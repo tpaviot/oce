@@ -2,28 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{D51DEE4A-08AE-0C35-1958-543E95D8B323}</UniqueIdentifier>
+      <UniqueIdentifier>{71658B9C-0FAC-052D-0852-E7B23B666FA7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QABugs">
-      <UniqueIdentifier>{D8E6C291-1699-0A34-06EA-B553BE8D1944}</UniqueIdentifier>
+      <UniqueIdentifier>{2C486E34-03DF-09E5-12AB-ED0BFBAD9D23}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QADNaming">
-      <UniqueIdentifier>{75DBDA2B-0427-16B9-0846-817C37021010}</UniqueIdentifier>
+      <UniqueIdentifier>{278EB9B0-0C2E-0175-1207-26EB762CAED4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QADraw">
-      <UniqueIdentifier>{6CA9375D-082E-17A7-0E5C-CDD6ADC9214C}</UniqueIdentifier>
+      <UniqueIdentifier>{89F0495F-0B41-123F-15C2-948F3F488D9A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANCollection">
-      <UniqueIdentifier>{A9430B07-055F-03D4-0969-EF403F62F773}</UniqueIdentifier>
+      <UniqueIdentifier>{48B82E63-0321-0CFE-11A7-A62FB3859BDF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewBRepNaming">
-      <UniqueIdentifier>{63C31F19-0DB0-0AE8-10BB-24AAEB51450B}</UniqueIdentifier>
+      <UniqueIdentifier>{BC774933-193F-0744-09E4-3143EB6203A8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewDBRepNaming">
-      <UniqueIdentifier>{8BFFE8F4-026F-0E50-0309-C98BEA00C8AC}</UniqueIdentifier>
+      <UniqueIdentifier>{DE22624A-115B-07D4-067C-C7D7EC30E183}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewModTopOpe">
-      <UniqueIdentifier>{7694346F-0B65-03B9-13AC-876A5054C290}</UniqueIdentifier>
+      <UniqueIdentifier>{25621E94-0D31-0F1F-1627-6EB4D62274CD}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -112,9 +112,6 @@
       <Filter>Source files\QADNaming</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\QADNaming\QADNaming_IteratorsCommands.cxx">
-      <Filter>Source files\QADNaming</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\QADNaming\QADNaming_Sample.cxx">
       <Filter>Source files\QADNaming</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\QADNaming\QADNaming_SelectionCommands.cxx">

@@ -42,11 +42,11 @@ class IGESSolid_HArray1OfFace : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESSolid_HArray1OfFace(const Standard_Integer Low,const Standard_Integer Up);
+      IGESSolid_HArray1OfFace(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESSolid_HArray1OfFace(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESSolid_Face)& V);
+      IGESSolid_HArray1OfFace(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESSolid_Face)& V);
   
-  Standard_EXPORT     void Init(const Handle(IGESSolid_Face)& V) ;
+        void Init(const Handle(IGESSolid_Face)& V) ;
   
         Standard_Integer Length() const;
   

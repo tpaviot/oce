@@ -39,6 +39,8 @@ void ShapeSchema_PGeom_Direction::SWrite(const Handle(Standard_Persistent)& p, S
   if (!p.IsNull()) {
     Handle(PGeom_Direction) &pp = (Handle(PGeom_Direction)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_gp_Vec::SWrite(pp->_CSFDB_GetPGeom_Vectorvec(),f,theSchema);
@@ -57,6 +59,8 @@ void ShapeSchema_PGeom_Direction::SRead(const Handle(Standard_Persistent)& p, St
 { 
   if (!p.IsNull()) {
     Handle(PGeom_Direction) &pp = (Handle(PGeom_Direction)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

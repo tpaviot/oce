@@ -2,16 +2,16 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{095F1094-1985-0584-027D-5A0017BC1F1D}</UniqueIdentifier>
+      <UniqueIdentifier>{172AB65F-0E3D-0CEB-042B-279CA09BD5AF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Draw">
-      <UniqueIdentifier>{9EE9689E-02A1-0C9E-07E8-ACE330779D97}</UniqueIdentifier>
+      <UniqueIdentifier>{EA08CA0E-0776-0993-0138-478C26422044}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DBRep">
-      <UniqueIdentifier>{0B450E8E-045E-1687-02CF-15448746164B}</UniqueIdentifier>
+      <UniqueIdentifier>{547902FD-05D2-1433-16A1-15D2C0BF7BEB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DrawTrSurf">
-      <UniqueIdentifier>{6199A81A-0CB1-1728-1358-1701304F032E}</UniqueIdentifier>
+      <UniqueIdentifier>{60A7A3C9-00FA-10D6-0FEC-FED1706820FC}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

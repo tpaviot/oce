@@ -1,25 +1,21 @@
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //26-04-1997 modified by pmn : Initialisation plus fine de la resolution
 
 Standard_Integer Blend_Walking::ArcToRecadre(const Standard_Boolean OnFirst,
-					     const math_Vector& sol,
+					     const math_Vector& theSol,
 					     const Standard_Integer PrevIndex,
 					     gp_Pnt2d& lastpt2d,
 					     gp_Pnt2d& pt2d,
@@ -29,17 +25,17 @@ Standard_Integer Blend_Walking::ArcToRecadre(const Standard_Boolean OnFirst,
   Standard_Boolean ok = Standard_False;
   Standard_Boolean byinter = (line->NbPoints() != 0), okinter = 0;
   Standard_Real distmin = RealLast();
-  Standard_Real uprev,vprev, prm, dist;
+  Standard_Real uprev = 0.,vprev = 0., prm = 0., dist = 0.;
   Handle(TheTopolTool) Iter;
 
   if (OnFirst) {
     if(byinter) previousP.ParametersOnS1(uprev,vprev);
-    pt2d.SetCoord(sol(1),sol(2));
+    pt2d.SetCoord(theSol(1),theSol(2));
     Iter = recdomain1;
   }
   else {
     if(byinter) previousP.ParametersOnS2(uprev,vprev);
-    pt2d.SetCoord(sol(3),sol(4));
+    pt2d.SetCoord(theSol(3),theSol(4));
     Iter = recdomain2;
   }
   lastpt2d.SetCoord(uprev,vprev);
@@ -75,7 +71,7 @@ Standard_Integer Blend_Walking::ArcToRecadre(const Standard_Boolean OnFirst,
 
 Standard_Boolean Blend_Walking::Recadre(Blend_FuncInv& FuncInv,
 					const Standard_Boolean OnFirst,
-					const math_Vector& sol,
+					const math_Vector& theSol,
 					math_Vector& solrst,
 					Standard_Integer& Indexsol,
 					Standard_Boolean& IsVtx,
@@ -86,11 +82,8 @@ Standard_Boolean Blend_Walking::Recadre(Blend_FuncInv& FuncInv,
   Standard_Boolean jalons_Trouve = Standard_False;
   Standard_Boolean recadre = Standard_True, ok;
   Standard_Boolean byinter = (line->NbPoints() != 0);
-#ifndef DEB
   Standard_Integer LeJalon = 0;
-#else
-  Standard_Integer LeJalon;
-#endif
+
   Standard_Integer nbarc;
   Standard_Real dist,prm,pmin, vtol;
   gp_Pnt2d pt2d, lastpt2d;
@@ -103,7 +96,7 @@ Standard_Boolean Blend_Walking::Recadre(Blend_FuncInv& FuncInv,
   if (OnFirst) Iter = recdomain1;
   else         Iter = recdomain2;
 
-  Indexsol = ArcToRecadre(OnFirst, sol, 0, 
+  Indexsol = ArcToRecadre(OnFirst, theSol, 0,
 			  lastpt2d, pt2d, pmin);
   IsVtx = Standard_False;
   if (Indexsol == 0) {
@@ -178,12 +171,12 @@ Standard_Boolean Blend_Walking::Recadre(Blend_FuncInv& FuncInv,
       if (OnFirst) {
 	previousP.ParametersOnS2(u,v);
 	Pnt1.SetCoord(u, v);
-	Pnt2.SetCoord(sol(3), sol(4));
+	Pnt2.SetCoord(theSol(3), theSol(4));
       }
       else {
 	previousP.ParametersOnS1(u,v);
 	Pnt1.SetCoord(u, v);
-	Pnt2.SetCoord(sol(1), sol(2));
+	Pnt2.SetCoord(theSol(1), theSol(2));
       }
 
       lambda = Pnt.Distance(lastpt2d);
@@ -199,12 +192,12 @@ Standard_Boolean Blend_Walking::Recadre(Blend_FuncInv& FuncInv,
     solrst(1) = pmin;
     solrst(2) = param; 
     if (OnFirst) {
-      solrst(3) = sol(3);
-      solrst(4) = sol(4);
+      solrst(3) = theSol(3);
+      solrst(4) = theSol(4);
     }
     else {
-      solrst(3) = sol(1);
-      solrst(4) = sol(2);
+      solrst(3) = theSol(1);
+      solrst(4) = theSol(2);
     }
   }
 
@@ -291,7 +284,7 @@ Standard_Boolean Blend_Walking::Recadre(Blend_FuncInv& FuncInv,
   if ((!recadre) && 
       ((Abs(pmin-ulast) < dist) || (Abs(pmin-ufirst) < dist)) ) {
 
-    Indexsol =  ArcToRecadre(OnFirst, sol, Indexsol, 
+    Indexsol =  ArcToRecadre(OnFirst, theSol, Indexsol,
 			     lastpt2d, pt2d, pmin);
     if (Indexsol == 0) {
       return Standard_False;

@@ -41,6 +41,8 @@ void StdSchema_PNaming_NamedShape::SWrite(const Handle(Standard_Persistent)& p, 
   if (!p.IsNull()) {
     Handle(PNaming_NamedShape) &pp = (Handle(PNaming_NamedShape)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPNaming_NamedShapemyOldShapes(),f);
@@ -62,6 +64,8 @@ void StdSchema_PNaming_NamedShape::SRead(const Handle(Standard_Persistent)& p, S
 { 
   if (!p.IsNull()) {
     Handle(PNaming_NamedShape) &pp = (Handle(PNaming_NamedShape)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

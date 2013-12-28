@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKViewerTest"
-	ProjectGUID="{7D88DFFA-0EE6-0ECB-0A3C-FFCB3074CBB3}"
+	ProjectGUID="{09BEBF4C-10EC-0AEE-10AD-872F4A31AD4A}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -56,12 +56,14 @@
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
+				EnableEnhancedInstructionSet="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\obj\TKViewerTest\TKViewerTest.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc9\obj\TKViewerTest/"
 				ObjectFile=".\..\..\..\win32\vc9\obj\TKViewerTest/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc9\obj\TKViewerTest/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -78,7 +80,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV3d.lib TKDraw.lib TKOpenGl.lib tcl85.lib tk85.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKShHealing.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV3d.lib TKDraw.lib TKOpenGl.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKViewerTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -150,12 +152,15 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				EnableEnhancedInstructionSet="2"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\objd\TKViewerTest\TKViewerTest.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc9\objd\TKViewerTest/"
 				ObjectFile=".\..\..\..\win32\vc9\objd\TKViewerTest/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc9\objd\TKViewerTest/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -175,7 +180,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV3d.lib TKDraw.lib TKOpenGl.lib tcl85.lib tk85.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKShHealing.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV3d.lib TKDraw.lib TKOpenGl.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKViewerTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -248,11 +253,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\obj\TKViewerTest\TKViewerTest.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc9\obj\TKViewerTest/"
 				ObjectFile=".\..\..\..\win64\vc9\obj\TKViewerTest/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc9\obj\TKViewerTest/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -269,7 +275,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV3d.lib TKDraw.lib TKOpenGl.lib tcl85.lib tk85.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKShHealing.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV3d.lib TKDraw.lib TKOpenGl.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKViewerTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -339,12 +345,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;_OCC64"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\objd\TKViewerTest\TKViewerTest.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc9\objd\TKViewerTest/"
 				ObjectFile=".\..\..\..\win64\vc9\objd\TKViewerTest/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc9\objd\TKViewerTest/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -364,7 +372,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV3d.lib TKDraw.lib TKOpenGl.lib tcl85.lib tk85.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKShHealing.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV3d.lib TKDraw.lib TKOpenGl.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKViewerTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

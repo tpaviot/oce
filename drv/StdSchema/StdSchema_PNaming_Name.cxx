@@ -41,6 +41,8 @@ void StdSchema_PNaming_Name::SWrite(const Handle(Standard_Persistent)& p, Storag
   if (!p.IsNull()) {
     Handle(PNaming_Name) &pp = (Handle(PNaming_Name)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPNaming_NamemyType());
@@ -63,6 +65,8 @@ void StdSchema_PNaming_Name::SRead(const Handle(Standard_Persistent)& p, Storage
 { 
   if (!p.IsNull()) {
     Handle(PNaming_Name) &pp = (Handle(PNaming_Name)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

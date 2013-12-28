@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5AFA1D6D-0B45-0B8D-0441-6F687C34CD1E}</ProjectGuid>
+    <ProjectGuid>{A292FE96-1366-011C-0796-14592DEACD33}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -93,9 +93,10 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc11\obj\TKCDF/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc11\obj\TKCDF/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc11\obj\TKCDF/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -133,11 +134,13 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc11\objd\TKCDF/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc11\objd\TKCDF/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc11\objd\TKCDF/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -178,9 +181,10 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc11\obj\TKCDF/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc11\obj\TKCDF/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc11\obj\TKCDF/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -218,11 +222,13 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc11\objd\TKCDF/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc11\objd\TKCDF/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc11\objd\TKCDF/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

@@ -15,6 +15,10 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -37,6 +41,10 @@
 				<Compiler>
 					<Add option="-O0" />
 					<Add option="-g" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -89,6 +97,7 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="freetype" />
 			<Add library="objc" />
 			<Add library="freeimage" />
 			<Add library="freetype" />
@@ -108,9 +117,11 @@
 		<Unit filename="../../../drv/PNaming/PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape_0.cxx" />
 		<Unit filename="../../../src/PNaming/PNaming_Name.cxx" />
 		<Unit filename="../../../src/PNaming/PNaming_Name_1.cxx" />
+		<Unit filename="../../../src/PNaming/PNaming_Name_2.cxx" />
 		<Unit filename="../../../src/PNaming/PNaming_NamedShape.cxx" />
 		<Unit filename="../../../src/PNaming/PNaming_Naming.cxx" />
 		<Unit filename="../../../src/PNaming/PNaming_Naming_1.cxx" />
+		<Unit filename="../../../src/PNaming/PNaming_Naming_2.cxx" />
 		<Unit filename="../../../src/PPrsStd/PPrsStd_AISPresentation.cxx" />
 		<Unit filename="../../../src/PPrsStd/PPrsStd_AISPresentation_1.cxx" />
 		<Unit filename="../../../src/MDataXtd/MDataXtd.cxx" />
@@ -141,6 +152,7 @@
 		<Unit filename="../../../src/MNaming/MNaming_NamedShapeStorageDriver.cxx" />
 		<Unit filename="../../../src/MNaming/MNaming_NamingRetrievalDriver.cxx" />
 		<Unit filename="../../../src/MNaming/MNaming_NamingRetrievalDriver_1.cxx" />
+		<Unit filename="../../../src/MNaming/MNaming_NamingRetrievalDriver_2.cxx" />
 		<Unit filename="../../../src/MNaming/MNaming_NamingStorageDriver.cxx" />
 	</Project>
 </CodeBlocks_project_file>

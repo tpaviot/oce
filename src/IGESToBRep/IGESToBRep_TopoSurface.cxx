@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //=======================================================================
 //modified: 
@@ -201,7 +197,7 @@ static Standard_Boolean extractCurve3d (const TopoDS_Shape& theEdges,
 {
   TopExp_Explorer anExp(theEdges, TopAbs_EDGE);
   Standard_Integer howMuch = 0;
-  Standard_Real f, l;
+  Standard_Real f = 0., l = 0.;
   for (; anExp.More(); anExp.Next()) {
     TopoDS_Edge anEdge = TopoDS::Edge(anExp.Current());
     if (anEdge.IsNull())
@@ -765,33 +761,49 @@ TopoDS_Shape IGESToBRep_TopoSurface::TransferSurfaceOfRevolution
   // (BRepPrimAPI_MakeRevol replace surface of revolution by plane then 3D and 2D curves are inconsistent;
   // and 3D is ignored. As result shape is rectangle instead circle shape.
   Handle(Geom_Curve) aBasisCurve;
+  
   {
-  try {
-    OCC_CATCH_SIGNALS
-    if (extractCurve3d(generatrix, aBasisCurve)) {
-      Handle(Geom_Surface) aResultSurf = new Geom_SurfaceOfRevolution(aBasisCurve, revolAxis);
-      if ( !aResultSurf.IsNull() && !IsFullAngle ) {
-        Standard_Real VF = aBasisCurve->FirstParameter();
-        Standard_Real VL = aBasisCurve->LastParameter();
-        // PTV 29.08.2002  begin of OCC663 Trim surface by correct parameters
-        Standard_Real UF = 0;
-        Standard_Real UL = endAngle - startAngle;;
-        //aResultSurf = new Geom_RectangularTrimmedSurface(aResultSurf, startAngle, endAngle, VF, VL);
-        aResultSurf = new Geom_RectangularTrimmedSurface(aResultSurf, UF, UL, VF, VL);
-        // PTV 29.08.2002  end of OCC663
-      }
-      if (!aResultSurf.IsNull()) {
-        BRepBuilderAPI_MakeFace aMakeF(aResultSurf, Precision::Confusion());
-        if (aMakeF.IsDone()) res = aMakeF.Face();
-      }
+    try
+    {
+      OCC_CATCH_SIGNALS
+      if (extractCurve3d(generatrix, aBasisCurve))
+      {
+        BRepBuilderAPI_MakeFace aMakeF;
+        Handle(Geom_Surface) aResultSurf = 
+                new Geom_SurfaceOfRevolution(aBasisCurve, revolAxis);
+
+        if ( !aResultSurf.IsNull())
+        {
+          if (!IsFullAngle)
+          {
+            const Standard_Real VF = aBasisCurve->FirstParameter();
+            const Standard_Real VL = aBasisCurve->LastParameter();
+            
+            // PTV 29.08.2002  begin of OCC663 Trim surface by correct parameters
+            const Standard_Real UF = 0;
+            const Standard_Real UL = endAngle - startAngle;
+            // PTV 29.08.2002  end of OCC663
+
+            aMakeF.Init(aResultSurf, UF, UL, VF, VL, Precision::Confusion());
+          }//if (!IsFullAngle)
+          else
+          {
+            aMakeF.Init(aResultSurf, Standard_True, Precision::Confusion());
+          }
+
+          if (aMakeF.IsDone())
+            res = aMakeF.Face();
+        }//if ( !aResultSurf.IsNull())
+      }//if (extractCurve3d(generatrix, aBasisCurve))
     }
-  }
-  catch (Standard_Failure) {
+    catch (Standard_Failure)
+    {
 #ifdef DEB
-    cout << "Warning: IgesToBRep_TopoSurface::TransferSurfaceOfRevolution(): exception by Geom: ";
-    Standard_Failure::Caught()->Print ( cout ); cout << endl;
+      cout << "Warning: IgesToBRep_TopoSurface::"
+                    "TransferSurfaceOfRevolution(): exception by Geom: ";
+      Standard_Failure::Caught()->Print ( cout ); cout << endl;
 #endif
-  }
+    }//catch (Standard_Failure)
   }
   
   if ( res.IsNull() ) {
@@ -903,13 +915,17 @@ TopoDS_Shape IGESToBRep_TopoSurface::TransferTabulatedCylinder
       Handle(Geom_Surface) aResultSurf = 
         new Geom_SurfaceOfLinearExtrusion(aBasisCurve, dir);
       if (!aResultSurf.IsNull()) {
-        aResultSurf = 
-          new Geom_RectangularTrimmedSurface(aResultSurf, 
-                                             aBasisCurve->FirstParameter(),
+        //aResultSurf = 
+        //  new Geom_RectangularTrimmedSurface(aResultSurf, 
+        //                                     aBasisCurve->FirstParameter(),
+        //                                     aBasisCurve->LastParameter(),
+        //                                     0., dir.Magnitude() );
+        BRepBuilderAPI_MakeFace aMakeF(aResultSurf, aBasisCurve->FirstParameter(),
                                              aBasisCurve->LastParameter(),
-                                             0., dir.Magnitude() );
-        BRepBuilderAPI_MakeFace aMakeF(aResultSurf, Precision::Confusion());
-        if (aMakeF.IsDone()) res = aMakeF.Face();
+                                             0., dir.Magnitude(),
+                                             Precision::Confusion());
+        if (aMakeF.IsDone())
+          res = aMakeF.Face();
       }
     }
   }
@@ -1211,7 +1227,11 @@ TopoDS_Shape IGESToBRep_TopoSurface::TransferTrimmedSurface
     face.EmptyCopy();
     TopoDS_Shape myshape1 = TC.TransferCurveOnFace (face, st->OuterContour(), trans, uFact, Standard_False);
     // si ca se passe mal , on recupere au moins la face avec NaturalRestriction
-    if (myshape1 .IsNull()) face = faceres;
+    if (myshape1 .IsNull()) {
+      face = faceres;
+      BRep_Builder B;
+      B.NaturalRestriction(face,Standard_False);
+    }
   }
   for (Standard_Integer i = 1; i <= st->NbInnerContours(); i++) {
     TopoDS_Shape myshape2 = TC.TransferCurveOnFace (face, st->InnerContour(i), trans, uFact, Standard_False);

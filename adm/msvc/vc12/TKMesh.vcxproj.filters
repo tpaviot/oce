@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{6E5348F1-135A-17FC-03BA-8025B22AF57B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepMesh">
+      <UniqueIdentifier>{5A9B5C48-0812-047E-0858-944D7D6B89F4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\IntPoly">
+      <UniqueIdentifier>{2DFC21F0-17F9-0D97-06FE-761F09EFA036}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_Array1OfBiPoint_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_Array1OfVertexOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfShapeReal_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfVertexInteger_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfFaceAttribute_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfIntegerPnt_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfShapeReal_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfVertexInteger_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfFaceAttribute_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfIntegerListOfInteger_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfIntegerListOfXY_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfIntegerPnt_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfShapePairOfPolygon_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfShapeReal_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfVertexInteger_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_ElemHasherOfDataStructureOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_HArray1OfVertexOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_HeapSortIndexedVertexOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_HeapSortVertexOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_IDMapOfLinkOfDataStructureOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_IDMapOfNodeOfDataStructureOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_IMapOfElementOfDataStructureOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_IndexedMapNodeOfIndexedMapOfVertex_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_IndexedMapOfVertex_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_LinkHasherOfDataStructureOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_ListIteratorOfListOfVertex_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_ListIteratorOfListOfXY_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_ListNodeOfListOfVertex_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_ListNodeOfListOfXY_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_ListOfVertex_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_ListOfXY_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_NodeHasherOfDataStructureOfDelaun_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_VertexHasher_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_BiPoint.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Circ.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_CircleTool.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Classifier.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_ComparatorOfIndexedVertexOfDelaun.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_ComparatorOfVertexOfDelaun.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_DataStructureOfDelaun.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Delaun.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_DiscretFactory.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_DiscretRoot.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Edge.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_FaceAttribute.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_FastDiscret.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_FastDiscretFace.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_GeomTool.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_IncrementalMesh.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_PairOfPolygon.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_SelectorOfDataStructureOfDelaun.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_ShapeTool.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Triangle.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Vertex.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_VertexInspector.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_VertexTool.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_IndexedMapNodeOfIndexedMapOfPnt2d_0.cxx">
+      <Filter>Source files\IntPoly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_IndexedMapNodeOfIndexedMapOfPnt_0.cxx">
+      <Filter>Source files\IntPoly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_IndexedMapOfPnt2d_0.cxx">
+      <Filter>Source files\IntPoly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_IndexedMapOfPnt_0.cxx">
+      <Filter>Source files\IntPoly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_SequenceNodeOfSequenceOfSequenceOfPnt2d_0.cxx">
+      <Filter>Source files\IntPoly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_SequenceNodeOfSequenceOfSequenceOfPnt_0.cxx">
+      <Filter>Source files\IntPoly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_SequenceOfSequenceOfPnt2d_0.cxx">
+      <Filter>Source files\IntPoly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_SequenceOfSequenceOfPnt_0.cxx">
+      <Filter>Source files\IntPoly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPoly\IntPoly_PlaneSection.cxx">
+      <Filter>Source files\IntPoly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPoly\IntPoly_Pnt2dHasher.cxx">
+      <Filter>Source files\IntPoly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPoly\IntPoly_PntHasher.cxx">
+      <Filter>Source files\IntPoly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPoly\IntPoly_ShapeSection.cxx">
+      <Filter>Source files\IntPoly</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKMesh.rc" />  </ItemGroup>
+</Project>

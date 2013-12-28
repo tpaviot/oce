@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepDimTol_Array1OfDatumReference(const Standard_Integer Low,const Standard_Integer Up);
+      StepDimTol_Array1OfDatumReference(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepDimTol_Array1OfDatumReference(const Handle(StepDimTol_DatumReference)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepDimTol_Array1OfDatumReference(const Handle(StepDimTol_DatumReference)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(StepDimTol_DatumReference)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepDimTol_Array1OfDatumReference()
 {
   Destroy();

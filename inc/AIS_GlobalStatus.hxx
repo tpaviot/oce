@@ -39,8 +39,7 @@ class TColStd_ListOfInteger;
 
 //! Stores  information  about objects in graphic context: <br>
 //!          - Status Of Display : in the main viewer <br>
-//!                                in the  collector <br>
-//!                                fully Erased <br>
+//!                                hidden in the main viewer <br>
 //!          - Displayed Modes <br>
 //!          - Active Selection Modes <br>
 //!          - is the Interactive Object Current ? <br>
@@ -81,13 +80,9 @@ public:
         AIS_DisplayStatus GraphicStatus() const;
   //! keeps the information of displayed modes in the <br>
 //!          main viewer. <br>
-//!          (The convention is that the object is displayed <br>
-//!          with the mode 0 in the collector...) <br>
        const TColStd_ListOfInteger& DisplayedModes() const;
   //! keeps the active selection modes of the object <br>
 //!          in the main viewer. <br>
-//!          (The convention is that the active selection mode <br>
-//!          for an object in the collector is the mode 0). <br>
        const TColStd_ListOfInteger& SelectionModes() const;
   
         Standard_Boolean IsHilighted() const;

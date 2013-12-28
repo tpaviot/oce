@@ -39,6 +39,8 @@ void ShapeSchema_PGeom_Ellipse::SWrite(const Handle(Standard_Persistent)& p, Sto
   if (!p.IsNull()) {
     Handle(PGeom_Ellipse) &pp = (Handle(PGeom_Ellipse)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_gp_Ax2::SWrite(pp->_CSFDB_GetPGeom_Conicposition(),f,theSchema);
@@ -59,6 +61,8 @@ void ShapeSchema_PGeom_Ellipse::SRead(const Handle(Standard_Persistent)& p, Stor
 { 
   if (!p.IsNull()) {
     Handle(PGeom_Ellipse) &pp = (Handle(PGeom_Ellipse)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

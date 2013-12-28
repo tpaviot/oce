@@ -70,6 +70,12 @@
 #ifndef _BRepMesh_ClassifierPtr_HeaderFile
 #include <BRepMesh_ClassifierPtr.hxx>
 #endif
+#ifndef _BRepMesh_Delaun_HeaderFile
+#include <BRepMesh_Delaun.hxx>
+#endif
+#ifndef _BRepMesh_Triangle_HeaderFile
+#include <BRepMesh_Triangle.hxx>
+#endif
 class BRepMesh_DataStructureOfDelaun;
 class BRepMesh_FaceAttribute;
 class TopoDS_Face;
@@ -81,11 +87,9 @@ class Poly_Triangulation;
 class TopLoc_Location;
 class BRepMesh_ListOfVertex;
 class TColStd_ListOfInteger;
-class BRepMesh_Delaun;
 class gp_XY;
 class gp_Pnt2d;
 class BRepMesh_DataMapOfIntegerListOfXY;
-class BRepMesh_Triangle;
 class BRepMesh_Edge;
 class BRepMesh_Vertex;
 class gp_Pnt;

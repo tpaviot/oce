@@ -2,9 +2,10 @@
 
 export TARGET="cbp"
 
-source ./env_cbp.sh "$TARGET" "$1"
+source ./env.sh "$1" "$TARGET"
 
-export CSF_OPT_LIB64="$CSF_OPT_LIB64:/usr/X11/lib"
-export CSF_OPT_LIB64D="$CSF_OPT_LIB64:/usr/X11/lib"
-
-/Applications/CodeBlocks.app/Contents/MacOS/CodeBlocks ./adm/mac/cbp/OCCT.workspace
+if [ -e "/Applications/CodeBlocks.app/Contents/MacOS/CodeBlocks" ]; then
+  /Applications/CodeBlocks.app/Contents/MacOS/CodeBlocks ./adm/$WOKSTATION/cbp/OCCT.workspace
+else
+  codeblocks ./adm/$WOKSTATION/cbp/OCCT.workspace
+fi

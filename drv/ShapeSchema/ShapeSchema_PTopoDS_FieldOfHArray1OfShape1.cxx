@@ -23,11 +23,11 @@ void ShapeSchema_PTopoDS_FieldOfHArray1OfShape1::SAdd(const PTopoDS_FieldOfHArra
 
 void ShapeSchema_PTopoDS_FieldOfHArray1OfShape1::SWrite(const PTopoDS_FieldOfHArray1OfShape1& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
-  Standard_Integer i;
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
 
   f.BeginWriteObjectData();
   f.PutInteger(pp.Length());
-  for (i = 0; i < pp.Length(); i++) {
+  for (Standard_Integer i = 0; i < pp.Length(); i++) {
     ShapeSchema_PTopoDS_Shape1::SWrite(pp.Value(i),f,theSchema);
 
   }
@@ -36,6 +36,7 @@ void ShapeSchema_PTopoDS_FieldOfHArray1OfShape1::SWrite(const PTopoDS_FieldOfHAr
 
 void ShapeSchema_PTopoDS_FieldOfHArray1OfShape1::SRead(PTopoDS_FieldOfHArray1OfShape1& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
   Standard_Integer size = 0;
 
   f.BeginReadObjectData();

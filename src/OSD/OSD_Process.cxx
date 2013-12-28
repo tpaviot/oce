@@ -1,21 +1,16 @@
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
@@ -340,7 +335,7 @@ Standard_Boolean OSD_Process :: IsSuperUser () {
  Standard_Boolean retVal = FALSE;
  PSID             pSIDadmin;
  HANDLE           hProcessToken = INVALID_HANDLE_VALUE;
- PTOKEN_GROUPS    pTKgroups;
+ PTOKEN_GROUPS    pTKgroups = NULL;
 
  if (  !OpenProcessToken (
          GetCurrentProcess (),
@@ -384,25 +379,18 @@ Standard_Integer OSD_Process :: ProcessId () {
 
 OSD_Path OSD_Process :: CurrentDirectory () {
 
- Standard_PCharacter pBuff;
- DWORD            dwSize = 0;
- OSD_Path         retVal;
+  OSD_Path anCurrentDirectory;
 
- dwSize = GetCurrentDirectory ( dwSize, pBuff );
- pBuff  = new Standard_Character[ dwSize ];
+  DWORD dwSize = PATHLEN + 1;
+  Standard_PCharacter pBuff = new char[dwSize];
 
- if (   (  dwSize = GetCurrentDirectory ( dwSize, pBuff )  ) == NULL   )
-
-  _osd_wnt_set_error ( myError, OSD_WProcess );
-
- else
+  if ( GetCurrentDirectory(dwSize, pBuff) > 0 )
+    anCurrentDirectory = OSD_Path ( pBuff );
+  else
+    _osd_wnt_set_error ( myError, OSD_WProcess );
  
-  retVal = OSD_Path ( pBuff );
- 
- delete[] pBuff;
-
- return retVal;
- 
+  delete[] pBuff;
+  return anCurrentDirectory;
 }  // end OSD_Process :: CurrentDirectory
 
 void OSD_Process :: SetCurrentDirectory ( const OSD_Path& where ) {

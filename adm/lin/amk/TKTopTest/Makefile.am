@@ -129,7 +129,6 @@ libTKTopTest_la_SOURCES = \
 @top_srcdir@/src/TestTopOpe/TestTopOpe_BOOP.cxx \
 @top_srcdir@/src/TestTopOpe/TestTopOpe_BOOPCommands.cxx \
 @top_srcdir@/src/TestTopOpe/TestTopOpe_CORCommands.cxx \
-@top_srcdir@/src/TestTopOpe/TestTopOpe_DSACommands.cxx \
 @top_srcdir@/src/TestTopOpe/TestTopOpe_DSF.cxx \
 @top_srcdir@/src/TestTopOpe/TestTopOpe_EditBOOP.cxx \
 @top_srcdir@/src/TestTopOpe/TestTopOpe_HDSCommands.cxx \

@@ -1,3 +1,0 @@
-#ifndef _Prs3d_RadiusAspect_HeaderFile
-#include <Prs3d_RadiusAspect.hxx>
-#endif

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKOpenGl"
-	ProjectGUID="{347AB596-038D-100F-173B-030324C365D5}"
+	ProjectGUID="{B349B7BA-140E-0307-05ED-AFE40FA5A9A7}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -56,12 +56,14 @@
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
+				EnableEnhancedInstructionSet="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\obj\TKOpenGl\TKOpenGl.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc9\obj\TKOpenGl/"
 				ObjectFile=".\..\..\..\win32\vc9\obj\TKOpenGl/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc9\obj\TKOpenGl/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -78,7 +80,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKService.lib TKV3d.lib opengl32.lib glu32.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKService.lib TKMath.lib TKV3d.lib opengl32.lib glu32.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKOpenGl.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -150,12 +152,15 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__OpenGl_DLL"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				EnableEnhancedInstructionSet="2"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\objd\TKOpenGl\TKOpenGl.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc9\objd\TKOpenGl/"
 				ObjectFile=".\..\..\..\win32\vc9\objd\TKOpenGl/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc9\objd\TKOpenGl/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -175,7 +180,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKService.lib TKV3d.lib opengl32.lib glu32.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKService.lib TKMath.lib TKV3d.lib opengl32.lib glu32.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKOpenGl.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -248,11 +253,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\obj\TKOpenGl\TKOpenGl.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc9\obj\TKOpenGl/"
 				ObjectFile=".\..\..\..\win64\vc9\obj\TKOpenGl/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc9\obj\TKOpenGl/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -269,7 +275,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKService.lib TKV3d.lib opengl32.lib glu32.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKService.lib TKMath.lib TKV3d.lib opengl32.lib glu32.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKOpenGl.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -339,12 +345,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;_OCC64"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\objd\TKOpenGl\TKOpenGl.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc9\objd\TKOpenGl/"
 				ObjectFile=".\..\..\..\win64\vc9\objd\TKOpenGl/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc9\objd\TKOpenGl/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -364,7 +372,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKService.lib TKV3d.lib opengl32.lib glu32.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKService.lib TKMath.lib TKV3d.lib opengl32.lib glu32.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKOpenGl.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -408,6 +416,9 @@
 				Name="OpenGl"
 				>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_AABB.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_AVIWriter.cxx">
 				</File>
 				<File
@@ -423,6 +434,18 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_AspectText.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_CappingAlgo.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_CappingPlaneResource.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Caps.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Clipping.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Context.cxx">
 				</File>
 				<File
@@ -433,6 +456,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Element.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Flipper.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Font.cxx">
@@ -462,9 +488,6 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_7.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_703.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_713.cxx">
 				</File>
 				<File
@@ -483,13 +506,10 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_LayerList.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_Marker.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_MarkerSet.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Matrix.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_PointSprite.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_PrimitiveArray.cxx">
@@ -501,7 +521,31 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_PriorityList.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_RaytraceSource.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_RenderFilter.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Resource.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_SceneGeometry.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_ShaderManager.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_ShaderObject.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_ShaderProgram.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_ShaderStates.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_StencilTest.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Structure.cxx">
@@ -547,6 +591,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace_5.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace_Raytrace.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_telem_util.cxx">

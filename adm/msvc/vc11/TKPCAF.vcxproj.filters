@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{CA3A137A-0DED-1215-1132-C381806B18A3}</UniqueIdentifier>
+      <UniqueIdentifier>{FB4A6F9D-0C2E-0762-1897-9BEEE861D211}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PDataXtd">
-      <UniqueIdentifier>{1EB39BCA-0F41-10D9-168C-0DFB49EC7E5E}</UniqueIdentifier>
+      <UniqueIdentifier>{2689FC82-13A1-1304-158C-26FD6EC85039}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PNaming">
-      <UniqueIdentifier>{5C645CBC-0CF9-1421-0905-68E8F395CC9B}</UniqueIdentifier>
+      <UniqueIdentifier>{0AD74DEB-1671-0211-0B8C-09FBDD767786}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PPrsStd">
-      <UniqueIdentifier>{ABF6C73D-0811-1347-0027-B23A641791A5}</UniqueIdentifier>
+      <UniqueIdentifier>{A1013745-105C-074F-040B-ABB1B920F763}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MDataXtd">
-      <UniqueIdentifier>{5B09893C-126E-1108-1659-C6FCD60162B9}</UniqueIdentifier>
+      <UniqueIdentifier>{51ABA11D-0B7C-176B-0257-68DD208D7F5F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MPrsStd">
-      <UniqueIdentifier>{F867E496-158A-1971-056B-FDD38C4BACA3}</UniqueIdentifier>
+      <UniqueIdentifier>{A54E5CEB-0930-0429-0ACB-A5E7FE21DCB8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MNaming">
-      <UniqueIdentifier>{33069CDF-0B1B-0C26-0D4D-34C840471211}</UniqueIdentifier>
+      <UniqueIdentifier>{21DFB24E-15DE-010E-0E07-5D17219993EC}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +69,9 @@
     <ClCompile Include="..\..\..\src\PNaming\PNaming_Name_1.cxx">
       <Filter>Source files\PNaming</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\PNaming\PNaming_Name_2.cxx">
+      <Filter>Source files\PNaming</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\PNaming\PNaming_NamedShape.cxx">
       <Filter>Source files\PNaming</Filter>
     </ClCompile>
@@ -76,6 +79,9 @@
       <Filter>Source files\PNaming</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\PNaming\PNaming_Naming_1.cxx">
+      <Filter>Source files\PNaming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PNaming\PNaming_Naming_2.cxx">
       <Filter>Source files\PNaming</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\PPrsStd\PPrsStd_AISPresentation.cxx">
@@ -166,6 +172,9 @@
       <Filter>Source files\MNaming</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\MNaming\MNaming_NamingRetrievalDriver_1.cxx">
+      <Filter>Source files\MNaming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MNaming\MNaming_NamingRetrievalDriver_2.cxx">
       <Filter>Source files\MNaming</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\MNaming\MNaming_NamingStorageDriver.cxx">

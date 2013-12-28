@@ -52,6 +52,9 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Graphic3d_SequenceOfHClipPlane_HeaderFile
+#include <Graphic3d_SequenceOfHClipPlane.hxx>
+#endif
 #ifndef _Handle_Graphic3d_AspectLine3d_HeaderFile
 #include <Handle_Graphic3d_AspectLine3d.hxx>
 #endif
@@ -223,6 +226,12 @@ public:
   //! Get Z layer ID of displayed structure. The method <br>
 //! returns -1 if the structure has no ID (deleted from graphic driver). <br>
   Standard_EXPORT     Standard_Integer GetZLayer() const;
+  //! Changes a sequence of clip planes slicing the structure on rendering. <br>
+//! @param thePlanes [in] the set of clip planes. <br>
+  Standard_EXPORT     void SetClipPlanes(const Graphic3d_SequenceOfHClipPlane& thePlanes) ;
+  //! Get clip planes slicing the structure on rendering. <br>
+//! @return set of clip planes. <br>
+  Standard_EXPORT    const Graphic3d_SequenceOfHClipPlane& GetClipPlanes() const;
   //! Modifies the detectability indicator to Standard_True <br>
 //!	    or Standard_False for the structure <me>. <br>
 //!	    The default value at the definition of <me> is <br>
@@ -262,6 +271,8 @@ public:
   //! Suppresses the highlight for the structure <me> <br>
 //!	     in all the views of the visualiser. <br>
   Standard_EXPORT     void UnHighlight() ;
+  
+  Standard_EXPORT   virtual  void Compute() ;
   //! Returns the new Structure defined for the new visualization <br>
   Standard_EXPORT   virtual  Handle_Graphic3d_Structure Compute(const Handle(Graphic3d_DataStructureManager)& aProjector) ;
   //! Returns the new Structure defined for the new visualization <br>

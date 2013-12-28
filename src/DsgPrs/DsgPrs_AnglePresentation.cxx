@@ -1,21 +1,17 @@
 // Created on: 1995-02-07
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <DsgPrs_AnglePresentation.ixx>
 #include <gp_Lin.hxx>
@@ -24,11 +20,10 @@
 #include <Graphic3d_Group.hxx>
 #include <Graphic3d_ArrayOfSegments.hxx>
 #include <Graphic3d_ArrayOfPolylines.hxx>
-#include <Prs3d_AngleAspect.hxx>
+#include <Prs3d_DimensionAspect.hxx>
 #include <Prs3d_Arrow.hxx>
 #include <Prs3d_ArrowAspect.hxx>
 #include <Prs3d_LineAspect.hxx>
-#include <Prs3d_LengthAspect.hxx>
 #include <Prs3d_Text.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <TCollection_ExtendedString.hxx>
@@ -78,7 +73,7 @@ static Standard_Integer AboveInBelowCone(const gp_Circ &CMax, const gp_Circ &CMi
 //==========================================================================
 void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentation,
                                     const Handle(Prs3d_Drawer)& aDrawer,
-                                    const Standard_Real aVal,
+                                    const Standard_Real /*aVal*/,
                                     const TCollection_ExtendedString& aText,
                                     const gp_Circ& aCircle,
                                     const gp_Pnt& aPosition,
@@ -87,14 +82,13 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
                                     const gp_Circ& VmaxCircle,
                                     const Standard_Real aArrowSize) 
 {
-  Handle(Prs3d_AngleAspect) anAngleAspect = aDrawer->AngleAspect();
-  Handle(Prs3d_LengthAspect) aLengthAspect = aDrawer->LengthAspect();
+  Handle(Prs3d_DimensionAspect) aDimensionAspect = aDrawer->DimensionAspect();
 
   TCollection_ExtendedString txt(aText);
 
   const Standard_Real myArrowSize = ( aArrowSize == 0.0 )? (0.1 * aCircle.Radius()) : aArrowSize;
 
-  anAngleAspect->ArrowAspect()->SetLength(myArrowSize);
+  aDimensionAspect->ArrowAspect()->SetLength(myArrowSize);
   aDrawer->ArrowAspect()->SetLength(myArrowSize);
 
   Standard_Boolean IsConeTrimmed = Standard_False; 
@@ -175,15 +169,15 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
     aPrims->AddVertex(ElCLib::Value(param + angle/11 * i, aCircle2));
   Prs3d_Root::CurrentGroup(aPresentation)->AddPrimitiveArray(aPrims);
 
-  DsgPrs::ComputeSymbol(aPresentation, anAngleAspect, AttachmentPnt,
+  DsgPrs::ComputeSymbol(aPresentation, aDimensionAspect, AttachmentPnt,
                         AttachmentPnt, aDir, aDir, DsgPrs_AS_LASTAR);
-  DsgPrs::ComputeSymbol(aPresentation, anAngleAspect, OppositePnt, 
+  DsgPrs::ComputeSymbol(aPresentation, aDimensionAspect, OppositePnt, 
                         OppositePnt, aDir2, aDir2, DsgPrs_AS_LASTAR);
 
   param = ElCLib::Parameter(aCircle2, tmpPnt);
   tmpPnt = ElCLib::Value(param, aCircle2);
   tmpPnt = tmpPnt.Translated(gp_Vec(0, 0, -2));
-  Prs3d_Text::Draw(aPresentation, aLengthAspect->TextAspect(), txt, tmpPnt);   //add the TCollection_ExtendedString
+  Prs3d_Text::Draw(aPresentation, aDimensionAspect->TextAspect(), txt, tmpPnt);   //add the TCollection_ExtendedString
 
   angle = 2. * M_PI - param ; 
   if( param > OppParam )
@@ -241,7 +235,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   char valcar[80];
   sprintf(valcar,"%5.2f",theval);
 
-  Handle(Prs3d_AngleAspect) LA = aDrawer->AngleAspect();
+  Handle(Prs3d_DimensionAspect) LA = aDrawer->DimensionAspect();
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
 
   gp_Ax2 ax(CenterPoint,axisdir,dir1);
@@ -353,7 +347,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   char valcar[80];
   sprintf(valcar,"%5.2f",theval);
   
-  Handle( Prs3d_AngleAspect ) LA = aDrawer->AngleAspect();
+  Handle( Prs3d_DimensionAspect ) LA = aDrawer->DimensionAspect();
   Prs3d_Root::CurrentGroup( aPresentation )->SetPrimitivesAspect( LA->LineAspect()->Aspect() );
 
   gp_Circ AngleCirc, AttachCirc;
@@ -467,7 +461,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   char valcar[80];
   sprintf(valcar,"%5.2f",theval);
   
-  Handle(Prs3d_AngleAspect) LA = aDrawer->AngleAspect();
+  Handle(Prs3d_DimensionAspect) LA = aDrawer->DimensionAspect();
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
 
   gp_Dir Norm;
@@ -586,7 +580,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   char valcar[80];
   sprintf(valcar,"%5.2f",theval);
   
-  Handle(Prs3d_AngleAspect) LA = aDrawer->AngleAspect();
+  Handle(Prs3d_DimensionAspect) LA = aDrawer->DimensionAspect();
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
 
   gp_Dir Norm = dir1.Crossed(dir2);
@@ -702,7 +696,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   TCollection_AsciiString valas(valcar);
   TCollection_ExtendedString aText(valas);
 
-  Handle(Prs3d_AngleAspect) LA = aDrawer->AngleAspect();
+  Handle(Prs3d_DimensionAspect) LA = aDrawer->DimensionAspect();
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
 
   gp_Dir Norm = dir1.Crossed(dir2);
@@ -801,7 +795,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
                                     const gp_Ax1& theAxe,
                                     const DsgPrs_ArrowSide ArrowSide)
 {
-  Handle(Prs3d_AngleAspect) LA = aDrawer->AngleAspect();
+  Handle(Prs3d_DimensionAspect) LA = aDrawer->DimensionAspect();
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
   
   gp_Dir dir1(gp_Vec(CenterPoint, AttachmentPoint1));

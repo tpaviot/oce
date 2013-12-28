@@ -40,6 +40,8 @@ void XCAFSchema_PMMgt_PManaged::SWrite(const Handle(Standard_Persistent)& p, Sto
   if (!p.IsNull()) {
     Handle(PMMgt_PManaged) &pp = (Handle(PMMgt_PManaged)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -57,6 +59,8 @@ void XCAFSchema_PMMgt_PManaged::SRead(const Handle(Standard_Persistent)& p, Stor
 { 
   if (!p.IsNull()) {
     Handle(PMMgt_PManaged) &pp = (Handle(PMMgt_PManaged)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

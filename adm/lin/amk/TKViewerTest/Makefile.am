@@ -11,7 +11,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES) $(CSF_TclLibs_INCLUDES) $(CSF_TclTkLibs_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_OpenGlLibs_INCLUDES) $(CSF_objc_INCLUDES) $(CSF_Appkit_INCLUDES) $(CSF_IOKit_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES) $(CSF_TclLibs_INCLUDES) $(CSF_TclTkLibs_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_OpenGlLibs_INCLUDES) $(CSF_objc_INCLUDES) $(CSF_Appkit_INCLUDES) $(CSF_IOKit_INCLUDES) $(CSF_FREETYPE_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/ViewerTest -I@top_srcdir@/src/ViewerTest
 
@@ -29,6 +29,7 @@ libTKViewerTest_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKMath/libTKMath.la \
 ../TKNIS/libTKNIS.la \
 ../TKService/libTKService.la \
+../TKShHealing/libTKShHealing.la \
 ../TKBool/libTKBool.la \
 ../TKPrim/libTKPrim.la \
 ../TKGeomAlgo/libTKGeomAlgo.la \
@@ -41,7 +42,7 @@ libTKViewerTest_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKV3d/libTKV3d.la \
 ../TKDraw/libTKDraw.la \
 ../TKOpenGl/libTKOpenGl.la \
-$(STLPort_LIB) $(CSF_TclLibs_LIB) $(CSF_TclTkLibs_LIB) $(CSF_user32_LIB) $(CSF_gdi32_LIB) $(CSF_OpenGlLibs_LIB) $(CSF_objc_LIB) $(CSF_Appkit_LIB) $(CSF_IOKit_LIB) 
+$(STLPort_LIB) $(CSF_TclLibs_LIB) $(CSF_TclTkLibs_LIB) $(CSF_user32_LIB) $(CSF_gdi32_LIB) $(CSF_OpenGlLibs_LIB) $(CSF_objc_LIB) $(CSF_Appkit_LIB) $(CSF_IOKit_LIB) $(CSF_FREETYPE_LIB) 
 
 libTKViewerTest_la_SOURCES = \
 @top_srcdir@/drv/ViewerTest/ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName_0.cxx \

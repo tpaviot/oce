@@ -1,20 +1,16 @@
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BRepGProp_Face.ixx>
 #include <BRep_Tool.hxx>
@@ -597,131 +593,6 @@ static void GetCurveKnots(const Standard_Real                  theMin,
     theKnots = new TColStd_HArray1OfReal(1, 2);
     theKnots->SetValue(1, theMin);
     theKnots->SetValue(2, theMax);
-  }
-}
-
-//=======================================================================
-//function : GetIntervalNbr
-//purpose  : 
-//=======================================================================
-
-static Standard_Integer GetIntervalNbr
-                 (const Standard_Real                  theParam,
-		  const Handle(TColStd_HArray1OfReal) &theSurfKnots,
-		  const Standard_Integer               theIndStart,
-		  const Standard_Integer               theIndEnd)
-{
-  Standard_Integer i;
-  Standard_Real    aTol = Precision::Confusion();
-
-  for (i = theIndStart + 1; i < theIndEnd; i++) {
-    if (theSurfKnots->Value(i) > theParam + aTol)
-      return i - 1;
-  }
-
-  return Min(theIndStart, theIndEnd - 1);
-}
-
-//=======================================================================
-//function : GetRealCurveKnots
-//purpose  : 
-//=======================================================================
-
-static void GetRealCurveKnots
-            (const Handle(TColStd_HArray1OfReal) &theCurveKnots,
-	     const Handle(TColStd_HArray1OfReal) &theSurfKnots,
-	     const Geom2dAdaptor_Curve           &theCurve,
-	           Handle(TColStd_HArray1OfReal) &theTKnots)
-{
-  Standard_Integer       i         = theCurveKnots->Lower();
-  Standard_Integer       iU        = theCurveKnots->Upper();
-  Standard_Integer       aNbIntPnt = 23;
-  TColStd_SequenceOfReal aSeqKnot;
-  Standard_Real          aTol      = Precision::Confusion();
-  Standard_Real          aTParam;
-
-  while (i < iU) {
-    Standard_Real    aT1   = theCurveKnots->Value(i++);
-    Standard_Real    aT2   = theCurveKnots->Value(i);
-    Standard_Real    aStep = (aT2 - aT1)/(aNbIntPnt + 1.);
-    Standard_Integer j;
-    gp_Pnt2d         aValue;
-    gp_Vec2d         aDir;
-    Standard_Integer aSurfLInd = theSurfKnots->Lower();
-    Standard_Integer aSurfUInd = theSurfKnots->Upper();
-    Standard_Integer anIntrvlInd;
-    Standard_Real    aTParamOld;
-    Standard_Real    aVParam;
-    Standard_Real    aVParamOld;
-    Standard_Real    aDiffOld;
-    Standard_Real    aDiff;
-
-
-    // Append the first curve knot of each interval in the sequence of knots.
-    aSeqKnot.Append(aT1);
-
-    aTParamOld = aT1;
-    theCurve.D0(aTParamOld, aValue);
-    aVParamOld  = aValue.Y();
-    anIntrvlInd = GetIntervalNbr(aVParamOld, theSurfKnots,
-				 aSurfLInd, aSurfUInd);
-    aDiffOld    = Min(Abs(aVParamOld - theSurfKnots->Value(anIntrvlInd)),
-		      Abs(aVParamOld - theSurfKnots->Value(anIntrvlInd + 1)));
-
-    for (j = 1; j <= aNbIntPnt; j++) {
-      aTParam = aT1 + j*aStep;
-      theCurve.D1(aTParam, aValue, aDir);
-      aVParam = aValue.Y();
-      aDiff   = Min(Abs(aVParam - theSurfKnots->Value(anIntrvlInd)),
-		    Abs(aVParam - theSurfKnots->Value(anIntrvlInd + 1)));
-
-      // Skip points if the curve goes along V isoline.
-      if (Abs(aDir.Y()) > aTol) {
-	Standard_Boolean isLower =
-	            (aVParam - aTol < theSurfKnots->Value(anIntrvlInd));
-	Standard_Boolean isUpper =
-                    (aVParam + aTol > theSurfKnots->Value(anIntrvlInd + 1));
-
-	if (isLower || isUpper) {
-	  if (isLower) {
-	    aSurfLInd = theSurfKnots->Lower();
-	    aSurfUInd = anIntrvlInd - 1;
-	  } else if (isUpper) {
-	    aSurfLInd = anIntrvlInd + 1;
-	    aSurfUInd = theSurfKnots->Upper();
-	  }
-
-	  // The V interval is changed. Find new interval.
-	  anIntrvlInd = GetIntervalNbr(aVParam, theSurfKnots,
-				       aSurfLInd, aSurfUInd);
-
-	  // Add the value that is closer to surface knots.
-	  // Check if the previous value is already added.
-	  if (aDiff < aDiffOld)
-	    aSeqKnot.Append(aTParam);
-	  else if (Abs(aSeqKnot.Last() - aTParamOld) > aTol)
-	    aSeqKnot.Append(aTParamOld);
-	}
-      }
-
-      // Prepare data for the next iteration.
-      aTParamOld = aTParam;
-      aVParamOld = aVParam;
-      aDiffOld   = aDiff;
-    }
-  }
-
-  // Add the last curve knot to the sequence.
-  aSeqKnot.Append(theCurveKnots->Value(iU));
-
-  // Fill the array of knots.
-  Standard_Integer aKnotsLen = aSeqKnot.Length();
-
-  theTKnots = new TColStd_HArray1OfReal(1, aKnotsLen);
-
-  for (i = 1; i <= aKnotsLen; i++) {
-    aTParam = aSeqKnot.Value(i);
-    theTKnots->SetValue(i, aTParam);
   }
 }
 

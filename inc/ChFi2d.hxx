@@ -30,6 +30,23 @@ class ChFi2d_Builder;
 
 //! This package contains the algorithms used to build <br>
 //!          fillets or chamfers on planar wire. <br>
+//! <br>
+//! This package provides two algorithms for 2D fillets: <br>
+//!     ChFi2d_Builder - it constructs a fillet or chamfer <br>
+//!                      for linear and circular edges of a face. <br>
+//!     ChFi2d_FilletAPI - it encapsulates two algorithms: <br>
+//!         ChFi2d_AnaFilletAlgo - analytical constructor of the fillet. <br>
+//!                                It works only for linear and circular edges, <br>
+//!                                having a common point. <br>
+//!         ChFi2d_FilletAlgo - iteration recursive method constructing <br>
+//!                             the fillet edge for any type of edges including <br>
+//!                             ellipses and b-splines. <br>
+//!                             The edges may even have no common point. <br>
+//!     ChFi2d_ChamferAPI - an algoroithm for construction of chamfers <br>
+//!                         between two linear edges of a plane. <br>
+//! <br>
+//! The algorithms ChFi2d_AnaFilletAlgo and ChFi2d_FilletAlgo may be used directly <br>
+//! or via the interface class ChFi2d_FilletAPI. <br>
 class ChFi2d  {
 public:
 

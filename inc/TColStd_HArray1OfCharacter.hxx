@@ -41,11 +41,11 @@ class TColStd_HArray1OfCharacter : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColStd_HArray1OfCharacter(const Standard_Integer Low,const Standard_Integer Up);
+      TColStd_HArray1OfCharacter(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColStd_HArray1OfCharacter(const Standard_Integer Low,const Standard_Integer Up,const Standard_Character& V);
+      TColStd_HArray1OfCharacter(const Standard_Integer Low,const Standard_Integer Up,const Standard_Character& V);
   
-  Standard_EXPORT     void Init(const Standard_Character& V) ;
+        void Init(const Standard_Character& V) ;
   
         Standard_Integer Length() const;
   

@@ -40,6 +40,8 @@ void StdLSchema_PDataStd_RealList::SWrite(const Handle(Standard_Persistent)& p, 
   if (!p.IsNull()) {
     Handle(PDataStd_RealList) &pp = (Handle(PDataStd_RealList)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDataStd_RealListmyValue(),f);
@@ -58,6 +60,8 @@ void StdLSchema_PDataStd_RealList::SRead(const Handle(Standard_Persistent)& p, S
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_RealList) &pp = (Handle(PDataStd_RealList)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

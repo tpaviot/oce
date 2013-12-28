@@ -19,9 +19,6 @@
 #ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _TopOpeBRepBuild_ShapeSet_HeaderFile
 #include <TopOpeBRepBuild_ShapeSet.hxx>
 #endif
@@ -33,6 +30,9 @@
 #endif
 #ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
@@ -76,8 +76,6 @@ public:
   Standard_EXPORT   virtual  void FindNeighbours() ;
   
   Standard_EXPORT   virtual const TopTools_ListOfShape& MakeNeighboursList(const TopoDS_Shape& E,const TopoDS_Shape& V) ;
-  
-  Standard_EXPORT     Standard_Boolean HasConnexStartElement() const;
   
   Standard_EXPORT   static  void IsUVISO(const TopoDS_Edge& E,const TopoDS_Face& F,Standard_Boolean& uiso,Standard_Boolean& viso) ;
   
@@ -129,7 +127,6 @@ private:
 
 
 TopoDS_Face myFace;
-Standard_Integer myDEBVertexIndex;
 
 
 };

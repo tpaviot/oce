@@ -1,22 +1,17 @@
 // Created on: 2011-02-04
 // Created by: Mikhail SAZONOV
-// Copyright (c) 2011-2012 OPEN CASCADE SAS
+// Copyright (c) 2011-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <OSD_MAllocHook.hxx>
 
@@ -30,6 +25,7 @@
 #include <set>
 #include <map>
 #include <cstdlib>
+#include <iomanip>
 
 #ifndef SIZE_MAX
 #define SIZE_MAX UINT_MAX
@@ -38,6 +34,11 @@
 #define MAX_STR 80
 
 static OSD_MAllocHook::Callback* MypCurrentCallback = NULL;
+
+namespace {
+  // dummy function to call at place where break point might be needed
+  inline void place_for_breakpoint () {}
+};
 
 //=======================================================================
 //function : GetCallback
@@ -78,32 +79,45 @@ OSD_MAllocHook::CollectBySize* OSD_MAllocHook::GetCollectBySize()
 #ifdef WNT
 #include <crtdbg.h>
 
+#if _MSC_VER == 1500  /* VS 2008 */
+
 static long getRequestNum(void* pvData, long lRequest, size_t& theSize)
 {
-  if (_CrtIsValidHeapPointer(pvData))
-  {
-#if _MSC_VER == 1500   // VS 2008
-#define nNoMansLandSize 4
-    // the header struct is taken from crt/src/dbgint.h
-    struct _CrtMemBlockHeader
-    {
-#ifdef _WIN64
-        int                         nBlockUse;
-        size_t                      nDataSize;
+#ifdef _DEBUG /* protect against invalid pointer; in Release, _CrtIsValidHeapPointer is always 1 */
+  if (!_CrtIsValidHeapPointer(pvData))
+    return lRequest;
 #else
-        size_t                      nDataSize;
-        int                         nBlockUse;
+  (void)lRequest; // avoid compiler warning on unused arg
 #endif
-      long                        lRequest;
-      unsigned char               gap[nNoMansLandSize];
-    };
-    _CrtMemBlockHeader* aHeader = ((_CrtMemBlockHeader*)pvData)-1;
-    theSize = aHeader->nDataSize;
-    return aHeader->lRequest;
+
+#define nNoMansLandSize 4
+  // the header struct is taken from crt/src/dbgint.h
+  struct _CrtMemBlockHeader
+  {
+#ifdef _WIN64
+      int                         nBlockUse;
+      size_t                      nDataSize;
+#else
+      size_t                      nDataSize;
+      int                         nBlockUse;
 #endif
-  }
+    long                        lRequest;
+    unsigned char               gap[nNoMansLandSize];
+  };
+
+  _CrtMemBlockHeader* aHeader = ((_CrtMemBlockHeader*)pvData)-1;
+  theSize = aHeader->nDataSize;
+  return aHeader->lRequest;
+}
+
+#else /* _MSC_VER == 1500 */
+
+static long getRequestNum(void* /*pvData*/, long lRequest, size_t& /*theSize*/)
+{
   return lRequest;
 }
+
+#endif /* _MSC_VER == 1500 */
 
 int __cdecl MyAllocHook(int      nAllocType,
                         void   * pvData,
@@ -175,9 +189,9 @@ void OSD_MAllocHook::SetCallback(Callback* theCB)
 //=======================================================================
 
 OSD_MAllocHook::LogFileHandler::LogFileHandler()
-: myLogFile(NULL),
-  myBreakSize(0)
+: myBreakSize(0)
 {
+  myLogFile.imbue (std::locale ("C"));
 }
 
 //=======================================================================
@@ -198,13 +212,15 @@ OSD_MAllocHook::LogFileHandler::~LogFileHandler()
 Standard_Boolean OSD_MAllocHook::LogFileHandler::Open(const char* theFileName)
 {
   Close();
-  myLogFile = fopen(theFileName, "w");
-  if (myLogFile != NULL)
+  myLogFile.open (theFileName);
+  if (!myLogFile.is_open())
   {
-    fputs("Operation type; Request Number; Block Size\n", myLogFile);
-    fputs("------------------------------------------\n", myLogFile);
+    return Standard_False;
   }
-  return myLogFile != NULL;
+
+  myLogFile << "Operation type; Request Number; Block Size\n"
+               "------------------------------------------\n";
+  return Standard_True;
 }
 
 //=======================================================================
@@ -214,10 +230,9 @@ Standard_Boolean OSD_MAllocHook::LogFileHandler::Open(const char* theFileName)
 
 void OSD_MAllocHook::LogFileHandler::Close()
 {
-  if (myLogFile != NULL)
+  if (myLogFile.is_open())
   {
-    fclose(myLogFile);
-    myLogFile = NULL;
+    myLogFile.close();
   }
 }
 
@@ -342,12 +357,21 @@ Standard_Boolean OSD_MAllocHook::LogFileHandler::MakeReport
   fclose(aLogFile);
 
   // print the report
-  FILE* aRepFile = fopen(theOutFile, "w");
-  if (aRepFile == NULL)
+  std::ofstream aRepFile (theOutFile);
+  if(!aRepFile.is_open())
+  {
     return Standard_False;
-  fprintf(aRepFile, "%10s %10s %10s %10s %10s %10s %10s\n",
-          "BlockSize", "NbAlloc", "NbLeft", "NbLeftPeak",
-          "AllocSize", "LeftSize", "PeakSize");
+  }
+  aRepFile.imbue (std::locale ("C"));
+
+  aRepFile << std::setw(20) << "BlockSize "
+           << std::setw(10) << "NbAlloc "
+           << std::setw(10) << "NbLeft "
+           << std::setw(10) << "NbLeftPeak "
+           << std::setw(20) << "AllocSize "
+           << std::setw(20) << "LeftSize "
+           << std::setw(20) << "PeakSize " << std::endl;
+
   Standard_Size aTotAlloc = 0;
   for (std::set<StorageInfo>::const_iterator it = aStMap.begin();
        it != aStMap.end(); ++it)
@@ -357,9 +381,15 @@ Standard_Boolean OSD_MAllocHook::LogFileHandler::MakeReport
     Standard_Size aSizeAlloc = aInfo.nbAlloc * aInfo.size;
     Standard_Size aSizeLeft = nbLeft * aInfo.size;
     Standard_Size aSizePeak = aInfo.nbLeftPeak * aInfo.size;
-    fprintf(aRepFile, "%10d %10d %10d %10d %10Iu %10Iu %10Iu\n", aInfo.size,
-            aInfo.nbAlloc, nbLeft, aInfo.nbLeftPeak,
-            aSizeAlloc, aSizeLeft, aSizePeak);
+
+    aRepFile << std::setw(20) << aInfo.size << ' '
+             << std::setw(10) << aInfo.nbAlloc << ' '
+             << std::setw(10) << nbLeft << ' '
+             << std::setw(10) << aInfo.nbLeftPeak << ' '
+             << std::setw(20) << aSizeAlloc << ' '
+             << std::setw(20) << aSizeLeft << ' '
+             << std::setw(20) << aSizePeak << std::endl;
+
     if (aTotAlloc + aSizeAlloc < aTotAlloc) // overflow ?
       aTotAlloc = SIZE_MAX;
     else
@@ -368,13 +398,19 @@ Standard_Boolean OSD_MAllocHook::LogFileHandler::MakeReport
     {
       for (std::set<unsigned long>::const_iterator it1 = aInfo.alive->begin();
            it1 != aInfo.alive->end(); ++it1)
-        fprintf(aRepFile, "%10lu\n", *it1);
+      aRepFile << std::setw(10) << *it1;
     }
   }
-  fprintf(aRepFile, "%10s %10s %10s %10s%c%10Iu %10Iu %10Iu\n", "Total:",
-          "", "", "", (aTotAlloc == SIZE_MAX ? '>' : ' '), aTotAlloc,
-          aTotalLeftSize, aTotalPeakSize);
-  fclose(aRepFile);
+  aRepFile << std::setw(20) << "Total:"
+           << std::setw(10) << "" << ' '
+           << std::setw(10) << "" << ' '
+           << std::setw(10) << "" << ' '
+           << (aTotAlloc == SIZE_MAX ? '>' : ' ')
+           << std::setw(20) << aTotAlloc << ' '
+           << std::setw(20) << aTotalLeftSize << ' '
+           << std::setw(20) << aTotalPeakSize << std::endl;
+
+  aRepFile.close();
   return Standard_True;
 }
 
@@ -387,15 +423,14 @@ void OSD_MAllocHook::LogFileHandler::AllocEvent
                    (size_t      theSize,
                     long        theRequestNum)
 {
-  if (myLogFile != NULL)
+  if (myLogFile.is_open())
   {
     myMutex.Lock();
-    fprintf(myLogFile, "alloc %10lu %10u\n", theRequestNum, theSize);
-    myMutex.Unlock();
+    myLogFile << "alloc "<< std::setw(10) << theRequestNum
+              << std::setw(20) << theSize << std::endl;
     if (myBreakSize == theSize)
-    {
-      int a = 1;
-    }
+      place_for_breakpoint();
+    myMutex.Unlock();
   }
 }
 
@@ -409,10 +444,11 @@ void OSD_MAllocHook::LogFileHandler::FreeEvent
                     size_t      theSize,
                     long        theRequestNum)
 {
-  if (myLogFile != NULL)
+  if (myLogFile.is_open())
   {
     myMutex.Lock();
-    fprintf(myLogFile, "free  %10lu %10u\n", theRequestNum, theSize);
+    myLogFile << "free " << std::setw(20) << theRequestNum
+              << std::setw(20) << theSize << std::endl;
     myMutex.Unlock();
   }
 }
@@ -430,7 +466,8 @@ OSD_MAllocHook::CollectBySize::CollectBySize()
 : myArray(NULL),
   myTotalLeftSize(0),
   myTotalPeakSize(0),
-  myBreakSize(0)
+  myBreakSize(0),
+  myBreakPeak(0)
 {
   Reset();
 }
@@ -477,12 +514,20 @@ void OSD_MAllocHook::CollectBySize::Reset()
 Standard_Boolean OSD_MAllocHook::CollectBySize::MakeReport(const char* theOutFile)
 {
   // print the report
-  FILE* aRepFile = fopen(theOutFile, "w");
-  if (aRepFile == NULL)
+  std::ofstream aRepFile(theOutFile);
+  if (!aRepFile.is_open())
     return Standard_False;
-  fprintf(aRepFile, "%10s %10s %10s %10s %10s %10s %10s\n",
-          "BlockSize", "NbAlloc", "NbLeft", "NbLeftPeak",
-          "AllocSize", "LeftSize", "PeakSize");
+  std::locale aCLoc("C");
+  aRepFile.imbue(aCLoc);
+
+  aRepFile << std::setw(10) << "BlockSize "
+           << std::setw(10) << "NbAlloc "
+           << std::setw(10) << "NbLeft "
+           << std::setw(10) << "NbLeftPeak "
+           << std::setw(20) << "AllocSize "
+           << std::setw(20) << "LeftSize "
+           << std::setw(20) << "PeakSize " << std::endl;
+
   Standard_Size aTotAlloc = 0;
   for (int i = 0; i < MAX_ALLOC_SIZE; i++)
   {
@@ -493,19 +538,30 @@ Standard_Boolean OSD_MAllocHook::CollectBySize::MakeReport(const char* theOutFil
       Standard_Size aSizeAlloc = myArray[i].nbAlloc * aSize;
       ptrdiff_t     aSizeLeft = nbLeft * aSize;
       Standard_Size aSizePeak = myArray[i].nbLeftPeak * aSize;
-      fprintf(aRepFile, "%10d %10d %10d %10d %10Iu %10Id %10Iu\n", aSize,
-              myArray[i].nbAlloc, nbLeft, myArray[i].nbLeftPeak,
-              aSizeAlloc, aSizeLeft, aSizePeak);
+
+      aRepFile << std::setw(10) << aSize << ' '
+               << std::setw(10) << myArray[i].nbAlloc << ' '
+               << std::setw(10) << nbLeft << ' '
+               << std::setw(10) << myArray[i].nbLeftPeak << ' '
+               << std::setw(20) << aSizeAlloc << ' '
+               << std::setw(20) << aSizeLeft << ' '
+               << std::setw(20) << aSizePeak << std::endl;
+
       if (aTotAlloc + aSizeAlloc < aTotAlloc) // overflow ?
         aTotAlloc = SIZE_MAX;
       else
         aTotAlloc += aSizeAlloc;
     }
   }
-  fprintf(aRepFile, "%10s %10s %10s %10s%c%10Iu %10Id %10Iu\n", "Total:",
-          "", "", "", (aTotAlloc == SIZE_MAX ? '>' : ' '), aTotAlloc,
-          myTotalLeftSize, myTotalPeakSize);
-  fclose(aRepFile);
+  aRepFile << std::setw(10) << "Total:" << ' '
+           << std::setw(10) << "" << ' '
+           << std::setw(10) << "" << ' '
+           << std::setw(10) << "" << ' '
+           << (aTotAlloc == SIZE_MAX ? '>' : ' ')
+           << std::setw(20) << aTotAlloc  << ' '
+           << std::setw(20) << myTotalLeftSize  << ' '
+           << std::setw(20) << myTotalPeakSize << std::endl;
+  aRepFile.close();
   return Standard_True;
 }
 
@@ -519,9 +575,7 @@ void OSD_MAllocHook::CollectBySize::AllocEvent
                     long        /*theRequestNum*/)
 {
   if (myBreakSize == theSize)
-  {
-    int a = 1;
-  }
+    place_for_breakpoint();
   if (theSize > 0)
   {
     myMutex.Lock();
@@ -530,7 +584,18 @@ void OSD_MAllocHook::CollectBySize::AllocEvent
     myTotalLeftSize += theSize;
     int nbLeft = myArray[ind].nbAlloc - myArray[ind].nbFree;
     if (nbLeft > myArray[ind].nbLeftPeak)
+    {
       myArray[ind].nbLeftPeak = nbLeft;
+      if (myBreakPeak != 0
+       && (myBreakSize == theSize || myBreakSize == 0))
+      {
+        const Standard_Size aSizePeak = myArray[ind].nbLeftPeak * theSize;
+        if (aSizePeak > myBreakPeak)
+        {
+          place_for_breakpoint();
+        }
+      }
+    }
     if (myTotalLeftSize > (ptrdiff_t)myTotalPeakSize)
       myTotalPeakSize = myTotalLeftSize;
     myMutex.Unlock();

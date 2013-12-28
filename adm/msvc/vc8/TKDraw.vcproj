@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKDraw"
-	ProjectGUID="{6D73680B-07E8-12D5-0E1A-BEA61188BE10}"
+	ProjectGUID="{3756D6B2-1431-1728-1320-444A32631E65}"
 	>
 	<Platforms>
 		<Platform
@@ -55,11 +55,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\obj\TKDraw\TKDraw.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc8\obj\TKDraw/"
 				ObjectFile=".\..\..\..\win32\vc8\obj\TKDraw/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc8\obj\TKDraw/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKMath.lib TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKMesh.lib TKService.lib TKHLR.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKMath.lib TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKMesh.lib TKService.lib TKHLR.lib gdi32.lib advapi32.lib user32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKDraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -149,12 +150,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\objd\TKDraw\TKDraw.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc8\objd\TKDraw/"
 				ObjectFile=".\..\..\..\win32\vc8\objd\TKDraw/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc8\objd\TKDraw/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -175,7 +178,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKMath.lib TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKMesh.lib TKService.lib TKHLR.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKMath.lib TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKMesh.lib TKService.lib TKHLR.lib gdi32.lib advapi32.lib user32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKDraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -250,11 +253,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\obj\TKDraw\TKDraw.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc8\obj\TKDraw/"
 				ObjectFile=".\..\..\..\win64\vc8\obj\TKDraw/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc8\obj\TKDraw/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -272,7 +276,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKMath.lib TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKMesh.lib TKService.lib TKHLR.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKernel.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKMath.lib TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKMesh.lib TKService.lib TKHLR.lib gdi32.lib advapi32.lib user32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKDraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -345,12 +349,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL;_OCC64"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\objd\TKDraw\TKDraw.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc8\objd\TKDraw/"
 				ObjectFile=".\..\..\..\win64\vc8\objd\TKDraw/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc8\objd\TKDraw/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -371,7 +377,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKMath.lib TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKMesh.lib TKService.lib TKHLR.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKernel.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKMath.lib TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKMesh.lib TKService.lib TKHLR.lib gdi32.lib advapi32.lib user32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKDraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

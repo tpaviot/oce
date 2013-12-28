@@ -355,7 +355,6 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/FSD/FSD_BinaryFile.cxx \
 @top_srcdir@/src/FSD/FSD_CmpFile.cxx \
 @top_srcdir@/src/FSD/FSD_File.cxx \
-@top_srcdir@/src/MMgt/MMgt_StackManager.cxx \
 @top_srcdir@/src/MMgt/MMgt_TShared.cxx \
 @top_srcdir@/src/Message/Message.cxx \
 @top_srcdir@/src/Message/Message_Algorithm.cxx \

@@ -44,7 +44,8 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Structure to provide all-in-one information on picking arguments <br>
+//! for "Matches" method of SelectBasics_SensitiveEntity. <br>
   Standard_EXPORT   static  Standard_Integer MaxOwnerPriority() ;
   
   Standard_EXPORT   static  Standard_Integer MinOwnerPriority() ;

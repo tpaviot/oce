@@ -13,15 +13,15 @@
 #include <Standard_DefineHandle.hxx>
 #endif
 
-#ifndef _Handle_Prs3d_CompositeAspect_HeaderFile
-#include <Handle_Prs3d_CompositeAspect.hxx>
+#ifndef _Handle_Prs3d_BasicAspect_HeaderFile
+#include <Handle_Prs3d_BasicAspect.hxx>
 #endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
-class Handle(Prs3d_CompositeAspect);
+class Handle(Prs3d_BasicAspect);
 class Prs3d_DatumAspect;
 
-DEFINE_STANDARD_HANDLE(Prs3d_DatumAspect,Prs3d_CompositeAspect)
+DEFINE_STANDARD_HANDLE(Prs3d_DatumAspect,Prs3d_BasicAspect)
 
 #endif

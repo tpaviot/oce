@@ -39,6 +39,8 @@ void XCAFSchema_PXCAFDoc_DocumentTool::SWrite(const Handle(Standard_Persistent)&
   if (!p.IsNull()) {
     Handle(PXCAFDoc_DocumentTool) &pp = (Handle(PXCAFDoc_DocumentTool)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -56,6 +58,8 @@ void XCAFSchema_PXCAFDoc_DocumentTool::SRead(const Handle(Standard_Persistent)& 
 { 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_DocumentTool) &pp = (Handle(PXCAFDoc_DocumentTool)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

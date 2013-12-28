@@ -41,6 +41,8 @@ void StdLSchema_PDataStd_Expression::SWrite(const Handle(Standard_Persistent)& p
   if (!p.IsNull()) {
     Handle(PDataStd_Expression) &pp = (Handle(PDataStd_Expression)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDataStd_ExpressionmyName(),f);
@@ -60,6 +62,8 @@ void StdLSchema_PDataStd_Expression::SRead(const Handle(Standard_Persistent)& p,
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_Expression) &pp = (Handle(PDataStd_Expression)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

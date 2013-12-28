@@ -39,11 +39,11 @@ class StepAP214_HArray1OfExternalIdentificationItem : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepAP214_HArray1OfExternalIdentificationItem(const Standard_Integer Low,const Standard_Integer Up);
+      StepAP214_HArray1OfExternalIdentificationItem(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepAP214_HArray1OfExternalIdentificationItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP214_ExternalIdentificationItem& V);
+      StepAP214_HArray1OfExternalIdentificationItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP214_ExternalIdentificationItem& V);
   
-  Standard_EXPORT     void Init(const StepAP214_ExternalIdentificationItem& V) ;
+        void Init(const StepAP214_ExternalIdentificationItem& V) ;
   
         Standard_Integer Length() const;
   

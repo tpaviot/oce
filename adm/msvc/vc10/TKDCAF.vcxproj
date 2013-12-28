@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{69450733-0F1F-0F23-0A4F-57CB1FD88B7B}</ProjectGuid>
+    <ProjectGuid>{EBFF00DB-10F1-1802-001B-C1564506D624}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,9 +89,11 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\obj\TKDCAF/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\obj\TKDCAF/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\obj\TKDCAF/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -129,11 +131,14 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKDCAF/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\objd\TKDCAF/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\objd\TKDCAF/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -174,9 +179,10 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\obj\TKDCAF/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\obj\TKDCAF/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\obj\TKDCAF/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -214,11 +220,13 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKDCAF/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\objd\TKDCAF/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\objd\TKDCAF/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -271,8 +279,6 @@
     <ClCompile Include="..\..\..\src\DDocStd\DDocStd_DrawDocument.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\DDocStd\DDocStd_MTMCommands.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\DDocStd\DDocStd_Sample.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\DDocStd\DDocStd_ToolsCommands.cxx">
     </ClCompile>
@@ -334,8 +340,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\DDataStd\DDataStd_ObjectCommands.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\DDataStd\DDataStd_Sample.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\DDataStd\DDataStd_TreeBrowser.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\DDataStd\DDataStd_TreeCommands.cxx">
@@ -345,8 +349,6 @@
     <ClCompile Include="..\..\..\src\DPrsStd\DPrsStd_AISPresentationCommands.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\DPrsStd\DPrsStd_AISViewerCommands.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\DPrsStd\DPrsStd_Sample.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\DrawDim\DrawDim.cxx">
     </ClCompile>

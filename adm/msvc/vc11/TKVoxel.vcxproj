@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{11AD6708-0E6B-04EA-125A-D0A806C7442F}</ProjectGuid>
+    <ProjectGuid>{2EE03EB8-007E-0340-13D2-9D4A266F3AF5}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -93,9 +93,10 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc11\obj\TKVoxel/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc11\obj\TKVoxel/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc11\obj\TKVoxel/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -133,11 +134,13 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc11\objd\TKVoxel/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc11\objd\TKVoxel/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc11\objd\TKVoxel/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -178,9 +181,10 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc11\obj\TKVoxel/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc11\obj\TKVoxel/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc11\obj\TKVoxel/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -218,11 +222,13 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc11\objd\TKVoxel/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc11\objd\TKVoxel/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc11\objd\TKVoxel/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

@@ -39,11 +39,11 @@ class TColgp_HArray2OfXY : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColgp_HArray2OfXY(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      TColgp_HArray2OfXY(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   TColgp_HArray2OfXY(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const gp_XY& V);
+      TColgp_HArray2OfXY(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const gp_XY& V);
   
-  Standard_EXPORT     void Init(const gp_XY& V) ;
+        void Init(const gp_XY& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -59,9 +59,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const gp_XY& Value) ;
   
-  Standard_EXPORT    const gp_XY& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const gp_XY& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     gp_XY& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        gp_XY& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const TColgp_Array2OfXY& Array2() const;
   

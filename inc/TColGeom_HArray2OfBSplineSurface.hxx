@@ -42,11 +42,11 @@ class TColGeom_HArray2OfBSplineSurface : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColGeom_HArray2OfBSplineSurface(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      TColGeom_HArray2OfBSplineSurface(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   TColGeom_HArray2OfBSplineSurface(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(Geom_BSplineSurface)& V);
+      TColGeom_HArray2OfBSplineSurface(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(Geom_BSplineSurface)& V);
   
-  Standard_EXPORT     void Init(const Handle(Geom_BSplineSurface)& V) ;
+        void Init(const Handle(Geom_BSplineSurface)& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -62,9 +62,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(Geom_BSplineSurface)& Value) ;
   
-  Standard_EXPORT    const Handle_Geom_BSplineSurface& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const Handle_Geom_BSplineSurface& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     Handle_Geom_BSplineSurface& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        Handle_Geom_BSplineSurface& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const TColGeom_Array2OfBSplineSurface& Array2() const;
   

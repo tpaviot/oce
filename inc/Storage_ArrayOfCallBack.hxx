@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Storage_ArrayOfCallBack(const Standard_Integer Low,const Standard_Integer Up);
+      Storage_ArrayOfCallBack(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Storage_ArrayOfCallBack(const Handle(Storage_CallBack)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Storage_ArrayOfCallBack(const Handle(Storage_CallBack)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(Storage_CallBack)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Storage_ArrayOfCallBack()
 {
   Destroy();

@@ -156,9 +156,6 @@ endif()
   list( APPEND TKTopTest_USED_SRCFILES "../../../src/TestTopOpe/TestTopOpe_CORCommands.cxx" )
   SOURCE_GROUP (TestTopOpe FILES "../../../src/TestTopOpe/TestTopOpe_CORCommands.cxx")
 
-  list( APPEND TKTopTest_USED_SRCFILES "../../../src/TestTopOpe/TestTopOpe_DSACommands.cxx" )
-  SOURCE_GROUP (TestTopOpe FILES "../../../src/TestTopOpe/TestTopOpe_DSACommands.cxx")
-
   list( APPEND TKTopTest_USED_SRCFILES "../../../src/TestTopOpe/TestTopOpe_DSF.cxx" )
   SOURCE_GROUP (TestTopOpe FILES "../../../src/TestTopOpe/TestTopOpe_DSF.cxx")
 
@@ -356,6 +353,10 @@ endif()
 
 if (WIN32)
 else()
+
+  if (APPLE)
+
+  endif()
 
 endif()
 

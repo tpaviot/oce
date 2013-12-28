@@ -39,6 +39,8 @@ void StdSchema_PDataXtd_Geometry::SWrite(const Handle(Standard_Persistent)& p, S
   if (!p.IsNull()) {
     Handle(PDataXtd_Geometry) &pp = (Handle(PDataXtd_Geometry)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPDataXtd_GeometrymyType());
@@ -57,6 +59,8 @@ void StdSchema_PDataXtd_Geometry::SRead(const Handle(Standard_Persistent)& p, St
 { 
   if (!p.IsNull()) {
     Handle(PDataXtd_Geometry) &pp = (Handle(PDataXtd_Geometry)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

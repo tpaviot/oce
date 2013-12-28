@@ -39,6 +39,8 @@ void ShapeSchema_PGeom_CylindricalSurface::SWrite(const Handle(Standard_Persiste
   if (!p.IsNull()) {
     Handle(PGeom_CylindricalSurface) &pp = (Handle(PGeom_CylindricalSurface)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_gp_Ax3::SWrite(pp->_CSFDB_GetPGeom_ElementarySurfaceposition(),f,theSchema);
@@ -58,6 +60,8 @@ void ShapeSchema_PGeom_CylindricalSurface::SRead(const Handle(Standard_Persisten
 { 
   if (!p.IsNull()) {
     Handle(PGeom_CylindricalSurface) &pp = (Handle(PGeom_CylindricalSurface)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

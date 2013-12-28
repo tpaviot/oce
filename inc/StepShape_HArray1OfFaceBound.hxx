@@ -42,11 +42,11 @@ class StepShape_HArray1OfFaceBound : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepShape_HArray1OfFaceBound(const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_HArray1OfFaceBound(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepShape_HArray1OfFaceBound(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepShape_FaceBound)& V);
+      StepShape_HArray1OfFaceBound(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepShape_FaceBound)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepShape_FaceBound)& V) ;
+        void Init(const Handle(StepShape_FaceBound)& V) ;
   
         Standard_Integer Length() const;
   

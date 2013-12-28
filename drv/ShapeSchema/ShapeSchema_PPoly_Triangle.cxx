@@ -14,6 +14,7 @@
 
 void ShapeSchema_PPoly_Triangle::SWrite(const PPoly_Triangle& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
   Standard_Integer PPoly_TrianglemyNodes1 = 0;
 
@@ -28,6 +29,7 @@ void ShapeSchema_PPoly_Triangle::SWrite(const PPoly_Triangle& pp, Storage_BaseDr
 
 void ShapeSchema_PPoly_Triangle::SRead(PPoly_Triangle& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
   Standard_Integer PPoly_TrianglemyNodes1 = 0;
    

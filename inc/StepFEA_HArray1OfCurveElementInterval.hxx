@@ -42,11 +42,11 @@ class StepFEA_HArray1OfCurveElementInterval : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepFEA_HArray1OfCurveElementInterval(const Standard_Integer Low,const Standard_Integer Up);
+      StepFEA_HArray1OfCurveElementInterval(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepFEA_HArray1OfCurveElementInterval(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepFEA_CurveElementInterval)& V);
+      StepFEA_HArray1OfCurveElementInterval(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepFEA_CurveElementInterval)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepFEA_CurveElementInterval)& V) ;
+        void Init(const Handle(StepFEA_CurveElementInterval)& V) ;
   
         Standard_Integer Length() const;
   

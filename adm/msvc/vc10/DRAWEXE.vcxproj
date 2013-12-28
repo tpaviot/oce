@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1CEE5336-140F-0518-10E0-CA1767C67D8C}</ProjectGuid>
+    <ProjectGuid>{DA3F63C7-0820-0DC1-04FA-B0855902C0FB}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,9 +89,11 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\obj\DRAWEXE/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\obj\DRAWEXE/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\obj\DRAWEXE/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -128,11 +130,14 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\DRAWEXE/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\objd\DRAWEXE/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\objd\DRAWEXE/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -172,9 +177,10 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\obj\DRAWEXE/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\obj\DRAWEXE/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\obj\DRAWEXE/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -211,11 +217,13 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\DRAWEXE/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\objd\DRAWEXE/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\objd\DRAWEXE/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

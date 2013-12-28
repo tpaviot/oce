@@ -1,22 +1,17 @@
 // Created on: 2000-08-04
 // Created by: Pavel TELKOV
-// Copyright (c) 2000-2012 OPEN CASCADE SAS
+// Copyright (c) 2000-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <XDEDRAW.ixx>
 #include <stdio.h>
@@ -98,6 +93,9 @@
 #include <AIS_Drawer.hxx>
 #include <Aspect_TypeOfLine.hxx>
 #include <Prs3d_LineAspect.hxx>
+#include <TDocStd_Owner.hxx>
+#include <Geom_Axis2Placement.hxx>
+#include <AIS_Trihedron.hxx>
 
 #define ZVIEW_SIZE 1000000.0
 // avoid warnings on 'extern "C"' functions returning C++ classes
@@ -1009,6 +1007,65 @@ static Standard_Integer XShowFaceBoundary (Draw_Interpretor& di,
 }
 
 //=======================================================================
+//function : testDoc
+//purpose  : Method to test destruction of document
+//=======================================================================
+static Standard_Integer testDoc (Draw_Interpretor&,
+                                 Standard_Integer argc,
+                                 const char ** argv)
+{
+  if( argc < 2 )
+  {
+    cout<<"Invalid numbers of arguments should be: XTestDoc shape"<<endl;
+    return 1;
+  }
+  TopoDS_Shape shape = DBRep::Get(argv[1]);
+  if( shape.IsNull())
+    return 1;
+ 
+  Handle(XCAFApp_Application) A = XCAFApp_Application::GetApplication();
+ 
+  Handle(TDocStd_Document) aD1 = new TDocStd_Document("MDTV-XCAF");
+  aD1->Open(A);
+  
+  Handle(V3d_Viewer) vw = ViewerTest_Tool::MakeViewer ("Test viwer"); 
+  Handle(AIS_InteractiveContext) aContext = new AIS_InteractiveContext(vw);
+  TPrsStd_AISViewer::New (aD1->Main(),aContext);
+  // get shape tool for shape verification
+  Handle(XCAFDoc_ShapeTool) aShapes =
+    XCAFDoc_DocumentTool::ShapeTool (aD1->Main());
+  TDF_Label aLab = aShapes->AddShape(shape);
+
+  Handle(Geom_Axis2Placement) aPlacement = 
+    new Geom_Axis2Placement (gp::Origin(), gp::DZ(),gp::DX());
+  Handle(AIS_Trihedron) aTriShape = new AIS_Trihedron (aPlacement);
+  
+  Handle(TNaming_NamedShape) NS;
+  Handle(TPrsStd_AISPresentation) prs;
+  if( aLab.FindAttribute( TNaming_NamedShape::GetID(), NS) ) {
+    prs = TPrsStd_AISPresentation::Set( NS );
+  }
+   
+  if( aLab.FindAttribute(TPrsStd_AISPresentation::GetID(), prs) ) 
+    prs->Display();
+  
+
+  TPrsStd_AISViewer::Update(aLab);
+  aContext->Display(aTriShape, Standard_True);
+  Handle(TDocStd_Owner) owner;
+  if (aD1->Main().Root().FindAttribute(TDocStd_Owner::GetID(), owner))
+  {
+    Handle_TDocStd_Document empty;
+    owner->SetDocument(empty);
+  }
+  aContext.Nullify();
+  aD1->Close();
+  aD1.Nullify();
+  return 0;
+}
+
+
+//=======================================================================
 //function : Init
 //purpose  :
 //=======================================================================
@@ -1082,6 +1139,7 @@ void XDEDRAW::Init(Draw_Interpretor& di)
           "Doc Label IsOn [R G B [LineWidth [LineStyle]]]:"
           "- turns on/off drawing of face boundaries and defines boundary line style",
           __FILE__, XShowFaceBoundary, g);
+   di.Add ("XTestDoc", "XTestDoc shape", __FILE__, testDoc, g);
 
   // Specialized commands
   XDEDRAW_Shapes::InitCommands ( di );

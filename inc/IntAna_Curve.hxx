@@ -126,8 +126,6 @@ Standard_Real DomainInf;
 Standard_Real DomainSup;
 Standard_Boolean RestrictedInf;
 Standard_Boolean RestrictedSup;
-Standard_Real LastZ;
-Standard_Real LastDZ;
 Standard_Boolean firstbounded;
 Standard_Boolean lastbounded;
 GeomAbs_SurfaceType typequadric;

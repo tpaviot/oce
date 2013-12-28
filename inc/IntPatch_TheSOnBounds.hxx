@@ -72,7 +72,7 @@ public:
   
   Standard_EXPORT   IntPatch_TheSOnBounds();
   
-  Standard_EXPORT     void Perform(IntPatch_ArcFunction& F,const Handle(Adaptor3d_TopolTool)& Domain,const Standard_Real TolBoundary,const Standard_Real TolTangency) ;
+  Standard_EXPORT     void Perform(IntPatch_ArcFunction& F,const Handle(Adaptor3d_TopolTool)& Domain,const Standard_Real TolBoundary,const Standard_Real TolTangency,const Standard_Boolean RecheckOnRegularity = Standard_False) ;
   
         Standard_Boolean IsDone() const;
   

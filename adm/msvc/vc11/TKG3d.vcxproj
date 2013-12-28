@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D77B249D-1509-0AF8-0941-BF32EBA80ECB}</ProjectGuid>
+    <ProjectGuid>{E20FF178-00BD-0973-0FA5-4A811C627223}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -93,9 +93,10 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc11\obj\TKG3d/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc11\obj\TKG3d/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc11\obj\TKG3d/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -133,11 +134,13 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc11\objd\TKG3d/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc11\objd\TKG3d/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc11\objd\TKG3d/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -178,9 +181,10 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc11\obj\TKG3d/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc11\obj\TKG3d/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc11\obj\TKG3d/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -218,11 +222,13 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc11\objd\TKG3d/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc11\objd\TKG3d/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc11\objd\TKG3d/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

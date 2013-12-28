@@ -1,22 +1,18 @@
 -- Created on: 1997-01-28
 -- Created by: CAL
 -- Copyright (c) 1997-1999 Matra Datavision
--- Copyright (c) 1999-2012 OPEN CASCADE SAS
+-- Copyright (c) 1999-2014 OPEN CASCADE SAS
 --
--- The content of this file is subject to the Open CASCADE Technology Public
--- License Version 6.5 (the "License"). You may not use the content of this file
--- except in compliance with the License. Please obtain a copy of the License
--- at http://www.opencascade.org and read it completely before using this file.
+-- This file is part of Open CASCADE Technology software library.
 --
--- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
--- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+-- This library is free software; you can redistribute it and / or modify it
+-- under the terms of the GNU Lesser General Public version 2.1 as published
+-- by the Free Software Foundation, with special exception defined in the file
+-- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+-- distribution for complete text of the license and disclaimer of any warranty.
 --
--- The Original Code and all software distributed under the License is
--- distributed on an "AS IS" basis, without warranty of any kind, and the
--- Initial Developer hereby disclaims all such warranties, including without
--- limitation, any warranties of merchantability, fitness for a particular
--- purpose or non-infringement. Please see the License for the specific terms
--- and conditions governing the rights and limitations under the License.
+-- Alternatively, this file may be used under the terms of Open CASCADE
+-- commercial license or contractual agreement.
 
 deferred class GraphicDriver from Graphic3d inherits TShared
 
@@ -46,7 +42,6 @@ uses
 
     PlaneAngle          from Quantity,
 
-    AlienImage          from AlienImage,
     PixMap              from Image,
 
     Array1OfEdge        from Aspect,
@@ -91,7 +86,9 @@ uses
     CUserDraw           from Graphic3d,
     NListOfHAsciiString from Graphic3d,
     FontAspect          from Font,
-    CGraduatedTrihedron from Graphic3d
+    CGraduatedTrihedron from Graphic3d,
+    ClipPlane           from Graphic3d,
+    Ax2                 from gp
 
 raises
 
@@ -203,15 +200,6 @@ is
                          ACGroup    : CGroup from Graphic3d;
                          NoInsert   : Integer from Standard )
         is deferred;
-    ---Purpose: call_togl_markercontextgroup
-
-    MarkerContextGroup ( me         : mutable;
-                         ACGroup    : CGroup from Graphic3d;
-                         NoInsert   : Integer from Standard;
-                         AMarkWidth : Integer from Standard;
-                         AMarkHeight: Integer from Standard;
-                         ATexture   : HArray1OfByte from TColStd )
-                is deferred;
     ---Purpose: call_togl_markercontextgroup
 
     RemoveGroup ( me        : mutable;
@@ -408,10 +396,11 @@ is
         is deferred;
     ---Purpose: call_togl_setlight
 
-    SetPlane ( me       : mutable;
-               ACView   : CView from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_setplane
+    SetClipPlanes (me : mutable; theCView : CView from Graphic3d) is deferred;
+    ---Purpose: Pass clip planes to the associated graphic driver view.
+
+    SetClipPlanes (me : mutable; theCStructure : CStructure from Graphic3d) is deferred;
+    ---Purpose: Pass clip planes to the associated graphic driver structure.
 
     SetVisualisation ( me       : mutable;
                        ACView   : CView from Graphic3d )
@@ -459,20 +448,18 @@ is
         is deferred;
     ---Purpose:
 
-    ----------------------------------------
-    -- Category: Methods to create Marker
-    -- for Purpose : see Graphic3d_Group.cdl
-    ----------------------------------------
-
-    Marker ( me         : mutable;
-             ACGroup    : CGroup from Graphic3d;
-             APoint     : Vertex from Graphic3d )
-        is deferred;
-
-    MarkerSet ( me          : mutable;
-                ACGroup     : CGroup from Graphic3d;
-                ListVertex  : Array1OfVertex from Graphic3d )
-        is deferred;
+    SetStencilTestOptions ( me          : mutable;
+                            theCGroup   : CGroup from Graphic3d;
+                            theIsEnabled: Boolean from Standard)
+    is deferred;
+    ---Purpose: sets the stencil test to theIsEnabled state;
+    
+    SetFlippingOptions (me          : mutable;
+                        theCGroup   : CGroup from Graphic3d;
+                        theIsEnabled: Boolean from Standard;
+                        theRefPlane : Ax2 from gp)
+    is deferred;
+    ---Purpose: sets the flipping to theIsEnabled state for the given graphic group.
 
     ----------------------------------------
     -- Category: Methods to create Text
@@ -958,22 +945,6 @@ is
         ---Purpose: Get Z layer ID of structure. If the structure doesn't
         -- exists in graphic driver, the method returns -1.
 
-    --------------------------
-    -- Category: Class methods
-    --------------------------
-
-    Light ( myclass;
-        ACLight : CLight from Graphic3d;
-        Update  : Boolean from Standard )
-        returns Integer from Standard;
-    ---Purpose: call_togl_light
-
-    Plane ( myclass;
-        ACPlane : CPlane from Graphic3d;
-        Update  : Boolean from Standard )
-        returns Integer from Standard;
-    ---Purpose: call_togl_plane
-
     -----------------------------
     -- Category: Internal methods
     -----------------------------
@@ -993,10 +964,6 @@ is
     PrintCPick ( me;
                  ACPick    : CPick from Graphic3d;
                  AField    : Integer from Standard );
-
-    PrintCPlane ( me;
-                  ACPlane   : CPlane from Graphic3d;
-                  AField    : Integer from Standard );
 
     PrintCStructure ( me;
                       ACStructure   : CStructure from Graphic3d;
@@ -1052,10 +1019,18 @@ is
 
     ---Purpose: returns Handle to display connection
 
+    IsDeviceLost (me)
+      returns Boolean from Standard;
+    -- Purpose: @return Standard_True in cases when the last view has been removed but some objects still present.
+
+    ResetDeviceLostFlag (me: mutable);
+    -- Purpose: Resets DeviceLostFlag to default (Standard_False) state.
+
 fields
 
     MyTraceLevel       : Integer from Standard is protected;
     MySharedLibrary    : SharedLibrary from OSD is protected;
     myDisplayConnection: DisplayConnection_Handle from Aspect is protected;
+    myDeviceLostFlag   : Boolean from Standard is protected;
 
 end GraphicDriver from Graphic3d;

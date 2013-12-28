@@ -40,6 +40,8 @@ void ShapeSchema_PGeom_BoundedSurface::SWrite(const Handle(Standard_Persistent)&
   if (!p.IsNull()) {
     Handle(PGeom_BoundedSurface) &pp = (Handle(PGeom_BoundedSurface)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -57,6 +59,8 @@ void ShapeSchema_PGeom_BoundedSurface::SRead(const Handle(Standard_Persistent)& 
 { 
   if (!p.IsNull()) {
     Handle(PGeom_BoundedSurface) &pp = (Handle(PGeom_BoundedSurface)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

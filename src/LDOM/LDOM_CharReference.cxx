@@ -1,22 +1,17 @@
 // Created on: 2002-02-08
 // Created by: Alexander GRIGORIEV
-// Copyright (c) 2002-2012 OPEN CASCADE SAS
+// Copyright (c) 2002-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <LDOM_CharReference.hxx>
 #include <stdio.h>
@@ -34,12 +29,13 @@ const int ENTI_AMP  = 1;
 const int ENTI_LT   = 2;
 const int ENTI_GT   = 3;
 const int ENTI_QUOT = 4;
-const int ENTI_APOS = 5;
+//const int ENTI_APOS = 5;
 
 struct entityRef {
   const char * name;
   const int    length;
   entityRef (const char * aName, const int aLen) : name(aName), length(aLen) {}
+  void operator= (const entityRef&);
 };
 
 //=======================================================================
@@ -54,21 +50,21 @@ char * LDOM_CharReference::Decode (char * theSrc, Standard_Integer& theLen)
 
   char * aSrcPtr = theSrc, * aDstPtr = theSrc;
   Standard_Integer anIncrCount = 0;
-  while (1) {
+  for(;;) {
     char * aPtr = strchr (aSrcPtr, '&');
     if (aPtr == NULL) {
       //        End of the loop
       aPtr = strchr (aSrcPtr, '\0');
       if (anIncrCount == 0)
-        theLen = aPtr - theSrc;
+        theLen = (Standard_Integer)(aPtr - theSrc);
       else {
-        Standard_Integer aByteCount = aPtr - aSrcPtr;
+        Standard_Integer aByteCount = (Standard_Integer)(aPtr - aSrcPtr);
         memmove (aDstPtr, aSrcPtr, aByteCount + 1);
-        theLen = (aDstPtr - theSrc) + aByteCount;
+        theLen = (Standard_Integer)(aDstPtr - theSrc) + aByteCount;
       }
       break;
     }
-    Standard_Integer aByteCount = aPtr - aSrcPtr;
+    Standard_Integer aByteCount = (Standard_Integer)(aPtr - aSrcPtr);
     if (aByteCount > 0 && aDstPtr != aSrcPtr)
       memmove (aDstPtr, aSrcPtr, aByteCount);
     aSrcPtr = aPtr;
@@ -84,12 +80,12 @@ char * LDOM_CharReference::Decode (char * theSrc, Standard_Integer& theLen)
         //      Error reading an XML string
         return NULL;
       aDstPtr[-1] = (char) aChar;
-      anIncrCount += aNewPtr - aSrcPtr;
+      anIncrCount += (Standard_Integer)(aNewPtr - aSrcPtr);
       aSrcPtr = &aNewPtr[1];
     }
     else if (IS_EQUAL(aSrcPtr+1, "amp;")) {
       aDstPtr = aSrcPtr - anIncrCount + 1;
-//    aDstPtr[-1] = '&';
+      aDstPtr[-1] = '&';
       anIncrCount += 4;
       aSrcPtr += 5;
     }
@@ -152,7 +148,7 @@ char * LDOM_CharReference::Encode (const char* theSrc, Standard_Integer& theLen,
   char       * aDest = (char *) theSrc;
   Standard_Integer aCount = 0;
   //    Analyse if there is a non-standard character in the string
-  while (1) {
+  for(;;) {
     const unsigned int iSrc =
       (const unsigned int) * (const unsigned char *) ptrSrc;
     if (iSrc == 0) {
@@ -166,7 +162,7 @@ char * LDOM_CharReference::Encode (const char* theSrc, Standard_Integer& theLen,
   }
   //    If there are such, copy the string with replacements
   if (!aCount)
-    theLen = endSrc - theSrc;
+    theLen = (Standard_Integer)(endSrc - theSrc);
   else {
     char * ptrDest = new char [(endSrc - theSrc) + aCount * 5 + 1];
     aDest = ptrDest;
@@ -187,7 +183,7 @@ char * LDOM_CharReference::Encode (const char* theSrc, Standard_Integer& theLen,
           ptrDest += entity_ref[aCode].length;
         }
     }
-    theLen = ptrDest - aDest;
+    theLen = (Standard_Integer)(ptrDest - aDest);
     * ptrDest = '\0';
   }
   return aDest;
@@ -287,7 +283,7 @@ int LDOM_CharReference::myTab [256] = {
   NORMAL_C,     // 059: Y
   NORMAL_C,     // 05a: Z
   NORMAL_C,     // 05b: [
-  NORMAL_C,     // 05c: \ 
+  NORMAL_C,     /* 05c: \	*/
   NORMAL_C,     // 05d: ]
   NORMAL_C,     // 05e: ^
   NORMAL_C,     // 05f: _

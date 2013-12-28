@@ -1,23 +1,18 @@
 // Created on: 1992-05-07
 // Created by: Jacques GOUSSARD
 // Copyright (c) 1992-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <IntPatch_ImpPrmIntersection.ixx>
 
@@ -163,9 +158,10 @@ void ComputeTangency (const IntPatch_TheSOnBounds& solrst,
   gp_Pnt2d p2d;
   gp_Vec2d d2d;
   //
-  static math_Vector X(1, 2);
-  static math_Vector F(1, 1);
-  static math_Matrix D(1, 1, 1, 2); 
+  double aX[2], aF[1], aD[1][2];
+  math_Vector X(aX, 1, 2);
+  math_Vector F(aF, 1, 1);
+  math_Matrix D(aD, 1, 1, 1, 2); 
   //
   seqlength = 0;
   NbPoints = solrst.NbPoints();
@@ -252,8 +248,8 @@ void ComputeTangency (const IntPatch_TheSOnBounds& solrst,
 	      LocTrans = TopAbs_EXTERNAL; // et pourquoi pas INTERNAL
 	    }
 	    else {
-	      if ((test > 0.)&& arcorien == TopAbs_FORWARD ||
-		  (test < 0.)&& arcorien == TopAbs_REVERSED){
+	      if (((test > 0.)&& arcorien == TopAbs_FORWARD) ||
+		  ((test < 0.)&& arcorien == TopAbs_REVERSED)){
 		LocTrans = TopAbs_FORWARD;
 	      }
 	      else {
@@ -291,8 +287,8 @@ void ComputeTangency (const IntPatch_TheSOnBounds& solrst,
 		      LocTrans = TopAbs_EXTERNAL; // et pourquoi pas INTERNAL
 		    }
 		    else {
-		      if ((test > 0.)&& arcorien == TopAbs_FORWARD ||
-			  (test < 0.)&& arcorien == TopAbs_REVERSED){
+		      if (((test > 0.)&& arcorien == TopAbs_FORWARD) ||
+			  ((test < 0.)&& arcorien == TopAbs_REVERSED)){
 			LocTrans = TopAbs_FORWARD;
 		      }
 		      else {
@@ -375,6 +371,8 @@ void Recadre(const Standard_Boolean ,
     case GeomAbs_Sphere:
       while(U1<(U1p-1.5*M_PI)) U1+=M_PI+M_PI;
       while(U1>(U1p+1.5*M_PI)) U1-=M_PI+M_PI;
+    default:
+      break;
   }
   switch(typeS2)
   { 
@@ -386,6 +384,8 @@ void Recadre(const Standard_Boolean ,
     case GeomAbs_Sphere:
       while(U2<(U2p-1.5*M_PI)) U2+=M_PI+M_PI;
       while(U2>(U2p+1.5*M_PI)) U2-=M_PI+M_PI;
+    default:
+      break;
   }
   pt.SetParameters(U1,V1,U2,V2);
 }
@@ -404,7 +404,7 @@ void IntPatch_ImpPrmIntersection::Perform (const Handle(Adaptor3d_HSurface)& Sur
 					   const Standard_Real Pas)
 {
   Standard_Boolean reversed, procf, procl, dofirst, dolast;
-  Standard_Integer indfirst, indlast, ind2, i,j,k, NbSegm;
+  Standard_Integer indfirst = 0, indlast = 0, ind2, i,j,k, NbSegm;
   Standard_Integer NbPointIns, NbPointRst, Nblines, Nbpts, NbPointDep;
   Standard_Real U1,V1,U2,V2,paramf,paraml,currentparam;
   
@@ -1394,25 +1394,6 @@ static Standard_Real AdjustUFirst(Standard_Real U1,Standard_Real U2)
 	u -= (2.*M_PI);
   }
 
-  return u;
-}
-
-// adjust U parameters on Quadric
-static Standard_Real AdjustUNext(Standard_Real Un,Standard_Real Up)
-{
-  Standard_Real u = Un;
-  if( Un < 0. )
-    while(u < 0.)
-      u += (2.*M_PI);
-  else if( Un > (2.*M_PI) )
-    while( u > (2.*M_PI) )
-      u -= (2.*M_PI);
-  else if(Un == 0. || fabs(Un) <= 1.e-9)
-    u = (fabs(Up) < fabs(2.*M_PI-Up)) ? 0. : (2.*M_PI);
-  else if(Un == (2.*M_PI) || fabs(Un-(2.*M_PI)) <= 1.e-9)
-    u = (fabs(Up) < fabs(2.*M_PI-Up)) ? 0. : (2.*M_PI);
-  else //( Un > 0. && Un < (2.*M_PI) )
-    return u;
   return u;
 }
 

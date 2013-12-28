@@ -39,11 +39,11 @@ class Plate_HArray1OfPinpointConstraint : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Plate_HArray1OfPinpointConstraint(const Standard_Integer Low,const Standard_Integer Up);
+      Plate_HArray1OfPinpointConstraint(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Plate_HArray1OfPinpointConstraint(const Standard_Integer Low,const Standard_Integer Up,const Plate_PinpointConstraint& V);
+      Plate_HArray1OfPinpointConstraint(const Standard_Integer Low,const Standard_Integer Up,const Plate_PinpointConstraint& V);
   
-  Standard_EXPORT     void Init(const Plate_PinpointConstraint& V) ;
+        void Init(const Plate_PinpointConstraint& V) ;
   
         Standard_Integer Length() const;
   

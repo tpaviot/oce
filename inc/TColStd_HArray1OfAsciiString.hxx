@@ -39,11 +39,11 @@ class TColStd_HArray1OfAsciiString : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColStd_HArray1OfAsciiString(const Standard_Integer Low,const Standard_Integer Up);
+      TColStd_HArray1OfAsciiString(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColStd_HArray1OfAsciiString(const Standard_Integer Low,const Standard_Integer Up,const TCollection_AsciiString& V);
+      TColStd_HArray1OfAsciiString(const Standard_Integer Low,const Standard_Integer Up,const TCollection_AsciiString& V);
   
-  Standard_EXPORT     void Init(const TCollection_AsciiString& V) ;
+        void Init(const TCollection_AsciiString& V) ;
   
         Standard_Integer Length() const;
   

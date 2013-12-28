@@ -109,7 +109,6 @@ Standard_Boolean done;
 Standard_Boolean empt;
 Standard_Boolean tgte;
 Standard_Boolean oppo;
-Standard_Boolean reverse;
 IntPatch_SequenceOfPoint spnt;
 IntPatch_SequenceOfLine slin;
 IntPatch_TheSOnBounds solrst;

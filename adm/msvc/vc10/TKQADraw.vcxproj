@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7D2BF36D-0E84-0C73-0E55-64220CF7599F}</ProjectGuid>
+    <ProjectGuid>{DF9F7765-14DC-052B-1028-6E9AAF6D8F49}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,16 +89,18 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\obj\TKQADraw/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\obj\TKQADraw/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\obj\TKQADraw/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKNIS.lib;TKMath.lib;TKernel.lib;TKService.lib;TKG2d.lib;TKDraw.lib;PTKernel.lib;TKV3d.lib;TKGeomBase.lib;TKG3d.lib;TKViewerTest.lib;TKCDF.lib;TKDCAF.lib;TKLCAF.lib;TKFillet.lib;TKTopAlgo.lib;TKHLR.lib;TKBool.lib;TKGeomAlgo.lib;TKPrim.lib;TKBO.lib;TKShHealing.lib;TKOffset.lib;TKFeat.lib;TKCAF.lib;TKIGES.lib;TKXSBase.lib;TKMesh.lib;TKXCAF.lib;TKSTEP.lib;TKXDESTEP.lib;TKXSDRAW.lib;TKSTL.lib;TKAdvTools.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKNIS.lib;TKMath.lib;TKernel.lib;TKService.lib;TKG2d.lib;TKDraw.lib;PTKernel.lib;TKV3d.lib;TKGeomBase.lib;TKG3d.lib;TKViewerTest.lib;TKCDF.lib;TKDCAF.lib;TKLCAF.lib;TKFillet.lib;TKTopAlgo.lib;TKHLR.lib;TKBool.lib;TKGeomAlgo.lib;TKPrim.lib;TKBO.lib;TKShHealing.lib;TKOffset.lib;TKFeat.lib;TKCAF.lib;TKIGES.lib;TKXSBase.lib;TKMesh.lib;TKXCAF.lib;TKSTEP.lib;TKXDESTEP.lib;TKXSDRAW.lib;TKSTL.lib;TKAdvTools.lib;TKVoxel.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bin\TKQADraw.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -129,18 +131,21 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKQADraw/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\objd\TKQADraw/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\objd\TKQADraw/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKNIS.lib;TKMath.lib;TKernel.lib;TKService.lib;TKG2d.lib;TKDraw.lib;PTKernel.lib;TKV3d.lib;TKGeomBase.lib;TKG3d.lib;TKViewerTest.lib;TKCDF.lib;TKDCAF.lib;TKLCAF.lib;TKFillet.lib;TKTopAlgo.lib;TKHLR.lib;TKBool.lib;TKGeomAlgo.lib;TKPrim.lib;TKBO.lib;TKShHealing.lib;TKOffset.lib;TKFeat.lib;TKCAF.lib;TKIGES.lib;TKXSBase.lib;TKMesh.lib;TKXCAF.lib;TKSTEP.lib;TKXDESTEP.lib;TKXSDRAW.lib;TKSTL.lib;TKAdvTools.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKNIS.lib;TKMath.lib;TKernel.lib;TKService.lib;TKG2d.lib;TKDraw.lib;PTKernel.lib;TKV3d.lib;TKGeomBase.lib;TKG3d.lib;TKViewerTest.lib;TKCDF.lib;TKDCAF.lib;TKLCAF.lib;TKFillet.lib;TKTopAlgo.lib;TKHLR.lib;TKBool.lib;TKGeomAlgo.lib;TKPrim.lib;TKBO.lib;TKShHealing.lib;TKOffset.lib;TKFeat.lib;TKCAF.lib;TKIGES.lib;TKXSBase.lib;TKMesh.lib;TKXCAF.lib;TKSTEP.lib;TKXDESTEP.lib;TKXSDRAW.lib;TKSTL.lib;TKAdvTools.lib;TKVoxel.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bind\TKQADraw.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -174,16 +179,17 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\obj\TKQADraw/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\obj\TKQADraw/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\obj\TKQADraw/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKNIS.lib;TKMath.lib;TKernel.lib;TKService.lib;TKG2d.lib;TKDraw.lib;PTKernel.lib;TKV3d.lib;TKGeomBase.lib;TKG3d.lib;TKViewerTest.lib;TKCDF.lib;TKDCAF.lib;TKLCAF.lib;TKFillet.lib;TKTopAlgo.lib;TKHLR.lib;TKBool.lib;TKGeomAlgo.lib;TKPrim.lib;TKBO.lib;TKShHealing.lib;TKOffset.lib;TKFeat.lib;TKCAF.lib;TKIGES.lib;TKXSBase.lib;TKMesh.lib;TKXCAF.lib;TKSTEP.lib;TKXDESTEP.lib;TKXSDRAW.lib;TKSTL.lib;TKAdvTools.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKNIS.lib;TKMath.lib;TKernel.lib;TKService.lib;TKG2d.lib;TKDraw.lib;PTKernel.lib;TKV3d.lib;TKGeomBase.lib;TKG3d.lib;TKViewerTest.lib;TKCDF.lib;TKDCAF.lib;TKLCAF.lib;TKFillet.lib;TKTopAlgo.lib;TKHLR.lib;TKBool.lib;TKGeomAlgo.lib;TKPrim.lib;TKBO.lib;TKShHealing.lib;TKOffset.lib;TKFeat.lib;TKCAF.lib;TKIGES.lib;TKXSBase.lib;TKMesh.lib;TKXCAF.lib;TKSTEP.lib;TKXDESTEP.lib;TKXSDRAW.lib;TKSTL.lib;TKAdvTools.lib;TKVoxel.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bin\TKQADraw.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -214,18 +220,20 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKQADraw/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\objd\TKQADraw/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\objd\TKQADraw/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKNIS.lib;TKMath.lib;TKernel.lib;TKService.lib;TKG2d.lib;TKDraw.lib;PTKernel.lib;TKV3d.lib;TKGeomBase.lib;TKG3d.lib;TKViewerTest.lib;TKCDF.lib;TKDCAF.lib;TKLCAF.lib;TKFillet.lib;TKTopAlgo.lib;TKHLR.lib;TKBool.lib;TKGeomAlgo.lib;TKPrim.lib;TKBO.lib;TKShHealing.lib;TKOffset.lib;TKFeat.lib;TKCAF.lib;TKIGES.lib;TKXSBase.lib;TKMesh.lib;TKXCAF.lib;TKSTEP.lib;TKXDESTEP.lib;TKXSDRAW.lib;TKSTL.lib;TKAdvTools.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKNIS.lib;TKMath.lib;TKernel.lib;TKService.lib;TKG2d.lib;TKDraw.lib;PTKernel.lib;TKV3d.lib;TKGeomBase.lib;TKG3d.lib;TKViewerTest.lib;TKCDF.lib;TKDCAF.lib;TKLCAF.lib;TKFillet.lib;TKTopAlgo.lib;TKHLR.lib;TKBool.lib;TKGeomAlgo.lib;TKPrim.lib;TKBO.lib;TKShHealing.lib;TKOffset.lib;TKFeat.lib;TKCAF.lib;TKIGES.lib;TKXSBase.lib;TKMesh.lib;TKXCAF.lib;TKSTEP.lib;TKXDESTEP.lib;TKXSDRAW.lib;TKSTL.lib;TKAdvTools.lib;TKVoxel.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bind\TKQADraw.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -293,8 +301,6 @@
     <ClCompile Include="..\..\..\src\QADNaming\QADNaming_BuilderCommands.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\QADNaming\QADNaming_IteratorsCommands.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\QADNaming\QADNaming_Sample.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\QADNaming\QADNaming_SelectionCommands.cxx">
     </ClCompile>

@@ -39,11 +39,11 @@ class StepAP214_HArray1OfPersonAndOrganizationItem : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer Low,const Standard_Integer Up);
+      StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP214_PersonAndOrganizationItem& V);
+      StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP214_PersonAndOrganizationItem& V);
   
-  Standard_EXPORT     void Init(const StepAP214_PersonAndOrganizationItem& V) ;
+        void Init(const StepAP214_PersonAndOrganizationItem& V) ;
   
         Standard_Integer Length() const;
   

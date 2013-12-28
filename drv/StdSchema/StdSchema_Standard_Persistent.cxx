@@ -40,6 +40,8 @@ void StdSchema_Standard_Persistent::SWrite(const Handle(Standard_Persistent)& p,
   if (!p.IsNull()) {
     Handle(Standard_Persistent) &pp = (Handle(Standard_Persistent)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -57,6 +59,8 @@ void StdSchema_Standard_Persistent::SRead(const Handle(Standard_Persistent)& p, 
 { 
   if (!p.IsNull()) {
     Handle(Standard_Persistent) &pp = (Handle(Standard_Persistent)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -42,6 +42,8 @@ void ShapeSchema_PBRep_Curve3D::SWrite(const Handle(Standard_Persistent)& p, Sto
   if (!p.IsNull()) {
     Handle(PBRep_Curve3D) &pp = (Handle(PBRep_Curve3D)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_PTopLoc_Location::SWrite(pp->_CSFDB_GetPBRep_CurveRepresentationmyLocation(),f,theSchema);
@@ -64,6 +66,8 @@ void ShapeSchema_PBRep_Curve3D::SRead(const Handle(Standard_Persistent)& p, Stor
 { 
   if (!p.IsNull()) {
     Handle(PBRep_Curve3D) &pp = (Handle(PBRep_Curve3D)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

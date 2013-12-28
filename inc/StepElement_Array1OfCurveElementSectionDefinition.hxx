@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepElement_Array1OfCurveElementSectionDefinition(const Standard_Integer Low,const Standard_Integer Up);
+      StepElement_Array1OfCurveElementSectionDefinition(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepElement_Array1OfCurveElementSectionDefinition(const Handle(StepElement_CurveElementSectionDefinition)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepElement_Array1OfCurveElementSectionDefinition(const Handle(StepElement_CurveElementSectionDefinition)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(StepElement_CurveElementSectionDefinition)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepElement_Array1OfCurveElementSectionDefinition()
 {
   Destroy();

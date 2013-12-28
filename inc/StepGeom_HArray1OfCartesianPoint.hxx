@@ -42,11 +42,11 @@ class StepGeom_HArray1OfCartesianPoint : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepGeom_HArray1OfCartesianPoint(const Standard_Integer Low,const Standard_Integer Up);
+      StepGeom_HArray1OfCartesianPoint(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepGeom_HArray1OfCartesianPoint(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepGeom_CartesianPoint)& V);
+      StepGeom_HArray1OfCartesianPoint(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepGeom_CartesianPoint)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepGeom_CartesianPoint)& V) ;
+        void Init(const Handle(StepGeom_CartesianPoint)& V) ;
   
         Standard_Integer Length() const;
   

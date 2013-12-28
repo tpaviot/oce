@@ -31,6 +31,9 @@
 #ifndef _SelectMgr_DataMapOfIntegerSensitive_HeaderFile
 #include <SelectMgr_DataMapOfIntegerSensitive.hxx>
 #endif
+#ifndef _gp_Lin_HeaderFile
+#include <gp_Lin.hxx>
+#endif
 #ifndef _SelectMgr_ViewerSelector_HeaderFile
 #include <SelectMgr_ViewerSelector.hxx>
 #endif

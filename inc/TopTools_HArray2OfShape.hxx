@@ -39,11 +39,11 @@ class TopTools_HArray2OfShape : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TopTools_HArray2OfShape(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      TopTools_HArray2OfShape(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   TopTools_HArray2OfShape(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const TopoDS_Shape& V);
+      TopTools_HArray2OfShape(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const TopoDS_Shape& V);
   
-  Standard_EXPORT     void Init(const TopoDS_Shape& V) ;
+        void Init(const TopoDS_Shape& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -59,9 +59,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const TopoDS_Shape& Value) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const TopoDS_Shape& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     TopoDS_Shape& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        TopoDS_Shape& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const TopTools_Array2OfShape& Array2() const;
   

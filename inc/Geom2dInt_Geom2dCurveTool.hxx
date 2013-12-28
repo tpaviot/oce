@@ -46,6 +46,9 @@
 #ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
 #endif
+#ifndef _gp_Vec2d_HeaderFile
+#include <gp_Vec2d.hxx>
+#endif
 class Adaptor2d_Curve2d;
 class gp_Pnt2d;
 class gp_Vec2d;
@@ -59,7 +62,7 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-      static  GeomAbs_CurveType TheType(const Adaptor2d_Curve2d& C) ;
+      static  GeomAbs_CurveType GetType(const Adaptor2d_Curve2d& C) ;
   
       static  Standard_Boolean IsComposite(const Adaptor2d_Curve2d& C) ;
   
@@ -93,11 +96,17 @@ public:
   
       static  void D2(const Adaptor2d_Curve2d& C,const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& T,gp_Vec2d& N) ;
   
+      static  void D3(const Adaptor2d_Curve2d& C,const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& T,gp_Vec2d& N,gp_Vec2d& V) ;
+  
+      static  gp_Vec2d DN(const Adaptor2d_Curve2d& C,const Standard_Real U,const Standard_Integer N) ;
+  
       static  Standard_Integer NbIntervals(const Adaptor2d_Curve2d& C) ;
   
       static  void Intervals(const Adaptor2d_Curve2d& C,TColStd_Array1OfReal& Tab) ;
   
       static  void GetInterval(const Adaptor2d_Curve2d& C,const Standard_Integer Index,const TColStd_Array1OfReal& Tab,Standard_Real& U1,Standard_Real& U2) ;
+  
+      static  Standard_Integer Degree(const Adaptor2d_Curve2d& C) ;
 
 
 

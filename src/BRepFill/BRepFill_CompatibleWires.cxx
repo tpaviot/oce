@@ -1,24 +1,18 @@
 // Created on: 1998-07-02
 // Created by: Joelle CHAUVET
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BRepFill_CompatibleWires.ixx>
 
@@ -69,7 +63,7 @@
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_SequenceOfReal.hxx>
 
-
+#ifdef DEB_EFV
 static void EdgesFromVertex (const TopoDS_Wire&   W,
 			     const TopoDS_Vertex& V, 
 			     TopoDS_Edge& E1, 
@@ -120,7 +114,7 @@ static void EdgesFromVertex (const TopoDS_Wire&   W,
   }
 }
 				      
-
+#endif
 static void SeqOfVertices (const TopoDS_Wire&   W,
 			   TopTools_SequenceOfShape& S)
 {
@@ -929,11 +923,6 @@ void BRepFill_CompatibleWires::
     
     // extremity of the first wire
     V1 = TopoDS::Vertex(SeqV.Value(1));	
-    // previous wire 
-#ifdef DEB
-    const TopoDS_Wire& wire2 = 
-#endif
-      TopoDS::Wire(myWork(i-1));
     // loop on vertices of wire1
     for (ii=1;ii<=SeqV.Length();ii++) {
       
@@ -1378,7 +1367,7 @@ void BRepFill_CompatibleWires::SameNumberByACR(const  Standard_Boolean  report)
 //purpose  : 
 //=======================================================================
 
-void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean polar )
+void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
 {
   // reorganize the wires respecting orientation and origin
   
@@ -1481,8 +1470,8 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean polar )
 	}
       
       Standard_Real MinSumDist = Precision::Infinite();
-      Standard_Integer jmin, j, k, n;
-      Standard_Boolean forward;
+      Standard_Integer jmin = 1, j, k, n;
+      Standard_Boolean forward = Standard_False;
       if (i == myWork.Length() && myDegen2)
 	{
 	  // last point section
@@ -1678,8 +1667,8 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean polar )
       newwire.Orientation( TopAbs_FORWARD );
       myWork(i) = newwire;
     }
+#ifdef DEB_EFV
 
-/*  
   for ( i=ideb; i<=myWork.Length(); i++) {
     
     const TopoDS_Wire& wire = TopoDS::Wire(myWork(i));
@@ -1929,7 +1918,7 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean polar )
       if (!Vsuiv.IsNull()) Psuiv=BRep_Tool::Pnt(Vsuiv);
     }
   }
-*/
+#endif
   
   // blocking sections ?
   if (vClosed) myWork(myWork.Length()) = myWork(1);

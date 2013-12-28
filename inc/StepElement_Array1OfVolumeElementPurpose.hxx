@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepElement_Array1OfVolumeElementPurpose(const Standard_Integer Low,const Standard_Integer Up);
+      StepElement_Array1OfVolumeElementPurpose(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepElement_Array1OfVolumeElementPurpose(const StepElement_VolumeElementPurpose& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepElement_Array1OfVolumeElementPurpose(const StepElement_VolumeElementPurpose& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const StepElement_VolumeElementPurpose& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepElement_Array1OfVolumeElementPurpose()
 {
   Destroy();

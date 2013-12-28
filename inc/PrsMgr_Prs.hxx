@@ -48,6 +48,8 @@ public:
   
   Standard_EXPORT   PrsMgr_Prs(const Handle(Graphic3d_StructureManager)& aStructureManager,const PrsMgr_Presentation3dPointer& aPresentation,const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d);
   
+  Standard_EXPORT     void Compute() ;
+  
   Standard_EXPORT     Handle_Graphic3d_Structure Compute(const Handle(Graphic3d_DataStructureManager)& aProjector) ;
   //! the "degenerated" Structure is displayed with <br>
 //!          a transformation defined by <AMatrix> <br>

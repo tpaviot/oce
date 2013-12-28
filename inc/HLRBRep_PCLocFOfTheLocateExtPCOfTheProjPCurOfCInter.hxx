@@ -37,14 +37,14 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
+#endif
 #ifndef _math_FunctionWithDerivative_HeaderFile
 #include <math_FunctionWithDerivative.hxx>
 #endif
 #ifndef _Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_HeaderFile
 #include <Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
 #endif
 class Standard_OutOfRange;
 class Standard_TypeMismatch;
@@ -85,7 +85,11 @@ public:
   
   Standard_EXPORT     Standard_Boolean IsMin(const Standard_Integer N) const;
   
-  Standard_EXPORT     Extrema_POnCurv2d Point(const Standard_Integer N) const;
+  Standard_EXPORT    const Extrema_POnCurv2d& Point(const Standard_Integer N) const;
+  
+  Standard_EXPORT     void SubIntervalInitialize(const Standard_Real theUfirst,const Standard_Real theUlast) ;
+  
+  Standard_EXPORT     Standard_Real SearchOfTolerance() ;
 
 
 
@@ -112,6 +116,10 @@ HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter myPoint;
 Standard_Boolean myPinit;
 Standard_Boolean myCinit;
 Standard_Boolean myD1Init;
+Standard_Real myTol;
+Standard_Integer myMaxDerivOrder;
+Standard_Real myUinfium;
+Standard_Real myUsupremum;
 
 
 };

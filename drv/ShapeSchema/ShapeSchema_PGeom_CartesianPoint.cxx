@@ -39,6 +39,8 @@ void ShapeSchema_PGeom_CartesianPoint::SWrite(const Handle(Standard_Persistent)&
   if (!p.IsNull()) {
     Handle(PGeom_CartesianPoint) &pp = (Handle(PGeom_CartesianPoint)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_gp_Pnt::SWrite(pp->_CSFDB_GetPGeom_CartesianPointpnt(),f,theSchema);
@@ -57,6 +59,8 @@ void ShapeSchema_PGeom_CartesianPoint::SRead(const Handle(Standard_Persistent)& 
 { 
   if (!p.IsNull()) {
     Handle(PGeom_CartesianPoint) &pp = (Handle(PGeom_CartesianPoint)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

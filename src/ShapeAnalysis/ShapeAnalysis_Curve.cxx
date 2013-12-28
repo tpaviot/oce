@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // pdn 04.12.98 Add method using Adaptor_Curve
 //:j8 abv 10.12.98 TR10 r0501_db.stp #9423
@@ -70,14 +66,17 @@ static void ProjectOnSegments (const Adaptor3d_Curve& AC, const gp_Pnt& P3D,
   //  On considere <nbseg> points sur [uMin,uMax]
   //  Quel est le plus proche. Et quel est le nouvel intervalle
   //  (il ne peut pas deborder l ancien)
-  Standard_Real u, dist, delta = (nbseg == 0)? 0 : (uMax-uMin)/nbseg; //szv#4:S4163:12Mar99 anti-exception
+  Standard_Real u, dist2, delta = (nbseg == 0)? 0 : (uMax-uMin)/nbseg; //szv#4:S4163:12Mar99 anti-exception
+  Standard_Real  distmin2 = distmin * distmin;
+  Standard_Boolean aHasChanged = Standard_False;
   for (Standard_Integer i = 0; i <= nbseg; i ++) {
     u = uMin + (delta * i);
     gp_Pnt PU = AC.Value (u);
-    dist = PU.Distance (P3D);
-    if (dist < distmin)  {  distmin = dist;  proj = PU;  param = u;  }
+    dist2 = PU.SquareDistance (P3D);
+    if (dist2 < distmin2)  {  distmin2 = dist2;  proj = PU;  param = u; aHasChanged = Standard_True;  }
   }
-
+  if (aHasChanged)
+    distmin = Sqrt (distmin2);
 #ifdef DEBUG
   cout<<"ShapeAnalysis_Geom:Project, param="<<param<<" -> distmin="<<distmin<<endl;
 #endif
@@ -173,27 +172,46 @@ Standard_Real ShapeAnalysis_Curve::Project(const Adaptor3d_Curve& C3D,
 					   const Standard_Boolean AdjustToEnds) const
 
 {
+
   Standard_Real uMin = C3D.FirstParameter();
   Standard_Real uMax = C3D.LastParameter();
-  Standard_Real distmin;
-  if (!Precision::IsInfinite(uMin)||!Precision::IsInfinite(uMax)) {
-    Standard_Real prec = ( AdjustToEnds ? preci : Precision::Confusion() ); //:j8 abv 10 Dec 98: tr10_r0501_db.stp #9423: protection against densing of points near one end
-    gp_Pnt LowBound = C3D.Value(uMin);
-    gp_Pnt HigBound = C3D.Value(uMax);
-    distmin = LowBound.Distance(P3D);
-    if (distmin <= prec) {
-      param = uMin;
-      proj  = LowBound;
-      return distmin;
-    }
-    distmin = HigBound.Distance(P3D);
-    if (distmin <= prec) {
-      param = uMax;
-      proj  = HigBound;
-      return distmin;
-    } 
+  
+  if (Precision::IsInfinite(uMin) && Precision::IsInfinite(uMax))
+    return ProjectAct(C3D, P3D, preci, proj, param);
+
+  Standard_Real distmin_L = Precision::Infinite(), distmin_H = Precision::Infinite();
+  Standard_Real prec = ( AdjustToEnds ? preci : Precision::Confusion() ); //:j8 abv 10 Dec 98: tr10_r0501_db.stp #9423: protection against densing of points near one end
+  gp_Pnt LowBound = C3D.Value(uMin);
+  gp_Pnt HigBound = C3D.Value(uMax);
+  distmin_L = LowBound.Distance(P3D);
+  distmin_H = HigBound.Distance(P3D);
+
+  if (distmin_L <= prec) {
+    param = uMin;
+    proj  = LowBound;
+    return distmin_L;
   }
-  return ProjectAct(C3D, P3D, preci, proj, param);
+
+  if (distmin_H <= prec) {
+    param = uMax;
+    proj  = HigBound;
+    return distmin_H;
+  } 
+
+  Standard_Real distProj = ProjectAct(C3D, P3D, preci, proj, param);
+  if(  distProj < distmin_L +  Precision::Confusion() && distProj < distmin_H +  Precision::Confusion())
+    return distProj;
+
+  if( distmin_L < distmin_H)
+  {
+    param = uMin;
+    proj  = LowBound;
+    return distmin_L;
+  }
+  param = uMax;
+  proj  = HigBound;
+  return distmin_H;
+
 }
 
 //=======================================================================
@@ -209,6 +227,7 @@ Standard_Real ShapeAnalysis_Curve::ProjectAct(const Adaptor3d_Curve& C3D,
        
 {
   Standard_Boolean OK = Standard_False;
+  param = 0.;
   try {
     OCC_CATCH_SIGNALS
     Extrema_ExtPC myExtPC(P3D,C3D);
@@ -231,11 +250,11 @@ Standard_Real ShapeAnalysis_Curve::ProjectAct(const Adaptor3d_Curve& C3D,
     Standard_Failure::Caught()->Print(cout); cout << endl;
 #endif
   }
-
+  
   //szv#4:S4163:12Mar99 moved
   Standard_Real uMin = C3D.FirstParameter(), uMax = C3D.LastParameter();
   Standard_Boolean closed = Standard_False;  // si on franchit les bornes ...
-  Standard_Real distmin = RealLast(), valclosed = 0.;
+  Standard_Real distmin = Precision::Infinite(), valclosed = 0.;
   Standard_Real aModParam = param;
   Standard_Real aModMin = distmin;
   
@@ -383,7 +402,7 @@ Standard_Real ShapeAnalysis_Curve::NextProject(const Standard_Real paramPrev,
 {
   Standard_Real uMin = (cf < cl ? cf : cl);
   Standard_Real uMax = (cf < cl ? cl : cf);
-  Standard_Real distmin;
+  Standard_Real distmin = Precision::Infinite();
   if (C3D->IsKind(STANDARD_TYPE(Geom_BoundedCurve))) {
     Standard_Real prec = ( AdjustToEnds ? preci : Precision::Confusion() ); //:j8 abv 10 Dec 98: tr10_r0501_db.stp #9423: protection against densing of points near one end
     gp_Pnt LowBound = C3D->Value(uMin);

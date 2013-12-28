@@ -64,9 +64,6 @@ public:
   //! Returns the list  of shapes modified from the shape <br>
 //!          <S>. <br>
   Standard_EXPORT   virtual const TopTools_ListOfShape& Modified(const TopoDS_Shape& S) ;
-  //! Returns the list  of shapes modified from the shape <S>. <br>
-//!         For use in BRepNaming. <br>
-  Standard_EXPORT    const TopTools_ListOfShape& Modified2(const TopoDS_Shape& aS) ;
   //! Returns the list  of shapes generated from the shape <S>. <br>
 //!         For use in BRepNaming. <br>
   Standard_EXPORT   virtual const TopTools_ListOfShape& Generated(const TopoDS_Shape& S) ;

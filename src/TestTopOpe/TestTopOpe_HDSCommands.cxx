@@ -1,23 +1,18 @@
 // Created on: 1994-10-24
 // Created by: Jean Yves LEBEY
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
@@ -322,53 +317,6 @@ static const TopoDS_Shape& GetShape(const Standard_Integer IS)
   return S;
 }
 
-#ifdef DEB
-static const TopoDS_Shape& GetShapeSameDomain
-(const Standard_Integer IS,const TopAbs_ShapeEnum TS,const TCollection_AsciiString& pre = "");
-
-//-----------------------------------------------------------------------
-// GetShapeSameDomain IS = shape index,TS = shape kind
-//-----------------------------------------------------------------------
-static const TopoDS_Shape& GetShapeSameDomain(const Standard_Integer IS,const TopAbs_ShapeEnum TS,const TCollection_AsciiString& pre)
-{
-  Standard_Boolean TypeControl = Standard_True;
-  if ( !PHDSD ) return bidbid;
-  
-  static TopoDS_Shape ShapeNull;
-  const Handle(TopOpeBRepDS_HDataStructure)& HDS = PHDSD->CurrentHDS();
-  const TopOpeBRepDS_DataStructure& BDS = PHDSD->CurrentBDS();
-  
-  // check on shape index and on shape kind if kind differs from TopAbs_SHAPE
-  Standard_Integer ns = BDS.NbShapes();
-  if ( IS < 1 || IS > ns) {
-    TopAbs::Print(TS,cout);cout<<" "<<IS<<" does not exist in DS"<<endl;
-    return ShapeNull;
-  }
-  else if ( !PHDSD->ShapeKind(IS,TS) ) {
-    if ( TypeControl ) {
-      cout<<"Shape "<<IS<<" is not a ";TopAbs::Print(TS,cout);
-      cout<<" but a ";TopAbs::Print(BDS.Shape(IS,SFindKeep).ShapeType(),cout);
-      cout<<endl;
-    }
-    return ShapeNull;
-  }
-  else if ( !HDS->HasSameDomain(HDS->Shape(IS,SFindKeep)) ) {
-    if ( TypeControl ) cout<<"Shape "<<IS<<" is not HasSameDomain"<<endl;
-    return ShapeNull;
-  }
-  
-  // shape index <IS> ok : get shape <S> of index <IS>
-  const TopoDS_Shape& S = BDS.Shape(IS,SFindKeep);
-  TopOpeBRepDS_Dumper Dumper(HDS);
-  TCollection_AsciiString sse = Dumper.SPrintShape(S);
-  TCollection_AsciiString sor = TopOpeBRepDS::SPrint(S.Orientation());
-  TCollection_AsciiString str;str=str+pre+sse+" is "+sor+"\n";
-  cout<<str;cout.flush();
-  
-  return S;
-}
-#endif
-
 //-----------------------------------------------------------------------
 // SeeSectionEdge
 //-----------------------------------------------------------------------
@@ -528,18 +476,6 @@ static Standard_Integer SeeGeometry(const Standard_Integer IG,const TopOpeBRepDS
 //-----------------------------------------------------------------------
 // SeeGeometry
 //-----------------------------------------------------------------------
-// Unused :
-#ifdef DEB
-static Standard_Integer SeeGeometry(const tsee_entity& E) 
-{ 
-  if (!E.myEOK) return 0; 
-  return SeeGeometry(E.myEindex,E.myETK);
-}
-#endif
-
-//-----------------------------------------------------------------------
-// SeeGeometry
-//-----------------------------------------------------------------------
 static Standard_Integer SeeGeometry(const TopOpeBRepDS_Kind TK)
 {
   if ( !PHDSD ) return 0; 
@@ -576,15 +512,6 @@ Standard_Integer TOPOPE_SeeShape(char* name)
 }
 
 //-----------------------------------------------------------------------
-// decalargs : shift a[*] from <-d>,modify na = na - deca
-//-----------------------------------------------------------------------
-// Unused :
-#ifdef DEB
-static void decalargs(Standard_Integer& na,const char** a,const Standard_Integer d) 
-{for(Standard_Integer i=1;i<na;i++)a[i]=a[i+d];na-=d;}
-#endif
-
-//-----------------------------------------------------------------------
 // suppressarg : remove a[d],modify na--
 //-----------------------------------------------------------------------
 void suppressarg(Standard_Integer& na,const char** a,const Standard_Integer d) 
@@ -610,14 +537,6 @@ Standard_EXPORT void suppressargs(Standard_Integer& na,const char** a,const Stan
   }
   na -= l-f+1;
 }
-
-//-----------------------------------------------------------------------
-// SetTolFlag
-//-----------------------------------------------------------------------
-// Unused :
-#ifdef DEB
-static Standard_Boolean SetTolFlag(Standard_Integer& na,const char** a) { decalargs(na,a,1); return Standard_True; }
-#endif
 
 //-----------------------------------------------------------------------
 // tsee_flags
@@ -918,11 +837,8 @@ void AddShapeKI
   // to sort, it is considered that : 
   // POINT == VERTEX,CURVE == EDGE,SURFACE == FACE
   
-#ifdef DEB
-  TopAbs_ShapeEnum SKtri;
-#else
   TopAbs_ShapeEnum SKtri=TopAbs_COMPOUND;
-#endif
+
   if (isshape) SKtri = TopOpeBRepDS::KindToShape(K);
   else if (isgeome) {
     if      (K == TopOpeBRepDS_POINT) SKtri = TopAbs_VERTEX; 

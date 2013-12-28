@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColGeom_Array1OfBezierCurve(const Standard_Integer Low,const Standard_Integer Up);
+      TColGeom_Array1OfBezierCurve(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColGeom_Array1OfBezierCurve(const Handle(Geom_BezierCurve)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TColGeom_Array1OfBezierCurve(const Handle(Geom_BezierCurve)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(Geom_BezierCurve)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TColGeom_Array1OfBezierCurve()
 {
   Destroy();

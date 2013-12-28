@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepElement_Array1OfMeasureOrUnspecifiedValue(const Standard_Integer Low,const Standard_Integer Up);
+      StepElement_Array1OfMeasureOrUnspecifiedValue(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepElement_Array1OfMeasureOrUnspecifiedValue(const StepElement_MeasureOrUnspecifiedValue& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepElement_Array1OfMeasureOrUnspecifiedValue(const StepElement_MeasureOrUnspecifiedValue& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const StepElement_MeasureOrUnspecifiedValue& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepElement_Array1OfMeasureOrUnspecifiedValue()
 {
   Destroy();

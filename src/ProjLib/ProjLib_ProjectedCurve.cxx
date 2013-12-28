@@ -1,24 +1,18 @@
 // Created on: 1993-08-25
 // Created by: Bruno DUMORTIER
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //  Modified by skv - Wed Aug 11 15:45:58 2004 OCC6272
 
@@ -118,247 +112,6 @@ static Standard_Boolean IsoIsDeg  (const Adaptor3d_Surface& S,
 }
 
 //=======================================================================
-//function : Interpolate
-//purpose  : 
-//=======================================================================
-
-static Handle(Geom2d_BSplineCurve) Interpolate(const Handle(TColgp_HArray1OfPnt2d)& myPoints,
-					       const Handle(TColStd_HArray1OfReal)& myParameters,
-					       const gp_Vec2d& InitialTangent, 
-					       const gp_Vec2d& FinalTangent)
-{
-  Handle(Geom2d_BSplineCurve) myCurve = NULL;
-
-// This code is extraction from Geom2dAPI_Interpolate with small correction
-// This is done to avoid of cyclic dependency if Geom2dAPI is used in ProjLib 
-
-  Standard_Integer degree,
-  ii,
-  jj,
-  index,
-  index1,
-  index2,
-  index3,
-  mult_index,
-  inversion_problem,
-  num_points,
-  num_distinct_knots,
-  num_poles  ;
-  
-  gp_Pnt2d a_point ;
-
-  Standard_Boolean myTangentRequest = Standard_True;
-
-  Handle(TColgp_HArray1OfVec2d) myTangents = 
-     new TColgp_HArray1OfVec2d(myPoints->Lower(),
-			      myPoints->Upper()) ;
-  Handle(TColStd_HArray1OfBoolean) myTangentFlags =
-      new TColStd_HArray1OfBoolean(myPoints->Lower(),
-				   myPoints->Upper()) ;
-  myTangentFlags->Init(Standard_False);
-  
-  myTangentFlags->SetValue(1,Standard_True) ;
-  myTangentFlags->SetValue(myPoints->Length(),Standard_True) ;
-  myTangents->SetValue(1,InitialTangent) ;
-  myTangents->SetValue(myPoints->Length(),FinalTangent);
-
-  num_points =
-  num_distinct_knots =
-  num_poles = myPoints->Length() ;
-  if (num_poles == 2 &&   !myTangentRequest)  {
-    degree = 1 ;
-  } 
-  else if (num_poles == 3 && !myTangentRequest) {
-    degree = 2 ;
-    num_distinct_knots = 2 ;
-  }
-  else {
-    degree = 3 ;
-    num_poles += 2 ;
-    //if (myTangentRequest) 
-      //for (ii = myTangentFlags->Lower() + 1 ; 
-	//   ii < myTangentFlags->Upper() ; ii++) {
-	//if (myTangentFlags->Value(ii)) {
-	  //num_poles += 1 ;
-	//}
-      //}
-    }
-  
-  
-  TColStd_Array1OfReal     parameters(1,num_poles) ;  
-  TColStd_Array1OfReal     flatknots(1,num_poles + degree + 1) ;
-  TColStd_Array1OfInteger  mults(1,num_distinct_knots) ;
-  TColStd_Array1OfReal     knots(1,num_distinct_knots) ;
-  TColStd_Array1OfInteger  contact_order_array(1, num_poles) ;
-  TColgp_Array1OfPnt2d       poles(1,num_poles) ;
-
-  for (ii = 1 ; ii <= degree + 1 ; ii++) {
-    flatknots.SetValue(ii,myParameters->Value(1)) ;
-    flatknots.SetValue(ii + num_poles,
-		       myParameters->Value(num_points)) ;
-  }
-  for (ii = 1 ; ii <= num_poles ; ii++) {
-    contact_order_array.SetValue(ii,0)  ;
-  }
-  for (ii = 2 ; ii < num_distinct_knots ; ii++) {
-    mults.SetValue(ii,1) ; 
-  }
-  mults.SetValue(1,degree + 1) ;
-  mults.SetValue(num_distinct_knots ,degree + 1) ;
-  
-  switch (degree) {
-  case 1:
-    for (ii = 1 ; ii <= num_poles ; ii++) {
-      poles.SetValue(ii ,myPoints->Value(ii)) ;
-    }
-    myCurve =
-      new Geom2d_BSplineCurve(poles,
-			    myParameters->Array1(),
-			    mults,
-			    degree) ;
-    //myIsDone = Standard_True ;
-    break ;
-  case 2:
-    knots.SetValue(1,myParameters->Value(1)) ;
-    knots.SetValue(2,myParameters->Value(3)) ;
-    for (ii = 1 ; ii <= num_poles ; ii++) {
-      poles.SetValue(ii,myPoints->Value(ii)) ;
-      
-    }
-    BSplCLib::Interpolate(degree,
-			  flatknots,
-			  myParameters->Array1(),
-			  contact_order_array,
-			  poles,
-			  inversion_problem) ;
-    if (!inversion_problem) {
-      myCurve =
-	new Geom2d_BSplineCurve(poles,
-			      knots,
-			      mults,
-			      degree) ;
-      //myIsDone = Standard_True ;
-    }
-    break ;
-  case 3:
-//
-// check if the boundary conditions are set
-//
-    //if (num_points >= 3) {
-//
-// cannot build the tangents with degree 3 with only 2 points
-// if those where not given in advance 
-//
-      //BuildTangents(myPoints->Array1(),
-		    //myTangents->ChangeArray1(),
-		    //myTangentFlags->ChangeArray1(),
-		    //myParameters->Array1()) ;
-    //}
-    contact_order_array.SetValue(2,1)  ;
-    parameters.SetValue(1,myParameters->Value(1)) ;
-    parameters.SetValue(2,myParameters->Value(1)) ;
-    poles.SetValue(1,myPoints->Value(1)) ;
-    for (jj = 1 ; jj <= 2 ; jj++) {
-      a_point.SetCoord(jj,myTangents->Value(1).Coord(jj)) ;
-
-    }
-    poles.SetValue(2,a_point) ;
-    mult_index = 2 ;
-    index = 3 ;
-    index1 = 2 ;
-    index2 = myPoints->Lower() + 1 ;
-    index3 = degree + 2 ;
-    if (myTangentRequest) {
-      for (ii = myParameters->Lower() + 1 ; 
-	   ii < myParameters->Upper() ; ii++) {
-	parameters.SetValue(index,myParameters->Value(ii)) ;
-	poles.SetValue(index,myPoints->Value(index2)) ;
-        flatknots.SetValue(index3,myParameters->Value(ii)) ; 
-	index += 1 ;
-        index3 += 1 ;
-	if (myTangentFlags->Value(index1)) {
-//
-// set the multiplicities, the order of the contact, the 
-// the flatknots,
-//
-	  mults.SetValue(mult_index,mults.Value(mult_index) + 1) ;
-	  contact_order_array(index) = 1 ;
-          flatknots.SetValue(index3, myParameters->Value(ii)) ;
-	  parameters.SetValue(index,
-			      myParameters->Value(ii)) ;
-	  for (jj = 1 ; jj <= 2 ; jj++) {
-            a_point.SetCoord(jj,myTangents->Value(ii).Coord(jj)) ;
-	  }
-	  poles.SetValue(index,a_point) ;
-	  index += 1  ;
-	  index3 += 1 ;
-	}
-	mult_index += 1 ;
-	index1 += 1 ;
-	index2 += 1 ;
-
-      }
-    }
-    else {
-      index1 = 2 ;
-      for(ii = myParameters->Lower()  ; ii <= myParameters->Upper()  ; ii++) {
-	parameters.SetValue(index1, 
-			    myParameters->Value(ii)) ;
-	index1 += 1 ;
-      }
-      index = 3 ;
-      for (ii = myPoints->Lower() + 1 ; ii <= myPoints->Upper() - 1 ; ii++) {
-	poles.SetValue(index,
-		       myPoints->Value(ii)) ;
-	index += 1 ;
-      }
-   
-   
-      index = degree + 1 ;
-      for(ii = myParameters->Lower()  ; ii <= myParameters->Upper()  ; ii++) {
-	flatknots.SetValue(index,
-			   myParameters->Value(ii)) ;
-	index += 1 ;
-      }
-    }
-    for (jj = 1 ; jj <= 2 ; jj++) {
-      a_point.SetCoord(jj,
-		       myTangents->Value(num_points).Coord(jj)) ;
-    }
-    poles.SetValue(num_poles-1 ,a_point) ;
-
-    contact_order_array.SetValue(num_poles - 1,1) ;
-    parameters.SetValue(num_poles,
-			myParameters->Value(myParameters->Upper())) ;
-    parameters.SetValue(num_poles -1,
-			myParameters->Value(myParameters->Upper())) ;
-
-    poles.SetValue(num_poles,
-		   myPoints->Value(num_points)) ;
-
-    BSplCLib::Interpolate(degree,
-			  flatknots,
-			  parameters,
-			  contact_order_array,
-			  poles,
-			  inversion_problem) ;
-    if (!inversion_problem) {
-      myCurve =
-	new Geom2d_BSplineCurve(poles,
-			      myParameters->Array1(),
-			      mults,
-			      degree) ;
-      //myIsDone = Standard_True ;
-    }
-    break ;
- 
-  }
-
-
-  return myCurve;
-}
-
-//=======================================================================
 //function : TrimC3d
 //purpose  : 
 //=======================================================================
@@ -396,15 +149,15 @@ static void TrimC3d(Handle(Adaptor3d_HCurve)& myCurve,
 //purpose  : 
 //=======================================================================
 
-static void ExtendC2d(Handle(Geom2d_BSplineCurve)& aRes,
-		      const Standard_Real t,
-		      const Standard_Real dt,
-		      const Standard_Real u1,
-		      const Standard_Real u2,
-		      const Standard_Real v1,
-		      const Standard_Real v2,
-                      const Standard_Integer FirstOrLast,
-                      const Standard_Integer NumberOfSingularCase)
+static void ExtendC2d (Handle(Geom2d_BSplineCurve)& aRes,
+                       const Standard_Real /*t*/,
+                       const Standard_Real /*dt*/,
+                       const Standard_Real u1,
+                       const Standard_Real u2,
+                       const Standard_Real v1,
+                       const Standard_Real v2,
+                       const Standard_Integer FirstOrLast,
+                       const Standard_Integer NumberOfSingularCase)
 {
   Standard_Real theParam = (FirstOrLast == 0)? aRes->FirstParameter()
     : aRes->LastParameter();
@@ -469,53 +222,7 @@ static void ExtendC2d(Handle(Geom2d_BSplineCurve)& aRes,
 
   aCompCurve.Add(aSegment, aTol);
   aRes = aCompCurve.BSplineCurve();
-  
-  /*  
-  gp_Pnt2d P0;
-  gp_Vec2d V01, V02;
-  aRes->D2(t, P0, V01, V02);
-  
-  gp_XY XYP1 = P0.XY() + V01.XY()*dt + .5*V02.XY()*dt*dt;
-  
-  gp_Vec2d V11 = V01 + V02*dt;
-  
-  if(XYP1.X() < u1) XYP1.SetX(u1);
-  if(XYP1.X() > u2) XYP1.SetX(u2);
-  if(XYP1.Y() < v1) XYP1.SetY(v1);
-  if(XYP1.Y() > v2) XYP1.SetY(v2);
-  
-  Handle(TColgp_HArray1OfPnt2d) aPnts = new TColgp_HArray1OfPnt2d(1, 2);
-  Handle(TColStd_HArray1OfReal) aPars = new TColStd_HArray1OfReal(1, 2);
-  
-  if(dt < 0.) {
-    aPnts->SetValue(1, gp_Pnt2d(XYP1));
-    aPnts->SetValue(2, P0);
-    aPars->SetValue(1, t + dt);
-    aPars->SetValue(2, t);
-  }
-  else {
-    aPnts->SetValue(2, gp_Pnt2d(XYP1));
-    aPnts->SetValue(1, P0);
-    aPars->SetValue(2, t + dt);
-    aPars->SetValue(1, t);
-  }
-  
-  Handle(Geom2d_BSplineCurve) aC;  
-  
-  if(dt < 0.) {
-    aC = Interpolate(aPnts, aPars, V11, V01); 
-  }
-  else {
-    aC = Interpolate(aPnts, aPars, V01, V11); 
-  }
-  
-  
-  Geom2dConvert_CompCurveToBSplineCurve aConcat(aRes);
-  aConcat.Add(aC, Precision::PConfusion());
-  
-  aRes = aConcat.BSplineCurve();
-  */
-}  
+}
 
 //=======================================================================
 //function : Project
@@ -754,8 +461,8 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
     default:
       {
 	Standard_Boolean IsTrimmed[2] = {Standard_False, Standard_False};
-        Standard_Real Vsingular[2]; //for surfaces of revolution
-	Standard_Real f, l, dt;
+	Standard_Real Vsingular[2] = { 0.0 , 0.0 }; //for surfaces of revolution
+	Standard_Real f = 0., l = 0., dt = 0.;
 	const Standard_Real eps = 0.01;
 	
 	if(mySurface->GetType() == GeomAbs_SurfaceOfRevolution) {
@@ -799,7 +506,7 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
 	// doit etre une et une seule courbe !!!
 	// De plus, cette courbe ne doit pas etre Single point
 	Standard_Integer NbCurves = Projector.NbCurves();
-	Standard_Real Udeb,Ufin;
+	Standard_Real Udeb = 0.,Ufin = 0.;
 	if (NbCurves > 0) {
 	  Projector.Bounds(1,Udeb,Ufin);
 	}

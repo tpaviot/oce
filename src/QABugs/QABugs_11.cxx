@@ -1,23 +1,17 @@
 // Created on: 2002-03-20
 // Created by: QA Admin
-// Copyright (c) 2002-2012 OPEN CASCADE SAS
+// Copyright (c) 2002-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <stdio.h>
 
@@ -93,8 +87,6 @@
 #include <V3d_View.hxx>
 #include <BRepFeat_SplitShape.hxx>
 #include <BRepAlgoAPI_Section.hxx>
-
-#include <tcl.h>
 
 #if ! defined(WNT)
 extern ViewerTest_DoubleMapOfInteractiveAndName& GetMapOfAIS();
@@ -256,7 +248,7 @@ static int BUC60610(Draw_Interpretor& di, Standard_Integer argc, const char ** a
     printf("Usage: %s  iges_input [name]\n",argv[0]);
     return(1);
   }
-  Standard_Character *Ch;
+  Standard_Character *Ch = NULL;
 
   if(argc > 2) {
     Ch = new Standard_Character[strlen(argv[2])+3];
@@ -281,53 +273,6 @@ static int BUC60610(Draw_Interpretor& di, Standard_Integer argc, const char ** a
   }
   return (1);
 }
-
-static Standard_Integer BUC60661(Draw_Interpretor& di, Standard_Integer argc, const char ** a)
-{
-  if(argc!=2)
-    {
-      di << "Usage : " << a[0] << " file.igs" << "\n";
-      return -1;
-    }
-
-  Handle(AIS_InteractiveContext) myContext = ViewerTest::GetAISContext();
-
-  if(myContext.IsNull()) {
-    di << "use 'vinit' command before " << a[0] << "\n";
-    return -1;
-  }
-
-  // MKV 30.03.05
-#if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 4))) && !defined(USE_NON_CONST)
-  const Standard_Character *DD = Tcl_GetVar(di.Interp(),"Draw_DataDir",TCL_GLOBAL_ONLY);
-#else
-  Standard_Character *DD = Tcl_GetVar(di.Interp(),"Draw_DataDir",TCL_GLOBAL_ONLY);
-#endif
-
-  Standard_Character  *file1 = new Standard_Character [strlen(DD)+strlen(a[1])+2];
-  Sprintf(file1,"%s/%s",DD,a[1]);
-
-  IGESToBRep_Reader reader;
-  Standard_Integer status = reader.LoadFile(file1);
-  if( !status ) {
-    IGESToBRep::Init();
-      reader.TransferRoots();
-      TopoDS_Shape shape = reader.OneShape();
-
-      Handle(AIS_Shape) importedShape = new AIS_Shape(shape);
-
-      Handle(V3d_Viewer) myPView = myContext->CurrentViewer();
-
-      if( ! myPView.IsNull() && (myPView->DefaultVisualization() == V3d_WIREFRAME) )
-	importedShape->SetDisplayMode(AIS_WireFrame);
-      else importedShape->SetDisplayMode(AIS_Shaded);
-      myContext->Display(importedShape);
-    }
-
-  printf("\n End of my  IGES to 3D-viewer *****************>\n");
-  return 0;
-}
-
 
 //====================================================
 //
@@ -830,17 +775,32 @@ static Standard_Integer OCC381_Save (Draw_Interpretor& di, Standard_Integer nb, 
   PCDM_StoreStatus theStatus = A->Save(D, theStatusMessage);
   if (theStatus != PCDM_SS_OK ) {
     switch ( theStatus ) {
-    case PCDM_SS_DriverFailure: {
-      di << " Could not store , no driver found to make it " <<"\n" ;
-      break ;
-    }
-    case PCDM_SS_WriteFailure: {
-      di << " Write access failure " << "\n" ;
-      break;
-    }
-    case PCDM_SS_Failure: {
-      di << " Write failure " << "\n" ;
-    }
+      case PCDM_SS_DriverFailure: {
+        di << "Error saving document: Could not store , no driver found to make it" << "\n";
+        break ;
+      }
+      case PCDM_SS_WriteFailure: {
+        di << "Error saving document: Write access failure" << "\n";
+        break;
+      }
+      case PCDM_SS_Failure: {
+        di << "Error saving document: Write failure" << "\n" ;
+        break;
+      }
+      case PCDM_SS_Doc_IsNull: {
+        di << "Error saving document: No document to save" << "\n";
+        break ;
+      }
+      case PCDM_SS_No_Obj: {
+        di << "Error saving document: No objects written" << "\n";
+        break;
+      }
+      case PCDM_SS_Info_Section_Error: {
+        di << "Error saving document: Write info section failure" << "\n" ;
+        break;
+      }
+      default:
+          break;
     }
     return 1;
   }
@@ -865,17 +825,32 @@ static Standard_Integer OCC381_SaveAs (Draw_Interpretor& di, Standard_Integer nb
   PCDM_StoreStatus theStatus = A->SaveAs(D,path, theStatusMessage);
   if (theStatus != PCDM_SS_OK ) {
     switch ( theStatus ) {
-    case PCDM_SS_DriverFailure: {
-      di << " Could not store , no driver found to make it " <<"\n" ;
-      break ;
-    }
-    case PCDM_SS_WriteFailure: {
-      di << " Write access failure " << "\n" ;
-      break;
-    }
-    case PCDM_SS_Failure: {
-      di << " Write failure " << "\n" ;
-    }
+      case PCDM_SS_DriverFailure: {
+        di << "Error saving document: Could not store , no driver found to make it" << "\n";
+        break ;
+      }
+      case PCDM_SS_WriteFailure: {
+        di << "Error saving document: Write access failure" << "\n";
+        break;
+      }
+      case PCDM_SS_Failure: {
+        di << "Error saving document: Write failure" << "\n" ;
+        break;
+      }
+      case PCDM_SS_Doc_IsNull: {
+        di << "Error saving document: No document to save" << "\n";
+        break ;
+      }
+      case PCDM_SS_No_Obj: {
+        di << "Error saving document: No objects written" << "\n";
+        break;
+      }
+      case PCDM_SS_Info_Section_Error: {
+        di << "Error saving document: Write info section failure" << "\n" ;
+        break;
+      }
+      default:
+          break;
     }
     return 1;
   }
@@ -885,76 +860,47 @@ static Standard_Integer OCC381_SaveAs (Draw_Interpretor& di, Standard_Integer nb
 
 #include <BRepClass3d_SolidClassifier.hxx>
 
-Standard_Integer OCC299bug (Draw_Interpretor& di,
-			    Standard_Integer n,
-			    const char ** a)
+Standard_Integer OCC299bug (Draw_Interpretor& theDi,
+                            Standard_Integer  theArgNb,
+                            const char**      theArgVec)
 {
-  char sbf[512];
-
-  if (n < 3) {
-    di << "Usage : " << a[0] << " Solid Point [Tolerance=1.e-7]" << "\n";
+  if (theArgNb < 3)
+  {
+    theDi << "Usage : " << theArgVec[0] << " Solid Point [Tolerance=1.e-7]\n";
     return -1;
   }
 
-  TopoDS_Shape aS = DBRep::Get(a[1]);
-  if (aS.IsNull()) {
-    Sprintf(sbf, " Null Shape is not allowed here\n");
-    di<<sbf;
+  TopoDS_Shape aS = DBRep::Get (theArgVec[1]);
+  if (aS.IsNull())
+  {
+    theDi << " Null Shape is not allowed here\n";
+    return 1;
+  }
+  else if (aS.ShapeType() != TopAbs_SOLID)
+  {
+    theDi << " Shape type must be SOLID\n";
     return 1;
   }
 
-  if (aS.ShapeType()!=TopAbs_SOLID) {
-    Sprintf(sbf, " Shape type must be SOLID\n");
-    di<<sbf;
+  gp_Pnt aP (8., 9., 10.);
+  if (!DrawTrSurf::GetPoint (theArgVec[2], aP))
+  {
+    theDi << " Null Point is not allowed here\n";
     return 1;
   }
-  //
-  Standard_Real aTol=1.e-7;
-  TCollection_AsciiString sIN("IN"), sOUT("OUT of"), sON("ON"), sUNKNOWN("UNKNOWN");
-  TopAbs_State aState = TopAbs_UNKNOWN;
-  gp_Pnt aP(8., 9., 10.);
+  const Standard_Real aTol = (theArgNb == 4) ? Draw::Atof (theArgVec[3]) : 1.e-7;
 
-  if (!DrawTrSurf::GetPoint(a[2], aP) ) {
-    Sprintf(sbf, " Null Point is not allowed here\n");
-    di<<sbf;
-    return 1;
-  }
+  BRepClass3d_SolidClassifier aSC (aS);
+  aSC.Perform (aP, aTol);
 
-  aTol=1.e-7;
-  if (n==4) {
-    aTol=Draw::Atof(a[3]);
+  switch (aSC.State())
+  {
+    case TopAbs_IN:      theDi << "The point is IN shape\n";      return 0;
+    case TopAbs_OUT:     theDi << "The point is OUT of shape\n";  return 0;
+    case TopAbs_ON:      theDi << "The point is ON shape\n";      return 0;
+    case TopAbs_UNKNOWN:
+    default:             theDi << "The point is UNKNOWN shape\n"; return 0;
   }
-  //
-  BRepClass3d_SolidClassifier aSC(aS);
-  aSC.Perform(aP,aTol);
-  //
-  aState = aSC.State();
-  //
-  Sprintf(sbf, "The point is "); di<<sbf;
-  //
-  switch (aState) {
-  case TopAbs_IN:
-    Sprintf(sbf, sIN.ToCString());
-    break;
-  case TopAbs_OUT:
-    Sprintf(sbf, sOUT.ToCString());
-    break;
-  case TopAbs_ON:
-    Sprintf(sbf, sON.ToCString());
-    break;
-  case TopAbs_UNKNOWN:
-    Sprintf(sbf, sUNKNOWN.ToCString());
-    break;
-  default:
-    Sprintf(sbf, sUNKNOWN.ToCString());
-    break;
-  }
-  di<<sbf;
-	//
-  Sprintf(sbf, " shape\n");
-  di<<sbf;
-
-  return 0;
 }
 
 #include <OSD_Process.hxx>
@@ -1448,6 +1394,9 @@ static Standard_Integer OCC524 (Draw_Interpretor& di, Standard_Integer argc, con
   di << aSStream1;
   di<<"\n";
 
+  if (Matrix.RowNumber() > 1) {
+    Matrix(Matrix.LowerRow() + 1, Matrix.LowerCol()) += 1.;
+  }
   Vector2.TMultiply(Vector, Matrix);
 
   //Vector2.Dump(cout);
@@ -1710,7 +1659,7 @@ static Standard_Integer OCC708 (Draw_Interpretor& di, Standard_Integer argc, con
     return 1;
   }
   
-  Standard_Boolean updateviewer = Standard_True, PutInCollector = Standard_True;
+  Standard_Boolean updateviewer = Standard_True;
 
   ViewerTest_DoubleMapOfInteractiveAndName& aMap = GetMapOfAIS();
   
@@ -1730,7 +1679,7 @@ static Standard_Integer OCC708 (Draw_Interpretor& di, Standard_Integer argc, con
     if (!aContext->HasOpenedContext()) {
       aContext->OpenLocalContext();
     }
-    aContext->Erase(AISObj, updateviewer, PutInCollector);
+    aContext->Erase(AISObj, updateviewer);
     aContext->UpdateCurrentViewer();
     aContext->Display(AISObj, updateviewer);
     aContext->UpdateCurrentViewer();
@@ -2408,28 +2357,16 @@ static Standard_Integer OCC5698 (Draw_Interpretor& di, Standard_Integer argc, co
   return 0;
 }
 
-static char sarr[2000];
-static int si=1;
-static int StackOverflow(int i = -1)
+#ifdef WNT
+static int StackOverflow (int i = -1)
 {
   char arr[2000];
-  if (si == 1) {
-    si = 0;
-    memcpy(arr,sarr,2000);
-    arr[1999]=0;
-    int n = strlen(arr), s=0;
-    while (n--)
-      s += StackOverflow(i-1);
-    return i + s + StackOverflow(i-1);
-  }
-  else if (i != 0) {
-    return i + StackOverflow(i-1);
-  }
-  si = 1;
+  memset (arr, 0, sizeof(arr));
+  if (i < 0)
+    StackOverflow(i-1);
   return i;
 }
 
-#ifdef WNT
 // this code does not work with optimize mode on Windows
 #pragma optimize( "", off )
 #endif
@@ -2437,7 +2374,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
 {
   if (argc != 1)
     {
-      di << "Usage : " << argv[0] << "\n";
+      cout << "Usage : " << argv[0] << "\n";
       return 1;
     }
   Standard_Boolean Succes;
@@ -2448,6 +2385,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
   {//==== Test Divide ByZero (Integer) ========================================
     try{
       OCC_CATCH_SIGNALS
+      cout << "(Integer) Divide By Zero..." << endl;
       di << "(Integer) Divide By Zero...";
       //cout.flush();
       di << "\n";
@@ -2483,6 +2421,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
   {//==== Test Divide ByZero (Real) ===========================================
     try{
       OCC_CATCH_SIGNALS
+      cout << "(Real) Divide By Zero..." << endl;
       di << "(Real) Divide By Zero...";
       //cout.flush();
       di << "\n";
@@ -2491,13 +2430,13 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
       di << " 4.0 / 0.0 = " << res << "  Does not Caught... KO"<< "\n";
       Succes = Standard_False;
     }
-#if defined(SOLARIS) || defined(WNT)
-    catch(Standard_DivideByZero)
-#else
-    catch(Standard_NumericError)
-#endif
+    catch(Standard_DivideByZero) // Solaris, Windows w/o SSE2
     {
-      di << " Ok"<< "\n";
+      di << " Ok" << "\n";
+    }
+    catch(Standard_NumericError) // Linux, Windows with SSE2
+    {
+      di << " Ok" << "\n";
     }
     catch(Standard_Failure) {
       //cout << " Caught (" << Standard_Failure::Caught() << ")... KO" << endl;
@@ -2511,6 +2450,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
   {//==== Test Overflow (Integer) =============================================
     try{
       OCC_CATCH_SIGNALS
+      cout << "(Integer) Overflow..." << endl;
       di << "(Integer) Overflow...";
       //cout.flush();
       di << "\n";
@@ -2535,6 +2475,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
   {//==== Test Overflow (Real) ================================================ 
     try{
       OCC_CATCH_SIGNALS
+      cout << "(Real) Overflow..." << endl;
       di << "(Real) Overflow...";
       //cout.flush();
       di << "\n";
@@ -2546,13 +2487,13 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
       di << "-- "<<res<<"="<<r<<"*"<<r<<"   Does not Caught... KO"<< "\n";
       Succes = Standard_False;
     }
-#if defined(SOLARIS) || defined(WNT)
-    catch(Standard_Overflow)
-#else
-    catch(Standard_NumericError)
-#endif
+    catch(Standard_Overflow) // Solaris, Windows w/o SSE2
     {
-      di << " Ok"<< "\n";
+      di << " Ok" << "\n";
+    }
+    catch(Standard_NumericError) // Linux, Windows with SSE2
+    {
+      di << " Ok" << "\n";
     }
     catch(Standard_Failure) {
       //cout << " Caught (" << Standard_Failure::Caught() << ")... KO" << endl;
@@ -2566,6 +2507,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
   {//==== Test Underflow (Real) ===============================================
     try{
       OCC_CATCH_SIGNALS
+      cout << "(Real) Underflow" << endl; // to have message in log even if process crashed
       di << "(Real) Underflow";
       //cout.flush();
       di << "\n";
@@ -2576,13 +2518,13 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
       //++++ Succes = Standard_False;
       di<<" -- "<<res<<"="<<r<<"*"<<r<<"   Does not Caught... (But) Ok"<<"\n";
     }
-#if defined(SOLARIS) || defined(WNT)
-    catch(Standard_Underflow)
-#else
-    catch(Standard_NumericError)
-#endif
+    catch(Standard_Underflow) // could be on Solaris, Windows w/o SSE2
     {
-      di << " Ok"<< "\n";
+      di << " Ok" << "\n";
+    }
+    catch(Standard_NumericError) // could be on Linux, Windows with SSE2
+    {
+      di << " Ok" << "\n";
     }
     catch(Standard_Failure) {
       //cout << " Caught (" << Standard_Failure::Caught() << ")... KO" << endl;
@@ -2596,6 +2538,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
   {//==== Test Invalid Operation (Real) ===============================================
     try{
       OCC_CATCH_SIGNALS
+      cout << "(Real) Invalid Operation..." << endl;
       di << "(Real) Invalid Operation...";
       //cout.flush();
       di << "\n";
@@ -2619,6 +2562,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
   {//==== Test Access Violation ===============================================
     try {
       OCC_CATCH_SIGNALS
+      cout << "Segmentation Fault..." << endl;
       di << "Segmentation Fault...";
       //cout.flush();
       di << "\n";
@@ -2647,6 +2591,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
   {//==== Test Stack Overflow ===============================================
     try {
       OCC_CATCH_SIGNALS
+      cout << "Stack Overflow..." << endl;
       di << "Stack Overflow...";
       //cout.flush();
       di << "\n";
@@ -2702,14 +2647,15 @@ static Standard_Integer OCC7141 (Draw_Interpretor& di, Standard_Integer argc, co
 {
   int nCount = 10;
 
-  if (argc > 2)
+  if (argc > 3)
     {
-      di << "Usage : " << argv[0] << " [nCount]" << "\n";
+      di << "Usage : " << argv[0] << " [nCount] path" << "\n";
       return 1;
     }
 
-  if (argc > 1)
+  if (argc > 2)
     nCount = Draw::Atoi(argv[1]);
+    TCollection_AsciiString aFilePath = argv[2];
   STEPCAFControl_Writer writer;
   Handle_TDocStd_Document document;
   document = new TDocStd_Document("Pace Test-StepExporter-");
@@ -2724,8 +2670,7 @@ static Standard_Integer OCC7141 (Draw_Interpretor& di, Standard_Integer argc, co
   try {
     OCC_CATCH_SIGNALS
     if( writer.Transfer(document, mode)) {
-      IFSelect_ReturnStatus stat =
-	writer.Write("TestExportStructure.step");
+    	writer.Write(aFilePath.ToCString());
     }
   }
   catch(OSD_Exception_STACK_OVERFLOW) {
@@ -3180,18 +3125,6 @@ static Standard_Integer OCC7068 (Draw_Interpretor& di, Standard_Integer argc, co
   if (!ListOfIO_1.IsEmpty() ) {
     AIS_ListIteratorOfListOfInteractive iter;
     for (iter.Initialize(ListOfIO_1); iter.More() ; iter.Next() ) {
-      Handle(AIS_InteractiveObject) aIO=iter.Value();
-      di<< GetMapOfAIS().Find1(aIO).ToCString() <<"\n";
-    }
-  }
-
-  // ObjectsInCollector
-  AIS_ListOfInteractive ListOfIO_2;
-  AISContext->ObjectsInCollector(ListOfIO_2);
-  di<< "ObjectsInCollector = " << ListOfIO_2.Extent() <<"\n";
-  if (!ListOfIO_2.IsEmpty() ) {
-    AIS_ListIteratorOfListOfInteractive iter;
-    for (iter.Initialize(ListOfIO_2); iter.More() ; iter.Next() ) {
       Handle(AIS_InteractiveObject) aIO=iter.Value();
       di<< GetMapOfAIS().Find1(aIO).ToCString() <<"\n";
     }
@@ -5211,7 +5144,7 @@ Standard_Integer OCC22736 (Draw_Interpretor& di, Standard_Integer argc, const ch
   return 0;
 }
 
-Standard_Integer OCC23429(Draw_Interpretor& di,
+Standard_Integer OCC23429(Draw_Interpretor& /*di*/,
                           Standard_Integer narg, const char** a)
 {
   if (narg < 4) return 1;
@@ -5309,9 +5242,9 @@ Standard_Integer CR23234 (Draw_Interpretor& di, Standard_Integer argc, const cha
   {
     aisContext->CloseAllContexts();
     aisContext->RemoveAll(false);
-    aisContext->EraseSelected(false, false);
+    aisContext->EraseSelected(false);
   }
-  aisContext->EraseAll(false,false);
+  aisContext->EraseAll(false);
   Handle(Geom_Axis2Placement) trihedronAxis = new Geom_Axis2Placement(gp::XOY());
   Handle(AIS_Trihedron) trihedron = new AIS_Trihedron(trihedronAxis);
   if (aMode)
@@ -5345,7 +5278,6 @@ void QABugs::Commands_11(Draw_Interpretor& theCommands) {
 
   theCommands.Add("OCC136", "OCC136", __FILE__, OCC136, group);
   theCommands.Add("BUC60610","BUC60610 iges_input [name]",__FILE__,BUC60610,group);
-  theCommands.Add("BUC60661","BUC60661 file.igs",__FILE__,BUC60661,  group);
 
 //====================================================
 //
@@ -5417,7 +5349,7 @@ void QABugs::Commands_11(Draw_Interpretor& theCommands) {
   theCommands.Add("OCC6046", "OCC6046 nb_of_vectors size", __FILE__, OCC6046, group);
   theCommands.Add("OCC5698", "OCC5698 wire", __FILE__, OCC5698, group);
   theCommands.Add("OCC6143", "OCC6143", __FILE__, OCC6143, group);
-  theCommands.Add("OCC7141", "OCC7141 [nCount]", __FILE__, OCC7141, group);
+  theCommands.Add("OCC7141", "OCC7141 [nCount] aPath", __FILE__, OCC7141, group);
   theCommands.Add("OCC7372", "OCC7372", __FILE__, OCC7372, group);
   theCommands.Add("OCC8169", "OCC8169 edge1 edge2 plane", __FILE__, OCC8169, group);
   theCommands.Add("OCC10138", "OCC10138 lower upper", __FILE__, OCC10138, group);

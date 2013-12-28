@@ -111,6 +111,9 @@ endif()
   list( APPEND TKStdSchema_USED_SRCFILES "../../../drv/StdSchema/StdSchema_PNaming_Name_1.cxx" )
   SOURCE_GROUP (StdSchema FILES "../../../drv/StdSchema/StdSchema_PNaming_Name_1.cxx")
 
+  list( APPEND TKStdSchema_USED_SRCFILES "../../../drv/StdSchema/StdSchema_PNaming_Name_2.cxx" )
+  SOURCE_GROUP (StdSchema FILES "../../../drv/StdSchema/StdSchema_PNaming_Name_2.cxx")
+
   list( APPEND TKStdSchema_USED_SRCFILES "../../../drv/StdSchema/StdSchema_PNaming_NamedShape.cxx" )
   SOURCE_GROUP (StdSchema FILES "../../../drv/StdSchema/StdSchema_PNaming_NamedShape.cxx")
 
@@ -119,6 +122,9 @@ endif()
 
   list( APPEND TKStdSchema_USED_SRCFILES "../../../drv/StdSchema/StdSchema_PNaming_Naming_1.cxx" )
   SOURCE_GROUP (StdSchema FILES "../../../drv/StdSchema/StdSchema_PNaming_Naming_1.cxx")
+
+  list( APPEND TKStdSchema_USED_SRCFILES "../../../drv/StdSchema/StdSchema_PNaming_Naming_2.cxx" )
+  SOURCE_GROUP (StdSchema FILES "../../../drv/StdSchema/StdSchema_PNaming_Naming_2.cxx")
 
   list( APPEND TKStdSchema_USED_SRCFILES "../../../drv/StdSchema/StdSchema_PPrsStd_AISPresentation.cxx" )
   SOURCE_GROUP (StdSchema FILES "../../../drv/StdSchema/StdSchema_PPrsStd_AISPresentation.cxx")
@@ -212,6 +218,10 @@ endif()
 
 if (WIN32)
 else()
+
+  if (APPLE)
+
+  endif()
 
 endif()
 

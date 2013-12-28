@@ -39,6 +39,8 @@ void XCAFSchema_PXCAFDoc_Centroid::SWrite(const Handle(Standard_Persistent)& p, 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Centroid) &pp = (Handle(PXCAFDoc_Centroid)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     XCAFSchema_gp_Pnt::SWrite(pp->_CSFDB_GetPXCAFDoc_CentroidmyPCentroid(),f,theSchema);
@@ -57,6 +59,8 @@ void XCAFSchema_PXCAFDoc_Centroid::SRead(const Handle(Standard_Persistent)& p, S
 { 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Centroid) &pp = (Handle(PXCAFDoc_Centroid)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

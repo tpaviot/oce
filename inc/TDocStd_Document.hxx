@@ -74,7 +74,7 @@ class TDocStd_Document : public CDM_Document {
 
 public:
 
-  //! returns the    document which contains <L>.  raises  an <br>
+  //! Will Abort any execution, clear fields <br>//! returns the    document which contains <L>.  raises  an <br>
 //!          exception if the document is not found. <br>
   Standard_EXPORT   static  Handle_TDocStd_Document Get(const TDF_Label& L) ;
   //! Constructs a document object defined by the <br>
@@ -210,6 +210,9 @@ public:
         void SetModificationMode(const Standard_Boolean theTransactionOnly) ;
   //! returns True if changes allowed only inside transactions <br>
         Standard_Boolean ModificationMode() const;
+  //! Prepares document for closing <br>
+  Standard_EXPORT   virtual  void BeforeClose() ;
+
 
 
 
@@ -217,12 +220,6 @@ public:
 
 protected:
 
-  //! Will Abort any execution, clear fields <br>
-  Standard_EXPORT   virtual  void Destroy() ;
-~TDocStd_Document()
-{
-  Destroy();
-}
   //! Returns Standard_True done <br>
   Standard_EXPORT   virtual  Standard_Boolean CommitTransaction() ;
   

@@ -2,28 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{EF851BF0-13DC-1778-09D9-0B0DAAAE1EB1}</UniqueIdentifier>
+      <UniqueIdentifier>{6FA37A25-0528-09DD-1928-63A3226B485D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRTopoBRep">
-      <UniqueIdentifier>{60FAEABF-07AD-0357-160A-3741FECD9D45}</UniqueIdentifier>
+      <UniqueIdentifier>{5BDB1D88-1867-04F9-14FB-A62EFF57789B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRBRep">
-      <UniqueIdentifier>{10316D51-0913-03BD-065E-E4BBFAF1560A}</UniqueIdentifier>
+      <UniqueIdentifier>{AF1B4422-04F1-1266-04FD-D959667C7586}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRAlgo">
-      <UniqueIdentifier>{47D61763-121A-10C3-05C9-A513228B24B0}</UniqueIdentifier>
+      <UniqueIdentifier>{07B33A58-0A0F-04C2-1404-A7719B138F8E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\HLRAppli">
+      <UniqueIdentifier>{35C101F1-0633-0793-0FF3-90BFD321F067}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Intrv">
-      <UniqueIdentifier>{15DC20A2-12C6-14C8-06A9-3F6060D04B0F}</UniqueIdentifier>
+      <UniqueIdentifier>{2E3A5F7F-0BF7-015C-0BE6-0BA687E1FF25}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopBas">
-      <UniqueIdentifier>{EFFB8B86-1745-0970-039C-F2970D9AF747}</UniqueIdentifier>
+      <UniqueIdentifier>{35DB34AC-1738-12A5-0CC1-DCCE3465D309}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopCnx">
-      <UniqueIdentifier>{E07F258B-0A3F-1285-0BB9-BBCEE30BBE63}</UniqueIdentifier>
+      <UniqueIdentifier>{01FA3AED-170C-1087-16CA-2F7928BB5D4C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Contap">
-      <UniqueIdentifier>{00670B66-0954-0BCD-03C7-136FBB0C94E8}</UniqueIdentifier>
+      <UniqueIdentifier>{EA4CDB65-0718-075C-01C4-186176A6BAC0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -371,6 +374,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\HLRAlgo\HLRAlgo_WiresBlock.cxx">
       <Filter>Source files\HLRAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HLRAppli\HLRAppli_ReflectLines.cxx">
+      <Filter>Source files\HLRAppli</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Intrv\Intrv_SequenceNodeOfSequenceOfInterval_0.cxx">
       <Filter>Source files\Intrv</Filter>

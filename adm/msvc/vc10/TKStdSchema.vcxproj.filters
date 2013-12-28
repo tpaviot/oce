@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{3E0690A2-17FD-07EB-0E3E-08C6D435ABB4}</UniqueIdentifier>
+      <UniqueIdentifier>{0F17E2FE-15F6-036E-0743-16E317970E8A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdSchema">
-      <UniqueIdentifier>{9BD8E4FB-07FF-1822-0687-14C393342706}</UniqueIdentifier>
+      <UniqueIdentifier>{3B9AD7A3-0359-10A0-0398-8417731FA851}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdDrivers">
-      <UniqueIdentifier>{EE033991-187B-0184-0419-A9DF5D876703}</UniqueIdentifier>
+      <UniqueIdentifier>{63661C1C-0032-131A-0C83-7E43246A2176}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +87,9 @@
     <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PNaming_Name_1.cxx">
       <Filter>Source files\StdSchema</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PNaming_Name_2.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PNaming_NamedShape.cxx">
       <Filter>Source files\StdSchema</Filter>
     </ClCompile>
@@ -94,6 +97,9 @@
       <Filter>Source files\StdSchema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PNaming_Naming_1.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PNaming_Naming_2.cxx">
       <Filter>Source files\StdSchema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PPrsStd_AISPresentation.cxx">

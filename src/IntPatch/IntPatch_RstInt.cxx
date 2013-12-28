@@ -1,23 +1,18 @@
 // Created on: 1993-05-07
 // Created by: Jacques GOUSSARD
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // ----------------------------------------------------------------------
 //-- lbr: Modifs importantes du 16-17 Nov 95
@@ -51,6 +46,7 @@
 #include <IntPatch_CSFunction.hxx>
 #include <IntPatch_CurvIntSurf.hxx>
 
+#define myInfinite 1.e15 // the same as was in Adaptor3d_TopolTool
 
 static void Recadre(GeomAbs_SurfaceType typeS1,
                     GeomAbs_SurfaceType typeS2,
@@ -457,10 +453,10 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 // Si OnFirst = True, c est que la surface Surf correspond a la 1ere
 // surface donnee aux algo d intersection.
 
-  static   IntPatch_SearchPnt Commun;
+  IntPatch_SearchPnt Commun;
 
   Standard_Real U,V,W;
-  Standard_Real U1,V1,U2,V2;
+  Standard_Real U1,V1,U2 = 0.,V2 = 0.;
   Standard_Real paramarc=0.,paramline=0.;
   Standard_Integer i,j,k;
   TColgp_SequenceOfPnt locpt;
@@ -558,11 +554,15 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
     Standard_Real VRes = Surf->VResolution(edgeTol);
 
     IntPatch_HInterTool::Bounds(arc,PFirst,PLast);
-    if (Precision::IsNegativeInfinite(PFirst) || 
-	Precision::IsPositiveInfinite(PLast)) { 
-      //-- cout<<" IntPatch_RstInt::PutVertexOnLine  ---> Restrictions Infinies :"<<endl;
-      return; 
-    }
+    if(Precision::IsNegativeInfinite(PFirst))
+      PFirst = -myInfinite;
+    if(Precision::IsPositiveInfinite(PLast))
+      PLast = myInfinite;
+    //if (Precision::IsNegativeInfinite(PFirst) || 
+	   // Precision::IsPositiveInfinite(PLast)) { 
+    //  //-- cout<<" IntPatch_RstInt::PutVertexOnLine  ---> Restrictions Infinies :"<<endl;
+    //  return;
+    //}
 
     Standard_Boolean isVFirst = Standard_False, isVLast = Standard_False;
     gp_Pnt2d p2dFirst,p2dLast;
@@ -695,8 +695,8 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 	      tolU = Max(tolULast,tolU); tolV = Max(tolVLast,tolV);
 	    }
 	    Standard_Real nptCh = UMaxCh-UMinCh;
-	    Standard_Boolean isNptLow = nptCh < 10. && nptCh < Nbptlin/100. ||
-	      !Domain->Has3d() && Standard_Integer(nptCh)+1 < Nbptlin;
+	    Standard_Boolean isNptLow = (nptCh < 10. && nptCh < Nbptlin/100.) ||
+	      (!Domain->Has3d() && Standard_Integer(nptCh)+1 < Nbptlin);
 	    if (!isNptLow && !IsSegment2dSmall(Brise,UMinAr,UMaxAr,tolU,tolV)) {
 	      // treat both ends
 	      Standard_Real UMinChP,UMaxChP,UMinArP,UMaxArP;
@@ -797,8 +797,8 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 		if (ptsommet.Distance(locpt(j)) <= edgeTol) {
 		  if (possiblyClosed) {
 		    locpt2(j).Coord(U,V);
-		    if (OSurfaceIsUClosed && Abs(U-U2) > tolOUClosed ||
-			OSurfaceIsVClosed && Abs(V-V2) > tolOVClosed)
+		    if ((OSurfaceIsUClosed && Abs(U-U2) > tolOUClosed) ||
+			(OSurfaceIsVClosed && Abs(V-V2) > tolOVClosed))
 		      continue;
 		  }
 		  duplicate = Standard_True;
@@ -807,16 +807,16 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 	      }
 
 	      if (!duplicate) {
-		Standard_Integer ParamApproxOnLine = Standard_Integer(W1[ip])+1;
+                Standard_Integer ParamApproxOnLine = Standard_Integer(W1[ip])+1;
 
-		arc->D1(paramarc,p2d,d2d);
-		U1 = p2d.X(); V1 = p2d.Y();
-		if (typL == IntPatch_Walking && SurfaceIsPeriodic)
-		  if (OnFirst)
-		    Recadre(TypeS1,TypeS2,wlin,ParamApproxOnLine,U1,V1,U2,V2);
-		  else
-		    Recadre(TypeS1,TypeS2,wlin,ParamApproxOnLine,U2,V2,U1,V1);
-
+                arc->D1(paramarc,p2d,d2d);
+                U1 = p2d.X(); V1 = p2d.Y();
+                if (typL == IntPatch_Walking && SurfaceIsPeriodic) {
+                  if (OnFirst)
+                    Recadre(TypeS1,TypeS2,wlin,ParamApproxOnLine,U1,V1,U2,V2);
+                  else
+                    Recadre(TypeS1,TypeS2,wlin,ParamApproxOnLine,U2,V2,U1,V1);
+                }
 		locpt.Append(ptsommet);
 		locpt2.Append(gp_Pnt2d(U2,V2));
 
@@ -827,14 +827,14 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 		  // check in 2d
 		  if (SurfaceIsUClosed || SurfaceIsVClosed) {
 		    GetLinePoint2d (L, paramline, OnFirst, U,V);
-		    if (SurfaceIsUClosed && Abs(U-U1) > tolUClosed ||
-			SurfaceIsVClosed && Abs(V-V1) > tolVClosed)
+		    if ((SurfaceIsUClosed && Abs(U-U1) > tolUClosed) ||
+			(SurfaceIsVClosed && Abs(V-V1) > tolVClosed))
 		      found = Standard_False;
 		  }
 		  if (found && (OSurfaceIsUClosed || OSurfaceIsVClosed)) {
 		    GetLinePoint2d (L, paramline, !OnFirst, U,V);
-		    if (OSurfaceIsUClosed && Abs(U-U2) > tolOUClosed ||
-			OSurfaceIsVClosed && Abs(V-V2) > tolOVClosed)
+		    if ((OSurfaceIsUClosed && Abs(U-U2) > tolOUClosed) ||
+			(OSurfaceIsVClosed && Abs(V-V2) > tolOVClosed))
 		      found = Standard_False;
 		  }
 		}
@@ -861,22 +861,22 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 					     ? wlin->Vertex(j)
 					     : rlin->Vertex(j));
 		  Standard_Boolean APointOnRstStillExist =
-		    (OnFirst  && Rptline.IsOnDomS1() && Rptline.ArcOnS1() == arc ||
-		     !OnFirst && Rptline.IsOnDomS2() && Rptline.ArcOnS2() == arc);
+		    ((OnFirst  && Rptline.IsOnDomS1() && Rptline.ArcOnS1() == arc) ||
+		     (!OnFirst && Rptline.IsOnDomS2() && Rptline.ArcOnS2() == arc));
 		  if(!APointOnRstStillExist) {
 		    if (possiblyClosed) {
 		      if (SurfaceIsUClosed || SurfaceIsVClosed) {
 			if (OnFirst) Rptline.ParametersOnS1(U,V);
 			else         Rptline.ParametersOnS2(U,V);
-			if (SurfaceIsUClosed && Abs(U-U1) > tolUClosed ||
-			    SurfaceIsVClosed && Abs(V-V1) > tolVClosed)
+			if ((SurfaceIsUClosed && Abs(U-U1) > tolUClosed) ||
+			    (SurfaceIsVClosed && Abs(V-V1) > tolVClosed))
 			  continue;
 		      }
 		      if (OSurfaceIsUClosed || OSurfaceIsVClosed) {
 			if (OnFirst) Rptline.ParametersOnS2(U,V);
 			else         Rptline.ParametersOnS1(U,V);
-			if (OSurfaceIsUClosed && Abs(U-U2) > tolOUClosed ||
-			    OSurfaceIsVClosed && Abs(V-V2) > tolOVClosed)
+			if ((OSurfaceIsUClosed && Abs(U-U2) > tolOUClosed) ||
+			    (OSurfaceIsVClosed && Abs(V-V2) > tolOVClosed))
 			  continue;
 		      }
 		    }
@@ -983,8 +983,8 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 		  //   on doit avoir VtxOnArc = True. On duplique le point sur S1
 		  //   en changeant ArcOnS2.
 		  Standard_Boolean OnDifferentRst =
-		    (OnFirst  && ptline.IsOnDomS1() && ptline.ArcOnS1() != arc ||
-		     !OnFirst && ptline.IsOnDomS2() && ptline.ArcOnS2() != arc);
+		    ((OnFirst  && ptline.IsOnDomS1() && ptline.ArcOnS1() != arc) ||
+		     (!OnFirst && ptline.IsOnDomS2() && ptline.ArcOnS2() != arc));
 		  ptline.SetTolerance(vtxTol);
 		  if (   (!ptline.IsVertexOnS1() &&  OnFirst) 
 		      || (!ptline.IsVertexOnS2() && !OnFirst) 

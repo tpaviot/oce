@@ -39,11 +39,11 @@ class TopOpeBRep_HArray1OfLineInter : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TopOpeBRep_HArray1OfLineInter(const Standard_Integer Low,const Standard_Integer Up);
+      TopOpeBRep_HArray1OfLineInter(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TopOpeBRep_HArray1OfLineInter(const Standard_Integer Low,const Standard_Integer Up,const TopOpeBRep_LineInter& V);
+      TopOpeBRep_HArray1OfLineInter(const Standard_Integer Low,const Standard_Integer Up,const TopOpeBRep_LineInter& V);
   
-  Standard_EXPORT     void Init(const TopOpeBRep_LineInter& V) ;
+        void Init(const TopOpeBRep_LineInter& V) ;
   
         Standard_Integer Length() const;
   

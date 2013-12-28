@@ -39,6 +39,8 @@ void ShapeSchema_PColStd_HArray2OfReal::SWrite(const Handle(Standard_Persistent)
   if (!p.IsNull()) {
     Handle(PColStd_HArray2OfReal) &pp = (Handle(PColStd_HArray2OfReal)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPColStd_HArray2OfRealmyLowerRow());
@@ -61,6 +63,8 @@ void ShapeSchema_PColStd_HArray2OfReal::SRead(const Handle(Standard_Persistent)&
 { 
   if (!p.IsNull()) {
     Handle(PColStd_HArray2OfReal) &pp = (Handle(PColStd_HArray2OfReal)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

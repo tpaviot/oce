@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomFill_Array1OfLocationLaw(const Standard_Integer Low,const Standard_Integer Up);
+      GeomFill_Array1OfLocationLaw(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   GeomFill_Array1OfLocationLaw(const Handle(GeomFill_LocationLaw)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      GeomFill_Array1OfLocationLaw(const Handle(GeomFill_LocationLaw)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(GeomFill_LocationLaw)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~GeomFill_Array1OfLocationLaw()
 {
   Destroy();

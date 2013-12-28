@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D6DE719A-02DF-1119-091E-2857898B12A3}</ProjectGuid>
+    <ProjectGuid>{251B54F2-0718-0A33-083C-FFB10FC17C68}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,9 +89,11 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\obj\TKFillet/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\obj\TKFillet/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\obj\TKFillet/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -129,11 +131,14 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKFillet/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\objd\TKFillet/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\objd\TKFillet/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -174,9 +179,10 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\obj\TKFillet/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\obj\TKFillet/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\obj\TKFillet/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -214,11 +220,13 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKFillet/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\objd\TKFillet/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\objd\TKFillet/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -302,9 +310,17 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_AnaFilletAlgo.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_Builder.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_Builder_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_ChamferAPI.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_FilletAPI.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_FilletAlgo.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d.cxx">
     </ClCompile>

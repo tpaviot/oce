@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{2D4CF361-08A8-12F8-11C4-62E44A79DB66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\IntTools">
+      <UniqueIdentifier>{3330DE1C-0B61-0389-0645-EB71C87B1361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepAlgoAPI">
+      <UniqueIdentifier>{354D37B6-09C9-13FC-043F-517E3F3798D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BOPInt">
+      <UniqueIdentifier>{1307A945-17CB-15D6-0B09-C598C2B019AD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BOPDS">
+      <UniqueIdentifier>{65C02F92-1111-11CB-18D2-BFEB71FA841C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BOPAlgo">
+      <UniqueIdentifier>{F74FE589-0AD0-0331-15FC-467148B737DA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BOPTools">
+      <UniqueIdentifier>{B405969D-0FAC-146F-0A65-95A8525DBF14}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_Array1OfRange_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_Array1OfRoots_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_CArray1OfInteger_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_CArray1OfReal_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_DataMapIteratorOfDataMapOfCurveSampleBox_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_DataMapNodeOfDataMapOfCurveSampleBox_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_DataMapOfCurveSampleBox_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_DataMapOfSurfaceSampleBox_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_IndexedDataMapOfTransientAddress_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListIteratorOfListOfBox_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListIteratorOfListOfCurveRangeSample_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListIteratorOfListOfSurfaceRangeSample_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListNodeOfListOfBox_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListNodeOfListOfCurveRangeSample_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListNodeOfListOfSurfaceRangeSample_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListOfBox_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListOfCurveRangeSample_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListOfSurfaceRangeSample_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_MapIteratorOfMapOfCurveSample_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_MapIteratorOfMapOfSurfaceSample_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_MapOfCurveSample_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_MapOfSurfaceSample_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_QuickSortRange_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_QuickSort_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceNodeOfSequenceOfCommonPrts_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceNodeOfSequenceOfCurves_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceNodeOfSequenceOfPntOn2Faces_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceNodeOfSequenceOfRanges_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceNodeOfSequenceOfRoots_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceOfCommonPrts_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceOfCurves_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceOfPntOn2Faces_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceOfRanges_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceOfRoots_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_StdMapNodeOfMapOfCurveSample_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_StdMapNodeOfMapOfSurfaceSample_0.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_BaseRangeSample.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_BeanBeanIntersector.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_BeanFaceIntersector.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_CommonPrt.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Compare.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_CompareRange.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Curve.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_CurveRangeLocalizeData.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_CurveRangeSample.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_CurveRangeSampleMapHasher.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeEdge.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeEdge_1.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeFace.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_FClass2d.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_FaceFace.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_LineConstructor.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_MarkedRangeSet.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_PntOn2Faces.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_PntOnFace.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Range.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Root.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_SurfaceRangeLocalizeData.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_SurfaceRangeSample.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_SurfaceRangeSampleMapHasher.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Tools.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_TopolTool.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI.cxx">
+      <Filter>Source files\BRepAlgoAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_BooleanOperation.cxx">
+      <Filter>Source files\BRepAlgoAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Check.cxx">
+      <Filter>Source files\BRepAlgoAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Common.cxx">
+      <Filter>Source files\BRepAlgoAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Cut.cxx">
+      <Filter>Source files\BRepAlgoAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Fuse.cxx">
+      <Filter>Source files\BRepAlgoAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Section.cxx">
+      <Filter>Source files\BRepAlgoAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPInt\BOPInt_Context.cxx">
+      <Filter>Source files\BOPInt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPInt\BOPInt_ShrunkRange.cxx">
+      <Filter>Source files\BOPInt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPInt\BOPInt_Tools.cxx">
+      <Filter>Source files\BOPInt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_BoxBndTree.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_CommonBlock.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_Curve.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_DS.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_FaceInfo.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_IndexRange.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_Iterator.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_IteratorSI.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_PassKey.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_PassKeyBoolean.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_PassKeyMapHasher.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_Pave.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_PaveBlock.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_PaveMapHasher.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_Point.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_ShapeInfo.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_SubIterator.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_Tools.cxx">
+      <Filter>Source files\BOPDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_Algo.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_ArgumentAnalyzer.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_BOP.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_BOP_1.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_Builder.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_BuilderArea.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_BuilderFace.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_BuilderShape.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_BuilderSolid.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_Builder_1.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_Builder_2.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_Builder_3.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_Builder_4.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_CheckResult.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_CheckerSI.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_1.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_2.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_3.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_4.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_5.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_6.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_7.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_8.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_SectionAttribute.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_Tools.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_WireEdgeSet.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_WireSplitter.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_WireSplitter_1.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools.cxx">
+      <Filter>Source files\BOPTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_AlgoTools.cxx">
+      <Filter>Source files\BOPTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_AlgoTools2D.cxx">
+      <Filter>Source files\BOPTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_AlgoTools3D.cxx">
+      <Filter>Source files\BOPTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_AlgoTools_1.cxx">
+      <Filter>Source files\BOPTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_AlgoTools_2.cxx">
+      <Filter>Source files\BOPTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_EdgeSet.cxx">
+      <Filter>Source files\BOPTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_Set.cxx">
+      <Filter>Source files\BOPTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_SetMapHasher.cxx">
+      <Filter>Source files\BOPTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_ShapeSet.cxx">
+      <Filter>Source files\BOPTools</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKBO.rc" />  </ItemGroup>
+</Project>

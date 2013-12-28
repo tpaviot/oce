@@ -48,6 +48,7 @@ endif()
   list( APPEND TKV3d_USED_LIBS TKMath )
   list( APPEND TKV3d_USED_LIBS TKernel )
   list( APPEND TKV3d_USED_LIBS TKService )
+  list( APPEND TKV3d_USED_LIBS TKShHealing )
   list( APPEND TKV3d_USED_LIBS TKTopAlgo )
   list( APPEND TKV3d_USED_LIBS TKG2d )
   list( APPEND TKV3d_USED_LIBS TKG3d )
@@ -63,15 +64,17 @@ if (WIN32)
   list( APPEND TKV3d_USED_LIBS glu32.lib )
 elseif(APPLE)
   find_library(FRAMEWORKS_OPENGL NAMES OpenGL)
-  if(3RDPARTY_USE_GLX)
+  if(USE_GLX)
     list( APPEND TKV3d_USED_LIBS GL )
     list( APPEND TKV3d_USED_LIBS GLU )
   else()
     list( APPEND TKV3d_USED_LIBS ${FRAMEWORKS_OPENGL} )
   endif()
+  list( APPEND TKV3d_USED_LIBS freetype )
 else()
   list( APPEND TKV3d_USED_LIBS GLU )
   list( APPEND TKV3d_USED_LIBS GL )
+  list( APPEND TKV3d_USED_LIBS freetype )
 endif()
 
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/V3d/V3d_BadValue_0.cxx" )
@@ -347,9 +350,6 @@ endif()
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_CPick.cxx" )
   SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_CPick.cxx")
 
-  list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_CPlane.cxx" )
-  SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_CPlane.cxx")
-
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_CStructure.cxx" )
   SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_CStructure.cxx")
 
@@ -364,6 +364,9 @@ endif()
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_CView.cxx" )
   SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_CView.cxx")
+
+  list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_ClipPlane.cxx" )
+  SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_ClipPlane.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_DataStructureManager.cxx" )
   SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_DataStructureManager.cxx")
@@ -386,17 +389,26 @@ endif()
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_Group_2.cxx" )
   SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_Group_2.cxx")
 
-  list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_Group_3.cxx" )
-  SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_Group_3.cxx")
-
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_Group_8.cxx" )
   SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_Group_8.cxx")
+
+  list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_MarkerImage.cxx" )
+  SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_MarkerImage.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_MaterialAspect.cxx" )
   SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_MaterialAspect.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_Plotter.cxx" )
   SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_Plotter.cxx")
+
+  list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_ShaderObject.cxx" )
+  SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_ShaderObject.cxx")
+
+  list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_ShaderProgram.cxx" )
+  SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_ShaderProgram.cxx")
+
+  list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_ShaderVariable.cxx" )
+  SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_ShaderVariable.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Graphic3d/Graphic3d_Strips.cxx" )
   SOURCE_GROUP (Graphic3d FILES "../../../src/Graphic3d/Graphic3d_Strips.cxx")
@@ -455,9 +467,6 @@ endif()
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_HSequenceOfPickPath_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_HSequenceOfPickPath_0.cxx")
 
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_HSetOfClipPlane_0.cxx" )
-  SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_HSetOfClipPlane_0.cxx")
-
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_HSetOfLight_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_HSetOfLight_0.cxx")
 
@@ -470,17 +479,11 @@ endif()
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_LightDefinitionError_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_LightDefinitionError_0.cxx")
 
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_ListIteratorOfSetListOfSetOfClipPlane_0.cxx" )
-  SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_ListIteratorOfSetListOfSetOfClipPlane_0.cxx")
-
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_ListIteratorOfSetListOfSetOfLight_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_ListIteratorOfSetListOfSetOfLight_0.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_ListIteratorOfSetListOfSetOfView_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_ListIteratorOfSetListOfSetOfView_0.cxx")
-
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_ListNodeOfSetListOfSetOfClipPlane_0.cxx" )
-  SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_ListNodeOfSetListOfSetOfClipPlane_0.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_ListNodeOfSetListOfSetOfLight_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_ListNodeOfSetListOfSetOfLight_0.cxx")
@@ -497,26 +500,17 @@ endif()
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_SequenceOfPickPath_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_SequenceOfPickPath_0.cxx")
 
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_SetIteratorOfSetOfClipPlane_0.cxx" )
-  SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_SetIteratorOfSetOfClipPlane_0.cxx")
-
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_SetIteratorOfSetOfLight_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_SetIteratorOfSetOfLight_0.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_SetIteratorOfSetOfView_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_SetIteratorOfSetOfView_0.cxx")
 
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_SetListOfSetOfClipPlane_0.cxx" )
-  SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_SetListOfSetOfClipPlane_0.cxx")
-
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_SetListOfSetOfLight_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_SetListOfSetOfLight_0.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_SetListOfSetOfView_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_SetListOfSetOfView_0.cxx")
-
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_SetOfClipPlane_0.cxx" )
-  SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_SetOfClipPlane_0.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_SetOfLight_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_SetOfLight_0.cxx")
@@ -544,9 +538,6 @@ endif()
 
   list( APPEND TKV3d_USED_SRCFILES "../../../drv/Visual3d/Visual3d_ZClippingDefinitionError_0.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../drv/Visual3d/Visual3d_ZClippingDefinitionError_0.cxx")
-
-  list( APPEND TKV3d_USED_SRCFILES "../../../src/Visual3d/Visual3d_ClipPlane.cxx" )
-  SOURCE_GROUP (Visual3d FILES "../../../src/Visual3d/Visual3d_ClipPlane.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Visual3d/Visual3d_ContextPick.cxx" )
   SOURCE_GROUP (Visual3d FILES "../../../src/Visual3d/Visual3d_ContextPick.cxx")
@@ -656,12 +647,6 @@ endif()
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d.cxx" )
   SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d.cxx")
 
-  list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_AngleAspect.cxx" )
-  SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_AngleAspect.cxx")
-
-  list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_AnglePresentation.cxx" )
-  SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_AnglePresentation.cxx")
-
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_Arrow.cxx" )
   SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_Arrow.cxx")
 
@@ -671,23 +656,20 @@ endif()
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_BasicAspect.cxx" )
   SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_BasicAspect.cxx")
 
-  list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_CompositeAspect.cxx" )
-  SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_CompositeAspect.cxx")
-
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_DatumAspect.cxx" )
   SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_DatumAspect.cxx")
+
+  list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_DimensionAspect.cxx" )
+  SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_DimensionAspect.cxx")
+
+  list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_DimensionUnits.cxx" )
+  SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_DimensionUnits.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_Drawer.cxx" )
   SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_Drawer.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_IsoAspect.cxx" )
   SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_IsoAspect.cxx")
-
-  list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_LengthAspect.cxx" )
-  SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_LengthAspect.cxx")
-
-  list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_LengthPresentation.cxx" )
-  SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_LengthPresentation.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_LineAspect.cxx" )
   SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_LineAspect.cxx")
@@ -707,9 +689,6 @@ endif()
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_Projector.cxx" )
   SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_Projector.cxx")
 
-  list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_RadiusAspect.cxx" )
-  SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_RadiusAspect.cxx")
-
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_Root.cxx" )
   SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_Root.cxx")
 
@@ -725,23 +704,8 @@ endif()
   list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_TextAspect.cxx" )
   SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_TextAspect.cxx")
 
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/StdPrs/StdPrs_HLRShape_0.cxx" )
-  SOURCE_GROUP (StdPrs FILES "../../../drv/StdPrs/StdPrs_HLRShape_0.cxx")
-
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/StdPrs/StdPrs_Point_0.cxx" )
-  SOURCE_GROUP (StdPrs FILES "../../../drv/StdPrs/StdPrs_Point_0.cxx")
-
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/StdPrs/StdPrs_Vertex_0.cxx" )
-  SOURCE_GROUP (StdPrs FILES "../../../drv/StdPrs/StdPrs_Vertex_0.cxx")
-
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/StdPrs/StdPrs_WFDeflectionShape_0.cxx" )
-  SOURCE_GROUP (StdPrs FILES "../../../drv/StdPrs/StdPrs_WFDeflectionShape_0.cxx")
-
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/StdPrs/StdPrs_WFRestrictedFace_0.cxx" )
-  SOURCE_GROUP (StdPrs FILES "../../../drv/StdPrs/StdPrs_WFRestrictedFace_0.cxx")
-
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/StdPrs/StdPrs_WFShape_0.cxx" )
-  SOURCE_GROUP (StdPrs FILES "../../../drv/StdPrs/StdPrs_WFShape_0.cxx")
+  list( APPEND TKV3d_USED_SRCFILES "../../../src/Prs3d/Prs3d_WFShape.cxx" )
+  SOURCE_GROUP (Prs3d FILES "../../../src/Prs3d/Prs3d_WFShape.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/StdPrs/StdPrs_Curve.cxx" )
   SOURCE_GROUP (StdPrs FILES "../../../src/StdPrs/StdPrs_Curve.cxx")
@@ -751,6 +715,9 @@ endif()
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/StdPrs/StdPrs_HLRPolyShape.cxx" )
   SOURCE_GROUP (StdPrs FILES "../../../src/StdPrs/StdPrs_HLRPolyShape.cxx")
+
+  list( APPEND TKV3d_USED_SRCFILES "../../../src/StdPrs/StdPrs_HLRShape.cxx" )
+  SOURCE_GROUP (StdPrs FILES "../../../src/StdPrs/StdPrs_HLRShape.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/StdPrs/StdPrs_HLRToolShape.cxx" )
   SOURCE_GROUP (StdPrs FILES "../../../src/StdPrs/StdPrs_HLRToolShape.cxx")
@@ -787,6 +754,9 @@ endif()
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/StdPrs/StdPrs_WFPoleSurface.cxx" )
   SOURCE_GROUP (StdPrs FILES "../../../src/StdPrs/StdPrs_WFPoleSurface.cxx")
+
+  list( APPEND TKV3d_USED_SRCFILES "../../../src/StdPrs/StdPrs_WFRestrictedFace.cxx" )
+  SOURCE_GROUP (StdPrs FILES "../../../src/StdPrs/StdPrs_WFRestrictedFace.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/StdPrs/StdPrs_WFSurface.cxx" )
   SOURCE_GROUP (StdPrs FILES "../../../src/StdPrs/StdPrs_WFSurface.cxx")
@@ -1031,6 +1001,9 @@ endif()
   list( APPEND TKV3d_USED_SRCFILES "../../../src/AIS/AIS_DiameterDimension.cxx" )
   SOURCE_GROUP (AIS FILES "../../../src/AIS/AIS_DiameterDimension.cxx")
 
+  list( APPEND TKV3d_USED_SRCFILES "../../../src/AIS/AIS_Dimension.cxx" )
+  SOURCE_GROUP (AIS FILES "../../../src/AIS/AIS_Dimension.cxx")
+
   list( APPEND TKV3d_USED_SRCFILES "../../../src/AIS/AIS_DimensionOwner.cxx" )
   SOURCE_GROUP (AIS FILES "../../../src/AIS/AIS_DimensionOwner.cxx")
 
@@ -1157,9 +1130,6 @@ endif()
   list( APPEND TKV3d_USED_SRCFILES "../../../src/AIS/AIS_TypeFilter.cxx" )
   SOURCE_GROUP (AIS FILES "../../../src/AIS/AIS_TypeFilter.cxx")
 
-  list( APPEND TKV3d_USED_SRCFILES "../../../drv/DsgPrs/DsgPrs_DatumPrs_0.cxx" )
-  SOURCE_GROUP (DsgPrs FILES "../../../drv/DsgPrs/DsgPrs_DatumPrs_0.cxx")
-
   list( APPEND TKV3d_USED_SRCFILES "../../../src/DsgPrs/DsgPrs.cxx" )
   SOURCE_GROUP (DsgPrs FILES "../../../src/DsgPrs/DsgPrs.cxx")
 
@@ -1172,8 +1142,8 @@ endif()
   list( APPEND TKV3d_USED_SRCFILES "../../../src/DsgPrs/DsgPrs_ConcentricPresentation.cxx" )
   SOURCE_GROUP (DsgPrs FILES "../../../src/DsgPrs/DsgPrs_ConcentricPresentation.cxx")
 
-  list( APPEND TKV3d_USED_SRCFILES "../../../src/DsgPrs/DsgPrs_DatumTool.cxx" )
-  SOURCE_GROUP (DsgPrs FILES "../../../src/DsgPrs/DsgPrs_DatumTool.cxx")
+  list( APPEND TKV3d_USED_SRCFILES "../../../src/DsgPrs/DsgPrs_DatumPrs.cxx" )
+  SOURCE_GROUP (DsgPrs FILES "../../../src/DsgPrs/DsgPrs_DatumPrs.cxx")
 
   list( APPEND TKV3d_USED_SRCFILES "../../../src/DsgPrs/DsgPrs_DiameterPresentation.cxx" )
   SOURCE_GROUP (DsgPrs FILES "../../../src/DsgPrs/DsgPrs_DiameterPresentation.cxx")
@@ -1273,6 +1243,10 @@ endif()
 
 if (WIN32)
 else()
+
+  if (APPLE)
+
+  endif()
 
 endif()
 

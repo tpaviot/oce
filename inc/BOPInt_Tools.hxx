@@ -53,6 +53,8 @@ public:
   Standard_EXPORT   static  void VertexParameter(const IntTools_CommonPrt& theCP,Standard_Real& theT) ;
   
   Standard_EXPORT   static  Standard_Boolean IsOnPave1(const Standard_Real theT,const IntTools_Range& theRange,const Standard_Real theTol) ;
+  //!  Checks if the range <theR> interfere with the range <theRRef> <br>
+  Standard_EXPORT   static  Standard_Boolean IsInRange(const IntTools_Range& theRRef,const IntTools_Range& theR,const Standard_Real theTol) ;
   
   Standard_EXPORT   static  Standard_Integer SegPln(const gp_Lin& theLin,const Standard_Real theTLin1,const Standard_Real theTLin2,const Standard_Real theTolLin,const gp_Pln& thePln,const Standard_Real theTolPln,gp_Pnt& theP,Standard_Real& theT,Standard_Real& theTolP,Standard_Real& theTmin,Standard_Real& theTmax) ;
 

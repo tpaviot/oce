@@ -1,21 +1,17 @@
 // Created on: 2011-09-20
 // Created by: Sergey ZERCHANINOV
-// Copyright (c) 2011-2012 OPEN CASCADE SAS
+// Copyright (c) 2011-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifndef _OpenGl_Display_Header
 #define _OpenGl_Display_Header
@@ -23,13 +19,8 @@
 #include <Handle_OpenGl_Display.hxx>
 #include <MMgt_TShared.hxx>
 
-#include <Standard_CString.hxx>
-#include <TColStd_HArray1OfByte.hxx>
-#include <NCollection_DataMap.hxx>
-
 #include <Aspect_Display.hxx>
 #include <Aspect_DisplayConnection.hxx>
-#include <Aspect_Drawable.hxx>
 #include <Aspect_TypeOfLine.hxx>
 #include <Aspect_TypeOfMarker.hxx>
 
@@ -49,30 +40,16 @@ struct OpenGl_Facilities
   int MaxViews;
 };
 
-struct OPENGL_MARKER_DATA
-{
-  unsigned int ListId;
-  unsigned int Width;
-  unsigned int Height;
-  unsigned char* Array;
-  DEFINE_STANDARD_ALLOC
-};
-
-typedef NCollection_DataMap<int,OPENGL_MARKER_DATA> OpenGl_MapOfUserMarker;
-
-class OpenGl_AspectText;
-struct OpenGl_TextParam;
+class OpenGl_Context;
 
 class OpenGl_Display : public MMgt_TShared
 {
- public:
+public:
+
   OpenGl_Display (const Handle(Aspect_DisplayConnection)& theDisplayConnection);
   virtual ~OpenGl_Display ();
 
   Aspect_Display GetDisplay () const { return myDisplay; }
-
-  Handle(OpenGl_Window) GetWindow (const Aspect_Drawable AParent) const;
-  void SetWindow (const Aspect_Drawable AParent, const Handle(OpenGl_Window) &AWindow);
 
   const OpenGl_Facilities & Facilities () const { return myFacilities; }
 
@@ -91,26 +68,12 @@ class OpenGl_Display : public MMgt_TShared
 
   // System attributes
 
-  void InitAttributes ();
-
-  const char * GetStringForMarker (const Aspect_TypeOfMarker AType, const Tfloat AVal) const;
-
-  void SetBaseForMarker () const;
+  void InitAttributes();
+  void ReleaseAttributes (const OpenGl_Context* theGlCtx);
 
   void SetTypeOfLine (const Aspect_TypeOfLine AType) const;
 
   void SetTypeOfHatch (const int AType) const;
-
-  // User markers
-
-  void AddUserMarker (const Standard_Integer AIndex,
-                      const Standard_Integer AMarkWidth,
-                      const Standard_Integer AMarkHeight,
-                      const Handle(TColStd_HArray1OfByte)& ATexture);
-
-  void UpdateUserMarkers ();
-
-  Standard_Integer GetUserMarkerListIndex (const Standard_Integer AIndex) const;
 
   friend class OpenGl_Window;
 
@@ -121,12 +84,6 @@ class OpenGl_Display : public MMgt_TShared
  protected:
 
   void Init ();
-
-  void ExportText (const wchar_t *text, const int is2d, const float x, const float y, const float z, const OpenGl_AspectText *aspect, const OpenGl_TextParam *param, const short height);
-
-#ifdef HAVE_GL2PS
-  static void getGL2PSFontName(const char *src_font, char *ps_font);
-#endif
 
   Aspect_Display   myDisplay;
   OpenGl_Facilities myFacilities;
@@ -140,22 +97,11 @@ class OpenGl_Display : public MMgt_TShared
   Standard_ShortReal myOffsetUnits;
   Standard_Integer myAntiAliasingMode;
 
-#if (defined(_WIN32) || defined(__WIN32__))
-  NCollection_DataMap<Aspect_Drawable,  Handle(OpenGl_Window)> myMapOfWindows;
-#else
-  NCollection_DataMap<Standard_Integer, Handle(OpenGl_Window)> myMapOfWindows;
-#endif
-
   unsigned int myLinestyleBase;
   unsigned int myPatternBase;
-  unsigned int myMarkerBase;
-
-  OpenGl_MapOfUserMarker myMapOfUM;
 
  public:
   DEFINE_STANDARD_ALLOC
 };
 
-extern Handle(OpenGl_Display) openglDisplay;
-
-#endif //OpenGl_Workspace_Header
+#endif // _OpenGl_Display_Header

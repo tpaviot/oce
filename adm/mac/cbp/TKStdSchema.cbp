@@ -15,6 +15,10 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -37,6 +41,10 @@
 				<Compiler>
 					<Add option="-O0" />
 					<Add option="-g" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -104,9 +112,11 @@
 		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_HArray1OfNamedShape.cxx" />
 		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_Name.cxx" />
 		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_Name_1.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_Name_2.cxx" />
 		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_NamedShape.cxx" />
 		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_Naming.cxx" />
 		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_Naming_1.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_Naming_2.cxx" />
 		<Unit filename="../../../drv/StdSchema/StdSchema_PPrsStd_AISPresentation.cxx" />
 		<Unit filename="../../../drv/StdSchema/StdSchema_PPrsStd_AISPresentation_1.cxx" />
 		<Unit filename="../../../drv/StdSchema/StdSchema_PTopLoc_Datum3D.cxx" />

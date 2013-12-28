@@ -14,6 +14,7 @@
 
 void ShapeSchema_gp_Mat2d::SWrite(const gp_Mat2d& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
   Standard_Integer gp_Mat2dmatrix1 = 0,gp_Mat2dmatrix2 = 0;
 
@@ -29,6 +30,7 @@ void ShapeSchema_gp_Mat2d::SWrite(const gp_Mat2d& pp, Storage_BaseDriver& f, con
 
 void ShapeSchema_gp_Mat2d::SRead(gp_Mat2d& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
   Standard_Integer gp_Mat2dmatrix1 = 0,gp_Mat2dmatrix2 = 0;
    

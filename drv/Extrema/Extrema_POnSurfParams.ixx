@@ -5,18 +5,6 @@
 
 #include <Extrema_POnSurfParams.jxx>
 
-#ifndef _Standard_Type_HeaderFile
-#include <Standard_Type.hxx>
-#endif
-
-
-IMPLEMENT_STANDARD_TYPE(Extrema_POnSurfParams)
-IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()
-  STANDARD_TYPE(Extrema_POnSurf),
-  STANDARD_TYPE(Standard_Storable),
-
-IMPLEMENT_STANDARD_SUPERTYPE_ARRAY_END()
-IMPLEMENT_STANDARD_TYPE_END(Extrema_POnSurfParams)
  
 
 

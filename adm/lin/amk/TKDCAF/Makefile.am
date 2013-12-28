@@ -79,7 +79,6 @@ libTKDCAF_la_SOURCES = \
 @top_srcdir@/src/DDataStd/DDataStd_NameCommands.cxx \
 @top_srcdir@/src/DDataStd/DDataStd_NamedShapeCommands.cxx \
 @top_srcdir@/src/DDataStd/DDataStd_ObjectCommands.cxx \
-@top_srcdir@/src/DDataStd/DDataStd_Sample.cxx \
 @top_srcdir@/src/DDataStd/DDataStd_TreeBrowser.cxx \
 @top_srcdir@/src/DDataStd/DDataStd_TreeCommands.cxx \
 @top_srcdir@/src/DDocStd/DDocStd.cxx \
@@ -87,7 +86,6 @@ libTKDCAF_la_SOURCES = \
 @top_srcdir@/src/DDocStd/DDocStd_DocumentCommands.cxx \
 @top_srcdir@/src/DDocStd/DDocStd_DrawDocument.cxx \
 @top_srcdir@/src/DDocStd/DDocStd_MTMCommands.cxx \
-@top_srcdir@/src/DDocStd/DDocStd_Sample.cxx \
 @top_srcdir@/src/DDocStd/DDocStd_ToolsCommands.cxx \
 @top_srcdir@/src/DNaming/DNaming.cxx \
 @top_srcdir@/src/DNaming/DNaming_BasicCommands.cxx \
@@ -108,7 +106,6 @@ libTKDCAF_la_SOURCES = \
 @top_srcdir@/src/DPrsStd/DPrsStd.cxx \
 @top_srcdir@/src/DPrsStd/DPrsStd_AISPresentationCommands.cxx \
 @top_srcdir@/src/DPrsStd/DPrsStd_AISViewerCommands.cxx \
-@top_srcdir@/src/DPrsStd/DPrsStd_Sample.cxx \
 @top_srcdir@/src/DrawDim/DrawDim.cxx \
 @top_srcdir@/src/DrawDim/DrawDim_Angle.cxx \
 @top_srcdir@/src/DrawDim/DrawDim_Dimension.cxx \

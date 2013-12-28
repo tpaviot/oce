@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "Draw">
+         <FileRef
+            location = "group:TKDraw.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKTopTest.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKViewerTest.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXSDRAW.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKDCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXDEDRAW.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKTObjDRAW.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKQADraw.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:DRAWEXE.xcodeproj">
+         </FileRef>
+   </Group>
+</Workspace>

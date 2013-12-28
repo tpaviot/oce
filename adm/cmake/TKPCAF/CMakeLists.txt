@@ -93,6 +93,9 @@ endif()
   list( APPEND TKPCAF_USED_SRCFILES "../../../src/PNaming/PNaming_Name_1.cxx" )
   SOURCE_GROUP (PNaming FILES "../../../src/PNaming/PNaming_Name_1.cxx")
 
+  list( APPEND TKPCAF_USED_SRCFILES "../../../src/PNaming/PNaming_Name_2.cxx" )
+  SOURCE_GROUP (PNaming FILES "../../../src/PNaming/PNaming_Name_2.cxx")
+
   list( APPEND TKPCAF_USED_SRCFILES "../../../src/PNaming/PNaming_NamedShape.cxx" )
   SOURCE_GROUP (PNaming FILES "../../../src/PNaming/PNaming_NamedShape.cxx")
 
@@ -101,6 +104,9 @@ endif()
 
   list( APPEND TKPCAF_USED_SRCFILES "../../../src/PNaming/PNaming_Naming_1.cxx" )
   SOURCE_GROUP (PNaming FILES "../../../src/PNaming/PNaming_Naming_1.cxx")
+
+  list( APPEND TKPCAF_USED_SRCFILES "../../../src/PNaming/PNaming_Naming_2.cxx" )
+  SOURCE_GROUP (PNaming FILES "../../../src/PNaming/PNaming_Naming_2.cxx")
 
   list( APPEND TKPCAF_USED_SRCFILES "../../../src/PPrsStd/PPrsStd_AISPresentation.cxx" )
   SOURCE_GROUP (PPrsStd FILES "../../../src/PPrsStd/PPrsStd_AISPresentation.cxx")
@@ -192,11 +198,18 @@ endif()
   list( APPEND TKPCAF_USED_SRCFILES "../../../src/MNaming/MNaming_NamingRetrievalDriver_1.cxx" )
   SOURCE_GROUP (MNaming FILES "../../../src/MNaming/MNaming_NamingRetrievalDriver_1.cxx")
 
+  list( APPEND TKPCAF_USED_SRCFILES "../../../src/MNaming/MNaming_NamingRetrievalDriver_2.cxx" )
+  SOURCE_GROUP (MNaming FILES "../../../src/MNaming/MNaming_NamingRetrievalDriver_2.cxx")
+
   list( APPEND TKPCAF_USED_SRCFILES "../../../src/MNaming/MNaming_NamingStorageDriver.cxx" )
   SOURCE_GROUP (MNaming FILES "../../../src/MNaming/MNaming_NamingStorageDriver.cxx")
 
 if (WIN32)
 else()
+
+  if (APPLE)
+
+  endif()
 
 endif()
 

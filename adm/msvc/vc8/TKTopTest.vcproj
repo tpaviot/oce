@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKTopTest"
-	ProjectGUID="{7641073A-0D51-1171-195F-8183BDF01A2C}"
+	ProjectGUID="{6091B47F-0520-0763-0465-4806E8BD6A83}"
 	>
 	<Platforms>
 		<Platform
@@ -55,11 +55,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\obj\TKTopTest\TKTopTest.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc8\obj\TKTopTest/"
 				ObjectFile=".\..\..\..\win32\vc8\obj\TKTopTest/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc8\obj\TKTopTest/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -149,12 +150,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TestTopOpeDraw_DLL;__TestTopOpeTools_DLL;__TestTopOpe_DLL;__BRepTest_DLL;__GeometryTest_DLL;__HLRTest_DLL;__MeshTest_DLL;__GeomliteTest_DLL;__DrawFairCurve_DLL;__BOPTest_DLL"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\objd\TKTopTest\TKTopTest.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc8\objd\TKTopTest/"
 				ObjectFile=".\..\..\..\win32\vc8\objd\TKTopTest/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc8\objd\TKTopTest/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -250,11 +253,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\obj\TKTopTest\TKTopTest.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc8\obj\TKTopTest/"
 				ObjectFile=".\..\..\..\win64\vc8\obj\TKTopTest/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc8\obj\TKTopTest/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -345,12 +349,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TestTopOpeDraw_DLL;__TestTopOpeTools_DLL;__TestTopOpe_DLL;__BRepTest_DLL;__GeometryTest_DLL;__HLRTest_DLL;__MeshTest_DLL;__GeomliteTest_DLL;__DrawFairCurve_DLL;__BOPTest_DLL;_OCC64"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\objd\TKTopTest\TKTopTest.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc8\objd\TKTopTest/"
 				ObjectFile=".\..\..\..\win64\vc8\objd\TKTopTest/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc8\objd\TKTopTest/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -514,9 +520,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\TestTopOpe\TestTopOpe_CORCommands.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\TestTopOpe\TestTopOpe_DSACommands.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\TestTopOpe\TestTopOpe_DSF.cxx">

@@ -16,6 +16,7 @@ endif()
 
   list( APPEND TKOpenGl_USED_LIBS TKernel )
   list( APPEND TKOpenGl_USED_LIBS TKService )
+  list( APPEND TKOpenGl_USED_LIBS TKMath )
   list( APPEND TKOpenGl_USED_LIBS TKV3d )
 
 if (WIN32)
@@ -27,7 +28,7 @@ if (WIN32)
   list( APPEND TKOpenGl_USED_LIBS vfw32.lib )
 elseif(APPLE)
   find_library(FRAMEWORKS_OPENGL NAMES OpenGL)
-  if(3RDPARTY_USE_GLX)
+  if(USE_GLX)
     list( APPEND TKOpenGl_USED_LIBS GL )
     list( APPEND TKOpenGl_USED_LIBS GLU )
   else()
@@ -38,18 +39,27 @@ elseif(APPLE)
   list( APPEND TKOpenGl_USED_LIBS ${FRAMEWORKS_APPKIT} )
   find_library(FRAMEWORKS_IOKIT NAMES IOKit)
   list( APPEND TKOpenGl_USED_LIBS ${FRAMEWORKS_IOKIT} )
+  if(USE_OPENCL)
+    list( APPEND TKOpenGl_USED_LIBS OpenCL )
+  endif()
   list( APPEND TKOpenGl_USED_LIBS freetype )
-  if(3RDPARTY_USE_GL2PS)
+  if(USE_GL2PS)
     list( APPEND TKOpenGl_USED_LIBS gl2ps )
   endif()
 else()
   list( APPEND TKOpenGl_USED_LIBS GLU )
   list( APPEND TKOpenGl_USED_LIBS GL )
+  if(USE_OPENCL)
+    list( APPEND TKOpenGl_USED_LIBS OpenCL )
+  endif()
   list( APPEND TKOpenGl_USED_LIBS freetype )
-  if(3RDPARTY_USE_GL2PS)
+  if(USE_GL2PS)
     list( APPEND TKOpenGl_USED_LIBS gl2ps )
   endif()
 endif()
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_AABB.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_AABB.cxx")
 
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_AVIWriter.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_AVIWriter.cxx")
@@ -66,6 +76,18 @@ endif()
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_AspectText.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_AspectText.cxx")
 
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_CappingAlgo.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_CappingAlgo.cxx")
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_CappingPlaneResource.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_CappingPlaneResource.cxx")
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Caps.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Caps.cxx")
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Clipping.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Clipping.cxx")
+
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Context.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Context.cxx")
 
@@ -77,6 +99,9 @@ endif()
 
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Element.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Element.cxx")
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Flipper.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Flipper.cxx")
 
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Font.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Font.cxx")
@@ -105,9 +130,6 @@ endif()
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_GraphicDriver_7.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_GraphicDriver_7.cxx")
 
-  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_GraphicDriver_703.cxx" )
-  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_GraphicDriver_703.cxx")
-
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_GraphicDriver_713.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_GraphicDriver_713.cxx")
 
@@ -126,14 +148,11 @@ endif()
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_LayerList.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_LayerList.cxx")
 
-  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Marker.cxx" )
-  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Marker.cxx")
-
-  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_MarkerSet.cxx" )
-  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_MarkerSet.cxx")
-
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Matrix.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Matrix.cxx")
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_PointSprite.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_PointSprite.cxx")
 
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_PrimitiveArray.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_PrimitiveArray.cxx")
@@ -144,8 +163,32 @@ endif()
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_PriorityList.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_PriorityList.cxx")
 
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_RaytraceSource.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_RaytraceSource.cxx")
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_RenderFilter.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_RenderFilter.cxx")
+
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Resource.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Resource.cxx")
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_SceneGeometry.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_SceneGeometry.cxx")
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_ShaderManager.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_ShaderManager.cxx")
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_ShaderObject.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_ShaderObject.cxx")
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_ShaderProgram.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_ShaderProgram.cxx")
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_ShaderStates.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_ShaderStates.cxx")
+
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_StencilTest.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_StencilTest.cxx")
 
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Structure.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Structure.cxx")
@@ -192,6 +235,9 @@ endif()
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Workspace_5.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Workspace_5.cxx")
 
+  list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Workspace_Raytrace.cxx" )
+  SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Workspace_Raytrace.cxx")
+
   list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_telem_util.cxx" )
   SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_telem_util.cxx")
 
@@ -200,6 +246,16 @@ endif()
 
 if (WIN32)
 else()
+
+  if (APPLE)
+
+    list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Context_1.mm" )
+    SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Context_1.mm")
+
+    list( APPEND TKOpenGl_USED_SRCFILES "../../../src/OpenGl/OpenGl_Window_1.mm" )
+    SOURCE_GROUP (OpenGl FILES "../../../src/OpenGl/OpenGl_Window_1.mm")
+
+  endif()
 
 endif()
 

@@ -1,22 +1,18 @@
 // Created on: 1992-06-24
 // Created by: Gilles DEBARBOUILLE
 // Copyright (c) 1992-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // CRD : 03/07/97 : Porting Windows NT.
 
@@ -72,10 +68,10 @@ Dynamic_FuzzyDefinitionsDictionary::Dynamic_FuzzyDefinitionsDictionary()
 void Dynamic_FuzzyDefinitionsDictionary::Creates(const Standard_CString afilename)
 {
   Standard_Integer fr,i,begin,end,endline;
-  char line[255];
-  char name[80];
-  char type[80];
-  char value[80],value1[80],value2[80],value3[80];
+  char line[256];
+  char name[81];
+  char type[81];
+  char value[81],value1[81],value2[81],value3[81];
   Handle(Dynamic_FuzzyDefinition) fuzzydefinition;
   Handle(Dynamic_Parameter) parameter;
   
@@ -96,7 +92,7 @@ void Dynamic_FuzzyDefinitionsDictionary::Creates(const Standard_CString afilenam
   
   for(;;)
     {
-      for(i=0; i<255; i++) line[i] = 0;
+      memset(line,0,sizeof(line));
 
       file.getline(line,255);
       if(!file)break;
@@ -130,19 +126,18 @@ void Dynamic_FuzzyDefinitionsDictionary::Creates(const Standard_CString afilenam
 		}
 	    }
 
-	  for(i=0; i<80; i++)name[i]=0;
+      memset(name,0,sizeof(name));
 
 	  endline = 0;
 	  for(i=begin+1; i<=end-1; i++)name[endline++] = line[i];
 
-	  for(i=0; i<80; i++)type   [i] = 0;
-	  for(i=0; i<80; i++)value  [i] = 0;
-	  for(i=0; i<80; i++)value1 [i] = 0;
-	  for(i=0; i<80; i++)value2 [i] = 0;
-	  for(i=0; i<80; i++)value3 [i] = 0;
+      memset(type,0,sizeof(type));
+      memset(value,0,sizeof(value));
+      memset(value1,0,sizeof(value1));
+      memset(value2,0,sizeof(value2));
+      memset(value3,0,sizeof(value3));
 
-//	  fr = sscanf(&line[end+1],"%s%80c",&type,&value);
-	  fr = sscanf(&line[end+1],"%s%80c",type,value);
+	  fr = sscanf(&line[end+1],"%80s%80c",type,value);
 	  if(fr == -1) continue;
 
 	  begin = 0;

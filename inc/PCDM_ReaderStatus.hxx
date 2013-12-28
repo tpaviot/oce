@@ -28,6 +28,7 @@ PCDM_RS_AlreadyRetrievedAndModified,
 PCDM_RS_AlreadyRetrieved,
 PCDM_RS_UnknownDocument,
 PCDM_RS_WrongResource,
+PCDM_RS_ReaderException,
 PCDM_RS_NoModel
 };
 

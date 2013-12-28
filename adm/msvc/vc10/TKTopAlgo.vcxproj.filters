@@ -2,55 +2,55 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{95A618DC-0668-175D-0C5E-C457B058E8D2}</UniqueIdentifier>
+      <UniqueIdentifier>{0913D23F-038D-0E36-0786-608167CFBF08}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntCurvesFace">
-      <UniqueIdentifier>{1D5067F8-0620-0720-085C-333D2DF59592}</UniqueIdentifier>
+      <UniqueIdentifier>{06CEA45E-1245-1579-0EA1-6BB87B1CC7C5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MAT">
-      <UniqueIdentifier>{2EBC53F4-0D1C-01B4-0F29-EF6A8E3CBC32}</UniqueIdentifier>
+      <UniqueIdentifier>{7F6C1C89-06A7-1183-0E5A-7060EFEC01B4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MAT2d">
-      <UniqueIdentifier>{67906263-1008-0491-120F-E194F1F98D71}</UniqueIdentifier>
+      <UniqueIdentifier>{63D3759C-08C3-13F3-112C-588E2EDE99C8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Bisector">
-      <UniqueIdentifier>{B52EA280-0502-0954-0EFC-5B4299718990}</UniqueIdentifier>
+      <UniqueIdentifier>{422E6E5F-15F9-1677-009E-7F562EF2E643}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepMAT2d">
-      <UniqueIdentifier>{FE8D475E-09EC-0ACA-09DB-AFA653D0B65F}</UniqueIdentifier>
+      <UniqueIdentifier>{EB4D3271-116C-08A0-016F-2A3861DB9165}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepCheck">
-      <UniqueIdentifier>{754C386D-146F-0EA3-159D-509757FFDCB6}</UniqueIdentifier>
+      <UniqueIdentifier>{267FDD89-1777-0073-14F6-8FD5981028EA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepBndLib">
-      <UniqueIdentifier>{F3474B5C-0D4D-04AD-190D-BDBDAAEF1501}</UniqueIdentifier>
+      <UniqueIdentifier>{EE3C051A-0FE5-15D8-1720-323FBAF5E698}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepExtrema">
-      <UniqueIdentifier>{4C060EA2-033D-0C3F-11B5-1F6095FDF509}</UniqueIdentifier>
+      <UniqueIdentifier>{F619A700-059E-1839-0262-C985053C2342}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepClass">
-      <UniqueIdentifier>{E23A7C96-0F44-0D6B-0A9D-C93891A0BA8E}</UniqueIdentifier>
+      <UniqueIdentifier>{2EDACB71-076F-07D0-01DF-1D7C89DB4584}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepClass3d">
-      <UniqueIdentifier>{37F0A7C9-1562-0B9E-00FF-42D75045C552}</UniqueIdentifier>
+      <UniqueIdentifier>{B104879A-0022-14B5-067B-6CCBF9C37CF7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepLib">
-      <UniqueIdentifier>{9D9D18CB-12EC-07E4-0CDC-67307EA0D1A4}</UniqueIdentifier>
+      <UniqueIdentifier>{4175F76A-0B33-074B-1866-9EC4356381BD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepGProp">
-      <UniqueIdentifier>{2371973F-0CDC-0DDB-18D3-F5D4323E5FBC}</UniqueIdentifier>
+      <UniqueIdentifier>{DACA93A2-09D7-12E8-0A6F-2096F095A19C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepIntCurveSurface">
-      <UniqueIdentifier>{FF4F0D99-15F4-12B0-1271-11CF6B48A3E5}</UniqueIdentifier>
+      <UniqueIdentifier>{A53A4DF9-174C-125F-151A-5301537C18D4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepTopAdaptor">
-      <UniqueIdentifier>{001739DF-17F4-0D47-008B-07C2496460CB}</UniqueIdentifier>
+      <UniqueIdentifier>{42309AA8-130A-0646-0764-1F7DDB7FF0EF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepBuilderAPI">
-      <UniqueIdentifier>{0ED17A9D-0A2B-191C-0A02-23FFF378DBD4}</UniqueIdentifier>
+      <UniqueIdentifier>{A30F7BB4-0FF1-070C-0E28-2B3A9D154E55}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepApprox">
-      <UniqueIdentifier>{A86A36BD-149C-18F2-1522-9D9BB95AB5FA}</UniqueIdentifier>
+      <UniqueIdentifier>{C9D2E883-0423-1624-1861-E80C096E538C}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

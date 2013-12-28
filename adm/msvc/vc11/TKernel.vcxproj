@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5895966C-11AB-033F-01B6-0BF808C8D53E}</ProjectGuid>
+    <ProjectGuid>{4B3BF3E4-1565-1018-07A8-8749C6FC7342}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -93,9 +93,10 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc11\obj\TKernel/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc11\obj\TKernel/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc11\obj\TKernel/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -133,11 +134,13 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc11\objd\TKernel/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc11\objd\TKernel/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc11\objd\TKernel/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -178,9 +181,10 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc11\obj\TKernel/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc11\obj\TKernel/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc11\obj\TKernel/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -218,11 +222,13 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc11\objd\TKernel/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc11\objd\TKernel/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc11\objd\TKernel/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -245,8 +251,6 @@
     <ClCompile Include="..\..\..\src\FSD\FSD_CmpFile.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\FSD\FSD_File.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MMgt\MMgt_StackManager.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\MMgt\MMgt_TShared.cxx">
     </ClCompile>

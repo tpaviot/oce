@@ -1,23 +1,18 @@
 // Created on: 1992-10-21
 // Created by: Remi GILET
 // Copyright (c) 1992-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Geom2dGcc_Lin2dTanObl.ixx>
 #include <Geom2dGcc_MyQCurve.hxx>
@@ -59,7 +54,8 @@ Geom2dGcc_Lin2dTanObl::
     gp_Circ2d c1(CCC1->Circ2d());
     GccEnt_QualifiedCirc Qc1=GccEnt_QualifiedCirc(c1,Qualified1.Qualifier());
     GccAna_Lin2dTanObl Lin(Qc1,TheLine,Angle);
-    if((WellDone = Lin.IsDone())) { 
+    WellDone = Lin.IsDone();
+    if(WellDone) { 
       NbrSol = Lin.NbSolutions();
       for (Standard_Integer i = 1 ; i <= NbrSol ; i++) {
 	linsol(i)    = Lin.ThisSolution(i);
@@ -123,7 +119,8 @@ Geom2dGcc_Lin2dTanObl::
     gp_Circ2d c1(CCC1->Circ2d());
     GccEnt_QualifiedCirc Qc1=GccEnt_QualifiedCirc(c1,Qualified1.Qualifier());
     GccAna_Lin2dTanObl Lin(Qc1,TheLine,Angle);
-    if((WellDone = Lin.IsDone())) { 
+    WellDone = Lin.IsDone();
+    if(WellDone) { 
       NbrSol = Lin.NbSolutions();
       for (Standard_Integer i = 1 ; i <= NbrSol ; i++) {
 	linsol(i)    = Lin.ThisSolution(i);
@@ -136,7 +133,8 @@ Geom2dGcc_Lin2dTanObl::
   else {
     Geom2dGcc_MyQCurve Qc1(C1,Qualified1.Qualifier());
     Geom2dGcc_MyL2dTanObl Lin(Qc1,TheLine,TolAng,Param1,Angle);
-    if((WellDone = Lin.IsDone())) { 
+    WellDone = Lin.IsDone();
+    if(WellDone) { 
       linsol(1)    = Lin.ThisSolution();
       Lin.Tangency1(par1sol(1),pararg1(1),pnttg1sol(1));
       Lin.Intersection2(par2sol(1),pararg2(1),pntint2sol(1));

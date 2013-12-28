@@ -40,6 +40,8 @@ void StdLSchema_PDataStd_RealArray::SWrite(const Handle(Standard_Persistent)& p,
   if (!p.IsNull()) {
     Handle(PDataStd_RealArray) &pp = (Handle(PDataStd_RealArray)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDataStd_RealArraymyValue(),f);
@@ -58,6 +60,8 @@ void StdLSchema_PDataStd_RealArray::SRead(const Handle(Standard_Persistent)& p, 
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_RealArray) &pp = (Handle(PDataStd_RealArray)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

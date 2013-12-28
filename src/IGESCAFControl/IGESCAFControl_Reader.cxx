@@ -1,22 +1,17 @@
 // Created on: 2000-08-16
 // Created by: Andrey BETENEV
-// Copyright (c) 2000-2012 OPEN CASCADE SAS
+// Copyright (c) 2000-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TDF_Label.hxx>
 #include <IGESCAFControl_Reader.ixx>
@@ -34,6 +29,7 @@
 #include <Transfer_TransientProcess.hxx>
 #include <XCAFDoc_DocumentTool.hxx>
 #include <TopoDS_Iterator.hxx>
+#include <TopTools_MapOfShape.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDataStd_Name.hxx>
 #include <XCAFDoc_LayerTool.hxx>
@@ -41,6 +37,8 @@
 #include <TCollection_HAsciiString.hxx>
 #include <XCAFDoc_ShapeMapTool.hxx>
 #include <IGESBasic_SubfigureDef.hxx>
+#include <TopoDS_Compound.hxx>
+#include <BRep_Builder.hxx>
 
 //=======================================================================
 //function : IGESCAFControl_Reader
@@ -80,6 +78,94 @@ static void checkColorRange (Standard_Real& theCol)
   if ( theCol > 100. ) theCol = 100.;
 }
 
+static inline Standard_Boolean IsComposite (const TopoDS_Shape& theShape)
+{
+  if( theShape.ShapeType() == TopAbs_COMPOUND)
+  {
+    if(!theShape.Location().IsIdentity())
+      return Standard_True;
+    TopoDS_Iterator anIt( theShape, Standard_False, Standard_False );
+    
+    for (; anIt.More() ; anIt.Next()) 
+    {
+      if( IsComposite (anIt.Value()))
+        return Standard_True;
+    }
+
+  }
+  return Standard_False;
+}
+
+//=======================================================================
+//function : AddCompositeShape
+//purpose  : Recursively adds composite shapes (TopoDS_Compounds) into the XDE document.
+//           If the compound does not contain nested compounds then adds it
+//           as no-assembly (i.e. no individual labels for sub-shapes), as this
+//           combination is often encountered in IGES (e.g. Group of Trimmed Surfaces).
+//           If the compound does contain nested compounds then adds it as an
+//           assembly.
+//           The construction happens bottom-up, i.e. the most deep sub-shapes are added
+//           first.
+//           If theIsTop is False (in a recursive call) then sub-shapes are added without
+//           a location. This is to ensure that no extra label in the XDE document is
+//           created for an instance (as otherwise, XDE will consider it as a free
+//           shape). Correct location and instance will be created when adding a parent
+//           compound.
+//           theMap is used to avoid visiting the same compound.
+//=======================================================================
+static void AddCompositeShape (const Handle(XCAFDoc_ShapeTool)& theSTool,
+                               const TopoDS_Shape& theShape,
+                               Standard_Boolean theConsiderLoc,
+                               TopTools_MapOfShape& theMap)
+{
+  TopoDS_Shape aShape = theShape;
+  TopLoc_Location aLoc = theShape.Location();
+  if (!theConsiderLoc && !aLoc.IsIdentity())
+    aShape.Location( TopLoc_Location() );
+  if (!theMap.Add (aShape)) 
+    return;
+
+  TopoDS_Iterator anIt( theShape, Standard_False, Standard_False );
+  Standard_Boolean aHasCompositeSubShape = Standard_False;
+  TopoDS_Compound aSimpleShape;
+  BRep_Builder aB;
+  aB.MakeCompound( aSimpleShape);
+  TopoDS_Compound aCompShape;
+  aB.MakeCompound( aCompShape);
+  Standard_Integer nbSimple = 0;
+
+  for (; anIt.More(); anIt.Next()) {
+    const TopoDS_Shape& aSubShape = anIt.Value();
+    if (IsComposite (aSubShape)) {
+      aHasCompositeSubShape = Standard_True;
+      AddCompositeShape( theSTool, aSubShape,Standard_False ,theMap );
+      aB.Add( aCompShape, aSubShape);
+    }
+    else
+    {
+      aB.Add(aSimpleShape, aSubShape);
+      nbSimple++;
+    }
+  }
+  //case of hybrid shape
+  if( nbSimple && aHasCompositeSubShape)
+  {
+    theSTool->AddShape( aSimpleShape,  Standard_False, Standard_False  );
+    TopoDS_Compound aNewShape;
+    BRep_Builder aB;
+    aB.MakeCompound(aNewShape);
+    aB.Add(aNewShape, aSimpleShape);
+    aB.Add(aNewShape,aCompShape);
+    //if (!aLoc.IsIdentity())
+    //  aNewShape.Location(aLoc );
+    aNewShape.Orientation(theShape.Orientation());
+    theSTool->AddShape( aNewShape,  aHasCompositeSubShape, Standard_False  );
+  }
+  else
+    theSTool->AddShape( aShape,  aHasCompositeSubShape, Standard_False  );
+  return;
+}
+
 Standard_Boolean IGESCAFControl_Reader::Transfer (Handle(TDocStd_Document) &doc)
 {
   // read all shapes
@@ -100,7 +186,13 @@ Standard_Boolean IGESCAFControl_Reader::Transfer (Handle(TDocStd_Document) &doc)
   for(i=1; i<=num; i++) {
     TopoDS_Shape sh = Shape ( i );
     // ---- HERE -- to add check [ assembly / hybrid model ]
-    STool->AddShape ( sh, Standard_False );
+    if( !IsComposite (sh))
+      STool->AddShape( sh, Standard_False );
+    else {
+      TopTools_MapOfShape aMap;
+      AddCompositeShape( STool, sh,Standard_True, aMap );
+      
+    }
   }
   
   // added by skl 13.10.2003
@@ -397,7 +489,7 @@ Standard_Boolean IGESCAFControl_Reader::ReadColors (Handle(TDocStd_Document)& Do
 //purpose  : 
 //=======================================================================
 
-Standard_Boolean IGESCAFControl_Reader::ReadNames (Handle(TDocStd_Document)& Doc) const
+Standard_Boolean IGESCAFControl_Reader::ReadNames (Handle(TDocStd_Document)& /*Doc*/) const
 {
   Handle(Interface_InterfaceModel) Model = WS()->Model();
 
@@ -442,7 +534,7 @@ Standard_Boolean IGESCAFControl_Reader::ReadNames (Handle(TDocStd_Document)& Doc
 //purpose  : 
 //=======================================================================
 
-Standard_Boolean IGESCAFControl_Reader::ReadLayers (Handle(TDocStd_Document)& Doc) const
+Standard_Boolean IGESCAFControl_Reader::ReadLayers (Handle(TDocStd_Document)& /*Doc*/) const
 {
   Handle(Interface_InterfaceModel) Model = WS()->Model();
 

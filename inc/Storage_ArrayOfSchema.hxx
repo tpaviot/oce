@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Storage_ArrayOfSchema(const Standard_Integer Low,const Standard_Integer Up);
+      Storage_ArrayOfSchema(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Storage_ArrayOfSchema(const Handle(Storage_Schema)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Storage_ArrayOfSchema(const Handle(Storage_Schema)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(Storage_Schema)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Storage_ArrayOfSchema()
 {
   Destroy();

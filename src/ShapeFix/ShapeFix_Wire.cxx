@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //:j6 abv 7 Dec 98: ProSTEP TR10 r0601_id.stp #57676 & #58586: 
 //    in FixIntersectingEdges, do not cut edges because of influence on adjacent faces
@@ -441,6 +437,8 @@ Standard_Boolean ShapeFix_Wire::FixReorder()
     myStatusReorder |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE2 );
   if ( sawo.Status() <0 ) 
     myStatusReorder |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE3 );
+  if ( sawo.Status() == 3)
+    myStatusReorder |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE5 );//only shifted
   return Standard_True;
 }
 
@@ -1300,9 +1298,10 @@ Standard_Boolean ShapeFix_Wire::FixShifted()
   SVMid = 0.5*(SVF+SVL);
   if (uclosed) URange = Abs ( SUL - SUF );
   else         URange = RealLast();
-  if (!IsVCrvClosed)
+  if (!IsVCrvClosed) {
     if (vclosed) VRange = Abs ( SVL - SVF );
     else         VRange = RealLast();
+  }
   Standard_Real UTol = 0.2 * URange, VTol = 0.2 * VRange;
 
   Handle(ShapeExtend_WireData) sbwdOring = WireData();
@@ -1341,7 +1340,7 @@ Standard_Boolean ShapeFix_Wire::FixShifted()
     TopoDS_Vertex V = sae.FirstVertex ( E2 );
     gp_Pnt p = BRep_Tool::Pnt ( V );
   
-    Standard_Real a1, b1, a2, b2;
+    Standard_Real a1 = 0., b1 = 0., a2 = 0., b2 = 0.;
     Handle(Geom2d_Curve) c2d1, c2d2;
 
     //:abv 29.08.01: torCuts.sat: distinguish degeneration by U and by V;
@@ -1383,7 +1382,7 @@ Standard_Boolean ShapeFix_Wire::FixShifted()
 //	if ( stop < n2 ) { stop = n2; degstop = Standard_True; }
       }
       else {
-	Standard_Real ax1, bx1, ax2, bx2;
+	Standard_Real ax1 = 0., bx1 = 0., ax2 = 0., bx2 = 0.;
 	Handle(Geom2d_Curve) cx1, cx2;
 	if ( ( c2d1.IsNull() && ! sae.PCurve ( E1, Face(), c2d1, a1, b1, Standard_True ) ) ||
 	     ( c2d2.IsNull() && ! sae.PCurve ( E2, Face(), c2d2, a2, b2, Standard_True ) ) ||
@@ -1446,9 +1445,9 @@ Standard_Boolean ShapeFix_Wire::FixShifted()
 #ifdef DEB
 	  cout << "Info: ShapeFix_Wire::FixShifted(): bi - meridian case fixed" << endl;
 #endif
+          continue;
 	}
 //	degn2 = n2; pdeg = p; // ie_exhaust-A.stp #37520
-	continue;
       }
 /*	
       // pdn to fix half sphere
@@ -2106,7 +2105,7 @@ Standard_Boolean ShapeFix_Wire::FixSelfIntersectingEdge (const Standard_Integer 
 
   // cycle is to verify fix in case of RemoveLoop
   Standard_Real tolfact = 0.1; // factor for shifting by parameter in RemoveLoop
-  Standard_Real f2d, l2d;
+  Standard_Real f2d = 0., l2d = 0.;
   Handle(Geom2d_Curve) c2d;
   Standard_Real newtol=0.; // = Precision();
 
@@ -2742,9 +2741,9 @@ Standard_Boolean ShapeFix_Wire::FixLacking (const Standard_Integer num,
 
   //=============
   //:s2 abv 21 Apr 99: Speculation: try bending pcurves
-  Standard_Real bendtol1, bendtol2;
+  Standard_Real bendtol1 = 0., bendtol2 = 0.;
   Handle(Geom2d_Curve) bendc1, bendc2;
-  Standard_Real bendf1, bendl1, bendf2, bendl2;
+  Standard_Real bendf1 = 0., bendl1 = 0., bendf2 = 0., bendl2 = 0.;
   if ( myGeomMode && ! BRep_Tool::IsClosed(E1,face) && ! BRep_Tool::IsClosed(E2,face) ) {
     gp_Pnt2d p2d = 0.5 * ( p2d1.XY() + p2d2.XY() );
     Standard_Boolean ok1 = TryBendingPCurve (E1, face, p2d, E1.Orientation() == TopAbs_FORWARD, 

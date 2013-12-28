@@ -1,23 +1,17 @@
 // Created on: 2000-03-01
 // Created by: Denis PASCAL
-// Copyright (c) 2000-2012 OPEN CASCADE SAS
+// Copyright (c) 2000-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <DDocStd.hxx>
 #include <Draw.hxx>
@@ -261,17 +255,32 @@ static Standard_Integer DDocStd_SaveAs (Draw_Interpretor& di,
     PCDM_StoreStatus theStatus = A->SaveAs(D,path);
     if (theStatus != PCDM_SS_OK ) {
       switch ( theStatus ) {
-      case PCDM_SS_DriverFailure: {
-	di << " could not store , no driver found to make it " <<"\n" ;
-	break ;
-      }
-      case PCDM_SS_WriteFailure: {
-	di << " Write access failure " << "\n" ;  
-	break;
-      }
-      case PCDM_SS_Failure: {
-	di << " Write failure " << "\n" ;  
-      }
+        case PCDM_SS_DriverFailure: {
+          di << "Error saving document: Could not store , no driver found to make it" << "\n";
+          break ;
+        }
+        case PCDM_SS_WriteFailure: {
+          di << "Error saving document: Write access failure" << "\n";
+          break;
+        }
+        case PCDM_SS_Failure: {
+          di << "Error saving document: Write failure" << "\n" ;
+          break;
+        }
+        case PCDM_SS_Doc_IsNull: {
+          di << "Error saving document: No document to save" << "\n";
+          break ;
+        }
+        case PCDM_SS_No_Obj: {
+          di << "Error saving document: No objects written" << "\n";
+          break;
+        }
+        case PCDM_SS_Info_Section_Error: {
+          di << "Error saving document: Write info section failure" << "\n" ;
+          break;
+        }
+        default:
+          break;
       }
       return 1;
     } else {

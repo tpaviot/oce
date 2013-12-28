@@ -77,12 +77,13 @@ public:
 //! for each instance of Graphic3d_AspectFillArea3d where texture will be used. <br>
 //! . <br>
 //! @return texture identifier. <br>
-  Standard_EXPORT     TCollection_AsciiString GetId() const;
+  Standard_EXPORT    const TCollection_AsciiString& GetId() const;
   
 //! This method will be called by graphic driver each time when texture resource should be created. <br>
 //! Default implementation will dynamically load image from specified path within this method <br>
 //! (and no copy will be preserved in this class instance). <br>
 //! Inheritors may dynamically generate the image or return cached instance. <br>
+//! Notice, image data should be in Bottom-Up order (see Image_PixMap::IsTopDown())! <br>
 //! @return the image for texture. <br>
   Standard_EXPORT   virtual  Image_PixMap_Handle GetImage() const;
   //! @return low-level texture parameters <br>

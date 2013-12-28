@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepFEA_Array1OfElementRepresentation(const Standard_Integer Low,const Standard_Integer Up);
+      StepFEA_Array1OfElementRepresentation(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepFEA_Array1OfElementRepresentation(const Handle(StepFEA_ElementRepresentation)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepFEA_Array1OfElementRepresentation(const Handle(StepFEA_ElementRepresentation)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(StepFEA_ElementRepresentation)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepFEA_Array1OfElementRepresentation()
 {
   Destroy();

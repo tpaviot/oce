@@ -42,6 +42,8 @@ void ShapeSchema_ObjMgt_SeqNodeOfPSeqOfExtRef::SWrite(const Handle(Standard_Pers
   if (!p.IsNull()) {
     Handle(ObjMgt_SeqNodeOfPSeqOfExtRef) &pp = (Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetObjMgt_SeqNodeOfPSeqOfExtRefMyPrevious(),f);
@@ -62,6 +64,8 @@ void ShapeSchema_ObjMgt_SeqNodeOfPSeqOfExtRef::SRead(const Handle(Standard_Persi
 { 
   if (!p.IsNull()) {
     Handle(ObjMgt_SeqNodeOfPSeqOfExtRef) &pp = (Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

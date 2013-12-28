@@ -1,21 +1,17 @@
 // Created on: 2002-05-28
 // Created by: QA Admin
-// Copyright (c) 2002-2012 OPEN CASCADE SAS
+// Copyright (c) 2002-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <QABugs.hxx>
 
@@ -149,10 +145,10 @@ static Standard_Integer OCC426 (Draw_Interpretor& di, Standard_Integer argc, con
       TopLoc_Location loc;
       Handle(Poly_Triangulation) facing = BRep_Tool::Triangulation(TopologicalFace, loc);
       if (facing.IsNull())
-	{
-	  di << "Triangulation FAILED for this face" << "\n";
-	  continue;
-	}
+      {
+        di << "Triangulation FAILED for this face" << "\n";
+        continue;
+      }
       di << "No of Triangles = " << facing->NbTriangles() << "\n";
     }
   di<<"Triangulation of all Faces Completed. "<< "\n" << "\n";
@@ -246,40 +242,36 @@ static Standard_Integer OCC486(Draw_Interpretor& di, Standard_Integer argc, cons
       Standard_Integer nPSurf = ( myExtPS.IsDone() ? myExtPS.NbExt() : 0 );
 
       if ( nPSurf > 0 )
-	{
+      {
+        //Standard_Real distMin = myExtPS.Value ( 1 );
+        Standard_Real distMin = myExtPS.SquareDistance ( 1 );
+        Standard_Integer indMin=1;
+        for (Standard_Integer sol = 2; sol <= nPSurf ; sol++)
+        {
+          //Standard_Real dist = myExtPS.Value(sol);
+          Standard_Real dist = myExtPS.SquareDistance(sol);
+          if ( distMin > dist )
+          {
+            distMin = dist;
+            indMin = sol;
+          }
+        }
+        distMin = sqrt(distMin);
+        Standard_Real S, T;
+        myExtPS.Point(indMin).Parameter ( S, T );
+        gp_Pnt aCheckPnt = aSurf.Value( S, T );
+        Standard_Real aCheckDist = P3D.Distance(aCheckPnt);
+        di << "Solution is : U = "<< S << "\t V = "<< T << "\n";
+        di << "Solution is : X = "<< aCheckPnt.X() << "\t Y = "<< aCheckPnt.Y() << "\t Z = "<< aCheckPnt.Z() << "\n";
+        di << "ExtremaDistance = " << distMin  << "\n";
+        di << "CheckDistance = " << aCheckDist << "\n";
 
-	  //Standard_Real distMin = myExtPS.Value ( 1 );
-	  Standard_Real distMin = myExtPS.SquareDistance ( 1 );
-	  Standard_Integer indMin=1;
-	  for (Standard_Integer sol = 2; sol <= nPSurf ; sol++)
-	    {
-	      //Standard_Real dist = myExtPS.Value(sol);
-	      Standard_Real dist = myExtPS.SquareDistance(sol);
-	      if ( distMin > dist )
-		{
-		  distMin = dist;
-		  indMin = sol;
-		}
-	    }
-//
-	  distMin = sqrt(distMin);
-	  Standard_Real S, T;
-	  myExtPS.Point(indMin).Parameter ( S, T );
-	  gp_Pnt aCheckPnt = aSurf.Value( S, T );
-	  Standard_Real aCheckDist = P3D.Distance(aCheckPnt);
-	  di << "Solution is : U = "<< S << "\t V = "<< T << "\n";
-	  di << "Solution is : X = "<< aCheckPnt.X() << "\t Y = "<< aCheckPnt.Y() << "\t Z = "<< aCheckPnt.Z() << "\n";
-	  di << "ExtremaDistance = " << distMin  << "\n";
-	  di << "CheckDistance = " << aCheckDist << "\n";
-
-	  if(fabs(distMin - aCheckDist) < Precision::Confusion()) return 0;
-	  else return 1;
-	}
+        if(fabs(distMin - aCheckDist) < Precision::Confusion()) return 0;
+        else return 1;
+      }
       else return 1;
     }
   catch (Standard_Failure) {di << "OCC486 Exception \n" ;return 1;}
-  
-  return 0;
 }
 
 #include <GC_MakeArcOfCircle.hxx>

@@ -1,22 +1,18 @@
 // Created on: 1997-03-01
 // Created by: MPS  
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modified by  MPS (14-04-97)  traitement des cas  ou il n'y a pas
 //                              d'intersection entre les stripes 
@@ -917,7 +913,6 @@ static Standard_Integer SurfIndex(const ChFiDS_StripeArray1& StripeArray1,
   case FACE2:       return aSurfData->IndexOfS2();
   default:          return -1;
   }
-  return -1;
 }
 
 //=======================================================================
@@ -1043,13 +1038,13 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
   ChFiDS_ListIteratorOfListOfStripe It;
   Handle(ChFiDS_Stripe) cd2,cdbid,cnext;
   TopoDS_Face face;
-  Standard_Integer jfp,ii;
+  Standard_Integer jfp = 0,ii;
   Standard_Integer ic,icplus,icmoins,icplus2,
-                   sense,index,indice,isurf1,isurf2;
-  Standard_Integer cbplus=0, n3d=0,IVtx,nb;
+                   sense,index = 0,indice,isurf1,isurf2;
+  Standard_Integer cbplus=0, n3d=0,IVtx = 0,nb;
   Standard_Boolean sameside,trouve,isfirst;
   Standard_Real pardeb ,parfin,xdir,ydir;
-  Standard_Real tolapp=1.e-4,maxapp,maxapp1,avedev;
+  Standard_Real tolapp=1.e-4,maxapp = 0.,maxapp1 = 0.,avedev;
   Handle (TopOpeBRepDS_CurvePointInterference) Interfp1, Interfp2;
   Handle (TopOpeBRepDS_SurfaceCurveInterference) Interfc;
   Handle(Geom_Curve) Curv3d;
@@ -1453,9 +1448,9 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
       oksea.SetValue(ic, Standard_False);
     }
     else {
-      Standard_Integer jf1;
-      Standard_Integer i1,i2;
-      Standard_Real pa1,pa2;
+      Standard_Integer jf1 = 0;
+      Standard_Integer i1 = 0,i2 = 0;
+      Standard_Real pa1 = 0.,pa2;
       Standard_Boolean ok;
       Handle(ChFiDS_Stripe) strip;
       Standard_Real angedg;
@@ -1825,7 +1820,7 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
 // Then this courbe3d is projected on all faces (nbface) that
 // separate icmoins and indfin
   Standard_Integer nbface = 0;
-  Standard_Real  error;
+  Standard_Real  error = 0.;
   TColGeom2d_Array1OfCurve proj2d1(0,size);
   TColGeom2d_Array1OfCurve proj2d2(0,size);
   TColGeom_Array1OfCurve cproj1(0,size);

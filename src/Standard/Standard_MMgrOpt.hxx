@@ -1,23 +1,17 @@
 // Created on: 2005-03-15
 // Created by: Peter KURNEV
-// Copyright (c) 2005-2012 OPEN CASCADE SAS
+// Copyright (c) 2005-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifndef _Standard_MMgrOpt_HeaderFile
 #define _Standard_MMgrOpt_HeaderFile
@@ -95,8 +89,7 @@ class Standard_MMgrOpt : public Standard_MMgrRoot
                          const Standard_Boolean aMMap       = Standard_True,
                          const Standard_Size    aCellSize   = 200,
                          const Standard_Integer aNbPages    = 10000,
-                         const Standard_Size    aThreshold  = 40000,
-                         const Standard_Boolean isReentrant = Standard_False);
+                         const Standard_Size    aThreshold  = 40000);
 
   //! Frees all free lists and pools allocated for small blocks 
   Standard_EXPORT virtual ~Standard_MMgrOpt();
@@ -117,11 +110,6 @@ class Standard_MMgrOpt : public Standard_MMgrRoot
   //! Release medium-sized blocks of memory in free lists to the system.
   //! Returns number of actually freed blocks
   Standard_EXPORT virtual Standard_Integer Purge(Standard_Boolean isDestroyed);
-
-  //! Set reentrant mode on or off.
-  //! Note: This method may be called only when no any other thread can 
-  //!       access this object simultaneously
-  Standard_EXPORT virtual void SetReentrant(Standard_Boolean isReentrant);
 
   //! Declaration of a type pointer to the callback function that
   //! should accept the following arguments: <br>
@@ -174,7 +162,6 @@ protected:
   
   Standard_Mutex   myMutex;         //!< Mutex to protect free lists data
   Standard_Mutex   myMutexPools;    //!< Mutex to protect small block pools data
-  Standard_Boolean myReentrant;     //!< Use mutex to provide correct reentrant behaviour
 };
 
 #endif

@@ -42,11 +42,11 @@ class StepShape_HArray1OfConnectedEdgeSet : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepShape_ConnectedEdgeSet)& V);
+      StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepShape_ConnectedEdgeSet)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepShape_ConnectedEdgeSet)& V) ;
+        void Init(const Handle(StepShape_ConnectedEdgeSet)& V) ;
   
         Standard_Integer Length() const;
   

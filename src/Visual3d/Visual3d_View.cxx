@@ -1,20 +1,16 @@
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 /***********************************************************************
 
@@ -78,9 +74,6 @@
 
 #define BUC60572        //GG_03-08-99    Add protection on Zclipping & Zcueing planes
 //              positions.
-
-#define BUC60570        //GG 14-09-99 Don't activates lighting
-//                      when the view shading model is NONE.
 
 #define GER61454        //GG 14-09-99 Activates model clipping planes
 
@@ -147,11 +140,6 @@
 #include <Visual3d_HSetOfLight.hxx>
 #include <Visual3d_SetIteratorOfSetOfLight.hxx>
 
-#include <Visual3d_ClipPlane.hxx>
-#include <Visual3d_SetOfClipPlane.hxx>
-#include <Visual3d_HSetOfClipPlane.hxx>
-#include <Visual3d_SetIteratorOfSetOfClipPlane.hxx>
-
 #include <Visual3d_SetIteratorOfSetOfView.hxx>
 
 #include <Graphic3d_TextureEnv.hxx>
@@ -198,10 +186,6 @@ Standard_Integer i, j;
         MyCView.DefWindow.IsDefined   = 0;
 
         MyCView.Context.NbActiveLight = 0;
-        MyCView.Context.NbActivePlane = 0;
-#ifdef GER61454
-        MyCView.Context.ActivePlane   = NULL;
-#endif
 
         for (i=0; i<=3; i++)
                 for (j=0; j<=3; j++)
@@ -311,10 +295,6 @@ Standard_Integer i, j;
         MyCView.DefWindow.IsDefined   = 0;
 
         MyCView.Context.NbActiveLight = 0;
-        MyCView.Context.NbActivePlane = 0;
-#ifdef GER61454
-        MyCView.Context.ActivePlane = NULL;
-#endif
 
         for (i=0; i<=3; i++)
                 for (j=0; j<=3; j++)
@@ -719,208 +699,57 @@ Standard_Real Rap;
 
 }
 
-void Visual3d_View::UpdateLights () {
-
-Standard_Integer i, j;
-CALL_DEF_LIGHT *lights=NULL;
-
-#ifdef BUC60570
-  if( MyContext.Model() == Visual3d_TOM_NONE ) {
-// Activates only a white ambient light
-    MyCView.Context.NbActiveLight = 1;
-    lights      = new CALL_DEF_LIGHT [MyCView.Context.NbActiveLight];
-    MyCView.Context.ActiveLight = lights;
-
-    lights[0].WsId              = MyCView.ViewId;
-    lights[0].ViewId    = MyCView.ViewId;
-    lights[0].LightType = int (Visual3d_TOLS_AMBIENT);
-    lights[0].Active    = 1;
-    lights[0].LightId   = 0;
-    lights[0].Headlight = 0;
-    lights[0].Color.r   = lights[0].Color.g = lights[0].Color.b = 1.;
-  } else {
-#endif
-        i       = MyContext.NumberOfActivatedLights ();
-        j       = MyGraphicDriver->InquireLightLimit ();
-        MyCView.Context.NbActiveLight   = (i > j ? j : i);
-
-        if (MyCView.Context.NbActiveLight > 0) {
-
-                // Dynamic Allocation
-                lights  = new CALL_DEF_LIGHT [MyCView.Context.NbActiveLight];
-
-                MyCView.Context.ActiveLight     = lights;
-
-Standard_Real X, Y, Z;
-
-Standard_Real LightConcentration;
-Standard_Real LightAttenuation1;
-Standard_Real LightAttenuation2;
-Standard_Real LightAngle;
-Quantity_Color LightColor;
-Graphic3d_Vertex LightPosition;
-Graphic3d_Vector LightDirection;
-Visual3d_TypeOfLightSource LightType=Visual3d_TOLS_AMBIENT;
-
-                // Parcing of light sources
-                for (j=0; j<MyCView.Context.NbActiveLight; j++) {
-                        LightType       = (MyContext.ActivatedLight (j+1))->LightType ();
-
-                        lights[j].WsId          = MyCView.ViewId;
-                        lights[j].ViewId        = MyCView.ViewId;
-
-                        lights[j].LightType     = int (LightType);
-                        lights[j].Active        = 1;
-                        lights[j].LightId       =
-                                int ((MyContext.ActivatedLight (j+1))->Identification ());
-                        lights[j].Headlight = (MyContext.ActivatedLight (j+1))->Headlight ()? 1:0;
-
-                        switch (LightType) {
-
-                        case Visual3d_TOLS_AMBIENT :
-                                (MyContext.ActivatedLight (j+1))->Values (
-                                                        LightColor
-                                                                );
-                        break;
-
-                        case Visual3d_TOLS_POSITIONAL :
-                                (MyContext.ActivatedLight (j+1))->Values (
-                                                        LightColor,
-                                                        LightPosition,
-                                                        LightAttenuation1,
-                                                        LightAttenuation2
-                                                                );
-                        break;
-
-                        case Visual3d_TOLS_DIRECTIONAL :
-                                (MyContext.ActivatedLight (j+1))->Values (
-                                                        LightColor,
-                                                        LightDirection
-                                                                );
-                        break;
-
-                        case Visual3d_TOLS_SPOT :
-                                (MyContext.ActivatedLight (j+1))->Values (
-                                                        LightColor,
-                                                        LightPosition,
-                                                        LightDirection,
-                                                        LightConcentration,
-                                                        LightAttenuation1,
-                                                        LightAttenuation2,
-                                                        LightAngle
-                                                                );
-                        break;
-
-                        }
-
-                        lights[j].Color.r       = float (LightColor.Red ());
-                        lights[j].Color.g       = float (LightColor.Green ());
-                        lights[j].Color.b       = float (LightColor.Blue ());
-
-                        if ( (LightType == Visual3d_TOLS_POSITIONAL) ||
-                             (LightType == Visual3d_TOLS_SPOT) ) {
-                                LightPosition.Coord (X, Y, Z);
-                                lights[j].Position.x    = float (X);
-                                lights[j].Position.y    = float (Y);
-                                lights[j].Position.z    = float (Z);
-                        }
-
-                        if ( (LightType == Visual3d_TOLS_DIRECTIONAL) ||
-                             (LightType == Visual3d_TOLS_SPOT) ) {
-                                LightDirection.Coord (X, Y, Z);
-                                lights[j].Direction.x   = float (X);
-                                lights[j].Direction.y   = float (Y);
-                                lights[j].Direction.z   = float (Z);
-                        }
-
-                        if ( (LightType == Visual3d_TOLS_POSITIONAL) ||
-                             (LightType == Visual3d_TOLS_SPOT) ) {
-                                lights[j].Attenuation[0] =
-                                        float (LightAttenuation1);
-                                lights[j].Attenuation[1] =
-                                        float (LightAttenuation2);
-                        }
-
-                        if (LightType == Visual3d_TOLS_SPOT) {
-                                lights[j].Concentration =
-                                        float (LightConcentration);
-                                lights[j].Angle         =
-                                        float (LightAngle);
-                        }
-                }
-
-        }
-#ifdef BUC60570
+void Visual3d_View::UpdateLights()
+{
+  if (IsDeleted()
+   || !IsDefined())
+  {
+    return;
   }
-#endif
-        // management of light sources
-        if (! IsDeleted ())
-                if (IsDefined ())
-                        MyGraphicDriver->SetLight (MyCView);
 
-        // Dynamic allocation
-        if (MyCView.Context.NbActiveLight > 0) delete [] lights;
+  if (MyContext.Model() == Visual3d_TOM_NONE)
+  {
+    // activate only a white ambient light
+    Graphic3d_CLight aCLight;
+    aCLight.Type        = Visual3d_TOLS_AMBIENT;
+    aCLight.IsHeadlight = Standard_False;
+    aCLight.Color.r() = aCLight.Color.g() = aCLight.Color.b() = 1.0f;
 
+    MyCView.Context.NbActiveLight = 1;
+    MyCView.Context.ActiveLight   = &aCLight;
+    MyGraphicDriver->SetLight (MyCView);
+    MyCView.Context.ActiveLight   = NULL;
+    return;
+  }
+
+  MyCView.Context.NbActiveLight = Min (MyContext.NumberOfActivatedLights(),
+                                       MyGraphicDriver->InquireLightLimit());
+  if (MyCView.Context.NbActiveLight < 1)
+  {
+    MyGraphicDriver->SetLight (MyCView);
+    return;
+  }
+
+  // parcing of light sources
+  MyCView.Context.ActiveLight = new Graphic3d_CLight[MyCView.Context.NbActiveLight];
+  for (Standard_Integer aLightIter = 0; aLightIter < MyCView.Context.NbActiveLight; ++aLightIter)
+  {
+    MyCView.Context.ActiveLight[aLightIter] = MyContext.ActivatedLight (aLightIter + 1)->CLight();
+  }
+  MyGraphicDriver->SetLight (MyCView);
+  delete[] MyCView.Context.ActiveLight;
+  MyCView.Context.ActiveLight = NULL;
 }
 
-void Visual3d_View::UpdatePlanes () {
+void Visual3d_View::UpdatePlanes()
+{
+  MyCView.Context.ClipPlanes = MyContext.ClipPlanes();
+  if (IsDeleted() || !IsDefined())
+  {
+    return;
+  }
 
-Standard_Integer i, j;
-CALL_DEF_PLANE *planes=NULL;
-
-        i       = MyContext.NumberOfActivatedClipPlanes ();
-        j       = MyGraphicDriver->InquirePlaneLimit ();
-        MyCView.Context.NbActivePlane   = (i > j ? j : i);
-
-        if (MyCView.Context.NbActivePlane > 0) {
-
-                // Dynamic Allocation
-#ifdef GER61454 //Keep the plane address for the next Update !
-                if( !MyCView.Context.ActivePlane )
-                   MyCView.Context.ActivePlane = new CALL_DEF_PLANE [j];
-                planes = MyCView.Context.ActivePlane;
-#else
-                planes  = new CALL_DEF_PLANE [MyCView.Context.NbActivePlane];
-
-                MyCView.Context.ActivePlane     = planes;
-#endif
-Standard_Real A, B, C, D;
-
-                // Parcing of clipping planes
-                for (j=0; j<MyCView.Context.NbActivePlane; j++) {
-
-                        planes[j].WsId          = MyCView.ViewId;
-                        planes[j].ViewId        = MyCView.ViewId;
-
-                        planes[j].Active        = 1;
-                        planes[j].PlaneId       =
-                                int ((MyContext.ActivatedClipPlane (j+1))->Identification ());
-
-                        (MyContext.ActivatedClipPlane (j+1))->Plane (A, B, C, D);
-                        planes[j].CoefA         = float (A);
-                        planes[j].CoefB         = float (B);
-                        planes[j].CoefC         = float (C);
-                        planes[j].CoefD         = float (D);
-                }
-
-        }
-
-        // Management of planes of clipping model
-        if (! IsDeleted ())
-                if (IsDefined ())
-                        MyGraphicDriver->SetPlane (MyCView);
-
-        // Dynamic allocation
-#ifdef GER61454
-        if ( MyCView.Context.ActivePlane && (MyCView.Context.NbActivePlane == 0)
- ) {
-          delete [] MyCView.Context.ActivePlane;
-          MyCView.Context.ActivePlane = NULL;
-        }
-#else
-        if (MyCView.Context.NbActivePlane > 0) delete [] planes;
-#endif
-
+  MyGraphicDriver->SetClipPlanes (MyCView);
 }
 
 void Visual3d_View::SetBackground (const Aspect_Background& ABack) {
@@ -1137,7 +966,7 @@ void Visual3d_View::SetViewOrientation (const Visual3d_ViewOrientation& VO) {
         MyCView.Orientation.ViewScaleZ                  = float (Z);
 
         CustomIsModified =
-        MyCView.Orientation.IsCustomMatrix != MyViewOrientation.IsCustomMatrix();
+          (MyCView.Orientation.IsCustomMatrix != MyViewOrientation.IsCustomMatrix());
         MyCView.Orientation.IsCustomMatrix = MyViewOrientation.IsCustomMatrix();
         if ( MyViewOrientation.IsCustomMatrix() ) {
           Standard_Integer i, j;
@@ -1840,6 +1669,12 @@ void Visual3d_View::Update (const Handle(Visual3d_Layer)& AnUnderLayer, const Ha
 
         if (! MyWindow->IsMapped ()) return;
 
+        if (MyGraphicDriver->IsDeviceLost())
+        {
+          MyViewManager->ReComputeStructures();
+          MyGraphicDriver->ResetDeviceLostFlag();
+        }
+
         // If activation/desactivation of ZBuffer should be automatic
         // depending on the presence or absence of facets.
         if (MyViewManager->ZBufferAuto ()) {
@@ -1911,7 +1746,7 @@ Visual3d_TypeOfAnswer Result = Visual3d_TOA_NO;
 
 }
 
-void Visual3d_View::ChangeDisplayPriority (const Handle(Graphic3d_Structure)& AStructure, const Standard_Integer OldPriority, const Standard_Integer NewPriority) {
+void Visual3d_View::ChangeDisplayPriority (const Handle(Graphic3d_Structure)& AStructure, const Standard_Integer /*OldPriority*/, const Standard_Integer NewPriority) {
 
         if (IsDeleted ()) return;
         if (! IsDefined ()) return;
@@ -2062,41 +1897,14 @@ void Visual3d_View::Display (const Handle(Graphic3d_Structure)& AStructure, cons
 Standard_Integer Index = IsComputed (AStructure);
 
         if ((Index != 0) && (AStructure->Visual () != Graphic3d_TOS_COMPUTED)) {
-
-#ifdef TRACE_LENGTH
-        if (MyTOCOMPUTESequence.Length () != MyCOMPUTEDSequence.Length ()) {
-                cout << "In Visual3d_View::Display, ";
-                cout << "TOCOMPUTE " << MyTOCOMPUTESequence.Length ()
-                     << " != COMPUTED " << MyCOMPUTEDSequence.Length ()
-                     << "\n" << flush;
-        }
-#endif
                 MyTOCOMPUTESequence.Remove (Index);
                 MyCOMPUTEDSequence.Remove (Index);
-
-#ifdef TRACE_LENGTH
-        if (MyTOCOMPUTESequence.Length () != MyCOMPUTEDSequence.Length ())
-                cout << "\tTOCOMPUTE " << MyTOCOMPUTESequence.Length ()
-                     << " != COMPUTED " << MyCOMPUTEDSequence.Length ()
-                     << "\n" << flush;
-#endif
                 Index = 0;
         }
 
 	Visual3d_TypeOfAnswer Answer = AcceptDisplay (AStructure);
 
-#ifdef TRACE_DISPLAY
-	Standard_Integer StructId = AStructure->Identification ();
-        cout << "Visual3d_View" << MyCView.ViewId << "::Display ("
-             << StructId << ");\n";
-        cout << flush;
-#endif
-
         if (Answer == Visual3d_TOA_NO) {
-#ifdef TRACE_DISPLAY
-                cout << "Answer : Visual3d_TOA_NO\n";
-                cout << flush;
-#endif
                 return;
         }
 
@@ -2106,10 +1914,6 @@ Standard_Integer Index = IsComputed (AStructure);
         }
 
         if (Answer == Visual3d_TOA_YES ) {
-#ifdef TRACE_DISPLAY
-                cout << "Answer : Visual3d_TOA_YES\n";
-                cout << flush;
-#endif
                 if (IsDisplayed (AStructure)) return;
                 MyGraphicDriver->DisplayStructure (
                         MyCView,
@@ -2121,32 +1925,8 @@ Standard_Integer Index = IsComputed (AStructure);
         }
 
         if (Answer == Visual3d_TOA_COMPUTE) {
-#ifdef TRACE_DISPLAY
-            cout << "Answer : Visual3d_TOA_COMPUTE\n";
-            cout << "Index : " << Index << "\n" << flush;
-#endif
             if (Index != 0) {
                 // Already computed, is COMPUTED still valid?
-#ifdef TRACE_DISPLAY
-                if (MyCOMPUTEDSequence.Value (Index)->HLRValidation ()) {
-                  cout << "Structure "
-                     << MyTOCOMPUTESequence.Value (Index)->Identification ()
-                     << "already calculated, in the view "
-                     << Identification () << ", par la structure "
-                     << MyCOMPUTEDSequence.Value (Index)->Identification ()
-                     << "\n was not recalculated as HLR is valid\n";
-                  cout << flush;
-                }
-                else {
-                  cout << "Structure "
-                     << MyTOCOMPUTESequence.Value (Index)->Identification ()
-                     << " already calculated, in the view "
-                     << Identification () << ", by the structure "
-                     << MyCOMPUTEDSequence.Value (Index)->Identification ()
-                     << "\n should be recalculated as HLR is invalid\n";
-                  cout << flush;
-                }
-#endif
 Standard_Integer OldStructId =
         MyCOMPUTEDSequence.Value (Index)->Identification ();
 
@@ -2238,36 +2018,15 @@ Standard_Integer ii, jj;
 #endif
             TheStructure->SetHLRValidation (Standard_True);
 
-#ifdef TRACE_LENGTH
-        if (MyTOCOMPUTESequence.Length () != MyCOMPUTEDSequence.Length ())
-                cout << "\tTOCOMPUTE " << MyTOCOMPUTESequence.Length ()
-                     << " != COMPUTED " << MyCOMPUTEDSequence.Length ()
-                     << "\n" << flush;
-#endif
-
             // TOCOMPUTE and COMPUTED associated to sequences are added
             MyTOCOMPUTESequence.Append (AStructure);
             MyCOMPUTEDSequence.Append (TheStructure);
-
-#ifdef TRACE_LENGTH
-        if (MyTOCOMPUTESequence.Length () != MyCOMPUTEDSequence.Length ())
-                cout << "\tTOCOMPUTE " << MyTOCOMPUTESequence.Length ()
-                     << " != COMPUTED " << MyCOMPUTEDSequence.Length ()
-                     << "\n" << flush;
-#endif
 
             // The previous are removed if necessary
             if (Index != 0) {
                 MyTOCOMPUTESequence.Remove (Index);
                 MyCOMPUTEDSequence.Remove (Index);
             }
-
-#ifdef TRACE_LENGTH
-        if (MyTOCOMPUTESequence.Length () != MyCOMPUTEDSequence.Length ())
-                cout << "\tTOCOMPUTE " << MyTOCOMPUTESequence.Length ()
-                     << " != COMPUTED " << MyCOMPUTEDSequence.Length ()
-                     << "\n" << flush;
-#endif
 
 // Return type of visualisation of the view
 Visual3d_TypeOfVisualization ViewType = MyContext.Visualization ();
@@ -2293,18 +2052,6 @@ Standard_Boolean ComputeShading = ((ViewType == Visual3d_TOV_SHADING) &&
                 TheStructure->SetHighlightColor (AStructure->HighlightColor ());
                 TheStructure->GraphicHighlight (Aspect_TOHM_COLOR);
             }
-
-#ifdef TRACE_DISPLAY
-            cout << "Structure " << StructId
-                 << " in the view " << Identification ()
-                 << " is calculated by the structure "
-                 << TheStructure->Identification ();
-            if (Answer == Visual3d_TOA_YES)
-                cout << " and displayed\n";
-            else
-                cout << " but not displayed\n";
-            cout << flush;
-#endif
 
             // It is displayed only if the calculated structure
             // has a proper type corresponding to the one of the view.
@@ -2595,6 +2342,11 @@ void Visual3d_View::MinMaxValues (const Graphic3d_MapOfStructure& ASet, Standard
   for ( Iterator.Initialize (ASet);
         Iterator.More ();
         Iterator.Next ()) {
+
+          if (!Iterator.Key()->IsVisible())
+          {
+            continue;
+          }
 
       if ( (Iterator.Key ())->IsInfinite ()){
         //XMin, YMin .... ZMax are initialized by means of infinite line data
@@ -3588,8 +3340,8 @@ void Visual3d_View :: SetComputedMode ( const Standard_Boolean aMode )
  Visual3d_TypeOfAnswer                 Answer;
  Standard_Integer                      StructId;
  Standard_Integer                      i = MyDisplayedStructure.Extent ();
-
- if (  !( ComputedModeIsActive = aMode )  ) {
+ ComputedModeIsActive = aMode;
+ if (!ComputedModeIsActive) {
 
   while (  S1Iterator.More ()  ) {
 

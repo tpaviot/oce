@@ -15,6 +15,10 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -37,6 +41,10 @@
 				<Compiler>
 					<Add option="-O0" />
 					<Add option="-g" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -202,11 +210,9 @@
 		<Unit filename="../../../drv/IntSurf/IntSurf_SequenceNodeOfSequenceOfCouple_0.cxx" />
 		<Unit filename="../../../drv/IntSurf/IntSurf_SequenceNodeOfSequenceOfInteriorPoint_0.cxx" />
 		<Unit filename="../../../drv/IntSurf/IntSurf_SequenceNodeOfSequenceOfPathPoint_0.cxx" />
-		<Unit filename="../../../drv/IntSurf/IntSurf_SequenceNodeOfSequenceOfPntOn2S_0.cxx" />
 		<Unit filename="../../../drv/IntSurf/IntSurf_SequenceOfCouple_0.cxx" />
 		<Unit filename="../../../drv/IntSurf/IntSurf_SequenceOfInteriorPoint_0.cxx" />
 		<Unit filename="../../../drv/IntSurf/IntSurf_SequenceOfPathPoint_0.cxx" />
-		<Unit filename="../../../drv/IntSurf/IntSurf_SequenceOfPntOn2S_0.cxx" />
 		<Unit filename="../../../src/IntSurf/IntSurf.cxx" />
 		<Unit filename="../../../src/IntSurf/IntSurf_Couple.cxx" />
 		<Unit filename="../../../src/IntSurf/IntSurf_InteriorPoint.cxx" />

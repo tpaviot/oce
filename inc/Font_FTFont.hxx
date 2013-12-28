@@ -2,20 +2,16 @@
 // Created by: Kirill GAVRILOV
 // Copyright (c) 2013 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifndef _Font_FTFont_H__
 #define _Font_FTFont_H__
@@ -24,6 +20,7 @@
 #include <NCollection_String.hxx>
 #include <Font_FTLibrary.hxx>
 #include <Image_PixMap.hxx>
+#include <Font_FontAspect.hxx>
 
 //! Wrapper over FreeType font.
 //! Notice that this class uses internal buffers for loaded glyphs
@@ -100,8 +97,19 @@ public:
                              const unsigned int        thePointSize,
                              const unsigned int        theResolution = 72);
 
+  //! Initialize the font.
+  //! @param theFontName   the font name
+  //! @param theFontAspect the font style
+  //! @param thePointSize  the face size in points (1/72 inch)
+  //! @param theResolution the resolution of the target device in dpi
+  //! @return true on success
+  Standard_EXPORT bool Init (const NCollection_String& theFontName,
+                             const Font_FontAspect     theFontAspect,
+                             const unsigned int        thePointSize,
+                             const unsigned int        theResolution);
+
   //! Release currently loaded font.
-  Standard_EXPORT void Release();
+  Standard_EXPORT virtual void Release();
 
   //! Render specified glyph into internal buffer (bitmap).
   Standard_EXPORT bool RenderGlyph (const Standard_Utf32Char theChar);

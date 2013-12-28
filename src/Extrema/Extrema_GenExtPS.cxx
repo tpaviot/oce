@@ -1,23 +1,18 @@
 // Created on: 1995-07-18
 // Created by: Modelistation
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //  Modified by skv - Thu Sep 30 15:21:07 2004 OCC593
 
@@ -60,7 +55,6 @@ Bnd_Sphere& theSol)
       mySphereArray(theSphereArray),
       mySol(theSol)
   {
-    //myXYZ = gp_Pnt(0, 0, 0);    
   }
 
   void DefineCheckPoint( const gp_Pnt& theXYZ )
@@ -72,11 +66,12 @@ Bnd_Sphere& theSol)
   virtual Standard_Boolean Reject( const Bnd_Sphere &theBnd ) const = 0;
   
   virtual Standard_Boolean Accept(const Standard_Integer& theObj) = 0;
-
  protected:
-  gp_Pnt                      myXYZ;
-  const Handle(Bnd_HArray1OfSphere)& mySphereArray;
-  Bnd_Sphere&						 mySol;
+  gp_Pnt                              myXYZ;
+  const Handle(Bnd_HArray1OfSphere)&  mySphereArray;
+  Bnd_Sphere&                         mySol;
+ private:
+  void operator= (const Bnd_SphereUBTreeSelector&);
 
 };
 
@@ -114,7 +109,8 @@ Standard_Boolean Bnd_SphereUBTreeSelectorMin::Accept(const Standard_Integer& the
   const Bnd_Sphere& aSph = mySphereArray->Value(theInd);
   Standard_Real aCurDist;
 
-    if ( (aCurDist = aSph.SquareDistance(myXYZ.XYZ())) < mySol.SquareDistance(myXYZ.XYZ()) )
+//    if ( (aCurDist = aSph.SquareDistance(myXYZ.XYZ())) < mySol.SquareDistance(myXYZ.XYZ()) )
+    if ( (aCurDist = aSph.Distance(myXYZ.XYZ())) < mySol.Distance(myXYZ.XYZ()) )
     {
       mySol = aSph;
       if ( aCurDist < myMinDist ) 
@@ -160,7 +156,8 @@ Standard_Boolean Bnd_SphereUBTreeSelectorMax::Accept(const Standard_Integer& the
   const Bnd_Sphere& aSph = mySphereArray->Value(theInd);
   Standard_Real aCurDist;
 
-    if ( (aCurDist = aSph.SquareDistance(myXYZ.XYZ())) > mySol.SquareDistance(myXYZ.XYZ()) )
+//    if ( (aCurDist = aSph.SquareDistance(myXYZ.XYZ())) > mySol.SquareDistance(myXYZ.XYZ()) )
+    if ( (aCurDist = aSph.Distance(myXYZ.XYZ())) > mySol.Distance(myXYZ.XYZ()) )
     {
       mySol = aSph;
       if ( aCurDist > myMaxDist ) 
@@ -281,52 +278,6 @@ Processing:
       - update table TbSel.
 -----------------------------------------------------------------------------*/
 
-static Standard_Boolean IsoIsDeg  (const Adaptor3d_Surface& S,
-				   const Standard_Real      Param,
-				   const GeomAbs_IsoType    IT,
-				   const Standard_Real      TolMin,
-				   const Standard_Real      TolMax) 
-{
-    Standard_Real U1=0.,U2=0.,V1=0.,V2=0.,T;
-    Standard_Boolean Along = Standard_True;
-    U1 = S.FirstUParameter();
-    U2 = S.LastUParameter();
-    V1 = S.FirstVParameter();
-    V2 = S.LastVParameter();
-    gp_Vec D1U,D1V;
-    gp_Pnt P;
-    Standard_Real Step,D1NormMax;
-    if (IT == GeomAbs_IsoV) 
-    {
-      Step = (U2 - U1)/10;
-      D1NormMax=0.;
-      for (T=U1;T<=U2;T=T+Step) 
-      {
-        S.D1(T,Param,P,D1U,D1V);
-        D1NormMax=Max(D1NormMax,D1U.Magnitude());
-      }
-
-      if (D1NormMax >TolMax || D1NormMax < TolMin ) 
-           Along = Standard_False;
-    }
-    else 
-    {
-      Step = (V2 - V1)/10;
-      D1NormMax=0.;
-      for (T=V1;T<=V2;T=T+Step) 
-      {
-	S.D1(Param,T,P,D1U,D1V);
-        D1NormMax=Max(D1NormMax,D1V.Magnitude());
-      }
-
-      if (D1NormMax >TolMax || D1NormMax < TolMin ) 
-           Along = Standard_False;
-
-
-    }
-    return Along;
-}
-//----------------------------------------------------------
 Extrema_GenExtPS::Extrema_GenExtPS() 
 {
   myDone = Standard_False;
@@ -496,7 +447,6 @@ void Extrema_GenExtPS::GetGridPoints( const Adaptor3d_Surface& theSurf)
   {
     Handle(TColStd_HArray1OfReal) anArrKnots;
     Standard_Integer aDegree = 0;
-    GeomAbs_CurveType aType = theSurf.BasisCurve()->Curve().GetType();
     if(theSurf.BasisCurve()->Curve().GetType() == GeomAbs_BSplineCurve)
     {
       Handle(Geom_BSplineCurve) aBspl = theSurf.BasisCurve()->Curve().BSpline();
@@ -752,6 +702,16 @@ void Extrema_GenExtPS::BuildTree()
   if ( ! mySphereUBTree.IsNull() )
     return;
 
+   if (myS->GetType() == GeomAbs_BSplineSurface) {
+     Handle(Geom_BSplineSurface) aBspl = myS->BSpline();
+     Standard_Integer aUValue = aBspl->UDegree() * aBspl->NbUKnots();
+     Standard_Integer aVValue = aBspl->VDegree() * aBspl->NbVKnots();
+     if (aUValue > myusample)
+       myusample = aUValue;
+     if (aVValue > myvsample)
+       myvsample = aVValue;
+   }
+
   Standard_Real PasU = myusup - myumin;
   Standard_Real PasV = myvsup - myvmin;
   Standard_Real U0 = PasU / myusample / 100.;
@@ -791,7 +751,7 @@ void Extrema_GenExtPS::BuildTree()
   aFiller.Fill();
 }
 
-void Extrema_GenExtPS::FindSolution(const gp_Pnt& P, 
+void Extrema_GenExtPS::FindSolution(const gp_Pnt& /*P*/, 
                                     const Extrema_POnSurfParams &theParams)
 {
   math_Vector Tol(1,2);
@@ -799,7 +759,6 @@ void Extrema_GenExtPS::FindSolution(const gp_Pnt& P,
   Tol(2) = mytolv;
 
   math_Vector UV(1, 2);
-
   theParams.Parameter(UV(1), UV(2));
 
   math_Vector UVinf(1,2), UVsup(1,2);
@@ -808,19 +767,9 @@ void Extrema_GenExtPS::FindSolution(const gp_Pnt& P,
   UVsup(1) = myusup;
   UVsup(2) = myvsup;
 
-  math_Vector errors(1,2);
-  math_Vector root(1, 2);
-  Standard_Real eps = 1.e-9;
-  Standard_Integer nbsubsample = 11;
+  const Standard_Integer aNbMaxIter = 100;
+  math_FunctionSetRoot S (myF, UV, Tol, UVinf, UVsup, aNbMaxIter);
 
-  Standard_Integer aNbMaxIter = 100;
-
-  gp_Pnt PStart = theParams.Value();
-  Standard_Real DistStart = theParams.GetSqrDistance();
-  Standard_Real DistSol = DistStart;
-  
-  math_FunctionSetRoot S (myF,UV,Tol,UVinf,UVsup, aNbMaxIter);
-  
   myDone = Standard_True;
 }
 
@@ -962,7 +911,7 @@ void Extrema_GenExtPS::Perform(const gp_Pnt& P)
       Bnd_SphereUBTreeSelectorMin aSelector(mySphereArray, aSol);
       //aSelector.SetMaxDist( RealLast() );
       aSelector.DefineCheckPoint( P );
-      Standard_Integer aNbSel = mySphereUBTree->Select( aSelector );
+      mySphereUBTree->Select( aSelector );
       //TODO: check if no solution in binary tree
       Bnd_Sphere& aSph = aSelector.Sphere();
       Standard_Real aU = myUParams->Value(aSph.U());
@@ -979,13 +928,12 @@ void Extrema_GenExtPS::Perform(const gp_Pnt& P)
       Bnd_SphereUBTreeSelectorMax aSelector(mySphereArray, aSol);
       //aSelector.SetMaxDist( RealLast() );
       aSelector.DefineCheckPoint( P );
-      Standard_Integer aNbSel = mySphereUBTree->Select( aSelector );
+      mySphereUBTree->Select( aSelector );
       //TODO: check if no solution in binary tree
       Bnd_Sphere& aSph = aSelector.Sphere();
       Standard_Real aU = myUParams->Value(aSph.U());
       Standard_Real aV = myVParams->Value(aSph.V());
       Extrema_POnSurfParams aParams(aU, aV, myS->Value(aU, aV));
-
       aParams.SetSqrDistance(P.SquareDistance(aParams.Value()));
       aParams.SetIndices(aSph.U(), aSph.V());
 
@@ -1012,7 +960,7 @@ Standard_Real Extrema_GenExtPS::SquareDistance (const Standard_Integer N) const
 }
 //=============================================================================
 
-Extrema_POnSurf Extrema_GenExtPS::Point (const Standard_Integer N) const
+const Extrema_POnSurf& Extrema_GenExtPS::Point (const Standard_Integer N) const
 {
   if (!IsDone()) { StdFail_NotDone::Raise(); }
   return myF.Point(N);

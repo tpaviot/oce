@@ -39,6 +39,8 @@ void StdSchema_PDataXtd_Shape::SWrite(const Handle(Standard_Persistent)& p, Stor
   if (!p.IsNull()) {
     Handle(PDataXtd_Shape) &pp = (Handle(PDataXtd_Shape)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -56,6 +58,8 @@ void StdSchema_PDataXtd_Shape::SRead(const Handle(Standard_Persistent)& p, Stora
 { 
   if (!p.IsNull()) {
     Handle(PDataXtd_Shape) &pp = (Handle(PDataXtd_Shape)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

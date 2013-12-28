@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKFillet"
-	ProjectGUID="{0918F404-0B99-0B27-02D8-3EB790855FFD}"
+	ProjectGUID="{CDF354C2-0FE1-00D2-0719-D790B85E2283}"
 	>
 	<Platforms>
 		<Platform
@@ -55,11 +55,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\obj\TKFillet\TKFillet.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc8\obj\TKFillet/"
 				ObjectFile=".\..\..\..\win32\vc8\obj\TKFillet/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc8\obj\TKFillet/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -149,12 +150,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\objd\TKFillet\TKFillet.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc8\objd\TKFillet/"
 				ObjectFile=".\..\..\..\win32\vc8\objd\TKFillet/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc8\objd\TKFillet/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -250,11 +253,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\obj\TKFillet\TKFillet.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc8\obj\TKFillet/"
 				ObjectFile=".\..\..\..\win64\vc8\obj\TKFillet/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc8\obj\TKFillet/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -345,12 +349,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;_OCC64"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\objd\TKFillet\TKFillet.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc8\objd\TKFillet/"
 				ObjectFile=".\..\..\..\win64\vc8\objd\TKFillet/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc8\objd\TKFillet/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -521,10 +527,22 @@
 					RelativePath="..\..\..\src\ChFi2d\ChFi2d.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\ChFi2d\ChFi2d_AnaFilletAlgo.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\ChFi2d\ChFi2d_Builder.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\ChFi2d\ChFi2d_Builder_0.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\ChFi2d\ChFi2d_ChamferAPI.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\ChFi2d\ChFi2d_FilletAPI.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\ChFi2d\ChFi2d_FilletAlgo.cxx">
 				</File>
 			</Filter>
 			<Filter

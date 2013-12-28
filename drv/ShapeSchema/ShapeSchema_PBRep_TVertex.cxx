@@ -41,6 +41,8 @@ void ShapeSchema_PBRep_TVertex::SWrite(const Handle(Standard_Persistent)& p, Sto
   if (!p.IsNull()) {
     Handle(PBRep_TVertex) &pp = (Handle(PBRep_TVertex)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPTopoDS_TShapemyShapes(),f);
@@ -63,6 +65,8 @@ void ShapeSchema_PBRep_TVertex::SRead(const Handle(Standard_Persistent)& p, Stor
 { 
   if (!p.IsNull()) {
     Handle(PBRep_TVertex) &pp = (Handle(PBRep_TVertex)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

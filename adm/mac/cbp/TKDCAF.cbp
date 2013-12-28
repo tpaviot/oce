@@ -15,6 +15,10 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -37,6 +41,10 @@
 				<Compiler>
 					<Add option="-O0" />
 					<Add option="-g" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -101,12 +109,14 @@
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
 			<Add library="objc" />
+			<Add library="freetype" />
 			<Add library="objc" />
 			<Add library="freeimage" />
 			<Add library="freetype" />
 			<Add library="tcl8.5" />
 			<Add library="tk8.5" />
 			<Add library="objc" />
+			<Add library="freetype" />
 		</Linker>
 		<Unit filename="../../../drv/DDF/DDF_StackIteratorOfTransactionStack_0.cxx" />
 		<Unit filename="../../../drv/DDF/DDF_StackNodeOfTransactionStack_0.cxx" />
@@ -126,7 +136,6 @@
 		<Unit filename="../../../src/DDocStd/DDocStd_DocumentCommands.cxx" />
 		<Unit filename="../../../src/DDocStd/DDocStd_DrawDocument.cxx" />
 		<Unit filename="../../../src/DDocStd/DDocStd_MTMCommands.cxx" />
-		<Unit filename="../../../src/DDocStd/DDocStd_Sample.cxx" />
 		<Unit filename="../../../src/DDocStd/DDocStd_ToolsCommands.cxx" />
 		<Unit filename="../../../drv/DNaming/DNaming_DataMapIteratorOfDataMapOfShapeOfName_0.cxx" />
 		<Unit filename="../../../drv/DNaming/DNaming_DataMapNodeOfDataMapOfShapeOfName_0.cxx" />
@@ -157,13 +166,11 @@
 		<Unit filename="../../../src/DDataStd/DDataStd_NameCommands.cxx" />
 		<Unit filename="../../../src/DDataStd/DDataStd_NamedShapeCommands.cxx" />
 		<Unit filename="../../../src/DDataStd/DDataStd_ObjectCommands.cxx" />
-		<Unit filename="../../../src/DDataStd/DDataStd_Sample.cxx" />
 		<Unit filename="../../../src/DDataStd/DDataStd_TreeBrowser.cxx" />
 		<Unit filename="../../../src/DDataStd/DDataStd_TreeCommands.cxx" />
 		<Unit filename="../../../src/DPrsStd/DPrsStd.cxx" />
 		<Unit filename="../../../src/DPrsStd/DPrsStd_AISPresentationCommands.cxx" />
 		<Unit filename="../../../src/DPrsStd/DPrsStd_AISViewerCommands.cxx" />
-		<Unit filename="../../../src/DPrsStd/DPrsStd_Sample.cxx" />
 		<Unit filename="../../../src/DrawDim/DrawDim.cxx" />
 		<Unit filename="../../../src/DrawDim/DrawDim_Angle.cxx" />
 		<Unit filename="../../../src/DrawDim/DrawDim_Dimension.cxx" />

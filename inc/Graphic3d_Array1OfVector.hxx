@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Graphic3d_Array1OfVector(const Standard_Integer Low,const Standard_Integer Up);
+      Graphic3d_Array1OfVector(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Graphic3d_Array1OfVector(const Graphic3d_Vector& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Graphic3d_Array1OfVector(const Graphic3d_Vector& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Graphic3d_Vector& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Graphic3d_Array1OfVector()
 {
   Destroy();

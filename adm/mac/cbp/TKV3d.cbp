@@ -15,6 +15,10 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -37,6 +41,10 @@
 				<Compiler>
 					<Add option="-O0" />
 					<Add option="-g" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -87,6 +95,7 @@
 			<Add library="TKMath" />
 			<Add library="TKernel" />
 			<Add library="TKService" />
+			<Add library="TKShHealing" />
 			<Add library="TKTopAlgo" />
 			<Add library="TKG2d" />
 			<Add library="TKG3d" />
@@ -102,6 +111,7 @@
 			<Add library="freetype" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="freetype" />
 		</Linker>
 		<Unit filename="../../../drv/V3d/V3d_BadValue_0.cxx" />
 		<Unit filename="../../../drv/V3d/V3d_UnMapped_0.cxx" />
@@ -194,12 +204,12 @@
 		<Unit filename="../../../src/Graphic3d/Graphic3d_CGroup.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_CLight.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_CPick.cxx" />
-		<Unit filename="../../../src/Graphic3d/Graphic3d_CPlane.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_CStructure.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_CTexture.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_CTransPersStruct.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_CUserDraw.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_CView.cxx" />
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ClipPlane.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_DataStructureManager.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_GraphicDriver.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_Group.cxx" />
@@ -207,10 +217,13 @@
 		<Unit filename="../../../src/Graphic3d/Graphic3d_Group_10.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_Group_13.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_Group_2.cxx" />
-		<Unit filename="../../../src/Graphic3d/Graphic3d_Group_3.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_Group_8.cxx" />
+		<Unit filename="../../../src/Graphic3d/Graphic3d_MarkerImage.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_MaterialAspect.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_Plotter.cxx" />
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ShaderObject.cxx" />
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ShaderProgram.cxx" />
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ShaderVariable.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_Strips.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_Structure.cxx" />
 		<Unit filename="../../../src/Graphic3d/Graphic3d_StructureManager.cxx" />
@@ -230,27 +243,21 @@
 		<Unit filename="../../../drv/Visual3d/Visual3d_ContextPickDefinitionError_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_DepthCueingDefinitionError_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_HSequenceOfPickPath_0.cxx" />
-		<Unit filename="../../../drv/Visual3d/Visual3d_HSetOfClipPlane_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_HSetOfLight_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_HSetOfView_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_LayerDefinitionError_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_LightDefinitionError_0.cxx" />
-		<Unit filename="../../../drv/Visual3d/Visual3d_ListIteratorOfSetListOfSetOfClipPlane_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_ListIteratorOfSetListOfSetOfLight_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_ListIteratorOfSetListOfSetOfView_0.cxx" />
-		<Unit filename="../../../drv/Visual3d/Visual3d_ListNodeOfSetListOfSetOfClipPlane_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_ListNodeOfSetListOfSetOfLight_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_ListNodeOfSetListOfSetOfView_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_PickError_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_SequenceNodeOfSequenceOfPickPath_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_SequenceOfPickPath_0.cxx" />
-		<Unit filename="../../../drv/Visual3d/Visual3d_SetIteratorOfSetOfClipPlane_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_SetIteratorOfSetOfLight_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_SetIteratorOfSetOfView_0.cxx" />
-		<Unit filename="../../../drv/Visual3d/Visual3d_SetListOfSetOfClipPlane_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_SetListOfSetOfLight_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_SetListOfSetOfView_0.cxx" />
-		<Unit filename="../../../drv/Visual3d/Visual3d_SetOfClipPlane_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_SetOfLight_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_SetOfView_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_TransformError_0.cxx" />
@@ -260,7 +267,6 @@
 		<Unit filename="../../../drv/Visual3d/Visual3d_ViewMappingDefinitionError_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_ViewOrientationDefinitionError_0.cxx" />
 		<Unit filename="../../../drv/Visual3d/Visual3d_ZClippingDefinitionError_0.cxx" />
-		<Unit filename="../../../src/Visual3d/Visual3d_ClipPlane.cxx" />
 		<Unit filename="../../../src/Visual3d/Visual3d_ContextPick.cxx" />
 		<Unit filename="../../../src/Visual3d/Visual3d_ContextView.cxx" />
 		<Unit filename="../../../src/Visual3d/Visual3d_Layer.cxx" />
@@ -297,38 +303,30 @@
 		<Unit filename="../../../src/Select3D/Select3D_SensitiveWire.cxx" />
 		<Unit filename="../../../drv/Prs3d/Prs3d_InvalidAngle_0.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d.cxx" />
-		<Unit filename="../../../src/Prs3d/Prs3d_AngleAspect.cxx" />
-		<Unit filename="../../../src/Prs3d/Prs3d_AnglePresentation.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_Arrow.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_ArrowAspect.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_BasicAspect.cxx" />
-		<Unit filename="../../../src/Prs3d/Prs3d_CompositeAspect.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_DatumAspect.cxx" />
+		<Unit filename="../../../src/Prs3d/Prs3d_DimensionAspect.cxx" />
+		<Unit filename="../../../src/Prs3d/Prs3d_DimensionUnits.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_Drawer.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_IsoAspect.cxx" />
-		<Unit filename="../../../src/Prs3d/Prs3d_LengthAspect.cxx" />
-		<Unit filename="../../../src/Prs3d/Prs3d_LengthPresentation.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_LineAspect.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_PlaneAspect.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_PlaneSet.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_PointAspect.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_Presentation.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_Projector.cxx" />
-		<Unit filename="../../../src/Prs3d/Prs3d_RadiusAspect.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_Root.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_ShadingAspect.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_ShapeTool.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_Text.cxx" />
 		<Unit filename="../../../src/Prs3d/Prs3d_TextAspect.cxx" />
-		<Unit filename="../../../drv/StdPrs/StdPrs_HLRShape_0.cxx" />
-		<Unit filename="../../../drv/StdPrs/StdPrs_Point_0.cxx" />
-		<Unit filename="../../../drv/StdPrs/StdPrs_Vertex_0.cxx" />
-		<Unit filename="../../../drv/StdPrs/StdPrs_WFDeflectionShape_0.cxx" />
-		<Unit filename="../../../drv/StdPrs/StdPrs_WFRestrictedFace_0.cxx" />
-		<Unit filename="../../../drv/StdPrs/StdPrs_WFShape_0.cxx" />
+		<Unit filename="../../../src/Prs3d/Prs3d_WFShape.cxx" />
 		<Unit filename="../../../src/StdPrs/StdPrs_Curve.cxx" />
 		<Unit filename="../../../src/StdPrs/StdPrs_DeflectionCurve.cxx" />
 		<Unit filename="../../../src/StdPrs/StdPrs_HLRPolyShape.cxx" />
+		<Unit filename="../../../src/StdPrs/StdPrs_HLRShape.cxx" />
 		<Unit filename="../../../src/StdPrs/StdPrs_HLRToolShape.cxx" />
 		<Unit filename="../../../src/StdPrs/StdPrs_Plane.cxx" />
 		<Unit filename="../../../src/StdPrs/StdPrs_PoleCurve.cxx" />
@@ -341,6 +339,7 @@
 		<Unit filename="../../../src/StdPrs/StdPrs_WFDeflectionRestrictedFace.cxx" />
 		<Unit filename="../../../src/StdPrs/StdPrs_WFDeflectionSurface.cxx" />
 		<Unit filename="../../../src/StdPrs/StdPrs_WFPoleSurface.cxx" />
+		<Unit filename="../../../src/StdPrs/StdPrs_WFRestrictedFace.cxx" />
 		<Unit filename="../../../src/StdPrs/StdPrs_WFSurface.cxx" />
 		<Unit filename="../../../drv/SelectMgr/SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive_0.cxx" />
 		<Unit filename="../../../drv/SelectMgr/SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors_0.cxx" />
@@ -422,6 +421,7 @@
 		<Unit filename="../../../src/AIS/AIS_ConnectedInteractive.cxx" />
 		<Unit filename="../../../src/AIS/AIS_ConnectedShape.cxx" />
 		<Unit filename="../../../src/AIS/AIS_DiameterDimension.cxx" />
+		<Unit filename="../../../src/AIS/AIS_Dimension.cxx" />
 		<Unit filename="../../../src/AIS/AIS_DimensionOwner.cxx" />
 		<Unit filename="../../../src/AIS/AIS_Drawer.cxx" />
 		<Unit filename="../../../src/AIS/AIS_EllipseRadiusDimension.cxx" />
@@ -464,12 +464,11 @@
 		<Unit filename="../../../src/AIS/AIS_Triangulation.cxx" />
 		<Unit filename="../../../src/AIS/AIS_Trihedron.cxx" />
 		<Unit filename="../../../src/AIS/AIS_TypeFilter.cxx" />
-		<Unit filename="../../../drv/DsgPrs/DsgPrs_DatumPrs_0.cxx" />
 		<Unit filename="../../../src/DsgPrs/DsgPrs.cxx" />
 		<Unit filename="../../../src/DsgPrs/DsgPrs_AnglePresentation.cxx" />
 		<Unit filename="../../../src/DsgPrs/DsgPrs_Chamf2dPresentation.cxx" />
 		<Unit filename="../../../src/DsgPrs/DsgPrs_ConcentricPresentation.cxx" />
-		<Unit filename="../../../src/DsgPrs/DsgPrs_DatumTool.cxx" />
+		<Unit filename="../../../src/DsgPrs/DsgPrs_DatumPrs.cxx" />
 		<Unit filename="../../../src/DsgPrs/DsgPrs_DiameterPresentation.cxx" />
 		<Unit filename="../../../src/DsgPrs/DsgPrs_EllipseRadiusPresentation.cxx" />
 		<Unit filename="../../../src/DsgPrs/DsgPrs_EqualDistancePresentation.cxx" />

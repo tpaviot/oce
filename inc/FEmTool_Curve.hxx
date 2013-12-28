@@ -19,9 +19,6 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
 #ifndef _Handle_PLib_Base_HeaderFile
 #include <Handle_PLib_Base.hxx>
 #endif
@@ -33,6 +30,9 @@
 #endif
 #ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
@@ -97,7 +97,6 @@ private:
 
 Standard_Integer myNbElements;
 Standard_Integer myDimension;
-Standard_Real myTolerance;
 Handle_PLib_Base myBase;
 Handle_TColStd_HArray1OfReal myKnots;
 TColStd_Array1OfInteger myDegree;

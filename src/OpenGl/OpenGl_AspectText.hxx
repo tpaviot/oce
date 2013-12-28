@@ -2,20 +2,16 @@
 // Created by: Sergey ZERCHANINOV
 // Copyright (c) 2011-2013 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifndef OpenGl_AspectText_Header
 #define OpenGl_AspectText_Header
@@ -28,6 +24,7 @@
 #include <TCollection_AsciiString.hxx>
 
 #include <OpenGl_Element.hxx>
+#include <Handle_OpenGl_ShaderProgram.hxx>
 
 //! Text representation parameters
 class OpenGl_AspectText : public OpenGl_Element
@@ -39,7 +36,7 @@ public:
   virtual ~OpenGl_AspectText();
 
   //! Copy parameters
-  void SetContext (const CALL_DEF_CONTEXTTEXT& theContext);
+  void SetAspect (const CALL_DEF_CONTEXTTEXT& theAspect);
 
   //! @return font family name
   const TCollection_AsciiString& FontName() const
@@ -118,19 +115,56 @@ public:
     return mySubtitleColor;
   }
 
+  //! Init and return OpenGl shader program resource.
+  //! @return shader program resource.
+  const Handle(OpenGl_ShaderProgram)& ShaderProgramRes (const Handle(OpenGl_Workspace)& theWorkspace) const
+  {
+    if (!myResources.IsShaderReady())
+    {
+      myResources.BuildShader (theWorkspace, myShaderProgram);
+      myResources.SetShaderReady();
+    }
+
+    return myResources.ShaderProgram;
+  }
+
   virtual void Render  (const Handle(OpenGl_Workspace)& theWorkspace) const;
   virtual void Release (const Handle(OpenGl_Context)&   theContext);
 
 protected:
 
-  TCollection_AsciiString  myFont;
-  TEL_COLOUR               myColor;
-  TEL_COLOUR               mySubtitleColor;
-  float                    myAngle;
-  Aspect_TypeOfStyleText   myStyleType;
-  Aspect_TypeOfDisplayText myDisplayType;
-  Font_FontAspect          myFontAspect;
-  bool                     myZoomable;
+  TCollection_AsciiString         myFont;
+  TEL_COLOUR                      myColor;
+  TEL_COLOUR                      mySubtitleColor;
+  float                           myAngle;
+  Aspect_TypeOfStyleText          myStyleType;
+  Aspect_TypeOfDisplayText        myDisplayType;
+  Font_FontAspect                 myFontAspect;
+  bool                            myZoomable;
+  Handle(Graphic3d_ShaderProgram) myShaderProgram;
+
+protected:
+
+  //! OpenGl resources
+  mutable struct Resources
+  {
+  public:
+    Resources() : myIsShaderReady (Standard_False) {}
+
+    Standard_Boolean IsShaderReady() const { return myIsShaderReady; }
+    void SetShaderReady()       { myIsShaderReady = Standard_True; }
+    void ResetShaderReadiness() { myIsShaderReady = Standard_False; }
+
+    void BuildShader (const Handle(OpenGl_Workspace)& theWS, const Handle(Graphic3d_ShaderProgram)& theShader);
+
+    Handle(OpenGl_ShaderProgram) ShaderProgram;
+    TCollection_AsciiString      ShaderProgramId;
+
+  private:
+
+    Standard_Boolean myIsShaderReady;
+
+  } myResources;
 
 public:
 

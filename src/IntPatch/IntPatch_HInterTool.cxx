@@ -1,23 +1,18 @@
 // Created on: 1995-07-02
 // Created by: Laurent BUCHARD
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <IntPatch_HInterTool.ixx>
 
@@ -37,8 +32,10 @@
 #include <Geom2d_BezierCurve.hxx>
 #include <Geom2d_BSplineCurve.hxx>
 
-static Standard_Real uinf,vinf,usup,vsup;
-
+IntPatch_HInterTool::IntPatch_HInterTool() :
+    uinf (0.), vinf (0.), usup (0.), vsup (0.)
+{
+}
 
 Standard_Integer IntPatch_HInterTool::NbSamplesV (const Handle(Adaptor3d_HSurface)& S,
                                                   const Standard_Real, const Standard_Real)
@@ -62,6 +59,9 @@ Standard_Integer IntPatch_HInterTool::NbSamplesV (const Handle(Adaptor3d_HSurfac
     case GeomAbs_Torus:
     case GeomAbs_SurfaceOfRevolution:
     case GeomAbs_SurfaceOfExtrusion: return 15;
+
+    case GeomAbs_OffsetSurface:
+    case GeomAbs_OtherSurface: return 10;
   }
   return 10;
 }
@@ -80,13 +80,16 @@ Standard_Integer IntPatch_HInterTool::NbSamplesU (const Handle(Adaptor3d_HSurfac
       if (!S->IsURational()) nbs *= 2;
       if (nbs < 4) nbs = 4;
       return nbs;
-	}
+	  }
     case GeomAbs_Torus: return 20;
-    //case GeomAbs_Cylinder:
-    //case GeomAbs_Cone:
-    //case GeomAbs_Sphere:
-    //case GeomAbs_SurfaceOfRevolution:
-    //case GeomAbs_SurfaceOfExtrusion: return 10;
+
+    case GeomAbs_Cylinder:
+    case GeomAbs_Cone:
+    case GeomAbs_Sphere:
+    case GeomAbs_SurfaceOfRevolution:
+    case GeomAbs_SurfaceOfExtrusion:
+    case GeomAbs_OffsetSurface:
+    case GeomAbs_OtherSurface: return 10;
   }
   return 10;
 }
@@ -136,7 +139,7 @@ Standard_Integer IntPatch_HInterTool::NbSamplePoints (const Handle(Adaptor3d_HSu
 void IntPatch_HInterTool::SamplePoint (const Handle(Adaptor3d_HSurface)& S,
                                        const Standard_Integer Index,
                                        Standard_Real& U,
-                                       Standard_Real& V )
+                                       Standard_Real& V ) const
 {
   Standard_Integer nbIntU = 1+NbSamplesU(S,uinf,usup);
   nbIntU>>=1;

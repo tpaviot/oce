@@ -90,7 +90,6 @@ private:
 IntSurf_Quadric quad1;
 IntSurf_Quadric quad2;
 Standard_Real deflectionmax;
-Standard_Real pasuvmax;
 Standard_Integer nbpointsmax;
 Standard_Integer type;
 Standard_Real myTolParam;

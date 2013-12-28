@@ -25,9 +25,6 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 class Standard_ErrorHandlerCallback;
 class Standard_ErrorHandler;
 class Standard_AncestorIterator;
@@ -59,24 +56,6 @@ public:
 //!           and clears the list. <br>
 //!           Returns non-zero if some memory has been actually freed. <br>
   Standard_EXPORT   static  Standard_Integer Purge() ;
-  //! Returns boolean flag indicating whether OCCT is <br>
-//!          operating in reentrant mode. This flag affects OCCT <br>
-//!          memory manager, exception and signal handling, <br>
-//!          operations with handles etc., making them thread-safe. <br>
-//! <br>
-//!          By default, this flag is set to False, in order <br>
-//!          to avoid performance reduction due to locking. <br>
-//! <br>
-//!          In multithreaded applications this flag must be set to <br>
-//!          True, either by calling method SetReentrant(), <br>
-//!          or by defining environment variable MMGT_REENTRANT. <br>
-  Standard_EXPORT   static  Standard_Boolean IsReentrant() ;
-  //! Sets boolean flag indicating whether OCCT is <br>
-//!          operating in reentrant mode. <br>
-//!          See method IsReentrant() for more information. <br>
-//!          Note: This method may be called only when no any other <br>
-//!                thread using OCCT exists <br>
-  Standard_EXPORT   static  void SetReentrant(const Standard_Boolean isReentrant) ;
 
 
 

@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{7FC3C440-1683-066F-020D-2F6877739732}</UniqueIdentifier>
+      <UniqueIdentifier>{A5CCEB23-03C3-1420-0F30-8798892F5EA5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepMesh">
-      <UniqueIdentifier>{CB56ED1B-04A8-093D-1416-A45494AD00FD}</UniqueIdentifier>
+      <UniqueIdentifier>{EEBEF103-09F4-0490-11B6-8DC42748FF17}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntPoly">
-      <UniqueIdentifier>{1BFA7F0D-04E2-0479-09DA-5E9D78B4597A}</UniqueIdentifier>
+      <UniqueIdentifier>{63475B5E-0047-10F5-0CAC-5BB7064D1E63}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -42,11 +42,11 @@ class StepShape_HArray1OfOrientedClosedShell : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepShape_HArray1OfOrientedClosedShell(const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_HArray1OfOrientedClosedShell(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepShape_HArray1OfOrientedClosedShell(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepShape_OrientedClosedShell)& V);
+      StepShape_HArray1OfOrientedClosedShell(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepShape_OrientedClosedShell)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepShape_OrientedClosedShell)& V) ;
+        void Init(const Handle(StepShape_OrientedClosedShell)& V) ;
   
         Standard_Integer Length() const;
   

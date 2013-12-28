@@ -1,23 +1,17 @@
 // Created on: 2000-05-30
 // Created by: Sergey MOZOKHIN
-// Copyright (c) 2000-2012 OPEN CASCADE SAS
+// Copyright (c) 2000-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <XSDRAWSTLVRML.ixx>
 #include <Draw_Interpretor.hxx>
@@ -98,10 +92,8 @@ static Standard_Integer writestl
 	Standard_Boolean isInParallel = Standard_False;
     if (argc > 3) {
       isASCIIMode = (Draw::Atoi(argv[3]) == 0);
-      if (argc > 4) {
+      if (argc > 4)
         isInParallel = (Draw::Atoi(argv[4]) == 1);
-        Standard::SetReentrant(isInParallel);
-      }
     }
     StlAPI_Writer aWriter;
     aWriter.ASCIIMode() = isASCIIMode;
@@ -162,9 +154,24 @@ static Standard_Integer loadvrml
 
     if (fic.open(argv[2], ios::in)) {
 
+      // Get path of the VRML file.
+      OSD_Path path(argv[2]);
+      TCollection_AsciiString vrmlDir(".");
+      TCollection_AsciiString disk = path.Disk();
+      TCollection_AsciiString trek = path.Trek();
+      if (!trek.IsEmpty())
+      {
+        if (!disk.IsEmpty())
+          vrmlDir = disk;
+        else
+          vrmlDir.Clear();
+        trek.ChangeAll('|', '/');
+        vrmlDir += trek;
+      }
+
       VrmlData_Scene aScene;
 
-      aScene.SetVrmlDir (".");
+      aScene.SetVrmlDir (vrmlDir);
       aScene << aStream;
       const char * aStr = 0L;
       switch (aScene.Status()) {
@@ -174,21 +181,25 @@ static Standard_Integer loadvrml
           shape = aScene.GetShape(ShapeAppMap);
           break;
         }
-      case VrmlData_EmptyData:          aStr = "EmptyData"; break;
-      case VrmlData_UnrecoverableError: aStr = "UnrecoverableError"; break;
-      case VrmlData_GeneralError:       aStr = "GeneralError"; break;
-      case VrmlData_EndOfFile:          aStr = "EndOfFile"; break;
-      case VrmlData_NotVrmlFile:        aStr = "NotVrmlFile"; break;
-      case VrmlData_CannotOpenFile:     aStr = "CannotOpenFile"; break;
-      case VrmlData_VrmlFormatError:    aStr = "VrmlFormatError"; break;
-      case VrmlData_NumericInputError:  aStr = "NumericInputError"; break;
-      case VrmlData_IrrelevantNumber:   aStr = "IrrelevantNumber"; break;
-      case VrmlData_BooleanInputError:  aStr = "BooleanInputError"; break;
-      case VrmlData_StringInputError:   aStr = "StringInputError"; break;
-      case VrmlData_NodeNameUnknown:    aStr = "NodeNameUnknown"; break;
-      case VrmlData_NonPositiveSize:    aStr = "NonPositiveSize"; break;
-      case VrmlData_ReadUnknownNode:    aStr = "ReadUnknownNode"; break;
-      case VrmlData_NonSupportedFeature:aStr = "NonSupportedFeature"; break;
+      case VrmlData_EmptyData:            aStr = "EmptyData"; break;
+      case VrmlData_UnrecoverableError:   aStr = "UnrecoverableError"; break;
+      case VrmlData_GeneralError:         aStr = "GeneralError"; break;
+      case VrmlData_EndOfFile:            aStr = "EndOfFile"; break;
+      case VrmlData_NotVrmlFile:          aStr = "NotVrmlFile"; break;
+      case VrmlData_CannotOpenFile:       aStr = "CannotOpenFile"; break;
+      case VrmlData_VrmlFormatError:      aStr = "VrmlFormatError"; break;
+      case VrmlData_NumericInputError:    aStr = "NumericInputError"; break;
+      case VrmlData_IrrelevantNumber:     aStr = "IrrelevantNumber"; break;
+      case VrmlData_BooleanInputError:    aStr = "BooleanInputError"; break;
+      case VrmlData_StringInputError:     aStr = "StringInputError"; break;
+      case VrmlData_NodeNameUnknown:      aStr = "NodeNameUnknown"; break;
+      case VrmlData_NonPositiveSize:      aStr = "NonPositiveSize"; break;
+      case VrmlData_ReadUnknownNode:      aStr = "ReadUnknownNode"; break;
+      case VrmlData_NonSupportedFeature:  aStr = "NonSupportedFeature"; break;
+      case VrmlData_OutputStreamUndefined:aStr = "OutputStreamUndefined"; break;
+      case VrmlData_NotImplemented:       aStr = "NotImplemented"; break;
+      default:
+        break;
       }
       if (aStr) {
         di << " ++ VRML Error: " << aStr << " in line "
@@ -601,10 +612,16 @@ static Standard_Integer hidesel
       Handle( MeshVS_MeshEntityOwner ) anOwner =
         Handle( MeshVS_MeshEntityOwner )::DownCast( aContext->SelectedOwner() );
       if( !anOwner.IsNull() )
+      {
         if( anOwner->Type()==MeshVS_ET_Node )
+        {
           aHiddenNodes->ChangeMap().Add( anOwner->ID() );
+        }
         else
+        {
           aHiddenElements->ChangeMap().Add( anOwner->ID() );
+        }
+      }
     }
     aContext->ClearSelected();
     aMesh->SetHiddenNodes( aHiddenNodes );
@@ -646,10 +663,16 @@ static Standard_Integer showonly
       Handle( MeshVS_MeshEntityOwner ) anOwner =
         Handle( MeshVS_MeshEntityOwner )::DownCast( aContext->SelectedOwner() );
       if( !anOwner.IsNull() )
+      {
         if( anOwner->Type()==MeshVS_ET_Node )
+        {
           aHiddenNodes->ChangeMap().Remove( anOwner->ID() );
+        }
         else
+        {
           aHiddenElements->ChangeMap().Remove( anOwner->ID() );
+        }
+      }
     }
     aMesh->SetHiddenNodes( aHiddenNodes );
     aMesh->SetHiddenElems( aHiddenElements );

@@ -7,6 +7,11 @@
 #define _Prs3d_TypeOfHLR_HeaderFile
 
 //! Declares types of hidden line removal algorithm. <br>
+//!          TOH_Algo enables using of exact HLR algorithm. <br>
+//!          TOH_PolyAlgo enables using of polygonal HLR algorithm. <br>
+//!          TOH_NotSet is used by AIS_Drawer class, it means that the drawer should return the global value. <br>
+//!          For more details see AIS_Drawer class, AIS_Shape::Compute() method and <br>
+//!          HLRAlgo package from TKHLR toolkit. <br>
 enum Prs3d_TypeOfHLR {
 Prs3d_TOH_NotSet,
 Prs3d_TOH_PolyAlgo,

@@ -1,22 +1,18 @@
 // Created on: 1994-03-10
 // Created by: Laurent BUCHARD
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modifed:     Porting NT 7-5-97 DPF (stdio.h)
 //              Apr 16 2002 eap, classification against infinite solid (occ299)
@@ -410,7 +406,7 @@ Standard_Integer BRepClass3d_SolidExplorer::OtherSegment(const gp_Pnt& P,
   Standard_Integer NbPointsOK=0;
   Standard_Integer NbFacesInSolid=0;
 
-  do { 
+  for(;;) { 
     myFirstFace++; 
     faceexplorer.Init(myShape,TopAbs_FACE);
     // look for point on face starting from myFirstFace
@@ -580,12 +576,19 @@ Standard_Integer BRepClass3d_SolidExplorer::OtherSegment(const gp_Pnt& P,
     else if(myParamOnEdge==0.2)  myParamOnEdge = 0.8; 
     else if(myParamOnEdge==0.8)  myParamOnEdge = 0.1; 
     else if(myParamOnEdge==0.1)  myParamOnEdge = 0.9;
-    else { myParamOnEdge*=0.5; } 
-    
-    
-  } //-- do { ...  } 
-  while(1); 
-  return 0;
+    //
+    else {
+      myParamOnEdge*=0.5;  
+      if(myParamOnEdge < 0.0001) { 
+	gp_Pnt PBidon(P.X()+1.0,P.Y(),P.Z());
+	gp_Vec V(P,PBidon);
+	Par= 1.0;
+	_Par=Par;
+	L  = gp_Lin(P,V);
+	return 0;
+      }
+    }
+  } //-- for(;;) { ...  } 
 }
 
 //  Modified by skv - Thu Sep  4 12:30:14 2003 OCC578 Begin

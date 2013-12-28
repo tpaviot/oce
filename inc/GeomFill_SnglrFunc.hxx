@@ -85,6 +85,15 @@ public:
 //!  derivatives V1 and V2. <br>//! Raised if the continuity of the current interval <br>
 //!  is not C2. <br>
   Standard_EXPORT     void D2(const Standard_Real U,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2) const;
+  
+//!  Returns the point P of parameter U, the first, the second <br>
+//!  and the third derivative. <br>//! Raised if the continuity of the current interval <br>
+//!  is not C1. <br>
+  Standard_EXPORT     void D3(const Standard_Real U,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2,gp_Vec& V3) const;
+  
+//!  The returned vector gives the value of the derivative for the <br>
+//!  order of derivation N. <br>//! Raised if N < 1. <br>
+  Standard_EXPORT     gp_Vec DN(const Standard_Real U,const Standard_Integer N) const;
   //!  Returns the parametric  resolution corresponding <br>
 //!         to the real space resolution <R3d>. <br>
   Standard_EXPORT     Standard_Real Resolution(const Standard_Real R3d) const;

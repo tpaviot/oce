@@ -42,11 +42,11 @@ class StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember : public MMgt_
 public:
 
   
-  Standard_EXPORT   StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember(const Standard_Integer Low,const Standard_Integer Up);
+      StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& V);
+      StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& V) ;
+        void Init(const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& V) ;
   
         Standard_Integer Length() const;
   

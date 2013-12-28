@@ -4,7 +4,6 @@ if (WIN32)
   list( APPEND TKService_PRECOMPILED_DEFS "-D__Aspect_DLL" )
   list( APPEND TKService_PRECOMPILED_DEFS "-D__InterfaceGraphic_DLL" )
   list( APPEND TKService_PRECOMPILED_DEFS "-D__SelectBasics_DLL" )
-  list( APPEND TKService_PRECOMPILED_DEFS "-D__AlienImage_DLL" )
   list( APPEND TKService_PRECOMPILED_DEFS "-D__Image_DLL" )
   list( APPEND TKService_PRECOMPILED_DEFS "-D__Cocoa_DLL" )
   list( APPEND TKService_PRECOMPILED_DEFS "-D__TColQuantity_DLL" )
@@ -21,8 +20,6 @@ endif()
   list( APPEND TKService_COMPILER_DIRECTORIES "../../../src/InterfaceGraphic" )
   list( APPEND TKService_COMPILER_DIRECTORIES "../../../drv/SelectBasics" )
   list( APPEND TKService_COMPILER_DIRECTORIES "../../../src/SelectBasics" )
-  list( APPEND TKService_COMPILER_DIRECTORIES "../../../drv/AlienImage" )
-  list( APPEND TKService_COMPILER_DIRECTORIES "../../../src/AlienImage" )
   list( APPEND TKService_COMPILER_DIRECTORIES "../../../drv/Image" )
   list( APPEND TKService_COMPILER_DIRECTORIES "../../../src/Image" )
   list( APPEND TKService_COMPILER_DIRECTORIES "../../../drv/Cocoa" )
@@ -42,24 +39,46 @@ endif()
 
   list( APPEND TKService_USED_LIBS TKernel )
   list( APPEND TKService_USED_LIBS TKMath )
+  list( APPEND TKService_USED_LIBS TKBRep )
+  list( APPEND TKService_USED_LIBS TKShHealing )
+  list( APPEND TKService_USED_LIBS TKGeomBase )
+  list( APPEND TKService_USED_LIBS TKGeomAlgo )
+  list( APPEND TKService_USED_LIBS TKG2d )
+  list( APPEND TKService_USED_LIBS TKG3d )
+  list( APPEND TKService_USED_LIBS TKTopAlgo )
 
 if (WIN32)
   list( APPEND TKService_USED_LIBS opengl32.lib )
   list( APPEND TKService_USED_LIBS glu32.lib )
 elseif(APPLE)
   find_library(FRAMEWORKS_OPENGL NAMES OpenGL)
-  if(3RDPARTY_USE_GLX)
+  if(USE_GLX)
     list( APPEND TKService_USED_LIBS GL )
     list( APPEND TKService_USED_LIBS GLU )
   else()
     list( APPEND TKService_USED_LIBS ${FRAMEWORKS_OPENGL} )
+  endif()
+  if(USE_GLX)
+    find_package(X11 COMPONENTS X11 Xext Xmu Xi)
+    list( APPEND TKService_USED_LIBS ${X11_LIBRARIES} )
+    list( APPEND TKService_USED_LIBS ${X11_Xi_LIB} )
+    list( APPEND TKService_USED_LIBS ${X11_Xmu_LIB} )
+  endif()
+  if(USE_GLX)
+    list( APPEND TKService_USED_LIBS Xext )
+  endif()
+  if(USE_GLX)
+    list( APPEND TKService_USED_LIBS Xmu )
+  endif()
+  if(USE_GLX)
+    list( APPEND TKService_USED_LIBS Xi )
   endif()
   list( APPEND TKService_USED_LIBS objc )
   find_library(FRAMEWORKS_APPKIT NAMES Appkit)
   list( APPEND TKService_USED_LIBS ${FRAMEWORKS_APPKIT} )
   find_library(FRAMEWORKS_IOKIT NAMES IOKit)
   list( APPEND TKService_USED_LIBS ${FRAMEWORKS_IOKIT} )
-  if(3RDPARTY_USE_FREEIMAGE)
+  if(USE_FREEIMAGE)
     list( APPEND TKService_USED_LIBS freeimage )
   endif()
   list( APPEND TKService_USED_LIBS freetype )
@@ -70,7 +89,7 @@ else()
   list( APPEND TKService_USED_LIBS Xext )
   list( APPEND TKService_USED_LIBS Xmu )
   list( APPEND TKService_USED_LIBS Xi )
-  if(3RDPARTY_USE_FREEIMAGE)
+  if(USE_FREEIMAGE)
     list( APPEND TKService_USED_LIBS freeimage )
   endif()
   list( APPEND TKService_USED_LIBS freetype )
@@ -355,164 +374,14 @@ endif()
   list( APPEND TKService_USED_SRCFILES "../../../src/SelectBasics/SelectBasics_SortAlgo.cxx" )
   SOURCE_GROUP (SelectBasics FILES "../../../src/SelectBasics/SelectBasics_SortAlgo.cxx")
 
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_AidaAlienData.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_AidaAlienData.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_AidaAlienImage.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_AidaAlienImage.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_AlienImage.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_AlienImage.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_AlienImageData.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_AlienImageData.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_AlienUserImage.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_AlienUserImage.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_BMPAlienData.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_BMPAlienData.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_BMPAlienImage.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_BMPAlienImage.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_BMPHeader.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_BMPHeader.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_EuclidAlienData.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_EuclidAlienData.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_EuclidAlienImage.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_EuclidAlienImage.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_GIFAlienData.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_GIFAlienData.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_GIFAlienImage.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_GIFAlienImage.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_GIFLZWDict.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_GIFLZWDict.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_MemoryOperations.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_MemoryOperations.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_SGIRGBAlienData.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_SGIRGBAlienData.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_SGIRGBAlienImage.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_SGIRGBAlienImage.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_SGIRGBFileHeader.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_SGIRGBFileHeader.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_SUNRFFileHeader.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_SUNRFFileHeader.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_SunRFAlienData.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_SunRFAlienData.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_SunRFAlienImage.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_SunRFAlienImage.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_X11XColor.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_X11XColor.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_X11XWDAlienData.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_X11XWDAlienData.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_X11XWDFileHeader.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_X11XWDFileHeader.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/AlienImage/AlienImage_XAlienImage.cxx" )
-  SOURCE_GROUP (AlienImage FILES "../../../src/AlienImage/AlienImage_XAlienImage.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_ColorPixelDataMap_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_ColorPixelDataMap_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_ColorPixelMapHasher_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_ColorPixelMapHasher_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_DColorImage_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_DColorImage_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_DIndexedImage_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_DIndexedImage_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_DataMapIteratorOfColorPixelDataMap_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_DataMapIteratorOfColorPixelDataMap_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_DataMapIteratorOfLookupTable_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_DataMapIteratorOfLookupTable_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_DataMapNodeOfColorPixelDataMap_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_DataMapNodeOfColorPixelDataMap_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_DataMapNodeOfLookupTable_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_DataMapNodeOfLookupTable_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_IndexPixelMapHasher_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_IndexPixelMapHasher_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_LookupTable_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_LookupTable_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_PixelFieldOfDColorImage_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_PixelFieldOfDColorImage_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_PixelFieldOfDIndexedImage_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_PixelFieldOfDIndexedImage_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_PixelRowOfDColorImage_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_PixelRowOfDColorImage_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/Image/Image_PixelRowOfDIndexedImage_0.cxx" )
-  SOURCE_GROUP (Image FILES "../../../drv/Image/Image_PixelRowOfDIndexedImage_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image.cxx" )
-  SOURCE_GROUP (Image FILES "../../../src/Image/Image.cxx")
-
   list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_AlienPixMap.cxx" )
   SOURCE_GROUP (Image FILES "../../../src/Image/Image_AlienPixMap.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_AveragePixelInterpolation.cxx" )
-  SOURCE_GROUP (Image FILES "../../../src/Image/Image_AveragePixelInterpolation.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_BalancedPixelInterpolation.cxx" )
-  SOURCE_GROUP (Image FILES "../../../src/Image/Image_BalancedPixelInterpolation.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_BilinearPixelInterpolation.cxx" )
-  SOURCE_GROUP (Image FILES "../../../src/Image/Image_BilinearPixelInterpolation.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_ColorImage.cxx" )
-  SOURCE_GROUP (Image FILES "../../../src/Image/Image_ColorImage.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_Convertor.cxx" )
-  SOURCE_GROUP (Image FILES "../../../src/Image/Image_Convertor.cxx")
 
   list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_Diff.cxx" )
   SOURCE_GROUP (Image FILES "../../../src/Image/Image_Diff.cxx")
 
-  list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_Image.cxx" )
-  SOURCE_GROUP (Image FILES "../../../src/Image/Image_Image.cxx")
-
   list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_PixMap.cxx" )
   SOURCE_GROUP (Image FILES "../../../src/Image/Image_PixMap.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_PixelAddress.cxx" )
-  SOURCE_GROUP (Image FILES "../../../src/Image/Image_PixelAddress.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_PixelInterpolation.cxx" )
-  SOURCE_GROUP (Image FILES "../../../src/Image/Image_PixelInterpolation.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_PlanarPixelInterpolation.cxx" )
-  SOURCE_GROUP (Image FILES "../../../src/Image/Image_PlanarPixelInterpolation.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/Image/Image_PseudoColorImage.cxx" )
-  SOURCE_GROUP (Image FILES "../../../src/Image/Image_PseudoColorImage.cxx")
 
   list( APPEND TKService_USED_SRCFILES "../../../drv/TColQuantity/TColQuantity_Array1OfLength_0.cxx" )
   SOURCE_GROUP (TColQuantity FILES "../../../drv/TColQuantity/TColQuantity_Array1OfLength_0.cxx")
@@ -525,6 +394,9 @@ endif()
 
   list( APPEND TKService_USED_SRCFILES "../../../drv/TColQuantity/TColQuantity_HArray2OfLength_0.cxx" )
   SOURCE_GROUP (TColQuantity FILES "../../../drv/TColQuantity/TColQuantity_HArray2OfLength_0.cxx")
+
+  list( APPEND TKService_USED_SRCFILES "../../../src/Font/Font_BRepFont.cxx" )
+  SOURCE_GROUP (Font FILES "../../../src/Font/Font_BRepFont.cxx")
 
   list( APPEND TKService_USED_SRCFILES "../../../src/Font/Font_FTFont.cxx" )
   SOURCE_GROUP (Font FILES "../../../src/Font/Font_FTFont.cxx")
@@ -542,44 +414,8 @@ if (WIN32)
   list( APPEND TKService_USED_SRCFILES "../../../drv/WNT/WNT_ClassDefinitionError_0.cxx" )
   SOURCE_GROUP (WNT FILES "../../../drv/WNT/WNT_ClassDefinitionError_0.cxx")
 
-  list( APPEND TKService_USED_SRCFILES "../../../drv/WNT/WNT_ColorTable_0.cxx" )
-  SOURCE_GROUP (WNT FILES "../../../drv/WNT/WNT_ColorTable_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/WNT/WNT_HColorTable_0.cxx" )
-  SOURCE_GROUP (WNT FILES "../../../drv/WNT/WNT_HColorTable_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/WNT/WNT_SequenceNodeOfSequenceOfImage_0.cxx" )
-  SOURCE_GROUP (WNT FILES "../../../drv/WNT/WNT_SequenceNodeOfSequenceOfImage_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../drv/WNT/WNT_SequenceOfImage_0.cxx" )
-  SOURCE_GROUP (WNT FILES "../../../drv/WNT/WNT_SequenceOfImage_0.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/WNT/EHDC.cxx" )
-  SOURCE_GROUP (WNT FILES "../../../src/WNT/EHDC.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/WNT/W32_Allocator.cxx" )
-  SOURCE_GROUP (WNT FILES "../../../src/WNT/W32_Allocator.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/WNT/W95_Allocator.cxx" )
-  SOURCE_GROUP (WNT FILES "../../../src/WNT/W95_Allocator.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/WNT/WNT_Allocator.cxx" )
-  SOURCE_GROUP (WNT FILES "../../../src/WNT/WNT_Allocator.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/WNT/WNT_ColorRef.cxx" )
-  SOURCE_GROUP (WNT FILES "../../../src/WNT/WNT_ColorRef.cxx")
-
   list( APPEND TKService_USED_SRCFILES "../../../src/WNT/WNT_Dword.cxx" )
   SOURCE_GROUP (WNT FILES "../../../src/WNT/WNT_Dword.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/WNT/WNT_Image.cxx" )
-  SOURCE_GROUP (WNT FILES "../../../src/WNT/WNT_Image.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/WNT/WNT_LogFont.cxx" )
-  SOURCE_GROUP (WNT FILES "../../../src/WNT/WNT_LogFont.cxx")
-
-  list( APPEND TKService_USED_SRCFILES "../../../src/WNT/WNT_Long.cxx" )
-  SOURCE_GROUP (WNT FILES "../../../src/WNT/WNT_Long.cxx")
 
   list( APPEND TKService_USED_SRCFILES "../../../src/WNT/WNT_Uint.cxx" )
   SOURCE_GROUP (WNT FILES "../../../src/WNT/WNT_Uint.cxx")
@@ -594,6 +430,16 @@ if (WIN32)
   SOURCE_GROUP (WNT FILES "../../../src/WNT/WNT_WindowData.cxx")
 
 else()
+
+  if (APPLE)
+
+    list( APPEND TKService_USED_SRCFILES "../../../src/Cocoa/Cocoa_LocalPool.mm" )
+    SOURCE_GROUP (Cocoa FILES "../../../src/Cocoa/Cocoa_LocalPool.mm")
+
+    list( APPEND TKService_USED_SRCFILES "../../../src/Cocoa/Cocoa_Window.mm" )
+    SOURCE_GROUP (Cocoa FILES "../../../src/Cocoa/Cocoa_Window.mm")
+
+  endif()
 
   list( APPEND TKService_USED_SRCFILES "../../../src/Xw/Xw_Window.cxx" )
   SOURCE_GROUP (Xw FILES "../../../src/Xw/Xw_Window.cxx")

@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{38CAA598-17EA-0E7D-0186-4A7729D52B0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Geom">
+      <UniqueIdentifier>{FD58A63C-0AEE-09FD-07AC-4E4ECD17B1EC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TColGeom">
+      <UniqueIdentifier>{A218B290-0529-16E3-0559-660CDCD67CC1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\GeomAdaptor">
+      <UniqueIdentifier>{988A502A-10B5-12C9-18F1-26D9758EB4D1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\AdvApprox">
+      <UniqueIdentifier>{012A0AD6-1793-0C33-15B9-0849D5274A3F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\GeomLProp">
+      <UniqueIdentifier>{7BACC058-0D5D-0CA3-0431-24CA174FBC7D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Adaptor3d">
+      <UniqueIdentifier>{DFDB38FB-0D1A-1129-0A7E-196430008DED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\LProp3d">
+      <UniqueIdentifier>{65E68290-0387-0AA3-0A11-2C91E01D46C3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TopAbs">
+      <UniqueIdentifier>{10C7F67B-106A-14B3-0F72-8CA3B04E9761}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\Geom\Geom_HSequenceOfBSplineSurface_0.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Geom\Geom_HSequenceOfSurface_0.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Geom\Geom_SequenceNodeOfSequenceOfBSplineSurface_0.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Geom\Geom_SequenceNodeOfSequenceOfSurface_0.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Geom\Geom_SequenceOfBSplineSurface_0.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Geom\Geom_SequenceOfSurface_0.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Geom\Geom_UndefinedDerivative_0.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Geom\Geom_UndefinedValue_0.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Axis1Placement.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Axis2Placement.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_AxisPlacement.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_BSplineCurve.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_BSplineCurve_1.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_BSplineSurface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_BSplineSurface_1.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_BezierCurve.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_BezierSurface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_BoundedCurve.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_BoundedSurface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_CartesianPoint.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Circle.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Conic.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_ConicalSurface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Curve.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_CylindricalSurface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Direction.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_ElementarySurface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Ellipse.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Geometry.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Hyperbola.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Line.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_OffsetCurve.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_OffsetSurface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_OsculatingSurface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Parabola.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Plane.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Point.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_RectangularTrimmedSurface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_SphericalSurface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Surface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_SurfaceOfLinearExtrusion.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_SurfaceOfRevolution.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_SweptSurface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_ToroidalSurface.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Transformation.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_TrimmedCurve.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_Vector.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom\Geom_VectorWithMagnitude.cxx">
+      <Filter>Source files\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array1OfBSplineCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array1OfBezierCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array1OfBoundedCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array1OfBoundedSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array1OfCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array1OfSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array2OfBSplineSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array2OfBezierSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array2OfBoundedSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array2OfSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray1OfBSplineCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray1OfBezierCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray1OfBoundedCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray1OfBoundedSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray1OfCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray1OfSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray2OfBSplineSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray2OfBezierSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray2OfBoundedSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray2OfSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HSequenceOfBoundedCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HSequenceOfBoundedSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HSequenceOfCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HSequenceOfSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceNodeOfSequenceOfBoundedCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceNodeOfSequenceOfBoundedSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceNodeOfSequenceOfCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceNodeOfSequenceOfSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceOfBoundedCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceOfBoundedSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceOfCurve_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceOfSurface_0.cxx">
+      <Filter>Source files\TColGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GeomAdaptor\GeomAdaptor_GHCurve_0.cxx">
+      <Filter>Source files\GeomAdaptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GeomAdaptor\GeomAdaptor_GHSurface_0.cxx">
+      <Filter>Source files\GeomAdaptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAdaptor\GeomAdaptor.cxx">
+      <Filter>Source files\GeomAdaptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAdaptor\GeomAdaptor_Curve.cxx">
+      <Filter>Source files\GeomAdaptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAdaptor\GeomAdaptor_HCurve.cxx">
+      <Filter>Source files\GeomAdaptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAdaptor\GeomAdaptor_HSurface.cxx">
+      <Filter>Source files\GeomAdaptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAdaptor\GeomAdaptor_Surface.cxx">
+      <Filter>Source files\GeomAdaptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AdvApprox\AdvApprox_ApproxAFunction.cxx">
+      <Filter>Source files\AdvApprox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AdvApprox\AdvApprox_Cutting.cxx">
+      <Filter>Source files\AdvApprox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AdvApprox\AdvApprox_DichoCutting.cxx">
+      <Filter>Source files\AdvApprox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AdvApprox\AdvApprox_PrefAndRec.cxx">
+      <Filter>Source files\AdvApprox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AdvApprox\AdvApprox_PrefCutting.cxx">
+      <Filter>Source files\AdvApprox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AdvApprox\AdvApprox_SimpleApprox.cxx">
+      <Filter>Source files\AdvApprox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GeomLProp\GeomLProp_CLProps_0.cxx">
+      <Filter>Source files\GeomLProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GeomLProp\GeomLProp_SLProps_0.cxx">
+      <Filter>Source files\GeomLProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomLProp\GeomLProp.cxx">
+      <Filter>Source files\GeomLProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomLProp\GeomLProp_CurveTool.cxx">
+      <Filter>Source files\GeomLProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomLProp\GeomLProp_SurfaceTool.cxx">
+      <Filter>Source files\GeomLProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Adaptor3d\Adaptor3d_HCurveOnSurface_0.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Adaptor3d\Adaptor3d_HIsoCurve_0.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Adaptor3d\Adaptor3d_HOffsetCurve_0.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Adaptor3d\Adaptor3d_HSurfaceOfLinearExtrusion_0.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Adaptor3d\Adaptor3d_HSurfaceOfRevolution_0.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_Curve.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_CurveOnSurface.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_HCurve.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_HSurface.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_HSurfaceTool.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_HVertex.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_InterFunc.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_IsoCurve.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_OffsetCurve.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_Surface.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_SurfaceOfLinearExtrusion.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_SurfaceOfRevolution.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Adaptor3d\Adaptor3d_TopolTool.cxx">
+      <Filter>Source files\Adaptor3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\LProp3d\LProp3d_CLProps_0.cxx">
+      <Filter>Source files\LProp3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\LProp3d\LProp3d_SLProps_0.cxx">
+      <Filter>Source files\LProp3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\LProp3d\LProp3d_CurveTool.cxx">
+      <Filter>Source files\LProp3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\LProp3d\LProp3d_SurfaceTool.cxx">
+      <Filter>Source files\LProp3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopAbs\TopAbs.cxx">
+      <Filter>Source files\TopAbs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKG3d.rc" />  </ItemGroup>
+</Project>

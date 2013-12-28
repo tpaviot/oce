@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKQADraw"
-	ProjectGUID="{A3FE15B7-0AE2-05A3-0600-375D5FD31C99}"
+	ProjectGUID="{E40EA357-0E7F-15CF-07FD-FCB583F0B117}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -56,12 +56,14 @@
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
+				EnableEnhancedInstructionSet="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\obj\TKQADraw\TKQADraw.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc9\obj\TKQADraw/"
 				ObjectFile=".\..\..\..\win32\vc9\obj\TKQADraw/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc9\obj\TKQADraw/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -78,7 +80,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib TKVoxel.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKQADraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -150,12 +152,15 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				EnableEnhancedInstructionSet="2"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\objd\TKQADraw\TKQADraw.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc9\objd\TKQADraw/"
 				ObjectFile=".\..\..\..\win32\vc9\objd\TKQADraw/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc9\objd\TKQADraw/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -175,7 +180,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib TKVoxel.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKQADraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -248,11 +253,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\obj\TKQADraw\TKQADraw.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc9\obj\TKQADraw/"
 				ObjectFile=".\..\..\..\win64\vc9\obj\TKQADraw/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc9\obj\TKQADraw/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -269,7 +275,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib TKVoxel.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKQADraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -339,12 +345,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\objd\TKQADraw\TKQADraw.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc9\objd\TKQADraw/"
 				ObjectFile=".\..\..\..\win64\vc9\objd\TKQADraw/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc9\objd\TKQADraw/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -364,7 +372,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib TKVoxel.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKQADraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -497,9 +505,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\QADNaming\QADNaming_IteratorsCommands.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\QADNaming\QADNaming_Sample.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\QADNaming\QADNaming_SelectionCommands.cxx">

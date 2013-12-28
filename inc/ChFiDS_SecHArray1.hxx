@@ -39,11 +39,11 @@ class ChFiDS_SecHArray1 : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   ChFiDS_SecHArray1(const Standard_Integer Low,const Standard_Integer Up);
+      ChFiDS_SecHArray1(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   ChFiDS_SecHArray1(const Standard_Integer Low,const Standard_Integer Up,const ChFiDS_CircSection& V);
+      ChFiDS_SecHArray1(const Standard_Integer Low,const Standard_Integer Up,const ChFiDS_CircSection& V);
   
-  Standard_EXPORT     void Init(const ChFiDS_CircSection& V) ;
+        void Init(const ChFiDS_CircSection& V) ;
   
         Standard_Integer Length() const;
   

@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT([OpenCASCADE], [6.6.0])
+AC_INIT([OpenCASCADE], [6.7.0])
 AC_CONFIG_AUX_DIR(make)
 AM_INIT_AUTOMAKE([foreign])
 AC_CANONICAL_HOST
@@ -143,8 +143,8 @@ CXXFLAGS="$CXXFLAGS -DCSFDB -DOCC_CONVERT_SIGNALS"
 CFLAGS="$CFLAGS -DCSFDB -DOCC_CONVERT_SIGNALS"
 
 case $platform in
-	Linux*) CXXFLAGS="$CXXFLAGS -DLIN -DLININTEL -D_GNU_SOURCE=1"
-		CFLAGS="$CFLAGS -DLIN -DLININTEL -fexceptions"
+	Linux*) CXXFLAGS="$CXXFLAGS -DLIN -DLININTEL -D_GNU_SOURCE=1 -mmmx -msse -msse2 -mfpmath=sse -Wall"
+		CFLAGS="$CFLAGS -DLIN -DLININTEL -fexceptions -mmmx -msse -msse2 -mfpmath=sse -Wall"
 		LDFLAGS="$LDFLAGS -lstdc++ -lrt";;
 	SunOS*) CXXFLAGS="$CXXFLAGS -Usun -DSOLARIS -instances=static"
 		CFLAGS="$CFLAGS -Usun -DSOLARIS -instances=static"
@@ -621,7 +621,8 @@ else
 	   DISABLE_GL2PS_REASON="($gl2ps directory is not exists)"
 	   AC_MSG_ERROR([$gl2ps directory is not exists])
 	elif test "x$HAVE_GL2PS_INC" = "xyes"; then
-	   CSF_GL2PS_INCLUDES="-I$gl2ps/include -DHAVE_GL2PS"
+	   CSF_GL2PS_INCLUDES=""
+	   CSF_OPT_INCLUDES="${CSF_OPT_INCLUDES} -I$gl2ps/include -DHAVE_GL2PS"
 	   HAVE_GL2PS_LIB=yes
 	   AC_MSG_CHECKING([for gl2psEndPage in -lgl2ps])
 	   LDFLAGS="-L$gl2ps/lib $LDFLAGS"
@@ -674,7 +675,8 @@ else
     DISABLE_FREEIMAGE_REASON="($freeimage directory is not exists)"
     AC_MSG_ERROR([$freeimage directory is not exists])
   elif test "x$HAVE_FREEIMAGE_INC" = "xyes"; then
-    CSF_FreeImagePlus_INCLUDES="-I$freeimage/include -DHAVE_FREEIMAGE"
+    CSF_FreeImagePlus_INCLUDES=""
+    CSF_OPT_INCLUDES="${CSF_OPT_INCLUDES} -I$freeimage/include -DHAVE_FREEIMAGE"
     HAVE_FREEIMAGE_LIB=yes
     AC_MSG_CHECKING([for FreeImage_OpenMemory in -lfreeimageplus])
     LDFLAGS="-L$freeimage/lib $LDFLAGS"
@@ -732,6 +734,41 @@ fi
 
 #---------------------------------------------------------------------
 #
+# Check for OpenCL SDK Includes
+#  
+#  
+#---------------------------------------------------------------------
+AC_ARG_WITH([opencl-include],
+  [AC_HELP_STRING([--with-opencl-include=DIR],[Location of OpenCL SDK includes])],
+  [opencl_inc="${withval}"],[opencl_inc=])
+
+if test "xno" = "xno$opencl_inc"; then
+  # user specified --without-opencl-lib
+  HAVE_OPENCL=no
+  HAVE_OPENCL_INC=no
+  DISABLE_OPENCL_REASON_INC="(--with-opencl-include=DIR option was not defined)"
+else
+  CSF_OPENCL_INCLUDES=""
+  AC_LANG([C++])
+  HAVE_OPENCL_INC=yes
+  if test ! -d $opencl_inc; then
+    DISABLE_OPENCL_REASON_INC="($opencl_inc directory is not exists)"
+    AC_MSG_ERROR([$opencl_inc directory is not exists])
+  elif test "x$opencl_inc" != "x"; then
+     CPPFLAGS="-I$opencl_inc $CPPFLAGS";
+  else
+     AC_MSG_NOTICE("--with-opencl-include key is not defined")
+  fi
+  # TODO: Add MacOS X specific header check
+  AC_CHECK_HEADER( [CL/cl.h], [], [HAVE_OPENCL_INC=no] )
+  if test "x$HAVE_OPENCL_INC" != "xyes"; then
+     AC_MSG_NOTICE("Specify --with-opencl-include to enable OpenCL support")
+     DISABLE_OPENCL_REASON_INC="(OpenCL includes were not found)"
+  fi
+fi
+
+#---------------------------------------------------------------------
+#
 # Check for TBB Libraries
 #  
 #  
@@ -762,7 +799,8 @@ else
 
   if test "x$HAVE_TBB" = "xyes"; then
      if test "x$tbb_inc" != "x"; then
-     	CSF_TBB_INCLUDES="-I$tbb_inc -DHAVE_TBB"
+      CSF_TBB_INCLUDES=""
+      CSF_OPT_INCLUDES="${CSF_OPT_INCLUDES} -I$tbb_inc -DHAVE_TBB"
      else
 	HAVE_TBB=no
      fi
@@ -788,6 +826,63 @@ else
 fi
 
 AM_CONDITIONAL( HAVE_TBB, [test "xyes" = "x$HAVE_TBB"] )
+
+#---------------------------------------------------------------------
+#
+# Check for OpenCL SDK Libraries
+#  
+#  
+#---------------------------------------------------------------------
+AC_ARG_WITH([opencl-library],
+  [AC_HELP_STRING([--with-opencl-library=DIR],[Location of OpenCL SDK libraries])],
+  [opencl_lib="${withval}"],[opencl_lib=])
+
+if test "xno" = "xno$opencl_lib"; then
+  # user specified --without-opencl
+  HAVE_OPENCL=no
+  DISABLE_OPENCL_REASON_LIB="(--with-opencl-library=DIR option was not defined)"
+else
+  CSF_OPENCL_LIB=""
+  HAVE_OPENCL=yes
+
+  if test "x$HAVE_OPENCL_INC" = "xyes"; then
+    if test ! -d $opencl_lib; then
+      DISABLE_OPENCL_REASON_LIB="($opencl_lib directory is not exists)"
+      AC_MSG_ERROR([$opencl_lib directory is not exists])
+    elif test "x$opencl_lib" != "x"; then
+      LDFLAGS="-L$opencl_lib $LDFLAGS"
+    fi
+    AC_CHECK_LIB(OpenCL, [clGetPlatformInfo], [], [HAVE_OPENCL=no])
+  else
+    HAVE_OPENCL=no
+  fi
+
+  if test "x$HAVE_OPENCL" = "xyes"; then
+    if test "x$opencl_inc" != "x"; then
+      CSF_OPENCL_INCLUDES=""
+      CSF_OPT_INCLUDES="${CSF_OPT_INCLUDES} -I$opencl_inc -DHAVE_OPENCL"
+    else
+      HAVE_OPENCL=no
+    fi
+    if test "x$opencl_lib" != "x"; then
+      CSF_OPENCL_LIB="-L$opencl_lib -lOpenCL"
+    else
+      HAVE_OPENCL=no
+    fi
+    
+    if test "x$HAVE_OPENCL" = "xyes"; then
+      CSF_OPT_INC="$opencl_inc:${CSF_OPT_INC}"
+      CSF_OPT_LIB="$opencl_lib:${CSF_OPT_LIB}"
+    else
+      DISABLE_OPENCL_REASON="(OpenCL was not found)";
+    fi
+  else
+    AC_MSG_NOTICE("Specify --with-opencl-library to enable OpenCL support")
+    DISABLE_OPENCL_REASON_LIB="(OpenCL libraries were not found)"
+  fi
+fi
+
+AM_CONDITIONAL( HAVE_OPENCL, [test "xyes" = "x$HAVE_OPENCL"] )
 
 #---------------------------------------------------------------------
 #
@@ -1128,6 +1223,9 @@ AC_SUBST(CSF_XmuLibs_INCLUDES)
 AC_SUBST(HAVE_TBB)
 AC_SUBST(CSF_TBB_INCLUDES)
 AC_SUBST(CSF_TBB_LIB)
+AC_SUBST(HAVE_OPENCL)
+AC_SUBST(CSF_OPENCL_INCLUDES)
+AC_SUBST(CSF_OPENCL_LIB)
 AC_SUBST(HAVE_QT)
 AC_SUBST(CSF_QT_INCLUDES)
 AC_SUBST(CSF_QT_LIB)
@@ -1155,6 +1253,7 @@ echo "gl2ps         : $HAVE_GL2PS $DISABLE_GL2PS_REASON"
 echo "freeimage     : $HAVE_FREEIMAGE $DISABLE_FREEIMAGE_REASON"
 echo "tbb includes  : $HAVE_TBB_INC $DISABLE_TBB_REASON_INC"
 echo "tbb libraries : $HAVE_TBB $DISABLE_TBB_REASON_LIB"
+echo "opencl        : $HAVE_OPENCL $DISABLE_OPENCL_REASON"
 echo "qt            : $HAVE_QT $DISABLE_QT_REASON"
 echo
 echo "Component                   Build"
@@ -1169,7 +1268,7 @@ echo "Draw                        $ENABLE_DRAW $DISABLE_DRAW_REASON"
 
 echo
 
-AC_OUTPUT([Makefile adm/lin/amk/Makefile custom_amk.sh \
+AC_OUTPUT([Makefile adm/lin/amk/Makefile custom.sh \
 adm/lin/amk/TKernel/Makefile \
 adm/lin/amk/TKMath/Makefile \
 adm/lin/amk/TKAdvTools/Makefile \

@@ -1,22 +1,18 @@
 // Created on: 1995-01-03
 // Created by: Frederic MAUPAS
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //:i6 abv 17 Sep 98: ProSTEP TR9 r0601-ct.stp: to be able read GeometricSet
 //gka 11.01.99 file PRO7755.stp #2018: work-around error in BRepLib_MakeFace
@@ -69,6 +65,8 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopExp_Explorer.hxx>
+
+#include <Geom_RectangularTrimmedSurface.hxx>
 
 #include <ShapeFix_ShapeTolerance.hxx>
 #include <StepShape_ConnectedEdgeSet.hxx>
@@ -701,8 +699,22 @@ static TopoDS_Face TranslateBoundedSurf (const Handle(StepGeom_Surface) &surf,
   if (!StepToGeom_MakeSurface::Convert(surf,theSurf) || //:i6: protection
       !theSurf->IsKind(STANDARD_TYPE(Geom_BoundedSurface))) return res;
 
-  //gka 11.01.99 file PRO7755.stp entity #2018 surface #1895: error BRepLib_MakeFace func IsDegenerated
-  BRepBuilderAPI_MakeFace myMkFace(theSurf, TolDegen);
+  BRepBuilderAPI_MakeFace myMkFace;
+  Handle(Geom_RectangularTrimmedSurface) RS = 
+                    Handle(Geom_RectangularTrimmedSurface)::DownCast(theSurf);
+
+  if (!RS.IsNull())
+  {
+    Standard_Real umin, umax, vmin, vmax;
+    theSurf->Bounds(umin, umax, vmin, vmax);
+
+    myMkFace.Init(RS->BasisSurface(), umin, umax, vmin, vmax, TolDegen);
+  }
+  else
+  {
+    myMkFace.Init(theSurf, Standard_True, TolDegen);
+  }
+
   return myMkFace.Face();
 }
 

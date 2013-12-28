@@ -41,6 +41,8 @@ void ShapeSchema_PGeom_SweptSurface::SWrite(const Handle(Standard_Persistent)& p
   if (!p.IsNull()) {
     Handle(PGeom_SweptSurface) &pp = (Handle(PGeom_SweptSurface)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPGeom_SweptSurfacebasisCurve(),f);
@@ -60,6 +62,8 @@ void ShapeSchema_PGeom_SweptSurface::SRead(const Handle(Standard_Persistent)& p,
 { 
   if (!p.IsNull()) {
     Handle(PGeom_SweptSurface) &pp = (Handle(PGeom_SweptSurface)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

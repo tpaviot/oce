@@ -194,8 +194,6 @@ Standard_Real mig[4];
 GeomFill_CornerState stcor[4];
 gp_Vec v[4];
 Standard_Boolean appdone;
-Standard_Real tolapp3d[4];
-Standard_Real tolappang[4];
 Standard_Integer degree[2];
 Handle_TColgp_HArray1OfPnt curvpol[4];
 Handle_TColgp_HArray1OfPnt tgtepol[4];

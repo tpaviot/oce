@@ -1,21 +1,17 @@
 // Created on: 2002-05-16
 // Created by: QA Admin
-// Copyright (c) 2002-2012 OPEN CASCADE SAS
+// Copyright (c) 2002-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <QABugs.hxx>
 
@@ -27,8 +23,6 @@
 #include <ViewerTest.hxx>
 #include <AIS_Shape.hxx>
 #include <TopoDS_Shape.hxx>
-
-#include <tcl.h>
 
 #include <gp_Ax2.hxx>
 #include <gp_Circ.hxx>
@@ -62,7 +56,6 @@ static Standard_Integer OCC332bug (Draw_Interpretor& di, Standard_Integer argc, 
 {
   // Used to Display Geometry or Topolgy
   char name[255];
-  char *pname = name;
   Standard_Boolean check = Standard_True;
 
   // Set default arguments
@@ -83,7 +76,7 @@ static Standard_Integer OCC332bug (Draw_Interpretor& di, Standard_Integer argc, 
   //if ((bend_angle >= M_PI)) {
   if ((bend_angle >= M_PI)) {
     di << "The arguments are invalid." << "\n";
-    return(TCL_ERROR);
+    return 1;
   }
   di << "creating the shape for a bent tube" << "\n";
 
@@ -426,8 +419,6 @@ static Standard_Integer OCC544 (Draw_Interpretor& di, Standard_Integer argc, con
 
   // Used to Display Geometry or Topolgy
   char name[255];
-  char *pname = name;
-  //bool check = true;
   Standard_Boolean check = Standard_True;
 
   // Set default arguments
@@ -450,7 +441,7 @@ static Standard_Integer OCC544 (Draw_Interpretor& di, Standard_Integer argc, con
   // mkv 15.07.03 if ((bend_angle >= 2.0*M_PI)) {
   if ((bend_angle >= 2.0*M_PI)) {
     di << "The arguments are invalid." << "\n";
-    return(TCL_ERROR);
+    return 1;
   }
   di << "creating the shape for a bent tube" << "\n";
  
@@ -534,7 +525,8 @@ static Standard_Integer OCC544 (Draw_Interpretor& di, Standard_Integer argc, con
   BRepBuilderAPI_MakeEdge mkEdge;
 
   mkEdge.Init(SpineCurve);
-  if (!mkEdge.IsDone()) return TCL_ERROR;
+  if (!mkEdge.IsDone()) 
+    return 1;
   TopoDS_Wire SpineWire = BRepBuilderAPI_MakeWire(mkEdge.Edge()).Wire();
 
   Sprintf (name,"SpineWire");
@@ -571,7 +563,8 @@ static Standard_Integer OCC544 (Draw_Interpretor& di, Standard_Integer argc, con
   mkPipe1.SetMode(Standard_False);
   mkPipe1.SetLaw(Wire1_, myLaw, Location1, Standard_False, Standard_False);
   mkPipe1.Build();
-  if (!mkPipe1.IsDone()) return TCL_ERROR;
+  if (!mkPipe1.IsDone()) 
+    return 1;
 
   // Make outer pipe shell
   BRepOffsetAPI_MakePipeShell mkPipe2(SpineWire);
@@ -580,7 +573,8 @@ static Standard_Integer OCC544 (Draw_Interpretor& di, Standard_Integer argc, con
   mkPipe2.SetMode(Standard_False);
   mkPipe2.SetLaw(outerWire1_, myLaw2, Location1, Standard_False, Standard_False);
  mkPipe2.Build();
-  if (!mkPipe2.IsDone()) return TCL_ERROR;
+  if (!mkPipe2.IsDone()) 
+    return 1;
 
 //    Sprintf(name,"w1-first");
 //    DBRep::Set(name,mkPipe1.FirstShape());
@@ -611,7 +605,8 @@ static Standard_Integer OCC544 (Draw_Interpretor& di, Standard_Integer argc, con
   mkFace.Init(Plane1,Standard_False,Precision::Confusion());
   mkFace.Add(TopoDS::Wire(outerWire1_));
   mkFace.Add(TopoDS::Wire(Wire1_.Reversed()));
-  if (!mkFace.IsDone()) return TCL_ERROR;
+  if (!mkFace.IsDone()) 
+    return 1;
   TopoDS_Face Face1 = mkFace.Face();
 
   // Make face for second opening
@@ -619,7 +614,8 @@ static Standard_Integer OCC544 (Draw_Interpretor& di, Standard_Integer argc, con
   mkFace.Init(Plane2,Standard_False,Precision::Confusion());
   mkFace.Add(TopoDS::Wire(outerWire2_));
   mkFace.Add(TopoDS::Wire(Wire2_.Reversed()));
-  if (!mkFace.IsDone()) return TCL_ERROR;
+  if (!mkFace.IsDone()) 
+    return 1;
   TopoDS_Face Face2 = mkFace.Face();
 
   // Grab the gas solid now that we've extracted the faces.

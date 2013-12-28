@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1302597F-1294-11F9-1210-5F3ED816FF9D}</ProjectGuid>
+    <ProjectGuid>{43066155-1596-03DB-0E24-578B0F6AC719}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,9 +89,11 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\obj\TKXDEIGES/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\obj\TKXDEIGES/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\obj\TKXDEIGES/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -129,11 +131,14 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKXDEIGES/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\objd\TKXDEIGES/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\objd\TKXDEIGES/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -174,9 +179,10 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\obj\TKXDEIGES/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\obj\TKXDEIGES/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\obj\TKXDEIGES/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -214,11 +220,13 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKXDEIGES/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\objd\TKXDEIGES/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\objd\TKXDEIGES/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

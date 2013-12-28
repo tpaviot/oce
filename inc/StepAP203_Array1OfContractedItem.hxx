@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepAP203_Array1OfContractedItem(const Standard_Integer Low,const Standard_Integer Up);
+      StepAP203_Array1OfContractedItem(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepAP203_Array1OfContractedItem(const StepAP203_ContractedItem& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepAP203_Array1OfContractedItem(const StepAP203_ContractedItem& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const StepAP203_ContractedItem& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepAP203_Array1OfContractedItem()
 {
   Destroy();

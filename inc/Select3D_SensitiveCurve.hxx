@@ -34,6 +34,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _SelectBasics_PickArgs_HeaderFile
+#include <SelectBasics_PickArgs.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
@@ -73,14 +76,19 @@ public:
   //! Creation of Sensitive Curve from Points. <br>
 //!          Warning : This Method should disappear in the next version... <br>
   Standard_EXPORT   Select3D_SensitiveCurve(const Handle(SelectBasics_EntityOwner)& OwnerId,const TColgp_Array1OfPnt& ThePoints);
-  
-  Standard_EXPORT     Standard_Boolean Matches(const Standard_Real X,const Standard_Real Y,const Standard_Real aTol,Standard_Real& DMin) ;
+  //! Checks whether the sensitive entity matches the picking <br>
+//! detection area (close to the picking line). <br>
+//! For details please refer to base class declaration. <br>
+  Standard_EXPORT     Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
   
   Standard_EXPORT     Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
   
   Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
-  
-  Standard_EXPORT     Standard_Real ComputeDepth(const gp_Lin& EyeLine) const;
+  //! Compute depth of sensitive circle for the detected sub-part. <br>
+//! @param thePickLine [in] the picking line. <br>
+//! @param theDetectedIndex [in] index of the detected sub-part. <br>
+//! @return depth on the picking line. <br>
+  Standard_EXPORT     Standard_Real ComputeDepth(const gp_Lin& thePickLine,const Standard_Integer theDetectedIndex) const;
   //! Gets index of last detected segment <br>
         Standard_Integer GetLastDetected() const;
   

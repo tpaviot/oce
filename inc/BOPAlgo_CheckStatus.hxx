@@ -17,6 +17,7 @@ BOPAlgo_IncompatibilityOfVertex,
 BOPAlgo_IncompatibilityOfEdge,
 BOPAlgo_IncompatibilityOfFace,
 BOPAlgo_OperationAborted,
+BOPAlgo_GeomAbs_C0,
 BOPAlgo_NotValid
 };
 

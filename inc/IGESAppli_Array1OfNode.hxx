@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESAppli_Array1OfNode(const Standard_Integer Low,const Standard_Integer Up);
+      IGESAppli_Array1OfNode(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESAppli_Array1OfNode(const Handle(IGESAppli_Node)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESAppli_Array1OfNode(const Handle(IGESAppli_Node)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(IGESAppli_Node)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESAppli_Array1OfNode()
 {
   Destroy();

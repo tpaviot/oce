@@ -1,24 +1,18 @@
 -- Created on: 1992-09-18
 -- Created by: Jean Louis FRENKEL
 -- Copyright (c) 1992-1999 Matra Datavision
--- Copyright (c) 1999-2012 OPEN CASCADE SAS
+-- Copyright (c) 1999-2014 OPEN CASCADE SAS
 --
--- The content of this file is subject to the Open CASCADE Technology Public
--- License Version 6.5 (the "License"). You may not use the content of this file
--- except in compliance with the License. Please obtain a copy of the License
--- at http://www.opencascade.org and read it completely before using this file.
+-- This file is part of Open CASCADE Technology software library.
 --
--- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
--- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+-- This library is free software; you can redistribute it and / or modify it
+-- under the terms of the GNU Lesser General Public version 2.1 as published
+-- by the Free Software Foundation, with special exception defined in the file
+-- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+-- distribution for complete text of the license and disclaimer of any warranty.
 --
--- The Original Code and all software distributed under the License is
--- distributed on an "AS IS" basis, without warranty of any kind, and the
--- Initial Developer hereby disclaims all such warranties, including without
--- limitation, any warranties of merchantability, fitness for a particular
--- purpose or non-infringement. Please see the License for the specific terms
--- and conditions governing the rights and limitations under the License.
-
-
+-- Alternatively, this file may be used under the terms of Open CASCADE
+-- commercial license or contractual agreement.
 
 class Drawer from Prs3d inherits TShared from MMgt
 
@@ -39,16 +33,17 @@ uses
     PointAspect from Prs3d,
     ShadingAspect from Prs3d,
     IsoAspect from Prs3d,
-    LengthAspect from Prs3d,
-    AngleAspect from Prs3d,
+    DimensionAspect from Prs3d,
     PlaneAspect from Prs3d,
-    RadiusAspect from Prs3d,
     ArrowAspect from Prs3d,
     TypeOfDeflection from Aspect,
     NameOfColor from Quantity,
     PlaneAngle from Quantity,
     Length from Quantity,
-    TypeOfHLR from Prs3d
+    TypeOfHLR from Prs3d,
+    DimensionUnits from Prs3d,
+    AsciiString from TCollection,
+    Ax2 from gp
 
 is
     Create returns mutable Drawer from Prs3d;
@@ -474,44 +469,51 @@ is
     is virtual;
     	---Purpose: Sets the modality anAspect for the display of datums.
 
-    LengthAspect(me:mutable) returns mutable LengthAspect from Prs3d
-    	---Purpose: Returns settings for the appearance of lengths.
-    is virtual;
+    DimensionAspect(me:mutable) returns mutable DimensionAspect from Prs3d is virtual;
+    ---Purpose: Returns settings for the appearance of dimensions.
 
-    SetLengthAspect(me:mutable; anAspect: LengthAspect from Prs3d) 
-    is virtual;
-    
-    	---Purpose: Sets the modality anAspect for display of lengths.
+    SetDimensionAspect(me:mutable; theAspect: DimensionAspect from Prs3d) is virtual;
+    ---Purpose: Sets the settings for the appearance of dimensions.
 
-    AngleAspect(me:mutable) returns mutable AngleAspect from Prs3d
-    	---Purpose: Returns settings for lines used to display angles.
-    is virtual;
+    SetDimLengthModelUnits (me: mutable; theUnits : AsciiString from TCollection) is virtual;
+    ---Purpose: Sets dimension length model units for computing of dimension presentation.
 
-    SetAngleAspect(me:mutable; anAspect: AngleAspect from Prs3d) 
-    is virtual;
-    	---Purpose: Sets the modality anAspect for the display of angles.
+    SetDimAngleModelUnits (me: mutable; theUnits : AsciiString from TCollection) is virtual;
+    ---Purpose: Sets dimension angle model units for computing of dimension presentation.
 
-    RadiusAspect(me) returns mutable RadiusAspect from Prs3d
-    	---Purpose: Returns settings for lines which serve to display radii.
-    is virtual;
+    DimLengthModelUnits (me) returns AsciiString from TCollection is virtual;
+    ---Purpose: Returns length model units for the dimension presentation.
+    ---C++: return const &
 
-    SetRadiusAspect(me:mutable; anAspect: RadiusAspect from Prs3d)     
-    is virtual;
-    	--- Purpose: Sets the parameter anAspect for display attributes of radii.
+    DimAngleModelUnits (me) returns AsciiString from TCollection is virtual;
+    ---Purpose: Returns angle model units for the dimension presentation.
+    ---C++: return const &
 
-    SectionAspect (me:mutable) returns mutable LineAspect from Prs3d
-    	---Purpose: The LineAspect for the wire can be edited.
-    	--          The default values are:
-    	--          Color: Quantity_NOC_ORANGE
-    	--          Type of line: Aspect_TOL_SOLID
-    	--          Width: 1.
-       	--          These attributes are used by the algorithm Prs3d_WFShape
-    is virtual;    
+    SetDimLengthDisplayUnits (me: mutable; theUnits : AsciiString from TCollection) is virtual;
+    ---Purpose: Sets length units in which value for dimension presentation is displayed.
 
-    SetSectionAspect(me:mutable;anAspect: LineAspect from Prs3d)
-    is virtual;
-    	---Purpose: Sets the parameter anAspect for display attributes of sections.
-    
+    SetDimAngleDisplayUnits (me: mutable; theUnits : AsciiString from TCollection) is virtual;
+    ---Purpose: Sets angle units in which value for dimension presentation is displayed.
+
+    DimLengthDisplayUnits (me) returns AsciiString from TCollection is virtual;
+    ---Purpose: Returns length units in which dimension presentation is displayed.
+    ---C++: return const &
+
+    DimAngleDisplayUnits (me) returns AsciiString from TCollection is virtual;
+    ---Purpose: Returns angle units in which dimension presentation is displayed.
+    ---C++: return const &
+
+    SectionAspect (me : mutable) returns mutable LineAspect from Prs3d is virtual;
+    ---Purpose: The LineAspect for the wire can be edited.
+    --          The default values are:
+    --          Color: Quantity_NOC_ORANGE
+    --          Type of line: Aspect_TOL_SOLID
+    --          Width: 1.
+    --          These attributes are used by the algorithm Prs3d_WFShape.
+
+    SetSectionAspect (me : mutable; theAspect: LineAspect from Prs3d) is virtual;
+    ---Purpose: Sets the parameter theAspect for display attributes of sections.
+
     SetFaceBoundaryDraw (me           : mutable;
                          theIsEnabled : Boolean from Standard)
     is virtual;
@@ -534,45 +536,49 @@ is
         ---Purpose: Returns line aspect of face boundaries.
 
 fields
-            myUIsoAspect: IsoAspect from Prs3d is protected;
-            myVIsoAspect: IsoAspect from Prs3d is protected;
-	    myNbPoints  : Integer   from Standard is protected;
-	    myIsoOnPlane: Boolean from Standard is protected;
-	    myFreeBoundaryAspect: LineAspect from Prs3d is protected;
-            myFreeBoundaryDraw: Boolean from Standard is protected;
-	    myUnFreeBoundaryAspect: LineAspect from Prs3d is protected;
-            myUnFreeBoundaryDraw: Boolean from Standard is protected;
-	    myWireAspect: LineAspect from Prs3d is protected;
-            myWireDraw: Boolean from Standard is protected;
-	    myLineAspect: LineAspect from Prs3d is protected;
-	    myTextAspect: TextAspect from Prs3d is protected;
-            myShadingAspect: ShadingAspect from Prs3d is protected;
-            myShadingAspectGlobal: Boolean from Standard is protected;
-            myChordialDeviation: Length from Quantity is protected;
-	    myTypeOfDeflection: TypeOfDeflection from Aspect is protected;
-            myMaximalParameterValue: Real from Standard is protected;
-	    
-            myDeviationCoefficient: Real from Standard is protected;
-            myHLRDeviationCoefficient: Real from Standard is protected;
 
-	    myDeviationAngle: Real from Standard is protected;
-	    myHLRAngle:       Real from Standard is protected;
-	    
-            myPointAspect: PointAspect from Prs3d is protected;
-            myPlaneAspect: PlaneAspect from Prs3d is protected;
-            myArrowAspect: ArrowAspect from Prs3d is protected;
-            myLineDrawArrow: Boolean from Standard is protected;
-	    myDrawHiddenLine: Boolean from Standard is protected;
-	    myHiddenLineAspect: LineAspect from Prs3d is protected;
-	    mySeenLineAspect: LineAspect from Prs3d is protected;
-            myVectorAspect: LineAspect from Prs3d is protected;
-            myDatumAspect: DatumAspect from Prs3d is protected;
-	    myDatumScale: Real from Standard is protected;
-	    myLengthAspect: LengthAspect from Prs3d is protected;
-	    myAngleAspect: AngleAspect from Prs3d is protected;
-	    myRadiusAspect: RadiusAspect from Prs3d is protected;
-      mySectionAspect: LineAspect from Prs3d is protected;
-      myFaceBoundaryDraw    : Boolean from Standard is protected;
-      myFaceBoundaryAspect  : LineAspect from Prs3d is protected;
-      myTypeOfHLR           : TypeOfHLR from Prs3d is protected;
+    myUIsoAspect: IsoAspect from Prs3d is protected;
+    myVIsoAspect: IsoAspect from Prs3d is protected;
+    myNbPoints  : Integer   from Standard is protected;
+    myIsoOnPlane: Boolean from Standard is protected;
+    myFreeBoundaryAspect: LineAspect from Prs3d is protected;
+    myFreeBoundaryDraw: Boolean from Standard is protected;
+    myUnFreeBoundaryAspect: LineAspect from Prs3d is protected;
+    myUnFreeBoundaryDraw: Boolean from Standard is protected;
+    myWireAspect: LineAspect from Prs3d is protected;
+    myWireDraw: Boolean from Standard is protected;
+    myLineAspect: LineAspect from Prs3d is protected;
+    myTextAspect: TextAspect from Prs3d is protected;
+    myShadingAspect: ShadingAspect from Prs3d is protected;
+    myShadingAspectGlobal: Boolean from Standard is protected;
+    myChordialDeviation: Length from Quantity is protected;
+    myTypeOfDeflection: TypeOfDeflection from Aspect is protected;
+    myMaximalParameterValue: Real from Standard is protected;
+
+    myDeviationCoefficient: Real from Standard is protected;
+    myHLRDeviationCoefficient: Real from Standard is protected;
+
+    myDeviationAngle: Real from Standard is protected;
+    myHLRAngle:       Real from Standard is protected;
+
+    myPointAspect: PointAspect from Prs3d is protected;
+    myPlaneAspect: PlaneAspect from Prs3d is protected;
+    myArrowAspect: ArrowAspect from Prs3d is protected;
+    myLineDrawArrow: Boolean from Standard is protected;
+    myDrawHiddenLine: Boolean from Standard is protected;
+    myHiddenLineAspect: LineAspect from Prs3d is protected;
+    mySeenLineAspect: LineAspect from Prs3d is protected;
+    myVectorAspect: LineAspect from Prs3d is protected;
+    myDatumAspect: DatumAspect from Prs3d is protected;
+    myDatumScale: Real from Standard is protected;
+
+    myDimensionAspect         : DimensionAspect from Prs3d is protected;
+    myDimensionModelUnits     : DimensionUnits from Prs3d is protected;
+    myDimensionDisplayUnits   : DimensionUnits from Prs3d is protected;
+
+    mySectionAspect       : LineAspect from Prs3d is protected;
+    myFaceBoundaryDraw    : Boolean from Standard is protected;
+    myFaceBoundaryAspect  : LineAspect from Prs3d is protected;
+    myTypeOfHLR           : TypeOfHLR from Prs3d is protected;
+
 end Drawer;

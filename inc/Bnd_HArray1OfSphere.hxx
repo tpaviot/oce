@@ -39,11 +39,11 @@ class Bnd_HArray1OfSphere : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Bnd_HArray1OfSphere(const Standard_Integer Low,const Standard_Integer Up);
+      Bnd_HArray1OfSphere(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Bnd_HArray1OfSphere(const Standard_Integer Low,const Standard_Integer Up,const Bnd_Sphere& V);
+      Bnd_HArray1OfSphere(const Standard_Integer Low,const Standard_Integer Up,const Bnd_Sphere& V);
   
-  Standard_EXPORT     void Init(const Bnd_Sphere& V) ;
+        void Init(const Bnd_Sphere& V) ;
   
         Standard_Integer Length() const;
   

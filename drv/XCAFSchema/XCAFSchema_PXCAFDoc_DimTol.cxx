@@ -42,6 +42,8 @@ void XCAFSchema_PXCAFDoc_DimTol::SWrite(const Handle(Standard_Persistent)& p, St
   if (!p.IsNull()) {
     Handle(PXCAFDoc_DimTol) &pp = (Handle(PXCAFDoc_DimTol)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPXCAFDoc_DimTolmyKind());
@@ -63,6 +65,8 @@ void XCAFSchema_PXCAFDoc_DimTol::SRead(const Handle(Standard_Persistent)& p, Sto
 { 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_DimTol) &pp = (Handle(PXCAFDoc_DimTol)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

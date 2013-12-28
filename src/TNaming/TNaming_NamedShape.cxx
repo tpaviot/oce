@@ -1,25 +1,18 @@
 // Created on: 1996-12-18
 // Created by: Yves FRICAUD
 // Copyright (c) 1996-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TNaming_NamedShape.ixx>
 #include <TNaming_Builder.ixx>
@@ -467,28 +460,6 @@ Handle(TDF_Attribute) TNaming_NamedShape::NewEmpty () const
 }
 
 //=======================================================================
-//function : static GetLocation 23.06.99 (szy)
-//purpose  : service: returns copy of Location if exist Relocation 
-//=======================================================================
-
-static TopLoc_Location GetLocation(const TopLoc_Location& L,
-				   const Handle(TDF_RelocationTable)& RT)
-{
-  TopLoc_Location result;
-  
-  if (!L.IsIdentity()) {
-    Handle(TopLoc_Datum3D) TD;
-    if(!RT->HasTransientRelocation(L.FirstDatum(), TD))
-#ifdef DEB
-      cout <<"TNaming_Named_Shape::Paste : Relocation for TopLocation don't exist" << endl;
-#endif
-    result = GetLocation(L.NextLocation(), RT) * 
-      TopLoc_Location(TD).Powered(L.FirstPower());
-  }
-  return result;
-}
-
-//=======================================================================
 //function : Paste
 //purpose  : 
 //=======================================================================
@@ -833,30 +804,6 @@ void TNaming_Builder::Modify(const TopoDS_Shape& oldShape,
 }
 
 //=======================================================================
-//function : DummyShapeToStoreOrientation
-//=======================================================================
-static const TopoDS_Shape& DummyShapeToStoreOrientation (const TopAbs_Orientation Or)
-{
-  gp_Pnt aPnt(0,0,0);
-  static TopoDS_Vertex aVForward, aVRev;
-  switch(Or) {
-  case TopAbs_FORWARD:
-    if(aVForward.IsNull()) {
-      aVForward = BRepBuilderAPI_MakeVertex (aPnt).Vertex();
-      aVForward.Orientation(TopAbs_FORWARD);
-    }
-    return aVForward;
-  case TopAbs_REVERSED:
-    if(aVRev.IsNull()) {
-      aVRev = BRepBuilderAPI_MakeVertex (aPnt).Vertex();
-      aVRev.Orientation(TopAbs_REVERSED);
-    }
-    return aVRev;
-  }
-  return aVForward;
-}
-
-//=======================================================================
 //function : Select
 //purpose  : 
 //=======================================================================
@@ -869,24 +816,13 @@ void TNaming_Builder::Select (const TopoDS_Shape& S,
       Standard_ConstructionError::Raise("TNaming_Builder : not same evolution");
   }
 
-  TNaming_RefShape* pos;
-
-  if(S.ShapeType() != TopAbs_VERTEX && 
-	  (S.Orientation() == TopAbs_FORWARD || S.Orientation() == TopAbs_REVERSED)) {
-	const TopoDS_Shape& aV = DummyShapeToStoreOrientation (S.Orientation());
-    if (!myShapes->myMap.IsBound(aV)) {
-      pos = new TNaming_RefShape(aV);
-      myShapes->myMap.Bind(aV,pos);
-	} else 
-	  pos = myShapes->myMap.ChangeFind(aV);
-  } else {
-    if (!myShapes->myMap.IsBound(InS)) {
-      pos = new TNaming_RefShape(InS);
-      myShapes->myMap.Bind(InS,pos);
-    }
-    else
-      pos = myShapes->myMap.ChangeFind(InS);
+  TNaming_RefShape* pos;  
+  if (!myShapes->myMap.IsBound(InS)) {
+    pos = new TNaming_RefShape(InS);
+    myShapes->myMap.Bind(InS,pos);
   }
+  else
+    pos = myShapes->myMap.ChangeFind(InS);
 
   TNaming_RefShape* pns;
   if (!myShapes->myMap.IsBound(S)) {
@@ -1052,16 +988,18 @@ static void SelectSameShape (TNaming_Node*&          myNode,
     else Valid = pdn->IsValidInTrans(Trans);
 
     if (Valid)
+    {
       if (Old) {
-	if( pdn->myOld == RS && pdn->myNew != 0L && pdn->myNew != RS) {
-	  break;
-	}  
+        if( pdn->myOld == RS && pdn->myNew != 0L && pdn->myNew != RS) {
+          break;
+        }  
       }
       else {
-	if( pdn->myNew == RS && pdn->myOld != 0L && pdn->myOld != RS) {
-	  break;
-	}
+        if( pdn->myNew == RS && pdn->myOld != 0L && pdn->myOld != RS) {
+          break;
+        }
       }
+    }
     pdn = pdn->NextSameShape(RS);
   }
   myNode = pdn;

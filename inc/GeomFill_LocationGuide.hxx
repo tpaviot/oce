@@ -58,6 +58,9 @@
 #ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
 #endif
+#ifndef _Handle_TColgp_HArray1OfPnt2d_HeaderFile
+#include <Handle_TColgp_HArray1OfPnt2d.hxx>
+#endif
 class GeomFill_TrihedronWithGuide;
 class GeomFill_SectionLaw;
 class Adaptor3d_HCurve;
@@ -73,6 +76,7 @@ class TColgp_Array1OfVec2d;
 class TColStd_Array1OfReal;
 class gp_Pnt;
 class Geom_Curve;
+class TColgp_HArray1OfPnt2d;
 
 
 
@@ -173,6 +177,8 @@ public:
   Standard_EXPORT     Handle_Adaptor3d_HCurve Guide() const;
   
   Standard_EXPORT     void SetOrigine(const Standard_Real Param1,const Standard_Real Param2) ;
+  
+  Standard_EXPORT     GeomFill_PipeError ComputeAutomaticLaw(Handle(TColgp_HArray1OfPnt2d)& ParAndRad) const;
 
 
 

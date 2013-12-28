@@ -40,6 +40,8 @@ void StdLSchema_PDataStd_Comment::SWrite(const Handle(Standard_Persistent)& p, S
   if (!p.IsNull()) {
     Handle(PDataStd_Comment) &pp = (Handle(PDataStd_Comment)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDataStd_CommentmyValue(),f);
@@ -58,6 +60,8 @@ void StdLSchema_PDataStd_Comment::SRead(const Handle(Standard_Persistent)& p, St
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_Comment) &pp = (Handle(PDataStd_Comment)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

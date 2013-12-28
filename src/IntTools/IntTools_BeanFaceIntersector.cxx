@@ -1,20 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <IntTools_BeanFaceIntersector.ixx>
 
@@ -447,17 +442,17 @@ void IntTools_BeanFaceIntersector::Perform()
       IntTools_Range aRange = myRangeManager.Range(i);
 
       if(myResults.Length() > 0) {
-	const IntTools_Range& aLastRange = myResults.Last();
-
-	if(Abs(aRange.First() - aLastRange.Last()) > Precision::PConfusion()) {
-	  myResults.Append(aRange);
-	}
-	else {
-	  myResults.ChangeValue(myResults.Length()).SetLast(aRange.Last());
-	}
+        const IntTools_Range& aLastRange = myResults.Last();
+        
+        if(Abs(aRange.First() - aLastRange.Last()) > Precision::PConfusion()) {
+          myResults.Append(aRange);
+        }
+        else {
+          myResults.ChangeValue(myResults.Length()).SetLast(aRange.Last());
+        }
       }
       else {
-	myResults.Append(aRange);
+        myResults.Append(aRange);
       }
     }
   }
@@ -742,9 +737,8 @@ Standard_Integer IntTools_BeanFaceIntersector::FastComputeExactIntersection()
 
     if(aCT==GeomAbs_Line) {
       if((surfPlane.Distance(myCurve.Value(myFirstParameter)) < myCriteria) &&
-	 (surfPlane.Distance(myCurve.Value(myLastParameter)) < myCriteria)) {
-	myRangeManager.InsertRange(myFirstParameter, myLastParameter, 2);
-	aresult = 1;
+         (surfPlane.Distance(myCurve.Value(myLastParameter)) < myCriteria)) {
+        aresult = 1;
       }
     }
     else { // else 1
@@ -752,78 +746,77 @@ Standard_Integer IntTools_BeanFaceIntersector::FastComputeExactIntersection()
 
       switch(aCT) {
         case GeomAbs_Circle: {
-	  aDir = myCurve.Circle().Axis().Direction();
-	  break;
+          aDir = myCurve.Circle().Axis().Direction();
+          break;
         }
-	case GeomAbs_Ellipse: {
-	  aDir = myCurve.Ellipse().Axis().Direction();
-	  break;
+        case GeomAbs_Ellipse: {
+          aDir = myCurve.Ellipse().Axis().Direction();
+          break;
         }
-	case GeomAbs_Hyperbola: {
-	  aDir = myCurve.Hyperbola().Axis().Direction();
-	  break;
+        case GeomAbs_Hyperbola: {
+          aDir = myCurve.Hyperbola().Axis().Direction();
+          break;
         }
-	case GeomAbs_Parabola: {
-	  aDir = myCurve.Parabola().Axis().Direction();
-	  break;
+        case GeomAbs_Parabola: {
+          aDir = myCurve.Parabola().Axis().Direction();
+          break;
         }
-	default: {
-	  return aresult;
+        default: {
+          return aresult;
         }
       }
       //
       Standard_Real anAngle = aDir.Angle(surfPlane.Axis().Direction());
       
       if(anAngle < Precision::Angular()) {
-	Standard_Boolean insertRange = Standard_False;
-	
-	switch(aCT) {
-	  case GeomAbs_Circle: {
-	    Standard_Real adist = 
-	      surfPlane.Distance(myCurve.Circle().Location()) + 
-		myCurve.Circle().Radius() * Precision::Angular();
-	    
-	    if(adist < myCriteria) {
-	      insertRange = Standard_True;
-	    }
-	    break;
-	  }
-	  case GeomAbs_Ellipse: {
-	    Standard_Real adist = 
-	      surfPlane.Distance(myCurve.Ellipse().Location()) + 
-		myCurve.Ellipse().MajorRadius() * Precision::Angular();
-	    
-	    if(adist < myCriteria) {
-	      insertRange = Standard_True;
-	    }
-	    break;
-	  }
-	  case GeomAbs_Hyperbola:
-	  case GeomAbs_Parabola: {
-	    Standard_Real aMaxPar =
-	      (Abs(myFirstParameter)  > Abs(myLastParameter)) ? 
-		Abs(myFirstParameter) : Abs(myLastParameter);
-	    
-	    gp_Pnt aLoc = (aCT == GeomAbs_Parabola) ? 
-	      myCurve.Parabola().Location() : 
-		myCurve.Hyperbola().Location();
-	    Standard_Real adist = aLoc.Distance(myCurve.Value(aMaxPar));
-	    adist = surfPlane.Distance(aLoc) + adist * Precision::Angular();
-	    
-	    if(adist < myCriteria) {
-	      insertRange = Standard_True;
-	    }
-	    break;
-	  }
-	  default: {
-	    break;
-	  }
-	}
-	//
-	if(insertRange) {
-	  myRangeManager.InsertRange(myFirstParameter, myLastParameter, 2);
-	  aresult = 1;
-	}
+        Standard_Boolean insertRange = Standard_False;
+        
+        switch(aCT) {
+          case GeomAbs_Circle: {
+            Standard_Real adist = 
+              surfPlane.Distance(myCurve.Circle().Location()) + 
+                myCurve.Circle().Radius() * Precision::Angular();
+            
+            if(adist < myCriteria) {
+              insertRange = Standard_True;
+            }
+            break;
+          }
+          case GeomAbs_Ellipse: {
+            Standard_Real adist = 
+              surfPlane.Distance(myCurve.Ellipse().Location()) + 
+                myCurve.Ellipse().MajorRadius() * Precision::Angular();
+            
+            if(adist < myCriteria) {
+              insertRange = Standard_True;
+            }
+            break;
+          }
+          case GeomAbs_Hyperbola:
+          case GeomAbs_Parabola: {
+            Standard_Real aMaxPar =
+              (Abs(myFirstParameter)  > Abs(myLastParameter)) ? 
+                Abs(myFirstParameter) : Abs(myLastParameter);
+            
+            gp_Pnt aLoc = (aCT == GeomAbs_Parabola) ? 
+              myCurve.Parabola().Location() : 
+                myCurve.Hyperbola().Location();
+            Standard_Real adist = aLoc.Distance(myCurve.Value(aMaxPar));
+            adist = surfPlane.Distance(aLoc) + adist * Precision::Angular();
+            
+            if(adist < myCriteria) {
+              insertRange = Standard_True;
+            }
+            break;
+          }
+          default: {
+            break;
+          }
+        }
+        //
+        if(insertRange) {
+          aresult = 1;
+        }
       }//if(anAngle < Precision::Angular()) {
     }//else { // else 1
   }// if(aST==GeomAbs_Plane) {
@@ -838,28 +831,27 @@ Standard_Integer IntTools_BeanFaceIntersector::FastComputeExactIntersection()
       Standard_Real anAngle = aDir1.Angle(aDir2);
       
       if(anAngle < Precision::Angular()) {
-	gp_Pnt aLoc = aCircle.Location();
-	gp_Lin anCylAxis(aCylinder.Axis());
-	Standard_Real alocdist = anCylAxis.Distance(aLoc);
-	Standard_Real adist = alocdist;
-	Standard_Real adiff = aCircle.Radius() - aCylinder.Radius();
-	adist += Abs(adiff);
-	
-	if(adist < myCriteria) {
-	  Standard_Real acylradius = aCylinder.Radius();
-	  Standard_Real atmpvalue = aCircle.Radius() * sin(Precision::Angular());
-	  Standard_Real aprojectedradius = atmpvalue;
-	  aprojectedradius = 
-	    sqrt((aCircle.Radius() * aCircle.Radius())
-		 - (aprojectedradius * aprojectedradius));
-	  adiff = aprojectedradius - acylradius;
-	  adist = alocdist + Abs(adiff);
-	  	  
-	  if(adist < myCriteria) { // Abs is important function here
-	    myRangeManager.InsertRange(myFirstParameter, myLastParameter, 2);
-	    aresult = 1;
-	  }
-	}
+        gp_Pnt aLoc = aCircle.Location();
+        gp_Lin anCylAxis(aCylinder.Axis());
+        Standard_Real alocdist = anCylAxis.Distance(aLoc);
+        Standard_Real adist = alocdist;
+        Standard_Real adiff = aCircle.Radius() - aCylinder.Radius();
+        adist += Abs(adiff);
+        
+        if(adist < myCriteria) {
+          Standard_Real acylradius = aCylinder.Radius();
+          Standard_Real atmpvalue = aCircle.Radius() * sin(Precision::Angular());
+          Standard_Real aprojectedradius = atmpvalue;
+          aprojectedradius = 
+            sqrt((aCircle.Radius() * aCircle.Radius())
+                 - (aprojectedradius * aprojectedradius));
+          adiff = aprojectedradius - acylradius;
+          adist = alocdist + Abs(adiff);
+          
+          if(adist < myCriteria) { // Abs is important function here
+            aresult = 1;
+          }
+        }
       }
     }// if(aST==GeomAbs_Cylinder)
 
@@ -868,18 +860,17 @@ Standard_Integer IntTools_BeanFaceIntersector::FastComputeExactIntersection()
       IntAna_QuadQuadGeo anInter(aCirclePln, mySurface.Sphere());
       
       if(anInter.IsDone()) {
-	if(anInter.TypeInter() == IntAna_Circle) {
-	  gp_Circ aCircleToCompare = anInter.Circle(1);
-	  Standard_Real adist = 
-	    aCircleToCompare.Location().Distance(aCircle.Location());
-	  Standard_Real adiff = aCircle.Radius() - aCircleToCompare.Radius();
-	  adist += Abs(adiff);
-	  
-	  if(adist < myCriteria) {
-	    myRangeManager.InsertRange(myFirstParameter, myLastParameter, 2);
-	    aresult = 1;
-	  }
-	}
+        if(anInter.TypeInter() == IntAna_Circle) {
+          gp_Circ aCircleToCompare = anInter.Circle(1);
+          Standard_Real adist = 
+            aCircleToCompare.Location().Distance(aCircle.Location());
+          Standard_Real adiff = aCircle.Radius() - aCircleToCompare.Radius();
+          adist += Abs(adiff);
+          
+          if(adist < myCriteria) {
+            aresult = 1;
+          }
+        }
       }
     }// if(aST==GeomAbs_Sphere) {
   }// if(aCT==GeomAbs_Circle) {
@@ -901,64 +892,60 @@ Standard_Integer IntTools_BeanFaceIntersector::FastComputeExactIntersection()
       aTolang2=1.e-16;
       aLin=myCurve.Line();
       const gp_Dir& aDirL=aLin.Direction();
-      const gp_Pnt& aLocL=aLin.Location();
       //
       aCos=aDirC.Dot(aDirL);
       if(aCos >= 0.) {
-	aAng2 = 2.*(1. - aCos);
+        aAng2 = 2.*(1. - aCos);
       }
       else {
-	aAng2 = 2.*(1. + aCos);
+        aAng2 = 2.*(1. + aCos);
       }
       //
       if(aAng2<=aTolang2) {// IsParallel = Standard_True;
-	Standard_Boolean bFlag;
-	Standard_Integer i;
-	Standard_Real aD;
-	gp_Pnt aPL[2];
-	gp_Lin aLC(aAx1C);
-	//
-	aPL[0]=myCurve.Value(myFirstParameter);
-	aPL[1]=myCurve.Value(myLastParameter);
-	//
-	for (i=0; i<2; ++i) {
-	  aD=aLC.Distance(aPL[i]);
-	  aD=fabs(aD-aRC);
-	  bFlag=(aD > myCriteria);
-	  if (bFlag) {
-	    break;
-	  }
-	}
-        //modified by NIZHNY-EMV Fri Apr 20 08:45:29 2012
+        Standard_Boolean bFlag = Standard_False;
+        Standard_Integer i;
+        Standard_Real aD;
+        gp_Pnt aPL[2];
+        gp_Lin aLC(aAx1C);
         //
-        if (!bFlag) {
-          Standard_Real U, V, aTm;
-          gp_Pnt aPm;
-          gp_Pnt2d aP2d;
-          //
-          aTm = IntTools_Tools::IntermediatePoint(myFirstParameter, myLastParameter);
-          aPm = myCurve.Value(aTm);
-          ElSLib::Parameters(aCyl, aPm, U, V);
-          aP2d.SetCoord(U,V);
-          //
-          bFlag = !(myContext->IsPointInOnFace(mySurface.Face(), aP2d));
+        aPL[0]=myCurve.Value(myFirstParameter);
+        aPL[1]=myCurve.Value(myLastParameter);
+        //
+        for (i=0; i<2; ++i) {
+          aD=aLC.Distance(aPL[i]);
+          aD=fabs(aD-aRC);
+          bFlag=(aD > myCriteria);
+          if (bFlag) {
+            break;
+          }
         }
-	//
-	if (!bFlag){
-	  myRangeManager.InsertRange(myFirstParameter, myLastParameter, 2);
-	  aresult = 1;
-	  return aresult;
-	} 
-        else {
-          aresult = 2;
-          return aresult;
-        }
-        //modified by NIZHNY-EMV Fri Apr 20 08:45:32 2012
+        if (!bFlag){
+          aresult = 1;
+        } 
       }
       
     }//if(aCT==GeomAbs_Line) {
   }
   //modified by NIZNHY-PKV Thu Mar 01 11:54:06 2012t
+  //
+  if (aresult==1) {
+    //check intermediate point
+    Standard_Real aTm;
+    Standard_Boolean bValid;
+    //
+    const TopoDS_Face& aF = mySurface.Face();
+    aTm = IntTools_Tools::IntermediatePoint(myFirstParameter, myLastParameter);
+    const gp_Pnt& aPm = myCurve.Value(aTm);
+    //
+    bValid = myContext->IsValidPointForFace(aPm, aF, myCriteria);
+    if (bValid) {
+      IntTools_Range aRange(myFirstParameter, myLastParameter);
+      myRangeManager.InsertRange(aRange, 2);
+    } else {
+      aresult=2;
+    }
+  }
+  //
   return aresult;
 }
 
@@ -1911,7 +1898,7 @@ Standard_Boolean IntTools_BeanFaceIntersector::ComputeLocalized() {
     Handle(Geom_BSplineSurface) aSurfBspl = Handle(Geom_BSplineSurface)::DownCast(myTrsfSurface);
 
     ComputeGridPoints(aSurfBspl, myUMinParameter, myUMaxParameter,
-		      myVMinParameter, myVMaxParameter, myCriteria,
+		      myVMinParameter, myVMaxParameter, myFaceTolerance,
 		      aSurfaceData);
 
     if(!bFBoxFound) {

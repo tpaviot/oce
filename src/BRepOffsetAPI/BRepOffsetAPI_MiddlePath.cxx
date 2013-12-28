@@ -1,7 +1,17 @@
-// File:      BRepOffsetAPI_MiddlePath.cxx
-// Created:   06.08.12 16:53:16
-// Author:    jgv@ROLEX
-// Copyright: Open CASCADE 2012
+// Created on: 2012-08-06
+// Created by: jgv@ROLEX
+// Copyright (c) 2012-2014 OPEN CASCADE SAS
+//
+// This file is part of Open CASCADE Technology software library.
+//
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
+//
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BRepOffsetAPI_MiddlePath.ixx>
 #include <BRepOffsetAPI_MiddlePath.hxx>
@@ -53,13 +63,6 @@
 #include <TColgp_SequenceOfPnt.hxx>
 #include <GeomLib.hxx>
 #include <GeomAPI_Interpolate.hxx>
-
-static Standard_Boolean IsClosed(const TopoDS_Wire& aWire)
-{
-  TopoDS_Vertex V1, V2;
-  TopExp::Vertices(aWire, V1, V2);
-  return (V1.IsSame(V2));
-}
 
 static Standard_Boolean IsLinear(const TopoDS_Edge& anEdge,
                                  gp_Lin& aLine)
@@ -531,8 +534,6 @@ void BRepOffsetAPI_MiddlePath::Build()
         E2 = TopoDS::Edge(myPaths((j<=NbPaths)? j : 1)(i));
       TopoDS_Edge E12 = TopoDS::Edge(SectionsEdges(i)(j-1));
       
-      //TopoDS_Vertex PrevVertex = TopoDS::Vertex(VerSeq(j-1));
-      //TopoDS_Vertex CurVertex  = TopoDS::Vertex(VerSeq(j));
       TopoDS_Vertex PrevVertex = (E1.IsNull())? TopoDS::Vertex(myPaths(j-1)(i))
         : TopExp::LastVertex(E1, Standard_True);
       TopoDS_Vertex CurVertex = (E2.IsNull())? TopoDS::Vertex(myPaths((j<=NbPaths)? j : 1)(i))
@@ -540,15 +541,13 @@ void BRepOffsetAPI_MiddlePath::Build()
       
       TopoDS_Edge ProperEdge;
       const TopTools_ListOfShape& LE = VEmap.FindFromKey(PrevVertex);
-      //Temporary
-      Standard_Integer LenList = LE.Extent();
-      ///////////
+
       for (itl.Initialize(LE); itl.More(); itl.Next())
       {
         anEdge = TopoDS::Edge(itl.Value());
         TopExp::Vertices(anEdge, V1, V2);
-        if ((V1.IsSame(PrevVertex) && V2.IsSame(CurVertex) ||
-             V1.IsSame(CurVertex) && V2.IsSame(PrevVertex)) &&
+        if (((V1.IsSame(PrevVertex) && V2.IsSame(CurVertex)) ||
+             (V1.IsSame(CurVertex) && V2.IsSame(PrevVertex))) &&
             !anEdge.IsSame(E1))
         {
           ProperEdge = anEdge;
@@ -673,7 +672,6 @@ void BRepOffsetAPI_MiddlePath::Build()
           BRepLib::BuildCurve3d(NewEdge2);
           Standard_Boolean good_ne  = IsValidEdge(NewEdge, theFace);
           Standard_Boolean good_ne1 = IsValidEdge(NewEdge1, theFace);
-          Standard_Boolean good_ne2 = IsValidEdge(NewEdge2, theFace);
 
           GeomAbs_CurveType type_E1 = TypeOfEdge(E1);
           GeomAbs_CurveType type_E2 = TypeOfEdge(E2);
@@ -826,7 +824,7 @@ void BRepOffsetAPI_MiddlePath::Build()
     {
       gp_Ax1 theAxis;
       gp_Dir theDir1, theDir2;
-      Standard_Real theAngle;
+      Standard_Real theAngle = 0.;
       gp_Vec theTangent;
       Standard_Boolean SimilarArcs = Standard_True;
       for (j = 1; j <= myPaths.Length(); j++)
@@ -864,8 +862,8 @@ void BRepOffsetAPI_MiddlePath::Build()
           }
           gp_Dir aDir1 = gp_Vec(aCirc.Location(), Pnt1);
           gp_Dir aDir2 = gp_Vec(aCirc.Location(), Pnt2);
-          if (!(aDir1.IsEqual(theDir1, AngTol) && aDir2.IsEqual(theDir2, AngTol) ||
-                aDir1.IsEqual(theDir2, AngTol) && aDir2.IsEqual(theDir1, AngTol)))
+          if (!((aDir1.IsEqual(theDir1, AngTol) && aDir2.IsEqual(theDir2, AngTol)) ||
+                (aDir1.IsEqual(theDir2, AngTol) && aDir2.IsEqual(theDir1, AngTol))))
           {
             SimilarArcs = Standard_False;
             break;
@@ -902,7 +900,12 @@ void BRepOffsetAPI_MiddlePath::Build()
           theAx2 = gp_Ax2(theCenterOfCirc, theAxis.Direction(), Vec1);
           theCircle = GC_MakeCircle(theAx2, Vec1.Magnitude());
         }
-        MidEdges(i) = BRepLib_MakeEdge(theCircle, 0., theAngle);
+        BRepLib_MakeEdge aME (theCircle, 0., theAngle);
+        aME.Build();
+
+        MidEdges(i) = aME.IsDone() ? 
+          aME.Shape() : 
+          TopoDS_Edge();
       }
     }
   }

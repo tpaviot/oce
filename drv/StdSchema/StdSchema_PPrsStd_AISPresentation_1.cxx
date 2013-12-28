@@ -40,6 +40,8 @@ void StdSchema_PPrsStd_AISPresentation_1::SWrite(const Handle(Standard_Persisten
   if (!p.IsNull()) {
     Handle(PPrsStd_AISPresentation_1) &pp = (Handle(PPrsStd_AISPresentation_1)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutBoolean(pp->_CSFDB_GetPPrsStd_AISPresentation_1myIsDisplayed());
@@ -64,6 +66,8 @@ void StdSchema_PPrsStd_AISPresentation_1::SRead(const Handle(Standard_Persistent
 { 
   if (!p.IsNull()) {
     Handle(PPrsStd_AISPresentation_1) &pp = (Handle(PPrsStd_AISPresentation_1)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

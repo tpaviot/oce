@@ -1,22 +1,18 @@
 -- Created on: 1995-02-10
 -- Created by: Mister rmi
 -- Copyright (c) 1995-1999 Matra Datavision
--- Copyright (c) 1999-2012 OPEN CASCADE SAS
+-- Copyright (c) 1999-2014 OPEN CASCADE SAS
 --
--- The content of this file is subject to the Open CASCADE Technology Public
--- License Version 6.5 (the "License"). You may not use the content of this file
--- except in compliance with the License. Please obtain a copy of the License
--- at http://www.opencascade.org and read it completely before using this file.
+-- This file is part of Open CASCADE Technology software library.
 --
--- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
--- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+-- This library is free software; you can redistribute it and / or modify it
+-- under the terms of the GNU Lesser General Public version 2.1 as published
+-- by the Free Software Foundation, with special exception defined in the file
+-- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+-- distribution for complete text of the license and disclaimer of any warranty.
 --
--- The Original Code and all software distributed under the License is
--- distributed on an "AS IS" basis, without warranty of any kind, and the
--- Initial Developer hereby disclaims all such warranties, including without
--- limitation, any warranties of merchantability, fitness for a particular
--- purpose or non-infringement. Please see the License for the specific terms
--- and conditions governing the rights and limitations under the License.
+-- Alternatively, this file may be used under the terms of Open CASCADE
+-- commercial license or contractual agreement.
 
 --modified by rob -FEB 01 1996
 --                -JUL 23 1997 : optimize recompute of selections...
@@ -76,9 +72,10 @@ uses
     SensitiveEntity              from SelectBasics,
     SortAlgo                     from SelectBasics,
     EntityOwner                  from SelectMgr,
-    StateOfSelection             from SelectMgr, 
-    Array1OfPnt2d                from TColgp
-    
+    StateOfSelection             from SelectMgr,
+    Array1OfPnt2d                from TColgp,
+    Lin                          from gp
+
 is
 
     Initialize ;
@@ -229,12 +226,12 @@ is
    	 ---C++: inline
 
 
-    Picked(me) returns any EntityOwner is static;
+    Picked(me) returns EntityOwner from SelectMgr is static;
     	---Level: Public 
     	---Purpose: Returns the current selected entity detected by the selector;
 
 
-    OnePicked(me:mutable) returns any EntityOwner is static;
+    OnePicked(me:mutable) returns EntityOwner from SelectMgr is static;
     	---Purpose: Returns the picked element with the highest priority,
     	-- and which is the closest to the last successful mouse position.
 
@@ -350,6 +347,54 @@ is
     SetUpdateSortPossible( me: mutable; possible : Boolean from Standard );
     IsUpdateSortPossible( me )  returns Boolean from Standard;
 
+    PickingLine (me; theX, theY : Real from Standard)
+      returns Lin from gp
+      is virtual protected;
+    ---Level: Internal
+    ---Purpose: Returns picking line along which the depth value should be
+    -- computed. Override this method to compute picking line by the same
+    -- which is used for projecting sensitive entities to selection space.
+    -- @param theX [in] the x picking coordinate.
+    -- @param theY [in] the y picking coordinate.
+    -- @return picking line.
+
+    DepthClipping (me; theX, theY : Real from Standard;
+                   theMin, theMax : out Real from Standard)
+      is virtual protected;
+    ---Level: Internal
+    ---Purpose: Returns global depth clipping limits applied to every sensitive.
+    -- Override this method to convert clippings defined by application into
+    -- selection space for mouse picking detection.
+    -- Default implementation returns infinite clip limits (no clipping).
+    -- @param theX [in] the x picking coordinate.
+    -- @param theY [in] the y picking coordinate.
+    -- @param theMin [out] the minimum depth. Default is RealFirst()
+    -- @param theMax [out] the maximum depth. Default is RealLast()
+
+    DepthClipping (me; theX, theY : Real from Standard;
+                   theOwner : EntityOwner from SelectMgr;
+                   theMin, theMax : out Real from Standard)
+      is virtual protected;
+    ---Level: Internal
+    ---Purpose: Returns depth clipping limits applied to sensitives of
+    -- entity owner. Override this method to convert clippings defined by
+    -- application owners into selection space for mouse picking detection.
+    -- Default implementation returns infinite clip limits (no clipping).
+    -- @param theX [in] the x picking coordinate.
+    -- @param theY [in] the y picking coordinate.
+    -- @param theOwner [in] the sensitive owner.
+    -- @param theMin [out] the minimum depth. Default is RealFirst()
+    -- @param theMax [out] the maximum depth. Default is RealLast()
+
+    HasDepthClipping (me; theOwner : EntityOwner from SelectMgr)
+      returns Boolean is virtual protected;
+    ---Level: Internal
+    ---Purpose: Returns True if the owner provides clipping by depth
+    -- for its sensitives. Override this method to tell the selector
+    -- to use the DepthClipping method for the owner.
+    -- Default implementation returns False for every owner.
+    -- @param theOwner [in] the onwer to check.
+    -- @return True if owner provides depth limits for sensitive clipping.
 
 fields
 

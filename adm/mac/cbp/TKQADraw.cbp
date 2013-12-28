@@ -15,6 +15,10 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -37,6 +41,10 @@
 				<Compiler>
 					<Add option="-O0" />
 					<Add option="-g" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -110,6 +118,7 @@
 			<Add library="TKXSDRAW" />
 			<Add library="TKSTL" />
 			<Add library="TKAdvTools" />
+			<Add library="TKVoxel" />
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
@@ -121,13 +130,13 @@
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
 			<Add library="objc" />
+			<Add library="freetype" />
 			<Add library="tcl8.5" />
 			<Add library="tk8.5" />
 			<Add library="objc" />
+			<Add library="freetype" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
-			<Add library="tcl8.5" />
-			<Add library="tk8.5" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
 		</Linker>
@@ -160,7 +169,6 @@
 		<Unit filename="../../../src/QADNaming/QADNaming_BasicCommands.cxx" />
 		<Unit filename="../../../src/QADNaming/QADNaming_BuilderCommands.cxx" />
 		<Unit filename="../../../src/QADNaming/QADNaming_IteratorsCommands.cxx" />
-		<Unit filename="../../../src/QADNaming/QADNaming_Sample.cxx" />
 		<Unit filename="../../../src/QADNaming/QADNaming_SelectionCommands.cxx" />
 		<Unit filename="../../../src/QADNaming/QADNaming_ToolsCommands.cxx" />
 		<Unit filename="../../../src/QADraw/QADraw.cxx" />

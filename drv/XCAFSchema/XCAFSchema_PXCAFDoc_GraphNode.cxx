@@ -41,6 +41,8 @@ void XCAFSchema_PXCAFDoc_GraphNode::SWrite(const Handle(Standard_Persistent)& p,
   if (!p.IsNull()) {
     Handle(PXCAFDoc_GraphNode) &pp = (Handle(PXCAFDoc_GraphNode)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPXCAFDoc_GraphNodemyFathers(),f);
@@ -61,6 +63,8 @@ void XCAFSchema_PXCAFDoc_GraphNode::SRead(const Handle(Standard_Persistent)& p, 
 { 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_GraphNode) &pp = (Handle(PXCAFDoc_GraphNode)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

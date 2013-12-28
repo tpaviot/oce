@@ -39,6 +39,8 @@ void XCAFSchema_PXCAFDoc_Volume::SWrite(const Handle(Standard_Persistent)& p, St
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Volume) &pp = (Handle(PXCAFDoc_Volume)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutReal(pp->_CSFDB_GetPXCAFDoc_VolumemyValue());
@@ -57,6 +59,8 @@ void XCAFSchema_PXCAFDoc_Volume::SRead(const Handle(Standard_Persistent)& p, Sto
 { 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Volume) &pp = (Handle(PXCAFDoc_Volume)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -1,5 +1,5 @@
 
-/*  A Bison parser, made from /misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc
+/*  A Bison parser, made from /dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc
  by  GNU Bison version 1.25
   */
 
@@ -30,7 +30,7 @@
 #define	HEXA	273
 #define	QUID	274
 
-#line 23 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 18 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 
 #include "recfile.ph"		/* definitions des types d'arguments */
 #include "recfile.pc"		/* la-dedans, tout y est */
@@ -63,6 +63,12 @@
 #if defined(_AIX)
 #include <malloc.h>
 #define alloca malloc
+#endif
+
+
+// disable MSVC warnings in flex code
+#ifdef _MSC_VER
+#pragma warning(disable:4244 4131)
 #endif
 
 #ifndef YYSTYPE
@@ -147,11 +153,11 @@ static const short yyrhs[] = {    20,
 
 #if YYDEBUG != 0
 static const short yyrline[] = { 0,
-    61,    62,    63,    64,    65,    66,    67,    68,    68,    68,
-    71,    72,    74,    75,    77,    80,    81,    82,    83,    84,
-    88,    91,    94,    99,   100,   101,   103,   104,   105,   107,
-   108,   110,   111,   112,   113,   115,   116,   118,   119,   121,
-   124,   127,   128,   130,   133,   135,   140,   143
+    62,    63,    64,    65,    66,    67,    68,    69,    69,    69,
+    72,    73,    75,    76,    78,    81,    82,    83,    84,    85,
+    89,    92,    95,   100,   101,   102,   104,   105,   106,   108,
+   109,   111,   112,   113,   114,   116,   117,   119,   120,   122,
+   125,   128,   129,   131,   134,   136,   141,   144
 };
 #endif
 
@@ -690,75 +696,75 @@ yyreduce:
   switch (yyn) {
 
 case 10:
-#line 69 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 70 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  rec_finfile();  return(0);  /*  fini pour celui-la  */  ;
     break;}
 case 15:
-#line 78 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 79 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  rec_finhead();  ;
     break;}
 case 16:
-#line 80 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 81 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  rec_typarg(rec_argIdent);     rec_newarg();  ;
     break;}
 case 17:
-#line 81 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 82 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  /* deja fait par lex*/ 	 rec_newarg();  ;
     break;}
 case 18:
-#line 82 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 83 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  rec_newarg();  ;
     break;}
 case 19:
-#line 83 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 84 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  rec_newarg();  ;
     break;}
 case 20:
-#line 84 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 85 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  rec_typarg(rec_argMisc);      rec_newarg();
 			   yyerrstatus = 1; yyclearin;  ;
     break;}
 case 21:
-#line 89 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 90 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  rec_listype();  ;
     break;}
 case 22:
-#line 92 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 93 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  rec_deblist();  ;
     break;}
 case 23:
-#line 95 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 96 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  if (modeprint > 0)
 		{  printf("Record no : %d -- ",nbrec+1);  rec_print(currec);  }
 	   rec_newent ();  yyerrstatus = 0; ;
     break;}
 case 40:
-#line 122 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 123 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  scope_debut();  ;
     break;}
 case 41:
-#line 125 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 126 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  rec_typarg(rec_argIdent);    rec_newarg();  ;
     break;}
 case 44:
-#line 131 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 132 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  rec_deblist();  ;
     break;}
 case 45:
-#line 134 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 135 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  scope_fin();  ;
     break;}
 case 46:
-#line 136 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 137 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  printf("***  Warning : Export List not yet processed\n");
 	   rec_newent();  scope_fin() ; ;
     break;}
 case 47:
-#line 141 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 142 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  rec_ident();  ;
     break;}
 case 48:
-#line 144 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 145 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"
 {  rec_type ();  ;
     break;}
 }
@@ -956,4 +962,4 @@ yyerrhandle:
   yystate = yyn;
   goto yynewstate;
 }
-#line 146 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
+#line 147 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/StepFile/step.yacc"

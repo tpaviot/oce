@@ -15,6 +15,10 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -37,6 +41,10 @@
 				<Compiler>
 					<Add option="-O0" />
 					<Add option="-g" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -113,6 +121,7 @@
 			<Add library="objc" />
 			<Add library="freeimage" />
 			<Add library="freetype" />
+			<Add library="freetype" />
 		</Linker>
 		<Unit filename="../../../drv/TestTopOpeDraw/TestTopOpeDraw_Array1OfDrawableMesure_0.cxx" />
 		<Unit filename="../../../drv/TestTopOpeDraw/TestTopOpeDraw_Array1OfDrawableP3D_0.cxx" />
@@ -144,7 +153,6 @@
 		<Unit filename="../../../src/TestTopOpe/TestTopOpe_BOOP.cxx" />
 		<Unit filename="../../../src/TestTopOpe/TestTopOpe_BOOPCommands.cxx" />
 		<Unit filename="../../../src/TestTopOpe/TestTopOpe_CORCommands.cxx" />
-		<Unit filename="../../../src/TestTopOpe/TestTopOpe_DSACommands.cxx" />
 		<Unit filename="../../../src/TestTopOpe/TestTopOpe_DSF.cxx" />
 		<Unit filename="../../../src/TestTopOpe/TestTopOpe_EditBOOP.cxx" />
 		<Unit filename="../../../src/TestTopOpe/TestTopOpe_HDSCommands.cxx" />

@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESDimen_Array1OfLeaderArrow(const Standard_Integer Low,const Standard_Integer Up);
+      IGESDimen_Array1OfLeaderArrow(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESDimen_Array1OfLeaderArrow(const Handle(IGESDimen_LeaderArrow)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESDimen_Array1OfLeaderArrow(const Handle(IGESDimen_LeaderArrow)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(IGESDimen_LeaderArrow)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESDimen_Array1OfLeaderArrow()
 {
   Destroy();

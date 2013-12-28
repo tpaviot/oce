@@ -40,6 +40,8 @@ void StdSchema_PNaming_HArray1OfNamedShape::SWrite(const Handle(Standard_Persist
   if (!p.IsNull()) {
     Handle(PNaming_HArray1OfNamedShape) &pp = (Handle(PNaming_HArray1OfNamedShape)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPNaming_HArray1OfNamedShapeLowerBound());
@@ -60,6 +62,8 @@ void StdSchema_PNaming_HArray1OfNamedShape::SRead(const Handle(Standard_Persiste
 { 
   if (!p.IsNull()) {
     Handle(PNaming_HArray1OfNamedShape) &pp = (Handle(PNaming_HArray1OfNamedShape)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

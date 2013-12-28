@@ -129,9 +129,6 @@ public:
   //! Returns the set of detectable structures <br>
 //!	    in a visualiser <me>. <br>
   Standard_EXPORT     void PickStructures(Graphic3d_MapOfStructure& SG) const;
-  //! Returns the set of visible structures <br>
-//!	    in a visualiser <me>. <br>
-  Standard_EXPORT     void VisibleStructures(Graphic3d_MapOfStructure& SG) const;
   //! Returns the values of the current default attributes. <br>
   Standard_EXPORT     Handle_Graphic3d_AspectFillArea3d FillArea3dAspect() const;
   //! Returns maximum number of managers defineable. <br>
@@ -208,6 +205,8 @@ public:
   Standard_EXPORT   virtual  void UnHighlight()  = 0;
   //! Suppress the highlighting on the structure <AStructure>. <br>
   Standard_EXPORT   virtual  void UnHighlight(const Handle(Graphic3d_Structure)& AStructure)  = 0;
+  
+  Standard_EXPORT     void ReComputeStructures() ;
 
 friend class Graphic3d_Structure;
 
@@ -236,7 +235,6 @@ Handle_Graphic3d_AspectMarker3d MyAspectMarker3d;
 Handle_Graphic3d_AspectFillArea3d MyAspectFillArea3d;
 Graphic3d_MapOfStructure MyDisplayedStructure;
 Graphic3d_MapOfStructure MyHighlightedStructure;
-Graphic3d_MapOfStructure MyVisibleStructure;
 Graphic3d_MapOfStructure MyPickStructure;
 Aspect_GenId MyStructGenId;
 Handle_Graphic3d_GraphicDriver MyGraphicDriver;
@@ -246,8 +244,6 @@ private:
 
   //! Sets detectable the structure <AStructure>. <br>
   Standard_EXPORT     void Detectable(const Handle(Graphic3d_Structure)& AStructure) ;
-  //! Sets invisible the structure <AStructure>. <br>
-  Standard_EXPORT     void Invisible(const Handle(Graphic3d_Structure)& AStructure) ;
   //! Returns a new identification number for a new structure <br>
 //!	    in the manager. <br>
   Standard_EXPORT     Standard_Integer NewIdentification() ;
@@ -255,9 +251,6 @@ private:
   Standard_EXPORT     void Remove(const Standard_Integer AnId) ;
   //! Sets no detectable the structure <AStructure>. <br>
   Standard_EXPORT     void Undetectable(const Handle(Graphic3d_Structure)& AStructure) ;
-  //! Sets visible the structure <AStructure>. <br>
-//!	    in the manager. <br>
-  Standard_EXPORT     void Visible(const Handle(Graphic3d_Structure)& AStructure) ;
 
 
 

@@ -320,9 +320,6 @@ endif()
   list( APPEND TKGeomAlgo_USED_SRCFILES "../../../drv/IntSurf/IntSurf_SequenceNodeOfSequenceOfPathPoint_0.cxx" )
   SOURCE_GROUP (IntSurf FILES "../../../drv/IntSurf/IntSurf_SequenceNodeOfSequenceOfPathPoint_0.cxx")
 
-  list( APPEND TKGeomAlgo_USED_SRCFILES "../../../drv/IntSurf/IntSurf_SequenceNodeOfSequenceOfPntOn2S_0.cxx" )
-  SOURCE_GROUP (IntSurf FILES "../../../drv/IntSurf/IntSurf_SequenceNodeOfSequenceOfPntOn2S_0.cxx")
-
   list( APPEND TKGeomAlgo_USED_SRCFILES "../../../drv/IntSurf/IntSurf_SequenceOfCouple_0.cxx" )
   SOURCE_GROUP (IntSurf FILES "../../../drv/IntSurf/IntSurf_SequenceOfCouple_0.cxx")
 
@@ -331,9 +328,6 @@ endif()
 
   list( APPEND TKGeomAlgo_USED_SRCFILES "../../../drv/IntSurf/IntSurf_SequenceOfPathPoint_0.cxx" )
   SOURCE_GROUP (IntSurf FILES "../../../drv/IntSurf/IntSurf_SequenceOfPathPoint_0.cxx")
-
-  list( APPEND TKGeomAlgo_USED_SRCFILES "../../../drv/IntSurf/IntSurf_SequenceOfPntOn2S_0.cxx" )
-  SOURCE_GROUP (IntSurf FILES "../../../drv/IntSurf/IntSurf_SequenceOfPntOn2S_0.cxx")
 
   list( APPEND TKGeomAlgo_USED_SRCFILES "../../../src/IntSurf/IntSurf.cxx" )
   SOURCE_GROUP (IntSurf FILES "../../../src/IntSurf/IntSurf.cxx")
@@ -1537,6 +1531,10 @@ endif()
 
 if (WIN32)
 else()
+
+  if (APPLE)
+
+  endif()
 
 endif()
 

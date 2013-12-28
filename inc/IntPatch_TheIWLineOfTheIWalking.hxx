@@ -37,6 +37,9 @@
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
+#ifndef _IntSurf_Allocator_HeaderFile
+#include <IntSurf_Allocator.hxx>
+#endif
 class IntSurf_LineOn2S;
 class Standard_OutOfRange;
 class Standard_DomainError;
@@ -51,7 +54,7 @@ class IntPatch_TheIWLineOfTheIWalking : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IntPatch_TheIWLineOfTheIWalking();
+  Standard_EXPORT   IntPatch_TheIWLineOfTheIWalking(const IntSurf_Allocator& theAllocator = 0);
   
   Standard_EXPORT     void Reverse() ;
   

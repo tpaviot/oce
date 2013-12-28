@@ -5,6 +5,7 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/HLRTopoBRep : @top_srcdir@/src/HLRTopoBRep: \
 @top_srcdir@/drv/HLRBRep : @top_srcdir@/src/HLRBRep: \
 @top_srcdir@/drv/HLRAlgo : @top_srcdir@/src/HLRAlgo: \
+@top_srcdir@/drv/HLRAppli : @top_srcdir@/src/HLRAppli: \
 @top_srcdir@/drv/Intrv : @top_srcdir@/src/Intrv: \
 @top_srcdir@/drv/TopBas : @top_srcdir@/src/TopBas: \
 @top_srcdir@/drv/TopCnx : @top_srcdir@/src/TopCnx: \
@@ -22,6 +23,7 @@ INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES)  \
 -I@top_srcdir@/drv/HLRTopoBRep -I@top_srcdir@/src/HLRTopoBRep \
 -I@top_srcdir@/drv/HLRBRep -I@top_srcdir@/src/HLRBRep \
 -I@top_srcdir@/drv/HLRAlgo -I@top_srcdir@/src/HLRAlgo \
+-I@top_srcdir@/drv/HLRAppli -I@top_srcdir@/src/HLRAppli \
 -I@top_srcdir@/drv/Intrv -I@top_srcdir@/src/Intrv \
 -I@top_srcdir@/drv/TopBas -I@top_srcdir@/src/TopBas \
 -I@top_srcdir@/drv/TopCnx -I@top_srcdir@/src/TopCnx \
@@ -153,6 +155,7 @@ libTKHLR_la_SOURCES = \
 @top_srcdir@/src/HLRAlgo/HLRAlgo_Projector.cxx \
 @top_srcdir@/src/HLRAlgo/HLRAlgo_TriangleData.cxx \
 @top_srcdir@/src/HLRAlgo/HLRAlgo_WiresBlock.cxx \
+@top_srcdir@/src/HLRAppli/HLRAppli_ReflectLines.cxx \
 @top_srcdir@/src/HLRBRep/HLRBRep.cxx \
 @top_srcdir@/src/HLRBRep/HLRBRep_Algo.cxx \
 @top_srcdir@/src/HLRBRep/HLRBRep_AreaLimit.cxx \

@@ -1,22 +1,17 @@
 // Created on: 2001-03-20
 // Created by: Andrey BETENEV
-// Copyright (c) 2001-2012 OPEN CASCADE SAS
+// Copyright (c) 2001-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifndef Standard_Assert_HeaderFile
 #define Standard_Assert_HeaderFile
@@ -61,6 +56,13 @@
 //!   execution when under debugger (may terminate the process if not under debugger).
 //!
 //! The second argument (message) should be string constant ("...").
+//!
+//! The Standard_STATIC_ASSERT macro is to be used for compile time checks.
+//! To use this macro, write:
+//!
+//!   Standard_STATIC_ASSERT(const_expression);
+//!
+//! If const_expression is false, a compiler error occurs.
 //!
 //! The macros are formed as functions and require semicolon at the end.
 
@@ -154,6 +156,23 @@ inline void Standard_ASSERT_DO_NOTHING() {}
 
 //! Raise debug message
 #define Standard_ASSERT_INVOKE(theDesc) Standard_ASSERT_INVOKE_(always, theDesc)
+
+//! Static assert --
+//! empty default template
+template <bool condition> 
+struct Standard_Static_Assert { };
+
+//! Static assert -- specialization for condition being true
+template <>
+struct Standard_Static_Assert<true>
+{
+  static void assert_ok() {}
+};
+
+//! Cause compiler error if argument is not constant expression or
+//! evaluates to false
+#define Standard_STATIC_ASSERT(theExpr)     \
+        Standard_Static_Assert<theExpr>::assert_ok();
 
 #endif // Standard_Assert_HeaderFile
 

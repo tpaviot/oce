@@ -244,7 +244,7 @@ protected:
 private:
 
   
-  Standard_EXPORT     void Span(const Standard_Integer Side,const Standard_Integer Ideb,const Standard_Integer Ifin,Standard_Integer& OutIdeb,Standard_Integer& OutIfin,const Standard_Integer NbKnots) const;
+  Standard_EXPORT     void Span(const Standard_Integer Side,const Standard_Integer Ideb,const Standard_Integer Ifin,Standard_Integer& OutIdeb,Standard_Integer& OutIfin,const Standard_Integer FKIndx,const Standard_Integer LKIndx) const;
   
   Standard_EXPORT     Standard_Boolean IfUVBound(const Standard_Real U,const Standard_Real V,Standard_Integer& Ideb,Standard_Integer& Ifin,Standard_Integer& IVdeb,Standard_Integer& IVfin,const Standard_Integer USide,const Standard_Integer VSide) const;
   

@@ -52,6 +52,8 @@ void StdLSchema_PDataStd_NamedData::SWrite(const Handle(Standard_Persistent)& p,
   if (!p.IsNull()) {
     Handle(PDataStd_NamedData) &pp = (Handle(PDataStd_NamedData)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDataStd_NamedDatamyDimensions(),f);
@@ -82,6 +84,8 @@ void StdLSchema_PDataStd_NamedData::SRead(const Handle(Standard_Persistent)& p, 
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_NamedData) &pp = (Handle(PDataStd_NamedData)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

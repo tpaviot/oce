@@ -39,6 +39,8 @@ void XCAFSchema_PXCAFDoc_Color::SWrite(const Handle(Standard_Persistent)& p, Sto
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Color) &pp = (Handle(PXCAFDoc_Color)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     XCAFSchema_Quantity_Color::SWrite(pp->_CSFDB_GetPXCAFDoc_ColormyColor(),f,theSchema);
@@ -57,6 +59,8 @@ void XCAFSchema_PXCAFDoc_Color::SRead(const Handle(Standard_Persistent)& p, Stor
 { 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Color) &pp = (Handle(PXCAFDoc_Color)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -1,22 +1,18 @@
 // Created on: 1995-03-29
 // Created by: Frederic MAUPAS
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // gka 21.08.98 PRO7656
 // gka 15.12.98 UKI60591 #1274560
@@ -291,14 +287,16 @@ void StepToTopoDS_TranslateEdgeLoop::Init(const Handle(StepShape_FaceBound)& Fac
     StepEdge1 = StepEdge;                         //
     Handle(StepShape_EdgeCurve) EC = Handle(StepShape_EdgeCurve)::DownCast(StepEdge);
     Handle(StepGeom_Curve) C = EC->EdgeGeometry();
-    if (C->IsKind(STANDARD_TYPE(StepGeom_SurfaceCurve))) {
-      Handle(StepGeom_SurfaceCurve) Sc = Handle(StepGeom_SurfaceCurve)::DownCast(C);
-      C = Sc->Curve3d();
+    if (!C.IsNull()){
+      if (C->IsKind(STANDARD_TYPE(StepGeom_SurfaceCurve))) {
+        Handle(StepGeom_SurfaceCurve) Sc = Handle(StepGeom_SurfaceCurve)::DownCast(C);
+        C = Sc->Curve3d();
 //      if (modepcurve != 3) {
 //	lastpcurve = StepToTopoDS_GeometricTool::PCurve (Sc,StepSurf,StepPCurve1);
 //	if (StepPCurve1 == StepPCurve) modepcurve = -1;
 //	StepPCurve = StepPCurve1;
 //      }
+      }
     }
 ////    else if (C->IsKind(STANDARD_TYPE(StepGeom_Polyline))) {  }
 //    else if (C->IsKind(STANDARD_TYPE(StepGeom_Pcurve))) {
@@ -462,8 +460,12 @@ void StepToTopoDS_TranslateEdgeLoop::Init(const Handle(StepShape_FaceBound)& Fac
       // --------------------------------------------
       // CASE 1 : The Edge Geometry is of Pcurve Type
       // --------------------------------------------
-      
-      if (C->IsKind(STANDARD_TYPE(StepGeom_Pcurve))) {
+      if (C.IsNull())
+      {
+	aTool.ComputePCurve(Standard_True);
+	hasPcurve = Standard_False;
+      }
+      else if (C->IsKind(STANDARD_TYPE(StepGeom_Pcurve))) {
 	Handle(StepGeom_Pcurve) StepPCurve = Handle(StepGeom_Pcurve)::DownCast(C);
 	C2d = myTranEdge.MakePCurve (StepPCurve,ConvSurf);
 	// -- Statistics --

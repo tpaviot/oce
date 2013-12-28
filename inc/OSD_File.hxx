@@ -31,9 +31,6 @@
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
 #endif
-#ifndef _Standard_CString_HeaderFile
-#include <Standard_CString.hxx>
-#endif
 #ifndef _OSD_FileNode_HeaderFile
 #include <OSD_FileNode.hxx>
 #endif
@@ -42,6 +39,9 @@
 #endif
 #ifndef _OSD_KindFile_HeaderFile
 #include <OSD_KindFile.hxx>
+#endif
+#ifndef _Standard_Size_HeaderFile
+#include <Standard_Size.hxx>
 #endif
 class Standard_ProgramError;
 class OSD_Path;
@@ -131,7 +131,7 @@ public:
   //! Returns TRUE if this file is locked. <br>
   Standard_EXPORT     Standard_Boolean IsLocked() ;
   //! Returns actual number of bytes of <me>. <br>
-  Standard_EXPORT     Standard_Integer Size() ;
+  Standard_EXPORT     Standard_Size Size() ;
   //! Prints a file on selected printer. <br>
   Standard_EXPORT     void Print(const OSD_Printer& WhichPrinter) ;
   //! Returns TRUE if <me> is open. <br>
@@ -163,6 +163,8 @@ protected:
 
 Standard_Integer myIO;
 Standard_Address myFILE;
+Standard_Integer myFileChannel;
+Standard_Address myFileHandle;
 
 
 private:
@@ -172,9 +174,6 @@ private:
 Standard_Boolean ImperativeFlag;
 OSD_LockType myLock;
 OSD_OpenMode myMode;
-Standard_CString myBuffer;
-Standard_CString myCurrPtr;
-Standard_CString myEndPtr;
 
 
 };

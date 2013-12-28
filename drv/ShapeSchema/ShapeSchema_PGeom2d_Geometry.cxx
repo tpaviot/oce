@@ -40,6 +40,8 @@ void ShapeSchema_PGeom2d_Geometry::SWrite(const Handle(Standard_Persistent)& p, 
   if (!p.IsNull()) {
     Handle(PGeom2d_Geometry) &pp = (Handle(PGeom2d_Geometry)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -57,6 +59,8 @@ void ShapeSchema_PGeom2d_Geometry::SRead(const Handle(Standard_Persistent)& p, S
 { 
   if (!p.IsNull()) {
     Handle(PGeom2d_Geometry) &pp = (Handle(PGeom2d_Geometry)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -153,11 +153,23 @@ endif()
   list( APPEND TKFillet_USED_SRCFILES "../../../src/ChFi2d/ChFi2d.cxx" )
   SOURCE_GROUP (ChFi2d FILES "../../../src/ChFi2d/ChFi2d.cxx")
 
+  list( APPEND TKFillet_USED_SRCFILES "../../../src/ChFi2d/ChFi2d_AnaFilletAlgo.cxx" )
+  SOURCE_GROUP (ChFi2d FILES "../../../src/ChFi2d/ChFi2d_AnaFilletAlgo.cxx")
+
   list( APPEND TKFillet_USED_SRCFILES "../../../src/ChFi2d/ChFi2d_Builder.cxx" )
   SOURCE_GROUP (ChFi2d FILES "../../../src/ChFi2d/ChFi2d_Builder.cxx")
 
   list( APPEND TKFillet_USED_SRCFILES "../../../src/ChFi2d/ChFi2d_Builder_0.cxx" )
   SOURCE_GROUP (ChFi2d FILES "../../../src/ChFi2d/ChFi2d_Builder_0.cxx")
+
+  list( APPEND TKFillet_USED_SRCFILES "../../../src/ChFi2d/ChFi2d_ChamferAPI.cxx" )
+  SOURCE_GROUP (ChFi2d FILES "../../../src/ChFi2d/ChFi2d_ChamferAPI.cxx")
+
+  list( APPEND TKFillet_USED_SRCFILES "../../../src/ChFi2d/ChFi2d_FilletAPI.cxx" )
+  SOURCE_GROUP (ChFi2d FILES "../../../src/ChFi2d/ChFi2d_FilletAPI.cxx")
+
+  list( APPEND TKFillet_USED_SRCFILES "../../../src/ChFi2d/ChFi2d_FilletAlgo.cxx" )
+  SOURCE_GROUP (ChFi2d FILES "../../../src/ChFi2d/ChFi2d_FilletAlgo.cxx")
 
   list( APPEND TKFillet_USED_SRCFILES "../../../src/ChFi3d/ChFi3d.cxx" )
   SOURCE_GROUP (ChFi3d FILES "../../../src/ChFi3d/ChFi3d.cxx")
@@ -458,6 +470,10 @@ endif()
 
 if (WIN32)
 else()
+
+  if (APPLE)
+
+  endif()
 
 endif()
 

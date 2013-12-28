@@ -2,32 +2,54 @@
 // Created by: Sergey ZERCHANINOV
 // Copyright (c) 2011-2013 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-#include <OpenGl_IndexBuffer.hxx>
-#include <OpenGl_Context.hxx>
-
-#include <OpenGl_PrimitiveArray.hxx>
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <OpenGl_AspectFace.hxx>
+#include <OpenGl_Context.hxx>
 #include <OpenGl_GraphicDriver.hxx>
+#include <OpenGl_IndexBuffer.hxx>
+#include <OpenGl_PointSprite.hxx>
+#include <OpenGl_PrimitiveArray.hxx>
+#include <OpenGl_ShaderManager.hxx>
+#include <OpenGl_ShaderProgram.hxx>
 #include <OpenGl_Structure.hxx>
 #include <OpenGl_Workspace.hxx>
 
 #include <InterfaceGraphic_PrimitiveArray.hxx>
+
+namespace
+{
+  template<class T>
+  void BindProgramWithMaterial (const Handle(OpenGl_Workspace)& theWS,
+                                const T*                      theAspect)
+  {
+    const Handle(OpenGl_Context)& aCtx = theWS->GetGlContext();
+    const Handle(OpenGl_ShaderProgram)& aProgram = theAspect->ShaderProgramRes (theWS);
+    if (aProgram.IsNull())
+    {
+      OpenGl_ShaderProgram::Unbind (aCtx);
+      return;
+    }
+    aProgram->BindWithVariables (aCtx);
+
+    const OpenGl_MaterialState* aMaterialState = aCtx->ShaderManager()->MaterialState (aProgram);
+    if (aMaterialState == NULL || aMaterialState->Aspect() != theAspect)
+    {
+      aCtx->ShaderManager()->UpdateMaterialStateTo (aProgram, theAspect);
+    }
+
+    aCtx->ShaderManager()->PushState (aProgram);
+  }
+}
 
 // =======================================================================
 // function : clearMemoryOwn
@@ -85,7 +107,8 @@ Standard_Boolean OpenGl_PrimitiveArray::BuildVBO (const Handle(OpenGl_Workspace)
     return Standard_False;
   }
 
-  if (myPArray->edges != NULL)
+  if (myPArray->edges != NULL
+   && myPArray->num_edges > 0)
   {
     myVbos[VBOEdges] = new OpenGl_IndexBuffer();
     if (!myVbos[VBOEdges]->Init (aGlCtx, 1, myPArray->num_edges, (GLuint* )myPArray->edges))
@@ -122,7 +145,11 @@ Standard_Boolean OpenGl_PrimitiveArray::BuildVBO (const Handle(OpenGl_Workspace)
     }
   }
 
-  clearMemoryOwn();
+  if (!aGlCtx->caps->keepArrayData)
+  {
+    clearMemoryOwn();
+  }
+  
   return Standard_True;
 }
 
@@ -176,6 +203,8 @@ void OpenGl_PrimitiveArray::DrawArray (Tint theLightingModel,
     case TelTriangleFansArrayType:
       glColor3fv (theInteriorColour->rgb);
       break;
+    case TelUnknownArrayType:
+      break;
   }
 
   // Temporarily disable environment mapping
@@ -228,7 +257,7 @@ void OpenGl_PrimitiveArray::DrawArray (Tint theLightingModel,
         glEnableClientState (GL_TEXTURE_COORD_ARRAY);
       }
 
-      if (pvc != NULL)
+      if ((pvc != NULL) && (theWorkspace->NamedStatus & OPENGL_NS_HIGHLIGHT) == 0)
       {
         glColorPointer (4, GL_UNSIGNED_BYTE, 0, pvc);  // array of colors
         glEnableClientState (GL_COLOR_ARRAY);
@@ -248,7 +277,7 @@ void OpenGl_PrimitiveArray::DrawArray (Tint theLightingModel,
       {
         myVbos[VBOVtexels]->BindFixed (aGlContext, GL_TEXTURE_COORD_ARRAY);
       }
-      if (!myVbos[VBOVcolours].IsNull())
+      if (!myVbos[VBOVcolours].IsNull() && (theWorkspace->NamedStatus & OPENGL_NS_HIGHLIGHT) == 0)
       {
         myVbos[VBOVcolours]->BindFixed (aGlContext, GL_COLOR_ARRAY);
         glColorMaterial (GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
@@ -294,7 +323,14 @@ void OpenGl_PrimitiveArray::DrawArray (Tint theLightingModel,
       }
       else
       {
-        glDrawArrays (myDrawMode, 0, myVbos[VBOVertices]->GetElemsNb());
+        if (myDrawMode == GL_POINTS)
+        {
+          DrawMarkers (theWorkspace);
+        }
+        else
+        {
+          glDrawArrays (myDrawMode, 0, myVbos[VBOVertices]->GetElemsNb());
+        }
       }
 
       // bind with 0
@@ -343,7 +379,14 @@ void OpenGl_PrimitiveArray::DrawArray (Tint theLightingModel,
       }
       else
       {
-        glDrawArrays (myDrawMode, 0, myPArray->num_vertexs);
+        if (myDrawMode == GL_POINTS)
+        {
+          DrawMarkers (theWorkspace);
+        }
+        else
+        {
+          glDrawArrays (myDrawMode, 0, myPArray->num_vertexs);
+        }
       }
 
       if (pvc != NULL)
@@ -393,10 +436,15 @@ void OpenGl_PrimitiveArray::DrawEdges (const TEL_COLOUR*               theEdgeCo
   if (myDrawMode > GL_LINE_STRIP)
   {
     anAspectLineOld = theWorkspace->SetAspectLine (theWorkspace->AspectFace (Standard_True)->AspectEdge());
-    theWorkspace->AspectLine (Standard_True);
+    const OpenGl_AspectLine* anAspect = theWorkspace->AspectLine (Standard_True);
 
     glPushAttrib (GL_POLYGON_BIT);
     glPolygonMode (GL_FRONT_AND_BACK, GL_LINE);
+
+    if (aGlContext->IsGlGreaterEqual (2, 0))
+    {
+      BindProgramWithMaterial (theWorkspace, anAspect);
+    }
   }
 
   Tint i, j, n;
@@ -516,6 +564,90 @@ void OpenGl_PrimitiveArray::DrawEdges (const TEL_COLOUR*               theEdgeCo
 }
 
 // =======================================================================
+// function : DrawMarkers
+// purpose  :
+// =======================================================================
+void OpenGl_PrimitiveArray::DrawMarkers (const Handle(OpenGl_Workspace)& theWorkspace) const
+{
+  const OpenGl_AspectMarker* anAspectMarker     = theWorkspace->AspectMarker (Standard_True);
+  const Handle(OpenGl_Context)&     aCtx        = theWorkspace->GetGlContext();
+  const Handle(OpenGl_PointSprite)& aSpriteNorm = anAspectMarker->SpriteRes (theWorkspace);
+  const Standard_Boolean            isHilight   = (theWorkspace->NamedStatus & OPENGL_NS_HIGHLIGHT);
+  if (aCtx->IsGlGreaterEqual (2, 0)
+   && !aSpriteNorm.IsNull() && !aSpriteNorm->IsDisplayList())
+  {
+    // Textured markers will be drawn with the point sprites
+    glPointSize (anAspectMarker->MarkerSize());
+
+    Handle(OpenGl_Texture) aTextureBack;
+    if (anAspectMarker->Type() != Aspect_TOM_POINT)
+    {
+      const Handle(OpenGl_PointSprite)& aSprite = (isHilight && anAspectMarker->SpriteHighlightRes (theWorkspace)->IsValid())
+                                                ? anAspectMarker->SpriteHighlightRes (theWorkspace)
+                                                : aSpriteNorm;
+      aTextureBack = theWorkspace->EnableTexture (aSprite);
+
+      glEnable (GL_ALPHA_TEST);
+      glAlphaFunc (GL_GEQUAL, 0.1f);
+
+      glEnable (GL_BLEND);
+      glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    }
+
+    glDrawArrays (myDrawMode, 0, toDrawVbo() ? myVbos[VBOVertices]->GetElemsNb() : myPArray->num_vertexs);
+
+    glDisable (GL_BLEND);
+    glDisable (GL_ALPHA_TEST);
+    if (anAspectMarker->Type() != Aspect_TOM_POINT)
+    {
+      theWorkspace->EnableTexture (aTextureBack);
+    }
+    glPointSize (1.0f);
+    return;
+  }
+
+  // Textured markers will be drawn with the glBitmap
+  if (anAspectMarker->Type() == Aspect_TOM_POINT
+   || anAspectMarker->Type() == Aspect_TOM_O_POINT)
+  {
+    const GLfloat aPntSize = anAspectMarker->Type() == Aspect_TOM_POINT
+                           ? anAspectMarker->MarkerSize()
+                           : 0.0f;
+    if (aPntSize > 0.0f)
+    {
+      glPointSize (aPntSize);
+    }
+    glDrawArrays (myDrawMode, 0, toDrawVbo() ? myVbos[VBOVertices]->GetElemsNb() : myPArray->num_vertexs);
+    if (aPntSize > 0.0f)
+    {
+      glPointSize (1.0f);
+    }
+  }
+
+  if (anAspectMarker->Type() != Aspect_TOM_POINT
+   && !aSpriteNorm.IsNull())
+  {
+    if (!isHilight && (myPArray->vcolours != NULL))
+    {
+      for (Standard_Integer anIter = 0; anIter < myPArray->num_vertexs; anIter++)
+      {
+        glColor4ubv ((GLubyte* )&myPArray->vcolours[anIter]);
+        glRasterPos3fv (myPArray->vertices[anIter].xyz);
+        aSpriteNorm->DrawBitmap (theWorkspace->GetGlContext());
+      }
+    }
+    else
+    {
+      for (Standard_Integer anIter = 0; anIter < myPArray->num_vertexs; anIter++)
+      {
+        glRasterPos3fv (myPArray->vertices[anIter].xyz);
+        aSpriteNorm->DrawBitmap (theWorkspace->GetGlContext());
+      }
+    }
+  }
+}
+
+// =======================================================================
 // function : OpenGl_PrimitiveArray
 // purpose  :
 // =======================================================================
@@ -552,6 +684,8 @@ OpenGl_PrimitiveArray::OpenGl_PrimitiveArray (CALL_DEF_PARRAY* thePArray)
       break;
     case TelTriangleFansArrayType:
       myDrawMode = GL_TRIANGLE_FAN;
+      break;
+    case TelUnknownArrayType:
       break;
   }
 }
@@ -595,10 +729,25 @@ void OpenGl_PrimitiveArray::Render (const Handle(OpenGl_Workspace)& theWorkspace
     return;
   }
 
+  const OpenGl_AspectFace*   anAspectFace   = theWorkspace->AspectFace   (Standard_True);
+  const OpenGl_AspectLine*   anAspectLine   = theWorkspace->AspectLine   (Standard_True);
+  const OpenGl_AspectMarker* anAspectMarker = theWorkspace->AspectMarker (myDrawMode == GL_POINTS);
+
   // create VBOs on first render call
-  if (!myIsVboInit && OpenGl_GraphicDriver::ToUseVBO() && theWorkspace->GetGlContext()->core15 != NULL)
+  const Handle(OpenGl_Context)& aCtx = theWorkspace->GetGlContext();
+  if (!myIsVboInit
+   && !aCtx->caps->vboDisable
+   && aCtx->core15 != NULL
+   && (myDrawMode != GL_POINTS || anAspectMarker->SpriteRes (theWorkspace).IsNull() || !anAspectMarker->SpriteRes (theWorkspace)->IsDisplayList()))
   {
-    BuildVBO (theWorkspace);
+    if (!BuildVBO (theWorkspace))
+    {
+      TCollection_ExtendedString aMsg;
+      aMsg += "VBO creation for Primitive Array has failed for ";
+      aMsg += myPArray->num_vertexs;
+      aMsg += " vertices. Out of memory?";
+      aCtx->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB, GL_DEBUG_TYPE_PERFORMANCE_ARB, 0, GL_DEBUG_SEVERITY_LOW_ARB, aMsg);
+    }
     myIsVboInit = Standard_True;
   }
 
@@ -615,12 +764,8 @@ void OpenGl_PrimitiveArray::Render (const Handle(OpenGl_Workspace)& theWorkspace
       break;
   }
 
-  const OpenGl_AspectFace*   anAspectFace   = theWorkspace->AspectFace   (Standard_True);
-  const OpenGl_AspectLine*   anAspectLine   = theWorkspace->AspectLine   (Standard_True);
-  const OpenGl_AspectMarker* anAspectMarker = theWorkspace->AspectMarker (myPArray->type == TelPointsArrayType);
-
-  Tint aFrontLightingModel = anAspectFace->IntFront.color_mask;
-  const TEL_COLOUR* anInteriorColor = &anAspectFace->IntFront.matcol;
+  Tint aFrontLightingModel = anAspectFace->IntFront().color_mask;
+  const TEL_COLOUR* anInteriorColor = &anAspectFace->IntFront().matcol;
   const TEL_COLOUR* anEdgeColor = &anAspectFace->AspectEdge()->Color();
   const TEL_COLOUR* aLineColor = (myPArray->type == TelPointsArrayType) ? &anAspectMarker->Color() : &anAspectLine->Color();
 
@@ -631,12 +776,35 @@ void OpenGl_PrimitiveArray::Render (const Handle(OpenGl_Workspace)& theWorkspace
     aFrontLightingModel = 0;
   }
 
+  if (aCtx->IsGlGreaterEqual (2, 0))
+  {
+    switch (myPArray->type)
+    {
+      case TelPointsArrayType:
+      {
+        BindProgramWithMaterial (theWorkspace, anAspectMarker);
+        break;
+      }
+      case TelSegmentsArrayType:
+      case TelPolylinesArrayType:
+      {
+        BindProgramWithMaterial (theWorkspace, anAspectLine);
+        break;
+      }
+      default: // polygonal array
+      {
+        BindProgramWithMaterial (theWorkspace, anAspectFace);
+        break;
+      }
+    }
+  }
+
   DrawArray (aFrontLightingModel,
-             anAspectFace->InteriorStyle,
-             anAspectFace->Edge,
+             anAspectFace->InteriorStyle(),
+             anAspectFace->Edge(),
              anInteriorColor,
              aLineColor,
              anEdgeColor,
-             &anAspectFace->IntFront,
+             &anAspectFace->IntFront(),
              theWorkspace);
 }

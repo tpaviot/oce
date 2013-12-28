@@ -1,0 +1,315 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+		0D96160A0505003D149F0EF5 = {isa = PBXBuildFile; fileRef = 181E14F3147A187F183C0DE5 ;};
+		02BB01910BF009DF0B7D10D4 = {isa = PBXBuildFile; fileRef = 022A06A6154613FF1328172A ;};
+		0BDF108017A7152511900AD5 = {isa = PBXBuildFile; fileRef = 022C168F183E079E08B90651 ;};
+		02EB064D0E1013AA0ABC150C = {isa = PBXBuildFile; fileRef = 05D818C11109080304D8134D ;};
+		12600CF917B102D605270C6A = {isa = PBXBuildFile; fileRef = 18DA0A09051514150AB5011E ;};
+		10EB08770DE00C4D039C0677 = {isa = PBXBuildFile; fileRef = 158A012F023003FD000104F9 ;};
+		149E03990ADD09AB12430A21 = {isa = PBXBuildFile; fileRef = 00870A3E02D216D90BCA0746 ;};
+		06EA15A80C2D118B03A70E95 = {isa = PBXBuildFile; fileRef = 11F916B80FCF000B128B03B6 ;};
+		00BA0456097602060B5F184B = {isa = PBXBuildFile; fileRef = 1388176D0BAC144017DC0800 ;};
+		11DE03800CFD033203B600A7 = {isa = PBXBuildFile; fileRef = 0B401427154906A907610DD8 ;};
+		123313A518CA0C47011501F7 = {isa = PBXBuildFile; fileRef = 00B518A716DC0DD114C402B6 ;};
+		126D14C303C1082401C50D7C = {isa = PBXBuildFile; fileRef = 1548056D11B10CA318A81459 ;};
+
+		12F7108A0F7108B6133E0723 = {isa = PBXBuildFile; fileRef = 1786145E12FB0B6800981023 ; };
+		05DC08B8161B1257060406E8 = {isa = PBXBuildFile; fileRef = 156E12AD101605D20F59089D ; };
+		16940E540402124301061855 = {isa = PBXBuildFile; fileRef = 04A0192C0C9613FC0DCC1101 ; };
+		008E17E8081A0C870C6C1980 = {isa = PBXBuildFile; fileRef = 1325120C03AA127A050D07DF ; };
+		01D4131E0043040C04F0161A = {isa = PBXBuildFile; fileRef = 08BA13FE099E01E70B2E0E6D ; };
+		049813AC11E914361559059B = {isa = PBXBuildFile; fileRef = 08B7051108170ACE1587104E ; };
+		0D2E1585048E136118E51436 = {isa = PBXBuildFile; fileRef = 151F0FBE0377177C027A0F98 ; };
+		0C7C15910123184611830866 = {isa = PBXBuildFile; fileRef = 14E81282105A165506960637 ; };
+		0517160A123500C113F30867 = {isa = PBXBuildFile; fileRef = 1236001217DE130D05DA005C ; };
+
+		020402E214D40BB9087C07E6 = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libTKNIS.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+
+		181E14F3147A187F183C0DE5 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NIS_Allocator.cxx; path = ../../../src/NIS/NIS_Allocator.cxx; sourceTree = "<group>"; };
+		022A06A6154613FF1328172A = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NIS_DrawList.cxx; path = ../../../src/NIS/NIS_DrawList.cxx; sourceTree = "<group>"; };
+		022C168F183E079E08B90651 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NIS_Drawer.cxx; path = ../../../src/NIS/NIS_Drawer.cxx; sourceTree = "<group>"; };
+		05D818C11109080304D8134D = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NIS_InteractiveContext.cxx; path = ../../../src/NIS/NIS_InteractiveContext.cxx; sourceTree = "<group>"; };
+		18DA0A09051514150AB5011E = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NIS_InteractiveObject.cxx; path = ../../../src/NIS/NIS_InteractiveObject.cxx; sourceTree = "<group>"; };
+		158A012F023003FD000104F9 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NIS_ObjectsIterator.cxx; path = ../../../src/NIS/NIS_ObjectsIterator.cxx; sourceTree = "<group>"; };
+		00870A3E02D216D90BCA0746 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NIS_SelectFilter.cxx; path = ../../../src/NIS/NIS_SelectFilter.cxx; sourceTree = "<group>"; };
+		11F916B80FCF000B128B03B6 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NIS_Surface.cxx; path = ../../../src/NIS/NIS_Surface.cxx; sourceTree = "<group>"; };
+		1388176D0BAC144017DC0800 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NIS_SurfaceDrawer.cxx; path = ../../../src/NIS/NIS_SurfaceDrawer.cxx; sourceTree = "<group>"; };
+		0B401427154906A907610DD8 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NIS_Triangulated.cxx; path = ../../../src/NIS/NIS_Triangulated.cxx; sourceTree = "<group>"; };
+		00B518A716DC0DD114C402B6 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NIS_TriangulatedDrawer.cxx; path = ../../../src/NIS/NIS_TriangulatedDrawer.cxx; sourceTree = "<group>"; };
+		1548056D11B10CA318A81459 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NIS_View.cxx; path = ../../../src/NIS/NIS_View.cxx; sourceTree = "<group>"; };
+
+		1786145E12FB0B6800981023 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKBRep.dylib; path = libTKBRep.dylib; sourceTree = "<group>"; };
+		156E12AD101605D20F59089D = {isa = PBXFileReference; lastKnownFileType = file; name = libTKV3d.dylib; path = libTKV3d.dylib; sourceTree = "<group>"; };
+		04A0192C0C9613FC0DCC1101 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKMath.dylib; path = libTKMath.dylib; sourceTree = "<group>"; };
+		1325120C03AA127A050D07DF = {isa = PBXFileReference; lastKnownFileType = file; name = libTKernel.dylib; path = libTKernel.dylib; sourceTree = "<group>"; };
+		08BA13FE099E01E70B2E0E6D = {isa = PBXFileReference; lastKnownFileType = file; name = libTKService.dylib; path = libTKService.dylib; sourceTree = "<group>"; };
+		08B7051108170ACE1587104E = {isa = PBXFileReference; lastKnownFileType = file; name = libTKG2d.dylib; path = libTKG2d.dylib; sourceTree = "<group>"; };
+		151F0FBE0377177C027A0F98 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKG3d.dylib; path = libTKG3d.dylib; sourceTree = "<group>"; };
+		14E81282105A165506960637 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKMesh.dylib; path = libTKMesh.dylib; sourceTree = "<group>"; };
+		1236001217DE130D05DA005C = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+
+		18770BB4176208410E5B055D = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12F7108A0F7108B6133E0723 ,
+				05DC08B8161B1257060406E8 ,
+				16940E540402124301061855 ,
+				008E17E8081A0C870C6C1980 ,
+				01D4131E0043040C04F0161A ,
+				049813AC11E914361559059B ,
+				0D2E1585048E136118E51436 ,
+				0C7C15910123184611830866 ,
+				0517160A123500C113F30867 ,
+
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+
+		0060022C14C5175A0D1C08CA = {
+			isa = PBXGroup;
+			children = (
+				181E14F3147A187F183C0DE5 ,
+				022A06A6154613FF1328172A ,
+				022C168F183E079E08B90651 ,
+				05D818C11109080304D8134D ,
+				18DA0A09051514150AB5011E ,
+				158A012F023003FD000104F9 ,
+				00870A3E02D216D90BCA0746 ,
+				11F916B80FCF000B128B03B6 ,
+				1388176D0BAC144017DC0800 ,
+				0B401427154906A907610DD8 ,
+				00B518A716DC0DD114C402B6 ,
+				1548056D11B10CA318A81459 ,
+			);
+			name = NIS;
+			sourceTree = "<group>";
+		};
+
+		16E3055205850E500D850EAE = {
+			isa = PBXGroup;
+			children = (
+				1786145E12FB0B6800981023 ,
+				156E12AD101605D20F59089D ,
+				04A0192C0C9613FC0DCC1101 ,
+				1325120C03AA127A050D07DF ,
+				08BA13FE099E01E70B2E0E6D ,
+				08B7051108170ACE1587104E ,
+				151F0FBE0377177C027A0F98 ,
+				14E81282105A165506960637 ,
+				1236001217DE130D05DA005C ,
+
+				0FAF1555072E05FE0EBA147B ,
+				020402E214D40BB9087C07E6 ,
+			);
+			sourceTree = "<group>";
+		};
+		0FAF1555072E05FE0EBA147B = {
+			isa = PBXGroup;
+			children = (
+				0060022C14C5175A0D1C08CA ,
+			);
+			name = "Source files";
+			sourceTree = "<group>";
+		};
+
+		05651109013A025908000A18 = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+
+		08BD0CD7107B0B0207C31390 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12DC0A12035A02B8169C1575 ;
+			buildPhases = (
+				149001530C880BA6005104D5 ,
+				18770BB4176208410E5B055D ,
+				05651109013A025908000A18 ,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TKNIS;
+			productName = TKNIS;
+			productReference = 020402E214D40BB9087C07E6 ;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+
+		0CC01127141707160D680E3F = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 00021163157B0E26188B1140 ;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 16E3055205850E500D850EAE;
+			productRefGroup = 16E3055205850E500D850EAE;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				08BD0CD7107B0B0207C31390 ,
+			);
+		};
+
+		149001530C880BA6005104D5 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D96160A0505003D149F0EF5 ,
+				02BB01910BF009DF0B7D10D4 ,
+				0BDF108017A7152511900AD5 ,
+				02EB064D0E1013AA0ABC150C ,
+				12600CF917B102D605270C6A ,
+				10EB08770DE00C4D039C0677 ,
+				149E03990ADD09AB12430A21 ,
+				06EA15A80C2D118B03A70E95 ,
+				00BA0456097602060B5F184B ,
+				11DE03800CFD033203B600A7 ,
+				123313A518CA0C47011501F7 ,
+				126D14C303C1082401C50D7C ,
+
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+
+		18870F8E009E11EF146B0AF6 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "$(CSF_OPT_LNK64)"; 
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		0E5C031E0E310DFA0DF61615 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "$(CSF_OPT_LNK64D)";
+			};
+			name = Release;
+		};
+		08730F7C159A118B06EC0015 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					CSFDB ,
+					HAVE_WOK_CONFIG_H ,
+					HAVE_CONFIG_H ,
+					OCC_CONVERT_SIGNALS ,
+				);
+				HEADER_SEARCH_PATHS = (
+					../../../inc,
+					/Users/mnt/tools/WOK660beta/site/../lib,
+					../../../drv/NIS,
+					../../../src/NIS,
+					"$(CSF_OPT_INC)",
+				);
+				OTHER_CFLAGS = (
+					"$(CSF_OPT_CMPL)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK660beta/site/../lib ../../../drv/NIS ../../../src/NIS";
+				WRAPPER_EXTENSION = dylib;
+			};
+			name = Debug;
+		};
+		09D20E970E4D079D04CD10C4 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					CSFDB ,
+					HAVE_WOK_CONFIG_H ,
+					HAVE_CONFIG_H ,
+					OCC_CONVERT_SIGNALS ,
+				);
+				HEADER_SEARCH_PATHS = (
+					../../../inc,
+					/Users/mnt/tools/WOK660beta/site/../lib,
+					../../../drv/NIS,
+					../../../src/NIS,
+					"$(CSF_OPT_INC)",
+				);
+				OTHER_CFLAGS = (
+					"$(CSF_OPT_CMPL)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK660beta/site/../lib ../../../drv/NIS ../../../src/NIS";
+				WRAPPER_EXTENSION = dylib;
+			};
+			name = Release;
+		};
+
+		00021163157B0E26188B1140 = {
+			isa = XCConfigurationList;
+		buildConfigurations = (
+				18870F8E009E11EF146B0AF6 ,
+				0E5C031E0E310DFA0DF61615 ,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12DC0A12035A02B8169C1575 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08730F7C159A118B06EC0015 ,
+				09D20E970E4D079D04CD10C4 ,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+
+	};
+	rootObject = 0CC01127141707160D680E3F ;
+}

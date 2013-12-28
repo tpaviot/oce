@@ -1,22 +1,18 @@
 // Created on: 1995-12-12
 // Created by: Jacques GOUSSARD
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modified by dpf, Fri Dec 19 15:31:03 1997 
 //  Processing of closing in 2d.
@@ -375,7 +371,7 @@ BRepCheck_Status BRepCheck_Wire::Closed(const Standard_Boolean Update)
 //purpose  : Return Standard_True if distance between thePnt_f and
 //           thePnt_l is not more, than aTol3d
 //=======================================================================
-Standard_Boolean IsDistanceIn3DTolerance (const BRepAdaptor_Surface& aFaceSurface,
+Standard_Boolean IsDistanceIn3DTolerance (const BRepAdaptor_Surface& /*aFaceSurface*/,
                                           const gp_Pnt& thePnt_f,
                                           const gp_Pnt& thePnt_l,
                                           const Standard_Real aTol3d)
@@ -402,12 +398,17 @@ Standard_Boolean IsDistanceIn3DTolerance (const BRepAdaptor_Surface& aFaceSurfac
 //function : IsDistanceIn3DTolerance
 //purpose  : 
 //=======================================================================
+static 
 Standard_Boolean IsDistanceIn2DTolerance (const BRepAdaptor_Surface& aFaceSurface,
                                           const gp_Pnt2d& thePnt,
                                           const gp_Pnt2d& thePntRef,
                                           const Standard_Real aTol3d,
+#ifdef DEB
                                           const Standard_Boolean PrintWarnings = Standard_True)
-  {
+#else
+                                          const Standard_Boolean = Standard_True)
+#endif
+{
   Standard_Real dumax = 0.01 * (aFaceSurface.LastUParameter() - aFaceSurface.FirstUParameter());
   Standard_Real dvmax = 0.01 * (aFaceSurface.LastVParameter() -	aFaceSurface.FirstVParameter());
   Standard_Real dumin = Abs(thePnt.X() - thePntRef.X());
@@ -421,7 +422,7 @@ Standard_Boolean IsDistanceIn2DTolerance (const BRepAdaptor_Surface& aFaceSurfac
     {
     cout << endl;
     cout << "--------Function IsDistanceIn2DTolerance(...)----------"								<< endl;
-    cout << "--- BRepCheck Wire: Closed2d -> Error"																	<< endl;
+    cout << "--- BRepCheck Wire: Not closed in 2d"																  << endl;
     cout << "*****************************************************"									<< endl;
     cout << "*dumin = " << dumin << "; dumax = " << dumax														<< endl;
     cout << "* dvmin = " << dvmin << "; dvmax = " << dvmax													<< endl;
@@ -470,7 +471,7 @@ Standard_Boolean IsDistanceIn2DTolerance (const BRepAdaptor_Surface& aFaceSurfac
     {
     cout << endl;
     cout << "--------Function IsDistanceIn2DTolerance(...)----------"							<< endl;
-    cout << "--- BRepCheck Wire: Closed2d -> Error"																<< endl;
+    cout << "--- BRepCheck Wire: Not closed in 2d"  															<< endl;
     cout << "*****************************************************"								<< endl;
     cout << "* Dist = " << Dist	<< " > Tol2d = " <<	aTol2d												<< endl;
     cout << "*****************************************************"								<< endl;
@@ -1172,7 +1173,7 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
 		f2-IP_ParamOnSecond > ::Precision::PConfusion() || 
 		IP_ParamOnSecond-l2 > ::Precision::PConfusion() ) 
 	      continue;
-	    Standard_Real tolvtt;
+	    Standard_Real tolvtt = 0.;
 	    //  Modified by Sergey KHROMOV - Mon Apr 15 12:34:22 2002 Begin
 	    if (!ConS.IsNull()) { 
 	      P3d = ConS->Value(IP_ParamOnFirst); 
@@ -1529,40 +1530,51 @@ Standard_Boolean BRepCheck_Wire::GeometricControls() const
   return myGctrl;
 }
 
-
 //=======================================================================
 //function : Propagate
 //purpose  : fill <mapE> with edges connected to <edg> through vertices
 //           contained in <mapVE>
 //=======================================================================
 static void Propagate(const TopTools_IndexedDataMapOfShapeListOfShape& mapVE,
-		      const TopoDS_Shape& edg,
-		      TopTools_MapOfShape& mapE)
+                      const TopoDS_Shape& edg,
+                      TopTools_MapOfShape& mapE)
 {
-  if (mapE.Contains(edg)) {
-    return;
-  }
-  mapE.Add(edg); // attention, if oriented == Standard_True, edge should
-                 // be FORWARD or REVERSED. It is not checked.
-                 // =============
-                 // attention, if oriented == Standard_True, <edg> must
-                 // be FORWARD or REVERSED. That is not checked.
-  
-  TopExp_Explorer ex;
-  for (ex.Init(edg,TopAbs_VERTEX); ex.More(); ex.Next()) {
-    const TopoDS_Vertex& vtx = TopoDS::Vertex(ex.Current());
-    // debug on vertex
-    Standard_Integer indv = mapVE.FindIndex(vtx);
-    if (indv != 0) {
-      for (TopTools_ListIteratorOfListOfShape itl(mapVE(indv)); itl.More(); itl.Next()) {
-	if (!itl.Value().IsSame(edg) &&
-	    !mapE.Contains(itl.Value())) {
-	  Propagate(mapVE,itl.Value(),mapE);
-	}
+  TopTools_ListOfShape currentEdges;
+  currentEdges.Append(edg);
+
+  do
+  {
+    TopTools_ListOfShape nextEdges;
+    TopTools_ListIteratorOfListOfShape itrc(currentEdges);
+    for (; itrc.More(); itrc.Next())
+    {
+      const TopoDS_Shape& Edge = itrc.Value();
+      mapE.Add(Edge);
+
+      TopExp_Explorer ex(Edge, TopAbs_VERTEX);
+      for (; ex.More(); ex.Next())
+      {
+        const TopoDS_Vertex& vtx = TopoDS::Vertex(ex.Current());
+        Standard_Integer indv = mapVE.FindIndex(vtx);
+        if (indv != 0)
+        {
+          const TopTools_ListOfShape& edges = mapVE(indv);
+
+          TopTools_ListIteratorOfListOfShape itl(edges);
+          for (; itl.More(); itl.Next())
+          {
+            const TopoDS_Shape& E = itl.Value();
+            if (!Edge.IsSame(E) && !mapE.Contains(E))
+              nextEdges.Append(E);
+          }
+        }
       }
     }
+    currentEdges = nextEdges;
   }
+  while (!currentEdges.IsEmpty());
 }
+
 //=======================================================================
 //function : GetOrientation
 //purpose  : 

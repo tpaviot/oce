@@ -2,31 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{7713A06A-0862-16DA-029F-9B5DE9327E42}</UniqueIdentifier>
+      <UniqueIdentifier>{FA7DEC56-071B-02E0-0E8F-496A3FDE711F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Aspect">
-      <UniqueIdentifier>{FF363C94-188B-0F38-0F86-684ECD0D7804}</UniqueIdentifier>
+      <UniqueIdentifier>{D4C2C663-16A9-111A-069E-51FF354A2591}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\InterfaceGraphic">
-      <UniqueIdentifier>{42642DBB-118A-1847-1479-065DE3FDF074}</UniqueIdentifier>
+      <UniqueIdentifier>{E86F761E-070B-06B3-0661-A40F2FE10BD1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SelectBasics">
-      <UniqueIdentifier>{B583FC0E-144D-1292-09BA-33A574B38EE2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\AlienImage">
-      <UniqueIdentifier>{69C4ECEF-13EF-100A-1556-AC1BD8582F63}</UniqueIdentifier>
+      <UniqueIdentifier>{CEE927D2-0A09-09A5-16DE-A4126FB66570}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Image">
-      <UniqueIdentifier>{8F126690-17BF-16AE-1090-0D393B2885DB}</UniqueIdentifier>
+      <UniqueIdentifier>{BDBC3A79-0563-1014-191D-3BE16D4CFC5D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\WNT">
-      <UniqueIdentifier>{6C0BB817-0769-090B-05ED-F327198BEDC5}</UniqueIdentifier>
+      <UniqueIdentifier>{4C587E54-14C3-0525-0412-ADFEDD3765AB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColQuantity">
-      <UniqueIdentifier>{A7616B2E-1496-0AEF-03E5-1EE6C6C0F20D}</UniqueIdentifier>
+      <UniqueIdentifier>{F3F8A574-0E5B-0F55-178A-17555CE53BC9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Font">
-      <UniqueIdentifier>{534A6F53-075D-125B-08AF-F6C6A46B6DCB}</UniqueIdentifier>
+      <UniqueIdentifier>{B84513EB-0C81-0388-16DC-4E46A800C1CD}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -309,205 +306,19 @@
     <ClCompile Include="..\..\..\src\SelectBasics\SelectBasics_SortAlgo.cxx">
       <Filter>Source files\SelectBasics</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_AidaAlienData.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_AidaAlienImage.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_AlienImage.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_AlienImageData.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_AlienUserImage.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_BMPAlienData.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_BMPAlienImage.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_BMPHeader.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_EuclidAlienData.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_EuclidAlienImage.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_GIFAlienData.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_GIFAlienImage.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_GIFLZWDict.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_MemoryOperations.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_SGIRGBAlienData.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_SGIRGBAlienImage.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_SGIRGBFileHeader.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_SUNRFFileHeader.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_SunRFAlienData.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_SunRFAlienImage.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_X11XColor.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_X11XWDAlienData.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_X11XWDFileHeader.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_XAlienImage.cxx">
-      <Filter>Source files\AlienImage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_ColorPixelDataMap_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_ColorPixelMapHasher_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_DColorImage_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_DIndexedImage_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_DataMapIteratorOfColorPixelDataMap_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_DataMapIteratorOfLookupTable_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_DataMapNodeOfColorPixelDataMap_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_DataMapNodeOfLookupTable_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_IndexPixelMapHasher_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_LookupTable_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_PixelFieldOfDColorImage_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_PixelFieldOfDIndexedImage_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_PixelRowOfDColorImage_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Image\Image_PixelRowOfDIndexedImage_0.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Image\Image.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Image\Image_AlienPixMap.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Image\Image_AveragePixelInterpolation.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Image\Image_BalancedPixelInterpolation.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Image\Image_BilinearPixelInterpolation.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Image\Image_ColorImage.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Image\Image_Convertor.cxx">
       <Filter>Source files\Image</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Image\Image_Diff.cxx">
       <Filter>Source files\Image</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Image\Image_Image.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Image\Image_PixMap.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Image\Image_PixelAddress.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Image\Image_PixelInterpolation.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Image\Image_PlanarPixelInterpolation.cxx">
-      <Filter>Source files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Image\Image_PseudoColorImage.cxx">
       <Filter>Source files\Image</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\WNT\WNT_ClassDefinitionError_0.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\WNT\WNT_ColorTable_0.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\WNT\WNT_HColorTable_0.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\WNT\WNT_SequenceNodeOfSequenceOfImage_0.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\WNT\WNT_SequenceOfImage_0.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\EHDC.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\W32_Allocator.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\W95_Allocator.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_Allocator.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_ColorRef.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\WNT\WNT_Dword.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_Image.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_LogFont.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_Long.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\WNT\WNT_Uint.cxx">
@@ -533,6 +344,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColQuantity\TColQuantity_HArray2OfLength_0.cxx">
       <Filter>Source files\TColQuantity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Font\Font_BRepFont.cxx">
+      <Filter>Source files\Font</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Font\Font_FTFont.cxx">
       <Filter>Source files\Font</Filter>

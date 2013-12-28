@@ -133,6 +133,10 @@ public:
 //!          a null shape if nothing constructed <br>
 //!          may be a face, a shell, a solid or a compound <br>
   Standard_EXPORT    const TopoDS_Shape& SewedShape() const;
+  //! set context <br>
+  Standard_EXPORT     void SetContext(const Handle(BRepTools_ReShape)& theContext) ;
+  //! return context <br>
+  Standard_EXPORT    const Handle_BRepTools_ReShape& GetContext() const;
   //! Gives the number of free edges (edge shared by one face) <br>
   Standard_EXPORT     Standard_Integer NbFreeEdges() const;
   //! Gives each free edge <br>

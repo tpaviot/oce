@@ -63,9 +63,11 @@ libTKStdSchema_la_SOURCES = \
 @top_srcdir@/drv/StdSchema/StdSchema_PNaming_HArray1OfNamedShape.cxx \
 @top_srcdir@/drv/StdSchema/StdSchema_PNaming_Name.cxx \
 @top_srcdir@/drv/StdSchema/StdSchema_PNaming_Name_1.cxx \
+@top_srcdir@/drv/StdSchema/StdSchema_PNaming_Name_2.cxx \
 @top_srcdir@/drv/StdSchema/StdSchema_PNaming_NamedShape.cxx \
 @top_srcdir@/drv/StdSchema/StdSchema_PNaming_Naming.cxx \
 @top_srcdir@/drv/StdSchema/StdSchema_PNaming_Naming_1.cxx \
+@top_srcdir@/drv/StdSchema/StdSchema_PNaming_Naming_2.cxx \
 @top_srcdir@/drv/StdSchema/StdSchema_PPrsStd_AISPresentation.cxx \
 @top_srcdir@/drv/StdSchema/StdSchema_PPrsStd_AISPresentation_1.cxx \
 @top_srcdir@/drv/StdSchema/StdSchema_PTopLoc_Datum3D.cxx \

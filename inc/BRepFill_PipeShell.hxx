@@ -58,6 +58,9 @@
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
+#ifndef _BRepFill_TypeOfContact_HeaderFile
+#include <BRepFill_TypeOfContact.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -114,7 +117,7 @@ public:
 //! If <KeepContact> the  Normal  is  defined to  assume like  the  sweeped <br>
 //!                  section is  in  contact to  the  <AuxiliarySpine> <br>
 //! Else  the  Normal  is  defined  by the vector  PQ. <br>
-  Standard_EXPORT     void Set(const TopoDS_Wire& AuxiliarySpine,const Standard_Boolean CurvilinearEquivalence = Standard_True,const Standard_Boolean KeepContact = Standard_False) ;
+  Standard_EXPORT     void Set(const TopoDS_Wire& AuxiliarySpine,const Standard_Boolean CurvilinearEquivalence = Standard_True,const BRepFill_TypeOfContact KeepContact = BRepFill_NoContact) ;
   //! Set the flag that indicates attempt to approximate <br>
 //!          a C1-continuous surface if a swept surface proved <br>
 //!          to be C0. <br>//! Give section to sweep. <br>
@@ -202,6 +205,7 @@ Standard_Real angmin;
 Standard_Real angmax;
 Standard_Boolean myForceApproxC1;
 Handle_Law_Function myLaw;
+Standard_Boolean myIsAutomaticLaw;
 Handle_BRepFill_LocationLaw myLocation;
 Handle_BRepFill_SectionLaw mySection;
 Handle_TopTools_HArray2OfShape myFaces;

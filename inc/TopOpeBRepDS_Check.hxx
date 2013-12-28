@@ -22,11 +22,11 @@
 #ifndef _TopOpeBRepDS_DataMapOfCheckStatus_HeaderFile
 #include <TopOpeBRepDS_DataMapOfCheckStatus.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -113,14 +113,9 @@ private:
 
 Handle_TopOpeBRepDS_HDataStructure myHDS;
 TopOpeBRepDS_DataMapOfCheckStatus myMapSurfaceStatus;
-Standard_Boolean mySurfaceDone;
 TopOpeBRepDS_DataMapOfCheckStatus myMapCurveStatus;
-Standard_Boolean myCurveDone;
 TopOpeBRepDS_DataMapOfCheckStatus myMapPointStatus;
-Standard_Boolean myPointDone;
 TopOpeBRepDS_DataMapOfCheckStatus myMapShapeStatus;
-Standard_Boolean myShapeDone;
-Standard_Boolean myDone;
 
 
 };

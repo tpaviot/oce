@@ -39,6 +39,8 @@ void StdSchema_PDataXtd_Axis::SWrite(const Handle(Standard_Persistent)& p, Stora
   if (!p.IsNull()) {
     Handle(PDataXtd_Axis) &pp = (Handle(PDataXtd_Axis)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -56,6 +58,8 @@ void StdSchema_PDataXtd_Axis::SRead(const Handle(Standard_Persistent)& p, Storag
 { 
   if (!p.IsNull()) {
     Handle(PDataXtd_Axis) &pp = (Handle(PDataXtd_Axis)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

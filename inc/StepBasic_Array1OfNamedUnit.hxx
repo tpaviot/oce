@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepBasic_Array1OfNamedUnit(const Standard_Integer Low,const Standard_Integer Up);
+      StepBasic_Array1OfNamedUnit(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepBasic_Array1OfNamedUnit(const Handle(StepBasic_NamedUnit)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepBasic_Array1OfNamedUnit(const Handle(StepBasic_NamedUnit)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(StepBasic_NamedUnit)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepBasic_Array1OfNamedUnit()
 {
   Destroy();

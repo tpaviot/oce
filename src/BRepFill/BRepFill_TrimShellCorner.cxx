@@ -1,22 +1,17 @@
 // Created on: 2003-10-21
 // Created by: Mikhail KLOKOV
-// Copyright (c) 2003-2012 OPEN CASCADE SAS
+// Copyright (c) 2003-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BRepFill_TrimShellCorner.ixx>
 
@@ -70,12 +65,6 @@
 
 #include <BOPCol_DataMapOfShapeListOfShape.hxx>
 #include <BOPCol_ListOfShape.hxx>
-
-static Standard_Boolean IsFromFirstToSecond(const TopoDS_Edge&   theEdge,
-                                            const Standard_Real  theParameterOnUEdge,
-                                            const TopoDS_Edge&   theUEdge1,
-                                            const TopoDS_Edge&   theUEdge2,
-                                            const TopoDS_Face&   theFace);
 
 static Standard_Boolean FindCommonVertex(const BOPDS_PDS&         theDS,
                                          const Standard_Integer   theEIndex1,
@@ -204,12 +193,6 @@ static Standard_Boolean ChooseSection(const TopoDS_Shape& Comp,
                                       TopoDS_Shape& resWire,
                                       gp_Pln& resPlane,
                                       Standard_Boolean& IsSingular);
-
-static Standard_Boolean ChoosePlane(const TopoDS_Shape& Comp,
-                                    const gp_Ax2& bis,
-                                    gp_Pln& resPlane,
-                                    TopoDS_Compound& NewComp);
-
 
 // ===========================================================================================
 // function: Constructor
@@ -851,7 +834,6 @@ Standard_Boolean SplitUEdges(const Handle(TopTools_HArray2OfShape)&     theUEdge
                              const BOPDS_PDS&                           theDS,
                              TopTools_DataMapOfShapeListOfShape&        theHistMap) {
 
-  const BOPDS_VectorOfInterfVE& aVEs = theDS->InterfVE();
   const BOPDS_VectorOfInterfVV& aVVs = theDS->InterfVV();
 
   BRep_Builder aBB;
@@ -889,8 +871,8 @@ Standard_Boolean SplitUEdges(const Handle(TopTools_HArray2OfShape)&     theUEdge
         //const BOPTools_VVInterference& aVV = aVVs(vvit);
         const BOPDS_InterfVV& aVV = aVVs(vvit);
 
-        if(((vindex1 == aVV.Index1()) && (vindex2 = aVV.Index2())) ||
-           ((vindex1 == aVV.Index2()) && (vindex2 = aVV.Index1()))) {
+        if(((vindex1 == aVV.Index1()) && (vindex2 == aVV.Index2())) ||
+           ((vindex1 == aVV.Index2()) && (vindex2 == aVV.Index1()))) {
 
           if(!aVV.HasIndexNew()) {
             continue;
@@ -1007,53 +989,6 @@ Standard_Boolean FindCommonVertex(const BOPDS_PDS&         theDS,
     }
   }
   return bvertexfound;
-}
-
-// ------------------------------------------------------------------------------------------
-// static function: IsFromFirstToSecond
-// purpose:
-// ------------------------------------------------------------------------------------------
-Standard_Boolean IsFromFirstToSecond(const TopoDS_Edge&   theEdge,
-                                     const Standard_Real  theParameterOnUEdge,
-                                     const TopoDS_Edge&   theUEdge1,
-                                     const TopoDS_Edge&   theUEdge2,
-                                     const TopoDS_Face&   theFace) {
-  TopoDS_Face aFace = theFace;
-  aFace.Orientation(TopAbs_FORWARD);
-  TopoDS_Edge E1, E2;
-  TopExp_Explorer anExp(aFace, TopAbs_EDGE);
-
-  for(; anExp.More(); anExp.Next()) {
-    if(E1.IsNull() && theUEdge1.IsSame(anExp.Current())) {
-      E1 = TopoDS::Edge(anExp.Current());
-    }
-    else if(E2.IsNull() && theUEdge2.IsSame(anExp.Current())) {
-      E2 = TopoDS::Edge(anExp.Current());
-    }
-  }
-
-  if(E1.IsNull() || E2.IsNull())
-    return Standard_True;
-
-  gp_Pnt2d PU1, PU2, pf, pl;
-  Standard_Real f, l;
-  Handle(Geom2d_Curve) C1 = BRep_Tool::CurveOnSurface(E1, aFace, f, l);
-  Handle(Geom2d_Curve) C2 = BRep_Tool::CurveOnSurface(E2, aFace, f, l);
-  Handle(Geom2d_Curve) CC = BRep_Tool::CurveOnSurface(theEdge, aFace, f, l);
-  PU1 = C1->Value(theParameterOnUEdge);
-  PU2 = C2->Value(theParameterOnUEdge);
-  BRep_Tool::Range(theEdge, f, l);
-  pf = CC->Value(f);
-  pl = CC->Value(l);
-  Standard_Real aTolerance = Precision::Confusion();
-
-  if(pf.Distance(PU1) < aTolerance)
-    return Standard_True;
-
-  if(pl.Distance(PU2) < aTolerance)
-    return Standard_True;
-  
-  return Standard_False;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2221,175 +2156,4 @@ static Standard_Boolean ChooseSection(const TopoDS_Shape& Comp,
     }
   return Standard_False;
   //end of simplest case
-}
-
-//=======================================================================
-//function : ChoosePlane
-//purpose  : 
-//=======================================================================
-static Standard_Boolean ChoosePlane(const TopoDS_Shape& Comp,
-                                    const gp_Ax2& bis,
-                                    gp_Pln& resPlane,
-                                    TopoDS_Compound& NewComp)
-{
-  Standard_Real TolConf = 1.e-4, TolAng = 1.e-5;
-
-  Standard_Integer N = 100;
-  Standard_Integer Eind, ind, i, j;
-  TopTools_SequenceOfShape Eseq;
-  TopExp_Explorer Explo( Comp, TopAbs_EDGE );
-  for (; Explo.More(); Explo.Next())
-    Eseq.Append( Explo.Current() );
-
-  Standard_Integer NumberOfEdges = Eseq.Length();
-  TColgp_Array2OfPnt Points( 0, NumberOfEdges*2-1, 1, N/4 );
-
-  for (Eind = 0; Eind < NumberOfEdges; Eind++)
-    {
-      TopoDS_Edge anEdge = TopoDS::Edge( Eseq(Eind+1) );
-      BRepAdaptor_Curve aCurve(anEdge);
-      GCPnts_UniformAbscissa Distribution( aCurve, N+1 );
-      for (i = 1; i <= N/4; i++)
-        {
-          Standard_Real par = Distribution.Parameter(i);
-          Points( Eind*2, i ) = aCurve.Value(par);
-        }
-      for (i = 3*N/4+2; i <= N+1; i++)
-        {
-          Standard_Real par = Distribution.Parameter(i);
-          Points( Eind*2+1, i-3*N/4-1 ) = aCurve.Value(par);
-        }
-    }
-
-  TColgp_Array1OfPnt Origins( 0, NumberOfEdges*2-1 );
-  TColgp_Array1OfDir Normals( 0, NumberOfEdges*2-1 );
-  TColStd_Array1OfBoolean IsSingular( 0, NumberOfEdges*2-1 );
-  Standard_Real MinAngle = M_PI/2;
-  Standard_Integer MinInd;
-  for (ind = 0; ind < NumberOfEdges*2; ind++)
-    {
-      TColgp_Array1OfPnt pnts( 1, N/4 );
-      for (i = 1; i <= N/4; i++)
-        pnts(i) = Points( ind, i );
-      gp_Ax2 Axe;
-      GeomLib::AxeOfInertia( pnts, Axe, IsSingular(ind) );
-      if (!IsSingular(ind))
-        {
-          Origins(ind) = Axe.Location();
-          Normals(ind) = Axe.Direction();
-          Standard_Real Angle = bis.Angle( Axe );
-          if (Angle > M_PI/2)
-            Angle = M_PI - Angle;
-          if (Angle < MinAngle)
-            {
-              MinAngle = Angle;
-              MinInd = ind;
-            }
-        }
-    }
-
-  gp_Ax2 TheAxe( Origins(MinInd), Normals(MinInd) );
-  Standard_Real MaxAngleWithPln = M_PI/16;
-  TColStd_SequenceOfInteger iseq;
-  TColgp_SequenceOfPnt Pseq;
-  for (ind = 0; ind < NumberOfEdges*2; ind++)
-    if (!IsSingular(ind))
-      {
-        Standard_Real Angle = Normals(ind).Angle( TheAxe.Direction() );
-          if (Angle > M_PI/2)
-            Angle = M_PI - Angle;
-        if (Angle <= MaxAngleWithPln)
-          {
-            iseq.Append(ind);
-            for (j = 1; j <= N/4; j++)
-              Pseq.Append( Points(ind,j) );
-          }
-      }
-
-  TColgp_Array1OfPnt Parray( 1, Pseq.Length() );
-  for (i = 1; i <= Parray.Length(); i++)
-    Parray(i) = Pseq(i);
-  Standard_Boolean issing;
-  GeomLib::AxeOfInertia( Parray, TheAxe, issing );
-  resPlane = gp_Pln( TheAxe );
-  
-  i = 1;
-  BRep_Builder B;
-  B.MakeCompound(NewComp);
-  while (i <= iseq.Length())
-    {
-      Standard_Integer ind0 = iseq(i);
-      if (IsEven(ind0) && i < iseq.Length() && iseq(i+1) == ind0+1) //the whole edge
-        {
-          B.Add( NewComp, Eseq(ind0/2+1) );
-          i += 2;
-        }
-      else
-        i++;
-    }
-
-  Standard_Integer slen = Pseq.Length();
-  for (ind = 0; ind < NumberOfEdges*2; ind += 2)
-    {
-      Standard_Integer IndSing = -1, IndNotSing = -1;
-      gp_Lin aLine;
-      if (IsSingular(ind) && IsSingular(ind+1))
-        {
-          Standard_Boolean OnPlane0 = Standard_False, OnPlane1 = Standard_False;
-          aLine = gce_MakeLin( Points(ind, 1), Points(ind, N/4) );
-          if (resPlane.Contains( aLine, TolConf, TolAng ))
-            {
-              for (j = 1; j <= N/4; j++)
-                Pseq.Append( Points(ind,j) );
-              OnPlane0 = Standard_True;
-            }
-          aLine = gce_MakeLin( Points(ind+1, 1), Points(ind+1, N/4) );
-          if (resPlane.Contains( aLine, TolConf, TolAng ))
-            {
-              for (j = 1; j <= N/4; j++)
-                Pseq.Append( Points(ind+1,j) );
-              OnPlane1 = Standard_True;
-            }
-          if (OnPlane0 && OnPlane1)
-            B.Add( NewComp, Eseq(ind/2+1) );
-        }
-      else if (IsSingular(ind))
-        {
-          IndSing    = ind;
-          IndNotSing = ind+1;
-        }
-      else if (IsSingular(ind+1))
-        {
-          IndNotSing = ind;
-          IndSing    = ind+1;
-        }
-      if (IndSing != -1 && IndNotSing != -1)
-        {
-          aLine = gce_MakeLin( Points(IndSing, 1), Points(IndSing, N/4) );
-          if (resPlane.Contains( aLine, TolConf, TolAng ))
-            {
-              for (j = 1; j <= N/4; j++)
-                Pseq.Append( Points(IndSing,j) );
-
-              for (i = 1; i <= iseq.Length(); i++)
-                if (iseq(i) == IndNotSing)
-                  break;
-              if (i <= iseq.Length())
-                B.Add( NewComp, Eseq(ind/2+1) );
-            }
-        }
-    }
-
-  //Recompute the axe of plane
-  if (Pseq.Length() > slen)
-    {
-      TColgp_Array1OfPnt Parray2( 1, Pseq.Length() );
-      for (i = 1; i <= Parray2.Length(); i++)
-        Parray2(i) = Pseq(i);
-      GeomLib::AxeOfInertia( Parray2, TheAxe, issing );
-      resPlane = gp_Pln( TheAxe );
-    }
-
-  //Temporary
-  return Standard_True;
 }

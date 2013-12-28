@@ -22,9 +22,6 @@
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _AIS_Relation_HeaderFile
 #include <AIS_Relation.hxx>
 #endif
@@ -33,6 +30,9 @@
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
 #include <Handle_PrsMgr_PresentationManager3d.hxx>
@@ -152,7 +152,6 @@ private:
 
 TopoDS_Wire myWire;
 gp_Pnt myPntAttach;
-Standard_Boolean haspos;
 
 
 };

@@ -1,23 +1,18 @@
 // Created on: 1994-12-13
 // Created by: Jacques GOUSSARD
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Standard_Stream.hxx>
 #include <Standard_Macro.hxx>
@@ -367,6 +362,34 @@ static Standard_Integer boundingstr(Draw_Interpretor& di,Standard_Integer n,cons
     Draw::Set(a[6],aymax) ;
     Draw::Set(a[7],azmax) ;
   }
+  return 0;
+}
+
+//=======================================================================
+//function : getcoords
+//purpose  : 
+//=======================================================================
+static Standard_Integer getcoords(Draw_Interpretor& di,Standard_Integer n,const char** a)
+{
+  if(n < 2) 
+    return 1;
+
+  for (Standard_Integer i = 1; i < n; i++) 
+  {
+    const TopoDS_Shape aShape = DBRep::Get (a[i]);
+
+    if (aShape.IsNull())
+      continue;
+
+    if (aShape.ShapeType() == TopAbs_VERTEX)
+    {
+      const TopoDS_Vertex& aVertex = TopoDS::Vertex(aShape);
+      gp_Pnt aPnt = BRep_Tool::Pnt(aVertex);
+
+      di << a[i] << " (x,y,z) : " << aPnt.X() << " " << aPnt.Y() << " " << aPnt.Z() << "\n";
+    }
+  }
+
   return 0;
 }
 
@@ -775,7 +798,7 @@ static Standard_Integer wexplo (Draw_Interpretor&,
   return 0;
 }
 
-static Standard_Integer scalexyz(Draw_Interpretor& di, Standard_Integer n, const char** a)
+static Standard_Integer scalexyz(Draw_Interpretor& /*di*/, Standard_Integer n, const char** a)
 {
   if (n < 6) return 1;
 
@@ -879,6 +902,11 @@ void  BRepTest::BasicCommands(Draw_Interpretor& theCommands)
 		  __FILE__,
 		  orientsolid,g);
 
+  theCommands.Add("getcoords",
+    "getcoords vertex1 vertex 2... ; shows coords of input vertices",
+    __FILE__,
+    getcoords,g);
+  
   theCommands.Add("bounding",
 		  "bounding shape [ xmin ymin zmin xmax ymax zmax] ; draw bounds",
 		  __FILE__,

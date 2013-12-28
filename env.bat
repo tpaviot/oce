@@ -1,26 +1,28 @@
 @echo off
 
 rem Use:
-rem - first argument specifies version of Visual Studio (vc8, vc9, or vc10),
+rem - first argument specifies version of Visual Studio (vc8, vc9, vc10, vc12 or vc13),
 rem - second argument specifies architecture (win32 or win64),
 rem - third argument specifies build mode (Debug or Release)
 rem Default options are:
-rem   vc8 win32 Release
+rem   vc9 win32 Release
 
 set "SCRIPTROOT=%~dp0"
 set "SCRIPTROOT=%SCRIPTROOT:~0,-1%"
-set "CASROOT=%~dp0"
+set "CASROOT=%SCRIPTROOT%"
 if not ["%CASROOT%"] == [""] if exist "%SCRIPTROOT%\%CASROOT%" set "CASROOT=%SCRIPTROOT%\%CASROOT%"
 if     ["%CASROOT%"] == [""] set "CASROOT=%SCRIPTROOT%"
 
 rem ----- Reset values to defaults -----
 set "CASDEB="
-set "VCVER=vc8"
+set "VCVER=vc9"
 set "ARCH=32"
 set "VCVARS="
 set "HAVE_TBB=false"
+set "HAVE_OPENCL=false"
 set "HAVE_FREEIMAGE=false"
 set "HAVE_GL2PS=false"
+set "HAVE_OPENCL=false"
 set "CSF_OPT_INC="
 set "CSF_OPT_LIB32="
 set "CSF_OPT_LIB64="
@@ -54,9 +56,11 @@ rem ----- Optional 3rd-parties should be enabled by HAVE macros -----
 set "CSF_OPT_CMPL="
 set "PRODUCTS_DEFINES="
 if ["%HAVE_TBB%"]       == ["true"] set "PRODUCTS_DEFINES=%PRODUCTS_DEFINES% -DHAVE_TBB"
+if ["%HAVE_OPENCL%"]    == ["true"] set "PRODUCTS_DEFINES=%PRODUCTS_DEFINES% -DHAVE_OPENCL"
 if ["%HAVE_GL2PS%"]     == ["true"] set "PRODUCTS_DEFINES=%PRODUCTS_DEFINES% -DHAVE_GL2PS"
 if ["%HAVE_FREEIMAGE%"] == ["true"] set "PRODUCTS_DEFINES=%PRODUCTS_DEFINES% -DHAVE_FREEIMAGE"
 if ["%HAVE_TBB%"]       == ["true"] set "CSF_DEFINES=HAVE_TBB;%CSF_DEFINES%"
+if ["%HAVE_OPENCL%"]    == ["true"] set "CSF_DEFINES=HAVE_OPENCL;%CSF_DEFINES%"
 if ["%HAVE_GL2PS%"]     == ["true"] set "CSF_DEFINES=HAVE_GL2PS;%CSF_DEFINES%"
 if ["%HAVE_FREEIMAGE%"] == ["true"] set "CSF_DEFINES=HAVE_FREEIMAGE;%CSF_DEFINES%"
 
@@ -110,6 +114,7 @@ set MMGT_CLEAR=1
 set CSF_EXCEPTION_PROMPT=1
 set "CSF_SHMessage=%CASROOT%\src\SHMessage"
 set "CSF_MDTVTexturesDirectory=%CASROOT%\src\Textures"
+set "CSF_ShadersDirectory=%CASROOT%\src\Shaders"
 set "CSF_XSMessage=%CASROOT%\src\XSMessage"
 set "CSF_TObjMessage=%CASROOT%\src\TObj"
 set "CSF_StandardDefaults=%CASROOT%\src\StdResource"

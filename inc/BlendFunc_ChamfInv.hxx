@@ -19,9 +19,6 @@
 #ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
 #ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
 #endif
@@ -39,6 +36,9 @@
 #endif
 #ifndef _Blend_FuncInv_HeaderFile
 #include <Blend_FuncInv.hxx>
+#endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
 #endif
 class Adaptor3d_HSurface;
 class Adaptor3d_HCurve;
@@ -99,8 +99,6 @@ private:
 
 Handle_Adaptor3d_HSurface surf1;
 Handle_Adaptor3d_HSurface surf2;
-Standard_Real dis1;
-Standard_Real dis2;
 Handle_Adaptor3d_HCurve curv;
 Handle_Adaptor2d_HCurve2d csurf;
 Standard_Integer choix;

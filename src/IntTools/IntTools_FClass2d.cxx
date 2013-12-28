@@ -1,23 +1,18 @@
 // Created on: 1995-03-22
 // Created by: Laurent BUCHARD
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <IntTools_FClass2d.ixx>
 
@@ -526,120 +521,120 @@ IntTools_FClass2d::IntTools_FClass2d()
 //purpose  : 
 //=======================================================================
   TopAbs_State IntTools_FClass2d::Perform(const gp_Pnt2d& _Puv,
-					  const Standard_Boolean RecadreOnPeriodic) const
+                                          const Standard_Boolean RecadreOnPeriodic) const
 { 
-  Standard_Integer dedans, nbtabclass;
-  
-  nbtabclass = TabClass.Length();
-  
-  if(nbtabclass==0) { 
-    return(TopAbs_IN);
+  Standard_Integer nbtabclass = TabClass.Length();
+  if (nbtabclass == 0)
+  {
+    return TopAbs_IN;
   }
-  
-  //-- U1 is the First Param and U2 is in this case U1+Period
-  Standard_Real u, v, uu, vv,  uperiod, vperiod;
-  Standard_Boolean IsUPer, IsVPer, urecadre, vrecadre;
-  TopAbs_State Status= TopAbs_UNKNOWN;
 
-  u=_Puv.X();
-  v=_Puv.Y();
-  uu = u, vv = v;
+  //-- U1 is the First Param and U2 is in this case U1+Period
+  Standard_Real u = _Puv.X();
+  Standard_Real v = _Puv.Y();
+  Standard_Real uu = u;
+  Standard_Real vv = v;
+  TopAbs_State Status = TopAbs_UNKNOWN;
 
   Handle(BRepAdaptor_HSurface) surf = new BRepAdaptor_HSurface();
   surf->ChangeSurface().Initialize( Face, Standard_False );
   
-  uperiod=0., vperiod=0.;
-  IsUPer = surf->IsUPeriodic();
-  IsVPer = surf->IsVPeriodic();
+  const Standard_Boolean IsUPer  = surf->IsUPeriodic();
+  const Standard_Boolean IsVPer  = surf->IsVPeriodic();
+  const Standard_Real    uperiod = IsUPer ? surf->UPeriod() : 0.0;
+  const Standard_Real    vperiod = IsVPer ? surf->VPeriod() : 0.0;
 
-  if (IsUPer){ 
-    uperiod = surf->UPeriod();
-  }
-
-  if (IsVPer){
-    vperiod = surf->VPeriod();
-  }
-  
+  Standard_Boolean urecadre, vrecadre, bUseClassifier;
+  Standard_Integer dedans = 1;
+  //
   urecadre = Standard_False;
   vrecadre = Standard_False;
-
+  //
   if (RecadreOnPeriodic) {
     
     if (IsUPer) {
       if (uu < Umin)
-	while (uu < Umin) {
-	  uu += uperiod;
-	}
+        while (uu < Umin) {
+          uu += uperiod;
+        }
       else {
-	while (uu >= Umin){
-	  uu -= uperiod;
-	}
-	uu += uperiod;
+        while (uu >= Umin){
+          uu -= uperiod;
+        }
+        uu += uperiod;
       }
     }// if (IsUPer) {
     
     if (IsVPer) {
       if (vv < Vmin)
-	while (vv < Vmin){
-	  vv += vperiod;
-	}
+        while (vv < Vmin){
+          vv += vperiod;
+        }
       else {
-	while (vv >= Vmin) {
-	  vv -= vperiod;
-	}
-	vv += vperiod;
+        while (vv >= Vmin) {
+          vv -= vperiod;
+        }
+        vv += vperiod;
       }
     }//if (IsVPer) {
   }
-
-  while (1) {
+  //
+  for(;;) {
     dedans = 1;
     gp_Pnt2d Puv(u,v);
-      
-    if(TabOrien(1)!=-1) {
+    bUseClassifier = (TabOrien(1) == -1);
+    if(!bUseClassifier) {
       Standard_Integer n, cur, TabOrien_n ;
       for(n=1; n<=nbtabclass; n++) { 
-	cur = ((CSLib_Class2d *)TabClass(n))->SiDans(Puv);
-	TabOrien_n=TabOrien(n);
-
-	if(cur==1) { 
-	  if(TabOrien_n==0) { 
-	    dedans = -1; 
-	    break;
-	  }
-	}
-	else if(cur==-1) { 
-	  if(TabOrien_n==1) {  
-	    dedans = -1; 
-	    break;
-	  }
-	}
-	else { 
-	  dedans = 0;
-	  break;
-	}
+        cur = ((CSLib_Class2d *)TabClass(n))->SiDans(Puv);
+        TabOrien_n=TabOrien(n);
+        
+        if(cur==1) { 
+          if(TabOrien_n==0) { 
+            dedans = -1; 
+            break;
+          }
+        }
+        else if(cur==-1) { 
+          if(TabOrien_n==1) {  
+            dedans = -1; 
+            break;
+          }
+        }
+        else { 
+          dedans = 0;
+          break;
+        }
       } // for(n=1; n<=nbtabclass; n++)
-
+      
       if(dedans==0) { 
-	BRepClass_FaceClassifier aClassifier;
-	aClassifier.Perform(Face,Puv,Toluv);
-	Status = aClassifier.State();
-      }
-      if(dedans == 1) { 
-	Status = TopAbs_IN;
-      }
-      if(dedans == -1) {
-	Status = TopAbs_OUT;
+        bUseClassifier = Standard_True;
+      } 
+      else {
+        Status = (dedans == 1) ? TopAbs_IN : TopAbs_OUT;
       }
     } // if(TabOrien(1)!=-1) {
-    
-    else {  //-- TabOrien(1)=-1   Wrong Wire
+    //compute state of the point using face classifier
+    if (bUseClassifier) {
+      //compute tolerance to use in face classifier
+      Standard_Real aURes, aVRes, aFCTol;
+      Standard_Boolean bUIn, bVIn;
+      //
+      aURes = surf->UResolution(Toluv);
+      aVRes = surf->VResolution(Toluv);
+      //
+      bUIn = (u >= Umin) && (u <= Umax);
+      bVIn = (v >= Vmin) && (v <= Vmax);
+      //
+      aFCTol = (bUIn==bVIn) ? Max(aURes, aVRes) : 
+        (!bUIn ? aURes : aVRes);
+      //
       BRepClass_FaceClassifier aClassifier;
-      aClassifier.Perform(Face,Puv,Toluv);
+      aClassifier.Perform(Face,Puv,aFCTol);
       Status = aClassifier.State();
     }
     
-    if (!RecadreOnPeriodic || !IsUPer && !IsVPer)
+    if (!RecadreOnPeriodic || (!IsUPer && !IsVPer))
       return Status;
     
     if (Status == TopAbs_IN || Status == TopAbs_ON)
@@ -651,25 +646,25 @@ IntTools_FClass2d::IntTools_FClass2d()
     }
     else {
       if (IsUPer){
-	u += uperiod;
+        u += uperiod;
       }
     }
 
     if (u > Umax || !IsUPer) {
       if (!vrecadre){
-	v = vv;
-	vrecadre = Standard_True;
+        v = vv;
+        vrecadre = Standard_True;
       }
       else {
-	if (IsVPer){
-	  v += vperiod;
-	}
+        if (IsVPer){
+          v += vperiod;
+        }
       }
 
       u = uu;
       
       if (v > Vmax || !IsVPer) {
-	return Status;
+        return Status;
       }
     }
   } //while (1)
@@ -683,31 +678,27 @@ IntTools_FClass2d::IntTools_FClass2d()
 						    const Standard_Real Tol,
 						    const Standard_Boolean RecadreOnPeriodic) const
 { 
-
-  Standard_Integer dedans, nbtabclass;
-  
-  nbtabclass = TabClass.Length();
-  
-  if(nbtabclass==0) { 
-    return(TopAbs_IN);
+  Standard_Integer nbtabclass = TabClass.Length();
+  if (nbtabclass == 0)
+  {
+    return TopAbs_IN;
   }
-  
+
   //-- U1 is the First Param and U2 in this case is U1+Period
   Standard_Real u=_Puv.X();
   Standard_Real v=_Puv.Y();
   Standard_Real uu = u, vv = v;
-  
+
   Handle(BRepAdaptor_HSurface) surf = new BRepAdaptor_HSurface();
   surf->ChangeSurface().Initialize( Face, Standard_False );
-  Standard_Boolean IsUPer, IsVPer;
-  Standard_Real uperiod=0, vperiod=0;
-  if ((IsUPer = surf->IsUPeriodic()))
-    uperiod = surf->UPeriod();
-  if ((IsVPer = surf->IsVPeriodic()))
-    vperiod = surf->VPeriod();
+  const Standard_Boolean IsUPer  = surf->IsUPeriodic();
+  const Standard_Boolean IsVPer  = surf->IsVPeriodic();
+  const Standard_Real    uperiod = IsUPer ? surf->UPeriod() : 0.0;
+  const Standard_Real    vperiod = IsVPer ? surf->VPeriod() : 0.0;
   TopAbs_State Status = TopAbs_UNKNOWN;
   Standard_Boolean urecadre = Standard_False, vrecadre = Standard_False;
-  
+  Standard_Integer dedans = 1;
+
   if (RecadreOnPeriodic)
     {
       if (IsUPer)
@@ -776,7 +767,7 @@ IntTools_FClass2d::IntTools_FClass2d()
       Status = aClassifier.State();
     }
     
-    if (!RecadreOnPeriodic || !IsUPer && !IsVPer)
+    if (!RecadreOnPeriodic || (!IsUPer && !IsVPer))
       return Status;
     if (Status == TopAbs_IN || Status == TopAbs_ON)
       return Status;

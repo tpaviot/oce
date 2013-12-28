@@ -28,14 +28,14 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _Prs3d_CompositeAspect_HeaderFile
-#include <Prs3d_CompositeAspect.hxx>
+#ifndef _Prs3d_BasicAspect_HeaderFile
+#include <Prs3d_BasicAspect.hxx>
 #endif
 class Prs3d_LineAspect;
 
 
 //! A framework to define the display of planes. <br>
-class Prs3d_PlaneAspect : public Prs3d_CompositeAspect {
+class Prs3d_PlaneAspect : public Prs3d_BasicAspect {
 
 public:
 

@@ -106,23 +106,23 @@ public:
 //!           finds the face suitable to produce shell. <br>
 //!           theLCEF - set of faces to search. All faces <br>
 //!           from theLCEF must share edge theEdge <br>
-  Standard_EXPORT   static  void GetFaceOff(const TopoDS_Edge& theEdge,const TopoDS_Face& theFace,BOPTools_ListOfCoupleOfShape& theLCEF,TopoDS_Face& theFaceOff,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Boolean GetFaceOff(const TopoDS_Edge& theEdge,const TopoDS_Face& theFace,BOPTools_ListOfCoupleOfShape& theLCEF,TopoDS_Face& theFaceOff,Handle(BOPInt_Context)& theContext) ;
   //! Returns True if the face theFace is inside of the <br>
 //!          couple of faces theFace1, theFace2. <br>
 //!          The faces theFace, theFace1, theFace2  must <br>
 //!          share the edge theEdge <br>
-  Standard_EXPORT   static  Standard_Boolean IsInternalFace(const TopoDS_Face& theFace,const TopoDS_Edge& theEdge,const TopoDS_Face& theFace1,const TopoDS_Face& theFace2,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Integer IsInternalFace(const TopoDS_Face& theFace,const TopoDS_Edge& theEdge,const TopoDS_Face& theFace1,const TopoDS_Face& theFace2,Handle(BOPInt_Context)& theContext) ;
   //! Returns True if the face theFace is inside of the <br>
 //!          appropriate couple of faces (from the set theLF)    . <br>
 //!          The faces of the set theLF and theFace  must <br>
 //!          share the edge theEdge <br>
-  Standard_EXPORT   static  Standard_Boolean IsInternalFace(const TopoDS_Face& theFace,const TopoDS_Edge& theEdge,BOPCol_ListOfShape& theLF,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Integer IsInternalFace(const TopoDS_Face& theFace,const TopoDS_Edge& theEdge,BOPCol_ListOfShape& theLF,Handle(BOPInt_Context)& theContext) ;
   //! Returns True if the face theFace is inside the <br>
 //!          solid theSolid. <br>
 //!          theMEF - Map Edge/Faces for theSolid <br>
 //!          theTol - value of precision of computation <br>
 //!          theContext- cahed geometrical tools <br>
-  Standard_EXPORT   static  Standard_Boolean IsInternalFace(const TopoDS_Face& theFace,const TopoDS_Solid& theSolid,BOPCol_IndexedDataMapOfShapeListOfShape& theMEF,const Standard_Real theTol,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Integer IsInternalFace(const TopoDS_Face& theFace,const TopoDS_Solid& theSolid,BOPCol_IndexedDataMapOfShapeListOfShape& theMEF,const Standard_Real theTol,Handle(BOPInt_Context)& theContext) ;
   //! For the face theFace gets the edge theEdgeOnF <br>
 //!          that is the same as theEdge <br>
 //!          Returns True if such edge exists <br>

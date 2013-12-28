@@ -39,11 +39,11 @@ class TopTools_HArray1OfListOfShape : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TopTools_HArray1OfListOfShape(const Standard_Integer Low,const Standard_Integer Up);
+      TopTools_HArray1OfListOfShape(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TopTools_HArray1OfListOfShape(const Standard_Integer Low,const Standard_Integer Up,const TopTools_ListOfShape& V);
+      TopTools_HArray1OfListOfShape(const Standard_Integer Low,const Standard_Integer Up,const TopTools_ListOfShape& V);
   
-  Standard_EXPORT     void Init(const TopTools_ListOfShape& V) ;
+        void Init(const TopTools_ListOfShape& V) ;
   
         Standard_Integer Length() const;
   

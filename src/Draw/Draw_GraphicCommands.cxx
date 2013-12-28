@@ -1,22 +1,18 @@
 // Created on: 1995-02-23
 // Created by: Remi LEQUETTE
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // **************************************************************
 
@@ -138,7 +134,7 @@ static Standard_Integer zoom(Draw_Interpretor& , Standard_Integer n, const char*
 
 static Standard_Integer wzoom(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
 {
-  Standard_Integer id,X,Y,W,H,X1,Y1,X2,Y2,b;
+  Standard_Integer id,X,Y,W,H,X1,Y1,X2 = 0,Y2 = 0,b;
   Standard_Real dX1,dY1,dX2,dY2,zx,zy;
   if(argc != 1 && argc != 6)
   {
@@ -689,46 +685,47 @@ static Standard_Integer hardcopy(Draw_Interpretor& ,
       iview = ViewId(a[2]);
       if (iview < 0) return 1;
       if (n >= 4) {
-	if      (!strcmp(a[3],"a7")) {
-	  cad = cad / (2 * Sqrt(2));
-	  dx  = dx  / (2 * Sqrt(2));
-	  dy  = dy  / (2 * Sqrt(2));
-	}
-	else if (!strcmp(a[3],"a6")) {
-	  cad = cad / 2;
-	  dx  = dx  / 2;
-	  dy  = dy  / 2;
-	}
-	else if (!strcmp(a[3],"a5")) {
-	  cad = cad / Sqrt(2);
-	  dx  = dx  / Sqrt(2);
-	  dy  = dy  / Sqrt(2);
-	}
-	else if (!strcmp(a[3],"a4")) {
-	  cad = cad;
-	  dx  = dx;
-	  dy  = dy;
-	}
-	else if (!strcmp(a[3],"a3")) {
-	  cad = cad * Sqrt(2);
-	  dx  = dx  * Sqrt(2);
-	  dy  = dy  * Sqrt(2);
-	}
-	else if (!strcmp(a[3],"a2")) {
-	  cad = cad * 2;
-	  dx  = dx  * 2;
-	  dy  = dy  * 2;
-	}
-	else if (!strcmp(a[3],"a1")) {
-	  cad = cad * 2 * Sqrt(2);
-	  dx  = dx  * 2 * Sqrt(2);
-	  dy  = dy  * 2 * Sqrt(2);
-	}
-	else if (!strcmp(a[3],"a0")) {
-	  cad = cad * 4;
-	  dx  = dx  * 4;
-	  dy  = dy  * 4;
-	}
+        if      (!strcmp(a[3],"a7")) {
+          cad = cad / (2 * Sqrt(2));
+          dx  = dx  / (2 * Sqrt(2));
+          dy  = dy  / (2 * Sqrt(2));
+        }
+        else if (!strcmp(a[3],"a6")) {
+          cad = cad / 2;
+          dx  = dx  / 2;
+          dy  = dy  / 2;
+        }
+        else if (!strcmp(a[3],"a5")) {
+          cad = cad / Sqrt(2);
+          dx  = dx  / Sqrt(2);
+          dy  = dy  / Sqrt(2);
+        }
+        else if (!strcmp(a[3],"a4")) {
+          // Do nothing
+          //cad == cad;
+          //dx  == dx;
+          //dy  == dy;
+        }
+        else if (!strcmp(a[3],"a3")) {
+          cad = cad * Sqrt(2);
+          dx  = dx  * Sqrt(2);
+          dy  = dy  * Sqrt(2);
+        }
+        else if (!strcmp(a[3],"a2")) {
+          cad = cad * 2;
+          dx  = dx  * 2;
+          dy  = dy  * 2;
+        }
+        else if (!strcmp(a[3],"a1")) {
+          cad = cad * 2 * Sqrt(2);
+          dx  = dx  * 2 * Sqrt(2);
+          dy  = dy  * 2 * Sqrt(2);
+        }
+        else if (!strcmp(a[3],"a0")) {
+          cad = cad * 4;
+          dx  = dx  * 4;
+          dy  = dy  * 4;
+        }
       }
     }
   }

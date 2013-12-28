@@ -41,6 +41,8 @@ void XCAFSchema_PTopLoc_ItemLocation::SWrite(const Handle(Standard_Persistent)& 
   if (!p.IsNull()) {
     Handle(PTopLoc_ItemLocation) &pp = (Handle(PTopLoc_ItemLocation)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPTopLoc_ItemLocationmyDatum(),f);
@@ -61,6 +63,8 @@ void XCAFSchema_PTopLoc_ItemLocation::SRead(const Handle(Standard_Persistent)& p
 { 
   if (!p.IsNull()) {
     Handle(PTopLoc_ItemLocation) &pp = (Handle(PTopLoc_ItemLocation)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

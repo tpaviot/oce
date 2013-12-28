@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepVisual_Array1OfBoxCharacteristicSelect(const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_Array1OfBoxCharacteristicSelect(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepVisual_Array1OfBoxCharacteristicSelect(const StepVisual_BoxCharacteristicSelect& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_Array1OfBoxCharacteristicSelect(const StepVisual_BoxCharacteristicSelect& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const StepVisual_BoxCharacteristicSelect& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepVisual_Array1OfBoxCharacteristicSelect()
 {
   Destroy();

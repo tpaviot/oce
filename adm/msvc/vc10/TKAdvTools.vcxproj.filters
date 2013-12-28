@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{CD47368F-1206-04F6-0561-ABEDE89042B1}</UniqueIdentifier>
+      <UniqueIdentifier>{845E46B4-06AE-05A6-117C-B300A3EF0285}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Dynamic">
-      <UniqueIdentifier>{0AB0D0DD-0C13-11B5-0EAF-42E569E37DC4}</UniqueIdentifier>
+      <UniqueIdentifier>{8E768CE0-053D-1477-1756-72D847D52F7F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Materials">
-      <UniqueIdentifier>{55D70249-0B70-0221-0A5F-E5C675482FE3}</UniqueIdentifier>
+      <UniqueIdentifier>{21603443-0B2B-0A35-0839-EBCA1720ACFD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Expr">
-      <UniqueIdentifier>{3FF33447-1484-1172-0520-A880EDA85233}</UniqueIdentifier>
+      <UniqueIdentifier>{3D260238-07A8-0FF6-06B2-95683BEE2D97}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ExprIntrp">
-      <UniqueIdentifier>{ACB47577-12A2-0289-0D04-4A09A5BF6DD8}</UniqueIdentifier>
+      <UniqueIdentifier>{F32F23B9-11F9-143D-02C5-CF15DEA4A4CC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GraphDS">
-      <UniqueIdentifier>{C4B72BCD-16AE-11AE-0C3D-BF65EABC251E}</UniqueIdentifier>
+      <UniqueIdentifier>{3F7D9F15-0FF6-09AE-1683-778CE8C407E6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GraphTools">
-      <UniqueIdentifier>{28FF0177-09B7-1386-16E0-6A21CAD05EBB}</UniqueIdentifier>
+      <UniqueIdentifier>{E2A713C4-064A-0B0A-06B5-61A15FA9A2BE}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -430,9 +430,6 @@
       <Filter>Source files\ExprIntrp</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp.cxx">
-      <Filter>Source files\ExprIntrp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp.tab.c">
       <Filter>Source files\ExprIntrp</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_Analysis.cxx">

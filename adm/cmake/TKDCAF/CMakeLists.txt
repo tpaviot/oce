@@ -109,9 +109,6 @@ endif()
   list( APPEND TKDCAF_USED_SRCFILES "../../../src/DDocStd/DDocStd_MTMCommands.cxx" )
   SOURCE_GROUP (DDocStd FILES "../../../src/DDocStd/DDocStd_MTMCommands.cxx")
 
-  list( APPEND TKDCAF_USED_SRCFILES "../../../src/DDocStd/DDocStd_Sample.cxx" )
-  SOURCE_GROUP (DDocStd FILES "../../../src/DDocStd/DDocStd_Sample.cxx")
-
   list( APPEND TKDCAF_USED_SRCFILES "../../../src/DDocStd/DDocStd_ToolsCommands.cxx" )
   SOURCE_GROUP (DDocStd FILES "../../../src/DDocStd/DDocStd_ToolsCommands.cxx")
 
@@ -202,9 +199,6 @@ endif()
   list( APPEND TKDCAF_USED_SRCFILES "../../../src/DDataStd/DDataStd_ObjectCommands.cxx" )
   SOURCE_GROUP (DDataStd FILES "../../../src/DDataStd/DDataStd_ObjectCommands.cxx")
 
-  list( APPEND TKDCAF_USED_SRCFILES "../../../src/DDataStd/DDataStd_Sample.cxx" )
-  SOURCE_GROUP (DDataStd FILES "../../../src/DDataStd/DDataStd_Sample.cxx")
-
   list( APPEND TKDCAF_USED_SRCFILES "../../../src/DDataStd/DDataStd_TreeBrowser.cxx" )
   SOURCE_GROUP (DDataStd FILES "../../../src/DDataStd/DDataStd_TreeBrowser.cxx")
 
@@ -219,9 +213,6 @@ endif()
 
   list( APPEND TKDCAF_USED_SRCFILES "../../../src/DPrsStd/DPrsStd_AISViewerCommands.cxx" )
   SOURCE_GROUP (DPrsStd FILES "../../../src/DPrsStd/DPrsStd_AISViewerCommands.cxx")
-
-  list( APPEND TKDCAF_USED_SRCFILES "../../../src/DPrsStd/DPrsStd_Sample.cxx" )
-  SOURCE_GROUP (DPrsStd FILES "../../../src/DPrsStd/DPrsStd_Sample.cxx")
 
   list( APPEND TKDCAF_USED_SRCFILES "../../../src/DrawDim/DrawDim.cxx" )
   SOURCE_GROUP (DrawDim FILES "../../../src/DrawDim/DrawDim.cxx")
@@ -258,6 +249,10 @@ endif()
 
 if (WIN32)
 else()
+
+  if (APPLE)
+
+  endif()
 
 endif()
 

@@ -42,6 +42,8 @@ void XCAFSchema_PXCAFDoc_Datum::SWrite(const Handle(Standard_Persistent)& p, Sto
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Datum) &pp = (Handle(PXCAFDoc_Datum)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPXCAFDoc_DatummyName(),f);
@@ -62,6 +64,8 @@ void XCAFSchema_PXCAFDoc_Datum::SRead(const Handle(Standard_Persistent)& p, Stor
 { 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Datum) &pp = (Handle(PXCAFDoc_Datum)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

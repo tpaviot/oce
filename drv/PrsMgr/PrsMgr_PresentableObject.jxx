@@ -1,6 +1,9 @@
 #ifndef _Standard_NotImplemented_HeaderFile
 #include <Standard_NotImplemented.hxx>
 #endif
+#ifndef _PrsMgr_Presentation3d_HeaderFile
+#include <PrsMgr_Presentation3d.hxx>
+#endif
 #ifndef _PrsMgr_PresentationManager_HeaderFile
 #include <PrsMgr_PresentationManager.hxx>
 #endif

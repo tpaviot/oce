@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+		10DE0068112A1549187C05CA = {isa = PBXBuildFile; fileRef = 00C1041401D50D2E04750AF9 ;};
+		035D1358160708B00E940602 = {isa = PBXBuildFile; fileRef = 040B0DC903750C8E0BD50B02 ;};
+		058D024B13CD164B18040B5C = {isa = PBXBuildFile; fileRef = 064E13E616FC0C700A6A0B0C ;};
+		016D18B3071A0A1F050810D4 = {isa = PBXBuildFile; fileRef = 056E043F0C8C10160E4D085F ;};
+		12DB0B4913F217A712391782 = {isa = PBXBuildFile; fileRef = 00C7054703F0186718EE0346 ;};
+		128F0669072F1668095B0838 = {isa = PBXBuildFile; fileRef = 132507E40C2E05060F9B0FF3 ;};
+		074D18C60E4806670FA513B8 = {isa = PBXBuildFile; fileRef = 1673058C1067148A19831207 ;};
+		0F7605430479010E10251921 = {isa = PBXBuildFile; fileRef = 0508064614A300AA023D0C09 ;};
+		0CFB1621187415D002331303 = {isa = PBXBuildFile; fileRef = 172F092E0D31126C00DC1436 ;};
+		06CA0D16081E10231203019F = {isa = PBXBuildFile; fileRef = 0DEE1027013E0FD410190308 ;};
+		07E80E28156C016017570E9F = {isa = PBXBuildFile; fileRef = 08BC0566051E12A401C80649 ;};
+		170B02DA07EA048300E20D2C = {isa = PBXBuildFile; fileRef = 140D045F121E1443073E17AC ;};
+		055914040F51049B190B0E9A = {isa = PBXBuildFile; fileRef = 08FA02DF185E0FE509680B60 ;};
+		0692159310FE05EA002C0704 = {isa = PBXBuildFile; fileRef = 1210071812F500780B681395 ;};
+		0F27145B160907F00DAD12AD = {isa = PBXBuildFile; fileRef = 0B5408AF07C5197B05F8097C ;};
+		0094026807DA070000DD0BD8 = {isa = PBXBuildFile; fileRef = 037E0BDD026E0F590ED81841 ;};
+		06FA1791146F0B7F17D20C48 = {isa = PBXBuildFile; fileRef = 117C0D3910980C95040315AB ;};
+		17A30A690FD8002F0EBF113A = {isa = PBXBuildFile; fileRef = 06FC01DF110414801472024E ;};
+		069713D50FFA11FD0FAF14F1 = {isa = PBXBuildFile; fileRef = 18CB05DC0E4F18F61983115B ;};
+		13A903430E890C2903CA188B = {isa = PBXBuildFile; fileRef = 16BC0C7D047715830966069C ;};
+		09B8076111BD0BD605D215BD = {isa = PBXBuildFile; fileRef = 09D4009E108608E911CE0D33 ;};
+		07F80F62148707690A5F078E = {isa = PBXBuildFile; fileRef = 083B015B0FB6031602580230 ;};
+		0D7410D9110406630D7903FE = {isa = PBXBuildFile; fileRef = 14EF136B013D01C408A50572 ;};
+		19720BA30F8D0C930FE51305 = {isa = PBXBuildFile; fileRef = 0C73187E0C50137F15A7050A ;};
+		0D340E4818B9014312350F21 = {isa = PBXBuildFile; fileRef = 0ECD0E9D05E8131500E41295 ;};
+		13030AD00F1D0C4113C708E5 = {isa = PBXBuildFile; fileRef = 0F1310541058125A17A1084B ;};
+
+		12F7108A0F7108B6133E0723 = {isa = PBXBuildFile; fileRef = 1786145E12FB0B6800981023 ; };
+		050800F009D302920D6C0D3B = {isa = PBXBuildFile; fileRef = 0BDF0115064513D318E20963 ; };
+		008E17E8081A0C870C6C1980 = {isa = PBXBuildFile; fileRef = 1325120C03AA127A050D07DF ; };
+		16940E540402124301061855 = {isa = PBXBuildFile; fileRef = 04A0192C0C9613FC0DCC1101 ; };
+		06B80986094107C817B314F9 = {isa = PBXBuildFile; fileRef = 0254035C131F08C8113910BD ; };
+		049813AC11E914361559059B = {isa = PBXBuildFile; fileRef = 08B7051108170ACE1587104E ; };
+		059C0B350C8610590DD60138 = {isa = PBXBuildFile; fileRef = 15BD16800DEC0A4D08140A0F ; };
+		022903FF1237053B1897169D = {isa = PBXBuildFile; fileRef = 104601AC154D11970F8B0050 ; };
+		158A036906831573035B040D = {isa = PBXBuildFile; fileRef = 18C4137A075516A806CE1830 ; };
+		0E4300E90B0411D504A60926 = {isa = PBXBuildFile; fileRef = 0BDE0912130C11980B8912CF ; };
+		0D2E1585048E136118E51436 = {isa = PBXBuildFile; fileRef = 151F0FBE0377177C027A0F98 ; };
+		032F0399113109DE0EBE163D = {isa = PBXBuildFile; fileRef = 074C12D20A5801C203E81720 ; };
+		12500911108218031554134D = {isa = PBXBuildFile; fileRef = 02630DD70463195C093C076C ; };
+
+		02B801270C08085C13E80C6A = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libTKXDESTEP.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+
+		00C1041401D50D2E04750AF9 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile_0.cxx; sourceTree = "<group>"; };
+		040B0DC903750C8E0BD50B02 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape_0.cxx; sourceTree = "<group>"; };
+		064E13E616FC0C700A6A0B0C = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile_0.cxx; sourceTree = "<group>"; };
+		056E043F0C8C10160E4D085F = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile_0.cxx; sourceTree = "<group>"; };
+		00C7054703F0186718EE0346 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapIteratorOfDataMapOfShapePD_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapIteratorOfDataMapOfShapePD_0.cxx; sourceTree = "<group>"; };
+		132507E40C2E05060F9B0FF3 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR_0.cxx; sourceTree = "<group>"; };
+		1673058C1067148A19831207 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile_0.cxx; sourceTree = "<group>"; };
+		0508064614A300AA023D0C09 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapNodeOfDataMapOfLabelShape_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapNodeOfDataMapOfLabelShape_0.cxx; sourceTree = "<group>"; };
+		172F092E0D31126C00DC1436 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile_0.cxx; sourceTree = "<group>"; };
+		0DEE1027013E0FD410190308 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile_0.cxx; sourceTree = "<group>"; };
+		08BC0566051E12A401C80649 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapNodeOfDataMapOfShapePD_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapNodeOfDataMapOfShapePD_0.cxx; sourceTree = "<group>"; };
+		140D045F121E1443073E17AC = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR_0.cxx; sourceTree = "<group>"; };
+		08FA02DF185E0FE509680B60 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapOfLabelExternFile_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapOfLabelExternFile_0.cxx; sourceTree = "<group>"; };
+		1210071812F500780B681395 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapOfLabelShape_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapOfLabelShape_0.cxx; sourceTree = "<group>"; };
+		0B5408AF07C5197B05F8097C = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapOfPDExternFile_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapOfPDExternFile_0.cxx; sourceTree = "<group>"; };
+		037E0BDD026E0F590ED81841 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapOfSDRExternFile_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapOfSDRExternFile_0.cxx; sourceTree = "<group>"; };
+		117C0D3910980C95040315AB = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapOfShapePD_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapOfShapePD_0.cxx; sourceTree = "<group>"; };
+		06FC01DF110414801472024E = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DataMapOfShapeSDR_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DataMapOfShapeSDR_0.cxx; sourceTree = "<group>"; };
+		18CB05DC0E4F18F61983115B = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_DictionaryOfExternFile_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_DictionaryOfExternFile_0.cxx; sourceTree = "<group>"; };
+		16BC0C7D047715830966069C = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_IteratorOfDictionaryOfExternFile_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_IteratorOfDictionaryOfExternFile_0.cxx; sourceTree = "<group>"; };
+		09D4009E108608E911CE0D33 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_StackItemOfDictionaryOfExternFile_0.cxx; path = ../../../drv/STEPCAFControl/STEPCAFControl_StackItemOfDictionaryOfExternFile_0.cxx; sourceTree = "<group>"; };
+		083B015B0FB6031602580230 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_ActorWrite.cxx; path = ../../../src/STEPCAFControl/STEPCAFControl_ActorWrite.cxx; sourceTree = "<group>"; };
+		14EF136B013D01C408A50572 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_Controller.cxx; path = ../../../src/STEPCAFControl/STEPCAFControl_Controller.cxx; sourceTree = "<group>"; };
+		0C73187E0C50137F15A7050A = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_ExternFile.cxx; path = ../../../src/STEPCAFControl/STEPCAFControl_ExternFile.cxx; sourceTree = "<group>"; };
+		0ECD0E9D05E8131500E41295 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_Reader.cxx; path = ../../../src/STEPCAFControl/STEPCAFControl_Reader.cxx; sourceTree = "<group>"; };
+		0F1310541058125A17A1084B = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = STEPCAFControl_Writer.cxx; path = ../../../src/STEPCAFControl/STEPCAFControl_Writer.cxx; sourceTree = "<group>"; };
+
+		1786145E12FB0B6800981023 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKBRep.dylib; path = libTKBRep.dylib; sourceTree = "<group>"; };
+		0BDF0115064513D318E20963 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKSTEPAttr.dylib; path = libTKSTEPAttr.dylib; sourceTree = "<group>"; };
+		1325120C03AA127A050D07DF = {isa = PBXFileReference; lastKnownFileType = file; name = libTKernel.dylib; path = libTKernel.dylib; sourceTree = "<group>"; };
+		04A0192C0C9613FC0DCC1101 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKMath.dylib; path = libTKMath.dylib; sourceTree = "<group>"; };
+		0254035C131F08C8113910BD = {isa = PBXFileReference; lastKnownFileType = file; name = libTKXSBase.dylib; path = libTKXSBase.dylib; sourceTree = "<group>"; };
+		08B7051108170ACE1587104E = {isa = PBXFileReference; lastKnownFileType = file; name = libTKG2d.dylib; path = libTKG2d.dylib; sourceTree = "<group>"; };
+		15BD16800DEC0A4D08140A0F = {isa = PBXFileReference; lastKnownFileType = file; name = libTKCAF.dylib; path = libTKCAF.dylib; sourceTree = "<group>"; };
+		104601AC154D11970F8B0050 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKSTEPBase.dylib; path = libTKSTEPBase.dylib; sourceTree = "<group>"; };
+		18C4137A075516A806CE1830 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKCDF.dylib; path = libTKCDF.dylib; sourceTree = "<group>"; };
+		0BDE0912130C11980B8912CF = {isa = PBXFileReference; lastKnownFileType = file; name = libTKLCAF.dylib; path = libTKLCAF.dylib; sourceTree = "<group>"; };
+		151F0FBE0377177C027A0F98 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKG3d.dylib; path = libTKG3d.dylib; sourceTree = "<group>"; };
+		074C12D20A5801C203E81720 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKXCAF.dylib; path = libTKXCAF.dylib; sourceTree = "<group>"; };
+		02630DD70463195C093C076C = {isa = PBXFileReference; lastKnownFileType = file; name = libTKSTEP.dylib; path = libTKSTEP.dylib; sourceTree = "<group>"; };
+
+		0E2111F204E6039B06B618A2 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12F7108A0F7108B6133E0723 ,
+				050800F009D302920D6C0D3B ,
+				008E17E8081A0C870C6C1980 ,
+				16940E540402124301061855 ,
+				06B80986094107C817B314F9 ,
+				049813AC11E914361559059B ,
+				059C0B350C8610590DD60138 ,
+				022903FF1237053B1897169D ,
+				158A036906831573035B040D ,
+				0E4300E90B0411D504A60926 ,
+				0D2E1585048E136118E51436 ,
+				032F0399113109DE0EBE163D ,
+				12500911108218031554134D ,
+
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+
+		14C001E716FC0BEE19640F5C = {
+			isa = PBXGroup;
+			children = (
+				00C1041401D50D2E04750AF9 ,
+				040B0DC903750C8E0BD50B02 ,
+				064E13E616FC0C700A6A0B0C ,
+				056E043F0C8C10160E4D085F ,
+				00C7054703F0186718EE0346 ,
+				132507E40C2E05060F9B0FF3 ,
+				1673058C1067148A19831207 ,
+				0508064614A300AA023D0C09 ,
+				172F092E0D31126C00DC1436 ,
+				0DEE1027013E0FD410190308 ,
+				08BC0566051E12A401C80649 ,
+				140D045F121E1443073E17AC ,
+				08FA02DF185E0FE509680B60 ,
+				1210071812F500780B681395 ,
+				0B5408AF07C5197B05F8097C ,
+				037E0BDD026E0F590ED81841 ,
+				117C0D3910980C95040315AB ,
+				06FC01DF110414801472024E ,
+				18CB05DC0E4F18F61983115B ,
+				16BC0C7D047715830966069C ,
+				09D4009E108608E911CE0D33 ,
+				083B015B0FB6031602580230 ,
+				14EF136B013D01C408A50572 ,
+				0C73187E0C50137F15A7050A ,
+				0ECD0E9D05E8131500E41295 ,
+				0F1310541058125A17A1084B ,
+			);
+			name = STEPCAFControl;
+			sourceTree = "<group>";
+		};
+
+		01EE154312670DD4017E0AD6 = {
+			isa = PBXGroup;
+			children = (
+				1786145E12FB0B6800981023 ,
+				0BDF0115064513D318E20963 ,
+				1325120C03AA127A050D07DF ,
+				04A0192C0C9613FC0DCC1101 ,
+				0254035C131F08C8113910BD ,
+				08B7051108170ACE1587104E ,
+				15BD16800DEC0A4D08140A0F ,
+				104601AC154D11970F8B0050 ,
+				18C4137A075516A806CE1830 ,
+				0BDE0912130C11980B8912CF ,
+				151F0FBE0377177C027A0F98 ,
+				074C12D20A5801C203E81720 ,
+				02630DD70463195C093C076C ,
+
+				14D00ABF05A10C0C08B20BEA ,
+				02B801270C08085C13E80C6A ,
+			);
+			sourceTree = "<group>";
+		};
+		14D00ABF05A10C0C08B20BEA = {
+			isa = PBXGroup;
+			children = (
+				14C001E716FC0BEE19640F5C ,
+			);
+			name = "Source files";
+			sourceTree = "<group>";
+		};
+
+		0A5A0E1D0B3D022B03CE1268 = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+
+		01E4054205C2124315540825 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16960E1509690B98052B01BD ;
+			buildPhases = (
+				07AD117B016B176109F701B0 ,
+				0E2111F204E6039B06B618A2 ,
+				0A5A0E1D0B3D022B03CE1268 ,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TKXDESTEP;
+			productName = TKXDESTEP;
+			productReference = 02B801270C08085C13E80C6A ;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+
+		077A145913680A9618FF03DF = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 0A9F07AC0B660636044F05D8 ;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 01EE154312670DD4017E0AD6;
+			productRefGroup = 01EE154312670DD4017E0AD6;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01E4054205C2124315540825 ,
+			);
+		};
+
+		07AD117B016B176109F701B0 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10DE0068112A1549187C05CA ,
+				035D1358160708B00E940602 ,
+				058D024B13CD164B18040B5C ,
+				016D18B3071A0A1F050810D4 ,
+				12DB0B4913F217A712391782 ,
+				128F0669072F1668095B0838 ,
+				074D18C60E4806670FA513B8 ,
+				0F7605430479010E10251921 ,
+				0CFB1621187415D002331303 ,
+				06CA0D16081E10231203019F ,
+				07E80E28156C016017570E9F ,
+				170B02DA07EA048300E20D2C ,
+				055914040F51049B190B0E9A ,
+				0692159310FE05EA002C0704 ,
+				0F27145B160907F00DAD12AD ,
+				0094026807DA070000DD0BD8 ,
+				06FA1791146F0B7F17D20C48 ,
+				17A30A690FD8002F0EBF113A ,
+				069713D50FFA11FD0FAF14F1 ,
+				13A903430E890C2903CA188B ,
+				09B8076111BD0BD605D215BD ,
+				07F80F62148707690A5F078E ,
+				0D7410D9110406630D7903FE ,
+				19720BA30F8D0C930FE51305 ,
+				0D340E4818B9014312350F21 ,
+				13030AD00F1D0C4113C708E5 ,
+
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+
+		092E048A12250158025C0810 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "$(CSF_OPT_LNK64)"; 
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		028812CF12EA187D01A30C28 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "$(CSF_OPT_LNK64D)";
+			};
+			name = Release;
+		};
+		147B046D1698051C16BE09EB = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					CSFDB ,
+					HAVE_WOK_CONFIG_H ,
+					HAVE_CONFIG_H ,
+					OCC_CONVERT_SIGNALS ,
+				);
+				HEADER_SEARCH_PATHS = (
+					../../../inc,
+					/Users/mnt/tools/WOK660beta/site/../lib,
+					../../../drv/STEPCAFControl,
+					../../../src/STEPCAFControl,
+					"$(CSF_OPT_INC)",
+				);
+				OTHER_CFLAGS = (
+					"$(CSF_OPT_CMPL)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK660beta/site/../lib ../../../drv/STEPCAFControl ../../../src/STEPCAFControl";
+				WRAPPER_EXTENSION = dylib;
+			};
+			name = Debug;
+		};
+		0D3A0E310AA212FC13251603 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					CSFDB ,
+					HAVE_WOK_CONFIG_H ,
+					HAVE_CONFIG_H ,
+					OCC_CONVERT_SIGNALS ,
+				);
+				HEADER_SEARCH_PATHS = (
+					../../../inc,
+					/Users/mnt/tools/WOK660beta/site/../lib,
+					../../../drv/STEPCAFControl,
+					../../../src/STEPCAFControl,
+					"$(CSF_OPT_INC)",
+				);
+				OTHER_CFLAGS = (
+					"$(CSF_OPT_CMPL)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK660beta/site/../lib ../../../drv/STEPCAFControl ../../../src/STEPCAFControl";
+				WRAPPER_EXTENSION = dylib;
+			};
+			name = Release;
+		};
+
+		0A9F07AC0B660636044F05D8 = {
+			isa = XCConfigurationList;
+		buildConfigurations = (
+				092E048A12250158025C0810 ,
+				028812CF12EA187D01A30C28 ,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16960E1509690B98052B01BD = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				147B046D1698051C16BE09EB ,
+				0D3A0E310AA212FC13251603 ,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+
+	};
+	rootObject = 077A145913680A9618FF03DF ;
+}

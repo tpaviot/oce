@@ -37,6 +37,9 @@
 #ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
 #endif
+#ifndef _Graphic3d_SequenceOfHClipPlane_HeaderFile
+#include <Graphic3d_SequenceOfHClipPlane.hxx>
+#endif
 #ifndef _SelectMgr_ViewerSelector_HeaderFile
 #include <SelectMgr_ViewerSelector.hxx>
 #endif
@@ -46,12 +49,17 @@
 #ifndef _Handle_V3d_View_HeaderFile
 #include <Handle_V3d_View.hxx>
 #endif
+#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
+#include <Handle_SelectMgr_EntityOwner.hxx>
+#endif
 class Select3D_Projector;
 class Graphic3d_Group;
 class Graphic3d_Structure;
 class SelectMgr_Selection;
 class V3d_View;
 class TColgp_Array1OfPnt2d;
+class gp_Lin;
+class SelectMgr_EntityOwner;
 
 
 //! Selector Usable by Viewers from V3d <br>
@@ -90,8 +98,6 @@ public:
   Standard_EXPORT     void Pick(const TColgp_Array1OfPnt2d& Polyline,const Handle(V3d_View)& aView) ;
   //! Returns the current Projector. <br>
        const Handle_Select3D_Projector& Projector() const;
-  //! Puts back the address of the current projector in sensitive primitives... <br>
-  Standard_EXPORT     void ReactivateProjector() ;
   //! Displays sensitive areas found in the view aView. <br>
   Standard_EXPORT     void DisplayAreas(const Handle(V3d_View)& aView) ;
   //! Clears the view aView of sensitive areas found in it. <br>
@@ -112,6 +118,23 @@ public:
 
 protected:
 
+  //! Set view clipping for the selector. <br>
+//! @param thePlanes [in] the view planes. <br>
+  Standard_EXPORT     void SetClipping(const Graphic3d_SequenceOfHClipPlane& thePlanes) ;
+  //! Computed depth boundaries for the passed set of clipping planes and picking line. <br>
+//! @param thePlanes [in] the planes. <br>
+//! @param thePickLine [in] the picking line. <br>
+//! @param theDepthMin [out] minimum depth limit. <br>
+//! @param theDepthMax [out] maximum depth limit. <br>
+  Standard_EXPORT     void ComputeClipRange(const Graphic3d_SequenceOfHClipPlane& thePlanes,const gp_Lin& thePickLine,Standard_Real& theDepthMin,Standard_Real& theDepthMax) const;
+  //! For more details please refer to base class. <br>
+  Standard_EXPORT   virtual  gp_Lin PickingLine(const Standard_Real theX,const Standard_Real theY) const;
+  //! For more details please refer to base class. <br>
+  Standard_EXPORT   virtual  void DepthClipping(const Standard_Real theX,const Standard_Real theY,Standard_Real& theMin,Standard_Real& theMax) const;
+  //! For more details please refer to base class. <br>
+  Standard_EXPORT   virtual  void DepthClipping(const Standard_Real theX,const Standard_Real theY,const Handle(SelectMgr_EntityOwner)& theOwner,Standard_Real& theMin,Standard_Real& theMax) const;
+  //! For more details please refer to base class. <br>
+  Standard_EXPORT   virtual  Standard_Boolean HasDepthClipping(const Handle(SelectMgr_EntityOwner)& theOwner) const;
 
 
 
@@ -136,6 +159,7 @@ Standard_Boolean myupdatetol;
 Handle_Graphic3d_Group myareagroup;
 Handle_Graphic3d_Group mysensgroup;
 Handle_Graphic3d_Structure mystruct;
+Graphic3d_SequenceOfHClipPlane myClipPlanes;
 
 
 };

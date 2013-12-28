@@ -39,11 +39,11 @@ class Quantity_HArray1OfColor : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Quantity_HArray1OfColor(const Standard_Integer Low,const Standard_Integer Up);
+      Quantity_HArray1OfColor(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Quantity_HArray1OfColor(const Standard_Integer Low,const Standard_Integer Up,const Quantity_Color& V);
+      Quantity_HArray1OfColor(const Standard_Integer Low,const Standard_Integer Up,const Quantity_Color& V);
   
-  Standard_EXPORT     void Init(const Quantity_Color& V) ;
+        void Init(const Quantity_Color& V) ;
   
         Standard_Integer Length() const;
   

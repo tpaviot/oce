@@ -1,28 +1,20 @@
 // Created on: 1998-08-06
 // Created by: Administrateur Atelier MDL
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifdef WNT
-
 
 #include <windows.h>
 #include <DrawRessource.h>
@@ -41,7 +33,7 @@ extern Standard_Boolean Draw_IsConsoleSubsystem;
 |
 |
 \*--------------------------------------------------------*/
-LONG APIENTRY WndProc(HWND hWndFrame, UINT wMsg, WPARAM wParam, LONG lParam )
+LRESULT APIENTRY WndProc(HWND hWndFrame, UINT wMsg, WPARAM wParam, LPARAM lParam )
 {
   HWND hWndClient;	
   switch(wMsg)
@@ -80,11 +72,12 @@ LONG APIENTRY WndProc(HWND hWndFrame, UINT wMsg, WPARAM wParam, LONG lParam )
 \*--------------------------------------------------------------------------*/
 BOOL CreateProc(HWND hWndFrame)
 {
-  HWND hWnd;
-
-  // Save hWnd in the main window in extra memory in 0
-  if (hWnd = CreateMDIClientWindow(hWndFrame))
+  HWND hWnd = CreateMDIClientWindow (hWndFrame);
+  if (hWnd != NULL)
+  {
+    // Save hWnd in the main window in extra memory in 0
     SetWindowLong(hWndFrame, CLIENTWND, (LONG)hWnd);
+  }
   return(TRUE);
 }
 
@@ -94,32 +87,32 @@ BOOL CreateProc(HWND hWndFrame)
 |  		Handler for message WM_COMMAND   
 |
 \*--------------------------------------------------------------------------*/
-BOOL CommandProc(HWND hWndFrame, WPARAM wParam, LPARAM lParam)
+BOOL CommandProc(HWND hWndFrame, WPARAM wParam, LPARAM /*lParam*/)
 {
-  HWND hWndClient; // Handle on window MDI
-  HWND hWndActive;
-
-	hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND);
+  // Handle on window MDI
+  HWND hWndClient = (HWND)GetWindowLong (hWndFrame, CLIENTWND);
   switch (LOWORD(wParam))
 	{
 	  case IDM_WINDOW_NEXT :
-					if(hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND))
-					  hWndActive = (HWND)SendMessage(hWndClient, WM_MDIGETACTIVE, 0, 0l);
-						SendMessage(hWndClient, WM_MDINEXT, (WPARAM)hWndActive, 0l);  
+					if(hWndClient)
+					{
+					  HWND hWndActive = (HWND)SendMessage(hWndClient, WM_MDIGETACTIVE, 0, 0l);
+					  SendMessage(hWndClient, WM_MDINEXT, (WPARAM)hWndActive, 0l);
+					}
 					break;
 
 		case IDM_WINDOW_CASCADE :
-					if(hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND))
+					if(hWndClient)
 						SendMessage(hWndClient, WM_MDICASCADE, 0, 0l);
 					break;
 					 
 		case IDM_WINDOW_TILEHOR :
-					if(hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND))
+					if(hWndClient)
 						SendMessage(hWndClient, WM_MDITILE, MDITILE_HORIZONTAL, 0l);
 					break;
 
 		case IDM_WINDOW_TILEVERT :
-					if(hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND))
+					if(hWndClient)
 						SendMessage(hWndClient, WM_MDITILE, MDITILE_VERTICAL, 0l);
 					break;
 		

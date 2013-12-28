@@ -42,11 +42,11 @@ class StepBasic_HArray1OfNamedUnit : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepBasic_HArray1OfNamedUnit(const Standard_Integer Low,const Standard_Integer Up);
+      StepBasic_HArray1OfNamedUnit(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepBasic_HArray1OfNamedUnit(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepBasic_NamedUnit)& V);
+      StepBasic_HArray1OfNamedUnit(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepBasic_NamedUnit)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepBasic_NamedUnit)& V) ;
+        void Init(const Handle(StepBasic_NamedUnit)& V) ;
   
         Standard_Integer Length() const;
   

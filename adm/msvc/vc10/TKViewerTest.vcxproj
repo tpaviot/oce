@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FEF9936B-07B1-04B4-07F8-B978638EB843}</ProjectGuid>
+    <ProjectGuid>{147AAB28-1782-11D7-038E-94FC7F4D1D20}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,16 +89,18 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\obj\TKViewerTest/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\obj\TKViewerTest/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\obj\TKViewerTest/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;tcl85.lib;tk85.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKShHealing.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bin\TKViewerTest.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -129,18 +131,21 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKViewerTest/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\objd\TKViewerTest/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\objd\TKViewerTest/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;tcl85.lib;tk85.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKShHealing.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bind\TKViewerTest.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -174,16 +179,17 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\obj\TKViewerTest/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\obj\TKViewerTest/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\obj\TKViewerTest/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;tcl85.lib;tk85.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKShHealing.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bin\TKViewerTest.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -214,18 +220,20 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKViewerTest/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\objd\TKViewerTest/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\objd\TKViewerTest/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;tcl85.lib;tk85.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKShHealing.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bind\TKViewerTest.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

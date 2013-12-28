@@ -1,23 +1,18 @@
 // Created on: 1993-12-16
 // Created by: Isabelle GRIGNON
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //  modified by ofv - Thu Feb 26 11:18:16 2004 OCC5246
 //  Modified by skv - Fri Oct 24 14:24:47 2003 OCC4077
@@ -1765,6 +1760,8 @@ TopAbs_Orientation ChFi3d_TrsfTrans(const IntSurf_TypeTrans T1)
   switch (T1)  {
     case IntSurf_In:  return TopAbs_FORWARD;
     case IntSurf_Out: return TopAbs_REVERSED;
+    default:
+      break;
   }
   return TopAbs_INTERNAL;
 }
@@ -2122,7 +2119,7 @@ void  ChFi3d_FilDS(const Standard_Integer       SolidIndex,
   Standard_Integer Iarc1 = 0,Iarc2 = 0;
   TopAbs_Orientation trafil1 = TopAbs_FORWARD, trafil2 = TopAbs_FORWARD;
   Standard_Integer IcFil1,IcFil2,Isurf,Ishape1,Ishape2;
-  Standard_Real Pardeb,Parfin;
+  Standard_Real Pardeb = 0.,Parfin = 0.;
   TopAbs_Orientation ET1;
   Handle(TopOpeBRepDS_CurvePointInterference) Interfp1,Interfp2;
   Handle(TopOpeBRepDS_SurfaceCurveInterference) Interfc1,Interfc2;
@@ -3052,7 +3049,7 @@ Standard_Boolean ChFi3d_ComputeCurves(Handle(Adaptor3d_HSurface)&   S1,
   //in the direction of the start/end line.
   gp_Vec Vint, Vref(pdeb,pfin);
   gp_Pnt Pbid;
-  Standard_Real Udeb,Ufin;
+  Standard_Real Udeb = 0.,Ufin = 0.;
   Standard_Real tolr1,tolr2;
   tolr1 = tolr2 = tolreached = tol3d;
   if((S1->GetType() == GeomAbs_Cylinder && S2->GetType() == GeomAbs_Plane)||
@@ -3068,7 +3065,17 @@ Standard_Boolean ChFi3d_ComputeCurves(Handle(Adaptor3d_HSurface)&   S1,
       cyl = S1->Cylinder();
     }
     IntAna_QuadQuadGeo ImpKK(pl,cyl,Precision::Angular(),tol3d);
-    if (ImpKK.IsDone()) {
+    Standard_Boolean isIntDone = ImpKK.IsDone();
+
+    if(ImpKK.TypeInter() == IntAna_Ellipse)
+    {
+      const gp_Elips anEl = ImpKK.Ellipse(1);
+      const Standard_Real aMajorR = anEl.MajorRadius();
+      const Standard_Real aMinorR = anEl.MinorRadius();
+      isIntDone = (aMajorR < 100000.0 * aMinorR);
+    }
+
+    if (isIntDone) {
       Standard_Boolean c1line = 0;
       switch  (ImpKK.TypeInter()) {
       case IntAna_Line:
@@ -3301,7 +3308,7 @@ Standard_Boolean ChFi3d_ComputeCurves(Handle(Adaptor3d_HSurface)&   S1,
   // At this stage : 
   // classic intersections have failed, the path is approached in vain.
 //  Standard_Real Step = 0.1;
-  while(1) {
+  for(;;) {
     //Attention the parameters of arrow for the path and
     //the tolerance for the approximation can't be taken as those of the  
     //Builder, so they are reestimated as much as possible.
@@ -3893,7 +3900,7 @@ Standard_EXPORT
   
   Standard_Boolean periodic, Bof, checkdeb, cepadur,bIsSmooth;
   Standard_Integer IEdge,IF,IL,nbed, iToApproxByC2;
-  Standard_Real WF, WL, Wrefdeb, Wreffin,nwf,nwl,period,pared,tolpared;
+  Standard_Real WF, WL, Wrefdeb, Wreffin,nwf,nwl,period,pared = 0.,tolpared;
   Standard_Real First, Last, epsV, urefdeb, tolrac;
   GeomAbs_Shape aContinuity;
   gp_Pnt PDeb, PFin, Bout;

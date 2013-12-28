@@ -14,6 +14,7 @@
 
 void XCAFSchema_Standard_GUID::SWrite(const Standard_GUID& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
   f.PutInteger(pp._CSFDB_GetStandard_GUIDmy32b());
   f.PutExtCharacter(pp._CSFDB_GetStandard_GUIDmy16b1());
@@ -31,6 +32,7 @@ void XCAFSchema_Standard_GUID::SWrite(const Standard_GUID& pp, Storage_BaseDrive
 
 void XCAFSchema_Standard_GUID::SRead(Standard_GUID& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
 
     Standard_Integer Standard_GUIDmy32b;

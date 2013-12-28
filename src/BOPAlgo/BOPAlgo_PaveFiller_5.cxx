@@ -1,24 +1,19 @@
 // Created by: Peter KURNEV
-// Copyright (c) 2010-2012 OPEN CASCADE SAS
+// Copyright (c) 2010-2014 OPEN CASCADE SAS
 // Copyright (c) 2007-2010 CEA/DEN, EDF R&D, OPEN CASCADE
 // Copyright (c) 2003-2007 OPEN CASCADE, EADS/CCR, LIP6, CEA/DEN, CEDRAT,
 //                         EDF R&D, LEG, PRINCIPIA R&D, BUREAU VERITAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BOPAlgo_PaveFiller.ixx>
 
@@ -56,6 +51,7 @@
 #include <BOPInt_Tools.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRep_Builder.hxx>
+#include <GeomAPI_ProjectPointOnSurf.hxx>
 
 
 //=======================================================================
@@ -74,9 +70,9 @@
     return; 
   }
   //----------------------------------------------------------------------
-  Standard_Boolean bJustAdd;
-  Standard_Integer nE, nF, aDiscretize, i, aNbCPrts, iX;
-  Standard_Real aTolE, aTolF, aTS1, aTS2, aDeflection;
+  Standard_Boolean bJustAdd, bV[2];
+  Standard_Integer nE, nF, aDiscretize, i, aNbCPrts, iX, nV[2];
+  Standard_Real aTolE, aTolF, aTS1, aTS2, aT1, aT2, aDeflection;
   Handle(NCollection_IncAllocator) aAllocator;
   TopAbs_ShapeEnum aType;
   BOPDS_ListIteratorOfListOfPaveBlock aIt;
@@ -126,7 +122,7 @@
     for (; aIt.More(); aIt.Next()) {
       Handle(BOPDS_PaveBlock)& aPB=aIt.ChangeValue();
       //
-      const Handle(BOPDS_PaveBlock) aPBR=aPB->RealPaveBlock();
+      const Handle(BOPDS_PaveBlock) aPBR=myDS->RealPaveBlock(aPB);
       if (aMPBF.Contains(aPBR)) {
         continue;
       }
@@ -158,14 +154,21 @@
       //
       IntTools_Range aSR(aTS1, aTS2);
       IntTools_Range anewSR=aSR;
-      //
       BOPTools_AlgoTools::CorrectRange(aE, aF, aSR, anewSR);
-      aEdgeFace.SetRange (anewSR);
+      //
+      aPB->Range(aT1, aT2);
+      IntTools_Range aPBRange(aT1, aT2);
+      aSR = aPBRange;
+      BOPTools_AlgoTools::CorrectRange(aE, aF, aSR, aPBRange);
+      //
+      aEdgeFace.SetRange (aPBRange);
       //
       aEdgeFace.Perform();
       if (!aEdgeFace.IsDone()) {
         continue;
       }
+      //
+      aPB->Indices(nV[0], nV[1]);
       //
       const IntTools_SequenceOfCommonPrts& aCPrts=aEdgeFace.CommonParts();
       aNbCPrts=aCPrts.Length();
@@ -174,8 +177,8 @@
         aType=aCPart.Type();
         switch (aType) {
         case TopAbs_VERTEX:  {
-          Standard_Boolean bIsOnPave1, bIsOnPave2, bV1, bV2;
-          Standard_Integer nV1, nV2;
+          Standard_Boolean bIsOnPave[2];
+          Standard_Integer j;
           Standard_Real aT, aTolToDecide; 
           TopoDS_Vertex aVnew;
           
@@ -184,16 +187,16 @@
           //
           const IntTools_Range& aR=aCPart.Range1();
           aTolToDecide=5.e-8;
-          bIsOnPave1=BOPInt_Tools::IsOnPave1(anewSR.First(), aR, aTolToDecide); 
-          bIsOnPave2=BOPInt_Tools::IsOnPave1(anewSR.Last() , aR, aTolToDecide); 
           //
-          aPB->Indices(nV1, nV2);
+          IntTools_Range aR1(aT1, anewSR.First()), aR2(anewSR.Last(), aT2);
           //
-
-          if (bIsOnPave1 && bIsOnPave2) {
-            bV1=CheckFacePaves(nV1, aMIFOn, aMIFIn);
-            bV2=CheckFacePaves(nV2, aMIFOn, aMIFIn);
-            if (bV1 && bV2) {
+          bIsOnPave[0]=BOPInt_Tools::IsInRange(aR1, aR, aTolToDecide); 
+          bIsOnPave[1]=BOPInt_Tools::IsInRange(aR2, aR, aTolToDecide); 
+          //
+          if (bIsOnPave[0] && bIsOnPave[1]) {
+            bV[0]=CheckFacePaves(nV[0], aMIFOn, aMIFIn);
+            bV[1]=CheckFacePaves(nV[1], aMIFOn, aMIFIn);
+            if (bV[0] && bV[1]) {
               iX=aEFs.Append()-1;
               IntTools_CommonPrt aCP = aCPart;
               aCP.SetType(TopAbs_EDGE);
@@ -206,36 +209,32 @@
               break;
             }
           }
-          if (bIsOnPave1) {
-            bV1=CheckFacePaves(nV1, aMIFOn, aMIFIn);
-            if (bV1) {
-              const TopoDS_Vertex& aV = (*(TopoDS_Vertex *)(&myDS->Shape(nV1)));
-              BOPTools_AlgoTools::UpdateVertex(aE, aT, aV);
-              BOPDS_ShapeInfo& aSIDS=myDS->ChangeShapeInfo(nV1);
-              Bnd_Box& aBoxDS=aSIDS.ChangeBox();
-              BRepBndLib::Add(aV, aBoxDS);
-              continue;
+          for (j=0; j<2; ++j) {
+            if (bIsOnPave[j]) {
+              bV[j]=CheckFacePaves(nV[j], aMIFOn, aMIFIn);
+              if (bV[j]) {
+                const TopoDS_Vertex& aV = (*(TopoDS_Vertex *)(&myDS->Shape(nV[j])));
+                BOPTools_AlgoTools::UpdateVertex(aE, aT, aV);
+                BOPDS_ShapeInfo& aSIDS=myDS->ChangeShapeInfo(nV[j]);
+                Bnd_Box& aBoxDS=aSIDS.ChangeBox();
+                BRepBndLib::Add(aV, aBoxDS);
+              }
+              else {
+                bIsOnPave[j] = ForceInterfVF(nV[j], nF);
+              }
             }
-            bIsOnPave1=!bIsOnPave1;
           }
           //
-          if (bIsOnPave2) {
-            bV2=CheckFacePaves(nV2, aMIFOn, aMIFIn);
-            if (bV2) {
-              const TopoDS_Vertex& aV = (*(TopoDS_Vertex *)(&myDS->Shape(nV2)));
-              BOPTools_AlgoTools::UpdateVertex(aE, aT, aV);
-              BOPDS_ShapeInfo& aSIDS=myDS->ChangeShapeInfo(nV2);
-              Bnd_Box& aBoxDS=aSIDS.ChangeBox();
-              BRepBndLib::Add(aV, aBoxDS);
-              continue;
-            }
-            bIsOnPave2=!bIsOnPave2;
-          }
-          //
-          if (!bIsOnPave1 && !bIsOnPave2) {
+          if (!bIsOnPave[0] && !bIsOnPave[1]) {
             if (CheckFacePaves(aVnew, aMIFOn)) {
               continue;
             }
+            //
+            const gp_Pnt& aPnew = BRep_Tool::Pnt(aVnew);
+            if (!myContext->IsValidPointForFace(aPnew, aF, aTolE)) {
+              continue;
+            }
+            //
             aBB.UpdateVertex(aVnew, aTolE);
             //
             aMIEFC.Add(nF);
@@ -263,9 +262,9 @@
           BOPDS_InterfEF& aEF=aEFs(iX);
           aEF.SetIndices(nE, nF);
           //
-          Standard_Boolean aCoinsideFlag;
-          aCoinsideFlag=BOPTools_AlgoTools::IsBlockInOnFace(anewSR, aF, aE, myContext);
-          if (!aCoinsideFlag) {
+          bV[0]=CheckFacePaves(nV[0], aMIFOn, aMIFIn);
+          bV[1]=CheckFacePaves(nV[1], aMIFOn, aMIFIn);
+          if (!bV[0] || !bV[1]) {
             myDS->AddInterf(nE, nF);
             break;
           }
@@ -293,7 +292,7 @@
   //=========================================
   // post treatment
   //=========================================
-  BOPAlgo_Tools::PerformCommonBlocks(aMPBLI, aAllocator);
+  BOPAlgo_Tools::PerformCommonBlocks(aMPBLI, aAllocator, myDS);
   PerformVerticesEF(aMVCPB, aAllocator);
   //
   // Update FaceInfoIn for all faces having EF common parts
@@ -438,11 +437,11 @@
     Handle(BOPDS_PaveBlock) aPB=aMPBLI.FindKey(i);
     nE=aPB->OriginalEdge();
     // 3
-    if (!aPB->IsCommonBlock()) {
+    if (!myDS->IsCommonBlock(aPB)) {
       myDS->UpdatePaveBlock(aPB);
     }
     else {
-      const Handle(BOPDS_CommonBlock)& aCB=aPB->CommonBlock();
+      const Handle(BOPDS_CommonBlock)& aCB=myDS->CommonBlock(aPB);
       myDS->UpdateCommonBlock(aCB);
     }    
   }//for (; aItMPBLI.More(); aItMPBLI.Next()) {
@@ -507,3 +506,54 @@
   //
   return !bRet;
 }
+//=======================================================================
+//function : ForceInterfVF
+//purpose  : 
+//=======================================================================
+Standard_Boolean BOPAlgo_PaveFiller::ForceInterfVF(const Standard_Integer nV, 
+                                                   const Standard_Integer nF)
+{
+  Standard_Boolean bRet;
+  //
+  bRet = Standard_False;
+  const TopoDS_Vertex& aV = *(TopoDS_Vertex*)&myDS->Shape(nV);
+  const TopoDS_Face&   aF = *(TopoDS_Face*)  &myDS->Shape(nF);
+  //
+  GeomAPI_ProjectPointOnSurf& aProj = myContext->ProjPS(aF);
+  const gp_Pnt& aP = BRep_Tool::Pnt(aV);
+  aProj.Perform(aP);
+  if (!aProj.IsDone()) {
+    return bRet;
+  }
+  Standard_Real aDist, U, V;
+  //
+  aDist=aProj.LowerDistance();
+  aProj.LowerDistanceParameters(U, V);
+  //
+  gp_Pnt2d aP2d(U, V);
+  bRet = myContext->IsPointInFace (aF, aP2d);
+  if (bRet) {
+    Standard_Integer i;
+    BRep_Builder aBB;
+    //
+    BOPDS_VectorOfInterfVF& aVFs=myDS->InterfVF();
+    i=aVFs.Append()-1;
+    BOPDS_InterfVF& aVF=aVFs(i);
+    aVF.SetIndices(nV, nF);
+    aVF.SetUV(U, V);
+    //
+    myDS->AddInterf(nV, nF);
+    //
+    aBB.UpdateVertex(aV, aDist);
+    BOPDS_ShapeInfo& aSIDS=myDS->ChangeShapeInfo(nV);
+    Bnd_Box& aBoxDS=aSIDS.ChangeBox();
+    BRepBndLib::Add(aV, aBoxDS);
+    //
+    BOPDS_FaceInfo& aFI=myDS->ChangeFaceInfo(nF);
+    BOPCol_MapOfInteger& aMVIn=aFI.ChangeVerticesIn();
+    aMVIn.Add(nV);
+  }
+  //
+  return bRet;
+}
+

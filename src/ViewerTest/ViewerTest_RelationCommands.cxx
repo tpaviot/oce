@@ -1,100 +1,87 @@
 // Created on: 1998-11-12
 // Created by: Robert COUBLANC
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <ViewerTest.hxx>
 #ifdef HAVE_CONFIG_H
 # include <config.h>
 #endif
 
+#include <AIS_AngleDimension.hxx>
+#include <AIS_Circle.hxx>
+#include <AIS_DiameterDimension.hxx>
+#include <AIS_DisplayMode.hxx>
 #include <AIS_InteractiveContext.hxx>
-#include <string.h>
+#include <AIS_LengthDimension.hxx>
+#include <AIS_ListIteratorOfListOfInteractive.hxx>
+#include <AIS_ListOfInteractive.hxx>
+#include <AIS_MapOfInteractive.hxx>
+#include <AIS_Point.hxx>
+#include <AIS_RadiusDimension.hxx>
+#include <AIS_Relation.hxx>
+#include <AIS_Shape.hxx>
+#include <BRepAdaptor_Curve.hxx>
+#include <BRep_Builder.hxx>
+#include <BRep_Tool.hxx>
+#include <BRepTools.hxx>
 #include <Draw_Interpretor.hxx>
 #include <Draw.hxx>
 #include <Draw_Appli.hxx>
+#include <Draw_Window.hxx>
 #include <DBRep.hxx>
-
-
+#include <ElSLib.hxx>
+#include <GC_MakePlane.hxx>
+#include <Geom_CartesianPoint.hxx>
+#include <Geom_Circle.hxx>
+#include <Geom_Plane.hxx>
+#include <gp_Circ.hxx>
+#include <gp_Pln.hxx>
+#include <IntAna_IntConicQuad.hxx>
+#include <IntAna_Quadric.hxx>
+#include <Precision.hxx>
+#include <Select3D_Projector.hxx>
+#include <StdSelect.hxx>
+#include <string.h>
 #include <TCollection_AsciiString.hxx>
+#include <TCollection_ExtendedString.hxx>
+#include <TColStd_MapOfInteger.hxx>
+#include <TopAbs.hxx>
+#include <TopAbs_ShapeEnum.hxx>
+#include <TopExp.hxx>
+#include <TopoDS.hxx>
+#include <TopoDS_Face.hxx>
+#include <TopoDS_Solid.hxx>
+#include <TopoDS_Vertex.hxx>
 #include <V3d_Viewer.hxx>
 #include <V3d_View.hxx>
 #include <V3d.hxx>
-
-#include <AIS_InteractiveContext.hxx>
-#include <AIS_Shape.hxx>
-#include <AIS_Point.hxx>
-#include <AIS_DisplayMode.hxx>
-#include <TColStd_MapOfInteger.hxx>
-#include <AIS_MapOfInteractive.hxx>
 #include <ViewerTest_DoubleMapOfInteractiveAndName.hxx>
 #include <ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName.hxx>
 #include <ViewerTest_EventManager.hxx>
-
-#include <TopoDS_Solid.hxx>
-#include <BRepTools.hxx>
-#include <BRep_Builder.hxx>
-#include <TopAbs_ShapeEnum.hxx>
-
-#include <TopoDS.hxx>
-#include <BRep_Tool.hxx>
-
-#include <TopAbs.hxx>
-#include <TopExp.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <TopoDS_Face.hxx>
-
-#include <Draw_Window.hxx>
-#include <AIS_ListIteratorOfListOfInteractive.hxx>
-#include <AIS_ListOfInteractive.hxx>
-#include <AIS_DisplayMode.hxx>
-#include <ElSLib.hxx>
-#include <Geom_CartesianPoint.hxx>
-#include <StdSelect.hxx>
-
 
 extern ViewerTest_DoubleMapOfInteractiveAndName& GetMapOfAIS();
 extern int ViewerMainLoop(Standard_Integer argc, const char** argv);
 extern Handle(AIS_InteractiveContext)& TheAISContext ();
 
-
-#include <Geom_Plane.hxx>
-#include <gp_Pln.hxx>
-#include <AIS_AngleDimension.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <GC_MakePlane.hxx>
-#include <IntAna_IntConicQuad.hxx>
-#include <Select3D_Projector.hxx>
-#include <Precision.hxx>
-#include <IntAna_Quadric.hxx>
-
 #ifdef HAVE_STRINGS_H
 # include <strings.h>
 #endif
 
-
-
 #define VertexMask 0x01
 #define EdgeMask 0x02
 #define FaceMask 0x04
-
 
 static Standard_Boolean ComputeIntersection(const gp_Lin& L,const gp_Pln& ThePl, gp_Pnt& TheInter)
 {
@@ -116,7 +103,9 @@ static Standard_Boolean ComputeIntersection(const gp_Lin& L,const gp_Pln& ThePl,
 //purpose  : calcul du point 3D correspondant a la position souris dans le plan de 
 // la vue...
 //=======================================================================
-static gp_Pnt Get3DPointAtMousePosition(){
+
+static gp_Pnt Get3DPointAtMousePosition ()
+{
   Handle(V3d_View) aview = ViewerTest::CurrentView();
   static Select3D_Projector prj;
   prj.SetView(aview);
@@ -138,15 +127,14 @@ static gp_Pnt Get3DPointAtMousePosition(){
   return P;
 }
 
-
-
 //=======================================================================
 //function : ComputeNewPlaneForDim
 //purpose  : 
 //=======================================================================
-static void ComputeNewPlaneForDim(const Handle(AIS_Relation)& R,
-				  gp_Pln& ,
-				  gp_Pnt& )
+
+static void ComputeNewPlaneForDim (const Handle(AIS_Relation)& R,
+                                   gp_Pln& ,
+                                   gp_Pnt&)
 {
 // 0	COMPOUND,
 // 1	COMPSOLID,
@@ -195,15 +183,379 @@ static void ComputeNewPlaneForDim(const Handle(AIS_Relation)& R,
 */
 }
 
+//=======================================================================
+//function : VDimBuilder
+//purpose  : Command for building dimension presentations: angle,
+//           length, radius, diameter
+//=======================================================================
+static int VDimBuilder(Draw_Interpretor& theDi, Standard_Integer theArgsNb, const char** theArgs)
+{
+  if (theArgsNb < 2)
+  {
+    std::cerr << theArgs[0] << ": command argument is required. Type help for more information.\n";
+    return 1;
+  }
+
+  // Parse parameters
+  TCollection_AsciiString aDimType(theArgs[1]);
+  AIS_KindOfDimension aKindOfDimension;
+  if (aDimType == "length")
+  {
+    aKindOfDimension = AIS_KOD_LENGTH;
+  }
+  else if (aDimType == "angle")
+  {
+    aKindOfDimension = AIS_KOD_PLANEANGLE;
+  }
+  else if (aDimType == "radius")
+  {
+    aKindOfDimension = AIS_KOD_RADIUS;
+  }
+  else if (aDimType == "diameter" || aDimType == "diam")
+  {
+    aKindOfDimension = AIS_KOD_DIAMETER;
+  }
+  else
+  {
+    std::cerr << theArgs[0] << ": wrong type of dimension. Type help for more information.\n";
+    return 1;
+  }
+  NCollection_List<Handle(AIS_InteractiveObject)> aShapes;
+  Handle(Prs3d_DimensionAspect) anAspect = new Prs3d_DimensionAspect;
+  Standard_Boolean isPlaneCustom = Standard_False;
+  TCollection_AsciiString aName;
+  gp_Pln aWorkingPlane;
+  Standard_Boolean isCustomFlyout = Standard_False;
+  Standard_Real aCustomFlyout = 0.0;
+
+  for (Standard_Integer anIt = 2; anIt < theArgsNb; ++anIt)
+  {
+    TCollection_AsciiString anArgString = theArgs[anIt];
+    TCollection_AsciiString aParamName;
+    TCollection_AsciiString aParamValue;
+    if (ViewerTest::SplitParameter (anArgString, aParamName, aParamValue))
+    {
+      aParamName.LowerCase();
+      aParamValue.LowerCase();
+
+      if (aParamName == "text")
+      {
+        anAspect->MakeText3d (aParamValue == "3d");
+      }
+      else if (aParamName == "name")
+      {
+        if (aParamValue.IsEmpty())
+        {
+          std::cerr << theArgs[0] << ": no name for dimension.\n";
+          return 1;
+        }
+
+        aName = aParamValue;
+      }
+      else if (aParamName == "plane")
+      {
+        if (aParamValue == "xoy")
+        {
+          aWorkingPlane = gp_Pln (gp_Ax3 (gp::XOY()));
+        }
+        else if (aParamValue == "zox")
+        {
+          aWorkingPlane = gp_Pln (gp_Ax3 (gp::ZOX()));
+        }
+        else if (aParamValue == "yoz")
+        {
+          aWorkingPlane = gp_Pln (gp_Ax3 (gp::YOZ()));
+        }
+        else
+        {
+          std::cerr << theArgs[0] << ": wrong plane.\n";
+          return 1;
+        }
+
+        isPlaneCustom = Standard_True;
+      }
+      else if (aParamName == "label")
+      {
+        NCollection_List<TCollection_AsciiString> aListOfLabelVals;
+        while (aParamValue.Length() > 0)
+        {
+          TCollection_AsciiString aValue = aParamValue;
+
+          Standard_Integer aSeparatorPos = aParamValue.Search (",");
+          if (aSeparatorPos >= 0)
+          {
+            aValue.Trunc (aSeparatorPos - 1);
+            aParamValue.Remove (aSeparatorPos, 1);
+          }
+
+          aListOfLabelVals.Append (aValue);
+
+          aParamValue.Remove (1, aValue.Length());
+        }
+
+        NCollection_List<TCollection_AsciiString>::Iterator aLabelValueIt (aListOfLabelVals);
+        for ( ; aLabelValueIt.More(); aLabelValueIt.Next())
+        {
+          aParamValue = aLabelValueIt.Value();
+
+          if (aParamValue == "left")
+          {
+            anAspect->SetTextHorizontalPosition (Prs3d_DTHP_Left);
+          }
+          else if (aParamValue == "right")
+          {
+            anAspect->SetTextHorizontalPosition (Prs3d_DTHP_Right);
+          }
+          else if (aParamValue == "hcenter")
+          {
+            anAspect->SetTextHorizontalPosition (Prs3d_DTHP_Center);
+          }
+          else if (aParamValue == "hfit")
+          {
+            anAspect->SetTextHorizontalPosition (Prs3d_DTHP_Fit);
+          }
+          else if (aParamValue == "above")
+          {
+            anAspect->SetTextVerticalPosition (Prs3d_DTVP_Above);
+          }
+          else if (aParamValue == "below")
+          {
+            anAspect->SetTextVerticalPosition (Prs3d_DTVP_Below);
+          }
+          else if (aParamValue == "vcenter")
+          {
+            anAspect->SetTextVerticalPosition (Prs3d_DTVP_Center);
+          }
+          else
+          {
+            std::cerr << theArgs[0] << ": invalid label position: \"" << aParamValue << "\".\n";
+            return 1;
+          }
+        }
+      }
+      else if (aParamName == "flyout")
+      {
+        if (!aParamValue.IsRealValue())
+        {
+          std::cerr << theArgs[0] << ": numeric value expected for flyout.\n";
+          return 1;
+        }
+
+        aCustomFlyout = aParamValue.RealValue();
+
+        isCustomFlyout = Standard_True;
+      }
+      else if (aParamName == "arrows")
+      {
+        if (aParamValue == "external")
+        {
+          anAspect->SetArrowOrientation (Prs3d_DAO_External);
+        }
+        else if (aParamValue == "internal")
+        {
+          anAspect->SetArrowOrientation (Prs3d_DAO_Internal);
+        }
+        else if (aParamValue == "fit")
+        {
+          anAspect->SetArrowOrientation (Prs3d_DAO_Fit);
+        }
+      }
+      else
+      {
+        std::cerr << theArgs[0] << ": unknow parameter: \"" << aParamName << "\".\n";
+        return 1;
+      }
+    }
+    else // Shape
+    {
+      if (!GetMapOfAIS().IsBound2 (anArgString))
+      {
+        std::cerr << theArgs[0] << ": wrong name of shape. May be here is a wrong parameter.\n";
+        return 1;
+      }
+
+      Handle(AIS_InteractiveObject) aShape = Handle(AIS_InteractiveObject)::DownCast (GetMapOfAIS().Find2 (anArgString));
+      if (aShape.IsNull())
+      {
+        std::cerr << theArgs[0] << ": wrong name of shape. Not a shape.\n";
+        return 1;
+      }
+
+      aShapes.Append (aShape);
+    }
+  }
+
+  if (aName.IsEmpty())
+  {
+    std::cerr << theArgs[0] << ": no name for dimension.\n";
+    return 1;
+  }
+
+  // Build dimension
+  Handle(AIS_Dimension) aDim;
+  switch (aKindOfDimension)
+  {
+    case AIS_KOD_LENGTH:
+    {
+      if (!isPlaneCustom)
+      {
+        std::cerr << theArgs[0] << ": can not build dimension without working plane.\n";
+        return 1;
+      }
+      if (aShapes.Extent() == 1)
+      {
+        if (aShapes.First()->Type() == AIS_KOI_Shape
+            && (Handle(AIS_Shape)::DownCast(aShapes.First()))->Shape().ShapeType() != TopAbs_EDGE)
+        {
+          std::cerr << theArgs[0] << ": wrong shape type.\n";
+          return 1;
+        }
+        aDim = new AIS_LengthDimension (TopoDS::Edge ((Handle(AIS_Shape)::DownCast(aShapes.First()))->Shape()), aWorkingPlane);
+      }
+      else if (aShapes.Extent() == 2)
+      {
+        if (aShapes.First()->Type() == AIS_KOI_Shape && aShapes.Last()->Type() == AIS_KOI_Shape)
+          aDim = new AIS_LengthDimension ((Handle(AIS_Shape)::DownCast(aShapes.First ()))->Shape(),
+                                          (Handle(AIS_Shape)::DownCast(aShapes.Last ()))->Shape(),
+                                          aWorkingPlane);
+        else// AIS_Point
+        {
+          Handle(AIS_Point) aPoint1 = Handle(AIS_Point)::DownCast(aShapes.First ());
+          Handle(AIS_Point) aPoint2 = Handle(AIS_Point)::DownCast(aShapes.Last ());
+          aDim = new AIS_LengthDimension (aPoint1->Component()->Pnt(),
+                                          aPoint2->Component()->Pnt(),
+                                          aWorkingPlane);
+        }
+      }
+      else
+      {
+        std::cerr << theArgs[0] << ": wrong number of shapes to build dimension.\n";
+        return 1;
+      }
+
+      break;
+    }
+
+    case AIS_KOD_PLANEANGLE:
+    {
+      if (aShapes.Extent() == 1 && aShapes.First()->Type()==AIS_KOI_Shape)
+      {
+        Handle(AIS_Shape) aShape = Handle(AIS_Shape)::DownCast(aShapes.First());
+        if (aShape->Shape().ShapeType() == TopAbs_FACE)
+          aDim = new AIS_AngleDimension (TopoDS::Face(aShape->Shape()));
+      }
+      if (aShapes.Extent() == 2)
+      {
+        Handle(AIS_Shape) aShape1 = Handle(AIS_Shape)::DownCast(aShapes.First());
+        Handle(AIS_Shape) aShape2 = Handle(AIS_Shape)::DownCast(aShapes.Last());
+        if (!aShape1.IsNull() && !aShape2.IsNull()
+            && aShape1->Shape().ShapeType() == TopAbs_EDGE
+            && aShape2->Shape().ShapeType() == TopAbs_EDGE)
+          aDim = new AIS_AngleDimension (TopoDS::Edge(aShape1->Shape()),TopoDS::Edge(aShape2->Shape()));
+        else
+        {
+          std::cerr << theArgs[0] << ": wrong shapes for angle dimension.\n";
+          return 1;
+        }
+      }
+      else if (aShapes.Extent() == 3)
+      {
+        gp_Pnt aP1, aP2, aP3;
+        Handle(AIS_Point) aPoint = Handle(AIS_Point)::DownCast (aShapes.First());
+        if (aPoint.IsNull())
+          return 1;
+        aP1 = aPoint->Component()->Pnt();
+        aShapes.RemoveFirst();
+        aPoint = Handle(AIS_Point)::DownCast (aShapes.First());
+        if (aPoint.IsNull())
+          return 1;
+        aP2 = aPoint->Component()->Pnt();
+        aShapes.RemoveFirst();
+        aPoint = Handle(AIS_Point)::DownCast (aShapes.First());
+        if (aPoint.IsNull())
+          return 1;
+        aP3 = aPoint->Component()->Pnt();
+        aDim = new AIS_AngleDimension (aP1, aP2, aP3);
+      }
+      else
+      {
+        std::cerr << theArgs[0] << ": wrong number of shapes to build dimension.\n";
+        return 1;
+      }
+
+      break;
+    }
+
+    case AIS_KOD_RADIUS: // radius of the circle
+    {
+      if (aShapes.Extent() == 1)
+      {
+        Handle(AIS_Circle) aShape = Handle(AIS_Circle)::DownCast (aShapes.First());
+        gp_Circ aCircle = aShape->Circle()->Circ();
+        aDim = new AIS_RadiusDimension (aCircle);
+      }
+      else
+      {
+        std::cerr << theArgs[0] << ": wrong number of shapes to build dimension.\n";
+        return 1;
+      }
+
+      break;
+    }
+
+    case AIS_KOD_DIAMETER:
+    {
+      if (aShapes.Extent() == 1)
+      {
+        Handle(AIS_Circle) aShape = Handle(AIS_Circle)::DownCast (aShapes.First());
+        gp_Circ aCircle = aShape->Circle()->Circ();
+        aDim = new AIS_DiameterDimension (aCircle);
+      }
+      else
+      {
+        std::cerr << theArgs[0] << ": wrong number of shapes to build dimension.\n";
+        return 1;
+      }
+
+      break;
+    }
+
+    default:
+    {
+      std::cerr << theArgs[0] << ": wrong type of dimension. Type help for more information.\n";
+      return 1;
+    }
+  }
+
+  aDim->SetDimensionAspect (anAspect);
+
+  if (isCustomFlyout)
+  {
+    aDim->SetFlyout (aCustomFlyout);
+  }
+
+  if (GetMapOfAIS().IsBound2(aName))
+  {
+    theDi << theArgs[0] << ": shape with name " << aName.ToCString ()<< " already exists. It will be replaced\n";
+    Handle(AIS_InteractiveObject) anObj = 
+        Handle(AIS_InteractiveObject)::DownCast(GetMapOfAIS().Find2(aName));
+    TheAISContext()->Remove(anObj, Standard_False);
+    GetMapOfAIS().UnBind2(aName);
+  }
+
+  GetMapOfAIS().Bind (aDim,aName);
+
+  return 0;
+}
 
 //=======================================================================
 //function : VAngleDimBuilder
 //purpose  : 
 //=======================================================================
+
 static int VAngleDimBuilder(Draw_Interpretor& di, Standard_Integer argc, const char** argv) 
 {
   Standard_Integer myCurrentIndex;
-  
   if (argc!=2) {di<<" vangledim error."<<"\n";return 1;}
   TheAISContext()->CloseAllContexts();
   TheAISContext()->OpenLocalContext();
@@ -258,7 +610,7 @@ static int VAngleDimBuilder(Draw_Interpretor& di, Standard_Integer argc, const c
     TheAISContext()->CloseLocalContext(myCurrentIndex);
     
     // Construction de l'AIS dimension
-    Handle (AIS_AngleDimension) myAISDim= new AIS_AngleDimension (TopoDS::Edge(ShapeA) ,TopoDS::Edge(ShapeB) ,theGeomPlane ,M_PI/2.0 ,TheMessage_Str );
+    Handle (AIS_AngleDimension) myAISDim= new AIS_AngleDimension (TopoDS::Edge(ShapeA) ,TopoDS::Edge(ShapeB));
     GetMapOfAIS().Bind (myAISDim,argv[1]);
     TheAISContext()->Display(myAISDim );
     
@@ -276,11 +628,6 @@ else {
 //purpose  : Display the diameter dimension of a face or an edge.
 //Draw arg : vdiameterdim Name 
 //==============================================================================
-#include <AIS_DiameterDimension.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <BRepAdaptor_Curve.hxx>
-#include <gp_Circ.hxx>
-
 
 static int VDiameterDimBuilder(Draw_Interpretor& di, Standard_Integer argc, const char** argv) 
 {
@@ -326,7 +673,7 @@ static int VDiameterDimBuilder(Draw_Interpretor& di, Standard_Integer argc, cons
     // Construction de L'AIS_AngleDimension.
     TheAISContext()->CloseLocalContext(myCurrentIndex);
     
-    Handle (AIS_DiameterDimension) myDiamDim= new AIS_DiameterDimension(ShapeA ,theRadius ,TheMessage_Str );
+    Handle (AIS_DiameterDimension) myDiamDim= new AIS_DiameterDimension(ShapeA);
     GetMapOfAIS().Bind (myDiamDim,argv[1]);
     TheAISContext()->Display(myDiamDim );
     
@@ -977,7 +1324,7 @@ static int VLenghtDimension(Draw_Interpretor& di, Standard_Integer argc, const c
       TheAISContext()->CloseLocalContext(myCurrentIndex);
       
       // on construit l'AISLenghtDimension.
-      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (EdgeA,EdgeB,theGeomPlane,theDist,TheMessage_Str );
+      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (EdgeA,EdgeB,theGeomPlane->Pln());
       TheAISContext()->Display(myLenghtDim );
       GetMapOfAIS().Bind (myLenghtDim ,argv[1]);
     }
@@ -1003,7 +1350,7 @@ static int VLenghtDimension(Draw_Interpretor& di, Standard_Integer argc, const c
       
       TCollection_ExtendedString TheMessage_Str(TCollection_ExtendedString("d=")+TCollection_ExtendedString(theDist ) );
       TheAISContext()->CloseLocalContext(myCurrentIndex);
-      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (EdgeA,VertexB,theGeomPlane,theDist,TheMessage_Str );
+      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (EdgeA,VertexB,theGeomPlane->Pln());
       TheAISContext()->Display(myLenghtDim );
       GetMapOfAIS().Bind (myLenghtDim ,argv[1]);
       
@@ -1011,28 +1358,20 @@ static int VLenghtDimension(Draw_Interpretor& di, Standard_Integer argc, const c
     }
     
     // Si ShapeB est une Face
-    else {
-      
+    else
+    {
       TopoDS_Face FaceB=TopoDS::Face(ShapeB);
       BRepExtrema_ExtCF myDeltaEdgeFace  (EdgeA,FaceB );
       // On verifie que l'edge est bien parallele a la face.
       if (!myDeltaEdgeFace.IsParallel() ) {di<<"vdistdim error: the edge isn't parallel to the face;can't compute the distance. "<<"\n";return 1; }
-      
-      // On saisit la distance et on l'arrondit!
-      theDist=Round (sqrt (myDeltaEdgeFace.SquareDistance(1))*10. )/10.;
-      
-      // Construction du texte.
-      TCollection_ExtendedString TheMessage_Str(TCollection_ExtendedString("d=")+TCollection_ExtendedString(theDist ) );
-      
+
       // on construit l'AISLenghtDimension.
-      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (FaceB,EdgeA,theDist,TheMessage_Str );
+      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (FaceB,EdgeA);
       TheAISContext()->Display(myLenghtDim );
       GetMapOfAIS().Bind (myLenghtDim ,argv[1]);
-      
     }
-    
   }
-  
+
   // ShapeA est un vertex
   // ====================
   if (ShapeA.ShapeType()==TopAbs_VERTEX ) {
@@ -1062,7 +1401,7 @@ static int VLenghtDimension(Draw_Interpretor& di, Standard_Integer argc, const c
       TCollection_ExtendedString TheMessage_Str(TCollection_ExtendedString("d=")+TCollection_ExtendedString(theDist ) );
       
       // on construit l'AISLenghtDimension.
-      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (EdgeB,VertexA,theGeomPlane,theDist,TheMessage_Str );
+      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (EdgeB,VertexA,theGeomPlane->Pln());
       TheAISContext()->Display(myLenghtDim );
       GetMapOfAIS().Bind (myLenghtDim ,argv[1]);
       
@@ -1089,7 +1428,7 @@ static int VLenghtDimension(Draw_Interpretor& di, Standard_Integer argc, const c
       TCollection_ExtendedString TheMessage_Str(TCollection_ExtendedString("d=")+TCollection_ExtendedString(theDist ) );
       
       // on construit l'AISLenghtDimension.
-      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (VertexA,VertexB,theGeomPlane,theDist,TheMessage_Str );
+      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (VertexA,VertexB,theGeomPlane->Pln());
       TheAISContext()->Display(myLenghtDim );
       GetMapOfAIS().Bind (myLenghtDim ,argv[1]);
       
@@ -1137,7 +1476,7 @@ static int VLenghtDimension(Draw_Interpretor& di, Standard_Integer argc, const c
       TCollection_ExtendedString TheMessage_Str(TCollection_ExtendedString("d=")+TCollection_ExtendedString(theDist ) );
       
       // on construit l'AISLenghtDimension.
-      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (VertexA,VertexAproj,theGeomPlane,theDist,TheMessage_Str );
+      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (VertexA,VertexAproj,theGeomPlane->Pln());
       TheAISContext()->Display(myLenghtDim );
       GetMapOfAIS().Bind (myLenghtDim ,argv[1]);
       
@@ -1165,7 +1504,7 @@ static int VLenghtDimension(Draw_Interpretor& di, Standard_Integer argc, const c
       TCollection_ExtendedString TheMessage_Str(TCollection_ExtendedString("d=")+TCollection_ExtendedString(theDist ) );
       
       // on construit l'AISLenghtDimension.
-      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (FaceA,EdgeB,theDist,TheMessage_Str );
+      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (FaceA,EdgeB);
       TheAISContext()->Display(myLenghtDim );
       GetMapOfAIS().Bind (myLenghtDim ,argv[1]);
       
@@ -1189,10 +1528,10 @@ static int VLenghtDimension(Draw_Interpretor& di, Standard_Integer argc, const c
       TopoDS_Vertex  Va,Vc;
       TopExp::Vertices(EdFromA,Va,Vc);
       gp_Pnt A=BRep_Tool::Pnt(Va);
+
 #ifdef DEB
-      gp_Pnt C=
+      gp_Pnt C = BRep_Tool::Pnt(Vc);
 #endif
-               BRep_Tool::Pnt(Vc);
 
       // On projette le point B sur la Face car il 
       // n'existe pas de constructeurs AIS_LD PointFace
@@ -1210,7 +1549,7 @@ static int VLenghtDimension(Draw_Interpretor& di, Standard_Integer argc, const c
       TCollection_ExtendedString TheMessage_Str(TCollection_ExtendedString("d=")+TCollection_ExtendedString(theDist ) );
       
       // on construit l'AISLenghtDimension mais en utilisant le constructeur Vertex Vertex.
-      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (VertexB,VertexBproj,theGeomPlane,theDist,TheMessage_Str );
+      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (VertexB,VertexBproj,theGeomPlane->Pln());
       TheAISContext()->Display(myLenghtDim );
       GetMapOfAIS().Bind (myLenghtDim ,argv[1]);
       
@@ -1232,7 +1571,7 @@ static int VLenghtDimension(Draw_Interpretor& di, Standard_Integer argc, const c
       TCollection_ExtendedString TheMessage_Str(TCollection_ExtendedString("d=")+TCollection_ExtendedString(theDist ) );
       
       // on construit l'AISLenghtDimension.
-      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (FaceA,FaceB,theDist,TheMessage_Str );
+      Handle(AIS_LengthDimension ) myLenghtDim=new AIS_LengthDimension (FaceA,FaceB);
       TheAISContext()->Display(myLenghtDim );
       GetMapOfAIS().Bind (myLenghtDim ,argv[1]);
       
@@ -1312,7 +1651,7 @@ static int VRadiusDimBuilder(Draw_Interpretor& di, Standard_Integer argc, const 
     TheAISContext()->CloseLocalContext(myCurrentIndex);
     
     // Construction de L'AIS_RadiusDimension.
-    Handle (AIS_RadiusDimension) myRadDim= new AIS_RadiusDimension(ShapeA ,theRadius ,TheMessage_Str );
+    Handle (AIS_RadiusDimension) myRadDim= new AIS_RadiusDimension(ShapeA);
     GetMapOfAIS().Bind (myRadDim,argv[1]);
     TheAISContext()->Display(myRadDim );
     
@@ -1345,8 +1684,7 @@ static int VRadiusDimBuilder(Draw_Interpretor& di, Standard_Integer argc, const 
     TheAISContext()->CloseLocalContext(myCurrentIndex);
     
     // Construction de L'AIS_RadiusDimension.
-    Handle (AIS_RadiusDimension) myRadDim= new AIS_RadiusDimension(ShapeA ,theRadius ,TheMessage_Str );
-    //Handle (AIS_MinRadiusDimension) myRadDim= new AIS_MinRadiusDimension(EdgeFromA ,theRadius ,TheMessage_Str );
+    Handle (AIS_RadiusDimension) myRadDim= new AIS_RadiusDimension(ShapeA);
     GetMapOfAIS().Bind (myRadDim,argv[1]);
     TheAISContext()->Display(myRadDim );
     
@@ -2154,6 +2492,7 @@ static int VMoveDim(Draw_Interpretor& di, Standard_Integer argc, const char** ar
   
   return 0;
 }
+
 //=======================================================================
 //function : RelationsCommands
 //purpose  : 
@@ -2164,7 +2503,14 @@ void ViewerTest::RelationCommands(Draw_Interpretor& theCommands)
 {
   const char *group = "AISRelations";
 
-  
+  theCommands.Add("vdimension",
+      "vdimension {angle|length|radius|diameter} name={Dim_Name} shape1 [shape2 [shape3]]\n"
+      " [text={2d|3d}] [plane={xoy|yoz|zox}]\n"
+      " [label={left|right|hcenter|hfit},{above|below|vcenter}]\n"
+      " [flyout=value] [arrows={external|internal|fit}]\n"
+      " -Builds angle, length, radius and diameter dimensions.\n"
+      __FILE__,VDimBuilder,group);
+
   theCommands.Add("vangledim",
 		  "vangledim Name:Selection in the viewer only ",
 		  __FILE__,VAngleDimBuilder,group);

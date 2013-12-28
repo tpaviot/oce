@@ -1,23 +1,18 @@
 // Created on: 1995-01-27
 // Created by: Jacques GOUSSARD
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <GeomInt_IntSS.ixx>
 
@@ -42,6 +37,11 @@
 #include <IntPatch_GLine.hxx>
 #include <IntPatch_ALineToWLine.hxx>
 #include <IntPatch_IType.hxx>
+#include <NCollection_IncAllocator.hxx>
+#include <NCollection_List.hxx>
+#include <NCollection_LocalArray.hxx>
+#include <NCollection_StdAllocator.hxx>
+#include <vector>
 
 #include <AppParCurves_MultiBSpCurve.hxx>
 
@@ -148,7 +148,7 @@ static
 class ProjectPointOnSurf
 {
  public:
-  ProjectPointOnSurf() : myIsDone (Standard_False) {}
+  ProjectPointOnSurf() : myIsDone (Standard_False),myIndex(0) {}
   void Init(const Handle(Geom_Surface)& Surface,
 	    const Standard_Real Umin,
 	    const Standard_Real Usup,
@@ -331,66 +331,66 @@ Standard_Real ProjectPointOnSurf::LowerDistance() const
 	}
 	//
 	if(myApprox2) { 
-	  Handle (Geom2d_Curve) C2d;
-	  BuildPCurves(fprm,lprm,Tolpc,myHS2->ChangeSurface().Surface(),newc,C2d);
-	  if(Tolpc>myTolReached2d || myTolReached2d==0.) { 
-	    myTolReached2d=Tolpc;
-	  }
-	  //
-	  slineS2.Append(new Geom2d_TrimmedCurve(C2d,fprm,lprm));
-	}
-	else { 
-	  slineS2.Append(H1);
-	}
+    Handle (Geom2d_Curve) C2d;
+    BuildPCurves(fprm,lprm,Tolpc,myHS2->ChangeSurface().Surface(),newc,C2d);
+    if(Tolpc>myTolReached2d || myTolReached2d==0.) { 
+      myTolReached2d=Tolpc;
+    }
+    //
+    slineS2.Append(new Geom2d_TrimmedCurve(C2d,fprm,lprm));
+  }
+  else { 
+    slineS2.Append(H1);
+  }
       } // if (!Precision::IsNegativeInfinite(fprm) &&  !Precision::IsPositiveInfinite(lprm))
 
       else {
-	GeomAbs_SurfaceType typS1 = myHS1->Surface().GetType();
-	GeomAbs_SurfaceType typS2 = myHS2->Surface().GetType();
-	if( typS1 == GeomAbs_SurfaceOfExtrusion ||
-	    typS1 == GeomAbs_OffsetSurface ||
-	    typS1 == GeomAbs_SurfaceOfRevolution ||
-	    typS2 == GeomAbs_SurfaceOfExtrusion ||
-	    typS2 == GeomAbs_OffsetSurface ||
-	    typS2 == GeomAbs_SurfaceOfRevolution) {
-	  sline.Append(newc);
-	  slineS1.Append(H1);
-	  slineS2.Append(H1);
-	  continue;
-	}
-	Standard_Boolean bFNIt, bLPIt;
-	Standard_Real aTestPrm, dT=100.;
-	Standard_Real u1, v1, u2, v2, TolX;
-	//
-	bFNIt=Precision::IsNegativeInfinite(fprm);
-	bLPIt=Precision::IsPositiveInfinite(lprm);
-	
-	aTestPrm=0.;
-	
-	if (bFNIt && !bLPIt) {
-	  aTestPrm=lprm-dT;
-	}
-	else if (!bFNIt && bLPIt) {
-	  aTestPrm=fprm+dT;
-	}
-	//
-	gp_Pnt ptref(newc->Value(aTestPrm));
-	//
-	TolX = Precision::Confusion();
-	Parameters(myHS1, myHS2, ptref,  u1, v1, u2, v2);
-	ok = (dom1->Classify(gp_Pnt2d(u1, v1), TolX) != TopAbs_OUT);
-	if(ok) { 
-	  ok = (dom2->Classify(gp_Pnt2d(u2,v2),TolX) != TopAbs_OUT); 
-	}
-	if (ok) {
-	  sline.Append(newc);
-	  slineS1.Append(H1);
-	  slineS2.Append(H1);
-	}
+        GeomAbs_SurfaceType typS1 = myHS1->Surface().GetType();
+        GeomAbs_SurfaceType typS2 = myHS2->Surface().GetType();
+        if( typS1 == GeomAbs_SurfaceOfExtrusion ||
+          typS1 == GeomAbs_OffsetSurface ||
+          typS1 == GeomAbs_SurfaceOfRevolution ||
+          typS2 == GeomAbs_SurfaceOfExtrusion ||
+          typS2 == GeomAbs_OffsetSurface ||
+          typS2 == GeomAbs_SurfaceOfRevolution) {
+            sline.Append(newc);
+            slineS1.Append(H1);
+            slineS2.Append(H1);
+            continue;
+        }
+        Standard_Boolean bFNIt, bLPIt;
+        Standard_Real aTestPrm, dT=100.;
+        Standard_Real u1, v1, u2, v2, TolX;
+        //
+        bFNIt=Precision::IsNegativeInfinite(fprm);
+        bLPIt=Precision::IsPositiveInfinite(lprm);
+
+        aTestPrm=0.;
+
+        if (bFNIt && !bLPIt) {
+          aTestPrm=lprm-dT;
+        }
+        else if (!bFNIt && bLPIt) {
+          aTestPrm=fprm+dT;
+        }
+        //
+        gp_Pnt ptref(newc->Value(aTestPrm));
+        //
+        TolX = Precision::Confusion();
+        Parameters(myHS1, myHS2, ptref,  u1, v1, u2, v2);
+        ok = (dom1->Classify(gp_Pnt2d(u1, v1), TolX) != TopAbs_OUT);
+        if(ok) { 
+          ok = (dom2->Classify(gp_Pnt2d(u2,v2),TolX) != TopAbs_OUT); 
+        }
+        if (ok) {
+          sline.Append(newc);
+          slineS1.Append(H1);
+          slineS2.Append(H1);
+        }
       }
     }// end of for (i=1; i<=myLConstruct.NbParts(); i++)
-  }// case IntPatch_Lin:  case IntPatch_Parabola:  case IntPatch_Hyperbola:
-    break;
+   }// case IntPatch_Lin:  case IntPatch_Parabola:  case IntPatch_Hyperbola:
+   break;
 
   //########################################  
   // Circle and Ellipse
@@ -947,7 +947,19 @@ Standard_Real ProjectPointOnSurf::LowerDistance() const
 								 mbspc.Degree());
 	      GeomLib_CheckBSplineCurve Check(BS,myTolCheck,myTolAngCheck);
 	      Check.FixTangent(Standard_True,Standard_True);
-	      // 		
+	      // 	
+        //Check IsClosed()
+        Standard_Real aDist = Max(BS->StartPoint().XYZ().SquareModulus(),
+                                  BS->EndPoint().XYZ().SquareModulus());
+        Standard_Real eps = Epsilon(aDist);
+        if(BS->StartPoint().SquareDistance(BS->EndPoint()) < 2.*eps &&
+          !BS->IsClosed() && !BS->IsPeriodic())
+        {
+          //force Closed()
+          gp_Pnt aPm((BS->Pole(1).XYZ() + BS->Pole(BS->NbPoles()).XYZ()) / 2.);
+          BS->SetPole(1, aPm);
+          BS->SetPole(BS->NbPoles(), aPm);
+        }
 	      sline.Append(BS);
 	      
 	      if(myApprox1) { 
@@ -1260,10 +1272,24 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
                                       const GeomInt_LineConstructor&                 theLConstructor,
                                       IntPatch_SequenceOfLine&                       theNewLines)
 {
+  typedef NCollection_List<Standard_Integer> ListOfInteger;
+  //have to use std::vector, not NCollection_Vector in order to use copy constructor of
+  //ListOfInteger which will be created with specific allocator instance
+  typedef std::vector<ListOfInteger, NCollection_StdAllocator<
+      ListOfInteger> > ArrayOfListOfInteger;
+
   Standard_Boolean bIsPrevPointOnBoundary, bIsCurrentPointOnBoundary;
   Standard_Integer nblines, aNbPnts, aNbParts, pit, i, j, aNbListOfPointIndex;
   Standard_Real aTol, umin, umax, vmin, vmax;
-  TColStd_ListOfInteger aListOfPointIndex;
+
+  //an inc allocator, it will contain wasted space (upon list's Clear()) but it should
+  //still be faster than the standard allocator, and wasted memory should not be
+  //significant and will be limited by time span of this function;
+  //this is a separate allocator from the anIncAlloc below what provides better data
+  //locality in the latter (by avoiding wastes which will only be in anIdxAlloc)
+  Handle(NCollection_IncAllocator) anIdxAlloc = new NCollection_IncAllocator();
+  ListOfInteger aListOfPointIndex (anIdxAlloc);
+
   //GeomAPI_ProjectPointOnSurf aPrj1, aPrj2;
   ProjectPointOnSurf aPrj1, aPrj2;
   Handle(Geom_Surface) aSurf1,  aSurf2;
@@ -1275,8 +1301,13 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
     return Standard_False;
   }
   //
-  TColStd_Array1OfListOfInteger anArrayOfLines(1, aNbPnts); 
-  TColStd_Array1OfInteger       anArrayOfLineType(1, aNbPnts);
+  Handle(NCollection_IncAllocator) anIncAlloc = new NCollection_IncAllocator();
+  NCollection_StdAllocator<ListOfInteger> anAlloc (anIncAlloc);
+  const ListOfInteger aDummy (anIncAlloc); //empty list to be copy constructed from
+  ArrayOfListOfInteger anArrayOfLines (aNbPnts + 1, aDummy, anAlloc);
+
+  NCollection_LocalArray<Standard_Integer> anArrayOfLineTypeArr (aNbPnts + 1);
+  Standard_Integer* anArrayOfLineType = anArrayOfLineTypeArr;
   //
   nblines = 0;
   aTol = Precision::Confusion();
@@ -1350,8 +1381,8 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
 
       if(!aListOfPointIndex.IsEmpty()) {
 	nblines++;
-	anArrayOfLines.SetValue(nblines, aListOfPointIndex);
-	anArrayOfLineType.SetValue(nblines, bIsPrevPointOnBoundary);
+	anArrayOfLines[nblines] = aListOfPointIndex;
+	anArrayOfLineType[nblines] = bIsPrevPointOnBoundary;
 	aListOfPointIndex.Clear();
       }
       bIsPrevPointOnBoundary = bIsCurrentPointOnBoundary;
@@ -1362,8 +1393,8 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
   aNbListOfPointIndex=aListOfPointIndex.Extent();
   if(aNbListOfPointIndex) {
     nblines++;
-    anArrayOfLines.SetValue(nblines, aListOfPointIndex);
-    anArrayOfLineType.SetValue(nblines, bIsPrevPointOnBoundary);
+    anArrayOfLines[nblines] = aListOfPointIndex;
+    anArrayOfLineType[nblines] = bIsPrevPointOnBoundary;
     aListOfPointIndex.Clear();
   }
   //
@@ -1374,15 +1405,15 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
   // Correct wlines.begin
   Standard_Integer aLineType;
   TColStd_Array1OfListOfInteger anArrayOfLineEnds(1, nblines);
-  Handle(IntSurf_LineOn2S) aSeqOfPntOn2S = new IntSurf_LineOn2S();
+  Handle(IntSurf_LineOn2S) aSeqOfPntOn2S = new IntSurf_LineOn2S (new NCollection_IncAllocator());
   //
   for(i = 1; i <= nblines; i++) {
-    aLineType=anArrayOfLineType.Value(i);
+    aLineType=anArrayOfLineType[i];
     if(aLineType) {
       continue;
     }
     //
-    const TColStd_ListOfInteger& aListOfIndex = anArrayOfLines.Value(i);
+    const ListOfInteger& aListOfIndex = anArrayOfLines[i];
     if(aListOfIndex.Extent() < 2) {
       continue;
     }
@@ -1396,12 +1427,12 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
 	continue;
       }
       //
-      aLineTypeNeib=anArrayOfLineType.Value(aneighbourindex);
+      aLineTypeNeib=anArrayOfLineType[aneighbourindex];
       if(!aLineTypeNeib){
 	continue;
       }
       //
-      const TColStd_ListOfInteger& aNeighbour = anArrayOfLines.Value(aneighbourindex);
+      const ListOfInteger& aNeighbour = anArrayOfLines[aneighbourindex];
       Standard_Integer anIndex = (!j) ? aNeighbour.Last() : aNeighbour.First();
       const IntSurf_PntOn2S& aPoint = theWLine->Point(anIndex);
       // check if need use derivative.begin .end [absence]
@@ -1637,10 +1668,10 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
     Handle(IntSurf_LineOn2S) aLineOn2S = new IntSurf_LineOn2S();
     //
     for(i = 1; i <= nblines; i++) {
-      if(anArrayOfLineType.Value(i) != 0) {
+      if(anArrayOfLineType[i] != 0) {
 	continue;
       }
-      const TColStd_ListOfInteger& aListOfIndex = anArrayOfLines.Value(i);
+      const ListOfInteger& aListOfIndex = anArrayOfLines[i];
 
       if(aListOfIndex.Extent() < 2) {
 	continue;
@@ -1666,7 +1697,7 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
 	    const IntSurf_PntOn2S& aP = aSeqOfPntOn2S->Value(aListOfFLIndex.First());
 	    aLineOn2S->Add(aP);
 	  }
-	  TColStd_ListIteratorOfListOfInteger anIt(aListOfIndex);
+	  ListOfInteger::Iterator anIt(aListOfIndex);
 
 	  for(; anIt.More(); anIt.Next()) {
 	    const IntSurf_PntOn2S& aP = theWLine->Point(anIt.Value());
@@ -1683,9 +1714,9 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
 	  Standard_Boolean bIsEndOfLine = Standard_True;
 
 	  if(aneighbour <= nblines) {
-	    const TColStd_ListOfInteger& aListOfNeighbourIndex = anArrayOfLines.Value(aneighbour);
+	    const ListOfInteger& aListOfNeighbourIndex = anArrayOfLines[aneighbour];
 
-	    if((anArrayOfLineType.Value(aneighbour) != 0) &&
+	    if((anArrayOfLineType[aneighbour] != 0) &&
 	       (aListOfNeighbourIndex.IsEmpty())) {
 	      bIsEndOfLine = Standard_False;
 	    }
@@ -1706,7 +1737,7 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
 
       if(bIsFirstInside && bIsLastInside) {
 	// append inside points between ifprm and ilprm
-	TColStd_ListIteratorOfListOfInteger anIt(aListOfIndex);
+	ListOfInteger::Iterator anIt(aListOfIndex);
 
 	for(; anIt.More(); anIt.Next()) {
 	  if((anIt.Value() < ifprm) || (anIt.Value() > ilprm))
@@ -1719,7 +1750,7 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
 
 	if(bIsFirstInside) {
 	  // append points from ifprm to last point + boundary point
-	  TColStd_ListIteratorOfListOfInteger anIt(aListOfIndex);
+	  ListOfInteger::Iterator anIt(aListOfIndex);
 
 	  for(; anIt.More(); anIt.Next()) {
 	    if(anIt.Value() < ifprm)
@@ -1737,9 +1768,9 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
 	  Standard_Boolean bIsEndOfLine = Standard_True;
 
 	  if(aneighbour <= nblines) {
-	    const TColStd_ListOfInteger& aListOfNeighbourIndex = anArrayOfLines.Value(aneighbour);
+	    const ListOfInteger& aListOfNeighbourIndex = anArrayOfLines[aneighbour];
 
-	    if((anArrayOfLineType.Value(aneighbour) != 0) &&
+	    if((anArrayOfLineType[aneighbour] != 0) &&
 	       (aListOfNeighbourIndex.IsEmpty())) {
 	      bIsEndOfLine = Standard_False;
 	    }
@@ -1762,7 +1793,7 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
 	    const IntSurf_PntOn2S& aP = aSeqOfPntOn2S->Value(aListOfFLIndex.First());
 	    aLineOn2S->Add(aP);
 	  }
-	  TColStd_ListIteratorOfListOfInteger anIt(aListOfIndex);
+	  ListOfInteger::Iterator anIt(aListOfIndex);
 
 	  for(; anIt.More(); anIt.Next()) {
 	    if(anIt.Value() > ilprm)
@@ -1796,12 +1827,12 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
     //
     if ((ilprm-ifprm)==1) {
       for(i = 1; i <= nblines; i++) {
-	aLineType=anArrayOfLineType.Value(i);
+	aLineType=anArrayOfLineType[i];
 	if(aLineType) {
 	  continue;
 	}
 	//
-	const TColStd_ListOfInteger& aListOfIndex = anArrayOfLines.Value(i);
+	const ListOfInteger& aListOfIndex = anArrayOfLines[i];
 	aNbPoints=aListOfIndex.Extent();
 	if(aNbPoints==1) {
 	  aIndex=aListOfIndex.First();

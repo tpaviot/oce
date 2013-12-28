@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2AC0E7FD-1099-07DC-0650-09CE08B58651}</ProjectGuid>
+    <ProjectGuid>{18D5D477-0210-0AF8-0044-980E5AD649FE}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -81,11 +81,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\HLRAppli;..\..\..\src\HLRAppli;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -93,13 +93,14 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc11\obj\TKHLR/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc11\obj\TKHLR/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc11\obj\TKHLR/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKGeomBase.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKTopAlgo.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -123,25 +124,27 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\HLRAppli;..\..\..\src\HLRAppli;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win32\vc11\objd\TKHLR/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc11\objd\TKHLR/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc11\objd\TKHLR/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKGeomBase.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKTopAlgo.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -166,11 +169,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\HLRAppli;..\..\..\src\HLRAppli;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -178,13 +181,14 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc11\obj\TKHLR/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc11\obj\TKHLR/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc11\obj\TKHLR/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKGeomBase.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKTopAlgo.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -208,25 +212,27 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\HLRAppli;..\..\..\src\HLRAppli;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc11\objd\TKHLR/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc11\objd\TKHLR/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc11\objd\TKHLR/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKGeomBase.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKTopAlgo.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -469,6 +475,8 @@
     <ClCompile Include="..\..\..\src\HLRAlgo\HLRAlgo_TriangleData.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\HLRAlgo\HLRAlgo_WiresBlock.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HLRAppli\HLRAppli_ReflectLines.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Intrv\Intrv_SequenceNodeOfSequenceOfInterval_0.cxx">
     </ClCompile>

@@ -1,26 +1,22 @@
 // Created on: 2007-05-29
 // Created by: Vlad Romashko
-// Copyright (c) 2007-2012 OPEN CASCADE SAS
+// Copyright (c) 2007-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <XmlMDataStd_ByteArrayDriver.ixx>
 #include <TDataStd_ByteArray.hxx>
 #include <TColStd_HArray1OfByte.hxx>
+#include <NCollection_LocalArray.hxx>
 #include <XmlObjMgt.hxx>
 #include <XmlMDataStd.hxx>
 
@@ -93,10 +89,11 @@ Standard_Boolean XmlMDataStd_ByteArrayDriver::Paste(const XmlObjMgt_Persistent& 
 
 
   Handle(TDataStd_ByteArray) aByteArray = Handle(TDataStd_ByteArray)::DownCast(theTarget);
-  Handle(TColStd_HArray1OfByte) array = new TColStd_HArray1OfByte(aFirstInd, aLastInd);
+  Handle(TColStd_HArray1OfByte) hArr = new TColStd_HArray1OfByte(aFirstInd, aLastInd);
+  TColStd_Array1OfByte& arr = hArr->ChangeArray1();
 
   Standard_CString aValueStr = Standard_CString(XmlObjMgt::GetStringValue(anElement).GetString());
-  Standard_Integer i = array->Lower(), upper = array->Upper();
+  Standard_Integer i = arr.Lower(), upper = arr.Upper();
   for (; i <= upper; i++)
   {
     if (!XmlObjMgt::GetInteger(aValueStr, aValue)) 
@@ -108,9 +105,9 @@ Standard_Boolean XmlMDataStd_ByteArrayDriver::Paste(const XmlObjMgt_Persistent& 
       WriteMessage (aMessageString);
       return Standard_False;
     }
-    array->SetValue(i, (Standard_Byte) aValue);
+    arr.SetValue(i, (Standard_Byte) aValue);
   }
-  aByteArray->ChangeArray(array);
+  aByteArray->ChangeArray(hArr);
   
 #ifdef DEB
   //cout << "CurDocVersion = " << XmlMDataStd::DocumentVersion() <<endl;
@@ -152,19 +149,32 @@ void XmlMDataStd_ByteArrayDriver::Paste(const Handle(TDF_Attribute)& theSource,
 
   Standard_Integer aL = aByteArray->Lower();
   Standard_Integer anU = aByteArray->Upper();
-  TCollection_AsciiString aValueStr;
 
   theTarget.Element().setAttribute(::FirstIndexString(), aL);
   theTarget.Element().setAttribute(::LastIndexString(), anU);
   theTarget.Element().setAttribute(::IsDeltaOn(),aByteArray->GetDelta());
 
-  const Handle(TColStd_HArray1OfByte)& array = aByteArray->InternalArray();
-  Standard_Integer lower = array->Lower(), i = lower, upper = array->Upper();
-  for (; i <= upper; i++)
+  const Handle(TColStd_HArray1OfByte)& hArr = aByteArray->InternalArray();
+  if (!hArr.IsNull() && hArr->Length())
   {
-    aValueStr += TCollection_AsciiString((Standard_Integer) array->Value(i));
-    aValueStr += ' ';
-  }
-  XmlObjMgt::SetStringValue (theTarget, aValueStr.ToCString(), Standard_True);
+    // Access to data through an internal reprsentation of the array is faster.
+    const TColStd_Array1OfByte& arr = hArr->Array1();
 
+    // Allocate 4 characters (including a space ' ') for each byte (unsigned char) from the array.
+    NCollection_LocalArray<Standard_Character> str(4 * arr.Length() + 1);
+
+    // Char counter in the array of chars.
+    Standard_Integer iChar = 0;
+
+    // Iterate on the array of bytes and fill-in the array of chars inserting spacing between the chars.
+    Standard_Integer iByte = arr.Lower(); // position inside the byte array
+    for (; iByte <= arr.Upper(); ++iByte)
+    {
+      const Standard_Byte& byte = arr.Value(iByte);
+      iChar += Sprintf(&(str[iChar]), "%d ", byte);
+    }
+
+    // Transfer the string (array of chars) to XML.
+    XmlObjMgt::SetStringValue (theTarget, (Standard_Character*)str, Standard_True);
+  }
 }

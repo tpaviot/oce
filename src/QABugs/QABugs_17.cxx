@@ -1,22 +1,17 @@
 // Created on: 2002-03-18
 // Created by: QA Admin
-// Copyright (c) 2002-2012 OPEN CASCADE SAS
+// Copyright (c) 2002-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <stdio.h>
 
@@ -292,15 +287,20 @@ static Standard_Integer  BUC60818(Draw_Interpretor& di, Standard_Integer argc, c
   return 0;
 }
 
-static Standard_Integer BUC60915_1(Draw_Interpretor& di, Standard_Integer argc, const char ** /*argv*/)
+static Standard_Integer BUC60915_1(Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
 {
   if (argc > 1) {
     di<<"Function don't has parameters"<<"\n";
     return 1;
   }
 
-  Handle(AIS_InteractiveContext)   context= ViewerTest_Tool::MakeContext ("buc60915");
-  ViewerTest_Tool::InitViewerTest (context);
+  if(ViewerTest::GetAISContext().IsNull())
+  {
+    di << "View was not created. Use 'vinit' command before "
+       << argv[0] << "\n";
+    return 1;
+  }
+  Handle(AIS_InteractiveContext) context = ViewerTest::GetAISContext();
 
   //The following dimesion code has problems regarding arrow_size. The desired effect is not produced.
   /***************************************/
@@ -325,52 +325,55 @@ static Standard_Integer BUC60915_1(Draw_Interpretor& di, Standard_Integer argc, 
   gp_Pnt plnpt(0, 0, 0);
   gp_Dir plndir(0, 0, 1);
   Handle(Geom_Plane) pln = new Geom_Plane(plnpt,plndir);
+  Handle(Prs3d_DimensionAspect) anAspect = new Prs3d_DimensionAspect();
+  anAspect->MakeArrows3d (Standard_True);
+  anAspect->ArrowAspect()->SetAngle (M_PI/180.0 * 10.0);
   /***************************************/
   //dimension "L 502.51"
   /***************************************/
-  Handle(AIS_LengthDimension) len = new AIS_LengthDimension(V2, V3, pln, 502.51, "502.51");
-  len->SetPosition(gp_Pnt(350, 250, 0));
-  len->SetTypeOfDist(AIS_TOD_Horizontal);
-  len->SetArrowSize(30.0);
+  Handle(AIS_LengthDimension) len = new AIS_LengthDimension(V2, V3, pln->Pln());
+  anAspect->ArrowAspect()->SetLength (30.0);
+  len->SetDimensionAspect (anAspect);
   context->Display(len);
   /***************************************/
   //dimension "L 90"
   /***************************************/
-  Handle(AIS_LengthDimension) len1 = new AIS_LengthDimension(V4, V7, pln, 90, "90");
-  len1->SetPosition(gp_Pnt(70, 120, 0));
-  len1->SetTypeOfDist(AIS_TOD_Vertical);
-  len1->SetArrowSize(100.0);
+  Handle(AIS_LengthDimension) len1 = new AIS_LengthDimension(V7, V4, pln->Pln());
+  len1->SetDimensionAspect (anAspect);
+  len1->SetFlyout (30.0);
+  anAspect->ArrowAspect()->SetLength (100.0);
   context->Display(len1);
   /***************************************/
   //dimension "L 150"
   /***************************************/
-  Handle(AIS_LengthDimension) len2 = new AIS_LengthDimension(V1, V2, pln, 150, "150",gp_Pnt(650, 120, 0),DsgPrs_AS_BOTHAR,
-    AIS_TOD_Vertical, 100.0 );
-  //len2->SetPosition(gp_Pnt(650, 120, 0));
-  //len2->SetTypeOfDist(AIS_TOD_Vertical);
-  //len1->SetArrowSize(100.0);
+  Handle(AIS_LengthDimension) len2 = new AIS_LengthDimension(V1, V2, pln->Pln());
+  len2->SetDimensionAspect (anAspect);
   context->Display(len2);
   /***************************************/
   //dimension "R 88.58"
   /***************************************/
   gp_Circ cir = gp_Circ(gp_Ax2(gp_Pnt(191.09, -88.58, 0), gp_Dir(0, 0, 1)), 88.58);
   TopoDS_Edge E1 = BRepBuilderAPI_MakeEdge(cir,gp_Pnt(191.09,0,0.),gp_Pnt(191.09,-177.16,0.) );
-  Handle(AIS_RadiusDimension) dim1 = new AIS_RadiusDimension(E1,88.58, "R 88.58",gp_Pnt(-30.0, -80.0, 0.0),DsgPrs_AS_BOTHAR,
-    100.0 );
+  Handle(AIS_RadiusDimension) dim1 = new AIS_RadiusDimension(E1);
+  dim1->SetDimensionAspect (anAspect);
   context->Display(dim1);
   /***************************************/
   //dimension "R 43.80"
   /***************************************/
   gp_Circ cir1 = gp_Circ(gp_Ax2(gp_Pnt(191.09, -88.58, 0), gp_Dir(0, 0, 1)), 43.80);
   TopoDS_Edge E_cir1 = BRepBuilderAPI_MakeEdge(cir1);
-  dim1 = new AIS_RadiusDimension(E_cir1,43.80, "R 43.80",gp_Pnt(0.0, -50.0, 0.0),DsgPrs_AS_LASTAR, 60.0 );
+  dim1 = new AIS_RadiusDimension(E_cir1);
+  anAspect->ArrowAspect()->SetLength (60.0);
+  dim1->SetDimensionAspect (anAspect);
   context->Display(dim1);
   /***************************************/
   //dimension "R 17.86"
   /***************************************/
   gp_Circ cir2 = gp_Circ(gp_Ax2(gp_Pnt(566.11, -88.58, 0), gp_Dir(0, 0, -1)), 17.86);
   TopoDS_Edge E_cir2 = BRepBuilderAPI_MakeEdge(cir2);
-  dim1 = new AIS_RadiusDimension(E_cir2,17.86, "R 17.86",gp_Pnt(600.0, -50.0, 0.0),DsgPrs_AS_LASTAR, 40.0 );
+  dim1 = new AIS_RadiusDimension(E_cir2);
+  anAspect->ArrowAspect()->SetLength (40.0);
+  dim1->SetDimensionAspect (anAspect);
   context->Display(dim1);
 
   return 0;
@@ -541,42 +544,35 @@ static Standard_Integer OCC280 (Draw_Interpretor& di, Standard_Integer argc, con
     HLR = 1;
   }
 
-  Handle(V3d_View) anOldView = ViewerTest::CurrentView();
+  TCollection_AsciiString anOldName = ViewerTest::GetCurrentViewName();
   Handle(V3d_Viewer) aViewer = ViewerTest::GetViewerFromContext();
   if (Draw::Atoi (argv[2]))
   {
     aViewer->SetDefaultSurfaceDetail (V3d_TEX_ALL);
   }
   aViewer->SetDefaultTypeOfView (V3d_PERSPECTIVE);
-
-  Handle(Aspect_Window) asp = anOldView->Window();
-  aViewer->SetViewOff (anOldView);
-
+  Handle(Aspect_Window) asp = ViewerTest::CurrentView()->Window();
   Handle(V3d_View) aNewView = aViewer->CreateView();
   ViewerTest::CurrentView (aNewView);
-
+  TCollection_AsciiString aNewName=anOldName + "_new";
+  ViewerTest::InitViewName(aNewName,ViewerTest::CurrentView());
   aNewView->SetWindow (asp);
   if (!asp->IsMapped()) asp->Map();
-
-  anOldView->Remove();
-  anOldView.Nullify();
-
-  aNewView->Update();
-
-  // replace view in event manager
+  aNewView->Redraw();
+  ViewerTest::RemoveView(anOldName,false);
   ViewerTest::UnsetEventManager();
   ViewerTest::SetEventManager (new ViewerTest_EventManager (aNewView, ViewerTest::GetAISContext()));
 
   if (HLR == 1)
   {
     di << "HLR\n";
-    aNewView->SetComputedMode (Standard_True);
+    ViewerTest::CurrentView()->SetComputedMode (Standard_True);
   }
 
   return 0;
 }
 
-static Standard_Integer  OCC232 (Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
+static Standard_Integer  OCC232 (Draw_Interpretor& di, Standard_Integer /*argc*/, const char ** argv)
 {
   Handle(AIS_InteractiveContext) aContext = ViewerTest::GetAISContext();
   if(aContext.IsNull()) { 
@@ -850,7 +846,6 @@ static Standard_Real fl  = 1.e-3;
 static Standard_Real tapp_angle = 1.e-2;
 static GeomAbs_Shape blend_cont = GeomAbs_C1;
 
-static BRepFilletAPI_MakeFillet* Rakk = 0;
 static BRepFilletAPI_MakeFillet* Rake = 0;
 static char name[100];
 
@@ -1201,13 +1196,13 @@ static Standard_Integer OCC884 (Draw_Interpretor& di, Standard_Integer argc, con
   di << "Info: No. of self-intersection points : " << num << "\n";
 
   char str[80];
-  Standard_CString name = str;
+  Standard_CString aName = str;
   for (i = 1; i <= num; ++i)
   { 
     gp_Pnt pt = points3d(i); 
     di << "Info: Intersecting pt : (" << pt.X() << ", " << pt.Y() << ", " << pt.Z() << ")\n";
     Sprintf(str,"p_%d",i);
-    DrawTrSurf::Set(name,pt);
+    DrawTrSurf::Set(aName,pt);
   }
 
   Handle(ShapeFix_Wire) sfw = new ShapeFix_Wire;

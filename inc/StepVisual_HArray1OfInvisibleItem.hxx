@@ -39,11 +39,11 @@ class StepVisual_HArray1OfInvisibleItem : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepVisual_HArray1OfInvisibleItem(const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_HArray1OfInvisibleItem(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepVisual_HArray1OfInvisibleItem(const Standard_Integer Low,const Standard_Integer Up,const StepVisual_InvisibleItem& V);
+      StepVisual_HArray1OfInvisibleItem(const Standard_Integer Low,const Standard_Integer Up,const StepVisual_InvisibleItem& V);
   
-  Standard_EXPORT     void Init(const StepVisual_InvisibleItem& V) ;
+        void Init(const StepVisual_InvisibleItem& V) ;
   
         Standard_Integer Length() const;
   

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKStdSchema"
-	ProjectGUID="{D5707A0C-0B00-0FEB-0396-50C2A51ADF4F}"
+	ProjectGUID="{B8DAAE71-0FA8-0FBB-01F0-400E0D5A8B19}"
 	>
 	<Platforms>
 		<Platform
@@ -55,11 +55,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\obj\TKStdSchema\TKStdSchema.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc8\obj\TKStdSchema/"
 				ObjectFile=".\..\..\..\win32\vc8\obj\TKStdSchema/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc8\obj\TKStdSchema/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -149,12 +150,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StdSchema_DLL;__StdDrivers_DLL"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\objd\TKStdSchema\TKStdSchema.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc8\objd\TKStdSchema/"
 				ObjectFile=".\..\..\..\win32\vc8\objd\TKStdSchema/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc8\objd\TKStdSchema/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -250,11 +253,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\obj\TKStdSchema\TKStdSchema.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc8\obj\TKStdSchema/"
 				ObjectFile=".\..\..\..\win64\vc8\obj\TKStdSchema/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc8\obj\TKStdSchema/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -345,12 +349,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StdSchema_DLL;__StdDrivers_DLL;_OCC64"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\objd\TKStdSchema\TKStdSchema.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc8\objd\TKStdSchema/"
 				ObjectFile=".\..\..\..\win64\vc8\objd\TKStdSchema/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc8\objd\TKStdSchema/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -493,6 +499,9 @@
 					RelativePath="..\..\..\drv\StdSchema\StdSchema_PNaming_Name_1.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\drv\StdSchema\StdSchema_PNaming_Name_2.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\drv\StdSchema\StdSchema_PNaming_NamedShape.cxx">
 				</File>
 				<File
@@ -500,6 +509,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\StdSchema\StdSchema_PNaming_Naming_1.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\drv\StdSchema\StdSchema_PNaming_Naming_2.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\StdSchema\StdSchema_PPrsStd_AISPresentation.cxx">

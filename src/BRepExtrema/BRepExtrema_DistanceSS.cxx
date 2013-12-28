@@ -1,23 +1,18 @@
 // Created on: 1996-04-22
 // Created by: Herve LOUESSARD 
 // Copyright (c) 1996-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modified: Sergey ZERCHANINOV
 
@@ -120,7 +115,7 @@ static void TRIM_INFINIT_EDGE(const TopoDS_Edge& S1, const TopoDS_Edge& S2, Topo
       Precision::IsInfinite(aLast2))
     return;
   
-  Standard_Real Umin, Umax;
+  Standard_Real Umin = 0., Umax = 0.;
   Standard_Boolean bUmin, bUmax;
   bUmin = bUmax = Standard_False;
 
@@ -259,7 +254,7 @@ static void TRIM_INFINIT_FACE(const TopoDS_Shape& S1, const TopoDS_Shape& S2,
   const Standard_Boolean bRestrict = BRep_Tool::NaturalRestriction(aF);
 
   Standard_Real U1, V1, U2, V2;
-  Standard_Real Umin, Umax, Vmin, Vmax;
+  Standard_Real Umin = RealLast(), Umax = RealFirst(), Vmin = RealLast(), Vmax = RealFirst();
   Standard_Boolean bUmin, bUmax, bVmin, bVmax;
   bUmin = bUmax = bVmin = bVmax = Standard_False;
   Standard_Boolean bIsTrim = Standard_False;
@@ -545,6 +540,8 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Shape& S1, const TopoDS_Shape&
           Perform( V1, F2, B1, B2 );
           break;
         }
+        default:
+          break;
       }
       break;
     }
@@ -585,6 +582,8 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Shape& S1, const TopoDS_Shape&
           Perform( E1, F2, B1, B2 );
           break;
         }
+        default:
+          break;
       }
       break;
     }
@@ -617,9 +616,13 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Shape& S1, const TopoDS_Shape&
           Perform( F1, F2, B1, B2 );
           break;
         }
+        default:
+          break;
       }
       break;
     }
+    default:
+      break;
   }
 }
 

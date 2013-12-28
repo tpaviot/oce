@@ -1,24 +1,18 @@
 // Created on: 1996-09-03
 // Created by: Yves FRICAUD
 // Copyright (c) 1996-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //  Modified by skv - Fri Dec 26 12:20:14 2003 OCC4455
 
@@ -45,6 +39,7 @@
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <Extrema_ExtPC.hxx>
 #include <TopTools_MapOfShape.hxx>
+#include <Precision.hxx>
 
 
 
@@ -68,7 +63,7 @@ myTol(Tol)
 //purpose  : 
 //=======================================================================
 
-static void ExtentEdge(const TopoDS_Face& F,
+static void ExtentEdge(const TopoDS_Face& /*F*/,
 		       const TopoDS_Edge& E,
 		       TopoDS_Edge& NE) 
 {
@@ -103,8 +98,8 @@ static void ExtentEdge(const TopoDS_Face& F,
 //purpose  : 
 //=======================================================================
 
-static void SelectEdge (const TopoDS_Face& F,
-			const TopoDS_Face& EF,
+static void SelectEdge (const TopoDS_Face& /*F*/,
+			const TopoDS_Face& /*EF*/,
 			const TopoDS_Edge& E,
 			TopTools_ListOfShape& LInt)
 {
@@ -141,8 +136,8 @@ static void SelectEdge (const TopoDS_Face& F,
     Standard_Integer i;
     Standard_Real    aTol       = BRep_Tool::Tolerance(EI);
     Standard_Boolean isMinFound = Standard_False;
-    Standard_Real    aSqrDist1;
-    Standard_Real    aSqrDist2;
+    Standard_Real    aSqrDist1  = Precision::Infinite();
+    Standard_Real    aSqrDist2  = Precision::Infinite();
 
     anExt.Initialize(Ad2, Fst, Lst, aTol);
 
@@ -330,10 +325,10 @@ void BRepOffset_Inter3d::FaceInter(const TopoDS_Face& F1,
 //purpose  : 
 //=======================================================================
 
-void BRepOffset_Inter3d::ConnexIntByArc(const TopTools_ListOfShape& SetOfFaces, 
-					const TopoDS_Shape&         ShapeInit, 
-					const BRepOffset_Analyse&   Analyse, 
-					const BRepAlgo_Image&     InitOffsetFace)
+void BRepOffset_Inter3d::ConnexIntByArc(const TopTools_ListOfShape& /*SetOfFaces*/, 
+                                        const TopoDS_Shape&         ShapeInit, 
+                                        const BRepOffset_Analyse&   Analyse, 
+                                        const BRepAlgo_Image&       InitOffsetFace)
 {
   BRepOffset_Type    OT   = BRepOffset_Concave;
   if (mySide == TopAbs_OUT) OT   = BRepOffset_Convex;
@@ -877,7 +872,7 @@ void BRepOffset_Inter3d::ContextIntByArc(const TopTools_IndexedMapOfShape& Conte
 //purpose  : 
 //=======================================================================
 
-void BRepOffset_Inter3d::AddCommonEdges(const TopTools_ListOfShape& SetOfFaces)
+void BRepOffset_Inter3d::AddCommonEdges(const TopTools_ListOfShape&)
 {
 }
 

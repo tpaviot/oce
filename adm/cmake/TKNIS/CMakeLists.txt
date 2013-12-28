@@ -30,7 +30,7 @@ if (WIN32)
   list( APPEND TKNIS_USED_LIBS gdi32.lib )
 elseif(APPLE)
   find_library(FRAMEWORKS_OPENGL NAMES OpenGL)
-  if(3RDPARTY_USE_GLX)
+  if(USE_GLX)
     list( APPEND TKNIS_USED_LIBS GL )
     list( APPEND TKNIS_USED_LIBS GLU )
   else()
@@ -79,6 +79,10 @@ endif()
 
 if (WIN32)
 else()
+
+  if (APPLE)
+
+  endif()
 
 endif()
 

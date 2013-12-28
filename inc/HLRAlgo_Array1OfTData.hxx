@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRAlgo_Array1OfTData(const Standard_Integer Low,const Standard_Integer Up);
+      HLRAlgo_Array1OfTData(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   HLRAlgo_Array1OfTData(const HLRAlgo_TriangleData& Item,const Standard_Integer Low,const Standard_Integer Up);
+      HLRAlgo_Array1OfTData(const HLRAlgo_TriangleData& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const HLRAlgo_TriangleData& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~HLRAlgo_Array1OfTData()
 {
   Destroy();

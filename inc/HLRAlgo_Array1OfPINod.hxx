@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRAlgo_Array1OfPINod(const Standard_Integer Low,const Standard_Integer Up);
+      HLRAlgo_Array1OfPINod(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   HLRAlgo_Array1OfPINod(const Handle(HLRAlgo_PolyInternalNode)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      HLRAlgo_Array1OfPINod(const Handle(HLRAlgo_PolyInternalNode)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(HLRAlgo_PolyInternalNode)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~HLRAlgo_Array1OfPINod()
 {
   Destroy();

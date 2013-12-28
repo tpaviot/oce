@@ -44,6 +44,8 @@ void ShapeSchema_PBRep_CurveOnClosedSurface::SWrite(const Handle(Standard_Persis
   if (!p.IsNull()) {
     Handle(PBRep_CurveOnClosedSurface) &pp = (Handle(PBRep_CurveOnClosedSurface)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_PTopLoc_Location::SWrite(pp->_CSFDB_GetPBRep_CurveRepresentationmyLocation(),f,theSchema);
@@ -73,6 +75,8 @@ void ShapeSchema_PBRep_CurveOnClosedSurface::SRead(const Handle(Standard_Persist
 { 
   if (!p.IsNull()) {
     Handle(PBRep_CurveOnClosedSurface) &pp = (Handle(PBRep_CurveOnClosedSurface)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

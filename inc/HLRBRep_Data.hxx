@@ -188,6 +188,8 @@ public:
 //!  othewise  returns  IN <br>
 //!  It  is  used  to  check  "suspision"  hided  part  of  edge. <br>
   Standard_EXPORT     TopAbs_State SimplClassify(const Standard_Integer E,const HLRBRep_EdgeData& ED,const Standard_Integer Nbp,const Standard_Real p1,const Standard_Real p2) ;
+  //! Classification of an edge. <br>
+  Standard_EXPORT     TopAbs_State Classify(const Standard_Integer E,const HLRBRep_EdgeData& ED,const Standard_Boolean LevelFlag,Standard_Integer& Level,const Standard_Real param) ;
   
   Standard_EXPORT     void Destroy() ;
 ~HLRBRep_Data()
@@ -213,8 +215,6 @@ private:
   //! Orient the Edges which  are not  Internal OutLine, <br>
 //!          not Double and not IsoLine. <br>
   Standard_EXPORT     void OrientOthEdge(const Standard_Integer I,HLRBRep_FaceData& FD) ;
-  //! Classification of an edge. <br>
-  Standard_EXPORT     TopAbs_State Classify(const Standard_Integer E,const HLRBRep_EdgeData& ED,const Standard_Boolean LevelFlag,Standard_Integer& Level,const Standard_Real param) ;
   //! Returns  True  if the  intersection is  rejected. <br>
   Standard_EXPORT     Standard_Boolean RejectedPoint(const IntRes2d_IntersectionPoint& PInter,const TopAbs_Orientation BoundOri,const Standard_Integer NumSeg) ;
   //! returns True  if there is a common  vertex between <br>

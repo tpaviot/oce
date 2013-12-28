@@ -1,23 +1,18 @@
 // Created on: 1997-01-29
 // Created by: Robert COUBLANC
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #define IMP051001       //GG Adds SetZDetected() and ZDetected() methods
 
@@ -63,7 +58,6 @@ OpenLocalContext(const Standard_Boolean UseDisplayedObjects,
   // entities connected to dynamic selection at neutral point are set to 0.
   
   myLastinMain.Nullify();
-  myLastinColl.Nullify();
   myLastPicked.Nullify();
   myWasLastMain = Standard_True;
 
@@ -140,7 +134,6 @@ void AIS_InteractiveContext::CloseLocalContext(const Standard_Integer Index,
    if(updateproj)
      myMainSel->UpdateConversion();
    else{
-     myMainSel->ReactivateProjector();
      myMainSel->UpdateSort();
    }
    if(debugmode)
@@ -156,11 +149,10 @@ void AIS_InteractiveContext::CloseLocalContext(const Standard_Integer Index,
    if(GoodIndex==myCurLocalIndex){
      myCurLocalIndex = HighestIndex();
      const Handle(AIS_LocalContext)& LocCtx = myLocalContexts(myCurLocalIndex);
-     if(LocCtx->HasSameProjector(VS->Projector())){
-       LocCtx->MainSelector()->ReactivateProjector();
-     }
-     else
+     if (!LocCtx->HasSameProjector (VS->Projector()))
+     {
        LocCtx->MainSelector()->UpdateConversion();
+     }
    }
    else if(debugmode)
      cout<<"a No Current Local Context WasClosed"<<endl;
@@ -188,8 +180,6 @@ void AIS_InteractiveContext::CloseAllContexts(const Standard_Boolean updateviewe
   ResetOriginalState(Standard_False);
 
   myMainSel->UpdateSort();
-  if(!myIsCollClosed && !myCollectorSel.IsNull())
-    myCollectorSel->UpdateSort();
   if(updateviewer) myMainVwr->Update();
 }
 
@@ -378,22 +368,18 @@ SubIntensityOn(const Handle(AIS_InteractiveObject)& anIObj,
     if(GB->IsSubIntensityOn())
       return;
     GB->SubIntensityOn();
-    Standard_Boolean UpdMain(Standard_False),UpdColl(Standard_False);
+    Standard_Boolean UpdMain(Standard_False);
     
     for(TColStd_ListIteratorOfListOfInteger It(GB->DisplayedModes());It.More();It.Next()){
-      if(GB->GraphicStatus()==AIS_DS_Displayed){
+      if (GB->GraphicStatus()==AIS_DS_Displayed)
+      {
         myMainPM->Color(anIObj,mySubIntensity,It.Value());
-        UpdMain = Standard_True;}
-      else if(GB->GraphicStatus()==AIS_DS_Erased){
-        myCollectorPM->Color(anIObj,mySubIntensity,It.Value());
-        UpdColl=Standard_True;
+        UpdMain = Standard_True;
       }
     }
     if(updateviewer){
       if(UpdMain)
         myMainVwr->Update();
-      if(UpdColl)
-        myCollectorVwr->Update();
     }
   }
   else {
@@ -426,15 +412,13 @@ SubIntensityOff(const Handle(AIS_InteractiveObject)& anIObj,
     if(!GB->IsSubIntensityOn())
       return;
     GB->SubIntensityOff();
-    Standard_Boolean UpdMain(Standard_False),UpdColl(Standard_False);
+    Standard_Boolean UpdMain(Standard_False);
     
     for(TColStd_ListIteratorOfListOfInteger It(GB->DisplayedModes());It.More();It.Next()){
-      if(GB->GraphicStatus()!=AIS_DS_Erased){
+      if(GB->GraphicStatus()==AIS_DS_Displayed)
+      {
         myMainPM->Unhighlight(anIObj,It.Value());
-        UpdMain = Standard_True;}
-      else {
-        myCollectorPM->Unhighlight(anIObj,It.Value());
-        UpdColl=Standard_True;
+        UpdMain = Standard_True;
       }
     }
     
@@ -446,8 +430,6 @@ SubIntensityOff(const Handle(AIS_InteractiveObject)& anIObj,
     if(updateviewer){
       if(UpdMain)
         myMainVwr->Update();
-      if(UpdColl)
-        myCollectorVwr->Update();
     }
   }
   else {
@@ -751,17 +733,11 @@ void AIS_InteractiveContext::NotUseDisplayedObjects()
 //purpose  : 
 //=======================================================================
 
-Standard_Integer AIS_InteractiveContext::PurgeDisplay(const Standard_Boolean CollectorToo)
+Standard_Integer AIS_InteractiveContext::PurgeDisplay()
 {
   if(HasOpenedContext()) return 0;
   
   Standard_Integer NbStr = PurgeViewer(myMainVwr);
-  if(!myCollectorVwr.IsNull())
-    if(CollectorToo){
-      NbStr+=PurgeViewer(myCollectorVwr);
-      if(!IsCollectorClosed())
-        myCollectorVwr->Update();
-    }
   myMainVwr->Update();
   return NbStr;
 
@@ -883,7 +859,7 @@ Standard_Boolean AIS_InteractiveContext::EndImmediateDraw(const Standard_Boolean
 
 void AIS_InteractiveContext::ResetOriginalState(const Standard_Boolean updateviewer)
 {
-  Standard_Boolean upd_main(Standard_False),upd_col(Standard_False);
+  Standard_Boolean upd_main(Standard_False);
   TColStd_ListIteratorOfListOfInteger itl;
 
   for (AIS_DataMapIteratorOfDataMapOfIOStatus it(myObjects);it.More();it.Next()){
@@ -910,12 +886,7 @@ void AIS_InteractiveContext::ResetOriginalState(const Standard_Boolean updatevie
       break; 
     }
     case AIS_DS_Erased:{
-      upd_col = Standard_True;
-      EraseGlobal(iobj,Standard_False,Standard_True);
-      break;
-    }
-    case AIS_DS_FullErased:{
-      EraseGlobal(iobj,Standard_False,Standard_False);
+      EraseGlobal(iobj,Standard_False);
       break;
     }
     default:
@@ -925,8 +896,6 @@ void AIS_InteractiveContext::ResetOriginalState(const Standard_Boolean updatevie
   if(updateviewer){
     if(upd_main) 
       myMainVwr->Update();
-    if(upd_col)
-      myCollectorVwr->Update();
   }
 }
 

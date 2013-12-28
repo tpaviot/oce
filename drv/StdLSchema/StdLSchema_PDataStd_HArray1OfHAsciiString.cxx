@@ -40,6 +40,8 @@ void StdLSchema_PDataStd_HArray1OfHAsciiString::SWrite(const Handle(Standard_Per
   if (!p.IsNull()) {
     Handle(PDataStd_HArray1OfHAsciiString) &pp = (Handle(PDataStd_HArray1OfHAsciiString)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPDataStd_HArray1OfHAsciiStringLowerBound());
@@ -60,6 +62,8 @@ void StdLSchema_PDataStd_HArray1OfHAsciiString::SRead(const Handle(Standard_Pers
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_HArray1OfHAsciiString) &pp = (Handle(PDataStd_HArray1OfHAsciiString)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

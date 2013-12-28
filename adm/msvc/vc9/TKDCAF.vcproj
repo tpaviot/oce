@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKDCAF"
-	ProjectGUID="{30D8C3CE-03D3-09D8-0DC6-ECF215096597}"
+	ProjectGUID="{91E3FD70-04E8-1867-094B-B0E269E09C7A}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -56,12 +56,14 @@
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
+				EnableEnhancedInstructionSet="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\obj\TKDCAF\TKDCAF.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc9\obj\TKDCAF/"
 				ObjectFile=".\..\..\..\win32\vc9\obj\TKDCAF/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc9\obj\TKDCAF/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -150,12 +152,15 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DDF_DLL;__DDocStd_DLL;__DNaming_DLL;__DDataStd_DLL;__DPrsStd_DLL;__DrawDim_DLL"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				EnableEnhancedInstructionSet="2"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\objd\TKDCAF\TKDCAF.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc9\objd\TKDCAF/"
 				ObjectFile=".\..\..\..\win32\vc9\objd\TKDCAF/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc9\objd\TKDCAF/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -248,11 +253,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\obj\TKDCAF\TKDCAF.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc9\obj\TKDCAF/"
 				ObjectFile=".\..\..\..\win64\vc9\obj\TKDCAF/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc9\obj\TKDCAF/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -339,12 +345,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DDF_DLL;__DDocStd_DLL;__DNaming_DLL;__DDataStd_DLL;__DPrsStd_DLL;__DrawDim_DLL;_OCC64"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\objd\TKDCAF\TKDCAF.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc9\objd\TKDCAF/"
 				ObjectFile=".\..\..\..\win64\vc9\objd\TKDCAF/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc9\objd\TKDCAF/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -466,9 +474,6 @@
 					RelativePath="..\..\..\src\DDocStd\DDocStd_MTMCommands.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\DDocStd\DDocStd_Sample.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\DDocStd\DDocStd_ToolsCommands.cxx">
 				</File>
 			</Filter>
@@ -567,9 +572,6 @@
 					RelativePath="..\..\..\src\DDataStd\DDataStd_ObjectCommands.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\DDataStd\DDataStd_Sample.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\DDataStd\DDataStd_TreeBrowser.cxx">
 				</File>
 				<File
@@ -587,9 +589,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\DPrsStd\DPrsStd_AISViewerCommands.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\DPrsStd\DPrsStd_Sample.cxx">
 				</File>
 			</Filter>
 			<Filter

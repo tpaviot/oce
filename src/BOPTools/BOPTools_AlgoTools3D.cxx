@@ -1,20 +1,16 @@
 // Created by: Peter KURNEV
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BOPTools_AlgoTools3D.ixx>
 
@@ -90,9 +86,9 @@ static
   void BOPTools_AlgoTools3D::DoSplitSEAMOnFace (const TopoDS_Edge& aSplit,
                                                 const TopoDS_Face& aF)
 {
-  Standard_Boolean bIsUPeriodic, bIsVPeriodic, bIsLeft;
-  Standard_Real aTol, a, b, anUPeriod, anVPeriod, aT, anU, dU=1.e-7, anU1,
-                anV, dV=1.e-7, anV1;
+  Standard_Boolean bIsUPeriodic, bIsVPeriodic, bIsLeft = Standard_False;
+  Standard_Real aTol, a, b, anUPeriod, anVPeriod, aT, anU, dU/*=1.e-7*/, anU1,
+                anV, dV/*=1.e-7*/, anV1;
   Standard_Real aScPr;
   gp_Pnt2d aP2D;
   gp_Vec2d aVec2D;
@@ -116,7 +112,7 @@ static
   //
   if (!bIsUPeriodic && !bIsVPeriodic) {
     Standard_Boolean bIsUClosed, bIsVClosed;
-    Standard_Real aUmin, aUmax, aVmin, aVmax;
+    Standard_Real aUmin = 0., aUmax = 0., aVmin = 0., aVmax = 0.;
     Handle(Geom_BSplineSurface) aBS;
     Handle(Geom_BezierSurface) aBZ;
     //
@@ -158,6 +154,10 @@ static
   //
   anU1=anU;
   anV1=anV;
+  //
+  GeomAdaptor_Surface aGAS(aS);
+  dU = aGAS.UResolution(aTol);
+  dV = aGAS.VResolution(aTol);
   //
   if (anUPeriod > 0.){
     if (fabs (anU) < dU) {
@@ -418,7 +418,7 @@ static
   //
   aETol = BRep_Tool::Tolerance(aE);
   aFTol = BRep_Tool::Tolerance(aF);
-  // pkv NPAL19220
+  // NPAL19220
   GeomAdaptor_Surface aGAS(aS);
   aTS=aGAS.GetType();
   if (aTS==GeomAbs_BSplineSurface) {
@@ -462,37 +462,52 @@ static
 //function : PointNearEdge
 //purpose  : 
 //=======================================================================
-  void BOPTools_AlgoTools3D::PointNearEdge (const TopoDS_Edge& aE,
-                                            const TopoDS_Face& aF,
-                                            const Standard_Real aT, 
-                                            gp_Pnt2d& aPx2DNear,
-                                            gp_Pnt& aPxNear,
-                                            Handle(BOPInt_Context)& theContext)
+void BOPTools_AlgoTools3D::PointNearEdge (const TopoDS_Edge& aE,
+					  const TopoDS_Face& aF,
+					  const Standard_Real aT, 
+					  gp_Pnt2d& aPx2DNear,
+					  gp_Pnt& aPxNear,
+					  Handle(BOPInt_Context)& theContext)
 {
-  Standard_Real dt2D=BOPTools_AlgoTools3D::MinStepIn2d();//~1.e-5;
-  Standard_Real aTolE, aTolF, dtx;
+  Standard_Real aTolE, aTolF, dTx, dT2D;
+  Handle(Geom_Surface) aS;
+  GeomAdaptor_Surface aGAS;
   //
-  Handle(Geom_Surface) aS = BRep_Tool::Surface(aF);
-  GeomAdaptor_Surface aGAS(aS);
+  dT2D=10.*BOPTools_AlgoTools3D::MinStepIn2d();//~1.e-5;
+  //
+  aS = BRep_Tool::Surface(aF);
+  aGAS.Load(aS);
   if (aGAS.GetType()==GeomAbs_Cylinder ||
       aGAS.GetType()==GeomAbs_Sphere) {
-    dt2D *= 100;
-  } else {
-    dt2D *= 10;
-  }
+    dT2D=10.*dT2D;
+  } 
+  //
   aTolE = BRep_Tool::Tolerance(aE);
   aTolF = BRep_Tool::Tolerance(aF);
-  dtx = 2*(aTolE + aTolF);
-  dt2D = (dtx > dt2D) ? dtx : dt2D;
-  BOPTools_AlgoTools3D::PointNearEdge (aE, aF, aT, dt2D, aPx2DNear, aPxNear);
+  dTx = 2.*(aTolE + aTolF);
+  if (dTx > dT2D) {
+    dT2D=dTx;
+  }
+  //
+  BOPTools_AlgoTools3D::PointNearEdge (aE, aF, aT, dT2D, aPx2DNear, aPxNear);
   if (!theContext->IsPointInOnFace(aF, aPx2DNear)) {
+    Standard_Integer iErr;
+    Standard_Real aU1, aU2, aV1, aV2, dV, dU, dTresh;
     gp_Pnt aP;
     gp_Pnt2d aP2d;
-    Standard_Real u1, u2, v1, v2;
     //
-    BRepTools::UVBounds(aF, u1, u2, v1, v2);
-    if ((u2-u1) < 1.e-4 || (v2-v1) < 1.e-4) {
-      Standard_Integer iErr = BOPTools_AlgoTools3D::PointInFace(aF, aP, aP2d, theContext);
+    BRepTools::UVBounds(aF, aU1, aU2, aV1, aV2);
+    // 
+    dU=aU2-aU1;
+    dV=aV2-aV1;
+    //
+    dTresh=1.e-4;
+    if (dT2D > dTresh) {
+      dTresh=dT2D;
+    }
+    //
+    if (dU < dTresh || dV < dTresh) {
+      iErr = BOPTools_AlgoTools3D::PointInFace(aF, aP, aP2d, theContext);
       if (!iErr) {
         aPxNear = aP;
         aPx2DNear = aP2d;
@@ -724,9 +739,9 @@ void Add(const TopoDS_Shape& aS,
                                                      Handle(BOPInt_Context)& theContext)
 {
   Standard_Boolean bIsDone, bHasFirstPoint, bHasSecondPoint;
-  Standard_Integer iErr, aIx, aNbDomains, i;
+  Standard_Integer iErr, aIx, aNbDomains;
   Standard_Real aUMin, aUMax, aVMin, aVMax;
-  Standard_Real aVx, aUx, aV1, aV2, aEpsT;
+  Standard_Real aVx = 0., aUx, aV1, aV2, aEpsT;
   gp_Dir2d aD2D (0., 1.);
   gp_Pnt2d aP2D;
   gp_Pnt aPx;
@@ -768,8 +783,8 @@ void Add(const TopoDS_Shape& aS,
   }
   //
   aNbDomains=aHatcher.NbDomains(aIx);
-  for (i=1; i<=aNbDomains; ++i) {
-    const HatchGen_Domain& aDomain=aHatcher.Domain (aIx, i) ;
+  if (aNbDomains > 0) {
+    const HatchGen_Domain& aDomain=aHatcher.Domain (aIx, 1) ;
     bHasFirstPoint=aDomain.HasFirstPoint();
     if (!bHasFirstPoint) {
       iErr=3;
@@ -788,7 +803,10 @@ void Add(const TopoDS_Shape& aS,
     //
     aVx=IntTools_Tools::IntermediatePoint(aV1, aV2);
     //
-    break;
+  }
+  else {
+    iErr=2;
+    return iErr;
   }
   //
   aS->D0(aUx, aVx, aPx);

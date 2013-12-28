@@ -21,7 +21,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_OpenGlLibs_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_OpenGlLibs_INCLUDES) $(CSF_FREETYPE_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/V3d -I@top_srcdir@/src/V3d \
 -I@top_srcdir@/drv/Graphic3d -I@top_srcdir@/src/Graphic3d \
@@ -44,6 +44,7 @@ libTKV3d_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKMath/libTKMath.la \
 ../TKernel/libTKernel.la \
 ../TKService/libTKService.la \
+../TKShHealing/libTKShHealing.la \
 ../TKTopAlgo/libTKTopAlgo.la \
 ../TKG2d/libTKG2d.la \
 ../TKG3d/libTKG3d.la \
@@ -51,7 +52,7 @@ libTKV3d_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKMesh/libTKMesh.la \
 ../TKGeomAlgo/libTKGeomAlgo.la \
 ../TKHLR/libTKHLR.la \
-$(STLPort_LIB) $(CSF_user32_LIB) $(CSF_gdi32_LIB) $(CSF_OpenGlLibs_LIB) 
+$(STLPort_LIB) $(CSF_user32_LIB) $(CSF_gdi32_LIB) $(CSF_OpenGlLibs_LIB) $(CSF_FREETYPE_LIB) 
 
 libTKV3d_la_SOURCES = \
 @top_srcdir@/drv/AIS/AIS_DataMapIteratorOfDataMapOfILC_0.cxx \
@@ -78,7 +79,6 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/drv/AIS/AIS_SequenceOfDimension_0.cxx \
 @top_srcdir@/drv/AIS/AIS_SequenceOfInteractive_0.cxx \
 @top_srcdir@/drv/AIS/AIS_StdMapNodeOfMapOfInteractive_0.cxx \
-@top_srcdir@/drv/DsgPrs/DsgPrs_DatumPrs_0.cxx \
 @top_srcdir@/drv/Graphic3d/Graphic3d_Array1OfVector_0.cxx \
 @top_srcdir@/drv/Graphic3d/Graphic3d_Array1OfVertex_0.cxx \
 @top_srcdir@/drv/Graphic3d/Graphic3d_Array2OfVertex_0.cxx \
@@ -151,12 +151,6 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/drv/SelectMgr/SelectMgr_SequenceOfOwner_0.cxx \
 @top_srcdir@/drv/SelectMgr/SelectMgr_SequenceOfSelection_0.cxx \
 @top_srcdir@/drv/SelectMgr/SelectMgr_SequenceOfSelector_0.cxx \
-@top_srcdir@/drv/StdPrs/StdPrs_HLRShape_0.cxx \
-@top_srcdir@/drv/StdPrs/StdPrs_Point_0.cxx \
-@top_srcdir@/drv/StdPrs/StdPrs_Vertex_0.cxx \
-@top_srcdir@/drv/StdPrs/StdPrs_WFDeflectionShape_0.cxx \
-@top_srcdir@/drv/StdPrs/StdPrs_WFRestrictedFace_0.cxx \
-@top_srcdir@/drv/StdPrs/StdPrs_WFShape_0.cxx \
 @top_srcdir@/drv/StdSelect/StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_0.cxx \
 @top_srcdir@/drv/StdSelect/StdSelect_IndexedDataMapOfOwnerPrs_0.cxx \
 @top_srcdir@/drv/V3d/V3d_BadValue_0.cxx \
@@ -165,27 +159,21 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/drv/Visual3d/Visual3d_ContextPickDefinitionError_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_DepthCueingDefinitionError_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_HSequenceOfPickPath_0.cxx \
-@top_srcdir@/drv/Visual3d/Visual3d_HSetOfClipPlane_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_HSetOfLight_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_HSetOfView_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_LayerDefinitionError_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_LightDefinitionError_0.cxx \
-@top_srcdir@/drv/Visual3d/Visual3d_ListIteratorOfSetListOfSetOfClipPlane_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_ListIteratorOfSetListOfSetOfLight_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_ListIteratorOfSetListOfSetOfView_0.cxx \
-@top_srcdir@/drv/Visual3d/Visual3d_ListNodeOfSetListOfSetOfClipPlane_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_ListNodeOfSetListOfSetOfLight_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_ListNodeOfSetListOfSetOfView_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_PickError_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_SequenceNodeOfSequenceOfPickPath_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_SequenceOfPickPath_0.cxx \
-@top_srcdir@/drv/Visual3d/Visual3d_SetIteratorOfSetOfClipPlane_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_SetIteratorOfSetOfLight_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_SetIteratorOfSetOfView_0.cxx \
-@top_srcdir@/drv/Visual3d/Visual3d_SetListOfSetOfClipPlane_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_SetListOfSetOfLight_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_SetListOfSetOfView_0.cxx \
-@top_srcdir@/drv/Visual3d/Visual3d_SetOfClipPlane_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_SetOfLight_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_SetOfView_0.cxx \
 @top_srcdir@/drv/Visual3d/Visual3d_TransformError_0.cxx \
@@ -208,6 +196,7 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/AIS/AIS_ConnectedInteractive.cxx \
 @top_srcdir@/src/AIS/AIS_ConnectedShape.cxx \
 @top_srcdir@/src/AIS/AIS_DiameterDimension.cxx \
+@top_srcdir@/src/AIS/AIS_Dimension.cxx \
 @top_srcdir@/src/AIS/AIS_DimensionOwner.cxx \
 @top_srcdir@/src/AIS/AIS_Drawer.cxx \
 @top_srcdir@/src/AIS/AIS_EllipseRadiusDimension.cxx \
@@ -254,7 +243,7 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/DsgPrs/DsgPrs_AnglePresentation.cxx \
 @top_srcdir@/src/DsgPrs/DsgPrs_Chamf2dPresentation.cxx \
 @top_srcdir@/src/DsgPrs/DsgPrs_ConcentricPresentation.cxx \
-@top_srcdir@/src/DsgPrs/DsgPrs_DatumTool.cxx \
+@top_srcdir@/src/DsgPrs/DsgPrs_DatumPrs.cxx \
 @top_srcdir@/src/DsgPrs/DsgPrs_DiameterPresentation.cxx \
 @top_srcdir@/src/DsgPrs/DsgPrs_EllipseRadiusPresentation.cxx \
 @top_srcdir@/src/DsgPrs/DsgPrs_EqualDistancePresentation.cxx \
@@ -299,12 +288,12 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/Graphic3d/Graphic3d_CGroup.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_CLight.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_CPick.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_CPlane.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_CStructure.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_CTexture.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_CTransPersStruct.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_CUserDraw.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_CView.cxx \
+@top_srcdir@/src/Graphic3d/Graphic3d_ClipPlane.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_DataStructureManager.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group.cxx \
@@ -312,10 +301,13 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group_10.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group_13.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group_2.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_Group_3.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group_8.cxx \
+@top_srcdir@/src/Graphic3d/Graphic3d_MarkerImage.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_MaterialAspect.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Plotter.cxx \
+@top_srcdir@/src/Graphic3d/Graphic3d_ShaderObject.cxx \
+@top_srcdir@/src/Graphic3d/Graphic3d_ShaderProgram.cxx \
+@top_srcdir@/src/Graphic3d/Graphic3d_ShaderVariable.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Strips.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Structure.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_StructureManager.cxx \
@@ -332,29 +324,26 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/Graphic3d/Graphic3d_Vector.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Vertex.cxx \
 @top_srcdir@/src/Prs3d/Prs3d.cxx \
-@top_srcdir@/src/Prs3d/Prs3d_AngleAspect.cxx \
-@top_srcdir@/src/Prs3d/Prs3d_AnglePresentation.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_Arrow.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_ArrowAspect.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_BasicAspect.cxx \
-@top_srcdir@/src/Prs3d/Prs3d_CompositeAspect.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_DatumAspect.cxx \
+@top_srcdir@/src/Prs3d/Prs3d_DimensionAspect.cxx \
+@top_srcdir@/src/Prs3d/Prs3d_DimensionUnits.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_Drawer.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_IsoAspect.cxx \
-@top_srcdir@/src/Prs3d/Prs3d_LengthAspect.cxx \
-@top_srcdir@/src/Prs3d/Prs3d_LengthPresentation.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_LineAspect.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_PlaneAspect.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_PlaneSet.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_PointAspect.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_Presentation.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_Projector.cxx \
-@top_srcdir@/src/Prs3d/Prs3d_RadiusAspect.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_Root.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_ShadingAspect.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_ShapeTool.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_Text.cxx \
 @top_srcdir@/src/Prs3d/Prs3d_TextAspect.cxx \
+@top_srcdir@/src/Prs3d/Prs3d_WFShape.cxx \
 @top_srcdir@/src/PrsMgr/PrsMgr_ModedPresentation.cxx \
 @top_srcdir@/src/PrsMgr/PrsMgr_PresentableObject.cxx \
 @top_srcdir@/src/PrsMgr/PrsMgr_Presentation.cxx \
@@ -388,6 +377,7 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/StdPrs/StdPrs_Curve.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_DeflectionCurve.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_HLRPolyShape.cxx \
+@top_srcdir@/src/StdPrs/StdPrs_HLRShape.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_HLRToolShape.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_Plane.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_PoleCurve.cxx \
@@ -400,6 +390,7 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/StdPrs/StdPrs_WFDeflectionRestrictedFace.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_WFDeflectionSurface.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_WFPoleSurface.cxx \
+@top_srcdir@/src/StdPrs/StdPrs_WFRestrictedFace.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_WFSurface.cxx \
 @top_srcdir@/src/StdSelect/StdSelect.cxx \
 @top_srcdir@/src/StdSelect/StdSelect_BRepHilighter.cxx \
@@ -439,7 +430,6 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/V3d/V3d_Viewer_2.cxx \
 @top_srcdir@/src/V3d/V3d_Viewer_3.cxx \
 @top_srcdir@/src/V3d/V3d_Viewer_4.cxx \
-@top_srcdir@/src/Visual3d/Visual3d_ClipPlane.cxx \
 @top_srcdir@/src/Visual3d/Visual3d_ContextPick.cxx \
 @top_srcdir@/src/Visual3d/Visual3d_ContextView.cxx \
 @top_srcdir@/src/Visual3d/Visual3d_Layer.cxx \

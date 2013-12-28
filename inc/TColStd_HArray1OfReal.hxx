@@ -41,11 +41,11 @@ class TColStd_HArray1OfReal : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColStd_HArray1OfReal(const Standard_Integer Low,const Standard_Integer Up);
+      TColStd_HArray1OfReal(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColStd_HArray1OfReal(const Standard_Integer Low,const Standard_Integer Up,const Standard_Real& V);
+      TColStd_HArray1OfReal(const Standard_Integer Low,const Standard_Integer Up,const Standard_Real& V);
   
-  Standard_EXPORT     void Init(const Standard_Real& V) ;
+        void Init(const Standard_Real& V) ;
   
         Standard_Integer Length() const;
   

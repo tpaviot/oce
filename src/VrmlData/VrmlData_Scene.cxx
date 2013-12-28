@@ -1,22 +1,17 @@
 // Created on: 2006-05-25
 // Created by: Alexander GRIGORIEV
-// Copyright (c) 2006-2012 OPEN CASCADE SAS
+// Copyright (c) 2006-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <VrmlData_Scene.hxx>
 #include <VrmlData_InBuffer.hxx>
@@ -209,13 +204,17 @@ VrmlData_ErrorStatus VrmlData_Scene::readLine (VrmlData_InBuffer& theBuffer)
     theBuffer.Input.getline (theBuffer.Line, sizeof(theBuffer.Line));
     theBuffer.LineCount++;
     const int stat = theBuffer.Input.rdstate();
-    if (stat & ios::badbit)
+    if (stat & ios::badbit) {
       aStatus = VrmlData_UnrecoverableError;
-    else if (stat & ios::failbit)
-      if (stat & ios::eofbit)
+    }
+    else if (stat & ios::failbit) {
+      if (stat & ios::eofbit) {
         aStatus = VrmlData_EndOfFile;
-      else
+      }
+      else {
         aStatus = VrmlData_GeneralError;
+      }
+    }
     theBuffer.LinePtr = &theBuffer.Line[0];
     theBuffer.IsProcessed = Standard_False;
   }
@@ -306,7 +305,7 @@ VrmlData_Scene& VrmlData_Scene::operator << (Standard_IStream& theInput)
 //   if (myStatus == StatusOK)
 //     myStatus = ReadLine (aBuffer);
   // Read VRML data by nodes
-  while (~0) {
+  for(;;) {
     if (!VrmlData_Node::OK(myStatus, ReadLine(aBuffer))) {
       if (myStatus == VrmlData_EndOfFile)
         myStatus = VrmlData_StatusOK;
@@ -347,7 +346,7 @@ VrmlData_Scene& VrmlData_Scene::operator << (Standard_IStream& theInput)
 
 Handle(VrmlData_Node) VrmlData_Scene::FindNode
                                 (const char                   * theName,
-                                 const Handle(Standard_Type)& theType) const
+                                 const Handle(Standard_Type)& /*theType*/) const
 {
   Handle(VrmlData_Node) aResult;
 #ifdef USE_LIST_API
@@ -450,7 +449,7 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
   TCollection_AsciiString aName;
 
   // Read the DEF token to assign the node name
-  if (VrmlData_Node::OK(aStatus, ReadLine(theBuffer)))
+  if (VrmlData_Node::OK(aStatus, ReadLine(theBuffer))) {
     if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "DEF")) {
       if (VrmlData_Node::OK(aStatus, ReadWord (theBuffer, aName)))
         aStatus = ReadLine(theBuffer);
@@ -458,6 +457,7 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
       theNode.Nullify();
       return aStatus;
     }
+  }
 
   const char * strName = aName.ToCString();
   if (aStatus == VrmlData_StatusOK) {
@@ -518,7 +518,7 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
       aStatus = ReadWord (theBuffer, aTitle);
       if (isProto) {
         aStatus = ReadLine(theBuffer);
-        if (aStatus == VrmlData_StatusOK)
+        if (aStatus == VrmlData_StatusOK) {
           if (theBuffer.LinePtr[0] != '[')
             aStatus = VrmlData_VrmlFormatError;
           else {
@@ -542,6 +542,7 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
               }
             }
           }
+        }
       }
       if (aStatus == VrmlData_StatusOK)
         aNode = new VrmlData_UnknownNode(* this,
@@ -551,19 +552,21 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
   }
   aStatus = ReadLine(theBuffer);
   if (aNode.IsNull() == Standard_False) {
-    if (aNode->Name()[0] != '\0')
+    if (aNode->Name()[0] != '\0') 
       myNamedNodes.Add (aNode);
     if (theType.IsNull() == Standard_False)
       if (aNode->IsKind(theType) == Standard_False)
         aStatus = VrmlData_VrmlFormatError;
   }
-  if (aStatus == VrmlData_StatusOK)
+  if (aStatus == VrmlData_StatusOK) {
     if (theBuffer.LinePtr[0] == '{') {
       theBuffer.LinePtr++;
       theNode = aNode;
       myAllNodes.Append(aNode);
-    } else
+    } else {
       aStatus = VrmlData_VrmlFormatError;
+    }
+  }
   return aStatus;
 }
 
@@ -702,7 +705,7 @@ VrmlData_ErrorStatus VrmlData_Scene::ReadXYZ
                                  Standard_Boolean       isOnlyPos) const
 {
   Standard_Real aVal[3] = {0., 0., 0.};
-  VrmlData_ErrorStatus aStatus;
+  VrmlData_ErrorStatus aStatus = VrmlData_StatusOK;
   for (Standard_Integer i = 0; i < 3; i++) {
     if (!VrmlData_Node::OK(aStatus, VrmlData_Scene::ReadLine(theBuffer)))
       break;
@@ -719,13 +722,16 @@ VrmlData_ErrorStatus VrmlData_Scene::ReadXYZ
       theBuffer.LinePtr = endptr;
     }
   }
-  if (aStatus == VrmlData_StatusOK)
-    if (isScale)
+  if (aStatus == VrmlData_StatusOK) {
+    if (isScale) {
       theXYZ.SetCoord (aVal[0] * myLinearScale,
                        aVal[1] * myLinearScale,
                        aVal[2] * myLinearScale);
-    else
+    }
+    else {
       theXYZ.SetCoord (aVal[0], aVal[1], aVal[2]);
+    }
+  }
   return aStatus;
 }
 
@@ -741,7 +747,7 @@ VrmlData_ErrorStatus VrmlData_Scene::ReadXY
                                  Standard_Boolean       isOnlyPos) const
 {
   Standard_Real aVal[2] = {0., 0.};
-  VrmlData_ErrorStatus aStatus;
+  VrmlData_ErrorStatus aStatus = VrmlData_StatusOK;
   for (Standard_Integer i = 0; i < 2; i++) {
     if (!VrmlData_Node::OK(aStatus, VrmlData_Scene::ReadLine(theBuffer)))
       break;
@@ -758,11 +764,12 @@ VrmlData_ErrorStatus VrmlData_Scene::ReadXY
       theBuffer.LinePtr = endptr;
     }
   }
-  if (aStatus == VrmlData_StatusOK)
+  if (aStatus == VrmlData_StatusOK) {
     if (isScale)
       theXY.SetCoord (aVal[0] * myLinearScale, aVal[1] * myLinearScale);
     else
       theXY.SetCoord (aVal[0], aVal[1]);
+  }
   return aStatus;
 }
 
@@ -779,7 +786,7 @@ VrmlData_ErrorStatus VrmlData_Scene::ReadArrIndex
 {
   VrmlData_ErrorStatus aStatus;
   theNBlocks = 0;
-  if (VrmlData_Node::OK(aStatus, ReadLine(theBuffer)))
+  if (VrmlData_Node::OK(aStatus, ReadLine(theBuffer))) {
     if (theBuffer.LinePtr[0] != '[')  // opening bracket
       aStatus = VrmlData_VrmlFormatError;
     else {
@@ -846,6 +853,7 @@ VrmlData_ErrorStatus VrmlData_Scene::ReadArrIndex
         }
       }
     }
+  }
   return aStatus;
 }
 
@@ -916,7 +924,7 @@ VrmlData_ErrorStatus VrmlData_Scene::WriteXYZ
                                  const char             * thePostfix) const
 {
   char buf[240];
-  if (IsDummyWrite() == Standard_False)
+  if (IsDummyWrite() == Standard_False) {
     if (isApplyScale && myLinearScale > Precision::Confusion())
       Sprintf (buf, "%.12g %.12g %.12g%s", theXYZ.X() / myLinearScale,
                theXYZ.Y() / myLinearScale, theXYZ.Z() / myLinearScale,
@@ -924,6 +932,7 @@ VrmlData_ErrorStatus VrmlData_Scene::WriteXYZ
     else
       Sprintf (buf, "%.12g %.12g %.12g%s", theXYZ.X(), theXYZ.Y(), theXYZ.Z(),
                thePostfix ? thePostfix : "");
+  }
   return WriteLine (buf);
 }
 
@@ -1132,8 +1141,10 @@ void dumpNode (Standard_OStream&                theStream,
     const Standard_Integer ** ppDummy; 
     const Standard_Size nCoord = aNode->Coordinates()->Length();
     const Standard_Size nPoly  = aNode->Polygons (ppDummy);
-    char buf[64];
-    Sprintf (buf, "IndexedFaceSet (%d vertices, %d polygons)", nCoord, nPoly);
+    char buf[80];
+    Sprintf (buf, "IndexedFaceSet (%" PRIuPTR " vertices, %" PRIuPTR " polygons)",
+             nCoord, nPoly);
+
     dumpNodeHeader (theStream, theIndent, buf, theNode->Name());
   } else if (theNode->IsKind(STANDARD_TYPE(VrmlData_IndexedLineSet))) {
     const Handle(VrmlData_IndexedLineSet) aNode =
@@ -1141,8 +1152,11 @@ void dumpNode (Standard_OStream&                theStream,
     const Standard_Integer ** ppDummy; 
     const Standard_Size nCoord = aNode->Coordinates()->Length();
     const Standard_Size nPoly  = aNode->Polygons (ppDummy);
-    char buf[64];
-    Sprintf (buf, "IndexedLineSet (%d vertices, %d polygons)", nCoord, nPoly);
+
+    char buf[80];
+    Sprintf(buf, "IndexedLineSet (%" PRIuPTR " vertices, %" PRIuPTR " polygons)",
+            nCoord, nPoly);
+
     dumpNodeHeader (theStream, theIndent, buf, theNode->Name());
   } else if (theNode->IsKind(STANDARD_TYPE(VrmlData_Material))) {
 //     const Handle(VrmlData_Material) aMaterial = 

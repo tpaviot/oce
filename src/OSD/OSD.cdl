@@ -1,20 +1,16 @@
 -- Copyright (c) 1992-1999 Matra Datavision
--- Copyright (c) 1999-2012 OPEN CASCADE SAS
+-- Copyright (c) 1999-2014 OPEN CASCADE SAS
 --
--- The content of this file is subject to the Open CASCADE Technology Public
--- License Version 6.5 (the "License"). You may not use the content of this file
--- except in compliance with the License. Please obtain a copy of the License
--- at http://www.opencascade.org and read it completely before using this file.
+-- This file is part of Open CASCADE Technology software library.
 --
--- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
--- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+-- This library is free software; you can redistribute it and / or modify it
+-- under the terms of the GNU Lesser General Public version 2.1 as published
+-- by the Free Software Foundation, with special exception defined in the file
+-- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+-- distribution for complete text of the license and disclaimer of any warranty.
 --
--- The Original Code and all software distributed under the License is
--- distributed on an "AS IS" basis, without warranty of any kind, and the
--- Initial Developer hereby disclaims all such warranties, including without
--- limitation, any warranties of merchantability, fitness for a particular
--- purpose or non-infringement. Please see the License for the specific terms
--- and conditions governing the rights and limitations under the License.
+-- Alternatively, this file may be used under the terms of Open CASCADE
+-- commercial license or contractual agreement.
 
 -- Update:
 --              20-01-2009 : ABD Integration support of system fonts (using FTGL and FreeType)
@@ -190,28 +186,6 @@ is
     exception SIGSEGV inherits Signal;
     exception SIGSYS  inherits Signal;
 
-
-    enumeration Signals is
-      ---purpose:
-      --     The "posix" signals.
-      --
-      S_SIGHUP,          -- "hangup."
-      S_SIGINT,          -- "interrupt."
-      S_SIGQUIT,         -- "quit."
-      S_SIGILL,          -- "illegal instruction."
-      S_SIGKILL,         -- "kill."
-      S_SIGBUS,          -- "bus error."
-      S_SIGSEGV,         -- "segmentation violation."
-      S_SIGSYS,          -- "bad argument to system call."
-      S_SIGFPE,          -- "floating point exception."
-      S_FPE_FLTDIV_TRAP, -- "floating/decimal divide by zero."
-      S_FPE_INTDIV_TRAP, -- "integer divide by zero."
-      S_FPE_FLTOVF_TRAP, -- "floating overflow."
-      S_FPE_INTOVF_TRAP, -- "integer overflow."
-      S_FPE_FLTUND_TRAP, -- "floating underflow."
-      S_FPE_FLTINEX_TRAP -- "floating inexact result."
-    end Signals;
-
     ----------------------------------------
     -- Exceptions ( Windows NT specific ) --
     ----------------------------------------
@@ -237,100 +211,6 @@ is
     exception Exception_STACK_OVERFLOW           inherits Exception;
     exception Exception_STATUS_NO_MEMORY         inherits Exception; -- generating by 'HeapAlloc'
     exception Exception_CTRL_BREAK               inherits Exception; -- generating by 'Ctrl-C' keystroke
-
-    ----------------------------------------------
-    -- Handler and SegvHandler (UNIX specific ) --
-    ----------------------------------------------
-
-    --
-    --     Handler(aSignal: Signals; aCode: Signals)
-    --
-
-    Handler(aSignal: Signals; aSigInfo: Address; aContext: Address)
-    ---Purpose:
-    --   1) Raise a exception when aSignal is a floating point signal.
-    --    aSignal is SIGFPE.
-    --    aCode is
-    --        (FPE:  Floating Point Exception)
-    --        (FLT:  FLoaTing operation.)
-    --        (INT:  INTeger  operation.)
-    --        (DIV:  DIVided by zero.)
-    --        (OVF:  OVerFlow.)
-    --        (INEX: INEXact operation.)
-    --
-    --        FPE_FLTDIV_TRAP  (the exception "DivideByZero" is raised.)
-    --        FPE_INTDIV_TRAP  (the exception "DivideByZero" is raised.)
-    --
-    --        FPE_FLTOVF_TRAP  (the exception "Overflow" is raised.)
-    --        FPE_INTOVF_TRAP  (the exception "Overflow" is raised.)
-    --
-    --        FPE_FLTINEX_TRAP (the exception "NumericError" is raised.)
-    --
-    --   2) Display the signal name, and call "exit" with signal number for
-    --   a "Hardware" signal.
-    --
-    raises
-        DivideByZero,
-    Overflow,
-    Underflow,
-        SIGHUP,
-        SIGINT,
-        SIGQUIT,
-        SIGILL,
-        SIGKILL,
-        SIGBUS,
-        SIGSEGV,
-        SIGSYS
-    is private;
-
-    SegvHandler(aSignal: Signals; aSigInfo: Address; aContext: Address)
-    ---Purpose:
-    -- Handle access to null object and segmentation violation
-    --
-    raises
-        NullObject,
-        SIGSEGV
-    is private;
-
-    ---------------------------------------
-    -- WntHandler (Windows NT specific ) --
-    ---------------------------------------
-
-    WntHandler ( exceptionInfo : Address from Standard )
-     returns Integer from Standard
-     raises  DivideByZero,
-             Overflow,
-         Underflow,
-         Exception_ACCESS_VIOLATION,
-         Exception_ARRAY_BOUNDS_EXCEEDED,
-         Exception_FLT_DENORMAL_OPERAND,
-         Exception_FLT_DIVIDE_BY_ZERO,
-         Exception_FLT_INEXACT_RESULT,
-         Exception_FLT_INVALID_OPERATION,
-         Exception_FLT_OVERFLOW,
-         Exception_FLT_STACK_CHECK,
-         Exception_FLT_UNDERFLOW,
-         Exception_ILLEGAL_INSTRUCTION,
-         Exception_IN_PAGE_ERROR,
-         Exception_INVALID_DISPOSITION,
-         Exception_NONCONTINUABLE_EXCEPTION,
-         Exception_PRIV_INSTRUCTION,
-         Exception_STACK_OVERFLOW,
-         Exception_STATUS_NO_MEMORY
-     is private;
-        ---Purpose:
-        --  1) Raises an exception if the exception due to floating point errors.
-        --     Flosting point errors:
-        --     EXCEPTION_FLT_DENORMAL_OPERAND
-        --     EXCEPTION_FLT_DIVIDE_BY_ZERO
-        --     EXCEPTION_FLT_INEXACT_RESULT
-        --     EXCEPTION_FLT_INVALID_OPERATION
-        --     EXCEPTOPN_FLT_OVERFLOW
-        --     EXCEPTION_FLT_STACK_CHECK
-        --     EXCEPTION_FLT_UNDERFLOW
-        --  2) Displays a message box 'Continue' - 'Debugger' - 'Stop' if the environment
-        --     variable 'CSF_EXCEPTION_PROMPT' is set and takes appropriate action.
-        --     Raises an exception otherwise.
 
     SetSignal(theFloatingSignal: Boolean = Standard_True);
     ---Purpose:

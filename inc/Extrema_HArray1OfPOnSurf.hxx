@@ -39,11 +39,11 @@ class Extrema_HArray1OfPOnSurf : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Extrema_HArray1OfPOnSurf(const Standard_Integer Low,const Standard_Integer Up);
+      Extrema_HArray1OfPOnSurf(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Extrema_HArray1OfPOnSurf(const Standard_Integer Low,const Standard_Integer Up,const Extrema_POnSurf& V);
+      Extrema_HArray1OfPOnSurf(const Standard_Integer Low,const Standard_Integer Up,const Extrema_POnSurf& V);
   
-  Standard_EXPORT     void Init(const Extrema_POnSurf& V) ;
+        void Init(const Extrema_POnSurf& V) ;
   
         Standard_Integer Length() const;
   

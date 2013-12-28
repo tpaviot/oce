@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepMesh_Array1OfVertexOfDelaun(const Standard_Integer Low,const Standard_Integer Up);
+      BRepMesh_Array1OfVertexOfDelaun(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   BRepMesh_Array1OfVertexOfDelaun(const BRepMesh_Vertex& Item,const Standard_Integer Low,const Standard_Integer Up);
+      BRepMesh_Array1OfVertexOfDelaun(const BRepMesh_Vertex& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const BRepMesh_Vertex& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~BRepMesh_Array1OfVertexOfDelaun()
 {
   Destroy();

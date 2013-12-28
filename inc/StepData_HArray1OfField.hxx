@@ -39,11 +39,11 @@ class StepData_HArray1OfField : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepData_HArray1OfField(const Standard_Integer Low,const Standard_Integer Up);
+      StepData_HArray1OfField(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepData_HArray1OfField(const Standard_Integer Low,const Standard_Integer Up,const StepData_Field& V);
+      StepData_HArray1OfField(const Standard_Integer Low,const Standard_Integer Up,const StepData_Field& V);
   
-  Standard_EXPORT     void Init(const StepData_Field& V) ;
+        void Init(const StepData_Field& V) ;
   
         Standard_Integer Length() const;
   

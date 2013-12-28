@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColStd_Array1OfListOfInteger(const Standard_Integer Low,const Standard_Integer Up);
+      TColStd_Array1OfListOfInteger(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColStd_Array1OfListOfInteger(const TColStd_ListOfInteger& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TColStd_Array1OfListOfInteger(const TColStd_ListOfInteger& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const TColStd_ListOfInteger& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TColStd_Array1OfListOfInteger()
 {
   Destroy();

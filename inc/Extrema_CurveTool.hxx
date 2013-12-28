@@ -34,6 +34,9 @@
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
 #endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
 #ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
 #endif
@@ -95,9 +98,15 @@ public:
   
       static  gp_Pnt Value(const Adaptor3d_Curve& C,const Standard_Real U) ;
   
+      static  void D0(const Adaptor3d_Curve& C,const Standard_Real U,gp_Pnt& P) ;
+  
       static  void D1(const Adaptor3d_Curve& C,const Standard_Real U,gp_Pnt& P,gp_Vec& V) ;
   
       static  void D2(const Adaptor3d_Curve& C,const Standard_Real U,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2) ;
+  
+      static  void D3(const Adaptor3d_Curve& C,const Standard_Real U,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2,gp_Vec& V3) ;
+  
+      static  gp_Vec DN(const Adaptor3d_Curve& C,const Standard_Real U,const Standard_Integer N) ;
   
       static  gp_Lin Line(const Adaptor3d_Curve& C) ;
   

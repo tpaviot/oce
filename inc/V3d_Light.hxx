@@ -92,6 +92,8 @@ public:
   Standard_EXPORT     V3d_TypeOfLight Type() const;
   //! returns true if the light is a headlight <br>
   Standard_EXPORT     Standard_Boolean Headlight() const;
+  //! Setup headlight flag. <br>
+  Standard_EXPORT     void SetHeadlight(const Standard_Boolean theValue) ;
   //! Returns TRUE when a light representation is displayed <br>
   Standard_EXPORT     Standard_Boolean IsDisplayed() const;
 

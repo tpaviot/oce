@@ -1,59 +1,209 @@
 // Created on: 1995-08-28
 // Created by: Laurent BOURESCHE
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modified: 28/02/1996 by PMN :  HermiteCoefficients added
 // Modified: 18/06/1996 by PMN :  NULL reference.
 // Modified: 19/02/1997 by JCT :  EvalPoly2Var added
 
 #include <PLib.ixx>
-#include <PLib_LocalArray.hxx>
+#include <NCollection_LocalArray.hxx>
 #include <math_Matrix.hxx> 
 #include <math_Gauss.hxx> 
 #include <Standard_ConstructionError.hxx>
 #include <GeomAbs_Shape.hxx>
 
+#include <math_Gauss.hxx>
+#include <math.hxx>
+
 // To convert points array into Real ..
 // *********************************
 
-#define Dimension_gen 2
-#define Array1OfPoints  TColgp_Array1OfPnt2d
-#define Point           gp_Pnt2d
+//=======================================================================
+//function : SetPoles
+//purpose  : 
+//=======================================================================
 
-#include <PLib_ChangeDim.gxx>
+void PLib::SetPoles(const TColgp_Array1OfPnt2d& Poles,
+		    TColStd_Array1OfReal& FP)
+{
+  Standard_Integer j      = FP   .Lower();
+  Standard_Integer PLower = Poles.Lower();
+  Standard_Integer PUpper = Poles.Upper();
+    
+  for (Standard_Integer i = PLower; i <= PUpper; i++) {
+    const gp_Pnt2d& P = Poles(i);
+    FP(j) = P.Coord(1); j++;
+    FP(j) = P.Coord(2); j++;
+  }
+}
 
-#undef Dimension_gen
-#undef Array1OfPoints
-#undef Point
+//=======================================================================
+//function : SetPoles
+//purpose  : 
+//=======================================================================
 
-#define Dimension_gen 3
-#define Array1OfPoints  TColgp_Array1OfPnt
-#define Point           gp_Pnt
+void PLib::SetPoles(const TColgp_Array1OfPnt2d&       Poles,
+		    const TColStd_Array1OfReal& Weights,
+		    TColStd_Array1OfReal&       FP)
+{
+  Standard_Integer j      = FP   .Lower();
+  Standard_Integer PLower = Poles.Lower();
+  Standard_Integer PUpper = Poles.Upper();
+    
+  for (Standard_Integer i = PLower; i <= PUpper; i++) {
+    Standard_Real w = Weights(i);
+    const gp_Pnt2d& P = Poles(i);
+    FP(j) = P.Coord(1) * w; j++;
+    FP(j) = P.Coord(2) * w; j++;
+    FP(j) =              w; j++;
+  }
+}
 
-#include <PLib_ChangeDim.gxx>
+//=======================================================================
+//function : GetPoles
+//purpose  : 
+//=======================================================================
 
-#undef Dimension_gen
-#undef Array1OfPoints
-#undef Point
+void PLib::GetPoles(const TColStd_Array1OfReal& FP,
+		    TColgp_Array1OfPnt2d& Poles)
+{
+  Standard_Integer j      = FP   .Lower();
+  Standard_Integer PLower = Poles.Lower();
+  Standard_Integer PUpper = Poles.Upper();
+    
+  for (Standard_Integer i = PLower; i <= PUpper; i++) {
+    gp_Pnt2d& P = Poles(i);
+    P.SetCoord(1,FP(j)); j++;
+    P.SetCoord(2,FP(j)); j++;
+  }
+}
 
-#include <math_Gauss.hxx>
-#include <math.hxx>
+//=======================================================================
+//function : GetPoles
+//purpose  : 
+//=======================================================================
+
+void PLib::GetPoles(const TColStd_Array1OfReal& FP,
+		    TColgp_Array1OfPnt2d&       Poles,
+		    TColStd_Array1OfReal&       Weights)
+{
+  Standard_Integer j      = FP   .Lower();
+  Standard_Integer PLower = Poles.Lower();
+  Standard_Integer PUpper = Poles.Upper();
+    
+  for (Standard_Integer i = PLower; i <= PUpper; i++) {
+    Standard_Real w = FP(j + 2);
+    Weights(i) = w;
+    gp_Pnt2d& P = Poles(i);
+    P.SetCoord(1,FP(j) / w); j++;
+    P.SetCoord(2,FP(j) / w); j++;
+    j++;
+  }
+}
+
+//=======================================================================
+//function : SetPoles
+//purpose  : 
+//=======================================================================
+
+void PLib::SetPoles(const TColgp_Array1OfPnt& Poles,
+		    TColStd_Array1OfReal& FP)
+{
+  Standard_Integer j      = FP   .Lower();
+  Standard_Integer PLower = Poles.Lower();
+  Standard_Integer PUpper = Poles.Upper();
+
+  for (Standard_Integer i = PLower; i <= PUpper; i++) {
+    const gp_Pnt& P = Poles(i);
+    FP(j) = P.Coord(1); j++;
+    FP(j) = P.Coord(2); j++;
+    FP(j) = P.Coord(3); j++;
+  }
+}
+
+//=======================================================================
+//function : SetPoles
+//purpose  : 
+//=======================================================================
+
+void PLib::SetPoles(const TColgp_Array1OfPnt&   Poles,
+		    const TColStd_Array1OfReal& Weights,
+		    TColStd_Array1OfReal&       FP)
+{
+  Standard_Integer j      = FP   .Lower();
+  Standard_Integer PLower = Poles.Lower();
+  Standard_Integer PUpper = Poles.Upper();
+    
+  for (Standard_Integer i = PLower; i <= PUpper; i++) {
+    Standard_Real w = Weights(i);
+    const gp_Pnt& P = Poles(i);
+    FP(j) = P.Coord(1) * w; j++;
+    FP(j) = P.Coord(2) * w; j++;
+    FP(j) = P.Coord(3) * w; j++;
+    FP(j) =              w; j++;
+  }
+}
+
+//=======================================================================
+//function : GetPoles
+//purpose  : 
+//=======================================================================
+
+void PLib::GetPoles(const TColStd_Array1OfReal& FP,
+		    TColgp_Array1OfPnt&         Poles)
+{
+  Standard_Integer j      = FP   .Lower();
+  Standard_Integer PLower = Poles.Lower();
+  Standard_Integer PUpper = Poles.Upper();
+    
+  for (Standard_Integer i = PLower; i <= PUpper; i++) {
+    gp_Pnt& P = Poles(i);
+    P.SetCoord(1,FP(j)); j++;
+    P.SetCoord(2,FP(j)); j++;
+    P.SetCoord(3,FP(j)); j++;
+  }
+}
+
+//=======================================================================
+//function : GetPoles
+//purpose  : 
+//=======================================================================
+
+void PLib::GetPoles(const TColStd_Array1OfReal& FP,
+		    TColgp_Array1OfPnt&         Poles,
+		    TColStd_Array1OfReal&       Weights)
+{
+  Standard_Integer j      = FP   .Lower();
+  Standard_Integer PLower = Poles.Lower();
+  Standard_Integer PUpper = Poles.Upper();
+    
+  for (Standard_Integer i = PLower; i <= PUpper; i++) {
+    Standard_Real w = FP(j + 3);
+    Weights(i) = w;
+    gp_Pnt& P = Poles(i);
+    P.SetCoord(1,FP(j) / w); j++;
+    P.SetCoord(2,FP(j) / w); j++;
+    P.SetCoord(3,FP(j) / w); j++;
+    j++;
+  }
+}
+
+// specialized allocator
+namespace
+{
 
 class BinomAllocator
 {
@@ -120,8 +270,6 @@ private:
 
 };
 
-namespace
-{
   // we do not call BSplCLib here to avoid Cyclic dependency detection by WOK
   //static BinomAllocator THE_BINOM (BSplCLib::MaxDegree() + 1);
   static BinomAllocator THE_BINOM (25 + 1);
@@ -192,8 +340,8 @@ void  PLib::RationalDerivative(const Standard_Integer Degree,
   Standard_Real *RationalArray = &RDers;
   Standard_Real Factor ;
   Standard_Integer ii, Index, OtherIndex, Index1, Index2, jj;
-  PLib_LocalArray binomial_array;
-  PLib_LocalArray derivative_storage;
+  NCollection_LocalArray<Standard_Real> binomial_array;
+  NCollection_LocalArray<Standard_Real> derivative_storage;
   if (Dimension == 3) {
     Standard_Integer DeRequest1 = DerivativeRequest + 1;
     Standard_Integer MinDegRequ = DerivativeRequest;
@@ -412,8 +560,8 @@ void  PLib::RationalDerivatives(const Standard_Integer DerivativeRequest,
   Standard_Integer ii, Index, Index1, Index2, jj;
   Standard_Integer DeRequest1 = DerivativeRequest + 1;
   
-  PLib_LocalArray binomial_array (DeRequest1);
-  PLib_LocalArray derivative_storage;
+  NCollection_LocalArray<Standard_Real> binomial_array (DeRequest1);
+  NCollection_LocalArray<Standard_Real> derivative_storage;
 
   for (ii = 0 ; ii < DeRequest1 ; ii++) {
     binomial_array[ii] = 1.0e0 ;
@@ -1249,7 +1397,6 @@ void  PLib::EvalPolynomial(const Standard_Real    Par,
       }
     }
     break;
-    break;
   }
   case 15 : {
     *tmpRA = *tmpPA; tmpRA++; tmpPA++;
@@ -1892,8 +2039,6 @@ void  PLib::EvalPoly2Var(const Standard_Real    UParameter,
 }
 
 
-static Standard_Integer  storage_divided = 0 ;
-static Standard_Real     *divided_differences_array = NULL;
 
 //=======================================================================
 //function : This evaluates the lagrange polynomial and its derivatives 
@@ -1945,7 +2090,7 @@ PLib::EvalLagrange(const Standard_Real                   Parameter,
   if (local_request >= Degree) {
     local_request = Degree ;
   }
-  PLib_LocalArray divided_differences_array ((Degree + 1) * Dimension);
+  NCollection_LocalArray<Standard_Real> divided_differences_array ((Degree + 1) * Dimension);
   //
   //  Build the divided differences array
   //
@@ -2075,7 +2220,7 @@ Standard_Integer PLib::EvalCubicHermite
   if (local_request >= Degree) {
     local_request = Degree ;
   }   
-  PLib_LocalArray divided_differences_array ((Degree + 1) * Dimension);
+  NCollection_LocalArray<Standard_Real> divided_differences_array ((Degree + 1) * Dimension);
 
   for (ii = 0, jj = 0  ; ii < 2 ; ii++, jj+= 2) {
     ParametersArray[jj] =

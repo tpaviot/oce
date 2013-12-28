@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{1C65CC25-060B-0009-1495-04323E7EA4C4}</UniqueIdentifier>
+      <UniqueIdentifier>{D8E5A87C-016B-0C8C-0A95-7BBDE2EF58C8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DDF">
-      <UniqueIdentifier>{7356AE53-13F6-0C6B-0803-95B7272B9BB3}</UniqueIdentifier>
+      <UniqueIdentifier>{ADE63D3E-13A5-034E-01A2-616F69D972E6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DDocStd">
-      <UniqueIdentifier>{FB1337EA-14E1-17CA-1243-051E18FAED78}</UniqueIdentifier>
+      <UniqueIdentifier>{068A2CD5-159C-1270-0ED5-AA376C1CCAAC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DNaming">
-      <UniqueIdentifier>{FC7B6DE0-0E16-0D67-07D3-3B54982EE713}</UniqueIdentifier>
+      <UniqueIdentifier>{3E1DC211-06BD-0240-0735-89528588CD53}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DDataStd">
-      <UniqueIdentifier>{44A5848C-1224-15AC-0EBE-E12BFB0E7EA7}</UniqueIdentifier>
+      <UniqueIdentifier>{603F673E-0DE1-12F2-1177-F733A55FB5EE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DPrsStd">
-      <UniqueIdentifier>{9D243B6B-09CA-0C23-084F-057DCB85BD50}</UniqueIdentifier>
+      <UniqueIdentifier>{A149129C-0D31-0EC1-1360-686B906DCC95}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DrawDim">
-      <UniqueIdentifier>{4FF2555A-0D59-1493-0198-92F34DA35A11}</UniqueIdentifier>
+      <UniqueIdentifier>{92866DFB-1395-14AF-0220-3305048E82A4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -76,9 +76,6 @@
       <Filter>Source files\DDocStd</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\DDocStd\DDocStd_MTMCommands.cxx">
-      <Filter>Source files\DDocStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\DDocStd\DDocStd_Sample.cxx">
       <Filter>Source files\DDocStd</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\DDocStd\DDocStd_ToolsCommands.cxx">
@@ -171,9 +168,6 @@
     <ClCompile Include="..\..\..\src\DDataStd\DDataStd_ObjectCommands.cxx">
       <Filter>Source files\DDataStd</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\DDataStd\DDataStd_Sample.cxx">
-      <Filter>Source files\DDataStd</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\DDataStd\DDataStd_TreeBrowser.cxx">
       <Filter>Source files\DDataStd</Filter>
     </ClCompile>
@@ -187,9 +181,6 @@
       <Filter>Source files\DPrsStd</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\DPrsStd\DPrsStd_AISViewerCommands.cxx">
-      <Filter>Source files\DPrsStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\DPrsStd\DPrsStd_Sample.cxx">
       <Filter>Source files\DPrsStd</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\DrawDim\DrawDim.cxx">

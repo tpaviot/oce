@@ -39,11 +39,11 @@ class BRepAdaptor_HArray1OfCurve : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   BRepAdaptor_HArray1OfCurve(const Standard_Integer Low,const Standard_Integer Up);
+      BRepAdaptor_HArray1OfCurve(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   BRepAdaptor_HArray1OfCurve(const Standard_Integer Low,const Standard_Integer Up,const BRepAdaptor_Curve& V);
+      BRepAdaptor_HArray1OfCurve(const Standard_Integer Low,const Standard_Integer Up,const BRepAdaptor_Curve& V);
   
-  Standard_EXPORT     void Init(const BRepAdaptor_Curve& V) ;
+        void Init(const BRepAdaptor_Curve& V) ;
   
         Standard_Integer Length() const;
   

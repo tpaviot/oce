@@ -2,34 +2,34 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{2901ED13-05E9-104A-033F-E959C504BB72}</UniqueIdentifier>
+      <UniqueIdentifier>{5697DB00-0E6D-0695-03F1-C15A400C4DC9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ChFiDS">
-      <UniqueIdentifier>{AE5CC474-0F2A-14EE-193B-1A4041709C2E}</UniqueIdentifier>
+      <UniqueIdentifier>{C6DA1F91-0969-13A9-019B-AC9BF2324F10}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ChFi2d">
-      <UniqueIdentifier>{1DAAE79B-16D6-0978-0E99-88A10302D90D}</UniqueIdentifier>
+      <UniqueIdentifier>{E4CD98C7-07EC-18CF-1775-00CCA57B82E6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ChFi3d">
-      <UniqueIdentifier>{F8122296-144D-10CB-0D1F-DA07E93D5896}</UniqueIdentifier>
+      <UniqueIdentifier>{CEE36B4B-0B61-122C-1153-2FCAB0A3F63E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ChFiKPart">
-      <UniqueIdentifier>{82FFC656-13C4-14E2-08DF-81B1D2C18691}</UniqueIdentifier>
+      <UniqueIdentifier>{7B7CFBD4-142A-1460-145A-6C0517C2425A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Blend">
-      <UniqueIdentifier>{69C0F56F-02AB-13F5-02F3-FD0CFB5F5FDE}</UniqueIdentifier>
+      <UniqueIdentifier>{9238A46C-16B7-05BE-022D-BD43047ADE5A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepBlend">
-      <UniqueIdentifier>{8EFB8072-1822-11EA-16EE-C0DC77CA2A5A}</UniqueIdentifier>
+      <UniqueIdentifier>{9C06C1E7-0244-1637-15D2-209381B400E2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BlendFunc">
-      <UniqueIdentifier>{A2AA4DB5-06E5-08C7-0F49-6EEBA731295E}</UniqueIdentifier>
+      <UniqueIdentifier>{A621633D-0C6C-111B-186D-711BAED04366}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepFilletAPI">
-      <UniqueIdentifier>{930CAF12-15D7-0CCD-157C-56609FE19CC0}</UniqueIdentifier>
+      <UniqueIdentifier>{F91D8E90-0117-11A0-1875-D1C187F8A0A5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\FilletSurf">
-      <UniqueIdentifier>{FA14ADF6-0B03-0C6B-0E1A-89579CD6FA6F}</UniqueIdentifier>
+      <UniqueIdentifier>{FAB8D417-11E4-07D0-04AB-674100DC6A48}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -132,10 +132,22 @@
     <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d.cxx">
       <Filter>Source files\ChFi2d</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_AnaFilletAlgo.cxx">
+      <Filter>Source files\ChFi2d</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_Builder.cxx">
       <Filter>Source files\ChFi2d</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_Builder_0.cxx">
+      <Filter>Source files\ChFi2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_ChamferAPI.cxx">
+      <Filter>Source files\ChFi2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_FilletAPI.cxx">
+      <Filter>Source files\ChFi2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_FilletAlgo.cxx">
       <Filter>Source files\ChFi2d</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d.cxx">

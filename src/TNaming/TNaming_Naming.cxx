@@ -1,24 +1,18 @@
 // Created on: 1997-09-03
 // Created by: Yves FRICAUD
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TNaming_Naming.ixx>
 
@@ -137,19 +131,6 @@ void WriteNSOnLabel(const Handle(TNaming_NamedShape) & NS, const TCollection_Asc
   else
     cout << "WriteNSOnLabel >>>  NamedShape IS NULL" << endl;
 }
-//=======================================================================
-static void Write(const TopTools_MapOfShape& MS,  const Standard_CString filename) 
-{
-  if (!MS.IsEmpty ()) {
-    TCollection_AsciiString aNam (filename);
-    Standard_Integer i(0);
-    TopTools_MapIteratorOfMapOfShape it(MS);
-    for(;it.More();it.Next(),i++) {
-      TCollection_AsciiString aName = aNam + "_" + i + ".brep";
-      Write ( it.Key(), aName.ToCString());
-    }
-  }
-}
 #endif
 
 //==========================================================================================
@@ -244,6 +225,7 @@ static Handle(TNaming_NamedShape)  BuildNS (const TDF_Label&        F,
   TNaming_Name& theName = Naming->ChangeName();
   theName.ShapeType(S.ShapeType());
   theName.Shape(S); 
+  theName.Orientation(S.Orientation());
   theName.Type(Name);
   TNaming_Builder B(Naming->Label());
   B.Select(S,S);
@@ -565,12 +547,10 @@ static Standard_Boolean TestSolution(const TNaming_Scope&      MDF,
 static void FindNewShapeInFather (const Handle(TNaming_NamedShape)& NS,
 				  TopoDS_Shape&                     SC)
 {  
-  TDF_Label         Father  = NS->Label().Father(); 
+  const TDF_Label& Father = NS->Label().Father(); 
   TNaming_Iterator  itLab(Father);
-  for (; itLab.More(); itLab.Next()) {
-    SC= itLab.NewShape();
-    break;
-  }
+  if(itLab.More()) 
+    SC = itLab.NewShape();    
 }
 
 //=======================================================================
@@ -836,6 +816,7 @@ static Standard_Boolean Filter (const TDF_Label&                  F,
   TNaming_Name& theName = NF->ChangeName();
   theName.ShapeType(S.ShapeType());
   theName.Shape(S);
+  theName.Orientation(S.Orientation());
   theName.Type(TNaming_FILTERBYNEIGHBOURGS);
   theName.Append(NS);
   theName.StopNamedShape (Until);
@@ -1017,6 +998,7 @@ static Handle(TNaming_NamedShape) BuildName (const TDF_Label&                  F
     TNaming_Name& theName = Naming->ChangeName();
     theName.ShapeType(Selection.ShapeType());
     theName.Shape(Selection);
+	theName.Orientation(Selection.Orientation());
     theName.Type(Ident.Type());
 #ifdef MDTV_DEB_MOD
     cout <<"BuildName: Inserted Naming Att at ";
@@ -1137,7 +1119,8 @@ static Handle(TNaming_NamedShape) BuildName (const TDF_Label&                  F
 	    Naming = TNaming_Naming::Insert(F);
 	    TNaming_Name& theName = Naming->ChangeName();
 	    theName.ShapeType(Selection.ShapeType());
-	    theName.Shape(Selection); //szy 21.10.03
+	    theName.Shape(Selection); 
+		theName.Orientation(Selection.Orientation());
 	    theName.Type(TNaming_GENERATION);
 	    theName.Append(TNaming_Tool::NamedShape(Selection,F));
 	    theName.Append(NewNS);
@@ -1317,7 +1300,8 @@ static Handle(TNaming_NamedShape) BuildNameWire (const TDF_Label&               
     F.AddAttribute (Naming);
     TNaming_Name& theName = Naming->ChangeName();
     theName.ShapeType(Selection.ShapeType());
-    theName.Shape(Selection); 
+    theName.Shape(Selection);
+	theName.Orientation(Selection.Orientation());
   } 
 
   TNaming_Name& theName = Naming->ChangeName();  
@@ -1523,7 +1507,8 @@ static Handle(TNaming_NamedShape) BuildNameShell (const TDF_Label& F,
     F.AddAttribute (Naming);
     TNaming_Name& theName = Naming->ChangeName();
     theName.ShapeType(Selection.ShapeType());
-    theName.Shape(Selection); 
+    theName.Shape(Selection);
+	theName.Orientation(Selection.Orientation());
   } 
 
   TNaming_Name& theName = Naming->ChangeName(); 
@@ -1641,6 +1626,7 @@ static void BuildAggregationName (const TDF_Label&                  F,
     TNaming_Name& theName = Naming->ChangeName();
     theName.ShapeType(S.ShapeType());
     theName.Shape(S); 
+	theName.Orientation(S.Orientation());
   } 
 #ifdef MDTV_DEB_CC
   cout <<"BuildAggregationName ==> ";
@@ -1673,7 +1659,8 @@ static void BuildAggregationName (const TDF_Label&                  F,
       Handle (TNaming_Naming)  aNaming = TNaming_Naming::Insert(F); 
       TNaming_Name&               aName = aNaming->ChangeName();	  
       aName.ShapeType(aS.ShapeType());
-      aName.Shape(aS); 
+      aName.Shape(aS);
+	  theName.Orientation(aS.Orientation());
       aName.Type(TNaming_UNION);
       
       if (atomTyp != TopAbs_SHAPE) {
@@ -1755,6 +1742,7 @@ Handle(TNaming_NamedShape) TNaming_Naming::Name (const TDF_Label&       F,
 	theName.ShapeType(S.ShapeType());
 	theName.Shape(S); 
 	theName.Type(TNaming_ORIENTATION);
+	theName.Orientation(S.Orientation());
 
 	if (!TNaming_Selector::IsIdentified (F, S, NS, Geom)) 
 	  NS = TNaming_Naming::Name(Naming->Label(),S,Context,Geom,0);
@@ -1860,6 +1848,7 @@ Handle(TNaming_NamedShape) TNaming_Naming::Name (const TDF_Label&       F,
 
     theName.ShapeType(S.ShapeType());// modified by vro 05.09.00
     theName.Shape(S); 
+	theName.Orientation(S.Orientation());
     if(S.ShapeType() != TopAbs_WIRE) 
       theName.Type(TNaming_UNION);
 

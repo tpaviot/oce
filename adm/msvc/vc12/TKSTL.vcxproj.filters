@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{5FEBC2D6-0042-0D48-0518-94106BC21F28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StlMesh">
+      <UniqueIdentifier>{8BB04FFE-0C24-048E-1407-D86C83BC1495}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StlAPI">
+      <UniqueIdentifier>{EB6804BF-0C4F-1938-00A6-1A0DC17D0850}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StlTransfer">
+      <UniqueIdentifier>{ACF6E8D8-06C4-18E7-12FA-B419DD0E388A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\RWStl">
+      <UniqueIdentifier>{A1ED973F-1980-1862-115D-28F611330D0D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\StlMesh\StlMesh_SequenceNodeOfSequenceOfMeshDomain_0.cxx">
+      <Filter>Source files\StlMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StlMesh\StlMesh_SequenceNodeOfSequenceOfMeshTriangle_0.cxx">
+      <Filter>Source files\StlMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StlMesh\StlMesh_SequenceNodeOfSequenceOfMesh_0.cxx">
+      <Filter>Source files\StlMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StlMesh\StlMesh_SequenceOfMeshDomain_0.cxx">
+      <Filter>Source files\StlMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StlMesh\StlMesh_SequenceOfMeshTriangle_0.cxx">
+      <Filter>Source files\StlMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StlMesh\StlMesh_SequenceOfMesh_0.cxx">
+      <Filter>Source files\StlMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StlMesh\StlMesh.cxx">
+      <Filter>Source files\StlMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StlMesh\StlMesh_Mesh.cxx">
+      <Filter>Source files\StlMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StlMesh\StlMesh_MeshDomain.cxx">
+      <Filter>Source files\StlMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StlMesh\StlMesh_MeshExplorer.cxx">
+      <Filter>Source files\StlMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StlMesh\StlMesh_MeshTriangle.cxx">
+      <Filter>Source files\StlMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StlAPI\StlAPI.cxx">
+      <Filter>Source files\StlAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StlAPI\StlAPI_Reader.cxx">
+      <Filter>Source files\StlAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StlAPI\StlAPI_Writer.cxx">
+      <Filter>Source files\StlAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StlTransfer\StlTransfer.cxx">
+      <Filter>Source files\StlTransfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStl\RWStl.cxx">
+      <Filter>Source files\RWStl</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKSTL.rc" />  </ItemGroup>
+</Project>

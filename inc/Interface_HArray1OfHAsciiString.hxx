@@ -42,11 +42,11 @@ class Interface_HArray1OfHAsciiString : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Interface_HArray1OfHAsciiString(const Standard_Integer Low,const Standard_Integer Up);
+      Interface_HArray1OfHAsciiString(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Interface_HArray1OfHAsciiString(const Standard_Integer Low,const Standard_Integer Up,const Handle(TCollection_HAsciiString)& V);
+      Interface_HArray1OfHAsciiString(const Standard_Integer Low,const Standard_Integer Up,const Handle(TCollection_HAsciiString)& V);
   
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& V) ;
+        void Init(const Handle(TCollection_HAsciiString)& V) ;
   
         Standard_Integer Length() const;
   

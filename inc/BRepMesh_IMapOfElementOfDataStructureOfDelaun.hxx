@@ -19,6 +19,9 @@
 #ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
 #endif
+#ifndef _BRepMesh_Triangle_HeaderFile
+#include <BRepMesh_Triangle.hxx>
+#endif
 #ifndef _Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun_HeaderFile
 #include <Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun.hxx>
 #endif
@@ -30,7 +33,6 @@
 #endif
 class Standard_DomainError;
 class Standard_OutOfRange;
-class BRepMesh_Triangle;
 class BRepMesh_ElemHasherOfDataStructureOfDelaun;
 class BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun;
 

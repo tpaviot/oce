@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKV3d"
-	ProjectGUID="{D94161A5-1900-1481-0EDB-6E141AE9E86B}"
+	ProjectGUID="{B2538C18-063D-0B90-019D-C6651416124A}"
 	>
 	<Platforms>
 		<Platform
@@ -55,11 +55,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\obj\TKV3d\TKV3d.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc8\obj\TKV3d/"
 				ObjectFile=".\..\..\..\win32\vc8\obj\TKV3d/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc8\obj\TKV3d/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKShHealing.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKV3d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -149,12 +150,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\objd\TKV3d\TKV3d.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc8\objd\TKV3d/"
 				ObjectFile=".\..\..\..\win32\vc8\objd\TKV3d/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc8\objd\TKV3d/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -175,7 +178,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKShHealing.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKV3d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -250,11 +253,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\obj\TKV3d\TKV3d.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc8\obj\TKV3d/"
 				ObjectFile=".\..\..\..\win64\vc8\obj\TKV3d/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc8\obj\TKV3d/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -272,7 +276,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKShHealing.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKV3d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -345,12 +349,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\objd\TKV3d\TKV3d.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc8\objd\TKV3d/"
 				ObjectFile=".\..\..\..\win64\vc8\objd\TKV3d/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc8\objd\TKV3d/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -371,7 +377,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKShHealing.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKV3d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -695,9 +701,6 @@
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CPick.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CPlane.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CStructure.cxx">
 				</File>
 				<File
@@ -711,6 +714,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CView.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Graphic3d\Graphic3d_ClipPlane.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_DataStructureManager.cxx">
@@ -734,16 +740,25 @@
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_2.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_3.cxx">
+					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_8.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_8.cxx">
+					RelativePath="..\..\..\src\Graphic3d\Graphic3d_MarkerImage.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_MaterialAspect.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Plotter.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Graphic3d\Graphic3d_ShaderObject.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Graphic3d\Graphic3d_ShaderProgram.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Graphic3d\Graphic3d_ShaderVariable.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Strips.cxx">
@@ -807,9 +822,6 @@
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_HSequenceOfPickPath_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_HSetOfClipPlane_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_HSetOfLight_0.cxx">
 				</File>
 				<File
@@ -822,16 +834,10 @@
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_LightDefinitionError_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfClipPlane_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfLight_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfView_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_ListNodeOfSetListOfSetOfClipPlane_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_ListNodeOfSetListOfSetOfLight_0.cxx">
@@ -849,25 +855,16 @@
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_SequenceOfPickPath_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfClipPlane_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfLight_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfView_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfClipPlane_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfLight_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfView_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetOfClipPlane_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetOfLight_0.cxx">
@@ -895,9 +892,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_ZClippingDefinitionError_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Visual3d\Visual3d_ClipPlane.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Visual3d\Visual3d_ContextPick.cxx">
@@ -1016,12 +1010,6 @@
 					RelativePath="..\..\..\src\Prs3d\Prs3d.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Prs3d\Prs3d_AngleAspect.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Prs3d\Prs3d_AnglePresentation.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\Prs3d\Prs3d_Arrow.cxx">
 				</File>
 				<File
@@ -1031,22 +1019,19 @@
 					RelativePath="..\..\..\src\Prs3d\Prs3d_BasicAspect.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Prs3d\Prs3d_CompositeAspect.cxx">
+					RelativePath="..\..\..\src\Prs3d\Prs3d_DatumAspect.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Prs3d\Prs3d_DatumAspect.cxx">
+					RelativePath="..\..\..\src\Prs3d\Prs3d_DimensionAspect.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Prs3d\Prs3d_DimensionUnits.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Prs3d\Prs3d_Drawer.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Prs3d\Prs3d_IsoAspect.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Prs3d\Prs3d_LengthAspect.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Prs3d\Prs3d_LengthPresentation.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Prs3d\Prs3d_LineAspect.cxx">
@@ -1067,9 +1052,6 @@
 					RelativePath="..\..\..\src\Prs3d\Prs3d_Projector.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Prs3d\Prs3d_RadiusAspect.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\Prs3d\Prs3d_Root.cxx">
 				</File>
 				<File
@@ -1084,28 +1066,13 @@
 				<File
 					RelativePath="..\..\..\src\Prs3d\Prs3d_TextAspect.cxx">
 				</File>
+				<File
+					RelativePath="..\..\..\src\Prs3d\Prs3d_WFShape.cxx">
+				</File>
 			</Filter>
 			<Filter
 				Name="StdPrs"
 				>
-				<File
-					RelativePath="..\..\..\drv\StdPrs\StdPrs_HLRShape_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\StdPrs\StdPrs_Point_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\StdPrs\StdPrs_Vertex_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\StdPrs\StdPrs_WFDeflectionShape_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\StdPrs\StdPrs_WFRestrictedFace_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\StdPrs\StdPrs_WFShape_0.cxx">
-				</File>
 				<File
 					RelativePath="..\..\..\src\StdPrs\StdPrs_Curve.cxx">
 				</File>
@@ -1114,6 +1081,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\StdPrs\StdPrs_HLRPolyShape.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\StdPrs\StdPrs_HLRShape.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\StdPrs\StdPrs_HLRToolShape.cxx">
@@ -1150,6 +1120,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\StdPrs\StdPrs_WFPoleSurface.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\StdPrs\StdPrs_WFRestrictedFace.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\StdPrs\StdPrs_WFSurface.cxx">
@@ -1407,6 +1380,9 @@
 					RelativePath="..\..\..\src\AIS\AIS_DiameterDimension.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\AIS\AIS_Dimension.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\AIS\AIS_DimensionOwner.cxx">
 				</File>
 				<File
@@ -1537,9 +1513,6 @@
 				Name="DsgPrs"
 				>
 				<File
-					RelativePath="..\..\..\drv\DsgPrs\DsgPrs_DatumPrs_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\DsgPrs\DsgPrs.cxx">
 				</File>
 				<File
@@ -1552,7 +1525,7 @@
 					RelativePath="..\..\..\src\DsgPrs\DsgPrs_ConcentricPresentation.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\DsgPrs\DsgPrs_DatumTool.cxx">
+					RelativePath="..\..\..\src\DsgPrs\DsgPrs_DatumPrs.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\DsgPrs\DsgPrs_DiameterPresentation.cxx">

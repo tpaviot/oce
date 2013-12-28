@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKernel"
-	ProjectGUID="{6B8FD14A-14E3-11E7-00B2-B42B307F9932}"
+	ProjectGUID="{B4079CD5-173B-0966-012F-A23E0695FDC7}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -56,12 +56,14 @@
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
+				EnableEnhancedInstructionSet="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\obj\TKernel\TKernel.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc9\obj\TKernel/"
 				ObjectFile=".\..\..\..\win32\vc9\obj\TKernel/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc9\obj\TKernel/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -150,12 +152,15 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				EnableEnhancedInstructionSet="2"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\objd\TKernel\TKernel.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc9\objd\TKernel/"
 				ObjectFile=".\..\..\..\win32\vc9\objd\TKernel/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc9\objd\TKernel/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -248,11 +253,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\obj\TKernel\TKernel.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc9\obj\TKernel/"
 				ObjectFile=".\..\..\..\win64\vc9\obj\TKernel/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc9\obj\TKernel/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -339,12 +345,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\objd\TKernel\TKernel.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc9\objd\TKernel/"
 				ObjectFile=".\..\..\..\win64\vc9\objd\TKernel/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc9\objd\TKernel/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -420,9 +428,6 @@
 			<Filter
 				Name="MMgt"
 				>
-				<File
-					RelativePath="..\..\..\src\MMgt\MMgt_StackManager.cxx">
-				</File>
 				<File
 					RelativePath="..\..\..\src\MMgt\MMgt_TShared.cxx">
 				</File>

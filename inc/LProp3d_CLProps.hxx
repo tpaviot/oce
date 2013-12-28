@@ -101,16 +101,16 @@ private:
 
 
 Handle_Adaptor3d_HCurve myCurve;
-Standard_Real u;
-Standard_Integer level;
-Standard_Real cn;
-Standard_Real linTol;
-gp_Pnt pnt;
-gp_Vec d[3];
-gp_Dir tangent;
-Standard_Real curvature;
-LProp_Status tangentStatus;
-Standard_Integer significantFirstDerivativeOrder;
+Standard_Real myU;
+Standard_Integer myDerOrder;
+Standard_Real myCN;
+Standard_Real myLinTol;
+gp_Pnt myPnt;
+gp_Vec myDerivArr[3];
+gp_Dir myTangent;
+Standard_Real myCurvature;
+LProp_Status myTangentStatus;
+Standard_Integer mySignificantFirstDerivativeOrder;
 
 
 };

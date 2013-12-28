@@ -1,22 +1,18 @@
 // Created on: 1994-01-14
 // Created by: Gilles DEBARBOUILLE
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Historique :
 // CRD : 03/07/97 : Portage Windows NT.
@@ -56,18 +52,18 @@ Handle(Dynamic_Parameter) Materials_MaterialDefinition::Switch(
   const Standard_CString atype,
   const Standard_CString avalue) const
 {
-  Standard_Integer fr,i;
-  char value1[80],value2[80],value3[80];
+  Standard_Integer fr;
+  char value1[81],value2[81],value3[81];
   Handle(Dynamic_Parameter) parameter;
   Handle(Dynamic_ObjectParameter) objectparameter;
 
   if     (!strcasecmp(atype,"Materials_Color"))
     {
-      for(i=0; i<80; i++)value1[i] = 0;
-      for(i=0; i<80; i++)value2[i] = 0;
-      for(i=0; i<80; i++)value3[i] = 0;
-      //      fr = sscanf(avalue,"%s%s%s",&value1,&value2,&value3);
-      fr = sscanf(avalue,"%s%s%s",value1,value2,value3);
+      memset(value1,0,sizeof(value1));
+      memset(value2,0,sizeof(value2));
+      memset(value3,0,sizeof(value3));
+
+      fr = sscanf(avalue,"%80s%80s%80s",value1,value2,value3);
       
       Handle(Materials_Color) pcolor =
 	new Materials_Color(Quantity_Color(Atof(value1),

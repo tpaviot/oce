@@ -1,23 +1,18 @@
 // Created on: 1998-07-22
 // Created by: Philippe MANGIN
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <stdio.h>
 
@@ -74,6 +69,14 @@
 #include <StdFail_NotDone.hxx>
 
 #include <BRepBuilderAPI_Copy.hxx>
+
+#include <GProp_GProps.hxx>
+#include <BRepGProp.hxx>
+#include <GeomAdaptor_HSurface.hxx>
+#include <IntCurveSurface_HInter.hxx>
+#include <IntCurveSurface_IntersectionPoint.hxx>
+#include <TColgp_HArray1OfPnt2d.hxx>
+#include <Law_Interpol.hxx>
 
 #ifdef DRAW
 #include <Draw.hxx>
@@ -210,10 +213,11 @@ static Standard_Boolean IsSameOriented(const TopoDS_Shape& aFace,
 //=======================================================================
 BRepFill_PipeShell::BRepFill_PipeShell(const TopoDS_Wire& Spine)
                       :  mySpine(Spine), 
-			 myTrihedron(GeomFill_IsCorrectedFrenet),
-			 myTransition(BRepFill_Modified),
                          myForceApproxC1(Standard_False),
-			 myStatus(GeomFill_PipeOk)
+                         myIsAutomaticLaw(Standard_False),
+                         myTrihedron(GeomFill_IsCorrectedFrenet),
+                         myTransition(BRepFill_Modified),
+                         myStatus(GeomFill_PipeOk)
 {
   myLocation.Nullify();
   mySection.Nullify();
@@ -325,7 +329,7 @@ BRepFill_PipeShell::BRepFill_PipeShell(const TopoDS_Wire& Spine)
 //=======================================================================
  void BRepFill_PipeShell::Set(const TopoDS_Wire& AuxiliarySpine,
 			      const Standard_Boolean CurvilinearEquivalence,
-			      const Standard_Boolean KeepContact) 
+			      const BRepFill_TypeOfContact KeepContact) 
 {  
   // Reorganization of the guide (pb of orientation and origin)
   TopoDS_Wire TheGuide;
@@ -333,6 +337,9 @@ BRepFill_PipeShell::BRepFill_PipeShell(const TopoDS_Wire& Spine)
   Standard_Boolean SpClose = mySpine.Closed(), 
                    GuideClose = AuxiliarySpine.Closed();
 
+  if (KeepContact == BRepFill_ContactOnBorder)
+    myIsAutomaticLaw = Standard_True;
+  
   if (!SpClose && !GuideClose) {
     // Case open reorientation of the guide
     TopoDS_Wire sp = mySpine;
@@ -377,7 +384,8 @@ BRepFill_PipeShell::BRepFill_PipeShell(const TopoDS_Wire& Spine)
   Guide->ChangeCurve().SetPeriodic(Standard_True);
 
   if (CurvilinearEquivalence) { // trihedron by curvilinear reduced abscissa
-    if (KeepContact) 
+    if (KeepContact == BRepFill_Contact ||
+        KeepContact == BRepFill_ContactOnBorder) 
       myTrihedron = GeomFill_IsGuideACWithContact; // with rotation 
     else
       myTrihedron = GeomFill_IsGuideAC; // without rotation 
@@ -389,7 +397,8 @@ BRepFill_PipeShell::BRepFill_PipeShell(const TopoDS_Wire& Spine)
     myLocation = new (BRepFill_ACRLaw) (mySpine, Loc); 	
   }
   else {// trihedron by plane
-    if (KeepContact) 
+    if (KeepContact == BRepFill_Contact ||
+        KeepContact == BRepFill_ContactOnBorder) 
       myTrihedron = GeomFill_IsGuidePlanWithContact; // with rotation 
     else 
       myTrihedron = GeomFill_IsGuidePlan; // without rotation
@@ -438,10 +447,74 @@ void BRepFill_PipeShell::SetForceApproxC1(const Standard_Boolean ForceApproxC1)
 			      const Standard_Boolean WithCorrection) 
 {
  Delete(Profile); // No duplication
- BRepFill_Section S (Profile, Location, WithContact, WithCorrection);
- mySeq.Append(S);
- mySection.Nullify();
- ResetLoc();
+ if (myIsAutomaticLaw)
+ {
+   mySeq.Clear();
+   BRepFill_Section S (Profile, Location, WithContact, WithCorrection);
+   S.Set(Standard_True);
+   mySeq.Append(S);
+   mySection.Nullify();
+   ResetLoc();
+
+   Handle(GeomFill_LocationGuide) Loc = Handle(GeomFill_LocationGuide)::DownCast(myLocation->Law(1));
+   Handle(TColgp_HArray1OfPnt2d) ParAndRad;
+   Loc->ComputeAutomaticLaw(ParAndRad);
+   
+   //Compuite initial width of section (this will be 1.)
+   GProp_GProps GlobalProps;
+   BRepGProp::LinearProperties(Profile, GlobalProps);
+   gp_Pnt BaryCenter = GlobalProps.CentreOfMass();
+
+   TopoDS_Face ProfileFace = BRepLib_MakeFace(TopoDS::Wire(Profile), Standard_True); //only plane
+   Handle(Geom_Surface) thePlane = BRep_Tool::Surface(ProfileFace);
+   Handle(GeomAdaptor_HSurface) GAHplane = new GeomAdaptor_HSurface(thePlane);
+   IntCurveSurface_HInter Intersector;
+   Handle(Adaptor3d_HCurve) aHCurve [2];
+   aHCurve[0] = Loc->GetCurve();
+   aHCurve[1] = Loc->Guide();
+   gp_Pnt PointsOnSpines [2];
+   Standard_Integer i, j;
+
+   for (i = 0; i < 2; i++)
+   {
+     Intersector.Perform(aHCurve[i], GAHplane);
+     Standard_Real MinDist = RealLast();
+     for (j = 1; j <= Intersector.NbPoints(); j++)
+     {
+       gp_Pnt aPint = Intersector.Point(j).Pnt();
+       Standard_Real aDist = BaryCenter.Distance(aPint);
+       if (aDist < MinDist)
+       {
+         MinDist = aDist;
+         PointsOnSpines[i] = aPint;
+       }
+     }
+   }
+
+   //Correct <ParAndRad> according to <InitialWidth>
+   Standard_Real InitialWidth = PointsOnSpines[0].Distance(PointsOnSpines[1]);
+   Standard_Integer NbParRad = ParAndRad->Upper();
+   for (i = 1; i <= NbParRad; i++)
+   {
+     gp_Pnt2d aParRad = ParAndRad->Value(i);
+     aParRad.SetY( aParRad.Y() / InitialWidth );
+     ParAndRad->SetValue(i, aParRad);
+   }
+  
+   myLaw = new Law_Interpol();
+   
+   Standard_Boolean IsPeriodic =
+     (Abs(ParAndRad->Value(1).Y() - ParAndRad->Value(NbParRad).Y()) < Precision::Confusion());
+
+   (Handle(Law_Interpol)::DownCast(myLaw))->Set(ParAndRad->Array1(), IsPeriodic);
+ }
+ else
+ {
+   BRepFill_Section S (Profile, Location, WithContact, WithCorrection);
+   mySeq.Append(S);
+   mySection.Nullify();
+   ResetLoc();
+ }
 }
 
 //=======================================================================

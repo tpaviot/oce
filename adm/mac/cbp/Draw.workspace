@@ -45,6 +45,7 @@
 			<Depends filename="TKMath.cbp" />
 			<Depends filename="TKNIS.cbp" />
 			<Depends filename="TKService.cbp" />
+			<Depends filename="TKShHealing.cbp" />
 			<Depends filename="TKBool.cbp" />
 			<Depends filename="TKPrim.cbp" />
 			<Depends filename="TKGeomAlgo.cbp" />
@@ -175,6 +176,7 @@
 			<Depends filename="TKXSDRAW.cbp" />
 			<Depends filename="TKSTL.cbp" />
 			<Depends filename="TKAdvTools.cbp" />
+			<Depends filename="TKVoxel.cbp" />
 		</Project>
 		<Project filename="DRAWEXE.cbp" active="1">
 			<Depends filename="TKDraw.cbp" />

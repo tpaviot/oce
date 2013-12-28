@@ -94,6 +94,10 @@ endif()
 if (WIN32)
 else()
 
+  if (APPLE)
+
+  endif()
+
 endif()
 
 if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKBinXCAF)

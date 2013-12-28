@@ -42,11 +42,11 @@ class Storage_HPArray : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Storage_HPArray(const Standard_Integer Low,const Standard_Integer Up);
+      Storage_HPArray(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Storage_HPArray(const Standard_Integer Low,const Standard_Integer Up,const Handle(Standard_Persistent)& V);
+      Storage_HPArray(const Standard_Integer Low,const Standard_Integer Up,const Handle(Standard_Persistent)& V);
   
-  Standard_EXPORT     void Init(const Handle(Standard_Persistent)& V) ;
+        void Init(const Handle(Standard_Persistent)& V) ;
   
         Standard_Integer Length() const;
   

@@ -1,20 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Standard_NotImplemented.hxx>
 #include <Adaptor3d_TopolTool.ixx>
@@ -24,7 +19,7 @@
 #include <gp_Pnt.hxx>
 #include <gp_Trsf.hxx>
 
-#define myInfinite 1.e15
+#define myInfinite Precision::Infinite()
 
 static void GetConeApexParam(const gp_Cone& C, Standard_Real& U, Standard_Real& V)
 {
@@ -55,7 +50,7 @@ static void GetConeApexParam(const gp_Cone& C, Standard_Real& U, Standard_Real& 
 }
 
 
-Adaptor3d_TopolTool::Adaptor3d_TopolTool () : nbRestr(0),idRestr(0),myNbSamplesU(-1)
+Adaptor3d_TopolTool::Adaptor3d_TopolTool () : myNbSamplesU(-1),nbRestr(0),idRestr(0)
                                               
 {
 }
@@ -282,12 +277,12 @@ TopAbs_State Adaptor3d_TopolTool::Classify(const gp_Pnt2d& P,
 
   if (nbRestr == 4) {
     if ((U < Uinf - Tol) || (U > Usup + Tol) ||
-	(V < Vinf - Tol) || (V > Vsup + Tol)) {
-      return TopAbs_OUT;
+      (V < Vinf - Tol) || (V > Vsup + Tol)) {
+        return TopAbs_OUT;
     }
     if ((Abs(U - Uinf) <= Tol) || (Abs(U - Usup) <= Tol) ||
-	(Abs(V - Vinf) <= Tol) || (Abs(V - Vsup) <= Tol)) {
-      return TopAbs_ON;
+      (Abs(V - Vinf) <= Tol) || (Abs(V - Vsup) <= Tol)) {
+        return TopAbs_ON;
     }
     return TopAbs_IN;
   }
@@ -297,100 +292,100 @@ TopAbs_State Adaptor3d_TopolTool::Classify(const gp_Pnt2d& P,
   else {
     Standard_Boolean dansu,dansv,surumin,surumax,survmin,survmax;
     if (Precision::IsNegativeInfinite(Uinf) && 
-	Precision::IsPositiveInfinite(Usup)) {
+	    Precision::IsPositiveInfinite(Usup)) {
       dansu = Standard_True;
       surumin = surumax = Standard_False;
     }
     else if (Precision::IsNegativeInfinite(Uinf)) {
       surumin = Standard_False;
       if (U >= Usup+Tol) {
-	dansu = Standard_False;
-	surumax = Standard_False;
+	      dansu = Standard_False;
+	      surumax = Standard_False;
       }
       else {
-	dansu = Standard_True;
-	surumax = Standard_False;
-	if (Abs(U-Usup)<=Tol) {
-	  surumax = Standard_True;
-	}
+	      dansu = Standard_True;
+	      surumax = Standard_False;
+	      if (Abs(U-Usup)<=Tol) {
+	        surumax = Standard_True;
+	      }
       }
     }
     else if (Precision::IsPositiveInfinite(Usup)) {
       surumax = Standard_False;
       if (U < Uinf-Tol) {
-	dansu = Standard_False;
-	surumin = Standard_False;
+        dansu = Standard_False;
+        surumin = Standard_False;
       }
       else {
-	dansu = Standard_True;
-	surumin = Standard_False;
-	if (Abs(U-Uinf)<=Tol) {
-	  surumin = Standard_True;
-	}
+        dansu = Standard_True;
+        surumin = Standard_False;
+        if (Abs(U-Uinf)<=Tol) {
+          surumin = Standard_True;
+        }
       }
     }
     else {
       if ((U < Uinf - Tol) || (U > Usup + Tol)) {
-	surumin = surumax = dansu = Standard_False;
+        surumin = surumax = dansu = Standard_False;
       }
       else {
-	dansu = Standard_True;
-	surumin = surumax = Standard_False;
-	if (Abs(U-Uinf)<=Tol) {
-	  surumin = Standard_True;
-	}
-	else if (Abs(U-Usup)<=Tol) {
-	  surumax = Standard_True;
-	}
+        dansu = Standard_True;
+        surumin = surumax = Standard_False;
+        if (Abs(U-Uinf)<=Tol) {
+          surumin = Standard_True;
+        }
+        else if (Abs(U-Usup)<=Tol) {
+          surumax = Standard_True;
+        }
       }
     }
 
     if (Precision::IsNegativeInfinite(Vinf) &&
-	Precision::IsPositiveInfinite(Vsup)) {
+	    Precision::IsPositiveInfinite(Vsup)) {
       dansv = Standard_True;
       survmin = survmax = Standard_False;
     }
     else if (Precision::IsNegativeInfinite(Vinf)) {
       survmin = Standard_False;
       if (V > Vsup+Tol) {
-	dansv = Standard_False;
-	survmax = Standard_False;
+        dansv = Standard_False;
+        survmax = Standard_False;
       }
       else {
-	dansv = Standard_True;
-	survmax = Standard_False;
-	if (Abs(V-Vsup)<=Tol) {
-	  survmax = Standard_True;
-	}
+        dansv = Standard_True;
+        survmax = Standard_False;
+        if (Abs(V-Vsup)<=Tol) {
+          survmax = Standard_True;
+        }
       }
     }
     else if (Precision::IsPositiveInfinite(Vsup)) {
       survmax = Standard_False;
       if (V < Vinf-Tol) {
-	dansv = Standard_False;
-	survmin = Standard_False;
+        dansv = Standard_False;
+        survmin = Standard_False;
       }
       else {
-	dansv = Standard_True;
-	survmin = Standard_False;
-	if (Abs(V-Vinf)<=Tol) {
-	  survmin = Standard_True;
-	}
+        dansv = Standard_True;
+        survmin = Standard_False;
+        if (Abs(V-Vinf)<=Tol) {
+          survmin = Standard_True;
+        }
       }
     }
     else {
       if ((V < Vinf - Tol) || (V > Vsup + Tol)) {
-	survmin = survmax = dansv = Standard_False;
+        survmin = survmax = dansv = Standard_False;
       }
       else {
-	dansv = Standard_True;
-	survmin = survmax = Standard_False;
-	if (Abs(V-Vinf)<=Tol) {
-	  survmin = Standard_True;
-	}
-	else if (Abs(V-Vsup)<=Tol) {
-	  survmax = Standard_True;
-	}
+        dansv = Standard_True;
+        survmin = survmax = Standard_False;
+        if (Abs(V-Vinf)<=Tol) {
+          survmin = Standard_True;
+        }
+        else if (Abs(V-Vsup)<=Tol) {
+          survmax = Standard_True;
+        }
       }
     }
 
@@ -936,7 +931,7 @@ void Adaptor3d_TopolTool::BSplSamplePnts(const Standard_Real theDefl,
   uinf = myS->FirstUParameter();  usup = myS->LastUParameter();
   vinf = myS->FirstVParameter();  vsup = myS->LastVParameter();
 
-  Standard_Integer i, j, k, nbi;
+  Standard_Integer i, k, j = 1;
   Standard_Real t1, t2, dt;
   Standard_Integer ui1 = aBS->FirstUKnotIndex();
   Standard_Integer ui2 = aBS->LastUKnotIndex();
@@ -976,6 +971,23 @@ void Adaptor3d_TopolTool::BSplSamplePnts(const Standard_Real theDefl,
   Standard_Boolean bUuniform = Standard_False;
   Standard_Boolean bVuniform = Standard_False;
 
+  //modified by NIZHNY-EMV Mon Jun 10 14:19:04 2013
+  if (nbsu < theNUmin || nbsv < theNVmin) {
+    Standard_Integer aNb;
+    if (nbsu < nbsv) {
+      aNb = (Standard_Integer)(nbsv * ((Standard_Real)theNUmin)/((Standard_Real)nbsu));
+      aNb = Min(aNb, 30);
+      bVuniform = (aNb > nbsv) ? Standard_True : bVuniform;
+      nbsv = bVuniform ? aNb : nbsv;
+    } else {
+      aNb = (Standard_Integer)(nbsu * ((Standard_Real)theNVmin)/((Standard_Real)nbsv));
+      aNb = Min(aNb, 30);
+      bUuniform = (aNb > nbsu) ? Standard_True : bUuniform;
+      nbsu = bUuniform ? aNb : nbsu;
+    }
+  }
+  //modified by NIZHNY-EMV Mon Jun 10 14:19:05 2013
+
   if(nbsu < theNUmin) {
     nbsu = theNUmin;
     bUuniform = Standard_True;
@@ -1006,7 +1018,7 @@ void Adaptor3d_TopolTool::BSplSamplePnts(const Standard_Real theDefl,
     }
   }
   else {  
-    nbi = aBS->UDegree();
+    Standard_Integer nbi = aBS->UDegree();
     k = 0;
     t1 = uinf;
     for(i = ui1+1; i <= ui2; ++i) {
@@ -1041,7 +1053,7 @@ void Adaptor3d_TopolTool::BSplSamplePnts(const Standard_Real theDefl,
     }
   }
   else {  
-    nbi = aBS->VDegree();
+    Standard_Integer nbi = aBS->VDegree();
     k = 0;
     t1 = vinf;
     for(i = vi1+1; i <= vi2; ++i) {
@@ -1252,12 +1264,12 @@ void Adaptor3d_TopolTool::BSplSamplePnts(const Standard_Real theDefl,
   //
   for(j = 0, i = 1; i <= nbsu; ++i) {
     if (bFlag) {
-       myUPars->SetValue(i,anUPars(i));
+      myUPars->SetValue(i,anUPars(i));
     }
     else {
       if(anUFlg(i)) {
-	++j;
-	myUPars->SetValue(j,anUPars(i));
+        ++j;
+        myUPars->SetValue(j,anUPars(i));
       }
     }
   }
@@ -1276,8 +1288,8 @@ void Adaptor3d_TopolTool::BSplSamplePnts(const Standard_Real theDefl,
     }
     else {
       if(aVFlg(i)) {
-	++j;
-	myVPars->SetValue(j,aVPars(i));
+        ++j;
+        myVPars->SetValue(j,aVPars(i));
       }
     }
   }

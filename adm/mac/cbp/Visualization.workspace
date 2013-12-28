@@ -4,12 +4,20 @@
 		<Project filename="TKService.cbp" >
 			<Depends filename="TKernel.cbp" />
 			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKShHealing.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKGeomAlgo.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
 		</Project>
 		<Project filename="TKV3d.cbp" >
 			<Depends filename="TKBRep.cbp" />
 			<Depends filename="TKMath.cbp" />
 			<Depends filename="TKernel.cbp" />
 			<Depends filename="TKService.cbp" />
+			<Depends filename="TKShHealing.cbp" />
 			<Depends filename="TKTopAlgo.cbp" />
 			<Depends filename="TKG2d.cbp" />
 			<Depends filename="TKG3d.cbp" />
@@ -21,6 +29,7 @@
 		<Project filename="TKOpenGl.cbp" >
 			<Depends filename="TKernel.cbp" />
 			<Depends filename="TKService.cbp" />
+			<Depends filename="TKMath.cbp" />
 			<Depends filename="TKV3d.cbp" />
 		</Project>
 		<Project filename="TKMeshVS.cbp" >

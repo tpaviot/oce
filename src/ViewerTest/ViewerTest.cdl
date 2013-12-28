@@ -1,25 +1,18 @@
 -- Created on: 1997-07-23
 -- Created by: Henri JEANNIN
 -- Copyright (c) 1997-1999 Matra Datavision
--- Copyright (c) 1999-2012 OPEN CASCADE SAS
+-- Copyright (c) 1999-2014 OPEN CASCADE SAS
 --
--- The content of this file is subject to the Open CASCADE Technology Public
--- License Version 6.5 (the "License"). You may not use the content of this file
--- except in compliance with the License. Please obtain a copy of the License
--- at http://www.opencascade.org and read it completely before using this file.
+-- This file is part of Open CASCADE Technology software library.
 --
--- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
--- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+-- This library is free software; you can redistribute it and / or modify it
+-- under the terms of the GNU Lesser General Public version 2.1 as published
+-- by the Free Software Foundation, with special exception defined in the file
+-- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+-- distribution for complete text of the license and disclaimer of any warranty.
 --
--- The Original Code and all software distributed under the License is
--- distributed on an "AS IS" basis, without warranty of any kind, and the
--- Initial Developer hereby disclaims all such warranties, including without
--- limitation, any warranties of merchantability, fitness for a particular
--- purpose or non-infringement. Please see the License for the specific terms
--- and conditions governing the rights and limitations under the License.
-
-
-
+-- Alternatively, this file may be used under the terms of Open CASCADE
+-- commercial license or contractual agreement.
 
 package ViewerTest
 
@@ -69,12 +62,29 @@ is
     ---Category: Create the viewer....
 
     ViewerInit ( thePxLeft,    thePxTop : Integer from Standard = 0;
-                thePxWidth, thePxHeight : Integer from Standard = 0);
-	---Purpose:
-	--          implemented in ViewerTest_ViewerCommands.cxx
+                thePxWidth, thePxHeight : Integer from Standard = 0;
+                theViewName : CString from Standard = "";
+                theDisplayName : CString from Standard = "")
+    returns AsciiString from TCollection;
+    ---Purpose: Creates view with default or custom name
+    --          and add this name in map to manage muliple views
+    --          implemented in ViewerTest_ViewerCommands.cxx
+   
+    ---Category: Manage the name of views
+    RemoveViewName (theName: AsciiString from TCollection);
+    
+    InitViewName (theName: AsciiString from TCollection;
+                  theView: View from V3d);
+    
+    GetCurrentViewName returns AsciiString from TCollection;
+   
+    ---Category: Delete the viewer....
+    RemoveView (theViewName:AsciiString from TCollection;
+               isContextRemoved:Boolean from Standard= Standard_True);
+    ---Purpose: Removes view and clear all maps
+    --          with information about its resources if neccessary
 
     ---Category: Selection in the viewer....
-
 
     WClass returns TShared from MMgt is private;
     ---C++:     return const &
@@ -177,6 +187,15 @@ is
     GetColorFromName(name: CString from Standard)
     returns NameOfColor from Quantity;
 
+    RedrawAllViews;
+    ---Purpose: redraws all defined views.
 
+    SplitParameter (theString : AsciiString from TCollection;
+                    theName   : out AsciiString from TCollection;
+                    theValue  : out AsciiString from TCollection)
+    returns Boolean from Standard;
+    ---Purpose: Splits "parameter=value" string into separate
+    -- parameter and value strings.
+    -- @return TRUE if the string matches pattern "<string>=<empty or string>"
 
 end;

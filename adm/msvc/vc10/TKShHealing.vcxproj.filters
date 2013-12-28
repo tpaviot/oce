@@ -2,37 +2,37 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{ADA0157E-195E-0204-1323-E2554C4E11DB}</UniqueIdentifier>
+      <UniqueIdentifier>{B8F4B1CC-0621-143A-082F-3F9C583187CC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeBuild">
-      <UniqueIdentifier>{76677CE8-0FF2-009B-0B67-D18D5F9878B4}</UniqueIdentifier>
+      <UniqueIdentifier>{CA81FA41-0127-0668-0A65-BBF9B406C1D4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeExtend">
-      <UniqueIdentifier>{1C9DD66B-0B5B-10BC-07A3-159230309820}</UniqueIdentifier>
+      <UniqueIdentifier>{9F791D3C-156B-0ABD-09F4-6CD9041BD6F7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeConstruct">
-      <UniqueIdentifier>{537B3BEB-1983-165C-0216-37E5B9CAF415}</UniqueIdentifier>
+      <UniqueIdentifier>{BE148CB3-07B6-0188-154D-49F600B59A76}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeCustom">
-      <UniqueIdentifier>{5E9F84D3-14DF-0FFE-00D9-14B95C9587AF}</UniqueIdentifier>
+      <UniqueIdentifier>{AFC18C0C-11B1-0345-032A-D5C70CFF048B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeAnalysis">
-      <UniqueIdentifier>{FEF37C42-1894-14A1-1463-07DFD3F7ACBD}</UniqueIdentifier>
+      <UniqueIdentifier>{83510FA3-0656-0237-088E-ED4ECFD130EE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeFix">
-      <UniqueIdentifier>{6DDD83FE-0FD8-0997-0E3A-093715FF5C56}</UniqueIdentifier>
+      <UniqueIdentifier>{E3688D2E-15F2-0E60-1086-344169B2668D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeUpgrade">
-      <UniqueIdentifier>{07292E62-18D8-1102-02F1-FFA444798914}</UniqueIdentifier>
+      <UniqueIdentifier>{6AD1997E-009C-03C2-11BC-1468FCF8B15D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeAlgo">
-      <UniqueIdentifier>{16B9BC7F-0A4A-025A-0BAF-C6BB8D435590}</UniqueIdentifier>
+      <UniqueIdentifier>{4463A18E-09E9-1516-0EA9-9A244EC57FC1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeProcess">
-      <UniqueIdentifier>{A6A02905-1052-0A56-0F10-D4CD0EE293B2}</UniqueIdentifier>
+      <UniqueIdentifier>{467E40D0-1216-039D-0A0D-FB5DC9CA59FD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeProcessAPI">
-      <UniqueIdentifier>{4EC273DC-0159-0AF4-04BD-944E64A6A85B}</UniqueIdentifier>
+      <UniqueIdentifier>{DA0780E2-17B8-09B2-1572-3C5BACA6A675}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

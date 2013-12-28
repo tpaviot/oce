@@ -28,19 +28,13 @@
 #ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
 #endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
 class gp_Pnt;
 
-
-Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(Extrema_POnSurfParams);
 
 //! Data container for point on surface parameters. These parameters <br>
 //!          are required to compute an initial approximation for extrema <br>
 //!          computation. <br>
 class Extrema_POnSurfParams  : public Extrema_POnSurf {
-
 public:
 
   DEFINE_STANDARD_ALLOC
@@ -65,14 +59,8 @@ public:
   //! Query the U and V indices of an element that contains <br>
 //!          this point. <br>
         void GetIndices(Standard_Integer& theIndexU,Standard_Integer& theIndexV) const;
-    Standard_Real _CSFDB_GetExtrema_POnSurfParamsmySqrDistance() const { return mySqrDistance; }
-    void _CSFDB_SetExtrema_POnSurfParamsmySqrDistance(const Standard_Real p) { mySqrDistance = p; }
-    Extrema_ElementType _CSFDB_GetExtrema_POnSurfParamsmyElementType() const { return myElementType; }
-    void _CSFDB_SetExtrema_POnSurfParamsmyElementType(const Extrema_ElementType p) { myElementType = p; }
-    Standard_Integer _CSFDB_GetExtrema_POnSurfParamsmyIndexU() const { return myIndexU; }
-    void _CSFDB_SetExtrema_POnSurfParamsmyIndexU(const Standard_Integer p) { myIndexU = p; }
-    Standard_Integer _CSFDB_GetExtrema_POnSurfParamsmyIndexV() const { return myIndexV; }
-    void _CSFDB_SetExtrema_POnSurfParamsmyIndexV(const Standard_Integer p) { myIndexV = p; }
+
+
 
 
 
@@ -81,7 +69,9 @@ protected:
 
 
 
-private: 
+
+private:
+
 
 
 Standard_Real mySqrDistance;

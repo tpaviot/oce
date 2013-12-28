@@ -22,9 +22,6 @@
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
 #endif
@@ -42,6 +39,9 @@
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
@@ -148,7 +148,6 @@ private:
 
 Handle_BRepBlend_Line myLine;
 Standard_Address myFunc;
-Standard_Integer mydimension;
 math_Vector myTolerance;
 Blend_Point myPnt;
 gp_Pnt myBary;

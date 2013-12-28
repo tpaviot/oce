@@ -2,31 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{012C1CCF-06B8-1810-0DFD-2AB72C5FC161}</UniqueIdentifier>
+      <UniqueIdentifier>{B80CE095-1777-0095-12D3-0367567556B3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DBC">
-      <UniqueIdentifier>{9103FE19-166A-1090-0C9A-ACF6E68598C0}</UniqueIdentifier>
+      <UniqueIdentifier>{8F33C1B8-07F0-0E9F-1310-090CE32D2C70}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PCollection">
-      <UniqueIdentifier>{EF6DB960-0F7F-0A5E-0EFB-90F1EAFA5CD1}</UniqueIdentifier>
+      <UniqueIdentifier>{C08A638B-0A8E-1720-0F71-470910A43827}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PColStd">
-      <UniqueIdentifier>{E3A16E87-0054-15D1-12E9-47AEF42F5360}</UniqueIdentifier>
+      <UniqueIdentifier>{62B043B2-0C1A-135F-0941-0729281F1499}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PMMgt">
-      <UniqueIdentifier>{0AED43F5-029C-13FD-06A5-FF9638DF575B}</UniqueIdentifier>
+      <UniqueIdentifier>{815948B0-151B-18D7-171E-70E66526191E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PShort">
-      <UniqueIdentifier>{E02A468F-177F-193A-1793-1491B26940BF}</UniqueIdentifier>
+      <UniqueIdentifier>{3B2CC1BF-121D-03DA-1806-B81DF7B75C1E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PStandard">
-      <UniqueIdentifier>{19E86E7E-07BC-0B29-15F8-FAEFB8904DD9}</UniqueIdentifier>
+      <UniqueIdentifier>{00B98729-0F24-03D7-14CE-16095FC14B67}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PTColStd">
-      <UniqueIdentifier>{E7152371-12AE-164C-0108-228F36E82E9B}</UniqueIdentifier>
+      <UniqueIdentifier>{3D744D39-008D-0299-0043-0FF108994754}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ObjMgt">
-      <UniqueIdentifier>{4BC4A145-1023-02FF-0CD6-C9748F036582}</UniqueIdentifier>
+      <UniqueIdentifier>{19DC1A9C-08F2-03FB-05AD-96D16F8FFCDF}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

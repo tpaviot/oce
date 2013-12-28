@@ -42,11 +42,11 @@ class IGESDimen_HArray1OfLeaderArrow : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESDimen_HArray1OfLeaderArrow(const Standard_Integer Low,const Standard_Integer Up);
+      IGESDimen_HArray1OfLeaderArrow(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESDimen_HArray1OfLeaderArrow(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESDimen_LeaderArrow)& V);
+      IGESDimen_HArray1OfLeaderArrow(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESDimen_LeaderArrow)& V);
   
-  Standard_EXPORT     void Init(const Handle(IGESDimen_LeaderArrow)& V) ;
+        void Init(const Handle(IGESDimen_LeaderArrow)& V) ;
   
         Standard_Integer Length() const;
   

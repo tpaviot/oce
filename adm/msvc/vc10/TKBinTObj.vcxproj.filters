@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{956FE69E-159A-02DA-111B-91D18251DB3B}</UniqueIdentifier>
+      <UniqueIdentifier>{DA8B95F0-0F70-0A1C-17AB-DCC458DE8801}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinTObjDrivers">
-      <UniqueIdentifier>{10262573-0729-168E-13A6-F3900B75E58A}</UniqueIdentifier>
+      <UniqueIdentifier>{B32C5CF2-0AF1-17F0-0255-5713F4DF083F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -200,7 +200,6 @@ private:
 
 
 Standard_Integer thenum0;
-Standard_Integer thenump0;
 Standard_Integer therrload;
 Handle_Interface_ParamSet theparams;
 TColStd_Array1OfInteger thenumpar;

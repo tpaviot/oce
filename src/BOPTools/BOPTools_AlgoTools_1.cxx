@@ -1,21 +1,16 @@
 // Created by: Peter KURNEV
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BOPTools_AlgoTools.ixx>
 
@@ -79,6 +74,10 @@
 #include <TopTools_ListIteratorOfListOfShape.hxx>
 #include <Geom2d_Curve.hxx>
 #include <GeomAdaptor_Surface.hxx>
+#include <Geom2dAdaptor_Curve.hxx>
+#include <IntRes2d_Domain.hxx>
+#include <Geom2dInt_GInter.hxx>
+#include <IntRes2d_IntersectionPoint.hxx>
 
 static 
   void CheckEdge (const TopoDS_Edge& E,
@@ -99,6 +98,12 @@ static
 
 static
   void CorrectWires(const TopoDS_Face& aF);
+
+static 
+  Standard_Real IntersectCurves2d(const gp_Pnt& aPV,
+                                  const TopoDS_Face& aF,
+                                  const TopoDS_Edge& aE1,
+                                  const TopoDS_Edge& aE2);
 
 static
   void UpdateEdges(const TopoDS_Face& aF);
@@ -166,28 +171,19 @@ static
 //=======================================================================
 void CorrectWires(const TopoDS_Face& aFx)
 {
-  GeomAbs_SurfaceType aType;
-  //
-  const Handle(Geom_Surface)& aS=BRep_Tool::Surface(aFx);
-  //BRepAdaptor_Surface aBAS (aFx, Standard_False);
-  GeomAdaptor_Surface aGAS (aS);
-  aType=aGAS.GetType();
-  if (aType!=GeomAbs_Cylinder) {
-    return;
-  }
-  //
   Standard_Integer i, aNbV;
-  Standard_Real aTol, aTol2, aD2, aD2max, aT1, aT2, aT; 
-  TopoDS_Edge aE1, aE2, aEi, aEj;
+  Standard_Real aTol, aTol2, aD2, aD2max, aT1, aT2, aT, aTol2d; 
   gp_Pnt aP, aPV;
   gp_Pnt2d aP2D;
   TopoDS_Face aF;
   BRep_Builder aBB;
   TopTools_IndexedDataMapOfShapeListOfShape aMVE;
-  TopTools_ListIteratorOfListOfShape aIt;
+  TopTools_ListIteratorOfListOfShape aIt, aIt1;
   //
   aF=aFx;
   aF.Orientation(TopAbs_FORWARD);
+  aTol2d = Precision::Confusion();
+  const Handle(Geom_Surface)& aS=BRep_Tool::Surface(aFx);
   //
   TopExp::MapShapesAndAncestors(aF, TopAbs_VERTEX, TopAbs_EDGE, aMVE);
   aNbV=aMVE.Extent();
@@ -201,15 +197,37 @@ void CorrectWires(const TopoDS_Face& aFx)
     const TopTools_ListOfShape& aLE=aMVE.FindFromIndex(i);
     aIt.Initialize(aLE);
     for (; aIt.More(); aIt.Next()) {
-      const TopoDS_Edge& aE=TopoDS::Edge(aIt.Value());
+      const TopoDS_Edge& aE=*(TopoDS_Edge*)(&aIt.Value());
       aT=BRep_Tool::Parameter(aV, aE);
       const Handle(Geom2d_Curve)& aC2D=BRep_Tool::CurveOnSurface(aE, aF, aT1, aT2);
       aC2D->D0(aT, aP2D);
-      //aP=aBAS.Value(aP2D.X(), aP2D.Y());
       aS->D0(aP2D.X(), aP2D.Y(), aP);
       aD2=aPV.SquareDistance(aP);
       if (aD2>aD2max) {
         aD2max=aD2;
+      }
+      //check self interference
+      if (aNbV == 2) {
+        continue;
+      }
+      aIt1 = aIt;
+      aIt1.Next();
+      for (; aIt1.More(); aIt1.Next()) {
+        const TopoDS_Edge& aE1=*(TopoDS_Edge*)(&aIt1.Value());
+        //do not perform check for edges that have two common vertices
+        {
+          TopoDS_Vertex aV11, aV12, aV21, aV22;
+          TopExp::Vertices(aE, aV11, aV12);
+          TopExp::Vertices(aE1, aV21, aV22);
+          if ((aV11.IsSame(aV21) && aV12.IsSame(aV22)) ||
+              (aV12.IsSame(aV21) && aV11.IsSame(aV22))) {
+            continue;
+          }
+        }
+        aD2 = IntersectCurves2d(aPV, aF, aE, aE1);
+        if (aD2>aD2max) {
+          aD2max=aD2;
+        }
       }
     }
     if (aD2max>aTol2) {
@@ -218,6 +236,58 @@ void CorrectWires(const TopoDS_Face& aFx)
     }
   }
 }
+//=======================================================================
+// Function : IntersectCurves2d
+// purpose  : Intersect 2d curves of edges
+//=======================================================================
+Standard_Real IntersectCurves2d(const gp_Pnt& aPV,
+                                const TopoDS_Face& aF,
+                                const TopoDS_Edge& aE1,
+                                const TopoDS_Edge& aE2)
+{
+  const Handle(Geom_Surface)& aS=BRep_Tool::Surface(aF);
+  GeomAdaptor_Surface aGAS (aS);
+  if (aGAS.IsUPeriodic() || aGAS.IsVPeriodic()) {
+    return 0;
+  }
+  //
+  Standard_Real aDist, aD, aT11, aT12, aT21, aT22, aTol2d;
+  Standard_Integer j, aNbPnt;
+  Geom2dInt_GInter aInter;
+  gp_Pnt aP;
+  gp_Pnt2d aP2D;
+  //
+  aDist = 0.;
+  aTol2d = Precision::Confusion();
+  //
+  const Handle(Geom2d_Curve)& aC2D1=BRep_Tool::CurveOnSurface(aE1, aF, aT11, aT12);
+  const Handle(Geom2d_Curve)& aC2D2=BRep_Tool::CurveOnSurface(aE2, aF, aT21, aT22);
+  //
+  Geom2dAdaptor_Curve aGAC1(aC2D1), aGAC2(aC2D2);
+  IntRes2d_Domain aDom1(aC2D1->Value(aT11), aT11, aTol2d, aC2D1->Value(aT12), aT12, aTol2d),
+                  aDom2(aC2D2->Value(aT21), aT21, aTol2d, aC2D2->Value(aT22), aT22, aTol2d);
+  //
+  aInter.Perform(aGAC1, aDom1, aGAC2, aDom2, aTol2d, aTol2d);
+  if (aInter.IsDone()) {
+    if (aInter.NbSegments()) {
+      return aDist;
+    }
+    aNbPnt = aInter.NbPoints();
+    if (aNbPnt) {
+      aDist = Precision::Infinite();
+      for (j = 1; j <= aNbPnt; ++j) {
+        aP2D = aInter.Point(j).Value();
+        aS->D0(aP2D.X(), aP2D.Y(), aP);
+        aD=aPV.SquareDistance(aP);
+        if (aD < aDist) {
+          aDist = aD;
+        }
+      }
+    }
+  }
+  return aDist;
+}
+
 //=======================================================================
 // Function : CorrectEdgeTolerance
 // purpose :  Correct tolerances for Edge 
@@ -325,7 +395,6 @@ void CorrectEdgeTolerance (const TopoDS_Edge& myShape,
     Standard_Boolean SameRange = TE->SameRange();
     Standard_Real First = myHCurve->FirstParameter();
     Standard_Real Last  = myHCurve->LastParameter();
-    //Standard_Real Delta =1.e-14;
     Standard_Real Delta =1.e-12;
 
     Handle(BRep_TFace)& TF = *((Handle(BRep_TFace)*) &S.TShape());
@@ -333,7 +402,6 @@ void CorrectEdgeTolerance (const TopoDS_Edge& myShape,
     const TopLoc_Location& TFloc = TF->Location();
     const Handle(Geom_Surface)& Su = TF->Surface();
     TopLoc_Location L = (Floc * TFloc).Predivided(myShape.Location());
-    //      Standard_Boolean checkclosed = Standard_False;
     Standard_Boolean pcurvefound = Standard_False;
 
     BRep_ListIteratorOfListOfCurveRepresentation itcr(TE->Curves());
@@ -345,10 +413,7 @@ void CorrectEdgeTolerance (const TopoDS_Edge& myShape,
         Standard_Real f,l;
         GC->Range(f,l);
         if (SameRange && (f != First || l != Last)) {
-          return ;//BRepCheck_InvalidSameRangeFlag);
-          if (SameParameter) {
-            return; //BRepCheck_InvalidSameParameterFlag);
-          }
+          return ;//BRepCheck_InvalidSameRangeFlag;
         }
 	
         Handle(Geom_Surface) Sb = cr->Surface();
@@ -723,7 +788,7 @@ void CheckEdge (const TopoDS_Edge& Ed, const Standard_Real aMaxTol)
   TopoDS_Iterator aItF, aItW, aItE;
   BRep_Builder aBB;
   //
-  aTolF = BRep_Tool::Tolerance(aF);
+  aTolE = aTolF = BRep_Tool::Tolerance(aF);
   aItF.Initialize(aF);
   for (; aItF.More(); aItF.Next()) {
     const TopoDS_Shape& aS = aItF.Value();

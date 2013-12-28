@@ -134,8 +134,12 @@ libTKFillet_la_SOURCES = \
 @top_srcdir@/src/BlendFunc/BlendFunc_RuledInv.cxx \
 @top_srcdir@/src/BlendFunc/BlendFunc_Tensor.cxx \
 @top_srcdir@/src/ChFi2d/ChFi2d.cxx \
+@top_srcdir@/src/ChFi2d/ChFi2d_AnaFilletAlgo.cxx \
 @top_srcdir@/src/ChFi2d/ChFi2d_Builder.cxx \
 @top_srcdir@/src/ChFi2d/ChFi2d_Builder_0.cxx \
+@top_srcdir@/src/ChFi2d/ChFi2d_ChamferAPI.cxx \
+@top_srcdir@/src/ChFi2d/ChFi2d_FilletAPI.cxx \
+@top_srcdir@/src/ChFi2d/ChFi2d_FilletAlgo.cxx \
 @top_srcdir@/src/ChFi3d/ChFi3d.cxx \
 @top_srcdir@/src/ChFi3d/ChFi3d_Builder.cxx \
 @top_srcdir@/src/ChFi3d/ChFi3d_Builder_0.cxx \

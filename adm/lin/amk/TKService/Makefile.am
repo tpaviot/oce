@@ -6,7 +6,6 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/InterfaceGraphic : @top_srcdir@/src/InterfaceGraphic: \
 @top_srcdir@/drv/SelectBasics : @top_srcdir@/src/SelectBasics: \
 @top_srcdir@/drv/Xw : @top_srcdir@/src/Xw: \
-@top_srcdir@/drv/AlienImage : @top_srcdir@/src/AlienImage: \
 @top_srcdir@/drv/Image : @top_srcdir@/src/Image: \
 @top_srcdir@/drv/Cocoa : @top_srcdir@/src/Cocoa: \
 @top_srcdir@/drv/TColQuantity : @top_srcdir@/src/TColQuantity: \
@@ -25,7 +24,6 @@ INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES) $(CSF_OpenGlLibs_INCLUDES) $(
 -I@top_srcdir@/drv/InterfaceGraphic -I@top_srcdir@/src/InterfaceGraphic \
 -I@top_srcdir@/drv/SelectBasics -I@top_srcdir@/src/SelectBasics \
 -I@top_srcdir@/drv/Xw -I@top_srcdir@/src/Xw \
--I@top_srcdir@/drv/AlienImage -I@top_srcdir@/src/AlienImage \
 -I@top_srcdir@/drv/Image -I@top_srcdir@/src/Image \
 -I@top_srcdir@/drv/Cocoa -I@top_srcdir@/src/Cocoa \
 -I@top_srcdir@/drv/TColQuantity -I@top_srcdir@/src/TColQuantity \
@@ -38,6 +36,13 @@ libTKService_la_LIBADD = $(CSF_OPT_LIBS) \
  \
 ../TKernel/libTKernel.la \
 ../TKMath/libTKMath.la \
+../TKBRep/libTKBRep.la \
+../TKShHealing/libTKShHealing.la \
+../TKGeomBase/libTKGeomBase.la \
+../TKGeomAlgo/libTKGeomAlgo.la \
+../TKG2d/libTKG2d.la \
+../TKG3d/libTKG3d.la \
+../TKTopAlgo/libTKTopAlgo.la \
 $(STLPort_LIB) $(CSF_OpenGlLibs_LIB) $(CSF_XwLibs_LIB) $(CSF_dpsLibs_LIB) $(CSF_XmuLibs_LIB) $(CSF_objc_LIB) $(CSF_Appkit_LIB) $(CSF_IOKit_LIB) $(CSF_FreeImagePlus_LIB) $(CSF_FREETYPE_LIB) 
 
 libTKService_la_SOURCES = \
@@ -79,20 +84,6 @@ libTKService_la_SOURCES = \
 @top_srcdir@/drv/Aspect/Aspect_WidthMapDefinitionError_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_WindowDefinitionError_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_WindowError_0.cxx \
-@top_srcdir@/drv/Image/Image_ColorPixelDataMap_0.cxx \
-@top_srcdir@/drv/Image/Image_ColorPixelMapHasher_0.cxx \
-@top_srcdir@/drv/Image/Image_DColorImage_0.cxx \
-@top_srcdir@/drv/Image/Image_DIndexedImage_0.cxx \
-@top_srcdir@/drv/Image/Image_DataMapIteratorOfColorPixelDataMap_0.cxx \
-@top_srcdir@/drv/Image/Image_DataMapIteratorOfLookupTable_0.cxx \
-@top_srcdir@/drv/Image/Image_DataMapNodeOfColorPixelDataMap_0.cxx \
-@top_srcdir@/drv/Image/Image_DataMapNodeOfLookupTable_0.cxx \
-@top_srcdir@/drv/Image/Image_IndexPixelMapHasher_0.cxx \
-@top_srcdir@/drv/Image/Image_LookupTable_0.cxx \
-@top_srcdir@/drv/Image/Image_PixelFieldOfDColorImage_0.cxx \
-@top_srcdir@/drv/Image/Image_PixelFieldOfDIndexedImage_0.cxx \
-@top_srcdir@/drv/Image/Image_PixelRowOfDColorImage_0.cxx \
-@top_srcdir@/drv/Image/Image_PixelRowOfDIndexedImage_0.cxx \
 @top_srcdir@/drv/SelectBasics/SelectBasics_ListIteratorOfListOfBox2d_0.cxx \
 @top_srcdir@/drv/SelectBasics/SelectBasics_ListIteratorOfListOfSensitive_0.cxx \
 @top_srcdir@/drv/SelectBasics/SelectBasics_ListNodeOfListOfBox2d_0.cxx \
@@ -105,31 +96,6 @@ libTKService_la_SOURCES = \
 @top_srcdir@/drv/TColQuantity/TColQuantity_Array2OfLength_0.cxx \
 @top_srcdir@/drv/TColQuantity/TColQuantity_HArray1OfLength_0.cxx \
 @top_srcdir@/drv/TColQuantity/TColQuantity_HArray2OfLength_0.cxx \
-@top_srcdir@/src/AlienImage/AlienImage.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_AidaAlienData.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_AidaAlienImage.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_AlienImage.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_AlienImageData.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_AlienUserImage.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_BMPAlienData.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_BMPAlienImage.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_BMPHeader.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_EuclidAlienData.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_EuclidAlienImage.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_GIFAlienData.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_GIFAlienImage.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_GIFLZWDict.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_MemoryOperations.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_SGIRGBAlienData.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_SGIRGBAlienImage.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_SGIRGBFileHeader.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_SUNRFFileHeader.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_SunRFAlienData.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_SunRFAlienImage.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_X11XColor.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_X11XWDAlienData.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_X11XWDFileHeader.cxx \
-@top_srcdir@/src/AlienImage/AlienImage_XAlienImage.cxx \
 @top_srcdir@/src/Aspect/Aspect.cxx \
 @top_srcdir@/src/Aspect/Aspect_AspectFillArea.cxx \
 @top_srcdir@/src/Aspect/Aspect_AspectLine.cxx \
@@ -170,24 +136,14 @@ libTKService_la_SOURCES = \
 @top_srcdir@/src/Aspect/Aspect_WidthMapEntry.cxx \
 @top_srcdir@/src/Aspect/Aspect_Window.cxx \
 @top_srcdir@/src/Aspect/Aspect_WindowDriver.cxx \
+@top_srcdir@/src/Font/Font_BRepFont.cxx \
 @top_srcdir@/src/Font/Font_FTFont.cxx \
 @top_srcdir@/src/Font/Font_FTLibrary.cxx \
 @top_srcdir@/src/Font/Font_FontMgr.cxx \
 @top_srcdir@/src/Font/Font_SystemFont.cxx \
-@top_srcdir@/src/Image/Image.cxx \
 @top_srcdir@/src/Image/Image_AlienPixMap.cxx \
-@top_srcdir@/src/Image/Image_AveragePixelInterpolation.cxx \
-@top_srcdir@/src/Image/Image_BalancedPixelInterpolation.cxx \
-@top_srcdir@/src/Image/Image_BilinearPixelInterpolation.cxx \
-@top_srcdir@/src/Image/Image_ColorImage.cxx \
-@top_srcdir@/src/Image/Image_Convertor.cxx \
 @top_srcdir@/src/Image/Image_Diff.cxx \
-@top_srcdir@/src/Image/Image_Image.cxx \
 @top_srcdir@/src/Image/Image_PixMap.cxx \
-@top_srcdir@/src/Image/Image_PixelAddress.cxx \
-@top_srcdir@/src/Image/Image_PixelInterpolation.cxx \
-@top_srcdir@/src/Image/Image_PlanarPixelInterpolation.cxx \
-@top_srcdir@/src/Image/Image_PseudoColorImage.cxx \
 @top_srcdir@/src/InterfaceGraphic/InterfaceGraphic_Palette.c \
 @top_srcdir@/src/InterfaceGraphic/InterfaceGraphic_cPrintf.cxx \
 @top_srcdir@/src/SelectBasics/SelectBasics.cxx \

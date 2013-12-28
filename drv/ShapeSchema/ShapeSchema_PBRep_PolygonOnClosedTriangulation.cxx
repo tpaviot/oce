@@ -44,6 +44,8 @@ void ShapeSchema_PBRep_PolygonOnClosedTriangulation::SWrite(const Handle(Standar
   if (!p.IsNull()) {
     Handle(PBRep_PolygonOnClosedTriangulation) &pp = (Handle(PBRep_PolygonOnClosedTriangulation)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_PTopLoc_Location::SWrite(pp->_CSFDB_GetPBRep_CurveRepresentationmyLocation(),f,theSchema);
@@ -66,6 +68,8 @@ void ShapeSchema_PBRep_PolygonOnClosedTriangulation::SRead(const Handle(Standard
 { 
   if (!p.IsNull()) {
     Handle(PBRep_PolygonOnClosedTriangulation) &pp = (Handle(PBRep_PolygonOnClosedTriangulation)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

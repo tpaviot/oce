@@ -40,6 +40,8 @@ void ShapeSchema_PPoly_Polygon2D::SWrite(const Handle(Standard_Persistent)& p, S
   if (!p.IsNull()) {
     Handle(PPoly_Polygon2D) &pp = (Handle(PPoly_Polygon2D)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutReal(pp->_CSFDB_GetPPoly_Polygon2DmyDeflection());
@@ -59,6 +61,8 @@ void ShapeSchema_PPoly_Polygon2D::SRead(const Handle(Standard_Persistent)& p, St
 { 
   if (!p.IsNull()) {
     Handle(PPoly_Polygon2D) &pp = (Handle(PPoly_Polygon2D)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -34,14 +34,14 @@
 #ifndef _Extrema_SeqPOnCOfCCLocFOfLocECCOfLocateExtCC_HeaderFile
 #include <Extrema_SeqPOnCOfCCLocFOfLocECCOfLocateExtCC.hxx>
 #endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
+#endif
 #ifndef _math_FunctionSetWithDerivatives_HeaderFile
 #include <math_FunctionSetWithDerivatives.hxx>
 #endif
 #ifndef _Handle_Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECCOfLocateExtCC_HeaderFile
 #include <Handle_Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECCOfLocateExtCC.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
@@ -69,7 +69,7 @@ public:
   
   Standard_EXPORT   Extrema_CCLocFOfLocECCOfLocateExtCC(const Adaptor3d_Curve& C1,const Adaptor3d_Curve& C2,const Standard_Real thetol = 1.0e-10);
   
-        void SetCurve(const Standard_Integer theRank,const Adaptor3d_Curve& C1) ;
+  Standard_EXPORT     void SetCurve(const Standard_Integer theRank,const Adaptor3d_Curve& C1) ;
   
         void SetTolerance(const Standard_Real theTol) ;
   
@@ -94,6 +94,10 @@ public:
         Standard_Address CurvePtr(const Standard_Integer theRank) const;
   
         Standard_Real Tolerance() const;
+  
+  Standard_EXPORT     void SubIntervalInitialize(const math_Vector& theUfirst,const math_Vector& theUlast) ;
+  
+  Standard_EXPORT     Standard_Real SearchOfTolerance(const Standard_Address C) ;
 
 
 
@@ -120,6 +124,14 @@ gp_Vec myDu;
 gp_Vec myDv;
 TColStd_SequenceOfReal mySqDist;
 Extrema_SeqPOnCOfCCLocFOfLocECCOfLocateExtCC myPoints;
+Standard_Real myTolC1;
+Standard_Real myTolC2;
+Standard_Integer myMaxDerivOrderC1;
+Standard_Integer myMaxDerivOrderC2;
+Standard_Real myUinfium;
+Standard_Real myUsupremum;
+Standard_Real myVinfium;
+Standard_Real myVsupremum;
 
 
 };

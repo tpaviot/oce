@@ -41,11 +41,11 @@ class TColStd_HArray1OfBoolean : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColStd_HArray1OfBoolean(const Standard_Integer Low,const Standard_Integer Up);
+      TColStd_HArray1OfBoolean(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColStd_HArray1OfBoolean(const Standard_Integer Low,const Standard_Integer Up,const Standard_Boolean& V);
+      TColStd_HArray1OfBoolean(const Standard_Integer Low,const Standard_Integer Up,const Standard_Boolean& V);
   
-  Standard_EXPORT     void Init(const Standard_Boolean& V) ;
+        void Init(const Standard_Boolean& V) ;
   
         Standard_Integer Length() const;
   

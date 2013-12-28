@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRep_Array1OfVPointInter(const Standard_Integer Low,const Standard_Integer Up);
+      TopOpeBRep_Array1OfVPointInter(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TopOpeBRep_Array1OfVPointInter(const TopOpeBRep_VPointInter& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TopOpeBRep_Array1OfVPointInter(const TopOpeBRep_VPointInter& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const TopOpeBRep_VPointInter& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TopOpeBRep_Array1OfVPointInter()
 {
   Destroy();

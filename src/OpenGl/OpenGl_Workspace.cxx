@@ -1,23 +1,23 @@
 // Created on: 2011-09-20
 // Created by: Sergey ZERCHANINOV
-// Copyright (c) 2011-2012 OPEN CASCADE SAS
+// Copyright (c) 2011-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
-#include <OpenGl_GlCore12.hxx>
+#ifdef HAVE_CONFIG_H
+  #include <config.h>
+#endif
+
+#include <OpenGl_GlCore15.hxx>
 
 #include <InterfaceGraphic.hxx>
 
@@ -28,11 +28,13 @@
 #include <OpenGl_Context.hxx>
 #include <OpenGl_FrameBuffer.hxx>
 #include <OpenGl_Texture.hxx>
+#include <OpenGl_View.hxx>
 #include <OpenGl_Workspace.hxx>
+#include <OpenGl_Element.hxx>
 
 #include <Graphic3d_TextureParams.hxx>
 
-#if (defined(_WIN32) || defined(__WIN32__)) && defined(HAVE_VIDEOCAPTURE)
+#if defined(_WIN32) && defined(HAVE_VIDEOCAPTURE)
   #include <OpenGl_AVIWriter.hxx>
 #endif
 
@@ -41,7 +43,8 @@ IMPLEMENT_STANDARD_RTTIEXT(OpenGl_Workspace,OpenGl_Window)
 
 namespace
 {
-  static const TEL_COLOUR myDefaultHighlightColor = { { 1.F, 1.F, 1.F, 1.F } };
+  static const TEL_COLOUR  THE_WHITE_COLOR = { { 1.0f, 1.0f, 1.0f, 1.0f } };
+  static const OpenGl_Vec4 THE_BLACK_COLOR      (0.0f, 0.0f, 0.0f, 1.0f);
 
   static const OpenGl_AspectLine myDefaultAspectLine;
   static const OpenGl_AspectFace myDefaultAspectFace;
@@ -64,16 +67,83 @@ namespace
 };
 
 // =======================================================================
+// function : Init
+// purpose  :
+// =======================================================================
+void OpenGl_Material::Init (const OPENGL_SURF_PROP& theProp)
+{
+  // ambient component
+  if (theProp.color_mask & OPENGL_AMBIENT_MASK)
+  {
+    const float* aSrcAmb = theProp.isphysic ? theProp.ambcol.rgb : theProp.matcol.rgb;
+    Ambient = OpenGl_Vec4 (aSrcAmb[0] * theProp.amb,
+                           aSrcAmb[1] * theProp.amb,
+                           aSrcAmb[2] * theProp.amb,
+                           1.0f);
+  }
+  else
+  {
+    Ambient = THE_BLACK_COLOR;
+  }
+
+  // diffusion component
+  if (theProp.color_mask & OPENGL_DIFFUSE_MASK)
+  {
+    const float* aSrcDif = theProp.isphysic ? theProp.difcol.rgb : theProp.matcol.rgb;
+    Diffuse = OpenGl_Vec4 (aSrcDif[0] * theProp.diff,
+                           aSrcDif[1] * theProp.diff,
+                           aSrcDif[2] * theProp.diff,
+                           1.0f);
+  }
+  else
+  {
+    Diffuse = THE_BLACK_COLOR;
+  }
+
+  // specular component
+  if (theProp.color_mask & OPENGL_SPECULAR_MASK)
+  {
+    const float* aSrcSpe = theProp.isphysic ? theProp.speccol.rgb : THE_WHITE_COLOR.rgb;
+    Specular = OpenGl_Vec4 (aSrcSpe[0] * theProp.spec,
+                            aSrcSpe[1] * theProp.spec,
+                            aSrcSpe[2] * theProp.spec,
+                            1.0f);
+  }
+  else
+  {
+    Specular = THE_BLACK_COLOR;
+  }
+
+  // emission component
+  if (theProp.color_mask & OPENGL_EMISSIVE_MASK)
+  {
+    const float* aSrcEms = theProp.isphysic ? theProp.emscol.rgb : theProp.matcol.rgb;
+    Emission = OpenGl_Vec4 (aSrcEms[0] * theProp.emsv,
+                            aSrcEms[1] * theProp.emsv,
+                            aSrcEms[2] * theProp.emsv,
+                            1.0f);
+  }
+  else
+  {
+    Emission = THE_BLACK_COLOR;
+  }
+
+  ChangeShine()        = theProp.shine;
+  ChangeTransparency() = theProp.trans;
+}
+
+// =======================================================================
 // function : OpenGl_Workspace
 // purpose  :
 // =======================================================================
 OpenGl_Workspace::OpenGl_Workspace (const Handle(OpenGl_Display)& theDisplay,
                                     const CALL_DEF_WINDOW&        theCWindow,
                                     Aspect_RenderingContext       theGContext,
+                                    const Handle(OpenGl_Caps)&    theCaps,
                                     const Handle(OpenGl_Context)& theShareCtx)
-: OpenGl_Window (theDisplay, theCWindow, theGContext, theShareCtx),
+: OpenGl_Window (theDisplay, theCWindow, theGContext, theCaps, theShareCtx),
   NamedStatus (0),
-  HighlightColor (&myDefaultHighlightColor),
+  HighlightColor (&THE_WHITE_COLOR),
   //
   myIsTransientOpen (Standard_False),
   myRetainMode (Standard_False),
@@ -96,6 +166,7 @@ OpenGl_Workspace::OpenGl_Workspace (const Handle(OpenGl_Display)& theDisplay,
   TextParam_applied (NULL),
   ViewMatrix_applied (&myDefaultMatrix),
   StructureMatrix_applied (&myDefaultMatrix),
+  myModelViewMatrix (myDefaultMatrix),
   PolygonOffset_applied (NULL)
 {
   theDisplay->InitAttributes();
@@ -114,6 +185,21 @@ OpenGl_Workspace::OpenGl_Workspace (const Handle(OpenGl_Display)& theDisplay,
 
   // Polygon Offset
   EnablePolygonOffset();
+
+#ifdef HAVE_OPENCL
+
+  myComputeInitStatus = OpenGl_CLIS_NONE;
+
+  myViewModificationStatus = 0;
+  myLayersModificationStatus = 0;
+
+  myRaytraceOutputTexture[0] = 0;
+  myRaytraceOutputTexture[1] = 0;
+
+  myIsRaytraceDataValid = Standard_False;
+  myToUpdateRaytraceData = Standard_False;
+
+#endif
 }
 
 // =======================================================================
@@ -133,6 +219,9 @@ Standard_Boolean OpenGl_Workspace::SetImmediateModeDrawToFront (const Standard_B
 // =======================================================================
 OpenGl_Workspace::~OpenGl_Workspace()
 {
+#ifdef HAVE_OPENCL
+  ReleaseOpenCL();
+#endif
 }
 
 // =======================================================================
@@ -168,7 +257,7 @@ void OpenGl_Workspace::UseTransparency (const Standard_Boolean theFlag)
 void OpenGl_Workspace::ResetAppliedAspect()
 {
   NamedStatus           = !myTextureBound.IsNull() ? OPENGL_NS_TEXTURE : 0;
-  HighlightColor        = &myDefaultHighlightColor;
+  HighlightColor        = &THE_WHITE_COLOR;
   AspectLine_set        = &myDefaultAspectLine;
   AspectLine_applied    = NULL;
   AspectFace_set        = &myDefaultAspectFace;
@@ -223,6 +312,10 @@ Handle(OpenGl_Texture) OpenGl_Workspace::DisableTexture()
       {
         glDisable (GL_TEXTURE_GEN_S);
         glDisable (GL_TEXTURE_GEN_T);
+        if (myTextureBound->GetParams()->GenMode() == Graphic3d_TOTM_SPRITE)
+        {
+          glDisable (GL_POINT_SPRITE);
+        }
       }
       glDisable (GL_TEXTURE_2D);
       break;
@@ -300,12 +393,26 @@ void OpenGl_Workspace::setTextureParams (Handle(OpenGl_Texture)&                
       glPopMatrix();
       break;
     }
+    case Graphic3d_TOTM_SPRITE:
+    {
+      if (GetGlContext()->core20 != NULL)
+      {
+        glEnable  (GL_POINT_SPRITE);
+        glTexEnvi (GL_POINT_SPRITE, GL_COORD_REPLACE, GL_TRUE);
+        glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+        GetGlContext()->core15->glPointParameteri (GL_POINT_SPRITE_COORD_ORIGIN, GL_LOWER_LEFT);
+      }
+      break;
+    }
     case Graphic3d_TOTM_MANUAL:
     default: break;
   }
 
   // setup lighting
-  glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, aParams->IsModulate() ? GL_MODULATE : GL_DECAL);
+  if (aParams->GenMode() != Graphic3d_TOTM_SPRITE)
+  {
+    glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, aParams->IsModulate() ? GL_MODULATE : GL_DECAL);
+  }
 
   // setup texture filtering and wrapping
   //if (theTexture->GetParams() != theParams)
@@ -458,16 +565,34 @@ void OpenGl_Workspace::Redraw (const Graphic3d_CView& theCView,
   if (aFrameBuffer != NULL)
   {
     glGetIntegerv (GL_VIEWPORT, aViewPortBack);
-    aFrameBuffer->SetupViewport();
-    aFrameBuffer->BindBuffer (aGlCtx);
+    aFrameBuffer->SetupViewport (aGlCtx);
+    aFrameBuffer->BindBuffer    (aGlCtx);
     toSwap = 0; // no need to swap buffers
   }
 
-  Redraw1 (theCView, theCUnderLayer, theCOverLayer, toSwap);
-  if (aFrameBuffer == NULL || !myTransientDrawToFront)
+#ifdef HAVE_OPENCL
+  if (!theCView.IsRaytracing || myComputeInitStatus == OpenGl_CLIS_FAIL)
   {
-    RedrawImmediatMode();
+#endif
+    Redraw1 (theCView, theCUnderLayer, theCOverLayer, toSwap);
+    if (aFrameBuffer == NULL || !myTransientDrawToFront)
+    {
+      RedrawImmediatMode();
+    }
+
+    theCView.WasRedrawnGL = Standard_True;
+#ifdef HAVE_OPENCL
   }
+  else
+  {
+    int aSizeX = aFrameBuffer != NULL ? aFrameBuffer->GetVPSizeX() : myWidth;
+    int aSizeY = aFrameBuffer != NULL ? aFrameBuffer->GetVPSizeY() : myHeight;
+
+    Raytrace (theCView, aSizeX, aSizeY, toSwap);
+
+    theCView.WasRedrawnGL = Standard_False;
+  }
+#endif
 
   if (aFrameBuffer != NULL)
   {

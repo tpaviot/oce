@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESSolid_Array1OfShell(const Standard_Integer Low,const Standard_Integer Up);
+      IGESSolid_Array1OfShell(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESSolid_Array1OfShell(const Handle(IGESSolid_Shell)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESSolid_Array1OfShell(const Handle(IGESSolid_Shell)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(IGESSolid_Shell)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESSolid_Array1OfShell()
 {
   Destroy();

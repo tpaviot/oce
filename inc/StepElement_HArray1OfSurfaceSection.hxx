@@ -42,11 +42,11 @@ class StepElement_HArray1OfSurfaceSection : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepElement_HArray1OfSurfaceSection(const Standard_Integer Low,const Standard_Integer Up);
+      StepElement_HArray1OfSurfaceSection(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepElement_HArray1OfSurfaceSection(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepElement_SurfaceSection)& V);
+      StepElement_HArray1OfSurfaceSection(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepElement_SurfaceSection)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepElement_SurfaceSection)& V) ;
+        void Init(const Handle(StepElement_SurfaceSection)& V) ;
   
         Standard_Integer Length() const;
   

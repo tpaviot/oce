@@ -2,19 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{4481AD19-18CD-09A4-147B-9A4A1E7837FE}</UniqueIdentifier>
+      <UniqueIdentifier>{E9B1CDF9-0576-0606-095A-17E3895B5738}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StlMesh">
-      <UniqueIdentifier>{A4134C3E-0F78-1950-15EF-C9DCFBCB0167}</UniqueIdentifier>
+      <UniqueIdentifier>{BB26F25F-17AD-0239-05E1-F6CA7C67BB64}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StlAPI">
-      <UniqueIdentifier>{C932EFE2-0947-097C-15EA-9CBCBF2BB053}</UniqueIdentifier>
+      <UniqueIdentifier>{3FB90298-1631-1643-0AF8-AE9FE0825EC4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StlTransfer">
-      <UniqueIdentifier>{452276ED-0E5E-0B80-145B-34F68524A647}</UniqueIdentifier>
+      <UniqueIdentifier>{1B982C1A-11C7-0C2F-1610-21B3AC9AFBF1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStl">
-      <UniqueIdentifier>{20BB667E-0151-12BD-0C15-8AA7C80D7BDC}</UniqueIdentifier>
+      <UniqueIdentifier>{1293BB5A-0C05-0651-13D8-E8D90A013DBD}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

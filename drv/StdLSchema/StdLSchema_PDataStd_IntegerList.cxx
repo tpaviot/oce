@@ -40,6 +40,8 @@ void StdLSchema_PDataStd_IntegerList::SWrite(const Handle(Standard_Persistent)& 
   if (!p.IsNull()) {
     Handle(PDataStd_IntegerList) &pp = (Handle(PDataStd_IntegerList)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDataStd_IntegerListmyValue(),f);
@@ -58,6 +60,8 @@ void StdLSchema_PDataStd_IntegerList::SRead(const Handle(Standard_Persistent)& p
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_IntegerList) &pp = (Handle(PDataStd_IntegerList)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

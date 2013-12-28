@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKHLR"
-	ProjectGUID="{28DE4BD1-1363-088B-1365-A337E3AA4401}"
+	ProjectGUID="{8A291328-11AD-07A8-0D82-0909F06B7BFE}"
 	>
 	<Platforms>
 		<Platform
@@ -47,19 +47,20 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\HLRAppli;..\..\..\src\HLRAppli;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\obj\TKHLR\TKHLR.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc8\obj\TKHLR/"
 				ObjectFile=".\..\..\..\win32\vc8\obj\TKHLR/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc8\obj\TKHLR/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -69,7 +70,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -144,17 +145,19 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\HLRAppli;..\..\..\src\HLRAppli;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\objd\TKHLR\TKHLR.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc8\objd\TKHLR/"
 				ObjectFile=".\..\..\..\win32\vc8\objd\TKHLR/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc8\objd\TKHLR/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -167,7 +170,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -242,19 +245,20 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\HLRAppli;..\..\..\src\HLRAppli;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\obj\TKHLR\TKHLR.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc8\obj\TKHLR/"
 				ObjectFile=".\..\..\..\win64\vc8\obj\TKHLR/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc8\obj\TKHLR/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -264,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -340,17 +344,19 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\HLRTopoBRep;..\..\..\src\HLRTopoBRep;..\..\..\drv\HLRBRep;..\..\..\src\HLRBRep;..\..\..\drv\HLRAlgo;..\..\..\src\HLRAlgo;..\..\..\drv\HLRAppli;..\..\..\src\HLRAppli;..\..\..\drv\Intrv;..\..\..\src\Intrv;..\..\..\drv\TopBas;..\..\..\src\TopBas;..\..\..\drv\TopCnx;..\..\..\src\TopCnx;..\..\..\drv\Contap;..\..\..\src\Contap;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\objd\TKHLR\TKHLR.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc8\objd\TKHLR/"
 				ObjectFile=".\..\..\..\win64\vc8\objd\TKHLR/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc8\objd\TKHLR/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -363,7 +369,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__HLRTopoBRep_DLL;__HLRBRep_DLL;__HLRAlgo_DLL;__HLRAppli_DLL;__Intrv_DLL;__TopBas_DLL;__TopCnx_DLL;__Contap_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -769,6 +775,13 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\HLRAlgo\HLRAlgo_WiresBlock.cxx">
+				</File>
+			</Filter>
+			<Filter
+				Name="HLRAppli"
+				>
+				<File
+					RelativePath="..\..\..\src\HLRAppli\HLRAppli_ReflectLines.cxx">
 				</File>
 			</Filter>
 			<Filter

@@ -40,6 +40,8 @@ void ShapeSchema_PGeom2d_OffsetCurve::SWrite(const Handle(Standard_Persistent)& 
   if (!p.IsNull()) {
     Handle(PGeom2d_OffsetCurve) &pp = (Handle(PGeom2d_OffsetCurve)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPGeom2d_OffsetCurvebasisCurve(),f);
@@ -59,6 +61,8 @@ void ShapeSchema_PGeom2d_OffsetCurve::SRead(const Handle(Standard_Persistent)& p
 { 
   if (!p.IsNull()) {
     Handle(PGeom2d_OffsetCurve) &pp = (Handle(PGeom2d_OffsetCurve)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

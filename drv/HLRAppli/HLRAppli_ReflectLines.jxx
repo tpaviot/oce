@@ -1,0 +1,6 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _HLRAppli_ReflectLines_HeaderFile
+#include <HLRAppli_ReflectLines.hxx>
+#endif

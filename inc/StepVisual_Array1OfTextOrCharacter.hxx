@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepVisual_Array1OfTextOrCharacter(const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_Array1OfTextOrCharacter(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepVisual_Array1OfTextOrCharacter(const StepVisual_TextOrCharacter& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_Array1OfTextOrCharacter(const StepVisual_TextOrCharacter& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const StepVisual_TextOrCharacter& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepVisual_Array1OfTextOrCharacter()
 {
   Destroy();

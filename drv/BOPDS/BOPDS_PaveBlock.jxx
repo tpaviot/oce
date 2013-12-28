@@ -1,6 +1,3 @@
-#ifndef _BOPDS_CommonBlock_HeaderFile
-#include <BOPDS_CommonBlock.hxx>
-#endif
 #ifndef _BOPDS_Pave_HeaderFile
 #include <BOPDS_Pave.hxx>
 #endif

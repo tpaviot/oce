@@ -1,23 +1,18 @@
 // Created on: 1999-09-16
 // Created by: Edward AGAPOV
 // Copyright (c) 1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Standard_NotImplemented.hxx>
 #include <Standard_OutOfRange.hxx>
@@ -126,21 +121,21 @@ void Extrema_ExtPExtS::MakePreciser (Standard_Real& U,
     while (notFound) {
       U = U + step;
       if (U > myusup) {
-	U = myusup;
-	break;
+	      U = myusup;
+	      break;
       }
       if (U < myuinf) {
-	U = myuinf;
-	break;
+	      U = myuinf;
+	      break;
       }
       D2e = D2next;
       Pe = Pnext;
       Pnext = ProjectPnt (OrtogSection, myDirection, GetValue(U+step, myC));
       D2next = P.SquareDistance(Pnext);
       if (isMin) 
-	notFound = D2e > D2next;
+	      notFound = D2e > D2next;
       else 
-	notFound = D2e < D2next;
+	      notFound = D2e < D2next;
     }
   }
 }
@@ -205,6 +200,7 @@ void Extrema_ExtPExtS::Initialize(const Adaptor3d_SurfaceOfLinearExtrusion& S,
 
   myF.Initialize(S);
   myC = anACurve;
+  myS = (Adaptor3d_SurfacePtr)&S;
   myPosition = GetPosition(myC);
   myDirection = S.Direction();
   myIsAnalyticallyComputable = //Standard_False;
@@ -225,6 +221,9 @@ void Extrema_ExtPExtS::Initialize(const Adaptor3d_SurfaceOfLinearExtrusion& S,
 
 void Extrema_ExtPExtS::Perform (const gp_Pnt& P)
 {
+  const Standard_Integer NbExtMax = 4; //dimension of arrays
+                                       //myPoint[] and mySqDist[]
+                                       //For "analytical" case
   myDone = Standard_False;
   myNbExt = 0;
   
@@ -260,10 +259,10 @@ void Extrema_ExtPExtS::Perform (const gp_Pnt& P)
     U = POC.Parameter();
     //// modified by jgv, 23.12.2008 for OCC17194 ////
     if (myC->IsPeriodic())
-      {
-	Standard_Real U2 = U;
-	ElCLib::AdjustPeriodic(myuinf, myuinf + 2.*M_PI, Precision::PConfusion(), U, U2);
-      }
+    {
+      Standard_Real U2 = U;
+      ElCLib::AdjustPeriodic(myuinf, myuinf + 2.*M_PI, Precision::PConfusion(), U, U2);
+    }
     //////////////////////////////////////////////////
     gp_Pnt E = POC.Value();
     Pe = ProjectPnt(anOrtogSection, myDirection, E);
@@ -276,6 +275,10 @@ void Extrema_ExtPExtS::Perform (const gp_Pnt& P)
       myPoint[myNbExt] = Extrema_POnSurf(U, V, Pe);
       mySqDist[myNbExt] = anExt.SquareDistance(i);
       myNbExt++;
+      if(myNbExt == NbExtMax)
+      {
+        break;
+      }
       // modified by NIZHNY-MKK  Thu Sep 18 14:46:18 2003.END
     }
     else {
@@ -291,17 +294,26 @@ void Extrema_ExtPExtS::Perform (const gp_Pnt& P)
 //      for (Standard_Integer k=1 ; k <= myF.NbExt(); 
       Standard_Integer k;
       for ( k=1 ; k <= myF.NbExt(); k++) {
-	if (IsOriginalPnt(myF.Point(k).Value(), myPoint, myNbExt)) {
-	  // modified by NIZHNY-MKK  Thu Sep 18 14:46:41 2003.BEGIN
-	  // 	  myPoint[++myNbExt] = myF.Point(k);
-	  // 	  myValue[myNbExt] = myF.Value(k);
-	  myPoint[myNbExt] = myF.Point(k);
-	  mySqDist[myNbExt] = myF.SquareDistance(k);
-	  myNbExt++;
-	  // modified by NIZHNY-MKK  Thu Sep 18 14:46:43 2003.END
-	}
+	      if (IsOriginalPnt(myF.Point(k).Value(), myPoint, myNbExt)) {
+	        // modified by NIZHNY-MKK  Thu Sep 18 14:46:41 2003.BEGIN
+	        // 	  myPoint[++myNbExt] = myF.Point(k);
+	        // 	  myValue[myNbExt] = myF.Value(k);
+	        myPoint[myNbExt] = myF.Point(k);
+	        mySqDist[myNbExt] = myF.SquareDistance(k);
+	        myNbExt++;
+          if(myNbExt == NbExtMax)
+          {
+            break;
+          }
+	        // modified by NIZHNY-MKK  Thu Sep 18 14:46:43 2003.END
+	      }
+      }
+      if(myNbExt == NbExtMax)
+      {
+        break;
       }
       // try symmetric point
+      myF.SetPoint(P); //To clear previous solutions
       U *= -1;
       MakePreciser(U, P, isMin, anOrtogSection);
       E = GetValue(U, myC);
@@ -312,15 +324,57 @@ void Extrema_ExtPExtS::Perform (const gp_Pnt& P)
       aFSR.Perform (myF,UV,UVinf,UVsup);
       
       for (k=1 ; k <= myF.NbExt(); k++) {
-	if (IsOriginalPnt(myF.Point(k).Value(), myPoint, myNbExt)) {
-	  // modified by NIZHNY-MKK  Thu Sep 18 14:46:59 2003.BEGIN
-	  // 	  myPoint[++myNbExt] = myF.Point(k);
-	  // 	  myValue[myNbExt] = myF.Value(k);
-	  myPoint[myNbExt] = myF.Point(k);
-	  mySqDist[myNbExt] = myF.SquareDistance(k);
-	  myNbExt++;
-	  // modified by NIZHNY-MKK  Thu Sep 18 14:47:04 2003.END
-	}
+        if(myF.SquareDistance(k) > Precision::Confusion()*Precision::Confusion())
+        {
+          //Additional checking solution: FSR sometimes is wrong
+          //when starting point is far from solution.
+          Standard_Real dist = Sqrt(myF.SquareDistance(k));
+          math_Vector Vals(1, 2);
+          const Extrema_POnSurf& PonS=myF.Point(k);
+          Standard_Real u, v;
+          PonS.Parameter(u, v);
+          UV(1) = u;
+          UV(2) = v;
+          myF.Value(UV, Vals);
+          gp_Vec du, dv;
+          myS->D1(u, v, Pe, du, dv);
+          Standard_Real mdu = du.Magnitude();
+          Standard_Real mdv = dv.Magnitude();
+          u = Abs(Vals(1));
+          v = Abs(Vals(2));
+          if(mdu > Precision::PConfusion())
+          {
+            if(u / dist / mdu > Precision::PConfusion())
+            {
+              continue;
+            }
+          }
+          if(mdv > Precision::PConfusion())
+          {
+            if(v / dist / mdv > Precision::PConfusion())
+            {
+              continue;
+            }
+          }
+
+        }
+	      if (IsOriginalPnt(myF.Point(k).Value(), myPoint, myNbExt)) {
+	        // modified by NIZHNY-MKK  Thu Sep 18 14:46:59 2003.BEGIN
+	        // 	  myPoint[++myNbExt] = myF.Point(k);
+	        // 	  myValue[myNbExt] = myF.Value(k);
+	        myPoint[myNbExt] = myF.Point(k);
+	        mySqDist[myNbExt] = myF.SquareDistance(k);
+	        myNbExt++;
+          if(myNbExt == NbExtMax)
+          {
+            break;
+          }
+	        // modified by NIZHNY-MKK  Thu Sep 18 14:47:04 2003.END
+	      }
+      }
+      if(myNbExt == NbExtMax)
+      {
+        break;
       }
     }
   }
@@ -357,7 +411,7 @@ Standard_Real Extrema_ExtPExtS::SquareDistance (const Standard_Integer N) const
 }
 //=============================================================================
 
-Extrema_POnSurf Extrema_ExtPExtS::Point (const Standard_Integer N) const
+const Extrema_POnSurf& Extrema_ExtPExtS::Point (const Standard_Integer N) const
 {
   if (!IsDone()) { StdFail_NotDone::Raise(); }
   if ((N < 1) || (N > myNbExt)) { Standard_OutOfRange::Raise(); }

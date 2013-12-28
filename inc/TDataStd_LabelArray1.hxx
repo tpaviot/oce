@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDataStd_LabelArray1(const Standard_Integer Low,const Standard_Integer Up);
+      TDataStd_LabelArray1(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TDataStd_LabelArray1(const TDF_Label& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TDataStd_LabelArray1(const TDF_Label& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const TDF_Label& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TDataStd_LabelArray1()
 {
   Destroy();

@@ -41,13 +41,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GccEnt_Array1OfPosition(const Standard_Integer Low,const Standard_Integer Up);
+      GccEnt_Array1OfPosition(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   GccEnt_Array1OfPosition(const GccEnt_Position& Item,const Standard_Integer Low,const Standard_Integer Up);
+      GccEnt_Array1OfPosition(const GccEnt_Position& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const GccEnt_Position& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~GccEnt_Array1OfPosition()
 {
   Destroy();

@@ -2,37 +2,37 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{59DC59A9-0704-022E-0F60-2FCB74D63789}</UniqueIdentifier>
+      <UniqueIdentifier>{4D9DD5CB-181C-0359-0708-EA3717C6FC4D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TestTopOpeDraw">
-      <UniqueIdentifier>{D83F4C32-02D6-0512-1844-712AECB8F6F3}</UniqueIdentifier>
+      <UniqueIdentifier>{DE44F7D8-17C2-021D-04BA-83BB1A70C5F9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TestTopOpeTools">
-      <UniqueIdentifier>{5CE89CEA-06F3-130B-04D3-E95B7C754921}</UniqueIdentifier>
+      <UniqueIdentifier>{D56E0BF2-0F65-1446-10FB-31012742C3BF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TestTopOpe">
-      <UniqueIdentifier>{14555CFF-04A8-022A-0BB4-ED8E0105E8BE}</UniqueIdentifier>
+      <UniqueIdentifier>{416B33FE-190F-0EC0-06C2-584C77043273}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepTest">
-      <UniqueIdentifier>{F3386CEF-16BD-0FF2-122E-B0EFDB534D2D}</UniqueIdentifier>
+      <UniqueIdentifier>{8C3E6495-079D-0287-173E-9BD99FEC7659}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeometryTest">
-      <UniqueIdentifier>{EFD151B9-068A-1465-0D08-F615CF11FEDE}</UniqueIdentifier>
+      <UniqueIdentifier>{4DD5BD20-093F-00C3-12A4-4EE16EB20AC3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRTest">
-      <UniqueIdentifier>{73DC5A98-16C3-0272-10D4-B6506C5A117E}</UniqueIdentifier>
+      <UniqueIdentifier>{E0B52FD9-1498-149B-03D7-081AEF2065DB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MeshTest">
-      <UniqueIdentifier>{3276C351-02A6-0F69-0D85-DC4A5D963085}</UniqueIdentifier>
+      <UniqueIdentifier>{FF131543-0F93-0C8C-1060-D5CD9EAE765A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomliteTest">
-      <UniqueIdentifier>{4B9C46A0-0B8D-087B-1478-7B153BAEDBEA}</UniqueIdentifier>
+      <UniqueIdentifier>{DC39A1C4-18B4-04B1-0029-83BF698B97AF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DrawFairCurve">
-      <UniqueIdentifier>{E7F9A4EB-0DE9-118C-1432-7609BE79BF23}</UniqueIdentifier>
+      <UniqueIdentifier>{938B78FA-0507-117A-1281-F6601D20181A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPTest">
-      <UniqueIdentifier>{F398B7CA-07E8-1813-06E7-366079F7E40D}</UniqueIdentifier>
+      <UniqueIdentifier>{0E909303-132E-164D-0CD1-826C699B7A60}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -124,9 +124,6 @@
       <Filter>Source files\TestTopOpe</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\TestTopOpe\TestTopOpe_CORCommands.cxx">
-      <Filter>Source files\TestTopOpe</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\TestTopOpe\TestTopOpe_DSACommands.cxx">
       <Filter>Source files\TestTopOpe</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\TestTopOpe\TestTopOpe_DSF.cxx">

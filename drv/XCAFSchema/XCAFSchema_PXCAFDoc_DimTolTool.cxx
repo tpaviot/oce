@@ -39,6 +39,8 @@ void XCAFSchema_PXCAFDoc_DimTolTool::SWrite(const Handle(Standard_Persistent)& p
   if (!p.IsNull()) {
     Handle(PXCAFDoc_DimTolTool) &pp = (Handle(PXCAFDoc_DimTolTool)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -56,6 +58,8 @@ void XCAFSchema_PXCAFDoc_DimTolTool::SRead(const Handle(Standard_Persistent)& p,
 { 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_DimTolTool) &pp = (Handle(PXCAFDoc_DimTolTool)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

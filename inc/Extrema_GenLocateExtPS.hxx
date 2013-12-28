@@ -54,7 +54,7 @@ public:
   //! Returns the value of the extremum square distance. <br>
   Standard_EXPORT     Standard_Real SquareDistance() const;
   //! Returns the point of the extremum distance. <br>
-  Standard_EXPORT     Extrema_POnSurf Point() const;
+  Standard_EXPORT    const Extrema_POnSurf& Point() const;
 
 
 

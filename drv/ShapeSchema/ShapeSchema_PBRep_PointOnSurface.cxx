@@ -42,6 +42,8 @@ void ShapeSchema_PBRep_PointOnSurface::SWrite(const Handle(Standard_Persistent)&
   if (!p.IsNull()) {
     Handle(PBRep_PointOnSurface) &pp = (Handle(PBRep_PointOnSurface)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_PTopLoc_Location::SWrite(pp->_CSFDB_GetPBRep_PointRepresentationmyLocation(),f,theSchema);
@@ -64,6 +66,8 @@ void ShapeSchema_PBRep_PointOnSurface::SRead(const Handle(Standard_Persistent)& 
 { 
   if (!p.IsNull()) {
     Handle(PBRep_PointOnSurface) &pp = (Handle(PBRep_PointOnSurface)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

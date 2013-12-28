@@ -14,6 +14,7 @@
 
 void XCAFSchema_Standard_Storable::SWrite(const Standard_Storable& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
 
   f.EndWriteObjectData();
@@ -21,6 +22,7 @@ void XCAFSchema_Standard_Storable::SWrite(const Standard_Storable& pp, Storage_B
 
 void XCAFSchema_Standard_Storable::SRead(Standard_Storable& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
 
   f.EndReadObjectData();

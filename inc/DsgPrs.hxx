@@ -19,14 +19,11 @@
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
 #endif
-#ifndef _Handle_Prs3d_AngleAspect_HeaderFile
-#include <Handle_Prs3d_AngleAspect.hxx>
+#ifndef _Handle_Prs3d_DimensionAspect_HeaderFile
+#include <Handle_Prs3d_DimensionAspect.hxx>
 #endif
 #ifndef _DsgPrs_ArrowSide_HeaderFile
 #include <DsgPrs_ArrowSide.hxx>
-#endif
-#ifndef _Handle_Prs3d_LengthAspect_HeaderFile
-#include <Handle_Prs3d_LengthAspect.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
@@ -41,10 +38,9 @@
 #include <Handle_Geom_Curve.hxx>
 #endif
 class Prs3d_Presentation;
-class Prs3d_AngleAspect;
+class Prs3d_DimensionAspect;
 class gp_Pnt;
 class gp_Dir;
-class Prs3d_LengthAspect;
 class gp_Pln;
 class Geom_Surface;
 class Geom_Curve;
@@ -71,8 +67,6 @@ class DsgPrs_EqualDistancePresentation;
 class DsgPrs_SymbPresentation;
 class DsgPrs_ShapeDirPresentation;
 class DsgPrs_OffsetPresentation;
-class DsgPrs_DatumTool;
-class DsgPrs_DatumPrs;
 class DsgPrs_XYZAxisPresentation;
 class DsgPrs_XYZPlanePresentation;
 class DsgPrs_ShadedPlanePresentation;
@@ -86,10 +80,7 @@ public:
 
   //! draws symbols ((one or two) arrows,(one or two)points <br>
 //!          at thebeginning and at the end of the dimension <br>
-  Standard_EXPORT   static  void ComputeSymbol(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_AngleAspect)& anAspect,const gp_Pnt& pt1,const gp_Pnt& pt2,const gp_Dir& dir1,const gp_Dir& dir2,const DsgPrs_ArrowSide ArrowSide) ;
-  //! draws symbols ((one or two) arrows,(one or two)points <br>
-//!          at thebeginning and at the end of the dimension <br>
-  Standard_EXPORT   static  void ComputeSymbol(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_LengthAspect)& anAspect,const gp_Pnt& pt1,const gp_Pnt& pt2,const gp_Dir& dir1,const gp_Dir& dir2,const DsgPrs_ArrowSide ArrowSide,const Standard_Boolean drawFromCenter = Standard_True) ;
+  Standard_EXPORT   static  void ComputeSymbol(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_DimensionAspect)& anAspect,const gp_Pnt& pt1,const gp_Pnt& pt2,const gp_Dir& dir1,const gp_Dir& dir2,const DsgPrs_ArrowSide ArrowSide,const Standard_Boolean drawFromCenter = Standard_True) ;
   
   Standard_EXPORT   static  void ComputePlanarFacesLengthPresentation(const Standard_Real FirstArrowLength,const Standard_Real SecondArrowLength,const gp_Pnt& AttachmentPoint1,const gp_Pnt& AttachmentPoint2,const gp_Dir& DirAttach,const gp_Pnt& OffsetPoint,const gp_Pln& PlaneOfFaces,gp_Pnt& EndOfArrow1,gp_Pnt& EndOfArrow2,gp_Dir& DirOfArrow1) ;
   
@@ -141,8 +132,6 @@ friend class DsgPrs_EqualDistancePresentation;
 friend class DsgPrs_SymbPresentation;
 friend class DsgPrs_ShapeDirPresentation;
 friend class DsgPrs_OffsetPresentation;
-friend class DsgPrs_DatumTool;
-friend class DsgPrs_DatumPrs;
 friend class DsgPrs_XYZAxisPresentation;
 friend class DsgPrs_XYZPlanePresentation;
 friend class DsgPrs_ShadedPlanePresentation;

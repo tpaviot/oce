@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MeshVS_Array1OfSequenceOfInteger(const Standard_Integer Low,const Standard_Integer Up);
+      MeshVS_Array1OfSequenceOfInteger(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   MeshVS_Array1OfSequenceOfInteger(const TColStd_SequenceOfInteger& Item,const Standard_Integer Low,const Standard_Integer Up);
+      MeshVS_Array1OfSequenceOfInteger(const TColStd_SequenceOfInteger& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const TColStd_SequenceOfInteger& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~MeshVS_Array1OfSequenceOfInteger()
 {
   Destroy();

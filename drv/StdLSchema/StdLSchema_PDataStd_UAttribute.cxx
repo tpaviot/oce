@@ -40,6 +40,8 @@ void StdLSchema_PDataStd_UAttribute::SWrite(const Handle(Standard_Persistent)& p
   if (!p.IsNull()) {
     Handle(PDataStd_UAttribute) &pp = (Handle(PDataStd_UAttribute)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDataStd_UAttributemyID(),f);
@@ -58,6 +60,8 @@ void StdLSchema_PDataStd_UAttribute::SRead(const Handle(Standard_Persistent)& p,
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_UAttribute) &pp = (Handle(PDataStd_UAttribute)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

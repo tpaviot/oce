@@ -17,7 +17,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES) $(CSF_TclLibs_INCLUDES) $(CSF_TclTkLibs_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_advapi32_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_TBB_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_advapi32_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_TBB_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/QABugs -I@top_srcdir@/src/QABugs \
 -I@top_srcdir@/drv/QADNaming -I@top_srcdir@/src/QADNaming \
@@ -67,7 +67,8 @@ libTKQADraw_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKXSDRAW/libTKXSDRAW.la \
 ../TKSTL/libTKSTL.la \
 ../TKAdvTools/libTKAdvTools.la \
-$(STLPort_LIB) $(CSF_TclLibs_LIB) $(CSF_TclTkLibs_LIB) $(CSF_gdi32_LIB) $(CSF_advapi32_LIB) $(CSF_user32_LIB) $(CSF_TBB_LIB) 
+../TKVoxel/libTKVoxel.la \
+$(STLPort_LIB) $(CSF_gdi32_LIB) $(CSF_advapi32_LIB) $(CSF_user32_LIB) $(CSF_TBB_LIB) 
 
 libTKQADraw_la_SOURCES = \
 @top_srcdir@/drv/QADNaming/QADNaming_DataMapIteratorOfDataMapOfShapeOfName_0.cxx \
@@ -117,7 +118,6 @@ libTKQADraw_la_SOURCES = \
 @top_srcdir@/src/QADNaming/QADNaming_BasicCommands.cxx \
 @top_srcdir@/src/QADNaming/QADNaming_BuilderCommands.cxx \
 @top_srcdir@/src/QADNaming/QADNaming_IteratorsCommands.cxx \
-@top_srcdir@/src/QADNaming/QADNaming_Sample.cxx \
 @top_srcdir@/src/QADNaming/QADNaming_SelectionCommands.cxx \
 @top_srcdir@/src/QADNaming/QADNaming_ToolsCommands.cxx \
 @top_srcdir@/src/QADraw/QADraw.cxx \

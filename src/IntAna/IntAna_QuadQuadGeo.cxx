@@ -1,22 +1,18 @@
 // Created on: 1992-08-06
 // Created by: Laurent BUCHARD
 // Copyright (c) 1992-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //----------------------------------------------------------------------
 //-- Purposse: Geometric Intersection between two Natural Quadric 
@@ -326,7 +322,8 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
 
     Standard_Real denom2 = denom*denom;
     Standard_Real ddenom = 1. - denom2;
-    denom = ( Abs(ddenom) <= 1.e-9 ) ? 1.e-9 : ddenom;
+    //denom = ( Abs(ddenom) <= 1.e-9 ) ? 1.e-9 : ddenom;
+    denom = ( Abs(ddenom) <= 1.e-16 ) ? 1.e-16 : ddenom;
       
     Standard_Real par1 = dist1/denom;
     Standard_Real par2 = -dist2/denom;
@@ -356,7 +353,8 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
   IntAna_QuadQuadGeo::IntAna_QuadQuadGeo( const gp_Pln& P
        ,const gp_Cylinder& Cl
        ,const Standard_Real Tolang
-       ,const Standard_Real Tol)
+       ,const Standard_Real Tol
+       ,const Standard_Real H)
     : done(Standard_False),
       nbint(0),
       typeres(IntAna_Empty),
@@ -370,16 +368,17 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
       myPChar(0,0,0)
 {
   InitTolerances();
-  Perform(P,Cl,Tolang,Tol);
+  Perform(P,Cl,Tolang,Tol,H);
 }
 //=======================================================================
 //function : Perform
 //purpose  : 
 //=======================================================================
   void IntAna_QuadQuadGeo::Perform( const gp_Pln& P
-				   ,const gp_Cylinder& Cl
-				   ,const Standard_Real Tolang
-				   ,const Standard_Real Tol) 
+                                   ,const gp_Cylinder& Cl
+                                   ,const Standard_Real Tolang
+                                   ,const Standard_Real Tol
+                                   ,const Standard_Real H) 
 {
   done = Standard_False;
   Standard_Real dist,radius;
@@ -422,7 +421,7 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
     }
 
   nbint = 0;
-  IntAna_IntConicQuad inter(axec,P,tolang);
+  IntAna_IntConicQuad inter(axec,P,tolang,Tol,H);
 
   if (inter.IsParallel()) {
     // Le resultat de l intersection Plan-Cylindre est de type droite.
@@ -531,13 +530,7 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
       param1bis = radius;
     }
   }
-  if(typeres == IntAna_Ellipse) { 
-    if(   param1>100000.0*param1bis 
-       || param1bis>100000.0*param1) { 
-      done = Standard_False;
-      return;
-    }
-  }
+
   done = Standard_True;
 }
 //=======================================================================
@@ -1237,13 +1230,14 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
     Standard_Real DistA1A2=A1A2.Distance();
     gp_Dir DA1=Con1.Position().Direction();
     gp_Vec O1O2(Con1.Apex(),Con2.Apex());
-    Standard_Real O1O2_DA1=gp_Vec(DA1).Dot(O1O2);
-    
-    gp_Vec O1_Proj_A2(O1O2.X()-O1O2_DA1*DA1.X(),
-		      O1O2.Y()-O1O2_DA1*DA1.Y(),
-		      O1O2.Z()-O1O2_DA1*DA1.Z());
+    gp_Dir O1O2n(O1O2); // normalization of the vector before projection
+    Standard_Real O1O2_DA1=gp_Vec(DA1).Dot(gp_Vec(O1O2n));
+
+    gp_Vec O1_Proj_A2(O1O2n.X()-O1O2_DA1*DA1.X(),
+		      O1O2n.Y()-O1O2_DA1*DA1.Y(),
+		      O1O2n.Z()-O1O2_DA1*DA1.Z());
     gp_Dir DB1=gp_Dir(O1_Proj_A2);
-    
+
     Standard_Real yO1O2=O1O2.Dot(gp_Vec(DA1));
     Standard_Real ABSTG1 = Abs(tg1);
     Standard_Real X2 = (DistA1A2/ABSTG1 - yO1O2)*0.5;

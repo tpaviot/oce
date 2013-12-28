@@ -15,6 +15,10 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -37,6 +41,10 @@
 				<Compiler>
 					<Add option="-O0" />
 					<Add option="-g" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -123,8 +131,12 @@
 		<Unit filename="../../../src/ChFiDS/ChFiDS_StripeMap.cxx" />
 		<Unit filename="../../../src/ChFiDS/ChFiDS_SurfData.cxx" />
 		<Unit filename="../../../src/ChFi2d/ChFi2d.cxx" />
+		<Unit filename="../../../src/ChFi2d/ChFi2d_AnaFilletAlgo.cxx" />
 		<Unit filename="../../../src/ChFi2d/ChFi2d_Builder.cxx" />
 		<Unit filename="../../../src/ChFi2d/ChFi2d_Builder_0.cxx" />
+		<Unit filename="../../../src/ChFi2d/ChFi2d_ChamferAPI.cxx" />
+		<Unit filename="../../../src/ChFi2d/ChFi2d_FilletAPI.cxx" />
+		<Unit filename="../../../src/ChFi2d/ChFi2d_FilletAlgo.cxx" />
 		<Unit filename="../../../src/ChFi3d/ChFi3d.cxx" />
 		<Unit filename="../../../src/ChFi3d/ChFi3d_Builder.cxx" />
 		<Unit filename="../../../src/ChFi3d/ChFi3d_Builder_0.cxx" />

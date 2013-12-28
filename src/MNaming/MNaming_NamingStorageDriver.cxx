@@ -1,43 +1,38 @@
 // Created on: 1997-09-17
 // Created by: Isabelle GRIGNON
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <MNaming_NamingStorageDriver.ixx>
-#include <PNaming_Naming_1.hxx>
+#include <PNaming_Naming_2.hxx>
 #include <PCollection_HAsciiString.hxx>
 #include <Standard_NoSuchObject.hxx>
 #include <TDF_Tool.hxx>
 #include <TNaming_Naming.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <TNaming_Name.hxx>
-#include <PNaming_Name_1.hxx>
+#include <PNaming_Name_2.hxx>
 #include <PNaming_NamedShape.hxx>
 #include <TNaming_NamedShape.hxx>
 #include <TNaming_ListOfNamedShape.hxx>
 #include <TNaming_ListIteratorOfListOfNamedShape.hxx>
 #include <CDM_MessageDriver.hxx>
 #include <PNaming_HArray1OfNamedShape.hxx>
+#include <TopAbs_Orientation.hxx>
 
 //=======================================================================
-//function : IntegerToShapeEnum
+//function : ShapeEnumToInteger
 //purpose  : 
 //=======================================================================
 
@@ -59,7 +54,7 @@ static Standard_Integer ShapeEnumToInteger (const TopAbs_ShapeEnum   I)
 }
 
 //=======================================================================
-//function : IntegerToNameType
+//function : NameTypeToInteger
 //purpose  : 
 //=======================================================================
 
@@ -85,6 +80,24 @@ static  Standard_Integer NameTypeToInteger (const TNaming_NameType I)
   return 0;
 }
 
+//=======================================================================
+//function : OrientationToInteger
+//purpose  : 
+//=======================================================================
+
+static  Standard_Integer OrientationToInteger (const TopAbs_Orientation Or) 
+{
+  switch(Or)
+    { 
+    case  TopAbs_FORWARD             : return 0;  
+    case  TopAbs_REVERSED            : return 1;
+    case  TopAbs_INTERNAL            : return 2;
+    case  TopAbs_EXTERNAL            : return 3;
+      default :
+	Standard_DomainError::Raise("TNaming_Name::myOrientation; enum term unknown ");
+    }
+  return 0;
+}
 //=======================================================================
 //function : MNaming_NamingStorageDriver
 //purpose  : 
@@ -117,7 +130,7 @@ Handle(Standard_Type) MNaming_NamingStorageDriver::SourceType() const
 //=======================================================================
 
 Handle(PDF_Attribute) MNaming_NamingStorageDriver::NewEmpty() const
-{ return new PNaming_Naming_1 (); }
+{ return new PNaming_Naming_2 (); }
 
 
 //=======================================================================
@@ -126,10 +139,10 @@ Handle(PDF_Attribute) MNaming_NamingStorageDriver::NewEmpty() const
 //=======================================================================
 
 static void  TNamingToPNaming  (const TNaming_Name&   TN,
-				Handle(PNaming_Name_1)& PN,
+				Handle(PNaming_Name_2)& PN,
 				const Handle(MDF_SRelocationTable)& RelocTable)
 {
-  PN = new PNaming_Name_1();
+  PN = new PNaming_Name_2();
   PN->Type     (NameTypeToInteger (TN.Type     ()));
   PN->ShapeType(ShapeEnumToInteger(TN.ShapeType()));
   
@@ -161,6 +174,7 @@ static void  TNamingToPNaming  (const TNaming_Name&   TN,
 
   }
   PN->ContextLabel(pEntry);
+  PN->Orientation(OrientationToInteger(TN.Orientation()));
 }
 
 //=======================================================================
@@ -173,9 +187,9 @@ void MNaming_NamingStorageDriver::Paste (
   const Handle(PDF_Attribute)&        Target,
   const Handle(MDF_SRelocationTable)& RelocTable) const
 {
-  Handle(PNaming_Naming_1) PF = Handle(PNaming_Naming_1)::DownCast(Target);
+  Handle(PNaming_Naming_2) PF = Handle(PNaming_Naming_2)::DownCast(Target);
   Handle(TNaming_Naming) F  = Handle(TNaming_Naming)::DownCast(Source);  
-  Handle(PNaming_Name_1) PN ;
+  Handle(PNaming_Name_2) PN ;
   TNamingToPNaming (F->GetName(), PN ,RelocTable);
   PF->SetName(PN);
 }

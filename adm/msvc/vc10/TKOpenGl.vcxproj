@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{CB60BC73-10E7-0C04-0436-558F4E337730}</ProjectGuid>
+    <ProjectGuid>{A32AB3D4-052E-0111-03FD-8584CBD14C84}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,16 +89,18 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\obj\TKOpenGl/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\obj\TKOpenGl/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\obj\TKOpenGl/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKService.lib;TKV3d.lib;opengl32.lib;glu32.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKService.lib;TKMath.lib;TKV3d.lib;opengl32.lib;glu32.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bin\TKOpenGl.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -129,18 +131,21 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKOpenGl/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\objd\TKOpenGl/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\objd\TKOpenGl/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKService.lib;TKV3d.lib;opengl32.lib;glu32.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKService.lib;TKMath.lib;TKV3d.lib;opengl32.lib;glu32.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bind\TKOpenGl.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -174,16 +179,17 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\obj\TKOpenGl/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\obj\TKOpenGl/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\obj\TKOpenGl/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKService.lib;TKV3d.lib;opengl32.lib;glu32.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKService.lib;TKMath.lib;TKV3d.lib;opengl32.lib;glu32.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bin\TKOpenGl.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -214,18 +220,20 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKOpenGl/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\objd\TKOpenGl/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\objd\TKOpenGl/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKService.lib;TKV3d.lib;opengl32.lib;glu32.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKService.lib;TKMath.lib;TKV3d.lib;opengl32.lib;glu32.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bind\TKOpenGl.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -236,6 +244,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_AABB.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_AVIWriter.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_AspectFace.cxx">
@@ -246,6 +256,14 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_AspectText.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_CappingAlgo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_CappingPlaneResource.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Caps.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Clipping.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Context.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Display.cxx">
@@ -253,6 +271,8 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Display_2.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Element.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Flipper.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Font.cxx">
     </ClCompile>
@@ -272,8 +292,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_7.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_703.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_713.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_Export.cxx">
@@ -286,11 +304,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_LayerList.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Marker.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_MarkerSet.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Matrix.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PointSprite.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PrimitiveArray.cxx">
     </ClCompile>
@@ -298,7 +314,23 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PriorityList.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_RaytraceSource.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_RenderFilter.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Resource.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_SceneGeometry.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ShaderManager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ShaderObject.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ShaderProgram.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ShaderStates.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_StencilTest.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Structure.cxx">
     </ClCompile>
@@ -329,6 +361,8 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_3.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_5.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_Raytrace.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_telem_util.cxx">
     </ClCompile>

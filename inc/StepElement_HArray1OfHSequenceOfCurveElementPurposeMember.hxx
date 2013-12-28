@@ -42,11 +42,11 @@ class StepElement_HArray1OfHSequenceOfCurveElementPurposeMember : public MMgt_TS
 public:
 
   
-  Standard_EXPORT   StepElement_HArray1OfHSequenceOfCurveElementPurposeMember(const Standard_Integer Low,const Standard_Integer Up);
+      StepElement_HArray1OfHSequenceOfCurveElementPurposeMember(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepElement_HArray1OfHSequenceOfCurveElementPurposeMember(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepElement_HSequenceOfCurveElementPurposeMember)& V);
+      StepElement_HArray1OfHSequenceOfCurveElementPurposeMember(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepElement_HSequenceOfCurveElementPurposeMember)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepElement_HSequenceOfCurveElementPurposeMember)& V) ;
+        void Init(const Handle(StepElement_HSequenceOfCurveElementPurposeMember)& V) ;
   
         Standard_Integer Length() const;
   

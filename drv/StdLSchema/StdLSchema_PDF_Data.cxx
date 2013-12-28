@@ -41,6 +41,8 @@ void StdLSchema_PDF_Data::SWrite(const Handle(Standard_Persistent)& p, Storage_B
   if (!p.IsNull()) {
     Handle(PDF_Data) &pp = (Handle(PDF_Data)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPDF_DatamyVersion());
@@ -61,6 +63,8 @@ void StdLSchema_PDF_Data::SRead(const Handle(Standard_Persistent)& p, Storage_Ba
 { 
   if (!p.IsNull()) {
     Handle(PDF_Data) &pp = (Handle(PDF_Data)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

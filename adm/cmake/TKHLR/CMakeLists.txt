@@ -4,6 +4,7 @@ if (WIN32)
   list( APPEND TKHLR_PRECOMPILED_DEFS "-D__HLRTopoBRep_DLL" )
   list( APPEND TKHLR_PRECOMPILED_DEFS "-D__HLRBRep_DLL" )
   list( APPEND TKHLR_PRECOMPILED_DEFS "-D__HLRAlgo_DLL" )
+  list( APPEND TKHLR_PRECOMPILED_DEFS "-D__HLRAppli_DLL" )
   list( APPEND TKHLR_PRECOMPILED_DEFS "-D__Intrv_DLL" )
   list( APPEND TKHLR_PRECOMPILED_DEFS "-D__TopBas_DLL" )
   list( APPEND TKHLR_PRECOMPILED_DEFS "-D__TopCnx_DLL" )
@@ -19,6 +20,8 @@ endif()
   list( APPEND TKHLR_COMPILER_DIRECTORIES "../../../src/HLRBRep" )
   list( APPEND TKHLR_COMPILER_DIRECTORIES "../../../drv/HLRAlgo" )
   list( APPEND TKHLR_COMPILER_DIRECTORIES "../../../src/HLRAlgo" )
+  list( APPEND TKHLR_COMPILER_DIRECTORIES "../../../drv/HLRAppli" )
+  list( APPEND TKHLR_COMPILER_DIRECTORIES "../../../src/HLRAppli" )
   list( APPEND TKHLR_COMPILER_DIRECTORIES "../../../drv/Intrv" )
   list( APPEND TKHLR_COMPILER_DIRECTORIES "../../../src/Intrv" )
   list( APPEND TKHLR_COMPILER_DIRECTORIES "../../../drv/TopBas" )
@@ -391,6 +394,9 @@ endif()
   list( APPEND TKHLR_USED_SRCFILES "../../../src/HLRAlgo/HLRAlgo_WiresBlock.cxx" )
   SOURCE_GROUP (HLRAlgo FILES "../../../src/HLRAlgo/HLRAlgo_WiresBlock.cxx")
 
+  list( APPEND TKHLR_USED_SRCFILES "../../../src/HLRAppli/HLRAppli_ReflectLines.cxx" )
+  SOURCE_GROUP (HLRAppli FILES "../../../src/HLRAppli/HLRAppli_ReflectLines.cxx")
+
   list( APPEND TKHLR_USED_SRCFILES "../../../drv/Intrv/Intrv_SequenceNodeOfSequenceOfInterval_0.cxx" )
   SOURCE_GROUP (Intrv FILES "../../../drv/Intrv/Intrv_SequenceNodeOfSequenceOfInterval_0.cxx")
 
@@ -498,6 +504,10 @@ endif()
 
 if (WIN32)
 else()
+
+  if (APPLE)
+
+  endif()
 
 endif()
 

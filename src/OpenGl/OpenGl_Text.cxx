@@ -2,26 +2,24 @@
 // Created by: Sergey ZERCHANINOV
 // Copyright (c) 2011-2013 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-#include <OpenGl_GlCore11.hxx>
-#include <OpenGl_Text.hxx>
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <OpenGl_AspectText.hxx>
+#include <OpenGl_GlCore11.hxx>
 #include <OpenGl_GraphicDriver.hxx>
+#include <OpenGl_ShaderManager.hxx>
+#include <OpenGl_ShaderProgram.hxx>
+#include <OpenGl_ShaderStates.hxx>
+#include <OpenGl_Text.hxx>
 #include <OpenGl_Workspace.hxx>
 
 #include <Font_FontMgr.hxx>
@@ -133,7 +131,7 @@ namespace
     // Standard GL2PS's alignment isn't used, because it doesn't work correctly
     // for all formats, therefore alignment is calculated manually relative
     // to the bottom-left corner, which corresponds to the GL2PS_TEXT_BL value
-    gl2psTextOpt (theText.ToCString(), aPsFont, theHeight, GL2PS_TEXT_BL, theAspect.Angle());
+    gl2psTextOpt (theText.ToCString(), aPsFont, (GLshort)theHeight, GL2PS_TEXT_BL, theAspect.Angle());
   }
 #endif
 
@@ -385,11 +383,34 @@ void OpenGl_Text::Render (const Handle(OpenGl_Workspace)& theWorkspace) const
   const OpenGl_AspectText* aTextAspect = theWorkspace->AspectText (Standard_True);
   const Handle(OpenGl_Texture) aPrevTexture = theWorkspace->DisableTexture();
 
+  const Handle(OpenGl_Context)& aCtx = theWorkspace->GetGlContext();
+
+  if (aCtx->IsGlGreaterEqual (2, 0))
+  {
+    Handle(OpenGl_ShaderProgram) aProgram = aTextAspect->ShaderProgramRes (theWorkspace);
+
+    if (!aProgram.IsNull())
+    {
+      aProgram->BindWithVariables (aCtx);
+
+      const OpenGl_MaterialState* aMaterialState = aCtx->ShaderManager()->MaterialState (aProgram);
+      
+      if (aMaterialState == NULL || aMaterialState->Aspect() != aTextAspect)
+        aCtx->ShaderManager()->UpdateMaterialStateTo (aProgram, aTextAspect);
+      
+      aCtx->ShaderManager()->PushState (aProgram);
+    }
+    else
+    {
+      OpenGl_ShaderProgram::Unbind (aCtx);
+    }
+  }
+
   // use highlight color or colors from aspect
   if (theWorkspace->NamedStatus & OPENGL_NS_HIGHLIGHT)
   {
     render (theWorkspace->PrinterContext(),
-            theWorkspace->GetGlContext(),
+            aCtx,
             *aTextAspect,
             *theWorkspace->HighlightColor,
             *theWorkspace->HighlightColor);
@@ -397,7 +418,7 @@ void OpenGl_Text::Render (const Handle(OpenGl_Workspace)& theWorkspace) const
   else
   {
     render (theWorkspace->PrinterContext(),
-            theWorkspace->GetGlContext(),
+            aCtx,
             *aTextAspect,
             aTextAspect->Color(),
             aTextAspect->SubtitleColor());
@@ -426,7 +447,7 @@ void OpenGl_Text::Render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
 // purpose  :
 // =======================================================================
 void OpenGl_Text::setupMatrix (const Handle(OpenGl_PrinterContext)& thePrintCtx,
-                               const Handle(OpenGl_Context)&        theCtx,
+                               const Handle(OpenGl_Context)&        /*theCtx*/,
                                const OpenGl_AspectText&             theTextAspect,
                                const OpenGl_Vec3                    theDVec) const
 {
@@ -476,9 +497,14 @@ void OpenGl_Text::setupMatrix (const Handle(OpenGl_PrinterContext)& thePrintCtx,
 // function : drawText
 // purpose  :
 // =======================================================================
-void OpenGl_Text::drawText (const Handle(OpenGl_PrinterContext)& thePrintCtx,
+
+void OpenGl_Text::drawText (const Handle(OpenGl_PrinterContext)& ,
                             const Handle(OpenGl_Context)&        theCtx,
+                          #ifdef HAVE_GL2PS
                             const OpenGl_AspectText&             theTextAspect) const
+                          #else
+                            const OpenGl_AspectText&                          ) const
+                          #endif
 {
 #ifdef HAVE_GL2PS
   if (theCtx->IsFeedback())
@@ -630,7 +656,7 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
     aFormatter.Append (theCtx, myString, *myFont.operator->());
     aFormatter.Format();
 
-    if (OpenGl_GraphicDriver::ToUseVBO() && theCtx->core15 != NULL)
+    if (!theCtx->caps->vboDisable && theCtx->core15 != NULL)
     {
       aFormatter.Result (theCtx, myTextures, myVertsVbo, myTCrdsVbo);
     }
@@ -753,6 +779,7 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
       drawText    (thePrintCtx, theCtx, theTextAspect);
       break;
     }
+    case Aspect_TODT_DIMENSION:
     case Aspect_TODT_NORMAL:
     {
       break;
@@ -764,8 +791,42 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
   setupMatrix (thePrintCtx, theCtx, theTextAspect, OpenGl_Vec3 (0.0f, 0.0f, 0.0f));
   drawText    (thePrintCtx, theCtx, theTextAspect);
 
-  // revert OpenGL state
   glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, aTexEnvParam);
+
+  if (theTextAspect.DisplayType() == Aspect_TODT_DIMENSION)
+  {
+    setupMatrix (thePrintCtx, theCtx, theTextAspect, OpenGl_Vec3 (0.0f, 0.0f, 0.00001f));
+
+    glDisable (GL_BLEND);
+    glDisable (GL_TEXTURE_2D);
+    glDisable (GL_ALPHA_TEST);
+    if (!myIs2d)
+    {
+      glDisable (GL_DEPTH_TEST);
+    }
+    glColorMask (GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+
+    glClear (GL_STENCIL_BUFFER_BIT);
+    glEnable (GL_STENCIL_TEST);
+    glStencilFunc (GL_ALWAYS, 1, 0xFF);
+    glStencilOp (GL_KEEP, GL_KEEP, GL_REPLACE);
+
+    glBegin (GL_QUADS);
+    glVertex2f (myBndBox.Left,  myBndBox.Top);
+    glVertex2f (myBndBox.Right, myBndBox.Top);
+    glVertex2f (myBndBox.Right, myBndBox.Bottom);
+    glVertex2f (myBndBox.Left,  myBndBox.Bottom);
+    glEnd();
+
+    glStencilFunc (GL_ALWAYS, 0, 0xFF);
+    // glPopAttrib() will reset state for us
+    //glDisable (GL_STENCIL_TEST);
+    //if (!myIs2d) glEnable (GL_DEPTH_TEST);
+
+    glColorMask (GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+  }
+
+  // revert OpenGL state
   glPopAttrib(); // enable bit
   glPopMatrix(); // model view matrix was modified
 }

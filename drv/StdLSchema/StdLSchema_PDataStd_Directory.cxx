@@ -39,6 +39,8 @@ void StdLSchema_PDataStd_Directory::SWrite(const Handle(Standard_Persistent)& p,
   if (!p.IsNull()) {
     Handle(PDataStd_Directory) &pp = (Handle(PDataStd_Directory)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -56,6 +58,8 @@ void StdLSchema_PDataStd_Directory::SRead(const Handle(Standard_Persistent)& p, 
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_Directory) &pp = (Handle(PDataStd_Directory)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -1,21 +1,17 @@
 // Created on: 2001-07-20
 // Created by: Alexander GRIGORIEV
-// Copyright (c) 2001-2012 OPEN CASCADE SAS
+// Copyright (c) 2001-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //AGV 060302: Input from istream
 //            AGV 130302: bug corr: was error if strlen(root_elem_name) < 7
@@ -38,7 +34,6 @@
 //#include <ctype.h>
 
 const int XML_MIN_BUFFER = 10;
-const int MAX_ATTRIBUTES = 512;
 const int FILE_NONVALUE  = -1;
 
 typedef enum {
@@ -80,6 +75,7 @@ LDOM_XmlReader::LDOM_XmlReader (const int                       aFileDes,
 #endif
        myError          (anErrorString),
        myDocument       (aDocument),
+	   myElement        (NULL),
        myPtr            (&myBuffer[0]),
        myEndPtr         (&myBuffer[0])
 {}
@@ -97,6 +93,7 @@ LDOM_XmlReader::LDOM_XmlReader (istream&                        anInput,
        myIStream        (anInput),
        myError          (anErrorString),
        myDocument       (aDocument),
+	   myElement        (NULL),
        myPtr            (&myBuffer[0]),
        myEndPtr         (&myBuffer[0])
 {}
@@ -112,15 +109,15 @@ LDOM_XmlReader::RecordType LDOM_XmlReader::ReadRecord
   theData.Clear();
   myError.Clear();
   ParserState aState = STATE_WAITING;
-  const char * aStartData = NULL, * aNameEnd, * aPtr;
+  const char * aStartData = NULL, * aNameEnd = NULL, * aPtr;
   LDOMBasicString anAttrName, anAttrValue;
   char anAttDelimiter = '\0';
 
-  while (1) {
+  for(;;) {
     //  Check if the current file buffer is exhausted
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //  There should always be some bytes available in the buffer for analysis
-    Standard_Integer aBytesRest = myEndPtr - myPtr;
+    Standard_Integer aBytesRest = (Standard_Integer)(myEndPtr - myPtr);
     if (aBytesRest < XML_MIN_BUFFER) {
       if (myEOF == Standard_True) {
         if (aBytesRest <= 0)
@@ -145,7 +142,7 @@ LDOM_XmlReader::RecordType LDOM_XmlReader::ReadRecord
         else {
           myIStream.read (&myBuffer[aBytesRest],
                           XML_BUFFER_SIZE - aBytesRest);
-          aNBytes = myIStream.gcount();
+          aNBytes = (Standard_Size)myIStream.gcount();
         }
         if (aNBytes == 0)
           myEOF = Standard_True;                  // END-OF-FILE
@@ -202,7 +199,7 @@ LDOM_XmlReader::RecordType LDOM_XmlReader::ReadRecord
             myPtr = aNameEnd;
             if (myPtr < myEndPtr) {
               myElement = & LDOM_BasicElement::Create (aStartData,
-                                                       myPtr - aStartData,
+                                                       (Standard_Integer)(myPtr - aStartData),
                                                        myDocument);
               myLastChild = NULL;
               aState = STATE_ATTRIBUTE_NAME;
@@ -293,7 +290,7 @@ LDOM_XmlReader::RecordType LDOM_XmlReader::ReadRecord
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     case STATE_COMMENT:
       aPtr = aStartData;
-      while (1) {
+      for(;;) {
         aPtr = (const char *) memchr (aPtr, '-', (myEndPtr - 2) - aPtr);
         if (aPtr == NULL) break;
         if (aPtr[1] != '-') ++ aPtr;
@@ -327,7 +324,7 @@ LDOM_XmlReader::RecordType LDOM_XmlReader::ReadRecord
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     case STATE_CDATA:
       aPtr = aStartData;
-      while (1) {
+      for(;;) {
         aPtr = (const char *) memchr (aPtr, ']', (myEndPtr - 1) - aStartData);
         if (aPtr == NULL) break;
         if (aPtr[1] != ']') {           // ERROR
@@ -408,7 +405,7 @@ LDOM_XmlReader::RecordType LDOM_XmlReader::ReadRecord
           aStartData = myPtr;
         else {
           if (theData.Length() == 0)
-            anAttrName = LDOMBasicString(myPtr, aNameEnd - myPtr, myDocument);
+            anAttrName = LDOMBasicString(myPtr, (Standard_Integer)(aNameEnd - myPtr), myDocument);
           else {
             theData.rdbuf()->sputn(myPtr, aNameEnd - myPtr);
 attr_name:
@@ -530,7 +527,7 @@ static Standard_Boolean isName (const char  * aString,
                                 const char  *& aNameEnd)
 {
   Standard_Boolean aResult;
-  int aCh = aString[0];
+  char aCh = aString[0];
   if (IsAlphabetic(aCh) || aCh == '_' || aCh == ':') {
     const char * aPtr = &aString[1];
     while (aPtr < aStringEnd) {

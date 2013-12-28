@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Bnd_Array1OfBox2d(const Standard_Integer Low,const Standard_Integer Up);
+      Bnd_Array1OfBox2d(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Bnd_Array1OfBox2d(const Bnd_Box2d& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Bnd_Array1OfBox2d(const Bnd_Box2d& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Bnd_Box2d& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Bnd_Array1OfBox2d()
 {
   Destroy();

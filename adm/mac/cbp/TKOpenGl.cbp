@@ -15,6 +15,10 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -37,6 +41,10 @@
 				<Compiler>
 					<Add option="-O0" />
 					<Add option="-g" />
+					<Add option="-mmmx" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-mfpmath=sse" />
 					<Add option="-DCSFDB" />
 					<Add option="-DHAVE_WOK_CONFIG_H" />
 					<Add option="-DHAVE_CONFIG_H" />
@@ -63,8 +71,10 @@
 			<Add option="-framework OpenGL" />
 			<Add option="-framework AppKit" />
 			<Add option="-framework IOKit" />
+			<Add option="-framework OpenCL" />
 			<Add library="TKernel" />
 			<Add library="TKService" />
+			<Add library="TKMath" />
 			<Add library="TKV3d" />
 			<Add library="dl" />
 			<Add library="tbb" />
@@ -72,15 +82,21 @@
 			<Add library="objc" />
 			<Add library="freeimage" />
 			<Add library="freetype" />
+			<Add library="freetype" />
 			<Add library="objc" />
 			<Add library="freetype" />
 			<Add library="gl2ps" />
 		</Linker>
+		<Unit filename="../../../src/OpenGl/OpenGl_AABB.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_AVIWriter.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_AspectFace.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_AspectLine.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_AspectMarker.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_AspectText.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_CappingAlgo.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_CappingPlaneResource.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_Caps.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_Clipping.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Context.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Context_1.mm">
 			<Option compile="1" />
@@ -89,6 +105,7 @@
 		<Unit filename="../../../src/OpenGl/OpenGl_Display.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Display_2.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Element.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_Flipper.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Font.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_FrameBuffer.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_GraduatedTrihedron.cxx" />
@@ -98,20 +115,26 @@
 		<Unit filename="../../../src/OpenGl/OpenGl_GraphicDriver_3.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_GraphicDriver_4.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_GraphicDriver_7.cxx" />
-		<Unit filename="../../../src/OpenGl/OpenGl_GraphicDriver_703.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_GraphicDriver_713.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_GraphicDriver_Export.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_GraphicDriver_Layer.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Group.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_IndexBuffer.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_LayerList.cxx" />
-		<Unit filename="../../../src/OpenGl/OpenGl_Marker.cxx" />
-		<Unit filename="../../../src/OpenGl/OpenGl_MarkerSet.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Matrix.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_PointSprite.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_PrimitiveArray.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_PrinterContext.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_PriorityList.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_RaytraceSource.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_RenderFilter.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Resource.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_SceneGeometry.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_ShaderManager.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_ShaderObject.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_ShaderProgram.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_ShaderStates.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_StencilTest.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Structure.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Text.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_TextFormatter.cxx" />
@@ -131,6 +154,7 @@
 		<Unit filename="../../../src/OpenGl/OpenGl_Workspace_2.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Workspace_3.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Workspace_5.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_Workspace_Raytrace.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_telem_util.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_telem_view.cxx" />
 	</Project>

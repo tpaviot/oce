@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomLib_Array1OfMat(const Standard_Integer Low,const Standard_Integer Up);
+      GeomLib_Array1OfMat(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   GeomLib_Array1OfMat(const gp_Mat& Item,const Standard_Integer Low,const Standard_Integer Up);
+      GeomLib_Array1OfMat(const gp_Mat& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const gp_Mat& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~GeomLib_Array1OfMat()
 {
   Destroy();

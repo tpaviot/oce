@@ -39,11 +39,11 @@ class Approx_HArray1OfGTrsf2d : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Approx_HArray1OfGTrsf2d(const Standard_Integer Low,const Standard_Integer Up);
+      Approx_HArray1OfGTrsf2d(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Approx_HArray1OfGTrsf2d(const Standard_Integer Low,const Standard_Integer Up,const gp_GTrsf2d& V);
+      Approx_HArray1OfGTrsf2d(const Standard_Integer Low,const Standard_Integer Up,const gp_GTrsf2d& V);
   
-  Standard_EXPORT     void Init(const gp_GTrsf2d& V) ;
+        void Init(const gp_GTrsf2d& V) ;
   
         Standard_Integer Length() const;
   

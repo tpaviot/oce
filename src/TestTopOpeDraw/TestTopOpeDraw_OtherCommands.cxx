@@ -1,23 +1,18 @@
 // Created on: 1996-02-02
 // Created by: Jean Yves LEBEY
 // Copyright (c) 1996-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
@@ -91,7 +86,7 @@ void OthersCommands_flags(Standard_Integer& na,const char** a,TestTopOpeDraw_Dis
     iloc = i - decal;
     if(!a[iloc]) break;
     if (a[iloc][0] == '-') {
-      l = strlen(a[iloc]);
+      l = (Standard_Integer)strlen(a[iloc]);
       for (j=1; j<l; j++) {
 	if     (a[iloc][j] == 'g') tgeo=Standard_True;
 	else if(!strcmp(a[iloc],"-tol")) tolflag = Standard_True;
@@ -227,7 +222,7 @@ static void BoopReadInitFile(Draw_Interpretor& di, const char* filename)
   di.EvalFile(filename);
 }
 
-static Standard_Integer ttab(Draw_Interpretor& di, Standard_Integer narg, const char** a) {
+static Standard_Integer ttab(Draw_Interpretor& di, Standard_Integer /*narg*/, const char** /*a*/) {
   char s[2000]; strcpy(s,"");
   Sprintf(s,"%s%s",s,"proc addt {at args} {upvar $at x;set L \"\";addl L [join $args];");
   Sprintf(s,"%s%s",s,"foreach l $L {set x([array size x]) $l}};");

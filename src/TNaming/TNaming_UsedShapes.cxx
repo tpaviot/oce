@@ -1,24 +1,18 @@
 // Created on: 1997-02-18
 // Created by: Yves FRICAUD
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TNaming_UsedShapes.ixx>
 
@@ -98,7 +92,7 @@ void TNaming_UsedShapes::BeforeRemoval()
 
 Standard_Boolean TNaming_UsedShapes::AfterUndo
 (const Handle(TDF_AttributeDelta)& anAttDelta,
- const Standard_Boolean forceIt)
+ const Standard_Boolean /*forceIt*/)
 {
   if (anAttDelta->IsKind(STANDARD_TYPE(TDF_DeltaOnAddition))) {
     anAttDelta->Attribute()->BeforeRemoval();
@@ -132,7 +126,7 @@ Handle(TDF_DeltaOnRemoval) TNaming_UsedShapes::DeltaOnRemoval() const
 //purpose  : 
 //=======================================================================
 
-void TNaming_UsedShapes::Restore(const Handle(TDF_Attribute)& anAttribute) 
+void TNaming_UsedShapes::Restore(const Handle(TDF_Attribute)& /*anAttribute*/) 
 {
 }
 
@@ -151,8 +145,8 @@ Handle(TDF_Attribute) TNaming_UsedShapes::NewEmpty () const
 //purpose  : 
 //=======================================================================
 
-void  TNaming_UsedShapes::Paste(const Handle(TDF_Attribute)&       into,
-				const Handle(TDF_RelocationTable)& Tab) const
+void  TNaming_UsedShapes::Paste(const Handle(TDF_Attribute)&,
+				const Handle(TDF_RelocationTable)&) const
 { 
 }
 
@@ -184,6 +178,6 @@ Standard_OStream& TNaming_UsedShapes::Dump(Standard_OStream& anOS) const
 //purpose  : 
 //=======================================================================
 
-void TNaming_UsedShapes::References(const Handle(TDF_DataSet)& aDataSet) const
+void TNaming_UsedShapes::References(const Handle(TDF_DataSet)& ) const
 {
 }

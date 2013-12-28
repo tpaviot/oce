@@ -1,20 +1,16 @@
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <PLib_JacobiPolynomial.ixx>
 
@@ -62,11 +58,11 @@ const Standard_Integer UNDEFINED=-999;
 void PLib_JacobiPolynomial::Points(const Standard_Integer NbGaussPoints, 
                                    TColStd_Array1OfReal& TabPoints) const 
 {
-  if (NbGaussPoints != NDEG8  && NbGaussPoints != NDEG10 &&  
+  if ((NbGaussPoints != NDEG8  && NbGaussPoints != NDEG10 &&  
       NbGaussPoints != NDEG15 && NbGaussPoints != NDEG20 && 
       NbGaussPoints != NDEG25 && NbGaussPoints != NDEG30 && 
       NbGaussPoints != NDEG40 && NbGaussPoints != NDEG50 && 
-      NbGaussPoints != NDEG61 || 
+      NbGaussPoints != NDEG61) || 
       NbGaussPoints <= myDegree)
     Standard_ConstructionError::Raise("Invalid NbGaussPoints");
 

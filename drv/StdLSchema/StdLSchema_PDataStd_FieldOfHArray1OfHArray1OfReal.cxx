@@ -23,11 +23,11 @@ void StdLSchema_PDataStd_FieldOfHArray1OfHArray1OfReal::SAdd(const PDataStd_Fiel
 
 void StdLSchema_PDataStd_FieldOfHArray1OfHArray1OfReal::SWrite(const PDataStd_FieldOfHArray1OfHArray1OfReal& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
-  Standard_Integer i;
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
 
   f.BeginWriteObjectData();
   f.PutInteger(pp.Length());
-  for (i = 0; i < pp.Length(); i++) {
+  for (Standard_Integer i = 0; i < pp.Length(); i++) {
     theSchema->WritePersistentReference(pp.Value(i),f);
 
   }
@@ -36,6 +36,7 @@ void StdLSchema_PDataStd_FieldOfHArray1OfHArray1OfReal::SWrite(const PDataStd_Fi
 
 void StdLSchema_PDataStd_FieldOfHArray1OfHArray1OfReal::SRead(PDataStd_FieldOfHArray1OfHArray1OfReal& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
   Standard_Integer size = 0;
 
   f.BeginReadObjectData();

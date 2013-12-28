@@ -1,21 +1,17 @@
 // Created by: NW,JPB,CAL
 // Copyright (c) 1991-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modified      1/08/97 ; PCT : ajout texture mapping
 //              20/08/97 ; PCT : ajout transparence pour texture
@@ -298,6 +294,7 @@ void Graphic3d_Structure::Display () {
     MyStructureManager->Display (this);
   }
 
+  MyCStructure.visible = 1;
 }
 
 void Graphic3d_Structure::Display (const Standard_Integer Priority) {
@@ -311,6 +308,7 @@ void Graphic3d_Structure::Display (const Standard_Integer Priority) {
     MyStructureManager->Display (this);
   }
 
+  MyCStructure.visible = 1;
 }
 
 void Graphic3d_Structure::SetDisplayPriority (const Standard_Integer Priority) {
@@ -437,11 +435,6 @@ void Graphic3d_Structure::SetVisible (const Standard_Boolean AValue) {
   MyCStructure.visible = AValue ? 1:0;
 
   MyGraphicDriver->NameSetStructure (MyCStructure);
-
-  if (AValue)
-    MyStructureManager->Visible (this);
-  else
-    MyStructureManager->Invisible (this);
 
   Update ();
 
@@ -651,6 +644,11 @@ void Graphic3d_Structure::GroupsWithFacet (const Standard_Integer ADelta) {
 
 }
 
+void Graphic3d_Structure::Compute()
+{
+  // Implemented by Presentation
+}
+
 Handle(Graphic3d_Structure) Graphic3d_Structure::Compute (const Handle(Graphic3d_DataStructureManager)& ) {
 
   // Implemented by Presentation
@@ -748,8 +746,8 @@ Handle(Graphic3d_AspectLine3d) Graphic3d_Structure::Line3dAspect () const {
   ALType  = Aspect_TypeOfLine (MyCStructure.ContextLine.LineType);
   AWidth  = Standard_Real (MyCStructure.ContextLine.Width);
 
-  Handle(Graphic3d_AspectLine3d) CTXL =
-    new Graphic3d_AspectLine3d (AColor, ALType, AWidth);
+  Handle(Graphic3d_AspectLine3d) CTXL = new Graphic3d_AspectLine3d (AColor, ALType, AWidth);
+  CTXL->SetShaderProgram (MyCStructure.ContextLine.ShaderProgram);
 
   return CTXL;
 
@@ -776,8 +774,8 @@ Handle(Graphic3d_AspectText3d) Graphic3d_Structure::Text3dAspect () const {
   AStyle  = Aspect_TypeOfStyleText (MyCStructure.ContextText.Style);
   ADisplayType = Aspect_TypeOfDisplayText (MyCStructure.ContextText.DisplayType);
 
-  Handle(Graphic3d_AspectText3d) CTXT =
-    new Graphic3d_AspectText3d (AColor, AFont, AnExpansion, ASpace,AStyle,ADisplayType);
+  Handle(Graphic3d_AspectText3d) CTXT = new Graphic3d_AspectText3d (AColor, AFont, AnExpansion, ASpace,AStyle,ADisplayType);
+  CTXT->SetShaderProgram (MyCStructure.ContextText.ShaderProgram);
 
   return CTXT;
 
@@ -795,11 +793,11 @@ Handle(Graphic3d_AspectMarker3d) Graphic3d_Structure::Marker3dAspect () const {
   G       = Standard_Real (MyCStructure.ContextMarker.Color.g);
   B       = Standard_Real (MyCStructure.ContextMarker.Color.b);
   AColor.SetValues (R, G, B, Quantity_TOC_RGB);
-  AMType  = Aspect_TypeOfMarker (MyCStructure.ContextMarker.MarkerType);
+  AMType  = MyCStructure.ContextMarker.MarkerType;
   AScale  = Standard_Real (MyCStructure.ContextMarker.Scale);
 
-  Handle(Graphic3d_AspectMarker3d) CTXM =
-    new Graphic3d_AspectMarker3d (AMType, AColor, AScale);
+  Handle(Graphic3d_AspectMarker3d) CTXM = new Graphic3d_AspectMarker3d (AMType, AColor, AScale);
+  CTXM->SetShaderProgram (MyCStructure.ContextMarker.ShaderProgram);
 
   return CTXM;
 
@@ -982,6 +980,7 @@ Graphic3d_MATERIAL_PHYSIC : Graphic3d_MATERIAL_ASPECT;
   {
     CTXF->SetTextureMapOff();
   }
+  CTXF->SetShaderProgram (MyCStructure.ContextFillArea.ShaderProgram);
 
   // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets
   CTXF->SetPolygonOffsets(MyCStructure.ContextFillArea.PolygonOffsetMode,
@@ -1018,6 +1017,7 @@ void Graphic3d_Structure::SetPrimitivesAspect (const Handle(Graphic3d_AspectLine
   MyCStructure.ContextLine.Color.b        = float (B);
   MyCStructure.ContextLine.LineType       = int (ALType);
   MyCStructure.ContextLine.Width          = float (AWidth);
+  MyCStructure.ContextLine.ShaderProgram  = CTX->ShaderProgram();
   MyCStructure.ContextLine.IsDef          = 1;
 
   MyGraphicDriver->ContextStructure (MyCStructure);
@@ -1213,6 +1213,7 @@ void Graphic3d_Structure::SetPrimitivesAspect (const Handle(Graphic3d_AspectFill
 
   MyCStructure.ContextFillArea.Texture.TextureMap   = CTX->TextureMap();
   MyCStructure.ContextFillArea.Texture.doTextureMap = CTX->TextureMapState() ? 1 : 0;
+  MyCStructure.ContextFillArea.ShaderProgram        = CTX->ShaderProgram();
 
   // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets
   Standard_Integer aPolyMode;
@@ -1272,6 +1273,7 @@ void Graphic3d_Structure::SetPrimitivesAspect (const Handle(Graphic3d_AspectText
   MyCStructure.ContextText.TextZoomable     = ATextZoomable;
   MyCStructure.ContextText.TextAngle        = float (ATextAngle);
   MyCStructure.ContextText.TextFontAspect   = int (ATextFontAspect);
+  MyCStructure.ContextText.ShaderProgram    = CTX->ShaderProgram();
 
   MyCStructure.ContextText.IsDef          = 1;
 
@@ -1303,8 +1305,9 @@ void Graphic3d_Structure::SetPrimitivesAspect (const Handle(Graphic3d_AspectMark
   MyCStructure.ContextMarker.Color.r      = float (R);
   MyCStructure.ContextMarker.Color.g      = float (G);
   MyCStructure.ContextMarker.Color.b      = float (B);
-  MyCStructure.ContextMarker.MarkerType   = int (AMType);
+  MyCStructure.ContextMarker.MarkerType   = AMType;
   MyCStructure.ContextMarker.Scale        = float (AScale);
+  MyCStructure.ContextMarker.ShaderProgram = CTX->ShaderProgram();
   MyCStructure.ContextMarker.IsDef        = 1;
 
   MyGraphicDriver->ContextStructure (MyCStructure);
@@ -2069,6 +2072,7 @@ void Graphic3d_Structure::UpdateStructure (const Handle(Graphic3d_AspectLine3d)&
   MyCStructure.ContextLine.Color.b        = float (B);
   MyCStructure.ContextLine.LineType       = int (ALType);
   MyCStructure.ContextLine.Width          = float (AWidth);
+  MyCStructure.ContextLine.ShaderProgram  = CTXL->ShaderProgram();
 
   CTXM->Values (AColor, AMType, AScale);
   AColor.Values (R, G, B, Quantity_TOC_RGB);
@@ -2076,8 +2080,9 @@ void Graphic3d_Structure::UpdateStructure (const Handle(Graphic3d_AspectLine3d)&
   MyCStructure.ContextMarker.Color.r      = float (R);
   MyCStructure.ContextMarker.Color.g      = float (G);
   MyCStructure.ContextMarker.Color.b      = float (B);
-  MyCStructure.ContextMarker.MarkerType   = int (AMType);
+  MyCStructure.ContextMarker.MarkerType   = AMType;
   MyCStructure.ContextMarker.Scale        = float (AScale);
+  MyCStructure.ContextMarker.ShaderProgram = CTXM->ShaderProgram();
 
   CTXT->Values (AColor, AFont, AnExpansion, ASpace,AStyleT,ADisplayType,AColorSubTitle,ATextZoomable,ATextAngle,ATextFontAspect);
   AColor.Values (R, G, B, Quantity_TOC_RGB);
@@ -2097,6 +2102,7 @@ void Graphic3d_Structure::UpdateStructure (const Handle(Graphic3d_AspectLine3d)&
   MyCStructure.ContextText.TextZoomable     = ATextZoomable;
   MyCStructure.ContextText.TextAngle        = float (ATextAngle);
   MyCStructure.ContextText.TextFontAspect   = int (ATextFontAspect);
+  MyCStructure.ContextText.ShaderProgram    = CTXT->ShaderProgram();
 
 
 
@@ -2262,6 +2268,7 @@ void Graphic3d_Structure::UpdateStructure (const Handle(Graphic3d_AspectLine3d)&
 
   MyCStructure.ContextFillArea.Texture.TextureMap   = CTXF->TextureMap();
   MyCStructure.ContextFillArea.Texture.doTextureMap = CTXF->TextureMapState() ? 1 : 0;
+  MyCStructure.ContextFillArea.ShaderProgram        = CTXF->ShaderProgram();
 
   // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets
   Standard_Integer aPolyMode;
@@ -2378,8 +2385,14 @@ void Graphic3d_Structure::Plot (const Handle(Graphic3d_Plotter)& ) {
 
 }
 
-void Graphic3d_Structure::SetManager (const Handle(Graphic3d_StructureManager)& AManager, const Standard_Boolean WithPropagation) {
+void Graphic3d_Structure::SetManager (const Handle(Graphic3d_StructureManager)& AManager, 
+                                      const Standard_Boolean 
+                                      #ifdef IMPLEMENTED
+                                        WithPropagation
+                                      #endif
+                                      )
 
+{
   // All connected structures should follow ?
 #ifdef IMPLEMENTED
   if (WithPropagation) {
@@ -2412,11 +2425,6 @@ void Graphic3d_Structure::SetManager (const Handle(Graphic3d_StructureManager)& 
   }
 
   if (MyCStructure.highlight) {
-  }
-
-  if (MyCStructure.visible) {
-    MyStructureManager->Invisible (this);
-    AManager->Visible (this);
   }
 
   if (MyCStructure.pick) {
@@ -2454,7 +2462,6 @@ Standard_Boolean Graphic3d_Structure::HLRValidation () const {
 //function : CStructure
 //purpose  :
 //=======================================================================
-
 Graphic3d_CStructure* Graphic3d_Structure::CStructure()
 {
   return &MyCStructure;
@@ -2464,7 +2471,6 @@ Graphic3d_CStructure* Graphic3d_Structure::CStructure()
 //function : SetZLayer
 //purpose  :
 //=======================================================================
-
 void Graphic3d_Structure::SetZLayer (const Standard_Integer theLayerId)
 {
   // if the structure is not displayed, unable to change its display layer
@@ -2478,8 +2484,26 @@ void Graphic3d_Structure::SetZLayer (const Standard_Integer theLayerId)
 //function : GetZLayer
 //purpose  :
 //=======================================================================
-
 Standard_Integer Graphic3d_Structure::GetZLayer () const
 {
   return MyStructureManager->GetZLayer (this);
+}
+
+//=======================================================================
+//function : SetClipPlanes
+//purpose  :
+//=======================================================================
+void Graphic3d_Structure::SetClipPlanes (const Graphic3d_SequenceOfHClipPlane& thePlanes)
+{
+  MyCStructure.ClipPlanes = thePlanes;
+  MyGraphicDriver->SetClipPlanes (MyCStructure);
+}
+
+//=======================================================================
+//function : GetClipPlanes
+//purpose  :
+//=======================================================================
+const Graphic3d_SequenceOfHClipPlane& Graphic3d_Structure::GetClipPlanes() const
+{
+  return MyCStructure.ClipPlanes;
 }

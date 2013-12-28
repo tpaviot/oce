@@ -19,14 +19,14 @@
 #ifndef _gp_GTrsf_HeaderFile
 #include <gp_GTrsf.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _BRepBuilderAPI_Collect_HeaderFile
 #include <BRepBuilderAPI_Collect.hxx>
 #endif
 #ifndef _BRepBuilderAPI_ModifyShape_HeaderFile
 #include <BRepBuilderAPI_ModifyShape.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
 class Standard_NoSuchObject;
 class gp_GTrsf;
@@ -113,7 +113,6 @@ private:
 
 
 gp_GTrsf myGTrsf;
-Standard_Boolean myUseModif;
 BRepBuilderAPI_Collect myHist;
 
 

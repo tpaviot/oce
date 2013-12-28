@@ -1,21 +1,16 @@
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 /***********************************************************************
 
@@ -141,7 +136,6 @@ void Visual3d_ViewManager::Remove () {
   // clear all structures whilst views are alive for correct GPU memory management
   MyDisplayedStructure.Clear();
   MyHighlightedStructure.Clear();
-  MyVisibleStructure.Clear();
   MyPickStructure.Clear();
 
   // clear list of managed views
@@ -317,7 +311,6 @@ void Visual3d_ViewManager::Erase (const Handle(Graphic3d_Structure)& AStructure)
 	}
 
 	MyHighlightedStructure.Remove (AStructure);
-	MyVisibleStructure.Remove (AStructure);
 	MyPickStructure.Remove (AStructure);
 
 }
@@ -959,7 +952,7 @@ Standard_Boolean Exist = Standard_False;
 
 #if defined(_WIN32) || defined(__WIN32__)
   const Handle(WNT_Window) THEWindow = Handle(WNT_Window)::DownCast (AWindow);
-  int TheSpecifiedWindowId = int (THEWindow->HWindow ());
+  Aspect_Handle TheSpecifiedWindowId = THEWindow->HWindow ();
 #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
   const Handle(Cocoa_Window) THEWindow = Handle(Cocoa_Window)::DownCast (AWindow);
   NSView* TheSpecifiedWindowId = THEWindow->HView();
@@ -976,7 +969,7 @@ Standard_Boolean Exist = Standard_False;
 const Handle(Aspect_Window) AspectWindow = (MyIterator.Value ())->Window ();
 #if defined(_WIN32) || defined(__WIN32__)
    const Handle(WNT_Window) theWindow = Handle(WNT_Window)::DownCast (AspectWindow);
-   int TheWindowIdOfView = int (theWindow->HWindow ());
+   Aspect_Handle TheWindowIdOfView = theWindow->HWindow ();
 #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
    const Handle(Cocoa_Window) theWindow = Handle(Cocoa_Window)::DownCast (AspectWindow);
    NSView* TheWindowIdOfView = theWindow->HView();
@@ -1063,6 +1056,19 @@ Standard_Integer Visual3d_ViewManager::Identification (const Handle(Visual3d_Vie
 
 void Visual3d_ViewManager::UnIdentification (const Standard_Integer aViewId)
 {
+  Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
+  while (MyIterator.More()) 
+  {
+    if ((MyIterator.Value())->Identification () == aViewId)
+    {
+      const Handle(Visual3d_View)& theView = MyIterator.Value();
+      //remove the view from the list
+      MyDefinedView.Remove(theView);
+      break;
+    }
+    // go to next
+    MyIterator.Next ();
+  }
   MyViewGenId.Free(aViewId);
 }
 

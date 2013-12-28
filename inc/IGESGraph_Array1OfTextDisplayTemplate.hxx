@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESGraph_Array1OfTextDisplayTemplate(const Standard_Integer Low,const Standard_Integer Up);
+      IGESGraph_Array1OfTextDisplayTemplate(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESGraph_Array1OfTextDisplayTemplate(const Handle(IGESGraph_TextDisplayTemplate)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESGraph_Array1OfTextDisplayTemplate(const Handle(IGESGraph_TextDisplayTemplate)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(IGESGraph_TextDisplayTemplate)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESGraph_Array1OfTextDisplayTemplate()
 {
   Destroy();

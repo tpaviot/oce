@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D76A0BF7-152A-07CE-127C-68CEAAD82E66}</ProjectGuid>
+    <ProjectGuid>{07A4597B-15D6-1032-1654-E9D7ED5F2027}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,9 +89,11 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\obj\TKPCAF/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\obj\TKPCAF/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\obj\TKPCAF/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -129,11 +131,14 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKPCAF/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\objd\TKPCAF/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\objd\TKPCAF/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -174,9 +179,10 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\obj\TKPCAF/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\obj\TKPCAF/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\obj\TKPCAF/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -214,11 +220,13 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKPCAF/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\objd\TKPCAF/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\objd\TKPCAF/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -266,11 +274,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\PNaming\PNaming_Name_1.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\PNaming\PNaming_Name_2.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\PNaming\PNaming_NamedShape.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\PNaming\PNaming_Naming.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\PNaming\PNaming_Naming_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PNaming\PNaming_Naming_2.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\PPrsStd\PPrsStd_AISPresentation.cxx">
     </ClCompile>
@@ -331,6 +343,8 @@
     <ClCompile Include="..\..\..\src\MNaming\MNaming_NamingRetrievalDriver.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\MNaming\MNaming_NamingRetrievalDriver_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MNaming\MNaming_NamingRetrievalDriver_2.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\MNaming\MNaming_NamingStorageDriver.cxx">
     </ClCompile>

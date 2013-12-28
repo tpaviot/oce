@@ -256,11 +256,9 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/drv/IntSurf/IntSurf_SequenceNodeOfSequenceOfCouple_0.cxx \
 @top_srcdir@/drv/IntSurf/IntSurf_SequenceNodeOfSequenceOfInteriorPoint_0.cxx \
 @top_srcdir@/drv/IntSurf/IntSurf_SequenceNodeOfSequenceOfPathPoint_0.cxx \
-@top_srcdir@/drv/IntSurf/IntSurf_SequenceNodeOfSequenceOfPntOn2S_0.cxx \
 @top_srcdir@/drv/IntSurf/IntSurf_SequenceOfCouple_0.cxx \
 @top_srcdir@/drv/IntSurf/IntSurf_SequenceOfInteriorPoint_0.cxx \
 @top_srcdir@/drv/IntSurf/IntSurf_SequenceOfPathPoint_0.cxx \
-@top_srcdir@/drv/IntSurf/IntSurf_SequenceOfPntOn2S_0.cxx \
 @top_srcdir@/drv/Intf/Intf_Array1OfLin_0.cxx \
 @top_srcdir@/drv/Intf/Intf_SeqOfSectionLine_0.cxx \
 @top_srcdir@/drv/Intf/Intf_SeqOfSectionPoint_0.cxx \

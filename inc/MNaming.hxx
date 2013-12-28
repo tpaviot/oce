@@ -31,6 +31,7 @@ class MDF_ARDriverHSequence;
 class MNaming_NamedShapeRetrievalDriver;
 class MNaming_NamingRetrievalDriver;
 class MNaming_NamingRetrievalDriver_1;
+class MNaming_NamingRetrievalDriver_2;
 class MNaming_NamedShapeStorageDriver;
 class MNaming_NamingStorageDriver;
 
@@ -64,6 +65,7 @@ private:
 friend class MNaming_NamedShapeRetrievalDriver;
 friend class MNaming_NamingRetrievalDriver;
 friend class MNaming_NamingRetrievalDriver_1;
+friend class MNaming_NamingRetrievalDriver_2;
 friend class MNaming_NamedShapeStorageDriver;
 friend class MNaming_NamingStorageDriver;
 

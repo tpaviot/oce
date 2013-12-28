@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKPCAF"
-	ProjectGUID="{E60AA32C-062F-18A0-193B-D206509CA997}"
+	ProjectGUID="{91786BE7-038B-0DBD-0231-11958C714FB4}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -56,12 +56,14 @@
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
+				EnableEnhancedInstructionSet="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\obj\TKPCAF\TKPCAF.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc9\obj\TKPCAF/"
 				ObjectFile=".\..\..\..\win32\vc9\obj\TKPCAF/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc9\obj\TKPCAF/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -150,12 +152,15 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				EnableEnhancedInstructionSet="2"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\objd\TKPCAF\TKPCAF.pch"
 				AssemblerListingLocation=".\..\..\..\win32\vc9\objd\TKPCAF/"
 				ObjectFile=".\..\..\..\win32\vc9\objd\TKPCAF/"
 				ProgramDataBaseFileName=".\..\..\..\win32\vc9\objd\TKPCAF/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -248,11 +253,12 @@
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\obj\TKPCAF\TKPCAF.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc9\obj\TKPCAF/"
 				ObjectFile=".\..\..\..\win64\vc9\obj\TKPCAF/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc9\obj\TKPCAF/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
 			/>
@@ -339,12 +345,14 @@
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64"
 				ExceptionHandling="2"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				FloatingPointModel="0"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\objd\TKPCAF\TKPCAF.pch"
 				AssemblerListingLocation=".\..\..\..\win64\vc9\objd\TKPCAF/"
 				ObjectFile=".\..\..\..\win64\vc9\objd\TKPCAF/"
 				ProgramDataBaseFileName=".\..\..\..\win64\vc9\objd\TKPCAF/"
-				WarningLevel="3"
+				WarningLevel="4"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -457,6 +465,9 @@
 					RelativePath="..\..\..\src\PNaming\PNaming_Name_1.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\PNaming\PNaming_Name_2.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\PNaming\PNaming_NamedShape.cxx">
 				</File>
 				<File
@@ -464,6 +475,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\PNaming\PNaming_Naming_1.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\PNaming\PNaming_Naming_2.cxx">
 				</File>
 			</Filter>
 			<Filter
@@ -570,6 +584,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\MNaming\MNaming_NamingRetrievalDriver_1.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\MNaming\MNaming_NamingRetrievalDriver_2.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\MNaming\MNaming_NamingStorageDriver.cxx">

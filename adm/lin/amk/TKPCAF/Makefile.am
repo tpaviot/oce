@@ -72,6 +72,7 @@ libTKPCAF_la_SOURCES = \
 @top_srcdir@/src/MNaming/MNaming_NamedShapeStorageDriver.cxx \
 @top_srcdir@/src/MNaming/MNaming_NamingRetrievalDriver.cxx \
 @top_srcdir@/src/MNaming/MNaming_NamingRetrievalDriver_1.cxx \
+@top_srcdir@/src/MNaming/MNaming_NamingRetrievalDriver_2.cxx \
 @top_srcdir@/src/MNaming/MNaming_NamingStorageDriver.cxx \
 @top_srcdir@/src/MPrsStd/MPrsStd.cxx \
 @top_srcdir@/src/MPrsStd/MPrsStd_AISPresentationRetrievalDriver.cxx \
@@ -90,9 +91,11 @@ libTKPCAF_la_SOURCES = \
 @top_srcdir@/src/PDataXtd/PDataXtd_Shape.cxx \
 @top_srcdir@/src/PNaming/PNaming_Name.cxx \
 @top_srcdir@/src/PNaming/PNaming_Name_1.cxx \
+@top_srcdir@/src/PNaming/PNaming_Name_2.cxx \
 @top_srcdir@/src/PNaming/PNaming_NamedShape.cxx \
 @top_srcdir@/src/PNaming/PNaming_Naming.cxx \
 @top_srcdir@/src/PNaming/PNaming_Naming_1.cxx \
+@top_srcdir@/src/PNaming/PNaming_Naming_2.cxx \
 @top_srcdir@/src/PPrsStd/PPrsStd_AISPresentation.cxx \
 @top_srcdir@/src/PPrsStd/PPrsStd_AISPresentation_1.cxx
 

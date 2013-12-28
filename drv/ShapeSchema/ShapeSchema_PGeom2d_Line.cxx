@@ -39,6 +39,8 @@ void ShapeSchema_PGeom2d_Line::SWrite(const Handle(Standard_Persistent)& p, Stor
   if (!p.IsNull()) {
     Handle(PGeom2d_Line) &pp = (Handle(PGeom2d_Line)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_gp_Ax2d::SWrite(pp->_CSFDB_GetPGeom2d_Lineposition(),f,theSchema);
@@ -57,6 +59,8 @@ void ShapeSchema_PGeom2d_Line::SRead(const Handle(Standard_Persistent)& p, Stora
 { 
   if (!p.IsNull()) {
     Handle(PGeom2d_Line) &pp = (Handle(PGeom2d_Line)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

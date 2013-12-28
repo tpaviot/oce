@@ -174,6 +174,8 @@ public:
   return Dot(Other);
 }
   
+        gp_Vec2d GetNormal() const;
+  
         void Multiply(const Standard_Real Scalar) ;
       void operator *=(const Standard_Real Scalar) 
 {

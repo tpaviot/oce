@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Interface_Array1OfFileParameter(const Standard_Integer Low,const Standard_Integer Up);
+      Interface_Array1OfFileParameter(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Interface_Array1OfFileParameter(const Interface_FileParameter& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Interface_Array1OfFileParameter(const Interface_FileParameter& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Interface_FileParameter& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Interface_Array1OfFileParameter()
 {
   Destroy();

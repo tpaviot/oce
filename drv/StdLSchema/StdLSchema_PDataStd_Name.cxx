@@ -40,6 +40,8 @@ void StdLSchema_PDataStd_Name::SWrite(const Handle(Standard_Persistent)& p, Stor
   if (!p.IsNull()) {
     Handle(PDataStd_Name) &pp = (Handle(PDataStd_Name)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDataStd_NamemyValue(),f);
@@ -58,6 +60,8 @@ void StdLSchema_PDataStd_Name::SRead(const Handle(Standard_Persistent)& p, Stora
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_Name) &pp = (Handle(PDataStd_Name)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

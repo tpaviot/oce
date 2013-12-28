@@ -28,17 +28,17 @@ endif()
 
 if (WIN32)
 elseif(APPLE)
-  if(3RDPARTY_USE_TBB)
+  if(USE_TBB)
     list( APPEND TKMesh_USED_LIBS tbb )
   endif()
-  if(3RDPARTY_USE_TBB)
+  if(USE_TBB)
     list( APPEND TKMesh_USED_LIBS tbbmalloc )
   endif()
 else()
-  if(3RDPARTY_USE_TBB)
+  if(USE_TBB)
     list( APPEND TKMesh_USED_LIBS tbb )
   endif()
-  if(3RDPARTY_USE_TBB)
+  if(USE_TBB)
     list( APPEND TKMesh_USED_LIBS tbbmalloc )
   endif()
 endif()
@@ -285,6 +285,10 @@ endif()
 
 if (WIN32)
 else()
+
+  if (APPLE)
+
+  endif()
 
 endif()
 

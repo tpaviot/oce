@@ -1,23 +1,18 @@
 // Created on: 1991-09-27
 // Created by: Christophe MARION
 // Copyright (c) 1991-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Precision.hxx>
 #include <gp_Vec.hxx>
@@ -362,11 +357,7 @@ gp_Pln Primitives_Wedge::Plane(const Primitives_Direction d1)
     break;
     
   };
-#ifndef DEB
-  Standard_Real X =0., Y =0., Z =0.;
-#else
-  Standard_Real X, Y, Z;
-#endif
+  Standard_Real X = 0., Y = 0., Z = 0.;
   
   switch (i) {
     
@@ -444,12 +435,10 @@ const TheFace& Primitives_Wedge::Face
     if ( i%2 == 0 ) myBuilder.ReverseFace(myFaces[i]);
 
     // pcurves
-#ifndef DEB
+
     Primitives_Direction dd1 = Primitives_ZMin, dd2 = Primitives_YMax, 
     dd3 = Primitives_ZMax,dd4 = Primitives_YMin;
-#else
-    Primitives_Direction dd1,dd2,dd3,dd4;
-#endif
+
     switch (i/2) {
       
     case 0 :
@@ -540,11 +529,8 @@ Standard_Boolean Primitives_Wedge::HasWire (const Primitives_Direction d1) const
   Standard_Integer i = Primitives_Wedge_NumDir1(d1);
 
   if (myInfinite[i]) return Standard_False;
-#ifndef DEB
   Primitives_Direction dd1 = Primitives_XMin,dd2 = Primitives_YMax,dd3 = Primitives_XMax ,dd4 = Primitives_ZMin;
-#else
-  Primitives_Direction dd1,dd2,dd3,dd4;
-#endif
+
   switch (i/2) {
     
   case 0 :
@@ -590,11 +576,8 @@ const TheWire& Primitives_Wedge::Wire
 {
   Standard_Integer i = Primitives_Wedge_NumDir1(d1);
 
-#ifndef DEB
   Primitives_Direction dd1 = Primitives_XMin,dd2 = Primitives_YMax,dd3 = Primitives_XMax ,dd4 = Primitives_ZMin;
-#else
-  Primitives_Direction dd1,dd2,dd3,dd4;
-#endif
+
   if (!WiresBuilt[i]) {
 
     switch (i/2) {
@@ -675,11 +658,9 @@ gp_Lin Primitives_Wedge::Line
   if (!HasEdge(d1,d2)) Standard_DomainError::Raise();
 
   Standard_Integer i = Primitives_Wedge_NumDir2(d1,d2);
-#ifndef DEB
+
   Standard_Real X =0., Y =0., Z =0.;
-#else
-  Standard_Real X, Y, Z;
-#endif
+
   gp_Dir D;
   gp_Vec VX = myAxes.XDirection();
   gp_Vec VY = myAxes.YDirection();
@@ -772,7 +753,7 @@ gp_Lin Primitives_Wedge::Line
     Y = YMin;
     Z = ZMin;
     if ( (XMin != X2Min) || (ZMin != Z2Min) ) 
-      D = gp_Vec(gp_Pnt(XMin,YMin,ZMin),gp_Pnt(X2Min,YMax,Z2Min));
+      D = gp_Vec( (X2Min-XMin)*VX + (YMax-YMin)*VY + (Z2Min-ZMin)*VZ);
     break;
     
   case 9 :
@@ -827,11 +808,9 @@ const TheEdge& Primitives_Wedge::Edge
   Standard_Integer i = Primitives_Wedge_NumDir2(d1,d2);
 
   if (!EdgesBuilt[i]) {
-#ifndef DEB
+
     Primitives_Direction dd1 = Primitives_XMin ,dd2 = Primitives_XMax;
-#else
-    Primitives_Direction dd1,dd2;
-#endif
+
     switch (i/4) {
     
     case 0 :
@@ -923,11 +902,9 @@ gp_Pnt  Primitives_Wedge::Point
   if (!HasVertex(d1,d2,d3)) Standard_DomainError::Raise();
 
   Standard_Integer i = Primitives_Wedge_NumDir3(d1,d2,d3);
-#ifndef DEB
+
   Standard_Real X =0., Y =0., Z =0.;
-#else
-  Standard_Real X, Y, Z;
-#endif
+
   switch (i) {
     
   case 0 :

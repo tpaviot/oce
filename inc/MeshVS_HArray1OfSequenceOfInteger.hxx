@@ -39,11 +39,11 @@ class MeshVS_HArray1OfSequenceOfInteger : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer Low,const Standard_Integer Up);
+      MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer Low,const Standard_Integer Up,const TColStd_SequenceOfInteger& V);
+      MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer Low,const Standard_Integer Up,const TColStd_SequenceOfInteger& V);
   
-  Standard_EXPORT     void Init(const TColStd_SequenceOfInteger& V) ;
+        void Init(const TColStd_SequenceOfInteger& V) ;
   
         Standard_Integer Length() const;
   

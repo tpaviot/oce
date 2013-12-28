@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESData_Array1OfDirPart(const Standard_Integer Low,const Standard_Integer Up);
+      IGESData_Array1OfDirPart(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESData_Array1OfDirPart(const IGESData_DirPart& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESData_Array1OfDirPart(const IGESData_DirPart& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const IGESData_DirPart& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESData_Array1OfDirPart()
 {
   Destroy();

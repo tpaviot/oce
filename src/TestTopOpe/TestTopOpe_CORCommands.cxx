@@ -1,23 +1,18 @@
 // Created on: 1997-07-24
 // Created by: Xuan PHAM PHU
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TestTopOpe.hxx>
 #include <TopOpeBRepTool_2d.hxx>
@@ -73,6 +68,9 @@
 #include <Draw_Color.hxx>
 #include <DBRep.hxx>
 
+#include <Extrema_ExtFlag.hxx>
+#include <Extrema_ExtAlgo.hxx>
+
 #ifdef DRAW
 #include <TopOpeBRepTool_DRAW.hxx>
 #endif
@@ -97,22 +95,6 @@ Standard_IMPORT TopoDS_Vertex FUN_tool_getv(const Standard_Integer Index,const T
 #define UNKNOWN  ( 0)
 #define oneINtwo ( 1)
 #define twoINone ( 2)
-
-#ifdef DEB
-static void FUN_coutsta(const Standard_Integer& sta, const Standard_Integer& i1, const Standard_Integer& i2, Draw_Interpretor& di)
-{
-  switch (sta) {
-  case SAME:
-    di<<i1<<" gives SAME bnd with "<<i2<<"\n"; break;
-  case DIFF:
-    di<<i1<<" gives  OUT bnd with "<<i2<<"\n"; break;
-  case oneINtwo:
-    di<<i1<<" is IN "<<i2<<"\n"; break;
-  case twoINone:
-    di<<i2<<" is IN "<<i1<<"\n"; break;
-  }
-}
-#endif
 
 static void FUN_test_draw(TCollection_AsciiString aa,
 			  const TopoDS_Edge& E, const TopoDS_Face& F,
@@ -671,16 +653,57 @@ static Standard_Integer pntonc2d(Draw_Interpretor& di, Standard_Integer n, const
 
 static Standard_Integer projponf(Draw_Interpretor& di, Standard_Integer n, const char** a)
 {
-  if (n < 3) return 1;
+  if (n < 3) {
+    di << "projponf f pnt [extrema flag: -min/-max/-minmax] [extrema algo: -g(grad)/-t(tree)]\n";
+    return 1;
+  }
+  //
   TopoDS_Shape aLocalShape = DBRep::Get(a[1]);
   TopoDS_Face f = TopoDS::Face(aLocalShape);
-//  TopoDS_Face f = TopoDS::Face(DBRep::Get(a[1]));
-  if (f.IsNull()) {di<<"null shape"<<"\n";return 1;}
-  gp_Pnt p; DrawTrSurf::GetPoint(a[2], p);
-  Standard_Real dist=0.; gp_Pnt2d uv; Standard_Boolean ok = FUN_tool_projPonF(p,f,uv,dist);
-  if (!ok) {di<<"projection failed"<<"\n"; return 1;}
-  gp_Pnt pproj; ok = FUN_tool_value(uv,f,pproj);
-  if (!ok) {di<<"projection failed"<<"\n"; return 1;}
+  //
+  if (f.IsNull()) {
+    di<<"null shape"<<"\n";
+    return 1;
+  }
+  //
+  Standard_Real dist=0.;
+  Standard_Boolean ok;
+  gp_Pnt2d uv;
+  gp_Pnt p, pproj; 
+  Extrema_ExtAlgo anExtAlgo = Extrema_ExtAlgo_Grad;
+  Extrema_ExtFlag anExtFlag = Extrema_ExtFlag_MINMAX;
+  //
+  DrawTrSurf::GetPoint(a[2], p);
+  //
+  if (n > 3) {
+    const char* key1 = a[3];
+    const char* key2 = (n > 4) ? a[4] : NULL;
+    if (key1) {
+      if (!strcasecmp(key1,"-min")) {
+        anExtFlag = Extrema_ExtFlag_MIN;
+      } else if (!strcasecmp(key1,"-max")) {
+        anExtFlag = Extrema_ExtFlag_MAX;
+      } else {
+        anExtAlgo = (!strcasecmp(key1,"-t")) ? Extrema_ExtAlgo_Tree : anExtAlgo;
+      }
+    }
+    if (key2) {
+      anExtAlgo = (!strcasecmp(key2,"-t")) ? Extrema_ExtAlgo_Tree : anExtAlgo;
+    }
+  }
+  ok = FUN_tool_projPonF(p, f, uv, dist, anExtFlag, anExtAlgo);
+  //
+  if (!ok) {
+    di<<"projection failed"<<"\n"; 
+    return 1;
+  }
+  //
+  ok = FUN_tool_value(uv,f,pproj);
+  if (!ok) {
+    di<<"projection failed"<<"\n"; 
+    return 1;
+  }
+  //
   di<<"proj dist = "<<dist<<" uvproj = ("<<uv.X()<<" "<<uv.Y();
   di<<"); pproj = ("<<pproj.X()<<" "<<pproj.Y()<<" "<<pproj.Z()<<")"<<"\n";
   return 0;
@@ -783,9 +806,7 @@ static Standard_Integer normal(Draw_Interpretor& di, Standard_Integer n, const c
 //  TopoDS_Face f = TopoDS::Face(DBRep::Get(a[1]));
   if (f.IsNull()) {di<<"null shape"<<"\n";return 1;}
   gp_Pnt p; DrawTrSurf::GetPoint(a[2], p);
-#ifdef DEB
-  Standard_Real length = Draw::Atof(a[3]);
-#endif
+
   Standard_Real dist=0.; gp_Pnt2d uv; Standard_Boolean ok = FUN_tool_projPonF(p,f,uv,dist);
   if (!ok) {di<<"projection failed"<<"\n"; return 1;}
 #ifdef DEB
@@ -878,7 +899,9 @@ void TestTopOpe::CORCommands(Draw_Interpretor& theCommands)
   theCommands.Add("classibnd2d","classibnd2d W1 W2 F i",    __FILE__, classifBnd2d, g);
   theCommands.Add("pntonc",     "pntonc par C3d",           __FILE__, pntonc, g);
   theCommands.Add("pntonc2d",   "pntonc2d par C2d S",       __FILE__, pntonc2d, g);
-  theCommands.Add("projponf",   "projponf f pnt",           __FILE__, projponf, g);
+  theCommands.Add("projponf",   
+                  "projponf f pnt [extrema flag: -min/-max/-minmax] [extrema algo: -g(grad)/-t(tree)]",
+                                                            __FILE__, projponf, g);
   theCommands.Add("tolmax",     "tolmax s",                 __FILE__, tolmax, g);
   theCommands.Add("normal",     "normal f p3d length",      __FILE__, normal, g);
   theCommands.Add("curvature",  "curvature f x y z",        __FILE__, curvature , g);

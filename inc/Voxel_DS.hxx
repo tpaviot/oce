@@ -70,6 +70,8 @@ public:
   Standard_EXPORT     Standard_Integer GetNbZ() const;
   //! Returns the center point of a voxel with co-ordinates (ix, iy, iz). <br>
   Standard_EXPORT     void GetCenter(const Standard_Integer ix,const Standard_Integer iy,const Standard_Integer iz,Standard_Real& xc,Standard_Real& yc,Standard_Real& zc) const;
+  //! Returns the origin point of a voxel with co-ordinates (ix, iy, iz). <br>
+  Standard_EXPORT     void GetOrigin(const Standard_Integer ix,const Standard_Integer iy,const Standard_Integer iz,Standard_Real& x0,Standard_Real& y0,Standard_Real& z0) const;
   //! Finds a voxel corresponding to a 3D point. <br>
 //!          Returns true if it is found. <br>
   Standard_EXPORT     Standard_Boolean GetVoxel(const Standard_Real x,const Standard_Real y,const Standard_Real z,Standard_Integer& ix,Standard_Integer& iy,Standard_Integer& iz) const;

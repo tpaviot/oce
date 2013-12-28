@@ -55,6 +55,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _BOPCol_DataMapOfIntegerReal_HeaderFile
+#include <BOPCol_DataMapOfIntegerReal.hxx>
+#endif
 #ifndef _BOPDS_MapOfPaveBlock_HeaderFile
 #include <BOPDS_MapOfPaveBlock.hxx>
 #endif
@@ -66,6 +69,9 @@
 #endif
 #ifndef _BOPDS_DataMapOfPaveBlockListOfPaveBlock_HeaderFile
 #include <BOPDS_DataMapOfPaveBlockListOfPaveBlock.hxx>
+#endif
+#ifndef _BOPCol_DataMapOfIntegerInteger_HeaderFile
+#include <BOPCol_DataMapOfIntegerInteger.hxx>
 #endif
 #ifndef _BOPDS_ListOfPaveBlock_HeaderFile
 #include <BOPDS_ListOfPaveBlock.hxx>
@@ -162,9 +168,18 @@ protected:
   
   Standard_EXPORT     Standard_Boolean IsExistingVertex(const gp_Pnt& theP,const Standard_Real theTol,const BOPCol_MapOfInteger& theMVOn) const;
   
-  Standard_EXPORT     void PutPaveOnCurve(const BOPCol_MapOfInteger& theMVOn,const Standard_Real theTolR3D,BOPDS_Curve& theNC,const Standard_Integer nF1,const Standard_Integer nF2,const BOPCol_MapOfInteger& theMVEF) ;
+//! Checks and puts paves from <theMVOn> on the curve <theNC>. <br>
+  Standard_EXPORT     void PutPavesOnCurve(const BOPCol_MapOfInteger& theMVOn,const Standard_Real theTolR3D,BOPDS_Curve& theNC,const Standard_Integer nF1,const Standard_Integer nF2,const BOPCol_MapOfInteger& theMI,const BOPCol_MapOfInteger& theMVEF,BOPCol_DataMapOfIntegerReal& theMVTol) ;
   
-  Standard_EXPORT     Standard_Boolean ExtendedTolerance(const Standard_Integer nV,const BOPCol_MapOfInteger& aMI,Standard_Real& aTolVExt) ;
+//! Depending on the parameter aType it checks whether <br>
+//! the vertex nV was created in EE or EF intersections. <br>
+//! If so, it increases aTolVExt from tolerance value of vertex to <br>
+//! the max distance from vertex nV to the ends of the range of common part. <br>
+//! Possible values of aType: <br>
+//! 1 - checks only EE; <br>
+//! 2 - checks only EF; <br>
+//! other - checks both types of intersections. <br>
+  Standard_EXPORT     Standard_Boolean ExtendedTolerance(const Standard_Integer nV,const BOPCol_MapOfInteger& aMI,Standard_Real& aTolVExt,const Standard_Integer aType = 0) ;
   
   Standard_EXPORT     void PutBoundPaveOnCurve(const TopoDS_Face& theF1,const TopoDS_Face& theF2,const Standard_Real theTolR3D,BOPDS_Curve& theNC,BOPCol_MapOfInteger& theMVOnIn,BOPCol_MapOfInteger& theMVB) ;
   
@@ -172,7 +187,8 @@ protected:
   
   Standard_EXPORT     Standard_Boolean IsExistingPaveBlock(const Handle(BOPDS_PaveBlock)& thePB,const BOPDS_Curve& theNC,const Standard_Real theTolR3D,const BOPCol_ListOfInteger& theLSE) ;
   
-  Standard_EXPORT     Standard_Integer PostTreatFF(BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks& theMSCPB,BOPCol_DataMapOfShapeInteger& theMVI,BOPDS_DataMapOfPaveBlockListOfPaveBlock& theDMExEd,BOPCol_BaseAllocator& theAllocator) ;
+//! Treatment of section edges. <br>
+  Standard_EXPORT     Standard_Integer PostTreatFF(BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks& theMSCPB,BOPCol_DataMapOfShapeInteger& theMVI,BOPDS_DataMapOfPaveBlockListOfPaveBlock& theDMExEdges,BOPCol_DataMapOfIntegerInteger& theDMI,BOPCol_BaseAllocator& theAllocator) ;
   
   Standard_EXPORT     void FindPaveBlocks(const Standard_Integer theV,const Standard_Integer theF,BOPDS_ListOfPaveBlock& theLPB) ;
   
@@ -182,35 +198,79 @@ protected:
   
   Standard_EXPORT     void GetEFPnts(const Standard_Integer nF1,const Standard_Integer nF2,IntSurf_ListOfPntOn2S& aListOfPnts) ;
   
-  Standard_EXPORT     void PutEFPavesOnCurve(const Standard_Integer nF1,const Standard_Integer nF2,BOPDS_Curve& theNC,const BOPCol_MapOfInteger& theMVEF) ;
+//! Checks and puts paves created in EF intersections on the curve <theNC>. <br>
+  Standard_EXPORT     void PutEFPavesOnCurve(BOPDS_Curve& theNC,const BOPCol_MapOfInteger& theMI,const BOPCol_MapOfInteger& theMVEF,BOPCol_DataMapOfIntegerReal& theMVTol) ;
   
-  Standard_EXPORT     void PutStickPavesOnCurve(const Standard_Integer nF1,const Standard_Integer nF2,BOPDS_Curve& theNC,const BOPCol_MapOfInteger& theMVStick) ;
+//! Puts stick paves on the curve <theNC> <br>
+  Standard_EXPORT     void PutStickPavesOnCurve(const TopoDS_Face& aF1,const TopoDS_Face& aF2,const BOPCol_MapOfInteger& theMI,BOPDS_Curve& theNC,const BOPCol_MapOfInteger& theMVStick,BOPCol_DataMapOfIntegerReal& theMVTol) ;
   
-  Standard_EXPORT     void GetStickVertices(const Standard_Integer nF1,const Standard_Integer nF2,BOPCol_MapOfInteger& theMVStick,BOPCol_MapOfInteger& theMVEFk) ;
+//! Collects indices of vertices created in all intersections between <br>
+//! two faces (<nF1> and <nF2>) to the map <theMVStick>. <br>
+//! Also, it collects indices of EF vertices to the <theMVEF> map <br>
+//! and indices of all subshapes of these two faces to the <theMI> map. <br>
+  Standard_EXPORT     void GetStickVertices(const Standard_Integer nF1,const Standard_Integer nF2,BOPCol_MapOfInteger& theMVStick,BOPCol_MapOfInteger& theMVEF,BOPCol_MapOfInteger& theMI) ;
   
-  Standard_EXPORT     void GetFullFaceMap(const Standard_Integer nF,BOPCol_MapOfInteger& theMI) ;
+//! Collects index nF and indices of all subshapes of the shape with index <nF> <br>
+//! to the map <theMI>. <br>
+  Standard_EXPORT     void GetFullShapeMap(const Standard_Integer nF,BOPCol_MapOfInteger& theMI) ;
   
+//! Removes indices of vertices that are already on the <br>
+//! curve <theNC> from the map <theMV>. <br>
+//! It is used in PutEFPavesOnCurve and PutStickPavesOnCurve methods. <br>
   Standard_EXPORT     void RemoveUsedVertices(BOPDS_Curve& theNC,BOPCol_MapOfInteger& theMV) ;
   
-  Standard_EXPORT     void PutPaveOnCurve(const Standard_Integer nV,const Standard_Real theTolR3D,const BOPDS_Curve& theNC,Handle(BOPDS_PaveBlock)& thePB) ;
+//! Puts the pave nV on the curve theNC. <br>
+//! Parameter aType defines whether to check the pave with <br>
+//! extended tolerance: <br>
+//! 0 - do not perform the check; <br>
+//! other - perform the check (aType goes to ExtendedTolerance). <br>
+  Standard_EXPORT     void PutPaveOnCurve(const Standard_Integer nV,const Standard_Real theTolR3D,BOPDS_Curve& theNC,const BOPCol_MapOfInteger& theMI,BOPCol_DataMapOfIntegerReal& theMVTol,const Standard_Integer aType = 0) ;
   
+//! Adds the existing edges from the map <theMPBOnIn> which interfere <br>
+//! with the vertices from <theMVB> map to the post treatment of section edges. <br>
   Standard_EXPORT     void ProcessExistingPaveBlocks(const Standard_Integer theInt,const BOPDS_MapOfPaveBlock& theMPBOnIn,BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks& theMSCPB,BOPCol_DataMapOfShapeInteger& theMVI,const BOPCol_MapOfInteger& theMVB,BOPDS_MapOfPaveBlock& theMPB) ;
   
+//! Replaces existing pave block <thePB> with new pave blocks <theLPB>. <br>
+//! The list <theLPB> contains images of <thePB> which were created in <br>
+//! the post treatment of section edges. <br>
   Standard_EXPORT     void UpdateExistingPaveBlocks(const Handle(BOPDS_PaveBlock)& thePB,BOPDS_ListOfPaveBlock& theLPB,const Standard_Integer nF1,const Standard_Integer nF2) ;
   
+//! Treatment of vertices that were created in EE intersections. <br>
   Standard_EXPORT     void TreatNewVertices(const BOPCol_IndexedDataMapOfShapeInteger& theMVI,BOPCol_IndexedDataMapOfShapeListOfShape& theImages) ;
   
 //! Put paves on the curve <aBC> in case when <aBC> <br>
 //! is closed 3D-curve <br>
   Standard_EXPORT     void PutClosingPaveOnCurve(BOPDS_Curve& aNC) ;
   
+//! Keeps data for post treatment <br>
   Standard_EXPORT     void PreparePostTreatFF(const Standard_Integer aInt,const Handle(BOPDS_PaveBlock)& aPB,BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks& aMSCPB,BOPCol_DataMapOfShapeInteger& aMVI,BOPDS_VectorOfCurve& aVC) ;
   
 //! Refines the state On for the all faces having <br>
 //! state information <br>
   Standard_EXPORT     void RefineFaceInfoOn() ;
   
+//! Updates the information about faces <br>
   Standard_EXPORT     void UpdateFaceInfo(BOPDS_DataMapOfPaveBlockListOfPaveBlock& theDME) ;
+  
+//! Updates tolerance of vertex with index <nV> <br>
+//! to make it interfere with edge <br>
+  Standard_EXPORT     void ForceInterfVE(const Standard_Integer nV,Handle(BOPDS_PaveBlock)& aPB,BOPDS_MapOfPaveBlock& aMPB) ;
+  
+//! Updates tolerance of vertex with index <nV> <br>
+//! to make it interfere with face with index <nF> <br>
+  Standard_EXPORT     Standard_Boolean ForceInterfVF(const Standard_Integer nV,const Standard_Integer nF) ;
+  
+//! Checks if there are any common or intersecting sub shapes <br>
+//! between two planar faces. <br>
+  Standard_EXPORT     Standard_Boolean CheckPlanes(const Standard_Integer nF1,const Standard_Integer nF2) const;
+  
+//! Creates new edge from the edge nE with vertices nV1 and nV2 <br>
+//! and returns the index of that new edge in the DS. <br>
+  Standard_EXPORT     Standard_Integer SplitEdge(const Standard_Integer nE,const Standard_Integer nV1,const Standard_Real aT1,const Standard_Integer nV2,const Standard_Real aT2) ;
+  
+//! Updates pave blocks which have the paves with indices contained <br>
+//! in the map <theDMI>. <br>
+  Standard_EXPORT     void UpdatePaveBlocks(const BOPCol_DataMapOfIntegerInteger& theDMI) ;
 
 
 BOPCol_ListOfShape myArguments;

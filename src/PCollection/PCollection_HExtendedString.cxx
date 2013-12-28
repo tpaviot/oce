@@ -1,21 +1,16 @@
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <PCollection_HExtendedString.ixx>
 #include <PCollection_HAsciiString.hxx>
@@ -357,10 +352,10 @@ Standard_Integer PCollection_HExtendedString::Location
 {
    if (ToIndex > Length() || FromIndex <= 0 || FromIndex > ToIndex ) 
                       Standard_OutOfRange::Raise();
-   for(Standard_Integer i = FromIndex-1, count = 0; i <= ToIndex-1; i++) 
+   for(Standard_Integer i = FromIndex-1, icount = 0; i <= ToIndex-1; i++) 
               if(Data(i) == C) {
-	        count++;
-	        if ( count == N ) return (i+1);
+	        icount++;
+	        if ( icount == N ) return (i+1);
 	      }
    return 0 ;
 }

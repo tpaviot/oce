@@ -42,6 +42,8 @@ void ShapeSchema_PTopoDS_CompSolid::SWrite(const Handle(Standard_Persistent)& p,
   if (!p.IsNull()) {
     Handle(PTopoDS_CompSolid) &pp = (Handle(PTopoDS_CompSolid)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetObjMgt_ExternShareablemyEntry(),f);
@@ -63,6 +65,8 @@ void ShapeSchema_PTopoDS_CompSolid::SRead(const Handle(Standard_Persistent)& p, 
 { 
   if (!p.IsNull()) {
     Handle(PTopoDS_CompSolid) &pp = (Handle(PTopoDS_CompSolid)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

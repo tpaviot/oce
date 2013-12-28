@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // AdvApp2Var_ApproxF2var.cxx
 #include <math.h>
@@ -277,7 +273,7 @@ int mma1cdi_(integer *ndimen,
 	     doublereal *hermit, 
 	     integer *iercod)
 {
-  static integer c__1 = 1;
+  integer c__1 = 1;
 
   /* System generated locals */
   integer contr1_dim1, contr1_offset, contr2_dim1, contr2_offset, 
@@ -286,9 +282,9 @@ int mma1cdi_(integer *ndimen,
   i__2, i__3;
 
   /* Local variables */
-  static integer nroo2, ncfhe, nd, ii, kk;
-  static integer ibb, kkm, kkp;
-  static doublereal bid1, bid2, bid3;
+  integer nroo2, ncfhe, nd, ii, kk;
+  integer ibb, kkm, kkp;
+  doublereal bid1, bid2, bid3 = 0.;
 
 /* ********************************************************************** 
 */
@@ -505,8 +501,8 @@ int mma1cnt_(integer *ndimen,
   i__2, i__3;
 
   /* Local variables */
-  static integer nd, ii, jj, ibb;
-  static doublereal bid;
+  integer nd, ii, jj, ibb;
+  doublereal bid;
 
 
   /* ***********************************************************************
@@ -643,10 +639,10 @@ int mma1fdi_(integer *ndimen,
   doublereal d__1;
 
   /* Local variables */
-  static integer ideb, ifin, nroo2, ideru, iderv;
-  static doublereal renor;
-  static integer ii, nd, ibb, iim, nbp, iip;
-  static doublereal bid1, bid2;
+  integer ideb, ifin, nroo2, ideru, iderv;
+  doublereal renor;
+  integer ii, nd, ibb, iim, nbp, iip;
+  doublereal bid1, bid2;
 
 /* ********************************************************************** 
 */
@@ -971,8 +967,8 @@ int mma1fer_(integer *,//ndimen,
   integer crvjac_dim1, crvjac_offset, i__1, i__2;
 
   /* Local variables */
-  static integer idim, ncfja, ncfnw, ndses, ii, kk, ibb, ier;
-  static integer nbr0;
+  integer idim, ncfja, ncfnw, ndses, ii, kk, ibb, ier;
+  integer nbr0;
 
 
 /* ***********************************************************************
@@ -997,7 +993,7 @@ int mma1fer_(integer *,//ndimen,
 /*               0 = constraints of passage to limits (i.e. C0), */
 /*               1 = C0 + constraintes of 1st derivatives (i.e. C1), */
 /*               2 = C1 + constraintes of 2nd derivatives (i.e. C2). */
-/*     NDGJAC: Degree of development in series to use for the calculation  
+/*     NDGJAC: Degree of development in series to use for the calculation  */
 /*             in the base of Jacobi. */
 /*     CRVJAC: Table of coeff. of the curve of approximation in the */
 /*             base of Jacobi. */
@@ -1022,7 +1018,7 @@ int mma1fer_(integer *,//ndimen,
 /*             =-1, warning, required tolerance can't be */
 /*                  met with coefficients NFCLIM. */
 /*             = 1, order of constraints (IORDRE) is not within authorised values */
-/*                  
+
 
 /*     COMMONS USED : */
 /*     ------------------ */
@@ -1165,7 +1161,7 @@ int AdvApp2Var_ApproxF2var::mma1her_(const integer *iordre,
   integer hermit_dim1, hermit_offset;
 
   /* Local variables */
-  static integer ibb;
+  integer ibb;
 
 
 
@@ -1204,7 +1200,7 @@ int AdvApp2Var_ApproxF2var::mma1her_(const integer *iordre,
 
 /*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     The part of HERMIT(*,2*i+j) table where  j=1 or 2 and i=0 to IORDRE, 
+/*     The part of HERMIT(*,2*i+j) table where  j=1 or 2 and i=0 to IORDRE, */
 /*     contains the coefficients of the polynom of degree 2*IORDRE+1 */
 /*     such as ALL values in -1 and in +1 of this polynom and its */
 /*     derivatives till order of derivation IORDRE are NULL, */
@@ -1333,7 +1329,7 @@ int mma1jak_(integer *ndimen,
   crvjac_dim1, crvjac_offset, cgauss_dim1;
 
   /* Local variables */
-  static integer ibb;
+  integer ibb;
 
 /* ********************************************************************** 
 */
@@ -1351,14 +1347,14 @@ int mma1jak_(integer *ndimen,
 /*     ------------------ */
 /*     NDIMEN: Total dimension of the space (sum of dimensions */
 /*             of sub-spaces) */
-/*     NBROOT: Nb of points of discretization of the iso, extremities not 
+/*     NBROOT: Nb of points of discretization of the iso, extremities not */
 /*             included. */
 /*     IORDRE: Order of constraint at the extremities of the boundary */
 /*              -1 = no constraints, */
 /*               0 = constraints of passage of limits (i.e. C0), */
 /*               1 = C0 + constraints of 1st derivatives (i.e. C1), */
 /*               2 = C1 + constraints of 2nd derivatives (i.e. C2). */
-/*     NDGJAC: Degree of development in series to be used for calculation in the  
+/*     NDGJAC: Degree of development in series to be used for calculation in the  */
 /*             base of Jacobi. */
 
 /*     OUTPUT ARGUMENTS : */
@@ -1448,9 +1444,9 @@ int mma1noc_(doublereal *dfuvin,
   doublereal d__1;
 
   /* Local variables */
-  static doublereal rider, riord;
-  static integer nd, ibb;
-  static doublereal bid;
+  doublereal rider, riord;
+  integer nd, ibb;
+  doublereal bid;
 /* ********************************************************************** 
 */
 
@@ -1581,8 +1577,8 @@ int mma1nop_(integer *nbroot,
   integer i__1;
 
   /* Local variables */
-  static doublereal alinu, blinu, alinv, blinv;
-  static integer ii, ibb;
+  doublereal alinu, blinu, alinv, blinv;
+  integer ii, ibb;
 
 /* ***********************************************************************
  */
@@ -1700,11 +1696,11 @@ int AdvApp2Var_ApproxF2var::mma2ac1_(integer const *ndimen,
   patjac_dim2, patjac_offset, i__1, i__2, i__3, i__4, i__5;
 
   /* Local variables */
-  static logical ldbg;
-  static integer ndgu, ndgv;
-  static doublereal bidu1, bidu2, bidv1, bidv2;
-  static integer ioru1, iorv1, ii, nd, jj, ku, kv;
-  static doublereal cnt1, cnt2, cnt3, cnt4;
+  logical ldbg;
+  integer ndgu, ndgv;
+  doublereal bidu1, bidu2, bidv1, bidv2;
+  integer ioru1, iorv1, ii, nd, jj, ku, kv;
+  doublereal cnt1, cnt2, cnt3, cnt4;
 
 /* ********************************************************************** 
 */
@@ -1865,9 +1861,9 @@ int AdvApp2Var_ApproxF2var::mma2ac2_(const integer *ndimen,
   vhermt_dim1, vhermt_offset, i__1, i__2, i__3, i__4;
 
   /* Local variables */
-  static logical ldbg;
-  static integer ndgv1, ndgv2, ii, jj, nd, kk;
-  static doublereal bid1, bid2;
+  logical ldbg;
+  integer ndgv1, ndgv2, ii, jj, nd, kk;
+  doublereal bid1, bid2;
 
 /* ********************************************************************** 
 */
@@ -1908,7 +1904,7 @@ int AdvApp2Var_ApproxF2var::mma2ac2_(const integer *ndimen,
 /*     ------------------- */
 /*   PATJAC: Table of coefficients of the polynom P(u,v) by approximation */
 /*           of F(u,v) WITH taking into account of constraints. */
-/* > *//*
+/* > */
 
 
 /* > */
@@ -2011,9 +2007,9 @@ int AdvApp2Var_ApproxF2var::mma2ac3_(const integer *ndimen,
   uhermt_dim1, uhermt_offset, i__1, i__2, i__3, i__4;
 
   /* Local variables */
-  static logical ldbg;
-  static integer ndgu1, ndgu2, ii, jj, nd, kk;
-  static doublereal bid1, bid2;
+  logical ldbg;
+  integer ndgu1, ndgu2, ii, jj, nd, kk;
+  doublereal bid1, bid2;
 
 /* ********************************************************************** 
 */
@@ -2157,8 +2153,8 @@ int AdvApp2Var_ApproxF2var::mma2can_(const integer *ncfmxu,
   patcan_offset, i__1, i__2;
 
   /* Local variables */
-  static logical ldbg;
-  static integer ilon1, ilon2, ii, nd;
+  logical ldbg;
+  integer ilon1, ilon2, ii, nd;
 
 /* ********************************************************************** 
 */
@@ -2310,7 +2306,7 @@ int mma2cd1_(integer *ndimen,
 	     doublereal *diditb)
 
 {
-  static integer c__1 = 1;
+  integer c__1 = 1;
 
 /* System generated locals */
     integer contr1_dim1, contr1_dim2, contr1_offset, contr2_dim1, contr2_dim2,
@@ -2324,10 +2320,10 @@ int mma2cd1_(integer *ndimen,
 	    i__5;
 
     /* Local variables */
-    static integer ncfhu, ncfhv, nuroo, nvroo, nd, ii, jj, kk, ll, ibb, kkm, 
+    integer ncfhu, ncfhv, nuroo, nvroo, nd, ii, jj, kk, ll, ibb, kkm, 
 	    llm, kkp, llp;
-    static doublereal bid1, bid2, bid3, bid4;
-    static doublereal diu1, diu2, div1, div2, sou1, sou2, sov1, sov2;
+    doublereal bid1, bid2, bid3, bid4;
+    doublereal diu1, diu2, div1, div2, sou1, sou2, sov1, sov2;
 
 /* ********************************************************************** 
 */
@@ -2350,7 +2346,7 @@ int mma2cd1_(integer *ndimen,
 */
 /*     NBPNTV: Nb of INTERNAL  parameters of discretisation by V. */
 /*             This is also the nb of root of Legendre polynom where discretization is done. */
-/*     VROOTL: Table of discretization parameters on (-1,1) by V. 
+/*     VROOTL: Table of discretization parameters on (-1,1) by V. */
 /*     IORDRU: Order of constraint imposed at the extremities of iso-V */
 /*             = 0, calculate the extremities of iso-V */
 /*             = 1, calculate, additionally, the 1st derivative in the direction of iso-V */
@@ -2670,7 +2666,7 @@ int mma2cd2_(integer *ndimen,
 	     doublereal *diditb)
 
 {
-  static integer c__1 = 1;
+  integer c__1 = 1;
   /* System generated locals */
   integer sotbv1_dim1, sotbv1_dim2, sotbv1_offset, sotbv2_dim1, sotbv2_dim2,
   sotbv2_offset, ditbv1_dim1, ditbv1_dim2, ditbv1_offset, 
@@ -2681,8 +2677,8 @@ int mma2cd2_(integer *ndimen,
   disotb_dim1, disotb_dim2, disotb_offset, i__1, i__2, i__3, i__4;
 
   /* Local variables */
-  static integer ncfhv, nuroo, nvroo, ii, nd, jj, kk, ibb, jjm, jjp;
-  static doublereal bid1, bid2, bid3, bid4;
+  integer ncfhv, nuroo, nvroo, ii, nd, jj, kk, ibb, jjm, jjp;
+  doublereal bid1, bid2, bid3, bid4;
 
 /* ********************************************************************** 
 */
@@ -2707,7 +2703,7 @@ int mma2cd2_(integer *ndimen,
 */
 /*     NBPNTV: Nb of INTERNAL  parameters of discretisation by V. */
 /*             This is also the nb of root of Legendre polynom where discretization is done. */
-/*     VROOTL: Table of discretization parameters on (-1,1) by V. 
+/*     VROOTL: Table of discretization parameters on (-1,1) by V. */
 /*     IORDRV: Order of constraint imposed at the extremities of iso-V */
 /*             = 0, calculate the extremities of iso-V */
 /*             = 1, calculate, additionally, the 1st derivative in the direction of iso-V */
@@ -2982,7 +2978,7 @@ int mma2cd3_(integer *ndimen,
 	     doublereal *diditb)
 
 {
-  static integer c__1 = 1;
+  integer c__1 = 1;
 
    /* System generated locals */
     integer sotbu1_dim1, sotbu1_dim2, sotbu1_offset, sotbu2_dim1, sotbu2_dim2,
@@ -2994,8 +2990,8 @@ int mma2cd3_(integer *ndimen,
 	    disotb_dim1, disotb_dim2, disotb_offset, i__1, i__2, i__3, i__4;
 
     /* Local variables */
-    static integer ncfhu, nuroo, nvroo, ii, nd, jj, kk, ibb, kkm, kkp;
-    static doublereal bid1, bid2, bid3, bid4;
+    integer ncfhu, nuroo, nvroo, ii, nd, jj, kk, ibb, kkm, kkp;
+    doublereal bid1, bid2, bid3, bid4;
 
 /* ********************************************************************** 
 */
@@ -3308,7 +3304,7 @@ int AdvApp2Var_ApproxF2var::mma2cdi_( integer *ndimen,
 				     integer *iercod)
 
 {
-  static integer c__8 = 8;
+  integer c__8 = 8;
 
     /* System generated locals */
     integer contr1_dim1, contr1_dim2, contr1_offset, contr2_dim1, contr2_dim2,
@@ -3319,13 +3315,13 @@ int AdvApp2Var_ApproxF2var::mma2cdi_( integer *ndimen,
 	     disotb_offset;
 
     /* Local variables */
-    static integer ilong;
-    static intptr_t iofwr;
-    static doublereal wrkar[1];
-    static integer iszwr;
-    static integer ibb, ier;
-    static integer isz1, isz2, isz3, isz4;
-    static intptr_t ipt1, ipt2, ipt3, ipt4;
+    integer ilong;
+    intptr_t iofwr;
+    doublereal* wrkar = 0;
+    integer iszwr;
+    integer ibb, ier = 0;
+    integer isz1, isz2, isz3, isz4;
+    intptr_t ipt1, ipt2, ipt3, ipt4;
 
 
 
@@ -3351,7 +3347,7 @@ int AdvApp2Var_ApproxF2var::mma2cdi_( integer *ndimen,
 */
 /*     NBPNTV: Nb of INTERNAL  parameters of discretisation by V. */
 /*             This is also the nb of root of Legendre polynom where discretization is done. */
-/*     VROOTL: Table of parameters of discretisation ON (-1,1) by V. 
+/*     VROOTL: Table of parameters of discretisation ON (-1,1) by V.*/ 
 
 /*     IORDRV: Order of constraint imposed at the extremities of iso-U */
 /*             = 0, calculate the extremities of iso-U */
@@ -3471,6 +3467,7 @@ int AdvApp2Var_ApproxF2var::mma2cdi_( integer *ndimen,
     --sotbv2;
     --ditbv1;
     --ditbv2;
+    AdvApp2Var_SysBase anAdvApp2Var_SysBase;
 
     /* Function Body */
     ibb = AdvApp2Var_SysBase::mnfndeb_();
@@ -3506,7 +3503,7 @@ int AdvApp2Var_ApproxF2var::mma2cdi_( integer *ndimen,
     isz3 = ((*iordru + 1) << 1) * *nbpntu;
     isz4 = ((*iordrv + 1) << 1) * *nbpntv;
     iszwr = isz1 + isz2 + isz3 + isz4;
-    AdvApp2Var_SysBase::mcrrqst_(&c__8, &iszwr, wrkar, &iofwr, &ier);
+    anAdvApp2Var_SysBase.mcrrqst_(&c__8, &iszwr, wrkar, &iofwr, &ier);
     if (ier > 0) {
 	goto L9013;
     }
@@ -3579,7 +3576,7 @@ L9013:
 
 L9999:
     if (iofwr != 0) {
-	AdvApp2Var_SysBase::mcrdelt_(&c__8, &iszwr, wrkar, &iofwr, &ier);
+	anAdvApp2Var_SysBase.mcrdelt_(&c__8, &iszwr, wrkar, &iofwr, &ier);
     }
     if (ier > 0) {
 	*iercod = 13;
@@ -3623,7 +3620,7 @@ int AdvApp2Var_ApproxF2var::mma2ce1_(integer *numdec,
 				     integer *iercod)
      
 {
-  static integer c__8 = 8;
+  integer c__8 = 8;
   
     /* System generated locals */
     integer sosotb_dim1, sosotb_dim2, sosotb_offset, disotb_dim1, disotb_dim2,
@@ -3632,13 +3629,13 @@ int AdvApp2Var_ApproxF2var::mma2ce1_(integer *numdec,
 	     patjac_offset;
 
     /* Local variables */
-    static logical ldbg;
-    static intptr_t iofwr;
-    static doublereal wrkar[1];
-    static integer iszwr;
-    static integer ier;
-    static integer isz1, isz2, isz3, isz4, isz5, isz6, isz7;
-    static intptr_t ipt1, ipt2, ipt3, ipt4, ipt5, ipt6, ipt7;
+    logical ldbg;
+    intptr_t iofwr;
+    doublereal* wrkar = 0;
+    integer iszwr;
+    integer ier;
+    integer isz1, isz2, isz3, isz4, isz5, isz6, isz7;
+    intptr_t ipt1, ipt2, ipt3, ipt4, ipt5, ipt6, ipt7;
 
 
 
@@ -3799,7 +3796,8 @@ int AdvApp2Var_ApproxF2var::mma2ce1_(integer *numdec,
     isz6 = *ndjacv + 1 - ((*iordrv + 1) << 1);
     isz7 = *ndimen << 2;
     iszwr = isz1 + isz2 + isz3 + isz4 + isz5 + isz6 + isz7;
-    AdvApp2Var_SysBase::mcrrqst_(&c__8, &iszwr, wrkar, &iofwr, &ier);
+    AdvApp2Var_SysBase anAdvApp2Var_SysBase;
+    anAdvApp2Var_SysBase.mcrrqst_(&c__8, &iszwr, wrkar, &iofwr, &ier);
     if (ier > 0) {
 	goto L9013;
     }
@@ -3853,7 +3851,7 @@ L9013:
 
 L9999:
     if (iofwr != 0) {
-	AdvApp2Var_SysBase::mcrdelt_(&c__8, &iszwr, wrkar, &iofwr, &ier);
+	anAdvApp2Var_SysBase.mcrdelt_(&c__8, &iszwr, wrkar, &iofwr, &ier);
     }
     if (ier > 0) {
 	*iercod = 13;
@@ -3913,12 +3911,12 @@ int mma2ce2_(integer *numdec,
   patjac_offset, vecerr_dim1, vecerr_offset, i__1, i__2, i__3, i__4;
   
   /* Local variables */
-  static logical ldbg;
-  static integer idim, igsu, minu, minv, maxu, maxv, igsv;
-  static doublereal vaux[3];
-  static integer i2rdu, i2rdv, ndses, nd, ii, jj, kk, nu, nv;
-  static doublereal zu, zv;
-  static integer nu1, nv1;
+  logical ldbg;
+  integer idim, igsu, minu, minv, maxu, maxv, igsv;
+  doublereal vaux[3];
+  integer i2rdu, i2rdv, ndses, nd, ii, jj, kk, nu, nv;
+  doublereal zu, zv;
+  integer nu1, nv1;
 
 /* ********************************************************************** 
 */
@@ -4321,7 +4319,7 @@ L300:
 /* L320: */
 	}
 
-/* ----- Contribution of calculated terms to the approximation error
+/* ----- Contribution of calculated terms to the approximation error */
 /* for terms (I,J) with MINU <= I <= MAXU, MINV <= J <= MAXV. */
 
 	idim = 1;
@@ -4505,7 +4503,7 @@ L600:
 /* L700: */
 	}
 
-/* ----- Contribution of calculated terms to the approximation error
+/* ----- Contribution of calculated terms to the approximation error */
 /* for  terms (I,J) with MINU <= I <= MAXU, MINV <= J <= MAXV */
 
 	idim = 1;
@@ -4678,9 +4676,9 @@ int mma2cfu_(integer *ndujac,
   soditb_offset, diditb_dim1, i__1, i__2;
 
   /* Local variables */
-  static logical ldbg;
-  static integer nptu2, nptv2, ii, jj;
-  static doublereal bid0, bid1, bid2;
+  logical ldbg;
+  integer nptu2, nptv2, ii, jj;
+  doublereal bid0, bid1, bid2;
 
 /* ********************************************************************** 
 */
@@ -4688,7 +4686,7 @@ int mma2cfu_(integer *ndujac,
 /*     FUNCTION : */
 /*     ---------- */
 /*     Calculate the terms connected to degree NDUJAC by U of the polynomial approximation */
-/*     of function F(u,v), starting from its discretisation 
+/*     of function F(u,v), starting from its discretisation */
 /*     on the roots of Legendre polynom of degree */
 /*     NBPNTU by U and NBPNTV by V. */
 
@@ -4818,7 +4816,7 @@ int mma2cfu_(integer *ndujac,
 	}
     }
 
-/* ------- Add terms connected to the supplementary root (0.D0) ------ 
+/* ------- Add terms connected to the supplementary root (0.D0) ------ */
 /* ----------- of Legendre polynom of uneven degree NBPNTU ----------- 
 */
 /* --> Only even NDUJAC terms are modified as GSSUTB(0) = 0 */
@@ -4894,16 +4892,16 @@ int mma2cfv_(integer *ndvjac,
   patjac_offset, i__1, i__2;
 
   /* Local variables */
-  static logical ldbg;
-  static integer nptv2, ii, jj;
-  static doublereal bid1;
+  logical ldbg;
+  integer nptv2, ii, jj;
+  doublereal bid1;
 
 /* ********************************************************************** 
 */
 
 /*     FUNCTION : */
 /*     ---------- */
-/*     Calculate the coefficients of polynomial approximation of F(u,v) 
+/*     Calculate the coefficients of polynomial approximation of F(u,v) */
 /*     of degree NDVJAC by V and of degree by U varying from MINDGU to MAXDGU. 
 */
 
@@ -4915,7 +4913,7 @@ int mma2cfv_(integer *ndvjac,
 /*     ------------------ */
 
 /*   NDVJAC: Degree of the polynom of approximation by V. */
-/*           The representation in the orthogonal base starts from degre 0. 
+/*           The representation in the orthogonal base starts from degre 0. */
 	     /* The polynomial base is the base of Jacobi of order -1 */
 /*           (Legendre), 0, 1 or 2 */
 /*   MINDGU: Degree minimum by U of coeff. to calculate. */
@@ -4925,9 +4923,9 @@ int mma2cfv_(integer *ndvjac,
 /*           by Gauss method. It is reqired that NBPNTV = 30, 40, 50 or 61 and NDVJAC < NBPNTV. */
 /*   GSSVTB: Table of coefficients of integration by Gauss method */
 /*           by V for NDVJAC fixed: j varies from 0 to NBPNTV/2. */
-/*   CHPAIR: Table of terms connected to degrees from MINDGU to MAXDGU by U to 
+/*   CHPAIR: Table of terms connected to degrees from MINDGU to MAXDGU by U to */
 /*           calculate the coeff. of approximation of EVEN degree NDVJAC by V. */
-/*   CHIMPR: Table of terms connected to degrees from MINDGU to MAXDGU by U to
+/*   CHIMPR: Table of terms connected to degrees from MINDGU to MAXDGU by U to */
 /*           calculate the coeff. of approximation of UNEVEN degree NDVJAC by V. */
 
 /*     OUTPUT ARGUMENTS : */
@@ -5052,9 +5050,9 @@ int AdvApp2Var_ApproxF2var::mma2ds1_(integer *ndimen,
   fpntab_offset, i__1;
 
   /* Local variables */
-  static logical ldbg;
-  static integer ibid1, ibid2, iuouv, nd;
-  static integer isz1, isz2;
+  logical ldbg;
+  integer ibid1, ibid2, iuouv, nd;
+  integer isz1, isz2;
 
 /* ********************************************************************** 
 */
@@ -5365,7 +5363,7 @@ int mma2ds2_(integer *ndimen,
 	     integer *iercod)
 
 {
-  static integer c__0 = 0;
+  integer c__0 = 0;
   /* System generated locals */
   integer sosotb_dim1, sosotb_dim2, sosotb_offset, disotb_dim1, disotb_dim2,
   disotb_offset, soditb_dim1, soditb_dim2, soditb_offset, 
@@ -5373,12 +5371,12 @@ int mma2ds2_(integer *ndimen,
   fpntab_offset, i__1, i__2, i__3;
 
   /* Local variables */
-  static integer jdec;
-  static logical ldbg;
-  static doublereal alinu, blinu, alinv, blinv, tcons;
-  static doublereal dbfn1[2], dbfn2[2];
-  static integer nuroo, nvroo, id, iu, iv;
-  static doublereal um, up;
+  integer jdec;
+  logical ldbg;
+  doublereal alinu, blinu, alinv, blinv, tcons;
+  doublereal dbfn1[2], dbfn2[2];
+  integer nuroo, nvroo, id, iu, iv;
+  doublereal um, up;
 
 
 /* ********************************************************************** 
@@ -5749,11 +5747,11 @@ int mma2er1_(integer *ndjacu,
   doublereal d__1;
 
   /* Local variables */
-  static logical ldbg;
-  static integer minu, minv;
-  static doublereal vaux[2];
-  static integer ii, nd, jj;
-  static doublereal bid0, bid1;
+  logical ldbg;
+  integer minu, minv;
+  doublereal vaux[2];
+  integer ii, nd, jj;
+  doublereal bid0, bid1;
 
 /* ********************************************************************** 
 */
@@ -5915,12 +5913,12 @@ int mma2er2_(integer *ndjacu,
   doublereal d__1;
 
   /* Local variables */
-  static logical ldbg;
-  static doublereal vaux[2];
-  static integer i2rdu, i2rdv;
-  static doublereal errnu, errnv;
-  static integer ii, nd, jj, nu, nv;
-  static doublereal bid0, bid1;
+  logical ldbg;
+  doublereal vaux[2];
+  integer i2rdu, i2rdv;
+  doublereal errnu, errnv;
+  integer ii, nd, jj, nu, nv;
+  doublereal bid0, bid1;
 
 /* ********************************************************************** 
 */
@@ -6155,7 +6153,7 @@ int AdvApp2Var_ApproxF2var::mma2fnc_(integer *ndimen,
 				     integer *iercod)
 
 {
-  static integer c__8 = 8;
+  integer c__8 = 8;
 
    /* System generated locals */
     integer courbe_dim1, courbe_dim2, courbe_offset, somtab_dim1, somtab_dim2,
@@ -6166,22 +6164,22 @@ int AdvApp2Var_ApproxF2var::mma2fnc_(integer *ndimen,
     doublereal d__1;
 
     /* Local variables */
-    static integer ideb;
-    static doublereal tmil;
-    static integer  ideb1, ibid1, ibid2, ncfja, ndgre, ilong, 
+    integer ideb;
+    doublereal tmil;
+    integer  ideb1, ibid1, ibid2, ncfja, ndgre, ilong, 
 	    ndwrk;
-    static doublereal wrkar[1];
-    static integer nupil;
-    static intptr_t iofwr;
-    static doublereal uvpav[4]	/* was [2][2] */;
-    static integer nd, ii;
-    static integer ibb;
-    static integer ier;
-    static doublereal uv11[4]	/* was [2][2] */;
-  static integer ncb1;
-    static doublereal eps3;
-    static integer isz1, isz2, isz3, isz4, isz5;
-    static intptr_t ipt1, ipt2, ipt3, ipt4, ipt5,iptt, jptt;
+    doublereal* wrkar = 0;
+    integer nupil;
+    intptr_t iofwr;
+    doublereal uvpav[4]	/* was [2][2] */;
+    integer nd, ii;
+    integer ibb;
+    integer ier = 0;
+    doublereal uv11[4]	/* was [2][2] */;
+  integer ncb1;
+    doublereal eps3;
+    integer isz1, isz2, isz3, isz4, isz5;
+    intptr_t ipt1, ipt2, ipt3, ipt4, ipt5,iptt, jptt;
 
 /* ********************************************************************** 
 */
@@ -6258,7 +6256,7 @@ int AdvApp2Var_ApproxF2var::mma2fnc_(integer *ndimen,
 /*     ERRMAX: Table of MAX errors (sub-space by sub-space) */
 /*             committed in the approximation of FONCNP by NBCRBE curves. */
 /*     ERRMOY: Table of AVERAGE errors (sub-space by sub-space) */
-/*             committed in the approximation of FONCNP by NBCRBE curves.
+/*             committed in the approximation of FONCNP by NBCRBE curves. */
 /*     IERCOD: Error code: */
 /*             -1 = ERRMAX > EPSAPR for at least one sub-space. */
 /*                  (the resulting curves of at least mathematic degree NCFLIM-1 */
@@ -6370,6 +6368,7 @@ int AdvApp2Var_ApproxF2var::mma2fnc_(integer *ndimen,
     courbe_dim2 = *ndimen;
     courbe_offset = courbe_dim1 * (courbe_dim2 + 1) + 1;
     courbe -= courbe_offset;
+    AdvApp2Var_SysBase anAdvApp2Var_SysBase;
 
     /* Function Body */
     ibb = AdvApp2Var_SysBase::mnfndeb_();
@@ -6429,7 +6428,7 @@ int AdvApp2Var_ApproxF2var::mma2fnc_(integer *ndimen,
     isz5 = (*ndgjac + 1) * *ndimen;
 
     ndwrk = isz1 + isz2 + isz3 + isz4 + isz5;
-    AdvApp2Var_SysBase::mcrrqst_(&c__8, &ndwrk, wrkar, &iofwr, &ier);
+    anAdvApp2Var_SysBase.mcrrqst_(&c__8, &ndwrk, wrkar, &iofwr, &ier);
     if (ier > 0) {
 	goto L9013;    }
 /* --> For the parameters of discretisation (NBROOT+2 extremities). */
@@ -6666,7 +6665,7 @@ L9100:
 
 L9900:
     if (iofwr != 0) {
-	AdvApp2Var_SysBase::mcrdelt_(&c__8, &ndwrk, wrkar, &iofwr, &ier);
+	anAdvApp2Var_SysBase.mcrdelt_(&c__8, &ndwrk, wrkar, &iofwr, &ier);
     }
     if (ier > 0) {
 	*iercod = 13;
@@ -6715,9 +6714,9 @@ int AdvApp2Var_ApproxF2var::mma2fx6_(integer *ncfmxu,
   doublereal d__1, d__2;
 
   /* Local variables */
-  static integer idim, ncfu, ncfv, id, ii, nd, jj, ku, kv, ns, ibb;
-  static doublereal bid;
-  static doublereal tol;
+  integer idim, ncfu, ncfv, id, ii, nd, jj, ku, kv, ns, ibb;
+  doublereal bid;
+  doublereal tol;
 
 /* ********************************************************************** 
 */
@@ -7146,9 +7145,9 @@ int AdvApp2Var_ApproxF2var::mma2jmx_(integer *ndgjac,
     integer i__1;
 
     /* Local variables */
-    static logical ldbg;
-    static integer numax, ii;
-    static doublereal bid;
+    logical ldbg;
+    integer numax, ii;
+    doublereal bid;
 
 
 /* ********************************************************************** 
@@ -7250,9 +7249,9 @@ int mma2moy_(integer *ndgumx,
     integer patjac_dim1, patjac_dim2, patjac_offset, i__1, i__2, i__3;
    
     /* Local variables */
-    static logical ldbg;
-    static integer minu, minv, idebu, idebv, ii, nd, jj;
-    static doublereal bid0, bid1;
+    logical ldbg;
+    integer minu, minv, idebu, idebv, ii, nd, jj;
+    doublereal bid0, bid1;
     
     
 /* ********************************************************************** 
@@ -7397,7 +7396,7 @@ int AdvApp2Var_ApproxF2var::mma2roo_(integer *nbpntu,
   integer i__1;
 
   /* Local variables */
-  static integer ii, ibb;
+  integer ii, ibb;
 
 /* ********************************************************************** 
 */
@@ -7503,9 +7502,9 @@ int mmmapcoe_(integer *ndim,
   crvjac_dim1, crvjac_offset, gsstab_dim1, i__1, i__2, i__3;
 
   /* Local variables */
-  static integer igss, ikdeb;
-  static doublereal bidon;
-  static integer nd, ik, ir, nbroot, ibb;
+  integer igss, ikdeb;
+  doublereal bidon;
+  integer nd, ik, ir, nbroot, ibb;
 
 /* ********************************************************************** 
 */
@@ -7664,9 +7663,9 @@ int mmaperm_(integer *ncofmx,
   integer crvjac_dim1, crvjac_offset, i__1, i__2;
 
   /* Local variables */
-  static doublereal bidj;
-  static integer i__, ia, nd, ncfcut, ibb;
-  static doublereal bid;
+  doublereal bidj;
+  integer i__, ia, nd, ncfcut, ibb;
+  doublereal bid;
 
 /* ********************************************************************** 
 */
@@ -7773,7 +7772,7 @@ int AdvApp2Var_ApproxF2var::mmapptt_(const integer *ndgjac,
   integer cgauss_dim1, i__1;
 
   /* Local variables */
-  static integer kjac, iptt, ipdb0, infdg, iptdb, mxjac, ilong, ibb;
+  integer kjac, iptt, ipdb0, infdg, iptdb, mxjac, ilong, ibb;
 
 /* ********************************************************************** 
 */
@@ -7781,7 +7780,7 @@ int AdvApp2Var_ApproxF2var::mmapptt_(const integer *ndgjac,
 /*     FUNCTION : */
 /*     ---------- */
 /*        Load the elements required for integration by */
-/*        Gauss method to obtain the coefficients in the base of
+/*        Gauss method to obtain the coefficients in the base of */
 /*        Legendre of the approximation by the least squares of a */
 /*        function. The elements are stored in commons MMAPGSS */
 /*        (case without constraint), MMAPGS0 (constraints C0), MMAPGS1 */
@@ -7794,7 +7793,7 @@ int AdvApp2Var_ApproxF2var::mmapptt_(const integer *ndgjac,
 /*     INPUT ARGUMENTS  : */
 /*     ------------------ */
 /*        NDGJAC : Max degree of the polynom of approximation. */
-/*                 The representation in orthogonal base goes from degree
+/*                 The representation in orthogonal base goes from degree */
 /*                 0 to degree NDGJAC-2*(JORDRE+1). The polynomial base */
 /*                 is the base of Jacobi of order -1 (Legendre), 0, 1 and 2 */
 /*        NBPNTS : Degree of the polynom of Legendre on the roots which of */
@@ -8077,7 +8076,7 @@ int mmjacpt_(const integer *ndimen,
   ptcaux_offset, i__1, i__2, i__3;
   
   /* Local variables */
-  static integer kdim, nd, ii, jj, ibb;
+  integer kdim, nd, ii, jj, ibb;
 
 /* ***********************************************************************
  */

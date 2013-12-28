@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepRepr_Array1OfRepresentationItem(const Standard_Integer Low,const Standard_Integer Up);
+      StepRepr_Array1OfRepresentationItem(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepRepr_Array1OfRepresentationItem(const Handle(StepRepr_RepresentationItem)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepRepr_Array1OfRepresentationItem(const Handle(StepRepr_RepresentationItem)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(StepRepr_RepresentationItem)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepRepr_Array1OfRepresentationItem()
 {
   Destroy();

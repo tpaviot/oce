@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{485A5C02-0D81-0081-0736-1832D3B0C784}</ProjectGuid>
+    <ProjectGuid>{3EC66015-00D9-0343-0DFC-1DDB281F2BF9}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,16 +89,18 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\obj\TKDraw/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\obj\TKDraw/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\obj\TKDraw/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKG2d.lib;TKGeomBase.lib;TKG3d.lib;TKMath.lib;TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKMesh.lib;TKService.lib;TKHLR.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKG2d.lib;TKGeomBase.lib;TKG3d.lib;TKMath.lib;TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKMesh.lib;TKService.lib;TKHLR.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bin\TKDraw.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -129,18 +131,21 @@
       <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKDraw/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win32\vc10\objd\TKDraw/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win32\vc10\objd\TKDraw/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKG2d.lib;TKGeomBase.lib;TKG3d.lib;TKMath.lib;TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKMesh.lib;TKService.lib;TKHLR.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKG2d.lib;TKGeomBase.lib;TKG3d.lib;TKMath.lib;TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKMesh.lib;TKService.lib;TKHLR.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bind\TKDraw.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -174,16 +179,17 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\obj\TKDraw/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\obj\TKDraw/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\obj\TKDraw/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKG2d.lib;TKGeomBase.lib;TKG3d.lib;TKMath.lib;TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKMesh.lib;TKService.lib;TKHLR.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKG2d.lib;TKGeomBase.lib;TKG3d.lib;TKMath.lib;TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKMesh.lib;TKService.lib;TKHLR.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bin\TKDraw.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -214,18 +220,20 @@
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKDraw/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\..\win64\vc10\objd\TKDraw/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\..\win64\vc10\objd\TKDraw/</ProgramDataBaseFileName>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKG2d.lib;TKGeomBase.lib;TKG3d.lib;TKMath.lib;TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKMesh.lib;TKService.lib;TKHLR.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKG2d.lib;TKGeomBase.lib;TKG3d.lib;TKMath.lib;TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKMesh.lib;TKService.lib;TKHLR.lib;gdi32.lib;advapi32.lib;user32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bind\TKDraw.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

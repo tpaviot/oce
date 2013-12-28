@@ -19,9 +19,6 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _FairCurve_BattenLaw_HeaderFile
 #include <FairCurve_BattenLaw.hxx>
 #endif
@@ -45,6 +42,9 @@
 #endif
 #ifndef _Handle_TColgp_HArray1OfPnt2d_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt2d.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
 class TColStd_HArray1OfReal;
 class TColgp_HArray1OfPnt2d;
@@ -87,7 +87,6 @@ private:
 
 Standard_Real MyLengthSliding;
 Standard_Real OriginalSliding;
-Standard_Boolean MyFreeSliding;
 FairCurve_BattenLaw MyBattenLaw;
 FairCurve_DistributionOfTension MyTension;
 FairCurve_DistributionOfSagging MySagging;

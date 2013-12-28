@@ -4,7 +4,7 @@ SUBDIRS = adm/lin/amk
 
 VPATH = @srcdir@ @top_srcdir@/adm/lin/amk: @top_srcdir@/adm/lin/amk:
 
-FoundationClasses_PKGS = OS
+FoundationClasses_PKGS = OS UnitsAPI
 
 if ENABLE_FOC
   FoundationClasses_DIRS = $(FoundationClasses_PKGS)
@@ -103,6 +103,8 @@ install-exec-local:
 		rm -f $(prefix)/inc/config.h; \
 	fi
 	cd $(prefix)/inc && ln -s ../config.h config.h
-	cd $(top_srcdir) && cp *amk.sh $(prefix)
+	cd $(top_srcdir) && cp draw.sh $(prefix)
+	cd $(top_srcdir) && cp custom.sh $(prefix)
+	cd $(top_srcdir) && cp env.sh $(prefix)
 
 .PHONY: FoundationClasses ModelingData ModelingAlgorithms Visualization ApplicationFramework DataExchange Draw

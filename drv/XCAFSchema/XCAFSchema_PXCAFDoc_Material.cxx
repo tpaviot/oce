@@ -43,6 +43,8 @@ void XCAFSchema_PXCAFDoc_Material::SWrite(const Handle(Standard_Persistent)& p, 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Material) &pp = (Handle(PXCAFDoc_Material)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPXCAFDoc_MaterialmyName(),f);
@@ -65,6 +67,8 @@ void XCAFSchema_PXCAFDoc_Material::SRead(const Handle(Standard_Persistent)& p, S
 { 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Material) &pp = (Handle(PXCAFDoc_Material)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -16,9 +16,6 @@
 #include <Handle_IGESData_IGESReaderData.hxx>
 #endif
 
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _IGESData_IGESType_HeaderFile
 #include <IGESData_IGESType.hxx>
 #endif
@@ -45,6 +42,9 @@
 #endif
 #ifndef _Interface_FileReaderData_HeaderFile
 #include <Interface_FileReaderData.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
@@ -128,7 +128,6 @@ protected:
 private: 
 
 
-Standard_Integer thecnum;
 IGESData_IGESType thectyp;
 Handle_TColStd_HSequenceOfHAsciiString thestar;
 Handle_Interface_ParamSet theparh;

@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESDraw_Array1OfViewKindEntity(const Standard_Integer Low,const Standard_Integer Up);
+      IGESDraw_Array1OfViewKindEntity(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESDraw_Array1OfViewKindEntity(const Handle(IGESData_ViewKindEntity)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESDraw_Array1OfViewKindEntity(const Handle(IGESData_ViewKindEntity)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(IGESData_ViewKindEntity)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESDraw_Array1OfViewKindEntity()
 {
   Destroy();

@@ -1,23 +1,18 @@
 // Created on: 1997-01-06
 // Created by: Yves FRICAUD
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TDF_LabelList.hxx>
 #include <TNaming_Tool.ixx>
@@ -41,6 +36,7 @@
 #include <TDF_AttributeMap.hxx>
 #include <TDF_Tool.hxx>
 #include <TDF_MapIteratorOfAttributeMap.hxx>
+#include <TDF_ChildIterator.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TNaming_ListIteratorOfListOfNamedShape.hxx>
 #endif
@@ -143,7 +139,6 @@ static TopoDS_Shape MakeShape (const TopTools_MapOfShape& MS)
 //function : GetShape
 //purpose  : 
 //=======================================================================
-
 TopoDS_Shape TNaming_Tool::GetShape(const Handle(TNaming_NamedShape)& NS)
 {  
   TNaming_Iterator itL (NS);
@@ -151,14 +146,39 @@ TopoDS_Shape TNaming_Tool::GetShape(const Handle(TNaming_NamedShape)& NS)
   if(NS->Evolution() == TNaming_SELECTED) {
     for (; itL.More(); itL.Next()) {
       if(!itL.NewShape().IsNull()) {
-	if(itL.NewShape().ShapeType() != TopAbs_VERTEX &&
-	   !itL.OldShape().IsNull() && itL.OldShape().ShapeType() == TopAbs_VERTEX) {
-	  const TopoDS_Shape& aS = itL.NewShape().Oriented(itL.OldShape().Orientation());
-	  MS.Add(aS);
-	} else
-	  MS.Add(itL.NewShape());
-      }
-    }
+		if(itL.NewShape().ShapeType() != TopAbs_VERTEX ) { //OR-N
+	      Handle (TNaming_Naming)  aNaming;
+	      NS->Label().FindAttribute(TNaming_Naming::GetID(), aNaming);
+	      if(!aNaming.IsNull()) {
+		    if(aNaming->GetName().Orientation() == TopAbs_FORWARD ||
+				aNaming->GetName().Orientation() == TopAbs_REVERSED) {
+		      TopoDS_Shape aS = itL.NewShape();
+			  if(aNaming->GetName().Type() == TNaming_ORIENTATION) {
+			    aS.Orientation(aNaming->GetName().Orientation());
+			  } else {
+				Handle (TNaming_Naming)  aNaming2;
+				TDF_ChildIterator it(aNaming->Label());
+				for(;it.More();it.Next()) {
+				  const TDF_Label& aLabel = it.Value();
+				  aLabel.FindAttribute(TNaming_Naming::GetID(), aNaming2);
+	              if(!aNaming2.IsNull()) {
+				    if(aNaming2->GetName().Type() == TNaming_ORIENTATION) {
+					  aS.Orientation(aNaming2->GetName().Orientation());
+					  break;
+					}
+				  }
+				}
+			  }
+		      MS.Add(aS);
+			} else  
+			    MS.Add(itL.NewShape());
+		  } else
+	          MS.Add(itL.NewShape());		
+		} //
+		else
+	        MS.Add(itL.NewShape());
+	  }
+	}  
   } else 
     for (; itL.More(); itL.Next()) {
       if (!itL.NewShape().IsNull()) MS.Add(itL.NewShape());      
@@ -214,15 +234,35 @@ TopoDS_Shape TNaming_Tool::CurrentShape(const Handle(TNaming_NamedShape)& Att)
   for (; itL.More(); itL.Next()) {
     const TopoDS_Shape& S = itL.NewShape();
     if (S.IsNull()) continue;
+//OR-N
     Standard_Boolean YaOrientationToApply(Standard_False);
     TopAbs_Orientation OrientationToApply(TopAbs_FORWARD);
     if(Att->Evolution() == TNaming_SELECTED) {
-      if (itL.More() && itL.NewShape().ShapeType() != TopAbs_VERTEX &&
-	  !itL.OldShape().IsNull() && itL.OldShape().ShapeType() == TopAbs_VERTEX) {
-	YaOrientationToApply = Standard_True;
-	OrientationToApply = itL.OldShape().Orientation();
-      }
-    }
+      if (itL.More() && itL.NewShape().ShapeType() != TopAbs_VERTEX) {		 	
+		Handle (TNaming_Naming)  aNaming;
+		Att->Label().FindAttribute(TNaming_Naming::GetID(), aNaming);
+		if(!aNaming.IsNull()) {
+		  if(aNaming->GetName().Type() == TNaming_ORIENTATION) {
+			 OrientationToApply = aNaming->GetName().Orientation();
+		  } else {
+	        Handle (TNaming_Naming)  aNaming2;
+			TDF_ChildIterator it(aNaming->Label());
+			for(;it.More();it.Next()) {
+			  const TDF_Label& aLabel = it.Value();
+			  aLabel.FindAttribute(TNaming_Naming::GetID(), aNaming2);
+	          if(!aNaming2.IsNull()) {
+			    if(aNaming2->GetName().Type() == TNaming_ORIENTATION) {
+				  OrientationToApply = aNaming2->GetName().Orientation();
+				  break;
+				}
+			  }
+			}
+		  }			
+		  if(OrientationToApply == TopAbs_FORWARD || OrientationToApply == TopAbs_REVERSED)
+			YaOrientationToApply = Standard_True;
+		}
+	  }
+	} //
     TNaming_NewShapeIterator it(itL);
     if (!it.More()) {
 	MS.Add(S);
@@ -259,15 +299,35 @@ TopoDS_Shape TNaming_Tool::CurrentShape(const Handle(TNaming_NamedShape)& Att,
   for (; itL.More(); itL.Next()) {
     const TopoDS_Shape& S = itL.NewShape();
     if (S.IsNull()) continue;
+//OR-N
     Standard_Boolean YaOrientationToApply(Standard_False);
     TopAbs_Orientation OrientationToApply(TopAbs_FORWARD);
     if(Att->Evolution() == TNaming_SELECTED) {
-      if (itL.More() && itL.NewShape().ShapeType() != TopAbs_VERTEX &&
-	  !itL.OldShape().IsNull() && itL.OldShape().ShapeType() == TopAbs_VERTEX) {
-	YaOrientationToApply = Standard_True;
-	OrientationToApply = itL.OldShape().Orientation();
+      if (itL.More() && itL.NewShape().ShapeType() != TopAbs_VERTEX) {
+		Handle (TNaming_Naming)  aNaming;
+		Att->Label().FindAttribute(TNaming_Naming::GetID(), aNaming);
+		if(!aNaming.IsNull()) {
+		  if(aNaming->GetName().Type() == TNaming_ORIENTATION) {
+			 OrientationToApply = aNaming->GetName().Orientation();
+		  } else {
+	        Handle (TNaming_Naming)  aNaming2;
+			TDF_ChildIterator it(aNaming->Label());
+			for(;it.More();it.Next()) {
+			  const TDF_Label& aLabel = it.Value();
+			  aLabel.FindAttribute(TNaming_Naming::GetID(), aNaming2);
+	          if(!aNaming2.IsNull()) {
+			    if(aNaming2->GetName().Type() == TNaming_ORIENTATION) {
+				  OrientationToApply = aNaming2->GetName().Orientation();
+				  break;
+				}
+			  }
+			}
+		  }
+		  if(OrientationToApply == TopAbs_FORWARD || OrientationToApply == TopAbs_REVERSED)
+			YaOrientationToApply = Standard_True;	    	
+		}
       }
-    }
+    } //
     TNaming_NewShapeIterator it(itL);
     if (!it.More()) {
       MS.Add(S);

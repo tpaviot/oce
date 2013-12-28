@@ -144,16 +144,6 @@ public:
   //! return a line going through the eye towards the <br>
 //!          2d point <X,Y>. <br>
   Standard_EXPORT   virtual  gp_Lin Shoot(const Standard_Real X,const Standard_Real Y) const;
-  //! Returns the minimum depth value (if clipping plane defined). <br>
-//!         Should be used when call ::Shoot() to compute eyeline. <br>
-        Standard_Real DepthMin() const;
-  //! Returns the maximum depth value (if clipping plane defined). <br>
-//!         Should be used when call ::Shoot() to compute eyeline. <br>
-        Standard_Real DepthMax() const;
-  //! Setup the min/max depth values (doesn't affect <br>
-//!         projection functionality itself). <br>
-//!         Should be used when call ::Shoot() to compute eyeline. <br>
-  Standard_EXPORT     void DepthMinMax(const Standard_Real theDepthMin,const Standard_Real theDepthMax) ;
   
       virtual  void Transform(gp_Pnt& P,const gp_GTrsf& T) const;
   
@@ -179,8 +169,6 @@ private:
 
 Standard_Integer myType;
 Handle_V3d_View myView;
-Standard_Real myDepthMin;
-Standard_Real myDepthMax;
 
 
 };

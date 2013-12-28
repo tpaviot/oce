@@ -22,6 +22,9 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 
 
 
@@ -31,9 +34,9 @@ public:
 
   //! Creates an array of points, <br>
 //! a single pixel point is drawn at each vertex. <br>
-//! The array must be filled using only <br>
-//!     the AddVertex(Point) method. <br>
-  Standard_EXPORT   Graphic3d_ArrayOfPoints(const Standard_Integer maxVertexs);
+//! The array must be filled using the AddVertex(Point) method. <br>
+//! When <hasVColors> is TRUE , you must use only AddVertex(Point,Color) method. <br>
+  Standard_EXPORT   Graphic3d_ArrayOfPoints(const Standard_Integer maxVertexs,const Standard_Boolean hasVColors = Standard_False);
 
 
 

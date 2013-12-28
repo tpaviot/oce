@@ -42,11 +42,11 @@ class StepGeom_HArray1OfCurve : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepGeom_HArray1OfCurve(const Standard_Integer Low,const Standard_Integer Up);
+      StepGeom_HArray1OfCurve(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepGeom_HArray1OfCurve(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepGeom_Curve)& V);
+      StepGeom_HArray1OfCurve(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepGeom_Curve)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepGeom_Curve)& V) ;
+        void Init(const Handle(StepGeom_Curve)& V) ;
   
         Standard_Integer Length() const;
   

@@ -90,7 +90,9 @@ public:
 //!          is a circle or an ellipse. If the maximum distance between <br>
 //!          the ellipse solution and the circle centered at the ellipse <br>
 //!          center is less than Tol, the result will be the circle. <br>
-  Standard_EXPORT   IntAna_QuadQuadGeo(const gp_Pln& P,const gp_Cylinder& C,const Standard_Real Tolang,const Standard_Real Tol);
+//!          H is the height of the cylinder <Cyl>. It is  used to check <br>
+//!          whether the plane and cylinder are parallel. <br>
+  Standard_EXPORT   IntAna_QuadQuadGeo(const gp_Pln& P,const gp_Cylinder& C,const Standard_Real Tolang,const Standard_Real Tol,const Standard_Real H = 0);
   //! Intersects a plane and a cylinder. <br>
 //!          TolAng is the angular tolerance used to determine <br>
 //!          if the axis of the cylinder is parallel to the plane. <br>
@@ -98,7 +100,9 @@ public:
 //!          is a circle or an ellipse. If the maximum distance between <br>
 //!          the ellipse solution and the circle centered at the ellipse <br>
 //!          center is less than Tol, the result will be the circle. <br>
-  Standard_EXPORT     void Perform(const gp_Pln& P,const gp_Cylinder& C,const Standard_Real Tolang,const Standard_Real Tol) ;
+//!          H is the height of the cylinder <Cyl>. It is  used to check <br>
+//!          whether the plane and cylinder are parallel. <br>
+  Standard_EXPORT     void Perform(const gp_Pln& P,const gp_Cylinder& C,const Standard_Real Tolang,const Standard_Real Tol,const Standard_Real H = 0) ;
   //! Creates the intersection between a plane and a sphere. <br>
   Standard_EXPORT   IntAna_QuadQuadGeo(const gp_Pln& P,const gp_Sphere& S);
   //! Intersects a plane and a sphere. <br>

@@ -31,6 +31,9 @@
 #ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
 #endif
+#ifndef _Graphic3d_ShaderProgram_Handle_HeaderFile
+#include <Graphic3d_ShaderProgram_Handle.hxx>
+#endif
 #ifndef _Aspect_AspectFillArea_HeaderFile
 #include <Aspect_AspectFillArea.hxx>
 #endif
@@ -137,6 +140,8 @@ public:
 //!          while positive values shift polygons away. <br>
 //!          Consult OpenGL reference for details (glPolygonOffset function description). <br>
   Standard_EXPORT     void SetPolygonOffsets(const Standard_Integer aMode,const Standard_ShortReal aFactor = 1.0,const Standard_ShortReal aUnits = 0.0) ;
+  //! Sets up OpenGL/GLSL shader program. <br>
+  Standard_EXPORT     void SetShaderProgram(const Graphic3d_ShaderProgram_Handle& theProgram) ;
   //! Returns the Back Face Removal status. <br>
 //!          Standard_True if SuppressBackFace is activated. <br>
   Standard_EXPORT     Standard_Boolean BackFace() const;
@@ -155,6 +160,8 @@ public:
   Standard_EXPORT     Standard_Boolean TextureMapState() const;
   //! Returns current polygon offsets settings. <br>
   Standard_EXPORT     void PolygonOffsets(Standard_Integer& aMode,Standard_ShortReal& aFactor,Standard_ShortReal& aUnits) const;
+  
+  Standard_EXPORT    const Graphic3d_ShaderProgram_Handle& ShaderProgram() const;
 
 
 
@@ -179,6 +186,7 @@ Graphic3d_MaterialAspect MyBackMaterial;
 Standard_Integer MyPolygonOffsetMode;
 Standard_ShortReal MyPolygonOffsetFactor;
 Standard_ShortReal MyPolygonOffsetUnits;
+Graphic3d_ShaderProgram_Handle MyShaderProgram;
 
 
 };

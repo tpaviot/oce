@@ -42,11 +42,11 @@ class IGESGeom_HArray1OfCurveOnSurface : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESGeom_HArray1OfCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up);
+      IGESGeom_HArray1OfCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESGeom_HArray1OfCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESGeom_CurveOnSurface)& V);
+      IGESGeom_HArray1OfCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESGeom_CurveOnSurface)& V);
   
-  Standard_EXPORT     void Init(const Handle(IGESGeom_CurveOnSurface)& V) ;
+        void Init(const Handle(IGESGeom_CurveOnSurface)& V) ;
   
         Standard_Integer Length() const;
   

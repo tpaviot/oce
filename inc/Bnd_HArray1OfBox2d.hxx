@@ -39,11 +39,11 @@ class Bnd_HArray1OfBox2d : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Bnd_HArray1OfBox2d(const Standard_Integer Low,const Standard_Integer Up);
+      Bnd_HArray1OfBox2d(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Bnd_HArray1OfBox2d(const Standard_Integer Low,const Standard_Integer Up,const Bnd_Box2d& V);
+      Bnd_HArray1OfBox2d(const Standard_Integer Low,const Standard_Integer Up,const Bnd_Box2d& V);
   
-  Standard_EXPORT     void Init(const Bnd_Box2d& V) ;
+        void Init(const Bnd_Box2d& V) ;
   
         Standard_Integer Length() const;
   

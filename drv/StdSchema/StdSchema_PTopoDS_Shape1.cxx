@@ -21,6 +21,7 @@ void StdSchema_PTopoDS_Shape1::SAdd(const PTopoDS_Shape1& p, const Handle(Storag
 
 void StdSchema_PTopoDS_Shape1::SWrite(const PTopoDS_Shape1& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
     theSchema->WritePersistentReference(pp._CSFDB_GetPTopoDS_Shape1myTShape(),f);
     StdSchema_PTopLoc_Location::SWrite(pp._CSFDB_GetPTopoDS_Shape1myLocation(),f,theSchema);
@@ -31,6 +32,7 @@ void StdSchema_PTopoDS_Shape1::SWrite(const PTopoDS_Shape1& pp, Storage_BaseDriv
 
 void StdSchema_PTopoDS_Shape1::SRead(PTopoDS_Shape1& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
 
     Handle(PTopoDS_TShape1) PTopoDS_Shape1myTShape;
