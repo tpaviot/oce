@@ -592,7 +592,7 @@ static void APIENTRY debugCallbackWrap(unsigned int theSource,
                                        unsigned int theSeverity,
                                        int          /*theLength*/,
                                        const char*  theMessage,
-                                       const void*  theUserParam)
+                                       void*  theUserParam)
 {
   OpenGl_Context* aCtx = (OpenGl_Context* )theUserParam;
   aCtx->PushMessage (theSource, theType, theId, theSeverity, theMessage);
