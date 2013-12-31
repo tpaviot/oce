@@ -362,7 +362,6 @@ static void SplitWire(const TopoDS_Wire& wire,
       Standard_Boolean SearchBackward = Standard_True;
 
       for(;;) {
-	Standard_Integer ei = ces.Last(); //ei-edge index, number of current edge analyzed for connection
 	Standard_Boolean found;
 	TopoDS_Edge edge;
 	TopoDS_Vertex lvertex;

@@ -802,7 +802,7 @@ static Standard_Boolean IsAutonomVertex(const TopoDS_Shape& aVertex,
 					const TopoDS_Shape& F2,
                                         const BOPDS_PDS& pDS)
 {
-  Standard_Integer index, indF1, indF2; 
+  Standard_Integer index;
   Standard_Integer aNbVVs, aNbEEs, aNbEFs, aInt;
   //
   index = pDS->Index(aVertex);
@@ -818,9 +818,6 @@ static Standard_Boolean IsAutonomVertex(const TopoDS_Shape& aVertex,
 		}
 	    }
 	}
-  //
-  indF1 = pDS->Index(F1);
-  indF2 = pDS->Index(F2);
   //
   if (!pDS->IsNewShape(index)) {
     return Standard_False;

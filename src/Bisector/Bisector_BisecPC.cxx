@@ -597,7 +597,7 @@ gp_Vec2d Bisector_BisecPC::DN (const Standard_Real     U,
 Standard_Real Bisector_BisecPC::SearchBound (const Standard_Real U1,
 					     const Standard_Real U2) const
 {
-  Standard_Real Dist1,Dist2,DistMid,U11,U22; 
+  Standard_Real Dist1,DistMid,U11,U22; 
   Standard_Real UMid = 0.;
   Standard_Real Tol      = Precision::PConfusion();
   Standard_Real DistMax2 = distMax*distMax;

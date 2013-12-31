@@ -73,7 +73,7 @@
 {
   Standard_Boolean bFlag;
   Standard_Integer aNbS, i, aNbB;//, iFlag, aNbLV, aNbA
-  Standard_Integer aNbSD, iX, j, iDS, jB, k;;
+  Standard_Integer aNbSD, iX, j, iDS, jB;
   TopAbs_ShapeEnum aTi, aTj;
   Handle(NCollection_IncAllocator) aAllocator;
   BOPCol_ListIteratorOfListOfInteger aIt;
@@ -156,8 +156,6 @@
     }
     //
     const BOPCol_ListOfInteger& aLI=aSelector.Indices();
-    //
-    k=0;
     //
     aIt.Initialize(aLI);
     for (; aIt.More(); aIt.Next()) {

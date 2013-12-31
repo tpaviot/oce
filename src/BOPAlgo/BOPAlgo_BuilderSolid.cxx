@@ -233,7 +233,7 @@ static
   //
   myLoops.Clear();
   //
-  Standard_Integer aNbLF, aNbOff, aNbFP, aNbFA;
+  Standard_Integer aNbLF, aNbOff, aNbFP;
   Standard_Integer i;
   TopAbs_Orientation anOr;
   TopoDS_Edge aEL;
@@ -402,8 +402,6 @@ static
   //
   aEFMap.Clear();
   AddedFacesMap.Clear();
-  //
-  aNbFA=myShapesToAvoid.Extent();
   //
   aItM.Initialize(myShapesToAvoid);
   for (; aItM.More(); aItM.Next()) {

@@ -166,7 +166,7 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
 				    const BOPCol_BaseAllocator& )
 {
   Standard_Boolean bHasImage;
-  Standard_Integer i, k, aNbS, aNbLIF, nFP, aNbFP, aNbFIN, iIsIN;
+  Standard_Integer i, k, aNbS, aNbLIF, nFP, aNbFIN, iIsIN;
   TopoDS_Solid aSD;
   TopoDS_Iterator aIt;
   BRep_Builder aBB; 
@@ -298,8 +298,6 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
     // 2.6. Select boxes of faces that are not out of aBoxS
     aSelector.Clear();
     aSelector.SetBox(aBoxS);
-    //
-    aNbFP=aBBTree.Select(aSelector);
     //
     const BOPCol_ListOfInteger& aLIFP=aSelector.Indices();
     //
@@ -474,7 +472,7 @@ void BOPAlgo_Builder::BuildSplitSolids(BOPCol_DataMapOfShapeListOfShape& theInPa
   myErrorStatus=0;
   //
   Standard_Boolean bFlagSD;
-  Standard_Integer i, aNbS, iErr, aNbSFS;
+  Standard_Integer i, aNbS, iErr;
   TopExp_Explorer aExp;
   BOPCol_ListIteratorOfListOfShape aIt;
   BOPCol_DataMapIteratorOfDataMapOfShapeShape aIt1;
@@ -544,8 +542,6 @@ void BOPAlgo_Builder::BuildSplitSolids(BOPCol_DataMapOfShapeListOfShape& theInPa
       aSFS.Append(aF);
     }
     //
-    aNbSFS=aSFS.Extent();
-    //
     // 1.3 Build new solids   
     Handle(NCollection_IncAllocator) aAlr1;
     aAlr1=new NCollection_IncAllocator();  
@@ -600,7 +596,7 @@ void BOPAlgo_Builder::FillInternalShapes()
 {
   myErrorStatus=0;
   //
-  Standard_Integer i, j,  aNbS, aNbSI, aNbSx, aNbSd;
+  Standard_Integer i, j,  aNbS, aNbSI, aNbSx;
   TopAbs_ShapeEnum aType;
   TopAbs_State aState; 
   TopoDS_Iterator aItS;
@@ -730,8 +726,6 @@ void BOPAlgo_Builder::FillInternalShapes()
       }
     }
   }// for (i=0; i<aNbS; ++i) {
-  //
-  aNbSd=aLSd.Extent();
   //
   // 3. Some shapes of aMSI can be already tied with faces of 
   //    split solids

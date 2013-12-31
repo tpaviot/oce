@@ -155,9 +155,6 @@ int AdvApp2Var_SysBase::macinit_(integer *imode,
 
 {
  
-  /* Fortran I/O blocks */
-  cilist io______1 = { 0, 0, 0, (char*) "(' --- Debug-mode : ',I10,' ---')", 0 };
-  
   /* ************************************************************************/
   /*     FUNCTION : */
   /*     ---------- */
@@ -737,7 +734,7 @@ int macrgfl_(intptr_t *iadfld,
   integer ibid, ienr;
   doublereal* t = 0;
   integer novfl = 0;
-  intptr_t ioff,iadrfl, iadt;
+  intptr_t ioff,iadt;
   
   
   /* ***********************************************************************
@@ -875,15 +872,9 @@ int macrmsg_(const char *,//crout,
 {
   
   /* Local variables */
-  integer inum, iunite;
+  integer inum;
   char cfm[80], cln[3];
   
-  /* Fortran I/O blocks */
-  cilist io___5 = { 0, 0, 0, cfm, 0 };
-  cilist io___6 = { 0, 0, 0, cfm, 0 };
-  cilist io___7 = { 0, 0, 0, cfm, 0 };
- 
-
 /* ***********************************************************************
  */
 
@@ -2727,7 +2718,7 @@ int AdvApp2Var_SysBase::mcrrqst_(integer *iunit,
   doublereal dfmt;
   integer ifmt, iver;
   char subr[7];
-  integer ksys , ibyte, irest, isyst, ier;
+  integer ksys , ibyte, irest, ier;
   intptr_t iadfd, iadff, iaddr,lofset, loc;
   integer izu;
 
@@ -3260,9 +3251,6 @@ int AdvApp2Var_SysBase::mswrdbg_(const char *,//ctexte,
 				 ftnlen )//ctexte_len)
 
 {
-
-  cilist io___1 = { 0, 0, 0, 0, 0 };
-  
 
 /* ***********************************************************************
  */

@@ -222,7 +222,10 @@ static void InGoodPeriod(const Standard_Real Prec,
   gp_Vec T,N,B;
   Standard_Integer ii, Deg;
   Standard_Boolean isconst, israt=Standard_False;
-  Standard_Real t, v,w, OldAngle=0, Angle, DeltaG, DeltaU, Diff;
+  Standard_Real t, v,w, OldAngle=0, Angle, DeltaG, Diff;
+#if DEB
+  Standard_Real DeltaU;
+#endif
   Standard_Real CurAngle =  PrecAngle, a1/*, a2*/;
   gp_Pnt2d p1,p2;
   Handle(Geom_SurfaceOfRevolution) Revol; // surface de revolution
