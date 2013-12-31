@@ -140,7 +140,7 @@ Storage_Error FSD_BinaryFile::Close()
 //purpose  : ------------------ PROTECTED
 //=======================================================================
 
-const Standard_CString FSD_BinaryFile::MagicNumber()
+Standard_CString FSD_BinaryFile::MagicNumber()
 {
   return MAGICNUMBER;
 }

@@ -93,7 +93,7 @@ public:
   
   Standard_EXPORT    const TDF_Label& ContextLabel() const;
   
-       const TopAbs_Orientation Orientation() const;
+       TopAbs_Orientation Orientation() const;
   
   Standard_EXPORT     Standard_Boolean Solve(const TDF_Label& aLab,const TDF_LabelMap& Valid) const;
   

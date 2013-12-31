@@ -250,7 +250,7 @@ Handle(TCollection_HExtendedString) TCollection_HExtendedString::Token
 // ----------------------------------------------------------------------------
 // ToExtString
 // ----------------------------------------------------------------------------
-const Standard_ExtString TCollection_HExtendedString::ToExtString() const
+Standard_ExtString TCollection_HExtendedString::ToExtString() const
 { 
    return (myString.ToExtString());
 }

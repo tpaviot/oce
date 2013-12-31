@@ -64,7 +64,6 @@ is
     FileName (me; num: Integer) returns CString;
     	---Purpose: Returns filename for numth extern reference
 	--          Returns Null if FileName is not defined or bad
-	---C++: return const
     
     ProdDef (me; num: Integer) returns ProductDefinition from StepBasic;
     	---Purpose: Returns ProductDefinition to which numth extern reference

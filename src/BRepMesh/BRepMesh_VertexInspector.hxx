@@ -108,7 +108,7 @@ public:
   }
 
   //!Get result index of node
-  const Standard_Integer GetCoincidentInd() const
+  Standard_Integer GetCoincidentInd() const
   {
     if ( myResInd.Size() > 0 )
     {

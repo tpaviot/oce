@@ -274,7 +274,7 @@ const OpenGl_Matrix * OpenGl_Workspace::SetStructureMatrix (const OpenGl_Matrix 
 
 /*----------------------------------------------------------------------*/
 
-const void OpenGl_Workspace::UpdateModelViewMatrix()
+void OpenGl_Workspace::UpdateModelViewMatrix()
 {
   OpenGl_Matrix aStructureMatT;
   OpenGl_Transposemat3( &aStructureMatT, StructureMatrix_applied);

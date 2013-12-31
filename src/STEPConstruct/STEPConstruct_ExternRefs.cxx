@@ -321,7 +321,7 @@ Standard_Integer STEPConstruct_ExternRefs::NbExternRefs () const
 //purpose  : 
 //=======================================================================
 
-const Standard_CString STEPConstruct_ExternRefs::FileName (const Standard_Integer num) const
+Standard_CString STEPConstruct_ExternRefs::FileName (const Standard_Integer num) const
 {
   Handle(StepBasic_DocumentFile) DocFile;
   Handle(StepAP214_AppliedExternalIdentificationAssignment) AEIA;

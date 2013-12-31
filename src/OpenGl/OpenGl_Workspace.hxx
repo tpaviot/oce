@@ -179,7 +179,7 @@ public:
 
   //! Updates current model-view matrix
   //! replacing it with StructureMatrixT*ViewMatrix from the workspace.
-  const void UpdateModelViewMatrix();
+  void UpdateModelViewMatrix();
 
   const OpenGl_AspectLine*   SetAspectLine   (const OpenGl_AspectLine*   theAspect);
   const OpenGl_AspectFace*   SetAspectFace   (const OpenGl_AspectFace*   theAspect);

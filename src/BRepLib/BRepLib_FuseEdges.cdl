@@ -86,7 +86,6 @@ is
     returns Integer from Standard
     raises NullObject        from Standard;
     	---Purpose: returns the number of vertices candidate to be removed
-    	---C++: return const
 
     Perform (me : in out);
     ---Purpose: Using  map of list of connex  edges, fuse each list to

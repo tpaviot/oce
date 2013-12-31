@@ -20,7 +20,7 @@
 //purpose  : Get
 //=======================================================================
 
-inline const TopAbs_Orientation TNaming_Name::Orientation() const
+inline TopAbs_Orientation TNaming_Name::Orientation() const
 { 
   return myOrientation;
 }
