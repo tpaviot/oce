@@ -698,7 +698,7 @@ ChFi3d_FilBuilder::SimulSurf(Handle(ChFiDS_SurfData)&            Data,
     if(cp1.IsOnArc()){
       TopoDS_Face F1 = S1->ChangeSurface().Face();
       TopoDS_Face bid;
-      ok = intf = !SearchFace(Spine,cp1,F1,bid);
+      intf = ok = !SearchFace(Spine,cp1,F1,bid);
     }
     const ChFiDS_CommonPoint& cp2 = Data->VertexFirstOnS2();
     if(cp2.IsOnArc() && !ok){
@@ -713,7 +713,7 @@ ChFi3d_FilBuilder::SimulSurf(Handle(ChFiDS_SurfData)&            Data,
     if(cp1.IsOnArc()){
       TopoDS_Face F1 = S1->ChangeSurface().Face();
       TopoDS_Face bid;
-      ok = intl = !SearchFace(Spine,cp1,F1,bid);
+      intl = ok = !SearchFace(Spine,cp1,F1,bid);
     }
     const ChFiDS_CommonPoint& cp2 = Data->VertexLastOnS2();
     if(cp2.IsOnArc() && !ok){
