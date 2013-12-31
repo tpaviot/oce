@@ -1,3 +1,35 @@
+Version 0.14 - December 2013
+
+This version is binary compatible with 0CE 0.13.
+
+* mingw64 port.
+
+* Intel Compiler support.
+
+* HPUX 11iv1 and 11iv3 ia64 and parisc architecture port.
+
+* Apple OSX 10.9 Maverick support.
+
+* Reduced compiler warnings on gcc, clang, icc and MinGW.
+
+* Fix writing of XML CAF documents
+
+* additional fixes to the CMake build system
+  - Removed lib path string from OCE_DEFAULT_CSF_GraphicShr variable for
+  MinGw.
+  - Add custom build step to set up integrated build include directory.
+  - Made OCE_BUILD_TYPE initialize to CMAKE_BUILD_TYPE if available.
+  - Break header file installation into individual install commands.
+  - CMake RPATH support for TKernel.
+  - Take CSF_GraphicShr environment variable into account.
+  - Remove Xmu dependency.
+  - Fix libTKOpenGL versioning name on Apple.
+
+Users who contributed to this release:
+  Jacob Abel, Greg Allen, Denis Barbier, Benjamin Bihler, Johannes Obermayr,
+  Thomas Paviot, David Sankel, Fotios Sioutis, Daniel Somer
+
+
 Version 0.13 - September 2013
 
 This version is not binary compatible with OCE 0.12, OCE_ABI_SOVERSION
