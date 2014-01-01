@@ -1,21 +1,16 @@
 // Created by: Peter KURNEV
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BOPTools_AlgoTools2D.ixx>
 
@@ -294,22 +289,18 @@ static
       aUP1=aUPeriod+aDelta;
       //
       if (u2 > aUP2) {
-        for(k=1; 1; ++k) {
+        k=1;
+        do {
           aUx=u2-k*aUPeriod;
-          if (aUx < aUP1) {
-            iCnt=k;
-            break;
-          }
-        }
+          iCnt = k++;
+        } while (aUx >= aUP1);
       }
       else if (u2 < -aUP2) {
-        for(k=1; 1; ++k) {
+        k=1;
+        do {
           aUx=u2+k*aUPeriod;
-          if (aUx > -aUP1) {
-            iCnt=k+1;
-            break;
-          }
-        }
+          iCnt = (k++) + 1;
+        } while (aUx <= -aUP1);
       }
       du = ( mincond ) ? aUPeriod : -aUPeriod;
       du=iCnt*du;
@@ -404,8 +395,8 @@ static
 //function : BuildPCurveForEdgeOnPlane
 //purpose  : 
 //=======================================================================
-  void BOPTools_AlgoTools2D::BuildPCurveForEdgeOnPlane (const TopoDS_Edge& aE,
-                                                    const TopoDS_Face& aF)
+void BOPTools_AlgoTools2D::BuildPCurveForEdgeOnPlane (const TopoDS_Edge& aE,
+						      const TopoDS_Face& aF)
 { 
   Standard_Real aTolE;
   TopLoc_Location aLoc;
@@ -432,14 +423,57 @@ static
   //
   return;
 }
+//=======================================================================
+// function: BuildPCurveForEdgesOnPlane
+// purpose: 
+//=======================================================================
+void BOPTools_AlgoTools2D::BuildPCurveForEdgesOnPlane 
+  (const BOPCol_ListOfShape& aEdges,
+   const TopoDS_Face& aFace)
+{
+  
+  TopLoc_Location aLoc;
+  Handle(Geom2d_Curve) aC2D;
+  Handle(Geom_Plane) aGP;
+  Handle(Geom_RectangularTrimmedSurface) aGRTS;
+  //
+  const Handle(Geom_Surface)& aS = BRep_Tool::Surface(aFace, aLoc);
+  aGRTS=Handle(Geom_RectangularTrimmedSurface)::DownCast(aS);
+  if(!aGRTS.IsNull()){
+    aGP=Handle(Geom_Plane)::DownCast(aGRTS->BasisSurface());
+    }    
+  else {
+    aGP=Handle(Geom_Plane)::DownCast(aS);
+  }
+  //
+  if (aGP.IsNull()) {
+    return;
+  }
+  //
+  Standard_Boolean bHasOld;
+  Standard_Real aTolE, aT1, aT2;
+  BOPCol_ListIteratorOfListOfShape aIt;
+  BRep_Builder aBB;
+  //
+  aIt.Initialize(aEdges);
+  for(; aIt.More(); aIt.Next()) {
+    const TopoDS_Edge& aE=(*(TopoDS_Edge *)&aIt.Value());
+    bHasOld=BOPTools_AlgoTools2D::HasCurveOnSurface
+      (aE, aFace, aC2D, aT1, aT2, aTolE);
+    if (!bHasOld) {
+      BOPTools_AlgoTools2D::CurveOnSurface(aE, aFace, aC2D, aTolE);
+      aBB.UpdateEdge(aE, aC2D, aFace, aTolE);
+    }
+  }
+}
 
 //=======================================================================
 //function : Make2D
 //purpose  : 
 //=======================================================================
-  void BOPTools_AlgoTools2D::Make2D (const TopoDS_Edge& aE,
-                                 const TopoDS_Face& aF,
-                                 Handle(Geom2d_Curve)& aC2D,
+void BOPTools_AlgoTools2D::Make2D (const TopoDS_Edge& aE,
+				   const TopoDS_Face& aF,
+				   Handle(Geom2d_Curve)& aC2D,
                                  Standard_Real& aFirst,
                                  Standard_Real& aLast,
                                  Standard_Real& aToler)

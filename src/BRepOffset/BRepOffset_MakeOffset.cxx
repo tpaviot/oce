@@ -1,24 +1,18 @@
 // Created on: 1995-10-27
 // Created by: Yves FRICAUD
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //  Modified by skv - Tue Mar 15 16:20:43 2005
 // Add methods for supporting history.
@@ -129,7 +123,7 @@
 #endif
 #ifdef DEB
 #include <OSD_Chronometer.hxx>
-
+//#define DEB_VERB
   Standard_Boolean AffichInt2d = Standard_False;       
   Standard_Boolean AffichOffC  = Standard_False;       
   Standard_Boolean ChronBuild  = Standard_False;
@@ -149,18 +143,10 @@
 static void DEBVerticesControl (const TopTools_IndexedMapOfShape& NewEdges,
 				      Handle(BRepAlgo_AsDes)      AsDes)
 {
-#ifdef DRAW
-  Standard_Integer NVP = 0;
-  Standard_Integer NVM = 0;
-  Standard_Integer NVN = 0;
-#endif
-
   TopTools_ListOfShape               LVP;
-  //TopTools_MapIteratorOfMapOfShape   it;
   TopTools_ListIteratorOfListOfShape it1LE ;    
   TopTools_ListIteratorOfListOfShape it2LE ;
   
-  //for (it.Initialize(NewEdges) ; it.More(); it.Next()) {
   Standard_Integer i;
   for (i = 1; i <= NewEdges.Extent(); i++) {
     const TopoDS_Edge& NE = TopoDS::Edge(NewEdges(i));
@@ -803,16 +789,33 @@ void BRepOffset_MakeOffset::MakeThickSolid()
       Glue.Add (exp.Current());
     } 
     Standard_Boolean YaResult = 0;
-    if (!myOffsetShape.IsNull()) {
-      for (exp.Init(myOffsetShape,TopAbs_FACE);exp.More(); exp.Next()) {
-	YaResult = 1;
-	Glue.Add (exp.Current().Reversed());
+    if (!myOffsetShape.IsNull())
+      {
+      for (exp.Init(myOffsetShape,TopAbs_FACE);exp.More(); exp.Next())
+        {
+        YaResult = 1;
+        Glue.Add (exp.Current().Reversed());
+        }
+#ifdef DEB
+      if(YaResult == 0)
+        {
+        cout << "OffsetShape does not contain a FACES." << endl;
+        }
+#endif
       }
-    }
-    if (YaResult == 0) {
+#ifdef DEB
+    else
+      {
+      cout << "OffsetShape is null!" << endl;
+      }
+#endif
+
+    if (YaResult == 0)
+      {
       myDone = Standard_False;
       return;
-    }
+      }
+
     myOffsetShape = Glue.Shells();
     for (exp.Init(myOffsetShape,TopAbs_SHELL); exp.More(); exp.Next()) {
       B.Add(Res,exp.Current());
@@ -1622,7 +1625,7 @@ void BRepOffset_MakeOffset::BuildOffsetByArc()
 //purpose  : 
 //=======================================================================
 
-void BRepOffset_MakeOffset::SelfInter(TopTools_MapOfShape& Modif)
+void BRepOffset_MakeOffset::SelfInter(TopTools_MapOfShape& /*Modif*/)
 {
 #ifdef DEB
   if ( ChronBuild) {
@@ -2694,7 +2697,7 @@ void BRepOffset_MakeOffset::MakeLoops(TopTools_IndexedMapOfShape& Modif)
 //           share edges that were reconstructed.
 //=======================================================================
 
-void BRepOffset_MakeOffset::MakeFaces(TopTools_IndexedMapOfShape& Modif)
+void BRepOffset_MakeOffset::MakeFaces(TopTools_IndexedMapOfShape& /*Modif*/)
 {
 #ifdef DEb
   if (ChronBuild) {  
@@ -3324,9 +3327,8 @@ void BRepOffset_MakeOffset::EncodeRegularity ()
     const TopTools_ListOfShape& LofOF    = myAsDes->Ascendant(ROE);
     
     if (LofOF.Extent() != 2) {
-#ifdef DEB
-      if ( Standard_False)
-	cout << " Edge shared by " << LofOF.Extent() << " Faces" << endl;
+#ifdef DEB_VERB
+    cout << " Edge shared by " << LofOF.Extent() << " Faces" << endl;
 #endif
       continue;
     }

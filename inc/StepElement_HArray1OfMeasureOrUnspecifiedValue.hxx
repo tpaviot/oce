@@ -39,11 +39,11 @@ class StepElement_HArray1OfMeasureOrUnspecifiedValue : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer Low,const Standard_Integer Up);
+      StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer Low,const Standard_Integer Up,const StepElement_MeasureOrUnspecifiedValue& V);
+      StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer Low,const Standard_Integer Up,const StepElement_MeasureOrUnspecifiedValue& V);
   
-  Standard_EXPORT     void Init(const StepElement_MeasureOrUnspecifiedValue& V) ;
+        void Init(const StepElement_MeasureOrUnspecifiedValue& V) ;
   
         Standard_Integer Length() const;
   

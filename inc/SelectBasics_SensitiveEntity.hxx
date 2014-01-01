@@ -28,6 +28,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _SelectBasics_PickArgs_HeaderFile
+#include <SelectBasics_PickArgs.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
@@ -54,13 +57,44 @@ public:
 //!          sensitive  primitive . <br>
 //! <br>
   Standard_EXPORT   virtual  void Areas(SelectBasics_ListOfBox2d& aresult)  = 0;
-  //! returns True if the object is very close to the <br>
-//!          sensitive areas it gave to the selector... <br>
-//!          returns the minimum distance found if no match; <br>
+  //! Checks whether the sensitive entity matches the picking detection <br>
+//! area (close to the picking line). This method takes into account depth <br>
+//! limits produced by abstract view: far/near planes, clippings. <br>
+//! Please port existing implementations of your picking detection, which <br>
+//! were done at Matches (X, Y, Tol, DMin) method to this one, introducing <br>
+//! the depth checks. Please note that the previous method is suppressed <br>
+//! and the virtual implementations are not used by OCC selection framework. <br>
+//! The porting procedure for simple sensitives (or if you are not interested <br>
+//! in implementing full scale depth checks) can be simplified to writing the <br>
+//! following code snippet: <br>
+//! @code <br>
+//! { // example code for porting descendants of Select3D_SensitiveEntity <br>
 //! <br>
-//!          to be implemented specifically by each type of <br>
-//!          sensitive  primitive . <br>
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real X,const Standard_Real Y,const Standard_Real aTol,Standard_Real& DMin)  = 0;
+//!   // invoke implementation of obsolete matches method (if implemented)... <br>
+//!   if (!Matches (thePickArgs.X(), thePickArgs.Y(), thePickArgs.Tolerance(), theMatchDMin)) <br>
+//!     return Standard_False; <br>
+//! <br>
+//!   // invoke your implementation of computing depth (if implemented)... <br>
+//!   Standard_Real aDetectDepth = ComputeDepth (thePickArgs.PickLine()); <br>
+//! <br>
+//!   return !thePickArgs.IsClipped(aDetectDepth); <br>
+//! } <br>
+//! @endcode <br>
+//! @param thePickArgs [in] the picking arguments. <br>
+//! @param theMatchDMin [out] the minimum distance on xy plane from point <br>
+//! of picking to center of gravity of the detected sub-part of sensitive <br>
+//! entity or the whole sensitive (e.g. used for resolving selection of <br>
+//! coinciding circles, selection will be set to the one whose center is <br>
+//! closest to the picking point). <br>
+//! @param theMatchDepth [out] the minimum detected depth: depth of the <br>
+//! closest detected sub-part of sensitive entity (or the whole sensitive). <br>
+//! @return True if the sensitive matches the detection area. <br>
+//! This method is an entry point for picking detection framework. <br>
+//! The method is triggered when it is required to compose list of <br>
+//! detected sensitive entities. The sensitives are filtered out from <br>
+//! detection result if returned value is False. The passed entities are <br>
+//! then can be sorted by "theDetectDist", "theDetectDepth" parameters. <br>
+  Standard_EXPORT   virtual  Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth)  = 0;
   //! returns True if the box (Xmin,YMin)------(Xmax,Ymax) <br>
 //!          contains the SensitiveEntity. <br>
 //!          Necessary for selection using elastic boxes,or segments. <br>
@@ -74,8 +108,6 @@ public:
   //! returns True if able to give 3D information <br>
 //!          (Depth,...). See Select3D <br>
   Standard_EXPORT   virtual  Standard_Boolean Is3D() const = 0;
-  //!  Sort Selected entities according to depth... <br>
-  Standard_EXPORT   virtual  Standard_Real Depth() const;
   //! returns the max number of boxes the entity is able to give <br>
 //!          at a time <br>
   Standard_EXPORT   virtual  Standard_Integer MaxBoxes() const = 0;

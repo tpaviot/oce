@@ -9,9 +9,6 @@
 #include <Standard_Type.hxx>
 #endif
 
-#ifndef _BRepMesh_Triangle_HeaderFile
-#include <BRepMesh_Triangle.hxx>
-#endif
 #ifndef _BRepMesh_ElemHasherOfDataStructureOfDelaun_HeaderFile
 #include <BRepMesh_ElemHasherOfDataStructureOfDelaun.hxx>
 #endif

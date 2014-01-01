@@ -1,24 +1,18 @@
 // Created on: 1997-03-13
 // Created by: Prestataire Mary FABIEN
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TestTopOpeDraw_DrawableMesure.ixx>
 #include <TestTopOpeDraw_DrawableMesure.hxx>
@@ -135,36 +129,6 @@ static Standard_CString makename2(const gp_Pnt& P)
   strncpy(&temp[0], C.ToCString(), C.Length());
   return temp;
 }
-
-#ifdef DEB
-static Handle(Geom_Curve) DrawAxe1(const TColgp_Array1OfPnt& T)
-{
-  Standard_Integer up = T.Upper();
-  TColgp_Array1OfPnt *AOP = new TColgp_Array1OfPnt(1, up);
-  for(Standard_Integer i= 1; i <= up; i++) {
-    gp_Pnt pnt(T.Value(i).Coord(1), 0, 0);
-    (*AOP).SetValue(i, pnt);
-  }
-  Handle(Geom_Curve) C;
-  C = TopOpeBRepTool_CurveTool::MakeBSpline1fromPnt(*AOP);
-  return C;
-}
-#endif
-
-#ifdef DEB
-static Handle(Geom_Curve) DrawAxe2(const TColgp_Array1OfPnt& T)
-{
-  Standard_Integer up = T.Upper();
-  TColgp_Array1OfPnt *AOP = new TColgp_Array1OfPnt(1, up);
-  for(Standard_Integer i= 1; i <= up; i++) {
-    gp_Pnt pnt(0, T.Value(i).Coord(2), 0);
-    (*AOP).SetValue(i, pnt);
-  }
-  Handle(Geom_Curve) C;
-  C = TopOpeBRepTool_CurveTool::MakeBSpline1fromPnt(*AOP);
-  return C;
-}
-#endif
 
 static Handle(Geom_Curve) DrawAxe1(const TColgp_Array1OfPnt& T,
 				   const Standard_Real ScaleX)

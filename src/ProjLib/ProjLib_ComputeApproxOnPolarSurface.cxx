@@ -1,21 +1,17 @@
 // Created by: Bruno DUMORTIER
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <ProjLib_ComputeApproxOnPolarSurface.hxx>
 #include <AppCont_Function2d.hxx>
@@ -119,7 +115,7 @@ static gp_Pnt2d Function_Value(const Standard_Real U,
   if((Type != GeomAbs_BSplineSurface) && 
      (Type != GeomAbs_BezierSurface)  &&
      (Type != GeomAbs_OffsetSurface)    ) {
-    Standard_Real S = 0.0, T = 0.0;
+    Standard_Real S = 0., T = 0.;
     switch (Type) {
 //    case GeomAbs_Plane:
 //      {
@@ -711,6 +707,14 @@ Handle(Adaptor2d_HCurve2d)
   Standard_Real TolU = Surf->UResolution(Tol3d), TolV = Surf->VResolution(Tol3d);
   Standard_Real DistTol3d = 100.0*Tol3d;
 
+  Standard_Real uperiod = 0., vperiod = 0.;
+  if(Surf->IsUPeriodic() || Surf->IsUClosed())
+    uperiod = Surf->LastUParameter() - Surf->FirstUParameter(); 
+  
+  if(Surf->IsVPeriodic() || Surf->IsVClosed())
+    vperiod = Surf->LastVParameter() - Surf->FirstVParameter(); 
+
+  
   // NO myTol is Tol2d !!!!
   //Standard_Real TolU = myTolerance, TolV = myTolerance;
   //Standard_Real Tol3d = 100*myTolerance; // At random Balthazar.
@@ -730,7 +734,9 @@ Handle(Adaptor2d_HCurve2d)
   Mult.Init(1);
   Mult(1) = Mult(NbOfPnts) = 2;
   
-  Standard_Real Vinf, Vsup;
+  Standard_Real Uinf, Usup, Vinf, Vsup;
+  Uinf = Surf->Surface().FirstUParameter();
+  Usup = Surf->Surface().LastUParameter();
   Vinf = Surf->Surface().FirstVParameter();
   Vsup = Surf->Surface().LastVParameter();
   GeomAbs_SurfaceType Type = Surf->GetType();
@@ -753,46 +759,46 @@ Handle(Adaptor2d_HCurve2d)
     case GeomAbs_Cylinder:
       {
 //	Standard_Real Sloc, Tloc;
-	Standard_Real Sloc;
-	Standard_Integer usens = 0;
-	gp_Cylinder Cylinder = Surf->Cylinder();
-	ElSLib::Parameters( Cylinder, Pts(1), S, T);
-	Pts2d(1).SetCoord(S,T);
-	for ( i = 2 ; i <= NbOfPnts ; i++) { 
-	  Sloc = S;
-	  ElSLib::Parameters( Cylinder, Pts(i), S, T);
-	  if(Abs(Sloc - S) > M_PI) {
-	    if(Sloc > S)
-	      usens++;
-	    else
-	      usens--;
+        Standard_Real Sloc;
+        Standard_Integer usens = 0;
+        gp_Cylinder Cylinder = Surf->Cylinder();
+        ElSLib::Parameters( Cylinder, Pts(1), S, T);
+        Pts2d(1).SetCoord(S,T);
+        for ( i = 2 ; i <= NbOfPnts ; i++) { 
+          Sloc = S;
+          ElSLib::Parameters( Cylinder, Pts(i), S, T);
+          if(Abs(Sloc - S) > M_PI) {
+            if(Sloc > S)
+              usens++;
+            else
+              usens--;
+          }
+          Pts2d(i).SetCoord(S+usens*2*M_PI,T);
         }
-	  Pts2d(i).SetCoord(S+usens*2*M_PI,T);
-	}
-	myProjIsDone = Standard_True;
-	break;
+        myProjIsDone = Standard_True;
+        break;
       }
     case GeomAbs_Cone:
       {
 //	Standard_Real Sloc, Tloc;
-	Standard_Real Sloc;
-	Standard_Integer usens = 0;
-	gp_Cone Cone = Surf->Cone();
-	ElSLib::Parameters( Cone, Pts(1), S, T);
-	Pts2d(1).SetCoord(S,T);
-	for ( i = 2 ; i <= NbOfPnts ; i++) { 
-	  Sloc = S;
-	  ElSLib::Parameters( Cone, Pts(i), S, T);
-	  if(Abs(Sloc - S) > M_PI) {
-	    if(Sloc > S)
-	      usens++;
-	    else
-	      usens--;
+        Standard_Real Sloc;
+        Standard_Integer usens = 0;
+        gp_Cone Cone = Surf->Cone();
+        ElSLib::Parameters( Cone, Pts(1), S, T);
+        Pts2d(1).SetCoord(S,T);
+        for ( i = 2 ; i <= NbOfPnts ; i++) { 
+          Sloc = S;
+          ElSLib::Parameters( Cone, Pts(i), S, T);
+          if(Abs(Sloc - S) > M_PI) {
+            if(Sloc > S)
+              usens++;
+            else
+              usens--;
+          }
+          Pts2d(i).SetCoord(S+usens*2*M_PI,T);
         }
-	  Pts2d(i).SetCoord(S+usens*2*M_PI,T);
-	}
-	myProjIsDone = Standard_True;
-	break;
+        myProjIsDone = Standard_True;
+        break;
       }
     case GeomAbs_Sphere:
       {
@@ -810,7 +816,7 @@ Handle(Adaptor2d_HCurve2d)
 	      usens += 2;
 	    else
 	      usens -= 2;
-        }
+    }
 	  if(1.6*M_PI > Abs(Sloc - S) && Abs(Sloc - S) > 0.4*M_PI) {
 	    vparit = !vparit;
 	    if(Sloc > S)
@@ -848,13 +854,13 @@ Handle(Adaptor2d_HCurve2d)
 	      usens++;
 	    else
 	      usens--;
-        }
+    }
 	  if(Abs(Tloc - T) > M_PI) {
 	    if(Tloc > T)
 	      vsens++;
 	    else
 	      vsens--;
-        }
+    }
 	  Pts2d(i).SetCoord(S+usens*2*M_PI,T+vsens*2*M_PI);
 	}
 	myProjIsDone = Standard_True;
@@ -865,9 +871,6 @@ Handle(Adaptor2d_HCurve2d)
     }
   }
   else {
-    Standard_Real Uinf = Surf->Surface().FirstUParameter();
-    Standard_Real Usup = Surf->Surface().LastUParameter();
-    
     myProjIsDone = Standard_False;
     Standard_Real Dist2Min = 1.e+200, u = 0., v = 0.;
     gp_Pnt pntproj;
@@ -877,6 +880,26 @@ Handle(Adaptor2d_HCurve2d)
     
     Curve->D0(Param.Value(1), pntproj) ;
     Extrema_ExtPS  aExtPS(pntproj, Surf->Surface(), TolU, TolV) ;
+    Standard_Real aMinSqDist = RealLast();
+    if (aExtPS.IsDone())
+    {
+      for (i = 1; i <= aExtPS.NbExt(); i++)
+      {
+        Standard_Real aSqDist = aExtPS.SquareDistance(i);
+        if (aSqDist < aMinSqDist)
+          aMinSqDist = aSqDist;
+      }
+    }
+    if (aMinSqDist > DistTol3d * DistTol3d) //try to project with less tolerance
+    {
+      TolU = Min(TolU, Precision::PConfusion());
+      TolV = Min(TolV, Precision::PConfusion());
+      aExtPS.Initialize(Surf->Surface(),
+                        Surf->Surface().FirstUParameter(), Surf->Surface().LastUParameter(), 
+                        Surf->Surface().FirstVParameter(), Surf->Surface().LastVParameter(),
+                        TolU, TolV);
+      aExtPS.Perform(pntproj);
+    }
 
     if( aExtPS.IsDone() && aExtPS.NbExt() >= 1 ) {
 
@@ -1022,20 +1045,11 @@ Handle(Adaptor2d_HCurve2d)
       // (and store the result and each parameter in a sequence)
       Standard_Integer usens = 0, vsens = 0; 
       // to know the position relatively to the period
-      Standard_Real U0 = u, V0 = v, U1 = u, V1 = v, uperiod =0, vperiod = 0;
+      Standard_Real U0 = u, V0 = v, U1 = u, V1 = v;
       // U0 and V0 are the points in the initialized period 
       // (period with u and v),
       // U1 and V1 are the points for construction of poles
 
-
-      if(Surf->IsUPeriodic() || Surf->IsUClosed()) {
-	uperiod = Surf->LastUParameter() - Surf->FirstUParameter(); 
-      }
-
-      if(Surf->IsVPeriodic() || Surf->IsVClosed()) {
-	vperiod = Surf->LastVParameter() - Surf->FirstVParameter(); 
-      } 
-      
       for ( i = 2 ; i <= NbOfPnts ; i++) 
 	if(myProjIsDone) {
 	  myProjIsDone = Standard_False;
@@ -1158,7 +1172,7 @@ Handle(Adaptor2d_HCurve2d)
 		    if((u - U0) > (2*uperiod/3)) {
 		      usens--;
 		    }
-		}
+    }
 		if(vperiod) {
 		  if((V0 - v) > (vperiod/2)) {
 		    vsens++;
@@ -1167,7 +1181,7 @@ Handle(Adaptor2d_HCurve2d)
 		    if((v - V0) > (vperiod/2)) {
 		      vsens--;
 		    }
-		}
+      }
 		U0 = u; V0 = v;
 		U1 = U0 + usens*uperiod;
 		V1 = V0 + vsens*vperiod;
@@ -1183,6 +1197,34 @@ Handle(Adaptor2d_HCurve2d)
   // -- Pnts2d is transformed into Geom2d_BSplineCurve, with the help of Param and Mult
   if(myProjIsDone) {
     myBSpline = new Geom2d_BSplineCurve(Pts2d,Param,Mult,1);
+    //jgv: put the curve into parametric range
+    gp_Pnt2d MidPoint = myBSpline->Value(0.5*(myBSpline->FirstParameter() + myBSpline->LastParameter()));
+    Standard_Real TestU = MidPoint.X(), TestV = MidPoint.Y();
+    Standard_Real sense = 0.;
+    if (uperiod)
+    {
+      if (TestU < Uinf - TolU)
+        sense = 1.;
+      else if (TestU > Usup + TolU)
+        sense = -1;
+      while (TestU < Uinf - TolU || TestU > Usup + TolU)
+        TestU += sense * uperiod;
+    }
+    if (vperiod)
+    {
+      sense = 0.;
+      if (TestV < Vinf - TolV)
+        sense = 1.;
+      else if (TestV > Vsup + TolV)
+        sense = -1.;
+      while (TestV < Vinf - TolV || TestV > Vsup + TolV)
+        TestV += sense * vperiod;
+    }
+    gp_Vec2d Offset(TestU - MidPoint.X(), TestV - MidPoint.Y());
+    if (Abs(Offset.X()) > gp::Resolution() ||
+        Abs(Offset.Y()) > gp::Resolution())
+      myBSpline->Translate(Offset);
+    //////////////////////////////////////////
     Geom2dAdaptor_Curve GAC(myBSpline);
     Handle(Adaptor2d_HCurve2d) IC2d = new Geom2dAdaptor_HCurve(GAC);
 #ifdef DEB
@@ -1198,13 +1240,10 @@ Handle(Adaptor2d_HCurve2d)
 //  Modified by Sergey KHROMOV - Thu Apr 18 10:57:51 2002 End
     return Handle(Adaptor2d_HCurve2d)();
   }
-#ifndef _MSC_VER
-  myProjIsDone = Standard_False;
+//  myProjIsDone = Standard_False;
 //  Modified by Sergey KHROMOV - Thu Apr 18 10:58:01 2002 Begin
 //   Standard_NoSuchObject_Raise_if(1,"ProjLib_ComputeOnPS: build echec");
 //  Modified by Sergey KHROMOV - Thu Apr 18 10:58:02 2002 End
-  return Handle(Adaptor2d_HCurve2d)();
-#endif
 }
 
 

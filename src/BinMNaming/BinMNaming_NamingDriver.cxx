@@ -1,24 +1,17 @@
 // Created on: 2004-05-13
 // Created by: Sergey ZARITCHNY
-// Copyright (c) 2004-2012 OPEN CASCADE SAS
+// Copyright (c) 2004-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BinMNaming_NamingDriver.ixx>
 #include <TopAbs_ShapeEnum.hxx>
@@ -26,6 +19,7 @@
 #include <TColStd_Array1OfInteger.hxx>
 #include <CDM_MessageDriver.hxx>
 #include <TDF_Attribute.hxx>
+#include  <TNaming_Iterator.hxx>
 #include <TNaming_NameType.hxx>
 #include <TNaming_Naming.hxx>
 #include <TNaming_NamedShape.hxx>
@@ -37,8 +31,10 @@
 #include <BinMNaming.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <TDF_Tool.hxx>
+
 #define  NULL_ENTRY "0:0"
-#define  OBSOLETE_NUM sizeof(Standard_Integer)
+#define  OBSOLETE_NUM (int)sizeof(Standard_Integer)
+
 //=======================================================================
 // 'Z' - is reserved for: forfidden to use
 //=======================================================================
@@ -237,12 +233,12 @@ Standard_Boolean BinMNaming_NamingDriver::Paste
                                           "Cannot retrieve reference on "
                                           "Arguments of Name");
 	WriteMessage (aMsg);
-      }
+	  }
 
 #ifdef DEB
       //cout << "CurDocVersion = " << BinMNaming::DocumentVersion() <<endl;
 #endif
-      if(BinMNaming::DocumentVersion() > 3) {
+    if(BinMNaming::DocumentVersion() > 3) {
 	TCollection_AsciiString entry;
 	ok = theSource >> entry;
 	if(ok) {
@@ -259,14 +255,48 @@ Standard_Boolean BinMNaming_NamingDriver::Paste
 		aName.ContextLabel(tLab);
 	    }
 	}
-      }
+    if(BinMNaming::DocumentVersion() > 4 && BinMNaming::DocumentVersion() < 7) {
+          // Orientation processing - converting from old format
+      Handle(TNaming_NamedShape) aNS;
+      if(anAtt->Label().FindAttribute(TNaming_NamedShape::GetID(), aNS)) {
+            //const TDF_Label& aLab = aNS->Label();
+        TNaming_Iterator itL (aNS);
+        for (; itL.More(); itL.Next()) {
+          const TopoDS_Shape& S = itL.NewShape();
+          if (S.IsNull()) continue;
+          if(aNS->Evolution() == TNaming_SELECTED) {
+            if (itL.More() && itL.NewShape().ShapeType() != TopAbs_VERTEX &&
+                  !itL.OldShape().IsNull() && itL.OldShape().ShapeType() == TopAbs_VERTEX ) {//OR-N
+              TopAbs_Orientation OrientationToApply = itL.OldShape().Orientation();
+              aName.Orientation(OrientationToApply);
+			}
+		  }
+		}
+	  }
+	}
+    if(BinMNaming::DocumentVersion() > 6) {
+      ok = theSource >> anIndx;
+      TopAbs_Orientation OrientationToApply(TopAbs_FORWARD);
+      if(ok) {
+        OrientationToApply = (TopAbs_Orientation)anIndx;
+		aName.Orientation(OrientationToApply);
+#ifdef DEB
+	    cout << "NamingDriver:: Retrieved Orientation = " << OrientationToApply << " Ok = " << theSource.IsOK()  <<endl;
+#endif
+	  } else {
+          aMsg = TCollection_ExtendedString("BinMNaming_NamingDriver: "
+                                            "Cannot retrieve Name Orientation ");
+	  WriteMessage (aMsg);
+	  }
+	}
+	}
 #ifdef DEB
       else if(BinMNaming::DocumentVersion() == -1)
 	cout << "Current DocVersion field is not initialized. "  <<endl;
       else 
 	cout << "Current DocVersion = " << BinMNaming::DocumentVersion() <<endl;
 #endif
-    }
+	}
   }
   return ok;
 }
@@ -332,4 +362,8 @@ void BinMNaming_NamingDriver::Paste (const Handle(TDF_Attribute)&  theSource,
   if(!aName.ContextLabel().IsNull())
     TDF_Tool::Entry(aName.ContextLabel(), entry);
   theTarget << entry;
+
+//7. keep Orientation
+  theTarget << (Standard_Integer)aName.Orientation();
+
 }

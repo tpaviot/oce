@@ -14,13 +14,15 @@
 //!          IS_HATCH    display hatched with a hatch style. <br>
 //!          IS_SOLID    display the interior entirely filled. <br>
 //!          IS_HIDDENLINE       display in hidden lines removed. <br>
+//!          IS_POINT            display only vertices. <br>
 //! <br>
 enum Aspect_InteriorStyle {
 Aspect_IS_EMPTY,
 Aspect_IS_HOLLOW,
 Aspect_IS_HATCH,
 Aspect_IS_SOLID,
-Aspect_IS_HIDDENLINE
+Aspect_IS_HIDDENLINE,
+Aspect_IS_POINT
 };
 
 #ifndef _Standard_PrimitiveTypes_HeaderFile

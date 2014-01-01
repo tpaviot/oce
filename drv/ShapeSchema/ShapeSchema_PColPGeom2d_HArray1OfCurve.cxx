@@ -40,6 +40,8 @@ void ShapeSchema_PColPGeom2d_HArray1OfCurve::SWrite(const Handle(Standard_Persis
   if (!p.IsNull()) {
     Handle(PColPGeom2d_HArray1OfCurve) &pp = (Handle(PColPGeom2d_HArray1OfCurve)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPColPGeom2d_HArray1OfCurveLowerBound());
@@ -60,6 +62,8 @@ void ShapeSchema_PColPGeom2d_HArray1OfCurve::SRead(const Handle(Standard_Persist
 { 
   if (!p.IsNull()) {
     Handle(PColPGeom2d_HArray1OfCurve) &pp = (Handle(PColPGeom2d_HArray1OfCurve)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

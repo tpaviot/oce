@@ -39,6 +39,8 @@ void ShapeSchema_PGeom_Axis1Placement::SWrite(const Handle(Standard_Persistent)&
   if (!p.IsNull()) {
     Handle(PGeom_Axis1Placement) &pp = (Handle(PGeom_Axis1Placement)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_gp_Ax1::SWrite(pp->_CSFDB_GetPGeom_AxisPlacementaxis(),f,theSchema);
@@ -57,6 +59,8 @@ void ShapeSchema_PGeom_Axis1Placement::SRead(const Handle(Standard_Persistent)& 
 { 
   if (!p.IsNull()) {
     Handle(PGeom_Axis1Placement) &pp = (Handle(PGeom_Axis1Placement)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

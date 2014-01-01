@@ -1,23 +1,18 @@
 // Created on: 1994-03-09
 // Created by: Isabelle GRIGNON
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //  Modified by skv - Mon Jun  7 18:38:57 2004 OCC5898
 //  Modified by skv - Thu Aug 21 11:55:58 2008 OCC20222
@@ -819,7 +814,7 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
 
   TopoDS_Edge edgecouture;
   Standard_Boolean couture,intcouture=Standard_False;;
-  Standard_Real tolreached;
+  Standard_Real tolreached = tolesp;
   Standard_Real  par1 =0.,par2 =0.;
   Standard_Integer indpt = 0,Icurv1 = 0,Icurv2 = 0;
   Handle(Geom_TrimmedCurve) curv1,curv2;
@@ -1221,7 +1216,7 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
 
     //   VARIANT 2 : extend Arcprol, not create new small edge
     //   To do: modify for intcouture
-    const Standard_Boolean variant1 = Standard_True;
+    #define VARIANT1
 
     // First of all the ponts are cut with the edge of the spine.
     Standard_Integer IArcspine = DStr.AddShape(Arcspine);
@@ -1251,10 +1246,11 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
     }
 
     Handle(Geom2d_Curve) Hc;
-    if (variant1)
+    #ifdef VARIANT1
       parVtx = BRep_Tool::Parameter(Vtx,Arcprol);
-    else
+    #else
       parVtx = BRep_Tool::Parameter(V2,Arcprol);
+    #endif
     const ChFiDS_FaceInterference& Fiop = Fd->Interference(IFopArc);
     gp_Pnt2d pop1, pop2, pv1, pv2;
     Hc = BRep_Tool::CurveOnSurface(Arcprol,Fop,Ubid,Ubid);
@@ -1376,26 +1372,31 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
 	Interfop = ChFi3d_FilCurveInDS(IZob,Iop,zob2dop,Et);
       DStr.ChangeShapeInterferences(Iop).Append(Interfop);
       Handle(TopOpeBRepDS_CurvePointInterference) interfprol;
-      if (variant1)
+      #ifdef VARIANT1
 	interfprol = ChFi3d_FilVertexInDS(TopAbs_FORWARD,IZob,IVtx,Udeb);
-      else {
+      #else 
+      {
 	Standard_Integer IV2 = DStr.AddShape(V2); // VARIANT 2
 	interfprol = ChFi3d_FilVertexInDS(TopAbs_FORWARD,IZob,IV2,Udeb);
       }
+      #endif
       DStr.ChangeCurveInterferences(IZob).Append(interfprol);
       Standard_Integer icc = stripe->IndexPoint(isfirst,IFopArc);
       interfprol = ChFi3d_FilPointInDS(TopAbs_REVERSED,IZob,icc,Ufin);
       DStr.ChangeCurveInterferences(IZob).Append(interfprol);
-      if (variant1) {
+      #ifdef VARIANT1 
+      {
 	if (IFopArc == 1) box1.Add( zob3d->Value(Ufin) );
 	else              box2.Add( zob3d->Value(Ufin) );
       }
-      else {
+      #else 
+      {
         // cut off existing Arcprol
         Standard_Integer iArcprol = DStr.AddShape(Arcprol);
         interfprol = ChFi3d_FilPointInDS(OVtx,iArcprol,icc,Udeb);
         DStr.ChangeShapeInterferences(Arcprol).Append(interfprol);
       }
+      #endif
     }
   }
   ChFi3d_EnlargeBox(DStr,stripe,Fd,box1,box2,isfirst);
@@ -3796,7 +3797,7 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
   TopoDS_Edge Arcpiv,Arcprol,Arcspine,Arcprolbis;
   if(isfirst) Arcspine = spine->Edges(1);
   else Arcspine = spine->Edges(spine->NbEdges());
-  TopAbs_Orientation OArcprolbis;
+  TopAbs_Orientation OArcprolbis = TopAbs_FORWARD;
   TopAbs_Orientation OArcprolv = TopAbs_FORWARD, OArcprolop = TopAbs_FORWARD;
   Standard_Integer ICurve;
   Handle(BRepAdaptor_HSurface) HBs  = new BRepAdaptor_HSurface();
@@ -3983,7 +3984,7 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
 
   TopoDS_Edge edgecouture;
   Standard_Boolean couture,intcouture=Standard_False;;
-  Standard_Real tolreached;
+  Standard_Real tolreached = tolesp;
   Standard_Real par1 = 0.,par2 = 0.;
   Standard_Integer indpt =0,Icurv1 =0,Icurv2 =0;
   Handle(Geom_TrimmedCurve) curv1,curv2;
@@ -4203,7 +4204,7 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
     // Above all the points cut the points with the edge of the spine.
     Standard_Integer IArcspine = DStr.AddShape(Arcspine);
     Standard_Integer IVtx = DStr.AddShape(Vtx);
-    TopAbs_Orientation OVtx2;
+    TopAbs_Orientation OVtx2 = TopAbs_FORWARD;
     TopAbs_Orientation OVtx = TopAbs_FORWARD;
     for(ex.Init(Arcspine.Oriented(TopAbs_FORWARD),TopAbs_VERTEX);
 	ex.More(); ex.Next()){

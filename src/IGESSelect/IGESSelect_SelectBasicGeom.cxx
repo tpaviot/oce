@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <IGESSelect_SelectBasicGeom.ixx>
 #include <IGESData_IGESEntity.hxx>
@@ -40,8 +36,8 @@ IGESSelect_SelectBasicGeom::IGESSelect_SelectBasicGeom
     : IFSelect_SelectExplore (-1)    {  thegeom = mode;  }
 
     Standard_Boolean  IGESSelect_SelectBasicGeom::Explore
-  (const Standard_Integer level, const Handle(Standard_Transient)& ent,
-   const Interface_Graph& G, Interface_EntityIterator& explored) const
+  (const Standard_Integer /*level*/, const Handle(Standard_Transient)& ent,
+   const Interface_Graph& /*G*/, Interface_EntityIterator& explored) const
 {
 //  thegeom > 0 : curves3d   < 0 : surfaces   == 0 : curves3d + surfaces libres
 

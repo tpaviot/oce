@@ -22,7 +22,6 @@
 class TopoDS_Shape;
 class BRepMesh_Vertex;
 class BRepMesh_Edge;
-class BRepMesh_Triangle;
 class BRepMesh_ShapeTool;
 class BRepMesh_Circ;
 class BRepMesh_DiscretRoot;
@@ -30,7 +29,6 @@ class BRepMesh_DiscretFactory;
 class BRepMesh_ComparatorOfVertexOfDelaun;
 class BRepMesh_ComparatorOfIndexedVertexOfDelaun;
 class BRepMesh_SelectorOfDataStructureOfDelaun;
-class BRepMesh_Delaun;
 class BRepMesh_DataStructureOfDelaun;
 class BRepMesh_CircleTool;
 class BRepMesh_VertexTool;
@@ -114,7 +112,6 @@ private:
 
 friend class BRepMesh_Vertex;
 friend class BRepMesh_Edge;
-friend class BRepMesh_Triangle;
 friend class BRepMesh_ShapeTool;
 friend class BRepMesh_Circ;
 friend class BRepMesh_DiscretRoot;
@@ -122,7 +119,6 @@ friend class BRepMesh_DiscretFactory;
 friend class BRepMesh_ComparatorOfVertexOfDelaun;
 friend class BRepMesh_ComparatorOfIndexedVertexOfDelaun;
 friend class BRepMesh_SelectorOfDataStructureOfDelaun;
-friend class BRepMesh_Delaun;
 friend class BRepMesh_DataStructureOfDelaun;
 friend class BRepMesh_CircleTool;
 friend class BRepMesh_VertexTool;

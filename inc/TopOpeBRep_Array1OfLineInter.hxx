@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRep_Array1OfLineInter(const Standard_Integer Low,const Standard_Integer Up);
+      TopOpeBRep_Array1OfLineInter(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TopOpeBRep_Array1OfLineInter(const TopOpeBRep_LineInter& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TopOpeBRep_Array1OfLineInter(const TopOpeBRep_LineInter& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const TopOpeBRep_LineInter& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TopOpeBRep_Array1OfLineInter()
 {
   Destroy();

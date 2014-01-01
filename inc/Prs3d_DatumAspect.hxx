@@ -25,8 +25,8 @@
 #ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
 #endif
-#ifndef _Prs3d_CompositeAspect_HeaderFile
-#include <Prs3d_CompositeAspect.hxx>
+#ifndef _Prs3d_BasicAspect_HeaderFile
+#include <Prs3d_BasicAspect.hxx>
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
@@ -35,7 +35,7 @@ class Prs3d_LineAspect;
 
 
 //! A framework to define the display of datums. <br>
-class Prs3d_DatumAspect : public Prs3d_CompositeAspect {
+class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 
 public:
 

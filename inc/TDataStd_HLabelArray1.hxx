@@ -39,11 +39,11 @@ class TDataStd_HLabelArray1 : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TDataStd_HLabelArray1(const Standard_Integer Low,const Standard_Integer Up);
+      TDataStd_HLabelArray1(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TDataStd_HLabelArray1(const Standard_Integer Low,const Standard_Integer Up,const TDF_Label& V);
+      TDataStd_HLabelArray1(const Standard_Integer Low,const Standard_Integer Up,const TDF_Label& V);
   
-  Standard_EXPORT     void Init(const TDF_Label& V) ;
+        void Init(const TDF_Label& V) ;
   
         Standard_Integer Length() const;
   

@@ -39,6 +39,8 @@ void XCAFSchema_PCollection_HAsciiString::SWrite(const Handle(Standard_Persisten
   if (!p.IsNull()) {
     Handle(PCollection_HAsciiString) &pp = (Handle(PCollection_HAsciiString)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     XCAFSchema_DBC_VArrayOfCharacter::SWrite(pp->_CSFDB_GetPCollection_HAsciiStringData(),f,theSchema);
@@ -57,6 +59,8 @@ void XCAFSchema_PCollection_HAsciiString::SRead(const Handle(Standard_Persistent
 { 
   if (!p.IsNull()) {
     Handle(PCollection_HAsciiString) &pp = (Handle(PCollection_HAsciiString)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

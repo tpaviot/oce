@@ -42,11 +42,11 @@ class GeomFill_HArray1OfLocationLaw : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   GeomFill_HArray1OfLocationLaw(const Standard_Integer Low,const Standard_Integer Up);
+      GeomFill_HArray1OfLocationLaw(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   GeomFill_HArray1OfLocationLaw(const Standard_Integer Low,const Standard_Integer Up,const Handle(GeomFill_LocationLaw)& V);
+      GeomFill_HArray1OfLocationLaw(const Standard_Integer Low,const Standard_Integer Up,const Handle(GeomFill_LocationLaw)& V);
   
-  Standard_EXPORT     void Init(const Handle(GeomFill_LocationLaw)& V) ;
+        void Init(const Handle(GeomFill_LocationLaw)& V) ;
   
         Standard_Integer Length() const;
   

@@ -1,23 +1,18 @@
 // Created on: 1994-10-03
 // Created by: Bruno DUMORTIER
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BRepFill_Evolved.ixx>
 
@@ -688,7 +683,7 @@ void BRepFill_Evolved::ElementaryPerform (const TopoDS_Face&              Sp,
 					  const TopoDS_Wire&              Pr,
 					  const BRepMAT2d_BisectingLocus& Locus,
 					        BRepMAT2d_LinkTopoBilo&   Link,
-					  const GeomAbs_JoinType          Join)
+					  const GeomAbs_JoinType          /*Join*/)
 {
 
 #ifdef DRAW
@@ -2429,7 +2424,7 @@ void BRepFill_Evolved::TransformInitWork(const TopLoc_Location& LS,
 //purpose  : Coding of regularities on edges parallel to CutVevo
 //           common to left and right parts of volevo.
 //=======================================================================
-void  BRepFill_Evolved::ContinuityOnOffsetEdge (const TopTools_ListOfShape& WorkProf) 
+void  BRepFill_Evolved::ContinuityOnOffsetEdge (const TopTools_ListOfShape&) 
 {
   BRepTools_WireExplorer WExp ; 
   BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape iteS;
@@ -2828,7 +2823,7 @@ void ComputeIntervals (const TopTools_SequenceOfShape& VOnF,
 		             TopTools_SequenceOfShape& LastV )
 {
   Standard_Integer IOnF    = 1,IOnL = 1;
-  Standard_Real    U1 = 0.0 ,U2 = 0.0 ;
+  Standard_Real    U1 = 0.,U2;
   TopoDS_Shape     V1,V2;
   
   if (!VS.IsNull()) {

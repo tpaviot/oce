@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ChFiDS_StripeArray1(const Standard_Integer Low,const Standard_Integer Up);
+      ChFiDS_StripeArray1(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   ChFiDS_StripeArray1(const Handle(ChFiDS_Stripe)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      ChFiDS_StripeArray1(const Handle(ChFiDS_Stripe)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(ChFiDS_Stripe)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~ChFiDS_StripeArray1()
 {
   Destroy();

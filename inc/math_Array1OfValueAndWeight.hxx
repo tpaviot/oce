@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   math_Array1OfValueAndWeight(const Standard_Integer Low,const Standard_Integer Up);
+      math_Array1OfValueAndWeight(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   math_Array1OfValueAndWeight(const math_ValueAndWeight& Item,const Standard_Integer Low,const Standard_Integer Up);
+      math_Array1OfValueAndWeight(const math_ValueAndWeight& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const math_ValueAndWeight& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~math_Array1OfValueAndWeight()
 {
   Destroy();

@@ -1,24 +1,18 @@
 // Created on: 1996-09-03
 // Created by: Olga KOULECHOVA
 // Copyright (c) 1996-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BRepFeat_MakeDPrism.ixx>
 
@@ -93,17 +87,6 @@ static void MajMap(const TopoDS_Shape&,
 		   TopTools_DataMapOfShapeListOfShape&, // myMap
 		   TopoDS_Shape&,  // myFShape
 		   TopoDS_Shape&); // myLShape
-
-
-
-#ifdef DEB
-static void VerifGluedFaces(const TopoDS_Face& theSkface,
-			    const TopoDS_Shape& thePbase,
-			    Handle(Geom_Curve)& theBCurve,
-			    TColGeom_SequenceOfCurve& theCurves,
-			    LocOpe_DPrism& theDPrism,
-			    TopTools_DataMapOfShapeShape& theMap);
-#endif
 
 static Standard_Real HeightMax(const TopoDS_Shape& theSbase,
 			       const TopoDS_Face& theSkface,
@@ -301,7 +284,6 @@ void BRepFeat_MakeDPrism::Perform(const Standard_Real Height)
       const TopoDS_Face& ff = TopoDS::Face(exp.Current());
       if(ToFuse(ff, FFace)) {
 	TopTools_DataMapOfShapeListOfShape sl;
-	//SetGluedFaces(ff, mySbase, FFace, sl, theDPrism, myGluedF);
 	break;
       }
     }
@@ -309,9 +291,7 @@ void BRepFeat_MakeDPrism::Perform(const Standard_Real Height)
 
 // management of gluing faces 
 
-  //SetGluedFaces(mySkface, mySbase, theBase, mySlface, theDPrism, myGluedF);
   GluedFacesValid();
-//  VerifGluedFaces(mySkface, theBase, myBCurve, myCurves, theDPrism, myGluedF);
 
   if(!myGluedF.IsEmpty()) {   // case gluing
     myJustGluer = Standard_True;
@@ -401,11 +381,7 @@ void BRepFeat_MakeDPrism::Perform(const TopoDS_Shape& Until)
       return;
     }
 
-    //SetGluedFaces(mySkface, mySbase, theBase, mySlface, theDPrism, myGluedF);
     GluedFacesValid();
-//    VerifGluedFaces(mySkface, theBase, myBCurve, myCurves, theDPrism, myGluedF);
-   
-
     theDPrism.Curves(myCurves);
     myBCurve = theDPrism.BarycCurve();
     GlobalPerform();
@@ -566,7 +542,6 @@ void BRepFeat_MakeDPrism::Perform(const TopoDS_Shape& From,
     GeneratedShapeValid();
 
   // management of gluing faces 
-    //SetGluedFaces(TopoDS_Face(), // on ne veut pas binder mySkface
 	//	  mySbase, myPbase, mySlface, theDPrism, myGluedF);
     GluedFacesValid();
     theDPrism.Curves(myCurves);
@@ -977,10 +952,7 @@ void BRepFeat_MakeDPrism::PerformUntilHeight(const TopoDS_Shape& Until,
       return;
     }
 
-    //SetGluedFaces(mySkface, mySbase, theBase, mySlface, theDPrism, myGluedF);
     GluedFacesValid();
-//    VerifGluedFaces(mySkface, theBase, myBCurve, myCurves, theDPrism, myGluedF);
-
     theDPrism.Curves(myCurves);
     myBCurve = theDPrism.BarycCurve();
     GlobalPerform();
@@ -1255,125 +1227,6 @@ Standard_Integer SensOfPrism(const Handle(Geom_Curve) C,
   else {}
   return sens;
 }
-
-#ifdef DEB
- //=======================================================================
-//function : SetGluedFaces
-//purpose  : 
-//=======================================================================
-
-static void SetGluedFaces(const TopoDS_Face& theSkface,
-			  const TopoDS_Shape& theSbase,
-			  const TopoDS_Shape& thePbase,
-			  const TopTools_DataMapOfShapeListOfShape& theSlmap,
-			  LocOpe_DPrism& theDPrism,
-			  TopTools_DataMapOfShapeShape& theMap)
-{
-  TopExp_Explorer exp;
-  if (!theSkface.IsNull() && thePbase.ShapeType() == TopAbs_FACE) {
-    for (exp.Init(theSbase,TopAbs_FACE); exp.More(); exp.Next()) {
-      if (exp.Current().IsSame(theSkface)) {
-	theMap.Bind(thePbase,theSkface);
-	break;
-      }
-    }
-  }
-  else {
-    TopExp_Explorer exp2;
-    for (exp.Init(thePbase,TopAbs_FACE);exp.More();exp.Next()) {
-      const TopoDS_Face& fac = TopoDS::Face(exp.Current());
-      for (exp2.Init(theSbase,TopAbs_FACE);exp2.More();exp2.Next()) {
-	if (exp2.Current().IsSame(fac)) {
-	  theMap.Bind(fac,fac);
-	  break;
-	}
-      }
-    }
-  }
-
-  // Sliding
-  TopTools_DataMapIteratorOfDataMapOfShapeListOfShape itm(theSlmap);
-  if(!theSlmap.IsEmpty()) {
-    for (; itm.More(); itm.Next()) {
-      const TopoDS_Face& fac = TopoDS::Face(itm.Key());
-      const TopTools_ListOfShape& ledg = itm.Value();
-      for (TopTools_ListIteratorOfListOfShape it(ledg); it.More(); it.Next()) {
-	const TopTools_ListOfShape& gfac = theDPrism.Shapes(it.Value());
-	if (gfac.Extent() != 1) {
-#ifdef DEB
-	  Standard_Boolean trc = BRepFeat_GettraceFEAT();
-	  if (trc) cout << " BRepFeat_MakeDPrism : Pb SetGluedFace" << endl;
-#endif
-	}
-	theMap.Bind(gfac.First(),fac);
-      }
-    }
-  }
-}
-#endif
-
-//=======================================================================
-//function : VerifGluedFaces
-//purpose  : Checking intersection Tool/theSkface = thePbase
-//           if yes -> OK if no -> case without gluing
-//=======================================================================
-#ifdef DEB
-static void VerifGluedFaces(const TopoDS_Face& theSkface,
-			    const TopoDS_Shape& thePbase,
-			    Handle(Geom_Curve)& theBCurve,
-			    TColGeom_SequenceOfCurve& theCurves,
-			    LocOpe_DPrism& theDPrism,
-			    TopTools_DataMapOfShapeShape& theMap)
-{
-  Standard_Boolean GluedFaces = Standard_True;
-  TopoDS_Shape VraiDPrism = theDPrism.Shape();
-  
-  TColGeom_SequenceOfCurve scur;
-  theDPrism.Curves(theCurves);
-  theBCurve = theDPrism.BarycCurve();    
-  scur.Clear();    
-  scur.Append(theBCurve);
-  LocOpe_CSIntersector ASI(theSkface);
-  ASI.Perform(scur);
-  if (ASI.IsDone() && ASI.NbPoints(1) >=1) {
-    TopAbs_Orientation Or = ASI.Point(1,1).Orientation();
-    TopoDS_Face FSk = ASI.Point(1,1).Face();
-    TopoDS_Shape Comp;
-    BRep_Builder B;
-    B.MakeCompound(TopoDS::Compound(Comp));
-    TopoDS_Solid S = BRepFeat::Tool(theSkface, FSk, Or);
-    if (!S.IsNull()) B.Add(Comp,S);
-    //modified by NIZNHY-PKV Thu Mar 21 17:48:45 2002 f
-    //BRepAlgo_Cut trP(VraiDPrism,Comp);
-    BRepAlgoAPI_Cut trP(VraiDPrism,Comp);
-    //modified by NIZNHY-PKV Thu Mar 21 17:48:49 2002 t
-    TopoDS_Shape Cutsh = trP.Shape();
-    TopExp_Explorer ex(Cutsh, TopAbs_SOLID);
-    for(; ex.More(); ex.Next()) {
-      TopExp_Explorer ex1(ex.Current(), TopAbs_FACE);
-      for(; ex1.More(); ex1.Next()) {
-	const TopoDS_Face& fac1 = TopoDS::Face(ex1.Current());
-	TopExp_Explorer ex2(thePbase, TopAbs_FACE);
-	for(; ex2.More(); ex2.Next()) {
-	  const TopoDS_Face& fac2 = TopoDS::Face(ex2.Current());
-	  if(fac1.IsSame(fac2)) break;
-	}
-	if (ex2.More()) break;
-      }
-      if (ex1.More()) continue;
-      GluedFaces = Standard_False;
-      break;
-    }
-    if (!GluedFaces) {
-#ifdef DEB
-      Standard_Boolean trc = BRepFeat_GettraceFEAT();
-      if (trc) cout << " Intersection DPrism/skface : no gluing" << endl;
-#endif
-      theMap.Clear();
-    }
-  }
-}
-#endif
 
 //=======================================================================
 //function : MajMap

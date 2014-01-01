@@ -14,6 +14,7 @@
 
 void StdSchema_gp_Mat::SWrite(const gp_Mat& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
   Standard_Integer gp_Matmatrix1 = 0,gp_Matmatrix2 = 0;
 
@@ -29,6 +30,7 @@ void StdSchema_gp_Mat::SWrite(const gp_Mat& pp, Storage_BaseDriver& f, const Han
 
 void StdSchema_gp_Mat::SRead(gp_Mat& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
   Standard_Integer gp_Matmatrix1 = 0,gp_Matmatrix2 = 0;
    

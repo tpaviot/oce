@@ -28,14 +28,14 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Draw_Drawable2D_HeaderFile
+#include <Draw_Drawable2D.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Draw_Drawable2D_HeaderFile
-#include <Draw_Drawable2D.hxx>
 #endif
 class gp_Pnt2d;
 class Draw_Color;
@@ -75,8 +75,6 @@ gp_Pnt2d myPos;
 Draw_Color myCol;
 Draw_MarkerShape myTyp;
 Standard_Integer mySiz;
-Standard_Real myRSiz;
-Standard_Boolean myIsRSiz;
 
 
 };

@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_AttributeArray1(const Standard_Integer Low,const Standard_Integer Up);
+      TDF_AttributeArray1(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TDF_AttributeArray1(const Handle(TDF_Attribute)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TDF_AttributeArray1(const Handle(TDF_Attribute)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(TDF_Attribute)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TDF_AttributeArray1()
 {
   Destroy();

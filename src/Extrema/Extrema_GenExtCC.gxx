@@ -1,23 +1,18 @@
 // Created on: 1995-07-18
 // Created by: Modelistation
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <StdFail_NotDone.hxx>
 #include <math_FunctionSetRoot.hxx>
@@ -53,8 +48,8 @@ Extrema_GenExtCC::Extrema_GenExtCC (const Curve1& C1,
 			      const Standard_Real Vsup,
 			      const Standard_Integer NbU, 
 			      const Standard_Integer NbV,
-			      const Standard_Real TolU, 
-			      const Standard_Real TolV) : myF (C1,C2), myDone (Standard_False)
+			      const Standard_Real /*TolU*/, 
+			      const Standard_Real /*TolV*/) : myF (C1,C2), myDone (Standard_False)
 {
   SetCurveCache (1, new Cache (C1, Uinf, Usup, NbU, Standard_True));
   SetCurveCache (2, new Cache (C2, Vinf, Vsup, NbV, Standard_True));
@@ -146,16 +141,6 @@ a- Constitution du tableau des distances (TbDist2(0,NbU+1,0,NbV+1)):
     aCache2->CalculatePoints();
 
 // Calcul des distances
-  //initialization of variables in the same way as in CalculatePoints()
-  Standard_Real PasU = aCache1->TrimLastParameter() - aCache1->TrimFirstParameter();
-  Standard_Real PasV = aCache2->TrimLastParameter() - aCache2->TrimFirstParameter();
-  Standard_Real U0 = PasU / aNbU / 100.;
-  Standard_Real V0 = PasV / aNbV / 100.;
-  PasU = (PasU - U0) / (aNbU - 1);
-  PasV = (PasV - V0) / (aNbV - 1);
-  U0 = aCache1->TrimFirstParameter() + (U0/2.);
-  V0 = aCache2->TrimFirstParameter() + (V0/2.);
-
   const Handle(ArrayOfPnt)& aPntArray1 = aCache1->Points();
   const Handle(ArrayOfPnt)& aPntArray2 = aCache2->Points();
   Standard_Integer NoU, NoV;
@@ -182,6 +167,8 @@ b- Calcul des minima:
   UVinf(2) = aCache2->TrimFirstParameter();
   UVsup(1) = aCache1->TrimLastParameter();
   UVsup(2) = aCache2->TrimLastParameter();
+  
+  myF.SubIntervalInitialize(UVinf,UVsup);
 
 //     - des 'bords' du tableau TbDist2
   for (NoV = 0; NoV <= aNbV+1; NoV++) {
@@ -203,6 +190,8 @@ b- Calcul des minima:
 //     - recherche d un minimum sur la grille
   Standard_Integer Nu, Nv;
   Standard_Real Dist2;
+  const Handle(TColStd_HArray1OfReal)& aParamArray1 = aCache1->Parameters();
+  const Handle(TColStd_HArray1OfReal)& aParamArray2 = aCache2->Parameters();
   for (NoU = 1; NoU <= aNbU; NoU++) {
     for (NoV = 1; NoV <= aNbV; NoV++) {
       if (TbSel(NoU,NoV) == 0) {
@@ -217,9 +206,9 @@ b- Calcul des minima:
 	    (TbDist2(NoU+1,NoV+1) >= Dist2)) {
 
 //     - calcul de l extremum sur la surface:
-	  UV(1) = U0 + (NoU - 1) * PasU;
-	  UV(2) = V0 + (NoV - 1) * PasV;
-
+          
+          UV(1) = aParamArray1->Value(NoU);
+          UV(2) = aParamArray2->Value(NoV);
 
 	  math_FunctionSetRoot S (myF,UV,Tol,UVinf,UVsup);
 
@@ -274,8 +263,9 @@ c- Calcul des maxima:
 	    (TbDist2(NoU+1,NoV+1) <= Dist2)) {
 
 //     - calcul de l extremum sur la surface:
-	  UV(1) = U0 + (NoU - 1) * PasU;
-	  UV(2) = V0 + (NoV - 1) * PasV;
+
+          UV(1) = aParamArray1->Value(NoU);
+          UV(2) = aParamArray2->Value(NoV);
 
 	  math_FunctionSetRoot S (myF,UV,Tol,UVinf,UVsup);
       

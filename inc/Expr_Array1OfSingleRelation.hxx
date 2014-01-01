@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Expr_Array1OfSingleRelation(const Standard_Integer Low,const Standard_Integer Up);
+      Expr_Array1OfSingleRelation(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Expr_Array1OfSingleRelation(const Handle(Expr_SingleRelation)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Expr_Array1OfSingleRelation(const Handle(Expr_SingleRelation)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(Expr_SingleRelation)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Expr_Array1OfSingleRelation()
 {
   Destroy();

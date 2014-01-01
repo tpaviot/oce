@@ -39,11 +39,11 @@ class GeomPlate_HArray1OfSequenceOfReal : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer Low,const Standard_Integer Up);
+      GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer Low,const Standard_Integer Up,const TColStd_SequenceOfReal& V);
+      GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer Low,const Standard_Integer Up,const TColStd_SequenceOfReal& V);
   
-  Standard_EXPORT     void Init(const TColStd_SequenceOfReal& V) ;
+        void Init(const TColStd_SequenceOfReal& V) ;
   
         Standard_Integer Length() const;
   

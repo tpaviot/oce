@@ -42,11 +42,11 @@ class TColGeom2d_HArray1OfBSplineCurve : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColGeom2d_HArray1OfBSplineCurve(const Standard_Integer Low,const Standard_Integer Up);
+      TColGeom2d_HArray1OfBSplineCurve(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColGeom2d_HArray1OfBSplineCurve(const Standard_Integer Low,const Standard_Integer Up,const Handle(Geom2d_BSplineCurve)& V);
+      TColGeom2d_HArray1OfBSplineCurve(const Standard_Integer Low,const Standard_Integer Up,const Handle(Geom2d_BSplineCurve)& V);
   
-  Standard_EXPORT     void Init(const Handle(Geom2d_BSplineCurve)& V) ;
+        void Init(const Handle(Geom2d_BSplineCurve)& V) ;
   
         Standard_Integer Length() const;
   

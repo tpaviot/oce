@@ -16,6 +16,9 @@
 #include <Standard_Macro.hxx>
 #endif
 
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -24,9 +27,6 @@
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
 #endif
 #ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
@@ -49,6 +49,8 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
+  Standard_EXPORT   IntPatch_HInterTool();
+  
       static  Standard_Boolean SingularOnUMin(const Handle(Adaptor3d_HSurface)& S) ;
   
       static  Standard_Boolean SingularOnUMax(const Handle(Adaptor3d_HSurface)& S) ;
@@ -61,9 +63,9 @@ public:
   
   Standard_EXPORT   static  Standard_Integer NbSamplesV(const Handle(Adaptor3d_HSurface)& S,const Standard_Real v1,const Standard_Real v2) ;
   
-  Standard_EXPORT   static  Standard_Integer NbSamplePoints(const Handle(Adaptor3d_HSurface)& S) ;
+  Standard_EXPORT     Standard_Integer NbSamplePoints(const Handle(Adaptor3d_HSurface)& S) ;
   
-  Standard_EXPORT   static  void SamplePoint(const Handle(Adaptor3d_HSurface)& S,const Standard_Integer Index,Standard_Real& U,Standard_Real& V) ;
+  Standard_EXPORT     void SamplePoint(const Handle(Adaptor3d_HSurface)& S,const Standard_Integer Index,Standard_Real& U,Standard_Real& V) const;
   //! Returns True if all the intersection point and edges <br>
 //!          are known on the Arc. <br>
 //!          The intersection point are given as vertices. <br>
@@ -141,6 +143,10 @@ private:
 
 
 
+Standard_Real uinf;
+Standard_Real vinf;
+Standard_Real usup;
+Standard_Real vsup;
 
 
 };

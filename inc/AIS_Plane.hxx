@@ -31,6 +31,9 @@
 #ifndef _AIS_TypeOfPlane_HeaderFile
 #include <AIS_TypeOfPlane.hxx>
 #endif
+#ifndef _Select3D_TypeOfSensitivity_HeaderFile
+#include <Select3D_TypeOfSensitivity.hxx>
+#endif
 #ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
 #endif
@@ -158,6 +161,10 @@ public:
   Standard_EXPORT   virtual  Standard_Boolean AcceptDisplayMode(const Standard_Integer aMode) const;
   //! connection to <aCtx> default drawer implies a recomputation of Frame values. <br>
   Standard_EXPORT   virtual  void SetContext(const Handle(AIS_InteractiveContext)& aCtx) ;
+  //! Returns the type of sensitivity for the plane; <br>
+        Select3D_TypeOfSensitivity TypeOfSensitivity() const;
+  //! Sets the type of sensitivity for the plane. <br>
+        void SetTypeOfSensitivity(const Select3D_TypeOfSensitivity theTypeOfSensitivity) ;
   //! computes the presentation according to a point of view <br>
 //!          given by <aProjector>. <br>
 //!          To be Used when the associated degenerated Presentations <br>
@@ -208,6 +215,7 @@ Standard_Boolean myAutomaticPosition;
 AIS_TypeOfPlane myTypeOfPlane;
 Standard_Boolean myIsXYZPlane;
 Standard_Boolean myHasOwnSize;
+Select3D_TypeOfSensitivity myTypeOfSensitivity;
 
 
 };

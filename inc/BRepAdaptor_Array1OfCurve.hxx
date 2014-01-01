@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepAdaptor_Array1OfCurve(const Standard_Integer Low,const Standard_Integer Up);
+      BRepAdaptor_Array1OfCurve(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   BRepAdaptor_Array1OfCurve(const BRepAdaptor_Curve& Item,const Standard_Integer Low,const Standard_Integer Up);
+      BRepAdaptor_Array1OfCurve(const BRepAdaptor_Curve& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const BRepAdaptor_Curve& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~BRepAdaptor_Array1OfCurve()
 {
   Destroy();

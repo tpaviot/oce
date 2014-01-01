@@ -78,6 +78,7 @@ class TColStd_ListOfInteger;
 class TCollection_AsciiString;
 class SelectBasics_SensitiveEntity;
 class SelectMgr_DataMapOfIntegerSensitive;
+class gp_Lin;
 
 
 //! A framework to define finding, sorting the sensitive <br>
@@ -237,6 +238,39 @@ protected:
   Standard_EXPORT   virtual  void LoadResult(const Bnd_Box2d& aBox) ;
   
   Standard_EXPORT   virtual  void LoadResult(const TColgp_Array1OfPnt2d& Polyline) ;
+  //! Returns picking line along which the depth value should be <br>
+//! computed. Override this method to compute picking line by the same <br>
+//! which is used for projecting sensitive entities to selection space. <br>
+//! @param theX [in] the x picking coordinate. <br>
+//! @param theY [in] the y picking coordinate. <br>
+//! @return picking line. <br>
+  Standard_EXPORT   virtual  gp_Lin PickingLine(const Standard_Real theX,const Standard_Real theY) const;
+  //! Returns global depth clipping limits applied to every sensitive. <br>
+//! Override this method to convert clippings defined by application into <br>
+//! selection space for mouse picking detection. <br>
+//! Default implementation returns infinite clip limits (no clipping). <br>
+//! @param theX [in] the x picking coordinate. <br>
+//! @param theY [in] the y picking coordinate. <br>
+//! @param theMin [out] the minimum depth. Default is RealFirst() <br>
+//! @param theMax [out] the maximum depth. Default is RealLast() <br>
+  Standard_EXPORT   virtual  void DepthClipping(const Standard_Real theX,const Standard_Real theY,Standard_Real& theMin,Standard_Real& theMax) const;
+  //! Returns depth clipping limits applied to sensitives of <br>
+//! entity owner. Override this method to convert clippings defined by <br>
+//! application owners into selection space for mouse picking detection. <br>
+//! Default implementation returns infinite clip limits (no clipping). <br>
+//! @param theX [in] the x picking coordinate. <br>
+//! @param theY [in] the y picking coordinate. <br>
+//! @param theOwner [in] the sensitive owner. <br>
+//! @param theMin [out] the minimum depth. Default is RealFirst() <br>
+//! @param theMax [out] the maximum depth. Default is RealLast() <br>
+  Standard_EXPORT   virtual  void DepthClipping(const Standard_Real theX,const Standard_Real theY,const Handle(SelectMgr_EntityOwner)& theOwner,Standard_Real& theMin,Standard_Real& theMax) const;
+  //! Returns True if the owner provides clipping by depth <br>
+//! for its sensitives. Override this method to tell the selector <br>
+//! to use the DepthClipping method for the owner. <br>
+//! Default implementation returns False for every owner. <br>
+//! @param theOwner [in] the onwer to check. <br>
+//! @return True if owner provides depth limits for sensitive clipping. <br>
+  Standard_EXPORT   virtual  Standard_Boolean HasDepthClipping(const Handle(SelectMgr_EntityOwner)& theOwner) const;
 
 SelectMgr_DataMapOfIntegerSensitive myentities;
 SelectMgr_DataMapOfSelectionActivation myselections;

@@ -1,24 +1,18 @@
 // Created on: 1999-09-21
 // Created by: Edward AGAPOV
 // Copyright (c) 1999-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Extrema_ExtPRevS.ixx>
 #include <Adaptor3d_HCurve.hxx>
@@ -174,7 +168,7 @@ static Standard_Boolean IsOriginalPnt (const gp_Pnt& P,
 				       const Standard_Integer NbPoints)
 {
   for (Standard_Integer i=1; i<=NbPoints; i++) {
-    if (Points[i].Value().IsEqual(P, Precision::Confusion())) {
+    if (Points[i-1].Value().IsEqual(P, Precision::Confusion())) {
       return Standard_False;
     }
   }
@@ -407,8 +401,9 @@ void Extrema_ExtPRevS::Perform(const gp_Pnt& P)
 	Dist2 = P.SquareDistance(E);
       }
       if (IsOriginalPnt(E, myPoint, myNbExt)) {
-	myPoint[++myNbExt] = Extrema_POnSurf(U,V,E);
+	myPoint[myNbExt] = Extrema_POnSurf(U,V,E);
 	mySqDist[myNbExt] = Dist2;
+	myNbExt++;
       }
     }
   }
@@ -476,9 +471,9 @@ void Extrema_ExtPRevS::Perform(const gp_Pnt& P)
 	Dist2 = P.SquareDistance(E);
       }
       if (IsOriginalPnt(E, myPoint, myNbExt)) {
-	myPoint[++myNbExt] = Extrema_POnSurf(U,V,E);
+	myPoint[myNbExt] = Extrema_POnSurf(U,V,E);
 	mySqDist[myNbExt] = Dist2;
-      
+	myNbExt++;
       }
     }
   }
@@ -518,7 +513,7 @@ Standard_Real Extrema_ExtPRevS::SquareDistance(const Standard_Integer N) const
   if (!IsDone()) { StdFail_NotDone::Raise(); }
   if ((N < 1) || (N > myNbExt)) { Standard_OutOfRange::Raise(); }
   if (myIsAnalyticallyComputable)
-    return mySqDist[N];
+    return mySqDist[N-1];
   else
     return myExtPS.SquareDistance(N);
 }
@@ -527,12 +522,12 @@ Standard_Real Extrema_ExtPRevS::SquareDistance(const Standard_Integer N) const
 //purpose  : 
 //=======================================================================
 
-Extrema_POnSurf Extrema_ExtPRevS::Point(const Standard_Integer N) const
+const Extrema_POnSurf& Extrema_ExtPRevS::Point(const Standard_Integer N) const
 {
   if (!IsDone()) { StdFail_NotDone::Raise(); }
   if ((N < 1) || (N > myNbExt)) { Standard_OutOfRange::Raise(); }
   if (myIsAnalyticallyComputable)
-    return myPoint[N];
+    return myPoint[N-1];
   else
     return myExtPS.Point(N);
 }

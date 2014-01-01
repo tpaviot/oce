@@ -28,6 +28,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _SelectBasics_PickArgs_HeaderFile
+#include <SelectBasics_PickArgs.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
@@ -63,8 +66,10 @@ public:
   //! Constructs a sensitive triangle object defined by the <br>
 //! owner OwnerId, the points P1, P2, P3, and the type of sensitivity Sensitivity. <br>
   Standard_EXPORT   Select3D_SensitiveTriangle(const Handle(SelectBasics_EntityOwner)& OwnerId,const gp_Pnt& P1,const gp_Pnt& P2,const gp_Pnt& P3,const Select3D_TypeOfSensitivity Sensitivity = Select3D_TOS_INTERIOR);
-  
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real X,const Standard_Real Y,const Standard_Real aTol,Standard_Real& DMin) ;
+  //! Checks whether the sensitive entity matches the picking <br>
+//! detection area (close to the picking line). <br>
+//! For details please refer to base class declaration. <br>
+  Standard_EXPORT     Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
   
   Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
   

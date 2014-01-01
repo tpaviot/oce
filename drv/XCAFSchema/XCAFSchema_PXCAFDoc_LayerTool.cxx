@@ -37,7 +37,10 @@ void XCAFSchema_PXCAFDoc_LayerTool::Add(const Handle(Standard_Persistent)& p, co
 void XCAFSchema_PXCAFDoc_LayerTool::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
+    Handle(PXCAFDoc_LayerTool) &pp = (Handle(PXCAFDoc_LayerTool)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -54,7 +57,10 @@ void XCAFSchema_PXCAFDoc_LayerTool::Write(const Handle(Standard_Persistent)& p, 
 void XCAFSchema_PXCAFDoc_LayerTool::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
- 
+    Handle(PXCAFDoc_LayerTool) &pp = (Handle(PXCAFDoc_LayerTool)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
+
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
 

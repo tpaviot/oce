@@ -64,14 +64,8 @@
 #ifndef _Handle_Prs3d_DatumAspect_HeaderFile
 #include <Handle_Prs3d_DatumAspect.hxx>
 #endif
-#ifndef _Handle_Prs3d_LengthAspect_HeaderFile
-#include <Handle_Prs3d_LengthAspect.hxx>
-#endif
-#ifndef _Handle_Prs3d_AngleAspect_HeaderFile
-#include <Handle_Prs3d_AngleAspect.hxx>
-#endif
-#ifndef _Handle_Prs3d_RadiusAspect_HeaderFile
-#include <Handle_Prs3d_RadiusAspect.hxx>
+#ifndef _Handle_Prs3d_DimensionAspect_HeaderFile
+#include <Handle_Prs3d_DimensionAspect.hxx>
 #endif
 class Prs3d_Drawer;
 class Prs3d_IsoAspect;
@@ -82,9 +76,8 @@ class Prs3d_PointAspect;
 class Prs3d_ShadingAspect;
 class Prs3d_PlaneAspect;
 class Prs3d_DatumAspect;
-class Prs3d_LengthAspect;
-class Prs3d_AngleAspect;
-class Prs3d_RadiusAspect;
+class Prs3d_DimensionAspect;
+class TCollection_AsciiString;
 
 
 
@@ -409,20 +402,27 @@ public:
 //!          Color: Quantity_NOC_PEACHPUFF <br>
 //!          Type of line: Aspect_TOL_SOLID Width: 1. <br>
   Standard_EXPORT     Handle_Prs3d_DatumAspect DatumAspect() ;
-  //! Returns a link with Prs3d_Drawer_LengthAspect, <br>
-//! which provides settings for the appearance of lengths. <br>
-  Standard_EXPORT     Handle_Prs3d_LengthAspect LengthAspect() ;
-  //! Returns true if the Drawer has a length aspect setting active. <br>
-        Standard_Boolean HasLengthAspect() const;
-  //! Returns a link with Prs3d_Drawer_AngleAspect, <br>
-//! which provides settings for lines used to display angles. <br>
-  Standard_EXPORT     Handle_Prs3d_AngleAspect AngleAspect() ;
-  //! Returns true if the Drawer has an angle aspect <br>
-//! setting active. <br>
-        Standard_Boolean HasAngleAspect() const;
-  //! Returns a link with Prs3d_Drawer_RadiusAspect, <br>
-//! which provides settings for lines which serve to display radii. <br>
-  Standard_EXPORT     Handle_Prs3d_RadiusAspect RadiusAspect() const;
+  //! Returns a link with Prs3d_Drawer_DimensionAspect, <br>
+//! which provides settings for the appearance of dimensions. <br>
+  Standard_EXPORT     Handle_Prs3d_DimensionAspect DimensionAspect() ;
+  
+        Standard_Boolean HasDimensionAspect() const;
+  //! Sets dimension length model units for computing of dimension presentation. <br>
+  Standard_EXPORT     void SetDimLengthModelUnits(const TCollection_AsciiString& theUnits) ;
+  //! Sets dimension angle model units for computing of dimension presentation. <br>
+  Standard_EXPORT     void SetDimAngleModelUnits(const TCollection_AsciiString& theUnits) ;
+  //! Returns angle model units for the dimension presentation. <br>
+  Standard_EXPORT    const TCollection_AsciiString& DimAngleModelUnits() const;
+  //! Returns length model units for the dimension presentation. <br>
+  Standard_EXPORT    const TCollection_AsciiString& DimLengthModelUnits() const;
+  //! Sets length units in which value for dimension presentation is displayed. <br>
+  Standard_EXPORT     void SetDimLengthDisplayUnits(const TCollection_AsciiString& theUnits) ;
+  //! Sets angle units in which value for dimension presentation is displayed. <br>
+  Standard_EXPORT     void SetDimAngleDisplayUnits(const TCollection_AsciiString& theUnits) ;
+  //! Returns length units in which dimension presentation is displayed. <br>
+  Standard_EXPORT    const TCollection_AsciiString& DimLengthDisplayUnits() const;
+  //! Returns angle units in which dimension presentation is displayed. <br>
+  Standard_EXPORT    const TCollection_AsciiString& DimAngleDisplayUnits() const;
   //! Returns a link with Prs3d_Drawer_SectionAspect, <br>
 //! which provides settings for wires which highlight sections. <br>
 //! The LineAspect for the wire can be edited. <br>
@@ -476,6 +476,10 @@ Standard_Boolean myhasOwnHLRDeviationAngle;
 Standard_Real myOwnHLRDeviationAngle;
 Standard_Real myPreviousHLRDeviationAngle;
 Standard_Boolean myHasOwnFaceBoundaryDraw;
+Standard_Boolean myHasOwnDimLengthModelUnits;
+Standard_Boolean myHasOwnDimLengthDisplayUnits;
+Standard_Boolean myHasOwnDimAngleModelUnits;
+Standard_Boolean myHasOwnDimAngleDisplayUnits;
 
 
 };

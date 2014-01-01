@@ -1,22 +1,17 @@
 // Created on: 2001-02-26
 // Created by: Peter KURNEV
-// Copyright (c) 2001-2012 OPEN CASCADE SAS
+// Copyright (c) 2001-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <IntTools_EdgeFace.ixx>
 
@@ -386,7 +381,7 @@ void IntTools_EdgeFace::CheckData()
   t2=tt2;
   anIsProj1=ff1;
   
-  while (1) {
+  for(;;) {
     if (fabs(t1-t2) < aEpsT) {
       tRoot=(anIsProj1) ? t1 : t2;
       return;
@@ -407,47 +402,21 @@ void IntTools_EdgeFace::CheckData()
 //function : IsProjectable
 //purpose  : 
 //=======================================================================
-  Standard_Boolean IntTools_EdgeFace::IsProjectable(const Standard_Real t) const
+Standard_Boolean IntTools_EdgeFace::IsProjectable(const Standard_Real aT) const
 {
-  Standard_Boolean bFlag;
-
-  gp_Pnt P;
-  myC.D0(t, P);
-  GeomAPI_ProjectPointOnSurf aProjector;
+  Standard_Boolean bFlag; 
+  gp_Pnt aPC;
   //
-  Standard_Real ULD = 0.0, VLD = 0.0;
-
-  GeomAPI_ProjectPointOnSurf& aLocProj = myContext->ProjPS(myFace);
-  aLocProj.Perform(P);
-  bFlag = aLocProj.IsDone();
-  
-  if(bFlag) {
-    aLocProj.LowerDistanceParameters(ULD, VLD);
-  }
+  myC.D0(aT, aPC);
+  bFlag=myContext->IsValidPointForFace(aPC, myFace, myCriteria);
   //
-
-  if (bFlag) {
-    bFlag=Standard_False;
-
-    // 
-    TopAbs_State aState;
-    gp_Pnt2d aP2d(ULD, VLD);
-
-    aState = myContext->FClass2d(myFace).Perform(aP2d);
-    //
-    
-    if (aState==TopAbs_IN || aState==TopAbs_ON) {
-      bFlag=Standard_True;
-    }
-  }
   return bFlag;
 }
-
 //=======================================================================
 //function : DistanceFunction
 //purpose  : 
 //=======================================================================
-  Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
+Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 {
   Standard_Real aD;
 
@@ -761,7 +730,7 @@ void IntTools_EdgeFace::CheckData()
   
   a=tA; b=tB; r=fA;
   
-  while (1) {
+  for(;;) {
     x0=.5*(a+b);
 
     if (IP==1)
@@ -805,7 +774,7 @@ void IntTools_EdgeFace::CheckData()
   yl=coeff*DistanceFunction(xl);
   
  
-  while (1) {
+  for(;;) {
     
     if (fabs(b-a) < myEpsT) {
       return .5*(b+a);
@@ -835,7 +804,7 @@ void IntTools_EdgeFace::CheckData()
   Standard_Integer IntTools_EdgeFace::MakeType(IntTools_CommonPrt&  aCommonPrt)
 {
   Standard_Real  af1, al1;
-  Standard_Real df1, tm;
+  Standard_Real  df1, tm;
   Standard_Boolean bAllNullFlag;
   //
   bAllNullFlag=aCommonPrt.AllNullFlag();
@@ -880,7 +849,7 @@ void IntTools_EdgeFace::CheckData()
     }
 	 return 0;
   }
-  //
+  
   /*
   dt=al1-af1;
   if (dt<1.e-5) {
@@ -920,8 +889,8 @@ void IntTools_EdgeFace::CheckData()
       aCommonPrt.SetType(TopAbs_EDGE);
     }
   }
-  */
-  return 0;
+
+  return 0;*/
 }
 
 

@@ -1,23 +1,18 @@
 // Created on: 1996-06-05
 // Created by: Stagiaire Xuan Trang PHAMPHU
 // Copyright (c) 1996-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modified : 20/08/96 PMN Ajout des methodes (Nb)Intervals et IsRationnal
 // Modified : 30/12/96 PMN Ajout GetMinimalWeight, GetSectionSize;
@@ -84,10 +79,8 @@ void BlendFunc_Chamfer::Set(const Standard_Real Param)
 //purpose  : 
 //=======================================================================
 
-void BlendFunc_Chamfer::Set(const Standard_Real First, const Standard_Real Last)
+void BlendFunc_Chamfer::Set(const Standard_Real, const Standard_Real)
 {
-//  corde1.SetParam(First, Last);
-//  corde2.SetParam(First, Last);
 }
 
 //=======================================================================
@@ -349,7 +342,7 @@ void BlendFunc_Chamfer::Tangent(const Standard_Real U1,
 //purpose  : 
 //=======================================================================
 
-void BlendFunc_Chamfer::Section(const Standard_Real Param,
+void BlendFunc_Chamfer::Section(const Standard_Real /*Param*/,
 				const Standard_Real U1,
 				const Standard_Real V1,
 				const Standard_Real U2,
@@ -441,10 +434,10 @@ void BlendFunc_Chamfer::GetShape (Standard_Integer& NbPoles,
 //purpose  : Determine les Tolerance a utiliser dans les approximations.
 //=======================================================================
 void BlendFunc_Chamfer::GetTolerance(const Standard_Real BoundTol, 
-				     const Standard_Real SurfTol, 
-				     const Standard_Real AngleTol, 
+				     const Standard_Real, 
+				     const Standard_Real, 
 				     math_Vector& Tol3d, 
-				     math_Vector& Tol1D) const
+				     math_Vector&) const
 {
   Tol3d.Init(BoundTol);
 }
@@ -478,16 +471,16 @@ void BlendFunc_Chamfer::Mults(TColStd_Array1OfInteger& TMults)
 //=======================================================================
 
 Standard_Boolean BlendFunc_Chamfer::Section
-  (const Blend_Point& P,
-   TColgp_Array1OfPnt& Poles,
-   TColgp_Array1OfVec& DPoles,
-   TColgp_Array1OfVec& D2Poles,
-   TColgp_Array1OfPnt2d& Poles2d,
-   TColgp_Array1OfVec2d& DPoles2d,
-   TColgp_Array1OfVec2d& D2Poles2d,
-   TColStd_Array1OfReal& Weights,
-   TColStd_Array1OfReal& DWeights,
-   TColStd_Array1OfReal& D2Weights)
+  (const Blend_Point& /*P*/,
+   TColgp_Array1OfPnt& /*Poles*/,
+   TColgp_Array1OfVec& /*DPoles*/,
+   TColgp_Array1OfVec& /*D2Poles*/,
+   TColgp_Array1OfPnt2d& /*Poles2d*/,
+   TColgp_Array1OfVec2d& /*DPoles2d*/,
+   TColgp_Array1OfVec2d& /*D2Poles2d*/,
+   TColStd_Array1OfReal& /*Weights*/,
+   TColStd_Array1OfReal& /*DWeights*/,
+   TColStd_Array1OfReal& /*D2Weights*/)
 {
    return Standard_False;
 }

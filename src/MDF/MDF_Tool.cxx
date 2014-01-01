@@ -1,21 +1,17 @@
 // Created by: DAUTRY Philippe
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //      	--------------
 
@@ -59,6 +55,14 @@
 #define DeclareAndSpeedCast(V,T,Vdown) Handle(T) Vdown = *((Handle(T)*)& V)
 #define DeclareConstAndSpeedCast(V,T,Vdown) const Handle(T)& Vdown = (Handle(T)&) V
 #define SpeedCast(V,T,Vdown) Vdown = *((Handle(T)*)& V)
+
+#include <NCollection_List.hxx>
+typedef struct {
+	Handle(PDF_Attribute) pAtt;
+	Handle(TDF_Attribute) tAtt;
+} ATTR;
+typedef NCollection_List<ATTR> MDF_AttributeList;
+typedef MDF_AttributeList::Iterator MDF_ListIteratorOfAttributeList;
 
 #undef DEB_MDF_TOOL
 
@@ -364,7 +368,7 @@ void MDF_Tool::ReadLabels
 //purpose  : PERSISTENT -> TRANSIENT
 //           Reads the persistent attributes content.
 //=======================================================================
-
+//#define DEB_ORIENT
 void MDF_Tool::ReadAttributes
 (const MDF_TypeARDriverMap& aDriverMap,
  const Handle(MDF_RRelocationTable)& aReloc) 
@@ -374,18 +378,50 @@ void MDF_Tool::ReadAttributes
   const PTColStd_PersistentTransientMap& attMap = aReloc->AttributeTable();
   PTColStd_DataMapIteratorOfPersistentTransientMap itr(attMap);
   Handle(TDF_Attribute) tAtt;
+  MDF_AttributeList attNList;
+  Standard_Boolean isName1(Standard_False);
+  ATTR pairAtt;
   for ( ; itr.More(); itr.Next()) {
     DeclareConstAndSpeedCast(itr.Key(),PDF_Attribute,pAtt);
     if (!pAtt.IsNull()) { // See above...
       const Handle(Standard_Type)& type = pAtt->DynamicType();
+	  
+	  if(!strcmp (type->Name(), "PNaming_Naming_1") ) {
+#ifdef DEB_ORIENT
+		  cout << "TYPE = " << type->Name() << endl;
+#endif
+		  isName1 = Standard_True;
+	  } else isName1 = Standard_False;
+
       if (aDriverMap.IsBound(type)) {
-	SpeedCast(itr.Value(),TDF_Attribute,tAtt);
-	const Handle(MDF_ARDriver)& driver = aDriverMap.Find(type);
-	driver->Paste(pAtt, tAtt, aReloc);
+	    SpeedCast(itr.Value(),TDF_Attribute,tAtt);
+	    const Handle(MDF_ARDriver)& driver = aDriverMap.Find(type);
+		if(isName1) {
+		  pairAtt.pAtt = pAtt;
+		  pairAtt.tAtt = tAtt;
+		  attNList.Append(pairAtt);
+		}
+		else 
+	      driver->Paste(pAtt, tAtt, aReloc);
       }
     }
   }
 
+// post processing for compartibiliy with previous versions (24.07.2013)
+  if(attNList.Extent()) {
+    MDF_ListIteratorOfAttributeList listIt(attNList);
+	for(;listIt.More();listIt.Next()) {
+		const  Handle(PDF_Attribute)& pAtt = listIt.Value().pAtt;
+		if (!pAtt.IsNull()) { 
+          const Handle(Standard_Type)& type = pAtt->DynamicType();
+		  if (aDriverMap.IsBound(type)) {	        
+	        const Handle(MDF_ARDriver)& driver = aDriverMap.Find(type);		
+	        driver->Paste(pAtt, listIt.Value().tAtt, aReloc);
+		  }
+		}
+	}
+  }
+//
   TDF_AttributeList attList;
   for (itr.Initialize(attMap); itr.More(); itr.Next()) {
     SpeedCast(itr.Value(),TDF_Attribute,tAtt);

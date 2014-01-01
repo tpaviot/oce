@@ -14,6 +14,7 @@
 
 void StdSchema_gp_Trsf2d::SWrite(const gp_Trsf2d& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
   f.PutReal(pp._CSFDB_Getgp_Trsf2dscale());
   f.PutInteger(pp._CSFDB_Getgp_Trsf2dshape());
@@ -25,6 +26,7 @@ void StdSchema_gp_Trsf2d::SWrite(const gp_Trsf2d& pp, Storage_BaseDriver& f, con
 
 void StdSchema_gp_Trsf2d::SRead(gp_Trsf2d& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
 
     Standard_Real gp_Trsf2dscale;

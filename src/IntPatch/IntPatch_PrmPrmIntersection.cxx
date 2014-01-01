@@ -1,23 +1,18 @@
 // Created on: 1993-02-02
 // Created by: Laurent BUCHARD
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // modified by Edward AGAPOV (eap) Tue Jan 22 12:29:55 2002
 // modified by Oleg FEDYAED  (ofv) Fri Nov 29 16:08:02 2002
@@ -60,6 +55,11 @@ static
   void AdjustOnPeriodic(const Handle(Adaptor3d_HSurface)& Surf1,
 			const Handle(Adaptor3d_HSurface)& Surf2,
 			IntPatch_SequenceOfLine& aSLin);
+
+static
+  IntSurf_PntOn2S MakeNewPoint(const IntSurf_PntOn2S& replacePnt,
+                               const IntSurf_PntOn2S& oldPnt,
+                               const Standard_Real* Periods);
 
 static Standard_Boolean IsPointOnLine(const IntSurf_PntOn2S        &thePOn2S,
                                       const Handle(IntPatch_WLine) &theWLine,
@@ -149,7 +149,6 @@ void IntPatch_PrmPrmIntersection::Perform (const Handle(Adaptor3d_HSurface)&    
   done = Standard_True;
   SLin.Clear();  
 
-  Standard_Real Deflection2 = Deflection*Deflection;
   Standard_Integer nbLigSec = Interference.NbSectionLines();
   Standard_Integer nbTanZon = Interference.NbTangentZones();
 
@@ -1310,6 +1309,12 @@ void IntPatch_PrmPrmIntersection::Perform (const Handle(Adaptor3d_HSurface)&    
   VminLig2 = Surf2->FirstVParameter();
   UmaxLig2 = Surf2->LastUParameter();
   VmaxLig2 = Surf2->LastVParameter();
+
+  Standard_Real Periods [4];
+  Periods[0] = (Surf1->IsUPeriodic())? Surf1->UPeriod() : 0.;
+  Periods[1] = (Surf1->IsVPeriodic())? Surf1->VPeriod() : 0.;
+  Periods[2] = (Surf2->IsUPeriodic())? Surf2->UPeriod() : 0.;
+  Periods[3] = (Surf2->IsVPeriodic())? Surf2->VPeriod() : 0.;
   
   IntSurf_ListIteratorOfListOfPntOn2S IterLOP1(LOfPnts);
 
@@ -1326,12 +1331,10 @@ void IntPatch_PrmPrmIntersection::Perform (const Handle(Adaptor3d_HSurface)&    
     if(U2<UminLig2) UminLig2=U2;
     if(V2<VminLig2) VminLig2=V2; 
   }
-
-  Standard_Real Deflection2 = Deflection*Deflection;
   
   Standard_Real SeuildPointLigne = 15.0 * Increment * Increment;
   
-  Standard_Integer NbPntOn2SOnLine = 0, NbLigCalculee = 0, ver;
+  Standard_Integer NbLigCalculee = 0, ver;
   Standard_Real pu1,pu2,pv1,pv2, dminiPointLigne;
   Standard_Boolean HasStartPoint,RejetLigne;
   IntSurf_PntOn2S StartPOn2S;
@@ -1540,7 +1543,10 @@ void IntPatch_PrmPrmIntersection::Perform (const Handle(Adaptor3d_HSurface)&    
                     Standard_Integer iP;
                     for( iP = 1; iP <= cNbP; iP++) {
                       if( pI == iP )
-                        newL2s->Add(replacePnt);
+                      {
+                        IntSurf_PntOn2S newPnt = MakeNewPoint(replacePnt, wline->Point(iP), Periods);
+                        newL2s->Add(newPnt);
+                      }
                       else if(removeNext && iP == (pI + 1))
                         continue;
                       else if(removePrev && iP == (pI - 1))
@@ -1833,6 +1839,39 @@ void AdjustOnPeriodic(const Handle(Adaptor3d_HSurface)& Surf1,
     }//for (j=0; j<1; ++j) {
   }//for (i=1; i<=aNbLines; ++i)
 }
+
+//==================================================================================
+// function : MakeNewPoint
+// purpose  : 
+//==================================================================================
+IntSurf_PntOn2S MakeNewPoint(const IntSurf_PntOn2S& replacePnt,
+                             const IntSurf_PntOn2S& oldPnt,
+                             const Standard_Real* Periods)
+{
+  IntSurf_PntOn2S NewPoint;
+  NewPoint.SetValue(replacePnt.Value());
+  
+  Standard_Real OldParams[4], NewParams[4];
+  oldPnt.Parameters(OldParams[0], OldParams[1], OldParams[2], OldParams[3]);
+  replacePnt.Parameters(NewParams[0], NewParams[1], NewParams[2], NewParams[3]);
+
+  Standard_Integer i;
+  for (i = 0; i < 4; i++)
+    if (Periods[i] != 0.)
+    {
+      if (Abs(NewParams[i] - OldParams[i]) >= 0.5*Periods[i])
+      {
+        if (NewParams[i] < OldParams[i])
+          NewParams[i] += Periods[i];
+        else
+          NewParams[i] -= Periods[i];
+      }
+    }
+
+  NewPoint.SetValue(NewParams[0], NewParams[1], NewParams[2], NewParams[3]);
+  return NewPoint;
+}
+
 //==================================================================================
 // function : Perform
 // purpose  : base SS Int. function
@@ -1863,6 +1902,13 @@ void IntPatch_PrmPrmIntersection::Perform (const Handle(Adaptor3d_HSurface)& Sur
   D1->VParameters(aVpars1);
   D2->UParameters(anUpars2); 
   D2->VParameters(aVpars2);
+
+  Standard_Real Periods [4];
+  Periods[0] = (Surf1->IsUPeriodic())? Surf1->UPeriod() : 0.;
+  Periods[1] = (Surf1->IsVPeriodic())? Surf1->VPeriod() : 0.;
+  Periods[2] = (Surf2->IsUPeriodic())? Surf2->UPeriod() : 0.;
+  Periods[3] = (Surf2->IsVPeriodic())? Surf2->VPeriod() : 0.;
+  
   //---------------------------------------------
   Limit = 2500;
   if((NbU1*NbV1<=Limit && NbV2*NbU2<=Limit)) {  
@@ -1896,12 +1942,11 @@ void IntPatch_PrmPrmIntersection::Perform (const Handle(Adaptor3d_HSurface)& Sur
       return;
     }
     
-    Standard_Real Deflection2 = Deflection*Deflection;
     Standard_Integer nbLigSec = Interference.NbSectionLines();
     Standard_Integer nbTanZon = Interference.NbTangentZones();
     Standard_Real SeuildPointLigne = 15.0 * Increment * Increment;
 
-    Standard_Integer NbPntOn2SOnLine = 0, NbLigCalculee = 0, ver;
+    Standard_Integer NbLigCalculee = 0, ver;
     Standard_Real U1,U2,V1,V2, pu1,pu2,pv1,pv2, incidence, dminiPointLigne;
     Standard_Boolean HasStartPoint,RejetLigne;
     IntSurf_PntOn2S StartPOn2S;
@@ -2247,7 +2292,10 @@ void IntPatch_PrmPrmIntersection::Perform (const Handle(Adaptor3d_HSurface)& Sur
 			    Standard_Integer iP;
 			    for( iP = 1; iP <= cNbP; iP++) {
 			      if( pI == iP )
-				newL2s->Add(replacePnt);
+                              {
+                                IntSurf_PntOn2S newPnt = MakeNewPoint(replacePnt, wline->Point(iP), Periods);
+                                newL2s->Add(newPnt);
+                              }
 			      else if(removeNext && iP == (pI + 1))
 				continue;
 			      else if(removePrev && iP == (pI - 1))
@@ -2489,7 +2537,6 @@ void IntPatch_PrmPrmIntersection::Perform (const Handle(Adaptor3d_HSurface)& Sur
   empt = Standard_True;
   done = Standard_True;
   SLin.Clear();  
-  Standard_Real Deflection2 = Deflection*Deflection;
   
   Standard_Integer NbLigCalculee = 0;
   Standard_Real U1,U2,V1,V2;
@@ -2917,7 +2964,7 @@ void IntPatch_PrmPrmIntersection::PointDepart(Handle(IntSurf_LineOn2S)& LineOn2S
     for(j=0;j<SV1;j++) { 
       aIPD.xIP1(i, j)=-1;
       const gp_Pnt& P=aIPD.xP1(i, j);
-      aIPD.xP1DS2(i, j) = (char) CodeReject(x20,y20,z20,x21,y21,z21,P.X(),P.Y(),P.Z());
+      aIPD.xP1DS2(i, j) = (char)CodeReject(x20,y20,z20,x21,y21,z21,P.X(),P.Y(),P.Z());
       int ix = (int)((P.X()-x0  + dx2 )/dx);
       if(DansGrille(ix)) { 
 	int iy = (int)((P.Y()-y0 + dy2)/dy);
@@ -2935,7 +2982,7 @@ void IntPatch_PrmPrmIntersection::PointDepart(Handle(IntSurf_LineOn2S)& LineOn2S
     for(j=0;j<SV2;j++) { 
       aIPD.xIP2(i, j)=-1;
       const gp_Pnt& P=aIPD.xP2(i, j);
-      aIPD.xP2DS1(i, j) = (char) CodeReject(x10,y10,z10,x11,y11,z11,P.X(),P.Y(),P.Z());
+      aIPD.xP2DS1(i, j) = (char)CodeReject(x10,y10,z10,x11,y11,z11,P.X(),P.Y(),P.Z());
       int ix = (int)((P.X()-x0 + dx2)/dx);
       if(DansGrille(ix)) { 
 	int iy = (int)((P.Y()-y0 + dy2)/dy);
@@ -3070,7 +3117,7 @@ void IntPatch_PrmPrmIntersection::PointDepart(Handle(IntSurf_LineOn2S)& LineOn2S
 	//-- aucun point du triangle n a ete trouve assez proche
 	//-- on recherche les 3 points les plus proches de P 
 	//-- dans chacun des tableaux 
-	Standard_Real Dist3[3],u3[3],v3[3];
+		  Standard_Real Dist3[3],u3[3] = { 0.0, 0.0, 0.0 },v3[3] = { 0.0, 0.0, 0.0 };
 	Dist3[0]=Dist3[1]=Dist3[2]=RealLast();
 	u3[0]=u3[1]=u3[2]=0;
 	v3[0]=v3[1]=v3[2]=0;

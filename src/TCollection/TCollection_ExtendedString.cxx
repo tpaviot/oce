@@ -1,34 +1,17 @@
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
-
-#define OptJr 1
-
-// OCC6794: if OptJr is ON, we need to ensure that memory allocations are done by 4 bytes words,
-// in order to avoid writing into unallocated memory at the string end when it is copied
-// by CSTRINGCOPY or ASCIISTRINGCOPY macros
-// (though, due to OCC memory manager roundings of allocated memory, the problem appears
-//  only when MMGT_OPT is 0 and string size is greater than MMGT_THRESHOLD)
-#ifdef OptJr
-#define ROUNDMEM(len) (((len)+3)&~0x3)
-#else
-#define ROUNDMEM(len) (len)
-#endif
 //#if defined(WNT) || defined(LIN)
 #include <stdio.h>
 //#endif
@@ -39,7 +22,6 @@
 #include <Standard_NullObject.hxx>
 #include <Standard_OutOfRange.hxx>
 #include <Standard_ctype.hxx>
-#include <Standard_String.hxx>
 #include <TCollection_AsciiString.hxx>
 
 static
@@ -47,7 +29,7 @@ static
 
 static
   Standard_PExtCharacter Reallocate(Standard_Address aAddr,
-				    const Standard_Size aLength);
+                                    const Standard_Size aLength);
 
 Standard_EXPORT short NULL_EXTSTRING[1] = {0};
 
@@ -117,13 +99,13 @@ inline Standard_Integer  nbSymbols(const Standard_CString aStr) {
     if((aStr[i] & 0x80) == 0x00) //1byte => 1 symb - Lat1
       {aLen++; i++;}
     else if((aStr[i] & 0xE0) == 0xC0 && 
-	    (aStr[i+1] && 
-	     (aStr[i+1] & 0xC0) == 0x80)) {//2 bytes => 1 symb
+            (aStr[i+1] && 
+             (aStr[i+1] & 0xC0) == 0x80)) {//2 bytes => 1 symb
       aLen++;
       i += 2;
     } else if((aStr[i] & 0xF0) == 0xE0 && 
-	      ((aStr[i+1] && (aStr[i+1] & 0xC0) == 0x80)) &&
-	      (aStr[i+2] && (aStr[i+2] & 0xC0) == 0x80)) {
+              ((aStr[i+1] && (aStr[i+1] & 0xC0) == 0x80)) &&
+              (aStr[i+2] && (aStr[i+2] & 0xC0) == 0x80)) {
       aLen++;
       i += 3;
     } else 
@@ -148,29 +130,23 @@ TCollection_ExtendedString::TCollection_ExtendedString()
 //----------------------------------------------------------------------------
 TCollection_ExtendedString::TCollection_ExtendedString
                                           (const Standard_CString astring, 
-					   const Standard_Boolean isMultiByte) 
+                                           const Standard_Boolean isMultiByte) 
 {
   if (astring) {
     if(!isMultiByte) {
-#if OptJr
-      STRINGLEN( astring , mylength ) ;
-#else
-      STRLEN(astring,mylength);
-#endif
+      mylength = (int)strlen( astring );
       mystring = Allocate((mylength+1)*2);
       for (int i = 0 ; i < mylength ; i++)
-	mystring[i] = ToExtCharacter(astring[i]); 
+        mystring[i] = ToExtCharacter(astring[i]); 
       mystring[mylength] =  '\0';
     }
     else {
       mylength = nbSymbols(astring);
-      mystring = Allocate(ROUNDMEM((mylength+1)*2));
+      mystring = Allocate( (mylength+1)*2 );
       if(!ConvertToUnicode (astring))
       {
 #ifdef DEB
-	cout <<"UTF8 decoding failure..." <<endl;
-#else
-	  {}
+        cout <<"UTF8 decoding failure..." <<endl;
 #endif
       }
     }
@@ -189,18 +165,11 @@ TCollection_ExtendedString::TCollection_ExtendedString
 {
 
   if (astring) {
-#if OptJr
-    EXTSTRINGLEN( astring , mylength ) ;
-#else
-    EXTSTRLEN(astring,mylength);
-#endif
-    mystring = Allocate(ROUNDMEM((mylength+1)*2));
-#if OptJr
-    EXTSTRINGCOPY( mystring , astring , mylength );
-#else
-    STRCPY(mystring,astring,mylength);
+    for ( mylength=0; astring[mylength]; ++mylength );
+    const Standard_Integer size = (mylength+1)*2;
+    mystring = Allocate(size);
+    memcpy( mystring, astring, size );
     mystring[mylength] =  '\0';
-#endif
   }
   else {
     Standard_NullObject::Raise("TCollection_ExtendedString : null parameter ");
@@ -246,7 +215,7 @@ TCollection_ExtendedString::TCollection_ExtendedString
                                         (const Standard_Integer      length,
                                          const Standard_ExtCharacter filler )
 {
-  mystring = Allocate((length+1)*2);
+  mystring = Allocate( (length+1)*2 );
   mylength = length;
   for (int i = 0 ; i < length ; i++) mystring[i] = filler;
   mystring[length] =  '\0';
@@ -261,11 +230,7 @@ TCollection_ExtendedString::TCollection_ExtendedString
   union {int bid ;
          char t [13];} CHN ;
   Sprintf(&CHN.t[0],"%d",aValue);
-#if OptJr
-  STRINGLEN( CHN.t , mylength ) ;
-#else
-  STRLEN(CHN.t,mylength);
-#endif
+  mylength = (int)strlen(CHN.t);
   mystring = Allocate((mylength+1)*2);
   for (int i = 0 ; i < mylength ; i++) mystring[i] = ToExtCharacter(CHN.t[i]);
   mystring[mylength] =  '\0';
@@ -280,11 +245,7 @@ TCollection_ExtendedString::TCollection_ExtendedString
   union {int bid ;
          char t [50];} CHN ;
   Sprintf(&CHN.t[0],"%g",aValue);
-#if OptJr
-  STRINGLEN( CHN.t , mylength ) ;
-#else
-  STRLEN(CHN.t,mylength);
-#endif
+  mylength = (int)strlen( CHN.t );
   mystring = Allocate((mylength+1)*2);
   for (int i = 0 ; i < mylength ; i++) mystring[i] = ToExtCharacter(CHN.t[i]);
   mystring[mylength] =  '\0';
@@ -296,16 +257,11 @@ TCollection_ExtendedString::TCollection_ExtendedString
 TCollection_ExtendedString::TCollection_ExtendedString
                                 (const TCollection_ExtendedString& astring)
 {
-
+  const Standard_Integer size = (astring.mylength+1)*2;
   mylength = astring.mylength;
-  mystring = Allocate(ROUNDMEM((mylength+1)*2));
-  if (astring.mystring)
-#if OptJr
-    EXTENDEDSTRINGCOPY( mystring , astring.mystring , mylength );
-#else
-    STRCPY(mystring,astring.mystring,mylength);
+  mystring = Allocate(size);
+  memcpy( mystring, astring.mystring, size );
   mystring[mylength] =  '\0';
-#endif
 }
 
 //---------------------------------------------------------------------------
@@ -316,15 +272,9 @@ TCollection_ExtendedString::TCollection_ExtendedString
 {
   mylength = astring.Length();
   mystring = Allocate((mylength+1)*2);
-#if OptJr
   Standard_CString aCString = astring.ToCString() ;
   for (Standard_Integer i = 0; i <= mylength ; i++)
     mystring[i] = ToExtCharacter( aCString[i] ); 
-#else
-  for (Standard_Integer i = 0; i < mylength ; i++)
-    mystring[i] = ToExtCharacter(astring.Value(i+1)); 
-  mystring[mylength] =  '\0';
-#endif
 }
 
 // ----------------------------------------------------------------------------
@@ -336,32 +286,16 @@ void TCollection_ExtendedString::AssignCat
   Standard_Integer otherlength = other.mylength; 
   if (otherlength) {
     Standard_ExtString sother = other.mystring;
-    Standard_Integer newlength = mylength +otherlength; 
+    Standard_Integer newlength = mylength + otherlength; 
     if (mystring) {
-        mystring = Reallocate((void*&)mystring,
-                                                             ROUNDMEM((newlength+1)*2));
-#if OptJr
-//      if ( ((long ) ( &mystring[ mylength ] ) & 3) == 0 ) {
-      EXTENDEDSTRINGCAT( mystring , mylength , sother , otherlength ) ;
-//        }
-//      else
-//        STRCAT( mystring , mylength , sother , otherlength + 1 ) ;
-#else
-      STRCAT(mystring,mylength,sother,otherlength);
-#endif
+      mystring = Reallocate((void*&)mystring, (newlength+1)*2 );
+      memcpy( mystring + mylength, sother, (otherlength+1)*2 );
     }
     else {
-      mystring = Allocate(ROUNDMEM((newlength+1)*2));
-#if OptJr
-      EXTENDEDSTRINGCOPY( mystring , sother , newlength );
-#else
-      STRCPY(mystring,sother,newlength);
-#endif
+      mystring = Allocate( (newlength+1)*2 );
+      memcpy( mystring, sother, (otherlength+1)*2 );
     }
     mylength = newlength;
-#if !OptJr
-    mystring[mylength] =  '\0';
-#endif
   }
 }
 
@@ -371,41 +305,11 @@ void TCollection_ExtendedString::AssignCat
 TCollection_ExtendedString TCollection_ExtendedString::Cat
                                 (const TCollection_ExtendedString& other) const 
 {
-  Standard_ExtString sother = other.mystring;
-  const Standard_Integer otherlength = sother ? other.mylength : 0;
-  const Standard_Integer newlength = mylength + otherlength;
-#ifdef OptJr
-  // ensure rounding allocated memory to 4 bytes
-  TCollection_ExtendedString res (newlength | 0x1, 0);
-  res.mylength = newlength;
-#else
-  TCollection_ExtendedString res (newlength, 0);
-#endif
- 
-  if (otherlength) {
-#if OptJr
-    EXTENDEDSTRINGCOPY( res.mystring , mystring , mylength );
-      //    if ( ((long ) ( &res.mystring[ mylength ] ) & 3) == 0 ) {
-    EXTENDEDSTRINGCAT( res.mystring , mylength , sother , otherlength ) ;
-//      }
-//    else
-//      STRCAT( res.mystring , mylength , sother , otherlength + 1 ) ;
-#else
-    if (mylength > 0) STRCPY (res.mystring, mystring, mylength);
-    STRCPY (&res.mystring[mylength], sother, otherlength);
-    res.mystring[newlength] =  '\0';
-#endif
-  }
-  else if (mylength > 0) {
-//    TCollection_ExtendedString res;
-//    res.mystring = (Standard_ExtString)Standard::Allocate((mylength+1)*2);
-#if OptJr
-    EXTENDEDSTRINGCOPY( res.mystring , mystring , mylength );
-#else
-    STRCPY (res.mystring, mystring,mylength);
-    res.mystring[res.mylength] =  '\0';
-#endif
-  }
+  TCollection_ExtendedString res( mylength + other.mylength, 0 );
+  if ( mylength > 0 )
+    memcpy( res.mystring, mystring, mylength*2 );
+  if ( other.mylength > 0 )
+    memcpy( res.mystring + mylength, other.mystring, other.mylength*2 );
   return res;
 }
 
@@ -438,20 +342,16 @@ void TCollection_ExtendedString::Copy (const TCollection_ExtendedString& fromwhe
 {
 
   if (fromwhere.mystring) {
-    Standard_Integer newlength = fromwhere.mylength;
+    const Standard_Integer newlength = fromwhere.mylength;
+    const Standard_Integer size      = (newlength + 1) * 2;
     if (mystring) {
-      mystring = Reallocate((void*&)mystring, ROUNDMEM(( newlength + 1)*2 ));
+      mystring = Reallocate((void*&)mystring, size );
     }
     else {
-      mystring = Allocate(ROUNDMEM((newlength+1)*2));
+      mystring = Allocate( size );
     }
     mylength = newlength;
-#if OptJr
-    EXTENDEDSTRINGCOPY( mystring , fromwhere.mystring , newlength );
-#else
-    STRCPY(mystring, fromwhere.mystring,newlength);
-    mystring[mylength] =  '\0';
-#endif
+    memcpy( mystring, fromwhere.mystring, size );
   }
   else {
     if (mystring) {
@@ -535,26 +435,14 @@ void TCollection_ExtendedString::Insert(const Standard_Integer            where,
   }
 }
 
-#if OptJr
 // ----------------------------------------------------------------------------
 // IsEqual
 // ----------------------------------------------------------------------------
 Standard_Boolean TCollection_ExtendedString::IsEqual
                                 (const Standard_ExtString other) const
 {
-// Standard_Integer otherlength ;
-
-//  EXTSTRINGLEN( other , otherlength )
-//  if ( mylength != otherlength ) return Standard_False;
-  Standard_Boolean KEqual ;
-  LEXTSTRINGEQUAL( mystring , mylength , other , KEqual ) ;
-  return KEqual ;
+  return ( memcmp( mystring, other, (mylength+1)*2 ) == 0 );
 }
-#else
-Standard_Boolean TCollection_ExtendedString::NoIsEqual
-                                (const Standard_ExtString other) const
-{return Standard_False ;}
-#endif
 
 // ----------------------------------------------------------------------------
 // IsEqual
@@ -562,39 +450,17 @@ Standard_Boolean TCollection_ExtendedString::NoIsEqual
 Standard_Boolean TCollection_ExtendedString::IsEqual
                                 (const TCollection_ExtendedString& other) const
 {
-  if (mylength != other.mylength) return Standard_False;
-  Standard_ExtString sother = other.mystring;  
-#if OptJr
-  Standard_Boolean KEqual ;
-  EXTENDEDSTRINGEQUAL( mystring , sother , mylength , KEqual ) ;
-  return KEqual ;
-#else
-  for (int i = 0 ; i < mylength ; i++)
-    if (mystring[i] != sother[i]) return Standard_False;
-  return Standard_True;
-#endif
+  return ( memcmp( mystring, other.mystring, (mylength+1)*2 ) == 0 );
 }
 
-#if OptJr
 // ----------------------------------------------------------------------------
 // IsDifferent
 // ----------------------------------------------------------------------------
 Standard_Boolean TCollection_ExtendedString::IsDifferent
                                 (const Standard_ExtString other ) const
 {
-// Standard_Integer otherlength ;
-
-//  EXTSTRINGLEN( other , otherlength )
-//  if ( mylength != otherlength ) return Standard_True;
-  Standard_Boolean KEqual ;
-  LEXTSTRINGEQUAL( mystring , mylength , other , KEqual ) ;
-  return !KEqual ;
+  return ( memcmp( mystring, other, (mylength+1)*2 ) != 0 );
 }
-#else
-Standard_Boolean TCollection_ExtendedString::NoIsDifferent
-                                (const Standard_ExtString other ) const
-{return Standard_False ;}
-#endif
 
 // ----------------------------------------------------------------------------
 // IsDifferent
@@ -602,40 +468,17 @@ Standard_Boolean TCollection_ExtendedString::NoIsDifferent
 Standard_Boolean TCollection_ExtendedString::IsDifferent
                                 (const TCollection_ExtendedString& other) const
 {
-  if (mylength != other.mylength) return Standard_True;
-  Standard_ExtString sother = other.mystring;  
-#if OptJr
-  Standard_Boolean KEqual ;
-  EXTENDEDSTRINGEQUAL( mystring , sother , mylength , KEqual ) ;
-  return !KEqual ;
-#else
-  for (int i = 0 ; i < mylength ; i++)
-    if (mystring[i] != sother[i]) return Standard_True;
-  return Standard_False;
-#endif
+  return ( memcmp( mystring, other.mystring, (mylength+1)*2 ) != 0 );
 }
 
-#if OptJr
 // ----------------------------------------------------------------------------
 // IsLess
 // ----------------------------------------------------------------------------
 Standard_Boolean TCollection_ExtendedString::IsLess
                                 (const Standard_ExtString other) const
 {
-// Standard_Integer otherlength ;
-
-//  EXTSTRINGLEN( other , otherlength )
-  Standard_Boolean KLess ;
-//  EXTSTRINGLESS( mystring , mylength , other , otherlength ,
-//                 INF( mylength , otherlength ) , KLess ) ;
-  LEXTSTRINGLESS( mystring , mylength , other , KLess ) ;
-  return KLess ;
+  return ( memcmp( mystring, other, (mylength+1)*2 ) < 0 );
 }
-#else
-Standard_Boolean TCollection_ExtendedString::NoIsLess
-                                (const Standard_ExtString other) const
-{return Standard_False ;}
-#endif
 
 // ----------------------------------------------------------------------------
 // IsLess
@@ -643,48 +486,17 @@ Standard_Boolean TCollection_ExtendedString::NoIsLess
 Standard_Boolean TCollection_ExtendedString::IsLess
                                 (const TCollection_ExtendedString& other) const
 {
-
-  Standard_Integer otherlength = other.mylength;
-  Standard_ExtString sother = other.mystring;  
-#if OptJr
-  Standard_Boolean KLess ;
-  EXTENDEDSTRINGLESS( mystring , mylength , sother , otherlength ,
-                      INF( mylength , otherlength ) , KLess ) ;
-  return KLess ;
-#else
-  Standard_Integer i = 0, j = 0;
-  while ( i < mylength && j < otherlength) {
-    if (mystring[i] < sother[j]) return Standard_True;
-    if (mystring[i] > sother[j]) return Standard_False;
-    i++ ; 
-    j++;
-  }
-  if (i == mylength && j < otherlength) return Standard_True;
-  return Standard_False;
-#endif
+  return ( memcmp( mystring, other.mystring, (mylength+1)*2 ) < 0 );
 }
 
-#if OptJr
 // ----------------------------------------------------------------------------
 // IsGreater
 // ----------------------------------------------------------------------------
 Standard_Boolean TCollection_ExtendedString::IsGreater
                                 (const Standard_ExtString other) const
 {
-// Standard_Integer otherlength ;
-
-//  EXTSTRINGLEN( other , otherlength )
-  Standard_Boolean KGreater ;
-//  EXTSTRINGGREATER( mystring , mylength , other , otherlength ,
-//                    INF( mylength , otherlength ) , KGreater ) ;
-  LEXTSTRINGGREATER( mystring , mylength , other , KGreater ) ;
-  return KGreater ;
+  return ( memcmp( mystring, other, (mylength+1)*2 ) > 0 );
 }
-#else
-Standard_Boolean TCollection_ExtendedString::NoIsGreater
-                                (const Standard_ExtString other) const
-{return Standard_False ;}
-#endif
 
 // ----------------------------------------------------------------------------
 // IsGreater
@@ -692,24 +504,7 @@ Standard_Boolean TCollection_ExtendedString::NoIsGreater
 Standard_Boolean TCollection_ExtendedString::IsGreater
                                 (const TCollection_ExtendedString& other) const
 {
-  Standard_Integer otherlength = other.mylength;
-  Standard_ExtString sother = other.mystring;  
-#if OptJr
-  Standard_Boolean KGreater ;
-  EXTENDEDSTRINGGREATER( mystring , mylength , sother , otherlength ,
-                         INF( mylength , otherlength ) , KGreater ) ;
-  return KGreater ;
-#else
-  Standard_Integer i = 0, j = 0;
-  while (i < mylength && j <= otherlength) {
-    if (mystring[i] < sother[j]) return Standard_False;
-    if (mystring[i] > sother[j]) return Standard_True;
-    i++ ; 
-    j++;
-  }
-  if (j == otherlength && i < mylength) return Standard_True;
-  return Standard_False;
-#endif
+  return ( memcmp( mystring, other.mystring, (mylength+1)*2 ) > 0 );
 }
 
 // ----------------------------------------------------------------------------
@@ -900,7 +695,7 @@ TCollection_ExtendedString TCollection_ExtendedString::Token
                                       (const Standard_ExtString separators,
                                        const Standard_Integer   whichone) const
 {
-  TCollection_ExtendedString res("");
+  TCollection_ExtendedString res;
   if (!separators)
     Standard_NullObject::Raise("TCollection_ExtendedString::Token : "
                                "parameter 'separators'");
@@ -962,12 +757,9 @@ TCollection_ExtendedString TCollection_ExtendedString::Token
     Standard::Free((void*&)buftmp);
   }
   else {
+    Standard::Free((void*&)res.mystring);
     res.mystring = buftmp;
-#if OptJr
-    EXTSTRINGLEN( buftmp , res.mylength ) ;
-#else
-    EXTSTRLEN(buftmp,res.mylength);
-#endif
+    for ( res.mylength=0; buftmp[res.mylength]; ++res.mylength );
   }
   return res;
 }
@@ -1022,13 +814,13 @@ Standard_Boolean TCollection_ExtendedString::ConvertToUnicode
     if((aStr[i] & 0x80) == 0x00) //1byte => 1 symb - Lat1
       {*p++ = ToExtCharacter(aStr[i]); i++;}
     else if((aStr[i] & 0xE0) == 0xC0 && 
-	    (aStr[i+1] && 
-	     (aStr[i+1] & 0xC0) == 0x80)) {//2 bytes => 1 symb
+            (aStr[i+1] && 
+             (aStr[i+1] & 0xC0) == 0x80)) {//2 bytes => 1 symb
       *p++ = ConvertToUnicode2B((unsigned char*)&aStr[i]);
       i += 2;
     } else if((aStr[i] & 0xF0) == 0xE0 && 
-	      ((aStr[i+1] && (aStr[i+1] & 0xC0) == 0x80)) &&
-	      (aStr[i+2] && (aStr[i+2] & 0xC0) == 0x80)) {      
+              ((aStr[i+1] && (aStr[i+1] & 0xC0) == 0x80)) &&
+              (aStr[i+2] && (aStr[i+2] & 0xC0) == 0x80)) {      
       *p++ = ConvertToUnicode3B((unsigned char*)&aStr[i]);
       i += 3;
     } else { //unsupported case ==> not UTF8
@@ -1120,7 +912,7 @@ Standard_PExtCharacter Allocate(const Standard_Size aLength)
 //purpose  : 
 //=======================================================================
 Standard_PExtCharacter Reallocate(Standard_Address aAddr,
-				  const Standard_Size aLength)
+                                  const Standard_Size aLength)
 {
   Standard_PExtCharacter pChar;
   //

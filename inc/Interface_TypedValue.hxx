@@ -19,29 +19,14 @@
 #ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
 #endif
-#ifndef _Interface_ParamType_HeaderFile
-#include <Interface_ParamType.hxx>
-#endif
 #ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
 #endif
 #ifndef _Handle_TColStd_HArray1OfAsciiString_HeaderFile
 #include <Handle_TColStd_HArray1OfAsciiString.hxx>
 #endif
 #ifndef _Handle_Dico_DictionaryOfInteger_HeaderFile
 #include <Handle_Dico_DictionaryOfInteger.hxx>
-#endif
-#ifndef _Interface_ValueInterpret_HeaderFile
-#include <Interface_ValueInterpret.hxx>
-#endif
-#ifndef _Interface_ValueSatisfies_HeaderFile
-#include <Interface_ValueSatisfies.hxx>
 #endif
 #ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
@@ -54,6 +39,9 @@
 #endif
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
+#endif
+#ifndef _Interface_ParamType_HeaderFile
+#include <Interface_ParamType.hxx>
 #endif
 #ifndef _MoniTool_ValueType_HeaderFile
 #include <MoniTool_ValueType.hxx>
@@ -123,21 +111,11 @@ private:
 TCollection_AsciiString thename;
 TCollection_AsciiString thedef;
 TCollection_AsciiString thelabel;
-Interface_ParamType thetype;
 Handle_Standard_Type theotyp;
-Standard_Integer thelims;
-Standard_Integer themaxlen;
-Standard_Integer theintlow;
-Standard_Integer theintup;
-Standard_Real therealow;
-Standard_Real therealup;
 TCollection_AsciiString theunidef;
 Handle_TColStd_HArray1OfAsciiString theenums;
 Handle_Dico_DictionaryOfInteger theeadds;
-Interface_ValueInterpret theinterp;
-Interface_ValueSatisfies thesatisf;
 TCollection_AsciiString thesatisn;
-Standard_Integer theival;
 Handle_TCollection_HAsciiString thehval;
 Handle_Standard_Transient theoval;
 

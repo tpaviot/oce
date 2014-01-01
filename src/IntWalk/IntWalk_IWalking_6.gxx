@@ -1,21 +1,16 @@
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifndef DEB
 #define No_Standard_RangeError
@@ -31,7 +26,7 @@ void IntWalk_IWalking::AddPointInCurrentLine
 
   IntSurf_PntOn2S Psol;
   Psol.SetValue(ThePointOfPathTool::Value3d(PathPnt),
-		reversed,ustart1(N),vstart1(N));
+		reversed,wd1[N].ustart,wd1[N].vstart);
   CurrentLine->AddPoint(Psol);
 }
 
@@ -58,9 +53,10 @@ void IntWalk_IWalking::MakeWalkingPoint
     Psol.SetValue(sp.Point(),reversed, U, V);
   }
   else if (Case == 11 || Case == 12 ) {
-    static math_Vector UV(1, 2);
-    static math_Vector FF(1, 1);
-    static math_Matrix DD(1, 1, 1, 2); 
+    Standard_Real aUV[2], aFF[1], aDD[1][2];
+    math_Vector UV(aUV,1, 2);
+    math_Vector FF(aFF,1, 1);
+    math_Matrix DD(aDD,1, 1, 1, 2); 
     UV(1) = U;
     UV(2) = V;
     sp.Values(UV, FF, DD);
@@ -80,14 +76,15 @@ void IntWalk_IWalking::OpenLine(const Standard_Integer N,
 				const ThePOPIterator& Pnts1,
 				TheIWFunction& sp,
                                 const Handle(IntWalk_TheIWLine)& Line )
-// **************** ouverture de la ligne et repartir dans l autre sens********
+// **************** open the line and restart in the other direction********
 
 {
   ThePointOfPath PathPnt;
 
-  static math_Vector UV(1, 2);
-  static math_Vector FF(1, 1);
-  static math_Matrix DD(1, 1, 1, 2); 
+  Standard_Real aUV[2], aFF[1], aDD[1][2];
+  math_Vector UV(aUV,1, 2);
+  math_Vector FF(aFF,1, 1);
+  math_Matrix DD(aDD,1, 1, 1, 2); 
 
   previousPoint = Line->Value(1);  
   if (!reversed) {
@@ -100,9 +97,9 @@ void IntWalk_IWalking::OpenLine(const Standard_Integer N,
   previousd3d = sp.Direction3d();
   previousd2d = sp.Direction2d();
 
-  if (N>0) { //point de depart donne en entree
+  if (N>0) { //departure point given at input
     PathPnt = Pnts1.Value(N);
-    //marque la ligne comme ouverte avec point d arret donne
+    //mark the line as open with a given stop point
     Line->AddStatusFirst(Standard_False,Standard_True,N,PathPnt); 
 
 
@@ -112,7 +109,7 @@ void IntWalk_IWalking::OpenLine(const Standard_Integer N,
   else  {
     if (N <0) Line->AddPoint(Psol);                      
     Line->AddStatusFirst(Standard_False,Standard_False);
-       //marque la ligne comme ouverte sans point d arret donne
+       //mark the line as open without given stop point 
   }
   Line->Reverse();  //inverser la ligne        
   Line->SetTangentVector(previousd3d.Reversed(),Line->NbPoints());

@@ -41,6 +41,8 @@ void ShapeSchema_PColgp_HSequenceOfVec::SWrite(const Handle(Standard_Persistent)
   if (!p.IsNull()) {
     Handle(PColgp_HSequenceOfVec) &pp = (Handle(PColgp_HSequenceOfVec)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPColgp_HSequenceOfVecFirstItem(),f);
@@ -61,6 +63,8 @@ void ShapeSchema_PColgp_HSequenceOfVec::SRead(const Handle(Standard_Persistent)&
 { 
   if (!p.IsNull()) {
     Handle(PColgp_HSequenceOfVec) &pp = (Handle(PColgp_HSequenceOfVec)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -46,6 +46,8 @@ void StdSchema_PDataXtd_PatternStd::SWrite(const Handle(Standard_Persistent)& p,
   if (!p.IsNull()) {
     Handle(PDataXtd_PatternStd) &pp = (Handle(PDataXtd_PatternStd)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPDataXtd_PatternStdmySignature());
@@ -73,6 +75,8 @@ void StdSchema_PDataXtd_PatternStd::SRead(const Handle(Standard_Persistent)& p, 
 { 
   if (!p.IsNull()) {
     Handle(PDataXtd_PatternStd) &pp = (Handle(PDataXtd_PatternStd)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -1,26 +1,21 @@
 // Created on: 2005-03-15
 // Created by: Peter KURNEV
-// Copyright (c) 2005-2012 OPEN CASCADE SAS
+// Copyright (c) 2005-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Standard_MMgrOpt.hxx>
 #include <Standard_OutOfMemory.hxx>
-
+#include <Standard_Assert.hxx>
 #ifdef HAVE_CONFIG_H
 # include <oce-config.h>
 #endif
@@ -189,15 +184,10 @@ Standard_MMgrOpt::Standard_MMgrOpt(const Standard_Boolean aClear,
                                    const Standard_Boolean aMMap,
                                    const Standard_Size aCellSize,
                                    const Standard_Integer aNbPages,
-                                   const Standard_Size aThreshold,
-				   const Standard_Boolean isReentrant)
+                                   const Standard_Size aThreshold)
 {
   // check basic assumption
-  if ( sizeof(Standard_Size) != sizeof(Standard_Address) )
-  {
-    cerr << "Fatal error: Open CASCADE Optimized Memory manager: this platform is not supported!" << endl;
-    exit(1);
-  }
+  Standard_STATIC_ASSERT(sizeof(Standard_Size) == sizeof(Standard_Address));
 
   // clear buffer fields
   myFreeListMax = 0;
@@ -213,7 +203,6 @@ Standard_MMgrOpt::Standard_MMgrOpt(const Standard_Boolean aClear,
   myCellSize = aCellSize;
   myNbPages = aNbPages;
   myThreshold = aThreshold;
-  myReentrant = isReentrant;
   
   // initialize 
   Initialize();
@@ -364,7 +353,7 @@ Standard_Address Standard_MMgrOpt::Allocate(const Standard_Size aSize)
     // The unlock is called as soon as possible, for every treatment case.
     // We also do not use Sentry, since in case if OCC signal or exception is
     // caused by this block we will have deadlock anyway...
-    if (myReentrant) myMutex.Lock();
+    myMutex.Lock();
     
     // if free block of the requested size is available, return it
     if ( myFreeList[Index] ) {
@@ -375,7 +364,7 @@ Standard_Address Standard_MMgrOpt::Allocate(const Standard_Size aSize)
       myFreeList[Index] = *(Standard_Size**)aBlock;
 
       // unlock the mutex
-      if ( myReentrant ) myMutex.Unlock();
+      myMutex.Unlock();
 
       // record size of the allocated block in the block header and
       // shift the pointer to the beginning of the user part of block
@@ -389,12 +378,12 @@ Standard_Address Standard_MMgrOpt::Allocate(const Standard_Size aSize)
     // else if block size is small allocate it in pools
     else if ( RoundSize <= myCellSize ) {
       // unlock the mutex for free lists 
-      if ( myReentrant ) myMutex.Unlock();
+      myMutex.Unlock();
 
       // and lock the specific mutex used to protect access to small blocks pools;
       // note that this is done by sentry class so as to ensure unlocking in case of 
       // possible exception that may be thrown from AllocMemory()
-      Standard_Mutex::Sentry aSentry (myReentrant ? &myMutexPools : NULL); 
+      Standard_Mutex::Sentry aSentry (myMutexPools);
 
       // check for availability of requested space in the current pool
       Standard_Size *aBlock = myNextAddr;
@@ -410,10 +399,10 @@ Standard_Address Standard_MMgrOpt::Allocate(const Standard_Size aSize)
           const Standard_Size aRPSize = ROUNDDOWN_CELL(aPSize);
           const Standard_Size aPIndex = INDEX_CELL(aRPSize);
           if ( aPIndex > 0 && aPIndex <= myFreeListMax ) {
-            if (myReentrant) myMutex.Lock();
+            myMutex.Lock();
             *(Standard_Size**)myNextAddr = myFreeList[aPIndex];
             myFreeList[aPIndex] = myNextAddr;
-            if (myReentrant) myMutex.Unlock();
+            myMutex.Unlock();
           }
         }
 
@@ -438,7 +427,7 @@ Standard_Address Standard_MMgrOpt::Allocate(const Standard_Size aSize)
     // blocks of medium size are allocated directly
     else {
       // unlock the mutex immediately, as we do not need further to access any field
-      if ( myReentrant ) myMutex.Unlock();
+      myMutex.Unlock();
 
       // we use operator ?: instead of if() since it is faster
       Standard_Size *aBlock = (Standard_Size*) (myClear ? calloc( RoundSizeN+BLOCK_SHIFT,   sizeof(Standard_Size)) :
@@ -509,14 +498,14 @@ void Standard_MMgrOpt::Free(Standard_Address& theStorage)
     // of standard library are already protected by their implementation.
     // We also do not use Sentry, since in case if OCC signal or exception is
     // caused by this block we will have deadlock anyway...
-    if (myReentrant) myMutex.Lock();
+    myMutex.Lock();
     
     // in the memory block header, record address of the next free block
     *(Standard_Size**)aBlock = myFreeList[Index];
     // add new block to be first in the list
     myFreeList[Index] = aBlock;
 
-    if (myReentrant) myMutex.Unlock();
+    myMutex.Unlock();
   }
   // otherwise, we have block of big size which shall be simply released
   else 
@@ -530,10 +519,10 @@ void Standard_MMgrOpt::Free(Standard_Address& theStorage)
 //purpose  : Frees all free lists except small blocks (less than CellSize)
 //=======================================================================
 
-Standard_Integer Standard_MMgrOpt::Purge(Standard_Boolean )//isDeleted)
+Standard_Integer Standard_MMgrOpt::Purge(Standard_Boolean )
 {
   // Lock access to critical data by mutex
-  Standard_Mutex::Sentry aSentry (myReentrant ? &myMutex : NULL);
+  Standard_Mutex::Sentry aSentry (myMutex);
 
   // TODO: implement support for isDeleted = True
   
@@ -553,7 +542,7 @@ Standard_Integer Standard_MMgrOpt::Purge(Standard_Boolean )//isDeleted)
   }
 
   // Lock access to critical data by mutex
-  Standard_Mutex::Sentry aSentry1 (myReentrant ? &myMutexPools : NULL);
+  Standard_Mutex::Sentry aSentry1 (myMutexPools);
 
   // release memory pools containing no busy memory;
   // for that for each pool count the summary size of blocks
@@ -696,7 +685,7 @@ Standard_Integer Standard_MMgrOpt::Purge(Standard_Boolean )//isDeleted)
 void Standard_MMgrOpt::FreePools()
 {
   // Lock access to critical data by mutex
-  Standard_Mutex::Sentry aSentry (myReentrant ? &myMutexPools : NULL);
+  Standard_Mutex::Sentry aSentry (myMutexPools);
     
   // last pool is remembered in myAllocList
   Standard_Size * aFree = myAllocList;
@@ -795,10 +784,10 @@ retry:
                                     PAGE_READWRITE,
                                     DWORD(AlignedSize / 0x80000000),
                                     DWORD(AlignedSize % 0x80000000), NULL); 
-    HANDLE * aMBlock = NULL;
+    HANDLE * aMBlock = (hMap && GetLastError() != ERROR_ALREADY_EXISTS ? 
+                        (HANDLE*)MapViewOfFile(hMap,FILE_MAP_WRITE,0,0,0) : NULL);
     // check for error and try allocating address space
-    if ( ! hMap || GetLastError() == ERROR_ALREADY_EXISTS ||
-         (NULL == (aMBlock = (HANDLE*)MapViewOfFile(hMap,FILE_MAP_WRITE,0,0,0))) ) 
+    if ( ! aMBlock ) 
     {
       // close handle if allocated
       if ( hMap ) 
@@ -876,14 +865,4 @@ void Standard_MMgrOpt::FreeMemory (Standard_Address aBlock,
   }
   else
     free(aBlock);
-}
-
-//=======================================================================
-//function : SetReentrant
-//purpose  : 
-//=======================================================================
-
-void Standard_MMgrOpt::SetReentrant(Standard_Boolean isReentrant)
-{
-  myReentrant = isReentrant;
 }

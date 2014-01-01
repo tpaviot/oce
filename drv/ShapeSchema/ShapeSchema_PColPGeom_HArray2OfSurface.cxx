@@ -40,6 +40,8 @@ void ShapeSchema_PColPGeom_HArray2OfSurface::SWrite(const Handle(Standard_Persis
   if (!p.IsNull()) {
     Handle(PColPGeom_HArray2OfSurface) &pp = (Handle(PColPGeom_HArray2OfSurface)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPColPGeom_HArray2OfSurfacemyLowerRow());
@@ -62,6 +64,8 @@ void ShapeSchema_PColPGeom_HArray2OfSurface::SRead(const Handle(Standard_Persist
 { 
   if (!p.IsNull()) {
     Handle(PColPGeom_HArray2OfSurface) &pp = (Handle(PColPGeom_HArray2OfSurface)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

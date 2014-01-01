@@ -25,6 +25,9 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
+#include <Handle_TColStd_HArray1OfReal.hxx>
+#endif
 #ifndef _Handle_TColgp_HArray1OfPnt2d_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt2d.hxx>
 #endif
@@ -34,10 +37,12 @@
 #ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
 #endif
+class TColStd_HArray1OfReal;
 class TColgp_HArray1OfPnt2d;
 class StdFail_NotDone;
 class Adaptor2d_Curve2d;
 class gp_Pnt2d;
+class TColStd_Array1OfReal;
 
 
 
@@ -50,6 +55,8 @@ public:
   
   Standard_EXPORT   Extrema_LCCache2dOfLocateExtCC2d(const Adaptor2d_Curve2d& theC,const Standard_Real theUFirst,const Standard_Real theULast,const Standard_Integer theNbSamples,const Standard_Boolean theToCalculate);
   
+  Standard_EXPORT   Extrema_LCCache2dOfLocateExtCC2d(const Adaptor2d_Curve2d& theC,const Standard_Real theUFirst,const Standard_Real theULast,const TColStd_Array1OfReal& IntervalsCN,const Standard_Integer StartIndex,const Standard_Integer EndIndex,const Standard_Real Coeff);
+  
   Standard_EXPORT     void SetCurve(const Adaptor2d_Curve2d& theC,const Standard_Integer theNbSamples,const Standard_Boolean theToCalculate) ;
   
   Standard_EXPORT     void SetCurve(const Adaptor2d_Curve2d& theC,const Standard_Real theUFirst,const Standard_Real theULast,const Standard_Integer theNbSamples,const Standard_Boolean theToCalculate) ;
@@ -59,6 +66,8 @@ public:
   Standard_EXPORT     void CalculatePoints() ;
   
         Standard_Boolean IsValid() const;
+  
+       const Handle_TColStd_HArray1OfReal& Parameters() const;
   
        const Handle_TColgp_HArray1OfPnt2d& Points() const;
   
@@ -93,6 +102,7 @@ Standard_Real myLast;
 Standard_Real myTrimFirst;
 Standard_Real myTrimLast;
 Standard_Integer myNbSamples;
+Handle_TColStd_HArray1OfReal myParamArray;
 Handle_TColgp_HArray1OfPnt2d myPntArray;
 Standard_Boolean myIsArrayValid;
 

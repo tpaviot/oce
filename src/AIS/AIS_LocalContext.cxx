@@ -1,22 +1,18 @@
 // Created on: 1997-01-17
 // Created by: Robert COUBLANC
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //Modified by ROB : Traque des UpdateConversion intempestifs.
 
@@ -103,7 +99,7 @@ AIS_LocalContext::AIS_LocalContext(const Handle(AIS_InteractiveContext)& aCtx,
 				   const Standard_Boolean LoadDisplayed,
 				   const Standard_Boolean AcceptStandardModes,
 				   const Standard_Boolean AcceptEraseOfTemp,
-				   const Standard_Boolean BothViewers):
+				   const Standard_Boolean /*BothViewers*/):
 myCTX(aCtx),
 myLoadDisplayed(LoadDisplayed),
 myAcceptStdMode(AcceptStandardModes),
@@ -317,13 +313,13 @@ Erase(const Handle(AIS_InteractiveObject)& anInteractive)
       AddOrRemoveSelected(anInteractive);
     if(myMainPM->IsHighlighted(anInteractive,STAT->HilightMode()))
       myMainPM->Unhighlight(anInteractive,STAT->HilightMode());
-    myMainPM->Erase(anInteractive,STAT->DisplayMode());
+    myMainPM->SetVisibility (anInteractive, STAT->DisplayMode(), Standard_False);
     STAT->SetDisplayMode(-1);
     status = Standard_True;
   }
   if(STAT->IsTemporary()){
     if(myMainPM->IsDisplayed(anInteractive,STAT->HilightMode()))
-      myMainPM->Erase(anInteractive,STAT->HilightMode());
+      myMainPM->SetVisibility (anInteractive, STAT->HilightMode(), Standard_False);
   }
   //selection step
   
@@ -588,13 +584,7 @@ void AIS_LocalContext::ActivateStandardMode(const TopAbs_ShapeEnum aType)
   AIS_DataMapIteratorOfDataMapOfSelStat ItM(myActiveObjects);
 
   for(;ItM.More();ItM.Next()){
-#ifdef BUC60722
-    AIS_DisplayStatus DS = 
-	myCTX->DisplayStatus(Handle(AIS_InteractiveObject)::DownCast(ItM.Key()));
-    if( ItM.Value()->Decomposed() && (DS != AIS_DS_FullErased)  )
-#else
     if(ItM.Value()->Decomposed())
-#endif
       myCTX->SelectionManager()->Activate(ItM.Key(),
 					  IMode,
 					  myMainVS);
@@ -842,8 +832,8 @@ void AIS_LocalContext::Unhilight(const Handle(AIS_InteractiveObject)& anObject)
   myMainPM->Unhighlight(anObject,Att->HilightMode());
   if(Att->IsTemporary() && Att->DisplayMode()==-1)
     if(!IsSomeWhereElse)
-      myMainPM->Erase(anObject,Att->HilightMode());
-  
+      myMainPM->SetVisibility (anObject, Att->HilightMode(), Standard_False);
+
   Att->SubIntensityOff();
   Att->SetHilightColor(Quantity_NOC_WHITE);
 }
@@ -1146,31 +1136,30 @@ HasFilters(const TopAbs_ShapeEnum aType) const
 
 void AIS_LocalContext::ClearDetected()
 {
-  for(Standard_Integer I=1;I<=myMapOfOwner.Extent();I++){
-    
-    if(!myMapOfOwner(I).IsNull()){
+  for(Standard_Integer I=1;I<=myMapOfOwner.Extent();I++)
+  {
+    if(!myMapOfOwner(I).IsNull())
+    {
       if(myMapOfOwner(I)->IsHilighted(myMainPM))
-	myMapOfOwner(I)->Unhilight(myMainPM);
-      else if (myMapOfOwner(I)->IsHilighted(myCTX->CollectorPrsMgr()))
-	myMapOfOwner(I)->Unhilight(myCTX->CollectorPrsMgr());
-      
-      else{
-	const Handle(SelectMgr_SelectableObject)& SO = 
-	  myMapOfOwner.FindKey(I)->Selectable();
-	if(myActiveObjects.IsBound(SO)){
-	  const Handle(AIS_LocalStatus)& Att = myActiveObjects(SO);
-	  
-	  if(Att->IsTemporary() &&
-	     Att->DisplayMode()==-1 && 
-	     Att->SelectionModes().IsEmpty()){
-	    myMapOfOwner(I)->Clear(myMainPM);
-	    //myMapOfOwner(I)->Clear();//rob-jmi...
-	  }
-	}
+        myMapOfOwner(I)->Unhilight(myMainPM);
+      else
+      {
+        const Handle(SelectMgr_SelectableObject)& SO = 
+          myMapOfOwner.FindKey(I)->Selectable();
+        if(myActiveObjects.IsBound(SO))
+        {
+          const Handle(AIS_LocalStatus)& Att = myActiveObjects(SO);
+
+          if(Att->IsTemporary() &&
+             Att->DisplayMode()==-1 && 
+             Att->SelectionModes().IsEmpty())
+          {
+            myMapOfOwner(I)->Clear(myMainPM);
+          }
+        }
       }
     }
   }
-
 }
 
 void AIS_LocalContext::UpdateConversion()

@@ -1,23 +1,17 @@
 // Created on: 2001-06-28
 // Created by: Alexander GRIGORIEV
-// Copyright (c) 2001-2012 OPEN CASCADE SAS
+// Copyright (c) 2001-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <LDOM_XmlWriter.hxx>
 #include <LDOM_Document.hxx>
@@ -101,8 +95,8 @@
 
 static const LXMLCh  gEndElement[] = { chOpenAngle, chForwardSlash, chNull };
 static const LXMLCh  gEndElement1[]= { chForwardSlash, chNull };
-static const LXMLCh  gEndPI[] = { chQuestion, chCloseAngle, chNull };
-static const LXMLCh  gStartPI[] = { chOpenAngle, chQuestion, chNull };
+//static const LXMLCh  gEndPI[] = { chQuestion, chCloseAngle, chNull };
+//static const LXMLCh  gStartPI[] = { chOpenAngle, chQuestion, chNull };
 static const LXMLCh  gXMLDecl1[] =
 {       chOpenAngle, chQuestion, chLatin_x, chLatin_m, chLatin_l
     ,   chSpace, chLatin_v, chLatin_e, chLatin_r, chLatin_s, chLatin_i
@@ -113,11 +107,13 @@ static const LXMLCh  gXMLDecl2[] =
     ,   chLatin_o, chLatin_d, chLatin_i, chLatin_n, chLatin_g, chEqual
     ,   chDoubleQuote, chNull
 };
+/*
 static const LXMLCh  gXMLDecl3[] =
 {       chDoubleQuote, chSpace, chLatin_s, chLatin_t, chLatin_a
     ,   chLatin_n, chLatin_d, chLatin_a, chLatin_l, chLatin_o
     ,   chLatin_n, chLatin_e, chEqual, chDoubleQuote, chNull
 };
+*/
 static const LXMLCh  gXMLDecl4[] =
 {       chDoubleQuote, chQuestion, chCloseAngle
     ,   chLF, chNull
@@ -132,6 +128,7 @@ static const LXMLCh  gStartComment[] =
 {    chOpenAngle, chBang, chDash, chDash, chNull };
 static const LXMLCh  gEndComment[] =
 {    chDash, chDash, chCloseAngle, chNull };
+/*
 static const LXMLCh  gStartDoctype[] =
 {   chOpenAngle, chBang, chLatin_D, chLatin_O, chLatin_C, chLatin_T,
     chLatin_Y, chLatin_P, chLatin_E, chSpace, chNull
@@ -152,6 +149,7 @@ static const LXMLCh  gNotation[] =
 {   chLatin_N, chLatin_D, chLatin_A, chLatin_T, chLatin_A,
     chSpace, chDoubleQuote, chNull
 };
+*/
 
 static LXMLCh * getEncodingName (const LXMLCh * theEncodingName)
 {

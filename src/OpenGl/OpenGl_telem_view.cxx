@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 /***********************************************************************
 
@@ -29,14 +25,15 @@ File OpenGl_telem_view :
 #include <OpenGl_Display.hxx>
 
 static  void
-EvalViewMappingMatrix( tel_view_mapping mapping /* View Mapping */,
-                       Tint *error_ind          /* Out: Error Indicator */,
+EvalViewMappingMatrix (const Handle(OpenGl_Display)& theGlDisplay,
+                       tel_view_mapping mapping /* View Mapping */,
+                       Tint* error_ind          /* Out: Error Indicator */,
                        Tmatrix3 mat             /* Out: Mapping Matrix * */,
                        Tint     flag,
                        Tfloat   cx,
                        Tfloat   cy,
-                       Tint     clip_flag,
-                       Tlimit3  *clip_limit
+                       Tint     /*clip_flag*/,
+                       Tlimit3* /*clip_limit*/
                       )
 {
   Tfloat    gx, gy, xsf, ysf, zsf;
@@ -85,7 +82,7 @@ EvalViewMappingMatrix( tel_view_mapping mapping /* View Mapping */,
   }
 
   /* prp between front and back planes */
-  if (openglDisplay.IsNull() || !openglDisplay->Walkthrough())
+  if (theGlDisplay.IsNull() || !theGlDisplay->Walkthrough())
   {
     if( mapping->prp[2] < mapping->fpd &&
       mapping->prp[2] > mapping->bpd )
@@ -142,7 +139,7 @@ EvalViewMappingMatrix( tel_view_mapping mapping /* View Mapping */,
     pmat[2][0] = -gx; pmat[3][0] = mapping->vpd*gx;
     pmat[2][1] = -gy; pmat[3][1] = mapping->vpd*gy;
   }
-  else if (!openglDisplay.IsNull() && !openglDisplay->SymPerspective())/* TelPerspective */
+  else if (!theGlDisplay.IsNull() && !theGlDisplay->SymPerspective())/* TelPerspective */
   {
     pmat[0][0] = pmat[1][1] = mapping->prp[2] - mapping->vpd;
     pmat[2][0] = -gx; 
@@ -153,7 +150,7 @@ EvalViewMappingMatrix( tel_view_mapping mapping /* View Mapping */,
     pmat[3][3] = mapping->prp[2];
 
     /* modify the next two cells to change clipping policy */
-    if (!openglDisplay.IsNull() && !openglDisplay->Walkthrough())
+    if (!theGlDisplay.IsNull() && !theGlDisplay->Walkthrough())
     {
       pmat[2][2] = mapping->prp[2] - ( fpd + bpd );
       pmat[3][2] = fpd * bpd; 
@@ -336,12 +333,11 @@ TelEvalViewOrientationMatrix( Tfloat *vrp    /* View Reference Point */,
   return;
 }
 
-void
-TelEvalViewMappingMatrix( tel_view_mapping mapping /* View Mapping */,
-                          Tint *error_ind          /* Out: Error Indicator */,
-                          Tmatrix3 mat             /* Out: Mapping Matrix */
-                         )
+void TelEvalViewMappingMatrix (const Handle(OpenGl_Display)& theGlDisplay,
+                               tel_view_mapping mapping /* View Mapping */,
+                               Tint *error_ind          /* Out: Error Indicator */,
+                               Tmatrix3 mat             /* Out: Mapping Matrix */
+                               )
 {
-  EvalViewMappingMatrix( mapping, error_ind, mat, 0, ( float )0.0, ( float )0.0, 0, 0 );
+  EvalViewMappingMatrix (theGlDisplay, mapping, error_ind, mat, 0, ( float )0.0, ( float )0.0, 0, 0);
 }
-

@@ -91,7 +91,6 @@ private:
 
 
 Standard_Boolean Done;
-Standard_Boolean Singular;
 math_Matrix U;
 math_Matrix V;
 math_Vector Diag;

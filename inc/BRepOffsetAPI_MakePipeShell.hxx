@@ -25,6 +25,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _BRepFill_TypeOfContact_HeaderFile
+#include <BRepFill_TypeOfContact.hxx>
+#endif
 #ifndef _Handle_Law_Function_HeaderFile
 #include <Handle_Law_Function.hxx>
 #endif
@@ -118,7 +121,7 @@ public:
 //!                 on the sweeped shape <br>
 //!     - correspondance beetween spine, and section on the sweeped shape <br>
 //!       defined by a vertex of the spine <br>
-  Standard_EXPORT     void SetMode(const TopoDS_Wire& AuxiliarySpine,const Standard_Boolean CurvilinearEquivalence,const Standard_Boolean KeepContact = Standard_False) ;
+  Standard_EXPORT     void SetMode(const TopoDS_Wire& AuxiliarySpine,const Standard_Boolean CurvilinearEquivalence,const BRepFill_TypeOfContact KeepContact = BRepFill_NoContact) ;
   //! Adds the section Profile to this framework. First and last <br>
 //! sections may be punctual, so the shape Profile may be <br>
 //! both wire and vertex. Correspondent point on spine is <br>

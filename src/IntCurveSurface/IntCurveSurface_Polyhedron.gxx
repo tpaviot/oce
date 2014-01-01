@@ -1,23 +1,18 @@
 // Created on: 1993-02-03
 // Created by: Laurent BUCHARD
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <gp_Pnt.hxx>
 #include <gp_Vec.hxx>
@@ -120,7 +115,7 @@ void IntCurveSurface_Polyhedron::Init(const ThePSurface&     Surface,
 				      const Standard_Real V0,
 				      const Standard_Real U1,
 				      const Standard_Real V1) { 
-  const Standard_Integer DebugDump = 0;
+  //#define DEBUGDUMP
   Standard_Integer i1,i2;
   Standard_Real    U,V;
   Standard_Real    U1mU0sNbdeltaU = (U1-U0)/(Standard_Real)nbdeltaU;
@@ -195,9 +190,9 @@ void IntCurveSurface_Polyhedron::Init(const ThePSurface&     Surface,
 
 //  Modified by Sergey KHROMOV - Fri Dec  7 11:23:34 2001 End
 
-  if(DebugDump) { 
+  #ifdef DEBUGDUMP 
     Dump();
-  }
+  #endif
 }
 //=======================================================================
 //function : Init
@@ -206,7 +201,7 @@ void IntCurveSurface_Polyhedron::Init(const ThePSurface&     Surface,
 void IntCurveSurface_Polyhedron::Init(const ThePSurface&     Surface,
 				      const TColStd_Array1OfReal& Upars,
 				      const TColStd_Array1OfReal& Vpars) { 
-  const Standard_Integer DebugDump = 0;
+  //#define DEBUGDUMP
   Standard_Integer i1,i2;
   Standard_Real    U,V;
   gp_Pnt TP;
@@ -286,9 +281,9 @@ void IntCurveSurface_Polyhedron::Init(const ThePSurface&     Surface,
 
 //  Modified by Sergey KHROMOV - Fri Dec  7 11:23:34 2001 End
 
-  if(DebugDump) { 
+  #ifdef DEBUGDUMP 
     Dump();
-  }
+  #endif
 }
 //=======================================================================
 //function : DeflectionOnTriangle
@@ -445,11 +440,7 @@ Standard_Integer IntCurveSurface_Polyhedron::TriConnex
   Standard_Integer colP = Pivotm1 - ligP * nbdeltaVp1;
 
 // Point sur Edge position in the MaTriangle and edge typ :
-#ifndef DEB  
   Standard_Integer ligE =0, colE =0, typE =0;
-#else
-  Standard_Integer ligE, colE, typE;
-#endif
   if (Pedge!=0) {
     ligE= (Pedge-1)/nbdeltaVp1;
     colE= (Pedge-1) - (ligE * nbdeltaVp1);
@@ -465,6 +456,7 @@ Standard_Integer IntCurveSurface_Polyhedron::TriConnex
   }
 
 // Triangle position General case :
+
   Standard_Integer linT =0, colT =0;
   Standard_Integer linO =0, colO =0;
   Standard_Integer t =0, tt =0;

@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_Array1OfPOnCurv2d(const Standard_Integer Low,const Standard_Integer Up);
+      Extrema_Array1OfPOnCurv2d(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Extrema_Array1OfPOnCurv2d(const Extrema_POnCurv2d& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Extrema_Array1OfPOnCurv2d(const Extrema_POnCurv2d& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Extrema_POnCurv2d& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Extrema_Array1OfPOnCurv2d()
 {
   Destroy();

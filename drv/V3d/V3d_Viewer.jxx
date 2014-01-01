@@ -4,12 +4,6 @@
 #ifndef _Visual3d_ViewManager_HeaderFile
 #include <Visual3d_ViewManager.hxx>
 #endif
-#ifndef _V3d_OrthographicView_HeaderFile
-#include <V3d_OrthographicView.hxx>
-#endif
-#ifndef _V3d_PerspectiveView_HeaderFile
-#include <V3d_PerspectiveView.hxx>
-#endif
 #ifndef _V3d_Light_HeaderFile
 #include <V3d_Light.hxx>
 #endif
@@ -33,9 +27,6 @@
 #endif
 #ifndef _V3d_View_HeaderFile
 #include <V3d_View.hxx>
-#endif
-#ifndef _V3d_Plane_HeaderFile
-#include <V3d_Plane.hxx>
 #endif
 #ifndef _V3d_Viewer_HeaderFile
 #include <V3d_Viewer.hxx>

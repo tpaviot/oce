@@ -42,11 +42,11 @@ class Approx_HArray1OfAdHSurface : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Approx_HArray1OfAdHSurface(const Standard_Integer Low,const Standard_Integer Up);
+      Approx_HArray1OfAdHSurface(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Approx_HArray1OfAdHSurface(const Standard_Integer Low,const Standard_Integer Up,const Handle(Adaptor3d_HSurface)& V);
+      Approx_HArray1OfAdHSurface(const Standard_Integer Low,const Standard_Integer Up,const Handle(Adaptor3d_HSurface)& V);
   
-  Standard_EXPORT     void Init(const Handle(Adaptor3d_HSurface)& V) ;
+        void Init(const Handle(Adaptor3d_HSurface)& V) ;
   
         Standard_Integer Length() const;
   

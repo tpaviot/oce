@@ -54,16 +54,15 @@
 #endif
 class gp_Pnt;
 class TopoDS_Shape;
-class TopoDS_Edge;
+class gp_Lin;
 class Geom_Curve;
+class TopoDS_Edge;
 class Geom_Plane;
 class TopoDS_Vertex;
 class TopoDS_Face;
 class gp_Pln;
 class Geom_Surface;
 class gp_Dir;
-class gp_Ax1;
-class gp_Lin;
 class Bnd_Box;
 class gp_Elips;
 class Prs3d_Presentation;
@@ -94,10 +93,6 @@ class AIS_Relation;
 class AIS_EllipseRadiusDimension;
 class AIS_MaxRadiusDimension;
 class AIS_MinRadiusDimension;
-class AIS_LengthDimension;
-class AIS_AngleDimension;
-class AIS_RadiusDimension;
-class AIS_DiameterDimension;
 class AIS_Chamf2dDimension;
 class AIS_Chamf3dDimension;
 class AIS_OffsetDimension;
@@ -260,12 +255,24 @@ public:
 //! several classes in calculation of dimensions. <br>
   Standard_EXPORT   static  gp_Pnt Nearest(const TopoDS_Shape& aShape,const gp_Pnt& aPoint) ;
   
+//! @return the nearest point on the line. <br>
+  Standard_EXPORT   static  gp_Pnt Nearest(const gp_Lin& theLine,const gp_Pnt& thePoint) ;
+  
+//! For the given point finds nearest point on the curve, <br>
+//! @return TRUE if found point is belongs to the curve <br>
+//! and FALSE otherwise. <br>
+  Standard_EXPORT   static  Standard_Boolean Nearest(const Handle(Geom_Curve)& theCurve,const gp_Pnt& thePoint,const gp_Pnt& theFirstPoint,const gp_Pnt& theLastPoint,gp_Pnt& theNearestPoint) ;
+  
   Standard_EXPORT   static  gp_Pnt Farest(const TopoDS_Shape& aShape,const gp_Pnt& aPoint) ;
   //! Used by 2d Relation only <br>
 //!          Computes the 3d geometry of <anEdge> in the current WorkingPlane <br>
 //!          and the extremities if any <br>
-//!          Return TRUE if ok <br>
-  Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& anEdge,Handle(Geom_Curve)& aCurve,gp_Pnt& FirstPnt,gp_Pnt& LastPnt) ;
+//!          Return TRUE if ok. <br>
+  Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& theEdge,Handle(Geom_Curve)& theCurve,gp_Pnt& theFirstPnt,gp_Pnt& theLastPnt) ;
+  //! Used by dimensions only. <br>
+//!          Computes the 3d geometry of <anEdge>. <br>
+//!          Return TRUE if ok. <br>
+  Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& theEdge,Handle(Geom_Curve)& theCurve,gp_Pnt& theFirstPnt,gp_Pnt& theLastPnt,Standard_Boolean& theIsInfinite) ;
   //! Used by 2d Relation only <br>
 //!          Computes the 3d geometry of <anEdge> in the current WorkingPlane <br>
 //!          and the extremities if any. <br>
@@ -273,13 +280,16 @@ public:
 //!          the not projected curve associated to <anEdge>. <br>
 //!          If <anEdge> is infinite, <isinfinite> = true and the 2 <br>
 //!          parameters <FirstPnt> and <LastPnt> have no signification. <br>
-//!          Return TRUE if ok <br>
-  Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& anEdge,Handle(Geom_Curve)& aCurve,gp_Pnt& FirstPnt,gp_Pnt& LastPnt,Handle(Geom_Curve)& extCurve,Standard_Boolean& isinfinite,Standard_Boolean& isOnPlane,const Handle(Geom_Plane)& aPlane) ;
+//!          Return TRUE if ok. <br>
+  Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& theEdge,Handle(Geom_Curve)& theCurve,gp_Pnt& theFirstPnt,gp_Pnt& theLastPnt,Handle(Geom_Curve)& theExtCurve,Standard_Boolean& theIsInfinite,Standard_Boolean& theIsOnPlane,const Handle(Geom_Plane)& thePlane) ;
   //! Used by 2d Relation only <br>
 //!          Computes the 3d geometry of <anEdge> in the current WorkingPlane <br>
 //!          and the extremities if any <br>
-//!          Return TRUE if ok <br>
-  Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& anEdge1,const TopoDS_Edge& anEdge2,Handle(Geom_Curve)& aCurve1,Handle(Geom_Curve)& aCurve2,gp_Pnt& FirstPnt1,gp_Pnt& LastPnt1,gp_Pnt& FirstPnt2,gp_Pnt& LastPnt2,const Handle(Geom_Plane)& aPlane) ;
+//!          Return TRUE if ok. <br>
+  Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& theFirstEdge,const TopoDS_Edge& theSecondEdge,Handle(Geom_Curve)& theFirstCurve,Handle(Geom_Curve)& theSecondCurve,gp_Pnt& theFirstPnt1,gp_Pnt& theLastPnt1,gp_Pnt& theFirstPnt2,gp_Pnt& theLastPnt2,const Handle(Geom_Plane)& thePlane) ;
+  //! Used  by  dimensions  only.Computes  the  3d geometry <br>
+//!          of<anEdge1> and <anEdge2> and checks if they are infinite. <br>
+  Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& theFirstEdge,const TopoDS_Edge& theSecondEdge,Handle(Geom_Curve)& theFirstCurve,Handle(Geom_Curve)& theSecondCurve,gp_Pnt& theFirstPnt1,gp_Pnt& theLastPnt1,gp_Pnt& theFirstPnt2,gp_Pnt& theLastPnt2,Standard_Boolean& theIsinfinite1,Standard_Boolean& theIsinfinite2) ;
   //! Used  by  2d Relation  only Computes  the  3d geometry <br>
 //!          of<anEdge1> and <anEdge2> in the current Plane and the <br>
 //!          extremities if any.   Return in ExtCurve  the 3d curve <br>
@@ -289,7 +299,7 @@ public:
 //!          external to the  plane,  <isinfinite> is true if  this <br>
 //!          edge is infinite.  So, the extremities of it are not <br>
 //!          significant.  Return TRUE if ok <br>
-  Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& anEdge1,const TopoDS_Edge& anEdge2,Standard_Integer& indexExt,Handle(Geom_Curve)& aCurve1,Handle(Geom_Curve)& aCurve2,gp_Pnt& FirstPnt1,gp_Pnt& LastPnt1,gp_Pnt& FirstPnt2,gp_Pnt& LastPnt2,Handle(Geom_Curve)& ExtCurve,Standard_Boolean& isinfinite1,Standard_Boolean& isinfinite2,const Handle(Geom_Plane)& aPlane) ;
+  Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& theFirstEdge,const TopoDS_Edge& theSecondEdge,Standard_Integer& theExtIndex,Handle(Geom_Curve)& theFirstCurve,Handle(Geom_Curve)& theSecondCurve,gp_Pnt& theFirstPnt1,gp_Pnt& theLastPnt1,gp_Pnt& theFirstPnt2,gp_Pnt& theLastPnt2,Handle(Geom_Curve)& theExtCurve,Standard_Boolean& theIsinfinite1,Standard_Boolean& theIsinfinite2,const Handle(Geom_Plane)& thePlane) ;
   //! Checks if aCurve belongs to aPlane; if not, projects aCurve in aPlane <br>
 //!          and returns aCurve; <br>
 //!          Return TRUE if ok <br>
@@ -301,22 +311,23 @@ public:
 //!           aPlane in following  cases: <br>
 //!          Face is Plane, Offset of Plane, <br>
 //!                  Extrusion of Line  and Offset of  Extrusion of Line <br>
-//!	        Returns pure type of Surface which can be: <br>
-//!	        Plane, Cylinder, Cone, Sphere, Torus, <br>
-//!	        SurfaceOfRevolution, SurfaceOfExtrusion <br>
+//!          Returns pure type of Surface which can be: <br>
+//!          Plane, Cylinder, Cone, Sphere, Torus, <br>
+//!          SurfaceOfRevolution, SurfaceOfExtrusion <br>
   Standard_EXPORT   static  Standard_Boolean GetPlaneFromFace(const TopoDS_Face& aFace,gp_Pln& aPlane,Handle(Geom_Surface)& aSurf,AIS_KindOfSurface& aSurfType,Standard_Real& Offset) ;
   
   Standard_EXPORT   static  void InitFaceLength(const TopoDS_Face& aFace,gp_Pln& aPlane,Handle(Geom_Surface)& aSurface,AIS_KindOfSurface& aSurfaceType,Standard_Real& anOffset) ;
-  
-  Standard_EXPORT   static  void ComputeLengthBetweenPlanarFaces(const TopoDS_Face& FirstFace,const TopoDS_Face& SecondFace,const gp_Pln& Plane1,const gp_Pln& Plane2,Standard_Real& Value,gp_Pnt& FirstAttach,gp_Pnt& SecondAttach,gp_Dir& DirAttach,const Standard_Boolean AutomaticPos,gp_Pnt& Position) ;
-  
-  Standard_EXPORT   static  void ComputeLengthBetweenCurvilinearFaces(const TopoDS_Face& FirstFace,const TopoDS_Face& SecondFace,Handle(Geom_Surface)& FirstSurf,Handle(Geom_Surface)& SecondSurf,const Standard_Boolean AutomaticPos,Standard_Real& Value,gp_Pnt& Position,gp_Pnt& FirstAttach,gp_Pnt& SecondAttach,gp_Dir& DirAttach) ;
-  //! Computes geometric   parameters for planar   faces for <br>
-//!          Angular dimensions <br>
-  Standard_EXPORT   static  void ComputeAngleBetweenPlanarFaces(const TopoDS_Face& FirstFace,const TopoDS_Face& SecondFace,const Handle(Geom_Surface)& Surf2,const gp_Ax1& Axis,const Standard_Real Value,const Standard_Boolean AutomaticPos,gp_Pnt& Position,gp_Pnt& Center,gp_Pnt& FirstAttach,gp_Pnt& SecondAttach,gp_Dir& FirstDir,gp_Dir& SecondDir) ;
-  //! Computes geometric   parameters for curvilinear   faces for <br>
-//!          Angular dimensions <br>
-  Standard_EXPORT   static  void ComputeAngleBetweenCurvilinearFaces(const TopoDS_Face& FirstFace,const TopoDS_Face& SecondFace,const Handle(Geom_Surface)& FirstSurf,const Handle(Geom_Surface)& SecondSurf,const AIS_KindOfSurface FirstSurfType,const AIS_KindOfSurface SecondSurfType,const gp_Ax1& Axis,const Standard_Real Value,const Standard_Boolean AutomaticPos,gp_Pnt& Position,gp_Pnt& Center,gp_Pnt& FirstAttach,gp_Pnt& SecondAttach,gp_Dir& FirstDir,gp_Dir& SecondDir,Handle(Geom_Plane)& Plane) ;
+  //! Finds attachment points on two curvilinear faces for length dimension. <br>
+//! @param thePlaneDir [in] the direction on the dimension plane to <br>
+//! compute the plane automatically. It will not be taken into account if <br>
+//! plane is defined by user. <br>
+  Standard_EXPORT   static  void InitLengthBetweenCurvilinearFaces(const TopoDS_Face& theFirstFace,const TopoDS_Face& theSecondFace,Handle(Geom_Surface)& theFirstSurf,Handle(Geom_Surface)& theSecondSurf,gp_Pnt& theFirstAttach,gp_Pnt& theSecondAttach,gp_Dir& theDirOnPlane) ;
+  //! Finds three points for the angle dimension between <br>
+//! two planes. <br>
+  Standard_EXPORT   static  Standard_Boolean InitAngleBetweenPlanarFaces(const TopoDS_Face& theFirstFace,const TopoDS_Face& theSecondFace,gp_Pnt& theCenter,gp_Pnt& theFirstAttach,gp_Pnt& theSecondAttach,const Standard_Boolean theIsFirstPointSet = Standard_False) ;
+  //! Finds three points for the angle dimension between <br>
+//! two curvilinear surfaces. <br>
+  Standard_EXPORT   static  Standard_Boolean InitAngleBetweenCurvilinearFaces(const TopoDS_Face& theFirstFace,const TopoDS_Face& theSecondFace,const AIS_KindOfSurface theFirstSurfType,const AIS_KindOfSurface theSecondSurfType,gp_Pnt& theCenter,gp_Pnt& theFirstAttach,gp_Pnt& theSecondAttach,const Standard_Boolean theIsFirstPointSet = Standard_False) ;
   
   Standard_EXPORT   static  gp_Pnt ProjectPointOnPlane(const gp_Pnt& aPoint,const gp_Pln& aPlane) ;
   
@@ -376,10 +387,6 @@ friend class AIS_Relation;
 friend class AIS_EllipseRadiusDimension;
 friend class AIS_MaxRadiusDimension;
 friend class AIS_MinRadiusDimension;
-friend class AIS_LengthDimension;
-friend class AIS_AngleDimension;
-friend class AIS_RadiusDimension;
-friend class AIS_DiameterDimension;
 friend class AIS_Chamf2dDimension;
 friend class AIS_Chamf3dDimension;
 friend class AIS_OffsetDimension;

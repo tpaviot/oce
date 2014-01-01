@@ -14,6 +14,7 @@
 
 void StdSchema_gp_XY::SWrite(const gp_XY& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
   f.PutReal(pp._CSFDB_Getgp_XYx());
   f.PutReal(pp._CSFDB_Getgp_XYy());
@@ -23,6 +24,7 @@ void StdSchema_gp_XY::SWrite(const gp_XY& pp, Storage_BaseDriver& f, const Handl
 
 void StdSchema_gp_XY::SRead(gp_XY& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
 
     Standard_Real gp_XYx;

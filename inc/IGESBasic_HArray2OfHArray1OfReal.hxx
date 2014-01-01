@@ -42,11 +42,11 @@ class IGESBasic_HArray2OfHArray1OfReal : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESBasic_HArray2OfHArray1OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      IGESBasic_HArray2OfHArray1OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   IGESBasic_HArray2OfHArray1OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(TColStd_HArray1OfReal)& V);
+      IGESBasic_HArray2OfHArray1OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(TColStd_HArray1OfReal)& V);
   
-  Standard_EXPORT     void Init(const Handle(TColStd_HArray1OfReal)& V) ;
+        void Init(const Handle(TColStd_HArray1OfReal)& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -62,9 +62,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(TColStd_HArray1OfReal)& Value) ;
   
-  Standard_EXPORT    const Handle_TColStd_HArray1OfReal& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const Handle_TColStd_HArray1OfReal& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        Handle_TColStd_HArray1OfReal& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const IGESBasic_Array2OfHArray1OfReal& Array2() const;
   

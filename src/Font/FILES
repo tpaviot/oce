@@ -1,5 +1,7 @@
 EXTERNLIB
 Font_CMPLRS.edl
+Font_BRepFont.hxx
+Font_BRepFont.cxx
 Font_FTFont.hxx
 Font_FTFont.cxx
 Font_FTLibrary.hxx

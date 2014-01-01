@@ -1,24 +1,18 @@
 // Created on: 1992-11-19
 // Created by: Remi LEQUETTE
 // Copyright (c) 1992-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BRepClass_Intersector.ixx>
 #include <BRep_Tool.hxx>
@@ -41,10 +35,10 @@
 #include <IntRes2d_IntersectionPoint.hxx>
 
 static 
-  void RefineTolerance(const TopoDS_Face& aF,
-		       const BRepAdaptor_Curve2d& aC,
-		       const Standard_Real aT,
-		       Standard_Real& aTolZ);
+void RefineTolerance(const TopoDS_Face& aF,
+                     const BRepAdaptor_Curve2d& aC,
+                     const Standard_Real aT,
+                     Standard_Real& aTolZ);
 
 //=======================================================================
 //function : BRepClass_Intersector
@@ -60,16 +54,16 @@ BRepClass_Intersector::BRepClass_Intersector()
 //purpose  : 
 //=======================================================================
 void  BRepClass_Intersector::Perform(const gp_Lin2d& L, 
-				     const Standard_Real P, 
-				     const Standard_Real Tol, 
-				     const BRepClass_Edge& E)
+                                     const Standard_Real P, 
+                                     const Standard_Real Tol, 
+                                     const BRepClass_Edge& E)
 {
-  Standard_Real deb, fin, aTolZ;
+  Standard_Real deb = 0.0, fin = 0.0, aTolZ = Tol;
   Handle(Geom2d_Curve) aC2D;
   //
-  aTolZ=Tol;
   const TopoDS_Edge& EE = E.Edge();
   const TopoDS_Face& F = E.Face();
+
   //
   aC2D=BRep_Tool::CurveOnSurface(EE, F, deb, fin);
   if (aC2D.IsNull()) {
@@ -84,24 +78,30 @@ void  BRepClass_Intersector::Perform(const gp_Lin2d& L,
   //
   // Case of "ON": direct check of belonging to edge
   // taking into account the tolerance
-  Extrema_ExtPC2d theExtPC2d(L.Location(), C);
+  Extrema_ExtPC2d anExtPC2d(L.Location(), C);
   Standard_Real MinDist = RealLast(), aDist;
   Standard_Integer MinInd = 0, i;
-  if (theExtPC2d.IsDone()) {
-    for (i = 1; i <= theExtPC2d.NbExt(); ++i) {
-      aDist = theExtPC2d.SquareDistance(i);
-      if (aDist < MinDist) {
-	MinDist = aDist;
-	MinInd = i;
+  if (anExtPC2d.IsDone())
+  {
+    const Standard_Integer aNbPnts = anExtPC2d.NbExt();
+    for (i = 1; i <= aNbPnts; ++i)
+    {
+      aDist = anExtPC2d.SquareDistance(i);
+
+      if (aDist < MinDist)
+      {
+        MinDist = aDist;
+        MinInd = i;
       }
     }
   }
+
   if (MinInd) {
     MinDist = sqrt(MinDist);
   }
   if (MinDist <= aTolZ) {
-    gp_Pnt2d pnt_exact = (theExtPC2d.Point(MinInd)).Value();
-    Standard_Real par = (theExtPC2d.Point(MinInd)).Parameter();
+    gp_Pnt2d pnt_exact = (anExtPC2d.Point(MinInd)).Value();
+    Standard_Real par = (anExtPC2d.Point(MinInd)).Parameter();
     //
     RefineTolerance(F, C, par, aTolZ);
     //
@@ -109,16 +109,16 @@ void  BRepClass_Intersector::Perform(const gp_Lin2d& L,
       IntRes2d_Transition tr_on_lin(IntRes2d_Head);
       IntRes2d_Position pos_on_curve = IntRes2d_Middle;
       if (Abs(par - deb) <= Precision::Confusion()) {
-	pos_on_curve = IntRes2d_Head;
+        pos_on_curve = IntRes2d_Head;
       }
       else if (Abs(par - fin) <= Precision::Confusion()) {
-	pos_on_curve = IntRes2d_End;
+        pos_on_curve = IntRes2d_End;
       }
       //
       IntRes2d_Transition tr_on_curve(pos_on_curve);
       IntRes2d_IntersectionPoint pnt_inter(pnt_exact, 0., par,
-					   tr_on_lin, tr_on_curve, 
-					   Standard_False);
+        tr_on_lin, tr_on_curve, 
+        Standard_False);
       //
       Append(pnt_inter);
       done = Standard_True;
@@ -130,7 +130,7 @@ void  BRepClass_Intersector::Perform(const gp_Lin2d& L,
   C.D0(deb,pdeb);
   C.D0(fin,pfin);
   Standard_Real toldeb = 1.e-5, tolfin = 1.e-5;
- 
+
   IntRes2d_Domain DL;
   //
   if(P!=RealLast()) {
@@ -139,21 +139,21 @@ void  BRepClass_Intersector::Perform(const gp_Lin2d& L,
   else { 
     DL.SetValues(L.Location(),0.,aTolZ,Standard_True);
   }
- 
+
   IntRes2d_Domain DE(pdeb,deb,toldeb,pfin,fin,tolfin);
   // temporary periodic domain
   if (C.Curve()->IsPeriodic()) {
     DE.SetEquivalentParameters(C.FirstParameter(),
-			       C.FirstParameter() + 
-			       C.Curve()->LastParameter() -
-			       C.Curve()->FirstParameter());
+      C.FirstParameter() + 
+      C.Curve()->LastParameter() -
+      C.Curve()->FirstParameter());
   }
-  
+
   Handle(Geom2d_Line) GL= new Geom2d_Line(L);
   Geom2dAdaptor_Curve CGA(GL);
   Geom2dInt_GInter Inter(CGA,DL,C,DE,
-			 Precision::PConfusion(),
-			 Precision::PIntersection());
+    Precision::PConfusion(),
+    Precision::PIntersection());
   //
   SetValues(Inter);
 }
@@ -163,14 +163,14 @@ void  BRepClass_Intersector::Perform(const gp_Lin2d& L,
 //purpose  : 
 //=======================================================================
 void  BRepClass_Intersector::LocalGeometry(const BRepClass_Edge& E, 
-					   const Standard_Real U, 
-					   gp_Dir2d& Tang, 
-					   gp_Dir2d& Norm, 
-					   Standard_Real& C) const 
+                                           const Standard_Real U, 
+                                           gp_Dir2d& Tang, 
+                                           gp_Dir2d& Norm, 
+                                           Standard_Real& C) const 
 {
   Standard_Real f,l;
   Geom2dLProp_CLProps2d Prop(BRep_Tool::CurveOnSurface(E.Edge(),E.Face(),f,l),
-			     U,2,Precision::PConfusion());
+    U,2,Precision::PConfusion());
   Prop.Tangent(Tang);
   C = Prop.Curvature();
   if (C > Precision::PConfusion())
@@ -184,9 +184,9 @@ void  BRepClass_Intersector::LocalGeometry(const BRepClass_Edge& E,
 //purpose  : 
 //=======================================================================
 void RefineTolerance(const TopoDS_Face& aF,
-		     const BRepAdaptor_Curve2d& aC,
-		     const Standard_Real aT,
-		     Standard_Real& aTolZ)
+                     const BRepAdaptor_Curve2d& aC,
+                     const Standard_Real aT,
+                     Standard_Real& aTolZ)
 {
   GeomAbs_SurfaceType aTypeS;
   //

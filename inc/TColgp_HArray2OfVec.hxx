@@ -39,11 +39,11 @@ class TColgp_HArray2OfVec : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColgp_HArray2OfVec(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      TColgp_HArray2OfVec(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   TColgp_HArray2OfVec(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const gp_Vec& V);
+      TColgp_HArray2OfVec(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const gp_Vec& V);
   
-  Standard_EXPORT     void Init(const gp_Vec& V) ;
+        void Init(const gp_Vec& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -59,9 +59,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const gp_Vec& Value) ;
   
-  Standard_EXPORT    const gp_Vec& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const gp_Vec& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     gp_Vec& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        gp_Vec& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const TColgp_Array2OfVec& Array2() const;
   

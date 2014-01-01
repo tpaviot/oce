@@ -40,6 +40,8 @@ void StdLSchema_PDF_Reference::SWrite(const Handle(Standard_Persistent)& p, Stor
   if (!p.IsNull()) {
     Handle(PDF_Reference) &pp = (Handle(PDF_Reference)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDF_ReferencemyValue(),f);
@@ -58,6 +60,8 @@ void StdLSchema_PDF_Reference::SRead(const Handle(Standard_Persistent)& p, Stora
 { 
   if (!p.IsNull()) {
     Handle(PDF_Reference) &pp = (Handle(PDF_Reference)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

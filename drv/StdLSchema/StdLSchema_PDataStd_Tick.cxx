@@ -37,7 +37,10 @@ void StdLSchema_PDataStd_Tick::Add(const Handle(Standard_Persistent)& p, const H
 void StdLSchema_PDataStd_Tick::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
+    Handle(PDataStd_Tick) &pp = (Handle(PDataStd_Tick)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -54,7 +57,10 @@ void StdLSchema_PDataStd_Tick::Write(const Handle(Standard_Persistent)& p, Stora
 void StdLSchema_PDataStd_Tick::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
- 
+    Handle(PDataStd_Tick) &pp = (Handle(PDataStd_Tick)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
+
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
 

@@ -42,11 +42,11 @@ class StepDimTol_HArray1OfDatumReference : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepDimTol_HArray1OfDatumReference(const Standard_Integer Low,const Standard_Integer Up);
+      StepDimTol_HArray1OfDatumReference(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepDimTol_HArray1OfDatumReference(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepDimTol_DatumReference)& V);
+      StepDimTol_HArray1OfDatumReference(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepDimTol_DatumReference)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepDimTol_DatumReference)& V) ;
+        void Init(const Handle(StepDimTol_DatumReference)& V) ;
   
         Standard_Integer Length() const;
   

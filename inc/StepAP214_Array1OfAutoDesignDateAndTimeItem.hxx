@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepAP214_Array1OfAutoDesignDateAndTimeItem(const Standard_Integer Low,const Standard_Integer Up);
+      StepAP214_Array1OfAutoDesignDateAndTimeItem(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepAP214_Array1OfAutoDesignDateAndTimeItem(const StepAP214_AutoDesignDateAndTimeItem& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepAP214_Array1OfAutoDesignDateAndTimeItem(const StepAP214_AutoDesignDateAndTimeItem& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const StepAP214_AutoDesignDateAndTimeItem& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepAP214_Array1OfAutoDesignDateAndTimeItem()
 {
   Destroy();

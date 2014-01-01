@@ -37,32 +37,27 @@
 #ifndef _Visual3d_TypeOfSurfaceDetail_HeaderFile
 #include <Visual3d_TypeOfSurfaceDetail.hxx>
 #endif
+#ifndef _Graphic3d_SequenceOfHClipPlane_HeaderFile
+#include <Graphic3d_SequenceOfHClipPlane.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Visual3d_ClipPlane_HeaderFile
-#include <Handle_Visual3d_ClipPlane.hxx>
 #endif
 #ifndef _Handle_Visual3d_Light_HeaderFile
 #include <Handle_Visual3d_Light.hxx>
 #endif
-#ifndef _Handle_Visual3d_HSetOfClipPlane_HeaderFile
-#include <Handle_Visual3d_HSetOfClipPlane.hxx>
+#ifndef _Handle_Visual3d_HSetOfLight_HeaderFile
+#include <Handle_Visual3d_HSetOfLight.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Visual3d_HSetOfLight_HeaderFile
-#include <Handle_Visual3d_HSetOfLight.hxx>
 #endif
 class Graphic3d_TextureEnv;
 class Visual3d_ClipDefinitionError;
 class Visual3d_DepthCueingDefinitionError;
 class Visual3d_LightDefinitionError;
 class Visual3d_ZClippingDefinitionError;
-class Visual3d_ClipPlane;
 class Visual3d_Light;
-class Visual3d_HSetOfClipPlane;
 class Visual3d_HSetOfLight;
 
 
@@ -122,10 +117,12 @@ public:
   Standard_EXPORT     void SetDepthCueingOn() ;
   //! Deactivates the depth-cueing. <br>
   Standard_EXPORT     void SetDepthCueingOff() ;
-  //! Activates the clipping plane <AClipPlane> <br>
-  Standard_EXPORT     void SetClipPlaneOn(const Handle(Visual3d_ClipPlane)& AClipPlane) ;
-  //! Deactivates the clipping plane <AClipPlane> <br>
-  Standard_EXPORT     void SetClipPlaneOff(const Handle(Visual3d_ClipPlane)& AClipPlane) ;
+  //! Returns sequence of clip planes. <br>
+//! @return sequence of clip planes. <br>
+  Standard_EXPORT    const Graphic3d_SequenceOfHClipPlane& ClipPlanes() const;
+  //! Change clip planes. <br>
+//! @return sequence of clip planes. <br>
+  Standard_EXPORT     Graphic3d_SequenceOfHClipPlane& ChangeClipPlanes() ;
   //! Activates the light source <ALight> <br>
   Standard_EXPORT     void SetLightOn(const Handle(Visual3d_Light)& ALight) ;
   //! Deactivates the light source <ALight> <br>
@@ -179,14 +176,6 @@ public:
   //! Deactivates the back Z-clipping plane defined by <br>
 //!	    SetBackPlane method. <br>
   Standard_EXPORT     void SetBackZClippingOff() ;
-  //! Returns the group of active clipping planes <br>
-//!	    in the view of context <me>. <br>
-  Standard_EXPORT     Handle_Visual3d_HSetOfClipPlane ActivatedClipPlanes() const;
-  //! Returns the number of active clipping planes <br>
-//!	    in the view of context <me>. <br>
-  Standard_EXPORT     Standard_Integer NumberOfActivatedClipPlanes() const;
-  
-  Standard_EXPORT     Handle_Visual3d_ClipPlane ActivatedClipPlane(const Standard_Integer AnIndex) const;
   //! Returns the group of active light sources <br>
 //!	    in the view of context <me>. <br>
   Standard_EXPORT     Handle_Visual3d_HSetOfLight ActivatedLights() const;
@@ -245,9 +234,9 @@ Standard_ShortReal MyDepthCueingBackPlane;
 Visual3d_TypeOfModel MyModel;
 Visual3d_TypeOfVisualization MyVisual;
 TColStd_SequenceOfAddress MyLights;
-TColStd_SequenceOfAddress MyClipPlanes;
 Handle_Graphic3d_TextureEnv MyTextureEnv;
 Visual3d_TypeOfSurfaceDetail MySurfaceDetail;
+Graphic3d_SequenceOfHClipPlane myClipPlanes;
 
 
 };

@@ -1,23 +1,18 @@
 // Created on: 1995-05-05
 // Created by: Christophe MARION
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modified by cma, Tue Apr  1 11:39:48 1997
 // Modified by cma, Tue Apr  1 11:40:30 1997
@@ -692,7 +687,7 @@ void HLRBRep_PolyAlgo::StoreShell (const TopoDS_Shape& Shape,
 {
   TopLoc_Location L;
   TopExp_Explorer exface,exedge;
-  Standard_Integer f=-1,i,j;
+  Standard_Integer f = 0,i,j;
   Standard_Integer nbFaceShell = 0;
   Standard_Boolean reversed;
   Standard_Boolean closed    = Standard_False;
@@ -1227,7 +1222,7 @@ InitBiPointsWithConnexity (const Standard_Integer e,
   Standard_Integer iPol,nbPol,i1,i1p1,i1p2,i2,i2p1,i2p2;
   Standard_Real X1  ,Y1  ,Z1  ,X2  ,Y2  ,Z2  ;
   Standard_Real XTI1,YTI1,ZTI1,XTI2,YTI2,ZTI2;
-  Standard_Real U1,U2 = 0;
+  Standard_Real U1,U2 = 0.;
   Handle(Poly_PolygonOnTriangulation) HPol[2];
   TopLoc_Location L;
   myBCurv.Initialize(E);
@@ -2493,7 +2488,7 @@ HLRBRep_PolyAlgo::InsertOnOutLine (TColStd_Array1OfTransient& PID)
   TopLoc_Location L;
   Standard_Boolean insP3,mP3P1,IntOutL;
   Standard_Integer f,ip1,ip2,ip3;//, i;
-  Standard_Real U3,V3,coef3,X3 = 0.0,Y3 = 0.0,Z3 = 0.0;
+  Standard_Real U3,V3,coef3,X3 = 0.,Y3 = 0.,Z3 = 0.;
 
   const gp_Trsf& T  = myProj.Transformation();
   
@@ -3153,7 +3148,11 @@ UpdateAroundNode (const Standard_Integer iNode,
 //=======================================================================
 
 void 
+#ifdef DEB
 HLRBRep_PolyAlgo::OrientTriangle(const Standard_Integer iTri,
+#else
+HLRBRep_PolyAlgo::OrientTriangle(const Standard_Integer,
+#endif
 				 const Standard_Address Tri1Indices,
 				 const Standard_Address Nod1Indices,
 				 const Standard_Address Nod1RValues,

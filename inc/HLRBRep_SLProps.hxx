@@ -119,31 +119,31 @@ private:
 
 
 
-Standard_Address surf;
-Standard_Real u;
-Standard_Real v;
-Standard_Integer level;
-Standard_Integer cn;
-Standard_Real linTol;
-gp_Pnt pnt;
-gp_Vec d1U;
-gp_Vec d1V;
-gp_Vec d2U;
-gp_Vec d2V;
-gp_Vec dUV;
-gp_Dir normal;
-Standard_Real minCurv;
-Standard_Real maxCurv;
-gp_Dir dirMinCurv;
-gp_Dir dirMaxCurv;
-Standard_Real meanCurv;
-Standard_Real gausCurv;
-Standard_Integer significantFirstUDerivativeOrder;
-Standard_Integer significantFirstVDerivativeOrder;
-LProp_Status uTangentStatus;
-LProp_Status vTangentStatus;
-LProp_Status normalStatus;
-LProp_Status curvatureStatus;
+Standard_Address mySurf;
+Standard_Real myU;
+Standard_Real myV;
+Standard_Integer myDerOrder;
+Standard_Integer myCN;
+Standard_Real myLinTol;
+gp_Pnt myPnt;
+gp_Vec myD1u;
+gp_Vec myD1v;
+gp_Vec myD2u;
+gp_Vec myD2v;
+gp_Vec myDuv;
+gp_Dir myNormal;
+Standard_Real myMinCurv;
+Standard_Real myMaxCurv;
+gp_Dir myDirMinCurv;
+gp_Dir myDirMaxCurv;
+Standard_Real myMeanCurv;
+Standard_Real myGausCurv;
+Standard_Integer mySignificantFirstDerivativeOrderU;
+Standard_Integer mySignificantFirstDerivativeOrderV;
+LProp_Status myUTangentStatus;
+LProp_Status myVTangentStatus;
+LProp_Status myNormalStatus;
+LProp_Status myCurvatureStatus;
 
 
 };

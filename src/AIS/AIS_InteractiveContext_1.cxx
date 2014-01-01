@@ -1,23 +1,18 @@
 // Created on: 1997-01-29
 // Created by: Robert COUBLANC
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #define UKI60826	//GG_161199	Use the requested selection color instead of default
 
@@ -31,10 +26,6 @@
 #define IMP160701   	//ZSV  Add InitDetected(),MoreDetected(),NextDetected(),
 //                       DetectedCurrentShape(),DetectedCurrentObject()
 //                       methods
-
-#define IMP191001	//GG Avoid to raise when switching with the 
-//			SetAutomaticHilight() method.
-//			Thanks to IFO of SAMTECH company for this improvment.
 
 #define OCC138          //VTN Avoding infinit loop in AddOrRemoveCurrentObject method.
 
@@ -146,7 +137,7 @@ AIS_StatusOfDetection AIS_InteractiveContext::MoveTo(const Standard_Integer XPix
 				   const Standard_Integer YPix, 
 				   const Handle(V3d_View)& aView)
 {
-  if(HasOpenedContext()&& aView->Viewer()!=myCollectorVwr){
+  if(HasOpenedContext()){
     myWasLastMain = Standard_True;
     return myLocalContexts(myCurLocalIndex)->MoveTo(XPix,YPix,aView);
   }
@@ -168,13 +159,6 @@ AIS_StatusOfDetection AIS_InteractiveContext::MoveTo(const Standard_Integer XPix
     selector=myMainSel;
     myLastPicked = myLastinMain;
     myWasLastMain = Standard_True;
-  }
-  else if (aView->Viewer()== myCollectorVwr){
-    pmgr = myCollectorPM;
-    selector=myCollectorSel;
-    myLastPicked = myLastinColl;
-    ismain = Standard_False;
-    myWasLastMain = Standard_False;
   }
   else 
     return AIS_SOD_Error;
@@ -207,14 +191,14 @@ AIS_StatusOfDetection AIS_InteractiveContext::MoveTo(const Standard_Integer XPix
   selector->Init();
   if ( selector->More() )
   {
-    if ( HasOpenedContext() ) {
+    if ( HasOpenedContext() ) 
+    {
       if ( !myFilters->IsOk( selector->OnePicked() ) ) 
-	return AIS_SOD_AllBad;
+        return AIS_SOD_AllBad;
       else
         if ( !myLocalContexts( myCurLocalIndex )->Filter()->IsOk( selector->OnePicked() ) )
           return AIS_SOD_AllBad;
     }
-    
  
     // Does nothing if previously detected object is equal to the current one
     if ( selector->OnePicked()->Selectable() == myLastPicked )
@@ -225,72 +209,64 @@ AIS_StatusOfDetection AIS_InteractiveContext::MoveTo(const Standard_Integer XPix
     // is needed only if myToHilightSelected flag is true. In this case previously detected
     // object has been already highlighted with myHilightColor during previous MoveTo() 
     // method call. As result it is necessary to rehighligt it with mySelectionColor.
-    if ( !myLastPicked.IsNull() )
+    if (!myLastPicked.IsNull())
     {
-      Standard_Integer HiMod =  
-        myLastPicked->HasHilightMode() ? myLastPicked->HilightMode() : 0;
-      if ( myLastPicked->State() != 1 )
+      Standard_Integer aHiMod = myLastPicked->HasHilightMode() ? myLastPicked->HilightMode() : 0;
+      if (myLastPicked->State() != 1)
       {
-	pmgr->Unhighlight( myLastPicked, HiMod );
+        pmgr->Unhighlight (myLastPicked, aHiMod);
         UpdVwr = Standard_True;
       }
-      else if ( myToHilightSelected )
+      else if (myToHilightSelected)
       {
-        pmgr->Color( myLastPicked, mySelectionColor, HiMod );
+        pmgr->Color (myLastPicked, mySelectionColor, aHiMod);
         UpdVwr = Standard_True;
       }
     }
-    
+
     // Initialize myLastPicked field with currently detected object
-    Handle(SelectMgr_SelectableObject) SO = selector->OnePicked()->Selectable();
-    myLastPicked = *((Handle(AIS_InteractiveObject)*)&SO);
-    
+    myLastPicked = Handle(AIS_InteractiveObject)::DownCast (selector->OnePicked()->Selectable());
+
     if ( ismain )
       myLastinMain = myLastPicked;
-    else 
-      myLastinColl = myLastPicked;
-#ifdef IMP191001
+
     // Highlight detected object if it is not selected or myToHilightSelected flag is true
-    if ( !myLastPicked.IsNull() && 
-         ( myLastPicked->State()!= 1 || myToHilightSelected ) )
-#else
-     if ( myLastPicked->State()!= 1 )
-#endif
+    if (!myLastPicked.IsNull()
+     && (myLastPicked->State()!= 1 || myToHilightSelected))
     {
-      Standard_Integer HiMod =  
-        myLastPicked->HasHilightMode() ? myLastPicked->HilightMode() : 0;
-      pmgr->Color( myLastPicked, myHilightColor, HiMod );
+      Standard_Integer aHiMod = myLastPicked->HasHilightMode() ? myLastPicked->HilightMode() : 0;
+      pmgr->Color (myLastPicked, myHilightColor, aHiMod);
       UpdVwr = Standard_True;
     }
-    
-    if ( myLastPicked->State()==1 )
+
+    if (!myLastPicked.IsNull()
+      && myLastPicked->State() == 1)
+    {
       TheStat = AIS_SOD_Selected;
+    }
   }
   else 
   {
-    // Previously detected object is unhilighted if it is not selected or hilighted 
-    // with selection color if it is selected. 
+    // Previously detected object is unhilighted if it is not selected or hilighted
+    // with selection color if it is selected.
     TheStat = AIS_SOD_Nothing;
-    if ( !myLastPicked.IsNull() )
+    if (!myLastPicked.IsNull())
     {
-      Standard_Integer HiMod =  
-        myLastPicked->HasHilightMode() ? myLastPicked->HilightMode() : 0;
-      if ( myLastPicked->State() != 1 )
+      Standard_Integer aHiMod = myLastPicked->HasHilightMode() ? myLastPicked->HilightMode() : 0;
+      if (myLastPicked->State() != 1)
       {
-	pmgr->Unhighlight( myLastPicked, HiMod );
+        pmgr->Unhighlight (myLastPicked, aHiMod);
         UpdVwr = Standard_True;
       }
-      else if ( myToHilightSelected )
+      else if (myToHilightSelected)
       {
-        pmgr->Color( myLastPicked, mySelectionColor, HiMod );
+        pmgr->Color (myLastPicked, mySelectionColor, aHiMod);
         UpdVwr = Standard_True;
       }
     }
-    
+
     if ( ismain )
       myLastinMain.Nullify();
-    else
-      myLastinColl.Nullify();
   }
   
   if(UpdVwr) aView->Viewer()->Update();
@@ -325,12 +301,7 @@ AIS_StatusOfPick AIS_InteractiveContext::Select(const Standard_Integer XPMin,
   if(aView->Viewer()== myMainVwr) {
     selector= myMainSel;
     myWasLastMain = Standard_True;}
-  
-  else if (aView->Viewer()==myCollectorVwr){
-    selector= myCollectorSel;
-    myWasLastMain = Standard_False;}
-  
-  
+
   selector->Pick(XPMin,YPMin,XPMax,YPMax,aView);
   AIS_Selection::SetCurrentSelection(myCurrentName.ToCString());
 
@@ -395,12 +366,7 @@ AIS_StatusOfPick AIS_InteractiveContext::Select(const TColgp_Array1OfPnt2d& aPol
   if(aView->Viewer()== myMainVwr) {
     selector= myMainSel;
     myWasLastMain = Standard_True;}
-  
-  else if (aView->Viewer()==myCollectorVwr){
-    selector= myCollectorSel;
-    myWasLastMain = Standard_False;}
-  
-  
+
   selector->Pick(aPolyline,aView);
   AIS_Selection::SetCurrentSelection(myCurrentName.ToCString());
 
@@ -454,7 +420,6 @@ AIS_StatusOfPick AIS_InteractiveContext::Select(const Standard_Boolean updatevie
     if(myWasLastMain)
       return myLocalContexts(myCurLocalIndex)->Select(updateviewer);
     else
-      // picking was done in the collector, special processing is required...
       {
 	myLocalContexts(myCurLocalIndex)->SetSelected(myLastPicked,updateviewer);
 	return AIS_SOP_OneSelected;
@@ -466,12 +431,6 @@ AIS_StatusOfPick AIS_InteractiveContext::Select(const Standard_Boolean updatevie
       SetCurrentObject(myLastinMain,Standard_False);
       if(updateviewer)
 	UpdateCurrentViewer();}
-  }
-  else if (!myWasLastMain && !myLastinColl.IsNull()){
-    if(myLastinColl->State()!=1){
-      SetCurrentObject(myLastinColl,Standard_False);
-      if(updateviewer)
-	UpdateCollector();}
   }
   else{
     AIS_Selection::SetCurrentSelection(myCurrentName.ToCString());
@@ -493,9 +452,7 @@ AIS_StatusOfPick AIS_InteractiveContext::Select(const Standard_Boolean updatevie
     AIS_Selection::Select();
     if(updateviewer){
       if(myWasLastMain)
-	UpdateCurrentViewer();
-      else
-	UpdateCollector();
+        UpdateCurrentViewer();
     }
   }
   Standard_Integer NS = NbCurrents();
@@ -524,10 +481,7 @@ AIS_StatusOfPick AIS_InteractiveContext::ShiftSelect(const Standard_Boolean upda
   }
   if(myWasLastMain && !myLastinMain.IsNull())
     AddOrRemoveCurrentObject(myLastinMain,updateviewer);
-  else if (!myWasLastMain && !myLastinColl.IsNull())
-    AddOrRemoveCurrentObject(myLastinColl,updateviewer);
-  
-  
+
   Standard_Integer NS = NbCurrents();
   if(NS==0) return AIS_SOP_NothingSelected;
   if(NS==1) return AIS_SOP_OneSelected;
@@ -558,10 +512,6 @@ AIS_StatusOfPick AIS_InteractiveContext::ShiftSelect(const Standard_Integer XPMi
   if(aView->Viewer()== myMainVwr) {
     selector= myMainSel;
     myWasLastMain = Standard_True;}
-  
-  else if (aView->Viewer()==myCollectorVwr){
-    selector= myCollectorSel;
-    myWasLastMain = Standard_False;}
   else
     return AIS_SOP_NothingSelected;
   
@@ -604,10 +554,6 @@ AIS_StatusOfPick AIS_InteractiveContext::ShiftSelect( const TColgp_Array1OfPnt2d
     if( aView->Viewer() == myMainVwr ) {
         selector= myMainSel;
         myWasLastMain = Standard_True;
-    }
-    else if ( aView->Viewer() == myCollectorVwr ) {
-        selector= myCollectorSel;
-        myWasLastMain = Standard_False;
     }
     else
         return AIS_SOP_NothingSelected;

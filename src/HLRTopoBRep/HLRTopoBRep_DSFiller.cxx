@@ -1,23 +1,18 @@
 // Created on: 1993-08-10
 // Created by: Christophe MARION
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <HLRTopoBRep_DSFiller.ixx>
 
@@ -55,10 +50,69 @@
 #include <Precision.hxx>
 #include <BRepApprox_ApproxLine.hxx>
 #include <BRepApprox_Approx.hxx>
+#include <BRep_TEdge.hxx>
+#include <BRep_ListIteratorOfListOfCurveRepresentation.hxx>
+#include <BRep_CurveRepresentation.hxx>
+#include <BRepExtrema_ExtPC.hxx>
+#include <TopTools_ListIteratorOfListOfShape.hxx>
 
 #define INTERPOLATE 0
 #define BRISE       0
 #define APPROX      1
+
+
+static Standard_Boolean IntLineRisesFromRegularity(const TopoDS_Edge& anIntLine,
+                                                   const TopoDS_Edge& anEdge,
+                                                   const TopoDS_Face&,
+                                                   const TopTools_ListOfShape& aList)
+{
+  TopoDS_Vertex Ver [2];
+  TopExp::Vertices(anIntLine, Ver[0], Ver[1]);
+
+  //find min param and max param
+  Standard_Real MinPar = RealLast(), MaxPar = RealFirst();
+  TopTools_ListIteratorOfListOfShape itl(aList);
+  for (; itl.More(); itl.Next())
+  {
+    const TopoDS_Edge& anOutLine = TopoDS::Edge(itl.Value());
+    Standard_Real aFirst, aLast;
+    BRep_Tool::Range(anOutLine, aFirst, aLast);
+    if (aFirst < MinPar)
+      MinPar = aFirst;
+    if (aLast > MaxPar)
+      MaxPar = aLast;
+  }
+  
+  Standard_Real theTol = BRep_Tool::Tolerance(anEdge);
+  Standard_Real ParamTol = Precision::Confusion();
+  
+  Standard_Integer i, j;
+  for (i = 0; i < 2; i++)
+  {
+    BRepExtrema_ExtPC anExtPC(Ver[i], anEdge);
+    if (!anExtPC.IsDone())
+      continue;
+    Standard_Integer NbExt = anExtPC.NbExt();
+    if (NbExt == 0)
+      continue;
+    Standard_Integer jmin = 1;
+    for (j = 2; j <= NbExt; j++)
+      if (anExtPC.SquareDistance(j) < anExtPC.SquareDistance(jmin))
+        jmin = j;
+    Standard_Real aDist = anExtPC.SquareDistance(jmin);
+    aDist = Sqrt(aDist);
+    if (aDist > theTol)
+      continue;
+
+    Standard_Real theParam = anExtPC.Parameter(jmin);
+    if (theParam > MinPar + ParamTol &&
+        theParam < MaxPar - ParamTol)
+      return Standard_True;
+  }
+
+  return Standard_False;
+}
+
 
 //=======================================================================
 //function : Insert
@@ -95,7 +149,7 @@ void  HLRTopoBRep_DSFiller::Insert (const TopoDS_Shape& S,
 	Domain  = BRT.GetTopolTool();
 	Surface = BRT.GetSurface();
       }
-      FO.Perform(Surface,Domain);
+      FO.Perform(Surface, Domain);
       if (FO.IsDone()) {
 	if (!FO.IsEmpty())
 	  InsertFace(f,S1,FO,DS,withPCurve);
@@ -112,7 +166,7 @@ void  HLRTopoBRep_DSFiller::Insert (const TopoDS_Shape& S,
 //purpose  : private, insert the outlines of a face
 //=======================================================================
 
-void  HLRTopoBRep_DSFiller::InsertFace (const Standard_Integer FI,
+void  HLRTopoBRep_DSFiller::InsertFace (const Standard_Integer /*FI*/,
 					const TopoDS_Face& F,
 					Contap_Contour& FO,
 					HLRTopoBRep_Data& DS,
@@ -140,8 +194,8 @@ void  HLRTopoBRep_DSFiller::InsertFace (const Standard_Integer FI,
   */
 
   const Standard_Integer NbLines = FO.NbLines();
-  Standard_Integer CurLine = 1;
-  for (; CurLine <= NbLines; CurLine++)
+  Standard_Integer CurLine;
+  for (CurLine = 1; CurLine <= NbLines; CurLine++)
   {
     const Contap_TheLineOfContour& Line = FO.Line(CurLine);
     const Standard_Integer NbPoints = Line.NbVertex();
@@ -447,6 +501,50 @@ void  HLRTopoBRep_DSFiller::InsertFace (const Standard_Integer FI,
       }
     }
   }
+
+  //jgv: correction of internal outlines: remove those that rise from middle of boundary outlines
+  TopTools_ListIteratorOfListOfShape itl(IntL);
+  while (itl.More())
+  {
+    TopoDS_Edge anIntLine = TopoDS::Edge(itl.Value());
+    Standard_Real found = Standard_False;
+    TopExp_Explorer Explo(F, TopAbs_EDGE);
+    for (; Explo.More(); Explo.Next())
+    {
+      TopoDS_Edge anEdge = TopoDS::Edge(Explo.Current());
+      if (!BRep_Tool::HasContinuity(anEdge))
+        continue;
+
+      TopLoc_Location RegLoc;
+      Standard_Real fpar, lpar;
+      Handle(Geom_Curve) RegCurve = BRep_Tool::Curve(anEdge, RegLoc, fpar, lpar);
+      TopTools_ListOfShape thelist;
+      TopTools_ListIteratorOfListOfShape itoutl(OutL);
+      for (; itoutl.More(); itoutl.Next())
+      {
+        TopoDS_Edge anOutLine = TopoDS::Edge(itoutl.Value());
+        TopLoc_Location aLoc;
+        Standard_Real aFirst, aLast;
+        Handle(Geom_Curve) aCurve = BRep_Tool::Curve(anOutLine, aLoc, aFirst, aLast);
+        if (aCurve == RegCurve && aLoc == RegLoc)
+          thelist.Append(anOutLine);
+      }
+
+      if (thelist.IsEmpty())
+        continue;
+
+      if (IntLineRisesFromRegularity(anIntLine, anEdge, F, thelist))
+      {
+        IntL.Remove(itl);
+        found = Standard_True;
+        break;
+      }
+    }
+    
+    if (!found)
+      itl.Next();
+  }
+  ///////////////////////////////////////////////////
 }
 
 //=======================================================================

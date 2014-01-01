@@ -155,6 +155,8 @@ public:
   Standard_EXPORT   static  Standard_Integer NbSamples(const Standard_Address C,const Standard_Real U0,const Standard_Real U1) ;
   
   Standard_EXPORT   static  Standard_Integer NbSamples(const Standard_Address C) ;
+  
+      static  Standard_Integer Degree(const Standard_Address C) ;
 
 
 

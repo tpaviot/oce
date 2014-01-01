@@ -42,11 +42,11 @@ class StepElement_HArray1OfCurveElementEndReleasePacket : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer Low,const Standard_Integer Up);
+      StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepElement_CurveElementEndReleasePacket)& V);
+      StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepElement_CurveElementEndReleasePacket)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepElement_CurveElementEndReleasePacket)& V) ;
+        void Init(const Handle(StepElement_CurveElementEndReleasePacket)& V) ;
   
         Standard_Integer Length() const;
   

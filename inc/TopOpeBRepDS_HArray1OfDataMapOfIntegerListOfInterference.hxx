@@ -39,11 +39,11 @@ class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public MMgt_TSh
 public:
 
   
-  Standard_EXPORT   TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer Low,const Standard_Integer Up);
+      TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer Low,const Standard_Integer Up,const TopOpeBRepDS_DataMapOfIntegerListOfInterference& V);
+      TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer Low,const Standard_Integer Up,const TopOpeBRepDS_DataMapOfIntegerListOfInterference& V);
   
-  Standard_EXPORT     void Init(const TopOpeBRepDS_DataMapOfIntegerListOfInterference& V) ;
+        void Init(const TopOpeBRepDS_DataMapOfIntegerListOfInterference& V) ;
   
         Standard_Integer Length() const;
   

@@ -39,11 +39,11 @@ class TColgp_HArray1OfXYZ : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColgp_HArray1OfXYZ(const Standard_Integer Low,const Standard_Integer Up);
+      TColgp_HArray1OfXYZ(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColgp_HArray1OfXYZ(const Standard_Integer Low,const Standard_Integer Up,const gp_XYZ& V);
+      TColgp_HArray1OfXYZ(const Standard_Integer Low,const Standard_Integer Up,const gp_XYZ& V);
   
-  Standard_EXPORT     void Init(const gp_XYZ& V) ;
+        void Init(const gp_XYZ& V) ;
   
         Standard_Integer Length() const;
   

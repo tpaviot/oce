@@ -37,6 +37,9 @@
 #ifndef _BOPDS_VectorOfListOfPaveBlock_HeaderFile
 #include <BOPDS_VectorOfListOfPaveBlock.hxx>
 #endif
+#ifndef _BOPDS_DataMapOfPaveBlockCommonBlock_HeaderFile
+#include <BOPDS_DataMapOfPaveBlockCommonBlock.hxx>
+#endif
 #ifndef _BOPDS_VectorOfFaceInfo_HeaderFile
 #include <BOPDS_VectorOfFaceInfo.hxx>
 #endif
@@ -237,10 +240,27 @@ Standard_EXPORT virtual ~BOPDS_DS();
   Standard_EXPORT     void UpdatePaveBlock(const Handle(BOPDS_PaveBlock)& thePB) ;
   
 //! Update the common block theCB <br>
-//! <br>
-//! face info <br>
-//! <br>
   Standard_EXPORT     void UpdateCommonBlock(const Handle(BOPDS_CommonBlock)& theCB) ;
+  
+//! Query <br>
+//! Returns true if the pave block is common block <br>
+  Standard_EXPORT     Standard_Boolean IsCommonBlock(const Handle(BOPDS_PaveBlock)& thePB) const;
+  
+//! Selector <br>
+//! Returns the common block <br>
+  Standard_EXPORT    const Handle_BOPDS_CommonBlock& CommonBlock(const Handle(BOPDS_PaveBlock)& thePB) const;
+  
+//! Modifier <br>
+//! Sets the common block <theCB> <br>
+  Standard_EXPORT     void SetCommonBlock(const Handle(BOPDS_PaveBlock)& thePB,const Handle(BOPDS_CommonBlock)& theCB) ;
+  
+//! Selector <br>
+//! Returns the real first pave block <br>
+  Standard_EXPORT     Handle_BOPDS_PaveBlock RealPaveBlock(const Handle(BOPDS_PaveBlock)& thePB) const;
+  
+//! Query <br>
+//! Returns true if common block contains more then one pave block <br>
+  Standard_EXPORT     Standard_Boolean IsCommonBlockOnEdge(const Handle(BOPDS_PaveBlock)& thePB) const;
   
 //! Selector <br>
 //! Returns the information about state of faces <br>
@@ -414,6 +434,7 @@ BOPDS_VectorOfIndexRange myRanges;
 BOPDS_VectorOfShapeInfo myLines;
 BOPCol_DataMapOfShapeInteger myMapShapeIndex;
 BOPDS_VectorOfListOfPaveBlock myPaveBlocksPool;
+BOPDS_DataMapOfPaveBlockCommonBlock myMapPBCB;
 BOPDS_VectorOfFaceInfo myFaceInfoPool;
 BOPCol_DataMapOfIntegerInteger myShapesSD;
 BOPDS_MapOfPassKey myInterfTB;

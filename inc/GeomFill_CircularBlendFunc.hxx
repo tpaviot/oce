@@ -138,7 +138,6 @@ private:
 
 gp_Pnt myBary;
 Standard_Real myRadius;
-Standard_Real myMinW;
 Standard_Real maxang;
 Standard_Real minang;
 Standard_Real distmin;

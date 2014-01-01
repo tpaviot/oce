@@ -19,14 +19,14 @@
 #ifndef _OSD_Path_HeaderFile
 #include <OSD_Path.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _OSD_Error_HeaderFile
 #include <OSD_Error.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 class OSD_OSDError;
 class Standard_ProgramError;
@@ -99,11 +99,6 @@ protected:
 
 
 OSD_Path myPath;
-#ifdef WNT
-Standard_Address myFileChannel;
-#else
-Standard_Integer myFileChannel;
-#endif
 OSD_Error myError;
 
 

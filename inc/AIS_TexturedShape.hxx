@@ -80,8 +80,8 @@ public:
   //!      Initializes the textured shape ashape. <br>
   Standard_EXPORT   AIS_TexturedShape(const TopoDS_Shape& shap);
   //! Sets the name of the texture file to map. The accepted <br>
-//!      file types are those used in AlienImage with extensions <br>
-//!      such as xwd, bmp, gif, rgb, ras, rs and more. <br>
+//!      file types are those used in Image_AlienPixMap with extensions <br>
+//!      such as rgb, png, jpg and more. <br>
   Standard_EXPORT   virtual  void SetTextureFileName(const TCollection_AsciiString& TextureFileName) ;
   //! Sets the number of occurrences of <br>
 //! the texture on each face. The texture itself is parameterized <br>
@@ -198,12 +198,6 @@ Standard_Boolean DoShowTriangles;
 Standard_Real myDeflection;
 Handle_Graphic3d_AspectFillArea3d myAspect;
 Handle_Graphic3d_Texture2Dmanual mytexture;
-Standard_Real Umin;
-Standard_Real Umax;
-Standard_Real Vmin;
-Standard_Real Vmax;
-Standard_Real dUmax;
-Standard_Real dVmax;
 Standard_Boolean myModulate;
 
 

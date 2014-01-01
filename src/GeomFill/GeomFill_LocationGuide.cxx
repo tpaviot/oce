@@ -1,24 +1,18 @@
 // Created on: 1998-07-08
 // Created by: Stephanie HUMEAU
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <GeomFill_LocationGuide.ixx>
 #include <gp.hxx>
@@ -44,7 +38,6 @@
 #include <Adaptor3d_HSurface.hxx>
 
 #include <IntCurveSurface_IntersectionPoint.hxx>
-#include <IntCurveSurface_HInter.hxx>
 #include <Adaptor3d_Surface.hxx>
 #include <GeomAdaptor.hxx>
 #include <GeomAdaptor_HSurface.hxx>
@@ -61,6 +54,9 @@
 #include <TColStd_HArray1OfInteger.hxx>
 #include <TColStd_HArray1OfReal.hxx>
 #include <TColgp_HArray1OfPnt.hxx>
+
+#include <Extrema_ExtCS.hxx>
+#include <Extrema_POnSurf.hxx>
 
 #if DRAW
 static Standard_Integer Affich = 0;
@@ -226,17 +222,13 @@ static void InGoodPeriod(const Standard_Real Prec,
   gp_Vec T,N,B;
   Standard_Integer ii, Deg;
   Standard_Boolean isconst, israt=Standard_False;
-  Standard_Real t, v,w, OldAngle=0, Angle, DeltaG, Diff;
-#if DEB
-  Standard_Real DeltaU;
-#endif
-  Standard_Real CurAngle =  PrecAngle, a1, a2;
+  Standard_Real t, v,w, OldAngle=0, Angle, DeltaG, DeltaU, Diff;
+  Standard_Real CurAngle =  PrecAngle, a1/*, a2*/;
   gp_Pnt2d p1,p2;
   Handle(Geom_SurfaceOfRevolution) Revol; // surface de revolution
   Handle(GeomAdaptor_HSurface) Pl; // = Revol
   Handle(Geom_TrimmedCurve) S;
   IntCurveSurface_IntersectionPoint PInt; // intersection guide/Revol
-  IntCurveSurface_HInter Int; 
   Handle(TColStd_HArray1OfInteger) Mult;
   Handle(TColStd_HArray1OfReal) Knots, Weights;
   Handle(TColgp_HArray1OfPnt)  Poles;
@@ -342,13 +334,18 @@ static void InGoodPeriod(const Standard_Real Prec,
 	(Handle(Geom_Curve)::DownCast(mySection->Copy()), Uf, Ul);
     }
     S->Transform(Transfo);
-      
+
     // Surface de revolution
     Revol = new(Geom_SurfaceOfRevolution) (S, Ax); 
     
-    Pl = new (GeomAdaptor_HSurface)(Revol);
-    Int.Perform(myGuide, Pl); // intersection  surf. revol / guide 
-    if (Int.NbPoints() == 0) {
+    GeomAdaptor_Surface GArevol(Revol);
+    Extrema_ExtCS DistMini(myGuide->Curve(), GArevol,
+                           Precision::Confusion(), Precision::Confusion());
+    Extrema_POnCurv Pc;
+    Extrema_POnSurf Ps;
+    Standard_Real theU = 0., theV = 0.;
+    
+    if (!DistMini.IsDone() || DistMini.NbExt() == 0) {
 #if DEB
       cout <<"LocationGuide : Pas d'intersection"<<endl;
       TraceRevol(t, U, myLaw, mySec, myCurve, Trans);
@@ -374,7 +371,9 @@ static void InGoodPeriod(const Standard_Real Prec,
 	  SOS = Standard_True;
 	  math_Vector RR(1,3);
 	  Result.Root(RR);
-	  PInt.SetValues(P, RR(2), RR(3), RR(1), IntCurveSurface_Out); 
+	  PInt.SetValues(P, RR(2), RR(3), RR(1), IntCurveSurface_Out);
+          theU = PInt.U();
+          theV = PInt.V();
 	}  
 	else {
 #if DEB
@@ -389,22 +388,30 @@ static void InGoodPeriod(const Standard_Real Prec,
     } 
     else { // on prend le point d'intersection 
       // d'angle le plus proche de P
-      PInt = Int.Point(1);
-      a1 = PInt.U();
+      
+      Standard_Real MinDist = RealLast();
+      Standard_Integer jref = 0;
+      for (Standard_Integer j = 1; j <= DistMini.NbExt(); j++)
+      {
+        Standard_Real aDist = DistMini.SquareDistance(j);
+        if (aDist < MinDist)
+        {
+          MinDist = aDist;
+          jref = j;
+        }
+      }
+      MinDist = Sqrt(MinDist);
+      DistMini.Points(jref, Pc, Ps);
+      
+      Ps.Parameter(theU, theV);
+      a1 = theU;
+      
       InGoodPeriod (CurAngle, 2*M_PI, a1);
-      Standard_Real Dmin = Abs(a1-CurAngle);
-      for (Standard_Integer jj=2;jj<=Int.NbPoints();jj++) {
-	a2 = Int.Point(jj).U();
-	InGoodPeriod (CurAngle, 2*M_PI, a2);
-	if (Abs(a2-CurAngle) < Dmin) {
-	  PInt = Int.Point(jj);
-	  Dmin = Abs(a2-CurAngle);
-	}//if
-      }//for
     }//else
     
     // Controle de w 
-    w = PInt.W();
+    w = Pc.Parameter();
+    
     if (ii>1) {
       Diff = w -  myPoles2d->Value(1, ii-1).Y();
       if (Abs(Diff) > DeltaG) {
@@ -423,7 +430,8 @@ static void InGoodPeriod(const Standard_Real Prec,
 #endif
     }
     //Recadrage de l'angle.
-    Angle = PInt.U();
+    Angle = theU;
+    
     if (ii > 1) {
       Diff = Angle - OldAngle;
 	if (Abs(Diff) > M_PI) {
@@ -439,7 +447,8 @@ static void InGoodPeriod(const Standard_Real Prec,
 
 
     //Recadrage du V
-    v = PInt.V();
+    v = theV;
+    
     if (ii > 1) {
       if (uperiodic) {
 	InGoodPeriod (myPoles2d->Value(2, ii-1).Y(), UPeriod, v);
@@ -1446,3 +1455,40 @@ void GeomFill_LocationGuide::SetOrigine(const Standard_Real Param1,
   OrigParam2 = Param2;
 }
 
+//==================================================================
+//Function : ComputeAutomaticLaw
+//Purpose :
+//==================================================================
+GeomFill_PipeError GeomFill_LocationGuide::ComputeAutomaticLaw(Handle(TColgp_HArray1OfPnt2d)& ParAndRad) const
+{
+  gp_Pnt P;
+  gp_Vec T,N,B;
+  Standard_Integer ii;
+  Standard_Real t;
+
+  GeomFill_PipeError theStatus = GeomFill_PipeOk;
+
+  Standard_Real f = myCurve->FirstParameter();
+  Standard_Real l = myCurve->LastParameter();
+
+  ParAndRad = new TColgp_HArray1OfPnt2d(1, myNbPts);
+  for (ii = 1; ii <= myNbPts; ii++)
+  {
+    t = Standard_Real(myNbPts - ii)*f + Standard_Real(ii - 1)*l;
+    t /= (myNbPts-1); 
+    myCurve->D0(t, P);
+    Standard_Boolean Ok = myLaw->D0(t, T, N, B);
+    if (!Ok)
+    {
+      theStatus = myLaw->ErrorStatus();
+      return theStatus;
+    }
+    gp_Pnt PointOnGuide = myLaw->CurrentPointOnGuide();
+    Standard_Real CurWidth = P.Distance(PointOnGuide);
+
+    gp_Pnt2d aParamWithRadius(t, CurWidth);
+    ParAndRad->SetValue(ii, aParamWithRadius);
+  }
+
+  return theStatus;
+}

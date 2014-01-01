@@ -1,23 +1,17 @@
 // Created on: 2002-05-21
 // Created by: QA Admin
-// Copyright (c) 2002-2012 OPEN CASCADE SAS
+// Copyright (c) 2002-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <QABugs.hxx>
 
@@ -112,7 +106,7 @@ static Standard_Integer OCC328bug (Draw_Interpretor& di, Standard_Integer argc, 
     return 1;
   }
 
-  Standard_Boolean updateviewer = Standard_True, PutInCollector = Standard_True;
+  Standard_Boolean updateviewer = Standard_True;
 
   ViewerTest_DoubleMapOfInteractiveAndName& aMap = GetMapOfAIS();
   
@@ -137,7 +131,7 @@ static Standard_Integer OCC328bug (Draw_Interpretor& di, Standard_Integer argc, 
       aContext->ActivateStandardMode(AIS_Shape::SelectionType(ChoosingMode));
       theactivatedmodes.Add(ChoosingMode);
     }
-    aContext->Erase(AISObj, updateviewer, PutInCollector);
+    aContext->Erase(AISObj, updateviewer);
     aContext->UpdateCurrentViewer();
 
     aContext->Display(AISObj, updateviewer);
@@ -405,7 +399,7 @@ static Standard_Integer OCC74bug_set (Draw_Interpretor& di, Standard_Integer arg
     return 1;
   }
   
-  Standard_Boolean updateviewer = Standard_True, PutInCollector = Standard_True;
+  Standard_Boolean updateviewer = Standard_True;
 
   ViewerTest_DoubleMapOfInteractiveAndName& aMap = GetMapOfAIS();
   
@@ -427,7 +421,7 @@ static Standard_Integer OCC74bug_set (Draw_Interpretor& di, Standard_Integer arg
     if (!aContext->HasOpenedContext()) {
       aContext->OpenLocalContext();
     }
-    aContext->Erase(AISObj, updateviewer, PutInCollector);
+    aContext->Erase(AISObj, updateviewer);
     aContext->UpdateCurrentViewer();
     aContext->Display(AISObj, updateviewer);
     aContext->UpdateCurrentViewer();
@@ -447,7 +441,7 @@ static Standard_Integer OCC74bug_get (Draw_Interpretor& di, Standard_Integer arg
     di << "ERROR : Usage : " << argv[0] << " shape; get selection mode" << "\n";
     return 1;
   }
-  
+
   ViewerTest_DoubleMapOfInteractiveAndName& aMap = GetMapOfAIS();
   
   TCollection_AsciiString aName(argv[1]);

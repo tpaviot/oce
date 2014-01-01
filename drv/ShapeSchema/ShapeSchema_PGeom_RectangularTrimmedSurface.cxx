@@ -40,6 +40,8 @@ void ShapeSchema_PGeom_RectangularTrimmedSurface::SWrite(const Handle(Standard_P
   if (!p.IsNull()) {
     Handle(PGeom_RectangularTrimmedSurface) &pp = (Handle(PGeom_RectangularTrimmedSurface)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPGeom_RectangularTrimmedSurfacebasisSurface(),f);
@@ -62,6 +64,8 @@ void ShapeSchema_PGeom_RectangularTrimmedSurface::SRead(const Handle(Standard_Pe
 { 
   if (!p.IsNull()) {
     Handle(PGeom_RectangularTrimmedSurface) &pp = (Handle(PGeom_RectangularTrimmedSurface)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

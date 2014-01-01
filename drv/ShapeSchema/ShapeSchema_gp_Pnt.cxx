@@ -14,6 +14,7 @@
 
 void ShapeSchema_gp_Pnt::SWrite(const gp_Pnt& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
     ShapeSchema_gp_XYZ::SWrite(pp._CSFDB_Getgp_Pntcoord(),f,theSchema);
 
@@ -22,6 +23,7 @@ void ShapeSchema_gp_Pnt::SWrite(const gp_Pnt& pp, Storage_BaseDriver& f, const H
 
 void ShapeSchema_gp_Pnt::SRead(gp_Pnt& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
 
     ShapeSchema_gp_XYZ::SRead((gp_XYZ&)pp._CSFDB_Getgp_Pntcoord(),f,theSchema);

@@ -14,6 +14,7 @@
 
 void ShapeSchema_gp_Ax3::SWrite(const gp_Ax3& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
     ShapeSchema_gp_Ax1::SWrite(pp._CSFDB_Getgp_Ax3axis(),f,theSchema);
     ShapeSchema_gp_Dir::SWrite(pp._CSFDB_Getgp_Ax3vydir(),f,theSchema);
@@ -24,6 +25,7 @@ void ShapeSchema_gp_Ax3::SWrite(const gp_Ax3& pp, Storage_BaseDriver& f, const H
 
 void ShapeSchema_gp_Ax3::SRead(gp_Ax3& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
 
     ShapeSchema_gp_Ax1::SRead((gp_Ax1&)pp._CSFDB_Getgp_Ax3axis(),f,theSchema);

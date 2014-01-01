@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepVisual_Array1OfPresentationStyleAssignment(const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_Array1OfPresentationStyleAssignment(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepVisual_Array1OfPresentationStyleAssignment(const Handle(StepVisual_PresentationStyleAssignment)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_Array1OfPresentationStyleAssignment(const Handle(StepVisual_PresentationStyleAssignment)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(StepVisual_PresentationStyleAssignment)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepVisual_Array1OfPresentationStyleAssignment()
 {
   Destroy();

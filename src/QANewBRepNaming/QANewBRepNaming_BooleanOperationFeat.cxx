@@ -1,22 +1,18 @@
 // Created on: 1999-09-27
 // Created by: Sergey ZARITCHNY
 // Copyright (c) 1999-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <QANewBRepNaming_BooleanOperationFeat.ixx>
 #include <Standard_NullObject.hxx>
@@ -75,23 +71,6 @@ static void ModDbgTools_Write(const TopoDS_Shape& shape,
   save.close();
 }
 
-static void ModDbgTools_WriteCurrentShape(const Handle(TNaming_NamedShape) & NS)
-{
-  TCollection_AsciiString entry;
-  TDF_Tool::Entry(NS->Label(), entry);
-  if (!NS.IsNull())
-    {
-      TopoDS_Shape Sh = TNaming_Tool::CurrentShape (NS);
-      if(!Sh.IsNull()) {
-	TCollection_AsciiString Entry = entry.Cat("_Cur.brep");
-	ModDbgTools_Write(Sh, Entry.ToCString());
-      }
-      else 
-	cout << "ModDbgTools::Write>>> TopoDS_Shape IS NULL on Entry = "<< entry << endl;
-    }
-  else
-    cout << "ModDbgTools::Write>>>  CurrentShape of TNaming_NamedShape IS NULL on Entry = "<< entry << endl;
-}
 #endif
 
 //=======================================================================
@@ -129,8 +108,9 @@ TDF_Label QANewBRepNaming_BooleanOperationFeat::ModifiedFaces() const {
   const TDF_Label& ModifiedFacesLabel = ResultLabel().NewChild();
   TDataStd_Name::Set(ModifiedFacesLabel, "ModifiedFaces");
   return ModifiedFacesLabel;
-#endif
+#else
   return ResultLabel().NewChild();
+#endif
 }
 
 //=======================================================================
@@ -143,8 +123,9 @@ TDF_Label QANewBRepNaming_BooleanOperationFeat::ModifiedEdges() const {
   const TDF_Label& ModifiedEdgesLabel = ResultLabel().NewChild();
   TDataStd_Name::Set(ModifiedEdgesLabel, "ModifiedEdges");
   return ModifiedEdgesLabel;
-#endif
+#else
   return ResultLabel().NewChild();
+#endif
 }
 
 //=======================================================================
@@ -157,8 +138,9 @@ TDF_Label QANewBRepNaming_BooleanOperationFeat::DeletedFaces() const {
   const TDF_Label& DeletedFacesLabel = ResultLabel().NewChild();
   TDataStd_Name::Set(DeletedFacesLabel, "DeletedFaces");
   return DeletedFacesLabel;
-#endif
+#else
   return ResultLabel().NewChild();
+#endif
 }
 
 //=======================================================================
@@ -171,8 +153,9 @@ TDF_Label QANewBRepNaming_BooleanOperationFeat::DeletedEdges() const {
   const TDF_Label& DeletedEdgesLabel = ResultLabel().NewChild();
   TDataStd_Name::Set(DeletedEdgesLabel, "DeletedEdges");
   return DeletedEdgesLabel;
-#endif
+#else
   return ResultLabel().NewChild();
+#endif
 }
 
 //=======================================================================
@@ -185,8 +168,9 @@ TDF_Label QANewBRepNaming_BooleanOperationFeat::DeletedVertices() const {
   const TDF_Label& DeletedVerticesLabel = ResultLabel().NewChild();
   TDataStd_Name::Set(DeletedVerticesLabel, "DeletedVertices");
   return DeletedVerticesLabel;
-#endif
+#else
   return ResultLabel().NewChild();
+#endif
 }
 
 //=======================================================================
@@ -199,8 +183,9 @@ TDF_Label QANewBRepNaming_BooleanOperationFeat::NewShapes() const {
   const TDF_Label& NewShapesLabel = ResultLabel().NewChild();
   TDataStd_Name::Set(NewShapesLabel, "NewShapes");
   return NewShapesLabel;
-#endif
+#else
   return ResultLabel().NewChild();
+#endif
 }
 
 //=======================================================================
@@ -213,8 +198,9 @@ TDF_Label QANewBRepNaming_BooleanOperationFeat::Content() const {
   const TDF_Label& ContentLabel = ResultLabel().NewChild();
   TDataStd_Name::Set(ContentLabel, "Content");
   return ContentLabel;
-#endif
+#else
   return ResultLabel().NewChild();
+#endif
 }
 
 //=======================================================================
@@ -227,8 +213,9 @@ TDF_Label QANewBRepNaming_BooleanOperationFeat::DeletedDegeneratedEdges() const 
   const TDF_Label& DegeneratedLabel = ResultLabel().NewChild();
   TDataStd_Name::Set(DegeneratedLabel, "DeletedDegeneratedEdges");
   return DegeneratedLabel;
-#endif
+#else
   return ResultLabel().NewChild();
+#endif
 }
 
 //=======================================================================
@@ -523,7 +510,7 @@ void QANewBRepNaming_BooleanOperationFeat::LoadModified11 (BRepAlgoAPI_BooleanOp
   for (; ShapeExplorer.More(); ShapeExplorer.Next ()) {
     const TopoDS_Shape& Root = ShapeExplorer.Current ();
     if (!View.Add(Root)) continue;
-    const TopTools_ListOfShape& Shapes = MS.Modified2 (Root);
+    const TopTools_ListOfShape& Shapes = MS.Modified (Root);
     if(Shapes.Extent() == 1) {found = Standard_True; break;}
   }
     
@@ -534,7 +521,7 @@ void QANewBRepNaming_BooleanOperationFeat::LoadModified11 (BRepAlgoAPI_BooleanOp
     for (; ShapeExplorer.More(); ShapeExplorer.Next ()) {
       const TopoDS_Shape& Root = ShapeExplorer.Current ();
       if (!View.Add(Root)) continue;
-      const TopTools_ListOfShape& Shapes = MS.Modified2 (Root);
+      const TopTools_ListOfShape& Shapes = MS.Modified (Root);
       if(Shapes.Extent() > 1) continue;
       TopTools_ListIteratorOfListOfShape ShapesIterator (Shapes);
       for (;ShapesIterator.More (); ShapesIterator.Next ()) {
@@ -629,7 +616,7 @@ static void Sort3Faces(const TopTools_ListOfShape& theListIn, TopTools_ListOfSha
   }
 
   Standard_Boolean found = Standard_False;
-  Standard_Integer j, i1, i2, i3; 
+  Standard_Integer j, i1 = 0, i2 = 0, i3 = 0; 
   TopoDS_Edge anEdge;
   for(i=1;i<=3;i++) {
     TopExp_Explorer anExp1(ArS.Value(i), TopAbs_EDGE);
@@ -690,7 +677,7 @@ void QANewBRepNaming_BooleanOperationFeat::Load1nFaces(BRepAlgoAPI_BooleanOperat
   for (; ShapeExplorer.More(); ShapeExplorer.Next ()) {
     const TopoDS_Shape& Root = ShapeExplorer.Current ();
     if (!View.Add(Root)) continue;
-    const TopTools_ListOfShape& Shapes = MS.Modified2 (Root);
+    const TopTools_ListOfShape& Shapes = MS.Modified (Root);
     if(Shapes.Extent() < 2) continue; 
     aListR.Append(Root);
   }
@@ -700,7 +687,7 @@ void QANewBRepNaming_BooleanOperationFeat::Load1nFaces(BRepAlgoAPI_BooleanOperat
   TopTools_ListIteratorOfListOfShape Itr(aListR);
   for(;Itr.More();Itr.Next()) {
     const TopoDS_Shape& Root = Itr.Value();
-    const TopTools_ListOfShape& Shapes = MS.Modified2 (Root);
+    const TopTools_ListOfShape& Shapes = MS.Modified (Root);
     TopTools_ListOfShape aList;
     gp_Ax1 anAx = ComputeAxis(MS.Shape2());	
     if(Shapes.Extent() == 2)
@@ -733,7 +720,7 @@ void QANewBRepNaming_BooleanOperationFeat::LoadModified1n (BRepAlgoAPI_BooleanOp
   for (; ShapeExplorer.More(); ShapeExplorer.Next ()) {
     const TopoDS_Shape& Root = ShapeExplorer.Current ();
     if (!View.Add(Root)) continue;
-    const TopTools_ListOfShape& Shapes = MS.Modified2 (Root);
+    const TopTools_ListOfShape& Shapes = MS.Modified (Root);
     if(Shapes.Extent() >= 2) aNum += Shapes.Extent();
   }
   
@@ -743,7 +730,7 @@ void QANewBRepNaming_BooleanOperationFeat::LoadModified1n (BRepAlgoAPI_BooleanOp
   for (; ShapeExplorer.More(); ShapeExplorer.Next ()) {
     const TopoDS_Shape& Root = ShapeExplorer.Current ();
     if (!View.Add(Root)) continue;
-    const TopTools_ListOfShape& Shapes = MS.Modified2 (Root);
+    const TopTools_ListOfShape& Shapes = MS.Modified (Root);
     if(Shapes.Extent() >= 2) aNum += Shapes.Extent();
   }
 
@@ -849,7 +836,7 @@ static void SortEdges2(const TColgp_Array1OfPnt& theArP, const gp_Ax1& theAx,
 static void SortEdges3(const TopTools_Array1OfShape& theArS, const TColgp_Array1OfPnt& theArP, 
 		       const gp_Ax1& theAx, TColStd_Array1OfInteger& theArI)
 {
-  Standard_Integer i, j, i1,i2, i3;
+  Standard_Integer i, j, i1 = 0,i2 = 0, i3 = 0;
   TopoDS_Shape aV;
   Standard_Boolean adjacent = Standard_False;
   for(i=1;i<=3;i++) {    
@@ -919,13 +906,13 @@ static void SortEdges4(const TopTools_Array1OfShape& theArS, const TColgp_Array1
 // 2. find nearest pair, reorganize ArI
 // 3. sort inside pairs
 // =======================================
-  Standard_Integer i, j, i1,i2, i3, i4;
+  Standard_Integer i, j, i1 = 0,i2 = 0, i3 = 0, i4 = 0;
 // 1.
   TopoDS_Shape aV1;
   for(i=1;i<=4;i++) { 
     const TopoDS_Shape& aV11 = TopExp::FirstVertex(TopoDS::Edge(theArS.Value(i)));
     const TopoDS_Shape& aV12 = TopExp::LastVertex(TopoDS::Edge(theArS.Value(i)));
-    Standard_Boolean aDjacent;
+    Standard_Boolean aDjacent = Standard_False;
     for(j=1;j<=4;j++) {
       if(i==j) continue;
       const TopoDS_Shape& aV21 = TopExp::FirstVertex(TopoDS::Edge(theArS.Value(j)));
@@ -1174,7 +1161,7 @@ static void FindAdjacent3(const TopTools_ListOfShape& theList,
     ArD.SetValue(i, anAx.Direction());
   }
   Standard_Boolean aDjacent = Standard_False;
-  Standard_Integer j, i2, i3; //i2, i3 - indexes of two adjacent faces having the same surface
+  Standard_Integer j, i2 = 0, i3 = 0; //i2, i3 - indexes of two adjacent faces having the same surface
   Standard_Integer i1 = 0; //single face
   for(i=1;i<=3;i++) {    
     for(j=1;j<=3;j++) {

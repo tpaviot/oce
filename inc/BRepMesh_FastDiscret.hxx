@@ -73,8 +73,14 @@
 #ifndef _BRepMesh_ClassifierPtr_HeaderFile
 #include <BRepMesh_ClassifierPtr.hxx>
 #endif
+#ifndef _BRepMesh_Delaun_HeaderFile
+#include <BRepMesh_Delaun.hxx>
+#endif
 #ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
+#endif
+#ifndef _BRepMesh_Triangle_HeaderFile
+#include <BRepMesh_Triangle.hxx>
 #endif
 #ifndef _BRepMesh_MapOfInteger_HeaderFile
 #include <BRepMesh_MapOfInteger.hxx>
@@ -93,8 +99,6 @@ class Geom2d_Curve;
 class TopoDS_Vertex;
 class BRepMesh_ListOfVertex;
 class TColStd_ListOfInteger;
-class BRepMesh_Delaun;
-class BRepMesh_Triangle;
 class BRepMesh_Edge;
 class BRepMesh_Vertex;
 class gp_Pnt;

@@ -41,6 +41,8 @@ void ShapeSchema_PGeom_BezierCurve::SWrite(const Handle(Standard_Persistent)& p,
   if (!p.IsNull()) {
     Handle(PGeom_BezierCurve) &pp = (Handle(PGeom_BezierCurve)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutBoolean(pp->_CSFDB_GetPGeom_BezierCurverational());
@@ -61,6 +63,8 @@ void ShapeSchema_PGeom_BezierCurve::SRead(const Handle(Standard_Persistent)& p, 
 { 
   if (!p.IsNull()) {
     Handle(PGeom_BezierCurve) &pp = (Handle(PGeom_BezierCurve)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

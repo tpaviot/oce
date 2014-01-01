@@ -42,6 +42,10 @@ public:
 //! to the one integer value, that is returned <br>
       static  Standard_Integer TypeToInteger(const TopAbs_ShapeEnum theT1,const TopAbs_ShapeEnum theT2) ;
   
+//! Converts the type of shape <theT>, <br>
+//! to integer value, that is returned <br>
+      static  Standard_Integer TypeToInteger(const TopAbs_ShapeEnum theT) ;
+  
 //! Returns true if the type  <theT> correspond <br>
 //! to a shape having boundary representation <br>
       static  Standard_Boolean HasBRep(const TopAbs_ShapeEnum theT) ;

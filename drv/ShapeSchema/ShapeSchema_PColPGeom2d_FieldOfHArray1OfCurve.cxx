@@ -23,11 +23,11 @@ void ShapeSchema_PColPGeom2d_FieldOfHArray1OfCurve::SAdd(const PColPGeom2d_Field
 
 void ShapeSchema_PColPGeom2d_FieldOfHArray1OfCurve::SWrite(const PColPGeom2d_FieldOfHArray1OfCurve& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
-  Standard_Integer i;
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
 
   f.BeginWriteObjectData();
   f.PutInteger(pp.Length());
-  for (i = 0; i < pp.Length(); i++) {
+  for (Standard_Integer i = 0; i < pp.Length(); i++) {
     theSchema->WritePersistentReference(pp.Value(i),f);
 
   }
@@ -36,6 +36,7 @@ void ShapeSchema_PColPGeom2d_FieldOfHArray1OfCurve::SWrite(const PColPGeom2d_Fie
 
 void ShapeSchema_PColPGeom2d_FieldOfHArray1OfCurve::SRead(PColPGeom2d_FieldOfHArray1OfCurve& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
   Standard_Integer size = 0;
 
   f.BeginReadObjectData();

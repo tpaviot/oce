@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepGeom_Array1OfBoundaryCurve(const Standard_Integer Low,const Standard_Integer Up);
+      StepGeom_Array1OfBoundaryCurve(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepGeom_Array1OfBoundaryCurve(const Handle(StepGeom_BoundaryCurve)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepGeom_Array1OfBoundaryCurve(const Handle(StepGeom_BoundaryCurve)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(StepGeom_BoundaryCurve)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepGeom_Array1OfBoundaryCurve()
 {
   Destroy();

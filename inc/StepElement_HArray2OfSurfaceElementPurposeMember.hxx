@@ -42,11 +42,11 @@ class StepElement_HArray2OfSurfaceElementPurposeMember : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(StepElement_SurfaceElementPurposeMember)& V);
+      StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(StepElement_SurfaceElementPurposeMember)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepElement_SurfaceElementPurposeMember)& V) ;
+        void Init(const Handle(StepElement_SurfaceElementPurposeMember)& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -62,9 +62,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(StepElement_SurfaceElementPurposeMember)& Value) ;
   
-  Standard_EXPORT    const Handle_StepElement_SurfaceElementPurposeMember& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const Handle_StepElement_SurfaceElementPurposeMember& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     Handle_StepElement_SurfaceElementPurposeMember& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        Handle_StepElement_SurfaceElementPurposeMember& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const StepElement_Array2OfSurfaceElementPurposeMember& Array2() const;
   

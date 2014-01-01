@@ -1,31 +1,7 @@
-/*
- Copyright (c) 1999-2012 OPEN CASCADE SAS
 
- The content of this file is subject to the Open CASCADE Technology Public
- License Version 6.5 (the "License"). You may not use the content of this file
- except in compliance with the License. Please obtain a copy of the License
- at http://www.opencascade.org and read it completely before using this file.
-
- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
-
- The Original Code and all software distributed under the License is
- distributed on an "AS IS" basis, without warranty of any kind, and the
- Initial Developer hereby disclaims all such warranties, including without
- limitation, any warranties of merchantability, fitness for a particular
- purpose or non-infringement. Please see the License for the specific terms
- and conditions governing the rights and limitations under the License.
-
-*/
-
-/*  A Bison parser, made from j:/kas/c40/ros/src/exprintrp/exprintrp.yacc
+/*  A Bison parser, made from /dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc
  by  GNU Bison version 1.25
   */
-
-/* Disable warnings in this auto-generated file */
-#ifdef _MSC_VER
-#pragma warning(push,0)
-#endif
 
 #define YYBISON 1  /* Identify Bison output.  */
 
@@ -59,7 +35,7 @@
 #define	SUMKEY	278
 #define	PRODKEY	279
 
-#line 1 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 17 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 
 extern void ExprIntrp_EndOfFuncDef();
 extern void ExprIntrp_EndOfRelation();
@@ -104,7 +80,16 @@ extern void ExprIntrp_Sumator();
 extern void ExprIntrp_VariableIdentifier();
 extern void ExprIntrp_Productor();
 extern void ExprIntrp_EndOfEqual();
-#line 52 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+
+extern void ExprIntrperror(char* msg);
+extern int  ExprIntrplex(void);
+
+// disable MSVC warnings in bison code
+#ifdef _MSC_VER
+#pragma warning(disable:4131 4244)
+#endif
+
+#line 77 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 
 #ifndef YYSTYPE
 #define YYSTYPE int
@@ -197,13 +182,13 @@ static const short yyrhs[] = {    31,
 
 #if YYDEBUG != 0
 static const short yyrline[] = { 0,
-    56,    57,    58,    59,    60,    63,    63,    66,    67,    69,
-    70,    71,    72,    73,    74,    75,    76,    77,    78,    79,
-    80,    81,    84,    85,    89,    90,    93,    94,    95,    95,
-    98,    99,   100,   102,   105,   105,   108,   108,   111,   112,
-   112,   112,   115,   116,   119,   119,   122,   123,   124,   126,
-   129,   129,   130,   130,   130,   133,   133,   134,   136,   136,
-   136,   139,   139,   139,   142,   143,   144,   147
+    81,    82,    83,    84,    85,    88,    88,    91,    92,    94,
+    95,    96,    97,    98,    99,   100,   101,   102,   103,   104,
+   105,   106,   109,   110,   114,   115,   118,   119,   120,   120,
+   123,   124,   125,   127,   130,   130,   133,   133,   136,   137,
+   137,   137,   140,   141,   144,   144,   147,   148,   149,   151,
+   154,   154,   155,   155,   155,   158,   158,   159,   161,   161,
+   161,   164,   164,   164,   167,   168,   169,   172
 };
 #endif
 
@@ -364,7 +349,7 @@ static const short yycheck[] = {     0,
 #ifdef __GNUC__
 #define alloca __builtin_alloca
 #else /* not GNU C.  */
-#if (!defined (__STDC__) && defined (sparc)) || defined (__sparc__) || defined (__sparc) || defined (__sgi)
+#if (!defined (__STDC__) && defined (sparc)) || defined (__sparc__) || defined (__sparc)
 #include <alloca.h>
 #else /* not sparc */
 #if (  defined( MSDOS ) || defined( WNT )  ) && !defined (__TURBOC__)
@@ -373,11 +358,6 @@ static const short yycheck[] = {     0,
 #if defined(_AIX)
 #include <malloc.h>
  #pragma alloca
-#else /* not MSDOS, __TURBOC__, or _AIX */
-#ifdef __hpux
-#include <malloc.h>
-#define alloca malloc
-#endif /* __hpux */
 #endif /* not _AIX */
 #endif /* not MSDOS, or __TURBOC__ */
 #endif /* not sparc.  */
@@ -427,18 +407,10 @@ while (0)
 
 #ifdef YYPURE
 #ifdef YYLSP_NEEDED
-#ifdef YYLEX_PARAM
-#define YYLEX		yylex(&yylval, &yylloc, YYLEX_PARAM)
-#else
 #define YYLEX		yylex(&yylval, &yylloc)
-#endif
-#else /* not YYLSP_NEEDED */
-#ifdef YYLEX_PARAM
-#define YYLEX		yylex(&yylval, YYLEX_PARAM)
 #else
 #define YYLEX		yylex(&yylval)
 #endif
-#endif /* not YYLSP_NEEDED */
 #endif
 
 /* If nonreentrant, generate the variables here */
@@ -479,45 +451,24 @@ int yydebug;			/*  nonzero means print parse trace	*/
 #ifndef YYMAXDEPTH
 #define YYMAXDEPTH 10000
 #endif
-
-/* Prevent warning if -Wstrict-prototypes.  */
-#ifdef __GNUC__
-int yyparse (void);
-#endif
 
 #if __GNUC__ > 1		/* GNU C and GNU C++ define this.  */
-#if defined( WNT )
 #define __yy_bcopy(FROM,TO,COUNT)	__builtin_memcpy(TO,FROM,COUNT)
-#else				/* not GNU C or C++ */
-#define __yy_memcpy(TO,FROM,COUNT)	__builtin_memcpy(TO,FROM,COUNT)
-#endif
 #else				/* not GNU C or C++ */
 #ifndef __cplusplus
 
 /* This is the most reliable way to avoid incompatibilities
    in available built-in functions on various systems.  */
 static void
-#if defined( WNT )
 __yy_bcopy (__from, __to, __count)
      char *__from;
      char *__to;
      int __count;
-#else
-__yy_memcpy (to, from, count)
-     char *to;
-     char *from;
-     int count;
-#endif
 {
-#ifdef WNT 
   register char *f = __from;
   register char *t = __to;
   register int i = __count;
-#else
-  register char *f = from;
-  register char *t = to;
-  register int i = count;
-#endif
+
   while (i-- > 0)
     *t++ = *f++;
 }
@@ -527,21 +478,11 @@ __yy_memcpy (to, from, count)
 /* This is the most reliable way to avoid incompatibilities
    in available built-in functions on various systems.  */
 static void
-#if defined(WNT)
 __yy_bcopy (char *__from, char *__to, int __count)
-#else
-__yy_memcpy (char *to, char *from, int count)
-#endif
 {
-#if defined(WNT)
   register char *f = __from;
   register char *t = __to;
   register int i = __count;
-#else
-  register char *f = from;
-  register char *t = to;
-  register int i = count;
-#endif
 
   while (i-- > 0)
     *t++ = *f++;
@@ -550,41 +491,16 @@ __yy_memcpy (char *to, char *from, int count)
 #endif
 #endif
 
-#line 196 "/PRODUCTS/flexbis-253-125/share/bison.simple"
-
-/* The user can define YYPARSE_PARAM as the name of an argument to be passed
-   into yyparse.  The argument should have type void *.
-   It should actually point to an object.
-   Grammar actions can access the variable by casting it
-   to the proper pointer type.  */
-
-#ifdef YYPARSE_PARAM
-#ifdef __cplusplus
-#define YYPARSE_PARAM_ARG void *YYPARSE_PARAM
-#define YYPARSE_PARAM_DECL
-#else /* not __cplusplus */
-#define YYPARSE_PARAM_ARG YYPARSE_PARAM
-#define YYPARSE_PARAM_DECL void *YYPARSE_PARAM;
-#endif /* not __cplusplus */
-#else /* not YYPARSE_PARAM */
-#define YYPARSE_PARAM_ARG
-#define YYPARSE_PARAM_DECL
-#endif /* not YYPARSE_PARAM */
-
+#line 169 "bison.simple"
 int
-#if defined(WNT)
 yyparse()
-#else
-yyparse(YYPARSE_PARAM_ARG)
-     YYPARSE_PARAM_DECL
-#endif
 {
   register int yystate;
   register int yyn;
   register short *yyssp;
   register YYSTYPE *yyvsp;
   int yyerrstatus;	/*  number of tokens to shift before error messages enabled */
-  int yychar1 = 0;		/*  lookahead token as an internal (translated) token number */
+  int yychar1;		/*  lookahead token as an internal (translated) token number */
 
   short	yyssa[YYINITDEPTH];	/*  the state stack			*/
   YYSTYPE yyvsa[YYINITDEPTH];	/*  the semantic value stack		*/
@@ -663,20 +579,13 @@ yynewstate:
 #ifdef yyoverflow
       /* Each stack pointer address is followed by the size of
 	 the data in use in that stack, in bytes.  */
+      yyoverflow("parser stack overflow",
+		 &yyss1, size * sizeof (*yyssp),
+		 &yyvs1, size * sizeof (*yyvsp),
 #ifdef YYLSP_NEEDED
-      /* This used to be a conditional around just the two extra args,
-	 but that might be undefined if yyoverflow is a macro.  */
-      yyoverflow("parser stack overflow",
-		 &yyss1, size * sizeof (*yyssp),
-		 &yyvs1, size * sizeof (*yyvsp),
 		 &yyls1, size * sizeof (*yylsp),
-		 &yystacksize);
-#else
-      yyoverflow("parser stack overflow",
-		 &yyss1, size * sizeof (*yyssp),
-		 &yyvs1, size * sizeof (*yyvsp),
-		 &yystacksize);
 #endif
+		 &yystacksize);
 
       yyss = yyss1; yyvs = yyvs1;
 #ifdef YYLSP_NEEDED
@@ -693,24 +602,12 @@ yynewstate:
       if (yystacksize > YYMAXDEPTH)
 	yystacksize = YYMAXDEPTH;
       yyss = (short *) alloca (yystacksize * sizeof (*yyssp));
-#if defined(WNT)
       __yy_bcopy ((char *)yyss1, (char *)yyss, size * sizeof (*yyssp));
-#else
-      __yy_memcpy ((char *)yyss, (char *)yyss1, size * sizeof (*yyssp));
-#endif
       yyvs = (YYSTYPE *) alloca (yystacksize * sizeof (*yyvsp));
-#if defined(WNT)
       __yy_bcopy ((char *)yyvs1, (char *)yyvs, size * sizeof (*yyvsp));
-#else
-      __yy_memcpy ((char *)yyvs, (char *)yyvs1, size * sizeof (*yyvsp));
-#endif
 #ifdef YYLSP_NEEDED
       yyls = (YYLTYPE *) alloca (yystacksize * sizeof (*yylsp));
-#if defined(WNT)
       __yy_bcopy ((char *)yyls1, (char *)yyls, size * sizeof (*yylsp));
-#else
-      __yy_memcpy ((char *)yyls, (char *)yyls1, size * sizeof (*yylsp));
-#endif
 #endif
 #endif /* no yyoverflow */
 
@@ -849,8 +746,7 @@ yydefault:
 /* Do a reduction.  yyn is the number of a rule to reduce with.  */
 yyreduce:
   yylen = yyr2[yyn];
-  if (yylen > 0)
-    yyval = yyvsp[1-yylen]; /* implement default value of the action */
+  yyval = yyvsp[1-yylen]; /* implement default value of the action */
 
 #if YYDEBUG != 0
   if (yydebug)
@@ -871,187 +767,187 @@ yyreduce:
   switch (yyn) {
 
 case 4:
-#line 59 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 84 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndOfFuncDef();;
     break;}
 case 5:
-#line 60 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 85 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndOfRelation();;
     break;}
 case 6:
-#line 63 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 88 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_AssignVariable();;
     break;}
 case 7:
-#line 63 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 88 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndOfAssign();;
     break;}
 case 8:
-#line 66 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 91 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_Deassign();;
     break;}
 case 10:
-#line 69 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 94 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_SumOperator();;
     break;}
 case 11:
-#line 70 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 95 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_MinusOperator();;
     break;}
 case 12:
-#line 71 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 96 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_ProductOperator();;
     break;}
 case 13:
-#line 72 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 97 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_DivideOperator();;
     break;}
 case 14:
-#line 73 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 98 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_ExpOperator();;
     break;}
 case 17:
-#line 76 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 101 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_UnaryMinusOperator();;
     break;}
 case 25:
-#line 89 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 114 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_VariableIdentifier();;
     break;}
 case 26:
-#line 90 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 115 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_NumValue();;
     break;}
 case 27:
-#line 93 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 118 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndFunction();;
     break;}
 case 28:
-#line 94 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 119 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndDerFunction();;
     break;}
 case 29:
-#line 95 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 120 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndDifferential();;
     break;}
 case 30:
-#line 95 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 120 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndDiffFunction();;
     break;}
 case 31:
-#line 98 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 123 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndFuncArg();;
     break;}
 case 32:
-#line 99 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 124 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_NextFuncArg();;
     break;}
 case 34:
-#line 102 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 127 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_StartFunction();;
     break;}
 case 35:
-#line 105 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 130 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_DefineFunction();;
     break;}
 case 37:
-#line 108 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 133 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_StartDerivate();;
     break;}
 case 38:
-#line 108 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 133 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndDerivate();;
     break;}
 case 39:
-#line 111 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 136 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_DiffVar();;
     break;}
 case 40:
-#line 112 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 137 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_DiffDegree();;
     break;}
 case 41:
-#line 112 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 137 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_VerDiffDegree();;
     break;}
 case 42:
-#line 112 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 137 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_DiffDegreeVar();;
     break;}
 case 43:
-#line 115 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 140 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_StartDifferential();;
     break;}
 case 45:
-#line 119 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 144 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_StartFunction();;
     break;}
 case 47:
-#line 122 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 147 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndFuncArg();;
     break;}
 case 48:
-#line 123 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 148 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_NextFuncArg();;
     break;}
 case 50:
-#line 126 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 151 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_VariableIdentifier();;
     break;}
 case 51:
-#line 129 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 154 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_Derivation();;
     break;}
 case 52:
-#line 129 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 154 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndDerivation();;
     break;}
 case 53:
-#line 130 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 155 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_Derivation();;
     break;}
 case 54:
-#line 130 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 155 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_DerivationValue();;
     break;}
 case 55:
-#line 130 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 155 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndDerivation();;
     break;}
 case 56:
-#line 133 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 158 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_ConstantIdentifier();;
     break;}
 case 57:
-#line 133 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 158 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_ConstantDefinition();;
     break;}
 case 59:
-#line 136 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 161 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_VariableIdentifier();;
     break;}
 case 60:
-#line 136 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 161 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_NumValue();;
     break;}
 case 61:
-#line 136 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 161 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_Sumator();;
     break;}
 case 62:
-#line 139 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 164 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_VariableIdentifier();;
     break;}
 case 63:
-#line 139 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 164 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_NumValue();;
     break;}
 case 64:
-#line 139 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 164 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_Productor();;
     break;}
 case 68:
-#line 147 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+#line 172 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"
 {ExprIntrp_EndOfEqual();;
     break;}
 }
@@ -1126,9 +1022,7 @@ yyerrlab:   /* here on detecting error */
 	  int x, count;
 
 	  count = 0;
-	  /* Start X at -yyn if nec to avoid negative indexes in yycheck.  */
-	  for (x = (yyn < 0 ? -yyn : 0);
-	       x < (sizeof(yytname) / sizeof(char *)); x++)
+	  for (x = 0; x < (sizeof(yytname) / sizeof(char *)); x++)
 	    if (yycheck[x + yyn] == x)
 	      size += strlen(yytname[x]) + 15, count++;
 	  msg = (char *) malloc(size + 15);
@@ -1139,8 +1033,7 @@ yyerrlab:   /* here on detecting error */
 	      if (count < 5)
 		{
 		  count = 0;
-		  for (x = (yyn < 0 ? -yyn : 0);
-		       x < (sizeof(yytname) / sizeof(char *)); x++)
+		  for (x = 0; x < (sizeof(yytname) / sizeof(char *)); x++)
 		    if (yycheck[x + yyn] == x)
 		      {
 			strcat(msg, count == 0 ? ", expecting `" : " or `");
@@ -1252,8 +1145,4 @@ yyerrhandle:
   yystate = yyn;
   goto yynewstate;
 }
-#line 150 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
+#line 175 "/dn61/LocalWOK/wok_entities/LOC/dev/CR670-IR2-master-occt/src/ExprIntrp/ExprIntrp.yacc"

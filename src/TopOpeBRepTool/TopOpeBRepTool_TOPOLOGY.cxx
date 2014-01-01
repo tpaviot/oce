@@ -1,23 +1,18 @@
 // Created on: 1998-10-06
 // Created by: Jean Yves LEBEY
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Geom_Curve.hxx>
 #include <Geom_TrimmedCurve.hxx>
@@ -1047,7 +1042,11 @@ Standard_EXPORT Standard_Boolean FUN_tool_pcurveonF(const TopoDS_Face& fF,TopoDS
       
       Standard_Real tole = BRep_Tool::Tolerance(e);
       TopoDS_Vertex vf,vl; TopExp::Vertices(e,vf,vl);
+
       TopoDS_Edge newe = faultyE;
+//      TopoDS_Edge newe; FUN_ds_CopyEdge(e,newe); newe.Orientation(TopAbs_FORWARD);
+//      vf.Orientation(TopAbs_FORWARD);  BB.Add(newe,vf); FUN_ds_Parameter(newe,vf,parf); 
+//      vl.Orientation(TopAbs_REVERSED); BB.Add(newe,vl); FUN_ds_Parameter(newe,vl,parl);
       BB.UpdateEdge(newe,C2d,fF,tole);
       newe.Orientation(e.Orientation());
       loe.Append(newe);  
@@ -1173,7 +1172,9 @@ Standard_EXPORT void FUN_ds_Parameter(const TopoDS_Shape& E,const TopoDS_Shape& 
   Handle(Geom_Curve) C = BRep_Tool::Curve(e,loc,f,l);
   if ( !C.IsNull() && C->IsPeriodic()) {
     Standard_Real per = C->Period();
+
     TopAbs_Orientation oV=TopAbs_FORWARD;
+
     TopExp_Explorer exV(e,TopAbs_VERTEX);
     for (; exV.More(); exV.Next()) {
       const TopoDS_Vertex& vofe = TopoDS::Vertex(exV.Current());

@@ -1,27 +1,23 @@
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Extrema_ExtPElS.ixx>
 #include <StdFail_NotDone.hxx>
 #include <Standard_OutOfRange.hxx>
 #include <Standard_NotImplemented.hxx>
 #include <ElSLib.hxx>
+static const Standard_Real ExtPElS_MyEps = Epsilon(2. * M_PI);
 //=============================================================================
 
 Extrema_ExtPElS::Extrema_ExtPElS () { myDone = Standard_False; }
@@ -70,6 +66,7 @@ void Extrema_ExtPElS::Perform(const gp_Pnt&       P,
   if (OPp.Magnitude() < Tol) { return; }
   gp_Vec myZ = Pos.XDirection()^Pos.YDirection();
   Standard_Real U1 = gp_Vec(Pos.XDirection()).AngleWithRef(OPp,myZ); //-M_PI<U1<M_PI
+  if (U1 > -ExtPElS_MyEps && U1 < ExtPElS_MyEps) { U1 = 0.; }
   Standard_Real U2 = U1 + M_PI;
   if (U1 < 0.) { U1 += 2. * M_PI; }
 
@@ -164,6 +161,7 @@ void Extrema_ExtPElS::Perform(const gp_Pnt&       P,
   Standard_Real B, U1, V1, U2, V2;
   Standard_Boolean Same = DirZ.Dot(MP) >= 0.0;
   U1 = gp_Vec(Pos.XDirection()).AngleWithRef(OPp,myZ); //-M_PI<U1<M_PI
+  if (U1 > -ExtPElS_MyEps && U1 < ExtPElS_MyEps) { U1 = 0.; }
   B = MP.Angle(DirZ);
   if (!Same) { U1 += M_PI; }
   U2 = U1 + M_PI;
@@ -257,6 +255,7 @@ void Extrema_ExtPElS::Perform(const gp_Pnt&       P,
   else {
     gp_Vec myZ = Pos.XDirection()^Pos.YDirection();
     U1 = gp_Vec(Pos.XDirection()).AngleWithRef(OPp,myZ);
+    if (U1 > -ExtPElS_MyEps && U1 < ExtPElS_MyEps) { U1 = 0.; }
     U2 = U1 + M_PI;
     if (U1 < 0.) { U1 += 2. * M_PI; }
     V = OP.Angle(OPp);
@@ -321,6 +320,7 @@ void Extrema_ExtPElS::Perform(const gp_Pnt&       P,
  
   gp_Vec myZ = Pos.XDirection()^Pos.YDirection();
   Standard_Real U1 = gp_Vec(Pos.XDirection()).AngleWithRef(OPp,myZ);
+  if (U1 > -ExtPElS_MyEps && U1 < ExtPElS_MyEps) { U1 = 0.; }
   Standard_Real U2 = U1 + M_PI;
   if (U1 < 0.) { U1 += 2. * M_PI; }
   Standard_Real R = sqrt(R2);
@@ -333,7 +333,10 @@ void Extrema_ExtPElS::Perform(const gp_Pnt&       P,
   if(O2.SquareDistance(P) < Tol) { return; }
 
   Standard_Real V1 = OO1.AngleWithRef(gp_Vec(O1,P),OO1.Crossed(OZ));
+  if (V1 > -ExtPElS_MyEps && V1 < ExtPElS_MyEps) { V1 = 0.; }
   Standard_Real V2 = OO2.AngleWithRef(gp_Vec(P,O2),OO2.Crossed(OZ));
+  if (V2 > -ExtPElS_MyEps && V2 < ExtPElS_MyEps) { V2 = 0.; }
+
   if (V1 < 0.) { V1 += 2. * M_PI; }
   if (V2 < 0.) { V2 += 2. * M_PI; }
 
@@ -408,7 +411,7 @@ Standard_Real Extrema_ExtPElS::SquareDistance (const Standard_Integer N) const
 }
 //=============================================================================
 
-Extrema_POnSurf Extrema_ExtPElS::Point (const Standard_Integer N) const
+const Extrema_POnSurf& Extrema_ExtPElS::Point (const Standard_Integer N) const
 {
   if (!IsDone()) { StdFail_NotDone::Raise(); }
   if ((N < 1) || (N > myNbExt)) { Standard_OutOfRange::Raise(); }

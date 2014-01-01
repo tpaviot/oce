@@ -19,6 +19,9 @@
 #ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
 #endif
+#ifndef _TopAbs_Orientation_HeaderFile
+#include <TopAbs_Orientation.hxx>
+#endif
 #ifndef _BOPAlgo_BuilderArea_HeaderFile
 #include <BOPAlgo_BuilderArea.hxx>
 #endif
@@ -45,6 +48,8 @@ Standard_EXPORT virtual ~BOPAlgo_BuilderFace();
   Standard_EXPORT    const TopoDS_Face& Face() const;
   //!  Performs the algorithm <br>
   Standard_EXPORT   virtual  void Perform() ;
+  
+  Standard_EXPORT     TopAbs_Orientation Orientation() const;
 
 
 
@@ -71,6 +76,7 @@ protected:
 
 
 TopoDS_Face myFace;
+TopAbs_Orientation myOrientation;
 
 
 private:

@@ -1,23 +1,18 @@
 // Created on: 1996-09-03
 // Created by: Yves FRICAUD
 // Copyright (c) 1996-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //  Modified by skv - Wed Dec 24 18:08:39 2003 OCC4455
 
@@ -299,9 +294,7 @@ static void EdgeInter(const TopoDS_Face&              F,
   Standard_Real f[3],l[3];
   Standard_Real TolDub = 1.e-7;
   Standard_Integer i;
-#ifdef DEB
-  Standard_Real MilTol2 = 1000*Tol*Tol;
-#endif
+
   BRep_Tool::Range(E1, f[1], l[1]);
   BRep_Tool::Range(E2, f[2], l[2]);
 
@@ -401,6 +394,7 @@ static void EdgeInter(const TopoDS_Face&              F,
 	      cout << "out of limit"<<endl;
 	      cout<<"aT2 = "<<aT2<<", f[2] = "<<f[2]<<", l[2] = "<<l[2]<<endl;
 	    }
+          Standard_Real MilTol2 = 1000*Tol*Tol;
 	  if (P1.SquareDistance(P) >  MilTol2 || P2.SquareDistance(P) > MilTol2 || P1.Distance(P2) > 2.*Tol)
 	    {
 	      cout << "Inter2d : Solution rejected "<<endl;
@@ -572,9 +566,7 @@ static void RefEdgeInter(const TopoDS_Face&              F,
   Standard_Real f[3],l[3];
   Standard_Real TolDub = 1.e-7;
   Standard_Integer i;
-#ifdef DEB
-  Standard_Real MilTol2 = 1000*Tol*Tol;
-#endif
+
   //BRep_Tool::Range(E1, f[1], l[1]);
   //BRep_Tool::Range(E2, f[2], l[2]);
 
@@ -671,6 +663,7 @@ static void RefEdgeInter(const TopoDS_Face&              F,
 	  cout << "out of limit"<<endl;
 	  cout<<"aT2 = "<<aT2<<", f[2] = "<<f[2]<<", l[2] = "<<l[2]<<endl;
 	}
+      Standard_Real MilTol2 = 1000*Tol*Tol;
       if (P1.SquareDistance(P) >  MilTol2 || P2.SquareDistance(P) > MilTol2 || P1.Distance(P2) > 2.*Tol)
 	{
 	  cout << "Inter2d : Solution rejected"<<endl;

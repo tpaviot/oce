@@ -1,23 +1,18 @@
 // Created on: 1996-10-17
 // Created by: Odile OLIVIER
 // Copyright (c) 1996-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Select3D_SensitiveWire.ixx>
 #include <SelectBasics_BasicTool.hxx>
@@ -39,9 +34,8 @@
 
 Select3D_SensitiveWire::
 Select3D_SensitiveWire(const Handle(SelectBasics_EntityOwner)& OwnerId,
-                       const Standard_Integer MaxRect):
+                       const Standard_Integer /*MaxRect*/):
 Select3D_SensitiveEntity(OwnerId),
-mymaxrect(MaxRect),
 myDetectedIndex(-1)
 {}
 
@@ -105,12 +99,12 @@ void Select3D_SensitiveWire::ResetLocation()
 // Function : Project
 // Purpose  :
 //=====================================================
-void Select3D_SensitiveWire
-::Project(const Handle(Select3D_Projector)& aProj)
+void Select3D_SensitiveWire::Project(const Handle(Select3D_Projector)& aProj)
 {
-  for(Standard_Integer i=1; i<=mysensitive.Length(); i++)
-    mysensitive(i)->Project(aProj);
-  Select3D_SensitiveEntity::Project(aProj);
+  for (Standard_Integer aSensIt = 1; aSensIt <= mysensitive.Length(); aSensIt++)
+  {
+    mysensitive (aSensIt)->Project (aProj);
+  }
 }
 
 //=====================================================
@@ -137,33 +131,37 @@ void Select3D_SensitiveWire
 // Function : Matches
 // Purpose  :
 //=====================================================
-Standard_Boolean Select3D_SensitiveWire
-::Matches(const Standard_Real X,
-          const Standard_Real Y,
-          const Standard_Real aTol,
-          Standard_Real& DMin)
-{
-  Standard_Integer i;
-  Standard_Real Dcur;
-  DMin = Precision::Infinite();
-  Standard_Boolean IsTouched = Standard_False;
-  for (i=1; i<=mysensitive.Length(); i++) 
-  {
-    if (mysensitive.Value(i)->Matches(X,Y,aTol,Dcur)) 
-    {
-      IsTouched = Standard_True;
-      if(Dcur<=DMin)
-      { 
-        myDetectedIndex = i; 
-        DMin = Dcur;
-      }
-    }
-  }
-  if ( ! IsTouched )
-    return Standard_False;
 
-  // compute and validate the depth (::Depth()) along the eyeline
-  return Select3D_SensitiveEntity::Matches(X,Y,aTol,DMin);
+Standard_Boolean Select3D_SensitiveWire::Matches (const SelectBasics_PickArgs& thePickArgs,
+                                                  Standard_Real& theMatchDMin,
+                                                  Standard_Real& theMatchDepth)
+{
+  theMatchDMin = RealLast();
+  theMatchDepth = RealLast();
+  Standard_Real aSegDMin, aSegDepth;
+  Standard_Boolean isMatched = Standard_False;
+  myDetectedIndex = -1;
+
+  for (Standard_Integer aSegIt = 1; aSegIt <= mysensitive.Length(); aSegIt++)
+  {
+    const Handle(SelectBasics_SensitiveEntity)& aSeg = mysensitive.Value (aSegIt);
+    if (!aSeg->Matches (thePickArgs, aSegDMin, aSegDepth))
+    {
+      continue;
+    }
+
+    isMatched = Standard_True;
+    if (aSegDMin > theMatchDMin)
+    {
+      continue;
+    }
+
+    myDetectedIndex = aSegIt;
+    theMatchDMin    = aSegDMin;
+    theMatchDepth   = aSegDepth;
+  }
+
+  return isMatched;
 }
 
 //=====================================================
@@ -254,34 +252,6 @@ void Select3D_SensitiveWire::Dump(Standard_OStream& S,const Standard_Boolean Ful
     mysensitive(i)->Dump(S,FullDump);}
 
   S<<"\tEnd Of Sensitive Wire"<<endl;
-
-}
-
-//=======================================================================
-//function : ComputeDepth
-//purpose  :
-//=======================================================================
-
-Standard_Real Select3D_SensitiveWire::ComputeDepth(const gp_Lin& EyeLine) const
-{
-
-  if(myDetectedIndex==-1)
-    // should be never called...
-    return Precision::Infinite();
-  return mysensitive(myDetectedIndex)->ComputeDepth(EyeLine);
-
-}
-
-//=======================================================================
-//function : SetLastPrj
-//purpose  :
-//=======================================================================
-
-void Select3D_SensitiveWire::SetLastPrj(const Handle(Select3D_Projector)& Prj)
-{
-  Select3D_SensitiveEntity::SetLastPrj(Prj);
-  for(Standard_Integer i=1;i<=mysensitive.Length();i++)
-    mysensitive(i)->SetLastPrj(Prj);
 
 }
 

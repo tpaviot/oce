@@ -44,6 +44,9 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
+  //! Initialize the algorithme <br>
+//!        - Parameterisation is used to convert <br>
+  Standard_EXPORT   GeomConvert_CompCurveToBSplineCurve(const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
   //! Initialize the algorithme with one curve <br>
 //!        - Parameterisation is used to convert <br>
   Standard_EXPORT   GeomConvert_CompCurveToBSplineCurve(const Handle(Geom_BoundedCurve)& BasisCurve,const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
@@ -55,6 +58,8 @@ public:
   Standard_EXPORT     Standard_Boolean Add(const Handle(Geom_BoundedCurve)& NewCurve,const Standard_Real Tolerance,const Standard_Boolean After = Standard_False,const Standard_Boolean WithRatio = Standard_True,const Standard_Integer MinM = 0) ;
   
   Standard_EXPORT     Handle_Geom_BSplineCurve BSplineCurve() const;
+  //! Clear a result curve <br>
+  Standard_EXPORT     void Clear() ;
 
 
 

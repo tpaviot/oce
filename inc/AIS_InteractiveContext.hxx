@@ -31,14 +31,14 @@
 #ifndef _Handle_StdSelect_ViewerSelector3d_HeaderFile
 #include <Handle_StdSelect_ViewerSelector3d.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
 #endif
 #ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Handle_SelectMgr_OrFilter_HeaderFile
 #include <Handle_SelectMgr_OrFilter.hxx>
@@ -221,18 +221,7 @@ public:
 //! the principal viewer MainViewer. <br>
   Standard_EXPORT   AIS_InteractiveContext(const Handle(V3d_Viewer)& MainViewer);
   
-//! Constructs the interactive context object defined by <br>
-//! the principal viewer MainViewer and the collector <br>
-//! (or trash) viewer. <br>
-  Standard_EXPORT   AIS_InteractiveContext(const Handle(V3d_Viewer)& MainViewer,const Handle(V3d_Viewer)& Collector);
-  
   Standard_EXPORT   virtual  void Delete() const;
-  
-        Standard_Boolean IsCollectorClosed() const;
-  
-        void CloseCollector() ;
-  
-  Standard_EXPORT     void OpenCollector() ;
   
   Standard_EXPORT     void SetAutoActivateSelection(const Standard_Boolean Auto) ;
   
@@ -288,51 +277,21 @@ public:
 //! displayable in highlighting only when detected by the Selector. <br>
 //! This method is available only when Local Contexts are open. <br>
   Standard_EXPORT     void Load(const Handle(AIS_InteractiveObject)& aniobj,const Standard_Integer SelectionMode = -1,const Standard_Boolean AllowDecomp = Standard_False) ;
-  //! To erase presentations in current local context, or <br>
-//! failing that, in other local contexts which allow erasing. <br>
-//! <br>
-//! If putinCollector is True, the object is erased with graphical status Erased, <br>
-//! and put into the Collector. These objects can be retrieved <br>
-//! from Interactive Context by ObjectsInCollector method. <br>
-//! If putinCollector is False, the objects erased with graphical status FullErased, <br>
-//! and not put into the Collector. These objects can be retrieved <br>
-//! from Interactive Context by ErasedObjects method. <br>
-//! <br>
-//! Note: objects that are put into the Collector recomute their presentation <br>
-//! for Collector Presentation Manager. <br>
-//! <br>
-//! If a local context is open and if updateviewer is <br>
-//! False, the presentation of the Interactive <br>
-//! Object activates the selection mode; the object is <br>
-//! displayed but no viewer will be updated. <br>
-  Standard_EXPORT     void Erase(const Handle(AIS_InteractiveObject)& aniobj,const Standard_Boolean updateviewer = Standard_True,const Standard_Boolean PutInCollector = Standard_False) ;
-  //! Updates viewer contents and returns the display <br>
-//! mode of each aniobj object. Use only if more than <br>
-//! one display mode is active in the main viewer. <br>
-//! This method works only on presentation modes other <br>
-//! than the default mode. Nothing is done if aMode is <br>
-//! the default presentation mode. <br>
-//! If a local context is open and if updateviewer equals <br>
-//! Standard_False, the presentation of the Interactive <br>
-//! Object activates the selection mode; the object is <br>
-//! displayed but no viewer will be updated. <br>
-  Standard_EXPORT     void EraseMode(const Handle(AIS_InteractiveObject)& aniobj,const Standard_Integer aMode,const Standard_Boolean updateviewer = Standard_True) ;
-  //! Every erased object goes into the Collector viewer, <br>
-//!          depending on PutInCollector value. <br>
-  Standard_EXPORT     void EraseAll(const Standard_Boolean PutInCollector = Standard_False,const Standard_Boolean updateviewer = Standard_True) ;
-  //! Displays all erased objects or display all objects from collector <br>
-  Standard_EXPORT     void DisplayAll(const Standard_Boolean OnlyFromCollector = Standard_False,const Standard_Boolean updateviewer = Standard_True) ;
-  //! display anIObj from the collector. <br>
-  Standard_EXPORT     void DisplayFromCollector(const Handle(AIS_InteractiveObject)& anIObj,const Standard_Boolean updateviewer = Standard_True) ;
+  //! Hides the object. The object's presentations are simply <br>
+//! flagged as invisible and therefore excluded from redrawing. <br>
+//! To show hidden objects, use Display(). <br>
+  Standard_EXPORT     void Erase(const Handle(AIS_InteractiveObject)& aniobj,const Standard_Boolean updateviewer = Standard_True) ;
+  //! Hides all objects. The object's presentations are simply <br>
+//! flagged as invisible and therefore excluded from redrawing. <br>
+//! To show all hidden objects, use DisplayAll(). <br>
+  Standard_EXPORT     void EraseAll(const Standard_Boolean updateviewer = Standard_True) ;
+  //! Displays all hidden objects. <br>
+  Standard_EXPORT     void DisplayAll(const Standard_Boolean updateviewer = Standard_True) ;
   
-//! Erases selected objects if there is no open active local context. <br>
-//! If there is no local context activated and if <br>
-//! updateviewer equals Standard_False, the <br>
-//! presentation of the Interactive Object activates the <br>
-//! selection mode; the object is displayed but no viewer <br>
-//! will be updated. <br>
-//! If a local context is open, this method is neutral. <br>
-  Standard_EXPORT     void EraseSelected(const Standard_Boolean PutInCollector = Standard_False,const Standard_Boolean updateviewer = Standard_True) ;
+//! Hides selected objects. The object's presentations are simply <br>
+//! flagged as invisible and therefore excluded from redrawing. <br>
+//! To show hidden objects, use Display(). <br>
+  Standard_EXPORT     void EraseSelected(const Standard_Boolean updateviewer = Standard_True) ;
   //! Displays selected objects if a local context is open. <br>
 //! Displays current objects if there is no active local context. <br>
 //! Objects selected when there is no open local context <br>
@@ -647,8 +606,7 @@ public:
   //! Returns the display status of the entity anIobj. <br>
 //! This will be one of the following: <br>
 //! -   DS_Displayed   displayed in main viewer <br>
-//! -   DS_Erased   erased in the Collector <br>
-//! -   DS_FullErased   erased everywhere but in the Collector <br>
+//! -   DS_Erased   hidden in main viewer <br>
 //! -   DS_Temporary   temporarily displayed <br>
 //! -   DS_None   nowhere displayed. <br>
   Standard_EXPORT     AIS_DisplayStatus DisplayStatus(const Handle(AIS_InteractiveObject)& anIobj) const;
@@ -666,12 +624,9 @@ public:
 //!          <theHiCol> gives the name of the hilightcolor <br>
   Standard_EXPORT     Standard_Boolean IsHilighted(const Handle(AIS_InteractiveObject)& anIobj,Standard_Boolean& WithColor,Quantity_NameOfColor& theHiCol) const;
   
-//! Returns true if the entity anIobj is in the Collector viewer. <br>
-  Standard_EXPORT     Standard_Boolean IsInCollector(const Handle(AIS_InteractiveObject)& anIObj) const;
-  
 //! Returns the display priority of the entity anIobj. This <br>
 //! will be display   mode of anIobj if it is in the main <br>
-//! viewer, and the highlight mode if it is in the Collector viewer. <br>
+//! viewer. <br>
   Standard_EXPORT     Standard_Integer DisplayPriority(const Handle(AIS_InteractiveObject)& anIobj) const;
   
 //! Returns true if a view of the Interactive Object aniobj has color. <br>
@@ -695,8 +650,6 @@ public:
 //! are called current objects; those selected in open <br>
 //! local context, selected objects. <br>
   Standard_EXPORT     void UpdateCurrentViewer() ;
-  //! Updates the Collector viewer. <br>
-  Standard_EXPORT     void UpdateCollector() ;
   //! Returns the display mode setting. <br>
 //! Note that mode 3 is only used. <br>
         Standard_Integer DisplayMode() const;
@@ -899,7 +852,7 @@ public:
 //!          is changed. <br>
 //!          When <globalChange> is FALSE , only the current group <br>
 //!          of the object presentation is changed. <br>
-//!	  	Updates the viewer or collector when <updateViewer> is TRUE <br>
+//!	  	Updates the viewer when <updateViewer> is TRUE <br>
   Standard_EXPORT     void SetSelectedAspect(const Handle(Prs3d_BasicAspect)& anAspect,const Standard_Boolean globalChange = Standard_True,const Standard_Boolean updateViewer = Standard_True) ;
   //! Relays mouse position in pixels XPix and YPix to the <br>
 //! interactive context selectors. This is done by the view <br>
@@ -1454,25 +1407,12 @@ public:
 //!          control only on <WhichKind>. <br>
   Standard_EXPORT     void DisplayedObjects(const AIS_KindOfInteractive WhichKind,const Standard_Integer WhichSignature,AIS_ListOfInteractive& aListOfIO,const Standard_Boolean OnlyFromNeutral = Standard_False) const;
   
-       const Handle_V3d_Viewer& Collector() const;
-  
-//! Returns the list aListOfIO of erased objects of a <br>
-//! particular Type WhichKind and Signature WhichSignature. <br>
-//! By Default, WhichSignature equals 1. This means <br>
-//! that there is a check on type only. <br>
-  Standard_EXPORT     void ObjectsInCollector(AIS_ListOfInteractive& aListOfIO) const;
-  //! gives the list of erased objects of a particular <br>
-//!          Type and signature <br>
-//!          by Default, <WhichSignature> = -1 means <br>
-//!          control only on <WhichKind>. <br>
-  Standard_EXPORT     void ObjectsInCollector(const AIS_KindOfInteractive WhichKind,const Standard_Integer WhichSignature,AIS_ListOfInteractive& aListOfIO) const;
-  
-//! Returns the list theListOfIO of erased objects (but not placed into collecter) <br>
+//! Returns the list theListOfIO of erased objects (hidden objects) <br>
 //! particular Type WhichKind and Signature WhichSignature. <br>
 //! By Default, WhichSignature equals 1. This means <br>
 //! that there is a check on type only. <br>
   Standard_EXPORT     void ErasedObjects(AIS_ListOfInteractive& theListOfIO) const;
-  //! gives the list of erased objects (but not placed into collecter) <br>
+  //! gives the list of erased objects (hidden objects) <br>
 //!          Type and signature <br>
 //!          by Default, <WhichSignature> = -1 means <br>
 //!          control only on <WhichKind>. <br>
@@ -1512,8 +1452,6 @@ public:
   Standard_EXPORT    const TCollection_AsciiString& SelectionName() const;
   //! Returns the domain name of the main viewer. <br>
   Standard_EXPORT     Standard_CString DomainOfMainViewer() const;
-  //! Returns the domain name of the Collector viewer. <br>
-  Standard_EXPORT     Standard_CString DomainOfCollector() const;
   
 //! This method is only intended for advanced operation, particularly with <br>
 //! the aim to improve performance when many objects have to be selected <br>
@@ -1526,18 +1464,14 @@ public:
   
        const Handle_PrsMgr_PresentationManager3d& MainPrsMgr() const;
   
-       const Handle_PrsMgr_PresentationManager3d& CollectorPrsMgr() const;
-  
        const Handle_StdSelect_ViewerSelector3d& MainSelector() const;
   
   Standard_EXPORT     Handle_StdSelect_ViewerSelector3d LocalSelector() const;
-  
-       const Handle_StdSelect_ViewerSelector3d& CollectorSelector() const;
   //! Clears all the structures which don't <br>
 //!          belong to objects displayed at neutral point <br>
 //!          only effective when no Local Context is opened... <br>
 //!          returns the number of removed  structures from the viewers. <br>
-  Standard_EXPORT     Standard_Integer PurgeDisplay(const Standard_Boolean CollectorToo = Standard_False) ;
+  Standard_EXPORT     Standard_Integer PurgeDisplay() ;
   
   Standard_EXPORT     Standard_Integer HighestIndex() const;
   
@@ -1572,7 +1506,7 @@ private:
   
   Standard_EXPORT     void GetDefModes(const Handle(AIS_InteractiveObject)& anIobj,Standard_Integer& Dmode,Standard_Integer& HiMod,Standard_Integer& SelMode) const;
   
-  Standard_EXPORT     void EraseGlobal(const Handle(AIS_InteractiveObject)& anObj,const Standard_Boolean updateviewer = Standard_True,const Standard_Boolean PutInCollector = Standard_False) ;
+  Standard_EXPORT     void EraseGlobal(const Handle(AIS_InteractiveObject)& anObj,const Standard_Boolean updateviewer = Standard_True) ;
   
   Standard_EXPORT     void ClearGlobal(const Handle(AIS_InteractiveObject)& anObj,const Standard_Boolean updateviewer = Standard_True) ;
   
@@ -1587,15 +1521,10 @@ Handle_SelectMgr_SelectionManager mgrSelector;
 Handle_PrsMgr_PresentationManager3d myMainPM;
 Handle_V3d_Viewer myMainVwr;
 Handle_StdSelect_ViewerSelector3d myMainSel;
-Handle_PrsMgr_PresentationManager3d myCollectorPM;
-Handle_V3d_Viewer myCollectorVwr;
-Handle_StdSelect_ViewerSelector3d myCollectorSel;
-Standard_Boolean myIsCollClosed;
 TCollection_AsciiString mySelectionName;
 TCollection_AsciiString myCurrentName;
 Handle_AIS_InteractiveObject myLastPicked;
 Handle_AIS_InteractiveObject myLastinMain;
-Handle_AIS_InteractiveObject myLastinColl;
 Standard_Boolean myWasLastMain;
 Standard_Boolean myCurrentTouched;
 Standard_Boolean mySelectedTouched;

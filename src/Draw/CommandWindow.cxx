@@ -1,25 +1,18 @@
 // Created on: 1998-08-06
 // Created by: Administrateur Atelier MDL
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifdef WNT
 #include <windows.h>
@@ -31,6 +24,7 @@
 #include <Draw_Window.hxx>
 #include <MainWindow.h>
 #include <Draw_Appli.hxx>
+
 
 
 /****************************************************\
@@ -56,7 +50,7 @@
 /*--------------------------------------------------------*\
 |  CREATE COMMAND WINDOW PROCEDURE
 \*--------------------------------------------------------*/
-HWND CreateCommandWindow(HWND hWnd, int nitem)
+HWND CreateCommandWindow(HWND hWnd, int /*nitem*/)
 {
   HINSTANCE       hInstance;
   
@@ -80,10 +74,9 @@ HWND CreateCommandWindow(HWND hWnd, int nitem)
 /*--------------------------------------------------------*\
 |  COMMAND WINDOW PROCEDURE
 \*--------------------------------------------------------*/
-LONG APIENTRY CommandProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lParam )
+LRESULT APIENTRY CommandProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam )
 {
   HWND hWndEdit;
-  int index; // Nb of characters in the buffer of hWndEdit
   MINMAXINFO* lpmmi;
 
   switch(wMsg)
@@ -101,12 +94,15 @@ LONG APIENTRY CommandProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lParam )
           break;
 
     case WM_SIZE :
+    {
     			hWndEdit = (HWND)GetWindowLong(hWnd, CLIENTWND);          
     			MoveWindow(hWndEdit, 0, 0, LOWORD(lParam), HIWORD(lParam), TRUE);
-            // Place the cursor at the end of the buffer
-          index = (int) SendMessage(hWnd, WM_GETTEXTLENGTH, 0l, 0l);
+          // Place the cursor at the end of the buffer
+          // Nb of characters in the buffer of hWndEdit
+          LRESULT index = SendMessage(hWnd, WM_GETTEXTLENGTH, 0l, 0l);
           SendMessage(hWnd, EM_SETSEL, index, index); 
     			break;
+    }
 
     case WM_SETFOCUS :
     			hWndEdit = (HWND)GetWindowLong(hWnd, CLIENTWND);
@@ -114,14 +110,14 @@ LONG APIENTRY CommandProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lParam )
           break;
 
     default :
-					return LONG(DefWindowProc(hWnd, wMsg, wParam, lParam));
+					return(DefWindowProc(hWnd, wMsg, wParam, lParam));
   }
   return(0l);
 }
 
 
 
-LONG APIENTRY EditProc(HWND, UINT, WPARAM, LONG);
+LRESULT APIENTRY EditProc(HWND, UINT, WPARAM, LPARAM);
 /*--------------------------------------------------------*\
 |  COMMAND CREATE PROCEDURE
 \*--------------------------------------------------------*/
@@ -175,7 +171,7 @@ int GetCommand(HWND hWnd, char* buffer)
   int again = 1;
   char temp[COMMANDSIZE]="";
 
-  int nbLine = (int)SendMessage(hWnd, EM_GETLINECOUNT, 0l, 0l);
+  int nbLine = (int )SendMessage(hWnd, EM_GETLINECOUNT, 0l, 0l);
   
   int nbChar = 0;
   buffer[0]='\0';
@@ -186,7 +182,7 @@ int GetCommand(HWND hWnd, char* buffer)
       WORD* nbMaxChar = (WORD*)temp;
       *nbMaxChar = COMMANDSIZE-1;
       
-      int nbCharRead = (int)SendMessage(hWnd, EM_GETLINE, nbLine-1, (LPARAM)temp);
+      int nbCharRead = (int )SendMessage(hWnd, EM_GETLINE, nbLine-1, (LPARAM)temp);
       nbChar += nbCharRead ;
       int cmp = strncmp(temp, PROMPT, 10);
       temp[nbCharRead]='\0';
@@ -207,14 +203,14 @@ extern char console_command[1000];
 /*--------------------------------------------------------*\
 |  EDIT WINDOW PROCEDURE
 \*--------------------------------------------------------*/
-LONG APIENTRY EditProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lParam )
+LRESULT APIENTRY EditProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam )
 {
   char buffer[COMMANDSIZE];	
 	POINT pos;
 	BOOL rep;
-	static int nbline; // Process the buffer of the edit window 
-  int index;
-    
+	static LRESULT nbline; // Process the buffer of the edit window 
+  LRESULT index;
+
   switch(wMsg)
   {
   case WM_CHAR :
@@ -237,16 +233,16 @@ LONG APIENTRY EditProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lParam )
 									strcpy(console_command, buffer+strlen(PROMPT));
 									console_semaphore = HAS_CONSOLE_COMMAND;
 									  // Purge the buffer
-                  nbline = (int)SendMessage(hWnd, EM_GETLINECOUNT, 0l, 0l);
+                  nbline = SendMessage(hWnd, EM_GETLINECOUNT, 0l, 0l);
 									if(nbline > 200)
 									{
                       nbline = 0;
 											GetCommand(hWnd, buffer);
-                      index = (int)SendMessage(hWnd, EM_LINEINDEX, 100, 0);
+                      index = SendMessage(hWnd, EM_LINEINDEX, 100, 0);
 											SendMessage(hWnd, EM_SETSEL, 0, index);			
 											SendMessage(hWnd, WM_CUT, 0, 0);
                         // Place the cursor at the end of text
-                      index =  (int)SendMessage(hWnd, WM_GETTEXTLENGTH, 0l, 0l);
+                      index =  SendMessage(hWnd, WM_GETTEXTLENGTH, 0l, 0l);
                       SendMessage(hWnd, EM_SETSEL, index, index);                      
 									}
     				      return(0l);
@@ -255,7 +251,7 @@ LONG APIENTRY EditProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lParam )
                   if (IsAlphanumeric((Standard_Character)LOWORD(wParam)))
                   {
                       // Place the cursor at the end of text before display
-                    index =  (int)SendMessage(hWnd, WM_GETTEXTLENGTH, 0l, 0l);
+                    index =  SendMessage(hWnd, WM_GETTEXTLENGTH, 0l, 0l);
                     SendMessage(hWnd, EM_SETSEL, index, index);
                     CallWindowProc(OldEditProc, hWnd, wMsg, wParam, lParam);                    
                     return 0l;
@@ -267,7 +263,7 @@ LONG APIENTRY EditProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lParam )
     if (console_semaphore != WAIT_CONSOLE_COMMAND) 
       return 0l;									
   }
-  return (LONG)CallWindowProc(OldEditProc, hWnd, wMsg, wParam, lParam);
+  return CallWindowProc(OldEditProc, hWnd, wMsg, wParam, lParam);
 }
 #endif
 

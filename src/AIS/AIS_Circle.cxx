@@ -1,23 +1,18 @@
 // Created on: 1997-01-21
 // Created by: Prestataire Christiane ARMAND
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //GER61351		//GG_171199     Enable to set an object RGB color instead a restricted object NameOfColor.
 
@@ -48,7 +43,8 @@ AIS_InteractiveObject(PrsMgr_TOP_AllView),
 myComponent(aComponent),
 myUStart(0.),
 myUEnd(2*M_PI),
-myCircleIsArc(Standard_False)
+myCircleIsArc(Standard_False),
+myIsFilledCircleSens (Standard_False)
 {
 }
 
@@ -56,17 +52,17 @@ myCircleIsArc(Standard_False)
 //function : AIS_Circle
 //purpose  : 
 //=======================================================================
-AIS_Circle::AIS_Circle(const Handle(Geom_Circle)& aComponent,
-                       const Standard_Real aUStart,
-                       const Standard_Real aUEnd,
-                       const Standard_Boolean aSens):
-       AIS_InteractiveObject(PrsMgr_TOP_AllView)
+AIS_Circle::AIS_Circle(const Handle(Geom_Circle)& theComponent,
+                       const Standard_Real theUStart,
+                       const Standard_Real theUEnd,
+                       const Standard_Boolean theIsFilledCircleSens)
+: AIS_InteractiveObject(PrsMgr_TOP_AllView),
+  myComponent (theComponent),
+  myUStart (theUStart),
+  myUEnd (theUEnd),
+  myCircleIsArc (Standard_True),
+  myIsFilledCircleSens (theIsFilledCircleSens)
 {
-  myComponent = aComponent;
-  myUStart    = aUStart;
-  myUEnd      = aUEnd;
-  mySens      = aSens;
-  myCircleIsArc = Standard_True;
 }
 
 //=======================================================================
@@ -236,8 +232,9 @@ void AIS_Circle::ComputeArc( const Handle(Prs3d_Presentation)& aPresentation)
 void AIS_Circle::ComputeCircleSelection(const Handle(SelectMgr_Selection)& aSelection)
 {
   Handle(SelectMgr_EntityOwner) eown = new SelectMgr_EntityOwner(this);
-  Handle(Select3D_SensitiveCircle) seg = new Select3D_SensitiveCircle(eown,
-								       myComponent);
+  Handle(Select3D_SensitiveCircle) seg = new Select3D_SensitiveCircle (eown,
+                                                                       myComponent,
+                                                                       myIsFilledCircleSens);
   aSelection->Add(seg);
 }
 //=======================================================================
@@ -250,8 +247,10 @@ void AIS_Circle::ComputeArcSelection(const Handle(SelectMgr_Selection)& aSelecti
 
 
   Handle(SelectMgr_EntityOwner) eown = new SelectMgr_EntityOwner(this);
-  Handle(Select3D_SensitiveCircle) seg = new Select3D_SensitiveCircle(eown,
-								      myComponent,myUStart,myUEnd);
+  Handle(Select3D_SensitiveCircle) seg = new Select3D_SensitiveCircle (eown,
+                                                                       myComponent,
+                                                                       myUStart, myUEnd,
+                                                                       myIsFilledCircleSens);
   aSelection->Add(seg);
 }
 

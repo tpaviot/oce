@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 /***********************************************************************
  
@@ -72,10 +68,7 @@ void V3d_View::Move(const Standard_Real Dx, const Standard_Real Dy, const Standa
   Zeye = Zrp*Zpn + Dx*XZ + Dy*YZ + Dz*ZZ ;
   Zrp = sqrt( Xeye*Xeye + Yeye*Yeye + Zeye*Zeye ) ;
   V3d_BadValue_Raise_if( Zrp <= 0. ,"V3d_View::Move:: Eye,At are Confused");
-#ifdef DEB
-  Standard_Real focale = 
-#endif
-    Focale();
+
   Prp.SetCoord(Xrp,Yrp,Zrp) ;
   MyViewMapping.SetProjectionReferencePoint(Prp) ;
   Xpn = Xeye / Zrp ; Ypn = Yeye / Zrp ; Zpn = Zeye / Zrp ;
@@ -84,24 +77,8 @@ void V3d_View::Move(const Standard_Real Dx, const Standard_Real Dy, const Standa
   MyView->SetViewOrientation(MyViewOrientation) ; 
   
   // Check ZClipping planes
-#ifdef IMP020300
   MyView->SetViewMapping(MyViewMapping) ; 
   SetZSize(0.);
-#else
-  Standard_Real Zmax,Xat,Yat,Zat ;
-  MyViewReferencePoint.Coord(Xat,Yat,Zat) ;
-  Xeye += Xat ; Yeye += Yat ; Zeye += Zat ;
-  Zmax = sqrt( Xeye*Xeye + Yeye*Yeye + Zeye*Zeye ) ;
-  if( Zmax > MyViewMapping.FrontPlaneDistance() &&
-	MyProjModel == V3d_TPM_SCREEN ) {
-    SetZSize(2.*Zmax+Zmax*Zmargin) ;
-  } else {
-    if( MyType == V3d_PERSPECTIVE ) {
-      SetFocale(focale) ;
-    }
-    MyView->SetViewMapping(MyViewMapping) ; 
-  }
-#endif
   ImmediateUpdate();
 }
 

@@ -40,6 +40,8 @@ void XCAFSchema_PXCAFDoc_Location::SWrite(const Handle(Standard_Persistent)& p, 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Location) &pp = (Handle(PXCAFDoc_Location)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     XCAFSchema_PTopLoc_Location::SWrite(pp->_CSFDB_GetPXCAFDoc_LocationmyPLocation(),f,theSchema);
@@ -58,6 +60,8 @@ void XCAFSchema_PXCAFDoc_Location::SRead(const Handle(Standard_Persistent)& p, S
 { 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Location) &pp = (Handle(PXCAFDoc_Location)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

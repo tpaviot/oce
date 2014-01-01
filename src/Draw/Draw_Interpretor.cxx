@@ -1,24 +1,18 @@
 // Created on: 1995-02-23
 // Created by: Remi LEQUETTE
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Draw_Interpretor.ixx>
 #include <Draw_Appli.hxx>
@@ -29,6 +23,7 @@
 
 #include <TCollection_AsciiString.hxx>
 #include <TCollection_ExtendedString.hxx>
+#include <OSD_Process.hxx>
 #include <OSD_Path.hxx>
 #include <OSD.hxx>
 
@@ -83,7 +78,11 @@ class TclUTFToLocalStringSentry {
     delete[] TclArgv;
   }
 #else
-  TclUTFToLocalStringSentry (int, const char **argv) : Argv((char**)argv) {}
+  TclUTFToLocalStringSentry (int, const char **argv) : 
+	   nb(0),
+       TclArgv(NULL),
+	   Argv((char**)argv)
+  {}
 #endif
 
   const char **GetArgv () const { return (const char **)Argv; }
@@ -122,15 +121,26 @@ namespace {
     cout << flush;
   }
 
-  FILE* capture_start (int std_fd, int *save_fd)
+  FILE* capture_start (int std_fd, int *save_fd, char*& tmp_name)
   {
-    (*save_fd) = 0;
+    *save_fd = 0;
 
     // open temporary files
-    FILE * aTmpFile = tmpfile();
-    int fd_tmp = fileno(aTmpFile);
-
-    if (fd_tmp <0) 
+  #if defined(_WIN32)
+    // use _tempnam() to decrease chances of failure (tmpfile() creates 
+    // file in root folder and will fail if it is write protected), see #24132
+    static const char* tmpdir = getenv("TEMP");
+    static char prefix[256] = ""; // prefix for temporary files, initialize once per process using pid
+    if (prefix[0] == '\0')
+      sprintf (prefix, "drawtmp%d_", (int)OSD_Process().ProcessId());
+    tmp_name = _tempnam (tmpdir, prefix);
+    FILE* aTmpFile = (tmp_name != NULL ? fopen (tmp_name, "w+b") : tmpfile());
+  #else
+    tmp_name = NULL;
+    FILE* aTmpFile = tmpfile();
+  #endif
+    int fd_tmp = (aTmpFile != NULL ? fileno (aTmpFile) : -1);
+    if (fd_tmp < 0)
     {
       cerr << "Error: cannot create temporary file for capturing console output" << endl;
       fclose (aTmpFile);
@@ -143,8 +153,11 @@ namespace {
     return aTmpFile;
   }
 
-  void capture_end (FILE* tmp_file, int std_fd, int save_fd, Standard_OStream &log, Standard_Boolean doEcho)
+  void capture_end (FILE* tmp_file, int std_fd, int save_fd, char* tmp_name, Standard_OStream &log, Standard_Boolean doEcho)
   {
+    if (! tmp_file)
+      return;
+
     // restore normal descriptors of console stream
     dup2 (save_fd, std_fd);
     close(save_fd);
@@ -162,6 +175,10 @@ namespace {
 
     // close temporary file
     fclose (tmp_file);
+
+    // remove temporary file if this is not done by the system
+    if (tmp_name)
+      remove (tmp_name);
   }
 };
 
@@ -195,14 +212,15 @@ static Standard_Integer CommandCmd
   flush_standard_streams();
 
   // capture cout and cerr to log
+  char *err_name = NULL, *out_name = NULL;
   FILE * aFile_err = NULL;
   FILE * aFile_out = NULL;
   int fd_err_save = 0;
   int fd_out_save = 0;
   if (doLog)
   {
-    aFile_out = capture_start (STDOUT_FILENO, &fd_out_save);
-    aFile_err = capture_start (STDERR_FILENO, &fd_err_save);
+    aFile_out = capture_start (STDOUT_FILENO, &fd_out_save, out_name);
+    aFile_err = capture_start (STDERR_FILENO, &fd_err_save, err_name);
   }
 
   // run command
@@ -260,8 +278,8 @@ static Standard_Integer CommandCmd
   // end capturing cout and cerr 
   if (doLog) 
   {
-    capture_end (aFile_err, STDERR_FILENO, fd_err_save, di.Log(), doEcho);
-    capture_end (aFile_out, STDOUT_FILENO, fd_out_save, di.Log(), doEcho);
+    capture_end (aFile_err, STDERR_FILENO, fd_err_save, err_name, di.Log(), doEcho);
+    capture_end (aFile_out, STDOUT_FILENO, fd_out_save, out_name, di.Log(), doEcho);
   }
 
   // log command result

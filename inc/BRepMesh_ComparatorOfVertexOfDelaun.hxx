@@ -36,7 +36,7 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepMesh_ComparatorOfVertexOfDelaun(const gp_XY& theDir,const Standard_Real TheTol);
+  Standard_EXPORT   BRepMesh_ComparatorOfVertexOfDelaun(const gp_XY& theDir);
   //! returns True if <Left> is lower than <Right> <br>
   Standard_EXPORT     Standard_Boolean IsLower(const BRepMesh_Vertex& Left,const BRepMesh_Vertex& Right) const;
   //! returns True if <Left> is greater than <Right> <br>

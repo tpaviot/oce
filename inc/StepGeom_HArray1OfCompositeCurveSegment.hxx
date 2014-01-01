@@ -42,11 +42,11 @@ class StepGeom_HArray1OfCompositeCurveSegment : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer Low,const Standard_Integer Up);
+      StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepGeom_CompositeCurveSegment)& V);
+      StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepGeom_CompositeCurveSegment)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepGeom_CompositeCurveSegment)& V) ;
+        void Init(const Handle(StepGeom_CompositeCurveSegment)& V) ;
   
         Standard_Integer Length() const;
   

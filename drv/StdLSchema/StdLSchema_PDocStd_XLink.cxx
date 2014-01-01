@@ -41,6 +41,8 @@ void StdLSchema_PDocStd_XLink::SWrite(const Handle(Standard_Persistent)& p, Stor
   if (!p.IsNull()) {
     Handle(PDocStd_XLink) &pp = (Handle(PDocStd_XLink)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDocStd_XLinkmyDocEntry(),f);
@@ -60,6 +62,8 @@ void StdLSchema_PDocStd_XLink::SRead(const Handle(Standard_Persistent)& p, Stora
 { 
   if (!p.IsNull()) {
     Handle(PDocStd_XLink) &pp = (Handle(PDocStd_XLink)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

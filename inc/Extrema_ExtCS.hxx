@@ -50,6 +50,7 @@ class Adaptor3d_Curve;
 class Adaptor3d_Surface;
 class Extrema_POnCurv;
 class Extrema_POnSurf;
+class gp_Pnt;
 
 
 //! It calculates all the extremum distances <br>
@@ -97,6 +98,8 @@ protected:
 
 private:
 
+  
+  Standard_EXPORT     Standard_Boolean AddSolution(const Adaptor3d_Curve& Curve,const Standard_Real T,const Standard_Real U,const Standard_Real V,const gp_Pnt& PointOnCurve,const gp_Pnt& PointOnSurf,const Standard_Real SquareDist) ;
   
   Standard_EXPORT     Adaptor3d_SurfacePtr Bidon() const;
 

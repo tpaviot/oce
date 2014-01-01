@@ -1,32 +1,27 @@
 // Created on: 2011-09-20
 // Created by: Sergey ZERCHANINOV
-// Copyright (c) 2011-2012 OPEN CASCADE SAS
+// Copyright (c) 2011-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <OpenGl_GlCore11.hxx>
 
 #include <OpenGl_Display.hxx>
+#include <OpenGl_Context.hxx>
+#include <OpenGl_Light.hxx>
 
 #include <OSD_Environment.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <Aspect_GraphicDeviceDefinitionError.hxx>
-
-#include <OpenGl_Light.hxx>
 
 #include <stdio.h>
 
@@ -36,8 +31,6 @@
 
 IMPLEMENT_STANDARD_HANDLE(OpenGl_Display,MMgt_TShared)
 IMPLEMENT_STANDARD_RTTIEXT(OpenGl_Display,MMgt_TShared)
-
-Handle(OpenGl_Display) openglDisplay;
 
 namespace
 {
@@ -49,8 +42,11 @@ namespace
 };
 
 /*----------------------------------------------------------------------*/
-
+#if (defined(_WIN32) || defined(__WIN32__)) || (defined(__APPLE__) && !defined(MACOSX_USE_GLX))
+OpenGl_Display::OpenGl_Display (const Handle(Aspect_DisplayConnection)& )
+#else
 OpenGl_Display::OpenGl_Display (const Handle(Aspect_DisplayConnection)& theDisplayConnection)
+#endif
 : myDisplay(NULL),
   myFacilities(myDefaultFacilities),
   myDBuffer(Standard_True),
@@ -62,8 +58,7 @@ OpenGl_Display::OpenGl_Display (const Handle(Aspect_DisplayConnection)& theDispl
   myOffsetUnits(0.F),
   myAntiAliasingMode(3),
   myLinestyleBase(0),
-  myPatternBase(0),
-  myMarkerBase(0)
+  myPatternBase(0)
 {
 #if (defined(_WIN32) || defined(__WIN32__)) || (defined(__APPLE__) && !defined(MACOSX_USE_GLX))
   myDisplay = TheDummyDisplay;
@@ -78,139 +73,30 @@ OpenGl_Display::OpenGl_Display (const Handle(Aspect_DisplayConnection)& theDispl
 
 OpenGl_Display::~OpenGl_Display ()
 {
-  // Delete line styles
-  if (myLinestyleBase)
-  {
-    glDeleteLists((GLuint)myLinestyleBase,5);
-    myLinestyleBase = 0;
-  }
-  // Delete surface patterns
-  if (myPatternBase)
-  {
-    glDeleteLists((GLuint)myPatternBase,TEL_HS_USER_DEF_START);
-    myPatternBase = 0;
-  }
-  // Delete markers
-  if (myMarkerBase)
-  {
-    glDeleteLists((GLuint)myMarkerBase,60);
-    myMarkerBase = 0;
-  }
-  // Delete user markers
-  OpenGl_MapOfUserMarker::Iterator itm(myMapOfUM);
-  for (; itm.More(); itm.Next())
-  {
-    const OPENGL_MARKER_DATA &aData = itm.Value();
-    if (aData.Array)
-    {
-      delete[] aData.Array;
-    }
-    else if (aData.ListId != 0)
-    {
-      glDeleteLists ( aData.ListId, 1 );
-    }
-  }
+  ReleaseAttributes (NULL);
   myDisplay = NULL;
 }
 
-/*----------------------------------------------------------------------*/
-
-Handle(OpenGl_Window) OpenGl_Display::GetWindow (const Aspect_Drawable AParent) const
+void OpenGl_Display::ReleaseAttributes (const OpenGl_Context* theGlCtx)
 {
-  Handle(OpenGl_Window) aWindow;
-  if ( myMapOfWindows.IsBound( AParent ) )
+  // Delete line styles
+  if (myLinestyleBase != 0)
   {
-    aWindow = myMapOfWindows.Find( AParent );
-  }
-  return aWindow;
-}
-
-/*----------------------------------------------------------------------*/
-
-void OpenGl_Display::SetWindow (const Aspect_Drawable AParent, const Handle(OpenGl_Window) &AWindow)
-{
-  if ( !myMapOfWindows.IsBound( AParent ) )
-  {
-    myMapOfWindows.Bind( AParent, AWindow );
-  }
-}
-
-/*----------------------------------------------------------------------*/
-
-//GenerateMarkerBitmap
-void OpenGl_Display::AddUserMarker (const Standard_Integer AIndex,
-                                   const Standard_Integer AMarkWidth,
-                                   const Standard_Integer AMarkHeight,
-                                   const Handle(TColStd_HArray1OfByte)& ATexture)
-{
-  if (!myMapOfUM.IsBound(AIndex))
-  {
-    const OPENGL_MARKER_DATA anEmptyData = { 0, 0, 0, NULL };
-    myMapOfUM.Bind(AIndex,anEmptyData);
-  }
-
-  OPENGL_MARKER_DATA &aData = myMapOfUM.ChangeFind(AIndex);
-
-  if (aData.Array)
-  {
-    delete[] aData.Array;
-    aData.Array = NULL;
-  }
-
-  unsigned char *anArray = new unsigned char[ATexture->Length()];
-
-  const int aByteWidth = AMarkWidth / 8;
-  int i, anIndex = ATexture->Upper() - ATexture->Lower() - aByteWidth + 1;
-  for ( ; anIndex >= 0; anIndex -= aByteWidth )
-    for ( i = 0; i < aByteWidth; i++ )
-      anArray[ATexture->Upper() - ATexture->Lower() - aByteWidth + 1 - anIndex + i ] = ATexture->Value( anIndex + i + 1 );
-
-  aData.Width = AMarkWidth;
-  aData.Height = AMarkHeight;
-  aData.Array = anArray;
-}
-
-/*----------------------------------------------------------------------*/
-
-void OpenGl_Display::UpdateUserMarkers ()
-{
-  OpenGl_MapOfUserMarker::Iterator itm(myMapOfUM);
-  for (; itm.More(); itm.Next())
-  {
-    OPENGL_MARKER_DATA &aData = itm.ChangeValue();
-    if (aData.Array)
+    if (theGlCtx->IsValid())
     {
-      if (aData.ListId == 0)
-        aData.ListId = glGenLists(1);
-
-      glNewList( (GLuint)aData.ListId, GL_COMPILE );
-
-      GLint w = ( GLsizei ) aData.Width;
-      GLint h = ( GLsizei ) aData.Height;
-      glBitmap( w, h,
-                0.5F * ( float )aData.Width, 0.5F * ( float )aData.Height,
-                ( float )30.0, ( float )30.0,
-                ( GLubyte* )aData.Array );
-
-      glEndList();
-
-      delete[] aData.Array;
-      aData.Array = NULL;
+      glDeleteLists ((GLuint )myLinestyleBase, 5);
     }
+    myLinestyleBase = 0;
   }
-}
-
-/*----------------------------------------------------------------------*/
-
-Standard_Integer OpenGl_Display::GetUserMarkerListIndex (const Standard_Integer AIndex) const
-{
-  if (myMapOfUM.IsBound(AIndex))
+  // Delete surface patterns
+  if (myPatternBase != 0)
   {
-    const OPENGL_MARKER_DATA &aData = myMapOfUM.Find(AIndex);
-    if (!aData.Array)
-      return aData.ListId;
+    if (theGlCtx->IsValid())
+    {
+      glDeleteLists ((GLuint )myPatternBase, TEL_HS_USER_DEF_START);
+    }
+    myPatternBase = 0;
   }
-  return -1;
 }
 
 /*----------------------------------------------------------------------*/

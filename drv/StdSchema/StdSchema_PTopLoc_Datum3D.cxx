@@ -39,6 +39,8 @@ void StdSchema_PTopLoc_Datum3D::SWrite(const Handle(Standard_Persistent)& p, Sto
   if (!p.IsNull()) {
     Handle(PTopLoc_Datum3D) &pp = (Handle(PTopLoc_Datum3D)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     StdSchema_gp_Trsf::SWrite(pp->_CSFDB_GetPTopLoc_Datum3DmyTrsf(),f,theSchema);
@@ -57,6 +59,8 @@ void StdSchema_PTopLoc_Datum3D::SRead(const Handle(Standard_Persistent)& p, Stor
 { 
   if (!p.IsNull()) {
     Handle(PTopLoc_Datum3D) &pp = (Handle(PTopLoc_Datum3D)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

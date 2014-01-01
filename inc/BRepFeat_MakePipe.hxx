@@ -34,9 +34,6 @@
 #ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
 #endif
-#ifndef _BRepFeat_StatusError_HeaderFile
-#include <BRepFeat_StatusError.hxx>
-#endif
 #ifndef _BRepFeat_Form_HeaderFile
 #include <BRepFeat_Form.hxx>
 #endif
@@ -137,7 +134,6 @@ TopTools_DataMapOfShapeListOfShape mySlface;
 TopoDS_Wire mySpine;
 TColGeom_SequenceOfCurve myCurves;
 Handle_Geom_Curve myBCurve;
-BRepFeat_StatusError myStatusError;
 
 
 };

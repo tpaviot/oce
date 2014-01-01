@@ -1,22 +1,18 @@
 -- Created on: 1992-01-17
 -- Created by: GG
 -- Copyright (c) 1992-1999 Matra Datavision
--- Copyright (c) 1999-2012 OPEN CASCADE SAS
+-- Copyright (c) 1999-2014 OPEN CASCADE SAS
 --
--- The content of this file is subject to the Open CASCADE Technology Public
--- License Version 6.5 (the "License"). You may not use the content of this file
--- except in compliance with the License. Please obtain a copy of the License
--- at http://www.opencascade.org and read it completely before using this file.
+-- This file is part of Open CASCADE Technology software library.
 --
--- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
--- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+-- This library is free software; you can redistribute it and / or modify it
+-- under the terms of the GNU Lesser General Public version 2.1 as published
+-- by the Free Software Foundation, with special exception defined in the file
+-- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+-- distribution for complete text of the license and disclaimer of any warranty.
 --
--- The Original Code and all software distributed under the License is
--- distributed on an "AS IS" basis, without warranty of any kind, and the
--- Initial Developer hereby disclaims all such warranties, including without
--- limitation, any warranties of merchantability, fitness for a particular
--- purpose or non-infringement. Please see the License for the specific terms
--- and conditions governing the rights and limitations under the License.
+-- Alternatively, this file may be used under the terms of Open CASCADE
+-- commercial license or contractual agreement.
 
 -- Modified FMN - 02/02/98 -> Specifique UNIX
 --          CAL - 16/07/98 -> S3892. Ajout grilles 3d.
@@ -51,7 +47,6 @@ uses
         TypeOfOrientation from V3d,
         View from V3d,
         Light from V3d,
-        Plane from V3d,
         ListOfTransient from V3d,
         ListIteratorOfListOfTransient from TColStd,
         SequenceOfInteger from TColStd,
@@ -112,10 +107,6 @@ is
         ---Level: Public
         ---Purpose: creates a view in the viewer according to its
         --          default parameters.
-
-        DefaultOrthographicView(me: mutable) returns mutable OrthographicView from V3d;
-
-        DefaultPerspectiveView(me: mutable) returns mutable PerspectiveView from V3d;
 
         -------------------------------------------------------
         ---Category: Methods to modify the status of the viewer
@@ -431,28 +422,6 @@ is
         DefinedLight(me) returns Light from V3d;
         ---Level:   Advanced
 
-        AddPlane( me: mutable; MyPlane : Plane from V3d);
-        ---Purpose: Adds Plane in Sequence Of Planes.
-
-        DelPlane( me: mutable; MyPlane : Plane from V3d);
-        ---Purpose: Delete Plane in Sequence Of Planes.
-
-        InitDefinedPlanes(me: mutable);
-        ---Level:   Advanced
-        ---Purpose: initializes an iteration on the Defined Planes.
-
-        MoreDefinedPlanes (me) returns Boolean from Standard;
-        ---Level:   Advanced
-        ---Purpose: returns true if there are more Defined Plane(s) to return.
-
-        NextDefinedPlanes (me: mutable);
-        ---Level:   Advanced
-        ---Purpose : Go to the next Defined Plane
-        --           (if there is not, DefinedPlane will raise an exception)
-
-        DefinedPlane(me) returns Plane from V3d;
-        ---Level:   Advanced
-
         Viewer (me) returns mutable ViewManager ;
         ---Level:   Advanced
         ---Purpose: Returns the viewer associated to Visual3d .
@@ -654,8 +623,6 @@ is
         --          directional-light V3d_XnegYneg
         --          ambient-light
 
-        Init(me: mutable);
-
         IsActive(me; aView: View from V3d)
         returns Boolean from Standard is private;
 
@@ -714,7 +681,6 @@ fields
         MyActiveViews:                ListOfTransient from V3d;
         MyDefinedLights:        ListOfTransient from V3d;
         MyActiveLights:          ListOfTransient from V3d;
-        MyDefinedPlanes:        ListOfTransient from V3d;
         MyBackground:                Background from Aspect ;
         MyGradientBackground:        GradientBackground from Aspect ;
         MyViewSize:                Real ;
@@ -724,14 +690,11 @@ fields
         MySurfaceDetail:        TypeOfSurfaceDetail from V3d ;
         MyDefaultAngle:         PlaneAngle from Quantity;
         MyDefaultTypeOfView:    TypeOfView from V3d;
-        MyDefaultOrthographicView: OrthographicView from V3d;
-        MyDefaultPerspectiveView: PerspectiveView from V3d;
         MyCurrentSelectedLight:   Light from V3d;
         myActiveViewsIterator: ListIteratorOfListOfTransient from TColStd;
         myDefinedViewsIterator: ListIteratorOfListOfTransient from TColStd;
         myActiveLightsIterator: ListIteratorOfListOfTransient from TColStd;
         myDefinedLightsIterator: ListIteratorOfListOfTransient from TColStd;
-        myDefinedPlanesIterator: ListIteratorOfListOfTransient from TColStd;
         myComputedMode: Boolean from Standard;
         myDefaultComputedMode: Boolean from Standard;
         myPrivilegedPlane: Ax3 from gp;
@@ -751,6 +714,5 @@ friends
 
         class View from V3d,
         class Light from V3d,
-        class Plane from V3d,
         SetPlane  from package V3d (aViewer: Viewer from V3d; x1,y1,z1,x2,y2,z2: Length from Quantity)
 end Viewer;

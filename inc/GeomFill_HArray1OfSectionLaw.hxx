@@ -42,11 +42,11 @@ class GeomFill_HArray1OfSectionLaw : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   GeomFill_HArray1OfSectionLaw(const Standard_Integer Low,const Standard_Integer Up);
+      GeomFill_HArray1OfSectionLaw(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   GeomFill_HArray1OfSectionLaw(const Standard_Integer Low,const Standard_Integer Up,const Handle(GeomFill_SectionLaw)& V);
+      GeomFill_HArray1OfSectionLaw(const Standard_Integer Low,const Standard_Integer Up,const Handle(GeomFill_SectionLaw)& V);
   
-  Standard_EXPORT     void Init(const Handle(GeomFill_SectionLaw)& V) ;
+        void Init(const Handle(GeomFill_SectionLaw)& V) ;
   
         Standard_Integer Length() const;
   

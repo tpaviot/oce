@@ -1,6 +1,0 @@
-#ifndef _Visual3d_View_HeaderFile
-#include <Visual3d_View.hxx>
-#endif
-#ifndef _Visual3d_ClipPlane_HeaderFile
-#include <Visual3d_ClipPlane.hxx>
-#endif

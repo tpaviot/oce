@@ -1,6 +1,0 @@
-#ifndef _Standard_NullObject_HeaderFile
-#include <Standard_NullObject.hxx>
-#endif
-#ifndef _AlienImage_MemoryOperations_HeaderFile
-#include <AlienImage_MemoryOperations.hxx>
-#endif

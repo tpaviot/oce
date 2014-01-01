@@ -1,23 +1,18 @@
 // Created on: 1995-10-09
 // Created by: Arnaud BOUZY/Odile Olivier
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //GER61351		//GG_171199     Enable to set an object RGB color instead a restricted object NameOfColor.
 
@@ -638,9 +633,20 @@ void AIS_Trihedron::LoadSubObjects()
 void AIS_Trihedron::SetContext(const Handle(AIS_InteractiveContext)& Ctx)
 {
 //  Standard_Boolean same_DA = myDrawer->Link() == Ctx->DefaultDrawer();
-
+   
+   if( Ctx.IsNull())
+   {
+      Standard_Integer anIdx;
+      for (anIdx = 0; anIdx < 7; anIdx++)
+      {
+        myShapes[anIdx]->SetContext(Ctx);
+      }
+     AIS_InteractiveObject::SetContext (Ctx);
+     return;
+   }
   // Remove subobjects from current context
   Handle(AIS_InteractiveContext) anAISContext = GetContext();
+  
   Standard_Boolean hasContext = (anAISContext.IsNull() == Standard_False);
   Standard_Integer anIdx;
   for (anIdx = 0; anIdx < 7; anIdx++)
@@ -655,9 +661,8 @@ void AIS_Trihedron::SetContext(const Handle(AIS_InteractiveContext)& Ctx)
 	}
       myShapes[anIdx].Nullify();
     }
-
+ 
   AIS_InteractiveObject::SetContext (Ctx);
-  
   LoadSubObjects();
   for(Standard_Integer i= 0;i<=6;i++)
     myShapes[i]->SetContext (Ctx);

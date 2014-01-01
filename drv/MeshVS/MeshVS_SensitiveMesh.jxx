@@ -7,9 +7,6 @@
 #ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
 #endif
-#ifndef _gp_Lin_HeaderFile
-#include <gp_Lin.hxx>
-#endif
 #ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
 #endif

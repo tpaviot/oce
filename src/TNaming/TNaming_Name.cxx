@@ -1,24 +1,18 @@
 // Created on: 1997-03-21
 // Created by: Yves FRICAUD
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TNaming_Name.ixx>
 #include <TNaming.hxx>
@@ -75,22 +69,23 @@
 #define BUC60925
 #define OCC352
 
+#ifdef DEB_DBGTOOLS_WRITE
 //#define OCC355
-//#define MDTV_DEB
-//#define MDTV_DEB_OR
-//#define MDTV_DEB_UNN
-//#define  MDTV_DEB_INT
-//#define MDTV_DEB_GEN
-//#define  MDTV_DEB_MODUN
-//#define MDTV_DEB_FNB
-//#define  MDTV_DEB_WIN
-//#define MDTV_DEB_ARG
-//#define MDTV_DEB_SHELL
+#define MDTV_DEB
+#define MDTV_DEB_OR
+#define MDTV_DEB_UNN
+#define  MDTV_DEB_INT
+#define MDTV_DEB_GEN
+#define  MDTV_DEB_MODUN
+#define MDTV_DEB_FNB
+#define  MDTV_DEB_WIN
+#define MDTV_DEB_ARG
+#define MDTV_DEB_SHELL
+#endif
 #ifdef MDTV_DEB
 #include <TCollection_AsciiString.hxx>
 #include <TDF_Tool.hxx>
 #include <BRepTools.hxx>
-#include <DbgTools.hxx>
 #endif
 #ifdef DEB
 #include <TCollection_AsciiString.hxx>
@@ -115,7 +110,7 @@ void PrintEntries(const TDF_LabelMap& map)
       cout << "LabelEntry = "<< entry << endl;
     }
 }
-
+#ifdef DEB_DBGTOOLS_WRITE
 //=======================================================================
 static void DbgTools_Write(const TopoDS_Shape& shape,
 		      const Standard_CString filename) 
@@ -172,8 +167,7 @@ static void DbgTools_WriteNSOnLabel (const Handle(TNaming_NamedShape)& NS,
   }
 }
 #endif
-
-//=======================================================================
+#endif
 //
 //====================================================================
 static Standard_Boolean ValidArgs(const TNaming_ListOfNamedShape& Args)
@@ -214,7 +208,9 @@ static Standard_Boolean ValidArgs(const TNaming_ListOfNamedShape& Args)
 //purpose  : 
 //=======================================================================
 
-TNaming_Name::TNaming_Name():myIndex(-1)
+TNaming_Name::TNaming_Name() : 
+   myType(TNaming_UNKNOWN),
+   myIndex(-1)
 {
 }
 
@@ -1079,9 +1075,6 @@ static Standard_Boolean Union (const TDF_Label&                  L,
 }
 
 //=======================================================================
-// function: FindShape
-//
-//=======================================================================
 static TopoDS_Shape FindShape(const TNaming_DataMapOfShapeMapOfShape& DM) 
 {
   TopoDS_Shape aResult;
@@ -1236,7 +1229,6 @@ static Standard_Boolean  Generated (const TDF_Label&                L,
       if(!aList2.Extent()) return Standard_False; // Empty
 
       Standard_Boolean found = Standard_False;
-      //TopoDS_Shape aShape = FindShape(aList2);
       TopoDS_Shape aShape = FindShape(aDM);
 #ifdef MDTV_DEB_GEN
       if(!aShape.IsNull())
@@ -2179,24 +2171,13 @@ const TDF_Label&  TNaming_Name::ContextLabel() const
 { 
   return myContextLabel;
 }
-/*
+
 //=======================================================================
 //function : Orientation
 //purpose  : Set
 //=======================================================================
-
-void TNaming_Name::Orientation(const Standard_Boolean theOrientation)
+void TNaming_Name::Orientation(const TopAbs_Orientation theOrientation) 
 {
   myOrientation = theOrientation;
 }
 
-//=======================================================================
-//function : ContextLabel
-//purpose  : Get
-//=======================================================================
-
-const Standard_Boolean TNaming_Name::Orientation() const
-{ 
-  return myOrientation;
-}
-*/

@@ -30,22 +30,18 @@ class BOPAlgo_PaveFiller;
 //! Created on: 1993-10-14 <br>
 //! Created by: Remi LEQUETTE <br>
 //! Copyright (c) 1993-1999 Matra Datavision <br>
-//! Copyright (c) 1999-2012 OPEN CASCADE SAS <br>
+//! Copyright (c) 1999-2014 OPEN CASCADE SAS <br>
 //! <br>
-//! The content of this file is subject to the Open CASCADE Technology Public <br>
-//! License Version 6.5 (the "License"). You may not use the content of this file <br>
-//! except in compliance with the License. Please obtain a copy of the License <br>
-//! at http://www.opencascade.org and read it completely before using this file. <br>
+//! This file is part of Open CASCADE Technology software library. <br>
 //! <br>
-//! The Initial Developer of the Original Code is Open CASCADE S.A.S., having its <br>
-//! main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France. <br>
+//! This library is free software; you can redistribute it and / or modify it <br>
+//! under the terms of the GNU Lesser General Public version 2.1 as published <br>
+//! by the Free Software Foundation, with special exception defined in the file <br>
+//! OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT <br>
+//! distribution for complete text of the license and disclaimer of any warranty. <br>
 //! <br>
-//! The Original Code and all software distributed under the License is <br>
-//! distributed on an "AS IS" basis, without warranty of any kind, and the <br>
-//! Initial Developer hereby disclaims all such warranties, including without <br>
-//! limitation, any warranties of merchantability, fitness for a particular <br>
-//! purpose or non-infringement. Please see the License for the specific terms <br>
-//! and conditions governing the rights and limitations under the License. <br>//!  The class Cut provides a Boolean <br>
+//! Alternatively, this file may be used under the terms of Open CASCADE <br>
+//! commercial license or contractual agreement. <br>//!  The class Cut provides a Boolean <br>
 //! cut operation on a pair of arguments (Boolean Subtraction). <br>
 //! The class Cut provides a framework for: <br>
 //!   -      Defining the construction of a cut shape <br>

@@ -1,23 +1,18 @@
 // Created on: 1995-08-04
 // Created by: Jean Yves LEBEY
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TopOpeBRep_FacesFiller.ixx>
 
@@ -66,8 +61,6 @@ static Standard_Boolean local_FindVertex(const TopOpeBRep_VPointInter& theVP,
 // modified by NIZHNY-MKK  Tue Nov 21 17:30:27 2000.END
 
 #ifdef DEB
-void static FUN_debdegeneR() {}
-void static FUN_debdegeneF() {}
 extern Standard_Boolean TopOpeBRepDS_GettraceDEGEN();
 extern Standard_Boolean TopOpeBRepDS_GettraceDSF();
 Standard_EXPORT Standard_Boolean FUN_debnull(const TopoDS_Shape& s);
@@ -660,8 +653,6 @@ static Standard_Integer FUN_putInterfonDegenEd
   if (FUN_debnull(Ed)) cout<<"Ed is null"<<endl;
   if (trace) {
     TopAbs_Orientation Edori = Ed.Orientation();
-    if (Edori == TopAbs_FORWARD) FUN_debdegeneF();
-    if (Edori == TopAbs_REVERSED) FUN_debdegeneR();      
   }
   Standard_Boolean trace3d = Standard_False;
 #ifdef DRAW
@@ -1032,12 +1023,13 @@ static Standard_Integer FUN_putInterfonDegenEd
     if (rkv != rkdg) {TopoDS_Vertex tmp = v; v = ov; ov = tmp; rkv = rkdg;} // ensure v is vertex of dge
   }
 
-  Standard_Integer mkt = 0; Standard_Real par1 = 0.0,par2 = 0.0;
+  Standard_Boolean setrest = Standard_False;
+  Standard_Integer mkt = 0; Standard_Real par1 = 0.,par2 = 0.;
   if (on3) {
     TopoDS_Edge ei = (rki == 1) ? TopoDS::Edge(VP.ArcOnS1()) : TopoDS::Edge(VP.ArcOnS2());
     Standard_Real pari = (rki == 1) ? VP.ParameterOnArc1() : VP.ParameterOnArc2();
     // if okrest, ei interfers in the compute of transitions for dge
-    mktdg.SetRest(pari,ei);
+    setrest = mktdg.SetRest(pari,ei);
     ok = mktdg.MkTonE(ei,mkt, par1,par2);  
     if ((!ok) || (mkt == NOI)) return NOI;      
     OOEi = ei; paronOOEi = pari; hasOOEi = Standard_True;

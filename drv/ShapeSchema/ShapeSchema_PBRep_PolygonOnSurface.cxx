@@ -43,6 +43,8 @@ void ShapeSchema_PBRep_PolygonOnSurface::SWrite(const Handle(Standard_Persistent
   if (!p.IsNull()) {
     Handle(PBRep_PolygonOnSurface) &pp = (Handle(PBRep_PolygonOnSurface)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_PTopLoc_Location::SWrite(pp->_CSFDB_GetPBRep_CurveRepresentationmyLocation(),f,theSchema);
@@ -64,6 +66,8 @@ void ShapeSchema_PBRep_PolygonOnSurface::SRead(const Handle(Standard_Persistent)
 { 
   if (!p.IsNull()) {
     Handle(PBRep_PolygonOnSurface) &pp = (Handle(PBRep_PolygonOnSurface)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

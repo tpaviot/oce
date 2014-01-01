@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESAppli_Array1OfFlow(const Standard_Integer Low,const Standard_Integer Up);
+      IGESAppli_Array1OfFlow(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESAppli_Array1OfFlow(const Handle(IGESAppli_Flow)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESAppli_Array1OfFlow(const Handle(IGESAppli_Flow)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(IGESAppli_Flow)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESAppli_Array1OfFlow()
 {
   Destroy();

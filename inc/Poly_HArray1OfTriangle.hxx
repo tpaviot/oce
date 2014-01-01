@@ -39,11 +39,11 @@ class Poly_HArray1OfTriangle : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Poly_HArray1OfTriangle(const Standard_Integer Low,const Standard_Integer Up);
+      Poly_HArray1OfTriangle(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Poly_HArray1OfTriangle(const Standard_Integer Low,const Standard_Integer Up,const Poly_Triangle& V);
+      Poly_HArray1OfTriangle(const Standard_Integer Low,const Standard_Integer Up,const Poly_Triangle& V);
   
-  Standard_EXPORT     void Init(const Poly_Triangle& V) ;
+        void Init(const Poly_Triangle& V) ;
   
         Standard_Integer Length() const;
   

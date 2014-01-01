@@ -76,6 +76,9 @@
 #ifndef _Handle_V3d_LayerMgr_HeaderFile
 #include <Handle_V3d_LayerMgr.hxx>
 #endif
+#ifndef _V3d_TypeOfProjectionModel_HeaderFile
+#include <V3d_TypeOfProjectionModel.hxx>
+#endif
 #ifndef _TColStd_Array2OfReal_HeaderFile
 #include <TColStd_Array2OfReal.hxx>
 #endif
@@ -84,9 +87,6 @@
 #endif
 #ifndef _Handle_Graphic3d_Group_HeaderFile
 #include <Handle_Graphic3d_Group.hxx>
-#endif
-#ifndef _V3d_TypeOfProjectionModel_HeaderFile
-#include <V3d_TypeOfProjectionModel.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
@@ -151,9 +151,6 @@
 #ifndef _Handle_V3d_Light_HeaderFile
 #include <Handle_V3d_Light.hxx>
 #endif
-#ifndef _Handle_V3d_Plane_HeaderFile
-#include <Handle_V3d_Plane.hxx>
-#endif
 #ifndef _Aspect_TypeOfTriedronPosition_HeaderFile
 #include <Aspect_TypeOfTriedronPosition.hxx>
 #endif
@@ -208,6 +205,12 @@
 #ifndef _V3d_TypeOfBackfacingModel_HeaderFile
 #include <V3d_TypeOfBackfacingModel.hxx>
 #endif
+#ifndef _Graphic3d_ClipPlane_Handle_HeaderFile
+#include <Graphic3d_ClipPlane_Handle.hxx>
+#endif
+#ifndef _Graphic3d_SequenceOfHClipPlane_HeaderFile
+#include <Graphic3d_SequenceOfHClipPlane.hxx>
+#endif
 class Visual3d_View;
 class Aspect_Window;
 class Graphic3d_Plotter;
@@ -223,7 +226,6 @@ class V3d_Viewer;
 class Quantity_Color;
 class Graphic3d_TextureEnv;
 class V3d_Light;
-class V3d_Plane;
 class TCollection_ExtendedString;
 class TCollection_AsciiString;
 class Aspect_ColorScale;
@@ -384,19 +386,6 @@ public:
   Standard_EXPORT     Standard_Boolean IsActiveLight(const Handle(V3d_Light)& aLight) const;
   //! Activate/Deactivate the transparency in this view. <br>
   Standard_EXPORT     void SetTransparency(const Standard_Boolean AnActivity = Standard_False) ;
-  //! Activates the clipping plane in this view. <br>//!      If No More Plane can be activated in MyView . <br>
-  Standard_EXPORT     void SetPlaneOn(const Handle(V3d_Plane)& MyPlane) ;
-  //! Activate all the clipping planes defined in <br>
-//!          this view. <br>//!      If No More Plane can be activated in MyView . <br>
-  Standard_EXPORT     void SetPlaneOn() ;
-  //! Desactivates the clipping plane defined <br>
-//!          in this view. <br>
-  Standard_EXPORT     void SetPlaneOff(const Handle(V3d_Plane)& MyPlane) ;
-  //! Deactivate all clipping planes defined <br>
-//!          in this view. <br>
-  Standard_EXPORT     void SetPlaneOff() ;
-  //! Returns TRUE when the plane is active in this view. <br>
-  Standard_EXPORT     Standard_Boolean IsActivePlane(const Handle(V3d_Plane)& aPlane) const;
   //! sets the immediate update mode and returns the previous one. <br>
   Standard_EXPORT     Standard_Boolean SetImmediateUpdate(const Standard_Boolean theImmediateUpdate) ;
   //! Customization of the ZBUFFER Triedron. <br>
@@ -748,18 +737,6 @@ public:
   Standard_EXPORT     void NextActiveLights() ;
   
   Standard_EXPORT     Handle_V3d_Light ActiveLight() const;
-  //! Returns True if One clipping plane more can be <br>
-//!          activated in this View. <br>
-  Standard_EXPORT     Standard_Boolean IfMorePlanes() const;
-  //! initializes an iteration on the active Planes. <br>
-  Standard_EXPORT     void InitActivePlanes() ;
-  //! returns true if there are more active Plane(s) to return. <br>
-  Standard_EXPORT     Standard_Boolean MoreActivePlanes() const;
-  //! Go to the next active Plane <br>
-//!           (if there is not, ActivePlane will raise an exception) <br>
-  Standard_EXPORT     void NextActivePlanes() ;
-  
-  Standard_EXPORT     Handle_V3d_Plane ActivePlane() const;
   //! Returns the viewer in which the view has been created. <br>
   Standard_EXPORT     Handle_V3d_Viewer Viewer() const;
   //! Returns True if MyView is associated with a window . <br>
@@ -912,6 +889,42 @@ public:
   //! returns the current state of the gl lighting <br>
 //!          currently used in triedron displaying <br>
   Standard_EXPORT     Standard_Boolean IsGLLightEnabled() const;
+  //! Adds clip plane to the view. The composition of clip planes truncates the <br>
+//! rendering space to convex volume. Number of supported clip planes can be consulted <br>
+//! by PlaneLimit method of associated Visual3d_View. Please be aware that the planes <br>
+//! which exceed the limit are igonred during rendering. <br>
+//! @param thePlane [in] the clip plane to be added to view. <br>
+  Standard_EXPORT   virtual  void AddClipPlane(const Graphic3d_ClipPlane_Handle& thePlane) ;
+  //! Removes clip plane from the view. <br>
+//! @param thePlane [in] the clip plane to be removed from view. <br>
+  Standard_EXPORT   virtual  void RemoveClipPlane(const Graphic3d_ClipPlane_Handle& thePlane) ;
+  //! Sets sequence of clip planes to the view. The planes that have been set <br>
+//! before are removed from the view. The composition of clip planes <br>
+//! truncates the rendering space to convex volume. Number of supported <br>
+//! clip planes can be consulted by PlaneLimit method of associated <br>
+//! Visual3d_View. Please be aware that the planes which exceed the limit <br>
+//! are igonred during rendering. <br>
+//! @param thePlanes [in] the clip planes to set. <br>
+  Standard_EXPORT     void SetClipPlanes(const Graphic3d_SequenceOfHClipPlane& thePlanes) ;
+  //! Get clip planes. <br>
+//! @return sequence clip planes that have been set for the view <br>
+  Standard_EXPORT    const Graphic3d_SequenceOfHClipPlane& GetClipPlanes() const;
+  //! enables OpenCL-based ray-tracing mode <br>
+  Standard_EXPORT     void SetRaytracingMode() ;
+  //! enables OpenGL-based rasterization mode <br>
+  Standard_EXPORT     void SetRasterizationMode() ;
+  //! enables sharp shadows in OpenCL-based ray-tracing mode <br>
+  Standard_EXPORT     void EnableRaytracedShadows() ;
+  //! enables specular reflections in OpenCL-based ray-tracing mode <br>
+  Standard_EXPORT     void EnableRaytracedReflections() ;
+  //! enables antialiasing in OpenCL-based ray-tracing mode <br>
+  Standard_EXPORT     void EnableRaytracedAntialiasing() ;
+  //! disables sharp shadows in OpenCL-based ray-tracing mode <br>
+  Standard_EXPORT     void DisableRaytracedShadows() ;
+  //! disables specular reflections in OpenCL-based ray-tracing mode <br>
+  Standard_EXPORT     void DisableRaytracedReflections() ;
+  //! disables antialiasing in OpenCL-based ray-tracing mode <br>
+  Standard_EXPORT     void DisableRaytracedAntialiasing() ;
 
 
 friend   //! Activates all of the views of a viewer attached <br>
@@ -980,7 +993,6 @@ private:
 
 V3d_ViewerPointer MyViewer;
 V3d_ListOfTransient MyActiveLights;
-V3d_ListOfTransient MyActivePlanes;
 Visual3d_ViewOrientation MyViewOrientation;
 Visual3d_ContextView MyViewContext;
 Aspect_Background MyBackground;
@@ -990,7 +1002,6 @@ Graphic3d_Vertex MyDefaultViewPoint;
 Handle_Aspect_Window MyWindow;
 Handle_Graphic3d_Plotter MyPlotter;
 TColStd_ListIteratorOfListOfTransient myActiveLightsIterator;
-TColStd_ListIteratorOfListOfTransient myActivePlanesIterator;
 Standard_Integer sx;
 Standard_Integer sy;
 Standard_Real rx;

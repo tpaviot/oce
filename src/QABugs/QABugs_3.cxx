@@ -1,27 +1,22 @@
 // Created on: 2002-06-17
 // Created by: QA Admin
-// Copyright (c) 2002-2012 OPEN CASCADE SAS
+// Copyright (c) 2002-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
-
+#include <QABugs.hxx>
 #ifdef HAVE_CONFIG_H
 #include <oce-config.h>
 #endif
-#include <QABugs.hxx>
 #include <Draw.hxx>
 #include <Draw_Interpretor.hxx>
 #include <TopLoc_Location.hxx>
@@ -33,7 +28,9 @@
 #include <GeomInt_IntSS.hxx>
 #include <BRepBuilderAPI_MakeEdge.hxx>
 #include <Standard_ErrorHandler.hxx>
-#include <tcl.h>
+#include <Graphic3d_ClipPlane.hxx>
+
+#include <fstream>
 
 static int BUC60623(Draw_Interpretor& di, Standard_Integer argc, const char ** a)
 {
@@ -231,333 +228,6 @@ static int BUC60609(Draw_Interpretor& di, Standard_Integer argc, const char ** a
   return 0;
 }
 
-
-#if ! defined(WNT)
-void stringerror(int state)
-{
- printf("%s",((state&ios::eofbit) !=0)? " [eof]": "");
- printf("%s",((state&ios::failbit)!=0)? " [fail]":"");
- printf("%s",((state&ios::badbit) !=0)? " [bad]": "");
- printf("%s\n",(state==ios::goodbit)? " [ok]": "");
-}
-
-
-//#if defined(LIN)
-//#include <strstream>
-//#else
-//#include <strstream.h>
-//#endif
-#ifdef OCE_HAVE_IOSTREAM
-#include <iostream>
-#include <sstream>
-using namespace std;
-#elif defined (OCE_HAVE_IOSTREAM_H)
-#include <iostream.h>
-#include <strstream.h>
-#else
-#error "check oce-config.h file or compilation options: either OCE_HAVE_IOSTREAM or OCE_HAVE_IOSTREAM_H should be defined"
-#endif
-static int UKI61075(Draw_Interpretor& /*di*/, Standard_Integer /*argc*/, const char ** /*argv*/) {
- double da,db;
- char buffer1[128];
-#ifndef USE_STL_STREAM
- ostrstream stringout1(buffer1,sizeof(buffer1));
- istrstream stringin1(buffer1,sizeof(buffer1));
-#else
- ostringstream stringout1(buffer1);
- istringstream stringin1(buffer1); 
-#endif
- char buffer2[128];
-#ifndef USE_STL_STREAM
- ostrstream stringout2(buffer2,sizeof(buffer2));
- istrstream stringin2(buffer2,sizeof(buffer2));
-#else
- ostringstream stringout2(buffer1);
- istringstream stringin2(buffer1); 
-#endif
-
- stringout1.precision(17);
- stringout2.precision(17);
-
- da=-(DBL_MAX);
- db=DBL_MAX;
- printf("Valeurs originales :\n\t%.17lg %.17lg\n",da,db);
-
- stringout1<<da<<' '<<db<<"\n";
-#ifndef USE_STL_STREAM
- buffer1[stringout1.pcount()]='\0';
-#else
- buffer1[stringout1.str().length()]= '\0' ;
-#endif
-
- printf("Valeurs ecrites dans le fichier :\n\t%s",buffer1);
-
- da=db=0.;
- stringin1>>da>>db;
- printf("Valeurs relues :\n\t%.17lg %.17lg",da,db);
- stringerror(stringin1.rdstate());
-
- stringout2<<da<<' '<<db<<"\n";
-#ifndef USE_STL_STREAM
- buffer2[stringout2.pcount()]='\0';
-#else
- buffer2[stringout2.str().length()]='\0';
-#endif
-
- printf("Valeurs reecrites :\n\t%s",buffer2);
-
- da=db=0.;
- stringin2>>da>>db;
- printf("Valeurs relues a nouveau :\n\t%.17lg %.17lg",da,db);
- stringerror(stringin2.rdstate());
- 
- return(0);
-}
-#endif
-
-#include<BRepAlgoAPI_Section.hxx>
-#include<BRepAlgo_Section.hxx>
-
-#include<Geom_Plane.hxx>
-#include<DrawTrSurf.hxx>
-
-//static Standard_CString St = " \"trimsphere\"/\"sphere\" [result] [name] [plane]";
-static Standard_CString St = " \"trimsphere\"/\"sphere\" [result] [name] [plane] [BRepAlgoAPI/BRepAlgo = 1/0]";
-
-static int BUC60585(Draw_Interpretor& di, Standard_Integer argc, const char ** argv) {
-  
-  //if(argc<2) {
-  //  cerr << "Usage : " << argv[0] << St << endl;
-  //  return -1;
-  //}
-  if(argc < 2 || argc > 6) {
-    di << "Usage : " << argv[0] << " shape1 shape2 shape3 shape4 shape5 shape6 [BRepAlgoAPI/BRepAlgo = 1/0]" << "\n";
-    return 1;
-  }
-  Standard_Boolean IsBRepAlgoAPI = Standard_True;
-  if (argc == 6) {
-    Standard_Integer IsB = Draw::Atoi(argv[5]);
-    if (IsB != 1) {
-      IsBRepAlgoAPI = Standard_False;
-#if ! defined(BRepAlgo_def04)
-//      di << "Error: There is not BRepAlgo_Section class" << "\n";
-//      return 1;
-#endif
-    }
-  }
-
-  
-  gp_Dir N;
-  if(!strcmp(argv[1],"trimsphere")) {
-//////////////////////////////////////////
-// Uncomment for trimmed sphere bug:
-//    filename = "trimsphere.topo";
-    N=gp_Dir( 0.0, -1.0, 0.0 );
-//////////////////////////////////////////
-  } else if(!strcmp(argv[1],"sphere")) {
-
-//////////////////////////////////////////
-// Uncomment for untrimmed sphere bug:
-
-//    filename="sphere.topo";
-    N=gp_Dir( 0.0, -0.75103523489975432, -0.66026212668838646 );
-    
-//////////////////////////////////////////
-  } else {
-    di << "Usage : " << argv[0] << St << "\n";
-    return -1;
-  }
-  
-  // MKV 30.03.05
-#if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 4))) && !defined(USE_NON_CONST)
-  const Standard_Character *DD = Tcl_GetVar(di.Interp(),"Draw_DataDir",TCL_GLOBAL_ONLY);
-#else
-  Standard_Character *DD = Tcl_GetVar(di.Interp(),"Draw_DataDir",TCL_GLOBAL_ONLY);
-#endif
-
-  Standard_Character  *filename = new Standard_Character [strlen(DD)+17];
-  Sprintf(filename,"%s/%s.topo",DD,argv[1]);
-
-  filebuf fic;
-  istream in(&fic);
-  if (!fic.open(filename,ios::in)) {
-    di << "Cannot open file for reading : " << filename << "\n";
-    delete [] filename;
-    return -1;
-  }
-  
-  // Read in the shape
-  
-  BRep_Builder B;
-  BRepTools_ShapeSet S(B);
-  S.Read(in);
-  TopoDS_Shape theShape;
-  S.Read(theShape,in);
-  
-  // Create the plane
-  
-  gp_Pnt O( 2036.25, -97.5, -1460.499755859375 );
-  gp_Dir A( 1.0,  0.0, 0.0 );
-  
-  gp_Ax3 PLA( O, N, A );
-  gp_Pln Pl(PLA);
-  
-  // Perform the section
-  
-//#if ! defined(BRepAlgoAPI_def01)
-//  BRepAlgoAPI_Section Sec( theShape, Pl, Standard_False);
-//#else
-//  BRepAlgo_Section Sec( theShape, Pl, Standard_False);
-//#endif
-
-  TopoDS_Shape res;
-  
-  try{
-    OCC_CATCH_SIGNALS
-//      Sec.Approximation(Standard_True);
-
-    //Sec.Build();
-    //if(!Sec.IsDone()){
-    //  cout << "Error performing intersection: not done." << endl;
-    //  delete filename;
-    //  return -1;
-    //}
-    //res = Sec.Shape();
-
-    if (IsBRepAlgoAPI) {
-      di << "BRepAlgoAPI_Section Sec( theShape, Pl, Standard_False)" <<"\n";
-      BRepAlgoAPI_Section Sec( theShape, Pl, Standard_False);
-      Sec.Build();
-      if(!Sec.IsDone()){
-	di << "Error performing intersection: not done." << "\n";
-	delete [] filename;
-	return -1;
-      }
-      res = Sec.Shape();
-    } else {
-      di << "BRepAlgo_Section Sec( theShape, Pl, Standard_False)" <<"\n";
-      BRepAlgo_Section Sec( theShape, Pl, Standard_False);
-      Sec.Build();
-      if(!Sec.IsDone()){
-	di << "Error performing intersection: not done." << "\n";
-	delete [] filename;
-	return -1;
-      }
-      res = Sec.Shape();
-    }
-    
-  }catch(Standard_Failure){
-    Handle(Standard_Failure) error = Standard_Failure::Caught();
-    di << "Error performing intersection: not done." << "\n";
-    delete [] filename;
-    return -1;
-  }
-  
-  if(argc>3) DBRep::Set(argv[3],theShape);
-
-  if(argc>2) DBRep::Set(argv[2],res);
-
-  if(argc>4) {
-    Handle(Geom_Geometry) result;
-    Handle(Geom_Plane) C = new Geom_Plane(Pl);
-    result=C;
-    DrawTrSurf::Set(argv[4],result);
-  }
-  
-  di << "Done" << "\n";
-
-  delete [] filename;
-  
-  return 0;
-}
-
-#include<TopoDS_Compound.hxx>
-
-static int BUC60547(Draw_Interpretor& di, Standard_Integer argc, const char ** argv) {
-  if(argc!=2) {
-    di << "Usage : " << argv[0] << " name"   << "\n";
-    return -1;
-  }
-
-  Handle(AIS_InteractiveContext) myAISContext = ViewerTest::GetAISContext();
-  if(myAISContext.IsNull()) {
-    di << "use 'vinit' command before " << argv[0] << "\n";
-    return -1;
-  }
-  
-  // MKV 30.03.05
-#if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 4))) && !defined(USE_NON_CONST)
-  const Standard_Character *DD = Tcl_GetVar(di.Interp(),"Draw_DataDir",TCL_GLOBAL_ONLY);
-#else
-  Standard_Character *DD = Tcl_GetVar(di.Interp(),"Draw_DataDir",TCL_GLOBAL_ONLY);
-#endif
-
-  Standard_Character *Ch = new Standard_Character[strlen(argv[1])+3];
-
-  Standard_Character *FileName = new Standard_Character[strlen(DD)+13];
- 
-  TopoDS_Shape free_1,free_2,free_3,free_4;
-  BRep_Builder B;
-  Sprintf(FileName,"%s/%s",DD,"buc60547a.brep");
-  BRepTools::Read(free_1,FileName,B);
-  Sprintf(FileName,"%s/%s",DD,"buc60547b.brep");
-  BRepTools::Read(free_2,FileName,B);
-  Sprintf(FileName,"%s/%s",DD,"buc60547c.brep");
-  BRepTools::Read(free_3,FileName,B);
-  Sprintf(FileName,"%s/%s",DD,"buc60547d.brep");
-  BRepTools::Read(free_4,FileName,B);
-  Sprintf(Ch,"%s_%i",argv[1],1);
-  DBRep::Set(Ch,free_1);
-  di << Ch << " ";
-  Sprintf(Ch,"%s_%i",argv[1],2);
-  DBRep::Set(Ch,free_2);
-  di << Ch << " ";
-  Sprintf(Ch,"%s_%i",argv[1],3);
-  DBRep::Set(Ch,free_3);
-  di << Ch << " ";
-  Sprintf(Ch,"%s_%i",argv[1],4);
-  DBRep::Set(Ch,free_4);
-  di << Ch << " ";
-  
-//  Handle(AIS_Shape) S1 = new AIS_Shape(free_1); 
-//  Handle(AIS_Shape) S2 = new AIS_Shape(free_2); 
-//  Handle(AIS_Shape) S3 = new AIS_Shape(free_3); 
-//  Handle(AIS_Shape) S4 = new AIS_Shape(free_4);
-  
-//  Handle(AIS_InteractiveContext) myAISContext = ViewerTest::GetAISContext();
-
-//  myAISContext->Display(S1); 
-//  myAISContext->Display(S2); 
-//  myAISContext->Display(S3); 
-//  myAISContext->Display(S4);
-
-//  di.Eval("vfit");
-  
-  TopoDS_Compound Com; 
-  BRep_Builder bui;
-  bui.MakeCompound(Com); 
-  bui.Add(Com,free_1); 
-  bui.Add(Com,free_2); 
-  bui.Add(Com,free_3); 
-  bui.Add(Com,free_4); 
-
-  Sprintf(Ch,"%s_%c",argv[1],'c');
-  DBRep::Set(Ch,Com);
-  di << Ch << " ";
-
-  Handle(AIS_Shape) SC = new AIS_Shape(Com);
-  myAISContext->Display(SC); // nothing on the screen If I save the compound :
-
-  Sprintf(FileName,"%s/%s",DD,"free.brep");
-
-  BRepTools::Write(Com,FileName); 
-
-  delete [] Ch;
-  delete [] FileName;
-  
-  return 0;
-}
-
 #include<BRepBuilderAPI_MakeVertex.hxx>
 #include<TCollection_ExtendedString.hxx>
 #include<AIS_LengthDimension.hxx>
@@ -578,13 +248,22 @@ static Standard_Integer BUC60632(Draw_Interpretor& di, Standard_Integer /*n*/, c
   Handle(AIS_Shape) Ve1 = new AIS_Shape(V1);
   Handle(AIS_Shape) Ve2 = new AIS_Shape(V2);
   
-  myAIScontext->Display(Ve1); 
-  myAIScontext->Display(Ve2); 
+  myAIScontext->Display(Ve1);
+  myAIScontext->Display(Ve2);
   
   Handle(Geom_Plane) Plane1 = new Geom_Plane(gp_Pnt(0,0,0),gp_Dir(0,0,1)); 
   TCollection_ExtendedString Ext1("Dim1"); 
-  Handle(AIS_LengthDimension) Dim1 = new AIS_LengthDimension(V1,V2,Plane1,Draw::Atof(a[2]),Ext1); 
-  
+  Handle(AIS_LengthDimension) Dim1 = new AIS_LengthDimension(V1,V2,Plane1->Pln()); 
+  Dim1->SetCustomValue (Draw::Atof(a[2]));
+
+  Handle(Prs3d_DimensionAspect) anAspect = new Prs3d_DimensionAspect();
+  anAspect->MakeArrows3d (Standard_False);
+  anAspect->MakeText3d (Standard_True);
+  anAspect->MakeTextShaded (Standard_True);
+  anAspect->TextAspect()->SetHeight (2.5);
+  anAspect->ArrowAspect()->SetLength (1.0);
+  Dim1->SetDimensionAspect (anAspect);
+
   myAIScontext->SetDisplayMode(Dim1, Draw::Atoi(a[1]));
   myAIScontext->Display(Dim1);
   return 0;
@@ -682,96 +361,8 @@ static Standard_Integer BUC60574(Draw_Interpretor& di, Standard_Integer /*n*/, c
 #include <BRepAlgoAPI_Fuse.hxx>
 #include <BRepAlgo_Fuse.hxx>
 
-#include <V3d_Plane.hxx>
 #include <V3d_View.hxx>
 #include <gce_MakePln.hxx>
-
-static Standard_Integer BUC60698(Draw_Interpretor& di, Standard_Integer argc, const char ** a)
-{
-  if(argc > 2) {
-    di << "Usage : " << a[0] << " [BRepAlgoAPI/BRepAlgo = 1/0]" << "\n";
-    return 1;
-  }
-  Standard_Boolean IsBRepAlgoAPI = Standard_True;
-  if (argc == 2) {
-    Standard_Integer IsB = Draw::Atoi(a[1]);
-    if (IsB != 1) {
-      IsBRepAlgoAPI = Standard_False;
-#if ! defined(BRepAlgo_def01)
-//      di << "Error: There is not BRepAlgo_Fuse class" << "\n";
-//      return 1;
-#endif
-    }
-  }
-  
-  Handle(AIS_InteractiveContext) myAISContext = ViewerTest::GetAISContext();
-  if(myAISContext.IsNull()) {
-    di << "use 'vinit' command before " << a[0] << "\n";
-    return -1;
-  }
-  TopoDS_Solid box = BRepPrimAPI_MakeBox(1,1,1).Solid();
-  TopoDS_Shape sphere = BRepPrimAPI_MakeSphere(gp_Pnt(0.5,0.5,0.5),0.6).Shape();
-
-//#if ! defined(BRepAlgoAPI_def01)
-//  TopoDS_Shape fuse = BRepAlgoAPI_Fuse(box,sphere).Shape();
-//#else
-//  TopoDS_Shape fuse = BRepAlgo_Fuse(box,sphere).Shape();
-//#endif
-
-  TopoDS_Shape fuse;
-  if (IsBRepAlgoAPI) {
-    di << "fuse = BRepAlgoAPI_Fuse(box,sphere).Shape()" <<"\n";
-    fuse = BRepAlgoAPI_Fuse(box,sphere).Shape();
-  } else {
-    di << "fuse = BRepAlgo_Fuse(box,sphere).Shape()" <<"\n";
-    fuse = BRepAlgo_Fuse(box,sphere).Shape();
-  }
-
-  Handle_AIS_Shape theAISShape = new AIS_Shape(fuse);
-  myAISContext->Display(theAISShape);
-  di.Eval("vfit");
-  gp_Pln thegpPln = gce_MakePln(gp_Pnt(0.5,0.5,0.5),gp_Dir(0,0,1));
-  Standard_Real A,B,C,D;
-  thegpPln.Coefficients(A,B,C,D);
-  Handle_V3d_Plane thePlane = new V3d_Plane(A,B,C,D);
-  myAISContext->CurrentViewer()->AddPlane (thePlane); // add to defined planes list
-  for (myAISContext->CurrentViewer()->InitActiveViews();
-       myAISContext->CurrentViewer()->MoreActiveViews ();
-       myAISContext->CurrentViewer()->NextActiveViews ()) {
-    try {
-      OCC_CATCH_SIGNALS
-      myAISContext->CurrentViewer()->ActiveView()->SetPlaneOn(thePlane);
-    }
-    catch(Standard_Failure) {
-      di << "SetPlaneOn catched 1" << "\n";
-    }
-#ifdef WNT
-    catch(...) {
-      di << "SetPlaneOn catched 1" << "\n";
-    }
-#endif
-  }//ActiveView loop
-  for (myAISContext->CurrentViewer()->InitDefinedViews();
-       myAISContext->CurrentViewer()->MoreDefinedViews ();
-       myAISContext->CurrentViewer()->NextDefinedViews ()) {
-    try {
-      OCC_CATCH_SIGNALS
-      myAISContext->CurrentViewer()->DefinedView()->SetPlaneOn(thePlane);
-    }
-    catch(Standard_Failure) {
-      di << "SetPlaneOn catched 1" << "\n";
-    }
-#ifdef WNT
-    catch(...) {
-      di << "SetPlaneOn catched 2" << "\n";
-    }
-#endif
-  }//DefinedView loop
-  myAISContext->UpdateCurrentViewer();
-  myAISContext->OpenLocalContext();
-  myAISContext->ActivateStandardMode(TopAbs_FACE);
-  return 0;
-}
 
 static Standard_Integer BUC60699(Draw_Interpretor& di, Standard_Integer /*n*/, const char ** a)
 {
@@ -969,7 +560,7 @@ static Standard_Integer BUC60726 (Draw_Interpretor& di,Standard_Integer argc, co
 #include <BRepBndLib.hxx>
 #include <Bnd_HArray1OfBox.hxx>
   
-static Standard_Integer BUC60729 (Draw_Interpretor& di,Standard_Integer /*argc*/, const char ** /*argv*/ )
+static Standard_Integer BUC60729 (Draw_Interpretor& /*di*/,Standard_Integer /*argc*/, const char ** /*argv*/ )
 {
   Bnd_Box aMainBox;
   TopoDS_Shape aShape = BRepPrimAPI_MakeBox(1,1,1).Solid();
@@ -1347,9 +938,10 @@ static Standard_Integer BUC60856(Draw_Interpretor& di, Standard_Integer /*argc*/
   }
 
   gp_Ax2  Cone_Ax;                                                                
-  double R1=8, R2=16;                                       
+  double R1=8, R2=16, angle;                                       
   gp_Pnt P0(0,0,0),                                                              
   P1(0,0,20), P2(0,0,45);                                                        
+  angle = 2*M_PI;                                                                  
   Handle(Geom_RectangularTrimmedSurface) S = GC_MakeTrimmedCone (P1, P2, R1, R2).Value();
   TopoDS_Shape myshape = BRepBuilderAPI_MakeFace(S, Precision::Confusion()).Shape();
   Handle(AIS_Shape) ais1 = new AIS_Shape(myshape);
@@ -1364,58 +956,64 @@ static Standard_Integer BUC60856(Draw_Interpretor& di, Standard_Integer /*argc*/
   return 0;
 }
 
-//#include <fstream.h>
-#ifdef OCE_HAVE_FSTREAM
-# include <fstream>
-#elif defined (OCE_HAVE_FSTREAM_H)
-# include <fstream.h> 
-#endif
-//#include <Standard_Stream.hxx>
 //==========================================================================
 //function : CoordLoad
 //           chargement d une face dans l explorer.
 //==========================================================================
-static Standard_Integer coordload (Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
+static Standard_Integer coordload (Draw_Interpretor& theDi,
+                                   Standard_Integer  theArgsNb,
+                                   const char**      theArgVec)
 { 
-  char line[256];
-  char X[30], Y[30];
-  TopoDS_Vertex V1,V2;
-  TopoDS_Edge Edge;
-  TopoDS_Wire Wire;
-  TopoDS_Face Face;
-
-  if (argc < 3) return 1;
-
-  ifstream file(argv[2], ios::in);
-  if(!file)
-    {
-      di<<"unable to open "<<argv[2]<<" for input"<<"\n";
-      return 2;
-    }
-  BRepBuilderAPI_MakeWire WB;
-
-  file.getline(line,80);
-  for(int i=0;i<30;i++) X[i]=Y[i]=0;
-  sscanf(line,"%20c%20c",&X,&Y);
-  V1 = BRepBuilderAPI_MakeVertex(gp_Pnt(Draw::Atof(X),Draw::Atof(Y),0.0));
-
-  for(;;)
-    {
-      file.getline(line,80);
-      if (!file) break;
-	  for(int i=0;i<30;i++) X[i]=Y[i]=0;
-	  sscanf(line,"%20c%20c",&X,&Y);
-	  V2 = BRepBuilderAPI_MakeVertex(gp_Pnt(Draw::Atof(X),Draw::Atof(Y),0.0));
-	  Edge = BRepBuilderAPI_MakeEdge(V1,V2);
-	  WB.Add(Edge);
-	  V1=V2;
+  if (theArgsNb < 3)
+  {
+    return 1;
   }
-  
-  file.close();
-  if (WB.IsDone()) Wire = WB.Wire();
-  Face = BRepBuilderAPI_MakeFace(Wire);
 
-  DBRep::Set (argv[1],Face);
+  std::ifstream aFile (theArgVec[2], ios::in);
+  if (!aFile)
+  {
+    theDi << "unable to open " << theArgVec[2] << " for input\n";
+    return 2;
+  }
+
+  char aLine[80];
+  memset (aLine, 0, 40);
+  aFile.getline (aLine, 80);
+
+  gp_Pnt aPnt (0.0, 0.0, 0.0);
+  aLine[40] = '\0';
+  aPnt.SetY (Draw::Atof (&aLine[20]));
+  aLine[20] = '\0';
+  aPnt.SetX (Draw::Atof (aLine));
+  TopoDS_Vertex aVert1 = BRepBuilderAPI_MakeVertex (aPnt);
+  BRepBuilderAPI_MakeWire aMakeWire;
+  for (;;)
+  {
+    memset (aLine, 0, 40);
+    aFile.getline (aLine, 80);
+    if (!aFile)
+    {
+      break;
+    }
+
+    aLine[40] = '\0';
+    aPnt.SetY (Draw::Atof (&aLine[20]));
+    aLine[20] = '\0';
+    aPnt.SetX (Draw::Atof (aLine));
+    TopoDS_Vertex aVert2 = BRepBuilderAPI_MakeVertex (aPnt);
+    aMakeWire.Add (BRepBuilderAPI_MakeEdge (aVert1, aVert2));
+    aVert1 = aVert2;
+  }
+  aFile.close();
+
+  if (!aMakeWire.IsDone())
+  {
+    DBRep::Set (theArgVec[1], TopoDS_Face());
+    return 0;
+  }
+
+  BRepBuilderAPI_MakeFace aMakeFace (aMakeWire.Wire());
+  DBRep::Set (theArgVec[1], aMakeFace.IsDone() ? aMakeFace.Face() : TopoDS_Face());
   return 0;
 }
 
@@ -2218,11 +1816,6 @@ void QABugs::Commands_3(Draw_Interpretor& theCommands) {
   theCommands.Add("BUC60569","BUC60569 shape",__FILE__,BUC60569,group);
   theCommands.Add("BUC60614","BUC60614 shape",__FILE__,BUC60614,group);
   theCommands.Add("BUC60609","BUC60609 shape name [U V]",__FILE__,BUC60609,group);
-#if ! defined(WNT)
-  theCommands.Add("UKI61075","UKI61075",__FILE__,UKI61075,group);
-#endif
-  theCommands.Add("BUC60585",St,__FILE__,BUC60585,group);
-  theCommands.Add("BUC60547","BUC60547 name",__FILE__,BUC60547,group);
   theCommands.Add("BUC60632","BUC60632 mode length",__FILE__,BUC60632,group);
   theCommands.Add("BUC60652","BUC60652 face",__FILE__,BUC60652,group);
   theCommands.Add("ksection","ksection resultat shell1 shell2 NbPntMax Toler3d Toler2d RelativeTol",__FILE__,ksection,group);
@@ -2230,8 +1823,6 @@ void QABugs::Commands_3(Draw_Interpretor& theCommands) {
   theCommands.Add("BUC60669","ksection resultat shell1 shell2 NbPntMax Toler3d Toler2d RelativeTol",__FILE__,ksection,group);  
   theCommands.Add("PRO19626","ksection resultat shell1 shell2 NbPntMax Toler3d Toler2d RelativeTol",__FILE__,ksection,group);  
   theCommands.Add("BUC60574","BUC60574 ",__FILE__,BUC60574,group);
-
-  theCommands.Add("BUC60698","BUC60698 [BRepAlgoAPI/BRepAlgo = 1/0]",__FILE__,BUC60698,group);
 
   theCommands.Add("BUC60699","BUC60699 ",__FILE__,BUC60699,group);
   theCommands.Add("GER61394","GER61394 [1/0]",__FILE__,GER61394,group);

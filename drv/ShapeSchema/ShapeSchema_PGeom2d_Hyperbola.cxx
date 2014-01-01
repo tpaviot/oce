@@ -39,6 +39,8 @@ void ShapeSchema_PGeom2d_Hyperbola::SWrite(const Handle(Standard_Persistent)& p,
   if (!p.IsNull()) {
     Handle(PGeom2d_Hyperbola) &pp = (Handle(PGeom2d_Hyperbola)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_gp_Ax22d::SWrite(pp->_CSFDB_GetPGeom2d_Conicposition(),f,theSchema);
@@ -59,6 +61,8 @@ void ShapeSchema_PGeom2d_Hyperbola::SRead(const Handle(Standard_Persistent)& p, 
 { 
   if (!p.IsNull()) {
     Handle(PGeom2d_Hyperbola) &pp = (Handle(PGeom2d_Hyperbola)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

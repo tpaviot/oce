@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //#52 rln 06.01.99 writing value 1.e-07
 //gka 19.01.99 changing size of ParamSet
@@ -290,9 +286,9 @@ void IGESData_GlobalSection::CopyRefs ()
 
 Handle(Interface_ParamSet) IGESData_GlobalSection::Params () const
 {
-  char vide[1];  char uncar[2];  char nombre[20];  char text[200];
+  char vide[1];  char uncar[2];  char nombre[1024];  char text[200];
   Standard_Integer lt;
-  vide[0] = uncar[1] = '\0';  uncar[0] = ',';
+  vide[0] = uncar[1] = nombre[0] = '\0';  uncar[0] = ',';
   Handle(Interface_ParamSet) res  = new Interface_ParamSet(26);  //gka 19.01.99
   if (theSeparator == ',') res->Append (vide,0,Interface_ParamVoid,0);
   else { uncar[0] = theSeparator; res->Append (uncar,1,Interface_ParamMisc,0); }
@@ -313,52 +309,52 @@ Handle(Interface_ParamSet) IGESData_GlobalSection::Params () const
   res->Append (text,lt, Interface_ParamText,0);
 
   sprintf(nombre,"%d",theIntegerBits);
-  res->Append (nombre,strlen(nombre),Interface_ParamInteger,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamInteger,0);
 
   sprintf(nombre,"%d",theMaxPower10Single);
-  res->Append (nombre,strlen(nombre),Interface_ParamInteger,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamInteger,0);
 
   sprintf(nombre,"%d",theMaxDigitsSingle);
-  res->Append (nombre,strlen(nombre),Interface_ParamInteger,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamInteger,0);
 
   sprintf(nombre,"%d",theMaxPower10Double);
-  res->Append (nombre,strlen(nombre),Interface_ParamInteger,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamInteger,0);
 
   sprintf(nombre,"%d",theMaxDigitsDouble);
-  res->Append (nombre,strlen(nombre),Interface_ParamInteger,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamInteger,0);
 
   MakeHollerith (theReceiveName,text,lt);
   res->Append (text,lt, Interface_ParamText,0);
 
   Interface_FloatWriter::Convert (theScale,nombre,Standard_True,0.,0.,"%f","%f");
 //  sprintf(nombre,"%f",theScale);
-  res->Append (nombre,strlen(nombre),Interface_ParamReal,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamReal,0);
 
   sprintf(nombre,"%d",theUnitFlag);
-  res->Append (nombre,strlen(nombre),Interface_ParamInteger,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamInteger,0);
 
   MakeHollerith (theUnitName,text,lt);
   res->Append (text,lt, Interface_ParamText,0);
 
   sprintf(nombre,"%d",theLineWeightGrad);
-  res->Append (nombre,strlen(nombre),Interface_ParamInteger,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamInteger,0);
 
   Interface_FloatWriter::Convert (theMaxLineWeight,nombre,Standard_True,0.,0.,"%f","%f");
 //  sprintf(nombre,"%f",theMaxLineWeight);
-  res->Append (nombre,strlen(nombre),Interface_ParamReal,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamReal,0);
 
   MakeHollerith (theDate,text,lt);
   res->Append (text,lt, Interface_ParamText,0);
 
   Interface_FloatWriter::Convert (theResolution,nombre,Standard_True,0.,0.,"%g","%g");
 //  sprintf(nombre,"%f",theResolution);
-  res->Append (nombre,strlen(nombre),Interface_ParamReal,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamReal,0);
 
   if (hasMaxCoord)
     Interface_FloatWriter::Convert (theMaxCoord,nombre,Standard_True,0.,0.,"%f","%f");
   //  sprintf(nombre,"%f",theMaxCoord);
   else nombre[0] = '\0';
-  res->Append (nombre,strlen(nombre),Interface_ParamReal,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamReal,0);
 
   MakeHollerith (theAuthorName,text,lt);
   res->Append (text,lt, Interface_ParamText,0);
@@ -367,10 +363,10 @@ Handle(Interface_ParamSet) IGESData_GlobalSection::Params () const
   res->Append (text,lt, Interface_ParamText,0);
 
   sprintf(nombre,"%d",theIGESVersion);
-  res->Append (nombre,strlen(nombre),Interface_ParamInteger,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamInteger,0);
 
   sprintf(nombre,"%d",theDraftingStandard);
-  res->Append (nombre,strlen(nombre),Interface_ParamInteger,0);
+  res->Append (nombre,(Standard_Integer)strlen(nombre),Interface_ParamInteger,0);
 
   if (!theLastChangeDate.IsNull()) {
     MakeHollerith (theLastChangeDate,text,lt);

@@ -39,11 +39,11 @@ class AppParCurves_HArray1OfConstraintCouple : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   AppParCurves_HArray1OfConstraintCouple(const Standard_Integer Low,const Standard_Integer Up);
+      AppParCurves_HArray1OfConstraintCouple(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   AppParCurves_HArray1OfConstraintCouple(const Standard_Integer Low,const Standard_Integer Up,const AppParCurves_ConstraintCouple& V);
+      AppParCurves_HArray1OfConstraintCouple(const Standard_Integer Low,const Standard_Integer Up,const AppParCurves_ConstraintCouple& V);
   
-  Standard_EXPORT     void Init(const AppParCurves_ConstraintCouple& V) ;
+        void Init(const AppParCurves_ConstraintCouple& V) ;
   
         Standard_Integer Length() const;
   

@@ -1,22 +1,17 @@
 // Created on: 2002-04-12
 // Created by: Alexander GRIGORIEV
-// Copyright (c) 2002-2012 OPEN CASCADE SAS
+// Copyright (c) 2002-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <NCollection_IncAllocator.hxx>
 #include <NCollection_DataMap.hxx>
@@ -24,16 +19,8 @@
 #include <Standard_Mutex.hxx>
 #include <Standard_OutOfMemory.hxx>
 #include <stdio.h>
-
-#if defined(_MSC_VER)
-# define FMT_SZ_Q "I"
-#elif defined(__GNUC__)
-# define FMT_SZ_Q "z"
-#elif defined(_OCC64)
-# define FMT_SZ_Q "l"
-#else
-# define FMT_SZ_Q ""
-#endif
+#include <fstream>
+#include <iomanip>
 
 IMPLEMENT_STANDARD_HANDLE  (NCollection_IncAllocator,NCollection_BaseAllocator)
 IMPLEMENT_STANDARD_RTTIEXT (NCollection_IncAllocator,NCollection_BaseAllocator)
@@ -53,6 +40,10 @@ namespace
 
   #define IMEM_FREE(p_bl) (size_t(p_bl->p_end_block - p_bl->p_free_space))
 
+#ifdef DEB
+  // auxiliary dummy function used to get a place where break point can be set
+  inline void place_for_breakpoint() {}
+#endif
 };
 
 #define MaxLookup 16
@@ -91,6 +82,8 @@ Standard_EXPORT void IncAllocator_SetDebugFlag(const Standard_Boolean theDebug)
   IS_DEBUG = theDebug;
 }
 
+#ifdef DEB
+
 //=======================================================================
 /**
  * Static value of the current allocation ID. It provides unique
@@ -108,17 +101,12 @@ static Standard_Size CATCH_ID = 0;
 static void Debug_Create(Standard_Address theAlloc)
 {
   static Standard_Mutex aMutex;
-  Standard_Boolean isReentrant = Standard::IsReentrant();
-  if (isReentrant)
-    aMutex.Lock();
+  aMutex.Lock();
   StorageIDMap().Bind(theAlloc, ++CurrentID);
   StorageIDSet().Add(CurrentID);
-  if (isReentrant)
-    aMutex.Unlock();
   if (CurrentID == CATCH_ID)
-  {
-    // Place for break point for creation of investigated allocator
-  }
+    place_for_breakpoint();
+  aMutex.Unlock();
 }
 
 //=======================================================================
@@ -128,19 +116,18 @@ static void Debug_Create(Standard_Address theAlloc)
 static void Debug_Destroy(Standard_Address theAlloc)
 {
   static Standard_Mutex aMutex;
-  Standard_Boolean isReentrant = Standard::IsReentrant();
-  if (isReentrant)
-    aMutex.Lock();
+  aMutex.Lock();
   if (StorageIDMap().IsBound(theAlloc))
   {
     Standard_Size anID = StorageIDMap()(theAlloc);
     StorageIDSet().Remove(anID);
     StorageIDMap().UnBind(theAlloc);
   }
-  if (isReentrant)
-    aMutex.Unlock();
+  aMutex.Unlock();
 }
-#endif
+
+#endif /* DEB */
+
 //=======================================================================
 //function : IncAllocator_PrintAlive
 //purpose  : Outputs the alive numbers to the file inc_alive.d
@@ -148,36 +135,42 @@ static void Debug_Destroy(Standard_Address theAlloc)
 
 Standard_EXPORT void IncAllocator_PrintAlive()
 {
-  if (!StorageIDSet().IsEmpty())
+  if (StorageIDSet().IsEmpty())
   {
-    FILE * ff = fopen("inc_alive.d", "wt");
-    if (ff == NULL)
-    {
-      cout << "failure writing file inc_alive.d" << endl;
-    }
-    else
-    {
-      fprintf(ff, "Alive IncAllocators (number, size in Kb)\n");
-      NCollection_DataMap<Standard_Address, Standard_Size>::Iterator
-        itMap(StorageIDMap());
-      Standard_Size aTotSize = 0;
-      Standard_Integer nbAlloc = 0;
-      for (; itMap.More(); itMap.Next())
-      {
-        NCollection_IncAllocator* anAlloc =
-          static_cast<NCollection_IncAllocator*>(itMap.Key());
-        Standard_Size anID = itMap.Value();
-        Standard_Size aSize = anAlloc->GetMemSize();
-        aTotSize += aSize;
-        nbAlloc++;
-        fprintf(ff, "%-8" FMT_SZ_Q "u %8.1f\n", anID, double(aSize)/1024);
-      }
-      fprintf(ff, "Total:\n%-8d %8.1f\n", nbAlloc, double(aTotSize)/1024);
-      fclose(ff);
-    }
+    return;
   }
-}
 
+  std::ofstream aFileOut ("inc_alive.d", std::ios_base::trunc | std::ios_base::out);
+  if (!aFileOut.is_open())
+  {
+    std::cout << "failure writing file inc_alive.d" << std::endl;
+    return;
+  }
+  aFileOut.imbue (std::locale ("C"));
+  aFileOut << std::fixed << std::setprecision(1);
+
+  aFileOut << "Alive IncAllocators (number, size in Kb)\n";
+  Standard_Size    aTotSize = 0;
+  Standard_Integer nbAlloc  = 0;
+  for (NCollection_DataMap<Standard_Address, Standard_Size>::Iterator itMap (StorageIDMap());
+       itMap.More(); itMap.Next())
+  {
+    const NCollection_IncAllocator* anAlloc = static_cast<NCollection_IncAllocator*>(itMap.Key());
+    Standard_Size anID  = itMap.Value();
+    Standard_Size aSize = anAlloc->GetMemSize();
+    aTotSize += aSize;
+    nbAlloc++;
+    aFileOut << std::setw(20) << anID << ' '
+             << std::setw(20) << (double(aSize) / 1024.0)
+             << '\n';
+  }
+  aFileOut << "Total:\n"
+           << std::setw(20) << nbAlloc << ' '
+           << std::setw(20) << (double(aTotSize) / 1024.0)
+           << '\n';
+  aFileOut.close();
+}
+#endif
 //=======================================================================
 //function : NCollection_IncAllocator()
 //purpose  : Constructor
@@ -192,11 +185,12 @@ NCollection_IncAllocator::NCollection_IncAllocator (const size_t theBlockSize)
   if (IS_DEBUG)
     Debug_Create(this);
 #endif
+  const size_t aDefault = DefaultBlockSize;
   const size_t aSize = IMEM_SIZE(sizeof(IBlock)) +
-      IMEM_SIZE((theBlockSize > 2*sizeof(IBlock)) ? theBlockSize : 24600);
+      IMEM_SIZE((theBlockSize > 2*sizeof(IBlock)) ? theBlockSize : aDefault);
   IBlock * const aBlock = (IBlock *) malloc (aSize * sizeof(aligned_t));
   myFirstBlock = aBlock;
-  mySize = aSize;
+  mySize = aSize - IMEM_SIZE(sizeof(IBlock));
   myMemSize = aSize * sizeof(aligned_t);
   if (aBlock == NULL)
     Standard_OutOfMemory::Raise("NCollection_IncAllocator: out of memory");
@@ -237,6 +231,8 @@ void * NCollection_IncAllocator::Allocate (const size_t aSize)
     aResult = (aligned_t *) allocateNewBlock (cSize+1);
     if (aResult)
       myFirstBlock -> p_free_space = myFirstBlock -> p_end_block;
+    else
+      Standard_OutOfMemory::Raise("NCollection_IncAllocator: out of memory");
   } else
     if (cSize <= IMEM_FREE(myFirstBlock)) {
       /* If the requested size fits into the free space in the 1st block  */
@@ -258,6 +254,20 @@ void * NCollection_IncAllocator::Allocate (const size_t aSize)
         aResult = (aligned_t *) allocateNewBlock (mySize);
         if (aResult)
           myFirstBlock -> p_free_space = aResult + cSize;
+        else
+        {
+          const size_t aDefault = IMEM_SIZE(DefaultBlockSize);
+          if (cSize > aDefault)
+              Standard_OutOfMemory::Raise("NCollection_IncAllocator: out of memory");
+          else
+          {            
+            aResult = (aligned_t *) allocateNewBlock (aDefault);
+            if (aResult)
+              myFirstBlock -> p_free_space = aResult + cSize;
+            else
+              Standard_OutOfMemory::Raise("NCollection_IncAllocator: out of memory");
+          }
+        }
       }
     }
   return aResult;
@@ -307,11 +317,16 @@ void * NCollection_IncAllocator::Reallocate (void         * theAddress,
 //   - extension of terminating allocation when the new size is too big
 // In both cases create a new memory block, allocate memory and copy there
 // the reallocated memory.
-  aligned_t * aResult = (aligned_t *) allocateNewBlock (mySize);
+  size_t cMaxSize = mySize > cNewSize ? mySize : cNewSize;
+  aligned_t * aResult = (aligned_t *) allocateNewBlock (cMaxSize);
   if (aResult) {
     myFirstBlock -> p_free_space = aResult + cNewSize;
     for (unsigned i = 0; i < cOldSize; i++)
       aResult[i] = anAddress[i];
+  }
+  else
+  {
+    Standard_OutOfMemory::Raise("NCollection_IncAllocator: out of memory");
   }
   return aResult;
 }
@@ -414,7 +429,5 @@ void * NCollection_IncAllocator::allocateNewBlock (const size_t cSize)
     aResult = (aligned_t *) IMEM_ALIGN(&aBlock[1]);
     myMemSize += aSz * sizeof(aligned_t);
   }
-  else
-    Standard_OutOfMemory::Raise("NCollection_IncAllocator: out of memory");
   return aResult;
 }

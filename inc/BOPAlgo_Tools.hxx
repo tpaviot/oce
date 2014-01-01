@@ -31,6 +31,9 @@
 #ifndef _BOPDS_DataMapOfIntegerListOfPaveBlock_HeaderFile
 #include <BOPDS_DataMapOfIntegerListOfPaveBlock.hxx>
 #endif
+#ifndef _BOPDS_PDS_HeaderFile
+#include <BOPDS_PDS.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -54,7 +57,7 @@ public:
   
   Standard_EXPORT   static  void MakeBlocks(const BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock& theMILI,BOPDS_DataMapOfIntegerListOfPaveBlock& theMBlocks,BOPCol_BaseAllocator& theAllocator) ;
   
-  Standard_EXPORT   static  void PerformCommonBlocks(BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock& theMBlocks,BOPCol_BaseAllocator& theAllocator) ;
+  Standard_EXPORT   static  void PerformCommonBlocks(BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock& theMBlocks,BOPCol_BaseAllocator& theAllocator,BOPDS_PDS& pDS) ;
   
   Standard_EXPORT   static  void FillMap(const Standard_Integer tneN1,const Standard_Integer tneN2,BOPCol_IndexedDataMapOfIntegerListOfInteger& theMILI,BOPCol_BaseAllocator& theAllocator) ;
   
@@ -62,7 +65,7 @@ public:
   
   Standard_EXPORT   static  void FillMap(const Handle(BOPDS_PaveBlock)& tnePB1,const Standard_Integer tneF,BOPDS_IndexedDataMapOfPaveBlockListOfInteger& theMILI,BOPCol_BaseAllocator& theAllocator) ;
   
-  Standard_EXPORT   static  void PerformCommonBlocks(const BOPDS_IndexedDataMapOfPaveBlockListOfInteger& theMBlocks,BOPCol_BaseAllocator& theAllocator) ;
+  Standard_EXPORT   static  void PerformCommonBlocks(const BOPDS_IndexedDataMapOfPaveBlockListOfInteger& theMBlocks,BOPCol_BaseAllocator& theAllocator,BOPDS_PDS& pDS) ;
 
 
 

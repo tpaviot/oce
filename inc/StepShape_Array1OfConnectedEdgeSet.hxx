@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepShape_Array1OfConnectedEdgeSet(const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_Array1OfConnectedEdgeSet(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepShape_Array1OfConnectedEdgeSet(const Handle(StepShape_ConnectedEdgeSet)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_Array1OfConnectedEdgeSet(const Handle(StepShape_ConnectedEdgeSet)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(StepShape_ConnectedEdgeSet)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepShape_Array1OfConnectedEdgeSet()
 {
   Destroy();

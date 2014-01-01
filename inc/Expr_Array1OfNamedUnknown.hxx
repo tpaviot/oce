@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Expr_Array1OfNamedUnknown(const Standard_Integer Low,const Standard_Integer Up);
+      Expr_Array1OfNamedUnknown(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Expr_Array1OfNamedUnknown(const Handle(Expr_NamedUnknown)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Expr_Array1OfNamedUnknown(const Handle(Expr_NamedUnknown)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(Expr_NamedUnknown)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Expr_Array1OfNamedUnknown()
 {
   Destroy();

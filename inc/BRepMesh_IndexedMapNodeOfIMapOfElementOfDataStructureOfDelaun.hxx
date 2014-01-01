@@ -28,7 +28,6 @@
 #ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
 #endif
-class BRepMesh_Triangle;
 class BRepMesh_ElemHasherOfDataStructureOfDelaun;
 class BRepMesh_IMapOfElementOfDataStructureOfDelaun;
 

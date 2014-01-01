@@ -28,9 +28,6 @@
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
@@ -117,8 +114,6 @@ Standard_Address firstArcLeft;
 Standard_Address firstArcRight;
 Standard_Address secondArcRight;
 Standard_Address secondArcLeft;
-Standard_Real firstParameter;
-Standard_Real secondParameter;
 
 
 };

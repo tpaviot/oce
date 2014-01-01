@@ -1,22 +1,18 @@
 /* 
- Copyright (c) 1999-2012 OPEN CASCADE SAS
+ Copyright (c) 1999-2014 OPEN CASCADE SAS
 
- The content of this file is subject to the Open CASCADE Technology Public
- License Version 6.5 (the "License"). You may not use the content of this file
- except in compliance with the License. Please obtain a copy of the License
- at http://www.opencascade.org and read it completely before using this file.
+ This file is part of Open CASCADE Technology software library.
 
- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+ This library is free software; you can redistribute it and / or modify it
+ under the terms of the GNU Lesser General Public version 2.1 as published
+ by the Free Software Foundation, with special exception defined in the file
+ OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+ distribution for complete text of the license and disclaimer of any warranty.
 
- The Original Code and all software distributed under the License is
- distributed on an "AS IS" basis, without warranty of any kind, and the
- Initial Developer hereby disclaims all such warranties, including without
- limitation, any warranties of merchantability, fitness for a particular
- purpose or non-infringement. Please see the License for the specific terms
- and conditions governing the rights and limitations under the License.
-
+ Alternatively, this file may be used under the terms of Open CASCADE
+ commercial license or contractual agreement.
 */ 
+
 #include "stdio.h"
 #include "string.h"
 #include "stdlib.h"
@@ -56,7 +52,7 @@
 
 static char txt_cart_p[]   = "CARTESIAN_POINT";
 
-void rec_restext(char* newtext,int lentext)         /* destine a etre appele de l'exterieur */
+void rec_restext(char* newtext, int lentext)         /* destine a etre appele de l'exterieur */
 {
   char *res, *text;
   if(strcmp(newtext,txt_cart_p)==0) {
@@ -82,19 +78,21 @@ void rec_restext(char* newtext,int lentext)         /* destine a etre appele de 
 }
 
 void rec_gettext(char* *r)
-{ *r = restext; }
 /*  Le resultat retourne (pointeur) est destine a etre inclus dans un struct */
+{ *r = restext; }
 
-void rec_settext(char * s)
+void rec_settext(char* s)
 /* substituer le texte courant par un autre deja alloue */
 {  restext = s ;  }
 
 char* rec_newtext(char* r)
 /*  routine utilitaire creant une chaine dynamique a partir d'un char[]  */
 {
-  char* savrestext; char* s0;
+  char* savrestext;
+  char* s0;
   savrestext = restext;
-  rec_restext(r,strlen(r)); s0 = restext;
+  rec_restext(r,(int)strlen(r));
+  s0 = restext;
   restext = savrestext;
   return (s0);
 }
@@ -169,7 +167,7 @@ static char idzero[]   = "#0";
 
 
 /*              Trace pour controle            */
-void recfile_modeprint(int mode )
+void recfile_modeprint(int mode)
 {  modeprint = mode;  }
 
 static int   lastno;
@@ -216,8 +214,8 @@ void rec_finfile()  {  }
 /*   GESTION DES RECORDS   */
 
 /*   ENREGISTRER UN RECORD (deja pret)    */
-static void rec_new(struct rec* newrec )
-/* newrec : nouveau record a enregistrer  */
+static void rec_new(struct rec* newrec)
+/*  nouveau record a enregistrer  */
 {
  nbrec ++ ;
  if ( firstrec == NULL ) firstrec = newrec ;
@@ -395,7 +393,9 @@ void rec_print(struct rec* unrec)
  if (modeprint < 2) return ;
  curarg = unrec->first ;
  while (curarg != NULL) {
-   numa ++;  argl = strlen(curarg->val) + 18;  numl += argl;
+   numa ++;
+   argl = (int)strlen(curarg->val) + 18;
+   numl += argl;
    if (numl > 132) {  printf("\n");  numl = argl;  }
    printf ("  - Arg.%d[%c%c] : %s",
 	   numa,argtype1[curarg->type],argtype2[curarg->type],curarg->val);
@@ -483,7 +483,7 @@ void scope_fin()
      La liberation de la memoire est faite par lir_file_fin, en une fois
 */
 
-void lir_file_nbr(int* nbh,int* nbr,int* nbp)
+void lir_file_nbr(int* nbh, int* nbr, int* nbp)
 /*  initialise le traitement et retourne la taille du directory et du header */
 {
  currec = firstrec ;
@@ -529,7 +529,7 @@ void lir_file_fin(int mode)
   }
 }
 
-int lir_file_rec(char* *ident,char* *type,int *nbarg)
+int lir_file_rec(char* *ident, char* *type, int *nbarg)
 /*   retourne les parametres du record courant
      retour de fonction ; 1 si ok, 0 si liste epuisee   */
 {
@@ -550,7 +550,7 @@ void lir_file_finrec()
 /*                                   rec_check(2) ;   */
 }
 
-int lir_file_arg(int* type,char* *val)
+int lir_file_arg(int* type, char* *val)
 /*  lit l'argument courant (au debut le 1er), fait le menage, prepare suivant
     retourne 1 si ok, 0 si c'est fini
     attention, suppose que nbarg > 0 ... (bref, pas de protection)   */
@@ -569,7 +569,7 @@ int lir_file_arg(int* type,char* *val)
      verolees aparaissent au grand jour du dbx   */
 
 void rec_check(int mode)
-       /* =1 pas de controle nbrec (en cours d'enregistrement) */
+/* mode=1 pas de controle nbrec (en cours d'enregistrement) */
 {
   struct rec* lerec ; struct unarg* larg ; int nr,na ;
   lerec = firstrec ;

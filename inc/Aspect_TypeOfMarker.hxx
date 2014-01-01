@@ -11,32 +11,32 @@
 //!          TOM_POINT   point   . <br>
 //!          TOM_PLUS    plus    + <br>
 //!          TOM_STAR    star    * <br>
-//!          TOM_O       circle  O <br>
 //!          TOM_X       cross   x <br>
+//!          TOM_O       circle  O <br>
 //!          TOM_O_POINT a point in a circle <br>
 //!          TOM_O_PLUS  a plus in a circle <br>
 //!          TOM_O_STAR  a star in a circle <br>
 //!          TOM_O_X     a cross in a circle <br>
-//!          TOM_BALL    a ball with 1 color and different saturations <br>
 //!          TOM_RING1   a large ring <br>
 //!          TOM_RING2   a medium ring <br>
 //!          TOM_RING3   a small ring <br>
+//!          TOM_BALL    a ball with 1 color and different saturations <br>
 //!          TOM_USERDEFINED     defined by Users <br>
 //! <br>
 enum Aspect_TypeOfMarker {
 Aspect_TOM_POINT,
 Aspect_TOM_PLUS,
 Aspect_TOM_STAR,
-Aspect_TOM_O,
 Aspect_TOM_X,
+Aspect_TOM_O,
 Aspect_TOM_O_POINT,
 Aspect_TOM_O_PLUS,
 Aspect_TOM_O_STAR,
 Aspect_TOM_O_X,
-Aspect_TOM_BALL,
 Aspect_TOM_RING1,
 Aspect_TOM_RING2,
 Aspect_TOM_RING3,
+Aspect_TOM_BALL,
 Aspect_TOM_USERDEFINED
 };
 

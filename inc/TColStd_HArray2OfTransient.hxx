@@ -42,11 +42,11 @@ class TColStd_HArray2OfTransient : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColStd_HArray2OfTransient(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      TColStd_HArray2OfTransient(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   TColStd_HArray2OfTransient(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(Standard_Transient)& V);
+      TColStd_HArray2OfTransient(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(Standard_Transient)& V);
   
-  Standard_EXPORT     void Init(const Handle(Standard_Transient)& V) ;
+        void Init(const Handle(Standard_Transient)& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -62,9 +62,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(Standard_Transient)& Value) ;
   
-  Standard_EXPORT    const Handle_Standard_Transient& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const Handle_Standard_Transient& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     Handle_Standard_Transient& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        Handle_Standard_Transient& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const TColStd_Array2OfTransient& Array2() const;
   

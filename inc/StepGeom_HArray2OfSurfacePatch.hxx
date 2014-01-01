@@ -42,11 +42,11 @@ class StepGeom_HArray2OfSurfacePatch : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepGeom_HArray2OfSurfacePatch(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      StepGeom_HArray2OfSurfacePatch(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   StepGeom_HArray2OfSurfacePatch(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(StepGeom_SurfacePatch)& V);
+      StepGeom_HArray2OfSurfacePatch(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(StepGeom_SurfacePatch)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepGeom_SurfacePatch)& V) ;
+        void Init(const Handle(StepGeom_SurfacePatch)& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -62,9 +62,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(StepGeom_SurfacePatch)& Value) ;
   
-  Standard_EXPORT    const Handle_StepGeom_SurfacePatch& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const Handle_StepGeom_SurfacePatch& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     Handle_StepGeom_SurfacePatch& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        Handle_StepGeom_SurfacePatch& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const StepGeom_Array2OfSurfacePatch& Array2() const;
   

@@ -70,11 +70,11 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Graphic3d_Vertex_HeaderFile
-#include <Graphic3d_Vertex.hxx>
-#endif
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
+#endif
+#ifndef _Graphic3d_Vertex_HeaderFile
+#include <Graphic3d_Vertex.hxx>
 #endif
 #ifndef _Quantity_PlaneAngle_HeaderFile
 #include <Quantity_PlaneAngle.hxx>
@@ -104,9 +104,9 @@ class Graphic3d_AspectLine3d;
 class Graphic3d_AspectFillArea3d;
 class Graphic3d_AspectText3d;
 class Graphic3d_AspectMarker3d;
-class Graphic3d_Array1OfVertex;
 class TCollection_ExtendedString;
 class Graphic3d_ArrayOfPrimitives;
+class gp_Ax2;
 
 
 //! This class allows the definition of groups <br>
@@ -194,12 +194,6 @@ public:
   //! Sets the coordinates of the boundary box of the <br>
 //!      group <me>. <br>
   Standard_EXPORT     void SetMinMaxValues(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real ZMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real ZMax) ;
-  //! Creates a marker in position <APoint> which will be drawn <br>
-//!      with the current attribute (AspectMarker). <br>
-  Standard_EXPORT     void Marker(const Graphic3d_Vertex& APoint,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of markers defined by a table of <br>
-//!     vertices. <br>
-  Standard_EXPORT     void MarkerSet(const Graphic3d_Array1OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
   //! Creates the string <AText> at position <APoint>. <br>
 //!      The 3D point of attachment is projected. The text is <br>
 //!      written in the plane of projection. <br>
@@ -252,10 +246,16 @@ public:
   Standard_EXPORT     void Text(const TCollection_ExtendedString& AText,const Graphic3d_Vertex& APoint,const Standard_Real AHeight,const Standard_Boolean EvalMinMax = Standard_True) ;
   //! Adds an array of primitives for display <br>
   Standard_EXPORT     void AddPrimitiveArray(const Handle(Graphic3d_ArrayOfPrimitives)& elem,const Standard_Boolean EvalMinMax = Standard_True) ;
+  //! Creates a primitive array with single marker using AddPrimitiveArray(). <br>
+  Standard_EXPORT     void Marker(const Graphic3d_Vertex& thePoint,const Standard_Boolean theToEvalMinMax = Standard_True) ;
   //! Creates an UserDraw primitive <br>
 //!  Category: Methods to create UserDraw <br>
 //!  Warning: Raises GroupDefinitionError if ... <br>
   Standard_EXPORT     void UserDraw(const Standard_Address AnObject,const Standard_Boolean EvalMinMax = Standard_True,const Standard_Boolean ContainsFacet = Standard_False) ;
+  //! sets the stencil test to theIsEnabled state; <br>
+  Standard_EXPORT     void SetStencilTestOptions(const Standard_Boolean theIsEnabled) ;
+  //! sets the flipping to theIsEnabled state. <br>
+  Standard_EXPORT     void SetFlippingOptions(const Standard_Boolean theIsEnabled,const gp_Ax2& theRefPlane) ;
   //! Returns TRUE if aspect is set for the group. <br>
   Standard_EXPORT     Standard_Boolean IsGroupPrimitivesAspectSet(const Graphic3d_GroupAspect theAspect) const;
   //! Returns the context of all the primitives of the group. <br>

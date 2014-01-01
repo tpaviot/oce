@@ -40,6 +40,8 @@ void ShapeSchema_PColPGeom_HArray1OfBSplineCurve::SWrite(const Handle(Standard_P
   if (!p.IsNull()) {
     Handle(PColPGeom_HArray1OfBSplineCurve) &pp = (Handle(PColPGeom_HArray1OfBSplineCurve)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPColPGeom_HArray1OfBSplineCurveLowerBound());
@@ -60,6 +62,8 @@ void ShapeSchema_PColPGeom_HArray1OfBSplineCurve::SRead(const Handle(Standard_Pe
 { 
   if (!p.IsNull()) {
     Handle(PColPGeom_HArray1OfBSplineCurve) &pp = (Handle(PColPGeom_HArray1OfBSplineCurve)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

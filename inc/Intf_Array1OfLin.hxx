@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Intf_Array1OfLin(const Standard_Integer Low,const Standard_Integer Up);
+      Intf_Array1OfLin(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Intf_Array1OfLin(const gp_Lin& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Intf_Array1OfLin(const gp_Lin& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const gp_Lin& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Intf_Array1OfLin()
 {
   Destroy();

@@ -25,8 +25,8 @@
 #ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
 #endif
-#ifndef _Prs3d_CompositeAspect_HeaderFile
-#include <Prs3d_CompositeAspect.hxx>
+#ifndef _Prs3d_BasicAspect_HeaderFile
+#include <Prs3d_BasicAspect.hxx>
 #endif
 #ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
@@ -38,7 +38,7 @@ class Quantity_Color;
 
 //! A framework for displaying arrows in representations <br>
 //! of dimensions and relations. <br>
-class Prs3d_ArrowAspect : public Prs3d_CompositeAspect {
+class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 
 public:
 

@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESBasic_Array1OfLineFontEntity(const Standard_Integer Low,const Standard_Integer Up);
+      IGESBasic_Array1OfLineFontEntity(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESBasic_Array1OfLineFontEntity(const Handle(IGESData_LineFontEntity)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESBasic_Array1OfLineFontEntity(const Handle(IGESData_LineFontEntity)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(IGESData_LineFontEntity)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESBasic_Array1OfLineFontEntity()
 {
   Destroy();

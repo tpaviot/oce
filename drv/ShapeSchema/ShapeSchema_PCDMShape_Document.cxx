@@ -40,6 +40,8 @@ void ShapeSchema_PCDMShape_Document::SWrite(const Handle(Standard_Persistent)& p
   if (!p.IsNull()) {
     Handle(PCDMShape_Document) &pp = (Handle(PCDMShape_Document)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_PTopoDS_Shape1::SWrite(pp->_CSFDB_GetPCDMShape_DocumentmyShape(),f,theSchema);
@@ -58,6 +60,8 @@ void ShapeSchema_PCDMShape_Document::SRead(const Handle(Standard_Persistent)& p,
 { 
   if (!p.IsNull()) {
     Handle(PCDMShape_Document) &pp = (Handle(PCDMShape_Document)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

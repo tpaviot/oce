@@ -16,12 +16,6 @@
 #include <Handle_Select3D_SensitiveEntity.hxx>
 #endif
 
-#ifndef _Handle_Select3D_Projector_HeaderFile
-#include <Handle_Select3D_Projector.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
-#include <Standard_ShortReal.hxx>
-#endif
 #ifndef _SelectBasics_SensitiveEntity_HeaderFile
 #include <SelectBasics_SensitiveEntity.hxx>
 #endif
@@ -30,6 +24,9 @@
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
+#endif
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -40,12 +37,11 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
-class Select3D_Projector;
 class SelectBasics_EntityOwner;
+class Select3D_Projector;
 class TopLoc_Location;
 class TColgp_Array1OfPnt2d;
 class Bnd_Box2d;
-class gp_Lin;
 
 
 //!  Abstract framework to define 3D sensitive entities. <br>
@@ -62,12 +58,11 @@ public:
         Standard_Boolean NeedsConversion() const;
   //! Returns true if this framework provides 3D information. <br>
   Standard_EXPORT     Standard_Boolean Is3D() const;
-  //!Returns the projector aProjector. <br>
-//!	 In classes inheriting this framework, you must <br>
+  //! In classes inheriting this framework, you must <br>
 //! redefine this function in order to get a sensitive 2D <br>
 //! rectangle from a 3D entity. This rectangle is the <br>
 //! sensitive zone which makes the 3D entity selectable. <br>
-  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector) ;
+  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector)  = 0;
   //! Returns the max number of sensitive areas returned <br>
 //!          by this class is 1 by default. <br>
 //!          Else on must redefine this method. <br>
@@ -82,11 +77,6 @@ public:
 //! sensitive entity which can accept another connected <br>
 //! sensitive entity.//can be connected to another sensitive entity. <br>
   Standard_EXPORT   virtual  Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& aLocation) ;
-  //! Matches the coordinates X, Y with the entity found at <br>
-//! that point within the tolerance aTol and the minimum depth DMin. <br>
-//! You must redefine this function for every inheriting entity. <br>
-//! You will have to call this framework inside the redefined function. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real X,const Standard_Real Y,const Standard_Real aTol,Standard_Real& DMin) ;
   //! Matches the box defined by the coordinates Xmin, <br>
 //! Ymin, Xmax, Ymax with the entity found at that point <br>
 //! within the tolerance aTol. <br>
@@ -98,17 +88,6 @@ public:
   Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
   //! prevents from hiding virtual methods... <br>
   Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
-  //! Returns the eye line for the point defined by the coordinates X,Y. <br>
-  Standard_EXPORT     gp_Lin GetEyeLine(const Standard_Real X,const Standard_Real Y) const;
-  //! Returns the depth of this object on the line EyeLine. <br>
-//! EyeLine goes through the eye towards a point <br>
-//! defined by the coordinates X,Y in the function GetEyeLine. <br>//! gives an abcissa on <aLin> . <br>
-//!          <aLin> represents the line going through <br>
-//!          the eye towards an X,Y point on the screen. This Method <br>
-//!          must return a mean Depth on this line. <br>
-  Standard_EXPORT   virtual  Standard_Real ComputeDepth(const gp_Lin& EyeLine) const = 0;
-  
-  Standard_EXPORT   virtual  Standard_Real Depth() const;
   //! Returns true if this framework has a location defined. <br>
   Standard_EXPORT   virtual  Standard_Boolean HasLocation() const;
   
@@ -125,8 +104,6 @@ public:
   Standard_EXPORT   static  void DumpBox(Standard_OStream& S,const Bnd_Box2d& abox) ;
   
   Standard_EXPORT     void UpdateLocation(const TopLoc_Location& aLoc) ;
-  
-  Standard_EXPORT   virtual  void SetLastPrj(const Handle(Select3D_Projector)& aPrj) ;
 
 
 
@@ -137,16 +114,12 @@ protected:
 
   
   Standard_EXPORT   Select3D_SensitiveEntity(const Handle(SelectBasics_EntityOwner)& OwnerId);
-  
-  Standard_EXPORT     void SetLastDepth(const Standard_Real aDepth) ;
 
-Handle_Select3D_Projector mylastprj;
 
 
 private: 
 
 
-Standard_ShortReal mylastdepth;
 
 
 };

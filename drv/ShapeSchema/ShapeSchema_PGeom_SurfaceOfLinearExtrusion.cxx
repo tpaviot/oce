@@ -40,6 +40,8 @@ void ShapeSchema_PGeom_SurfaceOfLinearExtrusion::SWrite(const Handle(Standard_Pe
   if (!p.IsNull()) {
     Handle(PGeom_SurfaceOfLinearExtrusion) &pp = (Handle(PGeom_SurfaceOfLinearExtrusion)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPGeom_SweptSurfacebasisCurve(),f);
@@ -59,6 +61,8 @@ void ShapeSchema_PGeom_SurfaceOfLinearExtrusion::SRead(const Handle(Standard_Per
 { 
   if (!p.IsNull()) {
     Handle(PGeom_SurfaceOfLinearExtrusion) &pp = (Handle(PGeom_SurfaceOfLinearExtrusion)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

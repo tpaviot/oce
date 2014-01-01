@@ -1,22 +1,17 @@
 // Created on: 2011-10-20
 // Created by: Sergey ZERCHANINOV
-// Copyright (c) 2011-2012 OPEN CASCADE SAS
+// Copyright (c) 2011-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <OpenGl_GraphicDriver.hxx>
 
@@ -25,6 +20,7 @@
 #include <OpenGl_Structure.hxx>
 #include <OpenGl_CView.hxx>
 #include <OpenGl_Display.hxx>
+#include <OpenGl_Text.hxx>
 
 /*----------------------------------------------------------------------*/
 
@@ -158,7 +154,7 @@ Standard_Boolean OpenGl_GraphicDriver::ProjectRaster (const Graphic3d_CView& ACV
   return Standard_False;
 }
 
-Standard_Boolean OpenGl_GraphicDriver::UnProjectRaster (const Graphic3d_CView& ACView, const Standard_Integer Axm, const Standard_Integer Aym, const Standard_Integer AXM, const Standard_Integer AYM, const Standard_Integer AU, const Standard_Integer AV, Standard_ShortReal& Ax, Standard_ShortReal& Ay, Standard_ShortReal& Az)
+Standard_Boolean OpenGl_GraphicDriver::UnProjectRaster (const Graphic3d_CView& ACView, const Standard_Integer /*Axm*/, const Standard_Integer Aym, const Standard_Integer /*AXM*/, const Standard_Integer AYM, const Standard_Integer AU, const Standard_Integer AV, Standard_ShortReal& Ax, Standard_ShortReal& Ay, Standard_ShortReal& Az)
 {
   const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
   if (!aCView)
@@ -175,7 +171,7 @@ Standard_Boolean OpenGl_GraphicDriver::UnProjectRaster (const Graphic3d_CView& A
   return aCView->View->ProjectRasterToObject( aWidth, aHeight, AU, (AYM-1)-Aym-AV, Ax, Ay, Az );
 }
 
-Standard_Boolean OpenGl_GraphicDriver::UnProjectRasterWithRay (const Graphic3d_CView& ACView, const Standard_Integer Axm, const Standard_Integer Aym, const Standard_Integer AXM, const Standard_Integer AYM, const Standard_Integer AU, const Standard_Integer AV, Standard_ShortReal& Ax, Standard_ShortReal& Ay, Standard_ShortReal& Az, Standard_ShortReal& Dx, Standard_ShortReal& Dy, Standard_ShortReal& Dz)
+Standard_Boolean OpenGl_GraphicDriver::UnProjectRasterWithRay (const Graphic3d_CView& ACView, const Standard_Integer /*Axm*/, const Standard_Integer Aym, const Standard_Integer /*AXM*/, const Standard_Integer AYM, const Standard_Integer AU, const Standard_Integer AV, Standard_ShortReal& Ax, Standard_ShortReal& Ay, Standard_ShortReal& Az, Standard_ShortReal& Dx, Standard_ShortReal& Dy, Standard_ShortReal& Dz)
 {
   const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
   if (!aCView)
@@ -194,8 +190,24 @@ void OpenGl_GraphicDriver::RatioWindow (const Graphic3d_CView& theCView)
     aCView->WS->Resize (theCView.DefWindow);
 }
 
-void OpenGl_GraphicDriver::Redraw (const Graphic3d_CView& ACView, const Aspect_CLayer2d& ACUnderLayer, const Aspect_CLayer2d& ACOverLayer, const Standard_Integer x, const Standard_Integer y, const Standard_Integer width, const Standard_Integer height)
+void OpenGl_GraphicDriver::Redraw (const Graphic3d_CView& ACView, 
+                                   const Aspect_CLayer2d& ACUnderLayer, 
+                                   const Aspect_CLayer2d& ACOverLayer, 
+                                   const Standard_Integer /*x*/, 
+                                   const Standard_Integer /*y*/, 
+                                   const Standard_Integer /*width*/, 
+                                   const Standard_Integer /*height*/)
 {
+  if (!myCaps->vboDisable && ACView.IsRaytracing)
+  {
+    if (ACView.WasRedrawnGL)
+    {
+      myDeviceLostFlag = Standard_True;
+    }
+
+    myCaps->keepArrayData = Standard_True;
+  }
+
   const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
   if (aCView)
   {
@@ -216,16 +228,19 @@ Graphic3d_PtrFrameBuffer OpenGl_GraphicDriver::FBOCreate (const Graphic3d_CView&
   return (Graphic3d_PtrFrameBuffer)NULL;
 }
 
-Graphic3d_PtrFrameBuffer OpenGl_Workspace::FBOCreate (const Standard_Integer theWidth, const Standard_Integer theHeight)
+Graphic3d_PtrFrameBuffer OpenGl_Workspace::FBOCreate (const Standard_Integer theWidth,
+                                                      const Standard_Integer theHeight)
 {
   // activate OpenGL context
   if (!Activate())
     return NULL;
 
   // create the FBO
+  const Handle(OpenGl_Context)& aCtx = GetGlContext();
   OpenGl_FrameBuffer* aFrameBuffer = new OpenGl_FrameBuffer();
-  if (!aFrameBuffer->Init (GetGlContext(), theWidth, theHeight))
+  if (!aFrameBuffer->Init (aCtx, theWidth, theHeight))
   {
+    aFrameBuffer->Release (aCtx.operator->());
     delete aFrameBuffer;
     return NULL;
   }
@@ -247,12 +262,18 @@ void OpenGl_GraphicDriver::FBORelease (const Graphic3d_CView& ACView, Graphic3d_
 void OpenGl_Workspace::FBORelease (Graphic3d_PtrFrameBuffer theFBOPtr)
 {
   // activate OpenGL context
-  if (!Activate())
+  if (!Activate()
+   || theFBOPtr == NULL)
+  {
     return;
+  }
 
   // release the object
   OpenGl_FrameBuffer* aFrameBuffer = (OpenGl_FrameBuffer*)theFBOPtr;
-  aFrameBuffer->Release (GetGlContext());
+  if (aFrameBuffer != NULL)
+  {
+    aFrameBuffer->Release (GetGlContext().operator->());
+  }
   delete aFrameBuffer;
 }
 
@@ -345,7 +366,6 @@ Standard_Boolean OpenGl_GraphicDriver::BufferDump (const Graphic3d_CView&      t
 {
   const OpenGl_CView* aCView = (const OpenGl_CView* )theCView.ptrView;
   return (aCView != NULL) && aCView->WS->BufferDump ((OpenGl_FrameBuffer* )theCView.ptrFBO, theImage, theBufferType);
-  return Standard_False;
 }
 
 Standard_Boolean OpenGl_Workspace::BufferDump (OpenGl_FrameBuffer*         theFBOPtr,
@@ -375,28 +395,31 @@ Standard_Boolean OpenGl_Workspace::BufferDump (OpenGl_FrameBuffer*         theFB
     glReadBuffer (aDrawBufferPrev);
   }
 
-  GLint anAlignBack = 1;
-  glGetIntegerv (GL_PACK_ALIGNMENT, &anAlignBack);
-  GLint anExtraBytes = (GLint )theImage.RowExtraBytes();
-  GLint anAligment   = Min (GLint(theImage.MaxRowAligmentBytes()), 8); // limit to 8 bytes for OpenGL
+  // setup alignment
+  const GLint anExtraBytes = (GLint )theImage.RowExtraBytes();
+  const GLint anAligment   = Min (GLint(theImage.MaxRowAligmentBytes()), 8); // limit to 8 bytes for OpenGL
   glPixelStorei (GL_PACK_ALIGNMENT, anAligment);
 
-  if (anExtraBytes >= anAligment)
+  const GLint aPixelsWidth = GLint(theImage.SizeRowBytes() / theImage.SizePixelBytes());
+  glPixelStorei (GL_PACK_ROW_LENGTH, (anExtraBytes >= anAligment) ? aPixelsWidth : 0);
+
+  if (theImage.IsTopDown())
   {
     // copy row by row
     for (Standard_Size aRow = 0; aRow < theImage.SizeY(); ++aRow)
     {
-      glReadPixels (0, GLint(aRow), GLsizei (theImage.SizeX()), 1, aFormat, aType, theImage.ChangeRow (aRow));
+      // Image_PixMap rows indexation always starts from the upper corner
+      // while order in memory depends on the flag and processed by ChangeRow() method
+      glReadPixels (0, GLint(theImage.SizeY() - aRow - 1), GLsizei (theImage.SizeX()), 1, aFormat, aType, theImage.ChangeRow (aRow));
     }
   }
   else
   {
-    // read pixels
     glReadPixels (0, 0, GLsizei (theImage.SizeX()), GLsizei (theImage.SizeY()), aFormat, aType, theImage.ChangeData());
-    theImage.SetTopDown (false); // image bottom-up in OpenGL
   }
 
-  glPixelStorei (GL_PACK_ALIGNMENT, anAlignBack);
+  glPixelStorei (GL_PACK_ALIGNMENT,  1);
+  glPixelStorei (GL_PACK_ROW_LENGTH, 0);
 
   if (theFBOPtr != NULL && theFBOPtr->IsValid())
   {
@@ -411,14 +434,38 @@ Standard_Boolean OpenGl_Workspace::BufferDump (OpenGl_FrameBuffer*         theFB
 
 void OpenGl_GraphicDriver::RemoveView (const Graphic3d_CView& theCView)
 {
-  Handle(OpenGl_Context) aShareCtx = GetSharedContext();
-  if (myMapOfView.IsBound (theCView.ViewId))
-    myMapOfView.UnBind (theCView.ViewId);
-
-  if (myMapOfWS.IsBound (theCView.WsId))
+  Handle(OpenGl_Context)   aCtx = GetSharedContext();
+  Handle(OpenGl_View)      aView;
+  Handle(OpenGl_Workspace) aWindow;
+  if (myMapOfWS.Find (theCView.WsId, aWindow))
+  {
     myMapOfWS.UnBind (theCView.WsId);
+  }
+  if (!aWindow.IsNull())
+  {
+    if (aWindow->GetGlContext()->MakeCurrent())
+    {
+      aCtx = aWindow->GetGlContext();
+    }
+    else
+    {
+      // try to hijack another context if any
+      const Handle(OpenGl_Context)& anOtherCtx = GetSharedContext();
+      if (!anOtherCtx.IsNull()
+       && anOtherCtx != aWindow->GetGlContext())
+      {
+        aCtx = anOtherCtx;
+        aCtx->MakeCurrent();
+      }
+    }
+  }
+  if (myMapOfView.Find (theCView.ViewId, aView))
+  {
+    aView->ReleaseGlResources (aCtx);
+    myMapOfView.UnBind (theCView.ViewId);
+  }
 
-  if (myMapOfWS.IsEmpty() && !myMapOfStructure.IsEmpty())
+  if (myMapOfWS.IsEmpty())
   {
     // The last view removed but some objects still present.
     // Release GL resources now without object destruction.
@@ -426,14 +473,20 @@ void OpenGl_GraphicDriver::RemoveView (const Graphic3d_CView& theCView)
          aStructIt.More (); aStructIt.Next())
     {
       OpenGl_Structure* aStruct = aStructIt.ChangeValue();
-      aStruct->ReleaseGlResources (aShareCtx);
+      aStruct->ReleaseGlResources (aCtx);
     }
+    myTempText->Release (aCtx);
+    myGlDisplay->ReleaseAttributes (aCtx.operator->());
+    myDeviceLostFlag = !myMapOfStructure.IsEmpty();
   }
 
   OpenGl_CView* aCView = (OpenGl_CView* )theCView.ptrView;
-  aCView->View->ReleaseGlResources (aShareCtx);
   delete aCView;
   ((Graphic3d_CView *)&theCView)->ptrView = NULL;
+
+  aCtx.Nullify();
+  aView.Nullify();
+  aWindow.Nullify();
 }
 
 void OpenGl_GraphicDriver::SetLight (const Graphic3d_CView& ACView)
@@ -443,11 +496,22 @@ void OpenGl_GraphicDriver::SetLight (const Graphic3d_CView& ACView)
     aCView->View->SetLights(ACView.Context);
 }
 
-void OpenGl_GraphicDriver::SetPlane (const Graphic3d_CView& ACView)
+void OpenGl_GraphicDriver::SetClipPlanes (const Graphic3d_CView& theCView)
 {
-  const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
+  const OpenGl_CView *aCView = (const OpenGl_CView *)theCView.ptrView;
   if (aCView)
-    aCView->View->SetClippingPlanes(ACView.Context);
+  {
+    aCView->View->SetClipPlanes (theCView.Context.ClipPlanes);
+  }
+}
+
+void OpenGl_GraphicDriver::SetClipPlanes (const Graphic3d_CStructure& theCStructure)
+{
+  OpenGl_Structure* aStructure = (OpenGl_Structure *)theCStructure.ptrStructure;
+  if (aStructure)
+  {
+    aStructure->SetClipPlanes (theCStructure.ClipPlanes);
+  }
 }
 
 void OpenGl_GraphicDriver::SetVisualisation (const Graphic3d_CView& ACView)
@@ -483,31 +547,22 @@ void OpenGl_GraphicDriver::Update (const Graphic3d_CView& ACView, const Aspect_C
 
 Standard_Boolean OpenGl_GraphicDriver::View (Graphic3d_CView& theCView)
 {
-  if (openglDisplay.IsNull())
-    return Standard_False;
-
-  if (myMapOfView.IsBound (theCView.ViewId))
-    myMapOfView.UnBind (theCView.ViewId);
-
-  if (myMapOfWS.IsBound (theCView.WsId))
-    myMapOfWS.UnBind (theCView.WsId);
-
-  Handle(OpenGl_Workspace) aWS = Handle(OpenGl_Workspace)::DownCast(openglDisplay->GetWindow (theCView.DefWindow.XWindow));
-  if (aWS.IsNull())
+  if (myGlDisplay.IsNull()
+   || myMapOfView.IsBound (theCView.ViewId)
+   || myMapOfWS  .IsBound (theCView.WsId))
   {
-    Handle(OpenGl_Context) aShareCtx = GetSharedContext();
-    aWS = new OpenGl_Workspace (openglDisplay, theCView.DefWindow, theCView.GContext, aShareCtx);
-    openglDisplay->SetWindow (theCView.DefWindow.XWindow, aWS);
+    return Standard_False;
   }
 
-  myMapOfWS.Bind (theCView.WsId, aWS);
-
-  Handle(OpenGl_View) aView = new OpenGl_View (theCView.Context);
+  Handle(OpenGl_Context)   aShareCtx = GetSharedContext();
+  Handle(OpenGl_Workspace) aWS       = new OpenGl_Workspace (myGlDisplay, theCView.DefWindow, theCView.GContext, myCaps, aShareCtx);
+  Handle(OpenGl_View)      aView     = new OpenGl_View (theCView.Context, &myStateCounter);
+  myMapOfWS  .Bind (theCView.WsId,   aWS);
   myMapOfView.Bind (theCView.ViewId, aView);
 
   OpenGl_CView* aCView = new OpenGl_CView();
   aCView->View = aView;
-  aCView->WS = aWS;
+  aCView->WS   = aWS;
   theCView.ptrView = aCView;
 
   return Standard_True;
@@ -518,7 +573,7 @@ void OpenGl_GraphicDriver::ViewMapping (const Graphic3d_CView& ACView, const Sta
   const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
   if (aCView)
   {
-    aCView->View->SetMapping(ACView);
+    aCView->View->SetMapping (myGlDisplay, ACView);
     if (!AWait)
     {
       aCView->WS->Resize(ACView.DefWindow);

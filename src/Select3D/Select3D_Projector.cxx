@@ -1,23 +1,18 @@
 // Created on: 1992-03-13
 // Created by: Christophe MARION
 // Copyright (c) 1992-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #define IMP240100	//GG
 //			Change RefToPix()/Convert() to Project() method.
@@ -44,9 +39,7 @@
 Select3D_Projector::Select3D_Projector(const Handle(V3d_View)& aViou)
 : myPersp(aViou->Type()==V3d_PERSPECTIVE),
   myFocus(aViou->Focale()),
-  myView(aViou),
-  myDepthMin(-Precision::Infinite()),
-  myDepthMax( Precision::Infinite())
+  myView(aViou)
 {
   Standard_Real Xat,Yat,Zat,XUp,YUp,ZUp,DX,DY,DZ;
   //Standard_Boolean Pers=Standard_False;
@@ -72,9 +65,7 @@ Select3D_Projector::Select3D_Projector(const Handle(V3d_View)& aViou)
 
 Select3D_Projector::Select3D_Projector()
 : myPersp(Standard_False),
-  myFocus(0),
-  myDepthMin(-Precision::Infinite()),
-  myDepthMax( Precision::Infinite())
+  myFocus(0)
 {
   Scaled();
 }
@@ -86,9 +77,7 @@ Select3D_Projector::Select3D_Projector()
 
 Select3D_Projector::Select3D_Projector (const gp_Ax2& CS)
 : myPersp(Standard_False),
-  myFocus(0),
-  myDepthMin(-Precision::Infinite()),
-  myDepthMax( Precision::Infinite())
+  myFocus(0)
 {
   myScaledTrsf.SetTransformation(CS);
   myGTrsf.SetTrsf(myScaledTrsf);
@@ -103,9 +92,7 @@ Select3D_Projector::Select3D_Projector (const gp_Ax2& CS)
 Select3D_Projector::Select3D_Projector (const gp_Ax2& CS,
                                         const Standard_Real Focus)
 : myPersp(Standard_True),
-  myFocus(Focus),
-  myDepthMin(-Precision::Infinite()),
-  myDepthMax( Precision::Infinite())
+  myFocus(Focus)
 {
   myScaledTrsf.SetTransformation(CS);
   myGTrsf.SetTrsf(myScaledTrsf);
@@ -122,9 +109,7 @@ Select3D_Projector::Select3D_Projector (const gp_Trsf& T,
                                         const Standard_Real Focus)
 : myPersp(Persp),
   myFocus(Focus),
-  myScaledTrsf(T),
-  myDepthMin(-Precision::Infinite()),
-  myDepthMax( Precision::Infinite())
+  myScaledTrsf(T)
 {
   myGTrsf.SetTrsf(myScaledTrsf);
   Scaled();
@@ -140,9 +125,7 @@ Select3D_Projector::Select3D_Projector (const gp_GTrsf& GT,
                                         const Standard_Real Focus)
 : myPersp(Persp),
   myFocus(Focus),
-  myGTrsf(GT),
-  myDepthMin(-Precision::Infinite()),
-  myDepthMax( Precision::Infinite())
+  myGTrsf(GT)
 {
   Scaled();
 }
@@ -462,11 +445,4 @@ void Select3D_Projector::SetView(const Handle(V3d_View)& aViou)
   myScaledTrsf.SetTransformation(Axe);
   Scaled();
 
-}
-
-void Select3D_Projector::DepthMinMax (const Standard_Real theDepthMin,
-                                      const Standard_Real theDepthMax)
-{
-  myDepthMin = theDepthMin;
-  myDepthMax = theDepthMax;
 }

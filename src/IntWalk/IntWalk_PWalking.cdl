@@ -1,24 +1,18 @@
 -- Created on: 1992-04-03
 -- Created by: Isabelle GRIGNON
 -- Copyright (c) 1992-1999 Matra Datavision
--- Copyright (c) 1999-2012 OPEN CASCADE SAS
+-- Copyright (c) 1999-2014 OPEN CASCADE SAS
 --
--- The content of this file is subject to the Open CASCADE Technology Public
--- License Version 6.5 (the "License"). You may not use the content of this file
--- except in compliance with the License. Please obtain a copy of the License
--- at http://www.opencascade.org and read it completely before using this file.
+-- This file is part of Open CASCADE Technology software library.
 --
--- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
--- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+-- This library is free software; you can redistribute it and / or modify it
+-- under the terms of the GNU Lesser General Public version 2.1 as published
+-- by the Free Software Foundation, with special exception defined in the file
+-- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+-- distribution for complete text of the license and disclaimer of any warranty.
 --
--- The Original Code and all software distributed under the License is
--- distributed on an "AS IS" basis, without warranty of any kind, and the
--- Initial Developer hereby disclaims all such warranties, including without
--- limitation, any warranties of merchantability, fitness for a particular
--- purpose or non-infringement. Please see the License for the specific terms
--- and conditions governing the rights and limitations under the License.
-
-
+-- Alternatively, this file may be used under the terms of Open CASCADE
+-- commercial license or contractual agreement.
 
 generic class PWalking from IntWalk (
     ThePSurface           as any;
@@ -26,9 +20,9 @@ generic class PWalking from IntWalk (
 
     
     ---Purpose: This class implements an algorithm to determine the
-    --          intersection between 2 parametrized surface, marching from
+    --          intersection between 2 parametrized surfaces, marching from
     --          a starting point. The intersection line
-    --          starts and ends on the natural surface 's  boundaries .
+    --          starts and ends on the natural surface's  boundaries .
 
 
 uses XY                  from gp,
@@ -67,13 +61,12 @@ is
     	--          solution point (each point of the line).
     	--          It is necessary to call the Perform method to compute 
     	--          the intersection lines.
-    	--          la ligne trouvee part d'un point sur ou dans les 2 domaines
-    	--          naturelles des surfaces .Elle peut etre fermee ;dans les 
-    	--          cas standard si elle est ouverte elle s arrete  et commence
-    	--          a une frontiere d 'un des domaines.Si une ligne ouverte 
-    	--          s arrete en plein milieu d'un domaine ,on s'arrete sur 
-    	--          point de tangence.
-    	--          Epsilon  tolerance au carre de confusion de points      
+    	--          The line found starts at a point on or in 2 natural domains
+    	--          of surfaces. It can be closed in the 
+    	--          standard case if it is open it stops and begins at the 
+    	--          border of one of the domains. If an open line
+    	--          stops at the middle of a domain, one stops at the tangent point.
+    	--          Epsilon is SquareTolerance of points confusion.      
 
     	returns PWalking;
 	
@@ -93,31 +86,30 @@ is
     	--          TolTangency is the tolerance to find a tangent point.
     	--          Func is the criterion which has to be evaluated at each
     	--          solution point (each point of the line).
-    	--          la ligne trouvee part d'un point sur ou dans les 2 domaines
-    	--          naturelles des surfaces .Elle peut etre fermee ;dans les 
-    	--          cas standard si elle est ouverte elle s arrete  et commence
-    	--          a une frontiere d 'un des domaines.Si une ligne ouverte 
-    	--          s arrete en plein milieu d'un domaine ,on s'arrete sur 
-    	--          point de tangence.
-    	--          Epsilon  tolerance au carre de confusion de points      
+    	--          The line found starts at a point on or in 2 natural domains
+    	--          of surfaces. It can be closed in the 
+    	--          standard case if it is open it stops and begins at the 
+    	--          border of one of the domains. If an open line
+    	--          stops at the middle of a domain, one stops at the tangent point.
+    	--          Epsilon is SquareTolerance of points confusion.    
 
     	returns PWalking;
 
 	
     Perform(me :in out;ParDep : Array1OfReal  from TColStd)
 		       
-    	---Purpose: calcule la ligne d 'intersection
+    	---Purpose: calculate the line of intersection
 
     	is static;
 
     Perform(me :in out;ParDep : Array1OfReal  from TColStd;
     	    	u1min,v1min,u2min,v2min,u1max,v1max,u2max,v2max: Real from Standard)
 		       
-    	---Purpose: calcule  la  ligne d 'intersection le  reglage des
-    	--          pas est fait a partir des valeurs min max sur u et
-    	--           v.  (si ces donnees ne   sont pas presentes comme
-    	--          dans la methode precedente, les pas initiaux sont
-    	--          calcules a partir des min max uv des faces).
+    	---Purpose: calculate the line of intersection. The regulation
+    	--          of steps is done using min and max values on u and
+    	--          v.  (if this data is not presented as in the
+    	--          previous method, the initial steps are calculated
+    	--          starting from min and max uv of faces).
 
     	is static;
 
@@ -126,7 +118,7 @@ is
                       ParDep    : Array1OfReal  from TColStd;
                       FirstPoint: in out PntOn2S from IntSurf)
     
-    	---Purpose: calcule le premier point d'une ligne d'intersection
+    	---Purpose: calculate the first point of a line of intersection
     	--          
 
     	returns Boolean from Standard
@@ -275,12 +267,12 @@ fields
     indextg            : Integer  from Standard;
     tgdir              : Dir      from gp;
 
-    fleche             : Real     from Standard;   -- fleche maxi autorisee
-    pasMax             : Real     from Standard;   -- ratio  uv maximum autorise
-    tolconf            : Real     from Standard;   -- tol de confusion de 2 points
-    pasuv              : Real     from Standard[4];-- pas uv sur les caros 
-    pasSav             : Real     from Standard[4];-- premier pas sauvegarde
-    pasInit            : Real     from Standard[4];-- sauvegarde des pas 
+    fleche             : Real     from Standard;   -- max possible vector
+    pasMax             : Real     from Standard;   -- max possible uv ratio
+    tolconf            : Real     from Standard;   -- tol of confusion of 2 points
+    pasuv              : Real     from Standard[4];-- uv step on squares 
+    pasSav             : Real     from Standard[4];-- first saved step
+    pasInit            : Real     from Standard[4];-- saving of steps  
 
     Um1                : Real from Standard;
     UM1                : Real from Standard;
@@ -299,9 +291,9 @@ fields
 
     sensCheminement    : Integer  from Standard;
     choixIsoSav        : ConstIsoparametric  from IntImp; 
-                       -- sauvegarde du choix 1 iere iso
+                       -- save 1st iso choice
     previousPoint      : PntOn2S  from IntSurf;              
-                       -- point d 'intersection precedent
+                       -- previous intersection point
     previoustg         : Boolean  from Standard;
     previousd          : Dir      from gp;
     previousd1         : Dir2d    from gp;
@@ -310,5 +302,6 @@ fields
     firstd2            : Dir2d    from gp;
 
     myIntersectionOn2S : TheInt2S ;
-
+    STATIC_BLOCAGE_SUR_PAS_TROP_GRAND : Integer from Standard;
+    STATIC_PRECEDENT_INFLEXION        : Integer from Standard;
 end PWalking;

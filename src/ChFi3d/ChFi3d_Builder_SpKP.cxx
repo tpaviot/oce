@@ -1,23 +1,18 @@
 // Created on: 1994-01-20
 // Created by: Isabelle GRIGNON
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Standard_NotImplemented.hxx>
 #include <Precision.hxx>
@@ -197,10 +192,8 @@ static Standard_Real ComputeAbscissa(const BRepAdaptor_Curve& C,
   case GeomAbs_Circle:
     return C.Circle().Radius()*U;
   default:
-    break;
+    return 0;
   }    
-  Standard_NotImplemented::Raise("calculate abscisse non-processed");
-  return 0.;
 }
 
 //=======================================================================
@@ -392,8 +385,8 @@ void ChFi3d_Builder::Trunc(const Handle(ChFiDS_SurfData)&    SD,
       const ChFiDS_CommonPoint& cp1 = SD->Vertex(isfirst,1);
       const ChFiDS_CommonPoint& cp2 = SD->Vertex(isfirst,2);
       if(!((cp1.IsOnArc() && SearchFace(Spine,cp1,F1,FBID)) ||
-	   (cp2.IsOnArc() && SearchFace(Spine,cp2,F2,FBID)))) { 
-	tron = ChFi3d_KParticular(Spine,ivois,BS1->ChangeSurface(),BS2->ChangeSurface());
+           (cp2.IsOnArc() && SearchFace(Spine,cp2,F2,FBID)))) { 
+        tron = ChFi3d_KParticular(Spine,ivois,BS1->ChangeSurface(),BS2->ChangeSurface());
       }
     }
   }
@@ -450,7 +443,7 @@ static Standard_Real ResetProl(const TopOpeBRepDS_DataStructure& DStr,
   const Handle(Geom_Surface)& surf = DStr.Surface(CD->Surf()).Surface();
   Standard_Real par = 0., x, y;
   if(!isfirst) par = edglen;
-  Standard_Real sppar = 0.0;
+  Standard_Real sppar = 0.;
   for (Standard_Integer i = 1; i <= 2; i++) { 
     CD->ChangeInterference(i).SetParameter(par,isfirst);
     Handle(Geom2d_Curve) pc = CD->Interference(i).PCurveOnSurf();

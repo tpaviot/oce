@@ -19,9 +19,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
 #ifndef _IntPatch_SequenceOfLine_HeaderFile
 #include <IntPatch_SequenceOfLine.hxx>
 #endif
@@ -30,6 +27,9 @@
 #endif
 #ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
+#endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -159,9 +159,6 @@ private:
 
 Standard_Boolean done;
 Standard_Boolean empt;
-Standard_Real Preci;
-Standard_Real Fleche;
-Standard_Real Pas;
 IntPatch_SequenceOfLine SLin;
 
 

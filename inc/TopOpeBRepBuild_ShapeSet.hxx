@@ -126,18 +126,6 @@ Standard_EXPORT virtual ~TopOpeBRepBuild_ShapeSet(){Delete() ; }
   Standard_EXPORT    const TopoDS_Shape& Neighbour() const;
   
   Standard_EXPORT     TopTools_ListOfShape& ChangeStartShapes() ;
-  
-  Standard_EXPORT     Standard_Boolean IsStartElement(const TopoDS_Shape& S) const;
-  
-  Standard_EXPORT     Standard_Boolean IsElement(const TopoDS_Shape& S) const;
-  
-  Standard_EXPORT     Standard_Boolean IsShape(const TopoDS_Shape& S) const;
-  
-  Standard_EXPORT     Standard_Integer NStartElement(const TopoDS_Shape& S) const;
-  
-  Standard_EXPORT     Standard_Integer NElement(const TopoDS_Shape& S) const;
-  
-  Standard_EXPORT     Standard_Integer NShape(const TopoDS_Shape& S) const;
   //! Build the list of neighbour shapes of myCurrentShape <br>
 //! (neighbour shapes and myCurrentShapes are of type t) <br>
 //! Initialize myIncidentShapesIter on neighbour shapes. <br>

@@ -41,11 +41,11 @@ class TColQuantity_HArray1OfLength : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColQuantity_HArray1OfLength(const Standard_Integer Low,const Standard_Integer Up);
+      TColQuantity_HArray1OfLength(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColQuantity_HArray1OfLength(const Standard_Integer Low,const Standard_Integer Up,const Quantity_Length& V);
+      TColQuantity_HArray1OfLength(const Standard_Integer Low,const Standard_Integer Up,const Quantity_Length& V);
   
-  Standard_EXPORT     void Init(const Quantity_Length& V) ;
+        void Init(const Quantity_Length& V) ;
   
         Standard_Integer Length() const;
   

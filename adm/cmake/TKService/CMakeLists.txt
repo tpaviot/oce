@@ -3,7 +3,6 @@ set(TOOLKIT TKService)
 set(TOOLKIT_MODULES
 	Aspect
 	SelectBasics
-	AlienImage
 	Image
 	InterfaceGraphic
 	TColQuantity
@@ -35,6 +34,13 @@ endif(WIN32)
 set(TOOLKIT_DEPENDS
 	TKMath
 	TKernel
+	TKBRep
+	TKShHealing
+	TKGeomBase
+	TKGeomAlgo
+	TKG2d
+	TKG3d
+	TKTopAlgo
 )
 
 if(OCE_REQUIRES_FREETYPE)

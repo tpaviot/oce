@@ -42,11 +42,11 @@ class FEmTool_HAssemblyTable : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   FEmTool_HAssemblyTable(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      FEmTool_HAssemblyTable(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   FEmTool_HAssemblyTable(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(TColStd_HArray1OfInteger)& V);
+      FEmTool_HAssemblyTable(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(TColStd_HArray1OfInteger)& V);
   
-  Standard_EXPORT     void Init(const Handle(TColStd_HArray1OfInteger)& V) ;
+        void Init(const Handle(TColStd_HArray1OfInteger)& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -62,9 +62,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(TColStd_HArray1OfInteger)& Value) ;
   
-  Standard_EXPORT    const Handle_TColStd_HArray1OfInteger& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const Handle_TColStd_HArray1OfInteger& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfInteger& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        Handle_TColStd_HArray1OfInteger& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const FEmTool_AssemblyTable& Array2() const;
   

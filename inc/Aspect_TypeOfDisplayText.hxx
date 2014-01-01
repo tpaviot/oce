@@ -12,11 +12,13 @@
 //!          TODT_SUBTITLE       There is a subtitle under the text. <br>
 //!          TODT_DEKALE         The text is displayed with a 3D style. <br>
 //!          TODT_BLEND          The text is displayed in XOR. <br>
+//!          TODT_DIMENSION      Dimension line under text will be invisible. <br>
 enum Aspect_TypeOfDisplayText {
 Aspect_TODT_NORMAL,
 Aspect_TODT_SUBTITLE,
 Aspect_TODT_DEKALE,
-Aspect_TODT_BLEND
+Aspect_TODT_BLEND,
+Aspect_TODT_DIMENSION
 };
 
 #ifndef _Standard_PrimitiveTypes_HeaderFile

@@ -25,10 +25,12 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _BRepMesh_Triangle_HeaderFile
+#include <BRepMesh_Triangle.hxx>
+#endif
 class BRepMesh_DataStructureOfDelaun;
 class BRepMesh_Vertex;
 class BRepMesh_Edge;
-class BRepMesh_Triangle;
 
 
 //! Describes a selector and  an Iterator on a <br>

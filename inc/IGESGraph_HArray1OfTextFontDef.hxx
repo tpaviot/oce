@@ -42,11 +42,11 @@ class IGESGraph_HArray1OfTextFontDef : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESGraph_HArray1OfTextFontDef(const Standard_Integer Low,const Standard_Integer Up);
+      IGESGraph_HArray1OfTextFontDef(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESGraph_HArray1OfTextFontDef(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESGraph_TextFontDef)& V);
+      IGESGraph_HArray1OfTextFontDef(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESGraph_TextFontDef)& V);
   
-  Standard_EXPORT     void Init(const Handle(IGESGraph_TextFontDef)& V) ;
+        void Init(const Handle(IGESGraph_TextFontDef)& V) ;
   
         Standard_Integer Length() const;
   

@@ -42,11 +42,11 @@ class IGESDraw_HArray1OfConnectPoint : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESDraw_HArray1OfConnectPoint(const Standard_Integer Low,const Standard_Integer Up);
+      IGESDraw_HArray1OfConnectPoint(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESDraw_HArray1OfConnectPoint(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESDraw_ConnectPoint)& V);
+      IGESDraw_HArray1OfConnectPoint(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESDraw_ConnectPoint)& V);
   
-  Standard_EXPORT     void Init(const Handle(IGESDraw_ConnectPoint)& V) ;
+        void Init(const Handle(IGESDraw_ConnectPoint)& V) ;
   
         Standard_Integer Length() const;
   

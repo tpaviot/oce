@@ -16,6 +16,9 @@
 #include <Handle_Graphic3d_AspectLine3d.hxx>
 #endif
 
+#ifndef _Graphic3d_ShaderProgram_Handle_HeaderFile
+#include <Graphic3d_ShaderProgram_Handle.hxx>
+#endif
 #ifndef _Aspect_AspectLine_HeaderFile
 #include <Aspect_AspectLine.hxx>
 #endif
@@ -50,6 +53,10 @@ public:
 //!	    factor to this nominal line width. <br>
 //!	    The supported linewidths vary by 1-pixel units. <br>
   Standard_EXPORT   Graphic3d_AspectLine3d(const Quantity_Color& AColor,const Aspect_TypeOfLine AType,const Standard_Real AWidth);
+  //! Sets up OpenGL/GLSL shader program. <br>
+  Standard_EXPORT     void SetShaderProgram(const Graphic3d_ShaderProgram_Handle& theProgram) ;
+  
+  Standard_EXPORT    const Graphic3d_ShaderProgram_Handle& ShaderProgram() const;
 
 
 
@@ -64,6 +71,7 @@ protected:
 private: 
 
 
+Graphic3d_ShaderProgram_Handle MyShaderProgram;
 
 
 };

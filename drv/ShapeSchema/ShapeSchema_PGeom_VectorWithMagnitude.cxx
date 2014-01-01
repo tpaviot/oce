@@ -39,6 +39,8 @@ void ShapeSchema_PGeom_VectorWithMagnitude::SWrite(const Handle(Standard_Persist
   if (!p.IsNull()) {
     Handle(PGeom_VectorWithMagnitude) &pp = (Handle(PGeom_VectorWithMagnitude)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_gp_Vec::SWrite(pp->_CSFDB_GetPGeom_Vectorvec(),f,theSchema);
@@ -57,6 +59,8 @@ void ShapeSchema_PGeom_VectorWithMagnitude::SRead(const Handle(Standard_Persiste
 { 
   if (!p.IsNull()) {
     Handle(PGeom_VectorWithMagnitude) &pp = (Handle(PGeom_VectorWithMagnitude)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

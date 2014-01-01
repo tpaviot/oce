@@ -1,420 +1,264 @@
 // Created on: 1996-12-05
 // Created by: Jean-Pierre COMBE/Odile Olivier/Serguei Zaritchny
 // Copyright (c) 1996-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
-// modified     <SZY> 20-feb-98
-//              <VBU> myFShape could be a wire.
-
-#define BUC60915        //GG 05/06/01 Enable to compute the requested arrow size
-//                      if any in all dimensions.
-
-#include <Standard_NotImplemented.hxx>
-
-#include <AIS_RadiusDimension.ixx>
-
-#include <AIS_DimensionOwner.hxx>
-#include <DsgPrs_RadiusPresentation.hxx>
-#include <DsgPrs.hxx>
-
-#include <Geom_Surface.hxx>
-#include <Geom_Plane.hxx>
-#include <Geom_Circle.hxx>
-#include <Geom_Curve.hxx>
-#include <Geom_TrimmedCurve.hxx>
-#include <Geom_ToroidalSurface.hxx>
-#include <Geom_CylindricalSurface.hxx>
-#include <Geom_SurfaceOfLinearExtrusion.hxx>
-
-#include <gp_Circ.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Trsf.hxx>
-#include <ElCLib.hxx>
-#include <GC_MakeCircle.hxx>
-#include <gce_MakeLin.hxx>
-#include <gce_MakeCirc.hxx>
-
-#include <SelectMgr_EntityOwner.hxx>
-#include <Select3D_SensitiveSegment.hxx>
-
-#include <Precision.hxx>
-
-#include <TopExp_Explorer.hxx>
-#include <TopAbs_ShapeEnum.hxx>
-#include <TopoDS.hxx>
-#include <TopoDS_Face.hxx>
-#include <TopoDS_Wire.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopLoc_Location.hxx>
-#include <BRep_Tool.hxx>
-#include <BRepAdaptor_Surface.hxx>
-#include <BRepAdaptor_Curve.hxx>
-#include <Adaptor3d_HCurve.hxx>
-
-#include <Prs3d_AngleAspect.hxx>
-#include <Prs3d_ArrowAspect.hxx>
-#include <Prs3d_LengthAspect.hxx>
-#include <Prs3d_Drawer.hxx>
-
-#include <TCollection_AsciiString.hxx>
-#include <TCollection_ExtendedString.hxx>
-
+#include <AIS_RadiusDimension.hxx>
 
 #include <AIS.hxx>
-#include <AIS_Drawer.hxx>
+#include <BRepLib_MakeEdge.hxx>
+#include <ElCLib.hxx>
 #include <gce_MakeDir.hxx>
-#include <Select3D_SensitiveBox.hxx>
 
+IMPLEMENT_STANDARD_HANDLE (AIS_RadiusDimension, AIS_Dimension)
+IMPLEMENT_STANDARD_RTTIEXT (AIS_RadiusDimension, AIS_Dimension)
 
-
-//======================================================================
-//function : CircleFromPlanarFace
-//purpose  : if possible gets circle from planar face
-//=======================================================================
-static Standard_Boolean CircleFromPlanarFace (const TopoDS_Shape& aFace,
-					      Handle(Geom_Curve)& aCurve, 
-					      gp_Pnt & ptfirst,
-					      gp_Pnt & ptend)
+namespace
 {
-  TopExp_Explorer ExploEd (aFace, TopAbs_EDGE);
-  for ( ; ExploEd.More(); ExploEd.Next())
-    {
-      TopoDS_Edge curedge =  TopoDS::Edge (ExploEd.Current());
-      if (AIS::ComputeGeometry (curedge, aCurve, ptfirst, ptend))
-	if (aCurve->IsInstance (STANDARD_TYPE(Geom_Circle)) && 
-	    !Handle(Geom_Circle)::DownCast(aCurve).IsNull())
-	  return Standard_True;
-    }
-  return Standard_False;
-}
-
+  static const Standard_ExtCharacter THE_RADIUS_SYMBOL ('R');
+};
 
 //=======================================================================
 //function : Constructor
 //purpose  : 
 //=======================================================================
-AIS_RadiusDimension::AIS_RadiusDimension(const TopoDS_Shape& aShape, 
-					 const Standard_Real aVal, 
-					 const TCollection_ExtendedString& aText)
-:mydrawFromCenter(Standard_True)
+AIS_RadiusDimension::AIS_RadiusDimension (const gp_Circ& theCircle)
+: AIS_Dimension (AIS_KOD_RADIUS)
 {
-  myFShape = aShape;
-  myVal = aVal;
-  myText = aText;
-  mySymbolPrs = DsgPrs_AS_FIRSTPT_LASTAR;
-  myAutomaticPosition = Standard_True;
-
-  myArrowSize = myVal / 100.;
-  InitFirstShape();
+  SetMeasuredGeometry (theCircle);
+  SetSpecialSymbol (THE_RADIUS_SYMBOL);
+  SetDisplaySpecialSymbol (AIS_DSS_Before);
+  SetFlyout (0.0);
 }
 
 //=======================================================================
 //function : Constructor
-//purpose  :(avec position et texte)
+//purpose  : 
 //=======================================================================
-AIS_RadiusDimension::AIS_RadiusDimension( const TopoDS_Shape& aShape, 
-					  const Standard_Real aVal, 
-					  const TCollection_ExtendedString& aText, 
-					  const gp_Pnt& aPosition,
-					  const DsgPrs_ArrowSide aSymbolPrs, 
-					  const Standard_Real anArrowSize )
-:mydrawFromCenter(Standard_True)
+AIS_RadiusDimension::AIS_RadiusDimension (const gp_Circ& theCircle,
+                                          const gp_Pnt& theAttachPoint)
+: AIS_Dimension (AIS_KOD_RADIUS)
 {
-  myFShape = aShape;
-  myVal = aVal;
-  myText = aText;
-  myPosition = aPosition;
-  mySymbolPrs = aSymbolPrs;
-#ifdef BUC60915
-  SetArrowSize( anArrowSize );
-#else
-  myArrowSize = anArrowSize;
-#endif
-  myAutomaticPosition = Standard_False;
-  InitFirstShape();
+  SetMeasuredGeometry (theCircle, theAttachPoint);
+  SetSpecialSymbol (THE_RADIUS_SYMBOL);
+  SetDisplaySpecialSymbol (AIS_DSS_Before);
+  SetFlyout (0.0);
 }
 
 //=======================================================================
-//function : InitFirstShape
-//purpose  : 
+//function : Constructor
+//purpose  :
 //=======================================================================
-void AIS_RadiusDimension::InitFirstShape()
+AIS_RadiusDimension::AIS_RadiusDimension (const TopoDS_Shape& theShape)
+: AIS_Dimension (AIS_KOD_RADIUS)
 {
-  if (myFShape.ShapeType() == TopAbs_FACE)
-    {
-      BRepAdaptor_Surface surfAlgo( TopoDS::Face( myFShape ) );
-      Standard_Real uFirst, uLast, vFirst, vLast;
-      uFirst = surfAlgo.FirstUParameter();
-      uLast = surfAlgo.LastUParameter();
-      vFirst = surfAlgo.FirstVParameter();
-      vLast = surfAlgo.LastVParameter();
-      Standard_Real uMoy = (uFirst + uLast)/2;
-      Standard_Real vMoy = (vFirst + vLast)/2;
-      Handle( Geom_Surface ) surf = surfAlgo.Surface().Surface();
-      surf = Handle( Geom_Surface )::DownCast( surf->Transformed( surfAlgo.Trsf() ) );
-      Handle( Geom_Curve ) aCurve;
-
-      if (surf->DynamicType() == STANDARD_TYPE(Geom_ToroidalSurface))
-	{
-	  aCurve = surf->UIso( uMoy );
-	  uFirst = vFirst;
-	  uLast = vLast;
-	}
-      else if (surf->DynamicType() == STANDARD_TYPE(Geom_SurfaceOfLinearExtrusion)) 
-	{
-	  Handle( Adaptor3d_HCurve ) BasisCurve = surfAlgo.BasisCurve();
-	  if ( BasisCurve->GetType() == GeomAbs_Circle )
-	    aCurve = surf->VIso( vMoy );
-	  else return;
-	}
-      else if (surf->DynamicType() == STANDARD_TYPE(Geom_Plane)) 
-	{
-	  gp_Pnt FirstPnt, LastPnt;
-	  if (CircleFromPlanarFace (TopoDS::Face(myFShape), aCurve, FirstPnt, LastPnt))
-//	  if (CircleFromPlanarFace (myFShape, aCurve, FirstPnt, LastPnt))
-	    {
-	      uFirst = ElCLib::Parameter ((Handle(Geom_Circle)::DownCast( aCurve ))->Circ(), FirstPnt);
-	      uLast  = ElCLib::Parameter ((Handle(Geom_Circle)::DownCast( aCurve ))->Circ(), LastPnt);
-	    }
-	  else return;
-	}
-      else
-	aCurve = surf->VIso( vMoy );
-      
-      if (aCurve->DynamicType() == STANDARD_TYPE(Geom_Circle))
-	myCircle = (Handle( Geom_Circle )::DownCast( aCurve ))->Circ();
-      else if (aCurve->DynamicType() == STANDARD_TYPE(Geom_TrimmedCurve)) {
-	Handle(Geom_TrimmedCurve) tCurve = Handle(Geom_TrimmedCurve)::DownCast(aCurve); 
-	aCurve = tCurve->BasisCurve();
-	uFirst = tCurve->FirstParameter();
-	uLast  = tCurve->LastParameter();
-	if (aCurve->DynamicType() == STANDARD_TYPE(Geom_Circle))
-	  myCircle = Handle(Geom_Circle)::DownCast(aCurve)->Circ();//gp_Circ
-	else return;
-      }
-      else if (aCurve->DynamicType() == STANDARD_TYPE(Geom_BSplineCurve)) {
-	gp_Pnt P1,P2,P3;
-	aCurve->D0(uFirst,P1);
-	aCurve->D0((uFirst+uLast)/2,P2);
-	aCurve->D0(uLast,P3);
-	gce_MakeCirc MakeCirc = gce_MakeCirc(P1,P2,P3);
-	myCircle = MakeCirc.Value();
-	uFirst = ElCLib::Parameter(myCircle,P1);
-	uLast = ElCLib::Parameter(myCircle,P2);
-      }
-
-      myFirstPar = uFirst;
-      myLastPar  = uLast;
-    } // TopAbs_FACE
-
-  else // it is edge or a wire
-    {
-      TopoDS_Edge anEdge;
-      if (myFShape.ShapeType() == TopAbs_WIRE)  {
-	TopExp_Explorer exp (myFShape,TopAbs_EDGE);
-	if (exp.More())  anEdge = TopoDS::Edge (exp.Current());
-      }
-      else {
-	if ( myFShape.ShapeType() == TopAbs_EDGE) { 
-	  anEdge = TopoDS::Edge (myFShape);
-	  BRepAdaptor_Curve AdaptedCurve (anEdge);
-	  if (!AdaptedCurve.GetType() == GeomAbs_Circle) return;
-	  
-	  myCircle = AdaptedCurve.Circle();
-	  myFirstPar = AdaptedCurve.FirstParameter();
-	  myLastPar = AdaptedCurve.LastParameter();
-	}
-#ifdef DEB
-	else {
-	  cout << "AIS_RadiusDimension::InitFirstShape ==> myFShape.ShapeType() == " << myFShape.ShapeType()  << endl;
-	}
-#endif
-      }
-    } 
-
-  myCenter = myCircle.Location();
-  myCircle.SetRadius(myVal);
-  while (myFirstPar > 2*M_PI) myFirstPar -= 2*M_PI;
-  while (myFirstPar < 0.0 ) myFirstPar += 2*M_PI;
-  while (myLastPar  > 2*M_PI) myLastPar  -= 2*M_PI;
-  while (myLastPar  < 0.0 ) myLastPar  += 2*M_PI;
-  myPlane = new Geom_Plane(gp_Pln(gp_Ax3(myCircle.Position())));
-  myFirstLine = gce_MakeLin( myCenter, ElCLib::Value( myFirstPar, myCircle ) );
-  myLastLine  = gce_MakeLin( myCenter, ElCLib::Value( myLastPar, myCircle ) );
+  SetMeasuredGeometry (theShape);
+  SetSpecialSymbol (THE_RADIUS_SYMBOL);
+  SetDisplaySpecialSymbol (AIS_DSS_Before);
+  SetFlyout (0.0);
 }
 
 //=======================================================================
-//function : SetFirstShape
+//function : SetMeasuredGeometry
 //purpose  : 
 //=======================================================================
-void AIS_RadiusDimension::SetFirstShape( const TopoDS_Shape& aFShape )
+void AIS_RadiusDimension::SetMeasuredGeometry (const gp_Circ& theCircle)
 {
-  myFShape = aFShape;
-  InitFirstShape();
+  myCircle       = theCircle;
+  myGeometryType = GeometryType_Edge;
+  myShape        = BRepLib_MakeEdge (theCircle);
+  myAnchorPoint  = ElCLib::Value (0, myCircle);
+  myIsValid      = IsValidCircle (myCircle);
+
+  if (myIsValid)
+  {
+    ComputePlane();
+  }
+
+  myIsValid &= CheckPlane (myPlane);
+
+  SetToUpdate();
+}
+
+//=======================================================================
+//function : SetMeasuredGeometry
+//purpose  : 
+//=======================================================================
+void AIS_RadiusDimension::SetMeasuredGeometry (const gp_Circ& theCircle,
+                                               const gp_Pnt&  theAnchorPoint)
+{
+  myCircle       = theCircle;
+  myGeometryType = GeometryType_Edge;
+  myShape        = BRepLib_MakeEdge (theCircle);
+  myAnchorPoint  = theAnchorPoint;
+  myIsValid      = IsValidCircle (myCircle) && IsValidAnchor (myCircle, theAnchorPoint);
+
+  if (myIsValid)
+  {
+    ComputePlane();
+  }
+
+  myIsValid &= CheckPlane (myPlane);
+
+  SetToUpdate();
+}
+
+//=======================================================================
+//function : SetMeasuredGeometry
+//purpose  : 
+//=======================================================================
+void AIS_RadiusDimension::SetMeasuredGeometry (const TopoDS_Shape& theShape)
+{
+  Standard_Boolean isClosed = Standard_False;
+  myShape        = theShape;
+  myGeometryType = GeometryType_UndefShapes;
+  myIsValid      = InitCircularDimension (theShape, myCircle, myAnchorPoint, isClosed) 
+                && IsValidCircle (myCircle);
+
+  if (myIsValid)
+  {
+    ComputePlane();
+  }
+
+  myIsValid &= CheckPlane (myPlane);
+
+  SetToUpdate();
+}
+
+//=======================================================================
+//function : CheckPlane
+//purpose  : 
+//=======================================================================
+Standard_Boolean AIS_RadiusDimension::CheckPlane (const gp_Pln& thePlane) const
+{
+  // Check if anchor point and circle center point belong to plane.
+  if (!thePlane.Contains (myAnchorPoint, Precision::Confusion()) &&
+      !thePlane.Contains (myCircle.Location(), Precision::Confusion()))
+  {
+    return Standard_False;
+  }
+
+  return Standard_True;
+}
+
+//=======================================================================
+//function : ComputePlane
+//purpose  : 
+//=======================================================================
+void AIS_RadiusDimension::ComputePlane()
+{
+  if (!IsValid())
+  {
+    return;
+  }
+
+  gp_Dir aDimensionX = gce_MakeDir (myAnchorPoint, myCircle.Location());
+
+  myPlane = gp_Pln (gp_Ax3 (myCircle.Location(),
+                            myCircle.Axis().Direction(),
+                            aDimensionX));
+}
+
+//=======================================================================
+//function : GetModelUnits
+//purpose  :
+//=======================================================================
+const TCollection_AsciiString& AIS_RadiusDimension::GetModelUnits() const
+{
+  return myDrawer->DimLengthModelUnits();
+}
+
+//=======================================================================
+//function : GetDisplayUnits
+//purpose  :
+//=======================================================================
+const TCollection_AsciiString& AIS_RadiusDimension::GetDisplayUnits() const
+{
+  return myDrawer->DimLengthDisplayUnits();
+}
+
+//=======================================================================
+//function : SetModelUnits
+//purpose  :
+//=======================================================================
+void AIS_RadiusDimension::SetModelUnits (const TCollection_AsciiString& theUnits)
+{
+  myDrawer->SetDimLengthModelUnits (theUnits);
+}
+
+//=======================================================================
+//function : SetDisplayUnits
+//purpose  :
+//=======================================================================
+void AIS_RadiusDimension::SetDisplayUnits (const TCollection_AsciiString& theUnits)
+{
+  myDrawer->SetDimLengthDisplayUnits(theUnits);
+}
+
+//=======================================================================
+//function : ComputeValue
+//purpose  : 
+//=======================================================================
+Standard_Real AIS_RadiusDimension::ComputeValue() const
+{
+  if (!IsValid())
+  {
+    return 0.0;
+  }
+
+  return myCircle.Radius();
 }
 
 //=======================================================================
 //function : Compute
 //purpose  : 
 //=======================================================================
-void AIS_RadiusDimension::Compute(const Handle(PrsMgr_PresentationManager3d)& /*aPresentationManager*/,
-				  const Handle(Prs3d_Presentation)& aPresentation, 
-				  const Standard_Integer /*aMode*/)
+void AIS_RadiusDimension::Compute (const Handle(PrsMgr_PresentationManager3d)& /*thePM*/,
+                                   const Handle(Prs3d_Presentation)& thePresentation,
+                                   const Standard_Integer theMode)
 {
-  aPresentation->Clear();
+  thePresentation->Clear();
+  mySelectionGeom.Clear (theMode);
 
-  ComputeRadius( aPresentation );
+  if (!IsValid())
+  {
+    return;
+  }
+
+  DrawLinearDimension (thePresentation, theMode, myAnchorPoint, myCircle.Location(), Standard_True);
 }
 
 //=======================================================================
-//function : Compute
-//purpose  :  to avoid warning
-//=======================================================================
-void AIS_RadiusDimension::Compute(const Handle(Prs3d_Projector)& aProjector, 
-				  const Handle(Prs3d_Presentation)& aPresentation)
-{
-// Standard_NotImplemented::Raise("AIS_RadiusDimension::Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation)");
- PrsMgr_PresentableObject::Compute( aProjector , aPresentation ) ;
-}
-
-//=======================================================================
-//function : Compute
+//function : IsValidCircle
 //purpose  : 
 //=======================================================================
-
-void AIS_RadiusDimension::Compute(const Handle_Prs3d_Projector& aProjector,
-                                  const Handle_Geom_Transformation& aTransformation,
-                                  const Handle_Prs3d_Presentation& aPresentation)
+Standard_Boolean AIS_RadiusDimension::IsValidCircle (const gp_Circ& theCircle) const
 {
-// Standard_NotImplemented::Raise("AIS_RadiusDimension::Compute(const Handle_Prs3d_Projector&, const Handle_Geom_Transformation&, const Handle_Prs3d_Presentation&)");
- PrsMgr_PresentableObject::Compute( aProjector , aTransformation , aPresentation ) ;
+  return theCircle.Radius() > Precision::Confusion();
 }
 
 //=======================================================================
-//function : ComputeSelection
+//function : IsValidAnchor
 //purpose  : 
 //=======================================================================
-void AIS_RadiusDimension::ComputeSelection( const Handle(SelectMgr_Selection)& aSelection, 
-					    const Standard_Integer )
+Standard_Boolean AIS_RadiusDimension::IsValidAnchor (const gp_Circ& theCircle,
+                                                     const gp_Pnt& theAnchor) const
 {
-  gp_Pnt LineOrigin, LineEnd;
-  DsgPrs::ComputeRadiusLine( myCenter, myEndOfArrow, myPosition, mydrawFromCenter,
-			    LineOrigin,LineEnd); 
-  Handle(AIS_DimensionOwner) own = new AIS_DimensionOwner(this,7);
-  own->SetShape(myFShape);
-  Handle( Select3D_SensitiveSegment ) seg = new Select3D_SensitiveSegment( own, LineOrigin, LineEnd );
-  aSelection->Add( seg );
+  gp_Pln aCirclePlane (theCircle.Location(), theCircle.Axis().Direction());
+  Standard_Real anAnchorDist = theAnchor.Distance (theCircle.Location());
+  Standard_Real aRadius      = myCircle.Radius();
 
-  // Text
-  Standard_Real size(Min(myVal/100.+1.e-6,myArrowSize+1.e-6));
-  Handle( Select3D_SensitiveBox ) box = new Select3D_SensitiveBox( own,
-                                                                   myPosition.X(),
-                                                                   myPosition.Y(),
-                                                                   myPosition.Z(),
-                                                                   myPosition.X() + size,
-                                                                   myPosition.Y() + size,
-                                                                   myPosition.Z() + size );
-  aSelection->Add(box);
+  return Abs (anAnchorDist - aRadius) > Precision::Confusion()
+      && aCirclePlane.Contains (theAnchor, Precision::Confusion());
 }
-
-//=======================================================================
-//function : ComputeRadius
-//purpose  : 
-//=======================================================================
-
-void AIS_RadiusDimension::ComputeRadius( const Handle( Prs3d_Presentation )& aPresentation )
-{
-   if (myAutomaticPosition)
-     {
-       InitFirstShape();
-       myEndOfArrow = ElCLib::Value( (myFirstPar + myLastPar)/2, myCircle );
-       if(mydrawFromCenter) {
-	 myPosition = myCenter;
-       }
-       else 
-	 {
-	   gp_Vec v1(myCenter, myEndOfArrow);
-	   myPosition = myCenter.Translated(v1 * 1.2);
-	 }
-       myAutomaticPosition = Standard_True;
-       
-       if (myIsSetBndBox)
-	 myPosition = AIS::TranslatePointToBound(myPosition, gce_MakeDir( myCenter, myEndOfArrow ),
-						 myBndBox );       
-     }
-   else
-     {
-       //!Automaticposition
-       myPosition = AIS::ProjectPointOnPlane( myPosition, myPlane->Pln() );
-       Standard_Real PosPar = ElCLib::Parameter( myCircle, myPosition );
-       if (!AIS::InDomain(myFirstPar, myLastPar, PosPar))
-	 { // not in domain
-	   Standard_Real otherpar = PosPar + M_PI;
-	   if (otherpar > 2*M_PI) otherpar -= 2*M_PI;
-	   if (AIS::InDomain(myFirstPar, myLastPar, otherpar)){
-	     PosPar = otherpar;// parameter on circle
-	     myEndOfArrow = ElCLib::Value( PosPar, myCircle );
-	   }
-	   else {
-	     Standard_Real Teta1 = Abs( PosPar - myFirstPar ), Teta2 = Abs( PosPar - myLastPar );
-	     if (Teta1 > M_PI)
-	       Teta1 = 2.0*M_PI - Teta1; 
-	     if (Teta2 > M_PI)
-	       Teta2 = 2.0*M_PI - Teta2; 
-	     if (Teta1 < Teta2) 
-	       {
-		 if(myFirstLine.Contains(myPosition,Precision::Confusion()))
-		   PosPar = myFirstPar;
-		 else
-		   PosPar = myLastPar;
-	       }
-	     else
-	       {
-		 if(myLastLine.Contains(myPosition,Precision::Confusion()))
-		   PosPar = myLastPar; 
-		 else 
-		   PosPar = myFirstPar;
-	       }
-	     myEndOfArrow = ElCLib::Value( PosPar, myCircle );
-	     gp_Lin RadiusLine = gce_MakeLin( myCenter, myEndOfArrow );
-	     // project on radius line
-	     myPosition = ElCLib::Value( ElCLib::Parameter( RadiusLine, myPosition ), RadiusLine );
-	   }
-	 }
-       else
-	 myEndOfArrow = ElCLib::Value( PosPar, myCircle );
-     }
-   
-   Handle(Prs3d_LengthAspect) la = myDrawer->LengthAspect();
-   Handle(Prs3d_ArrowAspect) arr = la->Arrow1Aspect();
-   // size
-#ifdef BUC60915
-   if( !myArrowSizeIsDefined ) {
-     myArrowSize = Min(myArrowSize,myVal/5.);
-   }
-   arr->SetLength(myArrowSize);
-#else
-   if (myVal/5. > myArrowSize) 
-     arr->SetLength(myArrowSize);
-   else 
-     arr->SetLength(myVal/5.);
-#endif
-   
-   DsgPrs_RadiusPresentation::Add( aPresentation, myDrawer, myText, myPosition,
-				  myCenter, myEndOfArrow, mySymbolPrs, mydrawFromCenter );
- }

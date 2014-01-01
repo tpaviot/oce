@@ -25,6 +25,9 @@
 #ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
 #endif
+#ifndef _Graphic3d_SequenceOfHClipPlane_HeaderFile
+#include <Graphic3d_SequenceOfHClipPlane.hxx>
+#endif
 #ifndef _Graphic3d_CTransPersStruct_HeaderFile
 #include <Graphic3d_CTransPersStruct.hxx>
 #endif
@@ -67,7 +70,11 @@
 #ifndef _Graphic3d_TransModeFlags_HeaderFile
 #include <Graphic3d_TransModeFlags.hxx>
 #endif
+#ifndef _Graphic3d_ClipPlane_Handle_HeaderFile
+#include <Graphic3d_ClipPlane_Handle.hxx>
+#endif
 class Standard_NotImplemented;
+class PrsMgr_Presentation3d;
 class PrsMgr_PresentationManager;
 class Graphic3d_Structure;
 class Graphic3d_DataStructureManager;
@@ -160,8 +167,32 @@ public:
   //! Get ID of Z layer. If no presentations of object is displayed, <br>
 //! and layer ID is unavailable, the -1 value is returned. <br>
   Standard_EXPORT     Standard_Integer GetZLayer(const Handle(PrsMgr_PresentationManager)& thePrsMgr) const;
+  //! Adds clip plane for graphical clipping for all display mode <br>
+//! presentations. The composition of clip planes truncates the rendering <br>
+//! space to convex volume. Please be aware that number of supported <br>
+//! clip plane is limited. The planes which exceed the limit are ignored. <br>
+//! Besides of this, some planes can be already set in view where the object <br>
+//! is shown: the number of these planes should be substracted from limit <br>
+//! to predict the maximum possible number of object clipping planes. <br>
+//! @param thePlane [in] the clip plane to be appended to map of clip planes. <br>
+  Standard_EXPORT   virtual  void AddClipPlane(const Graphic3d_ClipPlane_Handle& thePlane) ;
+  //! Removes previously added clip plane. <br>
+//! @param thePlane [in] the clip plane to be removed from map of clip planes. <br>
+  Standard_EXPORT   virtual  void RemoveClipPlane(const Graphic3d_ClipPlane_Handle& thePlane) ;
+  //! Set clip planes for graphical clipping for all display mode presentations. <br>
+//! The composition of clip planes truncates the rendering space to convex <br>
+//! volume. Please be aware that number of supported clip plane is limited. <br>
+//! The planes which exceed the limit are ignored. Besides of this, some <br>
+//! planes can be already set in view where the object is shown: the number <br>
+//! of these planes should be substracted from limit to predict the maximum <br>
+//! possible number of object clipping planes. <br>
+  Standard_EXPORT   virtual  void SetClipPlanes(const Graphic3d_SequenceOfHClipPlane& thePlanes) ;
+  //! Get clip planes. <br>
+//! @return set of previously added clip planes for all display mode presentations. <br>
+       const Graphic3d_SequenceOfHClipPlane& GetClipPlanes() const;
 
 
+friend class PrsMgr_Presentation3d;
 friend class PrsMgr_PresentationManager;
 friend   
   Standard_EXPORT   Handle_Graphic3d_Structure PrsMgr_Presentation3d::Compute(const Handle(Graphic3d_DataStructureManager)& aProjector) ;
@@ -219,10 +250,15 @@ protected:
   Standard_EXPORT   virtual  void Fill(const Handle(PrsMgr_PresentationManager)& aPresentationManager,const Handle(PrsMgr_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
   
   Standard_EXPORT     PrsMgr_Presentations& Presentations() ;
+  //! General virtual method for internal update of presentation state <br>
+//! when some modifications on list of clip planes occurs. Base <br>
+//! implementation propagate clip planes to every presentation. <br>
+  Standard_EXPORT   virtual  void UpdateClipping() ;
 
 PrsMgr_Presentations myPresentations;
 PrsMgr_TypeOfPresentation3d myTypeOfPresentation3d;
 TopLoc_Location myLocation;
+Graphic3d_SequenceOfHClipPlane myClipPlanes;
 
 
 private: 

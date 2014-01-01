@@ -111,7 +111,7 @@ public:
 //!          minimum. <br>
   Standard_EXPORT     Standard_Boolean IsMin(const Standard_Integer N) const;
   //! Returns the point of the Nth extremum distance. <br>
-  Standard_EXPORT     Extrema_POnCurv Point(const Standard_Integer N) const;
+  Standard_EXPORT    const Extrema_POnCurv& Point(const Standard_Integer N) const;
 
 
 

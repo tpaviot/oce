@@ -1,24 +1,18 @@
 // Created on: 1999-02-11
 // Created by: Xuan PHAM PHU
 // Copyright (c) 1999-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TopOpeBRepTool_TOOL.hxx>
 #include <TopOpeBRepTool_EXPORT.hxx>
@@ -182,6 +176,7 @@ static Standard_Integer FUN_mkT2dquad(const Standard_Real curvC1, const Standard
   if (samec)           return isON2ifss;//is ON if curves are on same side/tg line
   if (curvC1 > curvC2) return isIN2ifss;//is IN if curves are on same side/tg line
   else                 return isOU2ifss;//is OU if curves are on same side/tg line
+//  return 0;
 }
 
 static Standard_Boolean FUN_getnearpar(const TopoDS_Edge& e,const Standard_Real par,const Standard_Real f,const Standard_Real l,
@@ -254,9 +249,6 @@ static Standard_Boolean FUN_getsta(const Standard_Integer mkt,const gp_Dir& tga1
     sta = TopAbs_ON; 
     return Standard_True;
   } 
-#ifndef _MSC_VER
-  return Standard_False;
-#endif
 } 
 static Standard_Boolean FUN_mkT2dquad(const TopoDS_Edge& e1,const Standard_Real par1,const Standard_Real f1,const Standard_Real l1,
 			 const TopoDS_Edge& e2,const Standard_Real par2,

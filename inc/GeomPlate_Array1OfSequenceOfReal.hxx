@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomPlate_Array1OfSequenceOfReal(const Standard_Integer Low,const Standard_Integer Up);
+      GeomPlate_Array1OfSequenceOfReal(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   GeomPlate_Array1OfSequenceOfReal(const TColStd_SequenceOfReal& Item,const Standard_Integer Low,const Standard_Integer Up);
+      GeomPlate_Array1OfSequenceOfReal(const TColStd_SequenceOfReal& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const TColStd_SequenceOfReal& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~GeomPlate_Array1OfSequenceOfReal()
 {
   Destroy();

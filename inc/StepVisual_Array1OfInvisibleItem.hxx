@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepVisual_Array1OfInvisibleItem(const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_Array1OfInvisibleItem(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepVisual_Array1OfInvisibleItem(const StepVisual_InvisibleItem& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_Array1OfInvisibleItem(const StepVisual_InvisibleItem& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const StepVisual_InvisibleItem& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepVisual_Array1OfInvisibleItem()
 {
   Destroy();

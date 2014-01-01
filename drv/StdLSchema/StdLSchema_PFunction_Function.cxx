@@ -39,6 +39,8 @@ void StdLSchema_PFunction_Function::SWrite(const Handle(Standard_Persistent)& p,
   if (!p.IsNull()) {
     Handle(PFunction_Function) &pp = (Handle(PFunction_Function)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     StdLSchema_Standard_GUID::SWrite(pp->_CSFDB_GetPFunction_FunctionmyDriverGUID(),f,theSchema);
@@ -58,6 +60,8 @@ void StdLSchema_PFunction_Function::SRead(const Handle(Standard_Persistent)& p, 
 { 
   if (!p.IsNull()) {
     Handle(PFunction_Function) &pp = (Handle(PFunction_Function)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

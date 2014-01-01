@@ -39,6 +39,8 @@ void ShapeSchema_PGeom2d_Circle::SWrite(const Handle(Standard_Persistent)& p, St
   if (!p.IsNull()) {
     Handle(PGeom2d_Circle) &pp = (Handle(PGeom2d_Circle)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_gp_Ax22d::SWrite(pp->_CSFDB_GetPGeom2d_Conicposition(),f,theSchema);
@@ -58,6 +60,8 @@ void ShapeSchema_PGeom2d_Circle::SRead(const Handle(Standard_Persistent)& p, Sto
 { 
   if (!p.IsNull()) {
     Handle(PGeom2d_Circle) &pp = (Handle(PGeom2d_Circle)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

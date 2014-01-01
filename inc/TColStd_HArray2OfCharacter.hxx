@@ -41,11 +41,11 @@ class TColStd_HArray2OfCharacter : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColStd_HArray2OfCharacter(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      TColStd_HArray2OfCharacter(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   TColStd_HArray2OfCharacter(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_Character& V);
+      TColStd_HArray2OfCharacter(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_Character& V);
   
-  Standard_EXPORT     void Init(const Standard_Character& V) ;
+        void Init(const Standard_Character& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -61,9 +61,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Standard_Character& Value) ;
   
-  Standard_EXPORT    const Standard_Character& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const Standard_Character& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     Standard_Character& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        Standard_Character& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const TColStd_Array2OfCharacter& Array2() const;
   

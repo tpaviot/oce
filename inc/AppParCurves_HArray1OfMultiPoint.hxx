@@ -39,11 +39,11 @@ class AppParCurves_HArray1OfMultiPoint : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   AppParCurves_HArray1OfMultiPoint(const Standard_Integer Low,const Standard_Integer Up);
+      AppParCurves_HArray1OfMultiPoint(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   AppParCurves_HArray1OfMultiPoint(const Standard_Integer Low,const Standard_Integer Up,const AppParCurves_MultiPoint& V);
+      AppParCurves_HArray1OfMultiPoint(const Standard_Integer Low,const Standard_Integer Up,const AppParCurves_MultiPoint& V);
   
-  Standard_EXPORT     void Init(const AppParCurves_MultiPoint& V) ;
+        void Init(const AppParCurves_MultiPoint& V) ;
   
         Standard_Integer Length() const;
   

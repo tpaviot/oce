@@ -22,9 +22,6 @@
 #ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
 #endif
-#ifndef _GeomAbs_CurveType_HeaderFile
-#include <GeomAbs_CurveType.hxx>
-#endif
 #ifndef _IntRes2d_Domain_HeaderFile
 #include <IntRes2d_Domain.hxx>
 #endif
@@ -72,11 +69,9 @@ private:
 
 TopoDS_Edge myEdge1;
 Geom2dAdaptor_Curve myCurve1;
-GeomAbs_CurveType myCurveType1;
 IntRes2d_Domain myDomain1;
 TopoDS_Edge myEdge2;
 Geom2dAdaptor_Curve myCurve2;
-GeomAbs_CurveType myCurveType2;
 IntRes2d_Domain myDomain2;
 
 

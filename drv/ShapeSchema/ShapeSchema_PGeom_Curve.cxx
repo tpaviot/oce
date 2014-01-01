@@ -38,7 +38,10 @@ void ShapeSchema_PGeom_Curve::Add(const Handle(Standard_Persistent)& p, const Ha
 void ShapeSchema_PGeom_Curve::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
+    Handle(PGeom_Curve) &pp = (Handle(PGeom_Curve)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -55,7 +58,10 @@ void ShapeSchema_PGeom_Curve::Write(const Handle(Standard_Persistent)& p, Storag
 void ShapeSchema_PGeom_Curve::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
- 
+    Handle(PGeom_Curve) &pp = (Handle(PGeom_Curve)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
+
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
 

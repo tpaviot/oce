@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESGeom_Array1OfCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up);
+      IGESGeom_Array1OfCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESGeom_Array1OfCurveOnSurface(const Handle(IGESGeom_CurveOnSurface)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESGeom_Array1OfCurveOnSurface(const Handle(IGESGeom_CurveOnSurface)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(IGESGeom_CurveOnSurface)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESGeom_Array1OfCurveOnSurface()
 {
   Destroy();

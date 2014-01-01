@@ -61,12 +61,6 @@
 #ifndef _V3d_TypeOfView_HeaderFile
 #include <V3d_TypeOfView.hxx>
 #endif
-#ifndef _Handle_V3d_OrthographicView_HeaderFile
-#include <Handle_V3d_OrthographicView.hxx>
-#endif
-#ifndef _Handle_V3d_PerspectiveView_HeaderFile
-#include <Handle_V3d_PerspectiveView.hxx>
-#endif
 #ifndef _Handle_V3d_Light_HeaderFile
 #include <Handle_V3d_Light.hxx>
 #endif
@@ -133,9 +127,6 @@
 #ifndef _Aspect_GradientFillMethod_HeaderFile
 #include <Aspect_GradientFillMethod.hxx>
 #endif
-#ifndef _Handle_V3d_Plane_HeaderFile
-#include <Handle_V3d_Plane.hxx>
-#endif
 #ifndef _Aspect_GridDrawMode_HeaderFile
 #include <Aspect_GridDrawMode.hxx>
 #endif
@@ -147,8 +138,6 @@
 #endif
 class Graphic3d_GraphicDriver;
 class Visual3d_ViewManager;
-class V3d_OrthographicView;
-class V3d_PerspectiveView;
 class V3d_Light;
 class Graphic3d_Structure;
 class V3d_RectangularGrid;
@@ -157,7 +146,6 @@ class Graphic3d_Group;
 class Graphic3d_AspectMarker3d;
 class V3d_BadValue;
 class V3d_View;
-class V3d_Plane;
 class Quantity_Color;
 class gp_Ax3;
 class Aspect_Grid;
@@ -184,10 +172,6 @@ public:
   //! creates a view in the viewer according to its <br>
 //!          default parameters. <br>
   Standard_EXPORT     Handle_V3d_View CreateView() ;
-  
-  Standard_EXPORT     Handle_V3d_OrthographicView DefaultOrthographicView() ;
-  
-  Standard_EXPORT     Handle_V3d_PerspectiveView DefaultPerspectiveView() ;
   //! Activates all of the views of a viewer attached <br>
 //!            to a window. <br>
   Standard_EXPORT     void SetViewOn() ;
@@ -351,19 +335,6 @@ public:
   Standard_EXPORT     void NextDefinedLights() ;
   
   Standard_EXPORT     Handle_V3d_Light DefinedLight() const;
-  //! Adds Plane in Sequence Of Planes. <br>
-  Standard_EXPORT     void AddPlane(const Handle(V3d_Plane)& MyPlane) ;
-  //! Delete Plane in Sequence Of Planes. <br>
-  Standard_EXPORT     void DelPlane(const Handle(V3d_Plane)& MyPlane) ;
-  //! initializes an iteration on the Defined Planes. <br>
-  Standard_EXPORT     void InitDefinedPlanes() ;
-  //! returns true if there are more Defined Plane(s) to return. <br>
-  Standard_EXPORT     Standard_Boolean MoreDefinedPlanes() const;
-  //! Go to the next Defined Plane <br>
-//!           (if there is not, DefinedPlane will raise an exception) <br>
-  Standard_EXPORT     void NextDefinedPlanes() ;
-  
-  Standard_EXPORT     Handle_V3d_Plane DefinedPlane() const;
   //! Returns the viewer associated to Visual3d . <br>
   Standard_EXPORT     Handle_Visual3d_ViewManager Viewer() const;
   //! Returns the Selected Light. <br>
@@ -437,8 +408,6 @@ public:
 //!          directional-light V3d_XnegYneg <br>
 //!          ambient-light <br>
   Standard_EXPORT     void SetDefaultLights() ;
-  
-  Standard_EXPORT     void Init() ;
   //! Add a new top-level Z layer to all managed views and get <br>
 //! its ID as <theLayerId> value. The Z layers are controlled entirely <br>
 //! by viewer, it is not possible to add a layer to a <br>
@@ -465,7 +434,6 @@ public:
 
 friend class V3d_View;
 friend class V3d_Light;
-friend class V3d_Plane;
 friend   //! test. <br>
   Standard_EXPORT   void V3d::SetPlane(const Handle(V3d_Viewer)& aViewer,const Quantity_Length x1,const Quantity_Length y1,const Quantity_Length z1,const Quantity_Length x2,const Quantity_Length y2,const Quantity_Length z2) ;
 
@@ -504,7 +472,6 @@ V3d_ListOfTransient MyDefinedViews;
 V3d_ListOfTransient MyActiveViews;
 V3d_ListOfTransient MyDefinedLights;
 V3d_ListOfTransient MyActiveLights;
-V3d_ListOfTransient MyDefinedPlanes;
 Aspect_Background MyBackground;
 Aspect_GradientBackground MyGradientBackground;
 Standard_Real MyViewSize;
@@ -514,14 +481,11 @@ V3d_TypeOfShadingModel MyShadingModel;
 V3d_TypeOfSurfaceDetail MySurfaceDetail;
 Quantity_PlaneAngle MyDefaultAngle;
 V3d_TypeOfView MyDefaultTypeOfView;
-Handle_V3d_OrthographicView MyDefaultOrthographicView;
-Handle_V3d_PerspectiveView MyDefaultPerspectiveView;
 Handle_V3d_Light MyCurrentSelectedLight;
 TColStd_ListIteratorOfListOfTransient myActiveViewsIterator;
 TColStd_ListIteratorOfListOfTransient myDefinedViewsIterator;
 TColStd_ListIteratorOfListOfTransient myActiveLightsIterator;
 TColStd_ListIteratorOfListOfTransient myDefinedLightsIterator;
-TColStd_ListIteratorOfListOfTransient myDefinedPlanesIterator;
 Standard_Boolean myComputedMode;
 Standard_Boolean myDefaultComputedMode;
 gp_Ax3 myPrivilegedPlane;

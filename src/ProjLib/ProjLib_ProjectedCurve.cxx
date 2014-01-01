@@ -1,24 +1,18 @@
 // Created on: 1993-08-25
 // Created by: Bruno DUMORTIER
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //  Modified by skv - Wed Aug 11 15:45:58 2004 OCC6272
 
@@ -155,15 +149,15 @@ static void TrimC3d(Handle(Adaptor3d_HCurve)& myCurve,
 //purpose  : 
 //=======================================================================
 
-static void ExtendC2d(Handle(Geom2d_BSplineCurve)& aRes,
-		      const Standard_Real t,
-		      const Standard_Real dt,
-		      const Standard_Real u1,
-		      const Standard_Real u2,
-		      const Standard_Real v1,
-		      const Standard_Real v2,
-                      const Standard_Integer FirstOrLast,
-                      const Standard_Integer NumberOfSingularCase)
+static void ExtendC2d (Handle(Geom2d_BSplineCurve)& aRes,
+                       const Standard_Real /*t*/,
+                       const Standard_Real /*dt*/,
+                       const Standard_Real u1,
+                       const Standard_Real u2,
+                       const Standard_Real v1,
+                       const Standard_Real v2,
+                       const Standard_Integer FirstOrLast,
+                       const Standard_Integer NumberOfSingularCase)
 {
   Standard_Real theParam = (FirstOrLast == 0)? aRes->FirstParameter()
     : aRes->LastParameter();
@@ -228,53 +222,7 @@ static void ExtendC2d(Handle(Geom2d_BSplineCurve)& aRes,
 
   aCompCurve.Add(aSegment, aTol);
   aRes = aCompCurve.BSplineCurve();
-  
-  /*  
-  gp_Pnt2d P0;
-  gp_Vec2d V01, V02;
-  aRes->D2(t, P0, V01, V02);
-  
-  gp_XY XYP1 = P0.XY() + V01.XY()*dt + .5*V02.XY()*dt*dt;
-  
-  gp_Vec2d V11 = V01 + V02*dt;
-  
-  if(XYP1.X() < u1) XYP1.SetX(u1);
-  if(XYP1.X() > u2) XYP1.SetX(u2);
-  if(XYP1.Y() < v1) XYP1.SetY(v1);
-  if(XYP1.Y() > v2) XYP1.SetY(v2);
-  
-  Handle(TColgp_HArray1OfPnt2d) aPnts = new TColgp_HArray1OfPnt2d(1, 2);
-  Handle(TColStd_HArray1OfReal) aPars = new TColStd_HArray1OfReal(1, 2);
-  
-  if(dt < 0.) {
-    aPnts->SetValue(1, gp_Pnt2d(XYP1));
-    aPnts->SetValue(2, P0);
-    aPars->SetValue(1, t + dt);
-    aPars->SetValue(2, t);
-  }
-  else {
-    aPnts->SetValue(2, gp_Pnt2d(XYP1));
-    aPnts->SetValue(1, P0);
-    aPars->SetValue(2, t + dt);
-    aPars->SetValue(1, t);
-  }
-  
-  Handle(Geom2d_BSplineCurve) aC;  
-  
-  if(dt < 0.) {
-    aC = Interpolate(aPnts, aPars, V11, V01); 
-  }
-  else {
-    aC = Interpolate(aPnts, aPars, V01, V11); 
-  }
-  
-  
-  Geom2dConvert_CompCurveToBSplineCurve aConcat(aRes);
-  aConcat.Add(aC, Precision::PConfusion());
-  
-  aRes = aConcat.BSplineCurve();
-  */
-}  
+}
 
 //=======================================================================
 //function : Project
@@ -513,8 +461,8 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
     default:
       {
 	Standard_Boolean IsTrimmed[2] = {Standard_False, Standard_False};
-        Standard_Real Vsingular[2]; //for surfaces of revolution
-	Standard_Real f, l, dt;
+	Standard_Real Vsingular[2] = { 0.0 , 0.0 }; //for surfaces of revolution
+	Standard_Real f = 0., l = 0., dt = 0.;
 	const Standard_Real eps = 0.01;
 	
 	if(mySurface->GetType() == GeomAbs_SurfaceOfRevolution) {
@@ -558,7 +506,7 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
 	// doit etre une et une seule courbe !!!
 	// De plus, cette courbe ne doit pas etre Single point
 	Standard_Integer NbCurves = Projector.NbCurves();
-	Standard_Real Udeb = 0.0,Ufin = 0.0;
+	Standard_Real Udeb = 0.,Ufin = 0.;
 	if (NbCurves > 0) {
 	  Projector.Bounds(1,Udeb,Ufin);
 	}

@@ -11,8 +11,7 @@
 //! the boundary, or the exterior of a 3D sensitive entity which is sensitive. <br>
 enum Select3D_TypeOfSensitivity {
 Select3D_TOS_INTERIOR,
-Select3D_TOS_BOUNDARY,
-Select3D_TOS_EXTERIOR
+Select3D_TOS_BOUNDARY
 };
 
 #ifndef _Standard_PrimitiveTypes_HeaderFile

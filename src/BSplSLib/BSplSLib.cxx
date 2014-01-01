@@ -1,23 +1,18 @@
 // Created on: 1991-08-26
 // Created by: JCV
 // Copyright (c) 1991-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modifed RLE Aug 93 - Complete rewrite
 // xab  21-Mar-95  implemented cache mecanism
@@ -28,7 +23,7 @@
 
 #include <BSplSLib.ixx>
 #include <PLib.hxx>
-#include <PLib_LocalArray.hxx>
+#include <NCollection_LocalArray.hxx>
 #include <BSplCLib.hxx>
 #include <TColgp_Array2OfXYZ.hxx>
 #include <TColgp_Array1OfXYZ.hxx>
@@ -39,9 +34,6 @@
 
 // for null derivatives
 static Standard_Real BSplSLib_zero[3] = {0.0, 0.0, 0.0};
-#if defined(WNT) && !defined(M_SQRT2)
-#define M_SQRT2 1.4142135623730950488016887 
-#endif
 
 //=======================================================================
 //struct : BSplCLib_DataContainer 
@@ -53,18 +45,16 @@ struct BSplSLib_DataContainer
 {
   BSplSLib_DataContainer (Standard_Integer UDegree, Standard_Integer VDegree)
   {
+    (void)UDegree; (void)VDegree; // just to avoid compiler warning in Release mode
     Standard_OutOfRange_Raise_if (UDegree > BSplCLib::MaxDegree() ||
         VDegree > BSplCLib::MaxDegree() || BSplCLib::MaxDegree() > 25,
         "BSplSLib: bspline degree is greater than maximum supported");
   }
-
   Standard_Real poles[4*(25+1)*(25+1)];
   Standard_Real knots1[2*25];
   Standard_Real knots2[2*25];
   Standard_Real ders[48];
 };
-
-typedef PLib_LocalArray BSplSLib_LocalArray;
 
 //**************************************************************************
 //                     Evaluation methods
@@ -141,9 +131,9 @@ void  BSplSLib::RationalDerivative(const Standard_Integer UDeg,
   M3 = (M1 << 1) + M1;
   M4 = (VDeg + 1) << 2;
   
-  BSplSLib_LocalArray StoreDerivatives (All ? 0 : ii * 3);
+  NCollection_LocalArray<Standard_Real> StoreDerivatives (All ? 0 : ii * 3);
   Standard_Real *RArray = (All ? &RDerivatives : (Standard_Real*)StoreDerivatives);
-  BSplSLib_LocalArray StoreW (ii);  
+  NCollection_LocalArray<Standard_Real> StoreW (ii);  
   Standard_Real *HomogeneousArray = &HDerivatives; 
   Standard_Real denominator,Pii,Pip,Pjq;
   
@@ -269,30 +259,29 @@ void  BSplSLib::RationalDerivative(const Standard_Integer UDeg,
 //  The first direction to compute (smaller degree) is returned 
 //  and the poles are stored according to this direction.
 
-static Standard_Boolean  PrepareEval
-(const Standard_Real            U,
- const Standard_Real            V,
- const Standard_Integer         Uindex,
- const Standard_Integer         Vindex,
- const Standard_Integer         UDegree,
- const Standard_Integer         VDegree,
- const Standard_Boolean         URat,
- const Standard_Boolean         VRat,
- const Standard_Boolean         UPer,
- const Standard_Boolean         VPer,
- const TColgp_Array2OfPnt&      Poles,
- const TColStd_Array2OfReal&    Weights,
- const TColStd_Array1OfReal&    UKnots,
- const TColStd_Array1OfReal&    VKnots,
- const TColStd_Array1OfInteger& UMults,
- const TColStd_Array1OfInteger& VMults,
- Standard_Real& u1,     // first  parameter to use
- Standard_Real& u2,     // second parameter to use
- Standard_Integer& d1,  // first degree
- Standard_Integer& d2,  // second degree
- Standard_Boolean& rational,
- BSplSLib_DataContainer& dc)
-{
+static Standard_Boolean  PrepareEval (const Standard_Real            U,
+                                      const Standard_Real            V,
+                                      const Standard_Integer         Uindex,
+                                      const Standard_Integer         Vindex,
+                                      const Standard_Integer         UDegree,
+                                      const Standard_Integer         VDegree,
+                                      const Standard_Boolean         URat,
+                                      const Standard_Boolean         VRat,
+                                      const Standard_Boolean         UPer,
+                                      const Standard_Boolean         VPer,
+                                      const TColgp_Array2OfPnt&      Poles,
+                                      const TColStd_Array2OfReal&    Weights,
+                                      const TColStd_Array1OfReal&    UKnots,
+                                      const TColStd_Array1OfReal&    VKnots,
+                                      const TColStd_Array1OfInteger& UMults,
+                                      const TColStd_Array1OfInteger& VMults,
+                                      Standard_Real& u1,     // first  parameter to use
+                                      Standard_Real& u2,     // second parameter to use
+                                      Standard_Integer& d1,  // first degree
+                                      Standard_Integer& d2,  // second degree
+                                      Standard_Boolean& rational,
+                                      BSplSLib_DataContainer& dc)
+  {
   rational = URat || VRat;
   Standard_Integer uindex = Uindex;
   Standard_Integer vindex = Vindex;
@@ -300,27 +289,37 @@ static Standard_Boolean  PrepareEval
   Standard_Integer UKUpper = UKnots.Upper();
   Standard_Integer VKLower = VKnots.Lower();
   Standard_Integer VKUpper = VKnots.Upper();
-  if (UDegree <= VDegree) {
+
+  if (UDegree <= VDegree)
+    {
     // compute the indices
     if (uindex < UKLower || uindex > UKUpper)
       BSplCLib::LocateParameter(UDegree,UKnots,UMults,U,UPer,uindex,u1);
-    else u1 = U;
+    else
+      u1 = U;
+
     if (vindex < VKLower || vindex > VKUpper)
       BSplCLib::LocateParameter(VDegree,VKnots,VMults,V,VPer,vindex,u2);
-    else u2 = V;
+    else
+      u2 = V;
+
     // get the knots
     d1 = UDegree;
     d2 = VDegree;
     BSplCLib::BuildKnots(UDegree,uindex,UPer,UKnots,UMults,*dc.knots1);
     BSplCLib::BuildKnots(VDegree,vindex,VPer,VKnots,VMults,*dc.knots2);
-    if (&UMults == NULL) uindex -= UKLower + UDegree;
-    else                 uindex  = BSplCLib::PoleIndex
-      (UDegree,uindex,UPer,UMults);
-    if (&VMults == NULL) vindex -= VKLower + VDegree;
-    else                 vindex  = BSplCLib::PoleIndex
-      (VDegree,vindex,VPer,VMults);
+    
+    if (&UMults == NULL)
+      uindex -= UKLower + UDegree;
+    else
+      uindex  = BSplCLib::PoleIndex(UDegree,uindex,UPer,UMults);
+
+    if (&VMults == NULL)
+      vindex -= VKLower + VDegree;
+    else
+      vindex  = BSplCLib::PoleIndex(VDegree,vindex,VPer,VMults);
+
     // get the poles
-//    Standard_Integer i,j,k,ip,jp;
     Standard_Integer i,j,ip,jp;
     Standard_Real w, *pole = dc.poles;
     d1 = UDegree;
@@ -329,90 +328,149 @@ static Standard_Boolean  PrepareEval
     Standard_Integer PUpperRow = Poles.UpperRow();
     Standard_Integer PLowerCol = Poles.LowerCol();
     Standard_Integer PUpperCol = Poles.UpperCol();
-    if (rational) { // verify if locally non rational
+
+    // verify if locally non rational
+    if (rational) 
+      {
       rational = Standard_False;
       ip = PLowerRow + uindex;
       jp = PLowerCol + vindex;
+      
+      if(ip < PLowerRow)	ip = PUpperRow;
+      if(jp < PLowerCol)	jp = PUpperCol;
+      
       w  = Weights.Value(ip,jp);
       Standard_Real eps = Epsilon(w);
       Standard_Real dw;
-      
-      for (i = 0; i <= UDegree && !rational; i++) {
-	jp = PLowerCol + vindex;
-	
-	for (j = 0; j <= VDegree && !rational; j++) {
-	  dw = Weights.Value(ip,jp) - w;
-	  if (dw < 0) dw = - dw;
-	  rational = dw > eps;
-	  jp++;
-	  if (jp > PUpperCol) jp = PLowerCol;
-	}
-	ip++;
-	if (ip > PUpperRow) ip = PLowerRow;
+
+      for (i = 0; i <= UDegree && !rational; i++)
+        {
+        jp = PLowerCol + vindex;
+
+        if(jp < PLowerCol)
+          jp = PUpperCol;
+
+        for (j = 0; j <= VDegree && !rational; j++)
+          {
+          dw = Weights.Value(ip,jp) - w;
+          if (dw < 0)
+            dw = - dw;
+
+          rational = (dw > eps);
+
+          jp++;
+
+          if (jp > PUpperCol)
+            jp = PLowerCol;
+          }
+
+        ip++;
+
+        if (ip > PUpperRow)
+          ip = PLowerRow;
+
+        }
       }
-    }
+
     // copy the poles
     ip = PLowerRow + uindex;
-    if (rational) {
-    
-      for (i = 0; i <= d1; i++) {
-	jp = PLowerCol + vindex;
-	
-	for (j = 0; j <= d2; j++) {
-	  const gp_Pnt& P = Poles  .Value(ip,jp);
-	  pole[3] = w     = Weights.Value(ip,jp);
-	  pole[0] = P.X() * w;
-	  pole[1] = P.Y() * w;
-	  pole[2] = P.Z() * w;
-	  pole   += 4;
-	  jp++;
-	  if (jp > PUpperCol) jp = PLowerCol;
-	}
-	ip++;
-	if (ip > PUpperRow) ip = PLowerRow;
+
+    if(ip < PLowerRow)
+      ip = PUpperRow;
+
+    if (rational)
+      {
+      for (i = 0; i <= d1; i++)
+        {
+        jp = PLowerCol + vindex;
+
+        if(jp < PLowerCol)
+          jp = PUpperCol;
+
+        for (j = 0; j <= d2; j++)
+          {
+          const gp_Pnt& P = Poles  .Value(ip,jp);
+          pole[3] = w     = Weights.Value(ip,jp);
+          pole[0] = P.X() * w;
+          pole[1] = P.Y() * w;
+          pole[2] = P.Z() * w;
+          pole   += 4;
+          jp++;
+
+          if (jp > PUpperCol)
+            jp = PLowerCol;
+          }
+
+        ip++;
+
+        if (ip > PUpperRow)
+          ip = PLowerRow;
+
+        }
       }
-    }
-    else {
-    
-      for (i = 0; i <= d1; i++) {
-	jp = PLowerCol + vindex;
-	
-	for (j = 0; j <= d2; j++) {
-	  const gp_Pnt& P = Poles.Value(ip,jp);
-	  pole[0] = P.X();
-	  pole[1] = P.Y();
-	  pole[2] = P.Z();
-	  pole   += 3;
-	  jp++;
-	  if (jp > PUpperCol) jp = PLowerCol;
-	}
-	ip++;
-	if (ip > PUpperRow) ip = PLowerRow;
+    else
+      {
+      for (i = 0; i <= d1; i++)
+        {
+        jp = PLowerCol + vindex;
+        
+        if(jp < PLowerCol)
+          jp = PUpperCol;
+
+        for (j = 0; j <= d2; j++)
+          {
+          const gp_Pnt& P = Poles.Value(ip,jp);
+          pole[0] = P.X();
+          pole[1] = P.Y();
+          pole[2] = P.Z();
+          pole   += 3;
+          jp++;
+
+          if (jp > PUpperCol)
+            jp = PLowerCol;
+          }
+
+        ip++;
+        
+        if (ip > PUpperRow)
+          ip = PLowerRow;
+        }
       }
-    }
+
     return Standard_True;
-  }
-  else {
+    }
+  else
+    {
     // compute the indices
     if (uindex < UKLower || uindex > UKUpper)
       BSplCLib::LocateParameter(UDegree,UKnots,UMults,U,UPer,uindex,u2);
-    else u2 = U;
+    else
+      u2 = U;
+
     if (vindex < VKLower || vindex > VKUpper)
       BSplCLib::LocateParameter(VDegree,VKnots,VMults,V,VPer,vindex,u1);
-    else u1 = V;
+    else
+      u1 = V;
+
     // get the knots
+
     d2 = UDegree;
     d1 = VDegree;
+
     BSplCLib::BuildKnots(UDegree,uindex,UPer,UKnots,UMults,*dc.knots2);
     BSplCLib::BuildKnots(VDegree,vindex,VPer,VKnots,VMults,*dc.knots1);
-    if (&UMults == NULL) uindex -= UKLower + UDegree;
-    else                 uindex  = BSplCLib::PoleIndex
-      (UDegree,uindex,UPer,UMults);
-    if (&VMults == NULL) vindex -= VKLower + VDegree;
-    else                 vindex  = BSplCLib::PoleIndex
-      (VDegree,vindex,VPer,VMults);
+
+    if (&UMults == NULL)
+      uindex -= UKLower + UDegree;
+    else
+      uindex  = BSplCLib::PoleIndex(UDegree,uindex,UPer,UMults);
+
+    if (&VMults == NULL)
+      vindex -= VKLower + VDegree;
+    else
+      vindex  = BSplCLib::PoleIndex(VDegree,vindex,VPer,VMults);
+
     // get the poles
-//    Standard_Integer i,j,k,ip,jp;
     Standard_Integer i,j,ip,jp;
     Standard_Real w, *pole = dc.poles;
     d1 = VDegree;
@@ -421,70 +479,121 @@ static Standard_Boolean  PrepareEval
     Standard_Integer PUpperRow = Poles.UpperRow();
     Standard_Integer PLowerCol = Poles.LowerCol();
     Standard_Integer PUpperCol = Poles.UpperCol();
-    if (rational) { // verify if locally non rational
+
+    // verify if locally non rational
+    if (rational)
+      { 
       rational = Standard_False;
       ip = PLowerRow + uindex;
       jp = PLowerCol + vindex;
+      
+      if(ip < PLowerRow)
+        ip = PUpperRow;
+
+      if(jp < PLowerCol)
+        jp = PUpperCol;
+
       w  = Weights.Value(ip,jp);
       Standard_Real eps = Epsilon(w);
       Standard_Real dw;
-      
-      for (i = 0; i <= UDegree && !rational; i++) {
-	jp = PLowerCol + vindex;
-	
-	for (j = 0; j <= VDegree && !rational; j++) {
-	  dw = Weights.Value(ip,jp) - w;
-	  if (dw < 0) dw = - dw;
-	  rational = dw > eps;
-	  jp++;
-	  if (jp > PUpperCol) jp = PLowerCol;
-	}
-	ip++;
-	if (ip > PUpperRow) ip = PLowerRow;
+
+      for (i = 0; i <= UDegree && !rational; i++)
+        {
+        jp = PLowerCol + vindex;
+
+        if(jp < PLowerCol)
+          jp = PUpperCol;
+
+        for (j = 0; j <= VDegree && !rational; j++)
+          {
+          dw = Weights.Value(ip,jp) - w;
+          if (dw < 0) dw = - dw;
+          rational = dw > eps;
+
+          jp++;
+
+          if (jp > PUpperCol)
+            jp = PLowerCol;
+          }
+
+        ip++;
+
+        if (ip > PUpperRow)
+          ip = PLowerRow;
+
+        }
       }
-    }
+
     // copy the poles
     jp = PLowerCol + vindex;
-    if (rational) {
-    
-      for (i = 0; i <= d1; i++) {
-	ip = PLowerRow + uindex;
-	
-	for (j = 0; j <= d2; j++) {
-	  const gp_Pnt& P = Poles  .Value(ip,jp);
-	  pole[3] = w     = Weights.Value(ip,jp);
-	  pole[0] = P.X() * w;
-	  pole[1] = P.Y() * w;
-	  pole[2] = P.Z() * w;
-	  pole   += 4;
-	  ip++;
-	  if (ip > PUpperRow) ip = PLowerRow;
-	}
-	jp++;
-	if (jp > PUpperCol) jp = PLowerCol;
+
+    if(jp < PLowerCol)
+      jp = PUpperCol;
+
+    if (rational)
+      {
+      for (i = 0; i <= d1; i++)
+        {
+        ip = PLowerRow + uindex;
+
+        if(ip < PLowerRow)
+          ip = PUpperRow;
+
+        for (j = 0; j <= d2; j++)
+          {
+          const gp_Pnt& P = Poles.Value(ip,jp);
+          pole[3] = w     = Weights.Value(ip,jp);
+          pole[0] = P.X() * w;
+          pole[1] = P.Y() * w;
+          pole[2] = P.Z() * w;
+          pole   += 4;
+          ip++;
+
+          if (ip > PUpperRow)
+            ip = PLowerRow;
+
+          }
+
+        jp++;
+
+        if (jp > PUpperCol)
+          jp = PLowerCol;
+
+        }
       }
-    }
-    else {
-    
-      for (i = 0; i <= d1; i++) {
-	ip = PLowerRow + uindex;
-	
-	for (j = 0; j <= d2; j++) {
-	  const gp_Pnt& P = Poles.Value(ip,jp);
-	  pole[0] = P.X();
-	  pole[1] = P.Y();
-	  pole[2] = P.Z();
-	  pole   += 3;
-	  ip++;
-	  if (ip > PUpperRow) ip = PLowerRow;
-	}
-	jp++;
-	if (jp > PUpperCol) jp = PLowerCol;
+    else
+      {
+      for (i = 0; i <= d1; i++)
+        {
+        ip = PLowerRow + uindex;
+
+        if(ip < PLowerRow)
+          ip = PUpperRow;
+
+        for (j = 0; j <= d2; j++)
+          {
+          const gp_Pnt& P = Poles.Value(ip,jp);
+          pole[0] = P.X();
+          pole[1] = P.Y();
+          pole[2] = P.Z();
+          pole   += 3;
+          ip++;
+
+          if (ip > PUpperRow)
+            ip = PLowerRow;
+          }
+
+        jp++;
+
+        if (jp > PUpperCol)
+          jp = PLowerCol;
+
+        }
       }
-    }
+
     return Standard_False;
+    }
   }
-}
 
 //=======================================================================
 //function : D0
@@ -1195,7 +1304,7 @@ void  BSplSLib::Iso(const Standard_Real            Param,
   
   // compute local knots
   
-  BSplSLib_LocalArray locknots1 (2*Degree);  
+  NCollection_LocalArray<Standard_Real> locknots1 (2*Degree);  
   BSplCLib::LocateParameter(Degree,Knots,Mults,u,Periodic,index,u);
   BSplCLib::BuildKnots(Degree,index,Periodic,Knots,Mults,*locknots1);
   if (&Mults == NULL)
@@ -1222,7 +1331,7 @@ void  BSplSLib::Iso(const Standard_Real            Param,
     l2 = Poles.UpperRow();
   }
   
-  BSplSLib_LocalArray locpoles ((Degree+1) * (l2-f2+1) * dim);
+  NCollection_LocalArray<Standard_Real> locpoles ((Degree+1) * (l2-f2+1) * dim);
   
   Standard_Real w, *pole = locpoles;
   index += f1;
@@ -1986,7 +2095,7 @@ void  BSplSLib::CacheD0(const Standard_Real                  UParameter,
     new_parameter[1] = (VParameter - VCacheParameter) / VSpanLenght ; 
     dimension = 3 * (VDegree + 1) ;
   }
-  BSplSLib_LocalArray locpoles(dimension);
+  NCollection_LocalArray<Standard_Real> locpoles(dimension);
   
   PLib::NoDerivativeEvalPolynomial(new_parameter[0],
 		       max_degree,
@@ -2144,7 +2253,7 @@ void  BSplSLib::CacheD1(const Standard_Real                  UParameter,
     my_vec_max = (Standard_Real *) &aVecU ;
   }
 
-  BSplSLib_LocalArray locpoles (2 * dimension);
+  NCollection_LocalArray<Standard_Real> locpoles (2 * dimension);
   
   PLib::EvalPolynomial(new_parameter[0],
 		       1,
@@ -2408,7 +2517,7 @@ void  BSplSLib::CacheD2(const Standard_Real                  UParameter,
     my_vec_max_max = (Standard_Real *) &aVecUU ;
   }
 
-  BSplSLib_LocalArray locpoles (3 * dimension);
+  NCollection_LocalArray<Standard_Real> locpoles (3 * dimension);
   
   //
   // initialize in case min or max degree are less than 2

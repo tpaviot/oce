@@ -42,11 +42,11 @@ class Storage_HArrayOfCallBack : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Storage_HArrayOfCallBack(const Standard_Integer Low,const Standard_Integer Up);
+      Storage_HArrayOfCallBack(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Storage_HArrayOfCallBack(const Standard_Integer Low,const Standard_Integer Up,const Handle(Storage_CallBack)& V);
+      Storage_HArrayOfCallBack(const Standard_Integer Low,const Standard_Integer Up,const Handle(Storage_CallBack)& V);
   
-  Standard_EXPORT     void Init(const Handle(Storage_CallBack)& V) ;
+        void Init(const Handle(Storage_CallBack)& V) ;
   
         Standard_Integer Length() const;
   

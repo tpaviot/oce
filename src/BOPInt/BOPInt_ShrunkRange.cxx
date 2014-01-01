@@ -1,20 +1,16 @@
 // Created by: Peter KURNEV
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BOPInt_ShrunkRange.ixx>
 
@@ -121,7 +117,7 @@
   void BOPInt_ShrunkRange::Perform()
 {
   Standard_Real aCF, aCL, aTolE, aTolV1, aTolV2, t1, t11, t1C, t2, t12, t2C;
-  Standard_Real aCoeff, dt1, dt2, aR, anEps;
+  Standard_Real aCoeff1, aCoeff2, aTol1, aTol2, dt1, dt2, aR, anEps;
   Standard_Integer pri;
   Standard_Boolean bInf1, bInf2, bAppr;
   GeomAbs_CurveType aCurveType;
@@ -170,9 +166,17 @@
     return;
   }
   //
-  aCoeff=2.;
+  aTol1 = aTolV1+aTolE;
+  aTol2 = aTolV2+aTolE;
+  //
+  aCoeff1 = (aTolE>0.05) ? 1. : 2.;
+  aCoeff2 = aCoeff1;
+  if (aCoeff1 == 2.) {
+    aCoeff1=(aTol1>0.05) ? 1.5 : 2.;
+    aCoeff2=(aTol2>0.05) ? 1.5 : 2.;
+  }
   // xf
-  if (aCurveType==GeomAbs_Line) {
+  if (aCurveType==GeomAbs_Line && (aCoeff1 != 1 || aCoeff2 != 1)) {
     Standard_Real aTV1, aTV2, aEps;
     gp_Pnt aPV1, aPV2, aPC1, aPC2;
     gp_Lin aL;
@@ -187,13 +191,16 @@
     aPV2=BRep_Tool::Pnt(myV2);
     aTV2=ElCLib::Parameter(aL, aPV2);
     //
-    if (fabs(aTV1-aCF)<aEps && fabs(aTV2-aCL)<aEps) {
-      aCoeff=1.;
+    if (fabs(aTV1-aCF)<aEps) {
+      aCoeff1=1.;
+    }
+    if (fabs(aTV2-aCL)<aEps) {
+      aCoeff2=1.;
     }
   }
   //
-  dt1=aCoeff*(aTolV1+aTolE);
-  dt2=aCoeff*(aTolV2+aTolE);
+  dt1=aCoeff1*aTol1;
+  dt2=aCoeff2*aTol2;
   // xt
   //
   if (aCurveType==GeomAbs_Line) {
@@ -238,7 +245,7 @@
     }
     //
     else {
-      Standard_Real d1 = aCoeff*(aTolV1+aTolE);
+      Standard_Real d1 = aCoeff1*aTol1;
       //       dt1 = aBAC.Resolution(d1);
       //
       gp_Vec aD1vec1;
@@ -333,7 +340,7 @@
     }
     //
     else {
-      Standard_Real d2 = aCoeff*(aTolV2+aTolE);
+      Standard_Real d2 = aCoeff2*aTol2;
       //       dt2 = aBAC.Resolution(d2);
 
       //

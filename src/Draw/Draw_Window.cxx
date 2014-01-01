@@ -1,22 +1,18 @@
 // Created on: 1994-07-27
 // Created by: Remi LEQUETTE
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // include windows.h first to have all definitions available
 #ifdef WNT
@@ -136,15 +132,30 @@ defaultPrompt:
 # include <strings.h>
 #endif
 
-#include <tk.h>
+
+#if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
+  // use forward declaration for small subset of used Tk functions
+  // to workaround broken standard Tk framework installation within OS X SDKs
+  // which *HAS* X11 headers in Tk.framework but doesn't install them appropriately
+  #define _TK
+  typedef struct Tk_Window_* Tk_Window;
+  typedef const char* Tk_Uid;
+
+  extern "C" int Tk_Init (Tcl_Interp* interp);
+  extern "C" void Tk_MainLoop();
+  extern "C" Tk_Window Tk_MainWindow (Tcl_Interp* interp) ;
+  extern "C" Tk_Uid Tk_GetUid (const char* str);
+  extern "C" const char* Tk_SetAppName (Tk_Window tkwin, const char* name) ;
+  extern "C" void Tk_GeometryRequest (Tk_Window tkwin, int reqWidth, int reqHeight);
+
+#else
+  #include <tk.h>
+#endif
 
 /*
  * Global variables used by the main program:
  */
 
-static Tk_Window mainWindow;    /* The main window for the application.  If
-                                 * NULL then the application no longer
-                                 * exists. */
 char *tcl_RcFileName = NULL;    /* Name of a user-specific startup script
                                  * to source if the application is being run
                                  * interactively (e.g. "~/.wishrc").  Set
@@ -1086,9 +1097,8 @@ Standard_Boolean Init_Appli()
 
   Tcl_StaticPackage(interp, "Tk", Tk_Init, (Tcl_PackageInitProc *) NULL);
 
-  mainWindow =
-  Tk_MainWindow(interp) ;
-  if (mainWindow == NULL) {
+  Tk_Window aMainWindow = Tk_MainWindow(interp) ;
+  if (aMainWindow == NULL) {
 #if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 5)))
     fprintf(stderr, "%s\n", Tcl_GetStringResult(interp));
 #else
@@ -1096,11 +1106,13 @@ Standard_Boolean Init_Appli()
 #endif
     exit(1);
   }
-  Tk_Name(mainWindow) =
-  Tk_GetUid(Tk_SetAppName(mainWindow,
-                          "Draw")) ;
+#if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
+  Tk_SetAppName(aMainWindow, "Draw");
+#else
+  Tk_Name(aMainWindow) = Tk_GetUid(Tk_SetAppName(aMainWindow, "Draw"));
+#endif
 
-  Tk_GeometryRequest(mainWindow, 200, 200);
+  Tk_GeometryRequest (aMainWindow, 200, 200);
 
 #if !defined(__APPLE__) || defined(MACOSX_USE_GLX)
   if (Draw_DisplayConnection.IsNull())
@@ -1112,7 +1124,7 @@ Standard_Boolean Init_Appli()
     catch (Standard_Failure)
     {
       std::cout << "Cannot open display. Interpret commands in batch mode." << std::endl;
-      return Standard_False;      
+      return Standard_False;
     }
   }
   if (Draw_WindowDisplay == NULL)
@@ -1344,15 +1356,15 @@ HWND DrawWindow::CreateDrawWindow(HWND hWndClient, int nitem)
 /*--------------------------------------------------------*\
 |  DRAW WINDOW PROCEDURE
 \*--------------------------------------------------------*/
-LONG APIENTRY DrawWindow::DrawProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lParam )
+LRESULT APIENTRY DrawWindow::DrawProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam )
 {
   DrawWindow* localObjet = (DrawWindow*)GetWindowLong(hWnd, CLIENTWND);
   if (!localObjet)
     {
       if (Draw_IsConsoleSubsystem)
-        return LONG(DefWindowProc(hWnd, wMsg, wParam, lParam));
+        return (DefWindowProc(hWnd, wMsg, wParam, lParam));
       else
-        return LONG(DefMDIChildProc(hWnd, wMsg, wParam, lParam));
+        return(DefMDIChildProc(hWnd, wMsg, wParam, lParam));
     }
 
   PAINTSTRUCT ps;
@@ -1375,18 +1387,14 @@ LONG APIENTRY DrawWindow::DrawProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lPa
       localObjet->WExpose();
       localObjet->Redraw();
       return 0l;
-      break;
     }
 
   default:
     if (Draw_IsConsoleSubsystem)
-      return LONG(DefWindowProc(hWnd, wMsg, wParam, lParam));
+      return (DefWindowProc(hWnd, wMsg, wParam, lParam));
     else
-      return LONG(DefMDIChildProc(hWnd, wMsg, wParam, lParam));
+      return(DefMDIChildProc(hWnd, wMsg, wParam, lParam));
   }
-#ifndef _MSC_VER // unreachable code in MSVC
-  return (0l);
-#endif
 }
 
 
@@ -1471,15 +1479,15 @@ DrawWindow::~DrawWindow()
 void DrawWindow::Init(Standard_Integer theXLeft, Standard_Integer theYTop,
                       Standard_Integer theWidth, Standard_Integer theHeight)
 {
-  if (win == 0)
+  if (win == NULL)
   {
     win = CreateDrawWindow(hWndClientMDI, 0);
   }
 
   // include decorations in the window dimensions
   // to reproduce same behaviour of Xlib window.
-  DWORD aWinStyle   = GetWindowLongPtr (win, GWL_STYLE);
-  DWORD aWinStyleEx = GetWindowLongPtr (win, GWL_EXSTYLE);
+  DWORD aWinStyle   = GetWindowLong (win, GWL_STYLE);
+  DWORD aWinStyleEx = GetWindowLong (win, GWL_EXSTYLE);
   HMENU aMenu       = GetMenu (win);
 
   RECT aRect;
@@ -1800,7 +1808,7 @@ void DrawWindow::DrawString(int x,int y, char* text)
   HDC hDC = GetDC(win);
   HDC aWorkDC = myUseBuffer ? GetMemDC(hDC) : hDC;
 
-  TextOut(aWorkDC, x, y, text, strlen(text));
+  TextOut(aWorkDC, x, y, text, (int )strlen(text));
 
   if (myUseBuffer) ReleaseMemDC(aWorkDC);
   ReleaseDC(win,hDC);
@@ -2006,11 +2014,8 @@ Standard_Boolean Init_Appli(HINSTANCE hInst,
    ** Enter the application message-polling loop.  This is the anchor for
    ** the application.
   */
-  if(Draw_IsConsoleSubsystem)
-
-    hWndFrame = NULL;
-
-  else if ((hWndFrame = CreateAppWindow(hInst)) != NULL)
+  hWndFrame = !Draw_IsConsoleSubsystem ? CreateAppWindow (hInst) : NULL;
+  if (hWndFrame != NULL)
   {
     ShowWindow(hWndFrame,nShow);
     UpdateWindow(hWndFrame);
@@ -2027,18 +2032,14 @@ Standard_Boolean Draw_Interprete (const char*);
 static DWORD WINAPI readStdinThreadFunc(VOID)
 {
   if (!Draw_IsConsoleSubsystem) return 1;
-
-  while (1) {
+  for(;;) {
     while (console_semaphore != WAIT_CONSOLE_COMMAND)
       Sleep(100);
-    //if (gets(console_command))
-	if (fgets(console_command,COMMAND_SIZE,stdin))
+      if (fgets(console_command,COMMAND_SIZE,stdin))
       {
         console_semaphore = HAS_CONSOLE_COMMAND;
       }
-
   }
-  return 0;
 }
 
 /*--------------------------------------------------------*\

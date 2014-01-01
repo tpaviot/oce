@@ -1,22 +1,18 @@
 -- Created on: 1995-06-12
 -- Created by: Joelle CHAUVET
 -- Copyright (c) 1995-1999 Matra Datavision
--- Copyright (c) 1999-2012 OPEN CASCADE SAS
+-- Copyright (c) 1999-2014 OPEN CASCADE SAS
 --
--- The content of this file is subject to the Open CASCADE Technology Public
--- License Version 6.5 (the "License"). You may not use the content of this file
--- except in compliance with the License. Please obtain a copy of the License
--- at http://www.opencascade.org and read it completely before using this file.
+-- This file is part of Open CASCADE Technology software library.
 --
--- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
--- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+-- This library is free software; you can redistribute it and / or modify it
+-- under the terms of the GNU Lesser General Public version 2.1 as published
+-- by the Free Software Foundation, with special exception defined in the file
+-- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+-- distribution for complete text of the license and disclaimer of any warranty.
 --
--- The Original Code and all software distributed under the License is
--- distributed on an "AS IS" basis, without warranty of any kind, and the
--- Initial Developer hereby disclaims all such warranties, including without
--- limitation, any warranties of merchantability, fitness for a particular
--- purpose or non-infringement. Please see the License for the specific terms
--- and conditions governing the rights and limitations under the License.
+-- Alternatively, this file may be used under the terms of Open CASCADE
+-- commercial license or contractual agreement.
 
 -- Modified:	Tue Oct 15 10:12:02 1996
 --              Add ChFi2d_TangencyError (PRO3529)
@@ -31,6 +27,23 @@ package ChFi2d
 
 	---Purpose: This package contains the algorithms used to build
 	--          fillets or chamfers on planar wire.
+	--
+	-- This package provides two algorithms for 2D fillets:
+	--     ChFi2d_Builder - it constructs a fillet or chamfer 
+	--                      for linear and circular edges of a face.
+	--     ChFi2d_FilletAPI - it encapsulates two algorithms:
+	--         ChFi2d_AnaFilletAlgo - analytical constructor of the fillet.
+	--                                It works only for linear and circular edges,
+	--                                having a common point.
+	--         ChFi2d_FilletAlgo - iteration recursive method constructing 
+	--                             the fillet edge for any type of edges including
+	--                             ellipses and b-splines. 
+	--                             The edges may even have no common point.
+	--     ChFi2d_ChamferAPI - an algoroithm for construction of chamfers 
+	--                         between two linear edges of a plane.
+	--
+	-- The algorithms ChFi2d_AnaFilletAlgo and ChFi2d_FilletAlgo may be used directly 
+	-- or via the interface class ChFi2d_FilletAPI.
 
 uses
     TopoDS,

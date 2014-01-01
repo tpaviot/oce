@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 /***********************************************************************
  
@@ -73,12 +69,10 @@ MyDefinedViews(),
 MyActiveViews(),
 MyDefinedLights(),
 MyActiveLights(),
-MyDefinedPlanes(),
 myActiveViewsIterator(),
 myDefinedViewsIterator(),
 myActiveLightsIterator(),
 myDefinedLightsIterator(),
-myDefinedPlanesIterator(),
 myComputedMode (theComputedMode),
 myDefaultComputedMode (theDefaultComputedMode),
 myPrivilegedPlane (gp_Ax3 (gp_Pnt (0.,0.,0), gp_Dir (0.,0.,1.), gp_Dir (1.,0.,0.))),
@@ -125,16 +119,6 @@ void V3d_Viewer::SetViewOn( ) {
 
   for (InitDefinedViews();MoreDefinedViews();NextDefinedViews()){
     SetViewOn(ActiveView());};
-}
-
-Handle(V3d_OrthographicView) V3d_Viewer::DefaultOrthographicView() {
-
-  return MyDefaultOrthographicView;
-}
-
-Handle(V3d_PerspectiveView) V3d_Viewer::DefaultPerspectiveView () {
-
-  return MyDefaultPerspectiveView;
 }
 
 void V3d_Viewer::SetViewOff( ) {
@@ -367,16 +351,6 @@ void V3d_Viewer::DelView( const Handle(V3d_View)& TheView ) {
 
   MyActiveViews.Remove(TheView);
   MyDefinedViews.Remove(TheView);
-}
-
-void V3d_Viewer::AddPlane( const Handle(V3d_Plane)& ThePlane ) {
-
-  MyDefinedPlanes.Append(ThePlane) ;
-}
-
-void V3d_Viewer::DelPlane( const Handle(V3d_Plane)& ThePlane ) {
-  
-  MyDefinedPlanes.Remove(ThePlane);
 }
 
 //=======================================================================

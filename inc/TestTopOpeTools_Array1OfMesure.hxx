@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TestTopOpeTools_Array1OfMesure(const Standard_Integer Low,const Standard_Integer Up);
+      TestTopOpeTools_Array1OfMesure(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TestTopOpeTools_Array1OfMesure(const TestTopOpeTools_Mesure& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TestTopOpeTools_Array1OfMesure(const TestTopOpeTools_Mesure& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const TestTopOpeTools_Mesure& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TestTopOpeTools_Array1OfMesure()
 {
   Destroy();

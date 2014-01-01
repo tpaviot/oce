@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESData_Array1OfIGESEntity(const Standard_Integer Low,const Standard_Integer Up);
+      IGESData_Array1OfIGESEntity(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESData_Array1OfIGESEntity(const Handle(IGESData_IGESEntity)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESData_Array1OfIGESEntity(const Handle(IGESData_IGESEntity)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(IGESData_IGESEntity)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESData_Array1OfIGESEntity()
 {
   Destroy();

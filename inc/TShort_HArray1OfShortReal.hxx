@@ -41,11 +41,11 @@ class TShort_HArray1OfShortReal : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TShort_HArray1OfShortReal(const Standard_Integer Low,const Standard_Integer Up);
+      TShort_HArray1OfShortReal(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TShort_HArray1OfShortReal(const Standard_Integer Low,const Standard_Integer Up,const Standard_ShortReal& V);
+      TShort_HArray1OfShortReal(const Standard_Integer Low,const Standard_Integer Up,const Standard_ShortReal& V);
   
-  Standard_EXPORT     void Init(const Standard_ShortReal& V) ;
+        void Init(const Standard_ShortReal& V) ;
   
         Standard_Integer Length() const;
   

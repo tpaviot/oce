@@ -1,21 +1,17 @@
 // Created on: 2011-10-20
 // Created by: Sergey ZERCHANINOV
-// Copyright (c) 2011-2012 OPEN CASCADE SAS
+// Copyright (c) 2011-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifndef _OpenGl_GraphicDriver_HeaderFile
 #define _OpenGl_GraphicDriver_HeaderFile
@@ -24,6 +20,7 @@
 #include <Handle_OpenGl_GraphicDriver.hxx>
 #include <Handle_OpenGl_View.hxx>
 #include <Handle_OpenGl_Workspace.hxx>
+#include <Handle_OpenGl_Display.hxx>
 #include <OpenGl_Context.hxx>
 #include <OpenGl_PrinterContext.hxx>
 
@@ -33,7 +30,6 @@
 #include <Handle_TColStd_HArray1OfReal.hxx>
 #include <Quantity_PlaneAngle.hxx>
 #include <Quantity_NameOfColor.hxx>
-#include <Handle_AlienImage_AlienImage.hxx>
 #include <Handle_OpenGl_View.hxx>
 #include <Handle_OpenGl_Workspace.hxx>
 
@@ -46,7 +42,7 @@
 #include <Aspect_TypeOfTriedronEcho.hxx>
 #include <Aspect_Handle.hxx>
 #include <Aspect_PrintAlgo.hxx>
-
+#include <gp_Ax2.hxx>
 #include <Graphic3d_CView.hxx>
 #include <Graphic3d_CStructure.hxx>
 #include <Graphic3d_CGroup.hxx>
@@ -76,7 +72,6 @@ class Quantity_Color;
 class Graphic3d_Vertex;
 class Aspect_Array1OfEdge;
 class TCollection_ExtendedString;
-class AlienImage_AlienImage;
 class Image_PixMap;
 class TColStd_HArray1OfReal;
 class Handle(OpenGl_Workspace);
@@ -84,16 +79,34 @@ class OpenGl_Element;
 class OpenGl_Structure;
 class OpenGl_Text;
 
+//! Tool class to implement consistent state counter
+//! for objects inside the same driver instance.
+class OpenGl_StateCounter
+{
+public:
+
+  OpenGl_StateCounter() : myCounter (0) { }
+
+  Standard_Size Increment() { return ++myCounter; }
+
+private:
+  
+  Standard_Size myCounter;
+};
+
 //! This class defines an OpenGl graphic driver <br>
 class OpenGl_GraphicDriver : public Graphic3d_GraphicDriver
 {
 public:
 
   //! Constructor
-  Standard_EXPORT OpenGl_GraphicDriver (const Standard_CString theShrName);
+  Standard_EXPORT OpenGl_GraphicDriver (const Handle(Aspect_DisplayConnection)& theDisplayConnection);
 
+  //! Constructor
+  Standard_EXPORT OpenGl_GraphicDriver (const Standard_CString theShrName = "TKOpenGl");
   Standard_EXPORT Standard_Boolean Begin (const Handle(Aspect_DisplayConnection)& theDisplayConnection);
   Standard_EXPORT void End ();
+
   Standard_EXPORT Standard_Integer InquireLightLimit ();
   Standard_EXPORT void InquireMat (const Graphic3d_CView& ACView, TColStd_Array2OfReal& AMatO, TColStd_Array2OfReal& AMatM);
   Standard_EXPORT Standard_Integer InquireViewLimit ();
@@ -112,11 +125,6 @@ public: // Methods for graphical groups
                                          const Standard_Integer  theNoInsert);
   Standard_EXPORT void MarkerContextGroup (const Graphic3d_CGroup& theCGroup,
                                            const Standard_Integer  theNoInsert);
-  Standard_EXPORT void MarkerContextGroup (const Graphic3d_CGroup& theCGroup,
-                                           const Standard_Integer  theNoInsert,
-                                           const Standard_Integer  theMarkWidth,
-                                           const Standard_Integer  theMarkHeight,
-                                           const Handle(TColStd_HArray1OfByte)& theTexture);
   Standard_EXPORT void RemoveGroup (const Graphic3d_CGroup& theCGroup);
   Standard_EXPORT void TextContextGroup (const Graphic3d_CGroup& theCGroup,
                                          const Standard_Integer  theNoInsert);
@@ -156,7 +164,8 @@ public:
   Standard_EXPORT void Redraw (const Graphic3d_CView& ACView, const Aspect_CLayer2d& ACUnderLayer, const Aspect_CLayer2d& ACOverLayer, const Standard_Integer x = 0, const Standard_Integer y = 0, const Standard_Integer width = 0, const Standard_Integer height = 0);
   Standard_EXPORT void RemoveView (const Graphic3d_CView& ACView);
   Standard_EXPORT void SetLight (const Graphic3d_CView& ACView);
-  Standard_EXPORT void SetPlane (const Graphic3d_CView& ACView);
+  Standard_EXPORT void SetClipPlanes (const Graphic3d_CView& theCView);
+  Standard_EXPORT void SetClipPlanes (const Graphic3d_CStructure& theCStructure);
   Standard_EXPORT void SetVisualisation (const Graphic3d_CView& ACView);
   Standard_EXPORT void TransformStructure (const Graphic3d_CStructure& ACStructure);
   Standard_EXPORT void Transparency (const Graphic3d_CView& ACView, const Standard_Boolean AFlag);
@@ -165,8 +174,7 @@ public:
   Standard_EXPORT void ViewMapping (const Graphic3d_CView& ACView, const Standard_Boolean AWait);
   Standard_EXPORT void ViewOrientation (const Graphic3d_CView& ACView,const Standard_Boolean AWait);
   Standard_EXPORT void Environment (const Graphic3d_CView& ACView);
-  Standard_EXPORT void Marker (const Graphic3d_CGroup& ACGroup, const Graphic3d_Vertex& APoint);
-  Standard_EXPORT void MarkerSet (const Graphic3d_CGroup& ACGroup, const Graphic3d_Array1OfVertex& ListVertex);
+  Standard_EXPORT void SetStencilTestOptions (const Graphic3d_CGroup& theCGroup, const Standard_Boolean theIsEnabled);
   Standard_EXPORT void Text (const Graphic3d_CGroup& ACGroup, const Standard_CString AText, const Graphic3d_Vertex& APoint, const Standard_Real AHeight, const Quantity_PlaneAngle AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
   Standard_EXPORT void Text (const Graphic3d_CGroup& ACGroup, const Standard_CString AText, const Graphic3d_Vertex& APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True);
   Standard_EXPORT void Text (const Graphic3d_CGroup& ACGroup, const TCollection_ExtendedString& AText, const Graphic3d_Vertex& APoint, const Standard_Real AHeight, const Quantity_PlaneAngle AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
@@ -205,6 +213,7 @@ public:
   Standard_EXPORT void SetTransparency (const Standard_ShortReal ATransparency);
   Standard_EXPORT void UnsetTransparency ();
   Standard_EXPORT void SetLineAttributes (const Standard_Integer Type,const Standard_ShortReal Width);
+  Standard_EXPORT void SetFlippingOptions (const Graphic3d_CGroup& theCGroup, const Standard_Boolean theIsEnabled, const gp_Ax2& theRefPlane);
 
   //! Set text attributes for under-/overlayer. <br>
   //! <Font> argument defines the name of the font to be used, <br>
@@ -300,8 +309,17 @@ public:
 
 public:
 
-  //! Returns true if VBO usage does not forbidden.
-  Standard_EXPORT static Standard_Boolean ToUseVBO();
+  //! @return the visualization options
+  inline const OpenGl_Caps& Options() const
+  {
+    return *myCaps.operator->();
+  }
+
+  //! @return the visualization options
+  inline OpenGl_Caps& ChangeOptions()
+  {
+    return *myCaps.operator->();
+  }
 
   //! VBO usage can be forbidden by this method even if it is supported by GL driver.
   //! Notice that disabling of VBO will cause rendering performance degradation.
@@ -319,6 +337,12 @@ public:
   //! Method to setup UserDraw callback
   Standard_EXPORT OpenGl_UserDrawCallback_t& UserDrawCallback();
 
+public:
+  
+  //! Returns information about OpenCL device used for computations.
+  Standard_EXPORT Standard_Boolean GetOpenClDeviceInfo (const Graphic3d_CView& theCView,
+                      NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString>& theInfo);
+
 private:
 
   //! Method to retrieve valid GL context.
@@ -331,6 +355,8 @@ public:
 
 private:
 
+  Handle(OpenGl_Display)                                          myGlDisplay;
+  Handle(OpenGl_Caps)                                             myCaps;
   NCollection_DataMap<Standard_Integer, Handle(OpenGl_View)>      myMapOfView;
   NCollection_DataMap<Standard_Integer, Handle(OpenGl_Workspace)> myMapOfWS;
   NCollection_DataMap<Standard_Integer, OpenGl_Structure*>        myMapOfStructure;
@@ -338,6 +364,14 @@ private:
   mutable Handle(OpenGl_PrinterContext)                           myPrintContext;
   OpenGl_UserDrawCallback_t                                       myUserDrawCallback;
   OpenGl_Text*                                                    myTempText;         //!< variable for compatibility (drawing text in layers)
+
+public:
+
+  OpenGl_StateCounter* GetStateCounter() const { return &myStateCounter; }
+
+private:
+
+  mutable OpenGl_StateCounter myStateCounter;
 
 };
 

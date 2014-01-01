@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //:o4 abv 17.02.99: r0301_db.stp #53082: treatment of open wires implemented
 // pdn 11.03.99 S4135 changing reordering algorithm in order to make it independent on tolerance
@@ -159,27 +155,6 @@ static Standard_Real DISTABS (const gp_XYZ& v1, const gp_XYZ& v2)
 //   repasser plus d une fois sur chaque edge (test fol-pre non nul)
 //  2/ reprendre les boucles pour les fusionner : pas encore fait
 //   (pour l instant, on imprime un petit message, c est tout)
-
-static Standard_Integer NextFree
-  (const Standard_Integer i, const Standard_Integer nb,
-   Standard_Integer& nbloops, TColStd_Array1OfInteger& loops,
-   TColStd_Array1OfInteger& loopord,
-   const Handle(TColStd_HArray1OfInteger)& ord)
-{
-  if (i < 0) return -NextFree (-i, nb,nbloops,loops,loopord,ord);
-
-  //szv#4:S4163:12Mar99 optimized
-  Standard_Integer j; // svv Jan11 2000 : porting on DEC
-  for (j = 1; j <= nbloops; j ++) if (i == loops(j)) break;
-  if ( j > nbloops ) return i; // OK
-
-  //  sinon, une boucle de plus, et chercher le prochain libre
-  nbloops ++;
-  for (j = 1; j <= nb; j ++)
-    if (loopord.Value(j) == 0) { loops(nbloops) = j; return j; }
-  nbloops --;  // finalement il n ya plus rien
-  return 0;
-}
 
 //=======================================================================
 //function : KeepLoopsMode
@@ -353,13 +328,13 @@ void ShapeAnalysis_WireOrder::Perform(const Standard_Boolean /*closed*/)
             }
             else 
               minDist = revDist;
-            if(minDist < distmin) {
+            if(minDist < distmin && Abs(distmin - minDist) > tol2) {
               distmin = minDist;
               direct = (dirDist <= revDist);
               lloop = j;
             }
           }
-          if(distmin<minLocDist) {
+          if(distmin < minLocDist && Abs(minLocDist - distmin) > tol2) {
             minLocDist = distmin;
             LocDirect = direct;
             LocNumInLoop = lloop;
@@ -367,7 +342,7 @@ void ShapeAnalysis_WireOrder::Perform(const Standard_Boolean /*closed*/)
           }
 	  
         }
-        if(minLocDist < minLoopDist) {
+        if(minLocDist < minLoopDist && Abs(minLoopDist - minLocDist) > tol2) {
           minLoopDist = minLocDist;
           loopNum = i;
           loopDirect = LocDirect;
@@ -393,8 +368,32 @@ void ShapeAnalysis_WireOrder::Perform(const Standard_Boolean /*closed*/)
       if(stTmp>=0) stTmp = (mainSeq->Value(i) > 0 ? 1 : -1);
     myOrd->SetValue(i,mainSeq->Value(i));
   }
-  myStat = stTmp;
-  return;
+  if (stTmp == 0) {
+    myStat = stTmp;
+    return;
+  }
+  else {//check if edges were only shifted in reverse or forward, not reordered
+    Standard_Boolean isShiftReverse = Standard_True, isShiftForward = Standard_True;
+    Standard_Integer tmpFirst = 0, tmpSecond = 0, length = mainSeq->Length();
+    for(i = 1; i <= length - 1; i++) {
+      tmpFirst = mainSeq->Value(i);
+      tmpSecond = mainSeq->Value(i+1);
+      if (!(tmpSecond - tmpFirst == 1 || (tmpFirst == length && tmpSecond == 1)))
+        isShiftForward = Standard_False;
+      if (!(tmpFirst - tmpSecond == 1 || (tmpSecond == length && tmpFirst == 1)))
+        isShiftReverse = Standard_False;
+    }
+    tmpFirst = mainSeq->Value(length);
+    tmpSecond = mainSeq->Value(1);
+    if (!(tmpSecond - tmpFirst == 1 || (tmpFirst == length && tmpSecond == 1)))
+      isShiftForward = Standard_False;
+    if (!(tmpFirst - tmpSecond == 1 || (tmpSecond == length && tmpFirst == 1)))
+      isShiftReverse = Standard_False;
+    if (isShiftForward || isShiftReverse)
+      stTmp = 3;
+    myStat = stTmp;
+    return;
+  }
 }
 
 //=======================================================================

@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference(const Standard_Integer Low,const Standard_Integer Up);
+      TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference(const TopOpeBRepDS_DataMapOfIntegerListOfInterference& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference(const TopOpeBRepDS_DataMapOfIntegerListOfInterference& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const TopOpeBRepDS_DataMapOfIntegerListOfInterference& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference()
 {
   Destroy();

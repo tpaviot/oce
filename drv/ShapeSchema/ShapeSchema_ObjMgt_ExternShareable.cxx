@@ -41,6 +41,8 @@ void ShapeSchema_ObjMgt_ExternShareable::SWrite(const Handle(Standard_Persistent
   if (!p.IsNull()) {
     Handle(ObjMgt_ExternShareable) &pp = (Handle(ObjMgt_ExternShareable)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetObjMgt_ExternShareablemyEntry(),f);
@@ -59,6 +61,8 @@ void ShapeSchema_ObjMgt_ExternShareable::SRead(const Handle(Standard_Persistent)
 { 
   if (!p.IsNull()) {
     Handle(ObjMgt_ExternShareable) &pp = (Handle(ObjMgt_ExternShareable)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

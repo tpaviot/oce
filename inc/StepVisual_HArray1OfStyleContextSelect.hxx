@@ -39,11 +39,11 @@ class StepVisual_HArray1OfStyleContextSelect : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepVisual_HArray1OfStyleContextSelect(const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_HArray1OfStyleContextSelect(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepVisual_HArray1OfStyleContextSelect(const Standard_Integer Low,const Standard_Integer Up,const StepVisual_StyleContextSelect& V);
+      StepVisual_HArray1OfStyleContextSelect(const Standard_Integer Low,const Standard_Integer Up,const StepVisual_StyleContextSelect& V);
   
-  Standard_EXPORT     void Init(const StepVisual_StyleContextSelect& V) ;
+        void Init(const StepVisual_StyleContextSelect& V) ;
   
         Standard_Integer Length() const;
   

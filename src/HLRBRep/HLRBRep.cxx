@@ -1,23 +1,18 @@
 // Created on: 1992-08-27
 // Created by: Christophe MARION
 // Copyright (c) 1992-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <HLRBRep.ixx>
 #include <BRepLib_MakeEdge2d.hxx>
@@ -163,6 +158,59 @@ TopoDS_Edge HLRBRep::MakeEdge (const HLRBRep_Curve& ec,
       Edg = mke2d.Edge();
   }
   }
+  return Edg;
+}
+
+//=======================================================================
+//function : MakeEdge3d
+//purpose  : 
+//=======================================================================
+
+TopoDS_Edge HLRBRep::MakeEdge3d(const HLRBRep_Curve& ec,
+                                const Standard_Real U1,
+                                const Standard_Real U2)
+{
+  TopoDS_Edge Edg;
+  //const Standard_Real sta = ec.Parameter2d(U1);
+  //const Standard_Real end = ec.Parameter2d(U2);
+
+  TopoDS_Edge anEdge = ec.GetCurve().Edge();
+  Standard_Real fpar, lpar;
+  //BRep_Tool::Range(anEdge, fpar, lpar);
+  //Handle(Geom_Curve) aCurve = BRep_Tool::Curve(anEdge, fpar, lpar);
+  BRepAdaptor_Curve BAcurve(anEdge);
+  fpar = BAcurve.FirstParameter();
+  lpar = BAcurve.LastParameter();
+  
+  Edg = TopoDS::Edge(anEdge.EmptyCopied());
+  Edg.Orientation(TopAbs_FORWARD);
+  BRep_Builder BB;
+  BB.Range(Edg, U1, U2);
+
+  //Share vertices if possible
+  TopoDS_Vertex V1, V2, V1new, V2new;
+  TopExp::Vertices(anEdge, V1, V2);
+
+  Standard_Real Tol = Precision::PConfusion();
+  if (Abs(fpar - U1) <= Tol)
+    V1new = V1;
+  else
+  {
+    gp_Pnt aPnt = BAcurve.Value(U1);
+    V1new = BRepLib_MakeVertex(aPnt);
+  }
+  if (Abs(lpar - U2) <= Tol)
+    V2new = V2;
+  else
+  {
+    gp_Pnt aPnt = BAcurve.Value(U2);
+    V2new = BRepLib_MakeVertex(aPnt);
+  }
+
+  V1new.Orientation(TopAbs_FORWARD);
+  V2new.Orientation(TopAbs_REVERSED);
+  BB.Add(Edg, V1new);
+  BB.Add(Edg, V2new);
   return Edg;
 }
 

@@ -37,6 +37,9 @@
 #ifndef _Font_FontAspect_HeaderFile
 #include <Font_FontAspect.hxx>
 #endif
+#ifndef _Graphic3d_ShaderProgram_Handle_HeaderFile
+#include <Graphic3d_ShaderProgram_Handle.hxx>
+#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
@@ -101,6 +104,7 @@ public:
 //!      TODT_SUBTITLE   There is a subtitle under the text. <br>
 //!      TODT_DEKALE     The text is displayed with a 3D style. <br>
 //!      TODT_BLEND      The text is displayed in XOR. <br>
+//!      TODT_DIMENSION  Dimension line under text will be invisible. <br>
   Standard_EXPORT     void SetDisplayType(const Aspect_TypeOfDisplayText ADisplayType) ;
   //! Modifies the colour of the subtitle for the TODT_SUBTITLE TextDisplayType <br>
 //!         and the colour of backgroubd for the TODT_DEKALE TextDisplayType. <br>
@@ -117,6 +121,8 @@ public:
   Standard_EXPORT     void SetTextFontAspect(const Font_FontAspect AFontAspect) ;
   //! Returns text FontAspect <br>
   Standard_EXPORT     Font_FontAspect GetTextFontAspect() const;
+  //! Sets up OpenGL/GLSL shader program. <br>
+  Standard_EXPORT     void SetShaderProgram(const Graphic3d_ShaderProgram_Handle& theProgram) ;
   //! Returns the current values of the group <me>. <br>
   Standard_EXPORT     void Values(Quantity_Color& AColor,Standard_CString& AFont,Standard_Real& AnExpansionFactor,Standard_Real& ASpace) const;
   //! Returns the current values of the group <me>. <br>
@@ -125,6 +131,8 @@ public:
   Standard_EXPORT     void Values(Quantity_Color& AColor,Standard_CString& AFont,Standard_Real& AnExpansionFactor,Standard_Real& ASpace,Aspect_TypeOfStyleText& AStyle,Aspect_TypeOfDisplayText& ADisplayType,Quantity_Color& AColorSubTitle,Standard_Boolean& ATextZoomable,Standard_Real& ATextAngle) const;
   //! Returns the current values of the group <me>. <br>
   Standard_EXPORT     void Values(Quantity_Color& AColor,Standard_CString& AFont,Standard_Real& AnExpansionFactor,Standard_Real& ASpace,Aspect_TypeOfStyleText& AStyle,Aspect_TypeOfDisplayText& ADisplayType,Quantity_Color& AColorSubTitle,Standard_Boolean& ATextZoomable,Standard_Real& ATextAngle,Font_FontAspect& ATextFontAspect) const;
+  
+  Standard_EXPORT    const Graphic3d_ShaderProgram_Handle& ShaderProgram() const;
 
 
 
@@ -149,6 +157,7 @@ Quantity_Color MyColorSubTitle;
 Standard_Boolean MyTextZoomable;
 Standard_Real MyTextAngle;
 Font_FontAspect MyTextFontAspect;
+Graphic3d_ShaderProgram_Handle MyShaderProgram;
 
 
 };

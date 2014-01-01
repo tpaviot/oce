@@ -1,21 +1,17 @@
 // Created on: 2002-03-18
 // Created by: QA Admin
-// Copyright (c) 2002-2012 OPEN CASCADE SAS
+// Copyright (c) 2002-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <QABugs.hxx>
 
@@ -37,8 +33,9 @@
 static Standard_Integer BUC60857 (Draw_Interpretor& di, Standard_Integer /*argc*/,const char ** argv)
 {
   gp_Ax2  Cone_Ax;
-  double R1=8, R2=16;
+  double R1=8, R2=16, angle;
   gp_Pnt P0(0,0,0), P1(0,0,20), P2(0,0,45);
+  angle = 2*M_PI;
 
   Handle(AIS_InteractiveContext) aContext = ViewerTest::GetAISContext();
   if(aContext.IsNull()) {
@@ -147,12 +144,85 @@ static Standard_Integer OCC137_z (Draw_Interpretor& di, Standard_Integer argc, c
   return 0;
 }
 
+#include <GccEnt_Position.hxx>
+#include <Geom2dGcc_QualifiedCurve.hxx>
+#include <Geom2dGcc_Circ2d2TanRad.hxx>
+#include <gp_Elips2d.hxx>
+#include <Geom2d_Ellipse.hxx>
+#include <Geom2d_Circle.hxx>
+
+static Standard_Integer OCC24303(Draw_Interpretor& di, Standard_Integer n, const char** a)
+{
+  if(n < 2)
+    return 1;
+
+  const Standard_Integer SolID = Draw::Atoi(a[1]);
+
+  //Ellipses
+  Standard_Real majorRadius = 2.0;
+  Standard_Real minorRadius = 1.0;
+  gp_Pnt2d p0(gp::Origin2d());
+  gp_Pnt2d p1(4.0,0.0);
+
+  gp_Elips2d ellipse1 = gp_Elips2d( gp_Ax2d(p0,gp::DX2d()),majorRadius, minorRadius,true);
+  gp_Elips2d ellipse2 = gp_Elips2d( gp_Ax2d(p1,gp::DX2d()),majorRadius, minorRadius,true);
+
+  Handle_Geom2d_Curve curve1 = new Geom2d_Ellipse(ellipse1);
+  Handle_Geom2d_Curve curve2 = new Geom2d_Ellipse(ellipse2);
+  DrawTrSurf::Set("c1", curve1);
+  DrawTrSurf::Set("c2", curve2);
+  //Expected tangent
+  gp_Pnt2d centre(5.0,0.0);
+  Standard_Real radius = 3.0;
+  gp_Circ2d theorical_tangent = gp_Circ2d(gp_Ax2d(centre,gp::DX2d()),radius);
+
+  //Calculate the tangent with Geom2dGcc_Circ2dTanRan
+
+  const Geom2dAdaptor_Curve  AdaptedCurve1 ( curve1 );
+  const Geom2dAdaptor_Curve  AdaptedCurve2 ( curve2 );
+
+  GccEnt_Position  curveQualif1 = GccEnt_unqualified;
+  GccEnt_Position  curveQualif2 = GccEnt_unqualified;
+
+  const Geom2dGcc_QualifiedCurve qualifiedCurve1 ( AdaptedCurve1, curveQualif1 );
+  const Geom2dGcc_QualifiedCurve qualifiedCurve2 ( AdaptedCurve2, curveQualif2 );
+
+  const Geom2dGcc_Circ2d2TanRad circCalc(qualifiedCurve1,qualifiedCurve2,radius,/*Precision::Approximation()*/ 1.0e-9);
+
+  const Standard_Integer aNbSol = circCalc.NbSolutions();
+  di << "Solutions " << aNbSol << "\n";
+
+  if((SolID < 1) || (SolID > aNbSol))
+  {
+    di << "Wrong SolID value\n";
+    return 1;
+  }
+
+  gp_Circ2d calculated_tangent = circCalc.ThisSolution(SolID);
+
+  char Buf[10];
+  for (Standard_Integer i = 1; i <= aNbSol; i++)
+  {
+    gp_Circ2d ct = circCalc.ThisSolution(i);
+    Handle (Geom2d_Circle) GSol = new Geom2d_Circle(ct);
+    Sprintf(Buf, "Sol%d",i);
+    DrawTrSurf::Set(Buf, GSol);
+  }
+
+  //This distance is different in OC 6.5.4 and OC 6.6.0
+  Standard_Real dist = theorical_tangent.Location().Distance(calculated_tangent.Location());
+  di << "Distance = " << dist << "\n";
+
+  return 0;
+}
+
 void QABugs::Commands_9(Draw_Interpretor& theCommands) {
   const char *group = "QABugs";
 
   theCommands.Add ("BUC60857", "BUC60857", __FILE__, BUC60857, group);
   theCommands.Add("OCC137","OCC137 mode [shape]",__FILE__,OCC137,group);
   theCommands.Add("OCC137_z","OCC137_z [ZDetection_mode]",__FILE__,OCC137_z,group);
+  theCommands.Add("OCC24303", "OCC24303 SolID ",	__FILE__,	OCC24303,group);
 
   return;
 }

@@ -39,11 +39,11 @@ class StepShape_HArray1OfValueQualifier : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepShape_HArray1OfValueQualifier(const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_HArray1OfValueQualifier(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepShape_HArray1OfValueQualifier(const Standard_Integer Low,const Standard_Integer Up,const StepShape_ValueQualifier& V);
+      StepShape_HArray1OfValueQualifier(const Standard_Integer Low,const Standard_Integer Up,const StepShape_ValueQualifier& V);
   
-  Standard_EXPORT     void Init(const StepShape_ValueQualifier& V) ;
+        void Init(const StepShape_ValueQualifier& V) ;
   
         Standard_Integer Length() const;
   

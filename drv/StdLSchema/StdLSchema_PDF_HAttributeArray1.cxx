@@ -40,6 +40,8 @@ void StdLSchema_PDF_HAttributeArray1::SWrite(const Handle(Standard_Persistent)& 
   if (!p.IsNull()) {
     Handle(PDF_HAttributeArray1) &pp = (Handle(PDF_HAttributeArray1)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPDF_HAttributeArray1LowerBound());
@@ -60,6 +62,8 @@ void StdLSchema_PDF_HAttributeArray1::SRead(const Handle(Standard_Persistent)& p
 { 
   if (!p.IsNull()) {
     Handle(PDF_HAttributeArray1) &pp = (Handle(PDF_HAttributeArray1)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

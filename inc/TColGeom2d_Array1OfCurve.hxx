@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColGeom2d_Array1OfCurve(const Standard_Integer Low,const Standard_Integer Up);
+      TColGeom2d_Array1OfCurve(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColGeom2d_Array1OfCurve(const Handle(Geom2d_Curve)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TColGeom2d_Array1OfCurve(const Handle(Geom2d_Curve)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(Geom2d_Curve)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TColGeom2d_Array1OfCurve()
 {
   Destroy();

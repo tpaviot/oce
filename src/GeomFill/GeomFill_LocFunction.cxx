@@ -1,24 +1,18 @@
 // Created on: 1998-02-02
 // Created by: Philippe MANGIN
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <GeomFill_LocFunction.ixx>
 
@@ -40,12 +34,12 @@ GeomFill_LocFunction::GeomFill_LocFunction(const Handle(GeomFill_LocationLaw)& L
 //					   const Standard_Real Last) 
 					   const Standard_Real ) 
 {
-  gp_Mat M;
+  gp_Mat aM;
   Standard_Boolean B;
-  B = myLaw->D0(Param, M, V.ChangeValue(1));
-  V(2).SetXYZ(M.Column(1));
-  V(3).SetXYZ(M.Column(2));
-  V(4).SetXYZ(M.Column(3));  
+  B = myLaw->D0(Param, aM, V.ChangeValue(1));
+  V(2).SetXYZ(aM.Column(1));
+  V(3).SetXYZ(aM.Column(2));
+  V(4).SetXYZ(aM.Column(3));
   return B;
 }
 
@@ -57,19 +51,19 @@ GeomFill_LocFunction::GeomFill_LocFunction(const Handle(GeomFill_LocationLaw)& L
 {
   TColgp_Array1OfPnt2d T1(1,1);
   TColgp_Array1OfVec2d T2(1,1);
-  gp_Mat M, DM;
+  gp_Mat aM, aDM;
   Standard_Boolean B;
-  B = myLaw->D1(Param, M, V.ChangeValue(1),
-		DM, DV.ChangeValue(1), 
+  B = myLaw->D1(Param, aM, V.ChangeValue(1),
+		aDM, DV.ChangeValue(1),
 		T1, T2);
 
-  V(2).SetXYZ(M.Column(1));
-  V(3).SetXYZ(M.Column(2));
-  V(4).SetXYZ(M.Column(3));
+  V(2).SetXYZ(aM.Column(1));
+  V(3).SetXYZ(aM.Column(2));
+  V(4).SetXYZ(aM.Column(3));
 
-  DV(2).SetXYZ(DM.Column(1));
-  DV(3).SetXYZ(DM.Column(2));
-  DV(4).SetXYZ(DM.Column(3)); 
+  DV(2).SetXYZ(aDM.Column(1));
+  DV(3).SetXYZ(aDM.Column(2));
+  DV(4).SetXYZ(aDM.Column(3));
   return B;
 }
 
@@ -81,24 +75,24 @@ GeomFill_LocFunction::GeomFill_LocFunction(const Handle(GeomFill_LocationLaw)& L
 {
   TColgp_Array1OfPnt2d T1(1,1);
   TColgp_Array1OfVec2d T2(1,1), T3(1,1);
-  gp_Mat M, DM, D2M;
+  gp_Mat aM, aDM, aD2M;
   Standard_Boolean B;
-  B = myLaw->D2(Param, M, V.ChangeValue(1),
-		DM, DV.ChangeValue(1),
-		D2M, D2V.ChangeValue(1), 
+  B = myLaw->D2(Param, aM, V.ChangeValue(1),
+		aDM, DV.ChangeValue(1),
+		aD2M, D2V.ChangeValue(1),
 		T1, T2, T3);
-  V(2).SetXYZ(M.Column(1));
-  V(3).SetXYZ(M.Column(2));
-  V(4).SetXYZ(M.Column(3));
+  V(2).SetXYZ(aM.Column(1));
+  V(3).SetXYZ(aM.Column(2));
+  V(4).SetXYZ(aM.Column(3));
 
-  DV(2).SetXYZ(DM.Column(1));
-  DV(3).SetXYZ(DM.Column(2));
-  DV(4).SetXYZ(DM.Column(3)); 
+  DV(2).SetXYZ(aDM.Column(1));
+  DV(3).SetXYZ(aDM.Column(2));
+  DV(4).SetXYZ(aDM.Column(3));
 
 
-  D2V(2).SetXYZ(D2M.Column(1));
-  D2V(3).SetXYZ(D2M.Column(2));
-  D2V(4).SetXYZ(D2M.Column(3)); 
+  D2V(2).SetXYZ(aD2M.Column(1));
+  D2V(3).SetXYZ(aD2M.Column(2));
+  D2V(4).SetXYZ(aD2M.Column(3));
 
   return B;  
 }

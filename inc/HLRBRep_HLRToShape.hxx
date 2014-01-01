@@ -89,6 +89,8 @@ public:
   
         TopoDS_Shape OutLineVCompound() ;
   
+        TopoDS_Shape OutLineVCompound3d() ;
+  
         TopoDS_Shape OutLineVCompound(const TopoDS_Shape& S) ;
   
         TopoDS_Shape IsoLineVCompound() ;
@@ -128,11 +130,11 @@ protected:
 private:
 
   
-  Standard_EXPORT     TopoDS_Shape InternalCompound(const Standard_Integer typ,const Standard_Boolean visible,const TopoDS_Shape& S) ;
+  Standard_EXPORT     TopoDS_Shape InternalCompound(const Standard_Integer typ,const Standard_Boolean visible,const TopoDS_Shape& S,const Standard_Boolean In3d = Standard_False) ;
   
-  Standard_EXPORT     void DrawFace(const Standard_Boolean visible,const Standard_Integer typ,const Standard_Integer iface,Handle(HLRBRep_Data)& DS,TopoDS_Shape& Result,Standard_Boolean& added) const;
+  Standard_EXPORT     void DrawFace(const Standard_Boolean visible,const Standard_Integer typ,const Standard_Integer iface,Handle(HLRBRep_Data)& DS,TopoDS_Shape& Result,Standard_Boolean& added,const Standard_Boolean In3d = Standard_False) const;
   
-  Standard_EXPORT     void DrawEdge(const Standard_Boolean visible,const Standard_Boolean inFace,const Standard_Integer typ,HLRBRep_EdgeData& ed,TopoDS_Shape& Result,Standard_Boolean& added) const;
+  Standard_EXPORT     void DrawEdge(const Standard_Boolean visible,const Standard_Boolean inFace,const Standard_Integer typ,HLRBRep_EdgeData& ed,TopoDS_Shape& Result,Standard_Boolean& added,const Standard_Boolean In3d = Standard_False) const;
 
 
 Handle_HLRBRep_Algo myAlgo;

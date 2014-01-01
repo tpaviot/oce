@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //:k8 abv 6 Jan 98: using parameter "step.group" for writing assemblies/shapes
 #include <XSDRAWSTEP.ixx>
@@ -98,6 +94,10 @@ void XSDRAWSTEP::Init ()
 
 static Standard_Integer stepread (Draw_Interpretor& di/*theCommands*/, Standard_Integer argc, const char** argv) 
 {
+  if (argc < 3) {
+    di << "Use: stepread  [file] [f or r (type of model full or reduced)]\n";
+    return 1;
+  }
   //  On admet le controller AP214 ou une variante
   DeclareAndCast(STEPControl_Controller,ctl,XSDRAW::Controller());
   if (ctl.IsNull()) XSDRAW::SetNorm("STEP");
@@ -121,7 +121,7 @@ static Standard_Integer stepread (Draw_Interpretor& di/*theCommands*/, Standard_
   progress->Show();
 
   Standard_Boolean fromtcl = Standard_False;
-  Standard_Boolean aFullMode = 0;
+  Standard_Boolean aFullMode = Standard_False;
   Standard_Integer k = 3;
   if(argc > k )
   {
@@ -307,47 +307,6 @@ static Standard_Integer testread (Draw_Interpretor& di, Standard_Integer argc, c
   return 0;
 }
  
-//=======================================================================
-//function : readstep
-//purpose  : 
-//=======================================================================
-
-static Standard_Integer readstep (Draw_Interpretor& di, Standard_Integer /*argc*/, const char** argv) 
-{
-//  On admet le controller AP214 ou une variante
-  
-  
-  STEPControl_Reader sr;
-  
-  IFSelect_ReturnStatus readstat = IFSelect_RetVoid;
-
-   readstat = sr.ReadFile (argv[1]);
- 
-  if (readstat != IFSelect_RetDone) {
-    
-    di<<"No model loaded"<<"\n";
-    return 1;
-  }
-
-  
-  Standard_Integer  num = sr.NbRootsForTransfer();
-  Standard_Integer  modepri;
-  di<<"NbRootsForTransfer="<<num<<" :\n";
-
-  cout<<"Mode (0 End, 1 root n0 1, 2 one root/n0, 3 one entity/n0, 4 Selection) : "<<flush;
-  cin>>modepri;
-  if (modepri == 0) { di<<"End Reading STEP"<<"\n"; return 0; }
-    
-
-  if (!sr.TransferRoot (num)) di<<"Transfer root n0 "<<num<<" : no result"<<"\n";
-  else {
-    TopoDS_Shape sh = sr.OneShape();
-    DBRep::Set (argv[2],sh);
-  }
-  cin>>modepri;
-  return 0;
-}
-
 //  ########  COMMANDE steptrans  : teste les transformations  #########
 //=======================================================================
 //function : steptrans
@@ -603,6 +562,5 @@ void XSDRAWSTEP::InitCommands (Draw_Interpretor& theCommands)
   theCommands.Add("steptrans",     "steptrans shape stepax1 stepax2",  __FILE__, steptrans,     g);
   theCommands.Add("countexpected","TEST",                              __FILE__, countexpected, g);
   theCommands.Add("dumpassembly", "TEST",                              __FILE__, dumpassembly,  g);
-  theCommands.Add("readstep",      "readstep  [file]",                 __FILE__, readstep,      g);
   theCommands.Add("stepfileunits" , "stepfileunits name_file", __FILE__, stepfileunits,      g);
 }

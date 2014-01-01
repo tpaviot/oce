@@ -34,6 +34,12 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Standard_CString_HeaderFile
+#include <Standard_CString.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 class TColStd_SequenceOfHAsciiString;
 class Font_SystemFont;
 class TCollection_HAsciiString;
@@ -62,6 +68,12 @@ public:
 //!         any font available in the system. Returns NULL in case when the fonts <br>
 //!         are not found in the system. <br>
   Standard_EXPORT     Handle_Font_SystemFont FindFont(const Handle(TCollection_HAsciiString)& theFontName,const Font_FontAspect theFontAspect,const Standard_Integer theFontSize) const;
+  //! Read font file and retrieve information from it. <br>
+  Standard_EXPORT     Handle_Font_SystemFont CheckFont(const Standard_CString theFontPath) const;
+  //! Register new font. <br>
+//!         If there is existing entity with the same name and properties but different path <br>
+//!         then font will will be overridden or ignored depending on theToOverride flag. <br>
+  Standard_EXPORT     Standard_Boolean RegisterFont(const Handle(Font_SystemFont)& theFont,const Standard_Boolean theToOverride) ;
 
 
 

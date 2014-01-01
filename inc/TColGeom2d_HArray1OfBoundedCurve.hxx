@@ -42,11 +42,11 @@ class TColGeom2d_HArray1OfBoundedCurve : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColGeom2d_HArray1OfBoundedCurve(const Standard_Integer Low,const Standard_Integer Up);
+      TColGeom2d_HArray1OfBoundedCurve(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColGeom2d_HArray1OfBoundedCurve(const Standard_Integer Low,const Standard_Integer Up,const Handle(Geom2d_BoundedCurve)& V);
+      TColGeom2d_HArray1OfBoundedCurve(const Standard_Integer Low,const Standard_Integer Up,const Handle(Geom2d_BoundedCurve)& V);
   
-  Standard_EXPORT     void Init(const Handle(Geom2d_BoundedCurve)& V) ;
+        void Init(const Handle(Geom2d_BoundedCurve)& V) ;
   
         Standard_Integer Length() const;
   

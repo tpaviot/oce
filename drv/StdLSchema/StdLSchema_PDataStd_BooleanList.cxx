@@ -40,6 +40,8 @@ void StdLSchema_PDataStd_BooleanList::SWrite(const Handle(Standard_Persistent)& 
   if (!p.IsNull()) {
     Handle(PDataStd_BooleanList) &pp = (Handle(PDataStd_BooleanList)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDataStd_BooleanListmyValue(),f);
@@ -58,6 +60,8 @@ void StdLSchema_PDataStd_BooleanList::SRead(const Handle(Standard_Persistent)& p
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_BooleanList) &pp = (Handle(PDataStd_BooleanList)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

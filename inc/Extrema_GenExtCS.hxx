@@ -34,11 +34,11 @@
 #ifndef _Extrema_FuncExtCS_HeaderFile
 #include <Extrema_FuncExtCS.hxx>
 #endif
-#ifndef _Adaptor3d_CurvePtr_HeaderFile
-#include <Adaptor3d_CurvePtr.hxx>
-#endif
 #ifndef _Adaptor3d_SurfacePtr_HeaderFile
 #include <Adaptor3d_SurfacePtr.hxx>
+#endif
+#ifndef _Adaptor3d_CurvePtr_HeaderFile
+#include <Adaptor3d_CurvePtr.hxx>
 #endif
 class TColgp_HArray1OfPnt;
 class TColgp_HArray2OfPnt;
@@ -134,7 +134,6 @@ Handle_TColgp_HArray2OfPnt mypoints2;
 Standard_Real mytol1;
 Standard_Real mytol2;
 Extrema_FuncExtCS myF;
-Adaptor3d_CurvePtr myC;
 Adaptor3d_SurfacePtr myS;
 
 

@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Poly_Array1OfTriangle(const Standard_Integer Low,const Standard_Integer Up);
+      Poly_Array1OfTriangle(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Poly_Array1OfTriangle(const Poly_Triangle& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Poly_Array1OfTriangle(const Poly_Triangle& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Poly_Triangle& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Poly_Array1OfTriangle()
 {
   Destroy();

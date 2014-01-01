@@ -42,11 +42,11 @@ class IGESDimen_HArray1OfGeneralNote : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESDimen_HArray1OfGeneralNote(const Standard_Integer Low,const Standard_Integer Up);
+      IGESDimen_HArray1OfGeneralNote(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESDimen_HArray1OfGeneralNote(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESDimen_GeneralNote)& V);
+      IGESDimen_HArray1OfGeneralNote(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESDimen_GeneralNote)& V);
   
-  Standard_EXPORT     void Init(const Handle(IGESDimen_GeneralNote)& V) ;
+        void Init(const Handle(IGESDimen_GeneralNote)& V) ;
   
         Standard_Integer Length() const;
   

@@ -40,6 +40,8 @@ void ShapeSchema_PColPGeom_HArray1OfBezierCurve::SWrite(const Handle(Standard_Pe
   if (!p.IsNull()) {
     Handle(PColPGeom_HArray1OfBezierCurve) &pp = (Handle(PColPGeom_HArray1OfBezierCurve)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPColPGeom_HArray1OfBezierCurveLowerBound());
@@ -60,6 +62,8 @@ void ShapeSchema_PColPGeom_HArray1OfBezierCurve::SRead(const Handle(Standard_Per
 { 
   if (!p.IsNull()) {
     Handle(PColPGeom_HArray1OfBezierCurve) &pp = (Handle(PColPGeom_HArray1OfBezierCurve)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -100,16 +100,16 @@ private:
 
 
 Standard_Address myCurve;
-Standard_Real u;
-Standard_Integer level;
-Standard_Real cn;
-Standard_Real linTol;
-gp_Pnt2d pnt;
-gp_Vec2d d[3];
-gp_Dir2d tangent;
-Standard_Real curvature;
-LProp_Status tangentStatus;
-Standard_Integer significantFirstDerivativeOrder;
+Standard_Real myU;
+Standard_Integer myDerOrder;
+Standard_Real myCN;
+Standard_Real myLinTol;
+gp_Pnt2d myPnt;
+gp_Vec2d myDerivArr[3];
+gp_Dir2d myTangent;
+Standard_Real myCurvature;
+LProp_Status myTangentStatus;
+Standard_Integer mySignificantFirstDerivativeOrder;
 
 
 };

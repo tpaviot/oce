@@ -42,11 +42,11 @@ class IGESDraw_HArray1OfViewKindEntity : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESDraw_HArray1OfViewKindEntity(const Standard_Integer Low,const Standard_Integer Up);
+      IGESDraw_HArray1OfViewKindEntity(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESDraw_HArray1OfViewKindEntity(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESData_ViewKindEntity)& V);
+      IGESDraw_HArray1OfViewKindEntity(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESData_ViewKindEntity)& V);
   
-  Standard_EXPORT     void Init(const Handle(IGESData_ViewKindEntity)& V) ;
+        void Init(const Handle(IGESData_ViewKindEntity)& V) ;
   
         Standard_Integer Length() const;
   

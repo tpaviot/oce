@@ -1,3 +1,0 @@
-#ifndef _WNT_Image_HeaderFile
-#include <WNT_Image.hxx>
-#endif

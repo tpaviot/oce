@@ -42,11 +42,11 @@ class TColGeom_HArray1OfSurface : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColGeom_HArray1OfSurface(const Standard_Integer Low,const Standard_Integer Up);
+      TColGeom_HArray1OfSurface(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColGeom_HArray1OfSurface(const Standard_Integer Low,const Standard_Integer Up,const Handle(Geom_Surface)& V);
+      TColGeom_HArray1OfSurface(const Standard_Integer Low,const Standard_Integer Up,const Handle(Geom_Surface)& V);
   
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& V) ;
+        void Init(const Handle(Geom_Surface)& V) ;
   
         Standard_Integer Length() const;
   
