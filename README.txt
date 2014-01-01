@@ -1,7 +1,7 @@
 oce stands for *o*pencascade *c*ommunity *e*dition.
 
 This project aims at gathering patches/changes/improvements from the OCC community over the latest release
-(currently OCCT 6.6.0).
+(currently OCCT 6.7.0).
 
 We use the following online resources:
   * Sources
@@ -26,4 +26,4 @@ How to stay up to date with latest developements?
 
 How to compile on Unix?
 =======================
-Read INSTALL file for instructions on compiling.
+Read INSTALL.Unix file for instructions on compiling.
