@@ -559,7 +559,7 @@
   case GeomAbs_Sphere:
     return(ElSLib::SphereValue(U,V,Ax3,RCyl)); 
   default:
-    break; 
+    return(gp_Pnt(0.0,0.0,0.0));
   }
 }
 
