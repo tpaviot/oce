@@ -373,13 +373,14 @@ void IntTools_EdgeFace::CheckData()
 					       Standard_Real& tRoot)
 {
   Standard_Real tm, t1, t2, aEpsT;
-  Standard_Integer anIsProj1, anIsProjm;
+  Standard_Integer anIsProj1, anIsProj2, anIsProjm;
   aEpsT=0.5*myEpsT;
   //
   // Root is inside [tt1, tt2]
   t1=tt1;  
   t2=tt2;
   anIsProj1=ff1;
+  anIsProj2=ff2;
   
   for(;;) {
     if (fabs(t1-t2) < aEpsT) {
@@ -391,6 +392,7 @@ void IntTools_EdgeFace::CheckData()
     
     if (anIsProjm != anIsProj1) {
       t2=tm;
+      anIsProj2=anIsProjm;
     }
     else {
       t1=tm;

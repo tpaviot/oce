@@ -228,7 +228,6 @@ Standard_Boolean IntCoCo(const IntSurf_Quadric& Quad1,
 	  Quad2.Parameters(aPChar, U2, V2);
 	  aPtsol.SetValue(aPChar, Tol, Standard_False);
 	  aPtsol.SetParameters(U1, V1, U2, V2);
-	  ElCLib::Parameter(cirsol, aPChar);
 	  aPtsol.SetParameter(0.);
 	  glig->AddVertex(aPtsol);
 	}
@@ -266,7 +265,6 @@ Standard_Boolean IntCoCo(const IntSurf_Quadric& Quad1,
 	Quad2.Parameters(aPChar, U2, V2);
 	aPtsol.SetValue(aPChar, Tol, Standard_False);
 	aPtsol.SetParameters(U1, V1, U2, V2);
-	ElCLib::Parameter(elipsol, aPChar);
 	aPtsol.SetParameter(0.);
 	glig->AddVertex(aPtsol);
       }
@@ -303,7 +301,6 @@ Standard_Boolean IntCoCo(const IntSurf_Quadric& Quad1,
 	  Quad2.Parameters(aPChar, U2, V2);
 	  aPtsol.SetValue(aPChar, Tol, Standard_False);
 	  aPtsol.SetParameters(U1, V1, U2, V2);
-	  ElCLib::Parameter(hyprsol, aPChar);
 	  aPtsol.SetParameter(0.);
 	  glig->AddVertex(aPtsol);
 	}
@@ -339,7 +336,6 @@ Standard_Boolean IntCoCo(const IntSurf_Quadric& Quad1,
 	Quad2.Parameters(aPChar, U2, V2);
 	aPtsol.SetValue(aPChar, Tol, Standard_False);
 	aPtsol.SetParameters(U1, V1, U2, V2);
-	ElCLib::Parameter(parabsol, aPChar);
 	aPtsol.SetParameter(0.);
 	glig->AddVertex(aPtsol);
       }

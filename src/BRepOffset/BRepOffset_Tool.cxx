@@ -798,9 +798,7 @@ void BRepOffset_Tool::PipeInter(const TopoDS_Face& F1,
 //=======================================================================
 
 static Standard_Boolean IsAutonomVertex(const TopoDS_Shape& aVertex,
-					const TopoDS_Shape& F1,
-					const TopoDS_Shape& F2,
-                                        const BOPDS_PDS& pDS)
+					const BOPDS_PDS& pDS)
 {
   Standard_Integer index;
   Standard_Integer aNbVVs, aNbEEs, aNbEFs, aInt;
@@ -869,9 +867,7 @@ static Standard_Boolean IsAutonomVertex(const TopoDS_Shape& aVertex,
 
 static Standard_Boolean AreConnex(const TopoDS_Wire& W1,
 				  const TopoDS_Wire& W2,
-				  const TopoDS_Shape& F1,
-				  const TopoDS_Shape& F2,
-                                  const BOPDS_PDS& pDS)
+				  const BOPDS_PDS& pDS)
 {
   TopoDS_Vertex V11, V12, V21, V22;
   TopExp::Vertices( W1, V11, V12 );
@@ -882,14 +878,14 @@ static Standard_Boolean AreConnex(const TopoDS_Wire& W1,
     {
       Standard_Boolean isCV1 = V11.IsSame(V21) || V11.IsSame(V22);
       Standard_Boolean isCV2 = V12.IsSame(V21) || V12.IsSame(V22);
-      if (isCV1 && !IsAutonomVertex(V11, F1, F2, pDS))
+      if (isCV1 && !IsAutonomVertex(V11, pDS))
 	{
 	  if (!isCV2)
 	    return Standard_False;
-          if (!IsAutonomVertex(V12, F1, F2, pDS))
+          if (!IsAutonomVertex(V12, pDS))
 	    return Standard_False;
 	}
-      if (!isCV1 && !IsAutonomVertex(V12, F1, F2, pDS))
+      if (!isCV1 && !IsAutonomVertex(V12, pDS))
 	return Standard_False;
 
       TopoDS_Vertex CV = (V11.IsSame(V21) || V11.IsSame(V22))? V11 : V12;
@@ -1515,7 +1511,7 @@ static TopoDS_Edge AssembleEdge(const BOPDS_PDS& pDS,
 	{
 	  TopoDS_Vertex V1, V2;
 	  TopExp::Vertices( CurEdge, V1, V2 );
-          if (IsAutonomVertex( V1, F1, F2, pDS ))
+          if (IsAutonomVertex( V1, pDS ))
 	    {
 	      After = Standard_False;
 	      Vfirst = Vlast = V2;
@@ -1758,7 +1754,7 @@ void BRepOffset_Tool::Inter3D(const TopoDS_Face& F1,
 	    for (k = 1; k <= wseq.Length(); k++)
 	      {
 		resWire = TopoDS::Wire(wseq(k));
-                if (AreConnex( resWire, aWire, cpF1, cpF2, pDS ))
+                if (AreConnex( resWire, aWire, pDS ))
 		  {
 		    Candidates.Append( 1 );
 		    break;
@@ -1777,7 +1773,7 @@ void BRepOffset_Tool::Inter3D(const TopoDS_Face& F1,
 		    //if (anEdge.IsSame(edges(Candidates.First())))
 		    //continue;
 		    aWire = BRepLib_MakeWire( anEdge );
-                    if (AreConnex( resWire, aWire, cpF1, cpF2, pDS ))
+                    if (AreConnex( resWire, aWire, pDS ))
 		      Candidates.Append( j );
 		  }
 		Standard_Integer minind = 1;
@@ -1822,13 +1818,13 @@ void BRepOffset_Tool::Inter3D(const TopoDS_Face& F1,
 		      {
 			TopoDS_Vertex V1, V2;
 			TopExp::Vertices( anEdge, V1, V2 );
-                        if (!IsAutonomVertex( V1, cpF1, cpF2, pDS ))
+                        if (!IsAutonomVertex( V1, pDS ))
 			  {
 			    StartVertex = V2;
 			    StartEdge = anEdge;
 			    StartFound = Standard_True;
 			  }
-                        else if (!IsAutonomVertex( V2, cpF1, cpF2, pDS ))
+                        else if (!IsAutonomVertex( V2, pDS ))
 			  {
 			    StartVertex = V1;
 			    StartEdge = anEdge;

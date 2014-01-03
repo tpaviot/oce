@@ -169,6 +169,11 @@ Standard_EXPORT void StandardCallBack_Reset()
   StandardCallBack_CatchID() = 0;
 }
 
+namespace {
+  // dummy function for break point
+  inline void place_for_break_point () {}
+};
+
 //=======================================================================
 //function : StandardCallBack
 //purpose  : Callback function to register alloc/free calls
@@ -207,6 +212,7 @@ void NCollection_BaseAllocator::StandardCallBack
       if (CurrentID == StandardCallBack_CatchID())
       {
         // Place for break point for allocation of investigated ID
+        place_for_break_point();
       }
     }
     else
@@ -218,6 +224,7 @@ void NCollection_BaseAllocator::StandardCallBack
         if (anID == StandardCallBack_CatchID())
         {
           // Place for break point for freeing of investigated ID
+          place_for_break_point();
         }
       }
     }

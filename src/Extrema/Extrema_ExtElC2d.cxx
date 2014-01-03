@@ -94,7 +94,6 @@ Method:
   Standard_Real Dy = D.Dot(y2);
   Standard_Real U1, teta[2];
   gp_Pnt2d O1=C1.Location();
-  C2.Location();
   gp_Pnt2d P1, P2;
   
   if (Abs(Dy) <= RealEpsilon()) {

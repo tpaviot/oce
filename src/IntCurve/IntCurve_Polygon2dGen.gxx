@@ -318,12 +318,9 @@ void IntCurve_Polygon2dGen::ComputeWithBox(const TheCurve&        C,
 		TheParams.SetValue(MaxIndexUsed,u);
 		
 		Standard_Real u1m = 0.5*(u+TheParams.Value(TheIndex.Value(i-1)));
-		Standard_Real um2 = 0.5*(u+TheParams.Value(TheIndex.Value(i+1)));
 		gp_Pnt2d P1m = TheCurveTool::Value(C,u1m);
-        TheCurveTool::Value(C,um2);
-		gp_Lin2d L1m(P1,gp_Dir2d(gp_Vec2d(P1,Pm)));
-        ThePnts.Value(TheIndex.Value(i+1));
-		t = L1m.Distance(P1m);
+        gp_Lin2d L1m(P1,gp_Dir2d(gp_Vec2d(P1,Pm)));
+        t = L1m.Distance(P1m);
 		i--; 
 	      }
 	    }

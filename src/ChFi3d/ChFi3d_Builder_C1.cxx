@@ -3653,6 +3653,8 @@ Standard_Boolean ChFi3d_Builder::FindFace(const TopoDS_Vertex& V,
   if(!ContainsV){
     cout<<"FindFace : the extremity of the spine is not in the end face"<<endl;
   }
+#else
+  (void)V; // avoid compiler warning on unused variable
 #endif
   return Found;
 }

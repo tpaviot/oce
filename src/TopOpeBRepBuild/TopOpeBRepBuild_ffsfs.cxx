@@ -438,7 +438,6 @@ void TopOpeBRepBuild_Builder::GFillFaceSFS(const TopoDS_Shape& FOR,const TopTool
 #endif
 	  SFS.AddStartElement(flfr2);
 	}
-	SFS.ChangeStartShapes().Extent();
       } // performfufa (context)
       
     } // makemerge
