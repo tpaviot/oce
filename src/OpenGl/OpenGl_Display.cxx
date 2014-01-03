@@ -35,7 +35,7 @@ IMPLEMENT_STANDARD_RTTIEXT(OpenGl_Display,MMgt_TShared)
 namespace
 {
   #if (defined(_WIN32) || defined(__WIN32__)) || (defined(__APPLE__) && !defined(MACOSX_USE_GLX))
-    static char* TheDummyDisplay = "DISPLAY";
+    static char TheDummyDisplay[] = "DISPLAY";
   #endif
 
   static const OpenGl_Facilities myDefaultFacilities = { 1, 1, 1, 1, OpenGLMaxLights, 10000 };
