@@ -407,7 +407,7 @@ void Draw_Appli(Standard_Integer argc, char** argv,const FDraw_InitAppli Draw_In
         cin.get(cmd[++i]);
       } while ((cmd[i] != '\n') && (!cin.fail()));
       cmd[i] = '\0';
-    } while (Draw_Interprete(cmd) != (unsigned int ) -2);
+    } while (Draw_Interprete(cmd));
   }
 #ifdef WNT
   // Destruction de l'application
