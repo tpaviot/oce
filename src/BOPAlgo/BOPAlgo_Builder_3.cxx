@@ -299,6 +299,8 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
     aSelector.Clear();
     aSelector.SetBox(aBoxS);
     //
+    aBBTree.Select(aSelector);
+    //
     const BOPCol_ListOfInteger& aLIFP=aSelector.Indices();
     //
     // 2.7. Collect faces that are IN aSolid [ aLFIN ]
