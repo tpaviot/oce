@@ -1,23 +1,18 @@
 // Created on: 1998-01-22
 // Created by: Philippe MANGIN/Roman BORISOV
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <GeomFill_Frenet.ixx>
 #include <GeomAbs_CurveType.hxx>
@@ -31,8 +26,11 @@
 #include <TCollection_CompareOfReal.hxx>
 #include <TColgp_SequenceOfPnt2d.hxx>
 
-#define NullTol 1.e-10
-#define MaxSingular 1.e-5
+static const Standard_Real NullTol = 1.e-10;
+static const Standard_Real MaxSingular = 1.e-5;
+
+static const Standard_Integer maxDerivOrder = 3;
+
 
 //=======================================================================
 //function : FDeriv
@@ -58,6 +56,30 @@ static gp_Vec DDeriv(const gp_Vec& F, const gp_Vec& DF, const gp_Vec& D2F)
         - 3*(F*DF)*(F*DF)/(Norma*Norma))/(Norma*Norma*Norma));
   return Result;
 }
+
+//=======================================================================
+//function : CosAngle
+//purpose  : Return a cosine between vectors theV1 and theV2.
+//=======================================================================
+static Standard_Real CosAngle(const gp_Vec& theV1, const gp_Vec& theV2)
+  {
+  const Standard_Real aTol = gp::Resolution();
+
+  const Standard_Real m1 = theV1.Magnitude(), m2 = theV2.Magnitude();
+  if((m1 <= aTol) || (m2 <= aTol)) //Vectors are codirectional
+    return 1.0;
+
+  Standard_Real aCAng = theV1.Dot(theV2)/(m1*m2);
+
+  if(aCAng > 1.0)
+    aCAng = 1.0;
+
+  if(aCAng < -1.0)
+    aCAng = -1.0;
+
+
+  return aCAng;
+  }
 
 //=======================================================================
 //function : GeomFill_Frenet
@@ -315,35 +337,204 @@ Handle(GeomFill_TrihedronLaw) GeomFill_Frenet::Copy() const
 }
 
 //=======================================================================
+//function :  RotateTrihedron
+//purpose  :  This function revolves the trihedron (which is determined of
+//            given "Tangent", "Normal" and "BiNormal" vectors)
+//            to coincide "Tangent" and "NewTangent" axes.
+//=======================================================================
+Standard_Boolean 
+          GeomFill_Frenet::RotateTrihedron( gp_Vec& Tangent,
+                                            gp_Vec& Normal,
+                                            gp_Vec& BiNormal,
+                                            const gp_Vec& NewTangent) const
+  {
+  const Standard_Real anInfCOS = cos(Precision::Angular()); //0.99999995
+  const Standard_Real aTol = gp::Resolution();
+
+  gp_Vec anAxis = Tangent.Crossed(NewTangent);
+  const Standard_Real NT = anAxis.Magnitude();
+  if(NT <= aTol)
+    //No rotation required
+    return Standard_True;
+  else
+    anAxis /= NT;   //Normalization
+
+  const Standard_Real aPx = anAxis.X(), aPy = anAxis.Y(), aPz = anAxis.Z();
+  const Standard_Real aCAng = CosAngle(Tangent,NewTangent); //cosine
+
+  const Standard_Real anAddCAng = 1.0 - aCAng;
+  const Standard_Real aSAng = sqrt(1.0 - aCAng*aCAng);  //sine
+
+//According to rotate direction, sine of rotation angle might be 
+//positive or negative.
+//We can research to choose necessary sign. But I think, it is more
+//effectively, to rotate "Tangent" vector in both direction. After that
+//we can choose necessary rotation direction in depend of results.
+
+  const gp_Vec aV11(anAddCAng*aPx*aPx+aCAng,      anAddCAng*aPx*aPy-aPz*aSAng,  anAddCAng*aPx*aPz+aPy*aSAng);
+  const gp_Vec aV12(anAddCAng*aPx*aPx+aCAng,      anAddCAng*aPx*aPy+aPz*aSAng,  anAddCAng*aPx*aPz-aPy*aSAng);
+  const gp_Vec aV21(anAddCAng*aPx*aPy+aPz*aSAng,  anAddCAng*aPy*aPy+aCAng,      anAddCAng*aPy*aPz-aPx*aSAng);
+  const gp_Vec aV22(anAddCAng*aPx*aPy-aPz*aSAng,  anAddCAng*aPy*aPy+aCAng,      anAddCAng*aPy*aPz+aPx*aSAng);
+  const gp_Vec aV31(anAddCAng*aPx*aPz-aPy*aSAng,  anAddCAng*aPy*aPz+aPx*aSAng,  anAddCAng*aPz*aPz+aCAng);
+  const gp_Vec aV32(anAddCAng*aPx*aPz+aPy*aSAng,  anAddCAng*aPy*aPz-aPx*aSAng,  anAddCAng*aPz*aPz+aCAng);
+
+  gp_Vec aT1(Tangent.Dot(aV11), Tangent.Dot(aV21), Tangent.Dot(aV31));
+  gp_Vec aT2(Tangent.Dot(aV12), Tangent.Dot(aV22), Tangent.Dot(aV32));
+
+  if(CosAngle(aT1,NewTangent) >= CosAngle(aT2,NewTangent))
+    {
+    Tangent = aT1;
+    Normal = gp_Vec(Normal.Dot(aV11), Normal.Dot(aV21), Normal.Dot(aV31));
+    BiNormal = gp_Vec(BiNormal.Dot(aV11), BiNormal.Dot(aV21), BiNormal.Dot(aV31));
+    }
+  else
+    {
+    Tangent = aT2;
+    Normal = gp_Vec(Normal.Dot(aV12), Normal.Dot(aV22), Normal.Dot(aV32));
+    BiNormal = gp_Vec(BiNormal.Dot(aV12), BiNormal.Dot(aV22), BiNormal.Dot(aV32));
+    }
+
+  return CosAngle(Tangent,NewTangent) >= anInfCOS;
+  }
+
+
+//=======================================================================
 //function : D0
 //purpose  : 
 //=======================================================================
 
- Standard_Boolean GeomFill_Frenet::D0(const Standard_Real Param,
+ Standard_Boolean GeomFill_Frenet::D0(const Standard_Real theParam,
                                       gp_Vec& Tangent,
                                       gp_Vec& Normal,
                                       gp_Vec& BiNormal)
 {
+  const Standard_Real aTol = gp::Resolution();
+
   Standard_Real norm;
   Standard_Integer Index;
   Standard_Real Delta = 0.;
-  if(IsSingular(Param, Index)) 
-    if (SingularD0(Param, Index, Tangent, Normal, BiNormal, Delta))
+  if(IsSingular(theParam, Index)) 
+    if (SingularD0(theParam, Index, Tangent, Normal, BiNormal, Delta))
       return Standard_True;
 
-  Standard_Real theParam = Param + Delta;
-  myTrimmed->D2(theParam, P, Tangent, BiNormal);
-  Tangent.Normalize();
-  BiNormal = Tangent.Crossed(BiNormal);
-  norm = BiNormal.Magnitude();
-  if (norm <= gp::Resolution()) {
-    gp_Ax2 Axe (gp_Pnt(0,0,0), Tangent);
-    BiNormal.SetXYZ(Axe.YDirection().XYZ());    
-  }
-  else BiNormal.Normalize();
+  Standard_Real aParam = theParam + Delta;
+  myTrimmed->D2(aParam, P, Tangent, BiNormal);
 
-  Normal = BiNormal;
-  Normal.Cross(Tangent);
+  const Standard_Real DivisionFactor = 1.e-3;
+  const Standard_Real anUinfium   = myTrimmed->FirstParameter();
+  const Standard_Real anUsupremum = myTrimmed->LastParameter();
+  const Standard_Real aDelta = (anUsupremum - anUinfium)*DivisionFactor;
+  Standard_Real Ndu = Tangent.Magnitude();
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+  if(Ndu <= aTol)
+    {
+    gp_Vec aTn;
+//Derivative is approximated by Taylor-series
+    
+    Standard_Integer anIndex = 1; //Derivative order
+    Standard_Boolean isDeriveFound = Standard_False;
+    
+    do
+      {
+      aTn =  myTrimmed->DN(theParam,++anIndex);
+      Ndu = aTn.Magnitude();
+      isDeriveFound = Ndu > aTol;
+      }
+    while(!isDeriveFound && anIndex < maxDerivOrder);
+
+    if(isDeriveFound)
+      {
+      Standard_Real u;
+      
+      if(theParam-anUinfium < aDelta)
+        u = theParam+aDelta;
+      else
+        u = theParam-aDelta;
+      
+      gp_Pnt P1, P2;
+      myTrimmed->D0(Min(theParam, u),P1);
+      myTrimmed->D0(Max(theParam, u),P2);
+      
+      gp_Vec V1(P1,P2);
+      Standard_Real aDirFactor = aTn.Dot(V1);
+      
+      if(aDirFactor < 0.0)
+        aTn = -aTn;
+      }//if(IsDeriveFound)
+    else
+      {
+//Derivative is approximated by three points
+
+      gp_Pnt Ptemp(0.0,0.0,0.0); //(0,0,0)-coordinate
+      gp_Pnt P1, P2, P3;
+      Standard_Boolean IsParameterGrown;
+                
+      if(theParam-anUinfium < 2*aDelta)
+        {
+        myTrimmed->D0(theParam,P1);
+        myTrimmed->D0(theParam+aDelta,P2);
+        myTrimmed->D0(theParam+2*aDelta,P3);
+        IsParameterGrown = Standard_True;
+        }
+      else
+        {
+        myTrimmed->D0(theParam-2*aDelta,P1);
+        myTrimmed->D0(theParam-aDelta,P2);
+        myTrimmed->D0(theParam,P3);
+        IsParameterGrown = Standard_False;
+        }
+        
+      gp_Vec V1(Ptemp,P1), V2(Ptemp,P2), V3(Ptemp,P3);
+      
+      if(IsParameterGrown)
+        aTn=-3*V1+4*V2-V3;
+      else
+        aTn=V1-4*V2+3*V3;
+      }//else of "if(IsDeriveFound)" condition
+      Ndu = aTn.Magnitude();
+      gp_Pnt Pt = P;
+      Standard_Real dPar = 10.0*aDelta;
+
+//Recursive calling is used for determine of trihedron for 
+//point, which is near to given.
+      if(theParam-anUinfium < dPar)
+        {
+        if(D0(aParam+dPar,Tangent,Normal,BiNormal) == Standard_False)
+          return Standard_False;
+        }
+      else
+        {
+        if(D0(aParam-dPar,Tangent,Normal,BiNormal) == Standard_False)
+          return Standard_False;
+        }
+
+      P = Pt;
+
+      if(RotateTrihedron(Tangent,Normal,BiNormal,aTn) == Standard_False)
+        {
+#ifdef DEB
+        cout << "Cannot coincide two tangents." << endl;
+#endif
+        return Standard_False;
+        }
+    }//if(Ndu <= aTol)
+  else
+    {
+    Tangent = Tangent/Ndu;
+    BiNormal = Tangent.Crossed(BiNormal);
+    norm = BiNormal.Magnitude();
+    if (norm <= gp::Resolution())
+      {
+      gp_Ax2 Axe (gp_Pnt(0,0,0), Tangent);
+      BiNormal.SetXYZ(Axe.YDirection().XYZ());    
+      }
+    else
+      BiNormal.Normalize();
+
+    Normal = BiNormal;
+    Normal.Cross(Tangent);
+    }
 
   return Standard_True;
 }

@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESGeom_Array1OfBoundary(const Standard_Integer Low,const Standard_Integer Up);
+      IGESGeom_Array1OfBoundary(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESGeom_Array1OfBoundary(const Handle(IGESGeom_Boundary)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESGeom_Array1OfBoundary(const Handle(IGESGeom_Boundary)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(IGESGeom_Boundary)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESGeom_Array1OfBoundary()
 {
   Destroy();

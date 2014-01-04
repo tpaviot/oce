@@ -39,11 +39,11 @@ class StepVisual_HArray1OfSurfaceStyleElementSelect : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer Low,const Standard_Integer Up,const StepVisual_SurfaceStyleElementSelect& V);
+      StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer Low,const Standard_Integer Up,const StepVisual_SurfaceStyleElementSelect& V);
   
-  Standard_EXPORT     void Init(const StepVisual_SurfaceStyleElementSelect& V) ;
+        void Init(const StepVisual_SurfaceStyleElementSelect& V) ;
   
         Standard_Integer Length() const;
   

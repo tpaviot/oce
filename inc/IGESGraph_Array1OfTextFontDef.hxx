@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESGraph_Array1OfTextFontDef(const Standard_Integer Low,const Standard_Integer Up);
+      IGESGraph_Array1OfTextFontDef(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESGraph_Array1OfTextFontDef(const Handle(IGESGraph_TextFontDef)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESGraph_Array1OfTextFontDef(const Handle(IGESGraph_TextFontDef)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(IGESGraph_TextFontDef)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESGraph_Array1OfTextFontDef()
 {
   Destroy();

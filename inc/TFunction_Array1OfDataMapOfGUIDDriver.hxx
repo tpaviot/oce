@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TFunction_Array1OfDataMapOfGUIDDriver(const Standard_Integer Low,const Standard_Integer Up);
+      TFunction_Array1OfDataMapOfGUIDDriver(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TFunction_Array1OfDataMapOfGUIDDriver(const TFunction_DataMapOfGUIDDriver& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TFunction_Array1OfDataMapOfGUIDDriver(const TFunction_DataMapOfGUIDDriver& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const TFunction_DataMapOfGUIDDriver& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TFunction_Array1OfDataMapOfGUIDDriver()
 {
   Destroy();

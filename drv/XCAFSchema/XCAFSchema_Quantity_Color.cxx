@@ -14,6 +14,7 @@
 
 void XCAFSchema_Quantity_Color::SWrite(const Quantity_Color& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
   f.PutShortReal(pp._CSFDB_GetQuantity_ColorMyRed());
   f.PutShortReal(pp._CSFDB_GetQuantity_ColorMyGreen());
@@ -24,6 +25,7 @@ void XCAFSchema_Quantity_Color::SWrite(const Quantity_Color& pp, Storage_BaseDri
 
 void XCAFSchema_Quantity_Color::SRead(Quantity_Color& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
 
     Standard_ShortReal Quantity_ColorMyRed;

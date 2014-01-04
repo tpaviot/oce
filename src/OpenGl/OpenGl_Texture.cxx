@@ -1,20 +1,16 @@
 // Created by: Kirill GAVRILOV
-// Copyright (c) 2012 OPEN CASCADE SAS
+// Copyright (c) 2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <OpenGl_Texture.hxx>
 
@@ -26,6 +22,24 @@
 
 IMPLEMENT_STANDARD_HANDLE (OpenGl_Texture, OpenGl_Resource)
 IMPLEMENT_STANDARD_RTTIEXT(OpenGl_Texture, OpenGl_Resource)
+
+//! Simple class to reset unpack alignment settings
+struct OpenGl_UnpackAlignmentSentry
+{
+
+  //! Reset unpack alignment settings to safe values
+  void Reset()
+  {
+    glPixelStorei (GL_UNPACK_ALIGNMENT,  1);
+    glPixelStorei (GL_UNPACK_ROW_LENGTH, 0);
+  }
+
+  ~OpenGl_UnpackAlignmentSentry()
+  {
+    Reset();
+  }
+
+};
 
 // =======================================================================
 // function : OpenGl_Texture
@@ -60,7 +74,7 @@ OpenGl_Texture::~OpenGl_Texture()
 // function : HasMipmaps
 // purpose  :
 // =======================================================================
-const Standard_Boolean OpenGl_Texture::HasMipmaps() const
+Standard_Boolean OpenGl_Texture::HasMipmaps() const
 {
   return myHasMipmaps;
 }
@@ -111,7 +125,10 @@ void OpenGl_Texture::Release (const OpenGl_Context* theGlCtx)
   Standard_ASSERT_RETURN (theGlCtx != NULL,
     "OpenGl_Texture destroyed without GL context! Possible GPU memory leakage...",);
 
-  glDeleteTextures (1, &myTextureId);
+  if (theGlCtx->IsValid())
+  {
+    glDeleteTextures (1, &myTextureId);
+  }
   myTextureId = NO_TEXTURE;
   mySizeX = mySizeY = 0;
 }
@@ -158,23 +175,23 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
     return false;
   }
 
-  GLenum aTextureFormat = GL_RGBA8;
-  GLenum aPixelFormat   = 0;
-  GLenum aDataType      = 0;
+  myTextFormat = GL_RGBA8;
+  GLenum aPixelFormat = 0;
+  GLenum aDataType    = 0;
   switch (theImage.Format())
   {
     case Image_PixMap::ImgGrayF:
     {
-      aTextureFormat = GL_ALPHA8; // GL_R8, GL_R32F
-      aPixelFormat   = GL_ALPHA;  // GL_RED
-      aDataType      = GL_FLOAT;
+      myTextFormat = GL_ALPHA8; // GL_R8, GL_R32F
+      aPixelFormat = GL_ALPHA;  // GL_RED
+      aDataType    = GL_FLOAT;
       break;
     }
     case Image_PixMap::ImgRGBAF:
     {
-      aTextureFormat = GL_RGBA8; // GL_RGBA32F
-      aPixelFormat   = GL_RGBA;
-      aDataType      = GL_FLOAT;
+      myTextFormat = GL_RGBA8; // GL_RGBA32F
+      aPixelFormat = GL_RGBA;
+      aDataType    = GL_FLOAT;
       break;
     }
     case Image_PixMap::ImgBGRAF:
@@ -183,30 +200,30 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
       {
         return false;
       }
-      aTextureFormat = GL_RGBA8; // GL_RGBA32F
-      aPixelFormat   = GL_BGRA;  // equals to GL_BGRA_EXT
-      aDataType      = GL_FLOAT;
+      myTextFormat = GL_RGBA8; // GL_RGBA32F
+      aPixelFormat = GL_BGRA;  // equals to GL_BGRA_EXT
+      aDataType    = GL_FLOAT;
       break;
     }
     case Image_PixMap::ImgRGBF:
     {
-      aTextureFormat = GL_RGB8; // GL_RGB32F
-      aPixelFormat   = GL_RGB;
-      aDataType      = GL_FLOAT;
+      myTextFormat = GL_RGB8; // GL_RGB32F
+      aPixelFormat = GL_RGB;
+      aDataType    = GL_FLOAT;
       break;
     }
     case Image_PixMap::ImgBGRF:
     {
-      aTextureFormat = GL_RGB8; // GL_RGB32F
-      aPixelFormat   = GL_BGR;  // equals to GL_BGR_EXT
-      aDataType      = GL_FLOAT;
+      myTextFormat = GL_RGB8; // GL_RGB32F
+      aPixelFormat = GL_BGR;  // equals to GL_BGR_EXT
+      aDataType    = GL_FLOAT;
       break;
     }
     case Image_PixMap::ImgRGBA:
     {
-      aTextureFormat = GL_RGBA8;
-      aPixelFormat   = GL_RGBA;
-      aDataType      = GL_UNSIGNED_BYTE;
+      myTextFormat = GL_RGBA8;
+      aPixelFormat = GL_RGBA;
+      aDataType    = GL_UNSIGNED_BYTE;
       break;
     }
     case Image_PixMap::ImgBGRA:
@@ -215,16 +232,16 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
       {
         return false;
       }
-      aTextureFormat = GL_RGBA8;
-      aPixelFormat   = GL_BGRA;  // equals to GL_BGRA_EXT
-      aDataType      = GL_UNSIGNED_BYTE;
+      myTextFormat = GL_RGBA8;
+      aPixelFormat = GL_BGRA;  // equals to GL_BGRA_EXT
+      aDataType    = GL_UNSIGNED_BYTE;
       break;
     }
     case Image_PixMap::ImgRGB32:
     {
-      aTextureFormat = GL_RGB8;
-      aPixelFormat   = GL_RGBA;
-      aDataType      = GL_UNSIGNED_BYTE;
+      myTextFormat = GL_RGB8;
+      aPixelFormat = GL_RGBA;
+      aDataType    = GL_UNSIGNED_BYTE;
       break;
     }
     case Image_PixMap::ImgBGR32:
@@ -233,16 +250,16 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
       {
         return false;
       }
-      aTextureFormat = GL_RGB8;
-      aPixelFormat   = GL_BGRA;  // equals to GL_BGRA_EXT
-      aDataType      = GL_UNSIGNED_BYTE;
+      myTextFormat = GL_RGB8;
+      aPixelFormat = GL_BGRA;  // equals to GL_BGRA_EXT
+      aDataType    = GL_UNSIGNED_BYTE;
       break;
     }
     case Image_PixMap::ImgRGB:
     {
-      aTextureFormat = GL_RGB8;
-      aPixelFormat   = GL_RGB;
-      aDataType      = GL_UNSIGNED_BYTE;
+      myTextFormat = GL_RGB8;
+      aPixelFormat = GL_RGB;
+      aDataType    = GL_UNSIGNED_BYTE;
       break;
     }
     case Image_PixMap::ImgBGR:
@@ -251,16 +268,16 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
       {
         return false;
       }
-      aTextureFormat = GL_RGB8;
-      aPixelFormat   = GL_BGR;  // equals to GL_BGR_EXT
-      aDataType      = GL_UNSIGNED_BYTE;
+      myTextFormat = GL_RGB8;
+      aPixelFormat = GL_BGR;  // equals to GL_BGR_EXT
+      aDataType    = GL_UNSIGNED_BYTE;
       break;
     }
     case Image_PixMap::ImgGray:
     {
-      aTextureFormat = GL_ALPHA8; // GL_R8
-      aPixelFormat   = GL_ALPHA;  // GL_RED
-      aDataType      = GL_UNSIGNED_BYTE;
+      myTextFormat = GL_ALPHA8; // GL_R8
+      aPixelFormat = GL_ALPHA;  // GL_RED
+      aDataType    = GL_UNSIGNED_BYTE;
       break;
     }
     default:
@@ -284,7 +301,16 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
   GLint aTestWidth  = 0;
   GLint aTestHeight = 0;
 
-  glPixelStorei (GL_UNPACK_ALIGNMENT, 1); // ensure alignment will not screw up the party
+  // setup the alignment
+  OpenGl_UnpackAlignmentSentry anUnpackSentry;
+  const GLint anAligment = Min ((GLint )theImage.MaxRowAligmentBytes(), 8); // OpenGL supports alignment upto 8 bytes
+  glPixelStorei (GL_UNPACK_ALIGNMENT, anAligment);
+
+  // notice that GL_UNPACK_ROW_LENGTH is not available on OpenGL ES 2.0 without GL_EXT_unpack_subimage extension
+  const GLint anExtraBytes = GLint(theImage.RowExtraBytes());
+  const GLint aPixelsWidth = GLint(theImage.SizeRowBytes() / theImage.SizePixelBytes());
+  glPixelStorei (GL_UNPACK_ROW_LENGTH, (anExtraBytes >= anAligment) ? aPixelsWidth : 0);
+
   switch (theType)
   {
     case Graphic3d_TOT_1D:
@@ -298,6 +324,8 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
       GLvoid* aDataPtr = (GLvoid* )theImage.Data();
       if (aWidth != aWidthOut)
       {
+        glPixelStorei (GL_PACK_ALIGNMENT,  1);
+        glPixelStorei (GL_PACK_ROW_LENGTH, 0);
         if (!aCopy.InitTrash (theImage.Format(), Standard_Size(aWidthOut), 1)
           || gluScaleImage (aPixelFormat,
                             aWidth,    1, aDataType, theImage.Data(),
@@ -308,10 +336,11 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
         }
 
         aDataPtr = (GLvoid* )aCopy.Data();
+        anUnpackSentry.Reset();
       }
 
       // use proxy to check texture could be created or not
-      glTexImage1D (GL_PROXY_TEXTURE_1D, 0, aTextureFormat,
+      glTexImage1D (GL_PROXY_TEXTURE_1D, 0, myTextFormat,
                     aWidthOut, 0,
                     aPixelFormat, aDataType, NULL);
       glGetTexLevelParameteriv (GL_PROXY_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &aTestWidth);
@@ -322,7 +351,7 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
         return false;
       }
 
-      glTexImage1D (GL_TEXTURE_1D, 0, aTextureFormat,
+      glTexImage1D (GL_TEXTURE_1D, 0, myTextFormat,
                     aWidthOut, 0,
                     aPixelFormat, aDataType, aDataPtr);
       if (glGetError() != GL_NO_ERROR)
@@ -349,6 +378,8 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
       if (aWidth != aWidthOut || aHeight != aHeightOut)
       {
         // scale texture
+        glPixelStorei (GL_PACK_ALIGNMENT,  1);
+        glPixelStorei (GL_PACK_ROW_LENGTH, 0);
         if (!aCopy.InitTrash (theImage.Format(), Standard_Size(aWidthOut), Standard_Size(aHeightOut))
           || gluScaleImage (aPixelFormat,
                             aWidth,    aHeight,    aDataType, theImage.Data(),
@@ -359,10 +390,11 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
         }
 
         aDataPtr = (GLvoid* )aCopy.Data();
+        anUnpackSentry.Reset();
       }
 
       // use proxy to check texture could be created or not
-      glTexImage2D (GL_PROXY_TEXTURE_2D, 0, aTextureFormat,
+      glTexImage2D (GL_PROXY_TEXTURE_2D, 0, myTextFormat,
                     aWidthOut, aHeightOut, 0,
                     aPixelFormat, aDataType, NULL);
       glGetTexLevelParameteriv (GL_PROXY_TEXTURE_2D, 0, GL_TEXTURE_WIDTH,  &aTestWidth);
@@ -374,7 +406,7 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
         return false;
       }
 
-      glTexImage2D (GL_TEXTURE_2D, 0, aTextureFormat,
+      glTexImage2D (GL_TEXTURE_2D, 0, myTextFormat,
                     aWidthOut, aHeightOut, 0,
                     aPixelFormat, aDataType, aDataPtr);
       if (glGetError() != GL_NO_ERROR)
@@ -401,7 +433,7 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
        && aWidth == aWidthOut && aHeight == aHeightOut)
       {
         // use proxy to check texture could be created or not
-        glTexImage2D (GL_PROXY_TEXTURE_2D, 0, aTextureFormat,
+        glTexImage2D (GL_PROXY_TEXTURE_2D, 0, myTextFormat,
                       aWidthOut, aHeightOut, 0,
                       aPixelFormat, aDataType, NULL);
         glGetTexLevelParameteriv (GL_PROXY_TEXTURE_2D, 0, GL_TEXTURE_WIDTH,  &aTestWidth);
@@ -414,7 +446,7 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
         }
 
         // upload main picture
-        glTexImage2D (GL_TEXTURE_2D, 0, aTextureFormat,
+        glTexImage2D (GL_TEXTURE_2D, 0, myTextFormat,
                       aWidthOut, aHeightOut, 0,
                       aPixelFormat, aDataType, theImage.Data());
         if (glGetError() != GL_NO_ERROR)
@@ -435,7 +467,7 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
       }
       else
       {
-        bool isCreated = gluBuild2DMipmaps (GL_TEXTURE_2D, aTextureFormat,
+        bool isCreated = gluBuild2DMipmaps (GL_TEXTURE_2D, myTextFormat,
                                             aWidth, aHeight,
                                             aPixelFormat, aDataType, theImage.Data()) == 0;
         if (isCreated)

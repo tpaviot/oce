@@ -1,22 +1,18 @@
 // Created on: 1995-01-11
 // Created by: Remi LEQUETTE
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // modified : pmn 11/04/97 : mis dans GeomliteTest
 
@@ -42,6 +38,9 @@
 #include <TColStd_Array1OfReal.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <Precision.hxx>
+#include <Geom2d_Circle.hxx>
+#include <IntAna2d_AnaIntersection.hxx>
+#include <IntAna2d_IntPoint.hxx>
 
 #include <stdio.h>
 #ifdef WNT
@@ -245,7 +244,8 @@ static Standard_Integer extrema(Draw_Interpretor& di, Standard_Integer n, const 
 // modified by APV (compilation error - LINUX)
 //  for ( Standard_Integer i = 1; i <= Ex.NbExtrema(); i++) {
   Standard_Integer i;
-  for ( i = 1; i <= Ex.NbExtrema(); i++) {
+  const Standard_Integer aNExtr = Ex.NbExtrema();
+  for ( i = 1; i <= aNExtr; i++) {
 // modified by APV (compilation error - LINUX)
 
     gp_Pnt2d P1,P2;
@@ -267,7 +267,7 @@ static Standard_Integer extrema(Draw_Interpretor& di, Standard_Integer n, const 
     }
   }
   if (i==1)
-    di << "No decisions ";
+    di << "No solutions!\n";
 
   return 0;
 }
@@ -335,6 +335,48 @@ static Standard_Integer intersect(Draw_Interpretor& di, Standard_Integer n, cons
   return 0;
 }
 
+//=======================================================================
+//function : intersect
+//purpose  : 
+//=======================================================================
+
+static Standard_Integer intersect_ana(Draw_Interpretor& di, Standard_Integer n, const char** a)
+{
+  if( n < 2) 
+  {
+    cout<< "2dintana circle circle "<<endl;
+    return 1;
+  }
+  
+  Handle(Geom2d_Curve) C1 = DrawTrSurf::GetCurve2d(a[1]);
+  if ( C1.IsNull() && !C1->IsKind(STANDARD_TYPE(Geom2d_Circle))) 
+    return 1;
+
+  Handle(Geom2d_Curve) C2 = DrawTrSurf::GetCurve2d(a[2]);
+  if ( C2.IsNull() && !C2->IsKind(STANDARD_TYPE(Geom2d_Circle)))
+    return 1;
+
+  Handle(Geom2d_Circle) aCir1 = Handle(Geom2d_Circle)::DownCast(C1);
+  Handle(Geom2d_Circle) aCir2 = Handle(Geom2d_Circle)::DownCast(C2);
+
+  IntAna2d_AnaIntersection Intersector(aCir1->Circ2d(), aCir2->Circ2d());
+
+  Standard_Integer i;
+
+  for ( i = 1; i <= Intersector.NbPoints(); i++) {
+    gp_Pnt2d P = Intersector.Point(i).Value();
+    di<<"Intersection point "<<i<<" : "<<P.X()<<" "<<P.Y()<<"\n";
+	di<<"parameter on the fist: "<<Intersector.Point(i).ParamOnFirst();
+	di<<" parameter on the second: "<<Intersector.Point(i).ParamOnSecond()<<"\n";
+    Handle(Draw_Marker2D) mark = new Draw_Marker2D( P, Draw_X, Draw_vert); 
+    dout << mark;
+  }
+  dout.Flush();
+
+  return 0;
+}
+
+
 
 void GeomliteTest::API2dCommands(Draw_Interpretor& theCommands)
 {
@@ -364,4 +406,7 @@ void GeomliteTest::API2dCommands(Draw_Interpretor& theCommands)
 
   theCommands.Add("2dintersect", "intersect curve curve [Tol]",__FILE__,
 		  intersect,g);
+
+  theCommands.Add("2dintanalytical", "intersect curve curve using IntAna",__FILE__,
+		  intersect_ana,g);
 }

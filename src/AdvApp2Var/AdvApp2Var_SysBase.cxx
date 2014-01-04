@@ -1,21 +1,18 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // AdvApp2Var_SysBase.cxx
+#include <assert.h>
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
@@ -33,9 +30,6 @@ int __s__cmp();
 
 static
 int macrbrk_();
-
-static
-int macrchk_();
 
 static
 int macrclw_(intptr_t *iadfld, 
@@ -122,22 +116,9 @@ int mcrgetv_(integer *sz,
 	     integer *ier);
 
 static
-int mcrlist_(integer *ier);
-
-static
 int mcrlocv_(void* t,
 	     intptr_t *l);
 
-
-/* Structures */
-static struct {
-    intptr_t icore[12000];	
-    integer ncore, lprot;
-} mcrgene_;
-
-static struct {
-    integer nrqst[2], ndelt[2], nbyte[2], mbyte[2];
-} mcrstac_;
 
 static struct {
     integer lec, imp, keyb, mae, jscrn, itblt, ibb;
@@ -146,6 +127,25 @@ static struct {
 #define mcrfill_ABS(a)  (((a)<0)?(-(a)):(a)) 
 
 
+//=======================================================================
+//function : AdvApp2Var_SysBase
+//purpose  : 
+//=======================================================================
+AdvApp2Var_SysBase::AdvApp2Var_SysBase()
+{
+    mainial_();
+    memset (&mcrstac_, 0, sizeof (mcrstac_));
+}
+
+//=======================================================================
+//function : ~AdvApp2Var_SysBase
+//purpose  : 
+//=======================================================================
+AdvApp2Var_SysBase::~AdvApp2Var_SysBase()
+{
+  assert (mcrgene_.ncore == 0); //otherwise memory leaking
+}
+  
 //=======================================================================
 //function : macinit_
 //purpose  : 
@@ -282,14 +282,12 @@ int AdvApp2Var_SysBase::macrai4_(integer *nbelem,
    */
   
   integer  iunit; 
-  /* Parameter adjustments */
-  --itablo;
   
   
   iunit = sizeof(integer);    
   /* Function Body */
   if (*nbelem > *maxelm) {
-    AdvApp2Var_SysBase::mcrrqst_(&iunit, nbelem, &itablo[1], iofset, iercod);
+    /*AdvApp2Var_SysBase::*/mcrrqst_(&iunit, nbelem, itablo, iofset, iercod);
   } else {
     *iercod = 0;
     *iofset = 0;
@@ -308,7 +306,7 @@ int AdvApp2Var_SysBase::macrar8_(integer *nbelem,
 				 integer *iercod)
 
 {
-  static integer c__8 = 8;
+  integer c__8 = 8;
 
   /* ***********************************************************************
    */
@@ -356,12 +354,9 @@ int AdvApp2Var_SysBase::macrar8_(integer *nbelem,
    */
   
   
-  /* Parameter adjustments */
-  --xtablo;
-  
   /* Function Body */
   if (*nbelem > *maxelm) {
-    AdvApp2Var_SysBase::mcrrqst_(&c__8, nbelem, &xtablo[1], iofset, iercod);
+    /*AdvApp2Var_SysBase::*/mcrrqst_(&c__8, nbelem, xtablo, iofset, iercod);
   } else {
     *iercod = 0;
     *iofset = 0;
@@ -382,16 +377,16 @@ int macrbrk_()
 //function : macrchk_
 //purpose  : 
 //=======================================================================
-int macrchk_()
+int AdvApp2Var_SysBase::macrchk_()
 {
   /* System generated locals */
   integer i__1;
   
   /* Local variables */
-  static integer  i__, j;
-  static intptr_t ioff;
-  static doublereal t[1];
-  static intptr_t loc;
+  integer  i__, j;
+  intptr_t ioff;
+  doublereal* t = 0;
+  intptr_t loc;
   
 /* ***********************************************************************
  */
@@ -479,27 +474,28 @@ int macrchk_()
   mcrlocv_(t, &loc);  
   /* CONTROL OF FLAGS IN THE TABLE */
   i__1 = mcrgene_.ncore;
-  for (i__ = 1; i__ <= i__1; ++i__) {
-    
-    for (j = 10; j <= 11; ++j) {
-      
-      if (mcrgene_.icore[j + i__ * 12 - 13] != -1) {
+  for (i__ = 0; i__ < i__1; ++i__) {
+
+    //p to access startaddr and endaddr
+    intptr_t* p = &mcrgene_.icore[i__].startaddr;
+    for (j = 0; j <= 1; ++j) {
+      intptr_t* pp = p + j;
+      if (*pp != -1) {
 	
-	ioff = (mcrgene_.icore[j + i__ * 12 - 13] - loc) / 8;
+	ioff = (*pp - loc) / 8;
 	
 	if (t[ioff] != -134744073.) {
 	  
 	  /* MSG : '*** ERREUR  : REMOVAL FROM MEMORY OF ADDRESS
 	     E:',ICORE(J,I) */
 	  /*       AND OF RANK ICORE(12,I) */
-	  macrerr_(&mcrgene_.icore[j + i__ * 12 - 13], 
-		   &mcrgene_.icore[i__ * 12 - 1]);          
+	  macrerr_(pp, p + 2);
 	  
 	  /* BACK-PARCING IN PHASE OF PRODUCTION */
 	  maostrb_();
 	  
 	  /* REMOVAL OF THE ADDRESS OF FLAG TO AVOID REMAKING ITS CONTROL */
-	  mcrgene_.icore[j + i__ * 12 - 13] = -1;
+	  *pp = -1;
 	  
 	}
 	
@@ -577,14 +573,12 @@ int AdvApp2Var_SysBase::macrdi4_(integer *nbelem,
  */
   integer iunit;
   
-  /* Parameter adjustments */
-  --itablo;
   iunit = sizeof(integer); 
   /* Function Body */
   if (*iofset != 0) {
     AdvApp2Var_SysBase::mcrdelt_(&iunit, 
 				 nbelem, 
-				 &itablo[1], 
+				 itablo, 
 				 iofset, 
 				 iercod);
   } else {
@@ -604,7 +598,7 @@ int AdvApp2Var_SysBase::macrdr8_(integer *nbelem,
 				 integer *iercod)
 
 {
-  static integer c__8 = 8;
+  integer c__8 = 8;
 
 /* ***********************************************************************
  */
@@ -647,13 +641,9 @@ int AdvApp2Var_SysBase::macrdr8_(integer *nbelem,
 /* ***********************************************************************
  */
   
-  
-  /* Parameter adjustments */
-  --xtablo;
-  
   /* Function Body */
   if (*iofset != 0) {
-    AdvApp2Var_SysBase::mcrdelt_(&c__8, nbelem, &xtablo[1], iofset, iercod);
+    AdvApp2Var_SysBase::mcrdelt_(&c__8, nbelem, xtablo, iofset, iercod);
   } else {
     *iercod = 0;
   }
@@ -668,12 +658,12 @@ int macrerr_(intptr_t *,//iad,
 	     intptr_t *)//nalloc)
 
 {
-  //static integer c__1 = 1;
+  //integer c__1 = 1;
   /* Builtin functions */
   //integer /*s__wsfe(),*/ /*do__fio(),*/ e__wsfe();
   
   /* Fortran I/O blocks */
-  //static cilist io___1 = { 0, 6, 0, "(X,A,I9,A,I3)", 0 };
+  //cilist io___1 = { 0, 6, 0, "(X,A,I9,A,I3)", 0 };
 
 /* ***********************************************************************
  */
@@ -733,13 +723,18 @@ int macrgfl_(intptr_t *iadfld,
 {
   /* Initialized data */
   
-  static integer ifois = 0;
+  /* original code used static integer ifois=0 which served as static
+     initialization flag and was only used to call matrsym_() once; now
+     this flag is not used as matrsym_() always returns 0 and has no
+     useful contents
+  */
+  integer ifois = 1;
   
-  static char cbid[1];
-  static integer ibid, ienr;
-  static doublereal t[1];
-  static integer novfl;
-  static intptr_t ioff,iadt;
+  char cbid[1];
+  integer ibid, ienr;
+  doublereal* t = 0;
+  integer novfl = 0;
+  intptr_t ioff,iadt;
   
   
   /* ***********************************************************************
@@ -877,10 +872,9 @@ int macrmsg_(const char *,//crout,
 {
   
   /* Local variables */
-  static integer inum;
-  static char cln[3];
+  integer inum;
+  char cfm[80], cln[3];
   
-
 /* ***********************************************************************
  */
 
@@ -1190,8 +1184,8 @@ int magtlog_(const char *cnmlog,
 {
  
   /* Local variables */
-  static char cbid[255];
-  static integer ibid, ier;
+  char cbid[255];
+  integer ibid, ier;
   
 
 /* ********************************************************************** 
@@ -1321,6 +1315,7 @@ int magtlog_(const char *cnmlog,
 int AdvApp2Var_SysBase::mainial_()
 {
   mcrgene_.ncore = 0;
+  mcrgene_.lprot = 0;
   return 0 ;
 } /* mainial_ */
 
@@ -1333,11 +1328,11 @@ int AdvApp2Var_SysBase::maitbr8_(integer *itaill,
 				 doublereal *xval) 
 
 {
-  static integer c__504 = 504;
+  integer c__504 = 504;
 
   /* Initialized data */
 
-  static doublereal buff0[63] = { 
+  doublereal buff0[63] = { 
     0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
     0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
     0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
@@ -1348,9 +1343,9 @@ int AdvApp2Var_SysBase::maitbr8_(integer *itaill,
   integer i__1;
   
   /* Local variables */
-  static integer i__;
-  static doublereal buffx[63];
-  static integer nbfois, noffst, nreste, nufois;
+  integer i__;
+  doublereal buffx[63];
+  integer nbfois, noffst, nreste, nufois;
 
 /* ***********************************************************************
  */
@@ -1590,7 +1585,7 @@ int maostrb_()
 //=======================================================================
 int maostrd_()
 {
-  static integer imod;
+  integer imod;
   
 /* ***********************************************************************
  */
@@ -1650,15 +1645,15 @@ int maoverf_(integer *nbentr,
 {
   /* Initialized data */
   
-  static integer ifois = 0;
+  integer ifois = 0;
   
   /* System generated locals */
   integer i__1;
   
   /* Local variables */
-  static integer ibid;
-  static doublereal buff[63];
-  static integer ioct, indic, nrest, icompt;
+  integer ibid;
+  doublereal buff[63];
+  integer ioct, indic, nrest, icompt;
 
 /* ***********************************************************************
  */
@@ -1889,7 +1884,7 @@ int matrsym_(const char *cnmsym,
 
 {
   /* Local variables */
-  static char chainx[255];
+  char chainx[255];
 
 /* ***********************************************************************
  */
@@ -1978,17 +1973,17 @@ int mcrcomm_(integer *kop,
 {
   /* Initialized data */
   
-  static integer ntab = 0;
+  integer ntab = 0;
   
   /* System generated locals */
   integer i__1, i__2;
   
   /* Local variables */
-  static intptr_t ideb;
-  static doublereal dtab[32000];
-  static intptr_t itab[160]	/* was [4][40] */;
-  static intptr_t ipre;
-  static integer i__, j, k;
+  intptr_t ideb;
+  doublereal dtab[32000];
+  intptr_t itab[160]	/* was [4][40] */;
+  intptr_t ipre;
+  integer i__, j, k;
   
 
 /************************************************************************
@@ -2156,12 +2151,12 @@ int AdvApp2Var_SysBase::mcrdelt_(integer *iunit,
 				 integer *iercod)
 
 {
-  static integer ibid;
-  static doublereal xbid;
-  static integer noct, iver, ksys, i__, n, nrang, 
+  integer ibid;
+  doublereal xbid;
+  integer noct, iver, ksys, i__, n, nrang, 
   ibyte, ier;
-  static intptr_t iadfd,  iadff, iaddr, loc; /* Les adrresses en long*/
-  static integer kop;
+  intptr_t iadfd,  iadff, iaddr, loc; /* Les adrresses en long*/
+  integer kop;
   
 /* ***********************************************************************
  */
@@ -2289,13 +2284,13 @@ int AdvApp2Var_SysBase::mcrdelt_(integer *iunit,
 
 /* SEARCH IN MCRGENE */
 
-    n = 0;
+    n = -1;
     mcrlocv_(t, &loc);
 
-    for (i__ = mcrgene_.ncore; i__ >= 1; --i__) {
-	if (*iunit == mcrgene_.icore[i__ * 12 - 11] && *isize == 
-		mcrgene_.icore[i__ * 12 - 10] && loc == mcrgene_.icore[i__ *
-		 12 - 9] && *iofset == mcrgene_.icore[i__ * 12 - 8]) {
+    for (i__ = mcrgene_.ncore - 1; i__ >= 0; --i__) {
+	if (*iunit == mcrgene_.icore[i__].unit && *isize == 
+		mcrgene_.icore[i__].reqsize && loc == mcrgene_.icore[i__].loc
+        && *iofset == mcrgene_.icore[i__].offset) {
 	    n = i__;
 	    goto L1100;
 	}
@@ -2305,18 +2300,18 @@ L1100:
 
 /* IF THE ALLOCATION DOES NOT EXIST, LEAVE */
 
-    if (n <= 0) {
+    if (n < 0) {
 	goto L9003;
     }
 
 /* ALLOCATION RECOGNIZED : RETURN OTHER INFOS */
 
-    ksys = static_cast<integer> (mcrgene_.icore[n * 12 - 7]);
-    ibyte = static_cast<integer> (mcrgene_.icore[n * 12 - 6]);
-    iaddr = mcrgene_.icore[n * 12 - 5];
-    iadfd = mcrgene_.icore[n * 12 - 3];
-    iadff = mcrgene_.icore[n * 12 - 2];
-    nrang = static_cast<integer> (mcrgene_.icore[n * 12 - 1]);
+    ksys = mcrgene_.icore[n].alloctype;
+    ibyte = mcrgene_.icore[n].size;
+    iaddr = mcrgene_.icore[n].addr;
+    iadfd = mcrgene_.icore[n].startaddr;
+    iadff = mcrgene_.icore[n].endaddr;
+    nrang = mcrgene_.icore[n].rank;
 
 /*     Control of flags */
 
@@ -2325,7 +2320,7 @@ L1100:
 	macrchk_();
     }
 
-    if (ksys <= 1) {
+    if (ksys == static_allocation) {
 /* DE-ALLOCATION ON COMMON */
 	kop = 2;
 	mcrcomm_(&kop, &ibyte, &iaddr, &ier);
@@ -2345,22 +2340,16 @@ L1100:
     macrclw_(&iadfd, &iadff, &nrang);
 
 /* UPDATE OF STATISTICS */
-    if (ksys <= 1) {
-	i__ = 1;
-    } else {
-	i__ = 2;
-    }
-    ++mcrstac_.ndelt[i__ - 1];
-    mcrstac_.nbyte[i__ - 1] -= static_cast<integer> (mcrgene_.icore[n * 12 - 11] * 
-	    mcrgene_.icore[n * 12 - 10]);
+    ++mcrstac_.ndelt[ksys];
+    mcrstac_.nbyte[ksys] -= mcrgene_.icore[n].unit * 
+	    mcrgene_.icore[n].reqsize;
 
 /* REMOVAL OF PARAMETERS IN MCRGENE */
-    if (n < 1000) {
-/*	noct = (mcrgene_1.ncore - n) * 48; */
-        noct = (mcrgene_.ncore - n) * 12 * sizeof(mcrgene_.icore[0]);
+    if (n < MAX_ALLOC_NB - 1) {
+        noct = (mcrgene_.ncore - (n + 1)) * sizeof(mcrgene_.icore[0]);
 	AdvApp2Var_SysBase::mcrfill_(&noct, 
-				     &mcrgene_.icore[(n + 1) * 12 - 12], 
-				     &mcrgene_.icore[n * 12 - 12]);
+				     &mcrgene_.icore[n + 1], 
+				     &mcrgene_.icore[n]);
     }
     --mcrgene_.ncore;
 
@@ -2558,7 +2547,7 @@ int mcrgetv_(integer *sz,
 //function : mcrlist_
 //purpose  : 
 //=======================================================================
-int mcrlist_(integer *ier)
+int AdvApp2Var_SysBase::mcrlist_(integer *ier) const
 
 {
   /* System generated locals */
@@ -2567,10 +2556,10 @@ int mcrlist_(integer *ier)
   /* Builtin functions */
   
   /* Local variables */
-  static char cfmt[1];
-  static doublereal dfmt;
-  static integer ifmt, i__, nufmt, ntotal;
-  static char subrou[7];
+  char cfmt[1];
+  doublereal dfmt;
+  integer ifmt, i__, nufmt, ntotal;
+  char subrou[7];
   
 
 /************************************************************************
@@ -2682,9 +2671,9 @@ int mcrlist_(integer *ier)
     ntotal = 0;
 
     i__1 = mcrgene_.ncore;
-    for (i__ = 1; i__ <= i__1; ++i__) {
+    for (i__ = 0; i__ < i__1; ++i__) {
 	nufmt = 2;
-	ifmt = static_cast<integer> (mcrgene_.icore[i__ * 12 - 11] * mcrgene_.icore[i__ * 12 - 10])
+	ifmt = mcrgene_.icore[i__].unit * mcrgene_.icore[i__].reqsize
 		;
 	macrmsg_(subrou, &nufmt, &ifmt, &dfmt, cfmt, 7L, 1L);
 	ntotal += ifmt;
@@ -2726,12 +2715,12 @@ int AdvApp2Var_SysBase::mcrrqst_(integer *iunit,
   integer i__1, i__2;
 
   /* Local variables */
-  static doublereal dfmt;
-  static integer ifmt, iver;
-  static char subr[7];
-  static integer ksys , ibyte, irest, ier;
-  static intptr_t iadfd, iadff, iaddr,lofset, loc;
-  static integer izu;
+  doublereal dfmt;
+  integer ifmt, iver;
+  char subr[7];
+  integer ksys , ibyte, irest, ier;
+  intptr_t iadfd, iadff, iaddr,lofset, loc;
+  integer izu;
 
   
 /* ********************************************************************** 
@@ -2883,7 +2872,7 @@ int AdvApp2Var_SysBase::mcrrqst_(integer *iunit,
     /* Function Body */
     *iercod = 0;
 
-    if (mcrgene_.ncore >= 1000) {
+    if (mcrgene_.ncore >= MAX_ALLOC_NB) {
 	goto L9001;
     }
     if (*iunit != 1 && *iunit != 2 && *iunit != 4 && *iunit != 8) {
@@ -2950,7 +2939,7 @@ int AdvApp2Var_SysBase::mcrrqst_(integer *iunit,
 /*         ENDIF */
 /*      ELSE */
 /*        ALLOCATION SYSTEME */
-    ksys = 2;
+    ksys = heap_allocation;
     mcrgetv_(&ibyte, reinterpret_cast<void**> (&iaddr), &ier);
     if (ier != 0) {
 	goto L9003;
@@ -2982,19 +2971,19 @@ int AdvApp2Var_SysBase::mcrrqst_(integer *iunit,
 
 /* RANGING OF PARAMETERS IN MCRGENE */
 
+    mcrgene_.icore[mcrgene_.ncore].prot = mcrgene_.lprot;
+    mcrgene_.icore[mcrgene_.ncore].unit = (unsigned char)(*iunit);
+    mcrgene_.icore[mcrgene_.ncore].reqsize = *isize;
+    mcrgene_.icore[mcrgene_.ncore].loc = loc;
+    mcrgene_.icore[mcrgene_.ncore].offset = *iofset;
+    mcrgene_.icore[mcrgene_.ncore].alloctype = (unsigned char)ksys;
+    mcrgene_.icore[mcrgene_.ncore].size = ibyte;
+    mcrgene_.icore[mcrgene_.ncore].addr = iaddr;
+    mcrgene_.icore[mcrgene_.ncore].userzone = mcrgene_.ncore;
+    mcrgene_.icore[mcrgene_.ncore].startaddr = iadfd;
+    mcrgene_.icore[mcrgene_.ncore].endaddr = iadff;
+    mcrgene_.icore[mcrgene_.ncore].rank = mcrgene_.ncore + 1;
     ++mcrgene_.ncore;
-    mcrgene_.icore[mcrgene_.ncore * 12 - 12] = mcrgene_.lprot;
-    mcrgene_.icore[mcrgene_.ncore * 12 - 11] = *iunit;
-    mcrgene_.icore[mcrgene_.ncore * 12 - 10] = *isize;
-    mcrgene_.icore[mcrgene_.ncore * 12 - 9] = loc;
-    mcrgene_.icore[mcrgene_.ncore * 12 - 8] = *iofset;
-    mcrgene_.icore[mcrgene_.ncore * 12 - 7] = ksys;
-    mcrgene_.icore[mcrgene_.ncore * 12 - 6] = ibyte;
-    mcrgene_.icore[mcrgene_.ncore * 12 - 5] = iaddr;
-    mcrgene_.icore[mcrgene_.ncore * 12 - 4] = mcrgene_.ncore;
-    mcrgene_.icore[mcrgene_.ncore * 12 - 3] = iadfd;
-    mcrgene_.icore[mcrgene_.ncore * 12 - 2] = iadff;
-    mcrgene_.icore[mcrgene_.ncore * 12 - 1] = mcrgene_.ncore;
 
     mcrgene_.lprot = 0;
 
@@ -3004,12 +2993,12 @@ int AdvApp2Var_SysBase::mcrrqst_(integer *iunit,
 
 /* STATISTICS */
 
-    ++mcrstac_.nrqst[ksys - 1];
-    mcrstac_.nbyte[ksys - 1] += static_cast<integer> (mcrgene_.icore[mcrgene_.ncore * 12 - 11] * 
-	    mcrgene_.icore[mcrgene_.ncore * 12 - 10]);
+    ++mcrstac_.nrqst[ksys];
+    mcrstac_.nbyte[ksys] += mcrgene_.icore[mcrgene_.ncore - 1].unit * 
+	    mcrgene_.icore[mcrgene_.ncore - 1].reqsize;
 /* Computing MAX */
-    i__1 = mcrstac_.mbyte[ksys - 1], i__2 = mcrstac_.nbyte[ksys - 1];
-    mcrstac_.mbyte[ksys - 1] = advapp_max(i__1,i__2);
+    i__1 = mcrstac_.mbyte[ksys], i__2 = mcrstac_.nbyte[ksys];
+    mcrstac_.mbyte[ksys] = advapp_max(i__1,i__2);
 
     goto L9900;
 
@@ -3020,7 +3009,7 @@ int AdvApp2Var_SysBase::mcrrqst_(integer *iunit,
 /*  MAX NB OF ALLOC REACHED : */
 L9001:
     *iercod = 1;
-    ifmt = 1000;
+    ifmt = MAX_ALLOC_NB;
     //__s__copy(subr, "MCRRQST", 7L, 7L);
     macrmsg_(subr, iercod, &ifmt, &dfmt, " ", 7L, 1L);
     maostrd_();
@@ -3151,7 +3140,7 @@ int AdvApp2Var_SysBase::msifill_(integer *nbintg,
 				 integer *ivecin,
 				 integer *ivecou)
 {
-  static integer nocte;
+  integer nocte;
   
 /* ***********************************************************************
  */
@@ -3206,7 +3195,7 @@ int AdvApp2Var_SysBase::msrfill_(integer *nbreel,
 				 doublereal *vecent,
 				 doublereal * vecsor)
 {
-  static integer nocte;
+  integer nocte;
   
 
 /* ***********************************************************************

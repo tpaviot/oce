@@ -28,9 +28,6 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _TCollection_ExtendedString_HeaderFile
-#include <TCollection_ExtendedString.hxx>
-#endif
 #ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
 #endif
@@ -72,11 +69,12 @@ public:
   //! Initializes the inner array with bounds from <lower> to <upper> <br>
   Standard_EXPORT     void Init(const Standard_Integer lower,const Standard_Integer upper) ;
   //! Sets  the   <Index>th  element  of   the  array to <Value> <br>
+//! OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal  array. <br>
   Standard_EXPORT     void SetValue(const Standard_Integer Index,const TCollection_ExtendedString& Value) ;
   //! Returns the value of  the  <Index>th element of the array <br>
 //! <br>
-  Standard_EXPORT     TCollection_ExtendedString Value(const Standard_Integer Index) const;
-    TCollection_ExtendedString operator ()(const Standard_Integer Index) const
+  Standard_EXPORT    const TCollection_ExtendedString& Value(const Standard_Integer Index) const;
+   const TCollection_ExtendedString& operator ()(const Standard_Integer Index) const
 {
   return Value(Index);
 }

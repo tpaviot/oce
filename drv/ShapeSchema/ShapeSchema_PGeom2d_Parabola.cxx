@@ -39,6 +39,8 @@ void ShapeSchema_PGeom2d_Parabola::SWrite(const Handle(Standard_Persistent)& p, 
   if (!p.IsNull()) {
     Handle(PGeom2d_Parabola) &pp = (Handle(PGeom2d_Parabola)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_gp_Ax22d::SWrite(pp->_CSFDB_GetPGeom2d_Conicposition(),f,theSchema);
@@ -58,6 +60,8 @@ void ShapeSchema_PGeom2d_Parabola::SRead(const Handle(Standard_Persistent)& p, S
 { 
   if (!p.IsNull()) {
     Handle(PGeom2d_Parabola) &pp = (Handle(PGeom2d_Parabola)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -520,8 +520,6 @@ Standard_Real ucacheparameter;
 Standard_Real vcacheparameter;
 Standard_Real ucachespanlenght;
 Standard_Real vcachespanlenght;
-Standard_Integer ucachespanindex;
-Standard_Integer vcachespanindex;
 Standard_Integer validcache;
 Standard_Real umaxderivinv;
 Standard_Real vmaxderivinv;

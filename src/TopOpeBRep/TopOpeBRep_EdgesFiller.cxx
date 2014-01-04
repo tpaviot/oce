@@ -1,23 +1,18 @@
 // Created on: 1994-10-12
 // Created by: Jean Yves LEBEY
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TopOpeBRep_EdgesFiller.ixx>
 #include <TopOpeBRep_PointGeomTool.hxx>
@@ -73,7 +68,7 @@ void TopOpeBRep_EdgesFiller::Insert(const TopoDS_Shape& E1,const TopoDS_Shape& E
   myLI1.Clear();
   myLI2.Clear();
   myHDS = HDS;
-
+ 
 #ifdef DEB
   Standard_Boolean trc = TopOpeBRepDS_GettraceDSF();
   trc = trc || TopOpeBRepDS_GettraceEDSF();
@@ -84,20 +79,11 @@ void TopOpeBRep_EdgesFiller::Insert(const TopoDS_Shape& E1,const TopoDS_Shape& E
     myPEI->Dump(str,myPDS->Shape(myE1),myPDS->Shape(myE2));
   }
 #endif
-  
-#ifdef DEB
-  Standard_Boolean hs =
-#endif
-           myPEI->HasSegment();
   Standard_Boolean esd = myPEI->SameDomain();
   if (esd) myPDS->FillShapesSameDomain(E1,E2);
   
   // exit if no point.
   myPEI->InitPoint(); if ( !myPEI->MorePoint() ) return;
-  
-#ifdef DEB
-  Standard_Boolean reducesegment = (hs && !esd);
-#endif
 
   // --- Add <E1,E2> in BDS
   Standard_Integer E1index = myPDS->AddShape(E1,1);
@@ -119,9 +105,8 @@ void TopOpeBRep_EdgesFiller::Insert(const TopoDS_Shape& E1,const TopoDS_Shape& E
     if ( ! myF2.IsNull() ) myPDS->AddShape(myF2,2);
 
 #ifdef DEB
-    Standard_Boolean pointofsegment =
+    Standard_Boolean pointofsegment = P2D.IsPointOfSegment();
 #endif
-                         P2D.IsPointOfSegment();
 
 #ifdef DEB
     if (trc) {
@@ -129,7 +114,7 @@ void TopOpeBRep_EdgesFiller::Insert(const TopoDS_Shape& E1,const TopoDS_Shape& E
       else if (pointofsegment && !esd) debposnesd();
     }
 #endif
-    
+
     TopOpeBRepDS_Transition T1 = P2D.Transition(1);
     TopOpeBRepDS_Transition T2 = P2D.Transition(2);
     
@@ -208,6 +193,7 @@ void TopOpeBRep_EdgesFiller::Insert(const TopoDS_Shape& E1,const TopoDS_Shape& E
 	    Handle(TopOpeBRepDS_CurvePointInterference) epi = Handle(TopOpeBRepDS_CurvePointInterference)::DownCast(I);
 	    const TopOpeBRepDS_Transition& tevi = epi->Transition();
 	    Standard_Integer sevi = epi->Support();
+
 	    Standard_Integer gevi=0;
 
 	    if      (isvertex1) gevi = myPDS->AddShape(V1,1);
@@ -449,7 +435,7 @@ Handle(TopOpeBRepDS_Interference) TopOpeBRep_EdgesFiller::StoreVI(const TopOpeBR
 //function : ToRecompute
 //purpose  : 
 //=======================================================================
-Standard_Boolean TopOpeBRep_EdgesFiller::ToRecompute(const TopOpeBRep_Point2d& P2D,const Handle(TopOpeBRepDS_Interference)& I,const Standard_Integer IEmother)
+Standard_Boolean TopOpeBRep_EdgesFiller::ToRecompute(const TopOpeBRep_Point2d& P2D,const Handle(TopOpeBRepDS_Interference)& /*I*/,const Standard_Integer /*IEmother*/)
 {
   Standard_Boolean b = Standard_True;
   Standard_Boolean pointofsegment = P2D.IsPointOfSegment();
@@ -498,22 +484,21 @@ void TopOpeBRep_EdgesFiller::RecomputeInterferences(const TopoDS_Edge& E,TopOpeB
     Handle(TopOpeBRepDS_Interference)& iloi = loi.First(); 
     TopOpeBRepDS_Transition& TU = iloi->ChangeTransition();
     Standard_Integer ifb = TU.IndexBefore();
-#ifdef DEB
-	Standard_Integer ifa = TU.IndexAfter();
-#endif
     const TopoDS_Face& fb = TopoDS::Face(myPDS->Shape(ifb));
 
 #ifdef DEB
+    Standard_Integer ifa = TU.IndexAfter();
     if (ifb != ifa) {cout<<"TopOpeBRep_EdgesFiller : ifb != ifa on E"<<EIX<<" NYI"<<endl;}
 #endif
 
     Standard_Real pE = FDS_Parameter(iloi); TopOpeBRepDS_Transition TN;
     TN.ShapeBefore(TU.ShapeBefore());TN.IndexBefore(TU.IndexBefore());
     TN.ShapeAfter(TU.ShapeAfter());TN.IndexAfter(TU.IndexAfter());
+
 #ifdef DEB
     Standard_Boolean ok =
 #endif
-             FDS_stateEwithF2d(*myPDS,E,pE,K,G,fb,TN);
+    FDS_stateEwithF2d(*myPDS,E,pE,K,G,fb,TN);
 
 #ifdef DEB
     if (TRC) {

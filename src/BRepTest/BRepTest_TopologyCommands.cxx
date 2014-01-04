@@ -1,23 +1,18 @@
 // Created on: 1993-07-22
 // Created by: Remi LEQUETTE
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifdef HAVE_CONFIG_H
 # include <oce-config.h>
@@ -104,59 +99,35 @@ static Standard_Integer section(Draw_Interpretor& , Standard_Integer n, const ch
   BRepAlgo_Section Sec(s1, s2, Standard_False);
   TopoDS_Shape res;
 
-  if (n > 4) {
-#ifdef WNT
-    if (!strcasecmp(a[4],"-2d") || !strcasecmp(a[4], "-no2d")) {
-#else 
-    if (!strncasecmp(a[4],"-2d", 3) || !strcasecmp(a[4], "-no2d")) {
-#endif
-      if (!strcasecmp(a[4], "-2d")) {
-	Sec.ComputePCurveOn1(Standard_True);
-	Sec.ComputePCurveOn2(Standard_True);
-      } else
-	if (!strcasecmp(a[4], "-2d1")) 
-	  Sec.ComputePCurveOn1(Standard_True);
-	else
-	  if (!strcasecmp(a[4], "-2d2")) 
-	    Sec.ComputePCurveOn2(Standard_True);
-	  else
-	    if (strcasecmp(a[4], "-no2d"))
-	      return 1;
-      if(n > 5) {
-	if (!strcasecmp(a[5], "-a")) 
-	  Sec.Approximation(TopOpeBRepTool_APPROX);
-	else 
-	  if (strcasecmp(a[5], "-p"))
-	    return 1;
-      }
-    } else {// fin a[4],"-2d"
-      if (!strcasecmp(a[4], "-a") || !strcasecmp(a[4], "-p")) {
-	if (!strcasecmp(a[4], "-a")) 
-	  Sec.Approximation(TopOpeBRepTool_APPROX);
-	if(n > 5) {
-#ifdef WNT
-	  if (!strcasecmp(a[5],"-2d") || !strcasecmp(a[5], "-no2d")) {
-#else 
-	  if (!strncasecmp(a[5],"-2d", 3) || !strcasecmp(a[5], "-no2d")) {
-#endif
-	    if (!strcasecmp(a[5], "-2d")) {
-	      Sec.ComputePCurveOn1(Standard_True);
-	      Sec.ComputePCurveOn2(Standard_True);
-	    } else
-	      if (!strcasecmp(a[5], "-2d1")) 
-		Sec.ComputePCurveOn1(Standard_True);
-	      else
-		if (!strcasecmp(a[5], "-2d2")) 
-		  Sec.ComputePCurveOn2(Standard_True);
-		else
-		  if (strcasecmp(a[5], "-no2d"))
-		    return 1;
-	  }
-	}
-      } else // fin a[4],"-a"
-	return 1;
+  for (int i=4; i < n; i++) {
+    if (!strcasecmp(a[i], "-2d"))
+    {
+      Sec.ComputePCurveOn1(Standard_True);
+      Sec.ComputePCurveOn2(Standard_True);
+    } 
+    else if (!strcasecmp(a[i], "-2d1")) 
+    {
+      Sec.ComputePCurveOn1(Standard_True);
+      Sec.ComputePCurveOn2(Standard_False);
+    } 
+    else if (!strcasecmp(a[i], "-2d2")) 
+    {
+      Sec.ComputePCurveOn1(Standard_False);
+      Sec.ComputePCurveOn2(Standard_True);
+    } 
+    else if (!strcasecmp(a[i], "-no2d"))
+    {
+      Sec.ComputePCurveOn1(Standard_False);
+      Sec.ComputePCurveOn2(Standard_False);
+    } 
+    else if (!strcasecmp(a[i], "-a")) 
+      Sec.Approximation(Standard_True);
+    else if (strcasecmp(a[i], "-p"))
+    {
+      cout << "Unknown option: " << a[i] << endl;
+      return 1;
     }
-  }// fin n > 4
+  }
 
   res = Sec.Shape();
   

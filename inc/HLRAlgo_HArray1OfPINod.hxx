@@ -42,11 +42,11 @@ class HLRAlgo_HArray1OfPINod : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   HLRAlgo_HArray1OfPINod(const Standard_Integer Low,const Standard_Integer Up);
+      HLRAlgo_HArray1OfPINod(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   HLRAlgo_HArray1OfPINod(const Standard_Integer Low,const Standard_Integer Up,const Handle(HLRAlgo_PolyInternalNode)& V);
+      HLRAlgo_HArray1OfPINod(const Standard_Integer Low,const Standard_Integer Up,const Handle(HLRAlgo_PolyInternalNode)& V);
   
-  Standard_EXPORT     void Init(const Handle(HLRAlgo_PolyInternalNode)& V) ;
+        void Init(const Handle(HLRAlgo_PolyInternalNode)& V) ;
   
         Standard_Integer Length() const;
   

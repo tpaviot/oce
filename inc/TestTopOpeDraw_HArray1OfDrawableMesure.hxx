@@ -42,11 +42,11 @@ class TestTopOpeDraw_HArray1OfDrawableMesure : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TestTopOpeDraw_HArray1OfDrawableMesure(const Standard_Integer Low,const Standard_Integer Up);
+      TestTopOpeDraw_HArray1OfDrawableMesure(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TestTopOpeDraw_HArray1OfDrawableMesure(const Standard_Integer Low,const Standard_Integer Up,const Handle(TestTopOpeDraw_DrawableMesure)& V);
+      TestTopOpeDraw_HArray1OfDrawableMesure(const Standard_Integer Low,const Standard_Integer Up,const Handle(TestTopOpeDraw_DrawableMesure)& V);
   
-  Standard_EXPORT     void Init(const Handle(TestTopOpeDraw_DrawableMesure)& V) ;
+        void Init(const Handle(TestTopOpeDraw_DrawableMesure)& V) ;
   
         Standard_Integer Length() const;
   

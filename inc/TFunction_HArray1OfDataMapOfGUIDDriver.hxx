@@ -39,11 +39,11 @@ class TFunction_HArray1OfDataMapOfGUIDDriver : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer Low,const Standard_Integer Up);
+      TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer Low,const Standard_Integer Up,const TFunction_DataMapOfGUIDDriver& V);
+      TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer Low,const Standard_Integer Up,const TFunction_DataMapOfGUIDDriver& V);
   
-  Standard_EXPORT     void Init(const TFunction_DataMapOfGUIDDriver& V) ;
+        void Init(const TFunction_DataMapOfGUIDDriver& V) ;
   
         Standard_Integer Length() const;
   

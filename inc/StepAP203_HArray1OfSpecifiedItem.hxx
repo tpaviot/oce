@@ -39,11 +39,11 @@ class StepAP203_HArray1OfSpecifiedItem : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepAP203_HArray1OfSpecifiedItem(const Standard_Integer Low,const Standard_Integer Up);
+      StepAP203_HArray1OfSpecifiedItem(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepAP203_HArray1OfSpecifiedItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP203_SpecifiedItem& V);
+      StepAP203_HArray1OfSpecifiedItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP203_SpecifiedItem& V);
   
-  Standard_EXPORT     void Init(const StepAP203_SpecifiedItem& V) ;
+        void Init(const StepAP203_SpecifiedItem& V) ;
   
         Standard_Integer Length() const;
   

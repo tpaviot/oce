@@ -40,6 +40,8 @@ void StdLSchema_PDataStd_Variable::SWrite(const Handle(Standard_Persistent)& p, 
   if (!p.IsNull()) {
     Handle(PDataStd_Variable) &pp = (Handle(PDataStd_Variable)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutBoolean(pp->_CSFDB_GetPDataStd_VariableisConstant());
@@ -59,6 +61,8 @@ void StdLSchema_PDataStd_Variable::SRead(const Handle(Standard_Persistent)& p, S
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_Variable) &pp = (Handle(PDataStd_Variable)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

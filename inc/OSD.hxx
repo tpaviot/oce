@@ -16,17 +16,11 @@
 #include <Standard_Macro.hxx>
 #endif
 
-#ifndef _OSD_Signals_HeaderFile
-#include <OSD_Signals.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
-#include <Standard_Address.hxx>
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
@@ -67,7 +61,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! A tool to manage threads <br>
 //! Sets signal and exception handlers. <br>
 //! <b>Windows-specific notes<\b> <br>
 //! Compiled with MS VC++ sets 3 main handlers: <br>
@@ -158,47 +152,6 @@ protected:
 
 private:
 
-  
-//!   1) Raise a exception when aSignal is a floating point signal. <br>
-//!    aSignal is SIGFPE. <br>
-//!    aCode is <br>
-//!        (FPE:  Floating Point Exception) <br>
-//!        (FLT:  FLoaTing operation.) <br>
-//!        (INT:  INTeger  operation.) <br>
-//!        (DIV:  DIVided by zero.) <br>
-//!        (OVF:  OVerFlow.) <br>
-//!        (INEX: INEXact operation.) <br>
-//! <br>
-//!        FPE_FLTDIV_TRAP  (the exception "DivideByZero" is raised.) <br>
-//!        FPE_INTDIV_TRAP  (the exception "DivideByZero" is raised.) <br>
-//! <br>
-//!        FPE_FLTOVF_TRAP  (the exception "Overflow" is raised.) <br>
-//!        FPE_INTOVF_TRAP  (the exception "Overflow" is raised.) <br>
-//! <br>
-//!        FPE_FLTINEX_TRAP (the exception "NumericError" is raised.) <br>
-//! <br>
-//!   2) Display the signal name, and call "exit" with signal number for <br>
-//!   a "Hardware" signal. <br>
-//! <br>
-  Standard_EXPORT   static  void Handler(const OSD_Signals aSignal,const Standard_Address aSigInfo,const Standard_Address aContext) ;
-  
-//! Handle access to null object and segmentation violation <br>
-//! <br>
-  Standard_EXPORT   static  void SegvHandler(const OSD_Signals aSignal,const Standard_Address aSigInfo,const Standard_Address aContext) ;
-  
-//!  1) Raises an exception if the exception due to floating point errors. <br>
-//!     Flosting point errors: <br>
-//!     EXCEPTION_FLT_DENORMAL_OPERAND <br>
-//!     EXCEPTION_FLT_DIVIDE_BY_ZERO <br>
-//!     EXCEPTION_FLT_INEXACT_RESULT <br>
-//!     EXCEPTION_FLT_INVALID_OPERATION <br>
-//!     EXCEPTOPN_FLT_OVERFLOW <br>
-//!     EXCEPTION_FLT_STACK_CHECK <br>
-//!     EXCEPTION_FLT_UNDERFLOW <br>
-//!  2) Displays a message box 'Continue' - 'Debugger' - 'Stop' if the environment <br>
-//!     variable 'CSF_EXCEPTION_PROMPT' is set and takes appropriate action. <br>
-//!     Raises an exception otherwise. <br>
-  Standard_EXPORT   static  Standard_Integer WntHandler(const Standard_Address exceptionInfo) ;
 
 
 

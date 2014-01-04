@@ -1,25 +1,21 @@
 // Created by: Peter KURNEV
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BOPTest.ixx>
 
 #include <stdio.h>
+#include <string.h>
 
 #include <NCollection_IncAllocator.hxx>
 
@@ -39,6 +35,73 @@
 #include <BOPTest_Objects.hxx>
 
 //
+#ifdef HAVE_TBB
+#include <BOPCol_TBB.hxx>
+//=======================================================================
+//class : BOPTime_Chronometer
+//purpose  : 
+//=======================================================================
+class BOPTime_Chronometer {
+ public:
+  BOPTime_Chronometer() {
+  }
+  //
+  ~BOPTime_Chronometer() {
+  }
+  //
+  void Start() {
+    myT0 = tick_count::now();
+  }
+  //
+  void Stop() {
+    myTime=(tick_count::now() - myT0).seconds();
+  }
+  //
+  double Time() const{
+    return myTime;
+  };
+  //
+ protected:
+  tick_count myT0;
+  double myTime;
+};
+////////////////////////////////////////////////////////////////////////
+#else
+#include <OSD_Chronometer.hxx>
+//=======================================================================
+//class    : BOPTime_Chronometer
+//purpose  : 
+//=======================================================================
+class BOPTime_Chronometer {
+ public:
+  BOPTime_Chronometer() {
+  }
+  //
+  ~BOPTime_Chronometer() {
+  }
+  //
+  void Start() {
+    myChronometer.Reset();
+    myChronometer.Start();
+  }
+  //
+  void Stop() {
+    myChronometer.Stop();
+    myChronometer.Show(myTime);
+  }
+  //
+  double Time() const{
+    return myTime;
+  };
+  //
+ protected:
+  OSD_Chronometer myChronometer;
+  double myTime;
+};
+#endif
+
+
+
 static Standard_Integer bfillds  (Draw_Interpretor&, Standard_Integer, const char**); 
 static Standard_Integer bbuild   (Draw_Interpretor&, Standard_Integer, const char**);
 static Standard_Integer bbop     (Draw_Interpretor&, Standard_Integer, const char**);
@@ -56,7 +119,7 @@ static Standard_Integer bclear   (Draw_Interpretor&, Standard_Integer, const cha
   const char* g = "Partition commands";
   // Commands  
   theCommands.Add("bfillds"  , "use bfillds"           , __FILE__, bfillds  , g);
-  theCommands.Add("bbuild"   , "use bbuild r"          , __FILE__, bbuild, g);
+  theCommands.Add("bbuild"   , " use bbuild r [-s -t]" , __FILE__, bbuild, g);
   theCommands.Add("bbop"     , "use bbop r op"         , __FILE__, bbop, g);
   theCommands.Add("bclear"   , "use bclear"            , __FILE__, bclear, g);
 }
@@ -87,7 +150,7 @@ Standard_Integer bfillds(Draw_Interpretor& di, Standard_Integer n, const char** 
   }
   //
   char buf[32];
-  Standard_Integer aNbS, aNbT, iErr;
+  Standard_Integer aNbS, iErr;
   BOPCol_ListIteratorOfListOfShape aIt;
   BOPCol_ListOfShape aLC;
   
@@ -99,7 +162,6 @@ Standard_Integer bfillds(Draw_Interpretor& di, Standard_Integer n, const char** 
   }
   //
   BOPCol_ListOfShape& aLT=BOPTest_Objects::Tools();
-  aNbT=aLT.Extent();
   //
   aIt.Initialize(aLS);
   for (; aIt.More(); aIt.Next()) {
@@ -127,15 +189,14 @@ Standard_Integer bfillds(Draw_Interpretor& di, Standard_Integer n, const char** 
   //
   return 0;
 }
-
 //=======================================================================
 //function : bbuild
 //purpose  : 
 //=======================================================================
 Standard_Integer bbuild(Draw_Interpretor& di, Standard_Integer n, const char** a) 
 { 
-  if (n!=2) {
-    di << " Use bbuild r\n";
+  if (n<2) {
+    di << " use bbuild r [-s -t]\n";
     return 0;
   }
   //
@@ -145,9 +206,14 @@ Standard_Integer bbuild(Draw_Interpretor& di, Standard_Integer n, const char** a
     return 0;
   }
   //
-  char buf[32];
-  Standard_Integer iErr;
+  char buf[128];
+  Standard_Boolean bRunParallel, bShowTime;
+  Standard_Integer i, iErr;
+  
+  BOPTime_Chronometer aChrono;
   BOPCol_ListIteratorOfListOfShape aIt;
+  //
+  
   //
   BOPAlgo_PaveFiller& aPF=BOPTest_Objects::PaveFiller();
   //
@@ -168,12 +234,37 @@ Standard_Integer bbuild(Draw_Interpretor& di, Standard_Integer n, const char** a
     aBuilder.AddArgument(aS);
   }
   //
-  aBuilder.PerformWithFiller(aPF);
+  bShowTime=Standard_False;
+  bRunParallel=Standard_True;
+  for (i=2; i<n; ++i) {
+    if (!strcmp(a[i], "-s")) {
+      bRunParallel=Standard_False;
+    }
+    else if (!strcmp(a[i], "-t")) {
+      bShowTime=Standard_True;
+    }
+  }
+  aBuilder.SetRunParallel(bRunParallel);
+  //
+  //
+  aChrono.Start();
+  //
+  aBuilder.PerformWithFiller(aPF); 
   iErr=aBuilder.ErrorStatus();
   if (iErr) {
     Sprintf(buf, " error: %d\n",  iErr);
     di << buf;
     return 0;
+  }
+  //
+  aChrono.Stop();
+  //
+  if (bShowTime) {
+    Standard_Real aTime;
+    //
+    aTime=aChrono.Time();
+    Sprintf(buf, "  Tps: %7.2lf\n", aTime);
+    di << buf;
   }
   //
   const TopoDS_Shape& aR=aBuilder.Shape();

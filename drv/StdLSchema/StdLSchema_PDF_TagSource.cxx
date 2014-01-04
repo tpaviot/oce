@@ -39,6 +39,8 @@ void StdLSchema_PDF_TagSource::SWrite(const Handle(Standard_Persistent)& p, Stor
   if (!p.IsNull()) {
     Handle(PDF_TagSource) &pp = (Handle(PDF_TagSource)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPDF_TagSourcemyValue());
@@ -57,6 +59,8 @@ void StdLSchema_PDF_TagSource::SRead(const Handle(Standard_Persistent)& p, Stora
 { 
   if (!p.IsNull()) {
     Handle(PDF_TagSource) &pp = (Handle(PDF_TagSource)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

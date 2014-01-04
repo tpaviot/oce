@@ -104,7 +104,6 @@ private:
 
 TDF_Label myTDFAcces;
 TopoDS_Shape myShape;
-Standard_Boolean myOneOnly;
 Standard_Boolean myDone;
 Standard_Boolean myIsFeature;
 TNaming_NameType myType;

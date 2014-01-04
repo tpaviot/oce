@@ -39,6 +39,8 @@ void ShapeSchema_PColgp_HArray1OfDir2d::SWrite(const Handle(Standard_Persistent)
   if (!p.IsNull()) {
     Handle(PColgp_HArray1OfDir2d) &pp = (Handle(PColgp_HArray1OfDir2d)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPColgp_HArray1OfDir2dLowerBound());
@@ -59,6 +61,8 @@ void ShapeSchema_PColgp_HArray1OfDir2d::SRead(const Handle(Standard_Persistent)&
 { 
   if (!p.IsNull()) {
     Handle(PColgp_HArray1OfDir2d) &pp = (Handle(PColgp_HArray1OfDir2d)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -1,22 +1,17 @@
 // Created on: 2007-01-29
 // Created by: Sergey KOCHETKOV
-// Copyright (c) 2007-2012 OPEN CASCADE SAS
+// Copyright (c) 2007-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <MeshVS_SensitiveMesh.ixx>
 
@@ -60,13 +55,13 @@ Standard_Integer MeshVS_SensitiveMesh::GetMode () const
 // name    : Matches
 // Purpose :
 //=======================================================================
-Standard_Boolean MeshVS_SensitiveMesh::Matches(const Standard_Real X,
-					       const Standard_Real Y,
-					       const Standard_Real aTol,
-					       Standard_Real&  DMin)
+Standard_Boolean MeshVS_SensitiveMesh::Matches (const SelectBasics_PickArgs& thePickArgs,
+                                                Standard_Real& theMatchDMin,
+                                                Standard_Real& theMatchDepth)
 {
-  DMin = 0.;
-  
+  theMatchDMin = 0.0;
+  theMatchDepth = Precision::Infinite();
+
   Handle(MeshVS_MeshOwner) anOwner = Handle(MeshVS_MeshOwner)::DownCast( OwnerId() );
   if( anOwner.IsNull() ) return Standard_False;
   Handle(MeshVS_Mesh) aMeshPrs = Handle(MeshVS_Mesh)::DownCast( anOwner->Selectable() );
@@ -75,12 +70,17 @@ Standard_Boolean MeshVS_SensitiveMesh::Matches(const Standard_Real X,
   if( aDS.IsNull() ) return Standard_False;
   Handle(TColStd_HPackedMapOfInteger) NodesMap;
   Handle(TColStd_HPackedMapOfInteger) ElemsMap;
+
   // Mesh data source should provide the algorithm for computation
   // of detected entities from 2D point
-  Standard_Boolean isDetected = aDS->GetDetectedEntities( aMeshPrs, X, Y, aTol, NodesMap, ElemsMap, DMin );
+  Standard_Boolean isDetected =
+    aDS->GetDetectedEntities (aMeshPrs, thePickArgs.X(), thePickArgs.Y(),
+                              thePickArgs.Tolerance(), NodesMap,
+                              ElemsMap, theMatchDMin);
+
   // The detected entites will be available from mesh owner
   anOwner->SetDetectedEntities( NodesMap, ElemsMap );
-  
+
   return isDetected;
 }
 
@@ -148,15 +148,6 @@ Handle(Select3D_SensitiveEntity) MeshVS_SensitiveMesh::GetConnected( const TopLo
   return aMeshEnt;
 }
 
-//=======================================================================
-//function : ComputeDepth
-//purpose  : 
-//=======================================================================
-Standard_Real MeshVS_SensitiveMesh::ComputeDepth( const gp_Lin& /*EyeLine*/ ) const
-{
-  return Precision::Infinite();
-}
-
 //==================================================
 // Function: ProjectOneCorner
 // Purpose :
@@ -181,8 +172,6 @@ void MeshVS_SensitiveMesh::ProjectOneCorner(const Handle(Select3D_Projector)& th
 //==================================================
 void MeshVS_SensitiveMesh::Project(const Handle(Select3D_Projector)& aProj)
 {
-  Select3D_SensitiveEntity::Project(aProj); // to set the field last proj...
-
   mybox2d.SetVoid();
   if (mybox.IsVoid())
     return;

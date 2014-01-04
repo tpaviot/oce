@@ -42,11 +42,11 @@ class TColStd_HArray1OfTransient : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColStd_HArray1OfTransient(const Standard_Integer Low,const Standard_Integer Up);
+      TColStd_HArray1OfTransient(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColStd_HArray1OfTransient(const Standard_Integer Low,const Standard_Integer Up,const Handle(Standard_Transient)& V);
+      TColStd_HArray1OfTransient(const Standard_Integer Low,const Standard_Integer Up,const Handle(Standard_Transient)& V);
   
-  Standard_EXPORT     void Init(const Handle(Standard_Transient)& V) ;
+        void Init(const Handle(Standard_Transient)& V) ;
   
         Standard_Integer Length() const;
   

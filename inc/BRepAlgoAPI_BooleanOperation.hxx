@@ -99,9 +99,6 @@ public:
   //! Returns true if the shape S has been deleted. The <br>
 //! result shape of the operation does not contain the shape S. <br>
   Standard_EXPORT   virtual  Standard_Boolean IsDeleted(const TopoDS_Shape& aS) ;
-  //! Returns the list  of shapes modified from the shape <S>. <br>
-//!         For use in BRepNaming. <br>
-  Standard_EXPORT   virtual const TopTools_ListOfShape& Modified2(const TopoDS_Shape& aS) ;
   //! Returns the list  of shapes generated from the shape <S>. <br>
 //!         For use in BRepNaming. <br>
   Standard_EXPORT   virtual const TopTools_ListOfShape& Generated(const TopoDS_Shape& S) ;

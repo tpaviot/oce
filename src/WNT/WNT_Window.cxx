@@ -1,20 +1,16 @@
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // include windows.h first to have all definitions available
 #include <windows.h>
@@ -287,45 +283,6 @@ Standard_Boolean WNT_Window :: DoMapping () const {
   return Standard_True;
 }
 
-static Standard_Boolean ConvertBitmap (HBITMAP       theHBitmap,
-                                       Image_PixMap& thePixMap)
-{
-  // Get informations about the bitmap
-  BITMAP aBitmap;
-  if (GetObject (theHBitmap, sizeof(BITMAP), (LPSTR )&aBitmap) == 0)
-  {
-    return Standard_False;
-  }
-
-  const Standard_Size aSizeRowBytes = Standard_Size(aBitmap.bmWidth) * 4;
-  if (!thePixMap.InitTrash (Image_PixMap::ImgBGR32, Standard_Size(aBitmap.bmWidth), Standard_Size(aBitmap.bmHeight), aSizeRowBytes))
-  {
-    return Standard_False;
-  }
-  thePixMap.SetTopDown (false);
-
-  // Setup image data
-  BITMAPINFOHEADER aBitmapInfo;
-  memset (&aBitmapInfo, 0, sizeof(BITMAPINFOHEADER));
-  aBitmapInfo.biSize        = sizeof(BITMAPINFOHEADER);
-  aBitmapInfo.biWidth       = aBitmap.bmWidth;
-  aBitmapInfo.biHeight      = aBitmap.bmHeight; // positive means bottom-up!
-  aBitmapInfo.biPlanes      = 1;
-  aBitmapInfo.biBitCount    = 32; // use 32bit for automatic word-alignment per row
-  aBitmapInfo.biCompression = BI_RGB;
-
-  // Copy the pixels
-  HDC aDC = GetDC (NULL);
-  Standard_Boolean isSuccess = GetDIBits (aDC, theHBitmap,
-                                          0,                           // first scan line to set
-                                          aBitmap.bmHeight,            // number of scan lines to copy
-                                          thePixMap.ChangeData(),      // array for bitmap bits
-                                          (LPBITMAPINFO )&aBitmapInfo, // bitmap data info
-                                          DIB_RGB_COLORS) != 0;
-  ReleaseDC (NULL, aDC);
-  return isSuccess;
-}
-
 //***//
 //******************************* Ratio **********************************//
 //***//
@@ -429,27 +386,25 @@ void WNT_Window :: doCreate (
                     const Quantity_NameOfColor         aBackColor
                    )
 {
-  LONG            uData;
-  WINDOWPLACEMENT wp;
-
   ZeroMemory (&myExtraData, sizeof (WNT_WindowData));
 
   myHWindow        = aHandle;
   myHParentWindow  = GetParent ((HWND )aHandle);
-  uData            = GetWindowLongPtr ((HWND )aHandle, GWLP_USERDATA);
+  LONG_PTR uData   = GetWindowLongPtr ((HWND )aHandle, GWLP_USERDATA);
   myUsrData        = Standard_Address(-1);
 
   SetBackground (aBackColor);
 
   myExtraData.WNT_Window_Ptr = (void* )this;
 
-  if (uData != (LONG )&myExtraData)
+  if (uData != (LONG_PTR )&myExtraData)
   {
     myUsrData = (Standard_Address )SetWindowLongPtr ((HWND )myHWindow, GWLP_USERDATA, (LONG_PTR )&myExtraData);
   }
 
   myExtraData.dwFlags = WDF_FOREIGN;
 
+  WINDOWPLACEMENT wp;
   wp.length = sizeof (WINDOWPLACEMENT);
   GetWindowPlacement ((HWND )myHWindow, &wp);
 

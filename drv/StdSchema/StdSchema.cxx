@@ -40,6 +40,9 @@
 #ifndef _StdSchema_PNaming_Name_1_HeaderFile
 #include <StdSchema_PNaming_Name_1.hxx>
 #endif
+#ifndef _StdSchema_PNaming_Name_2_HeaderFile
+#include <StdSchema_PNaming_Name_2.hxx>
+#endif
 #ifndef _StdSchema_PNaming_NamedShape_HeaderFile
 #include <StdSchema_PNaming_NamedShape.hxx>
 #endif
@@ -48,6 +51,9 @@
 #endif
 #ifndef _StdSchema_PNaming_Naming_1_HeaderFile
 #include <StdSchema_PNaming_Naming_1.hxx>
+#endif
+#ifndef _StdSchema_PNaming_Naming_2_HeaderFile
+#include <StdSchema_PNaming_Naming_2.hxx>
 #endif
 #ifndef _StdSchema_PNaming_HArray1OfNamedShape_HeaderFile
 #include <StdSchema_PNaming_HArray1OfNamedShape.hxx>
@@ -115,9 +121,11 @@ Storage_ADD_TYPES(StdSchema,PDataXtd_PatternStd,StdSchema_PDataXtd_PatternStd)
 Storage_ADD_TYPES(StdSchema,PDataXtd_Shape,StdSchema_PDataXtd_Shape)
 Storage_ADD_TYPES(StdSchema,PNaming_Name,StdSchema_PNaming_Name)
 Storage_ADD_TYPES(StdSchema,PNaming_Name_1,StdSchema_PNaming_Name_1)
+Storage_ADD_TYPES(StdSchema,PNaming_Name_2,StdSchema_PNaming_Name_2)
 Storage_ADD_TYPES(StdSchema,PNaming_NamedShape,StdSchema_PNaming_NamedShape)
 Storage_ADD_TYPES(StdSchema,PNaming_Naming,StdSchema_PNaming_Naming)
 Storage_ADD_TYPES(StdSchema,PNaming_Naming_1,StdSchema_PNaming_Naming_1)
+Storage_ADD_TYPES(StdSchema,PNaming_Naming_2,StdSchema_PNaming_Naming_2)
 Storage_ADD_TYPES(StdSchema,PNaming_HArray1OfNamedShape,StdSchema_PNaming_HArray1OfNamedShape)
 Storage_ADD_TYPES(StdSchema,PPrsStd_AISPresentation,StdSchema_PPrsStd_AISPresentation)
 Storage_ADD_TYPES(StdSchema,PPrsStd_AISPresentation_1,StdSchema_PPrsStd_AISPresentation_1)
@@ -147,9 +155,11 @@ Storage_READ_SELECTION(StdSchema,PDataXtd_PatternStd,StdSchema_PDataXtd_PatternS
 Storage_READ_SELECTION(StdSchema,PDataXtd_Shape,StdSchema_PDataXtd_Shape)
 Storage_READ_SELECTION(StdSchema,PNaming_Name,StdSchema_PNaming_Name)
 Storage_READ_SELECTION(StdSchema,PNaming_Name_1,StdSchema_PNaming_Name_1)
+Storage_READ_SELECTION(StdSchema,PNaming_Name_2,StdSchema_PNaming_Name_2)
 Storage_READ_SELECTION(StdSchema,PNaming_NamedShape,StdSchema_PNaming_NamedShape)
 Storage_READ_SELECTION(StdSchema,PNaming_Naming,StdSchema_PNaming_Naming)
 Storage_READ_SELECTION(StdSchema,PNaming_Naming_1,StdSchema_PNaming_Naming_1)
+Storage_READ_SELECTION(StdSchema,PNaming_Naming_2,StdSchema_PNaming_Naming_2)
 Storage_READ_SELECTION(StdSchema,PNaming_HArray1OfNamedShape,StdSchema_PNaming_HArray1OfNamedShape)
 Storage_READ_SELECTION(StdSchema,PPrsStd_AISPresentation,StdSchema_PPrsStd_AISPresentation)
 Storage_READ_SELECTION(StdSchema,PPrsStd_AISPresentation_1,StdSchema_PPrsStd_AISPresentation_1)
@@ -176,9 +186,11 @@ Storage_SCHEMA_TYPES(PDataXtd_PatternStd)
 Storage_SCHEMA_TYPES(PDataXtd_Shape)
 Storage_SCHEMA_TYPES(PNaming_Name)
 Storage_SCHEMA_TYPES(PNaming_Name_1)
+Storage_SCHEMA_TYPES(PNaming_Name_2)
 Storage_SCHEMA_TYPES(PNaming_NamedShape)
 Storage_SCHEMA_TYPES(PNaming_Naming)
 Storage_SCHEMA_TYPES(PNaming_Naming_1)
+Storage_SCHEMA_TYPES(PNaming_Naming_2)
 Storage_SCHEMA_TYPES(PNaming_HArray1OfNamedShape)
 Storage_SCHEMA_TYPES(PPrsStd_AISPresentation)
 Storage_SCHEMA_TYPES(PPrsStd_AISPresentation_1)

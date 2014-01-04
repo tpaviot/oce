@@ -42,11 +42,11 @@ class IGESAppli_HArray1OfNode : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESAppli_HArray1OfNode(const Standard_Integer Low,const Standard_Integer Up);
+      IGESAppli_HArray1OfNode(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESAppli_HArray1OfNode(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESAppli_Node)& V);
+      IGESAppli_HArray1OfNode(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESAppli_Node)& V);
   
-  Standard_EXPORT     void Init(const Handle(IGESAppli_Node)& V) ;
+        void Init(const Handle(IGESAppli_Node)& V) ;
   
         Standard_Integer Length() const;
   

@@ -39,11 +39,11 @@ class BRepMesh_HArray1OfVertexOfDelaun : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   BRepMesh_HArray1OfVertexOfDelaun(const Standard_Integer Low,const Standard_Integer Up);
+      BRepMesh_HArray1OfVertexOfDelaun(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   BRepMesh_HArray1OfVertexOfDelaun(const Standard_Integer Low,const Standard_Integer Up,const BRepMesh_Vertex& V);
+      BRepMesh_HArray1OfVertexOfDelaun(const Standard_Integer Low,const Standard_Integer Up,const BRepMesh_Vertex& V);
   
-  Standard_EXPORT     void Init(const BRepMesh_Vertex& V) ;
+        void Init(const BRepMesh_Vertex& V) ;
   
         Standard_Integer Length() const;
   

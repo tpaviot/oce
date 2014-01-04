@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Interface_Static.ixx>
 
@@ -25,8 +21,7 @@
 #include <OSD_Path.hxx>
 #include <stdio.h>
 
-
-static  char defmess[30];
+static char defmess[31];
 
 //  Fonctions Satisfies offertes en standard ...
 
@@ -243,18 +238,18 @@ Standard_CString  Interface_Static::CDef
   }
   if (part[0] == 'e') {
     Standard_Integer nume = 0;
-    sscanf (part,"%s %d",defmess,&nume);
+    sscanf (part,"%30s %d",defmess,&nume);
     return stat->EnumVal(nume);
   }
   if (part[0] == 'i') {
     Standard_Integer ilim;
     if (!stat->IntegerLimit((part[2] == 'a'),ilim)) return "";
-    Sprintf(defmess,"%d",ilim);   return defmess;
+    Sprintf(defmess,"%d",ilim);  return defmess;
   }
   if (part[0] == 'r') {
     Standard_Real rlim;
     if (!stat->RealLimit((part[2] == 'a'),rlim)) return "";
-    Sprintf(defmess,"%f",rlim);   return defmess;
+    Sprintf(defmess,"%f",rlim);  return defmess;
   }
   if (part[0] == 'u') return stat->UnitDef();
   return "";
@@ -279,8 +274,8 @@ Standard_Integer  Interface_Static::IDef
     if (part[1] == 'c') return (endcase - startcase + 1);
     if (part[1] == 'm') return (match ? 1 : 0);
     if (part[1] == 'v') {
-      char vale[50];
-      sscanf (part,"%s %s",defmess,vale);
+      char vale[51];
+      sscanf (part,"%30s %50s",defmess,vale);
       return stat->EnumCase (vale);
     }
   }

@@ -39,11 +39,11 @@ class AppParCurves_HArray1OfMultiCurve : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   AppParCurves_HArray1OfMultiCurve(const Standard_Integer Low,const Standard_Integer Up);
+      AppParCurves_HArray1OfMultiCurve(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   AppParCurves_HArray1OfMultiCurve(const Standard_Integer Low,const Standard_Integer Up,const AppParCurves_MultiCurve& V);
+      AppParCurves_HArray1OfMultiCurve(const Standard_Integer Low,const Standard_Integer Up,const AppParCurves_MultiCurve& V);
   
-  Standard_EXPORT     void Init(const AppParCurves_MultiCurve& V) ;
+        void Init(const AppParCurves_MultiCurve& V) ;
   
         Standard_Integer Length() const;
   

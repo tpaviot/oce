@@ -16,6 +16,9 @@
 #include <Standard_Macro.hxx>
 #endif
 
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
+#endif
 #ifndef _BOPAlgo_PaveFiller_HeaderFile
 #include <BOPAlgo_PaveFiller.hxx>
 #endif
@@ -30,6 +33,17 @@ public:
   
   Standard_EXPORT   BOPAlgo_CheckerSI();
 Standard_EXPORT virtual ~BOPAlgo_CheckerSI();
+  
+  Standard_EXPORT   virtual  void Perform() ;
+  //!  Sets the level of checking shape on self-interference. <br>
+//!           It defines which interferferences will be checked: <br>
+//!           0 - only V/V; <br>
+//!           1 - V/V and V/E; <br>
+//!           2 - V/V, V/E and E/E; <br>
+//!           3 - V/V, V/E, E/E and V/F; <br>
+//!           4 - V/V, V/E, E/E, V/F and E/F; <br>
+//!           5 - all interferences, default value. <br>
+  Standard_EXPORT     void SetLevelOfCheck(const Standard_Integer theLevel) ;
 
 
 
@@ -39,8 +53,11 @@ protected:
 
   
   Standard_EXPORT   virtual  void Init() ;
+  //! Provides post-tratment actions <br>
+  Standard_EXPORT     void PostTreat() ;
 
 
+Standard_Integer myLevelOfCheck;
 
 
 private:

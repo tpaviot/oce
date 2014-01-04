@@ -42,11 +42,11 @@ class StepRepr_HArray1OfPropertyDefinitionRepresentation : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer Low,const Standard_Integer Up);
+      StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepRepr_PropertyDefinitionRepresentation)& V);
+      StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepRepr_PropertyDefinitionRepresentation)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepRepr_PropertyDefinitionRepresentation)& V) ;
+        void Init(const Handle(StepRepr_PropertyDefinitionRepresentation)& V) ;
   
         Standard_Integer Length() const;
   

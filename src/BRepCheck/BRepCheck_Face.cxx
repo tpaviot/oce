@@ -1,24 +1,18 @@
 // Created on: 1995-12-15
 // Created by: Jacques GOUSSARD
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BRepCheck_Face.ixx>
 
@@ -41,6 +35,7 @@
 #include <BRepClass_FaceClassifier.hxx>
 //#include <Geom2dInt_GInter.hxx>
 #include <Geom2d_Curve.hxx>
+#include <Geom_Curve.hxx>
 #include <GProp_GProps.hxx>
 
 #include <IntRes2d_Domain.hxx>
@@ -650,50 +645,83 @@ static Standard_Boolean Intersect(const TopoDS_Wire& wir1,
 //purpose  : 
 //=======================================================================
 
-static Standard_Boolean IsInside(const TopoDS_Wire& wir,
+static Standard_Boolean IsInside(const TopoDS_Wire& theWire,
 				 const Standard_Boolean WireBienOriente,
 				 const BRepTopAdaptor_FClass2d& FClass2d,
-				 const TopoDS_Face& F)
+				 const TopoDS_Face& theFace)
 {
-  // Standard_Real U,V;
-  TopExp_Explorer exp;
-  exp.Init(wir,TopAbs_EDGE);
-  if(exp.More()) {
+  Standard_Real aParameter, aFirst, aLast;
 
-    const TopoDS_Edge& edg = TopoDS::Edge(exp.Current());
-    Standard_Real f,l;
-    Handle(Geom2d_Curve) C2d = BRep_Tool::CurveOnSurface(edg,F,f,l);
-    Standard_Real prm;
+  TopExp_Explorer anExplorer(theWire, TopAbs_EDGE);
+  for( ; anExplorer.More(); anExplorer.Next() )
+  {
+    const TopoDS_Edge& anEdge = TopoDS::Edge( anExplorer.Current() );
+    Handle(Geom2d_Curve) aCurve2D =
+      BRep_Tool::CurveOnSurface( anEdge, theFace, aFirst, aLast );
 
-    if (!Precision::IsNegativeInfinite(f) && 
-	!Precision::IsPositiveInfinite(l)) {
-      prm = (f+l)/2.;
+    // Selects the parameter of point on the curve
+    if( !Precision::IsNegativeInfinite(aFirst) &&
+        !Precision::IsPositiveInfinite(aLast) )
+    {
+      aParameter = (aFirst + aLast) * 0.5;
+
+      // Edge is skipped if its parametric range is too small
+      if( Abs(aParameter - aFirst) < Precision::PConfusion() )
+      {
+        continue;
+      }
+
+	  //Edge is skipped if its length is too small
+	  Standard_Real aFirst3D, aLast3D;
+	  Handle(Geom_Curve) aCurve = BRep_Tool::Curve( anEdge, aFirst3D, aLast3D );      
+      if ( aCurve.IsNull() )
+      {
+        continue;
+      }
+
+      gp_Pnt aPoints[2];
+      // Compute start point of edge
+      aCurve->D0( aFirst, aPoints[0] );
+      // Compute middle point of edge 
+      aCurve->D0( (aFirst3D+aLast3D)/2., aPoints[1] );
+      if( aPoints[0].Distance(aPoints[1]) < Precision::Confusion() )
+      {
+        continue;
+      }
     }
-    else {
-      if (Precision::IsNegativeInfinite(f) && 
-	  Precision::IsPositiveInfinite(l)){
-	prm = 0.;
+    else
+    {
+      if( Precision::IsNegativeInfinite(aFirst) &&
+          Precision::IsPositiveInfinite(aLast) )
+      {
+        aParameter = 0.;
       }
-      else if (Precision::IsNegativeInfinite(f)) {
-	prm = l-1.;
+      else if( Precision::IsNegativeInfinite(aFirst) )
+      {
+        aParameter = aLast - 1.;
       }
-      else {
-	prm = f+1.;
+      else
+      {
+        aParameter = aFirst + 1.;
       }
     }
 
-    gp_Pnt2d pt2d(C2d->Value(prm));
-    
-    if(WireBienOriente) { 
-      return(FClass2d.Perform(pt2d,Standard_False) == TopAbs_OUT);     
+    // Find point on curve (edge)
+    gp_Pnt2d aPoint2D(aCurve2D->Value(aParameter));
+    // Compute the topological position of a point relative to face
+    TopAbs_State aState = FClass2d.Perform(aPoint2D, Standard_False);
+
+    if( WireBienOriente )
+    {
+      return aState == TopAbs_OUT;
     }
-    else { 
-      return(FClass2d.Perform(pt2d,Standard_False) == TopAbs_IN);
+    else
+    {
+      return aState == TopAbs_IN;
     }
   }
   return Standard_False;
 }
-
 Standard_Boolean CheckThin(const TopoDS_Shape& w, const TopoDS_Shape& f)
 {
   TopoDS_Face aF = TopoDS::Face(f);

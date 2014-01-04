@@ -1,21 +1,17 @@
 // Created on: 2001-11-26
 // Created by: Sergey ZARITCHNY <szy@nnov.matra-dtv.fr>
-// Copyright (c) 2001-2012 OPEN CASCADE SAS
+// Copyright (c) 2001-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <QANewBRepNaming_Gluing.ixx>
 
@@ -309,33 +305,33 @@ void QANewBRepNaming_Gluing::RecomputeUnique(QANewModTopOpe_Glue& theMkGluing) {
       if (aNext == 0) anEdgesIterator.Initialize(theMkGluing.Generated(aFullEdge));
       else anEdgesIterator.Initialize(theMkGluing.Modified(aFullEdge));
       for (;anEdgesIterator.More();anEdgesIterator.Next())
-	if (anEdgesIterator.Value().ShapeType() == TopAbs_EDGE) {
-	  TopoDS_Edge aDivEdge = TopoDS::Edge(anEdgesIterator.Value());
-	  if (!TopExp::FirstVertex(aDivEdge).IsNull()) { // divided edge must have at least one vertex
-	    if (TopExp::FirstVertex(aFullEdge).IsNull()) AddToTheUnique(aDivEdge,aFullEdge);
-	    else if (!TopExp::LastVertex(aDivEdge).IsNull())//if full edge have at least one vertex, subedges must have two
-	      if (TopExp::LastVertex(aFullEdge).IsNull()) {
-		if (BRep_Tool::Pnt(TopExp::FirstVertex(aFullEdge)).
-		    IsEqual(BRep_Tool::Pnt(TopExp::FirstVertex(aDivEdge)),Precision::Confusion()))
-		  AddToTheUnique(aDivEdge,aFullEdge);
-		else if (BRep_Tool::Pnt(TopExp::FirstVertex(aFullEdge)).
-			 IsEqual(BRep_Tool::Pnt(TopExp::LastVertex(aDivEdge)),Precision::Confusion()))
-		  AddToTheUnique(aDivEdge,aFullEdge);
-	      } else {
-		Standard_Integer aCounter = 0;
-		if (BRep_Tool::Pnt(TopExp::FirstVertex(aFullEdge)).
-		    IsEqual(BRep_Tool::Pnt(TopExp::FirstVertex(aDivEdge)),Precision::Confusion()) ||
-		    BRep_Tool::Pnt(TopExp::FirstVertex(aFullEdge)).
-		    IsEqual(BRep_Tool::Pnt(TopExp::LastVertex(aDivEdge)),Precision::Confusion())) aCounter++;
-		if (BRep_Tool::Pnt(TopExp::LastVertex(aFullEdge)).
-		    IsEqual(BRep_Tool::Pnt(TopExp::FirstVertex(aDivEdge)),Precision::Confusion()) ||
-		    BRep_Tool::Pnt(TopExp::LastVertex(aFullEdge)).
-		    IsEqual(BRep_Tool::Pnt(TopExp::LastVertex(aDivEdge)),Precision::Confusion())) aCounter++;
-		if (aCounter!=2) AddToTheUnique(aDivEdge,aFullEdge);
-	      }
-	  }
-	}
-
+        if (anEdgesIterator.Value().ShapeType() == TopAbs_EDGE) {
+          TopoDS_Edge aDivEdge = TopoDS::Edge(anEdgesIterator.Value());
+          if (!TopExp::FirstVertex(aDivEdge).IsNull()) { // divided edge must have at least one vertex
+            if (TopExp::FirstVertex(aFullEdge).IsNull()) AddToTheUnique(aDivEdge,aFullEdge);
+            else if (!TopExp::LastVertex(aDivEdge).IsNull()) {//if full edge have at least one vertex, subedges must have two
+              if (TopExp::LastVertex(aFullEdge).IsNull()) {
+                if (BRep_Tool::Pnt(TopExp::FirstVertex(aFullEdge)).
+                    IsEqual(BRep_Tool::Pnt(TopExp::FirstVertex(aDivEdge)),Precision::Confusion()))
+                  AddToTheUnique(aDivEdge,aFullEdge);
+                else if (BRep_Tool::Pnt(TopExp::FirstVertex(aFullEdge)).
+                   IsEqual(BRep_Tool::Pnt(TopExp::LastVertex(aDivEdge)),Precision::Confusion()))
+                  AddToTheUnique(aDivEdge,aFullEdge);
+              } else {
+                Standard_Integer aCounter = 0;
+                if (BRep_Tool::Pnt(TopExp::FirstVertex(aFullEdge)).
+                    IsEqual(BRep_Tool::Pnt(TopExp::FirstVertex(aDivEdge)),Precision::Confusion()) ||
+                    BRep_Tool::Pnt(TopExp::FirstVertex(aFullEdge)).
+                    IsEqual(BRep_Tool::Pnt(TopExp::LastVertex(aDivEdge)),Precision::Confusion())) aCounter++;
+                if (BRep_Tool::Pnt(TopExp::LastVertex(aFullEdge)).
+                    IsEqual(BRep_Tool::Pnt(TopExp::FirstVertex(aDivEdge)),Precision::Confusion()) ||
+                    BRep_Tool::Pnt(TopExp::LastVertex(aFullEdge)).
+                    IsEqual(BRep_Tool::Pnt(TopExp::LastVertex(aDivEdge)),Precision::Confusion())) aCounter++;
+                if (aCounter!=2) AddToTheUnique(aDivEdge,aFullEdge);
+              }
+            }
+          }
+        }
     }
   }
   aNext = 2;
@@ -437,7 +433,8 @@ void QANewBRepNaming_Gluing::LoadSourceShapes(TopTools_DataMapOfShapeInteger& th
 //function : LoadUniqueShapes
 //purpose  : 
 //=======================================================================
-void QANewBRepNaming_Gluing::LoadUniqueShapes(QANewModTopOpe_Glue& theMkGluing, const TopTools_DataMapOfShapeInteger& theSources)
+void QANewBRepNaming_Gluing::LoadUniqueShapes(QANewModTopOpe_Glue& /*theMkGluing*/, 
+                                              const TopTools_DataMapOfShapeInteger& theSources)
 {
   Standard_Integer anIndex=1;
   TColStd_MapOfInteger alreadyUsed;
@@ -497,8 +494,9 @@ TDF_Label QANewBRepNaming_Gluing::Content() const {
   const TDF_Label& ContentLabel = ResultLabel().NewChild();
   TDataStd_Name::Set(ContentLabel, "Content");
   return ContentLabel;
-#endif
+#else
   return ResultLabel().NewChild();
+#endif
 }
 
 //=======================================================================

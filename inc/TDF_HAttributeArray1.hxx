@@ -42,11 +42,11 @@ class TDF_HAttributeArray1 : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TDF_HAttributeArray1(const Standard_Integer Low,const Standard_Integer Up);
+      TDF_HAttributeArray1(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TDF_HAttributeArray1(const Standard_Integer Low,const Standard_Integer Up,const Handle(TDF_Attribute)& V);
+      TDF_HAttributeArray1(const Standard_Integer Low,const Standard_Integer Up,const Handle(TDF_Attribute)& V);
   
-  Standard_EXPORT     void Init(const Handle(TDF_Attribute)& V) ;
+        void Init(const Handle(TDF_Attribute)& V) ;
   
         Standard_Integer Length() const;
   

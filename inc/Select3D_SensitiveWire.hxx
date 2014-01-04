@@ -16,11 +16,11 @@
 #include <Handle_Select3D_SensitiveWire.hxx>
 #endif
 
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _Select3D_SensitiveEntitySequence_HeaderFile
 #include <Select3D_SensitiveEntitySequence.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
@@ -37,6 +37,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _SelectBasics_PickArgs_HeaderFile
+#include <SelectBasics_PickArgs.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
@@ -51,7 +54,6 @@ class TopLoc_Location;
 class Select3D_SensitiveEntitySequence;
 class TColgp_Array1OfPnt2d;
 class Bnd_Box2d;
-class gp_Lin;
 
 
 //! A framework to define selection of a wire owner by an <br>
@@ -80,23 +82,20 @@ public:
   Standard_EXPORT     void SetLocation(const TopLoc_Location& aLoc) ;
   //!  propagation of location on all the sensitive inside... <br>
   Standard_EXPORT     void ResetLocation() ;
-  //! projection of the sensitive primitive in order to <br>
-//!          get 2D boxes for the Sort Algorithm <br>
-  Standard_EXPORT     Standard_Boolean Matches(const Standard_Real X,const Standard_Real Y,const Standard_Real aTol,Standard_Real& DMin) ;
+  //! Checks whether the sensitive entity matches the picking <br>
+//! detection area (close to the picking line). <br>
+//! For details please refer to base class declaration. <br>
+  Standard_EXPORT     Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
   
   Standard_EXPORT     Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
   
   Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
-  //! returns the depth of the touched entity <br>
-  Standard_EXPORT     Standard_Real ComputeDepth(const gp_Lin& EyeLine) const;
   //!returns <mymaxrect> <br>
   Standard_EXPORT     Standard_Integer MaxBoxes() const;
   
   Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
   //! Sets the owner for all entities in wire <br>
   Standard_EXPORT     void Set(const Handle(SelectBasics_EntityOwner)& TheOwnerId) ;
-  
-  Standard_EXPORT   virtual  void SetLastPrj(const Handle(Select3D_Projector)& aPrj) ;
   //!returns <mymaxrect> <br>
   Standard_EXPORT     Handle_Select3D_SensitiveEntity GetLastDetected() const;
 
@@ -113,7 +112,6 @@ protected:
 private: 
 
 
-Standard_Integer mymaxrect;
 Select3D_SensitiveEntitySequence mysensitive;
 Standard_Integer myDetectedIndex;
 

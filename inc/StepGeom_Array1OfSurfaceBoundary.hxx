@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepGeom_Array1OfSurfaceBoundary(const Standard_Integer Low,const Standard_Integer Up);
+      StepGeom_Array1OfSurfaceBoundary(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepGeom_Array1OfSurfaceBoundary(const StepGeom_SurfaceBoundary& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepGeom_Array1OfSurfaceBoundary(const StepGeom_SurfaceBoundary& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const StepGeom_SurfaceBoundary& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepGeom_Array1OfSurfaceBoundary()
 {
   Destroy();

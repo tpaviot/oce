@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDataXtd_Array1OfTrsf(const Standard_Integer Low,const Standard_Integer Up);
+      TDataXtd_Array1OfTrsf(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TDataXtd_Array1OfTrsf(const gp_Trsf& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TDataXtd_Array1OfTrsf(const gp_Trsf& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const gp_Trsf& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TDataXtd_Array1OfTrsf()
 {
   Destroy();

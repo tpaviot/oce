@@ -302,7 +302,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   static const Standard_CString MagicNumber() ;
+  Standard_EXPORT   static Standard_CString MagicNumber() ;
   
   Standard_EXPORT     void RaiseError(const Handle(Standard_Type)& theFailure) ;
 

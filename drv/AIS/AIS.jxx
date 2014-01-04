@@ -4,11 +4,14 @@
 #ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
 #endif
-#ifndef _TopoDS_Edge_HeaderFile
-#include <TopoDS_Edge.hxx>
+#ifndef _gp_Lin_HeaderFile
+#include <gp_Lin.hxx>
 #endif
 #ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
 #endif
 #ifndef _Geom_Plane_HeaderFile
 #include <Geom_Plane.hxx>
@@ -27,12 +30,6 @@
 #endif
 #ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _gp_Ax1_HeaderFile
-#include <gp_Ax1.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
-#include <gp_Lin.hxx>
 #endif
 #ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>

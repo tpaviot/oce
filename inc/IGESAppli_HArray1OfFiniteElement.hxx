@@ -42,11 +42,11 @@ class IGESAppli_HArray1OfFiniteElement : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESAppli_HArray1OfFiniteElement(const Standard_Integer Low,const Standard_Integer Up);
+      IGESAppli_HArray1OfFiniteElement(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESAppli_HArray1OfFiniteElement(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESAppli_FiniteElement)& V);
+      IGESAppli_HArray1OfFiniteElement(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESAppli_FiniteElement)& V);
   
-  Standard_EXPORT     void Init(const Handle(IGESAppli_FiniteElement)& V) ;
+        void Init(const Handle(IGESAppli_FiniteElement)& V) ;
   
         Standard_Integer Length() const;
   

@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepMesh_Array1OfBiPoint(const Standard_Integer Low,const Standard_Integer Up);
+      BRepMesh_Array1OfBiPoint(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   BRepMesh_Array1OfBiPoint(const BRepMesh_BiPoint& Item,const Standard_Integer Low,const Standard_Integer Up);
+      BRepMesh_Array1OfBiPoint(const BRepMesh_BiPoint& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const BRepMesh_BiPoint& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~BRepMesh_Array1OfBiPoint()
 {
   Destroy();

@@ -1,23 +1,18 @@
 // Created on: 1992-07-27
 // Created by: Laurent BUCHARD
 // Copyright (c) 1992-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifndef DEB
 #define No_Standard_RangeError
@@ -376,8 +371,10 @@ PERFORM(const gp_Hypr& H,const IntAna_Quadric& Quad) {
 
 
 IntAna_IntConicQuad::IntAna_IntConicQuad (const gp_Lin& L, const gp_Pln& P,
-					  const Standard_Real Tolang) {
-  Perform(L,P,Tolang);
+                                          const Standard_Real Tolang,
+                                          const Standard_Real Tol,
+                                          const Standard_Real Len) {
+  Perform(L,P,Tolang,Tol,Len);
 }
 
 
@@ -408,7 +405,9 @@ IntAna_IntConicQuad::IntAna_IntConicQuad (const gp_Hypr& H, const gp_Pln& P,
 
 
 void IntAna_IntConicQuad::Perform (const gp_Lin& L, const gp_Pln& P,
-				   const Standard_Real Tolang) {
+                                   const Standard_Real Tolang,
+                                   const Standard_Real Tol,
+                                   const Standard_Real Len) {
   
   // Tolang represente la tolerance angulaire a partir de laquelle on considere
   // que l angle entre 2 vecteurs est nul. On raisonnera sur le cosinus de cet
@@ -426,9 +425,22 @@ void IntAna_IntConicQuad::Perform (const gp_Lin& L, const gp_Pln& P,
 
   Direc=A*Al+B*Bl+C*Cl;
   Dis = A*Orig.X() + B*Orig.Y() + C*Orig.Z() + D;
-
+  //
+  parallel=Standard_False;
   if (Abs(Direc) < Tolang) {
-    parallel= Standard_True;
+    parallel=Standard_True;
+    if (Len!=0 && Direc!=0) {
+      //check the distance from bounding point of the line to the plane
+      gp_Pnt aP1, aP2;
+      //
+      aP1.SetCoord(Orig.X()-Dis*A, Orig.Y()-Dis*B, Orig.Z()-Dis*C);
+      aP2.SetCoord(aP1.X()+Len*Al, aP1.Y()+Len*Bl, aP1.Z()+Len*Cl);
+      if (P.Distance(aP2) > Tol) {
+        parallel=Standard_False;
+      } 
+    }
+  }
+  if (parallel) {
     if (Abs(Dis) < Tolang) {
       inquadric=Standard_True;
     }
@@ -441,9 +453,9 @@ void IntAna_IntConicQuad::Perform (const gp_Lin& L, const gp_Pln& P,
     inquadric=Standard_False;
     nbpts = 1;
     paramonc [0] = - Dis/Direc;
-    pnts[0].SetCoord(Orig.X()+paramonc[0]*Al
-		     , Orig.Y()+paramonc[0]*Bl
-		     , Orig.Z()+paramonc[0]*Cl);
+    pnts[0].SetCoord(Orig.X()+paramonc[0]*Al,
+                     Orig.Y()+paramonc[0]*Bl,
+                     Orig.Z()+paramonc[0]*Cl);
   }
   done=Standard_True;
 }

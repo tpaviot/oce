@@ -42,11 +42,11 @@ class StepVisual_HArray1OfCurveStyleFontPattern : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepVisual_CurveStyleFontPattern)& V);
+      StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepVisual_CurveStyleFontPattern)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepVisual_CurveStyleFontPattern)& V) ;
+        void Init(const Handle(StepVisual_CurveStyleFontPattern)& V) ;
   
         Standard_Integer Length() const;
   

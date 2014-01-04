@@ -13,14 +13,8 @@
 #ifndef _Visual3d_ZClippingDefinitionError_HeaderFile
 #include <Visual3d_ZClippingDefinitionError.hxx>
 #endif
-#ifndef _Visual3d_ClipPlane_HeaderFile
-#include <Visual3d_ClipPlane.hxx>
-#endif
 #ifndef _Visual3d_Light_HeaderFile
 #include <Visual3d_Light.hxx>
-#endif
-#ifndef _Visual3d_HSetOfClipPlane_HeaderFile
-#include <Visual3d_HSetOfClipPlane.hxx>
 #endif
 #ifndef _Visual3d_HSetOfLight_HeaderFile
 #include <Visual3d_HSetOfLight.hxx>

@@ -1,23 +1,18 @@
 // Created on: 1995-04-05
 // Created by: Christophe MARION
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <HLRTest.ixx>
 #include <HLRTest_Projector.hxx>
@@ -29,6 +24,8 @@
 #include <DBRep.hxx>
 #include <HLRBRep_Algo.hxx>
 #include <HLRBRep_HLRToShape.hxx>
+#include <HLRAppli_ReflectLines.hxx>
+
 static Handle(HLRBRep_Algo) hider;
 #ifdef WNT
 Standard_IMPORT Draw_Viewer dout;
@@ -93,9 +90,7 @@ Handle(HLRTopoBRep_OutLiner) HLRTest::GetOutLiner (Standard_CString& Name)
 static Standard_Integer
 hprj (Draw_Interpretor& , Standard_Integer n, const char** a)
 {
-  Standard_Integer id = 1;
   if (n < 2) return 1;
-  if (n > 2) id = Draw::Atoi(a[2]);
   //
   gp_Ax2 anAx2 = gp::XOY();
   if (n == 11)
@@ -414,6 +409,43 @@ hres (Draw_Interpretor& , Standard_Integer n, const char** a)
 }
 
 //=======================================================================
+//function : reflectlines
+//purpose  : 
+//=======================================================================
+
+static Standard_Integer reflectlines(Draw_Interpretor& , Standard_Integer n, const char** a)
+{
+  if (n < 6)
+    return 1;
+
+  TopoDS_Shape aShape =  DBRep::Get(a[2]);
+  if (aShape.IsNull())
+    return 1;
+
+  Standard_Real anAISViewProjX = atof(a[3]);
+  Standard_Real anAISViewProjY = atof(a[4]);
+  Standard_Real anAISViewProjZ = atof(a[5]);
+  
+  gp_Pnt anOrigin(0.,0.,0.);
+  gp_Dir aNormal(anAISViewProjX, anAISViewProjY, anAISViewProjZ);
+  gp_Ax2 theAxes(anOrigin, aNormal);
+  gp_Dir aDX = theAxes.XDirection();
+
+  HLRAppli_ReflectLines Reflector(aShape);
+
+  Reflector.SetAxes(aNormal.X(), aNormal.Y(), aNormal.Z(),
+                    anOrigin.X(), anOrigin.Y(), anOrigin.Z(),
+                    aDX.X(), aDX.Y(), aDX.Z());
+
+  Reflector.Perform();
+
+  TopoDS_Shape Result = Reflector.GetResult();
+  DBRep::Set(a[1], Result);
+
+  return 0;
+}
+
+//=======================================================================
 //function : Commands
 //purpose  : 
 //=======================================================================
@@ -436,6 +468,11 @@ void HLRTest::Commands (Draw_Interpretor& theCommands)
   theCommands.Add("hdebug"   ,"hdebug"                      ,__FILE__,hdbg,g);
   theCommands.Add("hnullify" ,"hnullify"                    ,__FILE__,hnul,g);
   theCommands.Add("hres2d"   ,"hres2d"                      ,__FILE__,hres,g);
+
+  theCommands.Add("reflectlines",
+                  "reflectlines res shape proj_X proj_Y proj_Z",
+                  __FILE__, reflectlines, g);
+  
   hider = new HLRBRep_Algo();
 }
 

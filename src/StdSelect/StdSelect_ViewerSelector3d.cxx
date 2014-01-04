@@ -1,23 +1,18 @@
 // Created on: 1995-03-15
 // Created by: Robert COUBLANC
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <StdSelect_ViewerSelector3d.ixx>
 #include <StdSelect.hxx>
@@ -29,10 +24,12 @@
 #include <gp_Dir.hxx>
 #include <gp_Ax3.hxx>
 #include <gp_GTrsf.hxx>
+#include <gp_Pln.hxx>
 #include <V3d_PerspectiveView.hxx>
-#include <V3d_Plane.hxx>
 #include <Select3D_SensitiveEntity.hxx>
 #include <Graphic3d_ArrayOfPolylines.hxx>
+#include <Graphic3d_SequenceOfHClipPlane.hxx>
+#include <SelectMgr_SelectableObject.hxx>
 #include <SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive.hxx>
 #include <SelectBasics_ListOfBox2d.hxx>
 #include <Visual3d_TransientManager.hxx>
@@ -55,6 +52,7 @@
 #include <SelectMgr_DataMapIteratorOfDataMapOfSelectionActivation.hxx>
 #include <Aspect_TypeOfMarker.hxx>
 #include <Graphic3d_AspectMarker3d.hxx>
+#include <Graphic3d_ArrayOfPoints.hxx>
 #include <SelectBasics_ListIteratorOfListOfBox2d.hxx>
 #include <Poly_Connect.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
@@ -196,56 +194,12 @@ void StdSelect_ViewerSelector3d
        const Standard_Integer YPix,
        const Handle(V3d_View)& aView)
 {
+  SetClipping (aView->GetClipPlanes());
   UpdateProj(aView);
   Standard_Real Xr3d,Yr3d,Zr3d;
   gp_Pnt2d P2d;
   aView->Convert(XPix,YPix,Xr3d,Yr3d,Zr3d);
   myprj->Project(gp_Pnt(Xr3d,Yr3d,Zr3d),P2d);
-
-  // compute depth limits if clipping plane(s) enabled
-  gp_Lin anEyeLine = myprj->Shoot (P2d.X(), P2d.Y());
-  Standard_Real aPlaneA, aPlaneB, aPlaneC, aPlaneD;
-  Standard_Real aDepthFrom = ShortRealFirst();
-  Standard_Real aDepthTo   = ShortRealLast();
-  for (aView->InitActivePlanes(); aView->MoreActivePlanes(); aView->NextActivePlanes())
-  {
-    aView->ActivePlane()->Plane (aPlaneA, aPlaneB, aPlaneC, aPlaneD);
-    const gp_Dir& anEyeLineDir  = anEyeLine.Direction();
-    gp_Dir aPlaneNormal (aPlaneA, aPlaneB, aPlaneC);
-
-    Standard_Real aDotProduct = anEyeLineDir.Dot (aPlaneNormal);
-    Standard_Real aDirection = -(aPlaneD + anEyeLine.Location().XYZ().Dot (aPlaneNormal.XYZ()));
-    if (Abs (aDotProduct) < Precision::Angular())
-    {
-      // eyeline parallel to the clipping plane
-      if (aDirection > 0.0)
-      {
-        // invalidate the interval
-        aDepthTo   = ShortRealFirst();
-        aDepthFrom = ShortRealFirst();
-        break;
-      }
-      // just ignore this plane
-      continue;
-    }
-
-    // compute distance along the eyeline from eyeline location to intersection with clipping plane
-    Standard_Real aDepth = aDirection / aDotProduct;
-
-    // reduce depth limits
-    if (aDotProduct < 0.0)
-    {
-      if (aDepth < aDepthTo)
-      {
-        aDepthTo = aDepth;
-      }
-    }
-    else if (aDepth > aDepthFrom)
-    {
-      aDepthFrom = aDepth;
-    }
-  }
-  myprj->DepthMinMax (aDepthFrom, aDepthTo);
 
   InitSelect(P2d.X(),P2d.Y());
 }
@@ -905,8 +859,9 @@ void StdSelect_ViewerSelector3d::ComputeSensitivePrs(const Handle(SelectMgr_Sele
       gp_Pnt P = hasloc ?
         Handle(Select3D_SensitivePoint)::DownCast(Ent)->Point() :
         Handle(Select3D_SensitivePoint)::DownCast(Ent)->Point().Transformed (theloc.Transformation());
-      Graphic3d_Vertex V (P.X(), P.Y(), P.Z());
-      mysensgroup->Marker (V);
+      Handle(Graphic3d_ArrayOfPoints) anArrayOfPoints = new Graphic3d_ArrayOfPoints (1);
+      anArrayOfPoints->AddVertex (P.X(), P.Y(), P.Z());
+      mysensgroup->AddPrimitiveArray (anArrayOfPoints);
     }
     //============================================================
     // Triangulation : On met un petit offset ves l'interieur...
@@ -1085,18 +1040,123 @@ void StdSelect_ViewerSelector3d::ComputeAreasPrs (const Handle(SelectMgr_Selecti
 }
 
 //=======================================================================
-//function : ReactivateProjector
+//function : SetClipping
 //purpose  :
 //=======================================================================
-void StdSelect_ViewerSelector3d::ReactivateProjector()
+void StdSelect_ViewerSelector3d::SetClipping (const Graphic3d_SequenceOfHClipPlane& thePlanes)
 {
-  Handle(SelectBasics_SensitiveEntity) BS;
-  for (SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive it (myentities); it.More(); it.Next())
+  myClipPlanes = thePlanes;
+}
+
+//=======================================================================
+//function : ComputeClipRange
+//purpose  :
+//=======================================================================
+void StdSelect_ViewerSelector3d::ComputeClipRange (const Graphic3d_SequenceOfHClipPlane& thePlanes,
+                                                   const gp_Lin& thePickLine,
+                                                   Standard_Real& theDepthMin,
+                                                   Standard_Real& theDepthMax) const
+{
+  theDepthMin = RealFirst();
+  theDepthMax = RealLast();
+  Standard_Real aPlaneA, aPlaneB, aPlaneC, aPlaneD;
+
+  Graphic3d_SequenceOfHClipPlane::Iterator aPlaneIt (thePlanes);
+  for (; aPlaneIt.More(); aPlaneIt.Next())
   {
-    BS = it.Value();
-    if (BS->Is3D())
+    const Handle(Graphic3d_ClipPlane)& aClipPlane = aPlaneIt.Value();
+    if (!aClipPlane->IsOn())
+      continue;
+
+    gp_Pln aGeomPlane = aClipPlane->ToPlane();
+
+    aGeomPlane.Coefficients (aPlaneA, aPlaneB, aPlaneC, aPlaneD);
+
+    const gp_Dir& aPlaneDir = aGeomPlane.Axis().Direction();
+    const gp_Dir& aPickDir  = thePickLine.Direction();
+    const gp_XYZ& aPntOnLine = thePickLine.Location().XYZ();
+    const gp_XYZ& aPlaneDirXYZ = aPlaneDir.XYZ();
+
+    Standard_Real aDotProduct = aPickDir.Dot (aPlaneDir);
+    Standard_Real aDistance = -(aPntOnLine.Dot (aPlaneDirXYZ) + aPlaneD);
+
+    // check whether the pick line is parallel to clip plane
+    if (Abs (aDotProduct) < Precision::Angular())
     {
-      (*((Handle(Select3D_SensitiveEntity)*) &BS))->SetLastPrj (myprj);
+      if (aDistance > 0.0)
+      {
+        // line lies above the plane, thus no selection is possible
+        theDepthMin = 0.0;
+        theDepthMax = 0.0;
+        return;
+      }
+
+      // line lies below the plane and is not clipped, skip
+      continue;
+    }
+
+    // compute distance to point of pick line intersection with the plane
+    Standard_Real aIntDist = aDistance / aDotProduct;
+
+    // change depth limits for case of opposite and directed planes
+    if (aDotProduct < 0.0)
+    {
+      theDepthMax = Min (aIntDist, theDepthMax);
+    }
+    else if (aIntDist > theDepthMin)
+    {
+      theDepthMin = Max (aIntDist, theDepthMin);
     }
   }
+}
+
+//=======================================================================
+//function : PickingLine
+//purpose  :
+//=======================================================================
+gp_Lin StdSelect_ViewerSelector3d::PickingLine(const Standard_Real theX, const Standard_Real theY) const
+{
+  return myprj->Shoot (theX, theY);
+}
+
+//=======================================================================
+//function : DepthClipping
+//purpose  :
+//=======================================================================
+void StdSelect_ViewerSelector3d::DepthClipping (const Standard_Real theX,
+                                                const Standard_Real theY,
+                                                Standard_Real& theDepthMin,
+                                                Standard_Real& theDepthMax) const
+{
+  return ComputeClipRange (myClipPlanes, PickingLine (theX, theY), theDepthMin, theDepthMax);
+}
+
+//=======================================================================
+//function : DepthClipping
+//purpose  :
+//=======================================================================
+void StdSelect_ViewerSelector3d::DepthClipping (const Standard_Real theX,
+                                                const Standard_Real theY,
+                                                const Handle(SelectMgr_EntityOwner)& theOwner,
+                                                Standard_Real& theDepthMin,
+                                                Standard_Real& theDepthMax) const
+{
+  return ComputeClipRange (theOwner->Selectable()->GetClipPlanes(),
+                           PickingLine (theX, theY),
+                           theDepthMin, theDepthMax);
+}
+
+//=======================================================================
+//function : HasDepthClipping
+//purpose  :
+//=======================================================================
+Standard_Boolean StdSelect_ViewerSelector3d::HasDepthClipping (const Handle(SelectMgr_EntityOwner)& theOwner) const
+{
+  if (!theOwner->HasSelectable())
+  {
+    return Standard_False;
+  }
+
+  const Handle(SelectMgr_SelectableObject)& aSelectable = theOwner->Selectable();
+  return (aSelectable->GetClipPlanes().Size() > 0);
 }

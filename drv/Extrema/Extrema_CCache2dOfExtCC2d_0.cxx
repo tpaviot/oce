@@ -9,6 +9,9 @@
 #include <Standard_Type.hxx>
 #endif
 
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
 #ifndef _TColgp_HArray1OfPnt2d_HeaderFile
 #include <TColgp_HArray1OfPnt2d.hxx>
 #endif
@@ -20,6 +23,9 @@
 #endif
 #ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
 #endif
 
  

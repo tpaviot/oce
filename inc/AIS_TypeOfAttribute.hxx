@@ -9,7 +9,7 @@
 
 enum AIS_TypeOfAttribute {
 AIS_TOA_Line,
-AIS_TOA_Angle,
+AIS_TOA_Dimension,
 AIS_TOA_Wire,
 AIS_TOA_Plane,
 AIS_TOA_Vector,

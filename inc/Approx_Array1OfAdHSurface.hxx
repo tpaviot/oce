@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Approx_Array1OfAdHSurface(const Standard_Integer Low,const Standard_Integer Up);
+      Approx_Array1OfAdHSurface(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Approx_Array1OfAdHSurface(const Handle(Adaptor3d_HSurface)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Approx_Array1OfAdHSurface(const Handle(Adaptor3d_HSurface)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(Adaptor3d_HSurface)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Approx_Array1OfAdHSurface()
 {
   Destroy();

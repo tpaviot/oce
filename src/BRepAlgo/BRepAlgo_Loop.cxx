@@ -1,23 +1,18 @@
 // Created on: 1995-11-10
 // Created by: Yves FRICAUD
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <stdio.h>
 
@@ -50,7 +45,7 @@
 #ifdef DRAW
 #include <DBRep.hxx>
 #endif
-#ifdef DEB
+#ifdef DEBUG_ALGO
 Standard_Boolean AffichLoop  = Standard_False;
 Standard_Integer NbLoops     = 0;
 Standard_Integer NbWires     = 1;
@@ -189,7 +184,7 @@ static TopoDS_Vertex  UpdateClosedEdge(const TopoDS_Edge&         E,
   }
   if (OnStart && OnEnd) {
     if (!VB[0].IsSame(VB[1])) {
-#ifdef DEB
+#ifdef DEBUG_ALGO
       if (AffichLoop)
 	cout <<"Two different vertices on the closing vertex"<<endl;
 #endif
@@ -306,7 +301,7 @@ static Standard_Boolean  SelectEdge(const TopoDS_Face&    F,
 {
   TopTools_ListIteratorOfListOfShape itl;
   NE.Nullify();
-#ifdef DEB  
+#ifdef DEBUG_ALGO  
   if (AffichLoop) {
     if ( LE.Extent() > 2) {
       cout <<"vertex on more than 2 edges in a face."<<endl;
@@ -507,28 +502,31 @@ void BRepAlgo_Loop::Perform()
   TopoDS_Vertex                                       V1,V2;
   Standard_Boolean                                    YaCouture = Standard_False;
 
-#ifdef DEB
+#ifdef DEBUG_ALGO
   if (AffichLoop) {
     cout <<"NewLoop"<<endl;
     NbLoops++;
 #ifdef DRAW
-    Standard_Integer NbEdges = 1;
     sprintf(name,"FLoop_%d",NbLoops);
     DBRep::Set(name,myFace);
+    Standard_Integer NbEdges = 1;
+#endif
     for (Mapit.Initialize(myVerOnEdges); Mapit.More(); Mapit.Next()) { 
       const TopoDS_Edge& E = TopoDS::Edge(Mapit.Key());
+#ifdef DRAW
       sprintf(name,"EEE_%d_%d",NbLoops,NbEdges++);
       DBRep::Set(name,E);
+#endif
     }
     for (itl.Initialize(myConstEdges); itl.More(); itl.Next()) {
       const TopoDS_Edge& E = TopoDS::Edge(itl.Value());    
+#ifdef DRAW
       sprintf(name,"EEE_%d_%d",NbLoops,NbEdges++);
       DBRep::Set(name,E);
-    }
 #endif
+    }
   }
 #endif
-  
   //------------------------------------------------
   // Cut edges
   //------------------------------------------------
@@ -569,11 +567,11 @@ void BRepAlgo_Loop::Perform()
     TopTools_MapOfShape Done;
     for (Mapit.Initialize(MVE); Mapit.More();Mapit.Next()) {
       for (itl.Initialize(Mapit.Value()); itl.More(); itl.Next()) {
-	TopoDS_Edge& E = TopoDS::Edge(itl.Value());
-	if (Done.Add(E)) {
-	  sprintf(name,"EEC_%d_%d",NbLoops,NbEdges++);
-	  DBRep::Set(name,E);
-	}
+        TopoDS_Edge& E = TopoDS::Edge(itl.Value());
+        if (Done.Add(E)) {
+          sprintf(name,"EEC_%d_%d",NbLoops,NbEdges++);
+          DBRep::Set(name,E);
+        }
       }
     }
   }
@@ -629,14 +627,14 @@ void BRepAlgo_Loop::Perform()
       UsedEdges.Add(CE);
 
       if (!MVE.IsBound(CV) || MVE(CV).IsEmpty()) {
-	End = Standard_True;
+        End = Standard_True;
       }
       else {
-	End = !SelectEdge(myFace,CE,CV,NE,MVE(CV));
-	if (!End) {
-	  CE = NE;
-	  if (MVE(CV).IsEmpty()) MVE.UnBind(CV);
-	}	
+        End = !SelectEdge(myFace,CE,CV,NE,MVE(CV));
+        if (!End) {
+          CE = NE;
+          if (MVE(CV).IsEmpty()) MVE.UnBind(CV);
+        }
       }
     }
     //--------------------------------------------------
@@ -646,28 +644,28 @@ void BRepAlgo_Loop::Perform()
     TopExp_Explorer explo( NW, TopAbs_VERTEX );
     for (; explo.More(); explo.Next())
       {
-	const TopoDS_Vertex& aV = TopoDS::Vertex( explo.Current() );
-	Handle(BRep_TVertex)& TV = *((Handle(BRep_TVertex)*) &(aV).TShape());
-	TV->Tolerance( Tol );
-	TV->Modified( Standard_True );
+      const TopoDS_Vertex& aV = TopoDS::Vertex( explo.Current() );
+      Handle(BRep_TVertex)& TV = *((Handle(BRep_TVertex)*) &(aV).TShape());
+      TV->Tolerance( Tol );
+      TV->Modified( Standard_True );
       }
     for (explo.Init( NW, TopAbs_EDGE ); explo.More(); explo.Next())
       {
-	const TopoDS_Edge& aE = TopoDS::Edge( explo.Current() );
-	Handle(BRep_TEdge)& TE = *((Handle(BRep_TEdge)*) &(aE).TShape());
-	TE->Tolerance( Tol );
-	TE->Modified( Standard_True );
+      const TopoDS_Edge& aE = TopoDS::Edge( explo.Current() );
+      Handle(BRep_TEdge)& TE = *((Handle(BRep_TEdge)*) &(aE).TShape());
+      TE->Tolerance( Tol );
+      TE->Modified( Standard_True );
       }
 
     if (VF.IsSame(CV) && SamePnt2d(VF,EF,CE,myFace))
       myNewWires.Append (NW);
+#ifdef DEBUG_ALGO
     else {
-#ifdef DEB
       cout <<"BRepAlgo_Loop: Open Wire"<<endl;
       if (AffichLoop)
-	cout << "OpenWire is : NW_"<<NbLoops<<"_"<<NbWires<<endl;
+        cout << "OpenWire is : NW_"<<NbLoops<<"_"<<NbWires<<endl;
+      }
 #endif
-    }
 #ifdef DRAW
     if (AffichLoop) {
       sprintf(name,"NW_%d_%d",NbLoops,NbWires++);	
@@ -690,7 +688,6 @@ void BRepAlgo_Loop::CutEdge (const TopoDS_Edge&          E,
 {
   TopoDS_Shape aLocalE  = E.Oriented(TopAbs_FORWARD);
   TopoDS_Edge WE = TopoDS::Edge(aLocalE);
-//  TopoDS_Edge WE = TopoDS::Edge(E.Oriented(TopAbs_FORWARD));
 
   Standard_Real                      U1,U2;
   TopoDS_Vertex                      V1,V2;

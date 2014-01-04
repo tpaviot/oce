@@ -1,24 +1,18 @@
 // Created on: 1991-07-16
 // Created by: Christophe MARION
 // Copyright (c) 1991-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <DrawTrSurf_Drawable.ixx>
 #include <GCPnts_UniformDeflection.hxx>
@@ -127,21 +121,25 @@ static void PlotCurve (Draw_Display& aDisplay,
 //=======================================================================
 
 void DrawTrSurf_Drawable::DrawCurveOn (Adaptor3d_Curve&   C, 
-				       Draw_Display& aDisplay) const
+                                       Draw_Display& aDisplay) const
 {
   gp_Pnt P;
-  if (myDrawMode == 1) {
+  if (myDrawMode == 1)
+  {
     Standard_Real Fleche = myDeflection/aDisplay.Zoom();
     GCPnts_UniformDeflection LineVu(C,Fleche);
-    if (LineVu.IsDone()) {
+    if (LineVu.IsDone())
+    {
       aDisplay.MoveTo(LineVu.Value(1));
-      for (Standard_Integer i = 2; i <= LineVu.NbPoints(); i++) {
-	aDisplay.DrawTo(LineVu.Value(i));
+      for (Standard_Integer i = 2; i <= LineVu.NbPoints(); i++)
+      {
+        aDisplay.DrawTo(LineVu.Value(i));
       }
-    }  
+    }
   }
-  else {
-    Standard_Real j;
+  else
+  {
+    Standard_Integer j;
     Standard_Integer intrv, nbintv = C.NbIntervals(GeomAbs_CN);
     TColStd_Array1OfReal TI(1,nbintv+1);
     C.Intervals(TI,GeomAbs_CN);
@@ -150,36 +148,44 @@ void DrawTrSurf_Drawable::DrawCurveOn (Adaptor3d_Curve&   C,
     GeomAbs_CurveType CurvType = C.GetType();
     gp_Pnt aPPnt=P, aNPnt;
 
-    for (intrv = 1; intrv <= nbintv; intrv++) {
+    for (intrv = 1; intrv <= nbintv; intrv++)
+    {
       Standard_Real t = TI(intrv);
       Standard_Real step = (TI(intrv+1) - t) / myDiscret;
 
-      switch (CurvType) {
-      case GeomAbs_Line :
-	break;
-      case GeomAbs_Circle :
-      case GeomAbs_Ellipse :
-	for (j = 1; j < myDiscret; j++) {
-	  t += step;
-	  C.D0(t,P);
-	  aDisplay.DrawTo(P);
-	}
-	break;
-      case GeomAbs_Parabola :
-      case GeomAbs_Hyperbola :
-      case GeomAbs_BezierCurve :
-      case GeomAbs_BSplineCurve :
-      case GeomAbs_OtherCurve :
-	for (j = 1; j <= myDiscret/2; j++) {
-	  C.D0 (t+step*2., aNPnt);
+      switch (CurvType)
+      {
+      case GeomAbs_Line:
+        break;
+      case GeomAbs_Circle:
+      case GeomAbs_Ellipse:
+        for (j = 1; j < myDiscret; j++)
+        {
+          t += step;
+          C.D0(t,P);
+          aDisplay.DrawTo(P);
+        }
+        break;
+      case GeomAbs_Parabola:
+      case GeomAbs_Hyperbola:
+      case GeomAbs_BezierCurve:
+      case GeomAbs_BSplineCurve:
+      case GeomAbs_OtherCurve:
+        const Standard_Integer nIter = myDiscret/2;
+        for (j = 1; j < nIter; j++)
+        {
+          const Standard_Real t1 = t+step*2.;
+          C.D0 (t1, aNPnt);
           PlotCurve (aDisplay, C, t, step, aPPnt, aNPnt);
-	  aPPnt = aNPnt;
-	  t += step*2.;
-	}
-	break;
+          aPPnt = aNPnt;
+          t = t1;
+        }
+
+        break;
       }
 
       C.D0(TI(intrv+1),P);
+      PlotCurve (aDisplay, C, t, step, aPPnt, P);
       aDisplay.DrawTo(P);
     }
   }

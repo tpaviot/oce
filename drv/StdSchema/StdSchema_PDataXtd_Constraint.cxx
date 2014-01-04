@@ -42,6 +42,8 @@ void StdSchema_PDataXtd_Constraint::SWrite(const Handle(Standard_Persistent)& p,
   if (!p.IsNull()) {
     Handle(PDataXtd_Constraint) &pp = (Handle(PDataXtd_Constraint)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPDataXtd_ConstraintmyType());
@@ -66,6 +68,8 @@ void StdSchema_PDataXtd_Constraint::SRead(const Handle(Standard_Persistent)& p, 
 { 
   if (!p.IsNull()) {
     Handle(PDataXtd_Constraint) &pp = (Handle(PDataXtd_Constraint)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

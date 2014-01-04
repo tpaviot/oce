@@ -1,23 +1,18 @@
 // Created on: 1995-08-04
 // Created by: Jean Yves LEBEY
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TopOpeBRep_FacesFiller.ixx>
 
@@ -69,7 +64,6 @@ void debvprmess(Standard_Integer f1,Standard_Integer f2,Standard_Integer il,Stan
 {cout<<"f1,f2,il,vp,si : "<<f1<<","<<f2<<","<<il<<","<<vp<<","<<si<<endl;cout.flush();debvpr();}
 void debpoint(Standard_Integer i) {cout<<"+ debpoint"<<i<<endl;}
 void debvertex(Standard_Integer i){cout<<"+ debvertex"<<i<<endl;}
-static void FUN_Raise() {cout <<"FAILURE IN TopOpeBRep_FacesFiller::ProcessVPonR"<<endl;}
 
 Standard_EXPORT void debarc(const Standard_Integer i)   {cout<<"+ debarc "<<i<<endl;}
 Standard_EXPORT void debooarc(const Standard_Integer i) {cout<<"+ debooarc "<<i<<endl;}
@@ -229,11 +223,15 @@ static void FUN_VPgeometryfound
   else          hasOOedge = (VP.State(OOShapeIndex) == TopAbs_ON);
   if ( hasOOedge ) {  
     TopoDS_Shape OOedge;
-    if (on2edges) OOedge = ((signed) rkErest == (signed) OOShapeIndex)? Erest : VP.Edge(OOShapeIndex);
+
+    if (on2edges) OOedge = (rkErest == OOShapeIndex)? Erest : VP.Edge(OOShapeIndex);
     else          OOedge = VP.EdgeON(OOShapeIndex);    
+
     Standard_Real OOpar = 0.;
-    if (on2edges) OOpar = ((signed) rkErest == (signed) OOShapeIndex)? parErest : VP.EdgeParameter(OOShapeIndex);
+
+    if (on2edges) OOpar = (rkErest == OOShapeIndex)? parErest : VP.EdgeParameter(OOShapeIndex);
     else          OOpar = VP.EdgeONParameter(OOShapeIndex); 
+
     Standard_Real tolOOe = FUN_tool_maxtol(OOedge);
     Standard_Real OOtolp = Precision::Parametric(tolOOe);
     if (BDS.HasShape(OOedge)) {

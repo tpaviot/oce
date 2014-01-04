@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopTools_Array1OfListOfShape(const Standard_Integer Low,const Standard_Integer Up);
+      TopTools_Array1OfListOfShape(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TopTools_Array1OfListOfShape(const TopTools_ListOfShape& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TopTools_Array1OfListOfShape(const TopTools_ListOfShape& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const TopTools_ListOfShape& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TopTools_Array1OfListOfShape()
 {
   Destroy();

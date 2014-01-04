@@ -1,24 +1,18 @@
 -- Created on: 1996-10-17
 -- Created by: Odile OLIVIER
 -- Copyright (c) 1996-1999 Matra Datavision
--- Copyright (c) 1999-2012 OPEN CASCADE SAS
+-- Copyright (c) 1999-2014 OPEN CASCADE SAS
 --
--- The content of this file is subject to the Open CASCADE Technology Public
--- License Version 6.5 (the "License"). You may not use the content of this file
--- except in compliance with the License. Please obtain a copy of the License
--- at http://www.opencascade.org and read it completely before using this file.
+-- This file is part of Open CASCADE Technology software library.
 --
--- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
--- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+-- This library is free software; you can redistribute it and / or modify it
+-- under the terms of the GNU Lesser General Public version 2.1 as published
+-- by the Free Software Foundation, with special exception defined in the file
+-- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+-- distribution for complete text of the license and disclaimer of any warranty.
 --
--- The Original Code and all software distributed under the License is
--- distributed on an "AS IS" basis, without warranty of any kind, and the
--- Initial Developer hereby disclaims all such warranties, including without
--- limitation, any warranties of merchantability, fitness for a particular
--- purpose or non-infringement. Please see the License for the specific terms
--- and conditions governing the rights and limitations under the License.
-
-
+-- Alternatively, this file may be used under the terms of Open CASCADE
+-- commercial license or contractual agreement.
 
 class SensitiveWire   from Select3D 
 inherits SensitiveEntity from Select3D
@@ -34,6 +28,7 @@ uses
     SensitiveEntity          from Select3D,
     SensitiveEntitySequence  from Select3D,
     ListOfBox2d              from SelectBasics,
+    PickArgs                 from SelectBasics,
     Array1OfPnt2d            from TColgp,
     Box2d                    from Bnd,
     Location                 from TopLoc
@@ -76,15 +71,15 @@ is
     ResetLocation(me:mutable) is redefined static;
     	---Purpose:  propagation of location on all the sensitive inside...    
 
-    Matches(me  :mutable; 
-            X,Y : Real from Standard;
-            aTol: Real from Standard;
-            DMin: out Real from Standard) 
+    Matches (me : mutable;
+             thePickArgs : PickArgs from SelectBasics;
+             theMatchDMin, theMatchDepth : out Real from Standard)
     returns Boolean
-    is  redefined static;
-    	---Level: Public 
-    	---Purpose: projection of the sensitive primitive in order to
-    	--          get 2D boxes for the Sort Algorithm
+    is redefined static;
+    ---Level: Public
+    ---Purpose: Checks whether the sensitive entity matches the picking
+    -- detection area (close to the picking line).
+    -- For details please refer to base class declaration.
 
     Matches (me  :mutable; 
              XMin,YMin,XMax,YMax : Real from Standard;
@@ -101,10 +96,6 @@ is
     	---Level: Public 
     
 
-    ComputeDepth(me;EyeLine: Lin from gp) 
-    returns Real from Standard is redefined static;
-    	---Purpose: returns the depth of the touched entity
-
     MaxBoxes(me) returns Integer is redefined static;    
     	---Level: Public 
     	---Purpose:returns <mymaxrect>
@@ -114,15 +105,12 @@ is
 
     Set(me:mutable;TheOwnerId: EntityOwner from SelectBasics) is redefined static; 
     ---Purpose: Sets the owner for all entities in wire 
-        
-    SetLastPrj(me:mutable;aPrj: Projector from Select3D) is redefined virtual; 
-     
+
     GetLastDetected(me)
     returns SensitiveEntity from Select3D is static; 
     ---Purpose:returns <mymaxrect>
 
 fields
-    mymaxrect       : Integer;
     mysensitive     : SensitiveEntitySequence from Select3D;
     myDetectedIndex : Integer from Standard;
 end SensitiveWire;

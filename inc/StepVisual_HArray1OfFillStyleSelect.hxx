@@ -39,11 +39,11 @@ class StepVisual_HArray1OfFillStyleSelect : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepVisual_HArray1OfFillStyleSelect(const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_HArray1OfFillStyleSelect(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepVisual_HArray1OfFillStyleSelect(const Standard_Integer Low,const Standard_Integer Up,const StepVisual_FillStyleSelect& V);
+      StepVisual_HArray1OfFillStyleSelect(const Standard_Integer Low,const Standard_Integer Up,const StepVisual_FillStyleSelect& V);
   
-  Standard_EXPORT     void Init(const StepVisual_FillStyleSelect& V) ;
+        void Init(const StepVisual_FillStyleSelect& V) ;
   
         Standard_Integer Length() const;
   

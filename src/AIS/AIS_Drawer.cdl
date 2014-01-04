@@ -1,24 +1,18 @@
 -- Created on: 1992-09-18
 -- Created by: Odile Olivier
 -- Copyright (c) 1992-1999 Matra Datavision
--- Copyright (c) 1999-2012 OPEN CASCADE SAS
+-- Copyright (c) 1999-2014 OPEN CASCADE SAS
 --
--- The content of this file is subject to the Open CASCADE Technology Public
--- License Version 6.5 (the "License"). You may not use the content of this file
--- except in compliance with the License. Please obtain a copy of the License
--- at http://www.opencascade.org and read it completely before using this file.
+-- This file is part of Open CASCADE Technology software library.
 --
--- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
--- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+-- This library is free software; you can redistribute it and / or modify it
+-- under the terms of the GNU Lesser General Public version 2.1 as published
+-- by the Free Software Foundation, with special exception defined in the file
+-- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+-- distribution for complete text of the license and disclaimer of any warranty.
 --
--- The Original Code and all software distributed under the License is
--- distributed on an "AS IS" basis, without warranty of any kind, and the
--- Initial Developer hereby disclaims all such warranties, including without
--- limitation, any warranties of merchantability, fitness for a particular
--- purpose or non-infringement. Please see the License for the specific terms
--- and conditions governing the rights and limitations under the License.
-
-
+-- Alternatively, this file may be used under the terms of Open CASCADE
+-- commercial license or contractual agreement.
 
 class Drawer from AIS inherits Drawer from Prs3d
 
@@ -57,16 +51,17 @@ uses
     PointAspect from Prs3d,
     ShadingAspect from Prs3d,
     IsoAspect from Prs3d,
-    LengthAspect from Prs3d,
-    AngleAspect from Prs3d,
+    DimensionAspect from Prs3d,
     PlaneAspect from Prs3d,
-    RadiusAspect from Prs3d,
     ArrowAspect from Prs3d,
     TypeOfDeflection from Aspect,
     NameOfColor from Quantity,
     PlaneAngle from Quantity,
     Length from Quantity,
-    TypeOfHLR from Prs3d
+    DimensionUnits from Prs3d,
+    AsciiString from TCollection,
+    TypeOfHLR from Prs3d,
+    Ax2 from gp
 
 is
     Create returns mutable Drawer from AIS;
@@ -541,43 +536,45 @@ is
     is redefined static;
 
 --
---  Attributes for the presentation of a Length.
+--  Attributes for the presentation of a dimensions.
 --  
 
-    LengthAspect(me:mutable) returns mutable LengthAspect from Prs3d
-    ---Purpose: Returns a link with Prs3d_Drawer_LengthAspect,
--- which provides settings for the appearance of lengths.
-    is redefined static;
+    DimensionAspect (me : mutable) returns mutable DimensionAspect from Prs3d is redefined static;
+    ---Purpose: Returns a link with Prs3d_Drawer_DimensionAspect,
+    -- which provides settings for the appearance of dimensions.
 
-    HasLengthAspect (me) returns Boolean from Standard 
-        ---C++: inline 
-    	---Purpose: Returns true if the Drawer has a length aspect setting active.
-    is static;      
-     
---
---  Attributes for the presentation of a Angle.
---  
+    HasDimensionAspect (me) returns Boolean from Standard is static;
+    ---C++: inline
+    -- Purpose: Returns true if the Drawer has a dimension aspect setting active.
 
-    AngleAspect(me:mutable) returns mutable AngleAspect from Prs3d
-    	---Purpose: Returns a link with Prs3d_Drawer_AngleAspect,
-    	-- which provides settings for lines used to display angles.
-    is redefined static;
+    SetDimLengthModelUnits (me: mutable; theUnits : AsciiString from TCollection) is redefined static;
+    ---Purpose: Sets dimension length model units for computing of dimension presentation.
 
-    HasAngleAspect (me) returns Boolean from Standard 
-        ---C++: inline 
-    	---Purpose: Returns true if the Drawer has an angle aspect
-    	-- setting active.
-    is static;      
+    SetDimAngleModelUnits (me: mutable; theUnits : AsciiString from TCollection) is redefined static;
+    ---Purpose: Sets dimension angle model units for computing of dimension presentation.
 
---
---  Attributes for the presentation of a Radius.
---  
+    DimAngleModelUnits (me) returns AsciiString from TCollection is redefined static;
+    ---Purpose: Returns angle model units for the dimension presentation.
+    ---C++: return const &
 
-    RadiusAspect(me) returns mutable RadiusAspect from Prs3d
-    	---Purpose: Returns a link with Prs3d_Drawer_RadiusAspect,
-    	-- which provides settings for lines which serve to display radii.
-    is redefined static;
-    
+    DimLengthModelUnits (me) returns AsciiString from TCollection is redefined static;
+    ---Purpose: Returns length model units for the dimension presentation.
+    ---C++: return const &
+
+    SetDimLengthDisplayUnits (me: mutable; theUnits : AsciiString from TCollection) is redefined static;
+    ---Purpose: Sets length units in which value for dimension presentation is displayed.
+
+    SetDimAngleDisplayUnits (me: mutable; theUnits : AsciiString from TCollection) is redefined static;
+    ---Purpose: Sets angle units in which value for dimension presentation is displayed.
+
+    DimLengthDisplayUnits (me) returns AsciiString from TCollection is redefined static;
+    ---Purpose: Returns length units in which dimension presentation is displayed.
+    ---C++: return const &
+
+    DimAngleDisplayUnits (me) returns AsciiString from TCollection is redefined static;
+    ---Purpose: Returns angle units in which dimension presentation is displayed.
+    ---C++: return const &
+
 -- Attributes for the sections
 
     SectionAspect (me:mutable) returns mutable LineAspect from Prs3d
@@ -619,25 +616,32 @@ is
     	-- for Interactive Objects.
 
 fields
+
     myLink                           : Drawer from Prs3d;
     hasLocalAttributes               : Boolean from Standard;		
-    
+
     myhasOwnDeviationCoefficient     : Boolean from Standard;
     myOwnDeviationCoefficient        : Real from Standard;
     myPreviousDeviationCoefficient   : Real from Standard;
-    
+
     myhasOwnHLRDeviationCoefficient  : Boolean from Standard;
     myOwnHLRDeviationCoefficient     : Real from Standard;
     myPreviousHLRDeviationCoefficient: Real from Standard;
-    
+
     myhasOwnDeviationAngle           : Boolean from Standard;
     myOwnDeviationAngle              : Real from Standard;
     myPreviousDeviationAngle         : Real from Standard;
-    
+
     myhasOwnHLRDeviationAngle        : Boolean from Standard;
     myOwnHLRDeviationAngle           : Real from Standard; 
     myPreviousHLRDeviationAngle      : Real from Standard;
     myHasOwnFaceBoundaryDraw         : Boolean from Standard;
+
+    myHasOwnDimLengthModelUnits      : Boolean from Standard;
+    myHasOwnDimLengthDisplayUnits    : Boolean from Standard;
+    myHasOwnDimAngleModelUnits      : Boolean from Standard;
+    myHasOwnDimAngleDisplayUnits    : Boolean from Standard;
+
 end Drawer;
  
 

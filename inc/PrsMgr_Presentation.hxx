@@ -74,7 +74,9 @@ private:
   
   Standard_EXPORT   virtual  void Display()  = 0;
   
-  Standard_EXPORT   virtual  void Erase() const = 0;
+  Standard_EXPORT   virtual  void Erase()  = 0;
+  
+  Standard_EXPORT   virtual  void SetVisible(const Standard_Boolean theValue)  = 0;
   
   Standard_EXPORT   virtual  void Highlight()  = 0;
   

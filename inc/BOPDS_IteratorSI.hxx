@@ -22,6 +22,9 @@
 #ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
 #endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
+#endif
 
 
 
@@ -46,6 +49,16 @@ Standard_EXPORT virtual ~BOPDS_IteratorSI();
 //!  theAllocator - the allocator to manage the memory <br>
 //! <br>
   Standard_EXPORT   BOPDS_IteratorSI(const BOPCol_BaseAllocator& theAllocator);
+  //!  Updates the lists of possible intersections <br>
+//!           according to the value of <theLevel>. <br>
+//!           It defines which interferferences will be checked: <br>
+//!           0 - only V/V; <br>
+//!           1 - V/V and V/E; <br>
+//!           2 - V/V, V/E and E/E; <br>
+//!           3 - V/V, V/E, E/E and V/F; <br>
+//!           4 - V/V, V/E, E/E, V/F and E/F; <br>
+//!           other - all interferences. <br>
+  Standard_EXPORT     void UpdateByLevelOfCheck(const Standard_Integer theLevel) ;
 
 
 

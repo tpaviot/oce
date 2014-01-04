@@ -1,26 +1,18 @@
 // Created on: 1995-03-13
 // Created by: Robert COUBLANC
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Select3D_SensitiveEntity.ixx>
 #include <Precision.hxx>
@@ -33,54 +25,19 @@
 //=======================================================================
 
 Select3D_SensitiveEntity::Select3D_SensitiveEntity(const Handle(SelectBasics_EntityOwner)& OwnerId):
-SelectBasics_SensitiveEntity(OwnerId),
-mylastprj(),
-mylastdepth(ShortRealLast())
+SelectBasics_SensitiveEntity(OwnerId)
 {}
 
 //=======================================================================
-//function : Project
-//purpose  : 
-//=======================================================================
-
-void Select3D_SensitiveEntity::Project(const Handle(Select3D_Projector)& aPrj)
-{
-  mylastprj = aPrj;
-}
-
-//=======================================================================
 //function : Matches
 //purpose  : 
 //=======================================================================
 
-Standard_Boolean Select3D_SensitiveEntity::Matches(const Standard_Real X,
-                                                   const Standard_Real Y,
-                                                   const Standard_Real aTol,
-                                                   Standard_Real&  DMin)
-{
-  if (!mylastprj.IsNull())
-  {
-    gp_Lin L = mylastprj->Shoot (X, Y);
-    SetLastDepth (ComputeDepth (L));
-    return (mylastdepth > mylastprj->DepthMin()) && (mylastdepth < mylastprj->DepthMax());
-  }
-  else
-  {
-    SetLastDepth (ComputeDepth (gp_Lin())); // how we determine depth without eyeline here?
-    return (mylastdepth > ShortRealFirst()) && (mylastdepth < ShortRealLast());
-  }
-}
-
-//=======================================================================
-//function : Matches
-//purpose  : 
-//=======================================================================
-
-Standard_Boolean Select3D_SensitiveEntity::Matches(const Standard_Real XMin,
-                                                   const Standard_Real YMin,
-                                                   const Standard_Real XMax,
-                                                   const Standard_Real YMax,
-                                                   const Standard_Real aTol)
+Standard_Boolean Select3D_SensitiveEntity::Matches(const Standard_Real,
+                                                   const Standard_Real,
+                                                   const Standard_Real,
+                                                   const Standard_Real,
+                                                   const Standard_Real)
 {
   return Standard_False;
 }
@@ -90,9 +47,9 @@ Standard_Boolean Select3D_SensitiveEntity::Matches(const Standard_Real XMin,
 //purpose  : 
 //=======================================================================
 
-Standard_Boolean Select3D_SensitiveEntity::Matches(const TColgp_Array1OfPnt2d& aPoly,
-                                                   const Bnd_Box2d& aBox,
-                                                   const Standard_Real aTol)
+Standard_Boolean Select3D_SensitiveEntity::Matches(const TColgp_Array1OfPnt2d&,
+                                                   const Bnd_Box2d&,
+                                                   const Standard_Real)
 {
   return Standard_False;
 }
@@ -102,7 +59,7 @@ Standard_Boolean Select3D_SensitiveEntity::Matches(const TColgp_Array1OfPnt2d& a
 //purpose  : 
 //=======================================================================
 
-void Select3D_SensitiveEntity::Dump(Standard_OStream& S,const Standard_Boolean FullDump) const
+void Select3D_SensitiveEntity::Dump(Standard_OStream& S, const Standard_Boolean) const
 {
   S<<"\tSensitive Entity 3D"<<endl;
 }
@@ -190,45 +147,12 @@ Standard_Boolean Select3D_SensitiveEntity::Is3D() const
 {return Standard_True;}
 
 //=======================================================================
-//function : Depth
-//purpose  : 
-//=======================================================================
-
-Standard_Real Select3D_SensitiveEntity::Depth() const
-{return mylastdepth;}
-
-//=======================================================================
-//function : GetEyeLine
-//purpose  : 
-//=======================================================================
-
-gp_Lin Select3D_SensitiveEntity::GetEyeLine(const Standard_Real X,
-                                            const Standard_Real Y) const
-{
-  gp_Lin L;
-  if (!mylastprj.IsNull())
-  {
-    L = mylastprj->Shoot (X, Y);
-  }
-  return L;
-}
-
-//=======================================================================
 //function : MaxBoxes
 //purpose  : 
 //=======================================================================
 
 Standard_Integer Select3D_SensitiveEntity::MaxBoxes() const 
 {return 1;}
-
-//=======================================================================
-//function : SetLastPrj
-//purpose  : 
-//=======================================================================
-
-void Select3D_SensitiveEntity::SetLastPrj(const Handle(Select3D_Projector)& aprj)
-{ mylastprj = aprj; }
-
 
 //=======================================================================
 //function : GetConnected
@@ -239,13 +163,4 @@ Handle(Select3D_SensitiveEntity) Select3D_SensitiveEntity::GetConnected(const To
 {
   Handle(Select3D_SensitiveEntity) NiouEnt;
   return NiouEnt;
-}
-
-//=======================================================================
-//function : SetLastDepth
-//purpose  : 
-//=======================================================================
-void Select3D_SensitiveEntity::SetLastDepth(const Standard_Real aDepth)
-{
-  mylastdepth = DToF(aDepth);
 }

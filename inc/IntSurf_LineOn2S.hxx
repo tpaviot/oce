@@ -22,6 +22,9 @@
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
+#ifndef _IntSurf_Allocator_HeaderFile
+#include <IntSurf_Allocator.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -41,7 +44,7 @@ class IntSurf_LineOn2S : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IntSurf_LineOn2S();
+  Standard_EXPORT   IntSurf_LineOn2S(const IntSurf_Allocator& theAllocator = 0);
   //! Adds a point in the line. <br>
         void Add(const IntSurf_PntOn2S& P) ;
   //! Returns the number of points in the line. <br>

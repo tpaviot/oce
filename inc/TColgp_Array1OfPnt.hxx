@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColgp_Array1OfPnt(const Standard_Integer Low,const Standard_Integer Up);
+      TColgp_Array1OfPnt(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColgp_Array1OfPnt(const gp_Pnt& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TColgp_Array1OfPnt(const gp_Pnt& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const gp_Pnt& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TColgp_Array1OfPnt()
 {
   Destroy();

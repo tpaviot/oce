@@ -40,6 +40,8 @@ void StdLSchema_PColStd_HArray1OfExtendedString::SWrite(const Handle(Standard_Pe
   if (!p.IsNull()) {
     Handle(PColStd_HArray1OfExtendedString) &pp = (Handle(PColStd_HArray1OfExtendedString)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPColStd_HArray1OfExtendedStringLowerBound());
@@ -60,6 +62,8 @@ void StdLSchema_PColStd_HArray1OfExtendedString::SRead(const Handle(Standard_Per
 { 
   if (!p.IsNull()) {
     Handle(PColStd_HArray1OfExtendedString) &pp = (Handle(PColStd_HArray1OfExtendedString)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

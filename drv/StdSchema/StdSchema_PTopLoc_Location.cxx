@@ -20,6 +20,7 @@ void StdSchema_PTopLoc_Location::SAdd(const PTopLoc_Location& p, const Handle(St
 
 void StdSchema_PTopLoc_Location::SWrite(const PTopLoc_Location& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
     theSchema->WritePersistentReference(pp._CSFDB_GetPTopLoc_LocationmyData(),f);
 
@@ -28,6 +29,7 @@ void StdSchema_PTopLoc_Location::SWrite(const PTopLoc_Location& pp, Storage_Base
 
 void StdSchema_PTopLoc_Location::SRead(PTopLoc_Location& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
 
     Handle(PTopLoc_ItemLocation) PTopLoc_LocationmyData;

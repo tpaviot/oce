@@ -66,6 +66,7 @@ public:
   //! Initialize the inner array with bounds from <lower> to <upper> <br>
   Standard_EXPORT     void Init(const Standard_Integer lower,const Standard_Integer upper) ;
   //! Sets  the   <Index>th  element  of   the  array to <Value> <br>
+//! OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal  array. <br>
   Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_Integer Value) ;
   //! Return the value of  the  <Index>th element of the array <br>
 //! <br>

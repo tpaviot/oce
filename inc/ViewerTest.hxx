@@ -19,14 +19,20 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Standard_CString_HeaderFile
+#include <Standard_CString.hxx>
+#endif
+#ifndef _Handle_V3d_View_HeaderFile
+#include <Handle_V3d_View.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _Handle_MMgt_TShared_HeaderFile
 #include <Handle_MMgt_TShared.hxx>
 #endif
 #ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Handle_TopTools_HArray1OfShape_HeaderFile
 #include <Handle_TopTools_HArray1OfShape.hxx>
@@ -49,19 +55,15 @@
 #ifndef _NIS_InteractiveContext_HeaderFile
 #include <NIS_InteractiveContext.hxx>
 #endif
-#ifndef _Handle_V3d_View_HeaderFile
-#include <Handle_V3d_View.hxx>
-#endif
 #ifndef _Handle_ViewerTest_EventManager_HeaderFile
 #include <Handle_ViewerTest_EventManager.hxx>
 #endif
 #ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
 #endif
-#ifndef _Standard_CString_HeaderFile
-#include <Standard_CString.hxx>
-#endif
 class Draw_Interpretor;
+class TCollection_AsciiString;
+class V3d_View;
 class MMgt_TShared;
 class TopoDS_Shape;
 class TopTools_HArray1OfShape;
@@ -69,7 +71,6 @@ class AIS_InteractiveObject;
 class TColStd_HArray1OfTransient;
 class V3d_Viewer;
 class AIS_InteractiveContext;
-class V3d_View;
 class ViewerTest_EventManager;
 class ViewerTest_Tool;
 class ViewerTest_EventManager;
@@ -86,9 +87,19 @@ public:
 
   //! Loads all Draw commands of  V2d & V3d. Used for plugin. <br>
   Standard_EXPORT   static  void Factory(Draw_Interpretor& theDI) ;
-  
+  //! Creates view with default or custom name <br>
+//!          and add this name in map to manage muliple views <br>
 //!          implemented in ViewerTest_ViewerCommands.cxx <br>
-  Standard_EXPORT   static  void ViewerInit(const Standard_Integer thePxLeft = 0,const Standard_Integer thePxTop = 0,const Standard_Integer thePxWidth = 0,const Standard_Integer thePxHeight = 0) ;
+  Standard_EXPORT   static  TCollection_AsciiString ViewerInit(const Standard_Integer thePxLeft = 0,const Standard_Integer thePxTop = 0,const Standard_Integer thePxWidth = 0,const Standard_Integer thePxHeight = 0,const Standard_CString theViewName = "",const Standard_CString theDisplayName = "") ;
+  
+  Standard_EXPORT   static  void RemoveViewName(const TCollection_AsciiString& theName) ;
+  
+  Standard_EXPORT   static  void InitViewName(const TCollection_AsciiString& theName,const Handle(V3d_View)& theView) ;
+  
+  Standard_EXPORT   static  TCollection_AsciiString GetCurrentViewName() ;
+  //! Removes view and clear all maps <br>
+//!          with information about its resources if neccessary <br>
+  Standard_EXPORT   static  void RemoveView(const TCollection_AsciiString& theViewName,const Standard_Boolean isContextRemoved = Standard_True) ;
   //!  waits until a shape of type <aType> is picked in the AIS Viewer and returns it. <br>
 //! if <aType> == TopAbs_Shape, any shape can be picked... <br>
 //! MaxPick  is the Max number before exiting, if no pick is successfull <br>
@@ -160,6 +171,12 @@ public:
   Standard_EXPORT   static  void StandardModeActivation(const Standard_Integer Mode) ;
   
   Standard_EXPORT   static  Quantity_NameOfColor GetColorFromName(const Standard_CString name) ;
+  //! redraws all defined views. <br>
+  Standard_EXPORT   static  void RedrawAllViews() ;
+  //! Splits "parameter=value" string into separate <br>
+//! parameter and value strings. <br>
+//! @return TRUE if the string matches pattern "<string>=<empty or string>" <br>
+  Standard_EXPORT   static  Standard_Boolean SplitParameter(const TCollection_AsciiString& theString,TCollection_AsciiString& theName,TCollection_AsciiString& theValue) ;
 
 
 

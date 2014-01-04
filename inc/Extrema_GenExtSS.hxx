@@ -87,9 +87,9 @@ public:
   //! Returns the value of the Nth resulting square distance. <br>
   Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N) const;
   //! Returns the point of the Nth resulting distance. <br>
-  Standard_EXPORT     Extrema_POnSurf PointOnS1(const Standard_Integer N) const;
+  Standard_EXPORT    const Extrema_POnSurf& PointOnS1(const Standard_Integer N) const;
   //! Returns the point of the Nth resulting distance. <br>
-  Standard_EXPORT     Extrema_POnSurf PointOnS2(const Standard_Integer N) const;
+  Standard_EXPORT    const Extrema_POnSurf& PointOnS2(const Standard_Integer N) const;
 
 
 
@@ -124,7 +124,6 @@ Handle_TColgp_HArray2OfPnt mypoints2;
 Standard_Real mytol1;
 Standard_Real mytol2;
 Extrema_FuncExtSS myF;
-Adaptor3d_SurfacePtr myS1;
 Adaptor3d_SurfacePtr myS2;
 
 

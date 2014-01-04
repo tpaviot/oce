@@ -1,25 +1,18 @@
 // Created on: 1995-03-13
 // Created by: Robert COUBLANC
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Select3D_SensitiveCurve.ixx>
 #include <SelectBasics_BasicTool.hxx>
@@ -76,25 +69,27 @@ mylastseg(0)
 // Purpose :
 //==================================================
 
-Standard_Boolean Select3D_SensitiveCurve
-::Matches(const Standard_Real X,
-          const Standard_Real Y,
-          const Standard_Real aTol,
-          Standard_Real& DMin)
+Standard_Boolean Select3D_SensitiveCurve::Matches (const SelectBasics_PickArgs& thePickArgs,
+                                                   Standard_Real& theMatchDMin,
+                                                   Standard_Real& theMatchDepth)
 {
   Standard_Integer Rank;
   TColgp_Array1OfPnt2d aArrayOf2dPnt(1, mypolyg.Size());
   Points2D(aArrayOf2dPnt);
   if (SelectBasics_BasicTool::MatchPolyg2d (aArrayOf2dPnt,
-                                            X, Y,
-                                            aTol,
-                                            DMin,
+                                            thePickArgs.X(), thePickArgs.Y(),
+                                            thePickArgs.Tolerance(),
+                                            theMatchDMin,
                                             Rank))
   {
+    // remember detected segment (for GetLastDetected)
     mylastseg = Rank;
-    // compute and validate the depth (::Depth()) along the eyeline
-    return Select3D_SensitiveEntity::Matches (X, Y, aTol, DMin);
+
+    theMatchDepth = ComputeDepth (thePickArgs.PickLine(), Rank);
+
+    return !thePickArgs.IsClipped (theMatchDepth);
   }
+
   return Standard_False;
 }
 
@@ -189,29 +184,30 @@ void Select3D_SensitiveCurve::Dump(Standard_OStream& S,const Standard_Boolean Fu
 //purpose  :
 //=======================================================================
 
-Standard_Real Select3D_SensitiveCurve::ComputeDepth(const gp_Lin& EyeLine) const
+Standard_Real Select3D_SensitiveCurve::ComputeDepth (const gp_Lin& thePickLine,
+                                                     const Standard_Integer theSegment) const
 {
-  Standard_Real aDepth = Precision::Infinite();
-
-  // Not implemented
-  if(mylastseg==0)
-    return aDepth;
-
-  gp_XYZ aCDG;
-  // In case if mylastseg and mylastseg+1 are not valid
-  // the depth will be infinite
-  if (mylastseg < mypolyg.Size())
+  if (theSegment == 0)
   {
-    aCDG = mypolyg.Pnt(mylastseg);
-    if (mylastseg+1 < mypolyg.Size())
-    {
-      aCDG += mypolyg.Pnt(mylastseg+1);
-      aCDG /= 2.;
-    }
-    aDepth = ElCLib::Parameter(EyeLine,gp_Pnt(aCDG));
+    return Precision::Infinite();
   }
 
-  return aDepth;
+  // In case if theSegment and theSegment + 1 are not valid
+  // the depth will be infinite
+  if (theSegment >= mypolyg.Size())
+  {
+    return Precision::Infinite();
+  }
+
+  gp_XYZ aCDG = mypolyg.Pnt (theSegment);
+
+  if (theSegment + 1 < mypolyg.Size())
+  {
+    aCDG += mypolyg.Pnt(theSegment + 1);
+    aCDG /= 2.;
+  }
+
+  return ElCLib::Parameter (thePickLine, gp_Pnt (aCDG));
 }
 
 //=======================================================================

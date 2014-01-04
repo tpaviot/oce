@@ -14,11 +14,11 @@
 
 void ShapeSchema_PColgp_FieldOfHArray2OfVec::SWrite(const PColgp_FieldOfHArray2OfVec& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
-  Standard_Integer i;
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
 
   f.BeginWriteObjectData();
   f.PutInteger(pp.Length());
-  for (i = 0; i < pp.Length(); i++) {
+  for (Standard_Integer i = 0; i < pp.Length(); i++) {
     ShapeSchema_gp_Vec::SWrite(pp.Value(i),f,theSchema);
 
   }
@@ -27,6 +27,7 @@ void ShapeSchema_PColgp_FieldOfHArray2OfVec::SWrite(const PColgp_FieldOfHArray2O
 
 void ShapeSchema_PColgp_FieldOfHArray2OfVec::SRead(PColgp_FieldOfHArray2OfVec& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
   Standard_Integer size = 0;
 
   f.BeginReadObjectData();

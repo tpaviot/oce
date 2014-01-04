@@ -39,11 +39,11 @@ class StepElement_HArray1OfVolumeElementPurpose : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepElement_HArray1OfVolumeElementPurpose(const Standard_Integer Low,const Standard_Integer Up);
+      StepElement_HArray1OfVolumeElementPurpose(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepElement_HArray1OfVolumeElementPurpose(const Standard_Integer Low,const Standard_Integer Up,const StepElement_VolumeElementPurpose& V);
+      StepElement_HArray1OfVolumeElementPurpose(const Standard_Integer Low,const Standard_Integer Up,const StepElement_VolumeElementPurpose& V);
   
-  Standard_EXPORT     void Init(const StepElement_VolumeElementPurpose& V) ;
+        void Init(const StepElement_VolumeElementPurpose& V) ;
   
         Standard_Integer Length() const;
   

@@ -146,6 +146,7 @@ p GeomPlate
 p HLRAlgo
 p HLRBRep
 p HLRTopoBRep
+p HLRAppli
 p Hatch
 p HatchGen
 p IntCurve
@@ -205,7 +206,6 @@ t TKTopAlgo
 t TKXMesh
 n InterfaceGraphic
 p AIS
-p AlienImage
 p Aspect
 p DsgPrs
 p Graphic3d
@@ -228,6 +228,7 @@ p WNT
 p Xw
 p Cocoa
 r Textures
+r Shaders
 t TKMeshVS
 t TKNIS
 t TKOpenGl

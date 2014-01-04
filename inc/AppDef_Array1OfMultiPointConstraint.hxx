@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AppDef_Array1OfMultiPointConstraint(const Standard_Integer Low,const Standard_Integer Up);
+      AppDef_Array1OfMultiPointConstraint(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   AppDef_Array1OfMultiPointConstraint(const AppDef_MultiPointConstraint& Item,const Standard_Integer Low,const Standard_Integer Up);
+      AppDef_Array1OfMultiPointConstraint(const AppDef_MultiPointConstraint& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const AppDef_MultiPointConstraint& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~AppDef_Array1OfMultiPointConstraint()
 {
   Destroy();

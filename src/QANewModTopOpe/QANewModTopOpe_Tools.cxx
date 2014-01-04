@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <QANewModTopOpe_Tools.ixx>
 
@@ -51,9 +47,6 @@
 #include <TopTools_ListIteratorOfListOfShape.hxx>
 #include <BOPDS_CommonBlock.hxx>
 #include <BOPTools_AlgoTools3D.hxx>
-
-static Standard_Boolean CheckSameDomainFaceInside(const TopoDS_Face& theFace1,
-                                                  const TopoDS_Face& theFace2);
 
 static Standard_Boolean AddShapeToHistoryMap(const TopoDS_Shape& theOldShape,
                                              const TopoDS_Shape& theNewShape,
@@ -274,7 +267,7 @@ Standard_Boolean QANewModTopOpe_Tools::IsSplit(const BOPAlgo_PPaveFiller& theDSF
   if(theEdge.IsNull() || (theEdge.ShapeType() != TopAbs_EDGE))
     return Standard_False;
 
-  Standard_Integer index, nSp;
+  Standard_Integer index;
   //
   const BOPDS_PDS& pDS = theDSFiller->PDS();
   index = pDS->Index(theEdge);
@@ -287,7 +280,6 @@ Standard_Boolean QANewModTopOpe_Tools::IsSplit(const BOPAlgo_PPaveFiller& theDSF
   aPBIt.Initialize(aLPB);
   for (; aPBIt.More(); aPBIt.Next()) {
     const Handle(BOPDS_PaveBlock)& aPB = aPBIt.Value();
-    nSp = aPB->Edge();
 
     TopAbs_State aSplitState = GetEdgeState(pDS, aPB);
 
@@ -465,7 +457,7 @@ Standard_Boolean QANewModTopOpe_Tools::EdgeSectionAncestors(const BOPAlgo_PPaveF
   }
 
   const Handle(BOPDS_PaveBlock)& aPB1 = aLPB1.First();
-  const Handle(BOPDS_CommonBlock)& aCB=aPB1->CommonBlock();
+  const Handle(BOPDS_CommonBlock)& aCB=pDS->CommonBlock(aPB1);
   if (aCB.IsNull()) {
     return Standard_False;
   }
@@ -547,7 +539,7 @@ Standard_Boolean QANewModTopOpe_Tools::BoolOpe(const TopoDS_Shape& theFace1,
   const BOPDS_PDS& pDS = aDSFiller.PDS();
 
   Standard_Integer aNb = 0, aNbSps;
-  Standard_Integer i = 0, j = 0;
+  Standard_Integer i = 0;
   TopTools_IndexedMapOfShape aMapV;
 
   {
@@ -738,59 +730,6 @@ Standard_Boolean QANewModTopOpe_Tools::BoolOpe(const TopoDS_Shape& theFace1,
     AddShapeToHistoryMap(aNewVertex, aNewVertex, theHistoryMap);
   }
   // fill vertex history.end
-  return Standard_True;
-}
-
-// -----------------------------------------------------------------
-// static function: CheckSameDomainFaceInside
-// purpose: Check if distance between several points of theFace1 and
-//          theFace2 is not more than sum of maximum of tolerances of
-//          theFace1's edges and tolerance of theFace2
-// -----------------------------------------------------------------
-Standard_Boolean CheckSameDomainFaceInside(const TopoDS_Face& theFace1,
-                                           const TopoDS_Face& theFace2) {
-
-  Standard_Real umin = 0., umax = 0., vmin = 0., vmax = 0.;
-  BRepTools::UVBounds(theFace1, umin, umax, vmin, vmax);
-  Handle(BOPInt_Context) aContext;
-  Handle(Geom_Surface) aSurface = BRep_Tool::Surface(theFace1);
-  Standard_Real aTolerance = BRep_Tool::Tolerance(theFace1);
-
-  aContext = new BOPInt_Context;
-  TopExp_Explorer anExpE(theFace1, TopAbs_EDGE);
-
-  for(; anExpE.More(); anExpE.Next()) {
-    const TopoDS_Edge& anEdge = TopoDS::Edge(anExpE.Current());
-    Standard_Real anEdgeTol = BRep_Tool::Tolerance(anEdge);
-    aTolerance = (aTolerance < anEdgeTol) ? anEdgeTol : aTolerance;
-  }
-  aTolerance += BRep_Tool::Tolerance(theFace2);
-
-  Standard_Integer nbpoints = 5;
-  Standard_Real adeltau = (umax - umin) / (nbpoints + 1);
-  Standard_Real adeltav = (vmax - vmin) / (nbpoints + 1);
-  Standard_Real U = umin + adeltau;
-  GeomAPI_ProjectPointOnSurf& aProjector = aContext->ProjPS(theFace2);
-
-  for(Standard_Integer i = 1; i <= nbpoints; i++, U+=adeltau) {
-    Standard_Real V = vmin + adeltav;
-
-    for(Standard_Integer j = 1; j <= nbpoints; j++, V+=adeltav) {
-      gp_Pnt2d aPoint(U,V);
-
-      if(aContext->IsPointInFace(theFace1, aPoint)) {
-        gp_Pnt aP3d = aSurface->Value(U, V);
-        aProjector.Perform(aP3d);
-
-        if(aProjector.IsDone()) {
-
-          if(aProjector.LowerDistance() > aTolerance)
-            return Standard_False;
-        }
-      }
-    }
-  }
-
   return Standard_True;
 }
 

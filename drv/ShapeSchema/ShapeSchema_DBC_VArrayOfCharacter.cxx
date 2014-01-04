@@ -14,11 +14,11 @@
 
 void ShapeSchema_DBC_VArrayOfCharacter::SWrite(const DBC_VArrayOfCharacter& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
-  Standard_Integer i;
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
 
   f.BeginWriteObjectData();
   f.PutInteger(pp.Length());
-  for (i = 0; i < pp.Length(); i++) {
+  for (Standard_Integer i = 0; i < pp.Length(); i++) {
     f.PutCharacter(pp.Value(i));
 
   }
@@ -27,6 +27,7 @@ void ShapeSchema_DBC_VArrayOfCharacter::SWrite(const DBC_VArrayOfCharacter& pp, 
 
 void ShapeSchema_DBC_VArrayOfCharacter::SRead(DBC_VArrayOfCharacter& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
   Standard_Integer size = 0;
 
   f.BeginReadObjectData();

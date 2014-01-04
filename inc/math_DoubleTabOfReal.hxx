@@ -19,14 +19,14 @@
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
 #endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
 #endif
 
 
@@ -80,6 +80,9 @@ private:
 
 
 Standard_Address Addr;
+Standard_Address AddrBuf[32];
+Standard_Real Buf[512];
+Standard_Boolean isAddrAllocated;
 Standard_Boolean isAllocated;
 Standard_Integer LowR;
 Standard_Integer UppR;

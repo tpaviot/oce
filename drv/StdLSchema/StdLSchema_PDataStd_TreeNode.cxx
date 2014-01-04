@@ -41,6 +41,8 @@ void StdLSchema_PDataStd_TreeNode::SWrite(const Handle(Standard_Persistent)& p, 
   if (!p.IsNull()) {
     Handle(PDataStd_TreeNode) &pp = (Handle(PDataStd_TreeNode)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDataStd_TreeNodemyFirst(),f);
@@ -61,6 +63,8 @@ void StdLSchema_PDataStd_TreeNode::SRead(const Handle(Standard_Persistent)& p, S
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_TreeNode) &pp = (Handle(PDataStd_TreeNode)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

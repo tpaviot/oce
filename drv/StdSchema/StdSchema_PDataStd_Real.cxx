@@ -39,6 +39,8 @@ void StdSchema_PDataStd_Real::SWrite(const Handle(Standard_Persistent)& p, Stora
   if (!p.IsNull()) {
     Handle(PDataStd_Real) &pp = (Handle(PDataStd_Real)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutReal(pp->_CSFDB_GetPDataStd_RealmyValue());
@@ -58,6 +60,8 @@ void StdSchema_PDataStd_Real::SRead(const Handle(Standard_Persistent)& p, Storag
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_Real) &pp = (Handle(PDataStd_Real)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 /***********************************************************************
  
@@ -44,7 +40,6 @@
 #include <V3d_View.jxx>
 #include <Visual3d_View.hxx>
 #include <Visual3d_Light.hxx>
-#include <Visual3d_ClipPlane.hxx>
 #include <V3d_Static.hxx>
 #include <V3d.hxx>
 
@@ -119,70 +114,6 @@ Standard_Boolean V3d_View::Transparency() const {
   return MyTransparencyFlag;
 }
 
-void V3d_View::SetPlaneOn( const Handle(V3d_Plane)& ThePlane ) {
-
-#ifdef GER61454
-  if( !MyActivePlanes.Contains(ThePlane)) {
-    V3d_BadValue_Raise_if( MyActivePlanes.Extent() >= MyView->PlaneLimit(), "too many planes");
-    MyActivePlanes.Append(ThePlane) ;
-  }
-  MyViewContext.SetClipPlaneOn(ThePlane->Plane()) ;
-  MyView->SetContext(MyViewContext);
-#else 	//GER61454
-  if( !MyActivePlanes.Contains(ThePlane)) {
-    V3d_BadValue_Raise_if( MyActivePlanes.Extent() >= Visual3d_ClipPlane::Limit(), "too many planes");
-    MyActivePlanes.Append(ThePlane) ;
-    MyViewContext.SetClipPlaneOn(ThePlane->Plane()) ;
-    
-    MyView->SetContext(MyViewContext);
-  }
-#endif	//GER61454
-}
-
-void V3d_View::SetPlaneOff( const Handle(V3d_Plane)& ThePlane ) {
-
-  MyActivePlanes.Remove(ThePlane);
-  MyViewContext.SetClipPlaneOff(ThePlane->Plane()) ;
-  MyView->SetContext(MyViewContext) ;
-}
-
-Standard_Boolean V3d_View::IsActivePlane(const Handle(V3d_Plane)& aPlane) const {
-  if( aPlane.IsNull() ) return Standard_False;
-  return  MyActivePlanes.Contains(aPlane);
-}
-
-void V3d_View::SetPlaneOn( ) {
-
-#ifdef GER61454
-  for(MyViewer->InitDefinedPlanes();MyViewer->MoreDefinedPlanes();MyViewer->NextDefinedPlanes()) {
-    if(!MyActivePlanes.Contains(MyViewer->DefinedPlane())) {
-      V3d_BadValue_Raise_if( MyActivePlanes.Extent() >= MyView->PlaneLimit(), "too many planes");
-      MyActivePlanes.Append(MyViewer->DefinedPlane());
-    }
-    MyViewContext.SetClipPlaneOn(MyViewer->DefinedPlane()->Plane());
-  }
-  MyView->SetContext(MyViewContext) ;
-#else	//GER61454
-  for(MyViewer->InitDefinedPlanes();MyViewer->MoreDefinedPlanes();MyViewer->NextDefinedPlanes()) {
-    if(!MyActivePlanes.Contains(MyViewer->DefinedPlane())) {
-      V3d_BadValue_Raise_if( MyActivePlanes.Extent() >=  Visual3d_ClipPlane::Limit(),
-			    "too many planes");
-      MyActivePlanes.Append(MyViewer->DefinedPlane());
-      MyViewContext.SetClipPlaneOn(MyViewer->DefinedPlane()->Plane());
-      MyView->SetContext(MyViewContext) ;
-    }
-  }
-#endif	//GER61454
-}
-
-void V3d_View::SetPlaneOff( ) {
-
-  for(InitActivePlanes();MoreActivePlanes();NextActivePlanes()) {
-    MyViewContext.SetClipPlaneOff(ActivePlane()->Plane());}
-  MyActivePlanes.Clear();
-  MyView->SetContext(MyViewContext) ;
-}
-
 void V3d_View::InitActiveLights() {
 myActiveLightsIterator.Initialize(MyActiveLights);
 }
@@ -195,30 +126,6 @@ void V3d_View::NextActiveLights () {
 Handle(V3d_Light) V3d_View::ActiveLight() const {
   return (Handle(V3d_Light)&)(myActiveLightsIterator.Value());}
 
-
-void V3d_View::InitActivePlanes() {
-myActivePlanesIterator.Initialize(MyActivePlanes);
-}
-Standard_Boolean V3d_View::MoreActivePlanes () const {
-  return myActivePlanesIterator.More();
-}
-void V3d_View::NextActivePlanes () {
-  myActivePlanesIterator.Next();
-}
-
-Handle(V3d_Plane) V3d_View::ActivePlane() const {
-  return (Handle(V3d_Plane)&)(myActivePlanesIterator.Value());}
-
-Standard_Boolean V3d_View::IfMorePlanes() const {
-
-#ifdef GER61454
-        return MyActivePlanes.Extent() < MyView->PlaneLimit();
-#else
-  	return MyActivePlanes.Extent() < Visual3d_ClipPlane::Limit();
-#endif
-
-}
-
 Standard_Boolean V3d_View::IfMoreLights() const {
 
 #ifdef GER61454
@@ -227,4 +134,53 @@ Standard_Boolean V3d_View::IfMoreLights() const {
 //	return MyActiveLights.Extent() < Visual3d_Light::Limit();
 	return MyActiveLights.Extent();
 #endif
+}
+
+//=======================================================================
+//function : AddClipPlane
+//purpose  :
+//=======================================================================
+void V3d_View::AddClipPlane (const Handle(Graphic3d_ClipPlane)& thePlane)
+{
+  MyViewContext.ChangeClipPlanes().Append (thePlane);
+  MyView->SetContext (MyViewContext);
+}
+
+//=======================================================================
+//function : RemoveClipPlane
+//purpose  :
+//=======================================================================
+void V3d_View::RemoveClipPlane (const Handle(Graphic3d_ClipPlane)& thePlane)
+{
+  Graphic3d_SequenceOfHClipPlane& aSeqOfPlanes = MyViewContext.ChangeClipPlanes();
+  Graphic3d_SequenceOfHClipPlane::Iterator aPlaneIt (aSeqOfPlanes);
+  for (; aPlaneIt.More(); aPlaneIt.Next())
+  {
+    const Handle(Graphic3d_ClipPlane)& aPlane = aPlaneIt.Value();
+    if (aPlane != thePlane)
+      continue;
+
+    aSeqOfPlanes.Remove (aPlaneIt);
+    MyView->SetContext (MyViewContext);
+    return;
+  }
+}
+
+//=======================================================================
+//function : SetClipPlanes
+//purpose  :
+//=======================================================================
+void V3d_View::SetClipPlanes (const Graphic3d_SequenceOfHClipPlane& thePlanes)
+{
+  MyViewContext.ChangeClipPlanes() = thePlanes;
+  MyView->SetContext (MyViewContext);
+}
+
+//=======================================================================
+//function : GetClipPlanes
+//purpose  :
+//=======================================================================
+const Graphic3d_SequenceOfHClipPlane& V3d_View::GetClipPlanes() const
+{
+  return MyViewContext.ClipPlanes();
 }

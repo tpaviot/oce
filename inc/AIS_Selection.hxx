@@ -19,9 +19,6 @@
 #ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _AIS_NListTransient_HeaderFile
 #include <AIS_NListTransient.hxx>
 #endif
@@ -30,6 +27,9 @@
 #endif
 #ifndef _AIS_NDataMapOfTransientIteratorOfListTransient_HeaderFile
 #include <AIS_NDataMapOfTransientIteratorOfListTransient.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
@@ -86,6 +86,8 @@ public:
   Standard_EXPORT   static  Standard_Boolean SetCurrentSelection(const Standard_CString aName) ;
   
   Standard_EXPORT   static  Handle_AIS_Selection CurrentSelection() ;
+  //! Clears selection. <br>
+  Standard_EXPORT   static  void ClearCurrentSelection() ;
   //! removes all the object of the currentselection. <br>
   Standard_EXPORT   static  void Select() ;
   //!  if the object is not yet in the current selection, it will be added. <br>
@@ -132,7 +134,6 @@ private:
 
 
 TCollection_AsciiString myName;
-Standard_Integer mycuri;
 AIS_NListTransient myresult;
 AIS_NListIteratorOfListTransient myIterator;
 AIS_NDataMapOfTransientIteratorOfListTransient myResultMap;

@@ -1,20 +1,16 @@
 // Created by: Peter KURNEV
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BOPAlgo_WireSplitter.ixx>
 
@@ -48,6 +44,8 @@
 #include <BOPCol_SequenceOfReal.hxx>
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
+#include <BOPTools_AlgoTools2D.hxx>
+#include <Geom2dAdaptor_Curve.hxx>
 //
 
 static
@@ -111,9 +109,7 @@ static
   Standard_Real Tolerance2D (const TopoDS_Vertex& aV,
                              const GeomAdaptor_Surface& aGAS);
 
-static
-  void BuildPCurveForPlane (const BOPCol_ListOfShape myEdges,
-                            const TopoDS_Face& myFace);
+
 
 static
   Standard_Real UTolerance2D (const TopoDS_Vertex& aV,
@@ -154,7 +150,8 @@ static
   const BOPCol_ListOfShape& myEdges=aCB.Shapes();
   //
   // 1.Filling mySmartMap
-  BuildPCurveForPlane(myEdges, myFace);
+  BOPTools_AlgoTools2D::BuildPCurveForEdgesOnPlane(myEdges, myFace);
+  //
   aIt.Initialize(myEdges);
   for(; aIt.More(); aIt.Next()) {
     const TopoDS_Edge& aE=(*(TopoDS_Edge *)&aIt.Value());
@@ -342,12 +339,13 @@ void Path (const GeomAdaptor_Surface& aGAS,
   Standard_Integer i, j, aNb, aNbj;
   Standard_Real aTol, anAngleIn, anAngleOut, anAngle, aMinAngle;
   Standard_Real aTol2D, aTol2D2;
-  Standard_Real aTol2, aD2;
+  Standard_Real aTol2, aD2, aTwoPI;
   Standard_Boolean anIsSameV2d, anIsSameV, anIsFound, anIsOut, anIsNotPassed;
   TopoDS_Vertex aVb;
   TopoDS_Edge aEOutb;
   BOPAlgo_ListIteratorOfListOfEdgeInfo anIt;
   //
+  aTwoPI = M_PI + M_PI;
   aTol=1.e-7;
   //
   // append block
@@ -527,26 +525,29 @@ void Path (const GeomAdaptor_Surface& aGAS,
         break;
       }
       //
-      // Look for minimal angle and make the choice.
-      gp_Pnt2d aP2Dx;
-      //
-      aP2Dx=Coord2dVf(aE, myFace);
-      //
-      aD2=aP2Dx.SquareDistance(aPb);
-      if (aD2 > aTol2D2){
-        continue;
-      }
-      //
-      //
-      anAngleOut=anEI.Angle();
-      //
-      if(bRecomputeAngle) {
-        if(aCurIndexE <= aRecomputedAngles.Length()) {
-          anAngleOut = aRecomputedAngles.Value(aCurIndexE);
+      if (aE.IsSame(aEOuta)) {
+        anAngle = aTwoPI;
+      } else {
+        // Look for minimal angle and make the choice.
+        gp_Pnt2d aP2Dx;
+        //
+        aP2Dx=Coord2dVf(aE, myFace);
+        //
+        aD2=aP2Dx.SquareDistance(aPb);
+        if (aD2 > aTol2D2){
+          continue;
         }
+        //
+        //
+        anAngleOut=anEI.Angle();
+        //
+        if(bRecomputeAngle) {
+          if(aCurIndexE <= aRecomputedAngles.Length()) {
+            anAngleOut = aRecomputedAngles.Value(aCurIndexE);
+          }
+        }
+        anAngle=ClockWiseAngle(anAngleIn, anAngleOut);
       }
-
-      anAngle=ClockWiseAngle(anAngleIn, anAngleOut);
       if (anAngle < aMinAngle) {
         aMinAngle=anAngle;
         pEdgeInfo=&anEI;
@@ -735,7 +736,7 @@ Standard_Integer NbWaysOut(const BOPAlgo_ListOfEdgeInfo& aLEInfo)
   }
   //
   BOPTools_AlgoTools2D::CurveOnSurface (anEdge, myFace, aC2D, 
-                                    aFirst, aLast, aToler);
+					aFirst, aLast, aToler);
   dt=2.*Tolerance2D(aV, aGAS);
   //
   //for case chl/927/r9
@@ -749,6 +750,12 @@ Standard_Integer NbWaysOut(const BOPAlgo_ListOfEdgeInfo& aLEInfo)
     dt = aTX; 
   }
   //
+  GeomAbs_CurveType aType;
+  Geom2dAdaptor_Curve aGAC2D(aC2D);
+  aType=aGAC2D.GetType();
+  if (aType==GeomAbs_BSplineCurve || aType==GeomAbs_BezierCurve) {
+    dt=1.1*dt;
+  }
   if (fabs (aTV-aFirst) < fabs(aTV - aLast)) {
     aTV1=aTV + dt;
   }
@@ -813,42 +820,7 @@ Standard_Real Angle (const gp_Dir2d& aDir2D)
   //
   return aTol2D;
 }
-//=======================================================================
-// function: BuildPCurvesForPlane
-// purpose: 
-//=======================================================================
-  void BuildPCurveForPlane (const BOPCol_ListOfShape myEdges,
-                            const TopoDS_Face& myFace)
-{
-  TopLoc_Location aLoc;
-  Handle(Geom2d_Curve) aC2D;
-  Handle(Geom_Plane) aGP;
-  Handle(Geom_RectangularTrimmedSurface) aGRTS;
-  //
-  const Handle(Geom_Surface)& aS = BRep_Tool::Surface(myFace, aLoc);
-  aGRTS=Handle(Geom_RectangularTrimmedSurface)::DownCast(aS);
-  if(!aGRTS.IsNull()){
-    aGP=Handle(Geom_Plane)::DownCast(aGRTS->BasisSurface());
-    }    
-  else {
-    aGP=Handle(Geom_Plane)::DownCast(aS);
-  }
-  //
-  if (aGP.IsNull()) {
-    return;
-  }
-  //
-  Standard_Real aTolE;
-  BOPCol_ListIteratorOfListOfShape aIt;
-  BRep_Builder aBB;
-  //
-  aIt.Initialize(myEdges);
-  for(; aIt.More(); aIt.Next()) {
-    const TopoDS_Edge& aE=(*(TopoDS_Edge *)&aIt.Value());
-    BOPTools_AlgoTools2D::CurveOnSurface(aE, myFace, aC2D, aTolE);
-    aBB.UpdateEdge(aE, aC2D, myFace, aTolE);
-  }
-}
+
 //=======================================================================
 //function : UTolerance2D
 //purpose  : 

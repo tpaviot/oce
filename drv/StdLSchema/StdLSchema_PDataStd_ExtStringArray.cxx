@@ -40,6 +40,8 @@ void StdLSchema_PDataStd_ExtStringArray::SWrite(const Handle(Standard_Persistent
   if (!p.IsNull()) {
     Handle(PDataStd_ExtStringArray) &pp = (Handle(PDataStd_ExtStringArray)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPDataStd_ExtStringArraymyValue(),f);
@@ -58,6 +60,8 @@ void StdLSchema_PDataStd_ExtStringArray::SRead(const Handle(Standard_Persistent)
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_ExtStringArray) &pp = (Handle(PDataStd_ExtStringArray)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

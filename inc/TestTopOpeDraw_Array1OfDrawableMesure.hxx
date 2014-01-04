@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TestTopOpeDraw_Array1OfDrawableMesure(const Standard_Integer Low,const Standard_Integer Up);
+      TestTopOpeDraw_Array1OfDrawableMesure(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TestTopOpeDraw_Array1OfDrawableMesure(const Handle(TestTopOpeDraw_DrawableMesure)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TestTopOpeDraw_Array1OfDrawableMesure(const Handle(TestTopOpeDraw_DrawableMesure)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(TestTopOpeDraw_DrawableMesure)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TestTopOpeDraw_Array1OfDrawableMesure()
 {
   Destroy();

@@ -1,23 +1,18 @@
 // Created on: 1997-12-19
 // Created by: Roman BORISOV /Philippe MANGIN
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <stdio.h>
 
@@ -471,7 +466,7 @@ Handle(GeomFill_TrihedronLaw) GeomFill_CorrectedFrenet::Copy() const
   gp_Vec Tangent, Normal, BN, cross;
   TColStd_SequenceOfReal parameters;
   TColStd_SequenceOfReal EvolAT;
-  Standard_Real Param = First, LengthMin, L, norm;
+  Standard_Real Param = First, L, norm;
   Standard_Boolean isZero = Standard_True, isConst = Standard_True;
   const Standard_Real minnorm = 1.e-16;
   Standard_Integer i;
@@ -481,12 +476,11 @@ Handle(GeomFill_TrihedronLaw) GeomFill_CorrectedFrenet::Copy() const
   frenet->SetInterval(First, Last); //To have the rigth evaluation at bounds
   GeomFill_SnglrFunc CS(myCurve);
   BndLib_Add3dCurve::Add(CS, First, Last, 1.e-2, Boite);
-  LengthMin = Boite.GetGap()*1.e-4;
     
   aT = gp_Vec(0, 0, 0);
   aN = gp_Vec(0, 0, 0);   
 
-  Standard_Real angleAT = 0.0 , currParam, currStep = Step;
+  Standard_Real angleAT = 0., currParam, currStep = Step;
 
   Handle( Geom_Plane ) aPlane;
   Standard_Boolean isPlanar = Standard_False;

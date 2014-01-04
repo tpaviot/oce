@@ -39,6 +39,8 @@ void XCAFSchema_PXCAFDoc_Area::SWrite(const Handle(Standard_Persistent)& p, Stor
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Area) &pp = (Handle(PXCAFDoc_Area)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutReal(pp->_CSFDB_GetPXCAFDoc_AreamyValue());
@@ -57,6 +59,8 @@ void XCAFSchema_PXCAFDoc_Area::SRead(const Handle(Standard_Persistent)& p, Stora
 { 
   if (!p.IsNull()) {
     Handle(PXCAFDoc_Area) &pp = (Handle(PXCAFDoc_Area)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

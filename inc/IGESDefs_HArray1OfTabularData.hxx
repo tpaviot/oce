@@ -42,11 +42,11 @@ class IGESDefs_HArray1OfTabularData : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESDefs_HArray1OfTabularData(const Standard_Integer Low,const Standard_Integer Up);
+      IGESDefs_HArray1OfTabularData(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESDefs_HArray1OfTabularData(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESDefs_TabularData)& V);
+      IGESDefs_HArray1OfTabularData(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESDefs_TabularData)& V);
   
-  Standard_EXPORT     void Init(const Handle(IGESDefs_TabularData)& V) ;
+        void Init(const Handle(IGESDefs_TabularData)& V) ;
   
         Standard_Integer Length() const;
   

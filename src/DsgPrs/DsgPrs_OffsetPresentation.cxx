@@ -1,22 +1,18 @@
 // Created on: 1996-09-18
 // Created by: Jacques MINOT
 // Copyright (c) 1996-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <DsgPrs_OffsetPresentation.ixx>
 
@@ -29,11 +25,12 @@
 
 #include <Graphic3d_Group.hxx>
 #include <Graphic3d_ArrayOfSegments.hxx>
+#include <Graphic3d_ArrayOfPoints.hxx>
 
 #include <Prs3d_Arrow.hxx>
 #include <Prs3d_ArrowAspect.hxx>
 #include <Prs3d_LineAspect.hxx>
-#include <Prs3d_LengthAspect.hxx>
+#include <Prs3d_DimensionAspect.hxx>
 
 #include <TCollection_AsciiString.hxx>
 
@@ -60,7 +57,7 @@ void DsgPrs_OffsetPresentation::Add (const Handle(Prs3d_Presentation)& aPresenta
 				     const gp_Dir& aDirection2,
 				     const gp_Pnt& OffsetPoint)
 {
-  Handle(Prs3d_LengthAspect) LA = aDrawer->LengthAspect();
+  Handle(Prs3d_DimensionAspect) LA = aDrawer->DimensionAspect();
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
 
   gp_Lin L1 (AttachmentPoint1,aDirection);
@@ -113,38 +110,36 @@ void DsgPrs_OffsetPresentation::Add (const Handle(Prs3d_Presentation)& aPresenta
 
   if (DimNulle)
   {
-    Prs3d_Arrow::Draw(aPresentation,offp,L4.Direction(),LA->Arrow1Aspect()->Angle(),LA->Arrow1Aspect()->Length());
-    Prs3d_Arrow::Draw(aPresentation,offp,L4.Direction().Reversed(),LA->Arrow1Aspect()->Angle(),LA->Arrow1Aspect()->Length());
+    Prs3d_Arrow::Draw(aPresentation,offp,L4.Direction(),LA->ArrowAspect()->Angle(),LA->ArrowAspect()->Length());
+    Prs3d_Arrow::Draw(aPresentation,offp,L4.Direction().Reversed(),LA->ArrowAspect()->Angle(),LA->ArrowAspect()->Length());
   }
   else
   {
-    if (dist < (LA->Arrow1Aspect()->Length()+LA->Arrow2Aspect()->Length()))
+    if (dist < (LA->ArrowAspect()->Length()+LA->ArrowAspect()->Length()))
       outside = Standard_True;
     gp_Dir arrdir = L3.Direction().Reversed();
     if (outside)
       arrdir.Reverse();
 
     // fleche 1 : 2eme groupe
-    Prs3d_Arrow::Draw(aPresentation,Proj1,arrdir,LA->Arrow1Aspect()->Angle(),LA->Arrow1Aspect()->Length());
+    Prs3d_Arrow::Draw(aPresentation,Proj1,arrdir,LA->ArrowAspect()->Angle(),LA->ArrowAspect()->Length());
 
     Prs3d_Root::NewGroup(aPresentation);
     Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
     
     // ball 1 : 3eme groupe
-    Handle(Graphic3d_AspectMarker3d) MarkerAsp = new Graphic3d_AspectMarker3d();
-    MarkerAsp->SetType(Aspect_TOM_BALL);
-    MarkerAsp->SetScale(0.8);
-    Quantity_Color acolor;
-    Aspect_TypeOfLine atype;
-    Standard_Real awidth;
-    LA->LineAspect()->Aspect()->Values(acolor, atype, awidth);
-    MarkerAsp->SetColor(acolor);
-    Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(MarkerAsp);
-    Graphic3d_Vertex V3d(Proj2.X() ,Proj2.Y(), Proj2.Z());
-    Prs3d_Root::CurrentGroup(aPresentation)->Marker(V3d);
-    
+    Quantity_Color aColor;
+    Aspect_TypeOfLine aType;
+    Standard_Real aWidth;
+    LA->LineAspect()->Aspect()->Values (aColor, aType, aWidth);
+    Handle(Graphic3d_AspectMarker3d) aMarkerAsp = new Graphic3d_AspectMarker3d (Aspect_TOM_O, aColor, 1.0);
+    Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect (aMarkerAsp);
+    Handle(Graphic3d_ArrayOfPoints) anArrayOfPoints = new Graphic3d_ArrayOfPoints (1);
+    anArrayOfPoints->AddVertex (Proj2.X(), Proj2.Y(), Proj2.Z());
+    Prs3d_Root::CurrentGroup(aPresentation)->AddPrimitiveArray (anArrayOfPoints);
+
     Prs3d_Root::NewGroup(aPresentation);
-    
+
     // texte : 4eme groupe
     Prs3d_Text::Draw(aPresentation,LA->TextAspect(),aText,offp);
   }
@@ -165,11 +160,11 @@ void DsgPrs_OffsetPresentation::Add (const Handle(Prs3d_Presentation)& aPresenta
 
 void DsgPrs_OffsetPresentation::AddAxes (const Handle(Prs3d_Presentation)& aPresentation,
 					 const Handle(Prs3d_Drawer)& aDrawer,
-					 const TCollection_ExtendedString& aText,
+					 const TCollection_ExtendedString& /*aText*/,
 					 const gp_Pnt& AttachmentPoint1,
 					 const gp_Pnt& AttachmentPoint2,
 					 const gp_Dir& aDirection,
-					 const gp_Dir& aDirection2,
+					 const gp_Dir& /*aDirection2*/,
 					 const gp_Pnt& OffsetPoint)
 {
   gp_Lin L1 (AttachmentPoint1,aDirection);
@@ -178,7 +173,7 @@ void DsgPrs_OffsetPresentation::AddAxes (const Handle(Prs3d_Presentation)& aPres
   gp_Lin L2 (AttachmentPoint2,aDirection);
   gp_Pnt Proj2 = ElCLib::Value(ElCLib::Parameter(L2,OffsetPoint),L2);
 
-  Handle(Prs3d_LengthAspect) LA = aDrawer->LengthAspect();
+  Handle(Prs3d_DimensionAspect) LA = aDrawer->DimensionAspect();
   Quantity_Color acolor;
   Aspect_TypeOfLine atype;
   Standard_Real awidth;
@@ -209,7 +204,8 @@ void DsgPrs_OffsetPresentation::AddAxes (const Handle(Prs3d_Presentation)& aPres
   Prs3d_Root::CurrentGroup(aPresentation)->AddPrimitiveArray(aPrims);
 
   // anneau : 3eme et 4eme groupes
-  Graphic3d_Vertex V3d(Proj2.X() ,Proj2.Y(), Proj2.Z());
+  Handle(Graphic3d_ArrayOfPoints) anArrayOfPoints = new Graphic3d_ArrayOfPoints (1);
+  anArrayOfPoints->AddVertex (Proj2.X(), Proj2.Y(), Proj2.Z());
 
   Prs3d_Root::NewGroup(aPresentation);
   Handle(Graphic3d_AspectMarker3d) MarkerAsp = new Graphic3d_AspectMarker3d();
@@ -218,7 +214,7 @@ void DsgPrs_OffsetPresentation::AddAxes (const Handle(Prs3d_Presentation)& aPres
   //MarkerAsp->SetColor(Quantity_Color(Quantity_NOC_RED));
   MarkerAsp->SetColor(acolor);
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(MarkerAsp);
-  Prs3d_Root::CurrentGroup(aPresentation)->Marker(V3d);
+  Prs3d_Root::CurrentGroup(aPresentation)->AddPrimitiveArray (anArrayOfPoints);
 
   Prs3d_Root::NewGroup(aPresentation);
   Handle(Graphic3d_AspectMarker3d) Marker2Asp = new Graphic3d_AspectMarker3d();
@@ -227,5 +223,5 @@ void DsgPrs_OffsetPresentation::AddAxes (const Handle(Prs3d_Presentation)& aPres
   //Marker2Asp->SetColor(Quantity_Color(Quantity_NOC_GREEN));
   Marker2Asp->SetColor(acolor);
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(Marker2Asp);
-  Prs3d_Root::CurrentGroup(aPresentation)->Marker(V3d);
+  Prs3d_Root::CurrentGroup(aPresentation)->AddPrimitiveArray (anArrayOfPoints);
 }

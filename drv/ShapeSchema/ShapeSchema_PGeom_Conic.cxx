@@ -40,6 +40,8 @@ void ShapeSchema_PGeom_Conic::SWrite(const Handle(Standard_Persistent)& p, Stora
   if (!p.IsNull()) {
     Handle(PGeom_Conic) &pp = (Handle(PGeom_Conic)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_gp_Ax2::SWrite(pp->_CSFDB_GetPGeom_Conicposition(),f,theSchema);
@@ -58,6 +60,8 @@ void ShapeSchema_PGeom_Conic::SRead(const Handle(Standard_Persistent)& p, Storag
 { 
   if (!p.IsNull()) {
     Handle(PGeom_Conic) &pp = (Handle(PGeom_Conic)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

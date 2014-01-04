@@ -1,23 +1,18 @@
 // Created on: 1993-12-13
 // Created by: Christophe MARION
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Precision.hxx>
 #include <Extrema_ExtPElC2d.ixx>
@@ -34,19 +29,19 @@ Extrema_ExtPElC2d::Extrema_ExtPElC2d () { myDone = Standard_False; }
 
 Extrema_ExtPElC2d::Extrema_ExtPElC2d 
   (const gp_Pnt2d&     P, 
-   const gp_Lin2d&     L,
-   const Standard_Real Tol,
-   const Standard_Real Uinf, 
-   const Standard_Real Usup)
+  const gp_Lin2d&     L,
+  const Standard_Real Tol,
+  const Standard_Real Uinf, 
+  const Standard_Real Usup)
 {
   Perform(P, L, Tol, Uinf, Usup);
 }
 
 void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P, 
-				const gp_Lin2d&     L,
-				const Standard_Real Tol,
-				const Standard_Real Uinf, 
-				const Standard_Real Usup)
+  const gp_Lin2d&     L,
+  const Standard_Real Tol,
+  const Standard_Real Uinf, 
+  const Standard_Real Usup)
 {
   myDone = Standard_True;
   gp_Pnt2d OR, MyP;
@@ -57,13 +52,13 @@ void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P,
   gp_Vec2d V(OR, P);
   Standard_Real Mydist = V1.Dot(V);
   if ((Mydist >= Uinf -Tol) && 
-      (Mydist <= Usup+ Tol)){ 
-    myNbExt = 1;
-    MyP = OR.Translated(Mydist*V1);
-    Extrema_POnCurv2d MyPOnCurve(Mydist, MyP);
-    mySqDist[0] = P.SquareDistance(MyP);
-    myPoint[0] = MyPOnCurve;
-    myIsMin[0] = Standard_True;
+    (Mydist <= Usup+ Tol)){ 
+      myNbExt = 1;
+      MyP = OR.Translated(Mydist*V1);
+      Extrema_POnCurv2d MyPOnCurve(Mydist, MyP);
+      mySqDist[0] = P.SquareDistance(MyP);
+      myPoint[0] = MyPOnCurve;
+      myIsMin[0] = Standard_True;
   }
 }
 
@@ -71,30 +66,32 @@ void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P,
 
 Extrema_ExtPElC2d::Extrema_ExtPElC2d 
   (const gp_Pnt2d&     P, 
-   const gp_Circ2d&    C,
-   const Standard_Real Tol,
-   const Standard_Real Uinf, 
-   const Standard_Real Usup)
+  const gp_Circ2d&    C,
+  const Standard_Real Tol,
+  const Standard_Real Uinf, 
+  const Standard_Real Usup)
 {
   Perform(P, C, Tol, Uinf, Usup);
 }
 
 void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P, 
-				const gp_Circ2d&    C,
-				const Standard_Real Tol,
-				const Standard_Real Uinf, 
-				const Standard_Real Usup)
+  const gp_Circ2d&    C,
+  const Standard_Real Tol,
+  const Standard_Real Uinf, 
+  const Standard_Real Usup)
 {
-  Standard_Real radius, U1, U2;
-//  gp_Pnt2d OC, P1, P2, OL;
-  gp_Pnt2d OC, P1, P2;
-  OC      = C.Location();
+  //  gp_Pnt2d OC, P1, P2, OL;
+  gp_Pnt2d OC(C.Location());
   myNbExt = 0;
-  
+
   if (OC.IsEqual(P, Precision::Confusion())) {
     myDone = Standard_False;
   }
-  else {
+  else
+  {
+    Standard_Real radius, U1, U2;
+    gp_Pnt2d P1, P2;
+
     myDone = Standard_True;
     gp_Dir2d V(gp_Vec2d(P, OC));
     radius = C.Radius();
@@ -105,18 +102,29 @@ void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P,
     Standard_Real myuinf = Uinf;
     ElCLib::AdjustPeriodic(Uinf, Uinf+2*M_PI, Precision::PConfusion(), myuinf, U1);
     ElCLib::AdjustPeriodic(Uinf, Uinf+2*M_PI, Precision::PConfusion(), myuinf, U2);
-    if (((U1-2*M_PI-Uinf) < Tol) && ((U1-2*M_PI-Uinf) > -Tol)) U1 = Uinf;
-    if (((U2-2*M_PI-Uinf) < Tol) && ((U2-2*M_PI-Uinf) > -Tol)) U2 = Uinf;
+    if (((U1-2*M_PI-Uinf) < Tol) && ((U1-2*M_PI-Uinf) > -Tol))
+    {
+      U1 = Uinf;
+      P1 = OC.XY() + radius * (cos(U1) * C.XAxis().Direction().XY() + sin(U1) * C.YAxis().Direction().XY());
+    }
 
-    if (((Uinf-U1) < Tol) && ((U1-Usup) < Tol)) {
+    if (((U2-2*M_PI-Uinf) < Tol) && ((U2-2*M_PI-Uinf) > -Tol))
+    {
+      U2 = Uinf;
+      P2 = OC.XY() + radius * (cos(U2) * C.XAxis().Direction().XY() + sin(U2) * C.YAxis().Direction().XY());
+    }
+
+    if (((Uinf-U1) < Tol) && ((U1-Usup) < Tol))
+    {
       Extrema_POnCurv2d MyPOnCurve(U1, P1);
       mySqDist[0] = P.SquareDistance(P1);
       myPoint[0] = MyPOnCurve;
       myIsMin[0] = Standard_True;
       myNbExt++;
     }
-    
-    if (((Uinf-U2) < Tol) && ((U2-Usup) < Tol)) {
+
+    if (((Uinf-U2) < Tol) && ((U2-Usup) < Tol))
+    {
       Extrema_POnCurv2d MyPOnCurve(U2, P2);
       mySqDist[myNbExt] = P.SquareDistance(P2);
       myPoint[myNbExt] = MyPOnCurve;
@@ -130,10 +138,10 @@ void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P,
 
 
 Extrema_ExtPElC2d::Extrema_ExtPElC2d (const gp_Pnt2d&     P, 
-				      const gp_Elips2d&   E,
-				      const Standard_Real Tol,
-				      const Standard_Real Uinf, 
-				      const Standard_Real Usup)
+  const gp_Elips2d&   E,
+  const Standard_Real Tol,
+  const Standard_Real Uinf, 
+  const Standard_Real Usup)
 {
   Perform(P, E, Tol, Uinf, Usup);
 }
@@ -141,23 +149,23 @@ Extrema_ExtPElC2d::Extrema_ExtPElC2d (const gp_Pnt2d&     P,
 
 
 void Extrema_ExtPElC2d::Perform (const gp_Pnt2d&     P, 
-				 const gp_Elips2d&   E,
-				 const Standard_Real Tol,
-				 const Standard_Real Uinf, 
-				 const Standard_Real Usup)
+  const gp_Elips2d&   E,
+  const Standard_Real Tol,
+  const Standard_Real Uinf, 
+  const Standard_Real Usup)
 {
-//  gp_Pnt2d OR, P1, P2;
+  //  gp_Pnt2d OR, P1, P2;
   gp_Pnt2d OR;
   OR = E.Location();
-  
+
   Standard_Integer NoSol, NbSol;
   Standard_Real A = E.MajorRadius();
   Standard_Real B = E.MinorRadius();
   gp_Vec2d V(OR,P);
 
   if (OR.IsEqual(P, Precision::Confusion()) &&
-      (Abs(A-B) <= Tol)) {
-    myDone = Standard_False;
+    (Abs(A-B) <= Tol)) {
+      myDone = Standard_False;
   }
   else {
     Standard_Real X = V.Dot(gp_Vec2d(E.XAxis().Direction()));
@@ -184,20 +192,20 @@ void Extrema_ExtPElC2d::Perform (const gp_Pnt2d&     P,
 //=============================================================================
 
 Extrema_ExtPElC2d::Extrema_ExtPElC2d (const gp_Pnt2d&     P, 
-				      const gp_Hypr2d&    C,
-				      const Standard_Real Tol,
-				      const Standard_Real Uinf, 
-				      const Standard_Real Usup)
+  const gp_Hypr2d&    C,
+  const Standard_Real Tol,
+  const Standard_Real Uinf, 
+  const Standard_Real Usup)
 {
   Perform(P, C, Tol, Uinf, Usup);
 }
 
 
 void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P, 
-				const gp_Hypr2d&    H,
-				const Standard_Real Tol,
-				const Standard_Real Uinf,
-				const Standard_Real Usup)
+  const gp_Hypr2d&    H,
+  const Standard_Real Tol,
+  const Standard_Real Uinf,
+  const Standard_Real Usup)
 {
   gp_Pnt2d O = H.Location();
   myDone = Standard_False;
@@ -223,21 +231,21 @@ void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P,
     if (Vs > 0.) {
       Us = Log(Vs);
       if ((Us >= Uinf) && (Us <= Usup)) {
-	Cu = ElCLib::Value(Us,H);
-	DejaEnr = Standard_False;
-	for (NoExt = 0; NoExt < myNbExt; NoExt++) {
-	  if (TbExt[NoExt].SquareDistance(Cu) < Tol2) {
-	    DejaEnr = Standard_True;
-	    break;
-	  }
-	}
-	if (!DejaEnr) {
-	  TbExt[myNbExt] = Cu;
-	  mySqDist[myNbExt] = Cu.SquareDistance(P);
-	  myIsMin[myNbExt] = (NoSol == 0);
-	  myPoint[myNbExt] = Extrema_POnCurv2d(Us,Cu);
-	  myNbExt++;
-	}
+        Cu = ElCLib::Value(Us,H);
+        DejaEnr = Standard_False;
+        for (NoExt = 0; NoExt < myNbExt; NoExt++) {
+          if (TbExt[NoExt].SquareDistance(Cu) < Tol2) {
+            DejaEnr = Standard_True;
+            break;
+          }
+        }
+        if (!DejaEnr) {
+          TbExt[myNbExt] = Cu;
+          mySqDist[myNbExt] = Cu.SquareDistance(P);
+          myIsMin[myNbExt] = (NoSol == 0);
+          myPoint[myNbExt] = Extrema_POnCurv2d(Us,Cu);
+          myNbExt++;
+        }
       } // if ((Us >= Uinf) && (Us <= Usup))
     } // if (Vs > 0.)
   } // for (Standard_Integer NoSol = 1; ...
@@ -247,20 +255,20 @@ void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P,
 //=============================================================================
 
 Extrema_ExtPElC2d::Extrema_ExtPElC2d (const gp_Pnt2d&     P, 
-				      const gp_Parab2d&   C,
-				      const Standard_Real Tol,
-				      const Standard_Real Uinf, 
-				      const Standard_Real Usup)
+  const gp_Parab2d&   C,
+  const Standard_Real Tol,
+  const Standard_Real Uinf, 
+  const Standard_Real Usup)
 {
   Perform(P, C, Tol, Uinf, Usup);
 }
 
 
 void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P,
-				const gp_Parab2d&   C,
-				const Standard_Real Tol,
-				const Standard_Real Uinf, 
-				const Standard_Real Usup)
+  const gp_Parab2d&   C,
+  const Standard_Real Tol,
+  const Standard_Real Uinf, 
+  const Standard_Real Usup)
 {
   myDone = Standard_False;
   myNbExt = 0;
@@ -286,17 +294,17 @@ void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P,
       Cu = ElCLib::Value(Us,C);
       DejaEnr = Standard_False;
       for (NoExt = 0; NoExt < myNbExt; NoExt++) {
-	if (TbExt[NoExt].SquareDistance(Cu) < Tol2) {
-	  DejaEnr = Standard_True;
-	  break;
-	}
+        if (TbExt[NoExt].SquareDistance(Cu) < Tol2) {
+          DejaEnr = Standard_True;
+          break;
+        }
       }
       if (!DejaEnr) {
-	TbExt[myNbExt] = Cu;
-	mySqDist[myNbExt] = Cu.SquareDistance(P);
-	myIsMin[myNbExt] = (NoSol == 0);
-	myPoint[myNbExt] = Extrema_POnCurv2d(Us,Cu);
-	myNbExt++;
+        TbExt[myNbExt] = Cu;
+        mySqDist[myNbExt] = Cu.SquareDistance(P);
+        myIsMin[myNbExt] = (NoSol == 0);
+        myPoint[myNbExt] = Extrema_POnCurv2d(Us,Cu);
+        myNbExt++;
       }
     } // if ((Us >= Uinf) && (Us <= Usup))
   } // for (Standard_Integer NoSol = 1; ...
@@ -328,7 +336,7 @@ Standard_Boolean Extrema_ExtPElC2d::IsMin (const Standard_Integer N) const
 }
 //=============================================================================
 
-Extrema_POnCurv2d Extrema_ExtPElC2d::Point (const Standard_Integer N) const
+const Extrema_POnCurv2d& Extrema_ExtPElC2d::Point (const Standard_Integer N) const
 {
   if ((N < 1) || (N > NbExt())) { Standard_OutOfRange::Raise(); }
   return myPoint[N-1];

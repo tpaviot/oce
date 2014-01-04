@@ -43,6 +43,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _BRepMesh_Triangle_HeaderFile
+#include <BRepMesh_Triangle.hxx>
+#endif
 #ifndef _BRepMesh_PairOfIndex_HeaderFile
 #include <BRepMesh_PairOfIndex.hxx>
 #endif
@@ -52,7 +55,6 @@
 class BRepMesh_Vertex;
 class BRepMesh_VertexTool;
 class BRepMesh_Edge;
-class BRepMesh_Triangle;
 
 
 //! Describes  the data structure  necessary  for  the <br>

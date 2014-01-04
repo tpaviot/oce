@@ -75,6 +75,9 @@ public:
   //! Returns (modifiable) mode that means <br>
 //!          checking of problem of merging edges. <br>
         Standard_Boolean& MergeEdgeMode() ;
+  //! Returns (modifiable) mode that means <br>
+//!          checking of problem of continuity of the shape. <br>
+        Standard_Boolean& ContinuityMode() ;
   //! performs analysis <br>
   Standard_EXPORT     void Perform() ;
   //! result of test <br>
@@ -106,6 +109,8 @@ protected:
   Standard_EXPORT     void TestMergeVertex() ;
   
   Standard_EXPORT     void TestMergeEdge() ;
+  
+  Standard_EXPORT     void TestContinuity() ;
 
 
 
@@ -125,6 +130,7 @@ Standard_Boolean myRebuildFaceMode;
 Standard_Boolean myTangentMode;
 Standard_Boolean myMergeVertexMode;
 Standard_Boolean myMergeEdgeMode;
+Standard_Boolean myContinuityMode;
 Standard_Boolean myEmpty1;
 Standard_Boolean myEmpty2;
 BOPAlgo_ListOfCheckResult myResult;

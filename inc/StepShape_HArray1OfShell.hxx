@@ -39,11 +39,11 @@ class StepShape_HArray1OfShell : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepShape_HArray1OfShell(const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_HArray1OfShell(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepShape_HArray1OfShell(const Standard_Integer Low,const Standard_Integer Up,const StepShape_Shell& V);
+      StepShape_HArray1OfShell(const Standard_Integer Low,const Standard_Integer Up,const StepShape_Shell& V);
   
-  Standard_EXPORT     void Init(const StepShape_Shell& V) ;
+        void Init(const StepShape_Shell& V) ;
   
         Standard_Integer Length() const;
   

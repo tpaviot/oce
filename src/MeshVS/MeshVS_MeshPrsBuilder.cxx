@@ -1,22 +1,17 @@
 // Created on: 2003-09-16
 // Created by: Alexander SOLOVYOV
-// Copyright (c) 2003-2012 OPEN CASCADE SAS
+// Copyright (c) 2003-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <MeshVS_MeshPrsBuilder.ixx>
 
@@ -30,8 +25,8 @@
 #include <Graphic3d_AspectMarker3d.hxx>
 #include <Graphic3d_ArrayOfPolygons.hxx>
 #include <Graphic3d_ArrayOfSegments.hxx>
+#include <Graphic3d_ArrayOfPoints.hxx>
 #include <Graphic3d_ArrayOfPolylines.hxx>
-#include <Graphic3d_Array1OfVertex.hxx>
 #include <Graphic3d_Group.hxx>
 
 #include <TColStd_MapIteratorOfPackedMapOfInteger.hxx>
@@ -136,7 +131,7 @@ void MeshVS_MeshPrsBuilder::BuildNodes ( const Handle(Prs3d_Presentation)& Prs,
   if ( upper<=0 )
     return;
 
-  Graphic3d_Array1OfVertex aNodePoints ( 1, upper );
+  Handle(Graphic3d_ArrayOfPoints) aNodePoints = new Graphic3d_ArrayOfPoints (upper);
   Standard_Integer k=0;
   TColStd_MapIteratorOfPackedMapOfInteger it (anIDs);
   for( ; it.More(); it.Next() )
@@ -146,8 +141,8 @@ void MeshVS_MeshPrsBuilder::BuildNodes ( const Handle(Prs3d_Presentation)& Prs,
     {
       if ( IsExcludingOn() )
         IDsToExclude.Add (aKey);
-       k++;
-      aNodePoints.SetValue ( k, Graphic3d_Vertex ( aCoords(1), aCoords(2), aCoords(3) ) );
+      k++;
+      aNodePoints->AddVertex (aCoords(1), aCoords(2), aCoords(3));
     }
   }
 
@@ -156,7 +151,7 @@ void MeshVS_MeshPrsBuilder::BuildNodes ( const Handle(Prs3d_Presentation)& Prs,
     Prs3d_Root::NewGroup ( Prs );
     Handle (Graphic3d_Group) aNodeGroup = Prs3d_Root::CurrentGroup ( Prs );
     aNodeGroup->SetPrimitivesAspect ( aNodeMark );
-    aNodeGroup->MarkerSet ( aNodePoints );
+    aNodeGroup->AddPrimitiveArray (aNodePoints);
   }
 }
 
@@ -474,8 +469,10 @@ void MeshVS_MeshPrsBuilder::BuildHilightPrs ( const Handle(Prs3d_Presentation)& 
   {
     case MeshVS_ET_Node :
     {
-      aHilightGroup->SetPrimitivesAspect ( aNodeMark );
-      aHilightGroup->Marker ( Graphic3d_Vertex ( aCoords(1), aCoords(2), aCoords(3) ) );
+      aHilightGroup->SetPrimitivesAspect (aNodeMark);
+      Handle(Graphic3d_ArrayOfPoints) anArrayOfPoints = new Graphic3d_ArrayOfPoints (1);
+      anArrayOfPoints->AddVertex (aCoords(1), aCoords(2), aCoords(3));
+      aHilightGroup->AddPrimitiveArray (anArrayOfPoints);
     }
     break;
 
@@ -585,7 +582,7 @@ void MeshVS_MeshPrsBuilder::AddFaceWirePrs (const TColStd_Array1OfReal& theCoord
                                             const Standard_Boolean IsShrinked,
                                             const Standard_Real ShrinkCoef) const
 {
-  Standard_Real xG = 0.0, yG = 0.0, zG = 0.0, X = 0.0, Y = 0.0, Z = 0.0, startX=0., startY=0., startZ=0.;
+  Standard_Real xG = 0., yG = 0., zG = 0., X, Y, Z, startX=0., startY=0., startZ=0.;
   theLines->AddBound ( NbNodes+1 );
   if ( IsShrinked )
     CalculateCenter( theCoords, NbNodes, xG, yG, zG );
@@ -628,7 +625,7 @@ void MeshVS_MeshPrsBuilder::AddFaceSolidPrs (const Standard_Integer ID,
   if ( aDS.IsNull() )
     return;
 
-  Standard_Real xG = 0.0, yG = 0.0,  zG = 0.0, X= 0.0, Y= 0.0, Z= 0.0, nx= 0.0, ny= 0.0, nz= 0.0;
+  Standard_Real xG = 0., yG = 0., zG = 0., X, Y, Z, nx = 0., ny = 0., nz = 0.;
   thePolygons->AddBound ( NbNodes );
   if ( IsShrinked )
     CalculateCenter( theCoords, NbNodes, xG, yG, zG );

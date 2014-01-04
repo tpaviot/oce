@@ -200,7 +200,6 @@ private:
 Standard_Real myContC0;
 Standard_Real myContC1;
 Standard_Real myContC2;
-Standard_Real myContG0;
 Standard_Real myContG1;
 Standard_Real myContG2;
 Standard_Real myCourbC1;

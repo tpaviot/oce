@@ -1,24 +1,18 @@
 // Created on: 1995-04-24
 // Created by: Modelistation
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <ChFiDS_FilSpine.ixx>
 #include <ChFiDS_ListIteratorOfListOfHElSpine.hxx>
@@ -221,7 +215,7 @@ void  ChFiDS_FilSpine::UnSetRadius(const TopoDS_Vertex& V)
 //=======================================================================
 
 void  ChFiDS_FilSpine::SetRadius(const Handle(Law_Function)& C,
-				 const Standard_Integer      IinC)
+				 const Standard_Integer      /*IinC*/)
 {
   splitdone = Standard_False;
   Handle(Law_Composite) prout = new Law_Composite();
@@ -262,7 +256,7 @@ Standard_Boolean  ChFiDS_FilSpine::IsConstant(const Standard_Integer IE)const
   Standard_Real Uf = FirstParameter(IE);
   Standard_Real Ul = LastParameter(IE);
 
-  Standard_Real StartRad = 0, par, rad;
+  Standard_Real StartRad = 0.0, par, rad;
   Standard_Integer i;
   for (i = 1; i < parandrad.Length(); i++)
     {
@@ -270,11 +264,11 @@ Standard_Boolean  ChFiDS_FilSpine::IsConstant(const Standard_Integer IE)const
       rad = parandrad(i).Y();
       Standard_Real nextpar = parandrad(i+1).X();
       if (Abs( Uf-par ) <= gp::Resolution() ||
-	  (par < Uf && Uf < nextpar && nextpar-Uf > gp::Resolution()))
-	{
-	  StartRad = rad;
-	  break;
-	}
+         (par < Uf && Uf < nextpar && nextpar-Uf > gp::Resolution()))
+        {
+          StartRad = rad;
+          break;
+        }
     }
   for (i++; i <= parandrad.Length(); i++)
     {
@@ -311,7 +305,7 @@ Standard_Real  ChFiDS_FilSpine::Radius(const Standard_Integer IE)const
   Standard_Real Uf = FirstParameter(IE);
   Standard_Real Ul = LastParameter(IE);
 
-  Standard_Real StartRad = 0, par, rad;
+  Standard_Real StartRad = 0., par, rad;
   Standard_Integer i;
   for (i = 1; i < parandrad.Length(); i++)
     {
@@ -319,11 +313,11 @@ Standard_Real  ChFiDS_FilSpine::Radius(const Standard_Integer IE)const
       rad = parandrad(i).Y();
       Standard_Real nextpar = parandrad(i+1).X();
       if (Abs( Uf-par ) <= gp::Resolution() ||
-	  (par < Uf && Uf < nextpar && nextpar-Uf > gp::Resolution()))
-	{
-	  StartRad = rad;
-	  break;
-	}
+          (par < Uf && Uf < nextpar && nextpar-Uf > gp::Resolution()))
+        {
+          StartRad = rad;
+          break;
+        }
     }
   for (i++; i <= parandrad.Length(); i++)
     {

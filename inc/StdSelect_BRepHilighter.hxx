@@ -123,7 +123,6 @@ StdSelect_TypeOfResult mytype;
 TColStd_MapOfInteger myold;
 TColStd_MapOfInteger mynew;
 StdSelect_IndexedDataMapOfOwnerPrs myhimap;
-Standard_Integer mynbpick;
 Standard_Integer mylastindex;
 Handle_Visual3d_TransientManager myManager;
 

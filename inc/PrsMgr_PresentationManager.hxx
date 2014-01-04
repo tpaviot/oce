@@ -66,6 +66,8 @@ public:
 //! aPresentableObject in this framework with the <br>
 //! display mode aMode. <br>
   Standard_EXPORT   virtual  void Clear(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) ;
+  //! Sets the visibility of presentable object. <br>
+  Standard_EXPORT     void SetVisibility(const Handle(PrsMgr_PresentableObject)& thePresentableObject,const Standard_Integer theMode,const Standard_Boolean theValue) ;
   //! Highlights the presentation of the presentable object <br>
 //! aPresentableObject in this framework with the display mode aMode. <br>
   Standard_EXPORT     void Highlight(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) ;

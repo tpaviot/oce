@@ -107,8 +107,6 @@ TColStd_SequenceOfReal mySqDist;
 Standard_Integer mynbext;
 Standard_Boolean inverse;
 Standard_Address myC;
-Standard_Real myu1;
-Standard_Real myu2;
 Standard_Real myv1;
 Standard_Real myv2;
 Standard_Real mytolc1;

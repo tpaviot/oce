@@ -2,28 +2,29 @@
 // Created by: Sergey ZERCHANINOV
 // Copyright (c) 2011-2013 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
+
+#ifdef HAVE_CONFIG_H
+  #include <oce-config.h>
+#endif
 
 #include <OpenGl_GraphicDriver.hxx>
-
 #include <OpenGl_Context.hxx>
+#include <OpenGl_Flipper.hxx>
 #include <OpenGl_GraduatedTrihedron.hxx>
 #include <OpenGl_Group.hxx>
 #include <OpenGl_CView.hxx>
 #include <OpenGl_View.hxx>
+#include <OpenGl_StencilTest.hxx>
 #include <OpenGl_Text.hxx>
 #include <OpenGl_Trihedron.hxx>
 #include <OpenGl_Workspace.hxx>
@@ -35,9 +36,6 @@ IMPLEMENT_STANDARD_RTTIEXT(OpenGl_GraphicDriver,Graphic3d_GraphicDriver)
 
 namespace
 {
-  // Global switch - shared by whole TKOpenGl module. To be removed.
-  static Standard_Boolean TheToUseVbo = Standard_True;
-
   static const Handle(OpenGl_Context) TheNullGlCtx;
 };
 
@@ -65,8 +63,25 @@ extern "C" {
 // function : OpenGl_GraphicDriver
 // purpose  :
 // =======================================================================
+OpenGl_GraphicDriver::OpenGl_GraphicDriver (const Handle(Aspect_DisplayConnection)& theDisplayConnection)
+: Graphic3d_GraphicDriver ("TKOpenGl"),
+  myCaps           (new OpenGl_Caps()),
+  myMapOfView      (1, NCollection_BaseAllocator::CommonBaseAllocator()),
+  myMapOfWS        (1, NCollection_BaseAllocator::CommonBaseAllocator()),
+  myMapOfStructure (1, NCollection_BaseAllocator::CommonBaseAllocator()),
+  myUserDrawCallback (NULL),
+  myTempText (new OpenGl_Text())
+{
+  Begin (theDisplayConnection);
+}
+
+// =======================================================================
+// function : OpenGl_GraphicDriver
+// purpose  :
+// =======================================================================
 OpenGl_GraphicDriver::OpenGl_GraphicDriver (const Standard_CString theShrName)
 : Graphic3d_GraphicDriver (theShrName),
+  myCaps           (new OpenGl_Caps()),
   myMapOfView      (1, NCollection_BaseAllocator::CommonBaseAllocator()),
   myMapOfWS        (1, NCollection_BaseAllocator::CommonBaseAllocator()),
   myMapOfStructure (1, NCollection_BaseAllocator::CommonBaseAllocator()),
@@ -95,21 +110,12 @@ Standard_ShortReal OpenGl_GraphicDriver::DefaultTextHeight() const
 }
 
 // =======================================================================
-// function : ToUseVBO
-// purpose  :
-// =======================================================================
-Standard_Boolean OpenGl_GraphicDriver::ToUseVBO()
-{
-  return TheToUseVbo;
-}
-
-// =======================================================================
 // function : EnableVBO
 // purpose  :
 // =======================================================================
 void OpenGl_GraphicDriver::EnableVBO (const Standard_Boolean theToTurnOn)
 {
-  TheToUseVbo = theToTurnOn;
+  myCaps->vboDisable = !theToTurnOn;
 }
 
 // =======================================================================
@@ -166,6 +172,34 @@ Standard_Boolean OpenGl_GraphicDriver::SetImmediateModeDrawToFront (const Graphi
 }
 
 // =======================================================================
+// function : GetOpenClDeviceInfo
+// purpose  : Returns information about device used for computations
+// =======================================================================
+#ifndef HAVE_OPENCL
+
+Standard_Boolean OpenGl_GraphicDriver::GetOpenClDeviceInfo (const Graphic3d_CView&,
+  NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString>&)
+{
+  return Standard_False;
+}
+
+#else
+
+Standard_Boolean OpenGl_GraphicDriver::GetOpenClDeviceInfo (const Graphic3d_CView& theCView,
+  NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString>& theInfo)
+{
+
+  if (theCView.ViewId == -1 || theCView.ptrView == NULL)
+  {
+    return Standard_False;
+  }
+  
+  return reinterpret_cast<const OpenGl_CView*> (theCView.ptrView)->WS->GetOpenClDeviceInfo (theInfo);
+}
+
+#endif
+
+// =======================================================================
 // function : BeginAddMode
 // purpose  :
 // =======================================================================
@@ -204,8 +238,8 @@ void OpenGl_GraphicDriver::EndAddMode()
 // purpose  :
 // =======================================================================
 Standard_Boolean OpenGl_GraphicDriver::BeginImmediatMode (const Graphic3d_CView& theCView,
-                                                          const Aspect_CLayer2d& theCUnderLayer,
-                                                          const Aspect_CLayer2d& theCOverLayer,
+                                                          const Aspect_CLayer2d& /*theCUnderLayer*/,
+                                                          const Aspect_CLayer2d& /*theCOverLayer*/,
                                                           const Standard_Boolean theDoubleBuffer,
                                                           const Standard_Boolean theRetainMode)
 {
@@ -306,6 +340,14 @@ Standard_Boolean OpenGl_GraphicDriver::Print (const Graphic3d_CView& theCView,
 #endif
   myPrintContext.Nullify();
   return isPrinted;
+}
+
+void OpenGl_GraphicDriver::SetStencilTestOptions (const Graphic3d_CGroup& theCGroup,
+                                                  const Standard_Boolean theIsEnabled)
+{
+  OpenGl_StencilTest* aStencilTest = new OpenGl_StencilTest();
+  aStencilTest->SetOptions (theIsEnabled);
+  ((OpenGl_Group* )theCGroup.ptrGroup)->AddElement (TelNil, aStencilTest);
 }
 
 // =======================================================================
@@ -535,4 +577,17 @@ void OpenGl_GraphicDriver::GraduatedTrihedronMinMaxValues (const Standard_ShortR
                                                            const Standard_ShortReal theMaxZ)
 {
   OpenGl_GraduatedTrihedron::SetMinMax (theMinX, theMinY, theMinZ, theMaxX, theMaxY, theMaxZ);
+}
+
+// =======================================================================
+// function : SetFlippingOptions
+// purpose  : Enable or disable flipping option for the given group
+// =======================================================================
+void OpenGl_GraphicDriver::SetFlippingOptions (const Graphic3d_CGroup& theCGroup,
+                                               const Standard_Boolean  theIsEnabled,
+                                               const gp_Ax2&           theRefPlane)
+{
+  OpenGl_Flipper* aFlipper = new OpenGl_Flipper (theRefPlane);
+  aFlipper->SetOptions (theIsEnabled);
+  ((OpenGl_Group* )theCGroup.ptrGroup)->AddElement (TelNil, aFlipper);
 }

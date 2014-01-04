@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ChFiDS_SecArray1(const Standard_Integer Low,const Standard_Integer Up);
+      ChFiDS_SecArray1(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   ChFiDS_SecArray1(const ChFiDS_CircSection& Item,const Standard_Integer Low,const Standard_Integer Up);
+      ChFiDS_SecArray1(const ChFiDS_CircSection& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const ChFiDS_CircSection& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~ChFiDS_SecArray1()
 {
   Destroy();

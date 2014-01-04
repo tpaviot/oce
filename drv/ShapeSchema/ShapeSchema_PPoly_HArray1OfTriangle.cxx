@@ -39,6 +39,8 @@ void ShapeSchema_PPoly_HArray1OfTriangle::SWrite(const Handle(Standard_Persisten
   if (!p.IsNull()) {
     Handle(PPoly_HArray1OfTriangle) &pp = (Handle(PPoly_HArray1OfTriangle)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPPoly_HArray1OfTriangleLowerBound());
@@ -59,6 +61,8 @@ void ShapeSchema_PPoly_HArray1OfTriangle::SRead(const Handle(Standard_Persistent
 { 
   if (!p.IsNull()) {
     Handle(PPoly_HArray1OfTriangle) &pp = (Handle(PPoly_HArray1OfTriangle)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

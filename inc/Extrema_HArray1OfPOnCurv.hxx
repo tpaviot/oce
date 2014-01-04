@@ -39,11 +39,11 @@ class Extrema_HArray1OfPOnCurv : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Extrema_HArray1OfPOnCurv(const Standard_Integer Low,const Standard_Integer Up);
+      Extrema_HArray1OfPOnCurv(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Extrema_HArray1OfPOnCurv(const Standard_Integer Low,const Standard_Integer Up,const Extrema_POnCurv& V);
+      Extrema_HArray1OfPOnCurv(const Standard_Integer Low,const Standard_Integer Up,const Extrema_POnCurv& V);
   
-  Standard_EXPORT     void Init(const Extrema_POnCurv& V) ;
+        void Init(const Extrema_POnCurv& V) ;
   
         Standard_Integer Length() const;
   

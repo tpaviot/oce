@@ -1,21 +1,17 @@
-// Created on: 2012-01-26
+// Created on: 2014-01-26
 // Created by: Kirill GAVRILOV
-// Copyright (c) 2012-2012 OPEN CASCADE SAS
+// Copyright (c) 2014-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifndef _OpenGl_Context_H__
 #define _OpenGl_Context_H__
@@ -25,13 +21,18 @@
 #include <Aspect_Display.hxx>
 #include <Aspect_RenderingContext.hxx>
 #include <Handle_OpenGl_Context.hxx>
+#include <Handle_OpenGl_ShaderManager.hxx>
 #include <NCollection_DataMap.hxx>
+#include <NCollection_Map.hxx>
 #include <NCollection_Handle.hxx>
 #include <NCollection_Queue.hxx>
+#include <Message.hxx>
+#include <OpenGl_Caps.hxx>
 #include <OpenGl_Resource.hxx>
 #include <Standard_Transient.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <Handle_OpenGl_Context.hxx>
+#include <OpenGl_Clipping.hxx>
 
 //! Forward declarations
 struct OpenGl_GlCore12;
@@ -42,6 +43,7 @@ struct OpenGl_GlCore20;
 struct OpenGl_ArbVBO;
 struct OpenGl_ArbTBO;
 struct OpenGl_ArbIns;
+struct OpenGl_ArbDbg;
 struct OpenGl_ExtFBO;
 struct OpenGl_ExtGS;
 
@@ -102,7 +104,7 @@ public:
 public:
 
   //! Empty constructor. You should call Init() to perform initialization with bound GL context.
-  Standard_EXPORT OpenGl_Context();
+  Standard_EXPORT OpenGl_Context (const Handle(OpenGl_Caps)& theCaps = NULL);
 
   //! Destructor.
   Standard_EXPORT virtual ~OpenGl_Context();
@@ -115,7 +117,13 @@ public:
   //! GL context should be active!
   Standard_EXPORT Standard_Boolean Init();
 
-#if (defined(_WIN32) || defined(__WIN32__))
+  //! @return true if this context is valid (has been initialized)
+  inline Standard_Boolean IsValid() const
+  {
+    return myIsInitialized;
+  }
+
+#if defined(_WIN32)
   Standard_EXPORT Standard_Boolean Init (const Aspect_Handle           theWindow,
                                          const Aspect_Handle           theWindowDC,
                                          const Aspect_RenderingContext theGContext);
@@ -129,6 +137,10 @@ public:
 
   //! Check if theExtName extension is supported by active GL context.
   Standard_EXPORT Standard_Boolean CheckExtension (const char* theExtName) const;
+
+  //! Check if theExtName extension is in extensions string.
+  Standard_EXPORT static Standard_Boolean CheckExtension (const char* theExtString,
+                                                          const char* theExtName);
 
   //! Auxiliary template to retrieve GL function pointer.
   //! Pointer to function retrieved from library is statically casted
@@ -232,11 +244,48 @@ public:
   //! Clean up the delayed release queue.
   Standard_EXPORT void ReleaseDelayed();
 
+  //! @return tool for management of clippings within this context.
+  inline OpenGl_Clipping& ChangeClipping() { return myClippingState; }
+
+  //! @return tool for management of clippings within this context.
+  inline const OpenGl_Clipping& Clipping() const { return myClippingState; }
+
+  //! @return tool for management of shader programs within this context.
+  inline const Handle(OpenGl_ShaderManager)& ShaderManager() const { return myShaderManager; }
+
+public:
+
   //! @return maximum degree of anisotropy texture filter
   Standard_EXPORT Standard_Integer MaxDegreeOfAnisotropy() const;
 
   //! @return value for GL_MAX_TEXTURE_SIZE
   Standard_EXPORT Standard_Integer MaxTextureSize() const;
+
+  //! Get maximum number of clip planes supported by OpenGl.
+  //! This value is implementation dependant. At least 6
+  //! planes should be supported by OpenGl (see specs).
+  //! @return value for GL_MAX_CLIP_PLANES
+  Standard_EXPORT Standard_Integer MaxClipPlanes() const;
+
+public:
+
+  //! @return messanger instance
+  inline const Handle_Message_Messenger& Messanger() const
+  {
+    return ::Message::DefaultMessenger();
+  }
+
+  //! Callback for GL_ARB_debug_output extension
+  //! @param theSource   message source   within GL_DEBUG_SOURCE_   enumeration
+  //! @param theType     message type     within GL_DEBUG_TYPE_     enumeration
+  //! @param theId       message ID       within source
+  //! @param theSeverity message severity within GL_DEBUG_SEVERITY_ enumeration
+  //! @param theMessage  the message itself
+  Standard_EXPORT void PushMessage (const unsigned int theSource,
+                                    const unsigned int theType,
+                                    const unsigned int theId,
+                                    const unsigned int theSeverity,
+                                    const TCollection_ExtendedString& theMessage);
 
 private:
 
@@ -257,22 +306,26 @@ public: // core profiles
   OpenGl_GlCore15* core15;
   OpenGl_GlCore20* core20;
 
+  Handle(OpenGl_Caps) caps; //!< context options
+
 public: // extensions
 
   Standard_Boolean arbNPTW; //!< GL_ARB_texture_non_power_of_two
   OpenGl_ArbVBO*   arbVBO;  //!< GL_ARB_vertex_buffer_object
   OpenGl_ArbTBO*   arbTBO;  //!< GL_ARB_texture_buffer_object
   OpenGl_ArbIns*   arbIns;  //!< GL_ARB_draw_instanced
+  OpenGl_ArbDbg*   arbDbg;  //!< GL_ARB_debug_output
   OpenGl_ExtFBO*   extFBO;  //!< GL_EXT_framebuffer_object
   OpenGl_ExtGS*    extGS;   //!< GL_EXT_geometry_shader4
   Standard_Boolean extBgra; //!< GL_EXT_bgra
   Standard_Boolean extAnis; //!< GL_EXT_texture_filter_anisotropic
+  Standard_Boolean extPDS;  //!< GL_EXT_packed_depth_stencil
   Standard_Boolean atiMem;  //!< GL_ATI_meminfo
   Standard_Boolean nvxMem;  //!< GL_NVX_gpu_memory_info
 
 private: // system-dependent fields
 
-#if (defined(_WIN32) || defined(__WIN32__))
+#if defined(_WIN32)
   Aspect_Handle           myWindow;   //!< window handle (owner of GL context) : HWND
   Aspect_Handle           myWindowDC; //!< Device Descriptor handle : HDC
   Aspect_RenderingContext myGContext; //!< Rendering Context handle : HGLRC
@@ -297,14 +350,19 @@ private: // context info
   Handle(OpenGl_DelayReleaseMap) myDelayed;         //!< shared resources for delayed release
   Handle(OpenGl_ResourcesQueue)  myReleaseQueue;    //!< queue of resources for delayed clean up
 
+  OpenGl_Clipping myClippingState; //!< state of clip planes
+
   void*            myGlLibHandle;   //!< optional handle to GL library
   OpenGl_GlCore20* myGlCore20;      //!< common structure for GL core functions upto 2.0
   Standard_Integer myAnisoMax;      //!< maximum level of anisotropy texture filter
   Standard_Integer myMaxTexDim;     //!< value for GL_MAX_TEXTURE_SIZE
+  Standard_Integer myMaxClipPlanes; //!< value for GL_MAX_CLIP_PLANES
   Standard_Integer myGlVerMajor;    //!< cached GL version major number
   Standard_Integer myGlVerMinor;    //!< cached GL version minor number
   Standard_Boolean myIsFeedback;    //!< flag indicates GL_FEEDBACK mode
   Standard_Boolean myIsInitialized; //!< flag indicates initialization state
+
+  Handle(OpenGl_ShaderManager) myShaderManager; //! support object for managing shader programs
 
 private:
 

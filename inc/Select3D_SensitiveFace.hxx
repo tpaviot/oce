@@ -19,12 +19,6 @@
 #ifndef _Select3D_TypeOfSensitivity_HeaderFile
 #include <Select3D_TypeOfSensitivity.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _Select3D_SensitivePoly_HeaderFile
 #include <Select3D_SensitivePoly.hxx>
 #endif
@@ -33,6 +27,12 @@
 #endif
 #ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
+#ifndef _SelectBasics_PickArgs_HeaderFile
+#include <SelectBasics_PickArgs.hxx>
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
@@ -72,8 +72,10 @@ public:
 //! the sensitivity type Sensitivity. <br>
 //! The array of points is the outer polygon of the geometric face. <br>
   Standard_EXPORT   Select3D_SensitiveFace(const Handle(SelectBasics_EntityOwner)& OwnerId,const Handle(TColgp_HArray1OfPnt)& ThePoints,const Select3D_TypeOfSensitivity Sensitivity = Select3D_TOS_INTERIOR);
-  
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real X,const Standard_Real Y,const Standard_Real aTol,Standard_Real& DMin) ;
+  //! Checks whether the sensitive entity matches the picking <br>
+//! detection area (close to the picking line). <br>
+//! For details please refer to base class declaration. <br>
+  Standard_EXPORT   virtual  Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
   
   Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
   
@@ -81,9 +83,8 @@ public:
   //! Computes the depth values for all 3D points defining this face and returns <br>
 //! the minimal value among them. <br>
 //! If the "minimal depth" approach is not suitable and gives wrong detection results <br>
-//! in some particular case, a custom sensitive face class can be implemented at application level <br>
-//! that overrides default ComputeDepth() behavior. <br>
-  Standard_EXPORT   virtual  Standard_Real ComputeDepth(const gp_Lin& EyeLine) const;
+//! in some particular case, a custom sensitive face class can redefine this method. <br>
+  Standard_EXPORT   virtual  Standard_Real ComputeDepth(const gp_Lin& thePickLine,const Standard_Real theDepthMin,const Standard_Real theDepthMax) const;
   
   Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
   //! Returns the copy of this <br>
@@ -101,10 +102,11 @@ protected:
 
 private: 
 
+  //! Warning: Obsolete. <br>
+//! Use newer version of the method with min, max limits passed as arguments. <br>
+  Standard_EXPORT     void ComputeDepth(const gp_Lin& EyeLine) const;
 
 Select3D_TypeOfSensitivity mytype;
-Standard_Boolean myautointer;
-Standard_Integer myDetectedIndex;
 
 
 };

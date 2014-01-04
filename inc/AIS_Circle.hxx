@@ -71,10 +71,10 @@ public:
 //! datums initializes the circle aCircle <br>
   Standard_EXPORT   AIS_Circle(const Handle(Geom_Circle)& aCircle);
   //! Initializes this algorithm for constructing AIS circle datums. <br>
-//! Initializes the circle aCircle, the arc <br>
-//!   starting point UStart, the arc ending point UEnd, <br>
-//!   and the direction aSens. <br>
-  Standard_EXPORT   AIS_Circle(const Handle(Geom_Circle)& aCircle,const Standard_Real aUStart,const Standard_Real aUEnd,const Standard_Boolean aSens = Standard_True);
+//! Initializes the circle theCircle, the arc <br>
+//!   starting point theUStart, the arc ending point theUEnd, <br>
+//!   and the type of sensitivity theIsFilledCircleSens. <br>
+  Standard_EXPORT   AIS_Circle(const Handle(Geom_Circle)& theCircle,const Standard_Real theUStart,const Standard_Real theUEnd,const Standard_Boolean theIsFilledCircleSens = Standard_False);
   //! computes the presentation according to a point of view <br>
 //!          given by <aProjector>. <br>
 //!          To be Used when the associated degenerated Presentations <br>
@@ -109,6 +109,11 @@ public:
   Standard_EXPORT     void UnsetColor() ;
   //! Removes width settings from the solid line boundary of the circle datum. <br>
   Standard_EXPORT     void UnsetWidth() ;
+  //! Returns the type of sensitivity for the circle; <br>
+        Standard_Boolean IsFilledCircleSens() const;
+  //! Sets the type of sensitivity for the circle. If theIsFilledCircleSens set to Standard_True <br>
+//! then the whole circle will be detectable, otherwise only the boundary of the circle. <br>
+        void SetFilledCircleSens(const Standard_Boolean theIsFilledCircleSens) ;
 
 
 
@@ -141,7 +146,7 @@ Handle_Geom_Circle myComponent;
 Standard_Real myUStart;
 Standard_Real myUEnd;
 Standard_Boolean myCircleIsArc;
-Standard_Boolean mySens;
+Standard_Boolean myIsFilledCircleSens;
 
 
 };

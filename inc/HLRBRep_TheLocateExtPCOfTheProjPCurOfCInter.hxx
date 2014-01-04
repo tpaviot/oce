@@ -62,7 +62,7 @@ public:
   
   Standard_EXPORT     Standard_Boolean IsMin() const;
   
-  Standard_EXPORT     Extrema_POnCurv2d Point() const;
+  Standard_EXPORT    const Extrema_POnCurv2d& Point() const;
 
 
 

@@ -39,6 +39,8 @@ void ShapeSchema_PCollection_HExtendedString::SWrite(const Handle(Standard_Persi
   if (!p.IsNull()) {
     Handle(PCollection_HExtendedString) &pp = (Handle(PCollection_HExtendedString)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     ShapeSchema_DBC_VArrayOfExtCharacter::SWrite(pp->_CSFDB_GetPCollection_HExtendedStringData(),f,theSchema);
@@ -57,6 +59,8 @@ void ShapeSchema_PCollection_HExtendedString::SRead(const Handle(Standard_Persis
 { 
   if (!p.IsNull()) {
     Handle(PCollection_HExtendedString) &pp = (Handle(PCollection_HExtendedString)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

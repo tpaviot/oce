@@ -1,21 +1,17 @@
 // Created by: GG
 // Copyright (c) 1991-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modified     23/02/98 : FMN ; Remplacement PI par Standard_PI
 //              02.15.100 : JR : Clutter
@@ -140,8 +136,8 @@ Graphic3d_Vector Vec ;
 
 void V3d::ArrowOfRadius(const Handle(Graphic3d_Group)& garrow,const Standard_Real X0,const Standard_Real Y0,const Standard_Real Z0,const Standard_Real Dx,const Standard_Real Dy,const Standard_Real Dz,const Standard_Real Alpha,const Standard_Real Lng)
 {
-  Standard_Real Xc,Yc,Zc,Xi,Yi,Zi,Xj,Yj,Zj;
-  Standard_Real Xn,Yn,Zn,X,Y,Z,X1,Y1,Z1,Norme;
+  Standard_Real Xc, Yc, Zc, Xi, Yi, Zi, Xj, Yj, Zj;
+  Standard_Real Xn, Yn, Zn, X, Y, Z, X1 = 0., Y1 = 0., Z1 = 0., Norme;
   const Standard_Integer NbPoints = 10;
 
 //      Centre du cercle base de la fleche :
@@ -262,7 +258,7 @@ void V3d::DrawSphere(const Handle(V3d_Viewer)& aViewer,const Quantity_Length ray
 
   const Standard_Real Dbeta = 2. * M_PI / NFACES;
   const Standard_Real Dalpha = 2. * M_PI / NFACES;
-  Standard_ShortReal X,Y,Z,X0,Y0,Z0;
+  Standard_ShortReal X,Y,Z,X0 = 0.,Y0 = 0.,Z0 = 0.;
   Standard_Real R, Alpha, Beta = 0.;
   Standard_Integer i,j ;
   for( j=0; j<NFACES/2 ; j++, Beta += Dbeta ) {

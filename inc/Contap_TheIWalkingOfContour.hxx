@@ -28,11 +28,11 @@
 #ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
 #endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
-#include <TColStd_SequenceOfReal.hxx>
+#ifndef _IntWalk_VectorOfWalkingData_HeaderFile
+#include <IntWalk_VectorOfWalkingData.hxx>
 #endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
-#include <TColStd_SequenceOfInteger.hxx>
+#ifndef _IntWalk_VectorOfInteger_HeaderFile
+#include <IntWalk_VectorOfInteger.hxx>
 #endif
 #ifndef _IntSurf_PntOn2S_HeaderFile
 #include <IntSurf_PntOn2S.hxx>
@@ -43,8 +43,14 @@
 #ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
 #endif
+#ifndef _TColStd_SequenceOfInteger_HeaderFile
+#include <TColStd_SequenceOfInteger.hxx>
+#endif
 #ifndef _Contap_SequenceOfIWLineOfTheIWalkingOfContour_HeaderFile
 #include <Contap_SequenceOfIWLineOfTheIWalkingOfContour.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
@@ -54,9 +60,6 @@
 #endif
 #ifndef _Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalkingOfContour_HeaderFile
 #include <Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalkingOfContour.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
 #endif
 #ifndef _IntWalk_StatusDeflection_HeaderFile
 #include <IntWalk_StatusDeflection.hxx>
@@ -86,8 +89,6 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
-  Standard_EXPORT   Contap_TheIWalkingOfContour();
   
   Standard_EXPORT   Contap_TheIWalkingOfContour(const Standard_Real Epsilon,const Standard_Real Deflection,const Standard_Real Step);
   
@@ -135,6 +136,8 @@ protected:
   Standard_EXPORT     void AddPointInCurrentLine(const Standard_Integer N,const IntSurf_PathPoint& PathPnt,const Handle(Contap_TheIWLineOfTheIWalkingOfContour)& CurrentLine) const;
   
   Standard_EXPORT     void MakeWalkingPoint(const Standard_Integer Case,const Standard_Real U,const Standard_Real V,Contap_TheSurfFunctionOfContour& Section,IntSurf_PntOn2S& Psol) ;
+  
+  Standard_EXPORT     void Clear() ;
 
 
 
@@ -150,13 +153,9 @@ Standard_Real pas;
 math_Vector tolerance;
 Standard_Real epsilon;
 Standard_Boolean reversed;
-TColStd_SequenceOfReal ustart1;
-TColStd_SequenceOfReal vstart1;
-TColStd_SequenceOfInteger nbMultiplicities;
-TColStd_SequenceOfInteger etat1;
-TColStd_SequenceOfReal ustart2;
-TColStd_SequenceOfReal vstart2;
-TColStd_SequenceOfInteger etat2;
+IntWalk_VectorOfWalkingData wd1;
+IntWalk_VectorOfWalkingData wd2;
+IntWalk_VectorOfInteger nbMultiplicities;
 Standard_Real Um;
 Standard_Real UM;
 Standard_Real Vm;
@@ -167,6 +166,8 @@ gp_Vec previousd3d;
 gp_Dir2d previousd2d;
 TColStd_SequenceOfInteger seqAjout;
 Contap_SequenceOfIWLineOfTheIWalkingOfContour lines;
+Standard_Integer NbPointsConfondusConsecutifs;
+Standard_Integer EpsilonSembleTropGrand;
 
 
 };

@@ -40,6 +40,8 @@ void ShapeSchema_PGeom_TrimmedCurve::SWrite(const Handle(Standard_Persistent)& p
   if (!p.IsNull()) {
     Handle(PGeom_TrimmedCurve) &pp = (Handle(PGeom_TrimmedCurve)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPGeom_TrimmedCurvebasisCurve(),f);
@@ -60,6 +62,8 @@ void ShapeSchema_PGeom_TrimmedCurve::SRead(const Handle(Standard_Persistent)& p,
 { 
   if (!p.IsNull()) {
     Handle(PGeom_TrimmedCurve) &pp = (Handle(PGeom_TrimmedCurve)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

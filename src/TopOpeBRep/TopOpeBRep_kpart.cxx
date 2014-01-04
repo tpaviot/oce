@@ -1,23 +1,18 @@
 // Created on: 1994-02-17
 // Created by: Jean Yves LEBEY
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TopOpeBRep_FacesFiller.ixx>
 
@@ -114,7 +109,7 @@ static Standard_Boolean FUNBREP_SameUV(const TopOpeBRep_VPointInter& VP1,
 			  const Standard_Integer sind,const Standard_Real toluv)
 //-----------------------------------------------------------------------
 {
-  Standard_Real u1 = 0.0,v1 = 0.0,u2 = 0.0,v2 = 0.0;
+  Standard_Real u1 = 0.,v1 = 0.,u2 = 0.,v2 = 0.;
   if (sind == 1) {
     VP1.ParametersOnS1(u1,v1); VP2.ParametersOnS1(u2,v2);
   }
@@ -130,11 +125,20 @@ static Standard_Boolean FUNBREP_SameUV(const TopOpeBRep_VPointInter& VP1,
 #ifdef DEB
 //-------------------------------------------------------------------
 void FUNBREP_topokpartDEB 
-(const Handle(TopOpeBRepDS_Interference)& Ifound,const TopOpeBRepDS_ListOfInterference& DSCIL,const TopOpeBRep_LineInter& L,
- const TopOpeBRep_VPointInter& VP,const TopOpeBRepDS_Transition& lasttransLine,
- const TopOpeBRepDS_DataStructure& BDS,const TopoDS_Shape& E,const TopoDS_Shape& F,const Standard_Real toluv,
- const Standard_Boolean CPIfound,const Standard_Boolean samepar, const Standard_Boolean couture,
- const Standard_Real& parline,const TopOpeBRepDS_Transition& transLine)
+(const Handle(TopOpeBRepDS_Interference)& /*Ifound*/,
+ const TopOpeBRepDS_ListOfInterference& DSCIL,
+ const TopOpeBRep_LineInter& L,
+ const TopOpeBRep_VPointInter& VP,
+ const TopOpeBRepDS_Transition& lasttransLine,
+ const TopOpeBRepDS_DataStructure& /*BDS*/,
+ const TopoDS_Shape& /*E*/,
+ const TopoDS_Shape& /*F*/,
+ const Standard_Real /*toluv*/,
+ const Standard_Boolean CPIfound,
+ const Standard_Boolean samepar, 
+ const Standard_Boolean couture,
+ const Standard_Real& parline,
+ const TopOpeBRepDS_Transition& transLine)
 //-------------------------------------------------------------------
 {
   Standard_Integer iVP = VP.Index();

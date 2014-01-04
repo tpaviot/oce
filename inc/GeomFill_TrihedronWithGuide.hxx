@@ -19,6 +19,9 @@
 #ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
 #endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
 #ifndef _GeomFill_TrihedronLaw_HeaderFile
 #include <GeomFill_TrihedronLaw.hxx>
 #endif
@@ -28,6 +31,7 @@
 class Adaptor3d_HCurve;
 class Standard_OutOfRange;
 class Standard_NotImplemented;
+class gp_Pnt;
 
 
 //! To define Trihedron along one Curve with a guide <br>
@@ -42,6 +46,9 @@ public:
   Standard_EXPORT   virtual  Handle_Adaptor3d_HCurve Guide() const = 0;
   
   Standard_EXPORT   virtual  void Origine(const Standard_Real Param1,const Standard_Real Param2)  = 0;
+  //! Returns the current point on guide <br>
+//!          found by D0, D1 or D2. <br>
+  Standard_EXPORT     gp_Pnt CurrentPointOnGuide() const;
 
 
 
@@ -53,6 +60,7 @@ protected:
 
 Handle_Adaptor3d_HCurve myGuide;
 Handle_Adaptor3d_HCurve myTrimG;
+gp_Pnt myCurPointOnGuide;
 
 
 private: 

@@ -1,23 +1,18 @@
 // Created on: 1993-05-14
 // Created by: Joelle CHAUVET
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modified:	Thu Nov 26 16:37:18 1998
 //		correction in NbUIntervals for SurfaceOfLinearExtrusion 
@@ -187,26 +182,36 @@ GeomAbs_Shape GeomAdaptor_Surface::UContinuity() const
       return LocalContinuity(myBspl->UDegree(), myBspl->NbUKnots(), TK, TM,
                              myUFirst, myULast, IsUPeriodic());
     }
-	case GeomAbs_OffsetSurface:
+    case GeomAbs_OffsetSurface:
     {
       switch(BasisSurface()->UContinuity())
       {
-        case GeomAbs_CN : return GeomAbs_CN; 
-        case GeomAbs_C2 : return GeomAbs_C1; 
-        case GeomAbs_C1 : return GeomAbs_C0;
-        default: /* Do nothing */ break;
+      case GeomAbs_CN :
+      case GeomAbs_C3 : return GeomAbs_CN;
+      case GeomAbs_G2 :
+      case GeomAbs_C2 : return GeomAbs_C1;
+      case GeomAbs_G1 :
+      case GeomAbs_C1 : return GeomAbs_C0;
+      case GeomAbs_C0 : break;
       }
       Standard_NoSuchObject::Raise("GeomAdaptor_Surface::UContinuity");
-	  break;
+      break;
     }
-	case GeomAbs_SurfaceOfExtrusion:
+    case GeomAbs_SurfaceOfExtrusion:
     {
       GeomAdaptor_Curve GC
         ((*((Handle(Geom_SurfaceOfLinearExtrusion)*)&mySurface))->BasisCurve(),myUFirst,myULast);
       return GC.Continuity();
     }
-	case GeomAbs_OtherSurface: Standard_NoSuchObject::Raise("GeomAdaptor_Surface::UContinuity");
-	default: /* Do nothing */ break;
+    case GeomAbs_OtherSurface: 
+      Standard_NoSuchObject::Raise("GeomAdaptor_Surface::UContinuity");
+    case GeomAbs_Plane:
+    case GeomAbs_Cylinder:
+    case GeomAbs_Cone:
+    case GeomAbs_Sphere:
+    case GeomAbs_Torus:
+    case GeomAbs_BezierSurface:
+    case GeomAbs_SurfaceOfRevolution: break;
   }
   return GeomAbs_CN;
 }
@@ -230,26 +235,36 @@ GeomAbs_Shape GeomAdaptor_Surface::VContinuity() const
       return LocalContinuity(myBspl->VDegree(), myBspl->NbVKnots(), TK, TM,
                              myVFirst, myVLast, IsVPeriodic());
     }
-	case GeomAbs_OffsetSurface:
+    case GeomAbs_OffsetSurface:
     {
       switch(BasisSurface()->VContinuity())
       {
-        case GeomAbs_CN : return GeomAbs_CN; 
-        case GeomAbs_C2 : return GeomAbs_C1;
-        case GeomAbs_C1 : return GeomAbs_C0;
-        default: /* Do nothing */ break;
+      case GeomAbs_CN : 
+      case GeomAbs_C3 : return GeomAbs_CN; 
+      case GeomAbs_G2 :
+      case GeomAbs_C2 : return GeomAbs_C1;
+      case GeomAbs_G1 :
+      case GeomAbs_C1 : return GeomAbs_C0;
+      case GeomAbs_C0 : break;
       }
       Standard_NoSuchObject::Raise("GeomAdaptor_Surface::VContinuity");
       break;
     }
-	case GeomAbs_SurfaceOfRevolution:
+    case GeomAbs_SurfaceOfRevolution:
     {
       GeomAdaptor_Curve GC
         ((*((Handle(Geom_SurfaceOfRevolution)*)&mySurface))->BasisCurve(),myVFirst,myVLast);
       return GC.Continuity();
     }
-	case GeomAbs_OtherSurface: Standard_NoSuchObject::Raise("GeomAdaptor_Surface::VContinuity");
-	default: /* Do nothing */ break;
+    case GeomAbs_OtherSurface:
+      Standard_NoSuchObject::Raise("GeomAdaptor_Surface::VContinuity");
+    case GeomAbs_Plane:
+    case GeomAbs_Cylinder:
+    case GeomAbs_Cone:
+    case GeomAbs_Sphere:
+    case GeomAbs_Torus:
+    case GeomAbs_BezierSurface:
+    case GeomAbs_SurfaceOfExtrusion: break;
   }
   return GeomAbs_CN;
 }
@@ -269,7 +284,7 @@ Standard_Integer GeomAdaptor_Surface::NbUIntervals(const GeomAbs_Shape S) const
         (myBspl->VIso(myBspl->VKnot(myBspl->FirstVKnotIndex())),myUFirst,myULast);
       return myBasisCurve.NbIntervals(S);
     }
-	case GeomAbs_SurfaceOfExtrusion:
+	  case GeomAbs_SurfaceOfExtrusion:
     {
       GeomAdaptor_Curve myBasisCurve
         ((*((Handle(Geom_SurfaceOfLinearExtrusion)*)&mySurface))->BasisCurve(),myUFirst,myULast);
@@ -277,7 +292,7 @@ Standard_Integer GeomAdaptor_Surface::NbUIntervals(const GeomAbs_Shape S) const
         return myBasisCurve.NbIntervals(S);
       break;
     }
-	case GeomAbs_OffsetSurface:
+	  case GeomAbs_OffsetSurface:
     {
       GeomAbs_Shape BaseS = GeomAbs_CN;
       switch(S)
@@ -287,12 +302,20 @@ Standard_Integer GeomAdaptor_Surface::NbUIntervals(const GeomAbs_Shape S) const
         case GeomAbs_C0: BaseS = GeomAbs_C1; break;
         case GeomAbs_C1: BaseS = GeomAbs_C2; break;
         case GeomAbs_C2: BaseS = GeomAbs_C3; break;
-        default: /* Do nothing */ break;
+        case GeomAbs_C3:
+        case GeomAbs_CN: break;
       }
       GeomAdaptor_Surface Sur((*((Handle(Geom_OffsetSurface)*)&mySurface))->BasisSurface());
       return Sur.NbUIntervals(BaseS);
     }
-    default: /* Do nothing */ break;
+    case GeomAbs_Plane:
+    case GeomAbs_Cylinder:
+    case GeomAbs_Cone:
+    case GeomAbs_Sphere:
+    case GeomAbs_Torus:
+    case GeomAbs_BezierSurface:
+    case GeomAbs_OtherSurface:
+    case GeomAbs_SurfaceOfRevolution: break;
   }
   return 1;
 }
@@ -312,7 +335,7 @@ Standard_Integer GeomAdaptor_Surface::NbVIntervals(const GeomAbs_Shape S) const
         (myBspl->UIso(myBspl->UKnot(myBspl->FirstUKnotIndex())),myVFirst,myVLast);
       return myBasisCurve.NbIntervals(S);
     }
-	case GeomAbs_SurfaceOfRevolution:
+	  case GeomAbs_SurfaceOfRevolution:
     {
       GeomAdaptor_Curve myBasisCurve
         ((*((Handle(Geom_SurfaceOfRevolution)*)&mySurface))->BasisCurve(),myVFirst,myVLast);
@@ -320,7 +343,7 @@ Standard_Integer GeomAdaptor_Surface::NbVIntervals(const GeomAbs_Shape S) const
         return myBasisCurve.NbIntervals(S);
       break;
     }
-	case GeomAbs_OffsetSurface:
+	  case GeomAbs_OffsetSurface:
     {
       GeomAbs_Shape BaseS = GeomAbs_CN;
       switch(S)
@@ -330,12 +353,20 @@ Standard_Integer GeomAdaptor_Surface::NbVIntervals(const GeomAbs_Shape S) const
         case GeomAbs_C0: BaseS = GeomAbs_C1; break;
         case GeomAbs_C1: BaseS = GeomAbs_C2; break;
         case GeomAbs_C2: BaseS = GeomAbs_C3; break;
-        default: /* Do nothing */ break;
+        case GeomAbs_C3:
+        case GeomAbs_CN: break;
       }
       GeomAdaptor_Surface Sur((*((Handle(Geom_OffsetSurface)*)&mySurface))->BasisSurface());
       return Sur.NbVIntervals(BaseS);
-	}
-    default: /* Do nothing */ break;
+	  }
+    case GeomAbs_Plane:
+    case GeomAbs_Cylinder:
+    case GeomAbs_Cone:
+    case GeomAbs_Sphere:
+    case GeomAbs_Torus:
+    case GeomAbs_BezierSurface:
+    case GeomAbs_OtherSurface:
+    case GeomAbs_SurfaceOfExtrusion: break;
   }
   return 1;
 }
@@ -359,7 +390,7 @@ void GeomAdaptor_Surface::UIntervals(TColStd_Array1OfReal& T, const GeomAbs_Shap
       myBasisCurve.Intervals(T,S);
       break;
     }
-	case GeomAbs_SurfaceOfExtrusion:
+	  case GeomAbs_SurfaceOfExtrusion:
     {
       GeomAdaptor_Curve myBasisCurve
         ((*((Handle(Geom_SurfaceOfLinearExtrusion)*)&mySurface))->BasisCurve(),myUFirst,myULast);
@@ -370,7 +401,7 @@ void GeomAdaptor_Surface::UIntervals(TColStd_Array1OfReal& T, const GeomAbs_Shap
       }
       break;
     }
-	case GeomAbs_OffsetSurface:
+	  case GeomAbs_OffsetSurface:
     {
       GeomAbs_Shape BaseS = GeomAbs_CN;
       switch(S)
@@ -380,13 +411,21 @@ void GeomAdaptor_Surface::UIntervals(TColStd_Array1OfReal& T, const GeomAbs_Shap
         case GeomAbs_C0: BaseS = GeomAbs_C1; break;
         case GeomAbs_C1: BaseS = GeomAbs_C2; break;
         case GeomAbs_C2: BaseS = GeomAbs_C3; break;
-        default: /* Do nothing */ break;
+        case GeomAbs_C3:
+        case GeomAbs_CN: break;
       }
       GeomAdaptor_Surface Sur((*((Handle(Geom_OffsetSurface)*)&mySurface))->BasisSurface());
       myNbUIntervals = Sur.NbUIntervals(BaseS);
       Sur.UIntervals(T, BaseS);
     }
-    default: /* Do nothing */ break;
+    case GeomAbs_Plane:
+    case GeomAbs_Cylinder:
+    case GeomAbs_Cone:
+    case GeomAbs_Sphere:
+    case GeomAbs_Torus:
+    case GeomAbs_BezierSurface:
+    case GeomAbs_OtherSurface:
+    case GeomAbs_SurfaceOfRevolution: break;
   }
 
   T(T.Lower()) = myUFirst;
@@ -412,7 +451,7 @@ void GeomAdaptor_Surface::VIntervals(TColStd_Array1OfReal& T, const GeomAbs_Shap
       myBasisCurve.Intervals(T,S);
       break;
     }
-	case GeomAbs_SurfaceOfRevolution:
+	  case GeomAbs_SurfaceOfRevolution:
     {
       GeomAdaptor_Curve myBasisCurve
         ((*((Handle(Geom_SurfaceOfRevolution)*)&mySurface))->BasisCurve(),myVFirst,myVLast);
@@ -423,7 +462,7 @@ void GeomAdaptor_Surface::VIntervals(TColStd_Array1OfReal& T, const GeomAbs_Shap
       }
       break;
     }
-	case GeomAbs_OffsetSurface:
+	  case GeomAbs_OffsetSurface:
     {
       GeomAbs_Shape BaseS = GeomAbs_CN;
       switch(S)
@@ -433,13 +472,21 @@ void GeomAdaptor_Surface::VIntervals(TColStd_Array1OfReal& T, const GeomAbs_Shap
         case GeomAbs_C0: BaseS = GeomAbs_C1; break;
         case GeomAbs_C1: BaseS = GeomAbs_C2; break;
         case GeomAbs_C2: BaseS = GeomAbs_C3; break;
-        default: /* Do nothing */ break;
+        case GeomAbs_C3:
+        case GeomAbs_CN: break;
       }
       GeomAdaptor_Surface Sur((*((Handle(Geom_OffsetSurface)*)&mySurface))->BasisSurface());
       myNbVIntervals = Sur.NbVIntervals(BaseS);
       Sur.VIntervals(T, BaseS);
     }
-    default: /* Do nothing */ break;
+    case GeomAbs_Plane:
+    case GeomAbs_Cylinder:
+    case GeomAbs_Cone:
+    case GeomAbs_Sphere:
+    case GeomAbs_Torus:
+    case GeomAbs_BezierSurface:
+    case GeomAbs_OtherSurface:
+    case GeomAbs_SurfaceOfExtrusion: break;
   }
   
   T(T.Lower()) = myVFirst;
@@ -1266,20 +1313,22 @@ Standard_Boolean GeomAdaptor_Surface::IfUVBound(const Standard_Real U,
                                                 const Standard_Integer VSide) const
 {
   Standard_Integer Ideb,Ifin;
+  Standard_Integer anUFKIndx = myBspl->FirstUKnotIndex(), 
+    anULKIndx = myBspl->LastUKnotIndex(), 
+    aVFKIndx = myBspl->FirstVKnotIndex(), aVLKIndx = myBspl->LastVKnotIndex();
   myBspl->LocateU(U, PosTol, Ideb, Ifin, Standard_False);
   Standard_Boolean Local = (Ideb == Ifin);
-  Span(USide,Ideb,Ifin,Ideb,Ifin,myBspl->NbUKnots());
+  Span(USide,Ideb,Ifin,Ideb,Ifin,anUFKIndx,anULKIndx);
   Standard_Integer IVdeb,IVfin;
   myBspl->LocateV(V, PosTol, IVdeb, IVfin, Standard_False); 
   if(IVdeb == IVfin) Local = Standard_True;
-  Span(VSide,IVdeb,IVfin,IVdeb,IVfin,myBspl->NbVKnots());
+  Span(VSide,IVdeb,IVfin,IVdeb,IVfin,aVFKIndx,aVLKIndx);
 
   IOutDeb=Ideb;   IOutFin=Ifin; 
   IOutVDeb=IVdeb; IOutVFin=IVfin;
 
   return Local;
 }     
-
 //=======================================================================
 //function : Span <private>
 //purpose  : locates U,V parameters if U=UFirst or U=ULast, 
@@ -1292,21 +1341,22 @@ void GeomAdaptor_Surface::Span(const Standard_Integer Side,
                                const Standard_Integer Ifin,
                                Standard_Integer& OutIdeb,
                                Standard_Integer& OutIfin,
-                               const Standard_Integer NbKnots) const
+                               const Standard_Integer theFKIndx,
+                               const Standard_Integer theLKIndx) const
 {
   if(Ideb!=Ifin)//not a knot
   { 
-    if(Ideb<1)                 { OutIdeb=1; OutIfin=2; }
-	else if(Ifin>NbKnots)      { OutIdeb=NbKnots-1; OutIfin=NbKnots; }
-	else if(Ideb>=(NbKnots-1)) { OutIdeb=NbKnots-1; OutIfin=NbKnots; }
-	else if(Ifin<=2)           { OutIdeb=1; OutIfin=2; }
+    if(Ideb<theFKIndx)                 { OutIdeb=theFKIndx; OutIfin=theFKIndx+1; }
+	else if(Ifin>theLKIndx)      { OutIdeb=theLKIndx-1; OutIfin=theLKIndx; }
+	else if(Ideb>=(theLKIndx-1)) { OutIdeb=theLKIndx-1; OutIfin=theLKIndx; }
+	else if(Ifin<=theFKIndx+1)           { OutIdeb=theFKIndx; OutIfin=theFKIndx+1; }
 	else if(Ideb>Ifin)         { OutIdeb=Ifin-1;   OutIfin=Ifin; }
 	else                       { OutIdeb=Ideb;   OutIfin=Ifin; }
   }
   else
   {
-    if(Ideb<=1){ OutIdeb=1;   OutIfin=2;}//first knot
-    else if(Ifin>=NbKnots) { OutIdeb=NbKnots-1;OutIfin=NbKnots;}//last knot
+    if(Ideb<=theFKIndx){ OutIdeb=theFKIndx;   OutIfin=theFKIndx+1;}//first knot
+    else if(Ifin>=theLKIndx) { OutIdeb=theLKIndx-1;OutIfin=theLKIndx;}//last knot
     else
     {
 	  if(Side==-1){OutIdeb=Ideb-1;   OutIfin=Ifin;}

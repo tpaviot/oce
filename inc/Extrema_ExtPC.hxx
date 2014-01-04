@@ -88,7 +88,7 @@ public:
   
   Standard_EXPORT     Standard_Boolean IsMin(const Standard_Integer N) const;
   
-  Standard_EXPORT     Extrema_POnCurv Point(const Standard_Integer N) const;
+  Standard_EXPORT    const Extrema_POnCurv& Point(const Standard_Integer N) const;
   
   Standard_EXPORT     void TrimmedSquareDistances(Standard_Real& dist1,Standard_Real& dist2,gp_Pnt& P1,gp_Pnt& P2) const;
 

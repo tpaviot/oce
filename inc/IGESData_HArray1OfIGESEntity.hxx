@@ -42,11 +42,11 @@ class IGESData_HArray1OfIGESEntity : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESData_HArray1OfIGESEntity(const Standard_Integer Low,const Standard_Integer Up);
+      IGESData_HArray1OfIGESEntity(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESData_HArray1OfIGESEntity(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESData_IGESEntity)& V);
+      IGESData_HArray1OfIGESEntity(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESData_IGESEntity)& V);
   
-  Standard_EXPORT     void Init(const Handle(IGESData_IGESEntity)& V) ;
+        void Init(const Handle(IGESData_IGESEntity)& V) ;
   
         Standard_Integer Length() const;
   

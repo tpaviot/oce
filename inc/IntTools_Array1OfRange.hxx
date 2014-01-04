@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntTools_Array1OfRange(const Standard_Integer Low,const Standard_Integer Up);
+      IntTools_Array1OfRange(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IntTools_Array1OfRange(const IntTools_Range& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IntTools_Array1OfRange(const IntTools_Range& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const IntTools_Range& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IntTools_Array1OfRange()
 {
   Destroy();

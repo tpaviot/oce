@@ -22,11 +22,11 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
 #ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
 #endif
 class TColStd_HArray1OfReal;
 class Standard_DomainError;
@@ -149,7 +149,6 @@ private:
 
 Standard_Boolean myDone;
 Standard_Integer myNbPoints;
-Standard_Real myAbscissa;
 Handle_TColStd_HArray1OfReal myParams;
 
 

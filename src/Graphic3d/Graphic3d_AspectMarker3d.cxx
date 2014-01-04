@@ -1,102 +1,115 @@
 // Created by: NW,JPB,CAL
 // Copyright (c) 1991-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
-
-
-
-//-Version	
-
-//-Design	Declaration of variables specific to the context
-//		of trace of markers 3d
-
-// Rappels	Context of trace of markers 3d inherits the context
-//		defined by :
-//		- the color
-//		- the type of marker
-//		- the scale
-
-//-Warning	
-
-//-References	
-
-//-Language	C++ 2.0
-
-//-Declarations
-
-// for the class
 #include <Graphic3d_AspectMarker3d.ixx>
 #include <TColStd_Array1OfByte.hxx>
+#include <Image_PixMap.hxx>
+#include <Graphic3d_MarkerImage.hxx>
 
-//-Aliases
+// =======================================================================
+// function : Graphic3d_AspectMarker3d
+// purpose  :
+// =======================================================================
+Graphic3d_AspectMarker3d::Graphic3d_AspectMarker3d()
+: Aspect_AspectMarker()
+{}
 
-//-Global data definitions
+// =======================================================================
+// function : Graphic3d_AspectMarker3d
+// purpose  :
+// =======================================================================
+Graphic3d_AspectMarker3d::Graphic3d_AspectMarker3d (const Aspect_TypeOfMarker theType,
+                                                    const Quantity_Color&     theColor,
+                                                    const Standard_Real       theScale)
+: Aspect_AspectMarker (theColor, theType, theScale)
+{}
 
-//-Constructors
+// =======================================================================
+// function : Graphic3d_AspectMarker3d
+// purpose  :
+// =======================================================================
+Graphic3d_AspectMarker3d::Graphic3d_AspectMarker3d (const Quantity_Color&  theColor,
+                                                    const Standard_Integer theWidth,
+                                                    const Standard_Integer theHeight,
+                                                    const Handle(TColStd_HArray1OfByte)& theTextureBitMap)
+: Aspect_AspectMarker (theColor, Aspect_TOM_USERDEFINED, 1.0),
+  myMarkerImage (new Graphic3d_MarkerImage (theTextureBitMap, theWidth, theHeight))
+{}
 
-//-Destructors
+// =======================================================================
+// function : Graphic3d_AspectMarker3d
+// purpose  :
+// =======================================================================
+Graphic3d_AspectMarker3d::Graphic3d_AspectMarker3d (const Handle(Image_PixMap)& theTextureImage)
+: Aspect_AspectMarker (Quantity_NOC_YELLOW, Aspect_TOM_USERDEFINED, 1.0),
+  myMarkerImage (new Graphic3d_MarkerImage (theTextureImage))
+{}
 
-//-Methods, in order
-
-Graphic3d_AspectMarker3d::Graphic3d_AspectMarker3d ()
-     :Aspect_AspectMarker(), MyTextureWidth(0), MyTextureHeight(0)
-{  
-}
-
-Graphic3d_AspectMarker3d::Graphic3d_AspectMarker3d (const Aspect_TypeOfMarker AType, const Quantity_Color& AColor, const Standard_Real AScaleOrId ):
-Aspect_AspectMarker( AColor, AType, AScaleOrId ), MyTextureWidth(0), MyTextureHeight(0)
-{ 
-}
-
-
-Graphic3d_AspectMarker3d::Graphic3d_AspectMarker3d (const Aspect_TypeOfMarker AType, 
-						    const Quantity_Color& AColor, 
-						    const Standard_Real AScaleOrId, 
-						    const Standard_Integer AWidth,
-						    const Standard_Integer AHeight,
-						    const Handle(TColStd_HArray1OfByte)& ATexture ):
-Aspect_AspectMarker( AColor, AType, AScaleOrId ), MyTexture( ATexture ), MyTextureWidth(AWidth), MyTextureHeight(AHeight)
+// =======================================================================
+// function : GetTextureSize
+// purpose  :
+// =======================================================================
+void Graphic3d_AspectMarker3d::GetTextureSize (Standard_Integer& theWidth,
+                                               Standard_Integer& theHeight) const
 {
-  /*for( Standard_Integer aIndex = ATexture.Lower(); aIndex <= ATexture.Upper(); aIndex++ )
-    {
-      MyTexture.SetValue( aIndex, ATexture.Value( aIndex ) );
-    }
-  */
-  
+  if (!myMarkerImage.IsNull())
+  {
+    myMarkerImage->GetTextureSize (theWidth, theHeight);
+  }
+  else
+  {
+    theWidth  = 0;
+    theHeight = 0;
+  }
 }
 
-void Graphic3d_AspectMarker3d::GetTextureSize(Standard_Integer& AWidth, Standard_Integer& AHeight)
+// =======================================================================
+// function : GetMarkerImage
+// purpose  :
+// =======================================================================
+const Handle(Graphic3d_MarkerImage)& Graphic3d_AspectMarker3d::GetMarkerImage() const
 {
-  AWidth = MyTextureWidth;
-  AHeight = MyTextureHeight;
+  return myMarkerImage;
 }
 
-const Handle(TColStd_HArray1OfByte)& Graphic3d_AspectMarker3d::GetTexture()
+// =======================================================================
+// function : SetBitMap
+// purpose  :
+// =======================================================================
+void Graphic3d_AspectMarker3d::SetBitMap (const Standard_Integer theWidth,
+                                          const Standard_Integer theHeight,
+                                          const Handle(TColStd_HArray1OfByte)& theTextureBitMap)
 {
-  return MyTexture;
+  myMarkerImage.Nullify();
+  myMarkerImage = new Graphic3d_MarkerImage (theTextureBitMap, theWidth, theHeight);
 }
 
-void Graphic3d_AspectMarker3d::SetTexture (const Standard_Integer AWidth,
-					   const Standard_Integer AHeight,
-                                           const Handle(TColStd_HArray1OfByte)& ATexture )
+// =======================================================================
+// function : SetShaderProgram
+// purpose  :
+// =======================================================================
+void Graphic3d_AspectMarker3d::SetShaderProgram (const Handle(Graphic3d_ShaderProgram)& theProgram)
 {
-   MyTextureWidth = AWidth;
-   MyTextureHeight = AHeight;
-     
-   MyTexture = ATexture;
+  MyShaderProgram = theProgram;
+}
+
+// =======================================================================
+// function : ShaderProgram
+// purpose  :
+// =======================================================================
+const Handle(Graphic3d_ShaderProgram)& Graphic3d_AspectMarker3d::ShaderProgram() const
+{
+  return MyShaderProgram;
 }

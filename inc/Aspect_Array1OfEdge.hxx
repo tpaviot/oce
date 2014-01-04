@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Aspect_Array1OfEdge(const Standard_Integer Low,const Standard_Integer Up);
+      Aspect_Array1OfEdge(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Aspect_Array1OfEdge(const Aspect_Edge& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Aspect_Array1OfEdge(const Aspect_Edge& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Aspect_Edge& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Aspect_Array1OfEdge()
 {
   Destroy();

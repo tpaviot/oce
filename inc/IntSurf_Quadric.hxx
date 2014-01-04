@@ -22,14 +22,14 @@
 #ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
 #endif
+#ifndef _GeomAbs_SurfaceType_HeaderFile
+#include <GeomAbs_SurfaceType.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _GeomAbs_SurfaceType_HeaderFile
-#include <GeomAbs_SurfaceType.hxx>
 #endif
 #ifndef _gp_Pln_HeaderFile
 #include <gp_Pln.hxx>
@@ -123,12 +123,12 @@ private:
 
 gp_Ax3 ax3;
 gp_Lin lin;
+GeomAbs_SurfaceType typ;
 Standard_Real prm1;
 Standard_Real prm2;
 Standard_Real prm3;
 Standard_Real prm4;
 Standard_Boolean ax3direc;
-GeomAbs_SurfaceType typ;
 
 
 };

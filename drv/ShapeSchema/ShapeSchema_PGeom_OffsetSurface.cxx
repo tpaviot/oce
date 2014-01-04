@@ -40,6 +40,8 @@ void ShapeSchema_PGeom_OffsetSurface::SWrite(const Handle(Standard_Persistent)& 
   if (!p.IsNull()) {
     Handle(PGeom_OffsetSurface) &pp = (Handle(PGeom_OffsetSurface)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPGeom_OffsetSurfacebasisSurface(),f);
@@ -59,6 +61,8 @@ void ShapeSchema_PGeom_OffsetSurface::SRead(const Handle(Standard_Persistent)& p
 { 
   if (!p.IsNull()) {
     Handle(PGeom_OffsetSurface) &pp = (Handle(PGeom_OffsetSurface)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

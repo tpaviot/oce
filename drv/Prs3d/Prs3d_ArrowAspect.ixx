@@ -15,7 +15,7 @@
 
 IMPLEMENT_STANDARD_TYPE(Prs3d_ArrowAspect)
 IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()
-  STANDARD_TYPE(Prs3d_CompositeAspect),
+  STANDARD_TYPE(Prs3d_BasicAspect),
   STANDARD_TYPE(MMgt_TShared),
   STANDARD_TYPE(Standard_Transient),
 

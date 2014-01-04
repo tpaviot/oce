@@ -114,7 +114,6 @@ private:
 
 
 Standard_Boolean myIsActive;
-Standard_Boolean myIsDisplayed;
 Aspect_GridDrawMode myDrawMode;
 
 

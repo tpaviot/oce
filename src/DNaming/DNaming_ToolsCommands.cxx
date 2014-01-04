@@ -1,23 +1,18 @@
 // Created on: 1999-06-24
 // Created by: Sergey ZARITCHNY
 // Copyright (c) 1999-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Draw_Interpretor.hxx>
 #include <Draw.hxx>
@@ -31,6 +26,7 @@
 #include <TopExp_Explorer.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <TopAbs.hxx>
+#include <TNaming_CopyShape.hxx>
 #include <TNaming_Translator.hxx>
 #include <TopTools_DataMapIteratorOfDataMapOfShapeShape.hxx>
 #include <DNaming_DataMapOfShapeOfName.hxx>
@@ -147,6 +143,61 @@ static Standard_Integer DNaming_TCopyShape (Draw_Interpretor& di,
 }
 
 //=======================================================================
+//function : DNaming_TCopyTool
+//purpose  : CopyTool  Shape1 [Shape2 ...] 
+//           - for test TNaming_CopyShape::CopyTool mechanism
+//=======================================================================
+
+static Standard_Integer DNaming_TCopyTool (Draw_Interpretor& di,
+					   Standard_Integer nb, 
+					   const char** arg)
+{
+  if (nb < 2) {
+    di << "Usage: CopyTool Shape1 [Shape2] ..." << "\n";
+    return 1;
+  }
+
+  Standard_Integer                           i;
+  TCollection_AsciiString                    aCopyNames;
+  BRep_Builder                               aBuilder;
+  TColStd_IndexedDataMapOfTransientTransient aMap;
+  TopoDS_Shape                               aResult;
+
+  for (i = 1; i < nb; i++) {
+    TopoDS_Shape aShape = DBRep::Get(arg[i]);
+
+    if (aShape.IsNull()) {
+      BRepTools::Read(aShape, arg[i], aBuilder);
+    }
+
+    if (aShape.IsNull()) {
+      di << arg[i] << " is neither a shape nor a BREP file. Skip it." << "\n";
+      continue;
+    }
+
+    // Perform copying.
+    TNaming_CopyShape::CopyTool(aShape, aMap, aResult);
+
+    // Draw result.
+    TCollection_AsciiString aName(arg[i]);
+
+    aName.AssignCat("_c");
+    DBRep::Set(aName.ToCString(), aResult);
+
+    // Compose all names of copies.
+    if (!aCopyNames.IsEmpty()) {
+      aCopyNames.AssignCat(" ");
+    }
+
+    aCopyNames.AssignCat(aName);
+  }
+
+  di << aCopyNames.ToCString() << "\n";
+
+  return 0;
+}
+
+//=======================================================================
 //function : ToolsCommands
 //purpose  : 
 //=======================================================================
@@ -162,6 +213,10 @@ void DNaming::ToolsCommands (Draw_Interpretor& theCommands)
   theCommands.Add ("CopyShape", 
                    "CopyShape (Shape1 [Shape2] ...)",
 		   __FILE__, DNaming_TCopyShape, g); 
+
+  theCommands.Add ("CopyTool", 
+                   "CopyTool Shape1 [Shape2] ...",
+		   __FILE__, DNaming_TCopyTool, g); 
 
   theCommands.Add ("CheckSame", 
                    "CheckSame (Shape1 Shape2 ExploMode[F|E|V])",

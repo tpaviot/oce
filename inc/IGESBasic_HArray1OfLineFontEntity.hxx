@@ -42,11 +42,11 @@ class IGESBasic_HArray1OfLineFontEntity : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   IGESBasic_HArray1OfLineFontEntity(const Standard_Integer Low,const Standard_Integer Up);
+      IGESBasic_HArray1OfLineFontEntity(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESBasic_HArray1OfLineFontEntity(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESData_LineFontEntity)& V);
+      IGESBasic_HArray1OfLineFontEntity(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESData_LineFontEntity)& V);
   
-  Standard_EXPORT     void Init(const Handle(IGESData_LineFontEntity)& V) ;
+        void Init(const Handle(IGESData_LineFontEntity)& V) ;
   
         Standard_Integer Length() const;
   

@@ -40,6 +40,8 @@ void ShapeSchema_PTopoDS_HArray1OfHShape::SWrite(const Handle(Standard_Persisten
   if (!p.IsNull()) {
     Handle(PTopoDS_HArray1OfHShape) &pp = (Handle(PTopoDS_HArray1OfHShape)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPTopoDS_HArray1OfHShapeLowerBound());
@@ -60,6 +62,8 @@ void ShapeSchema_PTopoDS_HArray1OfHShape::SRead(const Handle(Standard_Persistent
 { 
   if (!p.IsNull()) {
     Handle(PTopoDS_HArray1OfHShape) &pp = (Handle(PTopoDS_HArray1OfHShape)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

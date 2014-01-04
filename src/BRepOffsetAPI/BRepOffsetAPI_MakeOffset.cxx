@@ -1,24 +1,18 @@
 // Created on: 1995-09-18
 // Created by: Bruno DUMORTIER
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BRepOffsetAPI_MakeOffset.ixx>
 #include <BRepBuilderAPI_MakeFace.hxx>
@@ -60,7 +54,7 @@ BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()
 //=======================================================================
 
 BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset(const TopoDS_Face& Spine, 
-				       const GeomAbs_JoinType Join)
+  const GeomAbs_JoinType Join)
 {
   Init(Spine, Join);
 }
@@ -72,7 +66,7 @@ BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset(const TopoDS_Face& Spine,
 //=======================================================================
 
 void BRepOffsetAPI_MakeOffset::Init(const TopoDS_Face&     Spine,
-			      const GeomAbs_JoinType Join)
+  const GeomAbs_JoinType Join)
 {
   myFace          = Spine;
   myIsInitialized = Standard_True;
@@ -89,7 +83,7 @@ void BRepOffsetAPI_MakeOffset::Init(const TopoDS_Face&     Spine,
 //=======================================================================
 
 BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset(const TopoDS_Wire& Spine, 
-					const GeomAbs_JoinType Join)
+  const GeomAbs_JoinType Join)
 {
   myWires.Append(Spine);
   myIsInitialized = Standard_True;
@@ -105,14 +99,14 @@ void BRepOffsetAPI_MakeOffset::Init(const GeomAbs_JoinType Join)
 {
   myJoin = Join;
 }
- 
+
 //=======================================================================
 //function : BRepOffsetAPI_MakeOffset
 //purpose  : 
 //=======================================================================
 
 void BRepOffsetAPI_MakeOffset::AddWire(const TopoDS_Wire& Spine)
-					    
+
 {
   myIsInitialized = Standard_True;
   myWires.Append(Spine);
@@ -124,10 +118,10 @@ void BRepOffsetAPI_MakeOffset::AddWire(const TopoDS_Wire& Spine)
 //=======================================================================
 
 static void BuildDomains(TopoDS_Face&               myFace,
-			 TopTools_ListOfShape&      WorkWires,
-			 BRepFill_ListOfOffsetWire& myAlgos,
-			 GeomAbs_JoinType           myJoin,
-			 Standard_Boolean           isPositive)
+  TopTools_ListOfShape&      WorkWires,
+  BRepFill_ListOfOffsetWire& myAlgos,
+  GeomAbs_JoinType           myJoin,
+  Standard_Boolean           isPositive)
 {
   BRepAlgo_FaceRestrictor  FR;
   TopoDS_Vertex            VF,VL;
@@ -146,14 +140,14 @@ static void BuildDomains(TopoDS_Face&               myFace,
   if (anExp.More()) {
     aWire2 = anExp.Current();
     if ((aWire1.Orientation() == aWire2.Orientation() && isPositive) ||
-	(aWire1.Orientation() == TopAbs::Complement(aWire2.Orientation()) && !isPositive)) {
-      TopTools_ListOfShape LWires;
-      TopTools_ListIteratorOfListOfShape itl;
-      for (itl.Initialize(WorkWires); itl.More(); itl.Next()) {
-	const TopoDS_Shape& W = itl.Value();
-	LWires.Append(W.Reversed());
-      }
-      WorkWires = LWires;
+      (aWire1.Orientation() == TopAbs::Complement(aWire2.Orientation()) && !isPositive)) {
+        TopTools_ListOfShape LWires;
+        TopTools_ListIteratorOfListOfShape itl;
+        for (itl.Initialize(WorkWires); itl.More(); itl.Next()) {
+          const TopoDS_Shape& W = itl.Value();
+          LWires.Append(W.Reversed());
+        }
+        WorkWires = LWires;
     }
   }
 //  Modified by Sergey KHROMOV - Thu Apr 26 16:04:44 2001 End
@@ -200,7 +194,7 @@ static void BuildDomains(TopoDS_Face&               myFace,
     myAlgos.Append(Algo);
     return;
   }
-  
+
   //====================================================
   // Classification of open wires.
   //====================================================  
@@ -227,21 +221,21 @@ static void BuildDomains(TopoDS_Face&               myFace,
       Standard_Real     Dist2Min = Precision::Infinite();
       Standard_Real     Found   = Standard_False;
       for (Standard_Integer ie = 1; ie <= ExtPS.NbExt(); ie++) {
-	Standard_Real X,Y;
-	if (ExtPS.SquareDistance(ie) < Dist2Min) {
-	  Dist2Min = ExtPS.SquareDistance(ie);
-	  Found   = Standard_True;
-	  ExtPS.Point(ie).Parameter(X,Y);
-	  PV.SetCoord(X,Y);
-	}
+        Standard_Real X,Y;
+        if (ExtPS.SquareDistance(ie) < Dist2Min) {
+          Dist2Min = ExtPS.SquareDistance(ie);
+          Found   = Standard_True;
+          ExtPS.Point(ie).Parameter(X,Y);
+          PV.SetCoord(X,Y);
+        }
       }
       if ( Found && (CL.Perform(PV) == TopAbs_IN)) {
-	// The face that contains a wire is found and it is removed from the list
-	B.Add(F,W);
-	LOW.Remove(itW);
+        // The face that contains a wire is found and it is removed from the list
+        B.Add(F,W);
+        LOW.Remove(itW);
       }
       else {
-	itW.Next();
+        itW.Next();
       }
     }
   }
@@ -259,54 +253,86 @@ static void BuildDomains(TopoDS_Face&               myFace,
 //purpose  : 
 //=======================================================================
 
-void BRepOffsetAPI_MakeOffset::Perform(const Standard_Real Offset, 
-				 const Standard_Real Alt)
+void BRepOffsetAPI_MakeOffset::Perform( const Standard_Real Offset,
+  const Standard_Real Alt)
 {
   StdFail_NotDone_Raise_if ( !myIsInitialized,
-			    "BRepOffsetAPI_MakeOffset : Perform without Init");
+    "BRepOffsetAPI_MakeOffset : Perform without Init");
 
-  Standard_Integer i = 1;
-  BRepFill_ListIteratorOfListOfOffsetWire itOW;  
-  TopoDS_Compound Res;
-  BRep_Builder    B;
-  B.MakeCompound (Res);
+  try
+  {
+    Standard_Integer i = 1;
+    BRepFill_ListIteratorOfListOfOffsetWire itOW;
+    TopoDS_Compound Res;
+    BRep_Builder    B;
+    B.MakeCompound (Res);
+    myLastIsLeft = (Offset <= 0);
 
-  myLastIsLeft = (Offset <= 0);
-  
-  if (Offset <= 0.) {
-    if (myLeft.IsEmpty()) {
-//  Modified by Sergey KHROMOV - Fri Apr 27 14:35:26 2001 Begin
-      BuildDomains(myFace,myWires,myLeft,myJoin, Standard_False);
-//  Modified by Sergey KHROMOV - Fri Apr 27 14:35:26 2001 End
-    }
-    for (itOW.Initialize(myLeft); itOW.More(); itOW.Next()) {
-      BRepFill_OffsetWire& Algo = itOW.Value();
-      Algo.Perform(Abs(Offset),Alt);
-      if (Algo.IsDone() && !Algo.Shape().IsNull()) {
-	B.Add(Res,Algo.Shape());
-	if (i == 1) myShape = Algo.Shape();
-	i++;
+    if( Offset <= 0. )
+    {
+      if( myLeft.IsEmpty() )
+      {
+        //  Modified by Sergey KHROMOV - Fri Apr 27 14:35:26 2001 Begin
+        BuildDomains(myFace,myWires,myLeft,myJoin, Standard_False);
+        //  Modified by Sergey KHROMOV - Fri Apr 27 14:35:26 2001 End
+      }
+
+      for (itOW.Initialize(myLeft); itOW.More(); itOW.Next())
+      {
+        BRepFill_OffsetWire& Algo = itOW.Value();
+        Algo.Perform(Abs(Offset),Alt);
+        if (Algo.IsDone() && !Algo.Shape().IsNull())
+        {
+          B.Add(Res,Algo.Shape());
+          if (i == 1)
+            myShape = Algo.Shape();
+
+          i++;
+        }
       }
     }
-  }
-  else {
-    if (myRight.IsEmpty()) {
-//  Modified by Sergey KHROMOV - Fri Apr 27 14:35:28 2001 Begin
-      BuildDomains(myFace,myWires,myRight,myJoin, Standard_True);
-//  Modified by Sergey KHROMOV - Fri Apr 27 14:35:35 2001 End
-    }
-    for (itOW.Initialize(myRight); itOW.More(); itOW.Next()) {
-      BRepFill_OffsetWire& Algo = itOW.Value();
-      Algo.Perform(Offset,Alt);
-      if (Algo.IsDone() && !Algo.Shape().IsNull()) {
-	B.Add(Res,Algo.Shape());
-	if (i == 1) myShape = Algo.Shape();
-	i++;
+    else
+    {
+      if (myRight.IsEmpty())
+      {
+        //  Modified by Sergey KHROMOV - Fri Apr 27 14:35:28 2001 Begin
+        BuildDomains(myFace,myWires,myRight,myJoin, Standard_True);
+        //  Modified by Sergey KHROMOV - Fri Apr 27 14:35:35 2001 End
+      }
+
+      for(itOW.Initialize(myRight); itOW.More(); itOW.Next())
+      {
+        BRepFill_OffsetWire& Algo = itOW.Value();
+        Algo.Perform(Offset,Alt);
+
+        if (Algo.IsDone() && !Algo.Shape().IsNull())
+        {
+          B.Add(Res,Algo.Shape());
+
+          if (i == 1)
+            myShape = Algo.Shape();
+
+          i++;
+        }
       }
     }
+
+    if( i > 2 )
+      myShape = Res;
+
+    if(myShape.IsNull())
+      NotDone();
+    else
+      Done();
   }
-  if (i > 2) myShape = Res;
-  Done();
+  catch(...) //Every exception was caught.
+  {
+    cout<<"An exception was caught in BRepOffsetAPI_MakeOffset::Perform : ";
+    Standard_ConstructionError::Caught()->Print(cout); 
+    cout<<endl;
+    NotDone();
+    myShape.Nullify();
+  }
 }
 
 //=======================================================================
@@ -326,7 +352,7 @@ void BRepOffsetAPI_MakeOffset::Build()
 //=======================================================================
 
 const TopTools_ListOfShape& BRepOffsetAPI_MakeOffset::Generated
-(const TopoDS_Shape& S)
+  (const TopoDS_Shape& S)
 {
   myGenerated.Clear();
   BRepFill_ListIteratorOfListOfOffsetWire itOW;

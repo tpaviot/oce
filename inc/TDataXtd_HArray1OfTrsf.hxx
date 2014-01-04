@@ -39,11 +39,11 @@ class TDataXtd_HArray1OfTrsf : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TDataXtd_HArray1OfTrsf(const Standard_Integer Low,const Standard_Integer Up);
+      TDataXtd_HArray1OfTrsf(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TDataXtd_HArray1OfTrsf(const Standard_Integer Low,const Standard_Integer Up,const gp_Trsf& V);
+      TDataXtd_HArray1OfTrsf(const Standard_Integer Low,const Standard_Integer Up,const gp_Trsf& V);
   
-  Standard_EXPORT     void Init(const gp_Trsf& V) ;
+        void Init(const gp_Trsf& V) ;
   
         Standard_Integer Length() const;
   

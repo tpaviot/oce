@@ -46,6 +46,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _SelectBasics_PickArgs_HeaderFile
+#include <SelectBasics_PickArgs.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
@@ -100,9 +103,10 @@ public:
   Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;
   
   Standard_EXPORT     Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& aLocation) ;
-  //! projection of the sensitive primitive in order to <br>
-//!          get 2D boxes for the Sort Algorithm <br>
-  Standard_EXPORT     Standard_Boolean Matches(const Standard_Real X,const Standard_Real Y,const Standard_Real aTol,Standard_Real& DMin) ;
+  //! Checks whether the sensitive entity matches the picking <br>
+//! detection area (close to the picking line). <br>
+//! For details please refer to base class declaration. <br>
+  Standard_EXPORT     Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
   
   Standard_EXPORT     Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
   

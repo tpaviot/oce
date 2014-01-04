@@ -100,7 +100,7 @@ public:
   //! Return the value of the Nth distance. <br>
   Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N) const;
   //! Returns the Nth extremum. <br>
-  Standard_EXPORT     Extrema_POnSurf Point(const Standard_Integer N) const;
+  Standard_EXPORT    const Extrema_POnSurf& Point(const Standard_Integer N) const;
 
 
 

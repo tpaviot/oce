@@ -71,7 +71,7 @@ public:
   //! Returns the value of the Nth resulting square distance. <br>
   Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N) const;
   //! Returns the point of the Nth resulting distance. <br>
-  Standard_EXPORT     Extrema_POnSurf Point(const Standard_Integer N) const;
+  Standard_EXPORT    const Extrema_POnSurf& Point(const Standard_Integer N) const;
 
 
 
@@ -96,8 +96,8 @@ Extrema_GenExtPS myExtPS;
 Standard_Boolean myIsAnalyticallyComputable;
 Standard_Boolean myDone;
 Standard_Integer myNbExt;
-Standard_Real mySqDist[6];
-Extrema_POnSurf myPoint[6];
+Standard_Real mySqDist[8];
+Extrema_POnSurf myPoint[8];
 
 
 };

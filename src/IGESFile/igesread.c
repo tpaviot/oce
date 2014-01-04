@@ -1,21 +1,16 @@
 /*
- Copyright (c) 1999-2012 OPEN CASCADE SAS
+ Copyright (c) 1999-2014 OPEN CASCADE SAS
 
- The content of this file is subject to the Open CASCADE Technology Public
- License Version 6.5 (the "License"). You may not use the content of this file
- except in compliance with the License. Please obtain a copy of the License
- at http://www.opencascade.org and read it completely before using this file.
+ This file is part of Open CASCADE Technology software library.
 
- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+ This library is free software; you can redistribute it and / or modify it
+ under the terms of the GNU Lesser General Public version 2.1 as published
+ by the Free Software Foundation, with special exception defined in the file
+ OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+ distribution for complete text of the license and disclaimer of any warranty.
 
- The Original Code and all software distributed under the License is
- distributed on an "AS IS" basis, without warranty of any kind, and the
- Initial Developer hereby disclaims all such warranties, including without
- limitation, any warranties of merchantability, fitness for a particular
- purpose or non-infringement. Please see the License for the specific terms
- and conditions governing the rights and limitations under the License.
-
+ Alternatively, this file may be used under the terms of Open CASCADE
+ commercial license or contractual agreement.
 */
 
 /*  Regroupement des sources "C" pour compilation   */ 
@@ -34,7 +29,7 @@ int  iges_lire (FILE* lefic, int *numsec, char ligne[100], int modefnes);
 void iges_newparam(int typarg,int longval, char *parval);
 void iges_param(int *Pstat,char *ligne,char c_separ,char c_fin,int lonlin);
 void iges_Dsect (int *Dstat,int numsec,char* ligne);
-void iges_Psect(int *Pstat,int numsec,char ligne[80]);
+void iges_Psect(int numsec,char ligne[80]);
 
 
 
@@ -56,7 +51,7 @@ void iges_Psect(int *Pstat,int numsec,char ligne[80]);
 static  char sects [] = " SGDPT ";
 
 
-int igesread(char* nomfic,int lesect[6],int modefnes)
+int igesread (char* nomfic, int lesect[6], int modefnes)
 {
   /* MGE 16/06/98 */
 
@@ -70,7 +65,7 @@ int igesread(char* nomfic,int lesect[6],int modefnes)
   if (lefic == NULL) return -1;    /*  fichier pas pu etre ouvert  */
   for (i = 1; i < 6; i++) lesect[i] = 0;
   for (j = 0; j < 100; j++) ligne[j] = 0;
-  while (1) {
+  for(;;) {
     numl ++;
     i = iges_lire(lefic,&numsec,ligne,modefnes);
     if (i <= 0) {
@@ -112,7 +107,7 @@ int igesread(char* nomfic,int lesect[6],int modefnes)
     }
     if (i == 3) iges_Dsect(&Dstat,numsec,ligne);    /* Directory  (Dsect) */
     if (i == 4) {                                   /* Parametres (Psect) */
-      iges_Psect(&Pstat,numsec,ligne);
+      iges_Psect(numsec,ligne);
       for (;;) {
 	iges_param(&Pstat,ligne,c_separ,c_fin,64);
 	if (Pstat != 2) break;

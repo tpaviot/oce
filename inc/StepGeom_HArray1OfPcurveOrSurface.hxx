@@ -39,11 +39,11 @@ class StepGeom_HArray1OfPcurveOrSurface : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepGeom_HArray1OfPcurveOrSurface(const Standard_Integer Low,const Standard_Integer Up);
+      StepGeom_HArray1OfPcurveOrSurface(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepGeom_HArray1OfPcurveOrSurface(const Standard_Integer Low,const Standard_Integer Up,const StepGeom_PcurveOrSurface& V);
+      StepGeom_HArray1OfPcurveOrSurface(const Standard_Integer Low,const Standard_Integer Up,const StepGeom_PcurveOrSurface& V);
   
-  Standard_EXPORT     void Init(const StepGeom_PcurveOrSurface& V) ;
+        void Init(const StepGeom_PcurveOrSurface& V) ;
   
         Standard_Integer Length() const;
   

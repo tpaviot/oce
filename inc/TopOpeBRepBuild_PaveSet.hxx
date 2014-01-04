@@ -25,9 +25,6 @@
 #ifndef _TopOpeBRepBuild_ListIteratorOfListOfPave_HeaderFile
 #include <TopOpeBRepBuild_ListIteratorOfListOfPave.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -102,8 +99,6 @@ private:
 TopoDS_Edge myEdge;
 TopOpeBRepBuild_ListOfPave myVertices;
 TopOpeBRepBuild_ListIteratorOfListOfPave myVerticesIt;
-Standard_Integer myEdgeVertexIndex;
-Standard_Integer myEdgeVertexCount;
 Standard_Boolean myHasEqualParameters;
 Standard_Real myEqualParameters;
 Standard_Boolean myClosed;

@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepVisual_Array1OfDirectionCountSelect(const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_Array1OfDirectionCountSelect(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepVisual_Array1OfDirectionCountSelect(const StepVisual_DirectionCountSelect& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_Array1OfDirectionCountSelect(const StepVisual_DirectionCountSelect& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const StepVisual_DirectionCountSelect& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepVisual_Array1OfDirectionCountSelect()
 {
   Destroy();

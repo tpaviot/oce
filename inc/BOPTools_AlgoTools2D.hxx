@@ -28,6 +28,9 @@
 #ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
 #endif
+#ifndef _BOPCol_ListOfShape_HeaderFile
+#include <BOPCol_ListOfShape.hxx>
+#endif
 class TopoDS_Edge;
 class TopoDS_Face;
 class gp_Vec;
@@ -104,6 +107,8 @@ public:
   Standard_EXPORT   static  Standard_Real IntermediatePoint(const TopoDS_Edge& anE) ;
   
   Standard_EXPORT   static  void BuildPCurveForEdgeOnPlane(const TopoDS_Edge& theE,const TopoDS_Face& theF) ;
+  
+  Standard_EXPORT   static  void BuildPCurveForEdgesOnPlane(const BOPCol_ListOfShape& theLE,const TopoDS_Face& theF) ;
   
 //! Make P-Curve <aC> for the edge <aE> on surface <aF> . <br>
 //! [aFirst, aLast] - range of the P-Curve <br>

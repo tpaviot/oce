@@ -42,11 +42,11 @@ class StepElement_HArray2OfCurveElementPurposeMember : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepElement_HArray2OfCurveElementPurposeMember(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      StepElement_HArray2OfCurveElementPurposeMember(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   StepElement_HArray2OfCurveElementPurposeMember(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(StepElement_CurveElementPurposeMember)& V);
+      StepElement_HArray2OfCurveElementPurposeMember(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(StepElement_CurveElementPurposeMember)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepElement_CurveElementPurposeMember)& V) ;
+        void Init(const Handle(StepElement_CurveElementPurposeMember)& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -62,9 +62,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(StepElement_CurveElementPurposeMember)& Value) ;
   
-  Standard_EXPORT    const Handle_StepElement_CurveElementPurposeMember& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const Handle_StepElement_CurveElementPurposeMember& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     Handle_StepElement_CurveElementPurposeMember& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        Handle_StepElement_CurveElementPurposeMember& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const StepElement_Array2OfCurveElementPurposeMember& Array2() const;
   

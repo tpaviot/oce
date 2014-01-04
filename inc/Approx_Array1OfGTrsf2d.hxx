@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Approx_Array1OfGTrsf2d(const Standard_Integer Low,const Standard_Integer Up);
+      Approx_Array1OfGTrsf2d(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Approx_Array1OfGTrsf2d(const gp_GTrsf2d& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Approx_Array1OfGTrsf2d(const gp_GTrsf2d& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const gp_GTrsf2d& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Approx_Array1OfGTrsf2d()
 {
   Destroy();

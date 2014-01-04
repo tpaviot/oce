@@ -1,21 +1,17 @@
 // Created on: 2002-04-12
 // Created by: Alexander KARTOMIN (akm)
-// Copyright (c) 2002-2012 OPEN CASCADE SAS
+// Copyright (c) 2002-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Purpose:     Implementation of the BaseAllocator class
 
@@ -24,18 +20,8 @@
 #include <NCollection_Map.hxx>
 #include <NCollection_List.hxx>
 #include <Standard_Mutex.hxx>
-
-#include <stdio.h>
-
-#if defined(_MSC_VER)
-# define FMT_SZ_Q "I"
-#elif defined(__GNUC__)
-# define FMT_SZ_Q "z"
-#elif defined(_OCC64)
-# define FMT_SZ_Q "l"
-#else
-# define FMT_SZ_Q ""
-#endif
+#include <fstream>
+#include <iomanip>
 
 IMPLEMENT_STANDARD_HANDLE(NCollection_BaseAllocator,MMgt_TShared)
 IMPLEMENT_STANDARD_RTTIEXT(NCollection_BaseAllocator,MMgt_TShared)
@@ -195,9 +181,7 @@ void NCollection_BaseAllocator::StandardCallBack
                      const Standard_Size /*theSize*/)
 {
   static Standard_Mutex aMutex;
-  Standard_Boolean isReentrant = Standard::IsReentrant();
-  if (isReentrant)
-    aMutex.Lock();
+  aMutex.Lock();
   // statistics by storage size
   NCollection_DataMap<Standard_Size, StorageInfo>& aStMap = StorageMap();
   if (!aStMap.IsBound(theRoundSize))
@@ -239,8 +223,7 @@ void NCollection_BaseAllocator::StandardCallBack
     }
   }
 
-  if (isReentrant)
-    aMutex.Unlock();
+  aMutex.Unlock();
 }
 
 //=======================================================================
@@ -266,35 +249,55 @@ void NCollection_BaseAllocator::PrintMemUsageStatistics()
   }
   Standard_Size aTotAlloc = 0;
   Standard_Size aTotLeft = 0;
+
   // print
-  FILE * ff = fopen("memstat.d", "wt");
-  if (ff == NULL)
+  std::ofstream aFileOut ("memstat.d", std::ios_base::trunc | std::ios_base::out);
+  if (!aFileOut.is_open())
   {
-    cout << "failure writing file memstat.d" << endl;
+    std::cout << "failure writing file memstat.d" << std::endl;
     return;
   }
-  fprintf(ff, "%12s %12s %12s %12s %12s\n",
-          "BlockSize", "NbAllocated", "NbLeft", "Allocated", "Left");
+  aFileOut.imbue (std::locale ("C"));
+
+  // header
+  aFileOut << std::setw(20) << "BlockSize"   << ' '
+           << std::setw(12) << "NbAllocated" << ' '
+           << std::setw(12) << "NbLeft"      << ' '
+           << std::setw(20) << "Allocated"   << ' '
+           << std::setw(20) << "Left"        << '\n';
+
+  // body
   for (itLst.Init(aColl); itLst.More(); itLst.Next())
   {
     const StorageInfo& aInfo = itLst.Value();
     Standard_Integer nbLeft = aInfo.nbAlloc - aInfo.nbFree;
     Standard_Size aSizeAlloc = aInfo.nbAlloc * aInfo.roundSize;
     Standard_Size aSizeLeft = nbLeft * aInfo.roundSize;
-    fprintf(ff, "%12" FMT_SZ_Q "u %12d %12d %12" FMT_SZ_Q "u %12" FMT_SZ_Q "u\n", aInfo.roundSize,
-            aInfo.nbAlloc, nbLeft, aSizeAlloc, aSizeLeft);
+
+    aFileOut << std::setw(20) << aInfo.roundSize << ' '
+             << std::setw(12) << aInfo.nbAlloc   << ' '
+             << std::setw(12) << nbLeft          << ' '
+             << std::setw(20) << aSizeAlloc      << ' '
+             << std::setw(20) << aSizeLeft       << '\n';
+
     aTotAlloc += aSizeAlloc;
-    aTotLeft += aSizeLeft;
+    aTotLeft  += aSizeLeft;
   }
-  fprintf(ff, "%12s %12s %12s %12" FMT_SZ_Q "u %12" FMT_SZ_Q "u\n", "Total:", "", "",
-          aTotAlloc, aTotLeft);
+
+  // footer
+  aFileOut << std::setw(20) << "Total:"  << ' '
+           << std::setw(12) << ""        << ' '
+           << std::setw(12) << ""        << ' '
+           << std::setw(20) << aTotAlloc << ' '
+           << std::setw(20) << aTotLeft  << '\n';
 
   if (!StorageIDSet().IsEmpty())
   {
-    fprintf(ff, "Alive allocation numbers of size=%" FMT_SZ_Q "u\n", StandardCallBack_CatchSize());
-    NCollection_Map<Standard_Size>::Iterator itMap1(StorageIDSet());
-    for (; itMap1.More(); itMap1.Next())
-      fprintf(ff, "%" FMT_SZ_Q "u\n", itMap1.Key());
+    aFileOut << "Alive allocation numbers of size=" << StandardCallBack_CatchSize() << '\n';
+    for (NCollection_Map<Standard_Size>::Iterator itMap1(StorageIDSet()); itMap1.More(); itMap1.Next())
+    {
+      aFileOut << itMap1.Key() << '\n';
+    }
   }
-  fclose(ff);
+  aFileOut.close();
 }

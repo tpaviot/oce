@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // AdvApp2Var_MathBase.cxx
 #include <math.h>
@@ -266,15 +262,15 @@ int AdvApp2Var_MathBase::mdsptpt_(integer *ndimen,
 				  doublereal *distan)
 
 {
-  static integer c__8 = 8;
+  integer c__8 = 8;
   /* System generated locals */
   integer i__1;
   doublereal d__1;
 
   /* Local variables */
-  static integer i__;
-  static doublereal differ[100];
-  static integer  ier;
+  integer i__;
+  doublereal* differ = 0;
+  integer  ier;
   intptr_t iofset, j;
 
 /* ********************************************************************** 
@@ -331,8 +327,9 @@ int AdvApp2Var_MathBase::mdsptpt_(integer *ndimen,
 /* ***********************************************************************
  */
 
+    AdvApp2Var_SysBase anAdvApp2Var_SysBase;
     if (*ndimen > 100) {
-	AdvApp2Var_SysBase::mcrrqst_(&c__8, ndimen, differ, &iofset, &ier);
+	anAdvApp2Var_SysBase.mcrrqst_(&c__8, ndimen, differ, &iofset, &ier);
     }
 
 /* --- If allocation is refused, the trivial method is applied. */
@@ -371,7 +368,7 @@ int AdvApp2Var_MathBase::mdsptpt_(integer *ndimen,
 /* --- Dynamic Desallocation */
 
     if (iofset != 0) {
-	AdvApp2Var_SysBase::mcrdelt_(&c__8, ndimen, differ, &iofset, &ier);
+	anAdvApp2Var_SysBase.mcrdelt_(&c__8, ndimen, differ, &iofset, &ier);
     }
 
  return 0 ;
@@ -389,7 +386,7 @@ int mfac_(doublereal *f,
     integer i__1;
 
     /* Local variables */
-    static integer i__;
+    integer i__;
 
 /*    FORTRAN CONFORME AU TEXT */
 /*     CALCUL DE MFACTORIEL N */
@@ -422,7 +419,7 @@ int AdvApp2Var_MathBase::mmapcmp_(integer *ndim,
   i__2;
 
   /* Local variables */
-  static integer ipair, nd, ndegre, impair, ibb, idg;
+  integer ipair, nd, ndegre, impair, ibb, idg;
   //extern  int  mgsomsg_();//mgenmsg_(),
 
 /* ********************************************************************** 
@@ -538,9 +535,9 @@ int mmaper0_(integer *ncofmx,
   doublereal d__1;
 
   /* Local variables */
-  static integer ncut;
-  static doublereal bidon;
-  static integer ii, nd;
+  integer ncut;
+  doublereal bidon;
+  integer ii, nd;
 
 /* ***********************************************************************
  */
@@ -716,9 +713,9 @@ int mmaper2_(integer *ncofmx,
     doublereal d__1;
 
     /* Local variables */
-    static integer idec, ncut;
-    static doublereal bidon;
-    static integer ii, nd;
+    integer idec, ncut;
+    doublereal bidon;
+    integer ii, nd;
 
 
 
@@ -735,7 +732,7 @@ int mmaper2_(integer *ncofmx,
 /*     KEYWORDS : */
 /*     ----------- */
 /*        JACOBI, POLYGON, APPROXIMATION, ERROR. */
-
+/**/
 /*  INPUT ARGUMENTS : */
 /*     ------------------ */
 /*        NCOFMX : Max. degree of the curve. */
@@ -900,9 +897,9 @@ int mmaper4_(integer *ncofmx,
     doublereal d__1;
 
     /* Local variables */
-    static integer idec, ncut;
-    static doublereal bidon;
-    static integer ii, nd;
+    integer idec, ncut;
+    doublereal bidon;
+    integer ii, nd;
 
 
 
@@ -1079,9 +1076,9 @@ int mmaper6_(integer *ncofmx,
     doublereal d__1;
 
     /* Local variables */
-    static integer idec, ncut;
-    static doublereal bidon;
-    static integer ii, nd;
+    integer idec, ncut;
+    doublereal bidon;
+    integer ii, nd;
 
 
 
@@ -1201,7 +1198,7 @@ int AdvApp2Var_MathBase::mmaperx_(integer *ncofmx,
   integer crvjac_dim1, crvjac_offset;
 
   /* Local variables */
-  static integer jord;
+  integer jord;
 
 /* ********************************************************************** 
 */
@@ -1297,11 +1294,11 @@ int AdvApp2Var_MathBase::mmaperx_(integer *ncofmx,
     i__2, i__3;
     
     /* Local variables */
-    static integer nboct;
-    static doublereal tbaux[61];
-    static integer nd;
-    static doublereal bid;
-    static integer ncf, ncj;
+    integer nboct;
+    doublereal tbaux[61];
+    integer nd;
+    doublereal bid;
+    integer ncf, ncj;
 
 
 /*      IMPLICIT DOUBLE PRECISION(A-H,O-Z) */
@@ -1542,14 +1539,14 @@ int AdvApp2Var_MathBase::mmarcin_(integer *ndimax,
   doublereal d__1;
   
   /* Local variables */
-  static doublereal x0, x1;
-  static integer nd;
-  static doublereal tabaux[61];
-  static integer ibb;
-  static doublereal bid;
-  static integer ncf;
-  static integer ncj;
-  static doublereal eps3;
+  doublereal x0, x1;
+  integer nd;
+  doublereal tabaux[61];
+  integer ibb;
+  doublereal bid;
+  integer ncf;
+  integer ncj;
+  doublereal eps3;
   
 
 
@@ -1767,10 +1764,10 @@ int mmatvec_(integer *nligne,
   integer i__1, i__2;
   
   /* Local variables */
-    static logical ldbg;
-  static integer jmin, jmax, i__, j, k;
-  static doublereal somme;
-  static integer aux;
+    logical ldbg;
+  integer jmin, jmax, i__, j, k;
+  doublereal somme;
+  integer aux;
 
 
 /* ***********************************************************************
@@ -1803,7 +1800,7 @@ int mmatvec_(integer *nligne,
 /*       GMATRI : Matrix of constraints in form of profile */
 /*       VECIN  : Input vector */
 /*       DEBLIG : Line indexusing which the vector matrix is calculated */
-
+/**/               
 /*     OUTPUT ARGUMENTS */
 /*     --------------------- */
 /*       VECOUT : VECTOR PRODUCT */
@@ -1917,9 +1914,9 @@ int AdvApp2Var_MathBase::mmbulld_(integer *nbcoln,
   integer dtabtr_dim1, dtabtr_offset, i__1, i__2;
   
   /* Local variables */
-  static logical ldbg;
-  static doublereal daux;
-  static integer nite1, nite2, nchan, i1, i2;
+  logical ldbg;
+  doublereal daux;
+  integer nite1, nite2, nchan, i1, i2;
   
 /* ***********************************************************************
  */
@@ -2070,8 +2067,8 @@ int AdvApp2Var_MathBase::mmcdriv_(integer *ndimen,
   i__2;
   
   /* Local variables */
-  static integer i__, j, k;
-  static doublereal mfactk, bid;
+  integer i__, j, k;
+  doublereal mfactk, bid;
   
 
 /* ***********************************************************************
@@ -2248,15 +2245,15 @@ int AdvApp2Var_MathBase::mmcglc1_(integer *ndimax,
   doublereal d__1;
   
   /* Local variables */
-  static integer ndec;
-  static doublereal tdeb, tfin;
-  static integer iter;
-  static doublereal oldso;
-  static integer itmax;
-  static doublereal sottc;
-  static integer kk, ibb;
-  static doublereal dif, pas;
-  static doublereal som;
+  integer ndec;
+  doublereal tdeb, tfin;
+  integer iter;
+  doublereal oldso = 0.;
+  integer itmax;
+  doublereal sottc;
+  integer kk, ibb;
+  doublereal dif, pas;
+  doublereal som;
  
 
 /* ***********************************************************************
@@ -2478,10 +2475,10 @@ int mmchole_(integer *,//mxcoef,
   //double sqrt();
   
     /* Local variables */
-  static logical ldbg;
-  static integer kmin, i__, j, k;
-  static doublereal somme;
-  static integer ptini, ptcou;
+  logical ldbg;
+  integer kmin, i__, j, k;
+  doublereal somme;
+  integer ptini, ptcou;
 
 
 /* ***********************************************************************
@@ -2648,10 +2645,10 @@ int AdvApp2Var_MathBase::mmcvctx_(integer *ndimen,
   i__2;
   
   /* Local variables */
-  static integer moup1, nordr;
-  static integer nd;
-  static integer ibb, ncf, ndv;
-  static doublereal eps1;
+  integer moup1, nordr;
+  integer nd;
+  integer ibb, ncf, ndv;
+  doublereal eps1;
 
 
 /* ***********************************************************************
@@ -2896,7 +2893,7 @@ L9999:
   integer curve_dim1, curve_offset, curveo_dim1, curveo_offset, i__1, i__2;
   
   /* Local variables */
-  static integer i__, nd, ibb;
+  integer i__, nd, ibb;
   
 
 /* ***********************************************************************
@@ -2976,8 +2973,8 @@ int mmcvstd_(integer *ncofmx,
   integer courbe_dim1, crvcan_dim1, crvcan_offset, i__1, i__2, i__3;
   
   /* Local variables */
-  static integer ndeg, i__, j, j1, nd, ibb;
-  static doublereal bid;
+  integer ndeg, i__, j, j1, nd, ibb;
+  doublereal bid;
   
 
 /* ***********************************************************************
@@ -3131,7 +3128,7 @@ int AdvApp2Var_MathBase::mmdrc11_(integer *iordre,
   
   /* Local variables */
   
-  static integer ndeg, i__, j, ndgcb, nd, ibb;
+  integer ndeg, i__, j, ndgcb, nd, ibb;
   
 
 /* ********************************************************************** 
@@ -3318,11 +3315,10 @@ int mmdrvcb_(integer *ideriv,
   integer courbe_dim1, tabpnt_dim1, i__1, i__2, i__3;
   
   /* Local variables */
-  static integer ndeg, i__, j, nd, ndgcrb, iptpnt, ibb;
+  integer ndeg, i__, j, nd, ndgcrb, iptpnt, ibb;
   
 
-/* ***********************************************************************
-*/
+/* *********************************************************************** */
 /*     FUNCTION : */
 /*     ---------- */
 
@@ -3501,8 +3497,8 @@ int AdvApp2Var_MathBase::mmdrvck_(integer *ncoeff,
   integer courbe_dim1, courbe_offset, i__1, i__2;
   
   /* Local variables */
-  static integer i__, j, k, nd;
-  static doublereal mfactk, bid;
+  integer i__, j, k, nd;
+  doublereal mfactk, bid;
   
 
 /*      IMPLICIT INTEGER (I-N) */
@@ -3775,8 +3771,8 @@ int mmexthi_(integer *ndegre,
   integer i__1;
   
   /* Local variables */
-  static integer iadd, ideb, ndeg2, nmod2, ii, ibb;
-  static integer kpt;
+  integer iadd, ideb, ndeg2, nmod2, ii, ibb;
+  integer kpt;
 
 /* ********************************************************************** 
 */
@@ -3926,8 +3922,8 @@ int mmextrl_(integer *ndegre,
   integer i__1;
   
   /* Local variables */
-  static integer iadd, ideb, ndeg2, nmod2, ii, ibb;
-  static integer kpt;
+  integer iadd, ideb, ndeg2, nmod2, ii, ibb;
+  integer kpt;
 
 
 /* ********************************************************************** 
@@ -4082,7 +4078,7 @@ int AdvApp2Var_MathBase::mmfmca8_(const integer *ndimen,
   tabres_offset;
 
   /* Local variables */
-  static integer i__, j, k, ilong;
+  integer i__, j, k, ilong;
 
 
 
@@ -4218,7 +4214,7 @@ L9999:
   tabres_offset, i__1, i__2, i__3;
   
     /* Local variables */
-  static integer i__, j, k, ilong;
+  integer i__, j, k, ilong;
 
 
 
@@ -4360,16 +4356,16 @@ int AdvApp2Var_MathBase::mmfmcar_(integer *ndimen,
 				  integer *iercod)
 
 {
-  static integer c__8 = 8;
+  integer c__8 = 8;
   /* System generated locals */
     integer patold_dim1, patold_dim2, patnew_dim1, patnew_dim2,
 	    i__1, patold_offset,patnew_offset;
 
     /* Local variables */
-    static doublereal tbaux[1];
-    static integer ksize, numax, kk;
-    static intptr_t iofst;
-    static integer ibb, ier;
+    doublereal* tbaux = 0;
+    integer ksize, numax, kk;
+    intptr_t iofst;
+    integer ibb, ier;
 
 /* ***********************************************************************
  */
@@ -4444,6 +4440,7 @@ int AdvApp2Var_MathBase::mmfmcar_(integer *ndimen,
     }
     *iercod = 0;
     iofst = 0;
+    AdvApp2Var_SysBase anAdvApp2Var_SysBase;
 
 /* ********************************************************************** 
 */
@@ -4510,7 +4507,7 @@ L2000:
 /* ------------------------- Dynamic allocation -------------------
 ---- */
 	ksize = *ndimen * *ncoefu * *ncoefv;
-	AdvApp2Var_SysBase::mcrrqst_(&c__8, &ksize, tbaux, &iofst, &ier);
+	anAdvApp2Var_SysBase.mcrrqst_(&c__8, &ksize, tbaux, &iofst, &ier);
 	if (ier > 0) {
 	    *iercod = 13;
 	    goto L9900;
@@ -4568,7 +4565,7 @@ L2000:
 
 L9900:
     if (iofst != 0) {
-	AdvApp2Var_SysBase::mcrdelt_(&c__8, &ksize, tbaux, &iofst, &ier);
+	anAdvApp2Var_SysBase.mcrdelt_(&c__8, &ksize, tbaux, &iofst, &ier);
     }
     if (ier > 0) {
 	*iercod = 13;
@@ -4608,7 +4605,7 @@ int AdvApp2Var_MathBase::mmfmcb5_(integer *isenmsc,
   i__2;
   
   /* Local variables */
-  static integer i__, nboct, nd;
+  integer i__, nboct, nd;
   
 
 /* ********************************************************************** 
@@ -4748,16 +4745,16 @@ int AdvApp2Var_MathBase::mmfmtb1_(integer *maxsz1,
 				  integer *jsize2, 
 				  integer *iercod)
 {
-  static integer c__8 = 8;
+  integer c__8 = 8;
 
    /* System generated locals */
     integer table1_dim1, table1_offset, table2_dim1, table2_offset, i__1, 
 	    i__2;
 
     /* Local variables */
-    static doublereal work[1];
-    static integer ilong, isize, ii, jj, ier;
-    static intptr_t iofst,iipt, jjpt;
+    doublereal* work = 0;
+    integer ilong, isize, ii, jj, ier = 0;
+    intptr_t iofst = 0,iipt, jjpt;
 
 
 /************************************************************************
@@ -4817,6 +4814,7 @@ int AdvApp2Var_MathBase::mmfmtb1_(integer *maxsz1,
     table2_dim1 = *maxsz2;
     table2_offset = table2_dim1 + 1;
     table2 -= table2_offset;
+    AdvApp2Var_SysBase anAdvApp2Var_SysBase;
 
     /* Function Body */
     *iercod = 0;
@@ -4826,7 +4824,7 @@ int AdvApp2Var_MathBase::mmfmtb1_(integer *maxsz1,
 
     iofst = 0;
     isize = *maxsz2 * *isize1;
-    AdvApp2Var_SysBase::mcrrqst_(&c__8, &isize, work, &iofst, &ier);
+    anAdvApp2Var_SysBase.mcrrqst_(&c__8, &isize, work, &iofst, &ier);
     if (ier > 0) {
 	goto L9200;
     }
@@ -4871,7 +4869,7 @@ L9200:
 
 L9999:
     if (iofst != 0) {
-	AdvApp2Var_SysBase::mcrdelt_(&c__8, &isize, work, &iofst, &ier);
+	anAdvApp2Var_SysBase.mcrdelt_(&c__8, &isize, work, &iofst, &ier);
     }
     if (ier > 0) {
 	*iercod = 2;
@@ -4904,12 +4902,12 @@ int AdvApp2Var_MathBase::mmgaus1_(integer *ndimf,
   integer i__1, i__2;
   
   /* Local variables */
-  static integer ndeg;
-  static doublereal h__[20];
-  static integer j;
-  static doublereal t, u[20], x;
-  static integer idimf;
-  static doublereal c1x, c2x;
+  integer ndeg;
+  doublereal h__[20];
+  integer j;
+  doublereal t, u[20], x;
+  integer idimf;
+  doublereal c1x, c2x;
 /* ********************************************************************** 
 */
 
@@ -5083,8 +5081,8 @@ L9999:
 int mmherm0_(doublereal *debfin, 
 	     integer *iercod)
 {
-  static integer c__576 = 576;
-  static integer c__6 = 6;
+  integer c__576 = 576;
+  integer c__6 = 6;
 
   
    /* System generated locals */
@@ -5092,19 +5090,19 @@ int mmherm0_(doublereal *debfin,
     doublereal d__1;
 
     /* Local variables */
-    static doublereal amat[36]	/* was [6][6] */;
-    static integer iord[2];
-    static doublereal prod;
-    static integer iord1, iord2;
-    static doublereal miden[36]	/* was [6][6] */;
-    static integer ncmat;
-    static doublereal epspi, d1, d2;
-    static integer ii, jj, pp, ncf;
-    static doublereal cof[6];
-    static integer iof[2], ier;
-    static doublereal mat[36]	/* was [6][6] */;
-    static integer cot;
-    static doublereal abid[72]	/* was [12][6] */;
+    doublereal amat[36]	/* was [6][6] */;
+    integer iord[2];
+    doublereal prod;
+    integer iord1, iord2;
+    doublereal miden[36]	/* was [6][6] */;
+    integer ncmat;
+    doublereal epspi, d1, d2;
+    integer ii, jj, pp, ncf;
+    doublereal cof[6];
+    integer iof[2], ier;
+    doublereal mat[36]	/* was [6][6] */;
+    integer cot;
+    doublereal abid[72]	/* was [12][6] */;
 /* ***********************************************************************
  */
 
@@ -5428,9 +5426,9 @@ int mmherm1_(doublereal *debfin,
   integer hermit_dim1, hermit_dim2, hermit_offset;
 
   /* Local variables */
-  static integer nbval;
-  static doublereal d1;
-  static integer cot;
+  integer nbval;
+  doublereal d1;
+  integer cot;
 
 /* ***********************************************************************
  */
@@ -5644,25 +5642,25 @@ int AdvApp2Var_MathBase::mmhjcan_(integer *ndimen,
 			    integer *iercod)
 
 {
-  static integer c__2 = 2;
-  static integer c__21 = 21;
+  integer c__2 = 2;
+  integer c__21 = 21;
   /* System generated locals */
     integer tcbold_dim1, tcbold_dim2, tcbold_offset, tcbnew_dim1, tcbnew_dim2,
 	     tcbnew_offset, i__1, i__2, i__3, i__4, i__5;
 
 
     /* Local variables */
-    static logical ldbg;
-    static integer ndeg;
-    static doublereal taux1[21];
-    static integer d__, e, i__, k;
-    static doublereal mfact;
-    static integer ncoeff;
-    static doublereal tjacap[21];
-    static integer iordre[2];
-    static doublereal hermit[36]/* was [6][3][2] */, ctenor, bornes[2];
-    static integer ier;
-    static integer aux1, aux2;
+    logical ldbg;
+    integer ndeg;
+    doublereal taux1[21];
+    integer d__, e, i__, k;
+    doublereal mfact;
+    integer ncoeff;
+    doublereal tjacap[21];
+    integer iordre[2];
+    doublereal hermit[36]/* was [6][3][2] */, ctenor, bornes[2];
+    integer ier;
+    integer aux1, aux2;
 
 /* ***********************************************************************
  */
@@ -5890,10 +5888,10 @@ L9999:
   integer tabtri_dim1, tabtri_offset, i__1, i__2;
   
   /* Local variables */
-  static logical idbg;
-  static integer icol, ilgn, nlgn, noct, inser;
-  static doublereal epsega;
-  static integer ibb;
+  logical idbg;
+  integer icol, ilgn, nlgn, noct, inser;
+  doublereal epsega = 0.;
+  integer ibb;
 
 /* ***********************************************************************
  */
@@ -5938,6 +5936,7 @@ L9999:
 /*        . Level of de debug = 3 */
 
 
+/**/
 /*     DECLARATIONS , CONTROL OF INPUT ARGUMENTS , INITIALIZATION */
 /* ***********************************************************************
  */
@@ -6090,8 +6089,8 @@ L9999:
   integer poljac_dim1, i__1, i__2;
   
   /* Local variables */
-  static integer iptt, i__, j, ibb;
-  static doublereal bid;
+  integer iptt, i__, j, ibb;
+  doublereal bid;
 
 /* ***********************************************************************
  */
@@ -6241,7 +6240,7 @@ L9999:
   polaux_dim1, i__1, i__2;
   
   /* Local variables */
-  static integer ndeg, i__, nd, ii, ibb;
+  integer ndeg, i__, nd, ii, ibb;
 
 /* ***********************************************************************
  */
@@ -6345,18 +6344,19 @@ int mmloncv_(integer *ndimax,
 {
   /* Initialized data */
   
-  static integer kgar = 0;
+  integer kgar = 0;
   
   /* System generated locals */
   integer courbe_dim1, courbe_offset, i__1, i__2;
   
   /* Local variables */
-  static doublereal tran;
-  static integer ngaus;
-  static doublereal c1, c2, d1, d2, wgaus[20], uroot[20], x1, x2, dd;
-  static integer ii, jj, kk;
-  static doublereal som;
-  static doublereal der1, der2;
+  doublereal tran;
+  integer ngaus = 0;
+  doublereal c1, c2, d1, d2,
+    wgaus[20] = {0.}, uroot[20] = {0.}, x1, x2, dd;
+  integer ii, jj, kk;
+  doublereal som;
+  doublereal der1, der2;
 
 
 
@@ -6368,7 +6368,7 @@ int mmloncv_(integer *ndimax,
 /*     ---------- for a function the mathematic representation  */
 /*                which of is a multidimensional polynom. */
 /*      The polynom is a set of polynoms the coefficients which of are ranked */
-	/*  in a table with 2 indices, each line relative to 1 polynom. */
+/*  in a table with 2 indices, each line relative to 1 polynom. */
 /*      The polynom is defined by its coefficients ordered by increasing 
 *       power of the variable. */
 /*      All polynoms have the same number of coefficients (and the same degree). */
@@ -6578,27 +6578,27 @@ L9900:
 			    integer *iercod)
 
 {
-  static integer c__2 = 2;
-  static integer c__1 = 1;
+  integer c__2 = 2;
+  integer c__1 = 1;
 
   
    /* Initialized data */
 
-    static doublereal moin11[2] = { -1.,1. };
+    doublereal moin11[2] = { -1.,1. };
 
     /* System generated locals */
     integer valbas_dim1, i__1;
 
     /* Local variables */
-    static doublereal vjac[80], herm[24];
-    static integer iord[2];
-    static doublereal wval[4];
-    static integer nwcof, iunit;
-    static doublereal wpoly[7];
-    static integer ii, jj, iorjac;
-    static doublereal hermit[36]	/* was [6][3][2] */;
-    static integer kk1, kk2, kk3;
-    static integer khe, ier;
+    doublereal vjac[80], herm[24];
+    integer iord[2];
+    doublereal wval[4];
+    integer nwcof, iunit;
+    doublereal wpoly[7];
+    integer ii, jj, iorjac;
+    doublereal hermit[36]	/* was [6][3][2] */;
+    integer kk1, kk2, kk3;
+    integer khe, ier;
 
 
 /* ***********************************************************************
@@ -6887,8 +6887,8 @@ L9999:
   integer courbe_dim1, courbe_offset, i__1, i__2;
   
   /* Local variables */
-  static integer ncof2;
-  static integer isize, nd, kcf, ncf;
+  integer ncof2;
+  integer isize, nd, kcf, ncf;
 
 
 /* ***********************************************************************
@@ -7016,8 +7016,8 @@ L9999:
   integer courbe_dim1, courbe_offset, i__1;
   
   /* Local variables */
-  static integer i__, nd;
-  static doublereal fu;
+  integer i__, nd;
+  doublereal fu;
   
  
 /* ***********************************************************************
@@ -7096,17 +7096,15 @@ int mmpojac_(doublereal *tparam,
 	     integer *iercod)
 
 {
-  static integer c__2 = 2;
+  integer c__2 = 2;
   
-    /* Initialized data */
-
     /* System generated locals */
     integer valjac_dim1, i__1, i__2;
 
     /* Local variables */
-    static doublereal cofa, cofb, denom, tnorm[100];
-    static integer ii, jj, kk1, kk2;
-    static doublereal aux1, aux2;
+    doublereal cofa, cofb, denom, tnorm[100];
+    integer ii, jj, kk1, kk2;
+    doublereal aux1, aux2;
 
 
 /* ***********************************************************************
@@ -7326,9 +7324,9 @@ L9999:
   integer i__1, i__2;
   
   /* Local variables */
-  static logical ldbg;
-  static integer imin, jmin, i__, j, k;
-  static logical trouve;
+  logical ldbg;
+  integer imin, jmin, i__, j, k;
+  logical trouve;
 
 /* ***********************************************************************
  */
@@ -7487,23 +7485,23 @@ L9999:
 			    integer *iercod)
 
 {
-  static integer c__100 = 100;
+  integer c__100 = 100;
  
    /* System generated locals */
     integer i__1, i__2;
 
     /* Local variables */
-    static logical ldbg;
-    static doublereal mcho[100];
-    static integer jmin, jmax, i__, j, k, l;
-    static intptr_t iofv1, iofv2, iofv3, iofv4;
-    static doublereal v1[100], v2[100], v3[100], v4[100];
-    static integer deblig, dimhch;
-    static doublereal hchole[100];
-    static intptr_t iofmch, iofmam, iofhch;
-    static doublereal matsym[100];
-    static integer ier;
-    static integer aux;
+    logical ldbg;
+    doublereal* mcho = 0;
+    integer jmin, jmax, i__, j, k, l;
+    intptr_t iofv1, iofv2, iofv3, iofv4;
+    doublereal *v1 = 0, *v2 = 0, *v3 = 0, *v4 = 0;
+    integer deblig, dimhch;
+    doublereal* hchole = 0;
+    intptr_t iofmch, iofmam, iofhch;
+    doublereal* matsym = 0;
+    integer ier;
+    integer aux;
 
 
 
@@ -7618,13 +7616,13 @@ L9999:
  */
 
 /*    Dynamic allocation */
-
-    AdvApp2Var_SysBase::macrar8_(hdimen, &c__100, v1, &iofv1, &ier);
+    AdvApp2Var_SysBase anAdvApp2Var_SysBase;
+    anAdvApp2Var_SysBase.macrar8_(hdimen, &c__100, v1, &iofv1, &ier);
     if (ier > 0) {
 	goto L9102;
     }
     dimhch = hposit[(*hdimen << 1) + 2];
-    AdvApp2Var_SysBase::macrar8_(&dimhch, &c__100, hchole, &iofhch, &ier);
+    anAdvApp2Var_SysBase.macrar8_(&dimhch, &c__100, hchole, &iofhch, &ier);
     if (ier > 0) {
 	goto L9102;
     }
@@ -7652,19 +7650,19 @@ L9999:
 /*    where G=MATSYG */
 /*          c=VECSYG */
 
-	AdvApp2Var_SysBase::macrar8_(gdimen, &c__100, v2, &iofv2, &ier);
+	anAdvApp2Var_SysBase.macrar8_(gdimen, &c__100, v2, &iofv2, &ier);
 	if (ier > 0) {
 	    goto L9102;
 	}
-	AdvApp2Var_SysBase::macrar8_(hdimen, &c__100, v3, &iofv3, &ier);
+	anAdvApp2Var_SysBase.macrar8_(hdimen, &c__100, v3, &iofv3, &ier);
 	if (ier > 0) {
 	    goto L9102;
 	}
-	AdvApp2Var_SysBase::macrar8_(gdimen, &c__100, v4, &iofv4, &ier);
+	anAdvApp2Var_SysBase.macrar8_(gdimen, &c__100, v4, &iofv4, &ier);
 	if (ier > 0) {
 	    goto L9102;
 	}
-	AdvApp2Var_SysBase::macrar8_(mnstoc, &c__100, matsym, &iofmam, &ier);
+	anAdvApp2Var_SysBase.macrar8_(mnstoc, &c__100, matsym, &iofmam, &ier);
 	if (ier > 0) {
 	    goto L9102;
 	}
@@ -7730,7 +7728,7 @@ L9999:
 
 
 	AdvApp2Var_SysBase::mvriraz_(gdimen, &v4[iofv4]);
-	AdvApp2Var_SysBase::macrar8_(mnstoc, &c__100, mcho, &iofmch, &ier);
+	anAdvApp2Var_SysBase.macrar8_(mnstoc, &c__100, mcho, &iofmch, &ier);
 	if (ier > 0) {
 	    goto L9102;
 	}
@@ -7802,31 +7800,31 @@ L9102:
 L9999:
 
 /* ___ DESALLOCATION, ... */
-    AdvApp2Var_SysBase::macrdr8_(hdimen, &c__100, v1, &iofv1, &ier);
+    anAdvApp2Var_SysBase.macrdr8_(hdimen, &c__100, v1, &iofv1, &ier);
     if (*iercod == 0 && ier > 0) {
 	*iercod = 3;
     }
-    AdvApp2Var_SysBase::macrdr8_(&dimhch, &c__100, hchole, &iofhch, &ier);
+    anAdvApp2Var_SysBase.macrdr8_(&dimhch, &c__100, hchole, &iofhch, &ier);
     if (*iercod == 0 && ier > 0) {
 	*iercod = 3;
     }
-    AdvApp2Var_SysBase::macrdr8_(gdimen, &c__100, v2, &iofv2, &ier);
+    anAdvApp2Var_SysBase.macrdr8_(gdimen, &c__100, v2, &iofv2, &ier);
     if (*iercod == 0 && ier > 0) {
 	*iercod = 3;
     }
-    AdvApp2Var_SysBase::macrdr8_(hdimen, &c__100, v3, &iofv3, &ier);
+    anAdvApp2Var_SysBase.macrdr8_(hdimen, &c__100, v3, &iofv3, &ier);
     if (*iercod == 0 && ier > 0) {
 	*iercod = 3;
     }
-    AdvApp2Var_SysBase::macrdr8_(gdimen, &c__100, v4, &iofv4, &ier);
+    anAdvApp2Var_SysBase.macrdr8_(gdimen, &c__100, v4, &iofv4, &ier);
     if (*iercod == 0 && ier > 0) {
 	*iercod = 3;
     }
-    AdvApp2Var_SysBase::macrdr8_(mnstoc, &c__100, matsym, &iofmam, &ier);
+    anAdvApp2Var_SysBase.macrdr8_(mnstoc, &c__100, matsym, &iofmam, &ier);
     if (*iercod == 0 && ier > 0) {
 	*iercod = 3;
     }
-    AdvApp2Var_SysBase::macrdr8_(mnstoc, &c__100, mcho, &iofmch, &ier);
+    anAdvApp2Var_SysBase.macrdr8_(mnstoc, &c__100, mcho, &iofmch, &ier);
     if (*iercod == 0 && ier > 0) {
 	*iercod = 3;
     }
@@ -7855,10 +7853,10 @@ int mmrslss_(integer *,//mxcoef,
   integer i__1, i__2;
   
   /* Local variables */
-  static logical ldbg;
-  static integer i__, j;
-  static doublereal somme;
-  static integer pointe, ptcour;
+  logical ldbg;
+  integer i__, j;
+  doublereal somme;
+  integer pointe, ptcour;
 
 /* ***********************************************************************
  */
@@ -8013,10 +8011,10 @@ int mmrslw_(integer *normax,
     doublereal d__1;
 
     /* Local variables */
-    static integer kpiv;
-    static doublereal pivot;
-    static integer ii, jj, kk;
-    static doublereal akj;
+    integer kpiv;
+    doublereal pivot;
+    integer ii, jj, kk;
+    doublereal akj;
     
 
 /* ********************************************************************** 
@@ -8199,8 +8197,8 @@ int mmrslw_(integer *normax,
     }
     goto L9999;
 
-/* ------If the absolute value of a pivot is smaller than -------- 
-   ---------- EPSPIV: return the code of error. ------------ 
+/* ------If the absolute value of a pivot is smaller than -------- */
+/* ---------- EPSPIV: return the code of error. ------------ 
 */
 
 L9900:
@@ -8236,8 +8234,8 @@ L9999:
   xmat_offset, aaux_dim1, aaux_offset, i__1, i__2;
   
   /* Local variables */
-  static integer i__, j;
-  static integer ibb;
+  integer i__, j;
+  integer ibb;
 
 /*      IMPLICIT DOUBLE PRECISION (A-H,O-Z) */
 /*      IMPLICIT INTEGER (I-N) */
@@ -8373,7 +8371,7 @@ L9999:
 			    doublereal *rtlegd)
 
 {
-  static integer ideb, nmod2, nsur2, ilong, ibb;
+  integer ideb, nmod2, nsur2, ilong, ibb;
 
 
 /* ********************************************************************** 
@@ -8504,7 +8502,7 @@ L9999:
   doublereal d__1;
   
   /* Local variables */
-  static integer ideb, ifin, imil, ibb;
+  integer ideb, ifin, imil, ibb;
 
 /* ***********************************************************************
  */
@@ -8612,8 +8610,8 @@ L1000:
 
     goto L1000;
 
-/* -------------- TEST IF TPARAM IS NOT A VALUE --------- 
-   ------------------------OF TABLEV UP TO EPSIL ---------------------- 
+/* -------------- TEST IF TPARAM IS NOT A VALUE --------- */
+/* ------------------------OF TABLEV UP TO EPSIL ---------------------- 
 */
 
 L2000:
@@ -8657,10 +8655,10 @@ int mmtmave_(integer *nligne,
   integer i__1, i__2;
   
   /* Local variables */
-  static logical ldbg;
-  static integer imin, imax, i__, j, k;
-  static doublereal somme;
-  static integer aux;
+  logical ldbg;
+  integer imin, imax, i__, j, k;
+  doublereal somme;
+  integer aux;
   
 
 /* ***********************************************************************
@@ -8681,9 +8679,9 @@ int mmtmave_(integer *nligne,
 /*       NLIGNE : NUMBER OF LINE OF THE MATRIX */
 /*       NCOLON : NOMBER OF COLUMN OF THE MATRIX */
 /*       GPOSIT: TABLE OF POSITIONING OF TERMS OF STORAGE */
-/*               GPOSIT(1,I) CONTAINS THE NUMBER of TERMS-1 ON LINE 
-               I IN THE PROFILE OF THE MATRIX */
-/*              GPOSIT(2,I) CONTAINS THE INDEX OF STORAGE OF THE DIAGONAL TERM */
+/*               GPOSIT(1,I) CONTAINS THE NUMBER of TERMS-1 ON LINE */
+/*               I IN THE PROFILE OF THE MATRIX */
+/*              GPOSIT(2,I) CONTAINS THE INDEX OF STORAGE OF THE DIAGONAL TERM*/
 /*               OF LINE I */
 /*               GPOSIT(3,I) CONTAINS THE INDEX COLUMN OF THE FIRST TERM OF */
 /*                           PROFILE OF LINE I */
@@ -8808,9 +8806,9 @@ int mmtrpj0_(integer *ncofmx,
   doublereal d__1;
   
   /* Local variables */
-  static integer ncut, i__;
-  static doublereal bidon, error;
-  static integer nd;
+  integer ncut, i__;
+  doublereal bidon, error;
+  integer nd;
   
 
 /* ***********************************************************************
@@ -8988,10 +8986,10 @@ int mmtrpj2_(integer *ncofmx,
     doublereal d__1;
 
     /* Local variables */
-    static integer ncut, i__;
-    static doublereal bidon, error;
-    static integer ia, nd;
-    static doublereal bid, eps1;
+    integer ncut, i__;
+    doublereal bidon, error;
+    integer ia, nd;
+    doublereal bid, eps1;
 
 
 /* ***********************************************************************
@@ -9192,10 +9190,10 @@ int mmtrpj4_(integer *ncofmx,
     doublereal d__1;
 
     /* Local variables */
-    static integer ncut, i__;
-    static doublereal bidon, error;
-    static integer ia, nd;
-    static doublereal bid, eps1;
+    integer ncut, i__;
+    doublereal bidon, error;
+    integer ia, nd;
+    doublereal bid, eps1;
 
 
 
@@ -9396,10 +9394,10 @@ int mmtrpj6_(integer *ncofmx,
     doublereal d__1;
 
     /* Local variables */
-    static integer ncut, i__;
-    static doublereal bidon, error;
-    static integer ia, nd;
-    static doublereal bid, eps1;
+    integer ncut, i__;
+    doublereal bidon, error;
+    integer ia, nd;
+    doublereal bid, eps1;
 
 
 
@@ -9542,7 +9540,7 @@ L9999:
     integer crvlgd_dim1, crvlgd_offset;
 
     /* Local variables */
-    static integer ia;
+    integer ia;
    
 
 /* ***********************************************************************
@@ -9624,18 +9622,18 @@ L9999:
 	     integer *iercod)
 {
  
-  static doublereal c_b2 = 10.;
+  doublereal c_b2 = 10.;
   
     /* System generated locals */
     integer i__1;
     doublereal d__1;
 
     /* Local variables */
-    static integer nchif, iunit, izero;
-    static doublereal vnorm;
-    static integer ii;
-    static doublereal bid;
-    static doublereal eps0;
+    integer nchif, iunit = 1, izero;
+    doublereal vnorm;
+    integer ii;
+    doublereal bid;
+    doublereal eps0;
 
 
 
@@ -9767,7 +9765,7 @@ L9999:
   
   static char nomprg[8+1] = "MMEPS1  ";
   
-  static integer ibb;
+  integer ibb;
   
 
 
@@ -9875,12 +9873,12 @@ L9999:
   integer i__1;
   
   /* Local variables */
-  static logical ldbg;
-  static integer d__;
-  static doublereal vaux1[3], vaux2[3];
-  static logical colin;
-  static doublereal valaux;
-  static integer aux;
+  logical ldbg;
+  integer d__;
+  doublereal vaux1[3], vaux2[3];
+  logical colin;
+  doublereal valaux;
+  integer aux;
  
 /* ***********************************************************************
  */
@@ -10284,8 +10282,8 @@ integer pow__ii(integer *x,
   doublereal ret_val;
   
   /* Local variables */
-  static integer i__;
-  static doublereal x;
+  integer i__;
+  doublereal x;
   
 
 
@@ -10358,9 +10356,9 @@ int mvcvin2_(integer *ncoeff,
   integer i__1, i__2;
   
   /* Local variables */
-  static integer m1jm1, ncfm1, j, k;
-  static doublereal bid;
-  static doublereal cij1, cij2;
+  integer m1jm1, ncfm1, j, k;
+  doublereal bid;
+  doublereal cij1, cij2;
   
 
 
@@ -10508,10 +10506,10 @@ int mvcvinv_(integer *ncoeff,
   integer i__1, i__2;
   
   /* Local variables */
-  static integer m1jm1, ncfm1, j, k;
-  static doublereal bid;
+  integer m1jm1, ncfm1, j, k;
+  doublereal bid;
   //extern /* Subroutine */ int maermsg_();
-  static doublereal cij1, cij2, cij3;
+  doublereal cij1, cij2, cij3;
   
  
 /* ********************************************************************** 
@@ -10663,8 +10661,8 @@ int mvgaus0_(integer *kindic,
     integer i__1;
 
     /* Local variables */
-    static doublereal tamp[40];
-    static integer ndegl, kg, ii;
+    doublereal tamp[40];
+    integer ndegl, kg, ii;
    
 /* ********************************************************************** 
 */
@@ -10791,8 +10789,8 @@ int mvpscr2_(integer *ncoeff,
   integer i__1;
   
   /* Local variables */
-  static integer ndeg, kk;
-  static doublereal xxx, yyy;
+  integer ndeg, kk;
+  doublereal xxx, yyy;
 
 
 
@@ -10919,8 +10917,8 @@ int mvpscr3_(integer *ncoeff,
   integer i__1;
   
   /* Local variables */
-  static integer ndeg, kk;
-  static doublereal xxx, yyy, zzz;
+  integer ndeg, kk;
+  doublereal xxx, yyy, zzz;
 
 
 
@@ -11058,9 +11056,9 @@ L9999:
   integer dtab_dim1, dtab_offset, i__1, i__2;
   
   /* Local variables */
-  static integer incr;
-  static doublereal dsave;
-  static integer i3, i4, i5, incrp1;
+  integer incr;
+  doublereal dsave;
+  integer i3, i4, i5, incrp1;
 
 
 /************************************************************************
@@ -11189,8 +11187,8 @@ L9900:
   doublereal ret_val, d__1, d__2;
 
   /* Local variables */
-  static doublereal xsom;
-  static integer i__, irmax;
+  doublereal xsom;
+  integer i__, irmax;
   
   
 

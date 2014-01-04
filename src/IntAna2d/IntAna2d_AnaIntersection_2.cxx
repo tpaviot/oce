@@ -1,20 +1,16 @@
 // Copyright (c) 1995-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <IntAna2d_AnaIntersection.jxx>
 
@@ -66,7 +62,7 @@ void IntAna2d_AnaIntersection::Perform (const gp_Circ2d& C1,
     if (ang1<0) {ang1=2*M_PI+ang1;}                // On revient entre 0 et 2PI
     lpnt[0].SetValue(XS,YS,ang1,ang2);
   }
-  else if (((sum-d)>Epsilon(d)) && ((d-dif)>Epsilon(d))) {
+  else if (((sum-d)>Epsilon(sum)) && ((d-dif)>Epsilon(d+dif))) {
     empt=Standard_False;
     para=Standard_False;
     iden=Standard_False;
@@ -78,6 +74,11 @@ void IntAna2d_AnaIntersection::Perform (const gp_Circ2d& C1,
     Standard_Real ref2=Ox2.Angle(ax);                       // Resultat entre -PI et +PI
 
     Standard_Real l1=(d*d + R1*R1 -R2*R2)/(2.0*d);
+    Standard_Real aDet = R1*R1-l1*l1;
+    if(aDet < 0.) {
+      aDet = 0.;
+      l1 = (l1 > 0 ? R1 : - R1);
+    }
     Standard_Real h= Sqrt(R1*R1-l1*l1);
 
     Standard_Real XS1= C1.Location().X() + l1*ax.X()/d - h*ax.Y()/d;
@@ -143,12 +144,15 @@ void IntAna2d_AnaIntersection::Perform (const gp_Circ2d& C1,
     lpnt[0].SetValue(XS1,YS1,ang11,ang21);
     lpnt[1].SetValue(XS2,YS2,ang12,ang22);
   }
-  else if (Abs(d-dif)<=Epsilon(d)) {    // Cercles tangents interieurs
+  else if (Abs(d-dif)<=Epsilon(sum)) {    // Cercles tangents interieurs
     empt=Standard_False;
     para=Standard_False;
     iden=Standard_False;
     nbp=1;
     gp_Vec2d ax(C1.Location(),C2.Location());
+    if(C1.Radius() < C2.Radius())
+      ax.Reverse();
+
     gp_Vec2d Ox1(C1.XAxis().Direction());
     gp_Vec2d Ox2(C2.XAxis().Direction());
     Standard_Real ang1=Ox1.Angle(ax);                       // Resultat entre -PI et +PI

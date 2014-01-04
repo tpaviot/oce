@@ -14,11 +14,11 @@
 
 void StdLSchema_PColStd_FieldOfHArray2OfInteger::SWrite(const PColStd_FieldOfHArray2OfInteger& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
-  Standard_Integer i;
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
 
   f.BeginWriteObjectData();
   f.PutInteger(pp.Length());
-  for (i = 0; i < pp.Length(); i++) {
+  for (Standard_Integer i = 0; i < pp.Length(); i++) {
     f.PutInteger(pp.Value(i));
 
   }
@@ -27,6 +27,7 @@ void StdLSchema_PColStd_FieldOfHArray2OfInteger::SWrite(const PColStd_FieldOfHAr
 
 void StdLSchema_PColStd_FieldOfHArray2OfInteger::SRead(PColStd_FieldOfHArray2OfInteger& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
   Standard_Integer size = 0;
 
   f.BeginReadObjectData();

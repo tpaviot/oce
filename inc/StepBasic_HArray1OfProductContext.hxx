@@ -42,11 +42,11 @@ class StepBasic_HArray1OfProductContext : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepBasic_HArray1OfProductContext(const Standard_Integer Low,const Standard_Integer Up);
+      StepBasic_HArray1OfProductContext(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepBasic_HArray1OfProductContext(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepBasic_ProductContext)& V);
+      StepBasic_HArray1OfProductContext(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepBasic_ProductContext)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepBasic_ProductContext)& V) ;
+        void Init(const Handle(StepBasic_ProductContext)& V) ;
   
         Standard_Integer Length() const;
   

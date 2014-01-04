@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AppParCurves_Array1OfConstraintCouple(const Standard_Integer Low,const Standard_Integer Up);
+      AppParCurves_Array1OfConstraintCouple(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   AppParCurves_Array1OfConstraintCouple(const AppParCurves_ConstraintCouple& Item,const Standard_Integer Low,const Standard_Integer Up);
+      AppParCurves_Array1OfConstraintCouple(const AppParCurves_ConstraintCouple& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const AppParCurves_ConstraintCouple& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~AppParCurves_Array1OfConstraintCouple()
 {
   Destroy();

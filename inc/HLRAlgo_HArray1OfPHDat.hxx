@@ -39,11 +39,11 @@ class HLRAlgo_HArray1OfPHDat : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   HLRAlgo_HArray1OfPHDat(const Standard_Integer Low,const Standard_Integer Up);
+      HLRAlgo_HArray1OfPHDat(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   HLRAlgo_HArray1OfPHDat(const Standard_Integer Low,const Standard_Integer Up,const HLRAlgo_PolyHidingData& V);
+      HLRAlgo_HArray1OfPHDat(const Standard_Integer Low,const Standard_Integer Up,const HLRAlgo_PolyHidingData& V);
   
-  Standard_EXPORT     void Init(const HLRAlgo_PolyHidingData& V) ;
+        void Init(const HLRAlgo_PolyHidingData& V) ;
   
         Standard_Integer Length() const;
   

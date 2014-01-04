@@ -41,13 +41,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColQuantity_Array1OfLength(const Standard_Integer Low,const Standard_Integer Up);
+      TColQuantity_Array1OfLength(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColQuantity_Array1OfLength(const Quantity_Length& Item,const Standard_Integer Low,const Standard_Integer Up);
+      TColQuantity_Array1OfLength(const Quantity_Length& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Quantity_Length& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~TColQuantity_Array1OfLength()
 {
   Destroy();

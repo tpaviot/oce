@@ -37,7 +37,10 @@ void XCAFSchema_PXCAFDoc_MaterialTool::Add(const Handle(Standard_Persistent)& p,
 void XCAFSchema_PXCAFDoc_MaterialTool::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
+    Handle(PXCAFDoc_MaterialTool) &pp = (Handle(PXCAFDoc_MaterialTool)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -54,6 +57,9 @@ void XCAFSchema_PXCAFDoc_MaterialTool::Write(const Handle(Standard_Persistent)& 
 void XCAFSchema_PXCAFDoc_MaterialTool::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
+    Handle(PXCAFDoc_MaterialTool) &pp = (Handle(PXCAFDoc_MaterialTool)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -39,11 +39,11 @@ class HLRAlgo_HArray1OfPISeg : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   HLRAlgo_HArray1OfPISeg(const Standard_Integer Low,const Standard_Integer Up);
+      HLRAlgo_HArray1OfPISeg(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   HLRAlgo_HArray1OfPISeg(const Standard_Integer Low,const Standard_Integer Up,const HLRAlgo_PolyInternalSegment& V);
+      HLRAlgo_HArray1OfPISeg(const Standard_Integer Low,const Standard_Integer Up,const HLRAlgo_PolyInternalSegment& V);
   
-  Standard_EXPORT     void Init(const HLRAlgo_PolyInternalSegment& V) ;
+        void Init(const HLRAlgo_PolyInternalSegment& V) ;
   
         Standard_Integer Length() const;
   

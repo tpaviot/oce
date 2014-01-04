@@ -39,6 +39,8 @@ void StdLSchema_PColStd_HArray2OfInteger::SWrite(const Handle(Standard_Persisten
   if (!p.IsNull()) {
     Handle(PColStd_HArray2OfInteger) &pp = (Handle(PColStd_HArray2OfInteger)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPColStd_HArray2OfIntegermyLowerRow());
@@ -61,6 +63,8 @@ void StdLSchema_PColStd_HArray2OfInteger::SRead(const Handle(Standard_Persistent
 { 
   if (!p.IsNull()) {
     Handle(PColStd_HArray2OfInteger) &pp = (Handle(PColStd_HArray2OfInteger)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

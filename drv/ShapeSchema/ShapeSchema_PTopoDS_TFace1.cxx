@@ -40,6 +40,8 @@ void ShapeSchema_PTopoDS_TFace1::SWrite(const Handle(Standard_Persistent)& p, St
   if (!p.IsNull()) {
     Handle(PTopoDS_TFace1) &pp = (Handle(PTopoDS_TFace1)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPTopoDS_TShape1myShapes(),f);
@@ -59,6 +61,8 @@ void ShapeSchema_PTopoDS_TFace1::SRead(const Handle(Standard_Persistent)& p, Sto
 { 
   if (!p.IsNull()) {
     Handle(PTopoDS_TFace1) &pp = (Handle(PTopoDS_TFace1)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

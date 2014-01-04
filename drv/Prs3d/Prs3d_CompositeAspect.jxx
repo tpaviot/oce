@@ -1,3 +1,0 @@
-#ifndef _Prs3d_CompositeAspect_HeaderFile
-#include <Prs3d_CompositeAspect.hxx>
-#endif

@@ -1,23 +1,18 @@
 // Created on: 1993-11-26
 // Created by: Modelistation
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <IntPatch_ALineToWLine.ixx>
 
@@ -106,7 +101,6 @@ static
   quad1(Quad1),
   quad2(Quad2),
   deflectionmax(0.01),
-  pasuvmax(0.05),
   nbpointsmax(200),
   type(0),
   myTolParam(1.e-12),
@@ -122,13 +116,12 @@ static
   IntPatch_ALineToWLine::IntPatch_ALineToWLine(const IntSurf_Quadric& Quad1,
 					       const IntSurf_Quadric& Quad2,
 					       const Standard_Real    Deflection,
-					       const Standard_Real    PasUVMax,
+					       const Standard_Real    ,
 					       const Standard_Integer NbMaxPoints) 
 :
   quad1(Quad1),
   quad2(Quad2),
   deflectionmax(Deflection),
-  pasuvmax(PasUVMax),
   nbpointsmax(NbMaxPoints),
   myTolParam(1.e-12),
   myTolOpenDomain(1.e-9),
@@ -305,7 +298,7 @@ static
   LinOn2S = new IntSurf_LineOn2S;
 
   //// Modified by jgv, 17.09.09 for OCC21255 ////
-  Standard_Real refpar = RealLast(), ref_u1 = 0, ref_u2 = 0;
+  Standard_Real refpar = RealLast(), ref_u1 = 0., ref_u2 = 0.;
   if (nbvtx)
     {
       const IntPatch_Point& FirstVertex = aline->Vertex(1);
@@ -892,7 +885,7 @@ gp_Pnt DefineDU(const Handle(IntPatch_ALine)& aline,
   gp_Pnt P1 = aline->Value(U), P2, P3;
   gp_Vec V13, V12, V23;
   Standard_Real dU = DU/2.0, curvDef, angDef, m1, m2, m3;
-  do{ //According to class TangentialDeflection from GCPnts
+  for(;;) { //According to class TangentialDeflection from GCPnts
     P2=aline->Value(U+dU);  P3=aline->Value(U+DU);
     V13 = P3.XYZ().Subtracted(P1.XYZ());  m1 = V13.Magnitude();
     V12 = P2.XYZ().Subtracted(P1.XYZ());  m2 = V12.Magnitude();
@@ -902,7 +895,7 @@ gp_Pnt DefineDU(const Handle(IntPatch_ALine)& aline,
     angDef = Abs(V13.Angle(V23));
     if(curvDef < CurvDef && angDef < AngDef) break;
     DU = dU;  dU /= 2.0;  
-  }while(1);
+  }
   return P3;
 }
 //=======================================================================
@@ -1085,8 +1078,8 @@ void RefineParameters(const Handle(IntPatch_ALine)& aALine,
   }
   //
   Standard_Boolean bIsDone, bIsEmpty, bParallel, bFound;
-  Standard_Integer aNbPoints;
-  Standard_Real aHalfPi, aEpsilon, aLimV, dT, aT1 = 0.0, aT2 = 0.0, aEpsT;
+  Standard_Integer aNbPoints = 0;
+  Standard_Real aHalfPi, aEpsilon, aLimV, dT, aT1, aT2 = 0., aEpsT;
   Standard_Real aU1, aV1, aU2, aV2;
   gp_Pnt aP1, aP2, aPx;
   gp_Pnt2d  aP2D1, aP2D2, aPLim(0., 0.);

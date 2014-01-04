@@ -23,11 +23,11 @@ void StdLSchema_PColStd_FieldOfHArray1OfExtendedString::SAdd(const PColStd_Field
 
 void StdLSchema_PColStd_FieldOfHArray1OfExtendedString::SWrite(const PColStd_FieldOfHArray1OfExtendedString& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
-  Standard_Integer i;
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
 
   f.BeginWriteObjectData();
   f.PutInteger(pp.Length());
-  for (i = 0; i < pp.Length(); i++) {
+  for (Standard_Integer i = 0; i < pp.Length(); i++) {
     theSchema->WritePersistentReference(pp.Value(i),f);
 
   }
@@ -36,6 +36,7 @@ void StdLSchema_PColStd_FieldOfHArray1OfExtendedString::SWrite(const PColStd_Fie
 
 void StdLSchema_PColStd_FieldOfHArray1OfExtendedString::SRead(PColStd_FieldOfHArray1OfExtendedString& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)theSchema; // dummy to avoid compiler warning on unused arg
   Standard_Integer size = 0;
 
   f.BeginReadObjectData();

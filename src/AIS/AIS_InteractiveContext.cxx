@@ -1,22 +1,18 @@
 // Created on: 1997-01-17
 // Created by: Robert COUBLANC
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modified by  XAB & Serguei Dec 97 (angle &deviation coeffts)
 
@@ -83,10 +79,6 @@
 // in spite of the selection mode of the interactive object in Natural Point.
 #define OCC166
 
-// An interactive Object being erased in the main viewer and put into collector should have the same selection mode.
-// It impacts the performance!
-#define OCC328
-
 static Standard_Boolean AISDebugModeOn()
 {
 //  static OSD_Environment aisdb("AISDEBUGMODE");
@@ -129,7 +121,6 @@ mgrSelector(new SelectMgr_SelectionManager()),
 myMainPM(new PrsMgr_PresentationManager3d(MainViewer->Viewer())),
 myMainVwr(MainViewer),
 myMainSel(new StdSelect_ViewerSelector3d()),
-myIsCollClosed(Standard_True),
 myToHilightSelected( Standard_False ),
 myFilters(new SelectMgr_OrFilter()),
 myDefaultDrawer(new Prs3d_Drawer()),
@@ -148,44 +139,11 @@ myIsAutoActivateSelMode( Standard_True )
   InitAttributes();
 }
 
-
-//=======================================================================
-//function : AIS_InteractiveContext
-//purpose  : 
-//=======================================================================
-
-AIS_InteractiveContext::AIS_InteractiveContext(const Handle(V3d_Viewer)& MainViewer,
-                                             const Handle(V3d_Viewer)& Collector):
-mgrSelector(new SelectMgr_SelectionManager()),
-myMainPM(new PrsMgr_PresentationManager3d(MainViewer->Viewer())),
-myMainVwr(MainViewer),
-myMainSel(new StdSelect_ViewerSelector3d()),
-myCollectorPM(new PrsMgr_PresentationManager3d(Collector->Viewer())),
-myCollectorVwr(Collector),
-myCollectorSel(new StdSelect_ViewerSelector3d()),
-myIsCollClosed(Standard_False),
-myToHilightSelected( Standard_False ),
-myFilters(new SelectMgr_OrFilter()),
-myDefaultDrawer(new Prs3d_Drawer()),
-myDefaultColor(Quantity_NOC_GOLDENROD),
-myHilightColor(Quantity_NOC_CYAN1),
-mySelectionColor(Quantity_NOC_GRAY80),
-myPreselectionColor(Quantity_NOC_GREEN),
-mySubIntensity(Quantity_NOC_GRAY40),
-myDisplayMode(0),
-myCurLocalIndex(0),
-#ifdef IMP051001
-myZDetectionFlag(0),
-#endif
-myIsAutoActivateSelMode( Standard_True )
-{
-  InitAttributes();
-  mgrSelector->Add(myCollectorSel);
-  SetPixelTolerance();
-}
-
 void AIS_InteractiveContext::Delete() const
 {
+  //Clear the static current selection. Else the memory
+  //is not release
+  AIS_Selection::ClearCurrentSelection();
 #ifdef OCC172
   // to avoid an exception
   if ( AIS_Selection::Find( mySelectionName.ToCString() ) )
@@ -199,6 +157,16 @@ void AIS_InteractiveContext::Delete() const
   // be performed when mgrSelector will be destroyed but anyway...
   mgrSelector->Remove( myMainSel );
 #endif
+  AIS_ListOfInteractive aList;
+  
+  AIS_DataMapIteratorOfDataMapOfIOStatus anIt(myObjects);
+  Handle(AIS_InteractiveContext) aNullContext;
+  for(; anIt.More() ; anIt.Next())
+  {
+    Handle(AIS_InteractiveObject) anObj = anIt.Key();
+    anObj->SetContext(aNullContext);
+    
+  }
   MMgt_TShared::Delete();
 }
 
@@ -226,13 +194,6 @@ void AIS_InteractiveContext::UpdateCurrentViewer()
   if (!myMainVwr.IsNull())
     myMainVwr->Update();
 }
-
-void AIS_InteractiveContext::OpenCollector()
-{
-  myIsCollClosed = Standard_False;
-  // to be completed....
-}
-
 
 
 //=======================================================================
@@ -308,57 +269,13 @@ void AIS_InteractiveContext::DisplayedObjects(const AIS_KindOfInteractive TheKin
 }
 
 //=======================================================================
-//function : UpdateCollector
-//purpose  : 
-//=======================================================================
-
-void AIS_InteractiveContext::UpdateCollector()
-{
-  if (!myCollectorVwr.IsNull())
-    myCollectorVwr->Update();
-}
-
-//=======================================================================
-//function : DomainOfCollector
-//purpose  : 
-//=======================================================================
-
-Standard_CString AIS_InteractiveContext::DomainOfCollector() const 
-{
-  if(myCollectorVwr.IsNull()) return "";
-  return  myCollectorVwr->Domain();
-}
-
-//=======================================================================
-//function : ObjectsInCollector
-//purpose  : 
-//=======================================================================
-
-void AIS_InteractiveContext::ObjectsInCollector(AIS_ListOfInteractive& aListOfIO) const 
-{
-  ObjectsByDisplayStatus( AIS_DS_Erased, aListOfIO );
-}
-
-//=======================================================================
-//function : ObjectsInCollector
-//purpose  : 
-//=======================================================================
-
-void AIS_InteractiveContext::ObjectsInCollector(const AIS_KindOfInteractive TheKind,
-                                                const Standard_Integer TheSign,
-                                                AIS_ListOfInteractive& aListOfIO) const 
-{
-  ObjectsByDisplayStatus( TheKind, TheSign, AIS_DS_Erased, aListOfIO );
-}
-
-//=======================================================================
 //function : ErasedObjects
 //purpose  : 
 //=======================================================================
 
 void AIS_InteractiveContext::ErasedObjects(AIS_ListOfInteractive& theListOfIO) const 
 {
-  ObjectsByDisplayStatus( AIS_DS_FullErased, theListOfIO );
+  ObjectsByDisplayStatus( AIS_DS_Erased, theListOfIO );
 }
 
 //=======================================================================
@@ -370,7 +287,7 @@ void AIS_InteractiveContext::ErasedObjects(const AIS_KindOfInteractive TheKind,
                                            const Standard_Integer TheSign,
                                            AIS_ListOfInteractive& theListOfIO) const 
 {
-  ObjectsByDisplayStatus( TheKind, TheSign, AIS_DS_FullErased, theListOfIO );
+  ObjectsByDisplayStatus( TheKind, TheSign, AIS_DS_Erased, theListOfIO );
 }
 
 //=======================================================================
@@ -466,8 +383,7 @@ void AIS_InteractiveContext::Display(const Handle(AIS_InteractiveObject)& anIObj
     // SAN : Do not return here. Perform advanced display mode analysis a bit later...
     if(IsDisplayed(anIObj)) return;
 #endif
-    Standard_Boolean updcol = Standard_False;
-    
+
     // it did not yet exist
     if(!myObjects.IsBound(anIObj)){
       
@@ -494,34 +410,11 @@ void AIS_InteractiveContext::Display(const Handle(AIS_InteractiveObject)& anIObj
       // const Handle(AIS_GlobalStatus)& STATUS = myObjects(anIObj);
       Handle(AIS_GlobalStatus) STATUS = myObjects(anIObj);
       // ENDCLE
-      switch (STATUS->GraphicStatus()){
-      case AIS_DS_Erased:{
-        if(STATUS->IsHilighted())
-          myCollectorPM->Unhighlight(anIObj,HiMod);
-        myCollectorPM->Erase(anIObj,HiMod);
-        mgrSelector->Deactivate(anIObj,myCollectorSel);
-        updcol = updateviewer;
-                         }// attention the break is not set on purpose...
-      case AIS_DS_FullErased:{
-        TColStd_ListIteratorOfListOfInteger ItL (STATUS->DisplayedModes());
-        for (;ItL.More();ItL.Next()){
-          myMainPM->Display(anIObj,ItL.Value());
-          if(STATUS->IsSubIntensityOn())
-            myMainPM->Color(anIObj,mySubIntensity,ItL.Value());
-        }
-        if( myIsAutoActivateSelMode )        
-            for (ItL.Initialize(STATUS->SelectionModes());ItL.More();ItL.Next())
-                mgrSelector->Activate(anIObj,ItL.Value(),myMainSel);
-        STATUS->SetGraphicStatus(AIS_DS_Displayed);
-        if(STATUS->IsHilighted())
-          myMainPM->Highlight(anIObj,HiMod);
-        break;
-                             }
-#ifdef OCC4373
-      // SAN : erase presentations for all display modes different from <DispMode>;
-      //       then make sure <DispMode> is displayed and maybe highlighted;
-      //       Finally, activate selection mode <SelMode> if not yet activated.
-      case AIS_DS_Displayed:{
+      if (STATUS->GraphicStatus() == AIS_DS_Displayed || STATUS->GraphicStatus() == AIS_DS_Erased)
+      {
+        // SAN : erase presentations for all display modes different from <DispMode>;
+        //       then make sure <DispMode> is displayed and maybe highlighted;
+        //       Finally, activate selection mode <SelMode> if not yet activated.
         TColStd_ListOfInteger aModesToRemove;
         TColStd_ListIteratorOfListOfInteger ItL (STATUS->DisplayedModes());
         for(;ItL.More();ItL.Next()){
@@ -543,6 +436,10 @@ void AIS_InteractiveContext::Display(const Handle(AIS_InteractiveObject)& anIObj
           STATUS->AddDisplayMode(DispMode);
 
         myMainPM->Display(anIObj,DispMode);
+        if (STATUS->GraphicStatus() == AIS_DS_Erased)
+        {
+          STATUS->SetGraphicStatus(AIS_DS_Displayed);
+        }
         if(STATUS->IsHilighted()){
           myMainPM->Highlight(anIObj,HiMod);
         }
@@ -553,19 +450,12 @@ void AIS_InteractiveContext::Display(const Handle(AIS_InteractiveObject)& anIObj
            if(!mgrSelector->IsActivated(anIObj,SelMode))
               mgrSelector->Activate(anIObj,SelMode,myMainSel);
         }
-
-        break;
-                            }
-#endif
-      default:
-        break;
       }
     } 
     
     if(anIObj->IsTransparent() && !myMainVwr->Viewer()->Transparency())
       myMainVwr->Viewer()->SetTransparency(Standard_True);
     if(updateviewer) myMainVwr->Update();
-    if(updcol && !myCollectorVwr.IsNull()) myCollectorVwr->Update();
   }
   
   //  LOCAL CONTEXT OPEN
@@ -660,7 +550,7 @@ void AIS_InteractiveContext::Load(const Handle(AIS_InteractiveObject)& anIObj,
       
       GetDefModes(anIObj,DispMode,HiMod,SelModeDef);
       Handle(AIS_GlobalStatus) STATUS= 
-        new AIS_GlobalStatus(AIS_DS_FullErased,DispMode,SelModeDef);
+        new AIS_GlobalStatus(AIS_DS_Erased,DispMode,SelModeDef);
       myObjects.Bind (anIObj,STATUS);      
       return;
     }
@@ -675,8 +565,7 @@ void AIS_InteractiveContext::Load(const Handle(AIS_InteractiveObject)& anIObj,
 //=======================================================================
 
 void AIS_InteractiveContext::Erase(const Handle(AIS_InteractiveObject)& anIObj, 
-                                   const Standard_Boolean updateviewer, 
-                                   const Standard_Boolean PutInCollector)
+                                   const Standard_Boolean updateviewer)
 {
   if(anIObj.IsNull()) return;
   
@@ -684,7 +573,7 @@ void AIS_InteractiveContext::Erase(const Handle(AIS_InteractiveObject)& anIObj,
     anIObj->ClearSelected();
   
   if(!HasOpenedContext()){
-    EraseGlobal(anIObj,updateviewer,PutInCollector);
+    EraseGlobal(anIObj,updateviewer);
   }
   else
     {
@@ -704,62 +593,31 @@ void AIS_InteractiveContext::Erase(const Handle(AIS_InteractiveObject)& anIObj,
       }
       
       if(!WasInCtx)
-        EraseGlobal(anIObj,updateviewer,PutInCollector);
+        EraseGlobal(anIObj,updateviewer);
       else
         if(updateviewer) myMainVwr->Update();
     }
 }
-//=======================================================================
-//function : Erase
-//purpose  : 
-//=======================================================================
-
-void AIS_InteractiveContext::EraseMode(const Handle(AIS_InteractiveObject)& anIObj,
-                                  const Standard_Integer aMode,
-                                  const Standard_Boolean /*updateviewer*/)
-{
-  if(anIObj.IsNull()) return;
-
-  if(!myObjects.IsBound(anIObj)) return;
-  
-  if(anIObj->HasDisplayMode()){
-    if(anIObj->DisplayMode()==aMode) return;
-  }
-  else if(myDisplayMode==aMode) return;
-  // CLE
-  // const Handle(AIS_GlobalStatus)& STATUS = myObjects(anIObj);
-  Handle(AIS_GlobalStatus) STATUS = myObjects(anIObj);
-  // ENDCLE
-  if(STATUS->GraphicStatus()!=AIS_DS_Displayed) return;
-  
-  
-//  if(STATUS->IsDModeIn(aMode)) {}
-}
-
-
 
 //=======================================================================
 //function : EraseAll
 //purpose  : 
 //=======================================================================
 
-void AIS_InteractiveContext::EraseAll(const Standard_Boolean PutInCollector,
-                                      const Standard_Boolean updateviewer)
+void AIS_InteractiveContext::EraseAll(const Standard_Boolean updateviewer)
 {
-  if(!HasOpenedContext()){
-    AIS_DataMapIteratorOfDataMapOfIOStatus ItM(myObjects);
-    
-    for(;ItM.More();ItM.Next()){
+  if(!HasOpenedContext())
+  {
+    for (AIS_DataMapIteratorOfDataMapOfIOStatus ItM(myObjects); ItM.More(); ItM.Next())
+    {
       if(ItM.Value()->GraphicStatus() == AIS_DS_Displayed)
-        Erase(ItM.Key(),Standard_False,PutInCollector);
+        Erase(ItM.Key(),Standard_False);
     }
-    if(updateviewer){
+    if(updateviewer)
+    {
       myMainVwr->Update();
-      if (PutInCollector && !myCollectorVwr.IsNull()) 
-        myCollectorVwr->Update();
     }
   }
-  
 }
 
 //=======================================================================
@@ -767,27 +625,23 @@ void AIS_InteractiveContext::EraseAll(const Standard_Boolean PutInCollector,
 //purpose  : 
 //=======================================================================
 
-void AIS_InteractiveContext::DisplayAll(const Standard_Boolean OnlyFromCollector,
-                                      const Standard_Boolean updateviewer)
+void AIS_InteractiveContext::DisplayAll(const Standard_Boolean updateviewer)
 {
   if(!HasOpenedContext()){
-    Standard_Boolean FoundInCollector(Standard_False);
-    AIS_DisplayStatus aDStatus = OnlyFromCollector ? AIS_DS_Erased : AIS_DS_FullErased,TheStatus;
 
-    if(!HasOpenedContext()){
-      AIS_DataMapIteratorOfDataMapOfIOStatus ItM(myObjects);
-      
-      for(;ItM.More();ItM.Next()){
-        TheStatus = ItM.Value()->GraphicStatus();
-        if(TheStatus == aDStatus)
+    AIS_DisplayStatus aStatus;
+
+    if (!HasOpenedContext())
+    {
+      for (AIS_DataMapIteratorOfDataMapOfIOStatus ItM (myObjects); ItM.More(); ItM.Next())
+      {
+        aStatus = ItM.Value()->GraphicStatus();
+        if (aStatus == AIS_DS_Erased)
           Display(ItM.Key(),Standard_False);
-        if(TheStatus == AIS_DS_Erased)
-          FoundInCollector = Standard_True;
       }
-      if(updateviewer){
+      if(updateviewer)
+      {
         myMainVwr->Update();
-        if(FoundInCollector && !myCollectorVwr.IsNull())
-          myCollectorVwr->Update();
       }
     }
   }
@@ -802,20 +656,20 @@ void AIS_InteractiveContext::DisplayAll(const Standard_Boolean OnlyFromCollector
 void AIS_InteractiveContext::DisplaySelected(const Standard_Boolean updateviewer)
 {
   
-  if(!HasOpenedContext()){
+  if (!HasOpenedContext())
+  {
     Standard_Boolean found = Standard_False;
     Handle(AIS_Selection) sel = AIS_Selection::Selection(myCurrentName.ToCString());
     Handle(AIS_InteractiveObject) iObj;
-    for (sel->Init();sel->More();sel->Next()) {
+    for (sel->Init(); sel->More(); sel->Next())
+    {
       iObj = Handle(AIS_InteractiveObject)::DownCast(sel->Value());
       Display(iObj,Standard_False);
       found = Standard_True;
     }
-    if(found && updateviewer) {
+    if (found && updateviewer)
+    {
       myMainVwr->Update();
-      if(!(myIsCollClosed && myCollectorVwr.IsNull())) 
-       
-        myCollectorVwr->Update();
     }
   }
 }
@@ -826,23 +680,22 @@ void AIS_InteractiveContext::DisplaySelected(const Standard_Boolean updateviewer
 //purpose  : 
 //=======================================================================
 
-void AIS_InteractiveContext::EraseSelected(const Standard_Boolean PutInCollector,
-                                           const Standard_Boolean updateviewer)
+void AIS_InteractiveContext::EraseSelected(const Standard_Boolean updateviewer)
 {
-  
-  if(!HasOpenedContext()){
+  if (!HasOpenedContext())
+  {
     Standard_Boolean found = Standard_False;
     Handle(AIS_Selection) sel = AIS_Selection::Selection(myCurrentName.ToCString());
     Handle(AIS_InteractiveObject) iObj;
-    for(sel->Init();sel->More();sel->Next()) {
+    for (sel->Init();sel->More();sel->Next())
+    {
       iObj = Handle(AIS_InteractiveObject)::DownCast(sel->Value());
-      Erase(iObj,Standard_False,PutInCollector);
+      Erase(iObj,Standard_False);
       found = Standard_True;
     }
-    if(found && updateviewer) {
+    if(found && updateviewer)
+    {
       myMainVwr->Update();
-      if(PutInCollector && !myCollectorVwr.IsNull())
-        myCollectorVwr->Update();
     }
   }
 }
@@ -1068,42 +921,28 @@ void AIS_InteractiveContext::Hilight(const Handle(AIS_InteractiveObject)& anIObj
 
   if(!anIObj->HasInteractiveContext()) anIObj->SetContext(this);
   if (!HasOpenedContext())
+  {
+    if(!myObjects.IsBound(anIObj)) return;
+
+    // CLE
+    // const Handle(AIS_GlobalStatus)& STATUS = myObjects(anIObj);
+    // const TColStd_ListOfInteger& LL = STATUS->DisplayedModes();
+    Handle(AIS_GlobalStatus) STATUS = myObjects(anIObj);
+
+    // ENDCLE
+    STATUS->SetHilightStatus (Standard_True);
+
+    if (STATUS->GraphicStatus() == AIS_DS_Displayed)
     {
-      if(!myObjects.IsBound(anIObj)) return;
-
-      // CLE
-      // const Handle(AIS_GlobalStatus)& STATUS = myObjects(anIObj);
-      // const TColStd_ListOfInteger& LL = STATUS->DisplayedModes();
-      Handle(AIS_GlobalStatus) STATUS = myObjects(anIObj);
-
-      // ENDCLE
-      STATUS->SetHilightStatus (Standard_True);
-      
-      switch(STATUS->GraphicStatus()){
-      case AIS_DS_Displayed:
-        {
-          Standard_Integer DispMode,HiMode = 0,SelMode;
-          GetDefModes(anIObj,DispMode,HiMode,SelMode);
-//        if(!STATUS->IsDModeIn(HiMode)){
-//          myMainPM->Display(anIObj,HiMode);
-//        }
-          myMainPM->Highlight(anIObj,HiMode);
-          if(updateviewer) myMainVwr->Update();
-          break;
-        }
-      case AIS_DS_Erased:
-        {
-          Standard_Integer HiMode = anIObj->HasHilightMode()? anIObj->HilightMode():0;
-          myCollectorPM->Highlight(anIObj,HiMode);
-          if(updateviewer) myCollectorVwr->Update();
-          break;
-        }
-      default:
-        break;
-      }
+      Standard_Integer aHilightMode = anIObj->HasHilightMode() ? anIObj->HilightMode() : 0;
+      myMainPM->Highlight (anIObj, aHilightMode);
     }
+  }
   else
+  {
     myLocalContexts(myCurLocalIndex)->Hilight(anIObj);
+  }
+
   if(updateviewer) myMainVwr->Update();
 }
 //=======================================================================
@@ -1120,38 +959,23 @@ void AIS_InteractiveContext::HilightWithColor(const Handle(AIS_InteractiveObject
   if(!anIObj->HasInteractiveContext()) anIObj->SetContext(this);
 
   if (!HasOpenedContext())
-    {
-      if(!myObjects.IsBound(anIObj)) return;
+  {
+    if(!myObjects.IsBound(anIObj)) return;
 
-      const Handle(AIS_GlobalStatus)& STATUS = myObjects(anIObj);
-      STATUS->SetHilightStatus (Standard_True);
-      
-      switch(STATUS->GraphicStatus()){
-      case AIS_DS_Displayed:
-        {
-          Standard_Integer DispMode,HiMode = 0,SelMode;
-          GetDefModes(anIObj,DispMode,HiMode,SelMode);
-//        if(!STATUS->IsDModeIn(HiMode)){
-//          myMainPM->Display(anIObj,HiMode);
-//        }
-          myMainPM->Color(anIObj,aCol,HiMode);
-          STATUS->SetHilightColor(aCol);
-          if(updateviewer) myMainVwr->Update();
-          break;
-        }
-      case AIS_DS_Erased:
-        {
-          Standard_Integer HiMode = anIObj->HasHilightMode()? anIObj->HilightMode():0;
-          myCollectorPM->Color(anIObj,aCol,HiMode);
-          if(updateviewer) myCollectorVwr->Update();
-          break;
-        }
-      default:
-        break;  
-      }
+    const Handle(AIS_GlobalStatus)& STATUS = myObjects(anIObj);
+    STATUS->SetHilightStatus (Standard_True);
+
+    if (STATUS->GraphicStatus() == AIS_DS_Displayed)
+    {
+      Standard_Integer aHilightMode = anIObj->HasHilightMode() ? anIObj->HilightMode() : 0;
+      myMainPM->Color (anIObj, aCol, aHilightMode);
+      STATUS->SetHilightColor (aCol);
     }
+  }
   else
+  {
     myLocalContexts(myCurLocalIndex)->Hilight(anIObj,aCol);
+  }
   if(updateviewer) myMainVwr->Update();
 }
 
@@ -1165,37 +989,23 @@ void AIS_InteractiveContext::Unhilight(const Handle(AIS_InteractiveObject)& anIO
   if(anIObj.IsNull()) return;
 
   if (!HasOpenedContext())
-    {
-      if(!myObjects.IsBound(anIObj)) return;
+  {
+    if(!myObjects.IsBound(anIObj)) return;
 
-      const Handle(AIS_GlobalStatus)& STATUS = myObjects(anIObj);
-      STATUS->SetHilightStatus (Standard_False);
-      STATUS->SetHilightColor(Quantity_NOC_WHITE);
-      
-      switch(STATUS->GraphicStatus()){
-      case AIS_DS_Displayed:
-        {
-          Standard_Integer DispMode,HiMode = 0,SelMode;
-          GetDefModes(anIObj,DispMode,HiMode,SelMode);
-          myMainPM->Unhighlight(anIObj,HiMode);
-//        if(!STATUS->IsDModeIn(HiMode))
-//          myMainPM->Erase(anIObj,HiMode);
-          if(updateviewer) myMainVwr->Update();
-          break;
-        }
-      case AIS_DS_Erased:
-        {
-          Standard_Integer HiMode = anIObj->HasHilightMode()? anIObj->HilightMode():0;
-          myCollectorPM->Unhighlight(anIObj,HiMode);
-          if(updateviewer) myCollectorVwr->Update();
-          break;
-        }
-      default:
-        break;  
-      }
+    const Handle(AIS_GlobalStatus)& STATUS = myObjects(anIObj);
+    STATUS->SetHilightStatus (Standard_False);
+    STATUS->SetHilightColor(Quantity_NOC_WHITE);
+
+    if (STATUS->GraphicStatus() == AIS_DS_Displayed)
+    {
+      Standard_Integer aHilightMode = anIObj->HasHilightMode() ? anIObj->HilightMode() : 0;
+      myMainPM->Unhighlight (anIObj, aHilightMode);
     }
+  }
   else
+  {
     myLocalContexts(myCurLocalIndex)->Unhilight(anIObj);
+  }
   if(updateviewer) myMainVwr->Update();
 }
 
@@ -1275,21 +1085,6 @@ Standard_Boolean AIS_InteractiveContext::IsDisplayed(const Handle(AIS_Interactiv
   return Standard_False;
   
 }
-//=======================================================================
-//function : IsDisplayed
-//purpose  : 
-//=======================================================================
-
-Standard_Boolean AIS_InteractiveContext::IsInCollector(const Handle(AIS_InteractiveObject)& anIObj) const 
-{
-  if(anIObj.IsNull()) return Standard_False;
-
-
-  if(myObjects.IsBound(anIObj)) 
-    return (myObjects(anIObj)->GraphicStatus()==AIS_DS_Erased);
-  return Standard_False;
-}
-
 
 //=======================================================================
 //function : IsDisplayed
@@ -1325,25 +1120,16 @@ Standard_Integer AIS_InteractiveContext::
 DisplayPriority(const Handle(AIS_InteractiveObject)& anIObj) const 
 {
   if(anIObj.IsNull()) return -1;
-  if(myObjects.IsBound(anIObj)){
-    // CLE
-    // const Handle(AIS_GlobalStatus) & STATUS = myObjects(anIObj);
+
+  if (myObjects.IsBound(anIObj))
+  {
     Handle(AIS_GlobalStatus) STATUS = myObjects(anIObj);
-    // ENDCLE
-    Standard_Integer DM = 0,HM = 0,SM ;
-    GetDefModes(anIObj,DM,HM,SM);
-    switch(STATUS->GraphicStatus()){
-    case AIS_DS_Displayed:
-      {
-        return myMainPM->DisplayPriority(anIObj,DM);
-        break;
-      }
-    case AIS_DS_Erased:
-      return myCollectorPM->DisplayPriority(anIObj,HM);
-    default:
-      break;
+    if (STATUS->GraphicStatus() == AIS_DS_Displayed || STATUS->GraphicStatus() == AIS_DS_Erased)
+    {
+      Standard_Integer aDispMode = anIObj->HasDisplayMode() ? anIObj->DisplayMode() : 
+                                   (anIObj->AcceptDisplayMode(myDisplayMode)? myDisplayMode : 0);
+      return myMainPM->DisplayPriority (anIObj, aDispMode);
     }
-    return 0;
   }
   return 0;
 }
@@ -1359,30 +1145,21 @@ void AIS_InteractiveContext::SetDisplayPriority(const Handle(AIS_InteractiveObje
     return;
   if(!anIObj->HasInteractiveContext())
     anIObj->SetContext(this);
-  if(myObjects.IsBound(anIObj)){
-    // CLE
-    // const Handle(AIS_GlobalStatus) & STATUS = myObjects(anIObj);
+  if(myObjects.IsBound(anIObj))
+  {
     Handle(AIS_GlobalStatus) STATUS = myObjects(anIObj);
-    // ENDCLE
-    Standard_Integer DM = 0,HM = 0,SM ;
-    GetDefModes(anIObj,DM,HM,SM);
-    switch(STATUS->GraphicStatus()){
-    case AIS_DS_Displayed:
-      {
-        myMainPM->SetDisplayPriority(anIObj,DM,aPriority);
-        break;
-      }
-    case AIS_DS_Erased:
-      {
-        myCollectorPM->SetDisplayPriority(anIObj,HM,aPriority);
-        break;
-      }
-    default:
-      break;
+
+    if (STATUS->GraphicStatus() == AIS_DS_Displayed || STATUS->GraphicStatus() == AIS_DS_Erased)
+    {
+      Standard_Integer aDisplayMode = anIObj->HasDisplayMode() ? anIObj->DisplayMode() : 
+                                      (anIObj->AcceptDisplayMode(myDisplayMode)? myDisplayMode : 0);
+      myMainPM->SetDisplayPriority (anIObj, aDisplayMode, aPriority);
     }
   }
   else if (HasOpenedContext())
-    {myLocalContexts(myCurLocalIndex)->SetDisplayPriority(anIObj,aPriority);}
+  {
+    myLocalContexts(myCurLocalIndex)->SetDisplayPriority(anIObj,aPriority);
+  }
 }
 
 //=======================================================================
@@ -1412,7 +1189,7 @@ void AIS_InteractiveContext::Redisplay(const AIS_KindOfInteractive KOI,
                                        const Standard_Integer /*Sign*/,
                                       const Standard_Boolean updateviewer)
 {
-  Standard_Boolean found_viewer(Standard_False),found_coll(Standard_False);
+  Standard_Boolean found_viewer(Standard_False);
   // update
   for(AIS_DataMapIteratorOfDataMapOfIOStatus It(myObjects);It.More();It.Next()){
     // CLE
@@ -1425,24 +1202,16 @@ void AIS_InteractiveContext::Redisplay(const AIS_KindOfInteractive KOI,
 //        ((IO->Signature()==Sign)? Standard_True:Standard_False);
 #endif
       Redisplay(IO,Standard_False);
-      switch(It.Value()->GraphicStatus()){
-      case AIS_DS_Displayed:
+      if (It.Value()->GraphicStatus() == AIS_DS_Displayed)
+      {
         found_viewer = Standard_True;
-        break;
-      case AIS_DS_Erased:
-        found_coll = Standard_True;
-        break;
-      default:
-        break;
       }
     }
   }
   // update viewer...
-  if(updateviewer){
-    if(found_viewer)
-      myMainVwr->Update();
-    if(found_coll)
-      myCollectorVwr->Update();
+  if(updateviewer && found_viewer)
+  {
+    myMainVwr->Update();
   }
 }
 
@@ -1458,26 +1227,16 @@ void AIS_InteractiveContext::RecomputePrsOnly(const Handle(AIS_InteractiveObject
 {
   if(anIObj.IsNull()) return;
   anIObj->Update(allmodes);
-  
-  if(updateviewer)  {
-    if(HasOpenedContext())
-      myMainVwr->Update();
-    else{
-      if(myObjects.IsBound(anIObj)){
-        switch(myObjects(anIObj)->GraphicStatus()){
-        case AIS_DS_Displayed:
-          myMainVwr->Update();
-          break;
-        case AIS_DS_Erased:
-          {
-            if(!myCollectorVwr.IsNull())
-              myCollectorVwr->Update();
-          }
-        default:
-          break;
-        }
-      }
-    }
+
+  if (!updateviewer)
+  {
+    return;
+  }
+
+  if (HasOpenedContext() ||
+     (myObjects.IsBound(anIObj) && myObjects(anIObj)->GraphicStatus() == AIS_DS_Displayed))
+  {
+    myMainVwr->Update();
   }
 }
 //=======================================================================
@@ -1496,24 +1255,14 @@ void AIS_InteractiveContext::RecomputeSelectionOnly(const Handle(AIS_Interactive
   ActivatedModes(anIObj,LI);
   if(!HasOpenedContext()){
     if(!myObjects.IsBound(anIObj)) return;
-    switch(myObjects(anIObj)->GraphicStatus())
+
+    if (myObjects(anIObj)->GraphicStatus() == AIS_DS_Displayed)
+    {
+      for(Lit.Initialize(LI);Lit.More();Lit.Next())
       {
-      case AIS_DS_Displayed:
-        {
-          for(Lit.Initialize(LI);Lit.More();Lit.Next())
-            mgrSelector->Activate(anIObj,Lit.Value(),myMainSel);
-          break;
-        }
-      case AIS_DS_Erased:
-        {
-          for(Lit.Initialize(LI);Lit.More();Lit.Next())
-            mgrSelector->Activate(anIObj,Lit.Value(),myCollectorSel);
-          
-          break;
-        }
-      default:
-        break;
+        mgrSelector->Activate(anIObj,Lit.Value(),myMainSel);
       }
+    }
   }
 }
 
@@ -1548,9 +1297,6 @@ void AIS_InteractiveContext::Update(const Handle(AIS_InteractiveObject)& anIObj,
     case AIS_DS_Displayed:
     case AIS_DS_Temporary:
       myMainVwr->Update();
-      break;
-    case AIS_DS_Erased:
-      myCollectorVwr->Update();
       break;
     default:
       break;
@@ -1757,7 +1503,7 @@ void AIS_InteractiveContext::SetDisplayMode(const AIS_DisplayMode aMode,
           STATUS->AddDisplayMode(aMode);
           
           if(STATUS->GraphicStatus()== AIS_DS_Displayed){
-            myMainPM->Erase(anObj, myDisplayMode);
+            myMainPM->SetVisibility (anObj, myDisplayMode, Standard_False);
             myMainPM->Display(anObj, aMode);
             if(STATUS->IsSubIntensityOn())
               myMainPM->Color(anObj,mySubIntensity,aMode);
@@ -1787,33 +1533,12 @@ void AIS_InteractiveContext::SetDisplayMode(const Handle(AIS_InteractiveObject)&
     
     if(!myObjects.IsBound(anIObj)) 
       anIObj->SetDisplayMode(aMode);
-#ifdef BUC60632
     else if( anIObj->AcceptDisplayMode(aMode) ) 
-#else
-    else
-#endif
     {
       // CLE
       // const Handle(AIS_GlobalStatus)& STATUS = myObjects(anIObj);
       Handle(AIS_GlobalStatus) STATUS = myObjects(anIObj);
       // ENDCLE
-#ifndef OCC4373      
-      // the interactive object has no mode : OldMode = Mode Session
-      //                    already has a mode : OldMode = old mode Propre
-
-      Standard_Integer OldMode = anIObj->HasDisplayMode() ?  anIObj->DisplayMode(): myDisplayMode;
-      
-      if(STATUS->IsDModeIn(OldMode))
-        STATUS->RemoveDisplayMode(OldMode);
-      STATUS->AddDisplayMode(aMode);
-      
-      if(STATUS->GraphicStatus()==AIS_DS_Displayed){
-        if(aMode!=OldMode ){
-          if(myMainPM->IsHighlighted(anIObj,OldMode))
-            myMainPM->Unhighlight(anIObj,OldMode);
-          
-          myMainPM->Erase(anIObj,OldMode);
-#else
       // SAN : erase presentations for all display modes different from <aMode>
       if(STATUS->GraphicStatus()==AIS_DS_Displayed){
         TColStd_ListOfInteger aModesToRemove;
@@ -1826,7 +1551,7 @@ void AIS_InteractiveContext::SetDisplayMode(const Handle(AIS_InteractiveObject)&
             aModesToRemove.Append(OldMode);
             if(myMainPM->IsHighlighted(anIObj,OldMode))
               myMainPM->Unhighlight(anIObj,OldMode);
-            myMainPM->Erase(anIObj,OldMode);
+            myMainPM->SetVisibility (anIObj, OldMode, Standard_False);
           }
         }
 
@@ -1835,8 +1560,7 @@ void AIS_InteractiveContext::SetDisplayMode(const Handle(AIS_InteractiveObject)&
 
         if(!STATUS->IsDModeIn(aMode))
           STATUS->AddDisplayMode(aMode);
-#endif
-        
+
         myMainPM->Display(anIObj,aMode);
         Standard_Integer DM,HM = 0,SM;
         GetDefModes(anIObj,DM,HM,SM);
@@ -1850,9 +1574,6 @@ void AIS_InteractiveContext::SetDisplayMode(const Handle(AIS_InteractiveObject)&
           myMainVwr->Viewer()->SetTransparency(Standard_True);
         
         if(updateviewer) myMainVwr->Update();
-#ifndef OCC4373 
-        }
-#endif
       }
       anIObj->SetDisplayMode(aMode);
     }
@@ -1884,7 +1605,7 @@ UnsetDisplayMode(const Handle(AIS_InteractiveObject)& anIObj,
       if(STATUS->GraphicStatus()==AIS_DS_Displayed){
         if(myMainPM->IsHighlighted(anIObj,OldMode))
           myMainPM->Unhighlight(anIObj,OldMode);
-        myMainPM->Erase(anIObj,OldMode);
+        myMainPM->SetVisibility (anIObj, OldMode, Standard_False);
         myMainPM->Display(anIObj,myDisplayMode);
         Standard_Integer DM,HM = 0,SM;
         GetDefModes(anIObj,DM,HM,SM);
@@ -2509,8 +2230,6 @@ void AIS_InteractiveContext::SetSelectedAspect(
     }
     if( found && updateViewer) {
       myMainVwr->Update();
-      if( !(myIsCollClosed && myCollectorVwr.IsNull()) ) 
-        myCollectorVwr->Update();
     }
   }
 }
@@ -2572,11 +2291,6 @@ void AIS_InteractiveContext::Status(const Handle(AIS_InteractiveObject)& anIObj,
         astatus +="\t| -->Erased\n";
         break;
       }
-    case AIS_DS_FullErased:
-      {
-        astatus +="\t| -->Full Erased\n";
-        break;
-      }
     default:
       break;
     }
@@ -2631,8 +2345,7 @@ void AIS_InteractiveContext::GetDefModes(const Handle(AIS_InteractiveObject)& an
 //=======================================================================
 
 void AIS_InteractiveContext::EraseGlobal(const Handle(AIS_InteractiveObject)& anIObj, 
-                                         const Standard_Boolean updateviewer, 
-                                         const Standard_Boolean PutInCollector)
+                                         const Standard_Boolean updateviewer)
 {
   if(anIObj.IsNull()) return ;
   if(!myObjects.IsBound(anIObj)) return;
@@ -2648,30 +2361,16 @@ void AIS_InteractiveContext::EraseGlobal(const Handle(AIS_InteractiveObject)& an
     for(;ItL.More();ItL.Next()){
       if(myMainPM->IsHighlighted(anIObj,ItL.Value()))
         myMainPM->Unhighlight(anIObj,ItL.Value());
-      myMainPM->Erase(anIObj,ItL.Value());
+      myMainPM->SetVisibility (anIObj, ItL.Value(), Standard_False);
     }
     if(IsCurrent(anIObj) && !STATUS->IsDModeIn(Dmode))
-      myMainPM->Erase(anIObj,Dmode);
+      myMainPM->SetVisibility (anIObj, Dmode, Standard_False);
     
     for(ItL.Initialize(STATUS->SelectionModes());ItL.More();ItL.Next())
       mgrSelector->Deactivate(anIObj,ItL.Value(),myMainSel);
     if(updateviewer) myMainVwr->Update();
   }
-  if(PutInCollector && !myCollectorPM.IsNull()){
-    myCollectorPM->Display(anIObj,Dmode);
-#ifdef OCC328
-    Standard_Integer SMode = anIObj->SelectionMode();
-    mgrSelector->Activate(anIObj,SMode,myCollectorSel);
-#else
-    mgrSelector->Activate(anIObj,0,myCollectorSel);
-#endif
-    if(STATUS->IsHilighted())
-      myCollectorPM->Highlight(anIObj,Dmode);
-    STATUS->SetGraphicStatus(AIS_DS_Erased);
-    if(updateviewer) myCollectorVwr->Update();
-  }
-  else
-    STATUS->SetGraphicStatus(AIS_DS_FullErased);
+  STATUS->SetGraphicStatus(AIS_DS_Erased);
   
 }
 
@@ -2722,8 +2421,6 @@ void AIS_InteractiveContext::ClearGlobal(const Handle(AIS_InteractiveObject)& an
 
   if(myLastinMain == anIObj)
     myLastinMain.Nullify();
-  if(myLastinColl == anIObj)
-    myLastinColl.Nullify();
 
   if(myLastPicked == anIObj)
     myLastPicked.Nullify();
@@ -2732,26 +2429,11 @@ void AIS_InteractiveContext::ClearGlobal(const Handle(AIS_InteractiveObject)& an
   // to avoid memory leaks
   mgrSelector->Remove(anIObj);
 
-  switch(STATUS->GraphicStatus()){
-  case AIS_DS_Erased:
-     { 
-       Standard_Integer DM = anIObj->HasHilightMode() ? anIObj->HilightMode() : 0; 
-       if(STATUS->IsHilighted()){
-         myCollectorPM->Unhighlight(anIObj,DM);
-       }
-       myCollectorPM->Erase(anIObj,DM);
-       myCollectorPM->Clear(anIObj,DM);
-       if(updateviewer) myCollectorVwr->Update();
-       break;
-     }
-   case AIS_DS_Displayed:
-     {
-       if(updateviewer) myMainVwr->Update();
-       break;
-     }
-   default:
-     break;
-   }
+  if (updateviewer && (STATUS->GraphicStatus() == AIS_DS_Displayed))
+  {
+    myMainVwr->Update();
+  }
+
   myObjects.UnBind(anIObj);
   
 }
@@ -2778,17 +2460,8 @@ void AIS_InteractiveContext::ClearGlobalPrs(const Handle(AIS_InteractiveObject)&
     myMainPM->Clear(anIObj,aMode);
   }
   
-  if(STATUS->GraphicStatus()== AIS_DS_Erased)
-    {
-      if(DM==aMode){
-        if(STATUS->IsHilighted())
-          myCollectorPM->Unhighlight(anIObj,aMode);
-        myCollectorPM->Erase(anIObj,DM);
-        myCollectorPM->Clear(anIObj,DM);
-      }
-      if(updateviewer) myCollectorVwr->Update();
-    }
-  else if(STATUS->GraphicStatus()==AIS_DS_Displayed && updateviewer)
+
+  if(STATUS->GraphicStatus()==AIS_DS_Displayed && updateviewer)
     myMainVwr->Update();
 }
 
@@ -2929,7 +2602,6 @@ void AIS_InteractiveContext::SetSensitivityMode(const StdSelect_SensitivityMode 
         myLocalContexts(myCurLocalIndex)->SetSensitivityMode(aMode);
   else {
     myMainSel->SetSensitivityMode(aMode);
-    if( !myCollectorSel.IsNull() ) myCollectorSel->SetSensitivityMode(aMode);
   }
 }
 
@@ -2956,7 +2628,6 @@ void AIS_InteractiveContext::SetSensitivity(const Standard_Real aPrecision) {
         myLocalContexts(myCurLocalIndex)->SetSensitivity(aPrecision);
   else {
     myMainSel->SetSensitivity(aPrecision);
-    if( !myCollectorSel.IsNull() ) myCollectorSel->SetSensitivity(aPrecision);
   }
 }
 
@@ -2983,7 +2654,6 @@ void AIS_InteractiveContext::SetPixelTolerance(const Standard_Integer aPrecision
         myLocalContexts(myCurLocalIndex)->SetPixelTolerance(aPrecision);
   else {
     myMainSel->SetPixelTolerance(aPrecision);
-    if( !myCollectorSel.IsNull() ) myCollectorSel->SetPixelTolerance(aPrecision);
   }
 }
 
@@ -3163,20 +2833,9 @@ void AIS_InteractiveContext::SetZLayer (const Handle(AIS_InteractiveObject)& the
 
   if (myObjects.IsBound (theIObj))
   {
-    switch (myObjects (theIObj)->GraphicStatus ())
+    if (myObjects (theIObj)->GraphicStatus() == AIS_DS_Displayed || myObjects (theIObj)->GraphicStatus() == AIS_DS_Erased)
     {
-      case AIS_DS_Displayed:
-      {
-        theIObj->SetZLayer (myMainPM, theLayerId);
-        break;
-      }
-      case AIS_DS_Erased:
-      {
-        theIObj->SetZLayer (myCollectorPM, theLayerId);
-        break;
-      }
-      default:
-        break;
+      theIObj->SetZLayer (myMainPM, theLayerId);
     }
   }
   else if (HasOpenedContext ())

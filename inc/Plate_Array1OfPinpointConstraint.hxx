@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Plate_Array1OfPinpointConstraint(const Standard_Integer Low,const Standard_Integer Up);
+      Plate_Array1OfPinpointConstraint(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Plate_Array1OfPinpointConstraint(const Plate_PinpointConstraint& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Plate_Array1OfPinpointConstraint(const Plate_PinpointConstraint& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Plate_PinpointConstraint& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Plate_Array1OfPinpointConstraint()
 {
   Destroy();

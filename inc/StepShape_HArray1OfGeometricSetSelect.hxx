@@ -39,11 +39,11 @@ class StepShape_HArray1OfGeometricSetSelect : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepShape_HArray1OfGeometricSetSelect(const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_HArray1OfGeometricSetSelect(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepShape_HArray1OfGeometricSetSelect(const Standard_Integer Low,const Standard_Integer Up,const StepShape_GeometricSetSelect& V);
+      StepShape_HArray1OfGeometricSetSelect(const Standard_Integer Low,const Standard_Integer Up,const StepShape_GeometricSetSelect& V);
   
-  Standard_EXPORT     void Init(const StepShape_GeometricSetSelect& V) ;
+        void Init(const StepShape_GeometricSetSelect& V) ;
   
         Standard_Integer Length() const;
   

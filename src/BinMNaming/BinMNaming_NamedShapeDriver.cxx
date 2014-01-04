@@ -1,22 +1,17 @@
 // Created on: 2004-04-08
 // Created by: Sergey ZARITCHNY
-// Copyright (c) 2004-2012 OPEN CASCADE SAS
+// Copyright (c) 2004-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BinMNaming_NamedShapeDriver.ixx>
 #include <Standard_DomainError.hxx>
@@ -42,7 +37,7 @@ static Standard_Character EvolutionToChar(const TNaming_Evolution theEvol)
     case TNaming_MODIFY       : return 'M';
     case TNaming_DELETE       : return 'D';
     case TNaming_SELECTED     : return 'S';
-      //    case TNaming_REPLACE      : return 'R';
+    case TNaming_REPLACE      : return 'M'; // for compatibility case TNaming_REPLACE      : return 'R';
   default:
     Standard_DomainError::Raise("TNaming_Evolution:: Evolution Unknown");
   }
@@ -211,9 +206,9 @@ Standard_Boolean BinMNaming_NamedShapeDriver::Paste
     case TNaming_SELECTED     : 
       aBuilder.Select(aNewShape, anOldShape); 
       break;
-      //    case TNaming_REPLACE      :
-      //      aBuilder.Replace(anOldShape, aNewShape); 
-      //      break;
+    case TNaming_REPLACE      :
+      aBuilder.Modify(anOldShape, aNewShape); // for compatibility aBuilder.Replace(anOldShape, aNewShape);
+      break;
       default :
         Standard_DomainError::Raise("TNaming_Evolution:: Evolution Unknown");
     }
@@ -298,7 +293,7 @@ void BinMNaming_NamedShapeDriver::ReadShapeSection (Standard_IStream& theIS)
 {
   // check section title string; note that some versions of OCCT (up to 6.3.1) 
   // might avoid writing shape section if it is empty
-  std::streamsize aPos = theIS.tellg();
+  std::streamoff aPos = theIS.tellg();
   TCollection_AsciiString aSectionTitle;
   theIS >> aSectionTitle;
   if(aSectionTitle.Length() > 0 && aSectionTitle == SHAPESET) {

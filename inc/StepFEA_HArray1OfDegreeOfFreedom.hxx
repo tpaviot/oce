@@ -39,11 +39,11 @@ class StepFEA_HArray1OfDegreeOfFreedom : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer Low,const Standard_Integer Up);
+      StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer Low,const Standard_Integer Up,const StepFEA_DegreeOfFreedom& V);
+      StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer Low,const Standard_Integer Up,const StepFEA_DegreeOfFreedom& V);
   
-  Standard_EXPORT     void Init(const StepFEA_DegreeOfFreedom& V) ;
+        void Init(const StepFEA_DegreeOfFreedom& V) ;
   
         Standard_Integer Length() const;
   

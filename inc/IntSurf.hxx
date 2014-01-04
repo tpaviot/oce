@@ -20,7 +20,6 @@ class gp_Vec;
 class gp_Dir;
 class IntSurf_Transition;
 class IntSurf_PntOn2S;
-class IntSurf_SequenceOfPntOn2S;
 class IntSurf_Couple;
 class IntSurf_SequenceOfCouple;
 class IntSurf_LineOn2S;
@@ -34,7 +33,6 @@ class IntSurf_SequenceOfInteriorPoint;
 class IntSurf_InteriorPointTool;
 class IntSurf_Transition;
 class IntSurf_ListOfPntOn2S;
-class IntSurf_SequenceNodeOfSequenceOfPntOn2S;
 class IntSurf_SequenceNodeOfSequenceOfCouple;
 class IntSurf_SequenceNodeOfSequenceOfPathPoint;
 class IntSurf_SequenceNodeOfSequenceOfInteriorPoint;
@@ -76,7 +74,6 @@ private:
 
 
 friend class IntSurf_PntOn2S;
-friend class IntSurf_SequenceOfPntOn2S;
 friend class IntSurf_Couple;
 friend class IntSurf_SequenceOfCouple;
 friend class IntSurf_LineOn2S;
@@ -90,7 +87,6 @@ friend class IntSurf_SequenceOfInteriorPoint;
 friend class IntSurf_InteriorPointTool;
 friend class IntSurf_Transition;
 friend class IntSurf_ListOfPntOn2S;
-friend class IntSurf_SequenceNodeOfSequenceOfPntOn2S;
 friend class IntSurf_SequenceNodeOfSequenceOfCouple;
 friend class IntSurf_SequenceNodeOfSequenceOfPathPoint;
 friend class IntSurf_SequenceNodeOfSequenceOfInteriorPoint;

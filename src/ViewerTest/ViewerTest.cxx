@@ -1,22 +1,18 @@
 // Created on: 1997-07-23
 // Created by: Henri JEANNIN
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modified by  Eric Gouthiere [sep-oct 98] -> add commands for display...
 // Modified by  Robert Coublanc [nov 16-17-18 1998]
@@ -32,9 +28,6 @@
 #include <TopLoc_Location.hxx>
 #include <TopTools_HArray1OfShape.hxx>
 #include <TColStd_HArray1OfTransient.hxx>
-#include <OSD_Directory.hxx>
-#include <OSD_File.hxx>
-#include <OSD_Path.hxx>
 #include <OSD_Timer.hxx>
 #include <Geom_Axis2Placement.hxx>
 #include <Geom_Axis1Placement.hxx>
@@ -54,8 +47,8 @@
 #include <AIS_ListIteratorOfListOfInteractive.hxx>
 #include <Aspect_InteriorStyle.hxx>
 #include <Graphic3d_AspectFillArea3d.hxx>
-#include <Graphic3d_TextureRoot.hxx>
 #include <Graphic3d_AspectLine3d.hxx>
+#include <Graphic3d_TextureRoot.hxx>
 #include <Image_AlienPixMap.hxx>
 #include <Prs3d_ShadingAspect.hxx>
 #include <Prs3d_IsoAspect.hxx>
@@ -241,30 +234,6 @@ void GetTypeAndSignfromString (const char* name,AIS_KindOfInteractive& TheType,S
 #include <BRepOffsetAPI_MakeThickSolid.hxx>
 #include <BRepOffset.hxx>
 
-
-//==============================================================================
-//function : GetTypeNameFromShape
-//purpose  : get the shape type as a string from a shape
-//==============================================================================
-
-static const char* GetTypeNameFromShape( const TopoDS_Shape& aShape )
-{ const char *ret = "????";
-
-  if ( aShape.IsNull() ) ret = "Null Shape";
-
-	    switch ( aShape.ShapeType() ) {
-	      case TopAbs_COMPOUND  : ret = "COMPOUND" ; break;
-	      case TopAbs_COMPSOLID : ret = "COMPSOLID" ; break;
-	      case TopAbs_SOLID     : ret = "SOLID" ; break;
-	      case TopAbs_SHELL     : ret = "SHELL" ; break;
-	      case TopAbs_FACE      : ret = "FACE" ; break;
-	      case TopAbs_WIRE      : ret = "WIRE" ; break;
-	      case TopAbs_EDGE      : ret = "EDGE" ; break;
-	      case TopAbs_VERTEX    : ret = "VERTEX" ; break;
-	      case TopAbs_SHAPE     : ret = "SHAPE" ; break;
-	    }
-  return ret;
-}
 //==============================================================================
 //  VIEWER OBJECT MANAGEMENT GLOBAL VARIABLES
 //==============================================================================
@@ -454,18 +423,7 @@ static TopoDS_Shape GetShapeFromName(const char* name)
 
   return S;
 }
-//==============================================================================
-//function : GetShapeFromName
-//purpose  : Compute an Shape from a draw variable or a file name
-//==============================================================================
-// Unused :
-#ifdef DEB
-static TopoDS_Shape GetShapeFromAIS(const AIS_InteractiveObject & TheAisIO )
-{
-  TopoDS_Shape TheShape=((*(Handle(AIS_Shape)*)&TheAisIO))->Shape();
-  return TheShape;
-}
-#endif
+
 //==============================================================================
 //function : GetAISShapeFromName
 //purpose  : Compute an AIS_Shape from a draw variable or a file name
@@ -836,16 +794,16 @@ static Standard_Integer VDump (Draw_Interpretor& di, Standard_Integer argc, cons
   Graphic3d_BufferType aBufferType = Graphic3d_BT_RGB;
   if (argc > 2)
   {
-    TCollection_AsciiString aBuffTypeStr (argv[2]);
-    if (TCollection_AsciiString::ISSIMILAR (aBuffTypeStr, TCollection_AsciiString ("rgb")))
+    const char* aBuffTypeStr = argv[2];
+    if ( strcasecmp( aBuffTypeStr, "rgb" ) == 0 ) // 4 is to compare '\0' as well
     {
       aBufferType = Graphic3d_BT_RGB;
     }
-    else if (TCollection_AsciiString::ISSIMILAR (aBuffTypeStr, TCollection_AsciiString ("rgba")))
+    else if ( strcasecmp( aBuffTypeStr, "rgba" ) == 0 )
     {
       aBufferType = Graphic3d_BT_RGBA;
     }
-    else if (TCollection_AsciiString::ISSIMILAR (aBuffTypeStr, TCollection_AsciiString ("depth")))
+    else if ( strcasecmp( aBuffTypeStr, "depth" ) == 0 )
     {
       aBufferType = Graphic3d_BT_Depth;
     }
@@ -912,7 +870,7 @@ static int VwrTst_DispErase(const Handle(AIS_InteractiveObject)& IO,
     Ctx->Display(IO,Mode,Upd);
     break;
   case 2:{
-    Ctx->Erase(IO,0 != Mode,Upd);
+    Ctx->Erase(IO,Upd);
     break;
   }
   case 3:{
@@ -1443,16 +1401,16 @@ static int VWidth (Draw_Interpretor& di, Standard_Integer argc, const char** arg
     else if (!ThereIsCurrent && !ThereIsArgument){
      ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName
        it(GetMapOfAIS());
-     while ( it.More() ) {
-       Handle(AIS_InteractiveObject) ashape =
-         Handle(AIS_InteractiveObject)::DownCast (it.Key1());
-       if (!ashape.IsNull()) {
-         if (HaveToSet)
-           TheAISContext()->SetWidth(ashape,Draw::Atof(argv[1]),Standard_False);
-         else
-           TheAISContext()->UnsetWidth(ashape,Standard_False);
-       }
-       it.Next();
+      while ( it.More() ) {
+        Handle(AIS_InteractiveObject) ashape =
+          Handle(AIS_InteractiveObject)::DownCast (it.Key1());
+        if (!ashape.IsNull()) {
+          if (HaveToSet)
+            TheAISContext()->SetWidth(ashape,Draw::Atof(argv[1]),Standard_False);
+          else
+            TheAISContext()->UnsetWidth(ashape,Standard_False);
+        }
+        it.Next();
      }
      TheAISContext()->UpdateCurrentViewer();
    }
@@ -1630,125 +1588,234 @@ static int VDonly2(Draw_Interpretor& , Standard_Integer argc, const char** argv)
 }
 
 //==============================================================================
-//function : VErase2
-//author   : ege
-//purpose  : Erase some  selected or named  objects
-//           if there is no selected or named objects, the whole viewer is erased
-//Draw arg : verase2 [name1] ... [name n]
+//function : VRemove
+//purpose  : Removes selected or named objects.
+//           If there is no selected or named objects,
+//           all objects in the viewer can be removed with argument -all.
+//           If -context is in arguments, the object is not deleted from the map of
+//           objects (deleted only from the current context).
 //==============================================================================
-static int VErase2(Draw_Interpretor& , 	Standard_Integer argc, 	const char** argv)
-
+int VRemove (Draw_Interpretor& theDI,
+            Standard_Integer  theArgNb,
+            const char**      theArgVec)
 {
-  if ( a3DView().IsNull() )
+  if (a3DView().IsNull())
+  {
     return 1;
-
-  Standard_Boolean ThereIsCurrent = TheAISContext() -> NbCurrents() > 0;
-  Standard_Boolean ThereIsArgument= argc>1;
-  if(TheAISContext()->HasOpenedContext())
-    TheAISContext()->CloseLocalContext();
-
-  //===============================================================
-  // Il n'y a pas d'arguments mais des objets selectionnes(current)
-  // dans le viewer
-  //===============================================================
-  if (!ThereIsArgument && ThereIsCurrent) {
-    ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName
-      it (GetMapOfAIS());
-    while ( it.More() ) {
-      if (it.Key1()->IsKind(STANDARD_TYPE(AIS_InteractiveObject))) {
-        const Handle(AIS_InteractiveObject) aShape =
-          Handle(AIS_InteractiveObject)::DownCast(it.Key1());
-        if (TheAISContext()->IsCurrent(aShape))
-          TheAISContext()->Erase(aShape,Standard_False);
-      }
-      it.Next();
-    }
-
-    TheAISContext() ->UpdateCurrentViewer();
   }
 
-  //===============================================================
-  // Il n'y a pas d'arguments et aucuns objets selectionnes
-  // dans le viewer:
-  // On erase tout le viewer
-  //===============================================================
+  TheAISContext()->CloseAllContexts (Standard_False);
 
-  if (!ThereIsArgument && !ThereIsCurrent) {
-    ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName it (GetMapOfAIS());
-    while ( it.More() ) {
-      if (it.Key1()->IsKind(STANDARD_TYPE(AIS_InteractiveObject))) {
-        const Handle(AIS_InteractiveObject) aShape =
-          Handle(AIS_InteractiveObject)::DownCast(it.Key1());
-        TheAISContext()->Erase(aShape,Standard_False);
-      } else if (it.Key1()->IsKind(STANDARD_TYPE(NIS_InteractiveObject))) {
-        const Handle(NIS_InteractiveObject) aShape =
-          Handle(NIS_InteractiveObject)::DownCast(it.Key1());
-        TheNISContext()->Erase(aShape);
-      }
-      it.Next();
+  //Standard_Boolean isStayedInMap = Standard_False;
+  TCollection_AsciiString aContextOnlyStr ("-context");
+  TCollection_AsciiString aRemoveAllStr ("-all");
+  
+  Standard_Boolean isContextOnly = (theArgNb > 1 && TCollection_AsciiString (theArgVec[1]) == aContextOnlyStr);
+  
+  Standard_Boolean isRemoveAll = (theArgNb == 3 && TCollection_AsciiString (theArgVec[2]) == aRemoveAllStr) ||
+                                 (theArgNb == 2 && TCollection_AsciiString (theArgVec[1]) == aRemoveAllStr);
+  
+  NCollection_List<TCollection_AsciiString> anIONameList;
+  
+  if (isRemoveAll)
+  {
+    for (ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName anIter (GetMapOfAIS());
+         anIter.More(); anIter.Next())
+    {
+      anIONameList.Append (anIter.Key2());
     }
-    TheAISContext() ->UpdateCurrentViewer();
-//    TheNISContext()->UpdateViews();
+  }
+  else if (isContextOnly ? theArgNb > 2 : theArgNb > 1) // removed objects names are in argument list
+  {
+    for (Standard_Integer anIt = isContextOnly ? 2 : 1; anIt < theArgNb; ++anIt)
+    {
+      TCollection_AsciiString aName = theArgVec[anIt];
+
+      if (!GetMapOfAIS().IsBound2 (aName))
+      {
+        theDI << aName.ToCString() << " was not bound to some object.\n";
+        continue;
+      }
+
+      const Handle(Standard_Transient)& aTransientObj = GetMapOfAIS().Find2 (aName);
+
+      const Handle(AIS_InteractiveObject) anIO = Handle(AIS_InteractiveObject)::DownCast (aTransientObj);
+      if (!anIO.IsNull())
+      {
+        if (anIO->GetContext() != TheAISContext())
+        {
+          theDI << aName.ToCString() << " was not displayed in current context.\n";
+          theDI << "Please activate view with this object displayed and try again.\n";
+          continue;
+        }
+
+        anIONameList.Append (aName);
+        continue;
+      }
+
+      const Handle(NIS_InteractiveObject) aNisIO = Handle(NIS_InteractiveObject)::DownCast (aTransientObj);
+      if (!aNisIO.IsNull())
+      {
+        anIONameList.Append (aName);
+      }
+    }
+  }
+  else if (TheAISContext()->NbCurrents() > 0
+        || TheNISContext()->GetSelected().Extent() > 0)
+  {
+    for (ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName anIter (GetMapOfAIS());
+         anIter.More(); anIter.Next())
+    {
+      const Handle(AIS_InteractiveObject) anIO = Handle(AIS_InteractiveObject)::DownCast (anIter.Key1());
+      if (!anIO.IsNull())
+      {
+        if (!TheAISContext()->IsCurrent (anIO))
+        {
+          continue;
+        }
+
+        anIONameList.Append (anIter.Key2());
+        continue;
+      }
+
+      const Handle(NIS_InteractiveObject) aNisIO = Handle(NIS_InteractiveObject)::DownCast (anIter.Key1());
+      if (!aNisIO.IsNull())
+      {
+        if (!TheNISContext()->IsSelected (aNisIO))
+        {
+          continue;
+        }
+
+        anIONameList.Append (anIter.Key2());
+      }
+    }
   }
 
-  //===============================================================
-  // Il y a des arguments
-  //===============================================================
-  if (ThereIsArgument) {
-    for (int i=1; i<argc ; i++) {
-      TCollection_AsciiString name=argv[i];
-      Standard_Boolean IsBound= GetMapOfAIS().IsBound2(name);
-      if (IsBound) {
-        const Handle(Standard_Transient) anObj = GetMapOfAIS().Find2(name);
-        if (anObj->IsKind(STANDARD_TYPE(AIS_InteractiveObject))) {
-          const Handle(AIS_InteractiveObject) aShape =
-            Handle(AIS_InteractiveObject)::DownCast (anObj);
-          TheAISContext()->Erase(aShape,Standard_False);
-        } else if (anObj->IsKind(STANDARD_TYPE(NIS_InteractiveObject))) {
-          const Handle(NIS_InteractiveObject) aShape =
-            Handle(NIS_InteractiveObject)::DownCast (anObj);
-          TheNISContext()->Erase(aShape);
+  // Unbind all removed objects from the map of displayed IO.
+  for (NCollection_List<TCollection_AsciiString>::Iterator anIter (anIONameList);
+       anIter.More(); anIter.Next())
+  {
+      const Handle(AIS_InteractiveObject) anIO  = Handle(AIS_InteractiveObject)::DownCast (GetMapOfAIS().Find2 (anIter.Value()));
+      
+      if (!anIO.IsNull())
+      {
+        TheAISContext()->Remove (anIO, Standard_False);
+        theDI << anIter.Value().ToCString() << " was removed\n";
+      }
+      else
+      {
+        const Handle(NIS_InteractiveObject) aNisIO = Handle(NIS_InteractiveObject)::DownCast (GetMapOfAIS().Find2 (anIter.Value()));
+        if (!aNisIO.IsNull())
+        {
+          TheNISContext()->Remove (aNisIO);
+          theDI << anIter.Value().ToCString() << " was removed\n";
+        }
+      }
+      
+      if (!isContextOnly)
+      {
+        GetMapOfAIS().UnBind2 (anIter.Value());
+      }
+  }
+
+  TheAISContext()->UpdateCurrentViewer();
+  return 0;
+}
+
+//==============================================================================
+//function : VErase
+//purpose  : Erase some selected or named objects
+//           if there is no selected or named objects, the whole viewer is erased
+//==============================================================================
+int VErase (Draw_Interpretor& theDI,
+            Standard_Integer  theArgNb,
+            const char**      theArgVec)
+{
+  if (a3DView().IsNull())
+  {
+    return 1;
+  }
+
+  TheAISContext()->CloseAllContexts (Standard_False);
+  const Standard_Boolean isEraseAll = TCollection_AsciiString (theArgNb > 0 ? theArgVec[0] : "").IsEqual ("veraseall");
+  if (theArgNb > 1)
+  {
+    if (isEraseAll)
+    {
+      std::cerr << " Syntax error: " << theArgVec[0] << " too much arguments.\n";
+      return 1;
+    }
+
+    // has a list of names
+    for (Standard_Integer anArgIter = 1; anArgIter < theArgNb; ++anArgIter)
+    {
+      TCollection_AsciiString aName = theArgVec[anArgIter];
+      if (!GetMapOfAIS().IsBound2 (aName))
+      {
+        continue;
+      }
+
+      const Handle(Standard_Transient)    anObj = GetMapOfAIS().Find2 (aName);
+      const Handle(AIS_InteractiveObject) anIO  = Handle(AIS_InteractiveObject)::DownCast (anObj);
+      theDI << aName.ToCString() << " ";
+      if (!anIO.IsNull())
+      {
+        TheAISContext()->Erase (anIO, Standard_False);
+      }
+      else
+      {
+        const Handle(NIS_InteractiveObject) aNisIO = Handle(NIS_InteractiveObject)::DownCast (anObj);
+        if (!aNisIO.IsNull())
+        {
+          TheNISContext()->Erase (aNisIO);
         }
       }
     }
-    TheAISContext() ->UpdateCurrentViewer();
-//    TheNISContext() ->UpdateViews();
+    TheAISContext()->UpdateCurrentViewer();
+    return 0;
   }
-  return 0;
-}
 
-//==============================================================================
-//function : VEraseAll
-//author   : ege
-//purpose  : Erase all the objects displayed in the viewer
-//Draw arg : veraseall
-//==============================================================================
-static int VEraseAll(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
-
-{
-  // Verification des arguments
-  if (argc>1){ di<<" Syntaxe error: "<<argv[0]<<" too much arguments."<<"\n";return 1;}
-  if (a3DView().IsNull() ) {di<<" Error: vinit hasn't been called."<<"\n";return 1;}
-  TheAISContext()->CloseAllContexts(Standard_False);
-  ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName
-    it(GetMapOfAIS());
-  while ( it.More() ) {
-    if (it.Key1()->IsKind(STANDARD_TYPE(AIS_InteractiveObject))) {
-      const Handle(AIS_InteractiveObject) aShape =
-        Handle(AIS_InteractiveObject)::DownCast(it.Key1());
-      TheAISContext()->Erase(aShape,Standard_False);
-    } else if (it.Key1()->IsKind(STANDARD_TYPE(NIS_InteractiveObject))) {
-      const Handle(NIS_InteractiveObject) aShape =
-        Handle(NIS_InteractiveObject)::DownCast(it.Key1());
-      TheNISContext()->Erase(aShape);
+  if (!isEraseAll
+   && TheAISContext()->NbCurrents() > 0)
+  {
+    // remove all currently selected objects
+    for (ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName anIter (GetMapOfAIS());
+         anIter.More(); anIter.Next())
+    {
+      const Handle(AIS_InteractiveObject) anIO = Handle(AIS_InteractiveObject)::DownCast (anIter.Key1());
+      if (!anIO.IsNull()
+       && TheAISContext()->IsCurrent (anIO))
+      {
+        theDI << anIter.Key2().ToCString() << " ";
+        TheAISContext()->Erase (anIO, Standard_False);
+      }
     }
-    it.Next();
+
+    TheAISContext()->UpdateCurrentViewer();
+    return 0;
   }
-  TheAISContext() ->UpdateCurrentViewer();
-//  TheNISContext() ->UpdateViews();
+
+  // erase entire viewer
+  for (ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName anIter (GetMapOfAIS());
+       anIter.More(); anIter.Next())
+  {
+    const Handle(AIS_InteractiveObject) anIO = Handle(AIS_InteractiveObject)::DownCast (anIter.Key1());
+    if (!anIO.IsNull())
+    {
+      TheAISContext()->Erase (anIO, Standard_False);
+    }
+    else
+    {
+      const Handle(NIS_InteractiveObject) aNisIO = Handle(NIS_InteractiveObject)::DownCast (anIter.Key1());
+      if (!aNisIO.IsNull())
+      {
+        TheNISContext()->Erase (aNisIO);
+      }
+    }
+  }
+  TheAISContext()->UpdateCurrentViewer();
   return 0;
 }
-
 
 //==============================================================================
 //function : VDisplayAll
@@ -2036,112 +2103,6 @@ static int VDisplay2 (Draw_Interpretor& di, Standard_Integer argc, const char** 
 //  TheNISContext()->UpdateViews();
   return 0;
 }
-
-//==============================================================================
-//function : VMoveA
-//purpose  : Test the annimation of an object along a
-//           predifined trajectory
-//Draw arg : vmove ShapeName
-//==============================================================================
-
-#ifdef DEB
-static int VMoveA (Draw_Interpretor& di, Standard_Integer argc, const char** argv) {
-
-  OSD_Timer myTimer;
-  myTimer.Start();
-
-  if (TheAISContext()->HasOpenedContext())
-    TheAISContext()->CloseLocalContext();
-
-  Standard_Real Step=2*M_PI/180;
-  Standard_Real Angle=0;
-  // R est le rayon de l'hellicoide
-  Standard_Real R=50;
-  // D est la distance parcourue en translation en 1 tour
-  Standard_Real D=50;
-
-  Handle(AIS_InteractiveObject) aIO;
-
-  if (GetMapOfAIS().IsBound2(argv[1]))
-    aIO = Handle(AIS_InteractiveObject)::DownCast(GetMapOfAIS().Find2(argv[1]));
-
-  if (aIO.IsNull()) {
-    di<<" Syntaxe error: "<<argv[1]<<" doesn't exist"<<"\n";
-    return 1;
-  }
-  TheAISContext()->Deactivate(aIO);
-
-  // boucle generant le mouvement
-  if(argc==3) {
-    di<<" Transformations"<<"\n";
-    for (Standard_Real myAngle=0;Angle<5*2*M_PI; myAngle++) {
-
-      Angle=Step*myAngle;
-      gp_Ax3 newBase(gp_Pnt(R*cos(Angle), R*sin(Angle), D*Angle/(2*M_PI) ), gp_Vec(0,0,1), gp_Vec(1,0,0)  );
-      gp_Trsf myTransfo;
-      myTransfo.SetTransformation(newBase.Rotated(gp_Ax1(gp_Pnt(R*cos(Angle),R*sin(Angle),0), gp_Dir(0,0,1)  ),Angle ) );
-      TheAISContext()->SetLocation(aIO,myTransfo);
-
-      TheAISContext() ->UpdateCurrentViewer();
-
-    }
-  }
-  else {
-    di<<" Locations"<<"\n";
-    gp_Trsf myAngleTrsf;
-    myAngleTrsf.SetRotation(gp_Ax1(gp_Pnt(0,0,0),gp_Dir(0,0,1) ), Step  );
-    TopLoc_Location myDeltaAngle (myAngleTrsf);
-    gp_Trsf myDistTrsf;
-    myDistTrsf.SetTranslation(gp_Dir(0,0,1) );
-    TopLoc_Location myDeltaDist (myDistTrsf);
-    TopLoc_Location myTrueLoc;
-
-    for (Standard_Real myAngle=0;Angle<5*2*M_PI; myAngle++) {
-
-      Angle=Step*myAngle;
-      myTrueLoc=myTrueLoc*myDeltaAngle*myDeltaDist;
-      TheAISContext()->SetLocation(aIO,myTrueLoc );
-      TheAISContext() ->UpdateCurrentViewer();
-    }
-  }
-
-
-  TopoDS_Shape ShapeBis=((*(Handle(AIS_Shape)*)&aIO)->Shape()).Located( aIO->Location() );
-
-  //TopLoc_Location Tempo=aIO->Location();
-  //TopoDS_Shape ShapeBis=((*(Handle(AIS_Shape)*)&aIO)->Shape());
-  //ShapeBis.Located(Tempo);
-
-
-  // On reset la location (origine) contenue dans l'AISInteractiveObject
-  TheAISContext() ->ResetLocation(aIO);
-
-  // On force aShape a devenir l'AIS IO propre a ShapeBis
-
-  // Pour cela on force aShape(AIS IO) a devenir une AISShape
-  // ->Set() est une methode de AIS_Shape
-  (*(Handle(AIS_Shape)*)& aIO)->Set(ShapeBis);
-
-  // On donne a ShapeBis le nom de l'AIS IO
-  //Rep::Set(argv[1],ShapeBis);
-
-
-  TheAISContext()->Redisplay(aIO,Standard_False);
-
-  // On reactive la selection des primitives sensibles
-  TheAISContext()->Activate(aIO,0);
-
-  TheAISContext() ->UpdateCurrentViewer();
-  a3DView() -> Redraw();
-
-  myTimer.Stop();
-  di<<" Temps ecoule "<<"\n";
-  myTimer.Show();
-
-  return 0;
-}
-#endif
-
 
 //==============================================================================
 //function : VPerf
@@ -3020,90 +2981,7 @@ static int VPickShape( Draw_Interpretor& di, Standard_Integer argc, const char**
     }
   }
   return 0;
-
 }
-
-
-//=======================================================================
-//function : VPickObject
-//purpose  : filters can be set (type of Object to pick....
-//
-//=======================================================================
-// Unused :
-#ifdef DEB
-static int VPickObject( Draw_Interpretor& , Standard_Integer /*argc*/, const char** /*argv*/)
-{
-  // preparation de la nomination automatique
-  static TCollection_AsciiString ObjType[] ={"None","Datum","Shape","Object","Relation"};
-//  static char* DatumSig [8] ={"Point","Axis","Trih","PlTri","Line","Circle","Plane","UnK"};
-
-/*  TCollection_AsciiString name;
-
-  Standard_Integer NbToPick = argc>2 ? argc-2 : 1;
-  if(NbToPick==1){
-    PickSh = ViewerTest::PickObject(theType);
-
-    if(PickSh.IsNull())
-      return 1;
-    if(argc>2){
-      name += argv[2];
-    }
-    else{
-
-      if(!PickSh.IsNull()){
-	nbOfSub[Standard_Integer(theType)]++;
-	name += "Picked_";
-	name += nameType[Standard_Integer(theType)];
-	TCollection_AsciiString indxstring(nbOfSub[Standard_Integer(theType)]);
-	name +="_";
-	name+=indxstring;
-      }
-    }
-    // si on avait une petite methode pour voir si la shape
-    // est deja dans la Double map, ca eviterait de creer....
-    DBRep::Set(name.ToCString(),PickSh);
-
-    Handle(AIS_Shape) newsh = new AIS_Shape(PickSh);
-    GetMapOfAIS().Bind(newsh, name);
-    TheAISContext()->Display(newsh);
-    cout<<"Nom de la shape pickee : "<<name<<endl;
-  }
-
-  // Plusieurs objets a picker, vite vite vite....
-  //
-  else{
-    Standard_Boolean autonaming = !strcasecmp(argv[2],".");
-    Handle(TopTools_HArray1OfShape) arr = new TopTools_HArray1OfShape(1,NbToPick);
-    if(ViewerTest::PickShapes(theType,arr)){
-      for(Standard_Integer i=1;i<=NbToPick;i++){
-	PickSh = arr->Value(i);
-	if(!PickSh.IsNull()){
-	  if(autonaming){
-	    nbOfSub[Standard_Integer(theType)]++;
-	    name.Clear();
-	    name += "Picked_";
-	    name += nameType[Standard_Integer(theType)];
-	    TCollection_AsciiString indxstring(nbOfSub[Standard_Integer(theType)]);
-	    name +="_";
-	    name+=indxstring;
-	  }
-	}
-	else
-	  name = argv[1+i];
-
-	DBRep::Set(name.ToCString(),PickSh);
-	Handle(AIS_Shape) newsh = new AIS_Shape(PickSh);
-	GetMapOfAIS().Bind(newsh, name);
-	cout<<"display of picke shape #"<<i<<" - nom : "<<name<<endl;
-	TheAISContext()->Display(newsh);
-
-      }
-    }
-  }
-  */
-  return 0;
-}
-#endif
 
 //=======================================================================
 //function : list of known objects
@@ -3385,27 +3263,40 @@ void ViewerTest::Commands(Draw_Interpretor& theCommands)
 		  __FILE__, visos, group);
 
   theCommands.Add("vdisplay",
-		  "vdisplay         : vdisplay2 name1 [name2] ... [name n] ",
+		  "vdisplay name1 [name2] ... [name n]"
+      "\n\t\t: Displays named objects",
 		  __FILE__,VDisplay2,group);
 
   theCommands.Add("verase",
-		  "verase      : verase2 [name1] ...  [name n] ",
-		  __FILE__,VErase2,group);
+      "verase [name1] ...  [name n]"
+      "\n\t\t: Erases selected or named objects."
+      "\n\t\t: If there are no selected or named objects the whole viewer is erased.",
+		  __FILE__, VErase, group);
+
+  theCommands.Add("vremove",
+    "vremove [-context] [name1] ...  [name n]"
+    "or vremove [-context] -all to remove all objects"
+      "\n\t\t: Removes selected or named objects."
+      "\n\t\t  If -context is in arguments, the objects are not deleted"
+      "\n\t\t  from the map of objects and names.",
+      __FILE__, VRemove, group);
 
   theCommands.Add("vdonly",
-		  "vdonly         : vdonly2 [name1] ...  [name n]",
+		  "vdonly [name1] ...  [name n]"
+      "\n\t\t: Displays only selected or named objects",
 		  __FILE__,VDonly2,group);
 
   theCommands.Add("vdisplayall",
-		  "vdisplayall         : vdisplayall",
+		  "Displays all erased interactive objects (see vdir and vstate)",
 		  __FILE__,VDisplayAll,group);
 
   theCommands.Add("veraseall",
-		  "veraseall        : veraseall ",
-		  __FILE__,VEraseAll,group);
+		  "Erases all objects displayed in the viewer",
+		  __FILE__, VErase, group);
 
   theCommands.Add("verasetype",
-		  "verasetype        : verasetype <Type>  \n\t erase all the displayed objects of one given kind (see vtypes)",
+		  "verasetype <Type>"
+      "\n\t\t: Erase all the displayed objects of one given kind (see vtypes)",
 		  __FILE__,VEraseType,group);
 
   theCommands.Add("vdisplaytype",
@@ -3421,38 +3312,51 @@ void ViewerTest::Commands(Draw_Interpretor& theCommands)
 		  __FILE__,VDispMode,group);
 
   theCommands.Add("vsetdispmode",
-		  "vsetdispmode    : vsetdispmode [name] mode(1,2,..): no name -> on selected objects ",
+		  "vsetdispmode [name] mode(1,2,..)"
+      "\n\t\t: Sets display mode for all, selected or named objects.",
 		  __FILE__,VDispMode,group);
 
   theCommands.Add("vunsetdispmode",
-		  "vunsetdispmode : vunsetdispmode [name] mode(1,2,..): no name -> on selected objects",
+		  "vunsetdispmode [name]"
+      "\n\t\t: Unsets custom display mode for selected or named objects.",
 		  __FILE__,VDispMode,group);
 
   theCommands.Add("vdir",
-		  "vdir",
+		  "Lists all objects displayed in 3D viewer",
 		  __FILE__,VDebug,group);
 
   theCommands.Add("vdump",
-                  "<filename>.{png|bmp|jpg|gif} [buffer={rgb|rgba|depth}] [width height]\n\t\t: Dump contents of viewer window to PNG, BMP, JPEG or GIF file",
+    #ifdef HAVE_FREEIMAGE
+      "<filename>.{png|bmp|jpg|gif} [buffer={rgb|rgba|depth}] [width height]"
+      "\n\t\t: Dumps contents of viewer window to PNG, BMP, JPEG or GIF file",
+    #else
+      "<filename>.{ppm} [buffer={rgb|rgba|depth}] [width height]"
+      "\n\t\t: Dumps contents of viewer window to PPM image file",
+    #endif
 		  __FILE__,VDump,group);
 
   theCommands.Add("vsub",      "vsub 0/1 (off/on) [obj]        : Subintensity(on/off) of selected objects",
 		  __FILE__,VSubInt,group);
 
   theCommands.Add("vsetcolor",
-		  "vsetcolor         : vsetcolor [name of shape] ColorName",
+		  "vsetcolor [name] ColorName"
+      "\n\t\t: Sets color for all, selected or named objects.",
 		  __FILE__,VColor2,group);
 
   theCommands.Add("vunsetcolor",
-		  "vunsetcolor     : vunsetcolor   [name of shape] ",
+		  "vunsetcolor [name]"
+      "\n\t\t: Resets color for all, selected or named objects.",
 		  __FILE__,VColor2,group);
 
   theCommands.Add("vsettransparency",
-		  "vsettransparency          : vtransparency [name of shape] TransparenctCoef (0 -> 1)",
+		  "vsettransparency [name] Coefficient"
+      "\n\t\t: Sets transparency for all, selected or named objects."
+      "\n\t\t: The Coefficient may be between 0.0 (opaque) and 1.0 (fully transparent).",
 		  __FILE__,VTransparency,group);
 
   theCommands.Add("vunsettransparency",
-		  "vunsettransparency          : vtransparency [name of shape]",
+		  "vunsettransparency [name]"
+      "\n\t\t: Resets transparency for all, selected or named objects.",
 		  __FILE__,VTransparency,group);
 
   theCommands.Add("vsetmaterial",
@@ -3547,7 +3451,9 @@ void ViewerTest::Commands(Draw_Interpretor& theCommands)
 		  "vunsetActivatedModes:   vunsetam  ",
 		  __FILE__,VActivatedMode,group);
 
-  theCommands.Add("vstate",   "vstate [Name1] ... [NameN] :No arg, select currents; no currrent select all  ",
+  theCommands.Add("vstate",
+      "vstate [name1] ... [nameN]"
+      "\n\t\t: Reports show/hidden state for selected or named objects",
 		  __FILE__,VState,group);
 
   theCommands.Add("vpickshapes",
@@ -3715,7 +3621,31 @@ static Standard_Integer TDraft(Draw_Interpretor& di, Standard_Integer argc, cons
   return 0;
 }
 
+//==============================================================================
+//function : splitParameter
+//purpose  : Split parameter string to parameter name an parameter value
+//==============================================================================
+Standard_Boolean ViewerTest::SplitParameter (const TCollection_AsciiString& theString,
+                                             TCollection_AsciiString&       theName,
+                                             TCollection_AsciiString&       theValue)
+{
+  Standard_Integer aParamNameEnd = theString.FirstLocationInSet ("=", 1, theString.Length());
 
+  if (aParamNameEnd == 0)
+  {
+    return Standard_False;
+  }
+
+  TCollection_AsciiString aString (theString);
+  if (aParamNameEnd != 0)
+  {
+    theValue = aString.Split (aParamNameEnd);
+    aString.Split (aString.Length() - 1);
+    theName = aString;
+  }
+
+  return Standard_True;
+}
 
 //============================================================================
 //  MyCommands

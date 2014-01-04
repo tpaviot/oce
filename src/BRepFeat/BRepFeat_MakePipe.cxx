@@ -1,24 +1,18 @@
 // Created on: 1996-09-03
 // Created by: Jacques GOUSSARD
 // Copyright (c) 1996-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BRepFeat_MakePipe.ixx>
 
@@ -68,9 +62,6 @@ static void MajMap(const TopoDS_Shape&, // base
 		   TopTools_DataMapOfShapeListOfShape&, // myMap
 		   TopoDS_Shape&,  // myFShape
 		   TopoDS_Shape&); // myLShape
-
-
-
 
 //=======================================================================
 //function : Init
@@ -210,7 +201,6 @@ void BRepFeat_MakePipe::Perform()
   myGShape = VraiPipe;
   GeneratedShapeValid();
 
-  //SetGluedFaces(mySkface, mySbase, myPbase, mySlface, thePipe, myGluedF);
   GluedFacesValid();
 
   if(myGluedF.IsEmpty()) {
@@ -284,7 +274,6 @@ void BRepFeat_MakePipe::Perform(const TopoDS_Shape& Until)
   myGShape = VraiTuyau;
   GeneratedShapeValid();
 
-  //SetGluedFaces(mySkface, mySbase, myPbase, mySlface, thePipe, myGluedF);
   GluedFacesValid();
 
   myFShape = thePipe.FirstShape();
@@ -344,7 +333,6 @@ void BRepFeat_MakePipe::Perform(const TopoDS_Shape& From,
   myGShape = VraiTuyau;
   GeneratedShapeValid();
 
-  //SetGluedFaces(TopoDS_Face(), // on ne veut pas binder mySkface
 	//	mySbase, myPbase, mySlface, thePipe, myGluedF);
   GluedFacesValid();
 
@@ -376,63 +364,6 @@ Handle(Geom_Curve) BRepFeat_MakePipe::BarycCurve()
 {
   return myBCurve;
 }
-
-#ifdef DEB
-//=======================================================================
-//function : SetGluedFaces
-//purpose  : management of faces of gluing and sliding  
-//=======================================================================
-
-static void SetGluedFaces(const TopoDS_Face& theSkface,
-			  const TopoDS_Shape& theSbase,
-			  const TopoDS_Shape& thePbase,
-			  const TopTools_DataMapOfShapeListOfShape& theSlmap,
-			  LocOpe_Pipe& thePipe,
-			  TopTools_DataMapOfShapeShape& theMap)
-{
-  TopExp_Explorer exp;
-  if (!theSkface.IsNull() && thePbase.ShapeType() == TopAbs_FACE) {
-    for (exp.Init(theSbase,TopAbs_FACE); exp.More(); exp.Next()) {
-      if (exp.Current().IsSame(theSkface)) {
-	theMap.Bind(thePbase,theSkface);
-	break;
-      }
-    }
-  }
-  else {
-    TopExp_Explorer exp2;
-    for (exp.Init(thePbase,TopAbs_FACE);exp.More();exp.Next()) {
-      const TopoDS_Face& fac = TopoDS::Face(exp.Current());
-      for (exp2.Init(theSbase,TopAbs_FACE);exp2.More();exp2.Next()) {
-	if (exp2.Current().IsSame(fac)) {
-	  theMap.Bind(fac,fac);
-	  break;
-	}
-      }
-    }
-  }
-
-  // Sliding
-  TopTools_DataMapIteratorOfDataMapOfShapeListOfShape itm(theSlmap);
-  if(!theSlmap.IsEmpty()) {
-    for (; itm.More(); itm.Next()) {
-      const TopoDS_Face& fac = TopoDS::Face(itm.Key());
-      const TopTools_ListOfShape& ledg = itm.Value();
-      TopTools_ListIteratorOfListOfShape it;
-      for (it.Initialize(ledg); it.More(); it.Next()) {
-	const TopTools_ListOfShape& gfac = thePipe.Shapes(it.Value());
-	if (gfac.Extent() != 1) {
-#ifdef DEB
-	  Standard_Boolean trc = BRepFeat_GettraceFEAT();
-	  if (trc) cout << " BRepFeat_MakeDPipe : Pb SetGluedFace" << endl;
-#endif
-	}
-	theMap.Bind(gfac.First(),fac);
-      }
-    }
-  }
-}
-#endif
 
 //=======================================================================
 //function : MajMap

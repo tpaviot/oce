@@ -19,9 +19,6 @@
 #ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
 #endif
@@ -50,8 +47,7 @@ public:
   //! class methods working on the name itself <br>
 //!          ======================================== <br>//! Returns the GUID for name attributes. <br>
   Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Creates (if does not exist) and sets the name in the name attribute. <br>
-//!          myEmpty becomes False <br>//! from any label <L>  search in father  labels (L is not <br>
+  //! Creates (if does not exist) and sets the name in the name attribute. <br>//! from any label <L>  search in father  labels (L is not <br>
 //!          concerned) the first name attribute.if found set it in <br>
 //!          <father>. <br>//! class methods working on the name tree <br>
 //!          ====================================== <br>//! Search in the  whole TDF_Data the Name attribute which <br>
@@ -70,7 +66,7 @@ public:
   //! Sets <S> as name. Raises if <S> is not a valid name. <br>
   Standard_EXPORT     void Set(const TCollection_ExtendedString& S) ;
   
-//!    Returns the name contained in this name attribute. <br>//! Set myEmpty field <br>
+//!    Returns the name contained in this name attribute. <br>
   Standard_EXPORT    const TCollection_ExtendedString& Get() const;
   
   Standard_EXPORT    const Standard_GUID& ID() const;
@@ -97,7 +93,6 @@ private:
 
 
 TCollection_ExtendedString myString;
-Standard_Boolean myEmpty;
 
 
 };

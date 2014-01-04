@@ -1,23 +1,18 @@
 // Created on: 1994-06-20
 // Created by: Modeling
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifdef HAVE_CONFIG_H
 # include <oce-config.h>
@@ -488,9 +483,9 @@ static Standard_Integer blend1(Draw_Interpretor& di, Standard_Integer narg, cons
    if(edge.ShapeType()!=TopAbs_EDGE) return 1;
     E.Append(edge);
   } 
-  FilletSurf_Builder Rakk(V,E,Rad);
-  if (simul) Rakk.Simulate();
-  else  Rakk.Perform();
+  FilletSurf_Builder aRakk(V,E,Rad);
+  if (simul) aRakk.Simulate();
+  else  aRakk.Perform();
 
   //if (Rakk.IsDone()==FilletSurf_IsNotOk) 
   // { FilletSurf_ErrorTypeStatus err=Rakk.StatusError();
@@ -504,20 +499,20 @@ static Standard_Integer blend1(Draw_Interpretor& di, Standard_Integer narg, cons
   // }
   // else {
   //  if (Rakk.IsDone()==FilletSurf_IsPartial) cout <<"resultat partiel"<<endl; 
-  if (Rakk.IsDone()==FilletSurf_IsNotOk) 
-   { FilletSurf_ErrorTypeStatus err=Rakk.StatusError();
+  if (aRakk.IsDone()==FilletSurf_IsNotOk)
+   { FilletSurf_ErrorTypeStatus err=aRakk.StatusError();
      if (err==FilletSurf_EmptyList) di<< "StatusError=EmptyList"<<"\n";
      else if (err==FilletSurf_EdgeNotG1) di<< "StatusError=NotG1"<<"\n";
-     else if (err==FilletSurf_FacesNotG1) di<< "StatusError=facesNotG1"<<"\n";   
-     else if (err==FilletSurf_EdgeNotOnShape) 
+     else if (err==FilletSurf_FacesNotG1) di<< "StatusError=facesNotG1"<<"\n";
+     else if (err==FilletSurf_EdgeNotOnShape)
      di<< "StatusError=edgenotonshape"<<"\n";
      else if (err==FilletSurf_NotSharpEdge ) di<< "StatusError=notsharpedge"<<"\n";
      else if (err==FilletSurf_PbFilletCompute) di <<"StatusError=PBFillet"<<"\n";
    }
    else {
-    if (Rakk.IsDone()==FilletSurf_IsPartial) di <<"partial result"<<"\n"; 
+    if (aRakk.IsDone()==FilletSurf_IsPartial) di <<"partial result"<<"\n";
  
-    nb=Rakk.NbSurface();
+    nb=aRakk.NbSurface();
     char localname [100];
     char *temp; 
     
@@ -525,17 +520,17 @@ static Standard_Integer blend1(Draw_Interpretor& di, Standard_Integer narg, cons
     
    if (!simul)
    { 
-    //if (Rakk.StartSectionStatus()==FilletSurf_NoExtremityOnEdge) 
+    //if (Rakk.StartSectionStatus()==FilletSurf_NoExtremityOnEdge)
     //  {cout<<" type deb conges = WLBLOUT"<<endl;}
-    //else if (Rakk.StartSectionStatus()==FilletSurf_OneExtremityOnEdge ) 
+    //else if (Rakk.StartSectionStatus()==FilletSurf_OneExtremityOnEdge )
     //  { cout<<" type deb conges = WLBLSTOP"<<endl;}
     //else if (Rakk.StartSectionStatus()==FilletSurf_TwoExtremityOnEdge)
     //  {cout<<" type deb conges = WLBLEND"<<endl;}
-    if (Rakk.StartSectionStatus()==FilletSurf_NoExtremityOnEdge) 
+    if (aRakk.StartSectionStatus()==FilletSurf_NoExtremityOnEdge)
       {di<<" type start fillets = WLBLOUT"<<"\n";}
-    else if (Rakk.StartSectionStatus()==FilletSurf_OneExtremityOnEdge ) 
+    else if (aRakk.StartSectionStatus()==FilletSurf_OneExtremityOnEdge)
       { di<<" type start fillets = WLBLSTOP"<<"\n";}
-    else if (Rakk.StartSectionStatus()==FilletSurf_TwoExtremityOnEdge)
+    else if (aRakk.StartSectionStatus()==FilletSurf_TwoExtremityOnEdge)
       {di<<" type start fillets = WLBLEND"<<"\n";}
     
     //if (Rakk.EndSectionStatus()==FilletSurf_NoExtremityOnEdge) 
@@ -544,15 +539,15 @@ static Standard_Integer blend1(Draw_Interpretor& di, Standard_Integer narg, cons
     //  {cout<<" type fin  conges = WLBLSTOP"<<endl;}
     //else if (Rakk.EndSectionStatus()==FilletSurf_TwoExtremityOnEdge) 
     //  { cout<<" type fin  conges = WLBLEND"<<endl;}
-    if (Rakk.EndSectionStatus()==FilletSurf_NoExtremityOnEdge) 
+    if (aRakk.EndSectionStatus()==FilletSurf_NoExtremityOnEdge)
       {di<<" type end fillets = WLBLOUT"<<"\n";}
-    else if (Rakk.EndSectionStatus()==FilletSurf_OneExtremityOnEdge) 
+    else if (aRakk.EndSectionStatus()==FilletSurf_OneExtremityOnEdge)
       {di<<" type end fillets = WLBLSTOP"<<"\n";}
-    else if (Rakk.EndSectionStatus()==FilletSurf_TwoExtremityOnEdge) 
+    else if (aRakk.EndSectionStatus()==FilletSurf_TwoExtremityOnEdge)
       { di<<" type end fillets = WLBLEND"<<"\n";}
     Standard_Real f,l;
-    f = Rakk.FirstParameter();
-    l = Rakk.LastParameter();
+    f = aRakk.FirstParameter();
+    l = aRakk.LastParameter();
     //cout<<"parameter on edge start : "<<f<<endl;
     //cout<<"parameter on edge end   : "<<l<<endl;
     di<<"parametre on edge start : "<<f<<"\n";
@@ -560,52 +555,52 @@ static Standard_Integer blend1(Draw_Interpretor& di, Standard_Integer narg, cons
     for (i=1;i<=nb;i++){
       //precision 
       //cout<<"precision "<< i << "= "<<Rakk.TolApp3d(i)<<endl;
-      di<<"precision "<< i << "= "<<Rakk.TolApp3d(i)<<"\n";
+      di<<"precision "<< i << "= "<<aRakk.TolApp3d(i)<<"\n";
       
       // display resulting surfaces  
       Sprintf(localname, "%s%d" ,ns0,i);
       temp = localname;
-      DrawTrSurf::Set(temp,Rakk.SurfaceFillet(i));
+      DrawTrSurf::Set(temp,aRakk.SurfaceFillet(i));
       di << localname<< " ";
       
       // display curves 3d 
       Sprintf(localname, "%s%d" ,"courb1",i);
       temp =localname; 
-      DrawTrSurf::Set(temp,Rakk.CurveOnFace1(i));
+      DrawTrSurf::Set(temp,aRakk.CurveOnFace1(i));
       di << localname<< " ";
       Sprintf(localname, "%s%d" ,"courb2",i);
       temp =localname;
-      DrawTrSurf::Set(temp,Rakk.CurveOnFace2(i));
+      DrawTrSurf::Set(temp,aRakk.CurveOnFace2(i));
       di << localname<< " ";     
       
       // display supports 
       Sprintf(localname, "%s%d" ,"face1",i);
       temp =localname ;
-      DBRep::Set(temp,Rakk.SupportFace1(i));
+      DBRep::Set(temp,aRakk.SupportFace1(i));
       di << localname<< " ";
       Sprintf(localname, "%s%d" ,"face2",i);
       temp =localname; 
-      DBRep::Set(temp,Rakk.SupportFace2(i));
+      DBRep::Set(temp,aRakk.SupportFace2(i));
       di << localname<< " ";
       
       // display Pcurves on faces 
       Sprintf(localname, "%s%d" ,"pcurveonface1",i);
       temp =localname ;
-      DrawTrSurf::Set(temp,Rakk.PCurveOnFace1(i));
+      DrawTrSurf::Set(temp,aRakk.PCurveOnFace1(i));
       di << localname<< " ";
       Sprintf(localname, "%s%d" ,"pcurveonface2",i);
       temp =localname; 
-      DrawTrSurf::Set(temp,Rakk.PCurveOnFace2(i));
+      DrawTrSurf::Set(temp,aRakk.PCurveOnFace2(i));
       di << localname<< " ";
       
       // display Pcurves on the fillet
       Sprintf(localname, "%s%d" ,"pcurveonconge1",i);
       temp =localname;
-      DrawTrSurf::Set(temp,Rakk.PCurve1OnFillet(i));
+      DrawTrSurf::Set(temp,aRakk.PCurve1OnFillet(i));
       di << localname<< " ";
       Sprintf(localname, "%s%d" ,"pcurveonconge2",i);
       temp =localname; 
-      DrawTrSurf::Set(temp,Rakk.PCurve2OnFillet(i));
+      DrawTrSurf::Set(temp,aRakk.PCurve2OnFillet(i));
       di << localname<< " ";
       
     } }
@@ -613,10 +608,10 @@ static Standard_Integer blend1(Draw_Interpretor& di, Standard_Integer narg, cons
    Standard_Integer j;
   
    for (i=1;i<=nb;i++)
-    {Standard_Integer s=Rakk.NbSection(i);
+    {Standard_Integer s=aRakk.NbSection(i);
     for (j=1;j<=s;j++)
      {Handle(Geom_TrimmedCurve Sec);
-     Rakk.Section(i,j,Sec);
+     aRakk.Section(i,j,Sec);
     Sprintf(localname, "%s%d%d" ,"sec",i,j);
      temp =localname;
     DrawTrSurf::Set (temp,Sec);

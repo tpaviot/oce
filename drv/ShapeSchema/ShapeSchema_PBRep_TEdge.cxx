@@ -41,6 +41,8 @@ void ShapeSchema_PBRep_TEdge::SWrite(const Handle(Standard_Persistent)& p, Stora
   if (!p.IsNull()) {
     Handle(PBRep_TEdge) &pp = (Handle(PBRep_TEdge)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPTopoDS_TShapemyShapes(),f);
@@ -63,6 +65,8 @@ void ShapeSchema_PBRep_TEdge::SRead(const Handle(Standard_Persistent)& p, Storag
 { 
   if (!p.IsNull()) {
     Handle(PBRep_TEdge) &pp = (Handle(PBRep_TEdge)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

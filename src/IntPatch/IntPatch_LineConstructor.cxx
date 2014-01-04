@@ -1,23 +1,18 @@
 // Created on: 1996-11-07
 // Created by: Laurent BUCHARD
 // Copyright (c) 1996-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <IntPatch_LineConstructor.ixx>
 
@@ -262,9 +257,7 @@ static Standard_Real LocalFirstParameter (const Handle(IntPatch_Line)& L)
       return firstp;
     }
   }
-#ifndef _MSC_VER
-  return firstp;
-#endif
+//  return firstp;
 }
 
 //=======================================================================
@@ -346,9 +339,6 @@ static Standard_Real LocalLastParameter (const Handle(IntPatch_Line)& L)
       return lastp;
     }
   }
-#ifndef _MSC_VER
-  return lastp;
-#endif
 }
 
 
@@ -823,32 +813,32 @@ static Standard_Boolean TestWLineIsARLine(const IntPatch_SequenceOfLine& slinref
     if(slinref.Value(i)->ArcType()==IntPatch_Restriction) { 
       Handle(IntPatch_RLine)& rlin = *((Handle(IntPatch_RLine) *)&(slinref(i)));
       for (Standard_Integer is=0; is<2; is++) {
-	Standard_Boolean onFirst = is==0;
-	if((onFirst && rlin->IsArcOnS1()) || (!onFirst && rlin->IsArcOnS2())) {
-	  Handle(Adaptor2d_HCurve2d) arc;
-	  Standard_Real u,v,u1,v1;
-	  if (onFirst) {
-	    arc = rlin->ArcOnS1();
-	    POn2S.ParametersOnS1(u,v);
-	    POn2S1.ParametersOnS1(u1,v1);
-	  }
-	  else {
-	    arc = rlin->ArcOnS2();
-	    POn2S.ParametersOnS2(u,v);
-	    POn2S1.ParametersOnS2(u1,v1);
-	  }
-	  if (indicepnt == 1) {
-	    u = (u+u1)*0.5;
-	    v = (v+v1)*0.5;
-	  }
-	  const Adaptor2d_Curve2d& C2d=arc->Curve2d();
-	  gp_Pnt2d PObt,P2d(u,v);
-	  Standard_Real par= Geom2dInt_TheProjPCurOfGInter::FindParameter(C2d,P2d,1e-7);
-	  PObt=C2d.Value(par);
-	  if(PObt.Distance(P2d) < tol2d) {
-	    return Standard_True;
-	  }
-	}
+        Standard_Boolean onFirst = is==0;
+        if((onFirst && rlin->IsArcOnS1()) || (!onFirst && rlin->IsArcOnS2())) {
+          Handle(Adaptor2d_HCurve2d) arc;
+          Standard_Real u,v,u1,v1;
+          if (onFirst) {
+            arc = rlin->ArcOnS1();
+            POn2S.ParametersOnS1(u,v);
+            POn2S1.ParametersOnS1(u1,v1);
+          }
+          else {
+            arc = rlin->ArcOnS2();
+            POn2S.ParametersOnS2(u,v);
+            POn2S1.ParametersOnS2(u1,v1);
+          }
+          if (indicepnt == 1) {
+            u = (u+u1)*0.5;
+            v = (v+v1)*0.5;
+          }
+          const Adaptor2d_Curve2d& C2d=arc->Curve2d();
+          gp_Pnt2d PObt,P2d(u,v);
+          Standard_Real par= Geom2dInt_TheProjPCurOfGInter::FindParameter(C2d,P2d,1e-7);
+          PObt=C2d.Value(par);
+          if(PObt.Distance(P2d) < tol2d) {
+            return Standard_True;
+          }
+        }
       }
     }
   }
@@ -975,7 +965,7 @@ static void TestWLineToRLine(const IntPatch_SequenceOfLine& slinref,
   Standard_Integer is;
   for (is=0; is<2; is++) {
     Standard_Boolean onFirst = is==0;
-    if( (onFirst && WLine->HasArcOnS1()) ||
+    if(( onFirst && WLine->HasArcOnS1()) ||
        (!onFirst && WLine->HasArcOnS2())) {
       PiParOnS piParOnS;
       PQuery pIsOnDomS;

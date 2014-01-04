@@ -55,14 +55,11 @@
 #ifndef _Handle_Prs3d_DatumAspect_HeaderFile
 #include <Handle_Prs3d_DatumAspect.hxx>
 #endif
-#ifndef _Handle_Prs3d_LengthAspect_HeaderFile
-#include <Handle_Prs3d_LengthAspect.hxx>
+#ifndef _Handle_Prs3d_DimensionAspect_HeaderFile
+#include <Handle_Prs3d_DimensionAspect.hxx>
 #endif
-#ifndef _Handle_Prs3d_AngleAspect_HeaderFile
-#include <Handle_Prs3d_AngleAspect.hxx>
-#endif
-#ifndef _Handle_Prs3d_RadiusAspect_HeaderFile
-#include <Handle_Prs3d_RadiusAspect.hxx>
+#ifndef _Prs3d_DimensionUnits_HeaderFile
+#include <Prs3d_DimensionUnits.hxx>
 #endif
 #ifndef _Prs3d_TypeOfHLR_HeaderFile
 #include <Prs3d_TypeOfHLR.hxx>
@@ -78,9 +75,8 @@ class Prs3d_PointAspect;
 class Prs3d_PlaneAspect;
 class Prs3d_ArrowAspect;
 class Prs3d_DatumAspect;
-class Prs3d_LengthAspect;
-class Prs3d_AngleAspect;
-class Prs3d_RadiusAspect;
+class Prs3d_DimensionAspect;
+class TCollection_AsciiString;
 
 
 //! A graphic attribute manager which governs how <br>
@@ -343,27 +339,35 @@ public:
   Standard_EXPORT   virtual  Handle_Prs3d_DatumAspect DatumAspect() ;
   //! Sets the modality anAspect for the display of datums. <br>
   Standard_EXPORT   virtual  void SetDatumAspect(const Handle(Prs3d_DatumAspect)& anAspect) ;
-  //! Returns settings for the appearance of lengths. <br>
-  Standard_EXPORT   virtual  Handle_Prs3d_LengthAspect LengthAspect() ;
-  //! Sets the modality anAspect for display of lengths. <br>
-  Standard_EXPORT   virtual  void SetLengthAspect(const Handle(Prs3d_LengthAspect)& anAspect) ;
-  //! Returns settings for lines used to display angles. <br>
-  Standard_EXPORT   virtual  Handle_Prs3d_AngleAspect AngleAspect() ;
-  //! Sets the modality anAspect for the display of angles. <br>
-  Standard_EXPORT   virtual  void SetAngleAspect(const Handle(Prs3d_AngleAspect)& anAspect) ;
-  //! Returns settings for lines which serve to display radii. <br>
-  Standard_EXPORT   virtual  Handle_Prs3d_RadiusAspect RadiusAspect() const;
-  //! Sets the parameter anAspect for display attributes of radii. <br>
-  Standard_EXPORT   virtual  void SetRadiusAspect(const Handle(Prs3d_RadiusAspect)& anAspect) ;
+  //! Returns settings for the appearance of dimensions. <br>
+  Standard_EXPORT   virtual  Handle_Prs3d_DimensionAspect DimensionAspect() ;
+  //! Sets the settings for the appearance of dimensions. <br>
+  Standard_EXPORT   virtual  void SetDimensionAspect(const Handle(Prs3d_DimensionAspect)& theAspect) ;
+  //! Sets dimension length model units for computing of dimension presentation. <br>
+  Standard_EXPORT   virtual  void SetDimLengthModelUnits(const TCollection_AsciiString& theUnits) ;
+  //! Sets dimension angle model units for computing of dimension presentation. <br>
+  Standard_EXPORT   virtual  void SetDimAngleModelUnits(const TCollection_AsciiString& theUnits) ;
+  //! Returns length model units for the dimension presentation. <br>
+  Standard_EXPORT   virtual const TCollection_AsciiString& DimLengthModelUnits() const;
+  //! Returns angle model units for the dimension presentation. <br>
+  Standard_EXPORT   virtual const TCollection_AsciiString& DimAngleModelUnits() const;
+  //! Sets length units in which value for dimension presentation is displayed. <br>
+  Standard_EXPORT   virtual  void SetDimLengthDisplayUnits(const TCollection_AsciiString& theUnits) ;
+  //! Sets angle units in which value for dimension presentation is displayed. <br>
+  Standard_EXPORT   virtual  void SetDimAngleDisplayUnits(const TCollection_AsciiString& theUnits) ;
+  //! Returns length units in which dimension presentation is displayed. <br>
+  Standard_EXPORT   virtual const TCollection_AsciiString& DimLengthDisplayUnits() const;
+  //! Returns angle units in which dimension presentation is displayed. <br>
+  Standard_EXPORT   virtual const TCollection_AsciiString& DimAngleDisplayUnits() const;
   //! The LineAspect for the wire can be edited. <br>
 //!          The default values are: <br>
 //!          Color: Quantity_NOC_ORANGE <br>
 //!          Type of line: Aspect_TOL_SOLID <br>
 //!          Width: 1. <br>
-//!          These attributes are used by the algorithm Prs3d_WFShape <br>
+//!          These attributes are used by the algorithm Prs3d_WFShape. <br>
   Standard_EXPORT   virtual  Handle_Prs3d_LineAspect SectionAspect() ;
-  //! Sets the parameter anAspect for display attributes of sections. <br>
-  Standard_EXPORT   virtual  void SetSectionAspect(const Handle(Prs3d_LineAspect)& anAspect) ;
+  //! Sets the parameter theAspect for display attributes of sections. <br>
+  Standard_EXPORT   virtual  void SetSectionAspect(const Handle(Prs3d_LineAspect)& theAspect) ;
   //! Enables or disables face boundary drawing for shading presentations. <br>
 //! theIsEnabled is a boolean flag indicating whether the face boundaries should be <br>
 //! drawn or not. <br>
@@ -415,9 +419,9 @@ Handle_Prs3d_LineAspect mySeenLineAspect;
 Handle_Prs3d_LineAspect myVectorAspect;
 Handle_Prs3d_DatumAspect myDatumAspect;
 Standard_Real myDatumScale;
-Handle_Prs3d_LengthAspect myLengthAspect;
-Handle_Prs3d_AngleAspect myAngleAspect;
-Handle_Prs3d_RadiusAspect myRadiusAspect;
+Handle_Prs3d_DimensionAspect myDimensionAspect;
+Prs3d_DimensionUnits myDimensionModelUnits;
+Prs3d_DimensionUnits myDimensionDisplayUnits;
 Handle_Prs3d_LineAspect mySectionAspect;
 Standard_Boolean myFaceBoundaryDraw;
 Handle_Prs3d_LineAspect myFaceBoundaryAspect;

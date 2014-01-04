@@ -1,23 +1,17 @@
 // Created on: 2005-01-21
 // Created by: Alexander SOLOVYOV
-// Copyright (c) 2005-2012 OPEN CASCADE SAS
+// Copyright (c) 2005-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <MeshVS_SensitivePolyhedron.ixx>
 
@@ -33,7 +27,7 @@ MeshVS_SensitivePolyhedron::
 MeshVS_SensitivePolyhedron( const Handle( SelectBasics_EntityOwner )& Owner,
                             const TColgp_Array1OfPnt& Nodes,
                             const Handle( MeshVS_HArray1OfSequenceOfInteger )& Topo )
-: Select3D_SensitiveEntity( Owner ),  
+: Select3D_SensitiveEntity( Owner ),
   myTopo( Topo )
 {
   Standard_Integer low = Nodes.Lower(), up = Nodes.Upper(), i;
@@ -51,8 +45,6 @@ MeshVS_SensitivePolyhedron( const Handle( SelectBasics_EntityOwner )& Owner,
 //================================================================
 void MeshVS_SensitivePolyhedron::Project( const Handle(Select3D_Projector)& aProjector )
 {
-  Select3D_SensitiveEntity::Project( aProjector );
-
   if( myNodes.IsNull() || myNodes2d.IsNull() )
     return;
 
@@ -115,10 +107,9 @@ void sort( Standard_Real& a, Standard_Real& b )
 // Function : Matches
 // Purpose  :
 //================================================================
-Standard_Boolean MeshVS_SensitivePolyhedron::Matches( const Standard_Real X,
-                                                      const Standard_Real Y,
-                                                      const Standard_Real aTol,
-                                                      Standard_Real& DMin )
+Standard_Boolean MeshVS_SensitivePolyhedron::Matches( const SelectBasics_PickArgs& thePickArgs,
+                                                      Standard_Real& /*theMatchDMin*/,
+                                                      Standard_Real& theMatchDepth )
 {
   if( myNodes2d.IsNull() || myTopo.IsNull() )
     return Standard_False;
@@ -127,7 +118,7 @@ Standard_Boolean MeshVS_SensitivePolyhedron::Matches( const Standard_Real X,
                    R2  = myTopo->Upper(),
                    low = myNodes2d->Lower();
 
-  Standard_Real rTol = aTol*SensitivityFactor();
+  Standard_Real rTol = thePickArgs.Tolerance() * SensitivityFactor();
 
   Standard_Boolean inside = Standard_False;
 
@@ -149,15 +140,15 @@ Standard_Boolean MeshVS_SensitivePolyhedron::Matches( const Standard_Real X,
       y2 = myNodes2d->Value( low+next ).Y();
 
       if( Abs( x2-x1 )<Precision::Confusion() )
-      {  
+      {
         //vertical edge!!!
 
         sort( y1, y2 );
-        if( Y>=y1-rTol && Y<=y2+rTol && x1>X-rTol )
+        if ( thePickArgs.Y() >= y1 - rTol && thePickArgs.Y() <= y2 + rTol && x1 > thePickArgs.X() - rTol )
           intersect++;
       }
       else
-      {  
+      {
         //inclined edge!!!
 
         k = ( y2-y1 ) / ( x2-x1 );
@@ -165,9 +156,9 @@ Standard_Boolean MeshVS_SensitivePolyhedron::Matches( const Standard_Real X,
 
         if( Abs( k )>Precision::Confusion() )
         {
-          xp = ( Y-b ) / k; // absciss of point of intersection
+          xp = ( thePickArgs.Y() - b ) / k; // absciss of point of intersection
           sort( x1, x2 );
-          if( xp>=x1 && xp<=x2 && xp>X-rTol )
+          if( xp >= x1 && xp <= x2 && xp > thePickArgs.X() - rTol )
             intersect++;
         }
       }
@@ -177,8 +168,11 @@ Standard_Boolean MeshVS_SensitivePolyhedron::Matches( const Standard_Real X,
 
   if( inside )
   {
-    return Select3D_SensitiveEntity::Matches( X, Y, aTol, DMin );
+    theMatchDepth = ComputeDepth (thePickArgs.PickLine());
+
+    return !thePickArgs.IsClipped(theMatchDepth);
   }
+
   return Standard_False;
 }
 
@@ -226,7 +220,7 @@ Standard_Real MeshVS_SensitivePolyhedron::FindIntersection
 {
   Standard_Real val( Precision::Infinite() );
   for( Standard_Integer i=1, n=NodesIndices.Length(); i<=n; i++ )
-    val = Min( val, ElCLib::Parameter( 
+    val = Min( val, ElCLib::Parameter(
       EyeLine, myNodes->Value( myNodes->Lower()+NodesIndices.Value( i ) ) ) );
 
   return val;
@@ -265,7 +259,7 @@ Standard_Real MeshVS_SensitivePolyhedron::ComputeDepth( const gp_Lin& EyeLine ) 
 // Function : Areas
 // Purpose  :
 //================================================================
-void MeshVS_SensitivePolyhedron::Areas( SelectBasics_ListOfBox2d& aResult ) 
+void MeshVS_SensitivePolyhedron::Areas( SelectBasics_ListOfBox2d& aResult )
 {
   Bnd_Box2d aBox;
   GetBox2d( aBox );

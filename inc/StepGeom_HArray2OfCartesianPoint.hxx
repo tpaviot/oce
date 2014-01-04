@@ -42,11 +42,11 @@ class StepGeom_HArray2OfCartesianPoint : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepGeom_HArray2OfCartesianPoint(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      StepGeom_HArray2OfCartesianPoint(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   StepGeom_HArray2OfCartesianPoint(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(StepGeom_CartesianPoint)& V);
+      StepGeom_HArray2OfCartesianPoint(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(StepGeom_CartesianPoint)& V);
   
-  Standard_EXPORT     void Init(const Handle(StepGeom_CartesianPoint)& V) ;
+        void Init(const Handle(StepGeom_CartesianPoint)& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -62,9 +62,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(StepGeom_CartesianPoint)& Value) ;
   
-  Standard_EXPORT    const Handle_StepGeom_CartesianPoint& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const Handle_StepGeom_CartesianPoint& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     Handle_StepGeom_CartesianPoint& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        Handle_StepGeom_CartesianPoint& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const StepGeom_Array2OfCartesianPoint& Array2() const;
   

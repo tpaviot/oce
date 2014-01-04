@@ -39,11 +39,11 @@ class StepAP214_HArray1OfAutoDesignDateAndTimeItem : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepAP214_HArray1OfAutoDesignDateAndTimeItem(const Standard_Integer Low,const Standard_Integer Up);
+      StepAP214_HArray1OfAutoDesignDateAndTimeItem(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepAP214_HArray1OfAutoDesignDateAndTimeItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP214_AutoDesignDateAndTimeItem& V);
+      StepAP214_HArray1OfAutoDesignDateAndTimeItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP214_AutoDesignDateAndTimeItem& V);
   
-  Standard_EXPORT     void Init(const StepAP214_AutoDesignDateAndTimeItem& V) ;
+        void Init(const StepAP214_AutoDesignDateAndTimeItem& V) ;
   
         Standard_Integer Length() const;
   

@@ -42,11 +42,11 @@ class GeomPlate_HArray1OfHCurveOnSurface : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   GeomPlate_HArray1OfHCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up);
+      GeomPlate_HArray1OfHCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   GeomPlate_HArray1OfHCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up,const Handle(Adaptor3d_HCurveOnSurface)& V);
+      GeomPlate_HArray1OfHCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up,const Handle(Adaptor3d_HCurveOnSurface)& V);
   
-  Standard_EXPORT     void Init(const Handle(Adaptor3d_HCurveOnSurface)& V) ;
+        void Init(const Handle(Adaptor3d_HCurveOnSurface)& V) ;
   
         Standard_Integer Length() const;
   

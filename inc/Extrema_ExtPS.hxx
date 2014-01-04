@@ -101,7 +101,7 @@ public:
   //! Returns the value of the Nth resulting square distance. <br>
   Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N) const;
   //! Returns the point of the Nth resulting distance. <br>
-  Standard_EXPORT     Extrema_POnSurf Point(const Standard_Integer N) const;
+  Standard_EXPORT    const Extrema_POnSurf& Point(const Standard_Integer N) const;
   //! if the surface is a trimmed surface, <br>
 //!          dUfVf is a square distance between <P> and the point <br>
 //!          of parameter FirstUParameter and FirstVParameter <PUfVf>. <br>

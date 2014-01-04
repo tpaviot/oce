@@ -147,7 +147,7 @@ public:
 //! It returns -1 if not found. <br>
   Standard_EXPORT     Standard_Integer SearchFromEnd(const Handle(TCollection_HExtendedString)& what) const;
   //! Returns pointer to ExtString <br>
-  Standard_EXPORT    const Standard_ExtString ToExtString() const;
+  Standard_EXPORT    Standard_ExtString ToExtString() const;
   //! Extracts <whichone> token from <me>. <br>
 //! By default, the <separators> is set to space and tabulation. <br>
 //! By default, the token extracted is the first one (whichone = 1). <br>

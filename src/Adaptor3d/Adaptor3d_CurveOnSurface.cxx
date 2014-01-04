@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #define No_Standard_OutOfRange
 
@@ -237,7 +233,7 @@ static void Locate1Coord(const Standard_Integer Index,
 			 const Handle(Geom_BSplineCurve)& BSplC,
 			 gp_Pnt2d& LeftBot, gp_Pnt2d& RightTop)
 {
-  Standard_Real Comp1=0, DComp1=0, cur, f=0, l=0;
+  Standard_Real Comp1=0, DComp1=0, cur, f = 0.0, l = 0.0;
   Standard_Real Tol = Precision::PConfusion()/10;
   Standard_Integer i = 1, Bnd1, Bnd2;
   Standard_Boolean DIsNull= Standard_False; 
@@ -332,17 +328,17 @@ static void Locate1Coord(const Standard_Integer Index,
 //=======================================================================
 
 static void Locate1Coord(const Standard_Integer Index,
-			 const gp_Pnt2d& UV, 
-			 const gp_Vec2d& DUV,
-			 const Handle(Geom_BSplineSurface)& BSplS,
-			 Standard_Boolean& DIsNull,
-			 gp_Pnt2d& LeftBot, 
-			 gp_Pnt2d& RightTop)
+        const gp_Pnt2d& UV, 
+        const gp_Vec2d& DUV,
+        const Handle(Geom_BSplineSurface)& BSplS,
+        Standard_Boolean& DIsNull,
+        gp_Pnt2d& LeftBot, 
+        gp_Pnt2d& RightTop)
 {
   Standard_Real Comp1=0,DComp1=0; 
   Standard_Real Tol = Precision::PConfusion()/10;
-  Standard_Integer i=1, Up=0, Up1, Up2, Down=0, Down1, Down2, Bnd1, Bnd2;
-  Standard_Real cur=0, f = 0, l = 0;
+  Standard_Integer i=1, Up=0, Up1, Up2, Down=0, Down1, Down2;
+  Standard_Real cur = 0.;
 
   DIsNull= Standard_False; 
 
@@ -351,96 +347,193 @@ static void Locate1Coord(const Standard_Integer Index,
   Up2 =  BSplS->LastVKnotIndex();
   Down2 = BSplS->FirstVKnotIndex();
 
-  
-  if(Index==1){ i = Down1; Comp1 =  UV.X(); DComp1= DUV.X(); Up=Up1; Down=Down1;
-		while ( ( Abs(BSplS->UKnot(i)-Comp1)>Tol )&&(i!=Up1 ) ) i++;
-		cur = BSplS->UKnot(i); 
-	      }   else
-		if(Index==2) { i = Down2; Comp1 = UV.Y(); DComp1=DUV.Y(); Up=Up2; Down=Down2;
-			       while ( ( Abs(BSplS->VKnot(i)-Comp1)>Tol )&&(i!=Up2 ) ) i++;
-			       cur = BSplS->VKnot(i);
-			     }
+  if(Index==1)
+  { 
+    i = Down1; 
+    Comp1 =  UV.X(); 
+    DComp1= DUV.X(); 
+    Up=Up1; 
+    Down=Down1;
+
+    while ( ( Abs(BSplS->UKnot(i)-Comp1)>Tol )&&(i!=Up1 ) )
+    {
+      i++;
+    }
+
+    cur = BSplS->UKnot(i); 
+  }
+  else if(Index==2)
+  {
+    i = Down2;
+    Comp1 = UV.Y();
+    DComp1=DUV.Y();
+    Up=Up2;
+    Down=Down2;
+
+    while ( ( Abs(BSplS->VKnot(i)-Comp1)>Tol )&&(i!=Up2 ) )
+    {
+      i++;
+    }
+
+    cur = BSplS->VKnot(i);
+  }
   
   if( Abs(Comp1-cur)<=Tol ) 
-    { 
-      Bnd1 = Down; Bnd2 = Up;
-      if(Index==1) {
-        TColStd_Array1OfReal Arr1(1,BSplS->NbUKnots());
-        BSplS->UKnots(Arr1); //   Up1=Arr1.Upper(); Down1=Arr1.Lower();
-        FindBounds(Arr1,cur,DUV.X(),Bnd1,Bnd2,DIsNull); 
-      }
-      else if(Index==2) {
-        TColStd_Array1OfReal Arr2(1,BSplS->NbVKnots());
-        BSplS->VKnots(Arr2); //   Up2=Arr2.Upper(); Down2=Arr2.Lower();
-        FindBounds(Arr2,cur,DUV.Y(),Bnd1,Bnd2,DIsNull); 
-      }
-      
-      ReverseParam(Bnd1,Bnd2,Bnd1,Bnd2);
-      
-      if(DIsNull==Standard_False){
-	if(Index==1) {LeftBot.SetX(BSplS->UKnot(Bnd1));
-		      RightTop.SetX(BSplS->UKnot(Bnd2));}
-	else
-	  if(Index==2){ LeftBot.SetY(BSplS->VKnot(Bnd1));
-			RightTop.SetY(BSplS->VKnot(Bnd2));
-		      }
-      }      
-    }
-  else//*********if Coord != Knot
+  { 
+    Standard_Integer Bnd1 = Down, Bnd2 = Up;
+    if(Index==1)
     {
-      if( (Index==1)&&(Comp1 < BSplS->UKnot(Down)) )
-	{ LeftBot.SetX(BSplS->UKnot(Down)); 
-	  RightTop.SetX( BSplS->UKnot(Down + 1) );
-	  return; }
-      else
-	if( (Index==2)&&(Comp1 < BSplS->VKnot(Down)) )
-	  { LeftBot.SetY(BSplS->VKnot(Down)); 
-	    RightTop.SetY( BSplS->VKnot(Down + 1) );
-	    return; }
-	else
-	  if( (Index==1)&&(Comp1 > BSplS->UKnot(Up)) )
-	    { RightTop.SetX(BSplS->UKnot(Up - 1)); 
-	      LeftBot.SetX( BSplS->UKnot(Up) );
-	      return; }
-	  else
-	    if( (Index==2)&&(Comp1 > BSplS->VKnot(Up)) )
-	      { RightTop.SetY(BSplS->VKnot(Up - 1)); 
-		LeftBot.SetY( BSplS->VKnot(Up) );
-		return; }
-	    else
-	      { i = Down;
-		if( (Index==1)&&(!(Comp1 < BSplS->UKnot(Down)))&&(!(Comp1 > BSplS->UKnot(Up))) )
-		  while (!( ((f=BSplS->UKnot(i)) < Comp1)&&((l=BSplS->UKnot(i+1)) > Comp1)) && (i<Up)) i++;
-		else
-		  if( (Index==2)&&(!(Comp1 < BSplS->VKnot(Down)))&&(!(Comp1 > BSplS->VKnot(Up))) )
-		    while (!(((f=BSplS->VKnot(i)) < Comp1)&&((l=BSplS->VKnot(i+1)) > Comp1)) && (i<Up)) i++;
-		  else
-		    ReverseParam(f,l,f,l);
-		
-		if(i!=Up){
-		  if(Abs(DComp1)>Tol)
-		    {if(Index==1) {  
-		      if(DComp1>0){ LeftBot.SetX(Comp1); RightTop.SetX(l);}else
-			if(DComp1<0){LeftBot.SetX(f); RightTop.SetX(Comp1);}
-		    }else
-		      if(Index==2) {  
-			if(DComp1>0){ LeftBot.SetY(Comp1); RightTop.SetY(l);}else
-			  if(DComp1<0){ LeftBot.SetY(f); RightTop.SetY(Comp1);}
-		      }
-		   }
-		  else
-		    {
-		      if(Abs(DComp1)<Tol)
-			{if(Index==1){LeftBot.SetX(f); RightTop.SetX(l);}	   else
-			   if(Index==2) { LeftBot.SetY(f); RightTop.SetY(l);}
-		       }
-		    }
-		}else
-		  if(i==Up){if(Index==1){LeftBot.SetX(Comp1); RightTop.SetX(BSplS->UKnot(i));} else
-			      if(Index==2) { LeftBot.SetY(Comp1); RightTop.SetY(BSplS->VKnot(i));}
-			  }
-	      }
+      TColStd_Array1OfReal Arr1(1,BSplS->NbUKnots());
+      BSplS->UKnots(Arr1); //   Up1=Arr1.Upper(); Down1=Arr1.Lower();
+      FindBounds(Arr1,cur,DUV.X(),Bnd1,Bnd2,DIsNull); 
     }
+    else if(Index==2)
+    {
+      TColStd_Array1OfReal Arr2(1,BSplS->NbVKnots());
+      BSplS->VKnots(Arr2); //   Up2=Arr2.Upper(); Down2=Arr2.Lower();
+      FindBounds(Arr2,cur,DUV.Y(),Bnd1,Bnd2,DIsNull); 
+    }
+    
+    ReverseParam(Bnd1,Bnd2,Bnd1,Bnd2);
+
+    if(DIsNull==Standard_False)
+    {
+      if(Index==1)
+      {
+        LeftBot.SetX(BSplS->UKnot(Bnd1));
+        RightTop.SetX(BSplS->UKnot(Bnd2));
+      }
+      else if(Index==2)
+      { 
+        LeftBot.SetY(BSplS->VKnot(Bnd1));
+        RightTop.SetY(BSplS->VKnot(Bnd2));
+      }
+    }      
+  }
+  else//*********if Coord != Knot
+  {
+    if( (Index==1)&&(Comp1 < BSplS->UKnot(Down)) )
+    { 
+      LeftBot.SetX(BSplS->UKnot(Down)); 
+      RightTop.SetX( BSplS->UKnot(Down + 1) );
+      return;
+    }
+    else if( (Index==2)&&(Comp1 < BSplS->VKnot(Down)) )
+    { 
+      LeftBot.SetY(BSplS->VKnot(Down)); 
+      RightTop.SetY( BSplS->VKnot(Down + 1) );
+      return;
+    }
+    else if( (Index==1)&&(Comp1 > BSplS->UKnot(Up)) )
+    { 
+      RightTop.SetX(BSplS->UKnot(Up - 1)); 
+      LeftBot.SetX( BSplS->UKnot(Up) );
+      return;
+    }
+    else if( (Index==2)&&(Comp1 > BSplS->VKnot(Up)) )
+    { 
+      RightTop.SetY(BSplS->VKnot(Up - 1)); 
+      LeftBot.SetY( BSplS->VKnot(Up) );
+      return;
+    } 
+    else
+    {
+      Standard_Real f = 0., l = 1.;
+      if (Index==1)
+      {
+        f=BSplS->UKnot(Down);
+        l=BSplS->UKnot(Up);
+      }
+      else if (Index == 2)
+      {
+        f=BSplS->VKnot(Down);
+        l=BSplS->VKnot(Up);
+      }
+
+      i = Down;
+      if ((!(Comp1 < f))&&(!(Comp1 > l)))
+      {
+        if (Index==1)
+        {
+          while (!(((f=BSplS->UKnot(i)) < Comp1)&&((l=BSplS->UKnot(i+1)) > Comp1)) && (i<Up)) 
+          {
+            i++;
+          }
+        }
+        else if (Index==2)
+        {
+          while (!(((f=BSplS->VKnot(i)) < Comp1)&&((l=BSplS->VKnot(i+1)) > Comp1)) && (i<Up)) 
+          {
+            i++;
+          }
+        }
+      }
+      else
+        ReverseParam(f,l,f,l);
+
+      if(i!=Up)
+      {
+        if(Abs(DComp1)>Tol)
+        {
+          if(Index==1) 
+          {  
+            if(DComp1>0)
+            { 
+              LeftBot.SetX(Comp1); 
+              RightTop.SetX(l);
+            }
+            else if(DComp1<0)
+            {
+              LeftBot.SetX(f); 
+              RightTop.SetX(Comp1);
+            }
+          }
+          else if(Index==2)
+          {
+            if(DComp1>0)
+            { 
+              LeftBot.SetY(Comp1); 
+              RightTop.SetY(l);
+            }
+            else if(DComp1<0)
+            { 
+              LeftBot.SetY(f); 
+              RightTop.SetY(Comp1);
+            }
+          }
+        }
+        else
+        {
+          if(Abs(DComp1)<Tol)
+          {
+            if(Index==1)
+            {
+              LeftBot.SetX(f); 
+              RightTop.SetX(l);
+            }
+            else if(Index==2) 
+            { 
+              LeftBot.SetY(f); 
+              RightTop.SetY(l);
+            }
+          }
+        }
+      } 
+      else if(i==Up)
+      {
+        if(Index==1)
+        {
+          LeftBot.SetX(Comp1);
+          RightTop.SetX(BSplS->UKnot(i));
+        }
+        else if(Index==2)
+        { 
+          LeftBot.SetY(Comp1); 
+          RightTop.SetY(BSplS->VKnot(i));
+        }
+      }
+    }
+  }
 }
 //=======================================================================
 //function :Locate2Coord
@@ -517,9 +610,9 @@ static void Locate2Coord(const Standard_Integer Index,
 			 const TColStd_Array1OfReal& Arr,
 			 gp_Pnt2d& LeftBot, gp_Pnt2d& RightTop)
 {
-  Standard_Real Comp=0,DComp=0,Tmp1=0,Tmp2=0;
+  Standard_Real Comp=0,DComp=0,Tmp1=0.0,Tmp2=0.0;
   Standard_Real Tol=Precision::PConfusion()/10;
-  Standard_Integer N=0, NUp=0, NLo=0;
+  Standard_Integer N, NUp=0, NLo=0;
   if(Index==1)
     { Comp=UV.X();
       DComp=DUV.Y();
@@ -775,7 +868,8 @@ Standard_Integer Adaptor3d_CurveOnSurface::NbIntervals
   myIntervals = new TColStd_HArray1OfReal(1,nbpoint);
   i=0;
   for (It.Initialize(tmpIntervals->Set());It.More();It.Next())
-  { i++;
+  { 
+    ++i;
     myIntervals->SetValue(i,It.Value());
   } 
   if( i==1 )

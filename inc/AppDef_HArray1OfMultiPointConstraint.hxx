@@ -39,11 +39,11 @@ class AppDef_HArray1OfMultiPointConstraint : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   AppDef_HArray1OfMultiPointConstraint(const Standard_Integer Low,const Standard_Integer Up);
+      AppDef_HArray1OfMultiPointConstraint(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   AppDef_HArray1OfMultiPointConstraint(const Standard_Integer Low,const Standard_Integer Up,const AppDef_MultiPointConstraint& V);
+      AppDef_HArray1OfMultiPointConstraint(const Standard_Integer Low,const Standard_Integer Up,const AppDef_MultiPointConstraint& V);
   
-  Standard_EXPORT     void Init(const AppDef_MultiPointConstraint& V) ;
+        void Init(const AppDef_MultiPointConstraint& V) ;
   
         Standard_Integer Length() const;
   

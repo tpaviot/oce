@@ -1,21 +1,17 @@
-// Created on: 2012-11-12
+// Created on: 2014-11-12
 // Created by: Kirill Gavrilov
-// Copyright (c) 2012 OPEN CASCADE SAS
+// Copyright (c) 2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
 
@@ -31,18 +27,11 @@
 #include <Cocoa_LocalPool.hxx>
 #include <TCollection_AsciiString.hxx>
 
+#include <OpenGL/CGLRenderers.h>
+
 namespace
 {
   static const TEL_COLOUR THE_DEFAULT_BG_COLOR = { { 0.F, 0.F, 0.F, 1.F } };
-  static const NSOpenGLPixelFormatAttribute THE_DOUBLE_BUFF[] = {
-    //NSOpenGLPFAColorSize, (NSOpenGLPixelFormatAttribute )32,
-    NSOpenGLPFADepthSize,   (NSOpenGLPixelFormatAttribute )24,
-    NSOpenGLPFAStencilSize, (NSOpenGLPixelFormatAttribute )8,
-    NSOpenGLPFADoubleBuffer,
-    NSOpenGLPFAAccelerated,
-    0
-  };
-
 };
 
 // =======================================================================
@@ -52,9 +41,10 @@ namespace
 OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
                               const CALL_DEF_WINDOW&        theCWindow,
                               Aspect_RenderingContext       theGContext,
+                              const Handle(OpenGl_Caps)&    theCaps,
                               const Handle(OpenGl_Context)& theShareCtx)
 : myDisplay (theDisplay),
-  myGlContext (new OpenGl_Context()),
+  myGlContext (new OpenGl_Context (theCaps)),
   myOwnGContext (theGContext == 0),
   myWidth ((Standard_Integer )theCWindow.dx),
   myHeight ((Standard_Integer )theCWindow.dy),
@@ -69,11 +59,31 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
   Cocoa_LocalPool aLocalPool;
   //NSOpenGLContext* aGContext = (NSOpenGLContext* )theGContext;
 
+  const NSOpenGLPixelFormatAttribute aDummyAttrib = NSOpenGLPFACompliant;
+  NSOpenGLPixelFormatAttribute anAttribs[] = {
+    theCaps->contextStereo ? NSOpenGLPFAStereo : aDummyAttrib,
+    //NSOpenGLPFAColorSize,  32,
+    NSOpenGLPFADepthSize,    24,
+    NSOpenGLPFAStencilSize,  8,
+    NSOpenGLPFADoubleBuffer,
+    theCaps->contextNoAccel ? NSOpenGLPFARendererID : NSOpenGLPFAAccelerated,
+    theCaps->contextNoAccel ? (NSOpenGLPixelFormatAttribute )kCGLRendererGenericFloatID : 0,
+    0
+  };
+
   // all GL context within one OpenGl_GraphicDriver should be shared!
   NSOpenGLContext*     aGLCtxShare = theShareCtx.IsNull() ? NULL : (NSOpenGLContext* )theShareCtx->myGContext;
-  NSOpenGLPixelFormat* aGLFormat   = [[[NSOpenGLPixelFormat alloc] initWithAttributes: THE_DOUBLE_BUFF] autorelease];
+  NSOpenGLPixelFormat* aGLFormat   = [[[NSOpenGLPixelFormat alloc] initWithAttributes: anAttribs] autorelease];
   NSOpenGLContext*     aGLContext  = [[NSOpenGLContext alloc] initWithFormat: aGLFormat
                                                                 shareContext: aGLCtxShare];
+  if (aGLContext == NULL
+   && theCaps->contextStereo)
+  {
+    anAttribs[0] = aDummyAttrib;
+    aGLFormat    = [[[NSOpenGLPixelFormat alloc] initWithAttributes: anAttribs] autorelease];
+    aGLContext   = [[NSOpenGLContext alloc] initWithFormat: aGLFormat
+                                              shareContext: aGLCtxShare];
+  }
   if (aGLContext == NULL)
   {
     TCollection_AsciiString aMsg ("OpenGl_Window::CreateWindow: NSOpenGLContext creation failed");

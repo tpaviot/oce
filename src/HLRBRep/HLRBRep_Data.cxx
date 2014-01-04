@@ -1,23 +1,18 @@
 // Created on: 1997-04-17
 // Created by: Christophe MARION
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //#define No_Standard_OutOfRange
 
@@ -464,6 +459,8 @@ public:
     }
   }
 };
+ 
+//-- ================================================================================
 
 
 //=======================================================================
@@ -1623,9 +1620,12 @@ TopAbs_State HLRBRep_Data::Compare (const Standard_Integer E,
 //purpose  : 
 //=======================================================================
 
-Standard_Boolean
-HLRBRep_Data::OrientOutLine (const Standard_Integer I,
-			     HLRBRep_FaceData& FD)
+
+#ifdef DEB
+Standard_Boolean HLRBRep_Data::OrientOutLine (const Standard_Integer I, HLRBRep_FaceData& FD)
+#else
+Standard_Boolean HLRBRep_Data::OrientOutLine (const Standard_Integer, HLRBRep_FaceData& FD)
+#endif
 {
   const Handle(HLRAlgo_WiresBlock)& wb = FD.Wires();
   Standard_Integer nw = wb->NbWires();
@@ -1823,7 +1823,7 @@ void HLRBRep_Data::OrientOthEdge (const Standard_Integer I,
     VertMax[15] = (Standard_Integer)((myDeca[15]+TotMax[15])*mySurD[15]); 
 
 TopAbs_State 
-HLRBRep_Data::Classify (const Standard_Integer E,
+HLRBRep_Data::Classify (const Standard_Integer /*E*/,
 			const HLRBRep_EdgeData& EData,
 			const Standard_Boolean LevelFlag,
 			Standard_Integer& Level,
@@ -2125,7 +2125,7 @@ HLRBRep_Data::Classify (const Standard_Integer E,
 //purpose  : 
 //=======================================================================
 
-TopAbs_State HLRBRep_Data::SimplClassify (const Standard_Integer E,
+TopAbs_State HLRBRep_Data::SimplClassify (const Standard_Integer /*E*/,
 					  const HLRBRep_EdgeData& EData,
 					  const Standard_Integer Nbp,
 					  const Standard_Real p1,

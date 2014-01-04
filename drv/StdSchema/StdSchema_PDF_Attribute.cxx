@@ -38,7 +38,10 @@ void StdSchema_PDF_Attribute::Add(const Handle(Standard_Persistent)& p, const Ha
 void StdSchema_PDF_Attribute::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
+    Handle(PDF_Attribute) &pp = (Handle(PDF_Attribute)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -55,6 +58,9 @@ void StdSchema_PDF_Attribute::Write(const Handle(Standard_Persistent)& p, Storag
 void StdSchema_PDF_Attribute::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
+    Handle(PDF_Attribute) &pp = (Handle(PDF_Attribute)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -1,23 +1,18 @@
 // Created on: 1993-06-17
 // Created by: Jean Yves LEBEY
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TopOpeBRepBuild_ShapeSet.ixx>
 #include <TopOpeBRepBuild_define.hxx>
@@ -293,95 +288,6 @@ TopTools_ListOfShape& TopOpeBRepBuild_ShapeSet::ChangeStartShapes()
 }
 
 //=======================================================================
-//function : IsStartElement
-//purpose  : 
-//=======================================================================
-Standard_Boolean TopOpeBRepBuild_ShapeSet::IsStartElement(const TopoDS_Shape& S) const
-{
-  Standard_Boolean b = Standard_False;
-#ifdef DEB
-  b = myOMSS.Contains(S);
-#endif
-  return b;
-}
-
-//=======================================================================
-//function : IsElement
-//purpose  : 
-//=======================================================================
-Standard_Boolean TopOpeBRepBuild_ShapeSet::IsElement(const TopoDS_Shape& S) const
-{
-  Standard_Boolean b = Standard_False;
-#ifdef DEB
-  b = myOMES.Contains(S);
-#endif
-  return b;
-}
-
-//=======================================================================
-//function : IsShape
-//purpose  : 
-//=======================================================================
-Standard_Boolean TopOpeBRepBuild_ShapeSet::IsShape(const TopoDS_Shape& S) const
-{
-  Standard_Boolean b = Standard_False;
-#ifdef DEB
-  b = myOMSH.Contains(S);
-#endif
-  return b;
-}
-
-//=======================================================================
-//function : NStartElement
-//purpose  : 
-//=======================================================================
-Standard_Integer TopOpeBRepBuild_ShapeSet::NStartElement(const TopoDS_Shape& S) const
-{
-  Standard_Integer n = 0;
-#ifdef DEB
-  Standard_Boolean b = Standard_False;
-  b = IsStartElement(S);
-  if (b) n++;
-  b = IsStartElement(S.Oriented(TopAbs::Complement(S.Orientation())));
-  if (b) n++;
-#endif
-  return n;
-}
-
-//=======================================================================
-//function : NElement
-//purpose  : 
-//=======================================================================
-Standard_Integer TopOpeBRepBuild_ShapeSet::NElement(const TopoDS_Shape& S) const
-{
-  Standard_Integer n = 0;
-#ifdef DEB
-  Standard_Boolean b = Standard_False;
-  b = IsElement(S);  if (b) n++;
-  b = IsElement(S.Oriented(TopAbs::Complement(S.Orientation())));
-  if (b) n++;
-#endif
-  return n;
-}
-
-//=======================================================================
-//function : IsShape
-//purpose  : 
-//=======================================================================
-Standard_Integer TopOpeBRepBuild_ShapeSet::NShape(const TopoDS_Shape& S) const
-{
-  Standard_Integer n = 0;
-#ifdef DEB
-  Standard_Boolean b = Standard_False;
-  b = IsShape(S);
-  if (b) n++;
-  b = IsShape(S.Oriented(TopAbs::Complement(S.Orientation())));
-  if (b) n++;
-#endif
-  return n;
-}
-
-//=======================================================================
 //function : FindNeighbours
 //purpose  : 
 //=======================================================================
@@ -409,7 +315,7 @@ void TopOpeBRepBuild_ShapeSet::FindNeighbours()
 //function : MakeNeighboursList
 //purpose  : // (Earg = Edge, Varg = Vertex) to find connected to Earg by Varg 
 //=======================================================================
-const TopTools_ListOfShape & TopOpeBRepBuild_ShapeSet::MakeNeighboursList(const TopoDS_Shape& Earg, const TopoDS_Shape& Varg)
+const TopTools_ListOfShape & TopOpeBRepBuild_ShapeSet::MakeNeighboursList(const TopoDS_Shape& /*Earg*/, const TopoDS_Shape& Varg)
 {
   const TopTools_ListOfShape& l = mySubShapeMap.FindFromKey(Varg);
   return l;
@@ -494,7 +400,19 @@ void TopOpeBRepBuild_ShapeSet::DumpName(Standard_OStream& OS,const TCollection_A
 //function : DumpCheck
 //purpose  : 
 //=======================================================================
-void TopOpeBRepBuild_ShapeSet::DumpCheck(Standard_OStream& OS,const TCollection_AsciiString& str,const TopoDS_Shape& S,const Standard_Boolean chk) const
+
+#ifdef DEB
+void TopOpeBRepBuild_ShapeSet::DumpCheck(Standard_OStream& OS,
+                                         const TCollection_AsciiString& str,
+                                         const TopoDS_Shape& S, 
+                                         const Standard_Boolean chk
+#else
+void TopOpeBRepBuild_ShapeSet::DumpCheck(Standard_OStream&,
+                                         const TCollection_AsciiString&,
+                                         const TopoDS_Shape&,
+                                         const Standard_Boolean
+#endif
+                                                                    ) const
 { 
   if (!myCheckShape) return;
 
@@ -706,10 +624,13 @@ Standard_Integer TopOpeBRepBuild_ShapeSet::DEBNumber() const
 //function : SName
 //purpose  : 
 //=======================================================================
-TCollection_AsciiString TopOpeBRepBuild_ShapeSet::SName(const TopoDS_Shape& S,const TCollection_AsciiString& sb,const TCollection_AsciiString& sa) const
+#ifdef DRAW
+TCollection_AsciiString TopOpeBRepBuild_ShapeSet::SName(const TopoDS_Shape& /*S*/,
+                                                        const TCollection_AsciiString& sb,
+                                                        const TCollection_AsciiString& sa) const
 {
   TCollection_AsciiString str;
-#ifdef DRAW
+
   str=sb;
   TCollection_AsciiString WESi=myDEBName.SubString(1,1)+myDEBNumber;
   str=str+WESi;
@@ -725,45 +646,76 @@ TCollection_AsciiString TopOpeBRepBuild_ShapeSet::SName(const TopoDS_Shape& S,co
   else if (iele) str=str+"ele"+iele;
   if      (isha) str=str+"sha"+isha;
   str=str+sa;
-#endif
+
   return str;
 }
+#else
+TCollection_AsciiString TopOpeBRepBuild_ShapeSet::SName(const TopoDS_Shape&,
+                                                        const TCollection_AsciiString&,
+                                                        const TCollection_AsciiString&) const
+{
+  TCollection_AsciiString str;
+  return str;
+}
+#endif
 
 //=======================================================================
 //function : SNameori
 //purpose  : 
 //=======================================================================
-TCollection_AsciiString TopOpeBRepBuild_ShapeSet::SNameori(const TopoDS_Shape& S,const TCollection_AsciiString& sb,const TCollection_AsciiString& sa) const
+#ifdef DRAW
+TCollection_AsciiString TopOpeBRepBuild_ShapeSet::SNameori(const TopoDS_Shape& S,
+                                                           const TCollection_AsciiString& sb,
+                                                           const TCollection_AsciiString& sa) const
 {
   TCollection_AsciiString str;
-#ifdef DRAW
   str=sb+SName(S);
   TopAbs_Orientation o = S.Orientation();
   TCollection_AsciiString sto;TestTopOpeDraw_TTOT::OrientationToString(o,sto);
   str=str+sto.SubString(1,1);
   str=str+sa;
-#endif
   return str;
 }
+#else
+TCollection_AsciiString TopOpeBRepBuild_ShapeSet::SNameori(const TopoDS_Shape&,
+                                                           const TCollection_AsciiString&,
+                                                           const TCollection_AsciiString&) const
+{
+  TCollection_AsciiString str;
+  return str;
+}
+#endif
 
 //=======================================================================
 //function : SName
 //purpose  : 
 //=======================================================================
-TCollection_AsciiString TopOpeBRepBuild_ShapeSet::SName(const TopTools_ListOfShape& L,const TCollection_AsciiString& sb,const TCollection_AsciiString& sa) const
+#ifdef DRAW
+TCollection_AsciiString TopOpeBRepBuild_ShapeSet::SName(const TopTools_ListOfShape& L,
+                                                        const TCollection_AsciiString& sb,
+                                                        const TCollection_AsciiString& /*sa*/) const
 {
   TCollection_AsciiString str;
-#ifdef DRAW
   for (TopTools_ListIteratorOfListOfShape it(L);it.More();it.Next()) str=str+sb+SName(it.Value())+sa+" ";
-#endif
   return str;
 }
+#else
+TCollection_AsciiString TopOpeBRepBuild_ShapeSet::SName(const TopTools_ListOfShape&,
+                                                        const TCollection_AsciiString&,
+                                                        const TCollection_AsciiString&) const
+{
+  TCollection_AsciiString str;
+  return str;
+}
+#endif
 
 //=======================================================================
 //function : SNameori
 //purpose  : 
 //=======================================================================
-TCollection_AsciiString TopOpeBRepBuild_ShapeSet::SNameori(const TopTools_ListOfShape& L,const TCollection_AsciiString& sb,const TCollection_AsciiString& sa) const
+TCollection_AsciiString TopOpeBRepBuild_ShapeSet::SNameori(const TopTools_ListOfShape& /*L*/,
+                                                           const TCollection_AsciiString& /*sb*/,
+                                                           const TCollection_AsciiString& /*sa*/) const
 {
   TCollection_AsciiString str;
 #ifdef DRAW

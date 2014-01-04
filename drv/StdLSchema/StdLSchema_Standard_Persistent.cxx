@@ -38,7 +38,10 @@ void StdLSchema_Standard_Persistent::Add(const Handle(Standard_Persistent)& p, c
 void StdLSchema_Standard_Persistent::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
+    Handle(Standard_Persistent) &pp = (Handle(Standard_Persistent)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -55,7 +58,10 @@ void StdLSchema_Standard_Persistent::Write(const Handle(Standard_Persistent)& p,
 void StdLSchema_Standard_Persistent::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
- 
+    Handle(Standard_Persistent) &pp = (Handle(Standard_Persistent)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
+
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
 

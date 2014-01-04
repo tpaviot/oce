@@ -109,8 +109,13 @@ private:
   Standard_EXPORT   PrsMgr_Presentation3d(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(PrsMgr_PresentableObject)& aPresentableObject);
   
   Standard_EXPORT     void Display() ;
+  //! displays myStructure and sets myDisplayReason to theIsHighlight value if <br>
+//! myStructure was not displayed or was invisible <br>
+  Standard_EXPORT     void Display(const Standard_Boolean theIsHighlight) ;
   
-  Standard_EXPORT     void Erase() const;
+  Standard_EXPORT     void Erase() ;
+  
+  Standard_EXPORT     void SetVisible(const Standard_Boolean theValue) ;
   
   Standard_EXPORT     void Highlight() ;
   
@@ -147,6 +152,8 @@ private:
   Standard_EXPORT     void Move(const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z) const;
   
   Standard_EXPORT     void SetShadingAspect(const Handle(Prs3d_ShadingAspect)& aShadingAspect) const;
+  
+  Standard_EXPORT     void Compute(const Handle(Graphic3d_Structure)& theStructure) ;
   
   Standard_EXPORT     Handle_Graphic3d_Structure Compute(const Handle(Graphic3d_DataStructureManager)& aProjector) ;
   

@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepShape_Array1OfGeometricSetSelect(const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_Array1OfGeometricSetSelect(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepShape_Array1OfGeometricSetSelect(const StepShape_GeometricSetSelect& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_Array1OfGeometricSetSelect(const StepShape_GeometricSetSelect& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const StepShape_GeometricSetSelect& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepShape_Array1OfGeometricSetSelect()
 {
   Destroy();

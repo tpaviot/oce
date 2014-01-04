@@ -1,22 +1,18 @@
 // Created on: 1997-01-22
 // Created by: Prestataire Michael ALEONARD
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <DsgPrs_SymmetricPresentation.ixx>
 
@@ -44,12 +40,13 @@
 #include <Graphic3d_ArrayOfPolylines.hxx>
 #include <Graphic3d_AspectLine3d.hxx>
 #include <Graphic3d_AspectMarker3d.hxx>
+#include <Graphic3d_ArrayOfPoints.hxx>
 #include <Graphic3d_Vertex.hxx>
 
 #include <Prs3d_Arrow.hxx>
 #include <Prs3d_ArrowAspect.hxx>
 #include <Prs3d_LineAspect.hxx>
-#include <Prs3d_LengthAspect.hxx>
+#include <Prs3d_DimensionAspect.hxx>
 
 #include <TCollection_AsciiString.hxx>
 
@@ -72,7 +69,7 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
 					const gp_Lin& aAxis,
 					const gp_Pnt& OffsetPoint)
 { 
-  Handle(Prs3d_LengthAspect) LA = aDrawer->LengthAspect();
+  Handle(Prs3d_DimensionAspect) LA = aDrawer->DimensionAspect();
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
 
   gp_Pnt ProjOffsetPoint = ElCLib::Value(ElCLib::Parameter(aAxis,OffsetPoint),aAxis);
@@ -136,17 +133,17 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
   Standard_Real D1(aAxis.Distance(AttachmentPoint1)),coeff(.5);
   gp_Pnt pint,Pj_P1,P1Previous = P1;
   
-  //=======================================================
-  // TO AVOID CROSSING
-  //        P1  -=- P2                P2  -=- P1         
-  //          \<-->/                    |<-->|
-  //           \  /                     |    |
-  //            \/                      |    | 
-  //            /\                      |    |
-  //           /  \                     |    |
-  // Pattach2 /____\ Pattach1 Pattach2 /______\ Pattach1
-  //         /  NO \                  /   YES  \
-  //=======================================================
+  /*=======================================================
+   TO AVOID CROSSING
+          P1  -=- P2                P2  -=- P1         
+            \<-->/                    |<-->|
+             \  /                     |    |
+              \/                      |    | 
+              /\                      |    |
+             /  \                     |    |
+   Pattach2 /____\ Pattach1 Pattach2 /______\ Pattach1
+           /  NO \                  /   YES  \	
+  =======================================================*/
 
   Standard_Boolean Cross = Standard_False;
   gp_Vec Attch1_PjAttch1(AttachmentPoint1,PjAttachPnt1);
@@ -158,13 +155,13 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
     P1       = P2;
     P2       = PntTempo;
   }  
-  //===================================
-  // FRACTURES OF TRAITS OF CALL    
-  //        /             \         
-  //       /               \
-  //       |      -=-      |
-  //       |<------------->| 
-  //===================================
+  /*===================================
+   FRACTURES OF TRAITS OF CALL    
+          /             \		
+         /               \	
+         |      -=-      |
+         |<------------->| 
+  ===================================*/
 
   gp_Vec        Vfix;
   Standard_Real alpha,b;
@@ -239,14 +236,14 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
 	Prs3d_Root::CurrentGroup(aPresentation)->AddPrimitiveArray(aPrims);
   }
 
-  //===================================
-  // FRACTURES OF PROCESSING OF CALL    
-  //              -=-    
-  //         |<--------->| 
-  //         |           |   
-  //        /             \         
-  //       /               \
-  //===================================
+  /*===================================
+   FRACTURES OF PROCESSING OF CALL    
+                -=-    
+           |<--------->| 
+           |           |   
+          /             \	
+         /               \	 
+  ===================================*/
   else if (aAxis.Distance(P1) < D1*(1 - coeff) || Cross) {
 
     //------ PROCESSING OF FACE ------------
@@ -343,14 +340,14 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
   Prs3d_Root::NewGroup(aPresentation);
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
   
-  if (dist < (LA->Arrow1Aspect()->Length()+LA->Arrow2Aspect()->Length())) outside = Standard_True;
+  if (dist < (LA->ArrowAspect()->Length()+LA->ArrowAspect()->Length())) outside = Standard_True;
   gp_Dir arrdir = L3.Direction().Reversed();
   if (outside) arrdir.Reverse();
   // arrow 1 ----
-  Prs3d_Arrow::Draw(aPresentation,P1,arrdir,LA->Arrow1Aspect()->Angle(),LA->Arrow1Aspect()->Length());
+  Prs3d_Arrow::Draw(aPresentation,P1,arrdir,LA->ArrowAspect()->Angle(),LA->ArrowAspect()->Length());
   
   // arrow 2 ----
-  Prs3d_Arrow::Draw(aPresentation,P2,arrdir.Reversed(),LA->Arrow2Aspect()->Angle(),LA->Arrow2Aspect()->Length());
+  Prs3d_Arrow::Draw(aPresentation,P2,arrdir.Reversed(),LA->ArrowAspect()->Angle(),LA->ArrowAspect()->Length());
 
   //-------------------------------------------------------------------------------------
   //|                                SYMBOL OF SYMMETRY                                 |
@@ -408,15 +405,15 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
   aPrims->AddVertex(pOff.Translated(vec1.Added(vec2.Reversed())));
   aPrims->AddVertex(pOff.Translated(vec1.Reversed().Added(vec2.Reversed())));
 
-  //--------------------------------------------------------------------------------------
-  //|                          MARKING OF THE SYMMETRY AXIS                             |
-  //--------------------------------------------------------------------------------------     
-  //        ____
-  //        \  / :Cursor
-  //         \/
-  //         /\
-  //        /__\
-
+  /*--------------------------------------------------------------------------------------
+  |                          MARKING OF THE SYMMETRY AXIS                             |
+  --------------------------------------------------------------------------------------     
+          ____
+          \  / :Cursor
+           \/
+           /\
+          /__\
+*/
   Standard_Real Dist = (aAxis.Distance(AttachmentPoint1)+aAxis.Distance(AttachmentPoint2))/75;
   gp_Vec vs(aDirectionAxis);
   gp_Vec vsym(vs.Divided(vs.Magnitude()).Multiplied(Dist).XYZ());
@@ -455,7 +452,7 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
 					const gp_Lin&  aAxis,
 					const gp_Pnt&  OffsetPoint)
 {
-  Handle(Prs3d_LengthAspect) LA = aDrawer->LengthAspect();
+  Handle(Prs3d_DimensionAspect) LA = aDrawer->DimensionAspect();
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());  
 
   gp_Pnt OffsetPnt(OffsetPoint.X(),OffsetPoint.Y(),OffsetPoint.Z());
@@ -590,14 +587,14 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
   Prs3d_Root::NewGroup(aPresentation);
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
   
-  if (dist < (LA->Arrow1Aspect()->Length()+LA->Arrow2Aspect()->Length())) outside = Standard_True;
+  if (dist < (LA->ArrowAspect()->Length()+LA->ArrowAspect()->Length())) outside = Standard_True;
   gp_Dir arrdir = L3.Direction().Reversed();
   if (outside) arrdir.Reverse();
   // arrow 1 ----
-  Prs3d_Arrow::Draw(aPresentation,P1,arrdir,LA->Arrow1Aspect()->Angle(),LA->Arrow1Aspect()->Length());
+  Prs3d_Arrow::Draw(aPresentation,P1,arrdir,LA->ArrowAspect()->Angle(),LA->ArrowAspect()->Length());
   
   // arrow 2 ----
-  Prs3d_Arrow::Draw(aPresentation,P2,arrdir.Reversed(),LA->Arrow2Aspect()->Angle(),LA->Arrow2Aspect()->Length());
+  Prs3d_Arrow::Draw(aPresentation,P2,arrdir.Reversed(),LA->ArrowAspect()->Angle(),LA->ArrowAspect()->Length());
 
   //-------------------------------------------------------------------------------------
   //|                                SYMBOL OF SYMMETRY                                 |
@@ -646,15 +643,15 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
   aPrims->AddVertex(pOff.Translated(vec1.Added(vec2.Reversed())));
   aPrims->AddVertex(pOff.Translated(vec1.Reversed().Added(vec2.Reversed())));
   
-  //--------------------------------------------------------------------------------------
-  //|                          MARKING OF THE AXIS OF SYMMETRY                           |
-  //--------------------------------------------------------------------------------------     
-  //        ____
-  //        \  / :Cursor
-  //         \/
-  //         /\
-  //        /__\
-
+/*--------------------------------------------------------------------------------------
+  |                          MARKING OF THE AXIS OF SYMMETRY                           |
+  --------------------------------------------------------------------------------------     
+          ____
+          \  / :Cursor
+           \/
+           /\
+          /__\
+*/
   Standard_Real Dist = aAxis.Distance(Center1)/37;
   gp_Dir aDirectionAxis = aAxis.Direction();
   gp_Vec vs(aDirectionAxis);
@@ -693,7 +690,7 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
 					const gp_Lin&  aAxis,
 					const gp_Pnt&  OffsetPoint)
 {
-  Handle(Prs3d_LengthAspect) LA = aDrawer->LengthAspect();
+  Handle(Prs3d_DimensionAspect) LA = aDrawer->DimensionAspect();
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());  
 
   if (AttachmentPoint1.IsEqual(AttachmentPoint2,Precision::Confusion()))
@@ -702,17 +699,16 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
     //  SYMMETRY WHEN THE REFERENCE POINT IS ON THE AXIS OF SYM.:
     //==============================================================
     //Marker of localisation of the face
-    Handle(Graphic3d_AspectMarker3d) MarkerAsp = new Graphic3d_AspectMarker3d();
-    MarkerAsp->SetType(Aspect_TOM_BALL);
-    MarkerAsp->SetScale(0.8);
-    Quantity_Color acolor;
-    Aspect_TypeOfLine atype;
-    Standard_Real awidth;
-    LA->LineAspect()->Aspect()->Values(acolor, atype, awidth);
-    MarkerAsp->SetColor(acolor);
-    Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(MarkerAsp);
-    Graphic3d_Vertex V3d(AttachmentPoint1.X(),AttachmentPoint1.Y(),AttachmentPoint1.Z());
-    Prs3d_Root::CurrentGroup(aPresentation)->Marker(V3d);
+    Quantity_Color aColor;
+    Aspect_TypeOfLine aType;
+    Standard_Real aWidth;
+    LA->LineAspect()->Aspect()->Values(aColor, aType, aWidth);
+    Handle(Graphic3d_AspectMarker3d) aMarkerAsp = new Graphic3d_AspectMarker3d (Aspect_TOM_O, aColor, 1.0);
+    Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect (aMarkerAsp);
+    Handle(Graphic3d_ArrayOfPoints) anArrayOfPoints = new Graphic3d_ArrayOfPoints (1);
+    anArrayOfPoints->AddVertex (AttachmentPoint1.X(), AttachmentPoint1.Y(), AttachmentPoint1.Z());
+    Prs3d_Root::CurrentGroup(aPresentation)->AddPrimitiveArray (anArrayOfPoints);
+
 
     //Trace of the linking segment 
     Prs3d_Root::NewGroup(aPresentation);
@@ -810,37 +806,36 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
 	Prs3d_Root::CurrentGroup(aPresentation)->AddPrimitiveArray(aPrims);
  
     //==== ARROWS ================
-    if (dist < (LA->Arrow1Aspect()->Length()+LA->Arrow2Aspect()->Length())) outside = Standard_True;
+    if (dist < (LA->ArrowAspect()->Length()+LA->ArrowAspect()->Length())) outside = Standard_True;
     gp_Dir arrdir = L3.Direction().Reversed();
     if (outside) arrdir.Reverse();
     // arrow 1 ----
-    Prs3d_Arrow::Draw(aPresentation,P1,arrdir,LA->Arrow1Aspect()->Angle(),LA->Arrow1Aspect()->Length());
+    Prs3d_Arrow::Draw(aPresentation,P1,arrdir,LA->ArrowAspect()->Angle(),LA->ArrowAspect()->Length());
   
     // arrow 2 ----
-    Prs3d_Arrow::Draw(aPresentation,P2,arrdir.Reversed(),LA->Arrow2Aspect()->Angle(),LA->Arrow2Aspect()->Length());
+    Prs3d_Arrow::Draw(aPresentation,P2,arrdir.Reversed(),LA->ArrowAspect()->Angle(),LA->ArrowAspect()->Length());
     
     //==== POINTS ================
     //Marker of localization of attachment points:
     Prs3d_Root::NewGroup(aPresentation);
     Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
 
-    Handle(Graphic3d_AspectMarker3d) MarkerAspAtt = new Graphic3d_AspectMarker3d();
-    MarkerAspAtt->SetType(Aspect_TOM_BALL);
-    MarkerAspAtt->SetScale(0.8);
-    Quantity_Color color;
-    Aspect_TypeOfLine type;
-    Standard_Real width;
-    LA->LineAspect()->Aspect()->Values(color, type, width);
-    MarkerAspAtt->SetColor(color);
-    Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(MarkerAspAtt);
-    Graphic3d_Vertex Vatt1(AttachmentPoint1.X(),AttachmentPoint1.Y(),AttachmentPoint1.Z());
-    Prs3d_Root::CurrentGroup(aPresentation)->Marker(Vatt1);
+    Quantity_Color aColor;
+    Aspect_TypeOfLine aType;
+    Standard_Real aWidth;
+    LA->LineAspect()->Aspect()->Values (aColor, aType, aWidth);
+    Handle(Graphic3d_AspectMarker3d) aMarkerAspAtt = new Graphic3d_AspectMarker3d (Aspect_TOM_O, aColor, 1.0);
+    Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect (aMarkerAspAtt);
+    Handle(Graphic3d_ArrayOfPoints) anArrayOfPoints1 = new Graphic3d_ArrayOfPoints (1);
+    anArrayOfPoints1->AddVertex (AttachmentPoint1.X(), AttachmentPoint1.Y(), AttachmentPoint1.Z());
+    Prs3d_Root::CurrentGroup(aPresentation)->AddPrimitiveArray (anArrayOfPoints1);
 
     Prs3d_Root::NewGroup(aPresentation);
     Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
-    Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(MarkerAspAtt);
-    Graphic3d_Vertex Vatt2(AttachmentPoint2.X(),AttachmentPoint2.Y(),AttachmentPoint2.Z());
-    Prs3d_Root::CurrentGroup(aPresentation)->Marker(Vatt2);
+    Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect (aMarkerAspAtt);
+    Handle(Graphic3d_ArrayOfPoints) anArrayOfPoints2 = new Graphic3d_ArrayOfPoints (1);
+    anArrayOfPoints2->AddVertex (AttachmentPoint2.X(), AttachmentPoint2.Y(), AttachmentPoint2.Z());
+    Prs3d_Root::CurrentGroup(aPresentation)->AddPrimitiveArray (anArrayOfPoints2);
       
     //-------------------------------------------------------------------------------------
     //|                                SYMBOL OF SYMMETRY                                 |
@@ -887,15 +882,15 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
     aPrims->AddVertex(pOff.Translated(vec1.Added(vec2.Reversed())));
     aPrims->AddVertex(pOff.Translated(vec1.Reversed().Added(vec2.Reversed())));
 
-    //--------------------------------------------------------------------------------------
-    //|                          MARKING OF THE AXIS OF SYMMETRY                           |
-    //--------------------------------------------------------------------------------------     
-    //        ____
-    //        \  / :Cursor
-    //         \/
-    //         /\
-    //        /__\
-    
+    /*--------------------------------------------------------------------------------------
+    |                          MARKING OF THE AXIS OF SYMMETRY                           |
+    --------------------------------------------------------------------------------------     
+            ____
+            \  / :Cursor
+             \/
+             /\
+            /__\
+    */
     Standard_Real Dist = P1.Distance(P2)/75;
     gp_Dir aDirectionAxis = aAxis.Direction();
     gp_Vec vs(aDirectionAxis);

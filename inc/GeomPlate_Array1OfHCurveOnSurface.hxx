@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomPlate_Array1OfHCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up);
+      GeomPlate_Array1OfHCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   GeomPlate_Array1OfHCurveOnSurface(const Handle(Adaptor3d_HCurveOnSurface)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      GeomPlate_Array1OfHCurveOnSurface(const Handle(Adaptor3d_HCurveOnSurface)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(Adaptor3d_HCurveOnSurface)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~GeomPlate_Array1OfHCurveOnSurface()
 {
   Destroy();

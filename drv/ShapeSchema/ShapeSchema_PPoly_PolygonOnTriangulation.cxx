@@ -41,6 +41,8 @@ void ShapeSchema_PPoly_PolygonOnTriangulation::SWrite(const Handle(Standard_Pers
   if (!p.IsNull()) {
     Handle(PPoly_PolygonOnTriangulation) &pp = (Handle(PPoly_PolygonOnTriangulation)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutReal(pp->_CSFDB_GetPPoly_PolygonOnTriangulationmyDeflection());
@@ -61,6 +63,8 @@ void ShapeSchema_PPoly_PolygonOnTriangulation::SRead(const Handle(Standard_Persi
 { 
   if (!p.IsNull()) {
     Handle(PPoly_PolygonOnTriangulation) &pp = (Handle(PPoly_PolygonOnTriangulation)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

@@ -1,21 +1,17 @@
 // Created on: 2011-10-20
 // Created by: Sergey ZERCHANINOV
-// Copyright (c) 2011-2012 OPEN CASCADE SAS
+// Copyright (c) 2011-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <OpenGl_GlCore11.hxx>
 
@@ -38,7 +34,6 @@ struct OpenGl_LAYER_PROP
   int        NbPoints;
   int        LineType;
   float      LineWidth;
-
   OpenGl_AspectText AspectText;
   OpenGl_TextParam TextParam;
 };
@@ -67,18 +62,18 @@ static OpenGl_LAYER_PROP TheLayerProp;
 
 /*----------------------------------------------------------------------*/
 
-void InitLayerProp (const int AListId)
+void InitLayerProp (const int theListId)
 {
-  TheLayerProp.ListId = AListId;
+  TheLayerProp.ListId = theListId;
 
-  if (AListId)
+  if (theListId)
   {
     TheLayerProp.Color = myDefaultColor;
     TheLayerProp.NbPoints = 0;
     TheLayerProp.LineType = -1;
     TheLayerProp.LineWidth = -1.F;
 
-    TheLayerProp.AspectText.SetContext(myDefaultContextText);
+    TheLayerProp.AspectText.SetAspect (myDefaultContextText);
 
     TheLayerProp.TextParam.HAlign = Graphic3d_HTA_LEFT;
     TheLayerProp.TextParam.VAlign = Graphic3d_VTA_BOTTOM;
@@ -115,7 +110,7 @@ void OpenGl_GraphicDriver::BeginLayer (const Aspect_CLayer2d& ACLayer)
   call_def_ptrLayer ptrLayer = (call_def_ptrLayer) ACLayer.ptrLayer;
   if (!ptrLayer) return;
 
-  InitLayerProp(ptrLayer->listIndex);
+  InitLayerProp (ptrLayer->listIndex);
   if (!TheLayerProp.ListId) return;
 
   glNewList (TheLayerProp.ListId, GL_COMPILE);
@@ -140,7 +135,7 @@ void OpenGl_GraphicDriver::ClearLayer (const Aspect_CLayer2d& ACLayer)
 {
   if (!ACLayer.ptrLayer) return;
 
-  InitLayerProp(ACLayer.ptrLayer->listIndex);
+  InitLayerProp (ACLayer.ptrLayer->listIndex);
   if (!TheLayerProp.ListId) return;
 
   glNewList (TheLayerProp.ListId, GL_COMPILE);
@@ -230,12 +225,12 @@ void OpenGl_GraphicDriver::UnsetTransparency ()
 
 void OpenGl_GraphicDriver::SetLineAttributes (const Standard_Integer Type, const Standard_ShortReal Width)
 {
-  if (!TheLayerProp.ListId || openglDisplay.IsNull()) return;
+  if (!TheLayerProp.ListId || myGlDisplay.IsNull()) return;
 
   if (TheLayerProp.LineType != Type)
   {
     TheLayerProp.LineType = Type;
-    openglDisplay->SetTypeOfLine((Aspect_TypeOfLine) Type);
+    myGlDisplay->SetTypeOfLine((Aspect_TypeOfLine) Type);
   }
   if (TheLayerProp.LineWidth != Width)
   {

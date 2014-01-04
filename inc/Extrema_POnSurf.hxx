@@ -22,38 +22,26 @@
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
 #endif
-#ifndef _Standard_Storable_HeaderFile
-#include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
 class gp_Pnt;
 
 
-Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(Extrema_POnSurf);
-
 //! Definition of a point on surface. <br>
 class Extrema_POnSurf  {
-
 public:
 
   DEFINE_STANDARD_ALLOC
 
   //! Creation of an indefinite point on surface. <br>
-  Standard_EXPORT   Extrema_POnSurf();
+      Extrema_POnSurf();
   //! Creation of a point on surface with parameter <br>
 //!          values on the surface and a Pnt from gp. <br>
-  Standard_EXPORT   Extrema_POnSurf(const Standard_Real U,const Standard_Real V,const gp_Pnt& P);
+      Extrema_POnSurf(const Standard_Real U,const Standard_Real V,const gp_Pnt& P);
   //! Returns the 3d point. <br>
        const gp_Pnt& Value() const;
   //! Returns the parameter values on the surface. <br>
         void Parameter(Standard_Real& U,Standard_Real& V) const;
-    Standard_Real _CSFDB_GetExtrema_POnSurfmyU() const { return myU; }
-    void _CSFDB_SetExtrema_POnSurfmyU(const Standard_Real p) { myU = p; }
-    Standard_Real _CSFDB_GetExtrema_POnSurfmyV() const { return myV; }
-    void _CSFDB_SetExtrema_POnSurfmyV(const Standard_Real p) { myV = p; }
-    const gp_Pnt& _CSFDB_GetExtrema_POnSurfmyP() const { return myP; }
+
+
 
 
 
@@ -62,7 +50,9 @@ protected:
 
 
 
-private: 
+
+private:
+
 
 
 Standard_Real myU;

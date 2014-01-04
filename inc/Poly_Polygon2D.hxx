@@ -19,14 +19,14 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 class Standard_NullObject;
 class TColgp_Array1OfPnt2d;
@@ -88,7 +88,6 @@ private:
 
 
 Standard_Real myDeflection;
-Standard_Integer myNbNodes;
 TColgp_Array1OfPnt2d myNodes;
 
 

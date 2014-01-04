@@ -39,11 +39,11 @@ class StepVisual_HArray1OfBoxCharacteristicSelect : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer Low,const Standard_Integer Up);
+      StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer Low,const Standard_Integer Up,const StepVisual_BoxCharacteristicSelect& V);
+      StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer Low,const Standard_Integer Up,const StepVisual_BoxCharacteristicSelect& V);
   
-  Standard_EXPORT     void Init(const StepVisual_BoxCharacteristicSelect& V) ;
+        void Init(const StepVisual_BoxCharacteristicSelect& V) ;
   
         Standard_Integer Length() const;
   

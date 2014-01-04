@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //szv#4 S4163
 #include <Interface_ParamSet.ixx>
@@ -55,7 +51,7 @@ Standard_Integer  Interface_ParamSet::Append (const Standard_CString val, const 
     Standard_Integer i;
     if (thelnval + lnval + 1 > thelnres) {
       //      Reservation de caracteres insuffisante : d abord augmenter
-      Standard_Integer newres = thelnres*2 + lnval ;
+      Standard_Integer newres = (Standard_Integer)(thelnres*2 + lnval);
       char* newval = new char[newres];
       for (i = 0; i < thelnval; i++) 
         newval[i] = theval[i]; //szv#4:S4163:12Mar99 `<= thelnres` was wrong
@@ -88,7 +84,7 @@ Standard_Integer  Interface_ParamSet::Append (const Standard_CString val, const 
     Interface_FileParameter& FP = thelist->ChangeValue(thenbpar);
     FP.Init(&theval[thelnval],typ);
     if (nument != 0) FP.SetEntityNumber(nument);
-    thelnval += (lnval+1);
+    thelnval += (Standard_Integer)(lnval+1);
   }
   return thenbpar;
 }

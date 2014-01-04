@@ -31,9 +31,6 @@
 #ifndef _Handle_HLRAlgo_PolyAlgo_HeaderFile
 #include <Handle_HLRAlgo_PolyAlgo.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -51,6 +48,9 @@
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
@@ -280,7 +280,6 @@ TopTools_SequenceOfShape myShapes;
 TopTools_IndexedMapOfShape myEMap;
 TopTools_IndexedMapOfShape myFMap;
 Handle_HLRAlgo_PolyAlgo myAlgo;
-Standard_Integer myHide;
 Standard_Boolean myDebug;
 Standard_Real myAngle;
 Standard_Real myTolSta;

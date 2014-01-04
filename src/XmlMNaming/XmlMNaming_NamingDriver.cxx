@@ -1,22 +1,17 @@
 // Created on: 2001-08-31
 // Created by: Julia DOROVSKIKH
-// Copyright (c) 2001-2012 OPEN CASCADE SAS
+// Copyright (c) 2001-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <XmlMNaming_NamingDriver.ixx>
 
@@ -26,6 +21,7 @@
 #include <TNaming_Naming.hxx>
 #include <TNaming_NamedShape.hxx>
 #include <TNaming_ListIteratorOfListOfNamedShape.hxx>
+#include <TNaming_Iterator.hxx>
 #include <TDF_Tool.hxx>
 
 //=======================================================================
@@ -41,6 +37,7 @@ IMPLEMENT_DOMSTRING (TypeString,                "nametype")
 IMPLEMENT_DOMSTRING (ShapeTypeString,           "shapetype")
 IMPLEMENT_DOMSTRING (ArgumentsString,           "arguments")
 IMPLEMENT_DOMSTRING (ContextLabelString,        "contextlabel")
+IMPLEMENT_DOMSTRING (OrientString,              "orientation")
 
 IMPLEMENT_DOMSTRING (NTUnknownString,           "unknown")
 IMPLEMENT_DOMSTRING (NTIdentityString,          "identity")
@@ -203,6 +200,39 @@ Standard_Boolean XmlMNaming_NamingDriver::Paste
     else
       cout << "Retrieving Context Label is NULL" <<endl;
 #endif
+
+    if(XmlMNaming::DocumentVersion() > 4 && XmlMNaming::DocumentVersion() < 7) {
+          // Orientation processing - converting from old format
+          Handle(TNaming_NamedShape) aNS;
+          if (aNg->Label().FindAttribute(TNaming_NamedShape::GetID(), aNS)) {
+            //const TDF_Label& aLab = aNS->Label();
+            TNaming_Iterator itL (aNS);
+            for (; itL.More(); itL.Next()) {
+              const TopoDS_Shape& S = itL.NewShape();
+              if (S.IsNull()) continue;
+              if(aNS->Evolution() == TNaming_SELECTED) {
+                if (itL.More() && itL.NewShape().ShapeType() != TopAbs_VERTEX &&
+                    !itL.OldShape().IsNull() && itL.OldShape().ShapeType() == TopAbs_VERTEX ) {//OR-N
+                  TopAbs_Orientation OrientationToApply = itL.OldShape().Orientation();
+                  aNgName.Orientation(OrientationToApply);
+                }
+              }
+            }
+          }         
+        }
+    if(XmlMNaming::DocumentVersion() > 6) {
+       aDOMStr = anElem.getAttribute(::OrientString());
+       if (!aDOMStr.GetInteger(aNb))
+       {
+         aMsgString = TCollection_ExtendedString
+           ("XmlMNaming_NamingDriver: Cannot retrieve "
+            "integer value of orientation from \"") + aDOMStr + "\"";
+         WriteMessage (aMsgString);
+         return Standard_False;
+       }
+       aNgName.Orientation((TopAbs_Orientation)aNb);
+    }
+    // or. end
   }
 #ifdef DEB
   else if(XmlMNaming::DocumentVersion() == -1)
@@ -286,6 +316,9 @@ void XmlMNaming_NamingDriver::Paste
   } else
     cout << "XmlMNaming_NamingDriver::Store: aDOMString is NULL" <<endl;
 #endif
+
+  // orientation
+  anElem.setAttribute(::OrientString(), (Standard_Integer)aNgName.Orientation());
 
 }
 

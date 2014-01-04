@@ -235,7 +235,6 @@ IntTools_SequenceOfRoots mySequenceOfRoots;
 IntTools_SequenceOfCommonPrts mySeqOfCommonPrts;
 Standard_Real myPar1;
 Standard_Boolean myParallel;
-Standard_Boolean myAllNullFlag;
 IntTools_Range myRange;
 
 

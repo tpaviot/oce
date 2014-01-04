@@ -16,8 +16,8 @@
 #include <Handle_AIS_DimensionOwner.hxx>
 #endif
 
-#ifndef _TopoDS_Shape_HeaderFile
-#include <TopoDS_Shape.hxx>
+#ifndef _AIS_DimensionSelectionMode_HeaderFile
+#include <AIS_DimensionSelectionMode.hxx>
 #endif
 #ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
@@ -28,8 +28,21 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
+#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#endif
+#ifndef _Quantity_NameOfColor_HeaderFile
+#include <Quantity_NameOfColor.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
+#ifndef _Handle_PrsMgr_PresentationManager_HeaderFile
+#include <Handle_PrsMgr_PresentationManager.hxx>
+#endif
 class SelectMgr_SelectableObject;
-class TopoDS_Shape;
+class PrsMgr_PresentationManager3d;
+class PrsMgr_PresentationManager;
 
 
 //! The owner is the entity which makes it possible to link <br>
@@ -48,16 +61,20 @@ class AIS_DimensionOwner : public SelectMgr_EntityOwner {
 public:
 
   
-//! Initializes the dimension owner, aSO, and attributes it <br>
-//! the priority, aPriority. <br>
-  Standard_EXPORT   AIS_DimensionOwner(const Handle(SelectMgr_SelectableObject)& aSO,const Standard_Integer aPriority = 0);
+//! Initializes the dimension owner, theSO, and attributes it <br>
+//! the priority, thePriority. <br>
+  Standard_EXPORT   AIS_DimensionOwner(const Handle(SelectMgr_SelectableObject)& theSelObject,const AIS_DimensionSelectionMode theSelMode,const Standard_Integer thePriority = 0);
   
-//! Constructs the reference shape owner aShape for <br>
-//! presentation primitives. <br>
-        void SetShape(const TopoDS_Shape& aShape) ;
+  Standard_EXPORT     AIS_DimensionSelectionMode SelectionMode() const;
   
-//! Returns the owner shape whose primitives we are concerned with. <br>
-       const TopoDS_Shape& FixedShape() const;
+  Standard_EXPORT   virtual  void HilightWithColor(const Handle(PrsMgr_PresentationManager3d)& thePM,const Quantity_NameOfColor theColor,const Standard_Integer theMode = 0) ;
+  //! Returns true if an object with the selection mode <br>
+//! aMode is highlighted in the presentation manager aPM. <br>
+  Standard_EXPORT   virtual  Standard_Boolean IsHilighted(const Handle(PrsMgr_PresentationManager)& thePM,const Standard_Integer theMode = 0) const;
+  
+  Standard_EXPORT   virtual  void Hilight(const Handle(PrsMgr_PresentationManager)& thePM,const Standard_Integer theMode = 0) ;
+  //! Removes highlighting from the selected part of dimension. <br>
+  Standard_EXPORT   virtual  void Unhilight(const Handle(PrsMgr_PresentationManager)& thePM,const Standard_Integer theMode = 0) ;
 
 
 
@@ -72,13 +89,12 @@ protected:
 private: 
 
 
-TopoDS_Shape myFixedShape;
+AIS_DimensionSelectionMode mySelectionMode;
 
 
 };
 
 
-#include <AIS_DimensionOwner.lxx>
 
 
 

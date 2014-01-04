@@ -1,28 +1,18 @@
 // Created on: 1998-11-12
 // Created by: Robert COUBLANC
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
-
-//===============================================
-//    AIS Objects Creation : Datums (axis,trihedrons,lines,planes)
-//===============================================
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifdef HAVE_CONFIG_H
 #include <oce-config.h>
@@ -38,12 +28,13 @@
 #include <Draw_Appli.hxx>
 #include <DBRep.hxx>
 
+#include <Font_BRepFont.hxx>
+#include <Font_FontMgr.hxx>
 #include <OSD_Chronometer.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <Visual3d_View.hxx>
 #include <V3d_Viewer.hxx>
 #include <V3d_View.hxx>
-#include <V3d_Plane.hxx>
 #include <V3d.hxx>
 
 #include <AIS_Shape.hxx>
@@ -81,8 +72,8 @@
 #include <AIS_InteractiveContext.hxx>
 #include <Geom_Plane.hxx>
 #include <gp_Pln.hxx>
-#include <AIS_AngleDimension.hxx>
 #include <TCollection_ExtendedString.hxx>
+#include <TCollection_HAsciiString.hxx>
 #include <GC_MakePlane.hxx>
 #include <gp_Circ.hxx>
 #include <AIS_Axis.hxx>
@@ -107,6 +98,7 @@
 #include <Graphic3d_ArrayOfQuadrangles.hxx>
 #include <Graphic3d_ArrayOfQuadrangleStrips.hxx>
 #include <Graphic3d_ArrayOfPolygons.hxx>
+#include <Graphic3d_AspectMarker3d.hxx>
 #include <Graphic3d_Group.hxx>
 #include <Standard_Real.hxx>
 
@@ -134,6 +126,7 @@
 
 #include <Select3D_SensitiveTriangle.hxx>
 #include <Select3D_SensitiveCurve.hxx>
+#include <Select3D_SensitivePoint.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <StdPrs_Curve.hxx>
 
@@ -141,6 +134,10 @@
 #include <BRepExtrema_ExtPF.hxx>
 
 #include <Prs3d_LineAspect.hxx>
+#include <Prs3d_PointAspect.hxx>
+
+#include <Image_AlienPixMap.hxx>
+#include <TColStd_HArray1OfAsciiString.hxx>
 
 #ifdef HAVE_STRINGS_H
 #include <strings.h>
@@ -311,11 +308,8 @@ static int VSize (Draw_Interpretor& di, Standard_Integer argc, const char** argv
   Standard_Boolean             ThereIsCurrent;
   Standard_Real                value;
   Standard_Boolean             hascol;
-#ifdef DEB
-  Quantity_NameOfColor         col;
-#else
+
   Quantity_NameOfColor         col = Quantity_NOC_BLACK ;
-#endif
 
   // Verification des arguments
   if ( argc>3 ) {di<<argv[0]<<" Syntaxe error"<<"\n"; return 1;}
@@ -894,12 +888,12 @@ static int VPointBuilder(Draw_Interpretor& di, Standard_Integer argc, const char
 //==============================================================================
 //function : VPlaneBuilder
 //purpose  : Build an AIS_Plane from selected entities or Named AIS components
-//Draw arg : vplane PlaneName [AxisName]  [PointName]
-//                            [PointName] [PointName] [PointName]
-//                            [PlaneName] [PointName]
+//Draw arg : vplane PlaneName [AxisName]  [PointName] [TypeOfSensitivity]
+//                            [PointName] [PointName] [PointName] [TypeOfSensitivity]
+//                            [PlaneName] [PointName] [TypeOfSensitivity]
 //==============================================================================
 
-static Standard_Integer VPlaneBuilder (Draw_Interpretor& di,
+static Standard_Integer VPlaneBuilder (Draw_Interpretor& /*di*/,
                                        Standard_Integer argc,
                                        const char** argv)
 {
@@ -909,12 +903,12 @@ static Standard_Integer VPlaneBuilder (Draw_Interpretor& di,
   Standard_Integer aCurrentIndex;
 
   // Verification
-  if (argc<2 || argc>5 )
+  if (argc<2 || argc>6 )
   {
     std::cout<<" Syntax error\n";
     return 1;
   }
-  if (argc==5 || argc==4)
+  if (argc == 6 || argc==5 || argc==4)
     hasArg=Standard_True;
   else 
     hasArg=Standard_False;
@@ -1020,6 +1014,23 @@ static Standard_Integer VPlaneBuilder (Draw_Interpretor& di,
         Handle(Geom_Plane) aGeomPlane = MkPlane.Value();
         Handle(AIS_Plane)  anAISPlane = new AIS_Plane(aGeomPlane );
         GetMapOfAIS().Bind (anAISPlane,aName );
+        if (argc == 6)
+        {
+          Standard_Integer aType = Draw::Atoi (argv[5]);
+          if (aType != 0 && aType != 1)
+          {
+            std::cout << "vplane error: wrong type of sensitivity!\n"
+                      << "Should be one of the following values:\n"
+                      << "0 - Interior\n"
+                      << "1 - Boundary"
+                      << std::endl;
+            return 1;
+          }
+          else
+          {
+            anAISPlane->SetTypeOfSensitivity (Select3D_TypeOfSensitivity (aType));
+          }
+        }
         TheAISContext()->Display(anAISPlane);
       }
 
@@ -1061,6 +1072,23 @@ static Standard_Integer VPlaneBuilder (Draw_Interpretor& di,
       Handle(Geom_Plane) aGeomPlane = new Geom_Plane(B,D);
       Handle(AIS_Plane) anAISPlane = new AIS_Plane(aGeomPlane,B );
       GetMapOfAIS().Bind (anAISPlane,aName );
+      if (argc == 5)
+      {
+        Standard_Integer aType = Draw::Atoi (argv[4]);
+        if (aType != 0 && aType != 1)
+        {
+          std::cout << "vplane error: wrong type of sensitivity!\n"
+                    << "Should be one of the following values:\n"
+                    << "0 - Interior\n"
+                    << "1 - Boundary"
+                    << std::endl;
+          return 1;
+        }
+        else
+        {
+          anAISPlane->SetTypeOfSensitivity (Select3D_TypeOfSensitivity (aType));
+        }
+      }
       TheAISContext()->Display(anAISPlane);
 
     }
@@ -1099,6 +1127,23 @@ static Standard_Integer VPlaneBuilder (Draw_Interpretor& di,
       // Construction of an AIS_Plane
       Handle(AIS_Plane) anAISPlane = new AIS_Plane(aNewGeomPlane, B);
       GetMapOfAIS().Bind (anAISPlane, aName);
+      if (argc == 5)
+      {
+        Standard_Integer aType = Draw::Atoi (argv[4]);
+        if (aType != 0 && aType != 1)
+        {
+          std::cout << "vplane error: wrong type of sensitivity!\n"
+                    << "Should be one of the following values:\n"
+                    << "0 - Interior\n"
+                    << "1 - Boundary"
+                    << std::endl;
+          return 1;
+        }
+        else
+        {
+          anAISPlane->SetTypeOfSensitivity (Select3D_TypeOfSensitivity (aType));
+        }
+      }
       TheAISContext()->Display(anAISPlane);
     }
     // Error
@@ -1842,7 +1887,7 @@ TopoDS_Face FilledCircle::ComputeFace()
   return aFace;
 }
 
-void FilledCircle::Compute(const Handle_PrsMgr_PresentationManager3d &thePresentationManager, 
+void FilledCircle::Compute(const Handle_PrsMgr_PresentationManager3d &/*thePresentationManager*/, 
                            const Handle_Prs3d_Presentation &thePresentation, 
                            const Standard_Integer theMode) 
 {
@@ -1857,7 +1902,7 @@ void FilledCircle::Compute(const Handle_PrsMgr_PresentationManager3d &thePresent
 }
 
 void FilledCircle::ComputeSelection(const Handle_SelectMgr_Selection &theSelection, 
-                                    const Standard_Integer theMode)
+                                    const Standard_Integer /*theMode*/)
 {
   Handle(SelectMgr_EntityOwner) anEntityOwner = new SelectMgr_EntityOwner(this);
   Handle(Select3D_SensitiveCircle) aSensitiveCircle = new Select3D_SensitiveCircle(anEntityOwner, 
@@ -1889,6 +1934,7 @@ void DisplayCircle (Handle (Geom_Circle) theGeomCircle,
   else
   {
     aCircle = new AIS_Circle(theGeomCircle);
+    Handle(AIS_Circle)::DownCast (aCircle)->SetFilledCircleSens (Standard_False);
   }
 
   // Check if there is an object with given name
@@ -1910,7 +1956,7 @@ void DisplayCircle (Handle (Geom_Circle) theGeomCircle,
   
 }
 
-static int VCircleBuilder(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+static int VCircleBuilder(Draw_Interpretor& /*di*/, Standard_Integer argc, const char** argv)
 {
   Standard_Integer myCurrentIndex;
   // Verification of the arguments
@@ -2310,8 +2356,8 @@ private:
                   const Handle(Prs3d_Presentation)& aPresentation,
                   const Standard_Integer aMode);
 
-  void ComputeSelection (  const Handle(SelectMgr_Selection)& aSelection,
-                           const Standard_Integer aMode){} ;
+  void ComputeSelection (  const Handle(SelectMgr_Selection)& /*aSelection*/,
+                           const Standard_Integer /*aMode*/){} ;
 
 protected:
   TCollection_ExtendedString          aText;
@@ -2323,7 +2369,7 @@ protected:
   Standard_Real                       aHeight;
   Standard_Boolean                    aZoomable;
   Quantity_Color                      aColor;
-  Standard_CString                    aFont;
+  TCollection_AsciiString             aFont;
   Font_FontAspect                     aFontAspect;
   Graphic3d_HorizontalTextAlignment   aHJustification;
   Graphic3d_VerticalTextAlignment     aVJustification;
@@ -2360,16 +2406,16 @@ MyTextClass::MyTextClass( const TCollection_ExtendedString& text, const gp_Pnt& 
 
 
 //////////////////////////////////////////////////////////////////////////////
-void MyTextClass::Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,
+void MyTextClass::Compute(const Handle(PrsMgr_PresentationManager3d)& /*aPresentationManager*/,
                           const Handle(Prs3d_Presentation)& aPresentation,
-                          const Standard_Integer aMode)
+                          const Standard_Integer /*aMode*/)
 {
 
   aPresentation->Clear();
 
   Handle_Prs3d_TextAspect asp = myDrawer->TextAspect();
 
-  asp->SetFont(aFont);
+  asp->SetFont(aFont.ToCString());
   asp->SetColor(aColor);
   asp->SetHeight(aHeight); // I am changing the myHeight value
 
@@ -2745,7 +2791,7 @@ Handle( Poly_Triangulation ) CalculationOfSphere( double X , double Y , double Z
 //author   : psn
 //purpose  : Create an AIS shape.
 //===============================================================================================
-static int VDrawSphere (Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+static int VDrawSphere (Draw_Interpretor& /*di*/, Standard_Integer argc, const char** argv)
 {
   // check for errors
   Handle(AIS_InteractiveContext) aContextAIS = ViewerTest::GetAISContext();
@@ -2757,7 +2803,7 @@ static int VDrawSphere (Draw_Interpretor& di, Standard_Integer argc, const char*
   else if (argc < 3)
   {
     std::cout << "Use: " << argv[0]
-              << " shapeName Fineness [X=0.0 Y=0.0 Z=0.0] [Radius=100.0] [ToEnableVBO=1] [NumberOfViewerUpdate=1] [ToShowEdges=0]\n";
+              << " shapeName Fineness [X=0.0 Y=0.0 Z=0.0] [Radius=100.0] [ToShowEdges=0]\n";
     return 1;
   }
 
@@ -2844,181 +2890,6 @@ static int VDrawSphere (Draw_Interpretor& di, Standard_Integer argc, const char*
   aShape->Attributes()->SetShadingAspect (aShAsp);
 
   VDisplayAISObject (aShapeName, aShape);
-  return 0;
-}
-
-//===============================================================================================
-//function : VClipPlane
-//purpose  :
-//===============================================================================================
-static int VClipPlane (Draw_Interpretor& di, Standard_Integer argc, const char** argv)
-{
-  Handle(V3d_Viewer) aViewer = ViewerTest::GetViewerFromContext();
-  Handle(V3d_View) aView = ViewerTest::CurrentView();
-  Standard_Real coeffA, coeffB, coeffC, coeffD;
-  if (aViewer.IsNull() || aView.IsNull())
-  {
-    std::cout << "Viewer not initialized!\n";
-    return 1;
-  }
-
-  // count an active planes count
-  Standard_Integer aNewPlaneId = 1;
-  Standard_Integer anActivePlanes = 0;
-  for (aViewer->InitDefinedPlanes(); aViewer->MoreDefinedPlanes(); aViewer->NextDefinedPlanes(), ++aNewPlaneId)
-  {
-    Handle(V3d_Plane) aPlaneV3d = aViewer->DefinedPlane();
-    if (aView->IsActivePlane (aPlaneV3d))
-    {
-      ++anActivePlanes;
-    }
-  }
-
-  if (argc == 1)
-  {
-    // just show info about existing planes
-    Standard_Integer aPlaneId = 1;
-    std::cout << "Active planes: " << anActivePlanes << " from maximal " << aView->View()->PlaneLimit() << "\n";
-    for (aViewer->InitDefinedPlanes(); aViewer->MoreDefinedPlanes(); aViewer->NextDefinedPlanes(), ++aPlaneId)
-    {
-      Handle(V3d_Plane) aPlaneV3d = aViewer->DefinedPlane();
-      aPlaneV3d->Plane (coeffA, coeffB, coeffC, coeffD);
-      gp_Pln aPlane (coeffA, coeffB, coeffC, coeffD);
-      const gp_Pnt& aLoc = aPlane.Location();
-      const gp_Dir& aNor = aPlane.Axis().Direction();
-      Standard_Boolean isActive = aView->IsActivePlane (aPlaneV3d);
-      std::cout << "Plane #" << aPlaneId
-        << " " << aLoc.X() << " " << aLoc.Y() << " " << aLoc.Z()
-        << " " << aNor.X() << " " << aNor.Y() << " " << aNor.Z()
-        << (isActive ? " on" : " off")
-        << (aPlaneV3d->IsDisplayed() ? ", displayed" : ", hidden")
-        << "\n";
-    }
-    if (aPlaneId == 1)
-    {
-      std::cout << "No defined clipping planes\n";
-    }
-    return 0;
-  }
-  else if (argc == 2 || argc == 3)
-  {
-    Standard_Integer aPlaneIdToOff = (argc == 3) ? Draw::Atoi (argv[1]) : 1;
-    Standard_Boolean toIterateAll = (argc == 2);
-    TCollection_AsciiString isOnOffStr ((argc == 3) ? argv[2] : argv[1]);
-    isOnOffStr.LowerCase();
-    Standard_Integer aPlaneId = 1;
-    for (aViewer->InitDefinedPlanes(); aViewer->MoreDefinedPlanes(); aViewer->NextDefinedPlanes(), ++aPlaneId)
-    {
-      if (aPlaneIdToOff == aPlaneId || toIterateAll)
-      {
-        Handle(V3d_Plane) aPlaneV3d = aViewer->DefinedPlane();
-        if (isOnOffStr.Search ("off") >= 0)
-        {
-          aView->SetPlaneOff (aPlaneV3d);
-          std::cout << "Clipping plane #" << aPlaneId << " was disabled\n";
-        }
-        else if (isOnOffStr.Search ("on") >= 0)
-        {
-          // avoid z-fighting glitches
-          aPlaneV3d->Erase();
-          if (!aView->IsActivePlane (aPlaneV3d))
-          {
-            if (anActivePlanes < aView->View()->PlaneLimit())
-            {
-              aView->SetPlaneOn (aPlaneV3d);
-              std::cout << "Clipping plane #" << aPlaneId << " was enabled\n";
-            }
-            else
-            {
-              std::cout << "Maximal active planes limit exceeded (" << anActivePlanes << ")\n"
-                        << "You should disable or remove some existing plane to activate this one\n";
-            }
-          }
-          else
-          {
-            std::cout << "Clipping plane #" << aPlaneId << " was already enabled\n";
-          }
-        }
-        else if (isOnOffStr.Search ("del") >= 0 || isOnOffStr.Search ("rem") >= 0)
-        {
-          aPlaneV3d->Erase(); // not performed on destructor!!!
-          aView->SetPlaneOff (aPlaneV3d);
-          aViewer->DelPlane (aPlaneV3d);
-          std::cout << "Clipping plane #" << aPlaneId << " was removed\n";
-          if (toIterateAll)
-          {
-            for (aViewer->InitDefinedPlanes(); aViewer->MoreDefinedPlanes(); aViewer->InitDefinedPlanes(), ++aPlaneId)
-            {
-              aPlaneV3d = aViewer->DefinedPlane();
-              aPlaneV3d->Erase(); // not performed on destructor!!!
-              aView->SetPlaneOff (aPlaneV3d);
-              aViewer->DelPlane (aPlaneV3d);
-              std::cout << "Clipping plane #" << aPlaneId << " was removed\n";
-            }
-            break;
-          }
-          else
-          {
-            break;
-          }
-        }
-        else if (isOnOffStr.Search ("disp") >= 0 || isOnOffStr.Search ("show") >= 0)
-        {
-          // avoid z-fighting glitches
-          aView->SetPlaneOff (aPlaneV3d);
-          aPlaneV3d->Display (aView);
-          std::cout << "Clipping plane #" << aPlaneId << " was shown and disabled\n";
-        }
-        else if (isOnOffStr.Search ("hide") >= 0)
-        {
-          aPlaneV3d->Erase();
-          std::cout << "Clipping plane #" << aPlaneId << " was hidden\n";
-        }
-        else
-        {
-          std::cout << "Usage: " << argv[0] << " [x y z dx dy dz] [planeId {on/off/del/display/hide}]\n";
-          return 1;
-        }
-      }
-    }
-    if (aPlaneIdToOff >= aPlaneId && !toIterateAll)
-    {
-      std::cout << "Clipping plane with id " << aPlaneIdToOff << " not found!\n";
-      return 1;
-    }
-    aView->Update();
-    return 0;
-  }
-  else if (argc != 7)
-  {
-    std::cout << "Usage: " << argv[0] << " [x y z dx dy dz] [planeId {on/off/del/display/hide}]\n";
-    return 1;
-  }
-
-  Standard_Real aLocX = Draw::Atof (argv[1]);
-  Standard_Real aLocY = Draw::Atof (argv[2]);
-  Standard_Real aLocZ = Draw::Atof (argv[3]);
-  Standard_Real aNormDX = Draw::Atof (argv[4]);
-  Standard_Real aNormDY = Draw::Atof (argv[5]);
-  Standard_Real aNormDZ = Draw::Atof (argv[6]);
-
-  Handle(V3d_Plane) aPlaneV3d = new V3d_Plane();
-  gp_Pln aPlane (gp_Pnt (aLocX, aLocY, aLocZ), gp_Dir (aNormDX, aNormDY, aNormDZ));
-  aPlane.Coefficients (coeffA, coeffB, coeffC, coeffD);
-  aPlaneV3d->SetPlane(coeffA, coeffB, coeffC, coeffD);
-
-  aViewer->AddPlane (aPlaneV3d); // add to defined planes list
-  std::cout << "Added clipping plane #" << aNewPlaneId << "\n";
-  if (anActivePlanes < aView->View()->PlaneLimit())
-  {
-    aView->SetPlaneOn (aPlaneV3d); // add to enabled planes list
-    aView->Update();
-  }
-  else
-  {
-    std::cout << "Maximal active planes limit exceeded (" << anActivePlanes << ")\n"
-              << "You should disable or remove some existing plane to activate the new one\n";
-  }
   return 0;
 }
 
@@ -3164,9 +3035,11 @@ class MyPArrayObject : public AIS_InteractiveObject
 
 public:
 
-  MyPArrayObject (const Handle(Graphic3d_ArrayOfPrimitives) theArray)
+  MyPArrayObject (Handle(TColStd_HArray1OfAsciiString) theArrayDescription,
+                  Handle(Graphic3d_AspectMarker3d) theMarkerAspect = NULL)
   {
-    myArray = theArray;
+    myArrayDescription = theArrayDescription;
+    myMarkerAspect = theMarkerAspect;
   }
 
   DEFINE_STANDARD_RTTI(MyPArrayObject)
@@ -3177,35 +3050,224 @@ private:
                 const Handle(Prs3d_Presentation)& aPresentation,
                 const Standard_Integer aMode);
 
-  void ComputeSelection (const Handle(SelectMgr_Selection)& aSelection,
-                         const Standard_Integer aMode) {};
+  void ComputeSelection (const Handle(SelectMgr_Selection)& theSelection,
+                         const Standard_Integer /*theMode*/);
+
+  bool CheckInputCommand (const TCollection_AsciiString theCommand,
+                          const Handle(TColStd_HArray1OfAsciiString) theArgsArray,
+                          Standard_Integer &theArgIndex,
+                          Standard_Integer theArgCount,
+                          Standard_Integer theMaxArgs);
 
 protected:
 
-  Handle(Graphic3d_ArrayOfPrimitives) myArray;
+  Handle(TColStd_HArray1OfAsciiString) myArrayDescription;
+  Handle(Graphic3d_AspectMarker3d) myMarkerAspect;
 
 };
 
 IMPLEMENT_STANDARD_HANDLE(MyPArrayObject, AIS_InteractiveObject)
 IMPLEMENT_STANDARD_RTTIEXT(MyPArrayObject, AIS_InteractiveObject)
 
-void MyPArrayObject::Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,
+void MyPArrayObject::Compute (const Handle(PrsMgr_PresentationManager3d)& /*aPresentationManager*/,
                               const Handle(Prs3d_Presentation)& aPresentation,
-                              const Standard_Integer aMode)
+                              const Standard_Integer /*aMode*/)
 {
+
+  // Parsing array description
+  Standard_Integer aVertexNum = 0, aBoundNum = 0, aEdgeNum = 0;
+  Standard_Boolean hasVColors, hasBColors, hasNormals, hasInfos, hasTexels;
+  hasVColors = hasNormals = hasBColors = hasInfos = hasTexels = Standard_False;
+
+  Standard_Integer anArgIndex = 0;
+  Standard_Integer anArgsCount = myArrayDescription->Length();
+  TCollection_AsciiString anArrayType = myArrayDescription->Value (anArgIndex++);
+
+  TCollection_AsciiString aCommand;
+  while (anArgIndex < anArgsCount)
+  {
+    aCommand = myArrayDescription->Value (anArgIndex);
+    aCommand.LowerCase();
+
+    // vertex command
+    if (CheckInputCommand ("v", myArrayDescription, anArgIndex, 3, anArgsCount))
+    {
+      // vertex has a normal or normal with color or texel
+      if (CheckInputCommand ("n", myArrayDescription, anArgIndex, 3, anArgsCount))
+        hasNormals = Standard_True;
+
+      // vertex has a color
+      if (CheckInputCommand ("c", myArrayDescription, anArgIndex, 3, anArgsCount))
+        hasVColors = Standard_True;
+
+      // vertex has a texel
+      if (CheckInputCommand ("t", myArrayDescription, anArgIndex, 2, anArgsCount))
+        hasTexels = Standard_True;
+
+      aVertexNum++;
+    }
+    // bound command
+    else if (CheckInputCommand ("b", myArrayDescription, anArgIndex, 1, anArgsCount))
+    {
+      // bound has color
+      if (CheckInputCommand ("c", myArrayDescription, anArgIndex, 3, anArgsCount))
+        hasBColors = Standard_True;
+
+      aBoundNum++;
+    }
+    // edge command
+    else if (CheckInputCommand ("e", myArrayDescription, anArgIndex, 1, anArgsCount))
+    {
+      // edge has a hide flag
+      if (CheckInputCommand ("h", myArrayDescription, anArgIndex, 0, anArgsCount))
+        hasInfos = Standard_True;
+
+      aEdgeNum++;
+    }
+    // unknown command
+    else
+      anArgIndex++;
+  }
+
+  Handle(Graphic3d_ArrayOfPrimitives) anArray;
+  if (anArrayType == "points")
+  {
+    anArray = new Graphic3d_ArrayOfPoints (aVertexNum);
+  }
+  else if (anArrayType == "segments")
+    anArray = new Graphic3d_ArrayOfSegments (aVertexNum, aEdgeNum, hasVColors);
+  else if (anArrayType == "polylines")
+    anArray = new Graphic3d_ArrayOfPolylines (aVertexNum, aBoundNum, aEdgeNum,
+                                              hasVColors, hasBColors, hasInfos);
+  else if (anArrayType == "triangles")
+    anArray = new Graphic3d_ArrayOfTriangles (aVertexNum, aEdgeNum, hasNormals,
+                                              hasVColors, hasTexels, hasInfos);
+  else if (anArrayType == "trianglefans")
+    anArray = new Graphic3d_ArrayOfTriangleFans (aVertexNum, aBoundNum,
+                                                 hasNormals, hasVColors,
+                                                 hasBColors, hasTexels);
+  else if (anArrayType == "trianglestrips")
+    anArray = new Graphic3d_ArrayOfTriangleStrips (aVertexNum, aBoundNum,
+                                                   hasNormals, hasVColors,
+                                                   hasBColors, hasTexels);
+  else if (anArrayType == "quads")
+    anArray = new Graphic3d_ArrayOfQuadrangles (aVertexNum, aEdgeNum,
+                                                hasNormals, hasVColors,
+                                                hasTexels, hasInfos);
+  else if (anArrayType == "quadstrips")
+    anArray = new Graphic3d_ArrayOfQuadrangleStrips (aVertexNum, aBoundNum,
+                                                     hasNormals, hasVColors,
+                                                     hasBColors, hasTexels);
+  else if (anArrayType == "polygons")
+    anArray = new Graphic3d_ArrayOfPolygons (aVertexNum, aBoundNum, aEdgeNum,
+                                             hasNormals, hasVColors, hasBColors,
+                                             hasTexels, hasInfos);
+
+  anArgIndex = 1;
+  while (anArgIndex < anArgsCount)
+  {
+    aCommand = myArrayDescription->Value (anArgIndex);
+    aCommand.LowerCase();
+    if (!aCommand.IsAscii())
+      break;
+
+    // vertex command
+    if (CheckInputCommand ("v", myArrayDescription, anArgIndex, 3, anArgsCount))
+    {
+      anArray->AddVertex (myArrayDescription->Value (anArgIndex - 3).RealValue(),
+                          myArrayDescription->Value (anArgIndex - 2).RealValue(),
+                          myArrayDescription->Value (anArgIndex - 1).RealValue());
+
+      // vertex has a normal or normal with color or texel
+      if (CheckInputCommand ("n", myArrayDescription, anArgIndex, 3, anArgsCount))
+        anArray->SetVertexNormal (anArray->VertexNumber (),
+                                  myArrayDescription->Value (anArgIndex - 3).RealValue(),
+                                  myArrayDescription->Value (anArgIndex - 2).RealValue(),
+                                  myArrayDescription->Value (anArgIndex - 1).RealValue());
+      
+      if (CheckInputCommand ("c", myArrayDescription, anArgIndex, 3, anArgsCount))
+        anArray->SetVertexColor (anArray->VertexNumber (),
+                                 myArrayDescription->Value (anArgIndex - 3).RealValue(),
+                                 myArrayDescription->Value (anArgIndex - 2).RealValue(),
+                                 myArrayDescription->Value (anArgIndex - 1).RealValue());
+      
+      if (CheckInputCommand ("t", myArrayDescription, anArgIndex, 2, anArgsCount))
+        anArray->SetVertexTexel (anArray->VertexNumber (),
+                                 myArrayDescription->Value (anArgIndex - 2).RealValue(),
+                                 myArrayDescription->Value (anArgIndex - 1).RealValue());
+    }
+    // bounds command
+    else if (CheckInputCommand ("b", myArrayDescription, anArgIndex, 1, anArgsCount))
+    {
+      Standard_Integer aVertCount = myArrayDescription->Value (anArgIndex - 1).IntegerValue();
+
+      if (CheckInputCommand ("c", myArrayDescription, anArgIndex, 3, anArgsCount))
+        anArray->AddBound (aVertCount,
+                           myArrayDescription->Value (anArgIndex - 3).RealValue(),
+                           myArrayDescription->Value (anArgIndex - 2).RealValue(),
+                           myArrayDescription->Value (anArgIndex - 1).RealValue());
+
+      else
+        anArray->AddBound (aVertCount);
+    }
+    // edge command
+    else if (CheckInputCommand ("e", myArrayDescription, anArgIndex, 1, anArgsCount))
+    {
+      Standard_Integer aVertIndex = myArrayDescription->Value (anArgIndex - 1).IntegerValue();
+
+      // edge has/hasn't hide flag
+      if (CheckInputCommand ("h", myArrayDescription, anArgIndex, 0, anArgsCount))
+        anArray->AddEdge (aVertIndex, Standard_False);
+      else
+        anArray->AddEdge (aVertIndex, Standard_True);
+    }
+    // unknown command
+    else
+      anArgIndex++;
+  }
+
   aPresentation->Clear();
-  Prs3d_Root::CurrentGroup (aPresentation)->AddPrimitiveArray (myArray);
+  if (!myMarkerAspect.IsNull())
+  {
+    Prs3d_Root::CurrentGroup (aPresentation)->SetGroupPrimitivesAspect (myMarkerAspect);
+  }
+  Prs3d_Root::CurrentGroup (aPresentation)->AddPrimitiveArray (anArray);
 }
 
-static bool CheckInputCommand (const TCollection_AsciiString theCommand,
-                               const char **theArgStr, int &theArgIndex,
-                               int theArgCount, int theMaxArgs)
+void MyPArrayObject::ComputeSelection (const Handle(SelectMgr_Selection)& theSelection,
+                                       const Standard_Integer /*theMode*/)
+{
+  Handle(SelectMgr_EntityOwner) anEntityOwner = new SelectMgr_EntityOwner (this);
+
+  Standard_Integer anArgIndex = 1;
+  while (anArgIndex < myArrayDescription->Length())
+  {
+    if (CheckInputCommand ("v", myArrayDescription, anArgIndex, 3, myArrayDescription->Length()))
+    {
+      gp_Pnt aPoint (myArrayDescription->Value (anArgIndex - 3).RealValue(),
+                     myArrayDescription->Value (anArgIndex - 2).RealValue(),
+                     myArrayDescription->Value (anArgIndex - 1).RealValue());
+      Handle(Select3D_SensitivePoint) aSensetivePoint = new Select3D_SensitivePoint (anEntityOwner, aPoint);
+      theSelection->Add (aSensetivePoint);
+    }
+    else
+    {
+      anArgIndex++;
+    }
+  }
+}
+
+bool MyPArrayObject::CheckInputCommand (const TCollection_AsciiString theCommand,
+                                       const Handle(TColStd_HArray1OfAsciiString) theArgsArray,
+                                       Standard_Integer &theArgIndex,
+                                       Standard_Integer theArgCount,
+                                       Standard_Integer theMaxArgs)
 {
   // check if there is more elements than expected
   if (theArgIndex >= theMaxArgs)
     return false;
 
-  TCollection_AsciiString aStrCommand(theArgStr[theArgIndex]);
+  TCollection_AsciiString aStrCommand = theArgsArray->Value (theArgIndex);
   aStrCommand.LowerCase();
   if (aStrCommand.Search(theCommand) != 1 ||
       theArgIndex + (theArgCount - 1) >= theMaxArgs)
@@ -3217,7 +3279,7 @@ static bool CheckInputCommand (const TCollection_AsciiString theCommand,
   // check data if it can be converted to numeric
   for (int aElement = 0; aElement < theArgCount; aElement++, theArgIndex++)
   {
-    aStrCommand = theArgStr[theArgIndex];
+    aStrCommand = theArgsArray->Value (theArgIndex);
     if (!aStrCommand.IsRealValue())
       return false;
   }
@@ -3256,17 +3318,30 @@ static int VDrawPArray (Draw_Interpretor& di, Standard_Integer argc, const char*
   Standard_Integer aArgIndex = 1;
   TCollection_AsciiString aName (argv[aArgIndex++]);
   TCollection_AsciiString anArrayType (argv[aArgIndex++]);
-  const Standard_Integer anArgsFrom = aArgIndex;
 
-  // parse number of verticies, bounds, edges
-  Standard_Integer aVertexNum = 0, aBoundNum = 0, aEdgeNum = 0;
-  Standard_Boolean hasVColors, hasBColors, hasNormals, hasInfos, hasTexels;
-  hasVColors = hasNormals = hasBColors = hasInfos = hasTexels = Standard_False;
+  Standard_Boolean hasVertex = Standard_False;
+
+  Handle(TColStd_HArray1OfAsciiString) anArgsArray = new TColStd_HArray1OfAsciiString (0, argc - 2);
+  anArgsArray->SetValue (0, anArrayType);
+
+  if (anArrayType != "points"         &&
+      anArrayType != "segments"       &&
+      anArrayType != "polylines"      &&
+      anArrayType != "triangles"      &&
+      anArrayType != "trianglefans"   &&
+      anArrayType != "trianglestrips" &&
+      anArrayType != "quads"          &&
+      anArrayType != "quadstrips"     &&
+      anArrayType != "polygons")
+  {
+    di << "Unexpected type of primitives array\n";
+    return 1;
+  }
 
   TCollection_AsciiString aCommand;
-  while (aArgIndex < argc)
+  for (Standard_Integer anArgIndex = 3; anArgIndex < argc; anArgIndex++)
   {
-    aCommand = argv[aArgIndex];
+    aCommand = argv[anArgIndex];
     aCommand.LowerCase();
     if (!aCommand.IsAscii())
     {
@@ -3275,156 +3350,28 @@ static int VDrawPArray (Draw_Interpretor& di, Standard_Integer argc, const char*
       break;
     }
 
-    // vertex command
-    if (CheckInputCommand ("v", argv, aArgIndex, 3, argc))
+    if (aCommand == "v")
     {
-      // vertex has a normal or normal with color or texel
-      if (CheckInputCommand ("n", argv, aArgIndex, 3, argc))
-        hasNormals = Standard_True;
-
-      // vertex has a color
-      if (CheckInputCommand ("c", argv, aArgIndex, 3, argc))
-        hasVColors = Standard_True;
-
-      // vertex has a texel
-      if (CheckInputCommand ("t", argv, aArgIndex, 2, argc))
-        hasTexels = Standard_True;
-
-      aVertexNum++;
+      hasVertex = Standard_True;
     }
-    // bound command
-    else if (CheckInputCommand ("b", argv, aArgIndex, 1, argc))
-    {
-      // bound has color
-      if (CheckInputCommand ("c", argv, aArgIndex, 3, argc))
-        hasBColors = Standard_True;
 
-      aBoundNum++;
-    }
-    // edge command
-    else if (CheckInputCommand ("e", argv, aArgIndex, 1, argc))
-    {
-      // edge has a hide flag
-      if (CheckInputCommand ("h", argv, aArgIndex, 0, argc))
-        hasInfos = Standard_True;
-
-      aEdgeNum++;
-    }
-    // unknown command
-    else
-      aArgIndex++;
+    anArgsArray->SetValue (anArgIndex - 2, aCommand);
   }
 
-  if (aVertexNum == 0)
+  if (!hasVertex)
   {
     di << "You should pass any verticies in the list of array elements\n";
     return 1;
   }
 
-  // create an array of primitives by types
-  Handle(Graphic3d_ArrayOfPrimitives) anArray;
+  Handle(Graphic3d_AspectMarker3d)    anAspPoints;
   if (anArrayType == "points")
-    anArray = new Graphic3d_ArrayOfPoints (aVertexNum);
-  else if (anArrayType == "segments")
-    anArray = new Graphic3d_ArrayOfSegments (aVertexNum, aEdgeNum, hasVColors);
-  else if (anArrayType == "polylines")
-    anArray = new Graphic3d_ArrayOfPolylines (aVertexNum, aBoundNum, aEdgeNum,
-                                              hasVColors, hasBColors, hasInfos);
-  else if (anArrayType == "triangles")
-    anArray = new Graphic3d_ArrayOfTriangles (aVertexNum, aEdgeNum, hasNormals,
-                                              hasVColors, hasTexels, hasInfos);
-  else if (anArrayType == "trianglefans")
-    anArray = new Graphic3d_ArrayOfTriangleFans (aVertexNum, aBoundNum,
-                                                 hasNormals, hasVColors,
-                                                 hasBColors, hasTexels);
-  else if (anArrayType == "trianglestrips")
-    anArray = new Graphic3d_ArrayOfTriangleStrips (aVertexNum, aBoundNum,
-                                                   hasNormals, hasVColors,
-                                                   hasBColors, hasTexels);
-  else if (anArrayType == "quads")
-    anArray = new Graphic3d_ArrayOfQuadrangles (aVertexNum, aEdgeNum,
-                                                hasNormals, hasVColors,
-                                                hasTexels, hasInfos);
-  else if (anArrayType == "quadstrips")
-    anArray = new Graphic3d_ArrayOfQuadrangleStrips (aVertexNum, aBoundNum,
-                                                     hasNormals, hasVColors,
-                                                     hasBColors, hasTexels);
-  else if (anArrayType == "polygons")
-    anArray = new Graphic3d_ArrayOfPolygons (aVertexNum, aBoundNum, aEdgeNum,
-                                             hasNormals, hasVColors, hasBColors,
-                                             hasTexels, hasInfos);
-  else
   {
-    di << "Unexpected type of primitiives array\n";
-    return 1;
-  }
-
-  // parse an array of primitives
-  aArgIndex = anArgsFrom;
-  while (aArgIndex < argc)
-  {
-    aCommand = argv[aArgIndex];
-    aCommand.LowerCase();
-    if (!aCommand.IsAscii())
-      break;
-
-    // vertex command
-    if (CheckInputCommand ("v", argv, aArgIndex, 3, argc))
-    {
-      anArray->AddVertex (Draw::Atof (argv[aArgIndex - 3]),
-                          Draw::Atof (argv[aArgIndex - 2]),
-                          Draw::Atof (argv[aArgIndex - 1]));
-
-      // vertex has a normal or normal with color or texel
-      if (CheckInputCommand ("n", argv, aArgIndex, 3, argc))
-        anArray->SetVertexNormal (anArray->VertexNumber (),
-                                  Draw::Atof (argv[aArgIndex - 3]),
-                                  Draw::Atof (argv[aArgIndex - 2]),
-                                  Draw::Atof (argv[aArgIndex - 1]));
-      
-      if (CheckInputCommand ("c", argv, aArgIndex, 3, argc))
-        anArray->SetVertexColor (anArray->VertexNumber (),
-                                 Draw::Atof (argv[aArgIndex - 3]),
-                                 Draw::Atof (argv[aArgIndex - 2]),
-                                 Draw::Atof (argv[aArgIndex - 1]));
-      
-      if (CheckInputCommand ("t", argv, aArgIndex, 2, argc))
-        anArray->SetVertexTexel (anArray->VertexNumber (),
-                                 Draw::Atof (argv[aArgIndex - 2]),
-                                 Draw::Atof (argv[aArgIndex - 1]));
-    }
-    // bounds command
-    else if (CheckInputCommand ("b", argv, aArgIndex, 1, argc))
-    {
-      Standard_Integer aVertCount = Draw::Atoi (argv[aArgIndex - 1]);
-
-      if (CheckInputCommand ("c", argv, aArgIndex, 3, argc))
-        anArray->AddBound (aVertCount,
-                           Draw::Atof (argv[aArgIndex - 3]),
-                           Draw::Atof (argv[aArgIndex - 2]),
-                           Draw::Atof (argv[aArgIndex - 1]));
-
-      else
-        anArray->AddBound (aVertCount);
-    }
-    // edge command
-    else if (CheckInputCommand ("e", argv, aArgIndex, 1, argc))
-    {
-      Standard_Integer aVertIndex = Draw::Atoi (argv[aArgIndex - 1]);
-
-      // edge has/hasn't hide flag
-      if (CheckInputCommand ("h", argv, aArgIndex, 0, argc))
-        anArray->AddEdge (aVertIndex, Standard_False);
-      else
-        anArray->AddEdge (aVertIndex, Standard_True);
-    }
-    // unknown command
-    else
-      aArgIndex++;
+    anAspPoints = new Graphic3d_AspectMarker3d (Aspect_TOM_POINT, Quantity_NOC_YELLOW, 1.0f);
   }
 
   // create primitives array object
-  Handle (MyPArrayObject) aPObject = new MyPArrayObject (anArray);
+  Handle(MyPArrayObject) aPObject = new MyPArrayObject (anArgsArray, anAspPoints);
 
   // register the object in map
   VDisplayAISObject (aName, aPObject);
@@ -3494,7 +3441,7 @@ static Standard_Integer VSetLocation (Draw_Interpretor& di,
 //Draw arg : vconnect name Xo Yo Zo Xu Xv Xw Zu Zv Zw object1 object2 ... [color=NAME]
 //===============================================================================================
 
-static Standard_Integer VConnect(Draw_Interpretor& di, 
+static Standard_Integer VConnect(Draw_Interpretor& /*di*/, 
                                  Standard_Integer argc, 
                                  const char ** argv) 
 {
@@ -3517,7 +3464,7 @@ static Standard_Integer VConnect(Draw_Interpretor& di,
   TCollection_AsciiString aName (argv[anArgIter++]);
   Handle(AIS_InteractiveObject) anOriginObject;
   TCollection_AsciiString aColorString (argv[argc-1]);
-  Standard_CString aColorName;
+  Standard_CString aColorName = "";
   Standard_Boolean hasColor = Standard_False;
   if (aColorString.Search ("color=") != -1)
   {
@@ -3674,7 +3621,7 @@ static Standard_Integer VConnect(Draw_Interpretor& di,
 //Draw arg : vconnectsh name Xo Yo Zo Xu Xv Xw Zu Zv Zw shape1 shape2 ... [color=NAME]
 //===============================================================================================
 
-static Standard_Integer VConnectShape(Draw_Interpretor& di, 
+static Standard_Integer VConnectShape(Draw_Interpretor& /*di*/, 
                                       Standard_Integer argc, 
                                       const char ** argv) 
 {
@@ -3697,7 +3644,7 @@ static Standard_Integer VConnectShape(Draw_Interpretor& di,
   TCollection_AsciiString aName (argv[anArgIter++]);
   Handle(AIS_InteractiveObject) anOriginShape;
   TCollection_AsciiString aColorString(argv[argc-1]);
-  Standard_CString aColorName;
+  Standard_CString aColorName = "";
   Standard_Boolean hasColor = Standard_False;
   if (aColorString.Search ("color=") != -1)
   {
@@ -3853,156 +3800,115 @@ static Standard_Integer VConnectShape(Draw_Interpretor& di,
   return 0;
 }
 
+namespace
+{
+  //! Checks if theMode is already turned on for theObj.
+  static Standard_Boolean InList (const Handle(AIS_InteractiveContext)& theAISContext,
+                                  const Handle(AIS_InteractiveObject)&  theObj,
+                                  const Standard_Integer                theMode)
+  {
+    TColStd_ListOfInteger anActiveModes;
+    theAISContext->ActivatedModes (theObj, anActiveModes);
+    for (TColStd_ListIteratorOfListOfInteger aModeIt (anActiveModes); aModeIt.More(); aModeIt.Next())
+    {
+      if (aModeIt.Value() == theMode)
+      {
+        return Standard_True;
+      }
+    }
+    return Standard_False;
+  }
+};
+
 //===============================================================================================
 //function : VSetSelectionMode
 //purpose  : Sets input selection mode for input object or for all displayed objects 
 //Draw arg : vselmode [object] mode On/Off (1/0)
 //===============================================================================================
-
-// function : InList 
-// purpose  : checks if theMode is already turned on for theObj
-Standard_Boolean InList(Handle(AIS_InteractiveContext) theAISContext, 
-                          Handle(AIS_InteractiveObject) theObj, 
-                          Standard_Integer theMode)
-{
-  TColStd_ListOfInteger anArray; 
-  theAISContext->ActivatedModes(theObj, anArray);
-  TColStd_ListIteratorOfListOfInteger anIt(anArray);
-  for(; anIt.More(); anIt.Next())
-  {
-    if(anIt.Value() == theMode) 
-      return Standard_True;
-  }
-  return Standard_False;
-}
-
-static Standard_Integer VSetSelectionMode(Draw_Interpretor& di, 
-                                          Standard_Integer argc, 
-                                          const char ** argv)
+static Standard_Integer VSetSelectionMode (Draw_Interpretor& /*di*/,
+                                           Standard_Integer  theArgc,
+                                           const char**      theArgv)
 {
   // Check errors
   Handle(AIS_InteractiveContext) anAISContext = ViewerTest::GetAISContext();
-  if(anAISContext.IsNull())
+  if (anAISContext.IsNull())
   {
-    std::cout << "Call vinit before!\n";
-    return 1; // TCL_ERROR
+    std::cerr << "Call vinit before!\n";
+    return 1;
   }
 
-  // Check the arguments 
-  if(argc != 3 && argc != 4)
+  // Check the arguments
+  if (theArgc != 3 && theArgc != 4)
   {
-    std::cout << "vselmode error : expects at least 2 arguments.\n"
-      << "Type help "<< argv[0] <<" for more information."; 
-    return 1; // TCL_ERROR
+    std::cerr << "vselmode error : expects at least 2 arguments.\n"
+              << "Type help "<< theArgv[0] <<" for more information.";
+    return 1;
   }
 
-  Handle(AIS_InteractiveObject) anObj;
-
-  // Set new selection mode for all objects in context
-  if(argc == 3)
+  // get objects to change selection mode
+  AIS_ListOfInteractive aTargetIOs;
+  if (theArgc == 3)
   {
-    // Get arguments 
-    Standard_Integer aMode = Draw::Atoi(argv[1]);
-    Standard_Boolean isTurnOn = (0 != Draw::Atoi(argv[2]));
-
-    // Get all displayed objects
-    AIS_ListOfInteractive anObjList;
-    anAISContext->DisplayedObjects(anObjList);
-    AIS_ListIteratorOfListOfInteractive anObjIter;
-
-    if(aMode == 0)
-    {
-      if(anAISContext->HasOpenedContext())
-        anAISContext->CloseLocalContext();
-    }
-
-    // Turn on aMode
-    if(aMode != 0 && isTurnOn)
-    {
-      if(!anAISContext->HasOpenedContext())
-      {
-        anAISContext->OpenLocalContext(); 
-        for(anObjIter.Initialize(anObjList); anObjIter.More(); anObjIter.Next())
-        {
-          anAISContext->Activate(anObjIter.Value(), aMode); 
-        }
-      }
-      else
-      {
-        for(anObjIter.Initialize(anObjList); anObjIter.More(); anObjIter.Next())
-        {
-          anObj = anObjIter.Value();
-          if(!InList(anAISContext, anObj, aMode))
-            anAISContext->Activate(anObj, aMode);
-        }
-      }
-    }
-
-    // Turn off aMode
-    if(aMode != 0 && !isTurnOn)
-    {
-      if(anAISContext->HasOpenedContext())
-      {
-        for(anObjIter.Initialize(anObjList); anObjIter.More(); anObjIter.Next())
-        {
-          anObj = anObjIter.Value();
-          if(InList(anAISContext, anObj, aMode))
-            anAISContext->Deactivate(anObj, aMode);
-        }
-      }
-    }
+    anAISContext->DisplayedObjects (aTargetIOs);
   }
-
-  // Set new selection mode for named object 
   else
   {
-    // Get argumnets 
-    Standard_Integer aMode = Draw::Atoi(argv[2]);
-    Standard_Boolean isTurnOn = (0 != Draw::Atoi(argv[3]));
-    TCollection_AsciiString aName(argv[1]); 
-
     // Check if there is an object with given name in context
-    if(GetMapOfAIS().IsBound2(aName))
+    const TCollection_AsciiString aNameIO (theArgv[1]);
+    if (GetMapOfAIS().IsBound2 (aNameIO))
     {
-      anObj = Handle(AIS_InteractiveObject)::
-        DownCast(GetMapOfAIS().Find2(aName));
-      if(anObj.IsNull())
+      Handle(AIS_InteractiveObject) anIO = Handle(AIS_InteractiveObject)::DownCast (GetMapOfAIS().Find2 (aNameIO));
+      if (anIO.IsNull())
       {
-        std::cout << "vselmode error : object name is used for non AIS viewer\n"; 
-        return 1; // TCL_ERROR
+        std::cerr << "vselmode error : object name is used for non AIS viewer\n"; 
+        return 1;
       }
+      aTargetIOs.Append (anIO);
+    }
+  }
+
+  const Standard_Integer aSelectionMode = Draw::Atoi (theArgc == 3 ? theArgv[1] : theArgv[2]);
+  const Standard_Boolean toTurnOn       = (0 != Draw::Atoi (theArgc == 3 ? theArgv[2] : theArgv[3]));
+  if (aSelectionMode == 0 && anAISContext->HasOpenedContext())
+  {
+    anAISContext->CloseLocalContext();
+  }
+
+  if (aSelectionMode != 0 && toTurnOn) // Turn on specified mode
+  {
+    if (!anAISContext->HasOpenedContext())
+    {
+      anAISContext->OpenLocalContext (Standard_False);
     }
 
-    if(aMode == 0)
+    for (AIS_ListIteratorOfListOfInteractive aTargetIt (aTargetIOs); aTargetIt.More(); aTargetIt.Next())
     {
-      if(anAISContext->HasOpenedContext())
-        anAISContext->CloseLocalContext();
-    }
-    // Turn on aMode
-    if(aMode != 0 && isTurnOn) 
-    {
-      if(!anAISContext->HasOpenedContext())
+      const Handle(AIS_InteractiveObject)& anIO = aTargetIt.Value();
+      if (!InList (anAISContext, anIO, aSelectionMode))
       {
-        anAISContext->OpenLocalContext(); 
-        anAISContext->Activate(anObj, aMode);
-      }
-      else
-      {
-        if(!InList(anAISContext, anObj, aMode))
-          anAISContext->Activate(anObj, aMode);
-      }
-    }
-
-    // Turn off aMode
-    if(aMode != 0 && !isTurnOn)
-    {
-      if(anAISContext->HasOpenedContext())
-      {
-        if(InList(anAISContext, anObj, aMode))
-          anAISContext->Deactivate(anObj, aMode);
+        anAISContext->Load (anIO, -1, Standard_True);
+        anAISContext->Activate (anIO, aSelectionMode);
       }
     }
   }
+
+  if (aSelectionMode != 0 && !toTurnOn) // Turn off specified mode
+  {
+    if (!anAISContext->HasOpenedContext())
+    {
+      return 0;
+    }
+
+    for (AIS_ListIteratorOfListOfInteractive aTargetIt (aTargetIOs); aTargetIt.More(); aTargetIt.Next())
+    {
+      const Handle(AIS_InteractiveObject)& anIO = aTargetIt.Value();
+      if (InList (anAISContext, anIO, aSelectionMode))
+      {
+        anAISContext->Deactivate (anIO, aSelectionMode);
+      }
+    }
+  }
+
   return 0;
 }
 
@@ -4044,9 +3950,9 @@ Triangle::Triangle (const gp_Pnt& theP1,
   myPoint3 = theP3;
 }
 
-void Triangle::Compute(const Handle(PrsMgr_PresentationManager3d)& thePresentationManager,
+void Triangle::Compute(const Handle(PrsMgr_PresentationManager3d)& /*thePresentationManager*/,
                        const Handle(Prs3d_Presentation)& thePresentation,
-                       const Standard_Integer theMode)
+                       const Standard_Integer /*theMode*/)
 {
   thePresentation->Clear();
 
@@ -4072,7 +3978,7 @@ void Triangle::Compute(const Handle(PrsMgr_PresentationManager3d)& thePresentati
 }
 
 void Triangle::ComputeSelection(const Handle(SelectMgr_Selection)& theSelection, 
-                                const Standard_Integer theMode)
+                                const Standard_Integer /*theMode*/)
 {
   Handle(SelectMgr_EntityOwner) anEntityOwner = new SelectMgr_EntityOwner(this);
   Handle(Select3D_SensitiveTriangle) aSensTriangle = 
@@ -4120,7 +4026,7 @@ Standard_Boolean IsMatch (const Handle(Geom_CartesianPoint)& thePoint1,
   return Standard_False;
 }
 
-static Standard_Integer VTriangle (Draw_Interpretor& di,
+static Standard_Integer VTriangle (Draw_Interpretor& /*di*/,
                                    Standard_Integer argc,
                                    const char ** argv)
 {
@@ -4233,9 +4139,9 @@ SegmentObject::SegmentObject (const gp_Pnt& thePnt1, const gp_Pnt& thePnt2)
   myPoint2 = thePnt2;
 }
 
-void SegmentObject::Compute (const Handle_PrsMgr_PresentationManager3d &thePresentationManager,
+void SegmentObject::Compute (const Handle_PrsMgr_PresentationManager3d &/*thePresentationManager*/,
                              const Handle_Prs3d_Presentation &thePresentation,
-                             const Standard_Integer theMode)
+                             const Standard_Integer /*theMode*/)
 {
   thePresentation->Clear();
   BRepBuilderAPI_MakeEdge anEdgeMaker(myPoint1, myPoint2);
@@ -4247,7 +4153,7 @@ void SegmentObject::Compute (const Handle_PrsMgr_PresentationManager3d &thePrese
 }
 
 void SegmentObject::ComputeSelection (const Handle_SelectMgr_Selection &theSelection,
-                                      const Standard_Integer theMode)
+                                      const Standard_Integer /*theMode*/)
 {
   Handle(SelectMgr_EntityOwner) anOwner = new SelectMgr_EntityOwner(this);
   Handle(TColgp_HArray1OfPnt) anArray = new TColgp_HArray1OfPnt(1, 2);
@@ -4263,7 +4169,7 @@ void SegmentObject::ComputeSelection (const Handle_SelectMgr_Selection &theSelec
 //Draw args : vsegment Name PointName PointName
 //purpose   : creates and displays Segment
 //=======================================================================
-static Standard_Integer VSegment (Draw_Interpretor& di,
+static Standard_Integer VSegment (Draw_Interpretor& /*di*/,
                                   Standard_Integer argc,
                                   const char ** argv)
 {
@@ -4390,7 +4296,7 @@ static Standard_Integer VObjZLayer (Draw_Interpretor& di,
 //function : VPolygonOffset
 //purpose  : Set or get polygon offset parameters
 //=======================================================================
-static Standard_Integer VPolygonOffset(Draw_Interpretor& di,
+static Standard_Integer VPolygonOffset(Draw_Interpretor& /*di*/,
                                        Standard_Integer argc,
                                        const char ** argv)
 {
@@ -4472,7 +4378,7 @@ static Standard_Integer VPolygonOffset(Draw_Interpretor& di,
 //function : VShowFaceBoundaries
 //purpose  : Set face boundaries drawing on/off for ais object
 //=======================================================================
-static Standard_Integer VShowFaceBoundary (Draw_Interpretor& di,
+static Standard_Integer VShowFaceBoundary (Draw_Interpretor& /*di*/,
                                            Standard_Integer argc,
                                            const char ** argv)
 {
@@ -4585,6 +4491,433 @@ static Standard_Integer VShowFaceBoundary (Draw_Interpretor& di,
   return 0;
 }
 
+// This class is used for testing markers.
+DEFINE_STANDARD_HANDLE(ViewerTest_MarkersArrayObject, AIS_InteractiveObject)
+class ViewerTest_MarkersArrayObject : public AIS_InteractiveObject
+{
+
+public:
+
+  ViewerTest_MarkersArrayObject (const gp_XYZ& theStartPoint,
+                                 const Standard_Integer& thePointsOnSide,
+                                 Handle(Graphic3d_AspectMarker3d) theMarkerAspect = NULL)
+  {
+    myStartPoint = theStartPoint;
+    myPointsOnSide = thePointsOnSide;
+    myMarkerAspect = theMarkerAspect;
+  }
+
+  DEFINE_STANDARD_RTTI(MyPArrayObject);
+
+private:
+
+  void Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,
+                const Handle(Prs3d_Presentation)& aPresentation,
+                const Standard_Integer aMode);
+
+  void ComputeSelection (const Handle(SelectMgr_Selection)& theSelection,
+                         const Standard_Integer /*theMode*/);
+
+protected:
+
+  gp_XYZ myStartPoint;
+  Standard_Integer myPointsOnSide;
+  Handle(Graphic3d_AspectMarker3d) myMarkerAspect;
+};
+
+IMPLEMENT_STANDARD_HANDLE(ViewerTest_MarkersArrayObject, AIS_InteractiveObject)
+IMPLEMENT_STANDARD_RTTIEXT(ViewerTest_MarkersArrayObject, AIS_InteractiveObject)
+
+void ViewerTest_MarkersArrayObject::Compute (const Handle(PrsMgr_PresentationManager3d)& /*aPresentationManager*/,
+                              const Handle(Prs3d_Presentation)& aPresentation,
+                              const Standard_Integer /*aMode*/)
+{
+  Handle(Graphic3d_ArrayOfPrimitives) anArray = new Graphic3d_ArrayOfPoints ((Standard_Integer )Pow (myPointsOnSide, 3), myPointsOnSide != 1);
+  if (myPointsOnSide == 1)
+  {
+    anArray->AddVertex (myStartPoint);
+  }
+  else
+  {
+    for (Standard_Real i = 1; i <= myPointsOnSide; i++)
+    {
+      for (Standard_Real j = 1; j <= myPointsOnSide; j++)
+      {
+        for (Standard_Real k = 1; k <= myPointsOnSide; k++)
+        {
+          anArray->AddVertex (myStartPoint.X() + i, myStartPoint.Y() + j, myStartPoint.Z() + k);
+          anArray->SetVertexColor (anArray->VertexNumber(),
+                                   i / myPointsOnSide,
+                                   j / myPointsOnSide,
+                                   k / myPointsOnSide);
+        }
+      }
+    }
+  }
+
+  aPresentation->Clear();
+  if (!myMarkerAspect.IsNull())
+  {
+    Prs3d_Root::CurrentGroup (aPresentation)->SetGroupPrimitivesAspect (myMarkerAspect);
+  }
+  Prs3d_Root::CurrentGroup (aPresentation)->AddPrimitiveArray (anArray);
+}
+
+void ViewerTest_MarkersArrayObject::ComputeSelection (const Handle(SelectMgr_Selection)& theSelection,
+                                       const Standard_Integer /*theMode*/)
+{
+  Handle(SelectMgr_EntityOwner) anEntityOwner = new SelectMgr_EntityOwner (this);
+
+  if (myPointsOnSide == 1)
+  {
+    gp_Pnt aPoint (myStartPoint);
+    Handle(Select3D_SensitivePoint) aSensetivePoint = new Select3D_SensitivePoint (anEntityOwner, aPoint);
+    theSelection->Add (aSensetivePoint);
+  }
+  else
+  {
+    for (Standard_Real i = 1; i <= myPointsOnSide; i++)
+    {
+      for (Standard_Real j = 1; j <= myPointsOnSide; j++)
+      {
+        for (Standard_Real k = 1; k <= myPointsOnSide; k++)
+        {
+          gp_Pnt aPoint (myStartPoint.X() + i, myStartPoint.Y() + j, myStartPoint.Z() + k);
+          Handle(Select3D_SensitivePoint) aSensetivePoint = new Select3D_SensitivePoint (anEntityOwner, aPoint);
+          theSelection->Add (aSensetivePoint);
+        }
+      }
+    }
+  }
+}
+//=======================================================================
+//function : VMarkersTest
+//purpose  : Draws an array of markers for testing purposes.
+//=======================================================================
+static Standard_Integer VMarkersTest (Draw_Interpretor&,
+                                      Standard_Integer  theArgNb,
+                                      const char**      theArgVec)
+{
+  Handle(AIS_InteractiveContext) aContext = ViewerTest::GetAISContext();
+  if (aContext.IsNull())
+  {
+    std::cerr << "Call 'vinit' before!\n";
+    return 1;
+  }
+
+  if (theArgNb < 5)
+  {
+    std::cerr << "Usage :\n " << theArgVec[0]
+              << "name X Y Z [PointsOnSide=10] [MarkerType=0] [Scale=1.0] [FileName=ImageFile]\n";
+    return 1;
+  }
+
+  Standard_Integer anArgIter = 1;
+
+  TCollection_AsciiString aName (theArgVec[anArgIter++]);
+  TCollection_AsciiString aFileName;
+  gp_XYZ aPnt (Atof (theArgVec[anArgIter]),
+               Atof (theArgVec[anArgIter + 1]),
+               Atof (theArgVec[anArgIter + 2]));
+  anArgIter += 3;
+
+  Standard_Integer aPointsOnSide = 10;
+  Standard_Integer aMarkerType   = -1;
+  Standard_Real    aScale        = 1.0;
+  for (; anArgIter < theArgNb; ++anArgIter)
+  {
+    const TCollection_AsciiString anArg (theArgVec[anArgIter]);
+    if (anArg.Search ("PointsOnSide=") > -1)
+    {
+      aPointsOnSide = anArg.Token ("=", 2).IntegerValue();
+    }
+    else if (anArg.Search ("MarkerType=") > -1)
+    {
+      aMarkerType = anArg.Token ("=", 2).IntegerValue();
+    }
+    else if (anArg.Search ("Scale=") > -1)
+    {
+      aScale = anArg.Token ("=", 2).RealValue();
+    }
+    else if (anArg.Search ("FileName=") > -1)
+    {
+      aFileName = anArg.Token ("=", 2);
+    }
+    else
+    {
+      std::cerr << "Wrong argument: " << anArg << "\n";
+      return 1;
+    }
+  }
+
+  Handle(Graphic3d_AspectMarker3d) anAspect;
+  Handle(Image_AlienPixMap) anImage;
+  Quantity_Color aColor (Quantity_NOC_GREEN1);
+  if ((aMarkerType == Aspect_TOM_USERDEFINED || aMarkerType < 0)
+   && !aFileName.IsEmpty())
+  {
+    anImage = new Image_AlienPixMap();
+    if (!anImage->Load (aFileName))
+    {
+      std::cerr << "Could not load image from file '" << aFileName << "'!\n";
+      return 1;
+    }
+    anAspect = new Graphic3d_AspectMarker3d (anImage);
+  }
+  else
+  {
+    anAspect = new Graphic3d_AspectMarker3d (aMarkerType >= 0 ? (Aspect_TypeOfMarker )aMarkerType : Aspect_TOM_POINT, aColor, aScale);
+  }
+
+  Handle(ViewerTest_MarkersArrayObject) aMarkersArray = new ViewerTest_MarkersArrayObject (aPnt, aPointsOnSide, anAspect);
+  VDisplayAISObject (aName, aMarkersArray);
+
+  return 0;
+}
+
+//! Auxiliary function to parse font aspect style argument
+static Standard_Boolean parseFontStyle (const TCollection_AsciiString& theArg,
+                                        Font_FontAspect&               theAspect)
+{
+  if (theArg == "regular"
+   || *theArg.ToCString() == 'r')
+  {
+    theAspect = Font_FA_Regular;
+    return Standard_True;
+  }
+  else if (theArg == "bolditalic")
+  {
+    theAspect = Font_FA_BoldItalic;
+    return Standard_True;
+  }
+  else if (theArg == "bold"
+        || *theArg.ToCString() == 'b')
+  {
+    theAspect = Font_FA_Bold;
+    return Standard_True;
+  }
+  else if (theArg == "italic"
+        || *theArg.ToCString() == 'i')
+  {
+    theAspect = Font_FA_Italic;
+    return Standard_True;
+  }
+  return Standard_False;
+}
+
+//! Auxiliary function
+static TCollection_AsciiString fontStyleString (const Font_FontAspect theAspect)
+{
+  switch (theAspect)
+  {
+    case Font_FA_Regular:    return "regular";
+    case Font_FA_BoldItalic: return "bolditalic";
+    case Font_FA_Bold:       return "bold";
+    case Font_FA_Italic:     return "italic";
+    default:                 return "undefined";
+  }
+}
+
+//=======================================================================
+//function : TextToBrep
+//purpose  : Tool for conversion text to occt-shapes
+//=======================================================================
+
+static int TextToBRep (Draw_Interpretor& /*theDI*/,
+                       Standard_Integer  theArgNb,
+                       const char**      theArgVec)
+{
+  // Check arguments
+  if (theArgNb < 5)
+  {
+    std::cerr << "Error: " << theArgVec[0] << " - invalid syntax\n";
+    return 1;
+  }
+
+  Standard_Integer    anArgIter = 1;
+  Standard_CString    aResName  = theArgVec[anArgIter++];
+  Standard_CString    aText     = theArgVec[anArgIter++];
+  Standard_CString    aFontName = theArgVec[anArgIter++];
+  const Standard_Real aSize     = Atof (theArgVec[anArgIter++]);
+
+  Font_BRepFont    aFont;
+  Font_FontAspect  aFontAspect      = Font_FA_Regular;
+  Standard_Boolean isCompositeCurve = Standard_False;
+  gp_Ax3           aPenAx3 (gp::XOY());
+  gp_Pnt           aPenLoc;
+  while (anArgIter < theArgNb)
+  {
+    const TCollection_AsciiString anArg (theArgVec[anArgIter++]);
+    TCollection_AsciiString anArgCase (anArg);
+    anArgCase.LowerCase();
+    if (anArgCase.Search ("x=") > -1)
+    {
+      aPenLoc.SetX (anArg.Token ("=", 2).RealValue());
+    }
+    else if (anArgCase.Search ("y=") > -1)
+    {
+      aPenLoc.SetY (anArg.Token ("=", 2).RealValue());
+    }
+    else if (anArgCase.Search ("z=") > -1)
+    {
+      aPenLoc.SetZ (anArg.Token ("=", 2).RealValue());
+    }
+    else if (anArgCase.Search ("composite=") > -1)
+    {
+      isCompositeCurve = (anArg.Token ("=", 2).IntegerValue() == 1);
+    }
+    else if (parseFontStyle (anArgCase, aFontAspect))
+    {
+      //
+    }
+    else
+    {
+      std::cerr << "Warning! Unknown argument '" << anArg.ToCString() << "'\n";
+    }
+  }
+
+  aFont.SetCompositeCurveMode (isCompositeCurve);
+  if (!aFont.Init (aFontName, aFontAspect, aSize))
+  {
+    std::cerr << "Font initialization error\n";
+    return 1;
+  }
+
+  aPenAx3.SetLocation (aPenLoc);
+  DBRep::Set (aResName, aFont.RenderText (aText, aPenAx3));
+  return 0;
+}
+
+//=======================================================================
+//function : VFont
+//purpose  : Font management
+//=======================================================================
+
+static int VFont (Draw_Interpretor& theDI,
+                  Standard_Integer  theArgNb,
+                  const char**      theArgVec)
+{
+  Handle(Font_FontMgr) aMgr = Font_FontMgr::GetInstance();
+  if (theArgNb < 2)
+  {
+    // just print the list of available fonts
+    Standard_Boolean isFirst = Standard_True;
+    for (Font_NListOfSystemFont::Iterator anIter (aMgr->GetAvailableFonts());
+         anIter.More(); anIter.Next())
+    {
+      const Handle(Font_SystemFont)& aFont = anIter.Value();
+      if (!isFirst)
+      {
+        theDI << "\n";
+      }
+
+      theDI << aFont->FontName()->String()
+            << " " << fontStyleString (aFont->FontAspect())
+            << " " << aFont->FontPath()->String();
+      isFirst = Standard_False;
+    }
+    return 0;
+  }
+
+  for (Standard_Integer anArgIter = 1; anArgIter < theArgNb; ++anArgIter)
+  {
+    const TCollection_AsciiString anArg (theArgVec[anArgIter]);
+    TCollection_AsciiString anArgCase (anArg);
+    anArgCase.LowerCase();
+    if (anArgCase == "find")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cerr << "Wrong syntax at argument '" << anArg.ToCString() << "'!\n";
+        return 1;
+      }
+
+      Standard_CString aFontName   = theArgVec[anArgIter];
+      Font_FontAspect  aFontAspect = Font_FA_Undefined;
+      if (++anArgIter < theArgNb)
+      {
+        anArgCase = theArgVec[anArgIter];
+        anArgCase.LowerCase();
+        if (!parseFontStyle (anArgCase, aFontAspect))
+        {
+          --anArgIter;
+        }
+      }
+      Handle(Font_SystemFont) aFont = aMgr->FindFont (new TCollection_HAsciiString (aFontName), aFontAspect, -1);
+      if (aFont.IsNull())
+      {
+        std::cerr << "Error: font '" << aFontName << "' is not found!\n";
+        continue;
+      }
+
+      theDI << aFont->FontName()->String()
+            << " " << fontStyleString (aFont->FontAspect())
+            << " " << aFont->FontPath()->String();
+    }
+    else if (anArgCase == "add"
+          || anArgCase == "register")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cerr << "Wrong syntax at argument '" << anArg.ToCString() << "'!\n";
+        return 1;
+      }
+      Standard_CString aFontPath   = theArgVec[anArgIter];
+      Standard_CString aFontName   = NULL;
+      Font_FontAspect  aFontAspect = Font_FA_Undefined;
+      if (++anArgIter < theArgNb)
+      {
+        if (!parseFontStyle (anArgCase, aFontAspect))
+        {
+          aFontName = theArgVec[anArgIter];
+        }
+        if (++anArgIter < theArgNb)
+        {
+          anArgCase = theArgVec[anArgIter];
+          anArgCase.LowerCase();
+          if (!parseFontStyle (anArgCase, aFontAspect))
+          {
+            --anArgIter;
+          }
+        }
+      }
+
+      Handle(Font_SystemFont) aFont = aMgr->CheckFont (aFontPath);
+      if (aFont.IsNull())
+      {
+        std::cerr << "Error: font '" << aFontPath << "' is not found!\n";
+        continue;
+      }
+
+      if (aFontAspect != Font_FA_Undefined
+       || aFontName   != NULL)
+      {
+        if (aFontAspect == Font_FA_Undefined)
+        {
+          aFontAspect = aFont->FontAspect();
+        }
+        Handle(TCollection_HAsciiString) aName = aFont->FontName();
+        if (aFontName != NULL)
+        {
+          aName = new TCollection_HAsciiString (aFontName);
+        }
+        aFont = new Font_SystemFont (aName, aFontAspect, new TCollection_HAsciiString (aFontPath));
+      }
+
+      aMgr->RegisterFont (aFont, Standard_True);
+      theDI << aFont->FontName()->String()
+            << " " << fontStyleString (aFont->FontAspect())
+            << " " << aFont->FontPath()->String();
+    }
+    else
+    {
+      std::cerr << "Warning! Unknown argument '" << anArg.ToCString() << "'\n";
+    }
+  }
+
+  return 0;
+}
+
 //=======================================================================
 //function : ObjectsCommands
 //purpose  :
@@ -4626,7 +4959,7 @@ void ViewerTest::ObjectCommands(Draw_Interpretor& theCommands)
     __FILE__,VPointBuilder,group);
 
   theCommands.Add("vplane",
-    "vplane  PlaneName [AxisName/PlaneName/PointName] [PointName/PointName/PointName] [Nothing/Nothing/PointName] ",
+    "vplane  PlaneName [AxisName/PlaneName/PointName] [PointName/PointName/PointName] [Nothing/Nothing/PointName] [TypeOfSensitivity]",
     __FILE__,VPlaneBuilder,group);
 
   theCommands.Add("vplanepara",
@@ -4652,10 +4985,6 @@ void ViewerTest::ObjectCommands(Draw_Interpretor& theCommands)
   theCommands.Add("vdrawsphere",
     "vdrawsphere: vdrawsphere shapeName Fineness [X=0.0 Y=0.0 Z=0.0] [Radius=100.0] [ToShowEdges=0]\n",
     __FILE__,VDrawSphere,group);
-
-  theCommands.Add("vclipplane",
-    "vclipplane : vclipplane [x y z dx dy dz] [planeId {on/off/del/display/hide}]",
-    __FILE__,VClipPlane,group);
 
   theCommands.Add ("vsetlocation",
         "vsetlocation : name x y z; set new location for an interactive object",
@@ -4720,4 +5049,16 @@ void ViewerTest::ObjectCommands(Draw_Interpretor& theCommands)
     "- turns on/off drawing of face boundaries for ais object "
     "and defines boundary line style.",
     __FILE__, VShowFaceBoundary, group);
+
+  theCommands.Add ("vmarkerstest",
+                   "vmarkerstest: name X Y Z [PointsOnSide=10] [MarkerType=0] [Scale=1.0] [FileName=ImageFile]\n",
+                   __FILE__, VMarkersTest, group);
+
+  theCommands.Add ("text2brep",
+                   "text2brep: res text fontName fontSize [x=0.0 y=0.0 z=0.0 composite=1 {regular,bold,italic,bolditalic=regular}]\n",
+                   __FILE__, TextToBRep, group);
+  theCommands.Add ("vfont",
+                            "vfont [add pathToFont [fontName] [regular,bold,italic,bolditalic=undefined]]"
+                   "\n\t\t:        [find fontName [regular,bold,italic,bolditalic=undefined]]",
+                   __FILE__, VFont, group);
 }

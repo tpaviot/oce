@@ -5,9 +5,6 @@
 
 #include <BRepMesh_ElemHasherOfDataStructureOfDelaun.hxx>
 
-#ifndef _BRepMesh_Triangle_HeaderFile
-#include <BRepMesh_Triangle.hxx>
-#endif
  
 
 #define Key BRepMesh_Triangle

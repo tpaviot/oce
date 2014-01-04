@@ -39,13 +39,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepShape_Array1OfValueQualifier(const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_Array1OfValueQualifier(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepShape_Array1OfValueQualifier(const StepShape_ValueQualifier& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_Array1OfValueQualifier(const StepShape_ValueQualifier& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const StepShape_ValueQualifier& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepShape_Array1OfValueQualifier()
 {
   Destroy();

@@ -42,11 +42,11 @@ class TColGeom_HArray1OfBezierCurve : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColGeom_HArray1OfBezierCurve(const Standard_Integer Low,const Standard_Integer Up);
+      TColGeom_HArray1OfBezierCurve(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TColGeom_HArray1OfBezierCurve(const Standard_Integer Low,const Standard_Integer Up,const Handle(Geom_BezierCurve)& V);
+      TColGeom_HArray1OfBezierCurve(const Standard_Integer Low,const Standard_Integer Up,const Handle(Geom_BezierCurve)& V);
   
-  Standard_EXPORT     void Init(const Handle(Geom_BezierCurve)& V) ;
+        void Init(const Handle(Geom_BezierCurve)& V) ;
   
         Standard_Integer Length() const;
   

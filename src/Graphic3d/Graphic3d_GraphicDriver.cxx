@@ -1,22 +1,18 @@
 // Created on: 1997-01-28
 // Created by: CAL
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //              11/97 ; CAL : retrait de la dependance avec math
 
@@ -48,31 +44,10 @@ Graphic3d_GraphicDriver::Graphic3d_GraphicDriver (const Standard_CString AShrNam
 
   SetTrace (0);
   MySharedLibrary.SetName (AShrName);
+  myDeviceLostFlag = Standard_False;
 
   //if (! MySharedLibrary.DlOpen (OSD_RTLD_LAZY))
   //Aspect_DriverDefinitionError::Raise (MySharedLibrary.DlError ());
-
-}
-
-//-Methods, in order
-
-Standard_Integer Graphic3d_GraphicDriver::Light (const Graphic3d_CLight& ACLight, const Standard_Boolean Update) {
-
-  static Standard_Integer NbLights = 1;
-  Standard_Integer Result;
-
-  Result = Update ? ACLight.LightId : NbLights++;
-  return Result;
-
-}
-
-Standard_Integer Graphic3d_GraphicDriver::Plane (const Graphic3d_CPlane& ACPlane, const Standard_Boolean Update) {
-
-  static Standard_Integer NbPlanes = 1;
-  Standard_Integer Result;
-
-  Result = Update ? ACPlane.PlaneId : NbPlanes++;
-  return Result;
 
 }
 
@@ -96,12 +71,12 @@ void Graphic3d_GraphicDriver::PrintCGroup (const Graphic3d_CGroup& ACGroup, cons
 
 }
 
-void Graphic3d_GraphicDriver::PrintCLight (const Graphic3d_CLight& ACLight, const Standard_Integer AField) const {
-
-  if (AField) {
-    cout << "\tws id " << ACLight.WsId << ", "
-      << "view id " << ACLight.ViewId << "\n";
-    switch (ACLight.LightType) {
+void Graphic3d_GraphicDriver::PrintCLight (const Graphic3d_CLight& theCLight,
+                                           const Standard_Integer  theField) const
+{
+  if (theField)
+  {
+    switch (theCLight.Type) {
     case 0 :
       cout << "\tlight type : ambient\n";
       break;
@@ -120,7 +95,6 @@ void Graphic3d_GraphicDriver::PrintCLight (const Graphic3d_CLight& ACLight, cons
     }
     cout << flush;
   }
-
 }
 
 void Graphic3d_GraphicDriver::PrintCPick (const Graphic3d_CPick& ACPick, const Standard_Integer AField) const {
@@ -130,16 +104,6 @@ void Graphic3d_GraphicDriver::PrintCPick (const Graphic3d_CPick& ACPick, const S
       << " view id " << ACPick.ViewId << "\n";
     cout << "\twindow id " << ACPick.DefWindow.XWindow << "\n";
     cout << "\tposition " << ACPick.x << " , " << ACPick.y << "\n";
-    cout << flush;
-  }
-
-}
-
-void Graphic3d_GraphicDriver::PrintCPlane (const Graphic3d_CPlane& ACPlane, const Standard_Integer AField) const {
-
-  if (AField) {
-    cout << "\tws id " << ACPlane.WsId << ", "
-      << "view id " << ACPlane.ViewId << "\n";
     cout << flush;
   }
 
@@ -241,4 +205,14 @@ Standard_Integer Graphic3d_GraphicDriver::Trace () const {
 const Handle(Aspect_DisplayConnection)& Graphic3d_GraphicDriver::GetDisplayConnection() const
 {
   return myDisplayConnection;
+}
+
+Standard_Boolean Graphic3d_GraphicDriver::IsDeviceLost() const
+{
+  return myDeviceLostFlag;
+}
+
+void Graphic3d_GraphicDriver::ResetDeviceLostFlag()
+{
+  myDeviceLostFlag = Standard_False;
 }

@@ -1,22 +1,17 @@
 // Created on: 2001-03-28
 // Created by: Peter KURNEV
-// Copyright (c) 2001-2012 OPEN CASCADE SAS
+// Copyright (c) 2001-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BOPTest.ixx>
 
@@ -88,49 +83,36 @@ static  Standard_Integer bhaspc      (Draw_Interpretor& , Standard_Integer , con
 //function : bclassify
 //purpose  : 
 //=======================================================================
-Standard_Integer bclassify (Draw_Interpretor& aDI,
-                            Standard_Integer n, 
-                            const char** a)
+Standard_Integer bclassify (Draw_Interpretor& theDI,
+                            Standard_Integer  theArgNb,
+                            const char**      theArgVec)
 {
-  char sbf[512];	
-  
-  if (n < 3) {
-    Sprintf(sbf, " Use >bclassify Solid Point [Tolerance=1.e-7]\n");
-    aDI<<sbf;
+  if (theArgNb < 3)
+  {
+    theDI << " Use >bclassify Solid Point [Tolerance=1.e-7]\n";
     return 1;
   }
-  
-  TopoDS_Shape aS = DBRep::Get(a[1]);
-  if (aS.IsNull()) {
-    Sprintf(sbf, " Null Shape is not allowed here\n");
-    aDI<<sbf;
+
+  TopoDS_Shape aS = DBRep::Get (theArgVec[1]);
+  if (aS.IsNull())
+  {
+    theDI << " Null Shape is not allowed here\n";
     return 1;
   }
-  
-  if (aS.ShapeType()!=TopAbs_SOLID) {
-    Sprintf(sbf, " Shape type must be SOLID\n");
-    aDI<<sbf;
+  else if (aS.ShapeType() != TopAbs_SOLID)
+  {
+    theDI << " Shape type must be SOLID\n";
     return 1;
   }
-  //
-  Standard_Real aTol=1.e-7;
-  TopAbs_State aState = TopAbs_UNKNOWN;
-  gp_Pnt aP(8., 9., 10.);
-  
-  DrawTrSurf::GetPoint(a[2], aP);
-  
-  aTol=1.e-7; 
-  if (n==4) {
-    aTol=Draw::Atof(a[3]);
-  }
-  //
-  BRepClass3d_SolidClassifier aSC(aS);
-  aSC.Perform(aP,aTol);
-  //
-  aState = aSC.State();
-  //
-  PrintState (aDI, aState);
-  //
+
+  gp_Pnt aP (8., 9., 10.);
+  DrawTrSurf::GetPoint (theArgVec[2], aP);
+  const Standard_Real aTol = (theArgNb == 4) ? Draw::Atof (theArgVec[3]) : 1.e-7; //Precision::Confusion();
+
+  BRepClass3d_SolidClassifier aSC (aS);
+  aSC.Perform (aP,aTol);
+
+  PrintState (theDI, aSC.State());
   return 0;
 }
 //
@@ -138,50 +120,37 @@ Standard_Integer bclassify (Draw_Interpretor& aDI,
 //function : b2dclassify
 //purpose  : 
 //=======================================================================
-Standard_Integer b2dclassify (Draw_Interpretor& aDI,
-                              Standard_Integer n, 
-                              const char** a)
+Standard_Integer b2dclassify (Draw_Interpretor& theDI,
+                              Standard_Integer  theArgNb,
+                              const char**      theArgVec)
 {
-  char sbf[512];	
-  
-  if (n < 3) {
-    Sprintf(sbf, " Use >bclassify Face Point2d [Tol2D=Tol(Face)]\n");
-    aDI<<sbf;
+  if (theArgNb < 3)
+  {
+    theDI << " Use >bclassify Face Point2d [Tol2D=Tol(Face)]\n";
     return 1;
   }
-  
-  TopoDS_Shape aS = DBRep::Get(a[1]);
-  if (aS.IsNull()) {
-    Sprintf(sbf, " Null Shape is not allowed here\n");
-    aDI<<sbf;
+
+  TopoDS_Shape aS = DBRep::Get (theArgVec[1]);
+  if (aS.IsNull())
+  {
+    theDI << " Null Shape is not allowed here\n";
     return 1;
   }
-  
-  if (aS.ShapeType()!=TopAbs_FACE) {
-    Sprintf(sbf, " Shape type must be FACE\n");
-    aDI<<sbf;
+  else if (aS.ShapeType() != TopAbs_FACE)
+  {
+    theDI << " Shape type must be FACE\n";
     return 1;
   }
-  //
-  Standard_Real aTol;
-  TopAbs_State aState = TopAbs_UNKNOWN;
-  gp_Pnt2d aP(8., 9.);
-  
-  DrawTrSurf::GetPoint2d(a[2], aP);
-  
-  const TopoDS_Face& aF=TopoDS::Face(aS);
-  aTol=BRep_Tool::Tolerance(aF); 
-  if (n==4) {
-    aTol=Draw::Atof(a[3]);
-  }
-  //
+
+  gp_Pnt2d aP (8., 9.);
+  DrawTrSurf::GetPoint2d (theArgVec[2], aP);
+  const TopoDS_Face&  aF   = TopoDS::Face(aS);
+  const Standard_Real aTol = (theArgNb == 4) ? Draw::Atof (theArgVec[3]) : BRep_Tool::Tolerance (aF);
+
   BRepClass_FaceClassifier aClassifier;
   aClassifier.Perform(aF, aP, aTol);
-  //
-  aState = aClassifier.State();
-  //
-  PrintState (aDI, aState);
-  //
+
+  PrintState (theDI, aClassifier.State());
   return 0;
 }
 
@@ -232,38 +201,19 @@ Standard_Integer bhaspc (Draw_Interpretor& di, Standard_Integer n, const char** 
 
 //=======================================================================
 //function : PrintState
-//purpose  : 
+//purpose  :
 //=======================================================================
-void PrintState (Draw_Interpretor& aDI,
-                 const TopAbs_State& aState)
+void PrintState (Draw_Interpretor&   theDI,
+                 const TopAbs_State& theState)
 {
-  char sbf[512];	
-  TCollection_AsciiString sIN("IN"), sOUT("OUT of"), sON("ON"), sUNKNOWN("UNKNOWN"); 
-  //
-  Sprintf(sbf, "The point is "); aDI<<sbf;
-  //
-  switch (aState) {
-  case TopAbs_IN:
-    Sprintf(sbf, "%s",sIN.ToCString());
-    break;
-  case TopAbs_OUT:
-    Sprintf(sbf, "%s",sOUT.ToCString());
-    break;
-  case TopAbs_ON:
-    Sprintf(sbf, "%s",sON.ToCString());
-    break;
-  case TopAbs_UNKNOWN:
-    Sprintf(sbf, "%s",sUNKNOWN.ToCString());
-    break;
-  default:
-    Sprintf(sbf, "%s",sUNKNOWN.ToCString());
-    break;
+  switch (theState)
+  {
+    case TopAbs_IN:       theDI << "The point is IN shape\n";      return;
+    case TopAbs_OUT:      theDI << "The point is OUT of shape\n";  return;
+    case TopAbs_ON:       theDI << "The point is ON shape\n";      return;
+    case TopAbs_UNKNOWN:
+    default:              theDI << "The point is UNKNOWN shape\n"; return;
   }
-  aDI<<sbf; 
-  //
-  Sprintf(sbf, " shape\n");
-  aDI<<sbf;
-  
 }
 
 //=======================================================================
@@ -316,4 +266,3 @@ Handle(Geom2d_Curve) CurveOnSurface(const TopoDS_Edge& E,
   }
   return nullPCurve;
 }
-

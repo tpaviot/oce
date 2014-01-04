@@ -42,11 +42,11 @@ class Storage_HArrayOfSchema : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Storage_HArrayOfSchema(const Standard_Integer Low,const Standard_Integer Up);
+      Storage_HArrayOfSchema(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Storage_HArrayOfSchema(const Standard_Integer Low,const Standard_Integer Up,const Handle(Storage_Schema)& V);
+      Storage_HArrayOfSchema(const Standard_Integer Low,const Standard_Integer Up,const Handle(Storage_Schema)& V);
   
-  Standard_EXPORT     void Init(const Handle(Storage_Schema)& V) ;
+        void Init(const Handle(Storage_Schema)& V) ;
   
         Standard_Integer Length() const;
   

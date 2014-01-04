@@ -1,21 +1,17 @@
 // Created by: DAUTRY Philippe
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifndef TDF_LabelNode_HeaderFile
 #define TDF_LabelNode_HeaderFile
@@ -57,31 +53,31 @@ class TDF_LabelNode {
 
   // Father access
   inline TDF_LabelNode* Father() const
-    { return myFather; };
+    { return myFather; }
 
   // Brother access
   inline TDF_LabelNode* Brother() const
-    { return myBrother; };
+    { return myBrother; }
 
   // Child access
   inline TDF_LabelNode* FirstChild() const
-    { return myFirstChild; };
+    { return myFirstChild; }
 
     // Attribute access
   inline const Handle(TDF_Attribute)& FirstAttribute() const
-    { return myFirstAttribute; };
+    { return myFirstAttribute; }
 
   // Tag access
   inline Standard_Integer Tag() const
-    { return myTag; };
+    { return myTag; }
 
   // Depth access
   inline Standard_Integer Depth() const
-    { return (myFlags & ~TDF_LabelNodeFlagsMsk); };
+    { return (myFlags & ~TDF_LabelNodeFlagsMsk); }
 
   // IsRoot
   inline Standard_Boolean IsRoot() const
-    { return myFather == NULL; };
+    { return myFather == NULL; }
 
   // Data
   Standard_EXPORT TDF_Data * Data() const;
@@ -93,19 +89,19 @@ class TDF_LabelNode {
         (myFlags | TDF_LabelNodeAttModMsk) :
           (myFlags & ~TDF_LabelNodeAttModMsk);
       if (aStatus) AllMayBeModified();
-    };
+    }
 
   inline Standard_Boolean AttributesModified() const
-    { return ((myFlags & TDF_LabelNodeAttModMsk) != 0); };
+    { return ((myFlags & TDF_LabelNodeAttModMsk) != 0); }
 
   // Flag MayBeModified access
   inline void MayBeModified(const Standard_Boolean aStatus)
     { myFlags = (aStatus) ?
         (myFlags | TDF_LabelNodeMayModMsk) :
-          (myFlags & ~TDF_LabelNodeMayModMsk); };
+          (myFlags & ~TDF_LabelNodeMayModMsk); }
 
   inline Standard_Boolean MayBeModified() const
-    { return ((myFlags & TDF_LabelNodeMayModMsk) != 0); };
+    { return ((myFlags & TDF_LabelNodeMayModMsk) != 0); }
 
   private :
 
@@ -147,20 +143,20 @@ class TDF_LabelNode {
 
   // Tag modification
   inline void Tag(const Standard_Integer aTag)
-    { myTag = aTag; };
+    { myTag = aTag; }
 
   // Depth modification
   inline void Depth(const Standard_Integer aDepth)
-    { myFlags = ((myFlags & TDF_LabelNodeFlagsMsk) | aDepth); };
+    { myFlags = ((myFlags & TDF_LabelNodeFlagsMsk) | aDepth); }
 
   // Flag Imported access
   inline void Imported(const Standard_Boolean aStatus)
     { myFlags = (aStatus) ?
         (myFlags | TDF_LabelNodeImportMsk) :
-          (myFlags & ~TDF_LabelNodeImportMsk); };
+          (myFlags & ~TDF_LabelNodeImportMsk); }
 
   inline Standard_Boolean IsImported() const
-    { return ((myFlags & TDF_LabelNodeImportMsk) != 0); };
+    { return ((myFlags & TDF_LabelNodeImportMsk) != 0); }
 
   // Private Fields
   // --------------------------------------------------------------------------

@@ -41,11 +41,11 @@ class TColStd_HArray2OfReal : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColStd_HArray2OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      TColStd_HArray2OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   TColStd_HArray2OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_Real& V);
+      TColStd_HArray2OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_Real& V);
   
-  Standard_EXPORT     void Init(const Standard_Real& V) ;
+        void Init(const Standard_Real& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -61,9 +61,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Standard_Real& Value) ;
   
-  Standard_EXPORT    const Standard_Real& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const Standard_Real& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     Standard_Real& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        Standard_Real& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const TColStd_Array2OfReal& Array2() const;
   

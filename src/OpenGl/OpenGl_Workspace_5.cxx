@@ -1,22 +1,17 @@
 // Created on: 2011-08-05
 // Created by: Sergey ZERCHANINOV
-// Copyright (c) 2011-2012 OPEN CASCADE SAS
+// Copyright (c) 2011-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <OpenGl_GlCore11.hxx>
 
@@ -26,6 +21,9 @@
 #include <OpenGl_AspectFace.hxx>
 #include <OpenGl_AspectMarker.hxx>
 #include <OpenGl_AspectText.hxx>
+#include <OpenGl_Context.hxx>
+#include <OpenGl_ShaderManager.hxx>
+#include <OpenGl_telem_util.hxx>
 
 #ifdef HAVE_CONFIG_H
 # include <oce-config.h>
@@ -63,316 +61,137 @@ static void TelUpdatePolygonOffsets( const TEL_POFFSET_PARAM *pdata )
 
 /*----------------------------------------------------------------------*/
 
-void OpenGl_Workspace::UpdateMaterial( const int flag )
+void OpenGl_Workspace::updateMaterial (const int theFlag)
 {
-  // Case of Hiddenline
-  if (AspectFace_set->InteriorStyle == Aspect_IS_HIDDENLINE)
+  // Case of hidden line
+  if (AspectFace_set->InteriorStyle() == Aspect_IS_HIDDENLINE)
   {
-	myAspectFaceHl = *AspectFace_set; // copy all values including line edge aspect
-    myAspectFaceHl.IntFront.matcol     = BackgroundColor();
-    myAspectFaceHl.IntFront.color_mask = 0;
-    myAspectFaceHl.IntBack.color_mask  = 0;
+    myAspectFaceHl = *AspectFace_set; // copy all values including line edge aspect
+    myAspectFaceHl.ChangeIntFront().matcol     = BackgroundColor();
+    myAspectFaceHl.ChangeIntFront().color_mask = 0;
+    myAspectFaceHl.ChangeIntFront().color_mask = 0;
 
-	AspectFace_set = &myAspectFaceHl;
+    AspectFace_set = &myAspectFaceHl;
     return;
   }
 
-  const OPENGL_SURF_PROP *prop = NULL;
-  GLenum face = 0;
-  if ( flag == TEL_FRONT_MATERIAL )
+  const OPENGL_SURF_PROP* aProps = &AspectFace_set->IntFront();
+  GLenum aFace = GL_FRONT_AND_BACK;
+  if (theFlag == TEL_BACK_MATERIAL)
   {
-    prop = &AspectFace_set->IntFront;
-    face = GL_FRONT_AND_BACK;
+    aFace  = GL_BACK;
+    aProps = &AspectFace_set->IntBack();
+  }
+  else if (AspectFace_set->DistinguishingMode() == TOn
+        && !(NamedStatus & OPENGL_NS_RESMAT))
+  {
+    aFace = GL_FRONT;
+  }
+
+  myMatTmp.Init (*aProps);
+
+  // handling transparency
+  if (NamedStatus & OPENGL_NS_2NDPASSDO)
+  {
+    // second pass
+    myMatTmp.Diffuse.a() = aProps->env_reflexion;
   }
   else
   {
-    prop = &AspectFace_set->IntBack;
-    face = GL_BACK;
-  }
-
-  const unsigned int rm = prop->color_mask;
-
-  if ( !rm ) return;
-
-  // Handling transparency
-  if ( (NamedStatus & OPENGL_NS_2NDPASSDO) == 0 )
-  {
-    if ( myUseTransparency && prop->trans != 1.0F )
+    if (aProps->env_reflexion != 0.0f)
     {
-      // Render transparent
+      // if the material reflects the environment scene, the second pass is needed
+      NamedStatus |= OPENGL_NS_2NDPASSNEED;
+    }
+
+    if (myUseTransparency && aProps->trans != 1.0f)
+    {
+      // render transparent
+      myMatTmp.Diffuse.a() = aProps->trans;
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-      glEnable (GL_BLEND);
+      glEnable    (GL_BLEND);
       glDepthMask (GL_FALSE);
     }
     else
     {
-      // Render opaque
-      if ( (NamedStatus & OPENGL_NS_ANTIALIASING) == 0 )
+      // render opaque
+      if ((NamedStatus & OPENGL_NS_ANTIALIASING) == 0)
       {
         glBlendFunc (GL_ONE, GL_ZERO);
-        glDisable (GL_BLEND);
+        glDisable   (GL_BLEND);
       }
       glDepthMask (GL_TRUE);
     }
   }
 
-  static float  mAmb[4];
-  static float  mDiff[4];
-  static float  mSpec[4];
-  static float  mEmsv[4];
-  static float  mShin;
-
-  static const float defspeccol[4] = { 1.F, 1.F, 1.F, 1.F };
-
-  // Reset material
-  if ( NamedStatus & OPENGL_NS_RESMAT )
+  // do not update material properties in case of zero reflection mode,
+  // because GL lighting will be disabled by OpenGl_PrimitiveArray::DrawArray() anyway.
+  if (aProps->color_mask == 0)
   {
-    // Ambient component
-    if( rm & OPENGL_AMBIENT_MASK )
-    {
-      const float *c = prop->isphysic? prop->ambcol.rgb : prop->matcol.rgb;
-
-      mAmb[0] = prop->amb * c[0];
-      mAmb[1] = prop->amb * c[1];
-      mAmb[2] = prop->amb * c[2];
-    }
-    else
-    {
-      mAmb[0] = 0.F;
-      mAmb[1] = 0.F;
-      mAmb[2] = 0.F;
-    }
-    mAmb[3] = 1.F;
-
-    // Diffusion component
-    if( rm & OPENGL_DIFFUSE_MASK )
-    {
-      const float *c = prop->isphysic? prop->difcol.rgb : prop->matcol.rgb;
-
-      mDiff[0] = prop->diff * c[0];
-      mDiff[1] = prop->diff * c[1];
-      mDiff[2] = prop->diff * c[2];
-    }
-    else
-    {
-      mDiff[0] = 0.F;
-      mDiff[1] = 0.F;
-      mDiff[2] = 0.F;
-    }
-    mDiff[3] = 1.F;
-
-    if (NamedStatus & OPENGL_NS_2NDPASSDO)
-    {
-      mDiff[3] = prop->env_reflexion;
-    }
-    else
-    {
-      if (myUseTransparency) mDiff[3] = prop->trans;
-      // If the material reflects the environment scene, the second pass is needed
-      if (prop->env_reflexion != 0.0) NamedStatus |= OPENGL_NS_2NDPASSNEED;
-    }
-
-    // Specular component
-    if( rm & OPENGL_SPECULAR_MASK )
-    {
-      const float *c = prop->isphysic? prop->speccol.rgb : defspeccol;
-
-      mSpec[0] = prop->spec * c[0];
-      mSpec[1] = prop->spec * c[1];
-      mSpec[2] = prop->spec * c[2];
-    }
-    else {
-      mSpec[0] = 0.F;
-      mSpec[1] = 0.F;
-      mSpec[2] = 0.F;
-    }
-    mSpec[3] = 1.F;
-
-    // Emissive component
-    if( rm & OPENGL_EMISSIVE_MASK )
-    {
-      const float *c = prop->isphysic? prop->emscol.rgb : prop->matcol.rgb;
-
-      mEmsv[0] = prop->emsv * c[0];
-      mEmsv[1] = prop->emsv * c[1];
-      mEmsv[2] = prop->emsv * c[2];
-    }
-    else {
-      mEmsv[0] = 0.F;
-      mEmsv[1] = 0.F;
-      mEmsv[2] = 0.F;
-    }
-    mEmsv[3] = 1.F;
-
-    /* Coeficient de brillance */
-    mShin = prop->shine;
-
-    glMaterialfv(face, GL_AMBIENT, mAmb );
-    glMaterialfv(face, GL_DIFFUSE, mDiff );
-    glMaterialfv(face, GL_SPECULAR, mSpec);
-    glMaterialfv(face, GL_EMISSION, mEmsv);
-    glMaterialf(face, GL_SHININESS, mShin);
-
-    NamedStatus &= ~OPENGL_NS_RESMAT;
+    return;
   }
 
-  // Set Material Optimize
-  else
+  // reset material
+  if (NamedStatus & OPENGL_NS_RESMAT)
   {
-    // Ambient component
-    if( rm & OPENGL_AMBIENT_MASK )
+    glMaterialfv (aFace, GL_AMBIENT,   myMatTmp.Ambient.GetData());
+    glMaterialfv (aFace, GL_DIFFUSE,   myMatTmp.Diffuse.GetData());
+    glMaterialfv (aFace, GL_SPECULAR,  myMatTmp.Specular.GetData());
+    glMaterialfv (aFace, GL_EMISSION,  myMatTmp.Emission.GetData());
+    glMaterialf  (aFace, GL_SHININESS, myMatTmp.Shine());
+
+    if (theFlag == TEL_FRONT_MATERIAL)
     {
-      const float *c = prop->isphysic? prop->ambcol.rgb : prop->matcol.rgb;
-
-      if (mAmb[0] != prop->amb * c[0] ||
-          mAmb[1] != prop->amb * c[1] ||
-          mAmb[2] != prop->amb * c[2] )
-      {
-        mAmb[0] = prop->amb * c[0];
-        mAmb[1] = prop->amb * c[1];
-        mAmb[2] = prop->amb * c[2];
-        mAmb[3] = 1.F;
-
-        glMaterialfv(face, GL_AMBIENT, mAmb);
-      }
+      myMatFront = myMatTmp;
+      myMatBack  = myMatTmp;
     }
     else
     {
-      if ( mAmb[0] != 0.F || mAmb[1] != 0.F || mAmb[2] != 0.F )
-      {
-        mAmb[0] = 0.F;
-        mAmb[1] = 0.F;
-        mAmb[2] = 0.F;
-        mAmb[3] = 1.F;
-
-        glMaterialfv(face, GL_AMBIENT, mAmb);
-      }
+      myMatBack = myMatTmp;
     }
 
-    // Diffusion component
-    if( rm & OPENGL_DIFFUSE_MASK )
-    {
-      const float *c = prop->isphysic? prop->difcol.rgb : prop->matcol.rgb;
+    NamedStatus &= ~OPENGL_NS_RESMAT;
+    return;
+  }
 
-      if (mDiff[0] != prop->diff * c[0] ||
-          mDiff[1] != prop->diff * c[1] ||
-          mDiff[2] != prop->diff * c[2] ||
-          mDiff[3] != ((NamedStatus & OPENGL_NS_2NDPASSDO)? prop->env_reflexion : (myUseTransparency? prop->trans : 1.0F)))
-      {
-        mDiff[0] = prop->diff * c[0];
-        mDiff[1] = prop->diff * c[1];
-        mDiff[2] = prop->diff * c[2];
-        mDiff[3] = 1.F;
+  // reduce updates
+  OpenGl_Material& anOld = (theFlag == TEL_FRONT_MATERIAL)
+                         ? myMatFront
+                         : myMatBack;
 
-        if (NamedStatus & OPENGL_NS_2NDPASSDO)
-        {
-          mDiff[3] = prop->env_reflexion;
-        }
-        else
-        {
-          if (myUseTransparency) mDiff[3] = prop->trans;
-          // If the material reflects the environment scene, the second pass is needed
-          if (prop->env_reflexion != 0.0) NamedStatus |= OPENGL_NS_2NDPASSNEED;
-        }
-
-        glMaterialfv(face, GL_DIFFUSE, mDiff );
-      }
-    }
-    else
-    {
-      Tfloat newDiff3 = 1.F;
-
-      if (NamedStatus & OPENGL_NS_2NDPASSDO)
-      {
-        newDiff3 = prop->env_reflexion;
-      }
-      else
-      {
-        if (myUseTransparency) newDiff3 = prop->trans;
-        // If the material reflects the environment scene, the second pass is needed
-        if (prop->env_reflexion != 0.0) NamedStatus |= OPENGL_NS_2NDPASSNEED;
-      }
-
-      /* OCC19915: Even if diffuse reflectance is disabled,
-      still trying to update the current transparency if it
-      differs from the previous value  */
-      if ( mDiff[0] != 0.F || mDiff[1] != 0.F || mDiff[2] != 0.F || fabs(mDiff[3] - newDiff3) > 0.01F )
-      {
-        mDiff[0] = 0.F;
-        mDiff[1] = 0.F;
-        mDiff[2] = 0.F;
-        mDiff[3] = newDiff3;
-
-        glMaterialfv(face, GL_DIFFUSE, mDiff);
-      }
-    }
-
-    // Specular component
-    if( rm & OPENGL_SPECULAR_MASK )
-    {
-      const float *c = prop->isphysic? prop->speccol.rgb : defspeccol;
-
-      if (mSpec[0] != prop->spec * c[0] ||
-          mSpec[1] != prop->spec * c[1] ||
-          mSpec[2] != prop->spec * c[2])
-      {
-        mSpec[0] = prop->spec * c[0];
-        mSpec[1] = prop->spec * c[1];
-        mSpec[2] = prop->spec * c[2];
-        mSpec[3] = 1.F;
-
-        glMaterialfv(face, GL_SPECULAR, mSpec);
-      }
-    }
-    else
-    {
-      if ( mSpec[0] != 0.F || mSpec[1] != 0.F || mSpec[2] != 0.F )
-      {
-        mSpec[0] = 0.F;
-        mSpec[1] = 0.F;
-        mSpec[2] = 0.F;
-        mSpec[3] = 1.F;
-
-        glMaterialfv(face, GL_SPECULAR, mSpec);
-      }
-    }
-
-    // Emissive component
-    if( rm & OPENGL_EMISSIVE_MASK )
-    {
-      const float *c = prop->isphysic? prop->emscol.rgb : prop->matcol.rgb;
-
-      if (mEmsv[0] != prop->emsv * c[0] ||
-          mEmsv[1] != prop->emsv * c[1] ||
-          mEmsv[2] != prop->emsv * c[2])
-      {
-        mEmsv[0] = prop->emsv * c[0];
-        mEmsv[1] = prop->emsv * c[1];
-        mEmsv[2] = prop->emsv * c[2];
-        mEmsv[3] = 1.F;
-
-        glMaterialfv(face, GL_EMISSION, mEmsv);
-      }
-    }
-    else
-    {
-      if ( mEmsv[0] != 0.F || mEmsv[1] != 0.F || mEmsv[2] != 0.F )
-      {
-        mEmsv[0] = 0.F;
-        mEmsv[1] = 0.F;
-        mEmsv[2] = 0.F;
-        mEmsv[3] = 1.F;
-
-        glMaterialfv(face, GL_EMISSION, mEmsv);
-      }
-    }
-
-    // Shining coefficient
-    if( mShin != prop->shine )
-    {
-      mShin = prop->shine;
-      glMaterialf(face, GL_SHININESS, mShin);
-    }
+  if (myMatTmp.Ambient.r() != anOld.Ambient.r()
+   || myMatTmp.Ambient.g() != anOld.Ambient.g()
+   || myMatTmp.Ambient.b() != anOld.Ambient.b())
+  {
+    glMaterialfv (aFace, GL_AMBIENT, myMatTmp.Ambient.GetData());
+  }
+  if (myMatTmp.Diffuse.r() != anOld.Diffuse.r()
+   || myMatTmp.Diffuse.g() != anOld.Diffuse.g()
+   || myMatTmp.Diffuse.b() != anOld.Diffuse.b()
+   || fabs (myMatTmp.Diffuse.a() - anOld.Diffuse.a()) > 0.01f)
+  {
+    glMaterialfv (aFace, GL_DIFFUSE, myMatTmp.Diffuse.GetData());
+  }
+  if (myMatTmp.Specular.r() != anOld.Specular.r()
+   || myMatTmp.Specular.g() != anOld.Specular.g()
+   || myMatTmp.Specular.b() != anOld.Specular.b())
+  {
+    glMaterialfv (aFace, GL_SPECULAR, myMatTmp.Specular.GetData());
+  }
+  if (myMatTmp.Emission.r() != anOld.Emission.r()
+   || myMatTmp.Emission.g() != anOld.Emission.g()
+   || myMatTmp.Emission.b() != anOld.Emission.b())
+  {
+    glMaterialfv (aFace, GL_EMISSION, myMatTmp.Emission.GetData());
+  }
+  if (myMatTmp.Shine() != anOld.Shine())
+  {
+    glMaterialf (aFace, GL_SHININESS, myMatTmp.Shine());
+  }
+  anOld = myMatTmp;
+  if (aFace == GL_FRONT_AND_BACK)
+  {
+    myMatBack = myMatTmp;
   }
 }
 
@@ -414,25 +233,20 @@ const OpenGl_AspectText * OpenGl_Workspace::SetAspectText(const OpenGl_AspectTex
 
 /*----------------------------------------------------------------------*/
 
-const OpenGl_Matrix * OpenGl_Workspace::SetViewMatrix(const OpenGl_Matrix *AMatrix)
+const OpenGl_Matrix * OpenGl_Workspace::SetViewMatrix (const OpenGl_Matrix *AMatrix)
 {
   const OpenGl_Matrix *ViewMatrix_old = ViewMatrix_applied;
   ViewMatrix_applied = AMatrix;
 
-  OpenGl_Matrix lmat;
-  OpenGl_Transposemat3( &lmat, StructureMatrix_applied );
-
-  glMatrixMode (GL_MODELVIEW);
-  OpenGl_Matrix rmat;
-  OpenGl_Multiplymat3 (&rmat, &lmat, ViewMatrix_applied);
-  glLoadMatrixf ((const GLfloat* )rmat.mat);
+  // Update model-view matrix with new view matrix
+  UpdateModelViewMatrix();
 
   return ViewMatrix_old;
 }
 
 /*----------------------------------------------------------------------*/
 
-const OpenGl_Matrix * OpenGl_Workspace::SetStructureMatrix(const OpenGl_Matrix *AMatrix)
+const OpenGl_Matrix * OpenGl_Workspace::SetStructureMatrix (const OpenGl_Matrix *AMatrix, bool aRevert)
 {
   const OpenGl_Matrix *StructureMatrix_old = StructureMatrix_applied;
   StructureMatrix_applied = AMatrix;
@@ -440,12 +254,34 @@ const OpenGl_Matrix * OpenGl_Workspace::SetStructureMatrix(const OpenGl_Matrix *
   OpenGl_Matrix lmat;
   OpenGl_Transposemat3( &lmat, AMatrix );
 
-  glMatrixMode (GL_MODELVIEW);
-  OpenGl_Matrix rmat;
-  OpenGl_Multiplymat3 (&rmat, &lmat, ViewMatrix_applied);
-  glLoadMatrixf ((const GLfloat* )rmat.mat);
+  // Update model-view matrix with new structure matrix
+  UpdateModelViewMatrix();
+
+  if (!myGlContext->ShaderManager()->IsEmpty())
+  {
+    if (aRevert)
+    {
+      myGlContext->ShaderManager()->RevertModelWorldStateTo (lmat.mat);
+    }
+    else
+    {
+      myGlContext->ShaderManager()->UpdateModelWorldStateTo (lmat.mat);
+    }
+  }
 
   return StructureMatrix_old;
+}
+
+/*----------------------------------------------------------------------*/
+
+void OpenGl_Workspace::UpdateModelViewMatrix()
+{
+  OpenGl_Matrix aStructureMatT;
+  OpenGl_Transposemat3( &aStructureMatT, StructureMatrix_applied);
+
+  glMatrixMode (GL_MODELVIEW);
+  OpenGl_Multiplymat3 (&myModelViewMatrix, &aStructureMatT, ViewMatrix_applied);
+  glLoadMatrixf ((const GLfloat* )&myModelViewMatrix.mat);
 }
 
 /*----------------------------------------------------------------------*/
@@ -483,8 +319,8 @@ const OpenGl_AspectFace* OpenGl_Workspace::AspectFace (const Standard_Boolean th
     return AspectFace_set;
   }
 
-  const Aspect_InteriorStyle anIntstyle = AspectFace_set->InteriorStyle;
-  if (AspectFace_applied == NULL || AspectFace_applied->InteriorStyle != anIntstyle)
+  const Aspect_InteriorStyle anIntstyle = AspectFace_set->InteriorStyle();
+  if (AspectFace_applied == NULL || AspectFace_applied->InteriorStyle() != anIntstyle)
   {
     switch (anIntstyle)
     {
@@ -497,7 +333,7 @@ const OpenGl_AspectFace* OpenGl_Workspace::AspectFace (const Standard_Boolean th
       case Aspect_IS_HATCH:
       {
         glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
-		myDisplay->SetTypeOfHatch (AspectFace_applied != NULL ? AspectFace_applied->Hatch : TEL_HS_SOLID);
+        myDisplay->SetTypeOfHatch (AspectFace_applied != NULL ? AspectFace_applied->Hatch() : TEL_HS_SOLID);
         break;
       }
       case Aspect_IS_SOLID:
@@ -507,9 +343,9 @@ const OpenGl_AspectFace* OpenGl_Workspace::AspectFace (const Standard_Boolean th
         glDisable (GL_POLYGON_STIPPLE);
         break;
       }
-      case 5: //szvgl - no corresponding enumeration item Aspect_IS_POINT
+      case Aspect_IS_POINT:
       {
-        glPolygonMode(GL_FRONT_AND_BACK,GL_POINT);
+        glPolygonMode (GL_FRONT_AND_BACK, GL_POINT);
         break;
       }
     }
@@ -517,8 +353,8 @@ const OpenGl_AspectFace* OpenGl_Workspace::AspectFace (const Standard_Boolean th
 
   if (anIntstyle == Aspect_IS_HATCH)
   {
-    const Tint hatchstyle = AspectFace_set->Hatch;
-    if (AspectFace_applied == NULL || AspectFace_applied->Hatch != hatchstyle)
+    const Tint hatchstyle = AspectFace_set->Hatch();
+    if (AspectFace_applied == NULL || AspectFace_applied->Hatch() != hatchstyle)
     {
       myDisplay->SetTypeOfHatch(hatchstyle);
     }
@@ -526,8 +362,8 @@ const OpenGl_AspectFace* OpenGl_Workspace::AspectFace (const Standard_Boolean th
 
   if (!ActiveView()->Backfacing())
   {
-    const Tint aCullingMode = AspectFace_set->CullingMode;
-    if (AspectFace_applied == NULL || AspectFace_applied->CullingMode != aCullingMode)
+    const Tint aCullingMode = AspectFace_set->CullingMode();
+    if (AspectFace_applied == NULL || AspectFace_applied->CullingMode() != aCullingMode)
     {
       switch ((TelCullMode )aCullingMode)
       {
@@ -553,30 +389,30 @@ const OpenGl_AspectFace* OpenGl_Workspace::AspectFace (const Standard_Boolean th
   }
 
   // Aspect_POM_None means: do not change current settings
-  if ((AspectFace_set->PolygonOffset.mode & Aspect_POM_None) != Aspect_POM_None)
+  if ((AspectFace_set->PolygonOffset().mode & Aspect_POM_None) != Aspect_POM_None)
   {
     if (PolygonOffset_applied         == NULL
-     || PolygonOffset_applied->mode   != AspectFace_set->PolygonOffset.mode
-     || PolygonOffset_applied->factor != AspectFace_set->PolygonOffset.factor
-     || PolygonOffset_applied->units  != AspectFace_set->PolygonOffset.units)
+     || PolygonOffset_applied->mode   != AspectFace_set->PolygonOffset().mode
+     || PolygonOffset_applied->factor != AspectFace_set->PolygonOffset().factor
+     || PolygonOffset_applied->units  != AspectFace_set->PolygonOffset().units)
     {
-      PolygonOffset_applied = &AspectFace_set->PolygonOffset;
+      PolygonOffset_applied = &AspectFace_set->PolygonOffset();
       TelUpdatePolygonOffsets (PolygonOffset_applied);
     }
   }
 
-  UpdateMaterial (TEL_FRONT_MATERIAL);
-  if (AspectFace_set->DistinguishingMode == TOn)
+  updateMaterial (TEL_FRONT_MATERIAL);
+  if (AspectFace_set->DistinguishingMode() == TOn)
   {
-    UpdateMaterial (TEL_BACK_MATERIAL);
+    updateMaterial (TEL_BACK_MATERIAL);
   }
 
   if ((NamedStatus & OPENGL_NS_FORBIDSETTEX) == 0)
   {
-    if (AspectFace_set->doTextureMap)
+    if (AspectFace_set->DoTextureMap())
     {
-      EnableTexture (AspectFace_set->TextureRes,
-                     AspectFace_set->TextureParams);
+      EnableTexture (AspectFace_set->TextureRes (this),
+                     AspectFace_set->TextureParams());
     }
     else
     {

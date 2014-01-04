@@ -1,19 +1,15 @@
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Geom_OsculatingSurface.ixx>
 #include <Geom_BezierSurface.hxx>
@@ -62,7 +58,7 @@ void Geom_OsculatingSurface::Init(const Handle(Geom_Surface)& BS,
 {
   ClearOsculFlags();
   myTol=Tol; 
-  Standard_Real TolMin=1.e-12; 
+  Standard_Real TolMin=0.;//consider all singularities below Tol, not just above 1.e-12 (id23943)
   Standard_Boolean OsculSurf = Standard_True;
   myBasisSurf = Handle(Geom_Surface)::DownCast(BS->Copy());
   myOsculSurf1 = new Geom_HSequenceOfBSplineSurface();
@@ -78,7 +74,7 @@ void Geom_OsculatingSurface::Init(const Handle(Geom_Surface)& BS,
       myAlong.SetValue(2,IsQPunctual(BS,V2,GeomAbs_IsoV,TolMin,Tol));
       myAlong.SetValue(3,IsQPunctual(BS,U1,GeomAbs_IsoU,TolMin,Tol));
       myAlong.SetValue(4,IsQPunctual(BS,U2,GeomAbs_IsoU,TolMin,Tol));
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
       cout<<myAlong(1)<<endl<<myAlong(2)<<endl<<myAlong(3)<<endl<<myAlong(4)<<endl;
 #endif
       if (myAlong(1) || myAlong(2) || myAlong(3) || myAlong(4)) 
@@ -111,7 +107,7 @@ void Geom_OsculatingSurface::Init(const Handle(Geom_Surface)& BS,
 	    {
 	      InitSurf = Handle(Geom_BSplineSurface)::DownCast(myBasisSurf);
 	    }
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
 	  cout<<"UDEG: "<<InitSurf->UDegree()<<endl;
 	  cout<<"VDEG: "<<InitSurf->VDegree()<<endl;
 #endif
@@ -139,7 +135,7 @@ void Geom_OsculatingSurface::Init(const Handle(Geom_Surface)& BS,
 			      OsculSurf  = BuildOsculatingSurface(V1,UKnot,VKnot,S,L);
 			      if(!OsculSurf) break;
 			      k++;
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
 			      cout<<"1.k = "<<k<<endl;
 #endif
 			      IsQPunc=IsQPunctual(L,V1,GeomAbs_IsoV,0.,Tol);
@@ -163,7 +159,7 @@ void Geom_OsculatingSurface::Init(const Handle(Geom_Surface)& BS,
 				  OsculSurf = BuildOsculatingSurface(V2,UKnot,VKnot,S,L);
 				  if(!OsculSurf) break;
 				  k++;
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
 				  cout<<"2.k = "<<k<<endl;
 #endif
 				  IsQPunc=IsQPunctual(L,V2,GeomAbs_IsoV,0.,Tol);
@@ -189,7 +185,7 @@ void Geom_OsculatingSurface::Init(const Handle(Geom_Surface)& BS,
 			      OsculSurf = BuildOsculatingSurface(V2,UKnot,VKnot,S,L);
 			      if(!OsculSurf) break;
 			      k++;
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
 			      cout<<"2.k = "<<k<<endl;
 #endif
 			      IsQPunc=IsQPunctual(L,V2,GeomAbs_IsoV,0.,Tol);
@@ -222,7 +218,7 @@ void Geom_OsculatingSurface::Init(const Handle(Geom_Surface)& BS,
 			      OsculSurf = BuildOsculatingSurface(U1,UKnot,VKnot,S,L);
 			      if(!OsculSurf) break;
 			      k++;
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
 			      cout<<"1.k = "<<k<<endl;
 #endif
 			      IsQPunc=IsQPunctual(L,U1,GeomAbs_IsoU,0.,Tol);
@@ -244,7 +240,7 @@ void Geom_OsculatingSurface::Init(const Handle(Geom_Surface)& BS,
 				  OsculSurf  = BuildOsculatingSurface(U2,UKnot,VKnot,S,L);
 				  if(!OsculSurf) break;
 				  k++;
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
 				  cout<<"2.k = "<<k<<endl;
 #endif
 				  IsQPunc=IsQPunctual(L,U2,GeomAbs_IsoU,0.,Tol);
@@ -269,7 +265,7 @@ void Geom_OsculatingSurface::Init(const Handle(Geom_Surface)& BS,
 			      OsculSurf  = BuildOsculatingSurface(U2,UKnot,VKnot,S,L);
 			      if(!OsculSurf) break;
 			      k++;
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
 			      cout<<"2.k = "<<k<<endl;
 #endif
 			      IsQPunc=IsQPunctual(L,U2,GeomAbs_IsoU,0.,Tol);
@@ -447,7 +443,7 @@ Standard_Boolean  Geom_OsculatingSurface::BuildOsculatingSurface
 {
   Standard_Integer i, j;
   Standard_Boolean OsculSurf=Standard_True;
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
   cout<<"t = "<<Param<<endl;
   cout<<"======================================"<<endl<<endl;
 #endif
@@ -460,7 +456,7 @@ Standard_Boolean  Geom_OsculatingSurface::BuildOsculatingSurface
   vdeg = BS->VDegree();
   if( (IsAlongU() && vdeg <=1) || (IsAlongV() && udeg <=1))
   {
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
       cout<<" surface osculatrice nulle "<<endl;
 #endif
       //Standard_ConstructionError::Raise("Geom_OsculatingSurface");
@@ -503,7 +499,7 @@ Standard_Boolean  Geom_OsculatingSurface::BuildOsculatingSurface
       Standard_Integer OscUNumCoeff=0, OscVNumCoeff=0;
       if (IsAlongU()) 
       {
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
         cout<<">>>>>>>>>>> AlongU"<<endl;
 #endif
         OscUNumCoeff = (Standard_Integer ) udeg + 1;  
@@ -511,7 +507,7 @@ Standard_Boolean  Geom_OsculatingSurface::BuildOsculatingSurface
       }
       if (IsAlongV()) 
       {
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
         cout<<">>>>>>>>>>> AlongV"<<endl;
 #endif
         OscUNumCoeff = (Standard_Integer ) udeg;  
@@ -650,7 +646,7 @@ Standard_Boolean  Geom_OsculatingSurface::BuildOsculatingSurface
 				Data.UDegree(),
 				Data.VDegree(),
 				0, 0);
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
       cout<<"^====================================^"<<endl<<endl;
 #endif
 
@@ -687,7 +683,7 @@ Standard_Boolean Geom_OsculatingSurface::IsQPunctual
         D1NormMax=Max(D1NormMax,D1U.Magnitude());
       }
 
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
       cout << " D1NormMax = " << D1NormMax << endl;
 #endif
       if (D1NormMax >TolMax || D1NormMax < TolMin ) 
@@ -702,7 +698,7 @@ Standard_Boolean Geom_OsculatingSurface::IsQPunctual
 	S->D1(Param,T,P,D1U,D1V);
         D1NormMax=Max(D1NormMax,D1V.Magnitude());
       }
-#ifdef DEB
+#if defined(DEB) && defined(OCCT_DEVELOPMENT)
       cout << " D1NormMax = " << D1NormMax << endl;
 #endif
       if (D1NormMax >TolMax || D1NormMax < TolMin ) 

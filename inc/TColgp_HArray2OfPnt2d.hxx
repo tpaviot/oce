@@ -39,11 +39,11 @@ class TColgp_HArray2OfPnt2d : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TColgp_HArray2OfPnt2d(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      TColgp_HArray2OfPnt2d(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   TColgp_HArray2OfPnt2d(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const gp_Pnt2d& V);
+      TColgp_HArray2OfPnt2d(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const gp_Pnt2d& V);
   
-  Standard_EXPORT     void Init(const gp_Pnt2d& V) ;
+        void Init(const gp_Pnt2d& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -59,9 +59,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const gp_Pnt2d& Value) ;
   
-  Standard_EXPORT    const gp_Pnt2d& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const gp_Pnt2d& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     gp_Pnt2d& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        gp_Pnt2d& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const TColgp_Array2OfPnt2d& Array2() const;
   

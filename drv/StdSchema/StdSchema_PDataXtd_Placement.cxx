@@ -37,7 +37,10 @@ void StdSchema_PDataXtd_Placement::Add(const Handle(Standard_Persistent)& p, con
 void StdSchema_PDataXtd_Placement::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
+    Handle(PDataXtd_Placement) &pp = (Handle(PDataXtd_Placement)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -54,7 +57,10 @@ void StdSchema_PDataXtd_Placement::Write(const Handle(Standard_Persistent)& p, S
 void StdSchema_PDataXtd_Placement::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-  
+    Handle(PDataXtd_Placement) &pp = (Handle(PDataXtd_Placement)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
+
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
 

@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESDefs_Array1OfTabularData(const Standard_Integer Low,const Standard_Integer Up);
+      IGESDefs_Array1OfTabularData(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   IGESDefs_Array1OfTabularData(const Handle(IGESDefs_TabularData)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      IGESDefs_Array1OfTabularData(const Handle(IGESDefs_TabularData)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(IGESDefs_TabularData)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~IGESDefs_Array1OfTabularData()
 {
   Destroy();

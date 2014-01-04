@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Storage_PArray(const Standard_Integer Low,const Standard_Integer Up);
+      Storage_PArray(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Storage_PArray(const Handle(Standard_Persistent)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Storage_PArray(const Handle(Standard_Persistent)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(Standard_Persistent)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Storage_PArray()
 {
   Destroy();

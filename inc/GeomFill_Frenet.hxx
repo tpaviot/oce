@@ -119,6 +119,10 @@ private:
 //!          first and seconde  derivatives. <br>
 //!  Warning : It used only for C2 aproximation <br>
   Standard_EXPORT     Standard_Boolean SingularD2(const Standard_Real Param,const Standard_Integer Index,gp_Vec& Tangent,gp_Vec& DTangent,gp_Vec& D2Tangent,gp_Vec& Normal,gp_Vec& DNormal,gp_Vec& D2Normal,gp_Vec& BiNormal,gp_Vec& DBiNormal,gp_Vec& D2BiNormal,Standard_Real& Delta) ;
+  //! revolves the trihedron (which is determined <br>
+//! of given "Tangent", "Normal" and "BiNormal" vectors) <br>
+//! to coincide "Tangent" and "NewTangent" axes. <br>
+  Standard_EXPORT     Standard_Boolean RotateTrihedron(gp_Vec& Tangent,gp_Vec& Normal,gp_Vec& BiNormal,const gp_Vec& NewTangent) const;
 
 gp_Pnt P;
 Handle_TColStd_HArray1OfReal mySngl;

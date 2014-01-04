@@ -38,7 +38,10 @@ void ShapeSchema_PGeom2d_BoundedCurve::Add(const Handle(Standard_Persistent)& p,
 void ShapeSchema_PGeom2d_BoundedCurve::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
+    Handle(PGeom2d_BoundedCurve) &pp = (Handle(PGeom2d_BoundedCurve)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -55,7 +58,10 @@ void ShapeSchema_PGeom2d_BoundedCurve::Write(const Handle(Standard_Persistent)& 
 void ShapeSchema_PGeom2d_BoundedCurve::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
- 
+    Handle(PGeom2d_BoundedCurve) &pp = (Handle(PGeom2d_BoundedCurve)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
+
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
 

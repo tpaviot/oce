@@ -104,7 +104,7 @@ public:
   Standard_EXPORT     Standard_Integer NbExternRefs() const;
   //! Returns filename for numth extern reference <br>
 //!          Returns Null if FileName is not defined or bad <br>
-  Standard_EXPORT    const Standard_CString FileName(const Standard_Integer num) const;
+  Standard_EXPORT    Standard_CString FileName(const Standard_Integer num) const;
   //! Returns ProductDefinition to which numth extern reference <br>
 //!          is associated. <br>
 //!          Returns Null if cannot be detected or if extern reference <br>

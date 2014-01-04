@@ -34,6 +34,9 @@
 #ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
 #endif
+#ifndef _GeomAbs_SurfaceType_HeaderFile
+#include <GeomAbs_SurfaceType.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -86,9 +89,10 @@ public:
 //! <br>
   Standard_EXPORT     void SetTolerances(const Standard_Real TolArc,const Standard_Real TolTang,const Standard_Real UVMaxStep,const Standard_Real Fleche) ;
   
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang) ;
-  
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang,IntSurf_ListOfPntOn2S& LOfPnts,const Standard_Boolean RestrictLine = Standard_True) ;
+  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang,const Standard_Boolean isGeomInt = Standard_True) ;
+  //! If isGeomInt == Standard_False, then method <br>
+//!          Param-Param intersection will be used. <br>
+  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang,IntSurf_ListOfPntOn2S& LOfPnts,const Standard_Boolean RestrictLine = Standard_True,const Standard_Boolean isGeomInt = Standard_True) ;
   
   Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real U1,const Standard_Real V1,const Standard_Real U2,const Standard_Real V2,const Standard_Real TolArc,const Standard_Real TolTang) ;
   
@@ -136,6 +140,12 @@ protected:
 
 private:
 
+  
+  Standard_EXPORT     void ParamParamPerfom(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang,IntSurf_ListOfPntOn2S& LOfPnts,const Standard_Boolean RestrictLine,const GeomAbs_SurfaceType typs1,const GeomAbs_SurfaceType typs2) ;
+  
+  Standard_EXPORT     void GeomGeomPerfom(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang,IntSurf_ListOfPntOn2S& LOfPnts,const Standard_Boolean RestrictLine,const GeomAbs_SurfaceType typs1,const GeomAbs_SurfaceType typs2) ;
+  
+  Standard_EXPORT     void GeomParamPerfom(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Boolean isNotAnalitical,const GeomAbs_SurfaceType typs1,const GeomAbs_SurfaceType typs2) ;
 
 
 Standard_Boolean done;

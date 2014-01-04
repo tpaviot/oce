@@ -1,22 +1,17 @@
 // Created by: NW,JPB,CAL
 // Copyright (c) 1991-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // modified:     1/07/97 ; PCT : ajout texture mapping
 //              20/07/97 ; PCT : ajout transparence texture
@@ -46,6 +41,7 @@
 #include <Graphic3d_Group.jxx>
 #include <Graphic3d_Group.pxx>
 #include <Graphic3d_TextureMap.hxx>
+#include <Graphic3d_ShaderProgram.hxx>
 
 //-Methods, in order
 
@@ -68,13 +64,14 @@ void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectLin
   MyCGroup.ContextLine.Width      = float (AWidth);
   MyCGroup.ContextLine.IsDef      = 1;
 
+  MyCGroup.ContextLine.ShaderProgram = CTX->ShaderProgram();
+
   int noinsert    = 1;
   MyGraphicDriver->LineContextGroup (MyCGroup, noinsert);
 
   MyCGroup.ContextLine.IsSet      = 1;
 
   Update ();
-
 }
 
 void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectFillArea3d)& CTX) {
@@ -273,52 +270,48 @@ void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectFil
   Standard_ShortReal    aPolyFactor, aPolyUnits;
   CTX->PolygonOffsets(aPolyMode, aPolyFactor, aPolyUnits);
   MyCGroup.ContextFillArea.PolygonOffsetMode   = aPolyMode;
-  MyCGroup.ContextFillArea.PolygonOffsetFactor = (Standard_ShortReal)aPolyFactor;
-  MyCGroup.ContextFillArea.PolygonOffsetUnits  = (Standard_ShortReal)aPolyUnits;
+  MyCGroup.ContextFillArea.PolygonOffsetFactor = aPolyFactor;
+  MyCGroup.ContextFillArea.PolygonOffsetUnits  = aPolyUnits;
   // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets
+
+  MyCGroup.ContextFillArea.ShaderProgram = CTX->ShaderProgram();
 
   int noinsert = 1;
   MyGraphicDriver->FaceContextGroup (MyCGroup, noinsert);
 
   MyCGroup.ContextFillArea.IsSet  = 1;
 
-  Update ();
-
+  Update();
 }
 
-void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectMarker3d)& CTX) {
+void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectMarker3d)& theCtx)
+{
+  if (IsDeleted()) return;
 
-  if (IsDeleted ()) return;
+  Standard_Real  aRed, aGreen, aBlue;
+  Standard_Real  aScale;
+  Quantity_Color aColor;
+  Aspect_TypeOfMarker aMarkerType;
 
-  Standard_Real R, G, B;
-  Standard_Real AScale;
-  Quantity_Color AColor;
-  Aspect_TypeOfMarker AMType;
+  theCtx->Values (aColor, aMarkerType, aScale);
+  aColor.Values (aRed, aGreen, aBlue, Quantity_TOC_RGB);
 
-  CTX->Values (AColor, AMType, AScale);
-  AColor.Values (R, G, B, Quantity_TOC_RGB);
+  MyCGroup.ContextMarker.IsDef       = 1;
+  MyCGroup.ContextMarker.Color.r     = Standard_ShortReal (aRed);
+  MyCGroup.ContextMarker.Color.g     = Standard_ShortReal (aGreen);
+  MyCGroup.ContextMarker.Color.b     = Standard_ShortReal (aBlue);
+  MyCGroup.ContextMarker.MarkerType  = aMarkerType;
+  MyCGroup.ContextMarker.Scale       = Standard_ShortReal (aScale);
+  MyCGroup.ContextMarker.MarkerImage = theCtx->GetMarkerImage();
 
-  MyCGroup.ContextMarker.Color.r  = float (R);
-  MyCGroup.ContextMarker.Color.g  = float (G);
-  MyCGroup.ContextMarker.Color.b  = float (B);
-  MyCGroup.ContextMarker.MarkerType       = int (AMType);
-  MyCGroup.ContextMarker.Scale    = float (AScale);
-  MyCGroup.ContextMarker.IsDef    = 1;
+  MyCGroup.ContextMarker.ShaderProgram = theCtx->ShaderProgram();
 
-  int noinsert    = 1;
-  if ( AMType == Aspect_TOM_USERDEFINED )
-  {
-    CTX->GetTextureSize( MyMarkWidth, MyMarkHeight );
-    MyMarkArray = CTX->GetTexture();
-    MyGraphicDriver->MarkerContextGroup (MyCGroup, noinsert, MyMarkWidth, MyMarkHeight, MyMarkArray);
-  }
-  else
-    MyGraphicDriver->MarkerContextGroup (MyCGroup, noinsert);
+  int noinsert = 1;
+  MyGraphicDriver->MarkerContextGroup (MyCGroup, noinsert);
 
-  MyCGroup.ContextMarker.IsSet    = 1;
+  MyCGroup.ContextMarker.IsSet = 1;
 
-  Update ();
-
+  Update();
 }
 
 void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectText3d)& CTX) {
@@ -357,6 +350,8 @@ void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectTex
   MyCGroup.ContextText.TextAngle    = float (ATextAngle);
   MyCGroup.ContextText.TextFontAspect   = (int)ATextFontAspect;
 
+  MyCGroup.ContextText.ShaderProgram = CTX->ShaderProgram();
+
   MyCGroup.ContextText.IsDef      = 1;
 
   int noinsert    = 1;
@@ -365,7 +360,6 @@ void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectTex
   MyCGroup.ContextText.IsSet              = 1;
 
   Update ();
-
 }
 
 void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectLine3d)& CTX) {
@@ -387,13 +381,14 @@ void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectLine3d)&
   MyCGroup.ContextLine.Width              = float (AWidth);
   MyCGroup.ContextLine.IsDef              = 1;
 
+  MyCGroup.ContextLine.ShaderProgram = CTX->ShaderProgram();
+
   int noinsert    = 0;
   MyGraphicDriver->LineContextGroup (MyCGroup, noinsert);
 
   MyCGroup.ContextLine.IsSet              = 1;
 
   Update ();
-
 }
 
 void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectFillArea3d)& CTX) {
@@ -591,48 +586,44 @@ void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectFillArea
   MyCGroup.ContextFillArea.PolygonOffsetUnits  = (Standard_ShortReal)aPolyUnits;
   // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets
 
+  MyCGroup.ContextFillArea.ShaderProgram = CTX->ShaderProgram();
+
   int noinsert    = 0;
   MyGraphicDriver->FaceContextGroup (MyCGroup, noinsert);
 
   MyCGroup.ContextFillArea.IsSet  = 1;
 
   Update ();
-
 }
 
-void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectMarker3d)& CTX) {
+void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectMarker3d)& thCtx)
+{
+  if (IsDeleted()) return;
 
-  if (IsDeleted ()) return;
+  Standard_Real  aRed, aGreen, aBlue;
+  Standard_Real  aScale;
+  Quantity_Color aColor;
+  Aspect_TypeOfMarker aMarkerType;
 
-  Standard_Real R, G, B;
-  Standard_Real AScale;
-  Quantity_Color AColor;
-  Aspect_TypeOfMarker AMType;
+  thCtx->Values (aColor, aMarkerType, aScale);
+  aColor.Values (aRed, aGreen, aBlue, Quantity_TOC_RGB);
 
-  CTX->Values (AColor, AMType, AScale);
-  AColor.Values (R, G, B, Quantity_TOC_RGB);
+  MyCGroup.ContextMarker.IsDef       = 1;
+  MyCGroup.ContextMarker.Color.r     = Standard_ShortReal (aRed);
+  MyCGroup.ContextMarker.Color.g     = Standard_ShortReal (aGreen);
+  MyCGroup.ContextMarker.Color.b     = Standard_ShortReal (aBlue);
+  MyCGroup.ContextMarker.MarkerType  = aMarkerType;
+  MyCGroup.ContextMarker.Scale       = Standard_ShortReal (aScale);
+  MyCGroup.ContextMarker.MarkerImage = thCtx->GetMarkerImage();
 
-  MyCGroup.ContextMarker.Color.r  = float (R);
-  MyCGroup.ContextMarker.Color.g  = float (G);
-  MyCGroup.ContextMarker.Color.b  = float (B);
-  MyCGroup.ContextMarker.MarkerType       = int (AMType);
-  MyCGroup.ContextMarker.Scale    = float (AScale);
-  MyCGroup.ContextMarker.IsDef    = 1;
+  MyCGroup.ContextMarker.ShaderProgram = thCtx->ShaderProgram();
 
-  int noinsert    = 0;
-  if ( AMType == Aspect_TOM_USERDEFINED )
-  {
-    CTX->GetTextureSize( MyMarkWidth, MyMarkHeight );
-    MyMarkArray = CTX->GetTexture();
-    MyGraphicDriver->MarkerContextGroup (MyCGroup, noinsert, MyMarkWidth, MyMarkHeight, MyMarkArray);
-  }
-  else
-    MyGraphicDriver->MarkerContextGroup (MyCGroup, noinsert);
+  int noinsert = 0;
+  MyGraphicDriver->MarkerContextGroup (MyCGroup, noinsert);
 
-  MyCGroup.ContextMarker.IsSet    = 1;
+  MyCGroup.ContextMarker.IsSet = 1;
 
-  Update ();
-
+  Update();
 }
 
 void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectText3d)& CTX) {
@@ -672,13 +663,14 @@ void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectText3d)&
   MyCGroup.ContextText.TextFontAspect   = (int)ATextFontAspect;
   MyCGroup.ContextText.IsDef              = 1;
 
+  MyCGroup.ContextText.ShaderProgram = CTX->ShaderProgram();
+
   int noinsert    = 0;
   MyGraphicDriver->TextContextGroup (MyCGroup, noinsert);
 
   MyCGroup.ContextText.IsSet              = 1;
 
-  Update ();
-
+  Update();
 }
 
 Standard_Boolean Graphic3d_Group::IsGroupPrimitivesAspectSet (const Graphic3d_GroupAspect theAspect) const {
@@ -718,26 +710,31 @@ void Graphic3d_Group::GroupPrimitivesAspect (const Handle(Graphic3d_AspectLine3d
   Aspect_TypeOfDisplayText ADisplayType;
   Quantity_Color          AColorSubTitle;
 
-  if (MyCGroup.ContextLine.IsSet) {
-    R   = Standard_Real (MyCGroup.ContextLine.Color.r);
-    G   = Standard_Real (MyCGroup.ContextLine.Color.g);
-    B   = Standard_Real (MyCGroup.ContextLine.Color.b);
-    ALType      = Aspect_TypeOfLine (MyCGroup.ContextLine.LineType);
-    AWidth      = Standard_Real (MyCGroup.ContextLine.Width);
+  if (MyCGroup.ContextLine.IsSet)
+  {
+    R      = Standard_Real (MyCGroup.ContextLine.Color.r);
+    G      = Standard_Real (MyCGroup.ContextLine.Color.g);
+    B      = Standard_Real (MyCGroup.ContextLine.Color.b);
+    ALType = Aspect_TypeOfLine (MyCGroup.ContextLine.LineType);
+    AWidth = Standard_Real (MyCGroup.ContextLine.Width);
+    CTXL->SetShaderProgram (MyCGroup.ContextLine.ShaderProgram);
   }
-  else {
-    R   = Standard_Real (MyCGroup.Struct->ContextLine.Color.r);
-    G   = Standard_Real (MyCGroup.Struct->ContextLine.Color.g);
-    B   = Standard_Real (MyCGroup.Struct->ContextLine.Color.b);
-    ALType      = Aspect_TypeOfLine (MyCGroup.Struct->ContextLine.LineType);
-    AWidth      = Standard_Real (MyCGroup.Struct->ContextLine.Width);
+  else
+  {
+    R      = Standard_Real (MyCGroup.Struct->ContextLine.Color.r);
+    G      = Standard_Real (MyCGroup.Struct->ContextLine.Color.g);
+    B      = Standard_Real (MyCGroup.Struct->ContextLine.Color.b);
+    ALType = Aspect_TypeOfLine (MyCGroup.Struct->ContextLine.LineType);
+    AWidth = Standard_Real (MyCGroup.Struct->ContextLine.Width);
+    CTXL->SetShaderProgram (MyCGroup.Struct->ContextLine.ShaderProgram);
   }
   AColor.SetValues (R, G, B, Quantity_TOC_RGB);
   CTXL->SetColor (AColor);
   CTXL->SetType (ALType);
   CTXL->SetWidth (AWidth);
 
-  if (MyCGroup.ContextText.IsSet) {
+  if (MyCGroup.ContextText.IsSet)
+  {
     R   = Standard_Real (MyCGroup.ContextText.Color.r);
     G   = Standard_Real (MyCGroup.ContextText.Color.g);
     B   = Standard_Real (MyCGroup.ContextText.Color.b);
@@ -749,19 +746,22 @@ void Graphic3d_Group::GroupPrimitivesAspect (const Handle(Graphic3d_AspectLine3d
     ASpace      = Standard_Real (MyCGroup.ContextText.Space);
     AStyleT     = Aspect_TypeOfStyleText (MyCGroup.ContextText.Style);
     ADisplayType= Aspect_TypeOfDisplayText (MyCGroup.ContextText.DisplayType);
+    CTXT->SetShaderProgram (MyCGroup.ContextText.ShaderProgram);
   }
-  else {
+  else
+  {
     R   = Standard_Real (MyCGroup.Struct->ContextText.Color.r);
     G   = Standard_Real (MyCGroup.Struct->ContextText.Color.g);
     B   = Standard_Real (MyCGroup.Struct->ContextText.Color.b);
     Rs  = Standard_Real (MyCGroup.Struct->ContextText.ColorSubTitle.r);
     Gs  = Standard_Real (MyCGroup.Struct->ContextText.ColorSubTitle.g);
     Bs  = Standard_Real (MyCGroup.Struct->ContextText.ColorSubTitle.b);
-    AFont       = Standard_CString (MyCGroup.Struct->ContextText.Font);
-    AnExpansion = Standard_Real (MyCGroup.Struct->ContextText.Expan);
-    ASpace      = Standard_Real (MyCGroup.Struct->ContextText.Space);
-    AStyleT     = Aspect_TypeOfStyleText (MyCGroup.Struct->ContextText.Style);
-    ADisplayType= Aspect_TypeOfDisplayText (MyCGroup.Struct->ContextText.DisplayType);
+    AFont        = Standard_CString (MyCGroup.Struct->ContextText.Font);
+    AnExpansion  = Standard_Real (MyCGroup.Struct->ContextText.Expan);
+    ASpace       = Standard_Real (MyCGroup.Struct->ContextText.Space);
+    AStyleT      = Aspect_TypeOfStyleText (MyCGroup.Struct->ContextText.Style);
+    ADisplayType = Aspect_TypeOfDisplayText (MyCGroup.Struct->ContextText.DisplayType);
+    CTXT->SetShaderProgram (MyCGroup.Struct->ContextText.ShaderProgram);
   }
   AColor.SetValues (R, G, B, Quantity_TOC_RGB);
   AColorSubTitle.SetValues (Rs, Gs, Bs, Quantity_TOC_RGB);
@@ -773,31 +773,36 @@ void Graphic3d_Group::GroupPrimitivesAspect (const Handle(Graphic3d_AspectLine3d
   CTXT->SetDisplayType (ADisplayType);
   CTXT->SetColorSubTitle (AColorSubTitle);
 
-  if (MyCGroup.ContextMarker.IsSet) {
-    R   = Standard_Real (MyCGroup.ContextMarker.Color.r);
-    G   = Standard_Real (MyCGroup.ContextMarker.Color.g);
-    B   = Standard_Real (MyCGroup.ContextMarker.Color.b);
-    AMType      = Aspect_TypeOfMarker (MyCGroup.ContextMarker.MarkerType);
-    AScale      = Standard_Real (MyCGroup.ContextMarker.Scale);
-    if( AMType == Aspect_TOM_USERDEFINED )
-    {
+  if (MyCGroup.ContextMarker.IsSet)
+  {
+    R      = Standard_Real (MyCGroup.ContextMarker.Color.r);
+    G      = Standard_Real (MyCGroup.ContextMarker.Color.g);
+    B      = Standard_Real (MyCGroup.ContextMarker.Color.b);
+    AMType = MyCGroup.ContextMarker.MarkerType;
+    AScale = Standard_Real (MyCGroup.ContextMarker.Scale);
+    CTXT->SetShaderProgram (MyCGroup.ContextMarker.ShaderProgram);
 
-      CTXM->SetTexture( MyMarkWidth, MyMarkHeight, MyMarkArray );
+    if (AMType == Aspect_TOM_USERDEFINED)
+    {
+      CTXM->SetBitMap (MyMarkWidth, MyMarkHeight, MyMarkArray);
     }
   }
-  else {
-    R   = Standard_Real (MyCGroup.Struct->ContextMarker.Color.r);
-    G   = Standard_Real (MyCGroup.Struct->ContextMarker.Color.g);
-    B   = Standard_Real (MyCGroup.Struct->ContextMarker.Color.b);
-    AMType      = Aspect_TypeOfMarker (MyCGroup.Struct->ContextMarker.MarkerType);
-    AScale      = Standard_Real (MyCGroup.Struct->ContextMarker.Scale);
+  else
+  {
+    R      = Standard_Real (MyCGroup.Struct->ContextMarker.Color.r);
+    G      = Standard_Real (MyCGroup.Struct->ContextMarker.Color.g);
+    B      = Standard_Real (MyCGroup.Struct->ContextMarker.Color.b);
+    AMType = MyCGroup.Struct->ContextMarker.MarkerType;
+    AScale = Standard_Real (MyCGroup.Struct->ContextMarker.Scale);
+    CTXT->SetShaderProgram (MyCGroup.Struct->ContextMarker.ShaderProgram);
   }
   AColor.SetValues (R, G, B, Quantity_TOC_RGB);
   CTXM->SetColor (AColor);
   CTXM->SetType (AMType);
   CTXM->SetScale (AScale);
 
-  if (MyCGroup.ContextFillArea.IsSet) {
+  if (MyCGroup.ContextFillArea.IsSet)
+  {
     // Interior
     AStyle      = Aspect_InteriorStyle (MyCGroup.ContextFillArea.Style);
     R   = Standard_Real (MyCGroup.ContextFillArea.IntColor.r);
@@ -942,6 +947,7 @@ void Graphic3d_Group::GroupPrimitivesAspect (const Handle(Graphic3d_AspectLine3d
     {
       CTXF->SetTextureMapOff();
     }
+    CTXF->SetShaderProgram (MyCGroup.ContextFillArea.ShaderProgram);
 
     // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets
     CTXF->SetPolygonOffsets(MyCGroup.ContextFillArea.PolygonOffsetMode,
@@ -949,7 +955,8 @@ void Graphic3d_Group::GroupPrimitivesAspect (const Handle(Graphic3d_AspectLine3d
       MyCGroup.ContextFillArea.PolygonOffsetUnits);
     // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets
   }
-  else {
+  else
+  {
     // Interior
     AStyle      = Aspect_InteriorStyle (MyCGroup.Struct->ContextFillArea.Style);
     R   = Standard_Real (MyCGroup.Struct->ContextFillArea.IntColor.r);
@@ -1094,6 +1101,7 @@ void Graphic3d_Group::GroupPrimitivesAspect (const Handle(Graphic3d_AspectLine3d
     {
       CTXF->SetTextureMapOff();
     }
+    CTXF->SetShaderProgram (MyCGroup.Struct->ContextFillArea.ShaderProgram);
 
     // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets
     CTXF->SetPolygonOffsets(MyCGroup.Struct->ContextFillArea.PolygonOffsetMode,

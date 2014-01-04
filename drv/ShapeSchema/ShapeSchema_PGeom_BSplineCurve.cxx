@@ -43,6 +43,8 @@ void ShapeSchema_PGeom_BSplineCurve::SWrite(const Handle(Standard_Persistent)& p
   if (!p.IsNull()) {
     Handle(PGeom_BSplineCurve) &pp = (Handle(PGeom_BSplineCurve)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutBoolean(pp->_CSFDB_GetPGeom_BSplineCurverational());
@@ -67,6 +69,8 @@ void ShapeSchema_PGeom_BSplineCurve::SRead(const Handle(Standard_Persistent)& p,
 { 
   if (!p.IsNull()) {
     Handle(PGeom_BSplineCurve) &pp = (Handle(PGeom_BSplineCurve)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

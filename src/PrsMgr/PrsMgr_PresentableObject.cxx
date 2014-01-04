@@ -1,22 +1,18 @@
 // Created on: 1997-12-16
 // Created by: Jean Louis Frenkel
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Modified by Rob
 // 16-dec-1997  : Update Flag for Presentations. 
@@ -36,7 +32,6 @@
 //function : PrsMgr_PresentableObject
 //purpose  : 
 //=======================================================================
-
 PrsMgr_PresentableObject::PrsMgr_PresentableObject(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d)
      :myPresentations(),myTypeOfPresentation3d(aTypeOfPresentation3d)
 {
@@ -46,24 +41,28 @@ PrsMgr_PresentableObject::PrsMgr_PresentableObject(const PrsMgr_TypeOfPresentati
   myTransformPersistence.Point.z = 0.0;
 }
 
-
 //=======================================================================
 //function : Fill
 //purpose  : 
 //=======================================================================
-void PrsMgr_PresentableObject::Fill(const Handle(PrsMgr_PresentationManager)& aPresentationManager,
-				    const Handle(PrsMgr_Presentation)& aPresentation,
-				    const Standard_Integer aMode) {
-  if (aPresentation->DynamicType() == STANDARD_TYPE(PrsMgr_Presentation3d)) {
-    Compute(((Handle(PrsMgr_PresentationManager3d)&)aPresentationManager),((Handle(PrsMgr_Presentation3d)&)aPresentation)->Presentation(),aMode);
-    UpdateLocation(((Handle(PrsMgr_Presentation3d)&)aPresentation)->Presentation());
-    Handle(Graphic3d_Structure) aStruct = Handle(Graphic3d_Structure)::DownCast( ((Handle(PrsMgr_Presentation3d)&)aPresentation)->Presentation() );
-    if ( !aStruct.IsNull() ) {
-      aStruct->SetTransformPersistence( GetTransformPersistenceMode(), GetTransformPersistencePoint() );
-    }
+void PrsMgr_PresentableObject::Fill (const Handle(PrsMgr_PresentationManager)& aPresentationManager,
+                                     const Handle(PrsMgr_Presentation)& aPresentation,
+                                     const Standard_Integer aMode)
+{
+  if (aPresentation->DynamicType() == STANDARD_TYPE (PrsMgr_Presentation3d))
+  {
+    Handle(PrsMgr_PresentationManager3d) aPrsMgr3d =
+      (Handle(PrsMgr_PresentationManager3d)&)aPresentationManager;
+    Handle(PrsMgr_Presentation3d) aPrs3d = 
+      (Handle(PrsMgr_Presentation3d)&)aPresentation;
+    Handle(Prs3d_Presentation) aStruct3d = aPrs3d->Presentation();
+
+    Compute (aPrsMgr3d, aStruct3d, aMode);
+    UpdateLocation (aStruct3d);
+    aStruct3d->SetClipPlanes (myClipPlanes);
+    aStruct3d->SetTransformPersistence (GetTransformPersistenceMode(), GetTransformPersistencePoint());
   }
 }
-
 
 //=======================================================================
 //function : Compute
@@ -75,6 +74,7 @@ void PrsMgr_PresentableObject::Compute(const Handle(PrsMgr_PresentationManager3d
 {
   Standard_NotImplemented::Raise("cannot compute in a 3d visualizer");
 }
+
 //=======================================================================
 //function : Compute
 //purpose  : 
@@ -84,6 +84,7 @@ void PrsMgr_PresentableObject::Compute(const Handle(Prs3d_Projector)& /*aProject
 {
   Standard_NotImplemented::Raise("cannot compute under a specific projector");
 }
+
 //=======================================================================
 //function : Compute
 //purpose  : 
@@ -116,11 +117,11 @@ void PrsMgr_PresentableObject::Update (const Standard_Boolean AllModes) {
     }
   }
 }
+
 //=======================================================================
 //function : Update
 //purpose  : 
 //=======================================================================
-
 void PrsMgr_PresentableObject::Update (const Standard_Integer aMode, const Standard_Boolean ClearOther) {
   Standard_Integer l = myPresentations.Length();
   for (Standard_Integer i=1; i <= l; i++) {
@@ -149,11 +150,11 @@ void PrsMgr_PresentableObject::Update (const Standard_Integer aMode, const Stand
   }
 
 }
+
 //=======================================================================
 //function : Presentations
 //purpose  : 
 //=======================================================================
-
 PrsMgr_Presentations& PrsMgr_PresentableObject::Presentations() {
   return myPresentations;
 }
@@ -162,18 +163,15 @@ PrsMgr_Presentations& PrsMgr_PresentableObject::Presentations() {
 //function : HasLocation
 //purpose  : 
 //=======================================================================
-
 Standard_Boolean PrsMgr_PresentableObject::HasLocation() const 
 {
-  return !Location().IsIdentity();}
-
-
+  return !Location().IsIdentity();
+}
 
 //=======================================================================
 //function : SetToUpdate
 //purpose  : 
 //=======================================================================
-
 void PrsMgr_PresentableObject::SetToUpdate(const Standard_Integer aMode)
 {
   for(Standard_Integer IP =1; IP<=myPresentations.Length();IP++){
@@ -181,6 +179,11 @@ void PrsMgr_PresentableObject::SetToUpdate(const Standard_Integer aMode)
       myPresentations(IP).Presentation()->SetUpdateStatus(Standard_True);
   }
 }
+
+//=======================================================================
+//function : SetToUpdate
+//purpose  :
+//=======================================================================
 void PrsMgr_PresentableObject::SetToUpdate()
 {
   for(Standard_Integer IP =1; IP<=myPresentations.Length();IP++){
@@ -213,7 +216,6 @@ void PrsMgr_PresentableObject::ToBeUpdated(TColStd_ListOfInteger& OutList) const
 //function : SetTypeOfPresentation
 //purpose  : 
 //=======================================================================
-
 void PrsMgr_PresentableObject::SetTypeOfPresentation(const PrsMgr_TypeOfPresentation3d aType)
 {
   myTypeOfPresentation3d = aType;
@@ -258,6 +260,10 @@ void PrsMgr_PresentableObject::ResetLocation()
   myLocation = aLoc;
 }
 
+//=======================================================================
+//function : UpdateLocation
+//purpose  :
+//=======================================================================
 void PrsMgr_PresentableObject::UpdateLocation()
 {
   if(!HasLocation()) return;
@@ -271,12 +277,10 @@ void PrsMgr_PresentableObject::UpdateLocation()
   }
 }
 
-
 //=======================================================================
 //function : UpdateLocation
 //purpose  : 
 //=======================================================================
-
 void PrsMgr_PresentableObject::UpdateLocation(const Handle(Prs3d_Presentation)& P)
 {
   if(myLocation.IsIdentity()) return;
@@ -362,4 +366,73 @@ Standard_Integer PrsMgr_PresentableObject::GetZLayer
     return thePrsMgr->GetZLayer (this);
 
   return -1;
+}
+
+// =======================================================================
+// function : AddClipPlane
+// purpose  :
+// =======================================================================
+void PrsMgr_PresentableObject::AddClipPlane (const Handle(Graphic3d_ClipPlane)& thePlane)
+{
+  // add to collection and process changes
+  myClipPlanes.Append (thePlane);
+  UpdateClipping();
+}
+
+// =======================================================================
+// function : RemoveClipPlane
+// purpose  :
+// =======================================================================
+void PrsMgr_PresentableObject::RemoveClipPlane (const Handle(Graphic3d_ClipPlane)& thePlane)
+{
+  // remove from collection and process changes
+  Graphic3d_SequenceOfHClipPlane::Iterator aPlaneIt (myClipPlanes);
+  for (; aPlaneIt.More(); aPlaneIt.Next())
+  {
+    const Handle(Graphic3d_ClipPlane)& aPlane = aPlaneIt.Value();
+    if (aPlane != thePlane)
+      continue;
+
+    myClipPlanes.Remove (aPlaneIt);
+    UpdateClipping();
+    return;
+  }
+}
+
+// =======================================================================
+// function : SetClipPlanes
+// purpose  :
+// =======================================================================
+void PrsMgr_PresentableObject::SetClipPlanes (const Graphic3d_SequenceOfHClipPlane& thePlanes)
+{
+  // change collection and process changes
+  myClipPlanes = thePlanes;
+  UpdateClipping();
+}
+
+// =======================================================================
+// function : UpdateClipping
+// purpose  :
+// =======================================================================
+void PrsMgr_PresentableObject::UpdateClipping()
+{
+  // affect generated structures
+  for (Standard_Integer aPrsIt = 1; aPrsIt <= myPresentations.Length(); ++aPrsIt)
+  {
+    // pass over presentation manager 3d mechanism right to the structures -
+    // we do not interested in display mode collections.
+    const PrsMgr_ModedPresentation& aModedPrs = myPresentations (aPrsIt);
+
+    Handle(PrsMgr_Presentation3d) aPrs = 
+      Handle(PrsMgr_Presentation3d)::DownCast (aModedPrs.Presentation());
+
+    if (aPrs.IsNull())
+      continue;
+
+    Handle(Prs3d_Presentation) aStruct3d = aPrs->Presentation();
+    if (aStruct3d.IsNull())
+      continue;
+
+    aStruct3d->SetClipPlanes (myClipPlanes);
+  }
 }

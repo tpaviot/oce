@@ -1,22 +1,18 @@
 // Created on: 1992-04-06
 // Created by: Remi LEQUETTE
 // Copyright (c) 1992-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 // Updated by GG Tue Oct 22 16:22:10 1996
 //              reason : Try to compress the pixel image
@@ -142,7 +138,15 @@ Draw_View::Draw_View(Standard_Integer i, Draw_Viewer* v,
 			Standard_Integer Y,
 			Standard_Integer W,
 			Standard_Integer H) :
-     Draw_Window("Win", X, Y, W, H), id(i), viewer(v)
+     Draw_Window("Win", X, Y, W, H), 
+     id(i),
+	 viewer(v),
+	 FlagPers(0),
+	 Flag2d(0),
+     FocalDist(0.),
+	 Zoom(0.),
+     dX(0),dY(0),
+     lastX(0),lastY(0)
 {
   Framex0=Framey0=Framex1=Framey1=0;
 }
@@ -157,8 +161,8 @@ Draw_View::Draw_View(Standard_Integer i, Draw_Viewer* v,
 			Standard_Integer Y,
 			Standard_Integer W,
 			Standard_Integer H,
-      HWND win) :
-     Draw_Window("Win", X, Y, W, H, win), id(i), viewer(v)
+      HWND theWin) :
+     Draw_Window("Win", X, Y, W, H, theWin), id(i), viewer(v)
 {
   Framex0=Framey0=Framex1=Framey1=0;
 }
@@ -169,9 +173,16 @@ Draw_View::Draw_View(Standard_Integer i, Draw_Viewer* v,
                      Standard_Integer W,
                      Standard_Integer H,
                      NSWindow* theWindow) :
-Draw_Window(theWindow, "Win", X, Y, W, H), id(i), viewer(v)
+     Draw_Window(theWindow, "Win", X, Y, W, H), id(i), viewer(v),
+	 FlagPers(0),
+	 Flag2d(0),
+     FocalDist(0.),
+	 Zoom(0.),
+     dX(0),dY(0),
+     lastX(0),lastY(0),
+	 Framex0(0),Framey0(0),
+	 Framex1(0),Framey1(0)
 {
-  Framex0=Framey0=Framex1=Framey1=0;
 }
 #endif
 
@@ -180,7 +191,7 @@ Draw_Window(theWindow, "Win", X, Y, W, H), id(i), viewer(v)
 //purpose  :
 //=======================================================================
 #if defined(_WIN32) || defined (__WIN32__) || (defined(__APPLE__) && !defined(MACOSX_USE_GLX))
-Draw_View::Draw_View(Standard_Integer i, Draw_Viewer* v, const char* w)
+	 Draw_View::Draw_View(Standard_Integer /*i*/, Draw_Viewer* /*v*/, const char* /*w*/) : viewer( NULL )
 #else
 Draw_View::Draw_View(Standard_Integer i, Draw_Viewer* v, const char* w) :
      Draw_Window(w), id(i), viewer(v)

@@ -1,24 +1,18 @@
 // Created on: 1997-06-26
 // Created by: Laurent PAINNOT
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BRepMesh_Classifier.ixx>
 
@@ -63,35 +57,6 @@ static const Standard_Real RESOLUTION = 1.0E-16;
 // Real mesh is created in the grid 10E5x10E5, so intersection
 // should be cheched with double of discretization.
 static const Standard_Real MIN_DIST = 2.E-5;
-
-//=======================================================================
-//function : IsLine
-//purpose  : 
-//=======================================================================
-static Standard_Boolean IsLine(const Handle(Geom2d_Curve)& theCurve2d)
-{
-  Standard_Boolean IsALine = Standard_False;
-  if ( theCurve2d->IsKind( STANDARD_TYPE(Geom2d_Line) ) )
-  {
-    IsALine = Standard_True;
-  }
-  else if ( theCurve2d->IsKind( STANDARD_TYPE(Geom2d_BSplineCurve) ) )
-  {
-    Handle(Geom2d_BSplineCurve) aBSpline = *((Handle(Geom2d_BSplineCurve)*)&theCurve2d);
-    IsALine = (aBSpline->NbPoles() == 2);
-  }
-  else if ( theCurve2d->IsKind( STANDARD_TYPE(Geom2d_BezierCurve) ) )
-  {
-    Handle(Geom2d_BezierCurve) aBezier = *((Handle(Geom2d_BezierCurve)*)&theCurve2d);
-    IsALine = (aBezier->NbPoles() == 2);
-  }
-  else if ( theCurve2d->IsKind( STANDARD_TYPE(Geom2d_TrimmedCurve) ) )
-  {
-    Handle(Geom2d_TrimmedCurve) aTrimmedCurve = *((Handle(Geom2d_TrimmedCurve)*)&theCurve2d);
-    IsALine = IsLine(aTrimmedCurve->BasisCurve());
-  }
-  return IsALine;
-}
 
 //=======================================================================
 //function : AnalizeWire
@@ -539,7 +504,7 @@ BRepMesh_Classifier::BRepMesh_Classifier(const TopoDS_Face& theFace,
   Standard_Integer k = 1;
   for (Standard_Integer i = 1; i <= aNbWires; i++)
   {
-    Standard_Real x1, y1, x2, y2, aXstart, aYstart;
+    Standard_Real x1 = 0., y1 = 0., x2, y2, aXstart = 0., aYstart = 0.;
     const Standard_Integer aLen = aWireLength(i) + 1;
     for (Standard_Integer j = 1; j <= aLen; j++)
     {

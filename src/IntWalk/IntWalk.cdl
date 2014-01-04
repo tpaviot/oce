@@ -1,28 +1,22 @@
 -- Created on: 1991-03-28
 -- Created by: Jacques GOUSSARD
 -- Copyright (c) 1991-1999 Matra Datavision
--- Copyright (c) 1999-2012 OPEN CASCADE SAS
+-- Copyright (c) 1999-2014 OPEN CASCADE SAS
 --
--- The content of this file is subject to the Open CASCADE Technology Public
--- License Version 6.5 (the "License"). You may not use the content of this file
--- except in compliance with the License. Please obtain a copy of the License
--- at http://www.opencascade.org and read it completely before using this file.
+-- This file is part of Open CASCADE Technology software library.
 --
--- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
--- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+-- This library is free software; you can redistribute it and / or modify it
+-- under the terms of the GNU Lesser General Public version 2.1 as published
+-- by the Free Software Foundation, with special exception defined in the file
+-- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+-- distribution for complete text of the license and disclaimer of any warranty.
 --
--- The Original Code and all software distributed under the License is
--- distributed on an "AS IS" basis, without warranty of any kind, and the
--- Initial Developer hereby disclaims all such warranties, including without
--- limitation, any warranties of merchantability, fitness for a particular
--- purpose or non-infringement. Please see the License for the specific terms
--- and conditions governing the rights and limitations under the License.
-
-
+-- Alternatively, this file may be used under the terms of Open CASCADE
+-- commercial license or contractual agreement.
 
 package IntWalk
 
-	---Purpose: This package defines the "walking" (marching?)algorithmes
+	---Purpose: This package defines the "walking" (marching) algorithmes
 	--          for the intersection between two surfaces.
 	--          One of the surfaces is a parametric one.
 	--          If the other is an implicit one, the "IWalking" class will
@@ -42,14 +36,16 @@ is
     enumeration StatusDeflection is 
                 PasTropGrand, PointConfondu, ArretSurPointPrecedent,
                 ArretSurPoint, OK;
+
+-- StepTooGreat, ConfusedPoint, StopOnPreviousPoint, StopOnPoint, OK
 		
--- classe definition ressource sur surface biparametree
+-- class for definition of ressources on a biparametric surface
 
     deferred generic class PSurfaceTool;    
 
 
--- classes de definition pour algorithme cheminement sur une 
--- surface biparametree
+-- classes for definition of marching algorithm on a
+-- biparametric surface
 
     deferred generic class PathPointTool;  
 
@@ -60,18 +56,24 @@ is
     generic class Iterator;
     
     
---classes des objets resultat pour cheminement sur surface bi-parametree
+--class of result objects marching on a biparametric surface
 
     generic class IWLine;
     
     
---algorithme cheminement/resolution
+--algorithm marching/solution
 
     generic class IWalking, TheIWLine, SequenceOfIWLine;
+    
+    imported VectorOfWalkingData;
+    ---Purpose: Defines a dynamic vector of work data.
+    
+    imported VectorOfInteger;
+    ---Purpose: Defines a dynamic vector of integer.
 
     
---algorithme/resolution pour un cheminement sur intersection entre
--- 2 surfaces biparametrees
+--algorithm/solution for a marching on intersection between
+-- 2 biparametric surfaces
 
     generic class PWalking, TheInt2S;
 

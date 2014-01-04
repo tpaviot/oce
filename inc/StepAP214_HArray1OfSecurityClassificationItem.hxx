@@ -39,11 +39,11 @@ class StepAP214_HArray1OfSecurityClassificationItem : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   StepAP214_HArray1OfSecurityClassificationItem(const Standard_Integer Low,const Standard_Integer Up);
+      StepAP214_HArray1OfSecurityClassificationItem(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepAP214_HArray1OfSecurityClassificationItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP214_SecurityClassificationItem& V);
+      StepAP214_HArray1OfSecurityClassificationItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP214_SecurityClassificationItem& V);
   
-  Standard_EXPORT     void Init(const StepAP214_SecurityClassificationItem& V) ;
+        void Init(const StepAP214_SecurityClassificationItem& V) ;
   
         Standard_Integer Length() const;
   

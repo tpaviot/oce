@@ -1,23 +1,18 @@
 // Created on: 1994-02-17
 // Created by: Jean Yves LEBEY
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <TopOpeBRep_FacesFiller.ixx>
 
@@ -74,15 +69,26 @@ extern Standard_Boolean GLOBAL_bvpr;
 extern void debvprmess(Standard_Integer f1,Standard_Integer f2,Standard_Integer il,Standard_Integer vp,Standard_Integer si);
 extern Standard_Boolean TopOpeBRep_GetcontextNOPUNK();
 
+#ifdef DRAW
 static void FUN_traceRLine(const TopOpeBRep_LineInter& L)
 {
-#ifdef DRAW
+
   TCollection_AsciiString ee("Edofline"); ee.Cat(L.Index()); char* eee = ee.ToCString();
   DBRep::Set(eee,L.Arc());
-#endif
-}
 
+}
+#else
+static void FUN_traceRLine(const TopOpeBRep_LineInter&)
+{
+    //
+}
+#endif
+
+#ifdef DRAW
 static void FUN_traceGLine(const TopOpeBRep_LineInter& L)
+#else
+static void FUN_traceGLine(const TopOpeBRep_LineInter&)
+#endif
 {
 #ifdef DRAW
   TCollection_AsciiString ll("Glineof"); ll.Cat(L.Index()); char* lll = ll.ToCString();
@@ -201,7 +207,7 @@ static Standard_Boolean FUN_IoflSsuppS(const TopOpeBRepDS_PDataStructure pDS,
 //           attached to the edge (stored in the DS).
 //=======================================================================
 static Standard_Boolean FUN_findTF(const TopOpeBRepDS_PDataStructure pDS,
-		      const Standard_Integer iE, const Standard_Integer iF, const Standard_Integer iOOF,
+		      const Standard_Integer iE, const Standard_Integer, const Standard_Integer iOOF,
 		      TopOpeBRepDS_Transition& TF)
 {  
   Standard_Real factor = 0.5;
@@ -756,24 +762,15 @@ void TopOpeBRep_FacesFiller::ProcessRLine()
       TopoDS_Face OOFace = (*this).Face(OOShapeIndex);
       Standard_Integer iOOFace = myDS->Shape(OOFace);
 
-      TopoDS_Edge edge,OOedge; Standard_Integer OOedgeIndex;
-#ifdef DEB
-      Standard_Integer SIedgeIndex;
-#endif
-      Standard_Real paredge;
+      TopoDS_Edge edge,OOedge; Standard_Integer SIedgeIndex,OOedgeIndex;
+      Standard_Real paredge,OOparedge;
       Standard_Integer onbound;
       if (SIErest) 
-	{edge = Erest;  paredge = parRest; onbound = obRest;
-#ifdef DEB
-	 SIedgeIndex = iErest;
-#endif
-	 OOedge = OOE;  OOedgeIndex = iOO;    } 
+	{edge = Erest;  SIedgeIndex = iErest; paredge = parRest; onbound = obRest; 
+	 OOedge = OOE;  OOedgeIndex = iOO;    OOparedge = OOpar;} 
       else         
-	{OOedge = Erest;OOedgeIndex = iErest; onbound = obOO;
-#ifdef DEB
-	 SIedgeIndex = iOO;
-#endif
-	 edge = OOE;    paredge = OOpar;}
+	{OOedge = Erest;OOedgeIndex = iErest; OOparedge = parRest;   onbound = obOO;
+	 edge = OOE;    SIedgeIndex = iOO;    paredge = OOpar;}
       
       // PVIndex :
       // --------
@@ -806,6 +803,7 @@ void TopOpeBRep_FacesFiller::ProcessRLine()
       const TopOpeBRepDS_Transition& llt2 = FaceFaceTransition(2);
       TopOpeBRepDS_Transition Trans = (ShapeIndex == 1)? llt1 : llt2;
       Standard_Boolean TransUNK = Trans.IsUnknown();
+      TopAbs_Orientation Transori; if (!TransUNK) Transori = Trans.Orientation(TopAbs_IN); 
       
       TopOpeBRepDS_Transition transEdge; Standard_Boolean Tunk = Standard_True;
       if (!TransUNK) { //xpu281098 PRO12875(edge9,OOface11)
@@ -927,7 +925,6 @@ void TopOpeBRep_FacesFiller::FillLineVPonR()
   Standard_Boolean tDSF = TopOpeBRepDS_GettraceDSF();
   Standard_Boolean trline = Standard_False;
 #endif
-
   // if a VP is on degenerated edge, adds the triplet
   // (vertex, closing edge, degenerated edge) to the
   // map as vertex for key.
@@ -937,10 +934,10 @@ void TopOpeBRep_FacesFiller::FillLineVPonR()
   
   mykeptVPnbr = 0; 
   
-  if (myLine->TypeLineCurve() == TopOpeBRep_RESTRICTION) {
+  if (myLine->TypeLineCurve() == TopOpeBRep_RESTRICTION) { 
 #ifdef DEB
     if (trline) FUN_traceRLine(*myLine);
-#endif    
+#endif
     ProcessRLine();
     return;
   }
@@ -950,11 +947,10 @@ void TopOpeBRep_FacesFiller::FillLineVPonR()
   if ( nINON == 0 ) {
     return; 
   }
-  
+   
 #ifdef DEB
   if (trline) FUN_traceGLine(*myLine);
 #endif
-  
   myLineIsonEdge = LSameDomainERL(*myLine, myERL);
   
   // walking (case mouch1a 1 1) : line (vpfirst on 3,vplast on 0,nvpkept = 2) => kept
@@ -966,9 +962,7 @@ void TopOpeBRep_FacesFiller::FillLineVPonR()
     else cout <<" geometric line not on edge"<<endl;
   }
 #endif
-  
-  //----------------------------------------------------------------------
-  // IMPORTANT : 
+  //----------------------------------------------------------------------  // IMPORTANT : 
   // Some of Curve/Point transitions for vpoints keep on RESTRICTION lines
   // sharing same domain with the current geometric line are computed here
   //----------------------------------------------------------------------
@@ -988,9 +982,6 @@ void TopOpeBRep_FacesFiller::FillLineVPonR()
   }
   
   if ( myLineIsonEdge && (!myDSCIL.IsEmpty()) ) {
-#ifdef DEB
-    if (tDSF) cout<<"myLineIsonEdge && (!myDSCIL.IsEmpty())"<<endl;
-#endif
     myDSCIL.Clear();
   }
 }

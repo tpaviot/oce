@@ -1,22 +1,18 @@
 // Created on: 1997-07-28
 // Created by: Pierre CHALAMET
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Graphic3d_TextureRoot.ixx>
 #include <Graphic3d_GraphicDriver.hxx>
@@ -29,6 +25,10 @@
 #include <OSD_Protection.hxx>
 #include <OSD_File.hxx>
 #include <Standard_Atomic.hxx>
+
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
 
 namespace
 {
@@ -52,6 +52,11 @@ TCollection_AsciiString Graphic3d_TextureRoot::TexturesFolder()
     {
       OSD_Environment aCasRootEnv ("CASROOT");
       VarName = aCasRootEnv.Value();
+#ifdef OCE_INSTALL_DATA_DIR
+      if (VarName.IsEmpty())  {
+        VarName = OCE_INSTALL_DATA_DIR;
+      }
+#endif
       if (!VarName.IsEmpty())
       {
         VarName += "/src/Textures";
@@ -60,9 +65,9 @@ TCollection_AsciiString Graphic3d_TextureRoot::TexturesFolder()
 
     if (VarName.IsEmpty())
     {
-      std::cerr << " CSF_MDTVTexturesDirectory and CASROOT not setted\n";
-      std::cerr << " one of these variable are mandatory to use this functionality\n";
-      Standard_Failure::Raise ("CSF_MDTVTexturesDirectory and CASROOT not setted");
+      std::cerr << "Both environment variables CSF_MDTVTexturesDirectory and CASROOT are undefined!\n"
+                << "At least one should be defined to use standard Textures.\n";
+      Standard_Failure::Raise ("CSF_MDTVTexturesDirectory and CASROOT are undefined");
       return VarName;
     }
 
@@ -108,7 +113,7 @@ void Graphic3d_TextureRoot::Destroy() const
 // function : GetId
 // purpose  :
 // =======================================================================
-TCollection_AsciiString Graphic3d_TextureRoot::GetId() const
+const TCollection_AsciiString& Graphic3d_TextureRoot::GetId() const
 {
   return myTexId;
 }

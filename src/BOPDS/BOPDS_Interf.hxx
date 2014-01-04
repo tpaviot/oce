@@ -1,21 +1,16 @@
 // Created by: Peter KURNEV
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifndef BOPDS_Interf_HeaderFile
 #define BOPDS_Interf_HeaderFile
@@ -62,7 +57,7 @@ class BOPDS_Interf  {
 		  const Standard_Integer theIndex2) {
     myIndex1=theIndex1; 
     myIndex2=theIndex2; 
-  }; 
+  }
   //
   /**
    * Returns the indices of interferred shapes
@@ -75,7 +70,7 @@ class BOPDS_Interf  {
 	       Standard_Integer& theIndex2) const {
 		 theIndex1=myIndex1; 
 		 theIndex2=myIndex2; 
-	       };
+	       }
   //
   /**
    * Sets the index of the first interferred shape
@@ -84,7 +79,7 @@ class BOPDS_Interf  {
    */
   void SetIndex1(const Standard_Integer theIndex) {
     myIndex1=theIndex; 
-  };
+  }
   //
   /**
    * Sets the index of the second interferred shape
@@ -93,7 +88,7 @@ class BOPDS_Interf  {
    */
   void SetIndex2(const Standard_Integer theIndex) {
     myIndex2=theIndex;
-  };
+  }
   //
   /**
    * Returns the index of the first interferred shape
@@ -102,7 +97,7 @@ class BOPDS_Interf  {
    */
   Standard_Integer Index1() const {
     return myIndex1; 
-  };
+  }
   //
   /**
    * Returns the index of the second interferred shape
@@ -111,7 +106,7 @@ class BOPDS_Interf  {
    */
   Standard_Integer Index2() const {
     return myIndex2; 
-  };
+  }
   //
   /**
    * Returns the index of that are opposite to the given index
@@ -130,7 +125,7 @@ class BOPDS_Interf  {
     else {
       return -1;
     }
-  };
+  }
   //
   /**
    * Returns true if the interference contains given index
@@ -150,7 +145,7 @@ class BOPDS_Interf  {
    */
   void SetIndexNew(const Standard_Integer theIndex) {
     myIndexNew=theIndex;
-  };
+  }
   //
   //
   /**
@@ -160,7 +155,7 @@ class BOPDS_Interf  {
    */
   Standard_Integer IndexNew() const {
     return myIndexNew; 
-  };
+  }
   //
   /**
    * Returns true if the interference has index of new shape
@@ -173,7 +168,7 @@ class BOPDS_Interf  {
   Standard_Boolean HasIndexNew(Standard_Integer& theIndex) const {
     theIndex=myIndexNew;
     return (myIndexNew>=0);
-  };
+  }
   //
   /**
    * Returns true if the interference has index of new shape
@@ -182,7 +177,7 @@ class BOPDS_Interf  {
    */
   Standard_Boolean HasIndexNew() const {
     return (myIndexNew>=0);
-  };
+  }
   //
  protected:     
   BOPDS_Interf() :
@@ -190,17 +185,17 @@ class BOPDS_Interf  {
     myIndex2(-1),
     myIndexNew(-1),
     myAllocator(NCollection_BaseAllocator::CommonBaseAllocator()) {
-  };
+  }
   //
   BOPDS_Interf(const Handle(NCollection_BaseAllocator)& theAllocator) :
     myIndex1(-1), 
     myIndex2(-1),
     myIndexNew(-1),
     myAllocator(theAllocator) {
-  };
+  }
   //
   virtual ~BOPDS_Interf() {
-  };
+  }
   
  protected:  	
   Standard_Integer myIndex1;
@@ -223,7 +218,7 @@ class BOPDS_InterfVV  : public BOPDS_Interf {
    *  Constructor
    */
   BOPDS_InterfVV() : BOPDS_Interf() {
-  };
+  }
   //
   /**
    *  Constructor
@@ -232,13 +227,13 @@ class BOPDS_InterfVV  : public BOPDS_Interf {
    */
   BOPDS_InterfVV(const Handle(NCollection_BaseAllocator)& theAllocator) 
     : BOPDS_Interf(theAllocator) {
-  };
+  }
   //
   /**
    *  Destructor
    */
   virtual ~BOPDS_InterfVV() {
-  };
+  }
   //
 };
 /**
@@ -259,7 +254,7 @@ class BOPDS_InterfVE  : public BOPDS_Interf {
     :
       BOPDS_Interf(),
       myParameter(0.) {
-  };
+  }
   //
   /**
    *  Constructor
@@ -270,13 +265,13 @@ class BOPDS_InterfVE  : public BOPDS_Interf {
     :
       BOPDS_Interf(theAllocator),
       myParameter(0.) {
-  };
+  }
   //
   /**
    *  Destructor
    */
   virtual ~BOPDS_InterfVE() {
-  };
+  }
   //
   /**
    *  Modifier
@@ -288,7 +283,7 @@ class BOPDS_InterfVE  : public BOPDS_Interf {
    */
   void SetParameter(const Standard_Real theT) {
     myParameter=theT;
-  };
+  }
   //
   /**
    *  Selector
@@ -300,7 +295,7 @@ class BOPDS_InterfVE  : public BOPDS_Interf {
    */
   Standard_Real Parameter() const {
     return myParameter;
-  };
+  }
   
  protected:
   Standard_Real myParameter;
@@ -324,7 +319,7 @@ class BOPDS_InterfVF  : public BOPDS_Interf {
     : BOPDS_Interf(),
       myU(0.),
       myV(0.) {
-  };
+  }
   //
   /**
    *  Constructor
@@ -335,13 +330,13 @@ class BOPDS_InterfVF  : public BOPDS_Interf {
     : BOPDS_Interf(theAllocator),
       myU(0.),
       myV(0.) {
-  };
+  }
   //
   /**
    *  Destructor
    */  
   virtual ~BOPDS_InterfVF() {
-  };
+  }
   //
   /**
    * Modifier
@@ -357,7 +352,7 @@ class BOPDS_InterfVF  : public BOPDS_Interf {
 	     const Standard_Real theV) {
     myU=theU;
     myV=theV;
-  };
+  }
   //
   /**
    * Selector
@@ -372,7 +367,7 @@ class BOPDS_InterfVF  : public BOPDS_Interf {
   void UV(Standard_Real& theU,Standard_Real& theV) const {
     theU=myU;
     theV=myV;
-  };
+  }
   
  protected:
   Standard_Real myU;
@@ -394,7 +389,7 @@ class BOPDS_InterfEE  : public BOPDS_Interf {
    *  Constructor
    */
   BOPDS_InterfEE() : BOPDS_Interf() {
-  };
+  }
   //
   /**
    *  Constructor
@@ -403,13 +398,13 @@ class BOPDS_InterfEE  : public BOPDS_Interf {
    */
   BOPDS_InterfEE(const Handle(NCollection_BaseAllocator)& theAllocator)
     : BOPDS_Interf(theAllocator) {
-  };
+  }
   //
   /**
    *  Destructor
    */
   virtual ~BOPDS_InterfEE() {
-  };
+  }
   //
   /**
    *  Modifier
@@ -419,7 +414,7 @@ class BOPDS_InterfEE  : public BOPDS_Interf {
    */
   void SetCommonPart(const IntTools_CommonPrt& theCP) {
     myCommonPart=theCP;
-  };
+  }
   //
   /**
    *  Selector
@@ -429,7 +424,7 @@ class BOPDS_InterfEE  : public BOPDS_Interf {
    */
   const IntTools_CommonPrt& CommonPart() const {
     return myCommonPart;
-  };
+  }
   
  protected:
   IntTools_CommonPrt myCommonPart;
@@ -449,7 +444,7 @@ class BOPDS_InterfEF  : public BOPDS_Interf {
    *  Constructor
    */
   BOPDS_InterfEF(): BOPDS_Interf() {
-  };
+  }
   //
   /**
    *  Constructor
@@ -463,13 +458,13 @@ class BOPDS_InterfEF  : public BOPDS_Interf {
    */
   BOPDS_InterfEF(const Handle(NCollection_BaseAllocator)& theAllocator)
     : BOPDS_Interf(theAllocator) {
-  };
+  }
   //
   /**
    *  Destructor
    */
   virtual ~BOPDS_InterfEF() {
-  };
+  }
   //
   /**
    * Modifier
@@ -479,7 +474,7 @@ class BOPDS_InterfEF  : public BOPDS_Interf {
    */
   void SetCommonPart(const IntTools_CommonPrt& theCP){
     myCommonPart=theCP;
-  };
+  }
   //
   /**
    *  Selector
@@ -489,7 +484,7 @@ class BOPDS_InterfEF  : public BOPDS_Interf {
    */
   const IntTools_CommonPrt& CommonPart() const {
     return myCommonPart;
-  };
+  }
   //
  protected:
   IntTools_CommonPrt myCommonPart;
@@ -511,33 +506,35 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
   BOPDS_InterfFF()
     : 
       BOPDS_Interf(),
+      myTangentFaces(Standard_False),
       myTolR3D(1.e-7),
       myTolR2D(1.e-7),
       myCurves(myAllocator),
       myPoints(myAllocator) {
-  };
+  }
   //
   /**
    *  Constructor
    * @param theAllocator
    *   allocator to manage the memory
    */
-  /**
+  /*
   BOPDS_InterfFF(const Handle(NCollection_BaseAllocator)& theAllocator)
     : 
       BOPDS_Interf(theAllocator),
+      myTangentFaces(Standard_False),
       myTolR3D(1.e-7),
       myTolR2D(1.e-7),
       myCurves(myAllocator),
       myPoints(myAllocator) {
-  };
+  }
   */
   //
   /**
    *  Destructor
    */
   virtual ~BOPDS_InterfFF() {
-  };
+  }
   //
   /**
    * Initializer
@@ -559,7 +556,24 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
       myPoints.Init();
     }
   }
-  //
+  /**
+   * Modifier
+   * Sets the flag of whether the faces are tangent  
+   * @param theFlag
+   *   the flag 
+   */
+  void SetTangentFaces(const Standard_Boolean theFlag) {
+     myTangentFaces=theFlag;
+  }
+  /**
+   * Selector
+   * Returns the flag whether the faces are tangent  
+   * @return
+   *   the flag 
+   */
+  Standard_Boolean TangentFaces()const {
+    return myTangentFaces;
+  }
   /**
    * Modifier
    * Sets the value of 3D tolerance  
@@ -608,7 +622,7 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
    */
   const BOPDS_VectorOfCurve& Curves()const{
     return myCurves;
-  };
+  }
   //
   /**
    * Selector/Modifier
@@ -618,7 +632,7 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
    */
   BOPDS_VectorOfCurve& ChangeCurves(){
     return myCurves;
-  };
+  }
   //
   /**
    * Selector
@@ -628,7 +642,7 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
    */
   const BOPDS_VectorOfPoint& Points()const{
     return myPoints;
-  };
+  }
   //
   /**
    * Selector/Modifier
@@ -638,9 +652,10 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
    */
   BOPDS_VectorOfPoint& ChangePoints(){
     return myPoints;
-  };
+  }
   //
  protected:
+  Standard_Boolean myTangentFaces;
   Standard_Real myTolR3D;
   Standard_Real myTolR2D;
   BOPDS_VectorOfCurve myCurves;

@@ -1,21 +1,17 @@
-// Created on: 2012-07-10
+// Created on: 2014-07-10
 // Created by: VRO
-// Copyright (c) 2012 OPEN CASCADE SAS
+// Copyright (c) 2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Image_Diff.hxx>
 #include <Image_AlienPixMap.hxx>
@@ -70,7 +66,7 @@ namespace
   }
 
   static const Standard_Size NEIGHBOR_PIXELS_NB = 8;
-  struct
+  static struct
   {
     Standard_Integer row_inc;
     Standard_Integer col_inc;
@@ -100,7 +96,7 @@ namespace
           && aCol < theData.SizeY();
     }
   }
-  static const NEIGHBOR_PIXELS[NEIGHBOR_PIXELS_NB] =
+  const NEIGHBOR_PIXELS[NEIGHBOR_PIXELS_NB] =
   {
     {-1, -1}, {-1,  0}, {-1,  1},
     { 0, -1},           { 0,  1},
@@ -426,7 +422,7 @@ Standard_Integer Image_Diff::ignoreBorderEffect()
 
   // Find a different area (a set of close to each other pixels which colors differ in both images).
   // It filters alone pixels with different color.
-  Standard_Size aRow1, aCol1, aRow2, aCol2;
+  Standard_Size aRow1 = 0, aCol1 = 0, aRow2, aCol2;
   Standard_Integer aLen1 = (myDiffPixels.Length() > 0) ? (myDiffPixels.Length() - 1) : 0;
   for (Standard_Integer aPixelId1 = 0; aPixelId1 < aLen1; ++aPixelId1)
   {
@@ -445,8 +441,8 @@ Standard_Integer Image_Diff::ignoreBorderEffect()
         if (myGroupsOfDiffPixels.IsEmpty())
         {
           TColStd_MapOfInteger* aGroup = new TColStd_MapOfInteger();
-          aGroup->Add (aValue1);
-          aGroup->Add (aValue2);
+          aGroup->Add ((Standard_Integer)aValue1);
+          aGroup->Add ((Standard_Integer)aValue2);
           myGroupsOfDiffPixels.Append (aGroup);
         }
         else
@@ -456,9 +452,9 @@ Standard_Integer Image_Diff::ignoreBorderEffect()
           for (ListOfMapOfInteger::Iterator aGrIter (myGroupsOfDiffPixels); aGrIter.More(); aGrIter.Next())
           {
             TColStd_MapOfInteger*& aGroup = aGrIter.ChangeValue();
-            if (aGroup->Contains (aValue1))
+            if (aGroup->Contains ((Standard_Integer)aValue1))
             {
-              aGroup->Add (aValue2);
+              aGroup->Add ((Standard_Integer)aValue2);
               isFound = Standard_True;
               break;
             }
@@ -468,8 +464,8 @@ Standard_Integer Image_Diff::ignoreBorderEffect()
           {
             // Create a new group
             TColStd_MapOfInteger* aGroup = new TColStd_MapOfInteger();
-            aGroup->Add (aValue1);
-            aGroup->Add (aValue2);
+            aGroup->Add ((Standard_Integer)aValue1);
+            aGroup->Add ((Standard_Integer)aValue2);
             myGroupsOfDiffPixels.Append (aGroup);
           }
         }
@@ -494,7 +490,7 @@ Standard_Integer Image_Diff::ignoreBorderEffect()
       for (Standard_Size aNgbrIter = 0; aNgbrIter < NEIGHBOR_PIXELS_NB; ++aNgbrIter)
       {
         if (NEIGHBOR_PIXELS[aNgbrIter].isValid (aDataRef, aRow1, aCol1)
-         && aGroup->Contains (NEIGHBOR_PIXELS[aNgbrIter].pixel2Int (aRow1, aCol1)))
+         && aGroup->Contains ((Standard_Integer)NEIGHBOR_PIXELS[aNgbrIter].pixel2Int (aRow1, aCol1)))
         {
           ++aNeighboursNb;
         }

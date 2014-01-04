@@ -28,9 +28,6 @@
 #ifndef _BOPDS_ListOfPave_HeaderFile
 #include <BOPDS_ListOfPave.hxx>
 #endif
-#ifndef _Handle_BOPDS_CommonBlock_HeaderFile
-#include <Handle_BOPDS_CommonBlock.hxx>
-#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
@@ -49,7 +46,6 @@
 #ifndef _BOPDS_ListOfPaveBlock_HeaderFile
 #include <BOPDS_ListOfPaveBlock.hxx>
 #endif
-class BOPDS_CommonBlock;
 class BOPDS_Pave;
 class Bnd_Box;
 
@@ -169,30 +165,6 @@ public:
   Standard_EXPORT     Standard_Boolean ContainsParameter(const Standard_Real thePrm,const Standard_Real theTol) const;
   
 //! Modifier <br>
-//! Sets the common block <theCB> <br>
-  Standard_EXPORT     void SetCommonBlock(const Handle(BOPDS_CommonBlock)& theCB) ;
-  
-//! Selector <br>
-//! Returns the common block <br>
-  Standard_EXPORT    const Handle_BOPDS_CommonBlock& CommonBlock() const;
-  
-//! Query <br>
-//! Returns true if the pave block is common block <br>
-  Standard_EXPORT     Standard_Boolean IsCommonBlock() const;
-  
-//! Query <br>
-//! Returns true if the pave block is common block <br>
-//! that contains at least one pave block <br>
-  Standard_EXPORT     Standard_Boolean IsCommonBlockOnEdge() const;
-  
-//! Selector <br>
-//! Returns the real common block <br>
-//! <br>
-//! shrunk data <br>
-//! <br>
-  Standard_EXPORT     Handle_BOPDS_PaveBlock RealPaveBlock() const;
-  
-//! Modifier <br>
 //! Sets the shrunk data for the pave block <br>
 //! <theTS1>,  <theTS2> - shrunk range <br>
 //! <theBox> - the bounding box <br>
@@ -225,7 +197,6 @@ Standard_Integer myOriginalEdge;
 BOPDS_Pave myPave1;
 BOPDS_Pave myPave2;
 BOPDS_ListOfPave myExtPaves;
-Handle_BOPDS_CommonBlock myCommonBlock;
 Standard_Real myTS1;
 Standard_Real myTS2;
 Bnd_Box myShrunkBox;

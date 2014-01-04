@@ -1,33 +1,24 @@
 // Created on: 2000-08-30
 // Created by: data exchange team
-// Copyright (c) 2000-2012 OPEN CASCADE SAS
+// Copyright (c) 2000-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <XCAFDoc_DocumentTool.ixx>
 #include <TDataStd_Name.hxx>
 #include <TDF_Data.hxx>
 #include <TDF_Tool.hxx>
 #include <TDF_LabelLabelMap.hxx>
-
-// purpose: give acces to DocumentTool->Label() for static methods
-static TDF_LabelLabelMap RootLDocLMap;
-
+#include <TDataStd_TreeNode.hxx>
 
 //=======================================================================
 //function : GetID
@@ -40,6 +31,20 @@ const Standard_GUID& XCAFDoc_DocumentTool::GetID()
   return DocumentToolID; 
 }
 
+namespace {
+//=======================================================================
+//function : GetRefID
+//purpose  : Returns a reference id to find a tree node attribute at the root
+//           label
+//=======================================================================
+
+static const Standard_GUID& GetDocumentToolRefID() 
+{
+  static Standard_GUID DocumentToolRefID ("efd212eb-6dfd-11d4-b9c8-0060b0ee281b");
+  return DocumentToolRefID; 
+}
+}
+
 
 //=======================================================================
 //function : Set
@@ -50,14 +55,14 @@ Handle(XCAFDoc_DocumentTool) XCAFDoc_DocumentTool::Set(const TDF_Label& L,
                                                        const Standard_Boolean IsAcces)
 {
   Handle(XCAFDoc_DocumentTool) A;
-  if (!DocLabel(L).FindAttribute (XCAFDoc_DocumentTool::GetID(), A)) {
-    if (!IsAcces) {
-      TDF_Label RootL = L.Root();
-      if (RootLDocLMap.IsBound(RootL)) RootLDocLMap.UnBind(RootL);
-      RootLDocLMap.Bind(RootL, L);
-    }
+  TDF_Label aL = DocLabel (L);
+  if (!aL.FindAttribute (XCAFDoc_DocumentTool::GetID(), A)) {
+    if (!IsAcces)
+      aL = L;
+
     A = new XCAFDoc_DocumentTool;
-    DocLabel(L).AddAttribute(A);
+    aL.AddAttribute(A);
+    A->Init();
     // set ShapeTool, ColorTool and LayerTool attributes
     XCAFDoc_ShapeTool::Set(ShapesLabel(L));
     XCAFDoc_ColorTool::Set(ColorsLabel(L));
@@ -77,11 +82,16 @@ Handle(XCAFDoc_DocumentTool) XCAFDoc_DocumentTool::Set(const TDF_Label& L,
 TDF_Label XCAFDoc_DocumentTool::DocLabel(const TDF_Label& acces) 
 {
   TDF_Label DocL, RootL = acces.Root();
-  if (RootLDocLMap.IsBound(RootL))
-    return RootLDocLMap.Find(RootL);
-  
+  const Standard_GUID& aRefGuid = GetDocumentToolRefID();
+  Handle(TDataStd_TreeNode) aRootNode, aLabNode;
+
+  if (RootL.FindAttribute (aRefGuid, aRootNode)) {
+    aLabNode = aRootNode->First();
+    DocL = aLabNode->Label();
+    return DocL;
+  }
+
   DocL = RootL.FindChild(1);
-  RootLDocLMap.Bind(RootL, DocL);
   return DocL;
 }
 
@@ -267,7 +277,15 @@ void XCAFDoc_DocumentTool::Paste (const Handle(TDF_Attribute)& /* into */,
 void XCAFDoc_DocumentTool::Init() const
 {
   TDF_Label DocL = Label(), RootL = DocL.Root();
-  if ( ! RootLDocLMap.IsBound(RootL) ) RootLDocLMap.Bind(RootL, DocL);
+  const Standard_GUID& aRefGuid = GetDocumentToolRefID();
+  Handle(TDataStd_TreeNode) aRootNode, aLabNode;
+
+  if (!RootL.FindAttribute (aRefGuid, aRootNode)) {
+    Handle(TDataStd_TreeNode) aRootNode = TDataStd_TreeNode::Set (RootL, aRefGuid);
+    Handle(TDataStd_TreeNode) aLNode = TDataStd_TreeNode::Set (DocL, aRefGuid);
+    aLNode->SetFather (aRootNode);
+    aRootNode->SetFirst (aLNode);
+  }
 }
 
 
@@ -278,25 +296,18 @@ void XCAFDoc_DocumentTool::Init() const
 
 Standard_Boolean XCAFDoc_DocumentTool::IsXCAFDocument(const  Handle(TDocStd_Document)& D)
 {
-  return RootLDocLMap.IsBound(D->Main().Root());
+  TDF_Label RootL = D->Main().Root();
+  const Standard_GUID& aRefGuid = GetDocumentToolRefID();
+  Handle(TDataStd_TreeNode) aRootNode;
+  return RootL.FindAttribute (aRefGuid, aRootNode);
 }
 
 
 //=======================================================================
 //function : Destroy
-//purpose  : Removal of the document from RootLDocLMap is necessary. Otherwise
-//           there remains orphan labels and upon creation of a new
-//           label with XCAFDoc_DocumentTool attribute that
-//           orphan is attempted to get used (when hashes match) causing
-//           an exception when trying to access its data framework.
+//purpose  : No longer required. Kept for binary compatibility only.
 //=======================================================================
 
 void XCAFDoc_DocumentTool::Destroy()
 {
-  TDF_Label DocL = Label();
-  if ( ! DocL.IsNull() ) {
-    TDF_Label RootL = DocL.Root();
-    if ( RootLDocLMap.IsBound( RootL ) ) 
-      RootLDocLMap.UnBind( RootL );
-  }
 }

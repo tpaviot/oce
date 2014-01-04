@@ -41,11 +41,11 @@ class TShort_HArray2OfShortReal : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TShort_HArray2OfShortReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      TShort_HArray2OfShortReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   TShort_HArray2OfShortReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_ShortReal& V);
+      TShort_HArray2OfShortReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_ShortReal& V);
   
-  Standard_EXPORT     void Init(const Standard_ShortReal& V) ;
+        void Init(const Standard_ShortReal& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -61,9 +61,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Standard_ShortReal& Value) ;
   
-  Standard_EXPORT    const Standard_ShortReal& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const Standard_ShortReal& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     Standard_ShortReal& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        Standard_ShortReal& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const TShort_Array2OfShortReal& Array2() const;
   

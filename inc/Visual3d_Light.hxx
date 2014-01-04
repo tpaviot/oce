@@ -16,9 +16,6 @@
 #include <Handle_Visual3d_Light.hxx>
 #endif
 
-#ifndef _Visual3d_TypeOfLightSource_HeaderFile
-#include <Visual3d_TypeOfLightSource.hxx>
-#endif
 #ifndef _Graphic3d_CLight_HeaderFile
 #include <Graphic3d_CLight.hxx>
 #endif
@@ -34,8 +31,8 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
+#ifndef _Visual3d_TypeOfLightSource_HeaderFile
+#include <Visual3d_TypeOfLightSource.hxx>
 #endif
 class Visual3d_LightDefinitionError;
 class Visual3d_View;
@@ -147,6 +144,8 @@ public:
   Standard_EXPORT     void SetPosition(const Graphic3d_Vertex& Position) ;
   //!  Returns the headlight  state of the light <me> <br>
   Standard_EXPORT     Standard_Boolean Headlight() const;
+  //! Setup headlight flag. <br>
+  Standard_EXPORT     void SetHeadlight(const Standard_Boolean theValue) ;
   //! Returns the colour of the light <me>. <br>
   Standard_EXPORT     Quantity_Color Color() const;
   //! Returns the light type of <me>. <br>
@@ -181,8 +180,8 @@ public:
 //!  Warning: Raises LightDefinitionError <br>
 //!	    if the type of the light is not TOLS_SPOT. <br>
   Standard_EXPORT     void Values(Quantity_Color& Color,Graphic3d_Vertex& Position,Graphic3d_Vector& Direction,Standard_Real& Concentration,Standard_Real& Fact1,Standard_Real& Fact2,Standard_Real& AngleCone) const;
-  //! Maximum number of activatable light sources. <br>
-  Standard_EXPORT   static  Standard_Integer Limit() ;
+  //! Returns the light defintion. <br>
+  Standard_EXPORT    const Graphic3d_CLight& CLight() const;
 
 
 friend class Visual3d_View;
@@ -197,14 +196,11 @@ protected:
 
 private: 
 
-  //! Returns the light identification. <br>
-  Standard_EXPORT     Standard_Integer Identification() const;
   //! Returns True if <AAngle> is a valid <br>
 //!	    spot light spread angle. <br>
   Standard_EXPORT   static  Standard_Boolean IsValid(const Standard_Real AAngle) ;
 
-Visual3d_TypeOfLightSource MyType;
-Graphic3d_CLight MyCLight;
+Graphic3d_CLight myCLight;
 
 
 };

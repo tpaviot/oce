@@ -4,6 +4,7 @@ set(TOOLKIT_MODULES
 	HLRTopoBRep
 	HLRBRep
 	HLRAlgo
+	HLRAppli
 	Intrv
 	TopBas
 	TopCnx

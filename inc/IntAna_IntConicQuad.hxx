@@ -89,11 +89,15 @@ public:
   //! Intersection between a line and a plane. <br>
 //!          Tolang is used to determine if the angle between two <br>
 //!          vectors is null. <br>
-  Standard_EXPORT   IntAna_IntConicQuad(const gp_Lin& L,const gp_Pln& P,const Standard_Real Tolang);
+//!          Tol is used to check the distance between line and plane <br>
+//!          on the distance <Len> from the origin of the line. <br>
+  Standard_EXPORT   IntAna_IntConicQuad(const gp_Lin& L,const gp_Pln& P,const Standard_Real Tolang,const Standard_Real Tol = 0,const Standard_Real Len = 0);
   //! Intersects a line and a plane. <br>
 //!          Tolang is used to determine if the angle between two <br>
 //!          vectors is null. <br>
-  Standard_EXPORT     void Perform(const gp_Lin& L,const gp_Pln& P,const Standard_Real Tolang) ;
+//!          Tol is used to check the distance between line and plane <br>
+//!          on the distance <Len> from the origin of the line. <br>
+  Standard_EXPORT     void Perform(const gp_Lin& L,const gp_Pln& P,const Standard_Real Tolang,const Standard_Real Tol = 0,const Standard_Real Len = 0) ;
   //! Intersection between a circle and a plane. <br>
 //!          Tolang is used to determine if the angle between two <br>
 //!          vectors is null. <br>

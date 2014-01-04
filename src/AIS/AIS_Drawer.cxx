@@ -1,39 +1,38 @@
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <AIS_Drawer.ixx>
 #include <Standard_ProgramError.hxx>
 
-AIS_Drawer::AIS_Drawer(): 
-myLink(new Prs3d_Drawer()),
-hasLocalAttributes(Standard_False),
-myhasOwnDeviationCoefficient(Standard_False),
-myPreviousDeviationCoefficient(0.1),
-myhasOwnHLRDeviationCoefficient (Standard_False),
-myhasOwnDeviationAngle (Standard_False),
-myhasOwnHLRDeviationAngle (Standard_False),
-myHasOwnFaceBoundaryDraw (Standard_False)
+// =======================================================================
+// function : AIS_Drawer
+// purpose  :
+// =======================================================================
+AIS_Drawer::AIS_Drawer()
+: myLink (new Prs3d_Drawer()),
+  hasLocalAttributes (Standard_False),
+  myhasOwnDeviationCoefficient (Standard_False),
+  myPreviousDeviationCoefficient (0.1),
+  myhasOwnHLRDeviationCoefficient (Standard_False),
+  myhasOwnDeviationAngle (Standard_False),
+  myhasOwnHLRDeviationAngle (Standard_False),
+  myHasOwnFaceBoundaryDraw (Standard_False)
 {
-  SetMaximalParameterValue(500000.);
-  myLink->SetMaximalParameterValue(500000.);
+  SetMaximalParameterValue (500000.0);
+  myLink->SetMaximalParameterValue (500000.0);
   SetTypeOfHLR (Prs3d_TOH_NotSet);
-} 
-
+}
 
 Aspect_TypeOfDeflection AIS_Drawer::TypeOfDeflection () const 
 {
@@ -216,17 +215,97 @@ Handle (Prs3d_DatumAspect) AIS_Drawer::DatumAspect ()
 Handle (Prs3d_PlaneAspect) AIS_Drawer::PlaneAspect () 
 {return myPlaneAspect.IsNull() ? myLink->PlaneAspect (): myPlaneAspect;}
 
-Handle (Prs3d_LengthAspect) AIS_Drawer::LengthAspect ()  
-{return myLengthAspect.IsNull()? myLink->LengthAspect () : myLengthAspect ;}
+// =======================================================================
+// function : DimensionAspect
+// purpose  :
+// =======================================================================
+Handle (Prs3d_DimensionAspect) AIS_Drawer::DimensionAspect()
+{
+  return myDimensionAspect.IsNull()? myLink->DimensionAspect () : myDimensionAspect;
+}
 
+// =======================================================================
+// function : DimAngleModelUnits
+// purpose  :
+// =======================================================================
+const TCollection_AsciiString& AIS_Drawer::DimAngleModelUnits() const
+{
+  return myHasOwnDimAngleModelUnits
+    ? Prs3d_Drawer::DimAngleModelUnits()
+    : myLink->DimAngleModelUnits();
+}
 
-Handle (Prs3d_AngleAspect) AIS_Drawer::AngleAspect () 
-{return myAngleAspect.IsNull()? myLink->AngleAspect () :myAngleAspect ;}
+// =======================================================================
+// function : DimensionModelUnits
+// purpose  :
+// =======================================================================
+const TCollection_AsciiString& AIS_Drawer::DimLengthModelUnits() const
+{
+  return myHasOwnDimLengthModelUnits
+    ? Prs3d_Drawer::DimLengthModelUnits()
+    : myLink->DimLengthModelUnits();
+}
+// =======================================================================
+// function : SetDimLengthModelUnits
+// purpose  :
+// =======================================================================
+void AIS_Drawer::SetDimLengthModelUnits (const TCollection_AsciiString& theUnits)
+{
+  myHasOwnDimLengthModelUnits = Standard_True;
+  Prs3d_Drawer::SetDimLengthDisplayUnits (theUnits);
+}
 
+// =======================================================================
+// function : SetDimAngleModelUnits
+// purpose  :
+// =======================================================================
+void AIS_Drawer::SetDimAngleModelUnits (const TCollection_AsciiString& theUnits)
+{
+  myHasOwnDimAngleModelUnits = Standard_True;
+  Prs3d_Drawer::SetDimAngleDisplayUnits (theUnits);
+}
 
-Handle (Prs3d_RadiusAspect) AIS_Drawer::RadiusAspect ()  const 
-{return myRadiusAspect.IsNull()? myLink->RadiusAspect():myRadiusAspect; }
+// =======================================================================
+// function : DimAngleDisplayUnits
+// purpose  :
+// =======================================================================
+const TCollection_AsciiString& AIS_Drawer::DimAngleDisplayUnits() const
+{
+  return myHasOwnDimAngleDisplayUnits
+    ? Prs3d_Drawer::DimAngleDisplayUnits()
+    : myLink->DimAngleDisplayUnits();
+}
 
+// =======================================================================
+// function : DimLengthDisplayUnits
+// purpose  :
+// =======================================================================
+const TCollection_AsciiString& AIS_Drawer::DimLengthDisplayUnits() const
+{
+  return myHasOwnDimLengthDisplayUnits
+    ? Prs3d_Drawer::DimLengthDisplayUnits()
+    : myLink->DimLengthDisplayUnits();
+}
+
+// =======================================================================
+// function : SetDimLengthDisplayUnits
+// purpose  :
+// =======================================================================
+void AIS_Drawer::SetDimLengthDisplayUnits (const TCollection_AsciiString& theUnits)
+{
+  myHasOwnDimLengthDisplayUnits = Standard_True;
+  Prs3d_Drawer::SetDimLengthDisplayUnits (theUnits);
+}
+
+// =======================================================================
+// function : SetDimAngleDisplayUnits
+// purpose  :
+// =======================================================================
+void AIS_Drawer::SetDimAngleDisplayUnits (const TCollection_AsciiString& theUnits)
+{
+  myHasOwnDimAngleDisplayUnits = Standard_True;
+  Prs3d_Drawer::SetDimAngleDisplayUnits (theUnits);
+}
 
 Handle (Prs3d_LineAspect) AIS_Drawer::SectionAspect ()
 {return mySectionAspect.IsNull()? myLink->SectionAspect (): mySectionAspect;}
@@ -258,15 +337,17 @@ void AIS_Drawer::ClearLocalAttributes()
   if(!mySeenLineAspect.IsNull())  mySeenLineAspect.Nullify();  
   if(!myVectorAspect.IsNull())  myVectorAspect .Nullify();   
   if(!myDatumAspect.IsNull())  myDatumAspect.Nullify();     
-  if(!myLengthAspect.IsNull())  myLengthAspect.Nullify();    
-  if(!myAngleAspect.IsNull())  myAngleAspect.Nullify();     
-  if(!myRadiusAspect.IsNull())  myRadiusAspect.Nullify();    
+  if(!myDimensionAspect.IsNull())  myDimensionAspect.Nullify();    
   if(!mySectionAspect.IsNull())  mySectionAspect.Nullify();   
   if( myhasOwnHLRDeviationCoefficient )  myhasOwnHLRDeviationCoefficient = Standard_False;   
   if(myhasOwnHLRDeviationAngle ) myhasOwnHLRDeviationAngle  = Standard_False;
   if (!myFaceBoundaryAspect.IsNull()) myFaceBoundaryAspect.Nullify();
   
   myHasOwnFaceBoundaryDraw = Standard_False;
+  myHasOwnDimLengthModelUnits = Standard_False;
+  myHasOwnDimLengthDisplayUnits = Standard_False;
+  myHasOwnDimAngleModelUnits = Standard_False;
+  myHasOwnDimAngleDisplayUnits = Standard_False;
 
   hasLocalAttributes = Standard_False;
 

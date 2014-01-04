@@ -1,23 +1,18 @@
 // Created on: 1994-12-02
 // Created by: Jacques GOUSSARD
 // Copyright (c) 1994-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <Draft_Modification.jxx>
 
@@ -1008,8 +1003,8 @@ void Draft_Modification::Perform ()
 			  theSurf = S2;		    
 			}
 			if(detrompeur != 0 && detrompeur != 4) {
-			  Standard_Real ul = 0.0, vl = 0.0, uf = 0.0, vf = 0.0;
-			  Standard_Real ufprim = 0.0, ulprim = 0.0, vfprim = 0.0, vlprim = 0.0;
+			  Standard_Real ul = 0., vl = 0., uf = 0., vf = 0.;
+			  Standard_Real ufprim = 0., ulprim = 0., vfprim = 0., vlprim = 0.;
 			  
 			  if(theSurf->DynamicType() == STANDARD_TYPE(Geom_Plane)) {	
 			    gp_Pln pl = Handle(Geom_Plane)::DownCast(S2)->Pln();
@@ -1627,10 +1622,21 @@ Handle(Geom_Surface) Draft_Modification::NewSurface
 #endif
       return NewS;
     }
-    if (Abs(Angle) > Precision::Angular()) {
+    if (Abs(Angle) > Precision::Angular())
+    {
       IntAna_QuadQuadGeo i2s;
       i2s.Perform(NeutralPlane,Cy,Precision::Angular(),Precision::Confusion());
-      if (!i2s.IsDone() || i2s.TypeInter() != IntAna_Circle) {
+      Standard_Boolean isIntDone = i2s.IsDone();
+
+      if(i2s.TypeInter() == IntAna_Ellipse)
+      {
+        const gp_Elips anEl = i2s.Ellipse(1);
+        const Standard_Real aMajorR = anEl.MajorRadius();
+        const Standard_Real aMinorR = anEl.MinorRadius();
+        isIntDone = (aMajorR < 100000.0 * aMinorR);
+      }
+
+      if (!isIntDone || i2s.TypeInter() != IntAna_Circle) {
 #ifdef DEB
     cout << "NewSurfaceCyl:Draft_Intersection_Neutral_Cylinder_NotDone" << endl;
 #endif

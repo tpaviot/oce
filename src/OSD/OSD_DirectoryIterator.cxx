@@ -1,20 +1,16 @@
 // Copyright (c) 1998-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifdef HAVE_CONFIG_H
 # include <oce-config.h>
@@ -225,7 +221,7 @@ void OSD_DirectoryIterator :: Destroy () {
 
  if (  myHandle != INVALID_HANDLE_VALUE  )
 
-  FindClose (  myHandle  );
+  FindClose (  ( HANDLE )myHandle  );
 
 }  // end  OSD_DirectoryIterator :: Destroy
 
@@ -239,13 +235,11 @@ Standard_Boolean OSD_DirectoryIterator :: More () {
             GetProcessHeap (), HEAP_GENERATE_EXCEPTIONS, sizeof ( WIN32_FIND_DATA )
            );
 
-  myHandle = FindFirstFile (
-                                  wc.ToCString (), ( PWIN32_FIND_DATA )myData
-                                 );
+  myHandle = FindFirstFile (wc.ToCString (), (PWIN32_FIND_DATA)myData);
 
-  if (  myHandle == INVALID_HANDLE_VALUE  )
-  
-   _osd_wnt_set_error ( myError, OSD_WDirectoryIterator );
+  if ( myHandle == INVALID_HANDLE_VALUE )
+
+    _osd_wnt_set_error ( myError, OSD_WDirectoryIterator );
   
   else {
   
@@ -258,7 +252,7 @@ Standard_Boolean OSD_DirectoryIterator :: More () {
   
  } else if ( !myFlag ) {
  
-  FindClose ( myHandle );
+  FindClose (  ( HANDLE )myHandle  );
   myHandle = INVALID_HANDLE_VALUE;
  
  }  // end if
@@ -275,7 +269,7 @@ void OSD_DirectoryIterator :: Next () {
  
   do {
   
-   if (   !FindNextFile (  myHandle, _FD  )   ) {
+   if (   !FindNextFile (  ( HANDLE )myHandle, _FD  )   ) {
    
     myFlag = Standard_False;
 
@@ -327,7 +321,7 @@ Standard_Integer OSD_DirectoryIterator :: Error () const {
 OSD_DirectoryIterator::OSD_DirectoryIterator() {}
 
 void OSD_DirectoryIterator::Initialize(
-                             const OSD_Path& where,
-                             const TCollection_AsciiString& Mask){}
+                             const OSD_Path&,
+                             const TCollection_AsciiString&){}
 
 #endif

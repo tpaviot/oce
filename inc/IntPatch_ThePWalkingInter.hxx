@@ -153,6 +153,8 @@ gp_Dir2d previousd2;
 gp_Dir2d firstd1;
 gp_Dir2d firstd2;
 IntPatch_TheInt2SOfThePWalkingInter myIntersectionOn2S;
+Standard_Integer STATIC_BLOCAGE_SUR_PAS_TROP_GRAND;
+Standard_Integer STATIC_PRECEDENT_INFLEXION;
 
 
 };

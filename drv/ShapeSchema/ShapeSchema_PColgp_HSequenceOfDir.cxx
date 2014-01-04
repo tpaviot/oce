@@ -41,6 +41,8 @@ void ShapeSchema_PColgp_HSequenceOfDir::SWrite(const Handle(Standard_Persistent)
   if (!p.IsNull()) {
     Handle(PColgp_HSequenceOfDir) &pp = (Handle(PColgp_HSequenceOfDir)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPColgp_HSequenceOfDirFirstItem(),f);
@@ -61,6 +63,8 @@ void ShapeSchema_PColgp_HSequenceOfDir::SRead(const Handle(Standard_Persistent)&
 { 
   if (!p.IsNull()) {
     Handle(PColgp_HSequenceOfDir) &pp = (Handle(PColgp_HSequenceOfDir)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

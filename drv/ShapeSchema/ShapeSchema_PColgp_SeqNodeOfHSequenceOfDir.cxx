@@ -41,6 +41,8 @@ void ShapeSchema_PColgp_SeqNodeOfHSequenceOfDir::SWrite(const Handle(Standard_Pe
   if (!p.IsNull()) {
     Handle(PColgp_SeqNodeOfHSequenceOfDir) &pp = (Handle(PColgp_SeqNodeOfHSequenceOfDir)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
     theSchema->WritePersistentReference(pp->_CSFDB_GetPColgp_SeqNodeOfHSequenceOfDirMyPrevious(),f);
@@ -61,6 +63,8 @@ void ShapeSchema_PColgp_SeqNodeOfHSequenceOfDir::SRead(const Handle(Standard_Per
 { 
   if (!p.IsNull()) {
     Handle(PColgp_SeqNodeOfHSequenceOfDir) &pp = (Handle(PColgp_SeqNodeOfHSequenceOfDir)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

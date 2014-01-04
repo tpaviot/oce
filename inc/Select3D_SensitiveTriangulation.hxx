@@ -58,6 +58,9 @@
 #ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
 #endif
+#ifndef _SelectBasics_PickArgs_HeaderFile
+#include <SelectBasics_PickArgs.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
@@ -103,15 +106,19 @@ public:
   Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;
   
   Standard_EXPORT     Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& aLocation) ;
-  
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real X,const Standard_Real Y,const Standard_Real aTol,Standard_Real& DMin) ;
+  //! Checks whether the sensitive entity matches the picking <br>
+//! detection area (close to the picking line). <br>
+//! For details please refer to base class declaration. <br>
+  Standard_EXPORT   virtual  Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
   
   Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
   
   Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
-  //! give the depht of the last detected triangle <br>
-//!          (center of gravity) <br>
-  Standard_EXPORT     Standard_Real ComputeDepth(const gp_Lin& EyeLine) const;
+  //! Compute precise depth of detected triangle. <br>
+//! @param thePickLine [in] the picking line. <br>
+//! @param theTriangle [in] the index of detected triangle. <br>
+//! @return depth on the picking line. <br>
+  Standard_EXPORT     Standard_Real ComputeDepth(const gp_Lin& thePickLine,const Standard_Integer theTriangle) const;
   //! Returns the detected three nodes P1, P2, P3 constituting a triangle. <br>
 //! This triangle is a component of the overall sensitive <br>
 //! triangulation created at construction time. <br>

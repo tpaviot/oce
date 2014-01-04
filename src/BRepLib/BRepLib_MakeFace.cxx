@@ -1,24 +1,18 @@
 // Created on: 1993-07-23
 // Created by: Remi LEQUETTE
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #include <BRepLib_MakeFace.ixx>
 
@@ -508,24 +502,23 @@ void  BRepLib_MakeFace::Init(const Handle(Geom_Surface)& SS,
 
   Standard_Real umin,umax,vmin,vmax,T;
 
-  Handle(Geom_Surface) S = SS;
+  Handle(Geom_Surface) S = SS, BS = SS;
   Handle(Geom_RectangularTrimmedSurface) RS = 
     Handle(Geom_RectangularTrimmedSurface)::DownCast(S);
   if (!RS.IsNull())
-    S = RS->BasisSurface();
-  
+    BS = RS->BasisSurface();
 
   Standard_Boolean OffsetSurface = 
-    (S->DynamicType() == STANDARD_TYPE(Geom_OffsetSurface));
-
+    (BS->DynamicType() == STANDARD_TYPE(Geom_OffsetSurface));
+     
   // adjust periodical surface or reordonate
   // check if the values are in the natural range
   Standard_Real epsilon = Precision::PConfusion();
   
-  S->Bounds(umin,umax,vmin,vmax);
+  BS->Bounds(umin,umax,vmin,vmax);
 
   if (OffsetSurface) {
-    Handle(Geom_OffsetSurface) OS = Handle(Geom_OffsetSurface)::DownCast(S);
+    Handle(Geom_OffsetSurface) OS = Handle(Geom_OffsetSurface)::DownCast(BS);
     Handle(Geom_Surface) Base = OS->BasisSurface();
 
     if (Base->DynamicType() == STANDARD_TYPE(Geom_SurfaceOfLinearExtrusion)) {
@@ -589,7 +582,10 @@ void  BRepLib_MakeFace::Init(const Handle(Geom_Surface)& SS,
   Handle(Geom_Curve) Cumin,Cumax,Cvmin,Cvmax;
   Standard_Boolean Dumin,Dumax,Dvmin,Dvmax;
   Dumin = Dumax = Dvmin = Dvmax = Standard_False;
-  Standard_Real uminTol = 0.0, umaxTol = 0.0, vminTol= 0.0, vmaxTol= 0.0;
+  Standard_Real uminTol = Precision::Confusion(), 
+                umaxTol = Precision::Confusion(), 
+                vminTol = Precision::Confusion(), 
+                vmaxTol = Precision::Confusion();
 
   if (!umininf) {
     Cumin = S->UIso(UMin);

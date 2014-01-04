@@ -1,23 +1,18 @@
 // Created on: 1993-01-29
 // Created by: Isabelle GRIGNON
 // Copyright (c) 1993-1999 Matra Datavision
-// Copyright (c) 1999-2012 OPEN CASCADE SAS
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
-
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 //-- lbr le 12 juin : Ajout des fleches sur les Lines
 //-- msv 13.03.2002 : compute deflection for WLine; Error() returns deflection
@@ -82,7 +77,7 @@ void IntPatch_PolyLine::Prepare()
   Standard_Integer i;
   myBox.SetVoid();
   Standard_Integer n=NbPoints();
-  Standard_Real eps = myError;
+  const Standard_Real eps_2 = myError * myError;
 
   gp_Pnt2d P1, P2;
   if (n >= 3) {
@@ -93,12 +88,12 @@ void IntPatch_PolyLine::Prepare()
     if (i >= 3) {
       gp_XY V13 = P3.XY() - P1.XY();
       gp_XY V12 = P2.XY() - P1.XY();
-      Standard_Real d13 = V13.Modulus(), d;
-      if (d13 > eps)
-	d = V13.CrossMagnitude(V12) / d13;
+      Standard_Real d13_2 = V13.SquareModulus(), d_2;
+      if (d13_2 > eps_2)
+	d_2 = V13.CrossSquareMagnitude(V12) / d13_2;
       else
-	d = eps;
-      if (d > myError) {
+	d_2 = eps_2;
+      if (d_2 > myError * myError) {
 	// try to compute deflection more precisely using parabola interpolation
 	gp_XY V23 = P3.XY() - P2.XY();
 	Standard_Real d12 = V12.Modulus(), d23 = V23.Modulus();
@@ -133,9 +128,9 @@ void IntPatch_PolyLine::Prepare()
 	  Standard_Real d2 = Abs (A2*xt2 + B2*yt2 + C2);
 	  if (d2 > d1) d1 = d2;
 	  // select min deflection from linear and parabolic ones
-	  if (d1 < d) d = d1;
+	  if (d1 * d1 < d_2) d_2 = d1 * d1;
 	}
-	if (d > myError) myError=d;
+	if (d_2 > myError * myError) myError=Sqrt(d_2);
       }
       P1 = P2; P2 = P3;
     }

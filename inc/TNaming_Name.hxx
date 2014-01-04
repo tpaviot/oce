@@ -37,6 +37,9 @@
 #ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
 #endif
+#ifndef _TopAbs_Orientation_HeaderFile
+#include <TopAbs_Orientation.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -74,6 +77,8 @@ public:
   
   Standard_EXPORT     void ContextLabel(const TDF_Label& theLab) ;
   
+  Standard_EXPORT     void Orientation(const TopAbs_Orientation theOrientation) ;
+  
   Standard_EXPORT     TNaming_NameType Type() const;
   
   Standard_EXPORT     TopAbs_ShapeEnum ShapeType() const;
@@ -87,6 +92,8 @@ public:
   Standard_EXPORT     Standard_Integer Index() const;
   
   Standard_EXPORT    const TDF_Label& ContextLabel() const;
+  
+       TopAbs_Orientation Orientation() const;
   
   Standard_EXPORT     Standard_Boolean Solve(const TDF_Label& aLab,const TDF_LabelMap& Valid) const;
   
@@ -113,11 +120,13 @@ Handle_TNaming_NamedShape myStop;
 Standard_Integer myIndex;
 TopoDS_Shape myShape;
 TDF_Label myContextLabel;
+TopAbs_Orientation myOrientation;
 
 
 };
 
 
+#include <TNaming_Name.lxx>
 
 
 

@@ -39,11 +39,11 @@ class TestTopOpeTools_HArray1OfMesure : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   TestTopOpeTools_HArray1OfMesure(const Standard_Integer Low,const Standard_Integer Up);
+      TestTopOpeTools_HArray1OfMesure(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   TestTopOpeTools_HArray1OfMesure(const Standard_Integer Low,const Standard_Integer Up,const TestTopOpeTools_Mesure& V);
+      TestTopOpeTools_HArray1OfMesure(const Standard_Integer Low,const Standard_Integer Up,const TestTopOpeTools_Mesure& V);
   
-  Standard_EXPORT     void Init(const TestTopOpeTools_Mesure& V) ;
+        void Init(const TestTopOpeTools_Mesure& V) ;
   
         Standard_Integer Length() const;
   

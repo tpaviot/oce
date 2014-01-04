@@ -1,21 +1,17 @@
 // Created on: 2010-09-16
 // Created by: KGV
-// Copyright (c) 2010-2012 OPEN CASCADE SAS
+// Copyright (c) 2010-2014 OPEN CASCADE SAS
 //
-// The content of this file is subject to the Open CASCADE Technology Public
-// License Version 6.5 (the "License"). You may not use the content of this file
-// except in compliance with the License. Please obtain a copy of the License
-// at http://www.opencascade.org and read it completely before using this file.
+// This file is part of Open CASCADE Technology software library.
 //
-// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
-// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+// This library is free software; you can redistribute it and / or modify it
+// under the terms of the GNU Lesser General Public version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
 //
-// The Original Code and all software distributed under the License is
-// distributed on an "AS IS" basis, without warranty of any kind, and the
-// Initial Developer hereby disclaims all such warranties, including without
-// limitation, any warranties of merchantability, fitness for a particular
-// purpose or non-infringement. Please see the License for the specific terms
-// and conditions governing the rights and limitations under the License.
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
 
 #ifdef HAVE_CONFIG_H
 # include <oce-config.h>
@@ -126,11 +122,11 @@ Image_AlienPixMap::~Image_AlienPixMap()
 // function : InitWrapper
 // purpose  :
 // =======================================================================
-bool Image_AlienPixMap::InitWrapper (ImgFormat            thePixelFormat,
-                                     Standard_Byte*       theDataPtr,
-                                     const Standard_Size  theSizeX,
-                                     const Standard_Size  theSizeY,
-                                     const Standard_Size  theSizeRowBytes)
+bool Image_AlienPixMap::InitWrapper (ImgFormat,
+                                     Standard_Byte*,
+                                     const Standard_Size,
+                                     const Standard_Size,
+                                     const Standard_Size)
 {
   Clear();
   return false;
@@ -140,13 +136,13 @@ bool Image_AlienPixMap::InitWrapper (ImgFormat            thePixelFormat,
 // function : InitTrash
 // purpose  :
 // =======================================================================
+#ifdef HAVE_FREEIMAGE
 bool Image_AlienPixMap::InitTrash (ImgFormat           thePixelFormat,
                                    const Standard_Size theSizeX,
                                    const Standard_Size theSizeY,
-                                   const Standard_Size theSizeRowBytes)
+                                   const Standard_Size /*theSizeRowBytes*/)
 {
   Clear();
-#ifdef HAVE_FREEIMAGE
   FREE_IMAGE_TYPE aFormatFI = convertToFreeFormat (thePixelFormat);
   int aBitsPerPixel = (int )Image_PixMap::SizePixelBytes (thePixelFormat) * 8;
   if (aFormatFI == FIT_UNKNOWN)
@@ -173,10 +169,16 @@ bool Image_AlienPixMap::InitTrash (ImgFormat           thePixelFormat,
   // assign image after wrapper initialization (virtual Clear() called inside)
   myLibImage = anImage;
   return true;
-#else
-  return Image_PixMap::InitTrash (thePixelFormat, theSizeX, theSizeY, theSizeRowBytes);
-#endif
 }
+#else
+bool Image_AlienPixMap::InitTrash (ImgFormat           thePixelFormat,
+                                   const Standard_Size theSizeX,
+                                   const Standard_Size theSizeY,
+                                   const Standard_Size theSizeRowBytes)
+{
+  return Image_PixMap::InitTrash (thePixelFormat, theSizeX, theSizeY, theSizeRowBytes);
+}
+#endif
 
 // =======================================================================
 // function : InitCopy
@@ -239,11 +241,10 @@ void Image_AlienPixMap::Clear (ImgFormat thePixelFormat)
 // function : Load
 // purpose  :
 // =======================================================================
+#ifdef HAVE_FREEIMAGE
 bool Image_AlienPixMap::Load (const TCollection_AsciiString& theImagePath)
 {
   Clear();
-#ifdef HAVE_FREEIMAGE
-
   FREE_IMAGE_FORMAT aFIF = FreeImage_GetFileType (theImagePath.ToCString(), 0);
   if (aFIF == FIF_UNKNOWN)
   {
@@ -290,10 +291,14 @@ bool Image_AlienPixMap::Load (const TCollection_AsciiString& theImagePath)
   // assign image after wrapper initialization (virtual Clear() called inside)
   myLibImage = anImage;
   return true;
-#else
-  return false;
-#endif
 }
+#else
+bool Image_AlienPixMap::Load (const TCollection_AsciiString&)
+{
+  Clear();
+  return false;
+}
+#endif
 
 // =======================================================================
 // function : savePPM
@@ -326,7 +331,7 @@ bool Image_AlienPixMap::savePPM (const TCollection_AsciiString& theFileName) con
     for (Standard_Size aCol = 0; aCol < SizeY(); ++aCol)
     {
       // extremely SLOW but universal (implemented for all supported pixel formats)
-      aColor = PixelColor (aCol, aRow, aDummy);
+      aColor = PixelColor ((Standard_Integer )aCol, (Standard_Integer )aRow, aDummy);
       aByte = Standard_Byte(aColor.Red() * 255.0);   fwrite (&aByte, 1, 1, aFile);
       aByte = Standard_Byte(aColor.Green() * 255.0); fwrite (&aByte, 1, 1, aFile);
       aByte = Standard_Byte(aColor.Blue() * 255.0);  fwrite (&aByte, 1, 1, aFile);
@@ -489,7 +494,7 @@ bool Image_AlienPixMap::Save (const TCollection_AsciiString& theFileName)
 #else
   const Standard_Integer aLen = theFileName.Length();
   if ((aLen >= 4) && (theFileName.Value (aLen - 3) == '.')
-   && TCollection_AsciiString::ISSIMILAR (theFileName.SubString (aLen - 2, aLen), "ppm"))
+      && strcasecmp( theFileName.ToCString() + aLen - 3, "ppm") == 0 )
   {
     return savePPM (theFileName);
   }
@@ -502,11 +507,14 @@ bool Image_AlienPixMap::Save (const TCollection_AsciiString& theFileName)
 // function : AdjustGamma
 // purpose  :
 // =======================================================================
+#ifdef HAVE_FREEIMAGE
 Standard_EXPORT bool Image_AlienPixMap::AdjustGamma (const Standard_Real theGammaCorr)
 {
-#ifdef HAVE_FREEIMAGE
   return FreeImage_AdjustGamma (myLibImage, theGammaCorr) != FALSE;
-#else
-  return false;
-#endif
 }
+#else
+Standard_EXPORT bool Image_AlienPixMap::AdjustGamma (const Standard_Real)
+{
+    return false;
+}
+#endif

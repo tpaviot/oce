@@ -22,14 +22,14 @@
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
 #ifndef _Handle_Law_Function_HeaderFile
 #include <Handle_Law_Function.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
+#endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -91,7 +91,6 @@ private:
 
 Handle_GeomFill_Boundary bound[4];
 gp_Pnt c[4];
-Standard_Real gap[4];
 Handle_Law_Function a[2];
 
 

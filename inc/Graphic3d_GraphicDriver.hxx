@@ -25,14 +25,14 @@
 #ifndef _Aspect_DisplayConnection_Handle_HeaderFile
 #include <Aspect_DisplayConnection_Handle.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Graphic3d_CView_HeaderFile
 #include <Graphic3d_CView.hxx>
@@ -45,9 +45,6 @@
 #endif
 #ifndef _Graphic3d_CGroup_HeaderFile
 #include <Graphic3d_CGroup.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfByte_HeaderFile
-#include <Handle_TColStd_HArray1OfByte.hxx>
 #endif
 #ifndef _Aspect_GradientFillMethod_HeaderFile
 #include <Aspect_GradientFillMethod.hxx>
@@ -124,17 +121,13 @@
 #ifndef _Graphic3d_CLight_HeaderFile
 #include <Graphic3d_CLight.hxx>
 #endif
-#ifndef _Graphic3d_CPlane_HeaderFile
-#include <Graphic3d_CPlane.hxx>
-#endif
 #ifndef _Graphic3d_CPick_HeaderFile
 #include <Graphic3d_CPick.hxx>
 #endif
 class Graphic3d_TransformError;
 class TColStd_Array2OfReal;
-class TColStd_HArray1OfByte;
 class Quantity_Color;
-class Graphic3d_Array1OfVertex;
+class gp_Ax2;
 class TCollection_ExtendedString;
 class TCollection_AsciiString;
 
@@ -175,8 +168,6 @@ public:
   Standard_EXPORT   virtual  void LineContextGroup(const Graphic3d_CGroup& ACGroup,const Standard_Integer NoInsert)  = 0;
   //! call_togl_markercontextgroup <br>
   Standard_EXPORT   virtual  void MarkerContextGroup(const Graphic3d_CGroup& ACGroup,const Standard_Integer NoInsert)  = 0;
-  //! call_togl_markercontextgroup <br>
-  Standard_EXPORT   virtual  void MarkerContextGroup(const Graphic3d_CGroup& ACGroup,const Standard_Integer NoInsert,const Standard_Integer AMarkWidth,const Standard_Integer AMarkHeight,const Handle(TColStd_HArray1OfByte)& ATexture)  = 0;
   //! call_togl_removegroup <br>
   Standard_EXPORT   virtual  void RemoveGroup(const Graphic3d_CGroup& ACGroup)  = 0;
   //! call_togl_textcontextgroup <br>
@@ -232,8 +223,10 @@ public:
   Standard_EXPORT   virtual  void RemoveView(const Graphic3d_CView& ACView)  = 0;
   //! call_togl_setlight <br>
   Standard_EXPORT   virtual  void SetLight(const Graphic3d_CView& ACView)  = 0;
-  //! call_togl_setplane <br>
-  Standard_EXPORT   virtual  void SetPlane(const Graphic3d_CView& ACView)  = 0;
+  //! Pass clip planes to the associated graphic driver view. <br>
+  Standard_EXPORT   virtual  void SetClipPlanes(const Graphic3d_CView& theCView)  = 0;
+  //! Pass clip planes to the associated graphic driver structure. <br>
+  Standard_EXPORT   virtual  void SetClipPlanes(const Graphic3d_CStructure& theCStructure)  = 0;
   //! call_togl_setvisualisation <br>
   Standard_EXPORT   virtual  void SetVisualisation(const Graphic3d_CView& ACView)  = 0;
   //! call_togl_transformstructure <br>
@@ -250,10 +243,10 @@ public:
   Standard_EXPORT   virtual  void ViewOrientation(const Graphic3d_CView& ACView,const Standard_Boolean AWait)  = 0;
   
   Standard_EXPORT   virtual  void Environment(const Graphic3d_CView& ACView)  = 0;
-  
-  Standard_EXPORT   virtual  void Marker(const Graphic3d_CGroup& ACGroup,const Graphic3d_Vertex& APoint)  = 0;
-  
-  Standard_EXPORT   virtual  void MarkerSet(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertex& ListVertex)  = 0;
+  //! sets the stencil test to theIsEnabled state; <br>
+  Standard_EXPORT   virtual  void SetStencilTestOptions(const Graphic3d_CGroup& theCGroup,const Standard_Boolean theIsEnabled)  = 0;
+  //! sets the flipping to theIsEnabled state for the given graphic group. <br>
+  Standard_EXPORT   virtual  void SetFlippingOptions(const Graphic3d_CGroup& theCGroup,const Standard_Boolean theIsEnabled,const gp_Ax2& theRefPlane)  = 0;
   //! call_togl_text <br>
   Standard_EXPORT   virtual  void Text(const Graphic3d_CGroup& ACGroup,const Standard_CString AText,const Graphic3d_Vertex& APoint,const Standard_Real AHeight,const Quantity_PlaneAngle AAngle,const Graphic3d_TextPath ATp,const Graphic3d_HorizontalTextAlignment AHta,const Graphic3d_VerticalTextAlignment AVta,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
   //! call_togl_text <br>
@@ -421,10 +414,6 @@ public:
   //! Get Z layer ID of structure. If the structure doesn't <br>
 //! exists in graphic driver, the method returns -1. <br>
   Standard_EXPORT   virtual  Standard_Integer GetZLayer(const Graphic3d_CStructure& theCStructure) const = 0;
-  //! call_togl_light <br>
-  Standard_EXPORT   static  Standard_Integer Light(const Graphic3d_CLight& ACLight,const Standard_Boolean Update) ;
-  //! call_togl_plane <br>
-  Standard_EXPORT   static  Standard_Integer Plane(const Graphic3d_CPlane& ACPlane,const Standard_Boolean Update) ;
   
   Standard_EXPORT     void PrintBoolean(const Standard_CString AComment,const Standard_Boolean AValue) const;
   
@@ -433,8 +422,6 @@ public:
   Standard_EXPORT     void PrintCLight(const Graphic3d_CLight& ACLight,const Standard_Integer AField) const;
   
   Standard_EXPORT     void PrintCPick(const Graphic3d_CPick& ACPick,const Standard_Integer AField) const;
-  
-  Standard_EXPORT     void PrintCPlane(const Graphic3d_CPlane& ACPlane,const Standard_Integer AField) const;
   
   Standard_EXPORT     void PrintCStructure(const Graphic3d_CStructure& ACStructure,const Standard_Integer AField) const;
   
@@ -457,6 +444,10 @@ public:
   Standard_EXPORT     Standard_Integer Trace() const;
   //! returns Handle to display connection <br>
   Standard_EXPORT    const Aspect_DisplayConnection_Handle& GetDisplayConnection() const;
+  
+  Standard_EXPORT     Standard_Boolean IsDeviceLost() const;
+  
+  Standard_EXPORT     void ResetDeviceLostFlag() ;
 
 
 
@@ -471,6 +462,7 @@ protected:
 Standard_Integer MyTraceLevel;
 OSD_SharedLibrary MySharedLibrary;
 Aspect_DisplayConnection_Handle myDisplayConnection;
+Standard_Boolean myDeviceLostFlag;
 
 
 private: 

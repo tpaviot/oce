@@ -40,6 +40,8 @@ void StdLSchema_PDataStd_HArray1OfHArray1OfReal::SWrite(const Handle(Standard_Pe
   if (!p.IsNull()) {
     Handle(PDataStd_HArray1OfHArray1OfReal) &pp = (Handle(PDataStd_HArray1OfHArray1OfReal)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
   f.PutInteger(pp->_CSFDB_GetPDataStd_HArray1OfHArray1OfRealLowerBound());
@@ -60,6 +62,8 @@ void StdLSchema_PDataStd_HArray1OfHArray1OfReal::SRead(const Handle(Standard_Per
 { 
   if (!p.IsNull()) {
     Handle(PDataStd_HArray1OfHArray1OfReal) &pp = (Handle(PDataStd_HArray1OfHArray1OfReal)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

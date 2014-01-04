@@ -42,13 +42,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepShape_Array1OfFace(const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_Array1OfFace(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   StepShape_Array1OfFace(const Handle(StepShape_Face)& Item,const Standard_Integer Low,const Standard_Integer Up);
+      StepShape_Array1OfFace(const Handle(StepShape_Face)& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Handle(StepShape_Face)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~StepShape_Array1OfFace()
 {
   Destroy();

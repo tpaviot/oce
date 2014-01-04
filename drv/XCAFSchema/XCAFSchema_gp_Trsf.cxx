@@ -14,6 +14,7 @@
 
 void XCAFSchema_gp_Trsf::SWrite(const gp_Trsf& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginWriteObjectData();
   f.PutReal(pp._CSFDB_Getgp_Trsfscale());
   f.PutInteger(pp._CSFDB_Getgp_Trsfshape());
@@ -25,6 +26,7 @@ void XCAFSchema_gp_Trsf::SWrite(const gp_Trsf& pp, Storage_BaseDriver& f, const 
 
 void XCAFSchema_gp_Trsf::SRead(gp_Trsf& pp, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 {
+  (void)pp; (void)theSchema; // dummy to avoid compiler warning on unused arg
   f.BeginReadObjectData();
 
     Standard_Real gp_Trsfscale;

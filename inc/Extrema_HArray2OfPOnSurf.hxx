@@ -39,11 +39,11 @@ class Extrema_HArray2OfPOnSurf : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   Extrema_HArray2OfPOnSurf(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+      Extrema_HArray2OfPOnSurf(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
   
-  Standard_EXPORT   Extrema_HArray2OfPOnSurf(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Extrema_POnSurf& V);
+      Extrema_HArray2OfPOnSurf(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Extrema_POnSurf& V);
   
-  Standard_EXPORT     void Init(const Extrema_POnSurf& V) ;
+        void Init(const Extrema_POnSurf& V) ;
   
         Standard_Integer ColLength() const;
   
@@ -59,9 +59,9 @@ public:
   
         void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Extrema_POnSurf& Value) ;
   
-  Standard_EXPORT    const Extrema_POnSurf& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+       const Extrema_POnSurf& Value(const Standard_Integer Row,const Standard_Integer Col) const;
   
-  Standard_EXPORT     Extrema_POnSurf& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+        Extrema_POnSurf& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
   
        const Extrema_Array2OfPOnSurf& Array2() const;
   

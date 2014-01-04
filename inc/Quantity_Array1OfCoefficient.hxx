@@ -41,13 +41,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Quantity_Array1OfCoefficient(const Standard_Integer Low,const Standard_Integer Up);
+      Quantity_Array1OfCoefficient(const Standard_Integer Low,const Standard_Integer Up);
   
-  Standard_EXPORT   Quantity_Array1OfCoefficient(const Quantity_Coefficient& Item,const Standard_Integer Low,const Standard_Integer Up);
+      Quantity_Array1OfCoefficient(const Quantity_Coefficient& Item,const Standard_Integer Low,const Standard_Integer Up);
   
   Standard_EXPORT     void Init(const Quantity_Coefficient& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+        void Destroy() ;
 ~Quantity_Array1OfCoefficient()
 {
   Destroy();

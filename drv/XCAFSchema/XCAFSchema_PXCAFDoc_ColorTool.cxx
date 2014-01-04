@@ -37,7 +37,10 @@ void XCAFSchema_PXCAFDoc_ColorTool::Add(const Handle(Standard_Persistent)& p, co
 void XCAFSchema_PXCAFDoc_ColorTool::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
+    Handle(PXCAFDoc_ColorTool) &pp = (Handle(PXCAFDoc_ColorTool)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
     
     f.BeginWritePersistentObjectData();
 
@@ -54,6 +57,9 @@ void XCAFSchema_PXCAFDoc_ColorTool::Write(const Handle(Standard_Persistent)& p, 
 void XCAFSchema_PXCAFDoc_ColorTool::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
+    Handle(PXCAFDoc_ColorTool) &pp = (Handle(PXCAFDoc_ColorTool)&)p;
+
+    (void)pp; // dummy to avoid compiler warning on unused arg
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
