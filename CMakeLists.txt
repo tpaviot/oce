@@ -23,12 +23,12 @@ set(OCE_VERSION_MAJOR 0)
 set(OCE_VERSION_MINOR 14)
 # OCE_VERSION_PATCH is used for bugfixes releases only
 # (uncomment following line)
-#set(OCE_VERSION_PATCH 0)
+set(OCE_VERSION_PATCH 1)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 set(OCE_VERSION_DEVEL)
 
 # bugfix release: add ${OCE_VERSION_PATCH} to OCE_VERSION
-set(OCE_VERSION ${OCE_VERSION_MAJOR}.${OCE_VERSION_MINOR}${OCE_VERSION_DEVEL})
+set(OCE_VERSION ${OCE_VERSION_MAJOR}.${OCE_VERSION_MINOR}.${OCE_VERSION_PATCH}${OCE_VERSION_DEVEL})
 
 set(OCE_ABI_SOVERSION 7)
 set(OCE_ABI_VERSION ${OCE_ABI_SOVERSION}.0.0)
@@ -1390,7 +1390,7 @@ set(CPACK_PACKAGE_VERSION_MAJOR ${OCE_VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR ${OCE_VERSION_MINOR})
 # bugfix release: add ${OCE_VERSION_PATCH} to the package version
 # (uncomment following line)
-#set(CPACK_PACKAGE_VERSION_PATCH ${OCE_VERSION_PATCH})
+set(CPACK_PACKAGE_VERSION_PATCH ${OCE_VERSION_PATCH})
 set(CPACK_PACKAGE_NAME OCE )
 
 set(CPACK_PACKAGE_CONTACT "OCE Developers <oce-dev@googlegroups.com>")
