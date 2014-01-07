@@ -1,0 +1,9 @@
+# Original bug : cts20482
+# Date : 19Mai98
+
+restore [locate_data_file CTO902_cts20482a.rle] part
+restore [locate_data_file CTO902_cts20482b.rle] tool1
+
+bsection result part tool1
+
+set length 408.37

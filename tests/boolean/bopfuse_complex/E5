@@ -1,0 +1,26 @@
+puts "TODO #23828 MacOS: Tcl Exception:  null shapes are not allowed"
+puts "TODO #23828 MacOS: TEST INCOMPLETE"
+puts "TODO DEBUG_OCC24121 Debian60-64: Process killed by CPU limit"
+puts "TODO DEBUG_OCC24121 Debian60-64: TEST INCOMPLETE"
+
+restore [locate_data_file OCC62.brep] sh
+explode sh
+
+bop sh_1 sh_3
+bopfuse res1
+
+bop res1 sh_2
+bopfuse res2
+btolx sh_6
+
+bop res2 sh_6
+bopfuse res3
+
+bop res3 sh_4
+bopfuse res4
+btolx sh_5
+
+bop res4 sh_5
+bopfuse result
+
+set square 1.20917e+07

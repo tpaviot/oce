@@ -1,0 +1,12 @@
+# Original bug : cts20489
+# Date : 13Mai98
+# C8
+
+restore [locate_data_file CTO902_cts20489-part.rle] part
+restore [locate_data_file CTO902_cts20489-tool.rle] tool
+
+bcut result part tool
+
+
+
+set square 222577

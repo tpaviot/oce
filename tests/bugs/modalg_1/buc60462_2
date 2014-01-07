@@ -1,0 +1,19 @@
+puts "TODO OCC12345 ALL: Faulty shapes in variables faulty_1 to faulty_"
+puts "TODO ?OCC24122 ALL: Error : The square of result shape is"
+
+puts "=========="
+puts "BUC60462"
+puts "=========="
+
+restore [locate_data_file buc60462c.brep] a 
+checkshape a
+restore [locate_data_file buc60462d.brep] b
+checkshape b
+puts "Fuse begin"
+bfuse result a b
+puts "Fuse end"
+
+checkshape result r
+
+set square 89562.1
+set 2dviewer 0

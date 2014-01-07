@@ -1,0 +1,15 @@
+
+puts "================"
+puts "OCC26"
+puts "================"
+puts ""
+puts "TODO OCC12345 ALL: Error : The square of result shape is"
+restore [locate_data_file OCC26.brep] a 
+explode a
+checkshape a_1
+checkshape a_2
+
+bfuse result a_2 a_1
+
+set square 44819.8
+set 2dviewer 0

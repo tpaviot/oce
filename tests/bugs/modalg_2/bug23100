@@ -1,0 +1,32 @@
+puts "============"
+puts "OCC23100"
+puts "============"
+puts ""
+#######################################################################
+# Wrong adjustment of p-curves on a cylinder
+#######################################################################
+
+set BugNumber OCC23100
+
+restore [locate_data_file bug23100_qf.brep] qf 
+
+explode qf
+copy qf_1 b1
+copy qf_2 b2
+
+catch {bop b1 b2}
+catch {bopfuse result}
+
+set square 50252.6
+
+set nb_v_good 34
+set nb_e_good 62
+set nb_w_good 30
+set nb_f_good 29
+set nb_sh_good 1
+set nb_sol_good 0
+set nb_compsol_good 0
+set nb_compound_good 1
+set nb_shape_good 157
+
+set 3dviewer 1

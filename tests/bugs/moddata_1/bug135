@@ -1,0 +1,17 @@
+
+puts "================"
+puts "OCC135"
+puts "================"
+puts ""
+
+restore [locate_data_file OCC135.brep] sh 
+checkshape sh
+
+sewing result 1 sh
+checkshape result
+
+set square 273837
+set 2dviewer 0
+
+
+

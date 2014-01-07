@@ -1,0 +1,10 @@
+# Original bug : cts17785
+# Date : 18mar98
+
+restore [locate_data_file cts17785-part.rle] part
+restore [locate_data_file cts17785-tool.rle] tool
+
+bcut result part tool
+
+
+set square 56064.6

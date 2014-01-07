@@ -1,0 +1,31 @@
+puts "==========="
+puts "OCC22535"
+puts "==========="
+######################################################
+# Cut cphere: invalid shape after reading from STEP
+######################################################
+
+set BugNumber OCC22535
+
+restore [locate_data_file OCC22535-cut_comp.brep] a 
+testwritestep $imagedir/${test_image}.stp a
+stepread $imagedir/${test_image}.stp b *
+renamevar b_1 result
+vinit
+vsetdispmode 1
+vdisplay result
+vfit
+
+set square 50201.3
+
+set nb_v_good 15
+set nb_e_good 24
+set nb_w_good 9
+set nb_f_good 8
+set nb_sh_good 5
+set nb_sol_good 4
+set nb_compsol_good 0
+set nb_compound_good 1
+set nb_shape_good 66
+
+set 3dviewer 1

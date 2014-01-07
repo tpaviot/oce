@@ -1,0 +1,27 @@
+pload QAcommands
+
+puts "============"
+puts "OCC826"
+puts "============"
+puts ""
+###################################
+## BRepAlgoAPI_Fuse fails on revolved and sphere
+###################################
+## (old topology)
+#####################################
+
+if { [ catch { set info_result [OCC826 a1 a2 result] } ] } {
+    puts "Faulty OCC826"
+} else {
+    if { [regexp {FAILED} $info_result] } {
+	puts "Faulty OCC826"
+    }
+
+    set ExplodeList [explode result]
+    if {[llength ${ExplodeList}] < 1} {
+	puts "Faulty OCC826"
+    }
+}
+
+set square 272939
+set 2dviewer 0

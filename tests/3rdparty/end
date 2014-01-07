@@ -1,0 +1,5 @@
+vdump $imagedir/${test_image}.png
+
+puts ""
+puts "TEST COMPLETED" 
+puts ""

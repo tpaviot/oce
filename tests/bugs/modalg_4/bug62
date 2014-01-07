@@ -1,0 +1,52 @@
+set os "ALL"
+
+if {[array get env os_type] != ""} {
+  set os $env(os_type)
+}
+
+if {[string compare $os "MacOS"] == 0} {
+  puts "TODO #23828 MacOS: Tcl Exception: sh is not a topological shape!!!"
+  puts "TODO #23828 MacOS: TEST INCOMPLETE"
+} else {
+  #puts "TODO OCC12345 ALL: Faulty shapes in variables faulty_1 to faulty_"
+  #puts "TODO OCC12345 ALL: Error : The square of result shape is"
+}
+
+puts "================"
+puts "OCC62"
+puts "BUC61001"
+puts "================"
+
+cpulimit 1400
+restore [locate_data_file OCC62.brep] sh 
+
+explode sh 
+checkshape sh
+
+bfuse res1 sh_1 sh_3
+checkshape res1
+
+bfuse res2 res1 sh_2 
+checkshape res2
+
+bfuse res3 res2 sh_6
+checkshape res3
+
+bfuse res4 res3 sh_4
+checkshape res4
+
+bfuse res5 res4 sh_5
+checkshape res5
+
+renamevar res5 result
+
+set OCC62_square 1.23063e+7
+puts "The expected square is ${OCC62_square}"
+
+set sq_persent 0.03
+regexp {Mass +: +([-0-9.+eE]+)} [sprops result] full m
+if { (${OCC62_square} != 0 && [expr abs(${OCC62_square} - $m)/${OCC62_square}] > ${sq_persent}) || (${OCC62_square} == 0 && $m != 0) } {
+   puts "Error : The square of result shape is $m"
+}
+
+set 2dviewer 0
