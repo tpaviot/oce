@@ -12,8 +12,8 @@
 #cmakedefine OCE_INSTALL_DATA_DIR "@OCE_ABSPATH_DATA_DIR@"
 
 /* Debug prefix, postfix and extension for DLLs */
-#define OCE_LIBRARY_PREFIX "@CMAKE_LIBRARY_PREFIX@"
-#define OCE_LIBRARY_EXTENSION "@CMAKE_LIBRARY_EXTENSION@"
+#define OCE_LIBRARY_PREFIX "@OCE_LIBRARY_PREFIX@"
+#define OCE_LIBRARY_EXTENSION "@OCE_LIBRARY_EXTENSION@"
 
 /* Debug postfix for DLLs */
 #if defined(_MSC_VER)
@@ -23,7 +23,7 @@
 #define OCE_LIBRARY_DEBUG_POSTFIX ""
 #endif
 #else
-#define OCE_LIBRARY_DEBUG_POSTFIX "@CMAKE_LIBRARY_DEBUG_POSTFIX@"
+#define OCE_LIBRARY_DEBUG_POSTFIX ""
 #endif
 
 /* Location where TKOpenGl shared library will be installed. */

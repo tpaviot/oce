@@ -1,3 +1,13 @@
+Version 0.14.1 - January 2014
+
+This version is binary compatible with 0CE 0.14.
+
+* Fix Debug build on MSVC.
+
+Users who contributed to this release:
+  Denis Barbier
+
+
 Version 0.14 - December 2013
 
 This version is binary compatible with 0CE 0.13.
