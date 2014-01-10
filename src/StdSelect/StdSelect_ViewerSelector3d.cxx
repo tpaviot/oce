@@ -767,9 +767,10 @@ void StdSelect_ViewerSelector3d::ComputeSensitivePrs(const Handle(SelectMgr_Sele
             gp_Pnt ThePts[3] =
             {
               gp_Pnt (C->GetPoint3d (II).XYZ()),
-              gp_Pnt (C->GetPoint3d (++II).XYZ()),
-              gp_Pnt (C->GetPoint3d (++II).XYZ())
+              gp_Pnt (C->GetPoint3d (II+1).XYZ()),
+              gp_Pnt (C->GetPoint3d (II+2).XYZ())
             };
+            II += 2;
 
             if (hasloc)
             {
@@ -834,9 +835,10 @@ void StdSelect_ViewerSelector3d::ComputeSensitivePrs(const Handle(SelectMgr_Sele
         gp_Pnt ThePts[3] =
         {
           gp_Pnt (C->GetPoint3d (II).XYZ()),
-          gp_Pnt (C->GetPoint3d (++II).XYZ()),
-          gp_Pnt (C->GetPoint3d (++II).XYZ())
+          gp_Pnt (C->GetPoint3d (II+1).XYZ()),
+          gp_Pnt (C->GetPoint3d (II+2).XYZ())
         };
+        II += 2;
 
         if (hasloc)
         {

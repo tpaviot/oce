@@ -532,6 +532,8 @@ void Aspect_MarkerStyle::SetPredefinedStyle() {
 		  }
 		}
 		break ;
+		default :
+		break;
 	}
 
 }
