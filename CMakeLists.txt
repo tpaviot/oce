@@ -80,6 +80,7 @@ endif(CMAKE_BUILD_TOOL STREQUAL "nmake")
 
 if(MSVC)
 	option_with_default( OCE_INSTALL_PDB_FILES "Install PDB files (debug informations)" ON )
+	option_with_default( OCE_MULTITHREADED_BUILD "Multithreaded build (/CL Option)" ON )
 endif(MSVC)
 
 ############################
@@ -821,6 +822,12 @@ if( OCE_EXTRA_WARNINGS)
 		add_definitions("-Wall -Wremarks")
 	endif(INTEL)
 endif(OCE_EXTRA_WARNINGS)
+
+if(OCE_MULTITHREADED_BUILD)
+   if(MSVC)
+      add_definitions("/MP")
+   endif()
+endif()
 
 #  Detect build problems with duplicate types
 try_compile(CHECK_BODY_TEMPLATE ${CMAKE_BINARY_DIR}/CMakeTmpDup
