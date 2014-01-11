@@ -404,6 +404,9 @@ void AIS_Dimension::DrawArrow (const Handle(Prs3d_Presentation)& thePresentation
 //function : DrawText
 //purpose  : 
 //=======================================================================
+#ifdef WNT
+#undef DrawText
+#endif
 void AIS_Dimension::DrawText (const Handle(Prs3d_Presentation)& thePresentation,
                               const gp_Pnt& theTextPos,
                               const gp_Dir& theTextDir,
