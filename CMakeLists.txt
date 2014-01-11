@@ -921,7 +921,7 @@ if (OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 	# Look for includes in bundle source directory.
 	# Put oce-win-bundle libraries and dlls in same place OCE libraries and dlls are going,
 	# and set variables to point OCE to them.
-	if (OCE_VISUALISATION)
+	if (OCE_VISUALISATION OR OCE_VISU_DEP)
 		set(FREETYPE_INCLUDE_DIR_freetype2 ${OCE_BUNDLE_ROOT_PATH}/libs/freetype CACHE PATH "" FORCE)
 		set(FREETYPE_INCLUDE_DIR_ft2build ${OCE_BUNDLE_ROOT_PATH}/libs/freetype/include CACHE PATH "" FORCE)
 		set(FREETYPE_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIR_freetype2} ${FREETYPE_INCLUDE_DIR_ft2build})
@@ -978,7 +978,7 @@ if (OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 
 			set(FREEIMAGE_INCLUDE_DIR ${OCE_BUNDLE_ROOT_PATH}/libs/FreeImage/Source ${OCE_BUNDLE_ROOT_PATH}/libs/FreeImage/Wrapper/FreeImagePlus CACHE PATH "" FORCE)
 		endif(OCE_WITH_FREEIMAGE)
-	endif (OCE_VISUALISATION)
+	endif (OCE_VISUALISATION OR OCE_VISU_DEP)
 endif(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 
 # Binaries
@@ -1209,8 +1209,12 @@ install(EXPORT OCE-libraries DESTINATION ${OCE_INSTALL_CMAKE_DATA_DIR} COMPONENT
 
 if(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 	# Add dependencies between OCE and oce-win-bundle
-	add_dependencies( TKService FreeImage )
-	add_dependencies( TKOpenGl freetype gl2ps )
+  if(OCE_WITH_FREEIMAGE)
+    add_dependencies( TKService FreeImage )
+  endif()
+  if (OCE_VISUALISATION)
+    add_dependencies( TKOpenGl freetype gl2ps )
+  endif()
 endif(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 
 ############
