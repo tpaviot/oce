@@ -52,6 +52,10 @@
 //#define strcasecmp _stricoll
 #endif
 
+#if defined(__BORLANDC__)
+#include <mem.h>
+#endif
+
 //=======================================================================
 //function : Dynamic_MethodDefinitionsDictionary
 //purpose  : 
