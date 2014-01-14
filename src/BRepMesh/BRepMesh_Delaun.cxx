@@ -49,6 +49,10 @@
 
 #include <NCollection_Vector.hxx>
 
+#ifdef __BORLANDC__
+#define M_SQRT1_2 0.7071067811865475244008443621048490392848359376887
+#endif
+
 typedef TColStd_ListIteratorOfListOfInteger  IteratorOnListOfInteger;
 typedef TColStd_ListOfInteger                ListOfInteger;
 
