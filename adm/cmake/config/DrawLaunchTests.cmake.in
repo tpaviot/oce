@@ -1,4 +1,3 @@
-set(ENV{CSF_TestScriptsPath}          "@OCE_SOURCE_DIR@/tests")
 set(ENV{CASROOT}                      "@OCE_SOURCE_DIR@")
 set(ENV{DRAWDEFAULT}                  "@OCE_SOURCE_DIR@/src/DrawResources/DrawDefault")
 set(ENV{DRAWHOME}                     "@OCE_SOURCE_DIR@/src/DrawResources")
