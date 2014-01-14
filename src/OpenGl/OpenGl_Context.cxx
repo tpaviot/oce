@@ -76,7 +76,6 @@ OpenGl_Context::OpenGl_Context (const Handle(OpenGl_Caps)& theCaps)
   core14 (NULL),
   core15 (NULL),
   core20 (NULL),
-  caps   (!theCaps.IsNull() ? theCaps : new OpenGl_Caps()),
   arbNPTW(Standard_False),
   arbVBO (NULL),
   arbTBO (NULL),
@@ -103,6 +102,11 @@ OpenGl_Context::OpenGl_Context (const Handle(OpenGl_Caps)& theCaps)
   myIsFeedback (Standard_False),
   myIsInitialized (Standard_False)
 {
+  if (!theCaps.IsNull())
+    caps = theCaps;
+  else
+    caps = new OpenGl_Caps();
+
 #if defined(MAC_OS_X_VERSION_10_3) && !defined(MACOSX_USE_GLX)
   // Vendors can not extend functionality on this system
   // and developers are limited to OpenGL support provided by Mac OS X SDK.
