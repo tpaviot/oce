@@ -10,6 +10,7 @@ set(ENV{CSF_CurrentUnitsDefaults}     "@OCE_SOURCE_DIR@/src/StdResource/CurrentU
 set(ENV{CSF_MDTVCurrentUnitsDefaults} "@OCE_SOURCE_DIR@/src/StdResource/MDTVCurrentUnits")
 set(ENV{CSF_STEPDefaults}             "@OCE_SOURCE_DIR@/src/XSTEPResource/STEP")
 set(ENV{CSF_IGESDefaults}             "@OCE_SOURCE_DIR@/src/XSTEPResource/IGES")
+set(ENV{CSF_XCAFDefaults}             "@OCE_SOURCE_DIR@/src/StdResource")
 set(ENV{@OCE_TEST_PATH_VAR_NAME@}     "@OCE_TEST_PATH@")
 set(ENV{OCE_SKIP_TESTS_DATA}          "1")
 execute_process(COMMAND @DRAWEXE_COMMAND@ -v -f DrawLaunchTests.draw)
