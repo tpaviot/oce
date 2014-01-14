@@ -743,6 +743,13 @@ proc testfile {filelist} {
 proc locate_data_file {filename} {
     global env groupname gridname casename
 
+    if [info exists env(OCE_SKIP_TESTS_DATA)] {
+        # raise error
+        error [join [list "File $filename could not be found" \
+                          "(should be in paths indicated by CSF_TestDataPath environment variable, " \
+                          "or in subfolder data in the script directory)"] "\n"]
+    }
+
     # check if the file is located in the subdirectory data of the script dir
     set scriptfile [info script]
     if { $scriptfile != "" } {
