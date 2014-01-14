@@ -215,7 +215,7 @@ public:
   //! Unary -.
   NCollection_Vec4 operator-() const
   {
-    return NCollection_Vec4 (-x(), -y(), -z(), -w());
+    return NCollection_Vec4<Element_t> (-x(), -y(), -z(), -w());
   }
 
   //! Compute per-component subtraction.
