@@ -525,12 +525,28 @@ void Draw::Load(Draw_Interpretor& theDI, const TCollection_AsciiString& theKey,
     }
 
     TCollection_AsciiString aPluginLibrary("");
-
+    
+#ifdef OCE_LIBRARY_PREFIX
     // Assemble library name according to the variables defined by CMAKE
     aPluginLibrary += OCE_LIBRARY_PREFIX;
     aPluginLibrary += aPluginResource->Value(theKey.ToCString());
     aPluginLibrary += OCE_LIBRARY_DEBUG_POSTFIX;
     aPluginLibrary += OCE_LIBRARY_EXTENSION;
+#else
+#ifndef WNT
+    aPluginLibrary += "lib";
+#endif
+    aPluginLibrary +=  aPluginResource->Value(theKey.ToCString());
+#ifdef WNT
+    aPluginLibrary += ".dll";
+#elif __APPLE__
+    aPluginLibrary += ".dylib";
+#elif defined (HPUX) || defined(__hpux)
+    aPluginLibrary += ".sl";
+#else
+    aPluginLibrary += ".so";
+#endif
+#endif
 
     OSD_SharedLibrary aSharedLibrary(aPluginLibrary.ToCString());
     if(!aSharedLibrary.DlOpen(OSD_RTLD_LAZY)) {
@@ -593,10 +609,30 @@ void Draw::Load(Draw_Interpretor& theDI, const TCollection_AsciiString& theKey,
 
     // Assemble library name according to the variables defined by CMAKE
     TCollection_AsciiString aPluginLibrary("");
+#ifdef OCE_LIBRARY_PREFIX
     aPluginLibrary += OCE_LIBRARY_PREFIX;
     aPluginLibrary += aPluginResource->Value(theKey.ToCString());
     aPluginLibrary += OCE_LIBRARY_DEBUG_POSTFIX;
     aPluginLibrary += OCE_LIBRARY_EXTENSION;
+#else
+#ifndef WNT
+    aPluginLibrary += "lib";
+#endif
+    aPluginLibrary +=  aPluginResource->Value(theKey.ToCString());
+#ifdef WNT
+#ifdef OCE_DEBUG_POSTFIX 
+	aPluginLibrary += OCE_DEBUG_POSTFIX ".dll";
+#else
+	aPluginLibrary += ".dll";
+#endif /* OCE_DEBUG_POSTFIX */
+#elif __APPLE__
+    aPluginLibrary += ".dylib";
+#elif defined (HPUX) || defined(__hpux)
+    aPluginLibrary += ".sl";
+#else
+    aPluginLibrary += ".so";
+#endif
+#endif
 
     OSD_SharedLibrary aSharedLibrary(aPluginLibrary.ToCString());
     if(!aSharedLibrary.DlOpen(OSD_RTLD_LAZY)) {

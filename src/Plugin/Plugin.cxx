@@ -57,11 +57,31 @@ Handle(Standard_Transient) Plugin::Load(const Standard_GUID& aGUID)
     
     TCollection_AsciiString thePluginLibrary("");
 
+#ifdef OCE_LIBRARY_PREFIX
     // Assemble library name according to the variables defined by CMAKE
     thePluginLibrary += OCE_LIBRARY_PREFIX;
     thePluginLibrary += PluginResource->Value(theResource.ToCString());
     thePluginLibrary += OCE_LIBRARY_DEBUG_POSTFIX;
     thePluginLibrary += OCE_LIBRARY_EXTENSION;
+#else
+#ifndef WNT
+    thePluginLibrary += "lib";
+#endif
+    thePluginLibrary +=  PluginResource->Value(theResource.ToCString());
+#ifdef WNT
+#ifdef OCE_DEBUG_POSTFIX
+	thePluginLibrary += OCE_DEBUG_POSTFIX ".dll";
+#else
+	thePluginLibrary += ".dll";
+#endif /* OCE_DEBUG_POSTFIX */
+#elif defined(__APPLE__)
+    thePluginLibrary += ".dylib";
+#elif defined (HPUX) || defined(__hpux)
+    thePluginLibrary += ".sl";
+#else
+    thePluginLibrary += ".so";
+#endif
+#endif
 
     OSD_SharedLibrary theSharedLibrary(thePluginLibrary.ToCString());
     if(!theSharedLibrary.DlOpen(OSD_RTLD_LAZY)) {
