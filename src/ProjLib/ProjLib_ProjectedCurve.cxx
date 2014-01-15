@@ -529,9 +529,10 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
 
 	if(IsTrimmed[0] || IsTrimmed[1]) {
 	  // Treatment only for surface of revolution
-	  Standard_Real u1, u2, v2;
+	  Standard_Real u1, u2, v1, v2;
 	  u1 = mySurface->FirstUParameter();
 	  u2 = mySurface->LastUParameter();
+	  v1 = mySurface->FirstVParameter();
 	  v2 = mySurface->LastVParameter();
 	  
 	  if(IsTrimmed[0]) {

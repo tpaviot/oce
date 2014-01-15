@@ -700,11 +700,14 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 	    if (!isNptLow && !IsSegment2dSmall(Brise,UMinAr,UMaxAr,tolU,tolV)) {
 	      // treat both ends
 	      Standard_Real UMinChP,UMinArP,UMaxArP;
-	      UMinChP = IntegerPart(UMinCh); UMinArP = IntegerPart(UMinAr);
-	                                     UMaxArP = IntegerPart(UMaxAr);
+	      UMinChP = IntegerPart(UMinCh);
+              UMinArP = IntegerPart(UMinAr);
+              UMaxArP = IntegerPart(UMaxAr);
 	      Standard_Integer irangAr1,irangAr2;
-	      irangAr1 = Standard_Integer(UMinArP)+1; irangAr2 = Standard_Integer(UMaxArP)+1;
-	      UMinChP = UMinCh - UMinChP; UMinArP = UMinAr - UMinArP;
+	      irangAr1 = Standard_Integer(UMinArP)+1;
+              irangAr2 = Standard_Integer(UMaxArP)+1;
+	      UMinChP = UMinCh - UMinChP;
+              UMinArP = UMinAr - UMinArP;
 	      //UMaxChP = UMaxCh - UMaxChP; UMaxArP = UMaxAr - UMaxArP;
 	      const Standard_Real eps = 1e-10;
 //	      Standard_Boolean isChExtr1 = irangCh1==1 && UMinChP<eps;

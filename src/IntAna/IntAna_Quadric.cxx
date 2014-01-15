@@ -130,14 +130,8 @@ void IntAna_Quadric::NewCoefficients( Standard_Real& _CXX,Standard_Real& _CYY,St
                                                   //   = X DirX + Y DirY + Z DirZ + Loc
   
   Standard_Real Cxx,Cyy,Czz,Cxy,Cxz,Cyz,Cx,Cy,Cz,Ccte;            
-
-
-  Axis.XDirection();
-  Axis.YDirection();
-  Axis.Direction();
   
   gp_Trsf Trans;
-  
   Trans.SetTransformation(Axis);
   Trans.Invert();
   t11=Trans.Value(1,1);  t12=Trans.Value(1,2); t13=Trans.Value(1,3); t14=Trans.Value(1,4);

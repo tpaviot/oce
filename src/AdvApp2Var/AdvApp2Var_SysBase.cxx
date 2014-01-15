@@ -214,7 +214,6 @@ int AdvApp2Var_SysBase::macinit_(integer *imode,
     mblank__.imp = *ival;
   } else if (*imode == 2) {
     mblank__.ibb = *ival;
-    AdvApp2Var_SysBase::e__wsfe();
   } else if (*imode == 3) {
     mblank__.lec = *ival;
   }
@@ -660,7 +659,7 @@ int macrerr_(intptr_t *,//iad,
 {
   //integer c__1 = 1;
   /* Builtin functions */
-  //integer /*s__wsfe(),*/ /*do__fio(),*/ e__wsfe();
+  //integer /*do__fio(),*/;
   
   /* Fortran I/O blocks */
   //cilist io___1 = { 0, 6, 0, "(X,A,I9,A,I3)", 0 };
@@ -697,15 +696,11 @@ int macrerr_(intptr_t *,//iad,
 /* ***********************************************************************
  */
   /*
-  s__wsfe(&io___1);
-  */
-  /*
   do__fio(&c__1, "*** ERREUR : Ecrasement de la memoire d'adresse ", 48L);
   do__fio(&c__1, (char *)&(*iad), (ftnlen)sizeof(long int));
   do__fio(&c__1, " sur l'allocation ", 18L);
   do__fio(&c__1, (char *)&(*nalloc), (ftnlen)sizeof(integer));
   */
-  AdvApp2Var_SysBase::e__wsfe();
   
   return 0 ;
 } /* macrerr_ */
@@ -873,7 +868,7 @@ int macrmsg_(const char *,//crout,
   
   /* Local variables */
   integer inum;
-  char cfm[80], cln[3];
+  char /*cfm[80],*/ cln[3];
   
 /* ***********************************************************************
  */
@@ -1110,28 +1105,16 @@ t !! ')", 80L, 54L);
   /*  iMPLEMENTATION OF WRITE , WITH OR WITHOUT DATA : */
   
   if (inum == 0) {
-    /*
-    s__wsfe(&io___5);
-    */
-    AdvApp2Var_SysBase::e__wsfe();
   } else if (inum == 1) {
-    /*
-    s__wsfe(&io___6);
-    */
     /*
     do__fio(&c__1, (char *)&it[1], (ftnlen)sizeof(integer));
     */
-    AdvApp2Var_SysBase::e__wsfe();
   } else {
     /*  MESSAGE DOES NOT EXIST ... */
-    /*
-    s__wsfe(&io___7);
-    */
     /*
     do__fio(&c__1, (char *)&(*num), (ftnlen)sizeof(integer));
     do__fio(&c__1, crout, crout_len);
     */
-    AdvApp2Var_SysBase::e__wsfe();
   }
   
   return 0;
@@ -2890,15 +2873,11 @@ int AdvApp2Var_SysBase::mcrrqst_(integer *iunit,
     if (iver == 1) {
 
 	if (ibyte == 0) {
-	    //s__wsle(&io___3);
 	    //do__lio(&c__9, &c__1, "Require zero allocation", 26L);
-	    AdvApp2Var_SysBase::e__wsle();
 	    maostrb_();
 	} else if (ibyte >= 4096000) {
-	    //s__wsle(&io___4);
 	    //do__lio(&c__9, &c__1, "Require allocation above 4 Mega-Octets : ", 50L);
 	    //do__lio(&c__3, &c__1, (char *)&ibyte, (ftnlen)sizeof(integer));
-	    AdvApp2Var_SysBase::e__wsle();
 	    maostrb_();
 	}
 
@@ -3122,17 +3101,6 @@ integer AdvApp2Var_SysBase::mnfndeb_()
 } /* mnfndeb_ */
 
 //=======================================================================
-//function : AdvApp2Var_SysBase::mnfnimp_
-//purpose  : 
-//=======================================================================
-integer AdvApp2Var_SysBase::mnfnimp_()
-{
-  integer ret_val;
-  ret_val = 6;
-  return ret_val;
-} /* mnfnimp_ */
-
-//=======================================================================
 //function : AdvApp2Var_SysBase::msifill_
 //purpose  : 
 //=======================================================================
@@ -3298,7 +3266,6 @@ int AdvApp2Var_SysBase::mswrdbg_(const char *,//ctexte,
     if (AdvApp2Var_SysBase::mnfndeb_() >= 1) {
 	//do__lio(&c__9, &c__1, "Dbg ", 4L);
 	//do__lio(&c__9, &c__1, ctexte, ctexte_len);
-	AdvApp2Var_SysBase::e__wsle();
     }
  return 0 ;
 } /* mswrdbg_ */
@@ -3331,39 +3298,6 @@ int AdvApp2Var_SysBase::do__lio ()
 {
   return 0;
 }
-//=======================================================================
-//function : e__wsfe
-//purpose  : 
-//=======================================================================
-int AdvApp2Var_SysBase::e__wsfe ()
-{
-  return 0;
-}
-//=======================================================================
-//function : e__wsle
-//purpose  : 
-//=======================================================================
-int AdvApp2Var_SysBase::e__wsle ()
-{
-  return 0;
-}
-//=======================================================================
-//function : s__wsfe
-//purpose  : 
-//=======================================================================
-int AdvApp2Var_SysBase::s__wsfe ()
-{
-  return 0;
-}
-//=======================================================================
-//function : s__wsle
-//purpose  : 
-//=======================================================================
-int AdvApp2Var_SysBase::s__wsle ()
-{
-  return 0;
-}
-
 
 /*
 C*****************************************************************************

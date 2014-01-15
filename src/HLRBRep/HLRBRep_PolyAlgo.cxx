@@ -2520,22 +2520,17 @@ HLRBRep_PolyAlgo::InsertOnOutLine (TColStd_Array1OfTransient& PID)
       TTMa[2][0] = ttma.Value(3,1);
       TTMa[2][1] = ttma.Value(3,2);
       TTMa[2][2] = ttma.Value(3,3);
-      Standard_Integer iseg,nbS;
-
-#ifdef DEB
-      Standard_Integer nbT = (*pid)->NbTData();
-      Standard_Integer nbN = (*pid)->NbPINod();
-#endif
-      nbS = (*pid)->NbPISeg();
 
 #ifdef DEB
       if (DoTrace) {
-	cout << " InsertOnOutLine : NbTData " << nbT << endl;
-	cout << " InsertOnOutLine : NbPISeg " << nbS << endl;
-	cout << " InsertOnOutLine : NbPINod " << nbN << endl;
+	cout << " InsertOnOutLine : NbTData " << (*pid)->NbTData() << endl;
+	cout << " InsertOnOutLine : NbPISeg " << (*pid)->NbPISeg() << endl;
+	cout << " InsertOnOutLine : NbPINod " << (*pid)->NbPINod() << endl;
       }
 #endif
 
+      Standard_Integer iseg,nbS;
+      nbS = (*pid)->NbPISeg();
       for (iseg = 1; iseg <= nbS; iseg++) {
 	Seg1Indices =
 	  ((HLRAlgo_Array1OfPISeg*)PISeg1)->ChangeValue(iseg).Indices();
@@ -2611,17 +2606,13 @@ HLRBRep_PolyAlgo::InsertOnOutLine (TColStd_Array1OfTransient& PID)
       if (IntOutL)
 	(*pid)->IntOutL(Standard_True);
 
-#ifdef DEB
-      nbT = (*pid)->NbTData();
-      nbN = (*pid)->NbPINod();
-#endif
       nbS = (*pid)->NbPISeg();
 
 #ifdef DEB
       if (DoTrace) {
-	cout << " InsertOnOutLine : NbTData " << nbT << endl;
-	cout << " InsertOnOutLine : NbPISeg " << nbS << endl;
-	cout << " InsertOnOutLine : NbPINod " << nbN << endl;
+	cout << " InsertOnOutLine : NbTData " << (*pid)->NbTData() << endl;
+	cout << " InsertOnOutLine : NbPISeg " << (*pid)->NbPISeg() << endl;
+	cout << " InsertOnOutLine : NbPINod " << (*pid)->NbPINod() << endl;
       }
 #endif
     }

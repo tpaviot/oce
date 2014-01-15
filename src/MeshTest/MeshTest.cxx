@@ -1133,8 +1133,6 @@ Standard_Integer tri2d(Draw_Interpretor&, Standard_Integer n, const char** a)
 
   T = BRep_Tool::Triangulation(F, L);
   if (!T.IsNull()) {
-    L.Transformation();
-
     // Build the connect tool
     Poly_Connect pc(T);
 
