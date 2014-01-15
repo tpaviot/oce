@@ -25,6 +25,7 @@
 //function : InitGraphicDriver
 //purpose  :
 //=======================================================================
+#if !defined(OCE_BUILD_STATIC_LIB) && !defined(HAVE_NO_DLL)
 Handle(Graphic3d_GraphicDriver) Graphic3d::InitGraphicDriver (const Handle(Aspect_DisplayConnection)& theDisplayConnection)
 {
 #if !defined(_WIN32) && !defined(__WIN32__) && (!defined(__APPLE__) || defined(MACOSX_USE_GLX))
@@ -85,3 +86,15 @@ Handle(Graphic3d_GraphicDriver) Graphic3d::InitGraphicDriver (const Handle(Aspec
 
   return aGraphicDriver;
 }
+#else
+
+extern "C"
+{
+     Handle(Graphic3d_GraphicDriver) MetaGraphicDriverFactory(const Standard_CString AShrName);
+}
+
+Handle(Graphic3d_GraphicDriver) Graphic3d::InitGraphicDriver (const Handle(Aspect_DisplayConnection)& theDisplayConnection)
+{
+     return MetaGraphicDriverFactory("");
+}
+#endif
