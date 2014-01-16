@@ -203,8 +203,6 @@ public:
   //! Raw access to the data (for OpenGL exchange).
   const Element_t* GetData()    const { return myMat; }
   Element_t*       ChangeData()       { return myMat; }
-  operator const   Element_t*() const { return myMat; }
-  operator         Element_t*()       { return myMat; }
 
   //! Multiply by the vector (M * V).
   //! @param theVec [in] the vector to multiply.
@@ -228,10 +226,10 @@ public:
     size_t aInputElem;
     for (size_t aResElem = 0; aResElem < 16; ++aResElem)
     {
-      aMatRes[aResElem] = (Element_t )0;
+      aMatRes.myMat[aResElem] = (Element_t )0;
       for (aInputElem = 0; aInputElem < 4; ++aInputElem)
       {
-        aMatRes[aResElem] += theMatA.GetValue(aResElem % 4, aInputElem)
+        aMatRes.myMat[aResElem] += theMatA.GetValue(aResElem % 4, aInputElem)
                            * theMatB.GetValue(aInputElem, aResElem / 4);
       }
     }
