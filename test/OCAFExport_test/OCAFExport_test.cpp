@@ -8,11 +8,10 @@
 #include <iostream>
 #include <gtest/gtest.h>
 
-Handle(TDocStd_Application) app = new AppStd_Application();
-
 TEST(OCAFExportTestSuite, testExportAscii)
 {
     const char * filename = "ascii.cbf";
+    Handle(TDocStd_Application) app = new AppStd_Application();
     Handle(TDocStd_Document) doc;
     app->NewDocument("BinOcaf", doc);
     app->SaveAs(doc, filename);
@@ -34,6 +33,7 @@ TEST(OCAFExportTestSuite, testExportNonAscii)
     char* filename = new char[extName.LengthOfCString()+1];
     extName.ToUTF8CString(filename);
 
+    Handle(TDocStd_Application) app = new AppStd_Application();
     Handle(TDocStd_Document) doc;
     app->NewDocument("BinOcaf", doc);
     app->SaveAs(doc, filename);
