@@ -1190,11 +1190,7 @@ endif(OCE_DATAEXCHANGE)
 
 # DRAWEXE application
 if(OCE_DRAW)
-	if(OCE_TESTING)
 	process_module( "Draw" "" "TKDraw;TKTopTest;TKViewerTest;TKXSDRAW;TKDCAF;TKXDEDRAW;TKTObjDRAW;TKQADraw;DRAWEXE" )
-	else(OCE_TESTING)
-	process_module( "Draw" "" "TKDraw;TKTopTest;TKViewerTest;TKXSDRAW;TKDCAF;TKXDEDRAW;TKTObjDRAW;DRAWEXE" )
-	endif(OCE_TESTING)
 endif(OCE_DRAW)
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/ProjectConfig.cmake.in
