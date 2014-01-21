@@ -1,0 +1,22 @@
+
+puts "========================"
+puts " OCC539 "
+puts "(case 2)"
+puts "========================"
+puts ""
+
+  puts "============================================"
+ puts "  BOPTUC      case_4_shell.brep and case_4_wire3.brep"
+ puts "============================================"
+ puts " " 
+
+restore [locate_data_file case_4_shell.brep] a
+restore [locate_data_file case_4_wire3.brep] b
+bop a b
+boptuc result
+
+set nb_v_good 16
+set nb_e_good 11
+set length 929.278
+set 2dviewer 0
+

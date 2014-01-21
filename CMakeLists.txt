@@ -171,6 +171,8 @@ endif (NOT WIN32)
 # header files in a temporary location so that dependent applications can be built
 option_with_default( OCE_COPY_HEADERS_BUILD "Copy header files when building OCE" OFF )
 
+option_with_default( OCE_USE_TCL_TEST_FRAMEWORK "Add occt-tests target" OFF )
+
 #
 # By default, OSX uses X11 OpenGl implementation
 #
@@ -210,6 +212,17 @@ option( OCE_MULTITHREAD_LIBRARY "Multithread library" ${OCE_MULTITHREAD_LIBRARY}
 if( OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" )
 	option_with_default( OCE_TBB_MALLOC_SUPPORT "Use TBB for memory allocation" ON )
 endif( OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" )
+
+if( OCE_USE_TCL_TEST_FRAMEWORK )
+	set( tcl_test_groups 3rdparty;blend;boolean;bugs;caf;chamfer;de;demo;draft;feat;geometry;heal;mesh;mkface;nproject;offset;perf;pipe;prism;sewing;thrusection;v3d;xcaf;xml )
+	if( NOT DEFINED OCE_TCL_TEST_GROUP)
+		set( OCE_TCL_TEST_GROUP "ALL" CACHE STRING "Group of OCCT test packages to run (values are: ALL;${tcl_test_groups})" )
+	endif( NOT DEFINED OCE_TCL_TEST_GROUP)
+	mark_as_advanced(OCE_TCL_TEST_GROUP)
+	if (${CMAKE_VERSION} VERSION_GREATER 2.8)
+		set_property(CACHE OCE_TCL_TEST_GROUP PROPERTY STRINGS "ALL;${tcl_test_groups}")
+	endif (${CMAKE_VERSION} VERSION_GREATER 2.8)
+endif( OCE_USE_TCL_TEST_FRAMEWORK )
 
 if( NOT DEFINED OCE_INSTALL_PREFIX )
 	if( WIN32 )
@@ -854,7 +867,7 @@ if(WIN32)
 	endif()
 	set(EXECUTABLE_OUTPUT_PATH ${LIBRARY_OUTPUT_PATH})
 else(WIN32)
-	set(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
+	set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
 endif(WIN32)
 message(STATUS "output_path: ${LIBRARY_OUTPUT_PATH}")
 
@@ -1191,11 +1204,11 @@ endif(OCE_DATAEXCHANGE)
 
 # DRAWEXE application
 if(OCE_DRAW)
-	if(OCE_TESTING)
-	process_module( "Draw" "" "TKDraw;TKTopTest;TKViewerTest;TKXSDRAW;TKDCAF;TKXDEDRAW;TKTObjDRAW;TKQADraw;DRAWEXE" )
-	else(OCE_TESTING)
-	process_module( "Draw" "" "TKDraw;TKTopTest;TKViewerTest;TKXSDRAW;TKDCAF;TKXDEDRAW;TKTObjDRAW;DRAWEXE" )
-	endif(OCE_TESTING)
+	if(OCE_USE_TCL_TEST_FRAMEWORK)
+		process_module( "Draw" "" "TKDraw;TKTopTest;TKViewerTest;TKXSDRAW;TKDCAF;TKXDEDRAW;TKTObjDRAW;TKQADraw;DRAWEXE" )
+	else()
+		process_module( "Draw" "" "TKDraw;TKTopTest;TKViewerTest;TKXSDRAW;TKDCAF;TKXDEDRAW;TKTObjDRAW;DRAWEXE" )
+	endif()
 endif(OCE_DRAW)
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/ProjectConfig.cmake.in
@@ -1404,6 +1417,41 @@ if(OCE_COVERAGE)
 	set(CMAKE_MODULE_LINKER_FLAGS_DEBUG "-fprofile-arcs -ftest-coverage" CACHE STRING "Extra linker flags required by code coverage" FORCE)
 	set(OCE_BUILD_TYPE "Debug" CACHE STRING "Build type required by testing framework" FORCE)
 endif(OCE_COVERAGE)
+
+if(OCE_USE_TCL_TEST_FRAMEWORK)
+	get_target_property(OCE_CSF_GraphicShr TKOpenGl LOCATION)
+	if(WIN32)
+		set(OCE_TEST_PATH_VAR_NAME "PATH")
+		set(OCE_TEST_PATH_VAR_SEPARATOR ";")
+	elseif(APPLE)
+		set(OCE_TEST_PATH_VAR_NAME "DYLD_LIBRARY_PATH")
+		set(OCE_TEST_PATH_VAR_SEPARATOR ":")
+	else()
+		set(OCE_TEST_PATH_VAR_NAME "LD_LIBRARY_PATH")
+		set(OCE_TEST_PATH_VAR_SEPARATOR ":")
+	endif()
+	set (OCE_TEST_PATH_CURRENT_VALUE $ENV{${OCE_TEST_PATH_VAR_NAME}})
+	if (OCE_TEST_PATH_CURRENT_VALUE)
+		set(OCE_TEST_PATH_CURRENT_VALUE "${OCE_TEST_PATH_VAR_SEPARATOR}${OCE_TEST_PATH_CURRENT_VALUE}")
+	endif ()
+	set(OCE_TEST_PATH "${LIBRARY_OUTPUT_PATH}${OCE_TEST_PATH_CURRENT_VALUE}")
+	get_target_property(DRAWEXE_COMMAND DRAWEXE LOCATION)
+	configure_file(
+	    "${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/DrawLaunchTests.cmake.in"
+	    "${CMAKE_CURRENT_BINARY_DIR}/DrawLaunchTests.cmake" IMMEDIATE @ONLY)
+	file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/DrawLaunchTests.draw)
+	if(ALL STREQUAL ${OCE_TCL_TEST_GROUP})
+		file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/DrawLaunchTests.draw "testgrid\n")
+	else()
+		file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/DrawLaunchTests.draw "testgrid ${OCE_TCL_TEST_GROUP}\n")
+	endif()
+	file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/DrawLaunchTests.draw "return")
+	add_custom_command(OUTPUT OcctTests COMMAND "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/DrawLaunchTests.cmake"
+		DEPENDS TKernel TKMath TKAdvTools TKG2d TKG3d TKGeomBase TKBRep TKGeomAlgo TKTopAlgo TKPrim TKBO TKHLR TKMesh TKShHealing TKXMesh TKBool TKFillet TKFeat TKOffset TKService TKV3d TKOpenGl TKMeshVS TKNIS TKVoxel TKCDF PTKernel TKLCAF FWOSPlugin TKPShape TKBinL TKXmlL TKPLCAF TKTObj TKShapeSchema TKStdLSchema TKCAF TKBin TKXml TKPCAF TKBinTObj TKXmlTObj TKStdSchema TKSTL TKXSBase TKSTEPBase TKIGES TKSTEPAttr TKSTEP209 TKSTEP TKVRML TKXCAF TKXCAFSchema TKXmlXCAF TKBinXCAF TKXDEIGES TKXDESTEP TKDraw TKTopTest TKViewerTest TKXSDRAW TKDCAF TKXDEDRAW TKTObjDRAW TKQADraw DRAWEXE
+		COMMENT "Running OCCT test suite...")
+	add_custom_target(occt-tests DEPENDS OcctTests)
+endif(OCE_USE_TCL_TEST_FRAMEWORK)
+
 
 ###############################################################################
 # OCE Packaging                                                               #

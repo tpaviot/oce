@@ -1,0 +1,8 @@
+#ger60239
+
+restore [locate_data_file CTO900_ger60239a.rle] c
+restore [locate_data_file CTO900_ger60239b.rle] d
+
+bfuse result c d
+
+set square 3468.6

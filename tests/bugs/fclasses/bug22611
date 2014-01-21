@@ -1,0 +1,23 @@
+puts "========"
+puts "OCC22611"
+puts "========"
+puts ""
+#######################################################################
+# Memory leak in expression interpreter
+#######################################################################
+
+pload QAcommands
+
+set BugNumber OCC22611
+
+OCC22611 "0.1214343" 1
+
+set listmem {}
+set i_max 1000000
+OCC22611 "0.1214343" ${i_max}
+
+lappend listmem [meminfo h]
+if { [checktrend $listmem 0 1 "Memory leak detected"] } {
+    puts "No memory leak"
+    break
+}

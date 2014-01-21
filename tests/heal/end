@@ -1,0 +1,10 @@
+clear
+smallview
+if { [isdraw result] } {
+   donly result
+} else {
+   puts "Error : the resulting shape is not done."
+}
+fit
+xwd $imagedir/${test_image}.png
+puts "TEST COMPLETED"

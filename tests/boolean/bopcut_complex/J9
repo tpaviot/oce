@@ -1,0 +1,7 @@
+restore [locate_data_file a157] a
+restore [locate_data_file a152] b
+
+bop a b
+bopcut result
+
+set square 4869.47

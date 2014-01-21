@@ -1,0 +1,17 @@
+
+puts "================"
+puts "OCC254"
+puts "================"
+puts ""
+
+restore [locate_data_file OCC254-1.brep] shape1 
+checkshape shape1
+ 
+restore [locate_data_file OCC254-3.brep] shape3
+checkshape shape3
+ 
+common result shape1 shape3
+checkshape result
+
+set length 1231.07
+set 2dviewer 0

@@ -1,0 +1,15 @@
+puts "TODO OCC12345 ALL: Faulty shapes in variables faulty_1 to faulty_"
+puts "TODO DEBUG_OCC24121 Debian60-64 Windows: --- BRepCheck Wire:"
+
+puts "========"
+puts "OCC131"
+puts "========"
+puts ""
+
+igesbrep [locate_data_file OCC131-8.igs] a *
+
+tpcompound result
+checkshape result
+checkshape result r
+
+set 2dviewer 0

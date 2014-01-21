@@ -1,0 +1,29 @@
+puts "================"
+puts "OCC322"
+puts "================"
+puts ""
+
+pload QAcommands
+
+restore [locate_data_file OCC322.brep] a 
+checkshape a
+
+sewing result a
+
+vinit
+vdisplay result
+vfit
+
+set x_coord 204
+set y_coord 297
+
+checkcolor $x_coord $y_coord 1 1 0
+
+set x_coord 251
+set y_coord 232
+
+checkcolor $x_coord $y_coord 1 1 0
+
+set square 20000
+set only_screen 1
+

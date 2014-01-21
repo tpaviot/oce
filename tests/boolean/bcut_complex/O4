@@ -1,0 +1,7 @@
+puts "TODO #22911 ALL: Error : The area of the resulting shape is"
+
+restore [locate_data_file CTO908_topo101-o2.brep] obj2
+restore [locate_data_file CTO908_topo101-t2.brep] tool2
+bcut result obj2 tool2
+
+set square 0

@@ -1,0 +1,21 @@
+puts "TODO ?DEBUG_OCC24121 Debian60-64: Process killed by CPU limit"
+puts "TODO ?DEBUG_OCC24121 Debian60-64: TEST INCOMPLETE"
+
+restore [locate_data_file lh3d_ro1.brep] a
+compound result
+isos a 0
+set i -60
+repeat 108 {
+plane p_$i $i*1000 0 0 1 0 0
+mkface f_$i p_$i
+bsection s_$i a f_$i 
+display s_$i
+compound result s_$i result
+clear f_$i
+clear p_$i
+set dist [expr $i * 100]
+puts "OK Section$i:$dist"
+incr i
+}
+
+set length 1.75226e+06

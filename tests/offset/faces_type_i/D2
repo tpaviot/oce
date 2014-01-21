@@ -1,0 +1,9 @@
+puts "TODO ?OCC23748 ALL: ERROR. offsetperform operation not done."
+puts "TODO ?OCC23748 ALL: Tcl Exception: ERROR. offsetperform operation not done."
+puts "TODO ?OCC23748 ALL: TEST INCOMPLETE"
+
+psphere s 15 270
+
+OFFSETSHAPE 1 {s_2 s_3} $calcul $type
+
+set volume 0

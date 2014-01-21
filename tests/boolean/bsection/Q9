@@ -1,0 +1,9 @@
+# Original bug : spo0139
+# Date : 19Mai98
+
+restore [locate_data_file spo0139a.rle] a
+restore [locate_data_file spo0139b.rle] b
+
+bsection result a b
+
+set length 202.576

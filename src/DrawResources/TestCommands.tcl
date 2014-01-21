@@ -367,7 +367,10 @@ proc testgrid {args} {
         # commant to run DRAW with a command file;
         # note that empty string is passed as standard input to avoid possible 
         # hang-ups due to waiting for stdin of the launching process
-	set command "exec <<{} DRAWEXE -f $logdir/$group/$grid/${casename}.tcl"
+	if { [catch {set nameofexecutable [info nameofexecutable]}] } {
+		set nameofexecutable "DRAWEXE"
+	}
+	set command "exec <<{} $nameofexecutable -f $logdir/$group/$grid/${casename}.tcl"
 
 	# alternative method to run without temporary file; disabled as it needs too many backslashes
 #	else {
@@ -739,6 +742,13 @@ proc testfile {filelist} {
 # If file is not found, raises Tcl error.
 proc locate_data_file {filename} {
     global env groupname gridname casename
+
+    if [info exists env(OCE_SKIP_TESTS_DATA)] {
+        # raise error
+        error [join [list "File $filename could not be found" \
+                          "(should be in paths indicated by CSF_TestDataPath environment variable, " \
+                          "or in subfolder data in the script directory)"] "\n"]
+    }
 
     # check if the file is located in the subdirectory data of the script dir
     set scriptfile [info script]
