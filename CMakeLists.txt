@@ -80,6 +80,7 @@ endif(CMAKE_BUILD_TOOL STREQUAL "nmake")
 
 if(MSVC)
 	option_with_default( OCE_INSTALL_PDB_FILES "Install PDB files (debug informations)" ON )
+	option_with_default( OCE_MULTITHREADED_BUILD "Multithreaded build (/CL Option)" ON )
 endif(MSVC)
 
 ############################
@@ -149,8 +150,6 @@ option_with_default( OCE_DRAW "Build test harness \(DRAW\)" OFF )
 option_with_default( OCE_VISUALISATION "Build visualisation component" ON )
 option_with_default( OCE_WITH_GL2PS "Build with GL2PS" OFF )
 option_with_default( OCE_WITH_FREEIMAGE "Build with FreeImage" OFF )
-option_with_default( OCE_DISABLE_TKSERVICE_FONT "Disable TKService Font (only without Visualization)" OFF )
-mark_as_advanced(OCE_DISABLE_TKSERVICE_FONT)
 option_with_default( OCE_EXTRA_WARNINGS "Enable Maximum Warnings Level" OFF )
 mark_as_advanced(OCE_EXTRA_WARNINGS)
 if( NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.8 )
@@ -274,10 +273,10 @@ endif(OCE_OCAF OR OCE_DATAEXCHANGE OR OCE_VISUALISATION OR OCE_DRAW)
 if(OCE_DISABLE_X11)
 	set(OCE_VISU_DEP FALSE)
 endif(OCE_DISABLE_X11)
-if(OCE_DISABLE_X11 OR OCE_DISABLE_TKSERVICE_FONT)
+if(OCE_DISABLE_X11)
 	set(OCE_DRAW OFF CACHE BOOL "Build DRAWEXE" FORCE)
 	set(OCE_VISUALISATION OFF CACHE BOOL "Build visualisation component" FORCE)
-endif(OCE_DISABLE_X11 OR OCE_DISABLE_TKSERVICE_FONT)
+endif(OCE_DISABLE_X11)
 
 if(NOT OCE_BUILD_SHARED_LIB AND OCE_DRAW)
 	set(OCE_DRAW OFF CACHE BOOL "Build DRAWEXE" FORCE)
@@ -362,10 +361,6 @@ if (OCE_USE_BUNDLE OR OCE_USE_BUNDLE_SOURCE)
 	find_path(OCE_BUNDLE_ROOT_PATH oce-bundle-root.empty "Path for the OCE-win-bundle")
 endif(OCE_USE_BUNDLE OR OCE_USE_BUNDLE_SOURCE)
 
-if(OCE_VISU_DEP AND NOT OCE_DISABLE_TKSERVICE_FONT)
-	set(OCE_REQUIRES_FREETYPE TRUE)
-endif()
-
 if(OCE_VISU_DEP)
 	## TKService requires OpenGL on Unix, see src/Xw/Xw_Window.cxx
 	if (NOT (WIN32 OR (APPLE AND OCE_OSX_USE_COCOA)))
@@ -373,7 +368,7 @@ if(OCE_VISU_DEP)
 	endif (NOT (WIN32 OR (APPLE AND OCE_OSX_USE_COCOA)))
 endif(OCE_VISU_DEP)
 
-if(OCE_REQUIRES_FREETYPE)
+if(OCE_VISU_DEP)
 	## TKService requires FreeType
 	if(NOT OCE_USE_BUNDLE AND NOT OCE_USE_BUNDLE_SOURCE)
 		find_package(Freetype REQUIRED)
@@ -384,7 +379,7 @@ if(OCE_REQUIRES_FREETYPE)
 	if(CMAKE_CONFIGURATION_TYPES OR NMAKE)
 		find_library(FREETYPE_LIBRARY_DEBUG freetyped "Location of freetype debug library")
 	endif(CMAKE_CONFIGURATION_TYPES OR NMAKE)
-endif(OCE_REQUIRES_FREETYPE)
+endif(OCE_VISU_DEP)
 
 if(OCE_VISUALISATION)
 	if(OCE_WITH_FREEIMAGE)
@@ -505,7 +500,7 @@ endif(OCE_DRAW)
 
 if (OCE_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)
 	message("Using previously built and installed OCE Bundle")
-	if (OCE_VISUALISATION)
+	if (OCE_VISU_DEP)
 		set(FREETYPE_INCLUDE_DIR_freetype2 ${OCE_BUNDLE_ROOT_PATH}/include/freetype CACHE PATH "" FORCE)
 		set(FREETYPE_INCLUDE_DIR_ft2build ${OCE_BUNDLE_ROOT_PATH}/include/freetype CACHE PATH "" FORCE)
 		set(FREETYPE_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIR_freetype2} ${FREETYPE_INCLUDE_DIR_ft2build})
@@ -526,7 +521,7 @@ if (OCE_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)
 			set(FREEIMAGEPLUS_LIBRARY_DEBUG ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImagePlusd.lib CACHE FILEPATH "" FORCE)
 			set(FREEIMAGE_INCLUDE_DIR ${OCE_BUNDLE_ROOT_PATH}/include/FreeImage CACHE PATH "" FORCE)
 		endif(OCE_WITH_FREEIMAGE)
-	endif (OCE_VISUALISATION)
+	endif (OCE_VISU_DEP)
 endif(OCE_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/build_inc
@@ -822,6 +817,12 @@ if( OCE_EXTRA_WARNINGS)
 	endif(INTEL)
 endif(OCE_EXTRA_WARNINGS)
 
+if(OCE_MULTITHREADED_BUILD)
+   if(MSVC)
+      add_definitions("/MP")
+   endif()
+endif()
+
 #  Detect build problems with duplicate types
 try_compile(CHECK_BODY_TEMPLATE ${CMAKE_BINARY_DIR}/CMakeTmpDup
 	${OCE_SOURCE_DIR}/adm/cmake/config/TestDuplicateBodyTemplate.cxx
@@ -920,7 +921,7 @@ if (OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 	# Look for includes in bundle source directory.
 	# Put oce-win-bundle libraries and dlls in same place OCE libraries and dlls are going,
 	# and set variables to point OCE to them.
-	if (OCE_VISUALISATION)
+	if (OCE_VISUALISATION OR OCE_VISU_DEP)
 		set(FREETYPE_INCLUDE_DIR_freetype2 ${OCE_BUNDLE_ROOT_PATH}/libs/freetype CACHE PATH "" FORCE)
 		set(FREETYPE_INCLUDE_DIR_ft2build ${OCE_BUNDLE_ROOT_PATH}/libs/freetype/include CACHE PATH "" FORCE)
 		set(FREETYPE_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIR_freetype2} ${FREETYPE_INCLUDE_DIR_ft2build})
@@ -977,7 +978,7 @@ if (OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 
 			set(FREEIMAGE_INCLUDE_DIR ${OCE_BUNDLE_ROOT_PATH}/libs/FreeImage/Source ${OCE_BUNDLE_ROOT_PATH}/libs/FreeImage/Wrapper/FreeImagePlus CACHE PATH "" FORCE)
 		endif(OCE_WITH_FREEIMAGE)
-	endif (OCE_VISUALISATION)
+	endif (OCE_VISUALISATION OR OCE_VISU_DEP)
 endif(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 
 # Binaries
@@ -1208,8 +1209,12 @@ install(EXPORT OCE-libraries DESTINATION ${OCE_INSTALL_CMAKE_DATA_DIR} COMPONENT
 
 if(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 	# Add dependencies between OCE and oce-win-bundle
-	add_dependencies( TKService FreeImage )
-	add_dependencies( TKOpenGl freetype gl2ps )
+  if(OCE_WITH_FREEIMAGE)
+    add_dependencies( TKService FreeImage )
+  endif()
+  if (OCE_VISUALISATION)
+    add_dependencies( TKOpenGl freetype gl2ps )
+  endif()
 endif(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 
 ############
@@ -1321,21 +1326,44 @@ endif(MSVC AND OCE_TESTING)
 ##############
 
 if (OCE_BUNDLE_AUTOINSTALL AND NOT OCE_USE_BUNDLE_SOURCE)
-	if (OCE_VISUALISATION)
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/freetyped.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/freetype.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
-	endif(OCE_VISUALISATION)
+	if (OCE_VISU_DEP)
+	  if (EXISTS ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/freetyped.dll)
+        install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/freetyped.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
+      endif()
+      if (EXISTS ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/freetype.dll)
+        install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/freetype.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
+      endif()
+      
+	  install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetyped.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug)
+      install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetype.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
+    
+	endif(OCE_VISU_DEP)
 
 	if (OCE_VISU_DEP AND OCE_WITH_GL2PS )
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/gl2psd.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/gl2ps.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
+	    if (EXISTS ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/gl2psd.dll)
+		   install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/gl2psd.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
+	    endif()
+		if (EXISTS ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/gl2ps.dll)
+		   install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/gl2ps.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
+		endif()
+		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2psd.dll DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug)
+		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2ps.dll DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
 	endif(OCE_VISU_DEP AND OCE_WITH_GL2PS)
 
 	if (OCE_VISU_DEP AND OCE_WITH_FREEIMAGE)
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImaged.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImage.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImagePlusd.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImagePlus.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
+		if (EXISTS ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImaged.dll)
+			install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImaged.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
+			install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImagePlusd.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
+		endif()
+		if (EXISTS ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImage.dll)
+			install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImage.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
+			install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImagePlus.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
+		endif()
+		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImaged.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug)
+		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImagePlusd.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug)
+		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImage.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
+		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImagePlus.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
+		
 	endif(OCE_VISU_DEP AND OCE_WITH_FREEIMAGE)
 
 	# Install TCL
