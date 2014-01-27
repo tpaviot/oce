@@ -611,7 +611,7 @@ static void PushAspectFace (const Handle(OpenGl_Context)&       theCtx,
 {
   theProgram->SetUniform (theCtx,
                           theProgram->GetStateLocation (OpenGl_OCCT_TEXTURE_ENABLE),
-                          theAspect->DoTextureMap());
+                          (GLint)theAspect->DoTextureMap());
   theProgram->SetUniform (theCtx,
                           theProgram->GetStateLocation (OpenGl_OCCT_ACTIVE_SAMPLER),
                           0 /* GL_TEXTURE0 */);

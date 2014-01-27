@@ -51,6 +51,10 @@
 #define stat _stat
 #endif
 
+#if defined(__BORLANDC__)
+#include <mem.h>
+#endif
+
 //=======================================================================
 //function : Dynamic_FuzzyDefinitionsDictionary
 //purpose  : 

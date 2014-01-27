@@ -34,12 +34,29 @@ namespace
   static void MakeLibName (const TCollection_AsciiString& theDefaultName,
                                  TCollection_AsciiString& theLibName)
   {
+#ifdef OCE_LIBRARY_PREFIX
     // Assemble library name according to the variables defined by CMAKE
   	theLibName = "";
   	theLibName += OCE_LIBRARY_PREFIX;
   	theLibName += theDefaultName;
   	theLibName += OCE_LIBRARY_DEBUG_POSTFIX;
   	theLibName += OCE_LIBRARY_EXTENSION;
+#else
+    theLibName = "";
+  #ifndef WNT
+    theLibName += "lib";
+  #endif
+    theLibName += theDefaultName;
+  #ifdef WNT
+    theLibName += ".dll";
+  #elif __APPLE__
+    theLibName += ".dylib";
+  #elif defined (HPUX) || defined(__hpux)
+    theLibName += ".sl";
+  #else
+    theLibName += ".so";
+  #endif
+#endif
   }
 };
 

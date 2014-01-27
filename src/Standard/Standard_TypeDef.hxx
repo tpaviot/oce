@@ -18,19 +18,16 @@
 #include <cstddef>
 #include <ctime>
 
-#if(defined(_MSC_VER) && (_MSC_VER < 1600))
+#if(defined(_MSC_VER) && (_MSC_VER < 1800)) || defined(__BORLANDC__)
+
+  #if defined(_MSC_VER) && (_MSC_VER < 1600)
   // old MSVC - hasn't stdint header
   typedef unsigned __int16  uint16_t;
   typedef unsigned __int32  uint32_t;
-#else
-#if defined(__hpux) && !defined(__GNUC__)
-  #include <inttypes.h>
-#else
+  #else
   #include <stdint.h>
-#endif
-#endif
+  #endif
 
-#if(defined(_MSC_VER) && (_MSC_VER < 1800))
   // only Visual Studio 2013 (vc12) provides <cinttypes> header
   // we do not defined all macros here - only used by OCCT framework
   #ifdef _WIN64

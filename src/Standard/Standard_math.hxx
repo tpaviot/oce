@@ -16,13 +16,13 @@
 #include <Standard_Macro.hxx>
 #endif
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) || defined(__BORLANDC__)
 
 #define _USE_MATH_DEFINES
 #include <math.h>
 
 // MSVC versions prior to 12 did not provided acosh, asinh, atanh functions in standard library
-#if _MSC_VER < 1800
+#if (defined(_MSC_VER) && (_MSC_VER < 1800)) || defined(__BORLANDC__)
 __Standard_API double __cdecl acosh ( double );
 __Standard_API double __cdecl asinh ( double );
 __Standard_API double __cdecl atanh ( double );

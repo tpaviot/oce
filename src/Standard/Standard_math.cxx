@@ -15,7 +15,7 @@
 #include <Standard_math.hxx>
 
 // MSVC versions prior to 12 did not provided acosh, asinh, atanh functions in standard library
-#if defined(_MSC_VER) && (_MSC_VER < 1800)
+#if (defined(_MSC_VER) && (_MSC_VER < 1800)) || defined(__BORLANDC__)
 
 Standard_EXPORT double  __cdecl acosh( double X)
 {

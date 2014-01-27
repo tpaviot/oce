@@ -27,6 +27,10 @@
 # include <oce-config.h>
 #endif
 
+#ifdef __BORLANDC__
+#define OCE_IS_DUPLICATE_UINT32_T
+#endif
+
 class Handle_Standard_Type;
 
 __Standard_API const Handle_Standard_Type& Standard_Integer_Type_();

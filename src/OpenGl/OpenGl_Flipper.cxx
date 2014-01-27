@@ -192,7 +192,7 @@ void OpenGl_Flipper::Render (const Handle(OpenGl_Workspace)& theWorkspace) const
     glMatrixMode (GL_MODELVIEW);
   }
 
-  glLoadMatrixf ((GLfloat*) aMatrixMV);
+  glLoadMatrixf (aMatrixMV.GetData());
 
   if (aCurrMode != GL_MODELVIEW)
   {
