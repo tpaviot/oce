@@ -23,13 +23,15 @@
 
 #include <OpenGl_GlCore11.hxx>
 
-#if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
-  #undef GL_VERSION_1_2
-  #undef GL_VERSION_1_3
-  #undef GL_VERSION_1_4
-  #undef GL_VERSION_1_5
-  #undef GL_VERSION_2_0
-#endif
+// We can safely #undef GL_VERSION_x_y since redeclaration of typedef names can
+// be done for same type: http://msdn.microsoft.com/en-us/library/87txds41.aspx
+// It is required to fix build against Mesa >= 10:
+// http://cgit.freedesktop.org/mesa/mesa/commit/?id=a36f7e6
+#undef GL_VERSION_1_2
+#undef GL_VERSION_1_3
+#undef GL_VERSION_1_4
+#undef GL_VERSION_1_5
+#undef GL_VERSION_2_0
 
 #include <OpenGl_glext.h>
 
