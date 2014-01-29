@@ -4194,14 +4194,6 @@ GLAPI void APIENTRY glGetVertexAttribPointervARB (GLuint index, GLenum pname, vo
 #define GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS_ARB 0x8B4D
 #define GL_OBJECT_ACTIVE_ATTRIBUTES_ARB   0x8B89
 #define GL_OBJECT_ACTIVE_ATTRIBUTE_MAX_LENGTH_ARB 0x8B8A
-typedef void (APIENTRYP PFNGLBINDATTRIBLOCATIONARBPROC) (GLhandleARB programObj, GLuint index, const GLcharARB *name);
-typedef void (APIENTRYP PFNGLGETACTIVEATTRIBARBPROC) (GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
-typedef GLint (APIENTRYP PFNGLGETATTRIBLOCATIONARBPROC) (GLhandleARB programObj, const GLcharARB *name);
-#ifdef GL_GLEXT_PROTOTYPES
-GLAPI void APIENTRY glBindAttribLocationARB (GLhandleARB programObj, GLuint index, const GLcharARB *name);
-GLAPI void APIENTRY glGetActiveAttribARB (GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
-GLAPI GLint APIENTRY glGetAttribLocationARB (GLhandleARB programObj, const GLcharARB *name);
-#endif
 #endif /* GL_ARB_vertex_shader */
 
 #ifndef GL_ARB_vertex_type_10f_11f_11f_rev
