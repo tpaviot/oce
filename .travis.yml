@@ -1,0 +1,10 @@
+language: cpp
+compiler:
+  - gcc
+  - clang
+before_script:
+  - mkdir cmake-build
+  - cd cmake-build
+script: cmake -DOCE_VISUALISATION:BOOL=OFF -DOCE_OCAF:BOOL=OFF
+        -DOCE_DATAEXCHANGE:BOOL=OFF .. && make
+after_script: make test
