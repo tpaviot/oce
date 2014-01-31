@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/tpaviot/oce.png?branch=master)](https://travis-ci.org/tpaviot/oce)
+
 oce stands for *o*pencascade *c*ommunity *e*dition.
 
 This project aims at gathering patches/changes/improvements from the OCC community over the latest release
