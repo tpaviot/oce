@@ -1,4 +1,4 @@
-if (OCE_OCAF)
+if (OCE_OCAF AND NOT OCE_DISABLE_X11)
 	# This test will dlopen FWOSPlugin and TKBin, we link against them to ensure that
 	# libraries from the build tree are used.
 	add_oce_test(OCAFExport_test "TKCAF;FWOSPlugin;TKBin")
@@ -7,4 +7,4 @@ if (OCE_OCAF)
 	string(REPLACE ";" "\\;" BuildPluginDir "${BuildPluginDir}")
 	set_tests_properties(OCAFExportTestSuite.testExportAscii PROPERTIES ENVIRONMENT "CSF_PluginDefaults=${BuildPluginDir};CSF_StandardDefaults=${BuildPluginDir}")
 	set_tests_properties(OCAFExportTestSuite.testExportNonAscii PROPERTIES ENVIRONMENT "CSF_PluginDefaults=${BuildPluginDir};CSF_StandardDefaults=${BuildPluginDir}")
-endif (OCE_OCAF)
+endif ()
