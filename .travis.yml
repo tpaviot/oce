@@ -5,9 +5,9 @@ compiler:
 before_script:
   - mkdir cmake-build
   - cd cmake-build
-script: cmake -DDEB_DEFAULT:BOOL=OFF
+script: cmake -DOCE_ENABLE_DEB_FLAG:BOOL=OFF
         -DCMAKE_BUILD_TYPE:STRING=Debug
-        -DOCE_TESTING:BOOL=ON
+        -DOCE_TESTING:BOOL=OFF
         -DOCE_VISUALISATION:BOOL=OFF
         -DOCE_OCAF:BOOL=ON
         -DOCE_DATAEXCHANGE:BOOL=ON
