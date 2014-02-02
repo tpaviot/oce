@@ -6,10 +6,14 @@ before_install:
   - sudo apt-get install libxmu-dev tcl8.5-dev tk8.5-dev libgl2ps-dev
 #  Needed to run OCCT tests in parallel
   - sudo apt-get install tclthread
+#  Is this needed to run OCCT tests?
+  - sudo apt-get install libgl1-mesa-dri
 before_script:
   - mkdir cmake-build
   - cd cmake-build
-script: xvfb-run ../.travis.build.sh
+#  Depth is necessary, otherwise DRAWEXE exits with this message:
+#    Tcl Exception: ** Exception ** 0x7fee03adb307 : Aspect_WindowDefinitionError: Xw_Window, couldn't find compatible Visual (RGBA, double-buffered)
+script: xvfb-run -s "-screen 0 1024x768x24" ../.travis.build.sh
 after_script:
   - cat occt/summary.xml || true
 branches:
