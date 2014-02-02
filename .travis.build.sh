@@ -27,9 +27,8 @@ make test
 # Run OCCT tests, but overwrite DrawLaunchTests.draw to write
 # an XML summary file at a specified location
 # Run only 3rdparty/export until problems are fixed
-sed -i -e 's/^testgrid$/testgrid -outdir occt -xml summary.xml -refresh 300 3rdparty export/' DrawLaunchTests.draw
+sed -i -e 's/^testgrid$/testgrid -outdir occt -xml summary.xml -refresh 300/' DrawLaunchTests.draw
 
 head -n -1 DrawLaunchTests.*
 cmake -P DrawLaunchTests.cmake || true
-head -n -1 occt/3rdparty/export/A?.[hlt]* || true
 
