@@ -24,9 +24,9 @@ script: cmake -DOCE_ENABLE_DEB_FLAG:BOOL=OFF
 after_script:
   - make test
 #  Overwrite default DrawLaunchTests.draw
+  - head -n -1 DrawLaunchTests.*
   - echo 'testgrid -outdir occt -xml summary.xml -refresh 300' > DrawLaunchTests.draw
-  - make occt-tests || true
-  - cat occt/summary.xml || true
+  - make occt-tests VERBOSE=1 && cat occt/summary.xml || true
 branches:
   only:
     - master
