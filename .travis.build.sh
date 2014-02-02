@@ -26,7 +26,7 @@ make test
 
 # Run OCCT tests, but overwrite DrawLaunchTests.draw to write
 # an XML summary file at a specified location
-sed -i -e '/s/^testgrid$/testgrid -outdir occt -xml summary.xml -refresh 300' DrawLaunchTests.draw
+sed -i -e 's/^testgrid$/testgrid -outdir occt -xml summary.xml -refresh 300/' DrawLaunchTests.draw
 
 head -n -1 DrawLaunchTests.*
 cmake -P DrawLaunchTests.cmake || true
