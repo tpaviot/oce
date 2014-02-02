@@ -21,7 +21,9 @@ echo ""
 echo "Starting build with -j$ncpus ...";
 # travis-ci truncates when there are more than 10,000 lines of output.
 # Builds generate around 9,000 lines of output, trim them to see test
-# results
+# results.  Is there a better way than setting CMAKE_COMMAND=true?
+# This breaks building tests, so build them normally.
+make -C test -j$ncpus
 make -j$ncpus CMAKE_COMMAND=true
 
 # Run OCE tests
