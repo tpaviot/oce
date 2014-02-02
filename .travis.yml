@@ -4,6 +4,8 @@ compiler:
   - clang
 before_install:
   - sudo apt-get install libx11-dev libxmu-dev libxext-dev tcl8.5-dev tk8.5-dev libgl1-mesa-dev libglu1-mesa-dev libgl2ps-dev
+  - export DISPLAY=:11.0
+  - sh -e /etc/init.d/xvfb start
 before_script:
   - mkdir cmake-build
   - cd cmake-build
