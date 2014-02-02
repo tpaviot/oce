@@ -13,7 +13,7 @@ before_script:
   - cd cmake-build
 #  Depth is necessary, otherwise DRAWEXE exits with this message:
 #    Tcl Exception: ** Exception ** 0x7fee03adb307 : Aspect_WindowDefinitionError: Xw_Window, couldn't find compatible Visual (RGBA, double-buffered)
-script: xvfb-run -s "-screen 0 1024x768x24" ../.travis.build.sh
+script: xvfb-run -s "-screen 0 1024x768x16" ../.travis.build.sh
 after_script:
   - cat occt/summary.xml || true
 branches:
