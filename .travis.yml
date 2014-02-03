@@ -17,7 +17,8 @@ before_script:
 #  Builds hang, remove some tests to find the culprit
 #  GOOD: - rm -rf tests/bugs tests/demo tests/xml
 #  BAD - rm -rf tests/bugs tests/demo
-  - rm -rf tests/xml/xcaf_*
+#  BAD - rm -rf tests/xml/xcaf_*
+  - rm -rf tests/xml/ocaf_*
   - mkdir cmake-build
   - cd cmake-build
 #  Depth is necessary, otherwise DRAWEXE exits with this message:
