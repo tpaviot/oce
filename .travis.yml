@@ -18,7 +18,8 @@ before_script:
 #  GOOD: - rm -rf tests/bugs tests/demo tests/xml
 #  BAD - rm -rf tests/bugs tests/demo
 #  BAD - rm -rf tests/xml/xcaf_*
-  - rm -rf tests/xml/ocaf_*
+#  BAD - rm -rf tests/xml/ocaf_*
+  - rm -rf tests/xml/ocaf_* tests/xml/xcaf_xml
   - mkdir cmake-build
   - cd cmake-build
 #  Depth is necessary, otherwise DRAWEXE exits with this message:
