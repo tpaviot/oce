@@ -9,6 +9,9 @@ before_install:
 #  Is this needed to run OCCT tests?
   - sudo apt-get install libgl1-mesa-dri
 before_script:
+#  Remove OCCT tests which are going to be skipped
+#  because of missing data files
+  - find tests -type f -name '??' | xargs grep -l locate_data_file /dev/null | xargs rm -f
   - mkdir cmake-build
   - cd cmake-build
 #  Depth is necessary, otherwise DRAWEXE exits with this message:
