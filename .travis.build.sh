@@ -22,16 +22,17 @@ echo "Starting build with -j$ncpus ...";
 # travis-ci truncates when there are more than 10,000 lines of output.
 # Builds generate around 9,000 lines of output, trim them to see test
 # results.
-make -j$ncpus >/dev/null
+make -j$ncpus | grep Built
 
 # Run OCE tests
 make test
 
 # Run OCCT tests, but overwrite DrawLaunchTests.draw to write
 # an XML summary file at a specified location
-# Run only 3rdparty/export until problems are fixed
-sed -i -e 's/^testgrid$/testgrid -outdir occt -xml summary.xml -refresh 300/' DrawLaunchTests.draw
+cat > DrawLaunchTests.draw <<EOT
+testgrid -outdir occt -xml summary.xml -refresh 300
+return
+EOT
 
-head -n -1 DrawLaunchTests.*
 cmake -P DrawLaunchTests.cmake || true
 
