@@ -31,7 +31,7 @@ make test
 # an XML summary file at a specified location
 cat > DrawLaunchTests.draw <<EOT
 testgrid -outdir occt -xml summary.xml -refresh 300
-return
+exit
 EOT
 
 cmake -P DrawLaunchTests.cmake || true
