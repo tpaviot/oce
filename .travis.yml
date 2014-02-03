@@ -15,7 +15,8 @@ before_script:
   - find tests -type f -name '[A-Z][0-9]' -o -name 'Z[A-Z][0-9]' -o -name 'bu[gc]*' | xargs grep -l locate_data_file /dev/null | xargs rm -f
   - rm -rf tests/chamfer tests/de tests/mesh tests/perf/*_mesh_*
 #  Builds hang, remove some tests to find the culprit
-  - rm -rf tests/bugs tests/demo tests/xml
+#  GOOD: - rm -rf tests/bugs tests/demo tests/xml
+  - rm -rf tests/bugs tests/demo
   - mkdir cmake-build
   - cd cmake-build
 #  Depth is necessary, otherwise DRAWEXE exits with this message:
