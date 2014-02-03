@@ -16,7 +16,8 @@ before_script:
   - rm -rf tests/chamfer tests/de tests/mesh tests/perf/*_mesh_*
 #  Builds hang, remove some tests to find the culprit
 #  GOOD: - rm -rf tests/bugs tests/demo tests/xml
-  - rm -rf tests/bugs tests/demo
+#  BAD - rm -rf tests/bugs tests/demo
+  - rm -rf tests/xml/xcaf_*
   - mkdir cmake-build
   - cd cmake-build
 #  Depth is necessary, otherwise DRAWEXE exits with this message:
