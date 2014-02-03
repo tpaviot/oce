@@ -10,8 +10,9 @@ before_install:
   - sudo apt-get install libgl1-mesa-dri
 before_script:
 #  Remove OCCT tests which are going to be skipped
-#  because of missing data files
-  - find tests -type f -name '??' | xargs grep -l locate_data_file /dev/null | xargs rm -f
+#  because of missing data files.  We must use -name
+#  to filter out 'begin' or 'end' files.
+  - find tests -type f -name '[A-Z][0-9]' -o -name 'Z[A-Z][0-9]' -o -name 'bu[gc]*' | xargs grep -l locate_data_file /dev/null | xargs rm -f
   - mkdir cmake-build
   - cd cmake-build
 #  Depth is necessary, otherwise DRAWEXE exits with this message:
