@@ -35,7 +35,7 @@ after_script:
         if [ -s occt/summary.failed ]; then
             echo "FAILED TESTS:";
             cat occt/summary.failed;
-            for file in $(sed -e 's/ .*//' occt/summary.failed); do head -n -1 occt/$file.{log,tcl}; done;
+            for file in $(cat occt/summary.failed); do head -n -1 occt/$file.{tcl,log}; done;
         fi;
     fi
 branches:
