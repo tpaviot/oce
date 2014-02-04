@@ -6,7 +6,7 @@ if test -x /usr/bin/getconf; then
     ncpus=$(/usr/bin/getconf _NPROCESSORS_ONLN)
 fi
 cmake -DOCE_ENABLE_DEB_FLAG:BOOL=OFF \
-      -DCMAKE_BUILD_TYPE:STRING=Debug \
+      -DCMAKE_BUILD_TYPE:STRING=Release \
       -DOCE_USE_TCL_TEST_FRAMEWORK:BOOL=ON \
       -DOCE_TESTING:BOOL=ON \
       -DOCE_DRAW:BOOL=ON \
