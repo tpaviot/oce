@@ -30,6 +30,7 @@ before_script:
 #    Tcl Exception: ** Exception ** 0x7fee03adb307 : Aspect_WindowDefinitionError: Xw_Window, couldn't find compatible Visual (RGBA, double-buffered)
 script: xvfb-run -s "-screen 0 1024x768x16" ../.travis.build.sh
 after_script:
+  - [ ! -r occt/summary.xml ] || xsltproc --param duration 1 ../.travis.xsl occt/summary.xml
   - if [ -r occt/summary.xml ]; then
         xsltproc ../.travis.xsl occt/summary.xml > occt/summary.failed;
         if [ -s occt/summary.failed ]; then

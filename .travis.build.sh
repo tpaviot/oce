@@ -43,7 +43,3 @@ echo "Timestamp" && date
 cmake -P DrawLaunchTests.cmake || true
 echo "Timestamp" && date
 
-if [ -r occt/summary.xml ]; then
-    xsltproc --param duration 1 ../.travis.xsl occt/summary.xml
-fi
-
