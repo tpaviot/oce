@@ -22,6 +22,7 @@ before_script:
 #  BAD - rm -rf tests/xml/xcaf_*
 #  BAD - rm -rf tests/xml/ocaf_*
 #  BAD - rm -rf tests/xml/ocaf_* tests/xml/xcaf_xml
+#  GOOD - rm -rf tests/xml
   - rm -rf tests/xml
   - mkdir cmake-build
   - cd cmake-build
@@ -34,7 +35,7 @@ after_script:
         if [ -s occt/summary.failed ]; then
             echo "FAILED TESTS:";
             cat occt/summary.failed;
-            for file in $(sed -e 's/ .*//' occt/summary.failed); do head -n -1 $file.{log,tcl}; done;
+            for file in $(sed -e 's/ .*//' occt/summary.failed); do head -n -1 occt/$file.{log,tcl}; done;
         fi;
     fi
 branches:

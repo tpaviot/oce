@@ -5,7 +5,7 @@
    <xsl:output method="text"/>
 
    <xsl:template match="testcase">
-       <xsl:if test="@status != 'OK'">
+       <xsl:if test="contains(@status, 'FAILED')">
            <xsl:variable name="parent" select="../@name"/>
            <xsl:value-of select="translate($parent, ' ', '/')"/>/<xsl:value-of select="@name"/>
            <xsl:text> </xsl:text><xsl:value-of select="@status"/><xsl:text>
