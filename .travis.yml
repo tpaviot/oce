@@ -8,6 +8,8 @@ before_install:
   - sudo apt-get install tclthread
 #  Is this needed to run OCCT tests?
   - sudo apt-get install libgl1-mesa-dri
+#  Postprocess OCCT tests output
+  - sudo apt-get install xsltproc
 before_script:
 #  Remove OCCT tests which are going to be skipped
 #  because of missing data files.  We must use -name
@@ -27,7 +29,14 @@ before_script:
 #    Tcl Exception: ** Exception ** 0x7fee03adb307 : Aspect_WindowDefinitionError: Xw_Window, couldn't find compatible Visual (RGBA, double-buffered)
 script: xvfb-run -s "-screen 0 1024x768x16" ../.travis.build.sh
 after_script:
-  - cat occt/summary.xml || true
+  - if [ -r occt/summary.xml ]; then
+        xsltproc ../.travis.xsl occt/summary.xml > occt/summary.failed;
+        if [ -s occt/summary.failed ]; then
+            echo "FAILED TESTS:";
+            cat occt/summary.failed;
+            for file in $(sed -e 's/ .*//' occt/summary.failed); do head -n -1 $file.{log,tcl}; done;
+        fi;
+    fi
 branches:
   only:
     - master
