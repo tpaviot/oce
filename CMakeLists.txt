@@ -857,8 +857,6 @@ if(WIN32)
 	if(MSVC) # The compiler used is MSVC
 		message(STATUS "Found MSVC compiler: ${MSVC} ${MSVC_VERSION}")
 		set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin/)
-	elseif (BORLAND) # The compiler used is BORLAND
-		set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/win${BIT}/bin/${CMAKE_BUILD_TYPE})
 	else()
 		IF (MINGW)
 			message(STATUS "Found MINGW compiler: ${MINGW}")
