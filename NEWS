@@ -1,3 +1,31 @@
+Version 0.15 - February 2014
+
+This version is not binary compatible with OCE 0.14.1, OCE_ABI_SOVERSION
+was incremented.
+
+* Upgraded to OCCT 6.7.0
+
+* Relicensed to LGPL 2.1.
+
+* Many bug and warning fixes detected by static analysis and compilers.
+
+* Add support for OCCT tests.
+
+* Build OCE and run tests on travis-ci.org service.
+
+* Build system improvements and additions
+  - Added multithreaded build option for MSVC.
+  - Build improvements and fixes with MSVC and Mingw.
+  - Fix build failures with Borland compiler.
+  - Fix build failures with Mesa 10.
+  - Various CMake improvements when compiling with bundle.
+  - Removed OCE_DISABLE_TKSERVICE_FONT option, it is no more possible
+    to build TKService without freetype.
+
+Users who contributed to this release:
+  Denis Barbier, Thomas Paviot, QbProg, Fotios Sioutis, Johannes Obermayr,
+  Jacob Abel, Benjamin Bihler
+
 Version 0.14.1 - January 2014
 
 This version is binary compatible with 0CE 0.14.
