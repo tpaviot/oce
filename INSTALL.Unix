@@ -66,14 +66,7 @@ can run these commands:
 ==================
 More expert options can be defined in the "Advanced mode".
 
-2.2.1 FTGL note:
-==============
-OCE supports either ftgl-2.1.2 or the latest ftgl-2.1.3-rc5. If you wish to
-build OCE over ftgl-2.1.2, define the FTGL_V212_INCLUDE_DIR variable instead
-of FTGL_INCLUDE_DIR.  For instance,
- flags="$flags -DFTGL_V212_INCLUDE_DIR:PATH=/opt/ftgl-2.1.2/include"
-
-2.2.2 Additional flags:
+2.2.1 Additional flags:
 =====================
 OCE can be compiled with TBB or OpenMP in order to support parallel meshing.
 By default, this support is disabled.  Enable it with
