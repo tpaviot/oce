@@ -19,13 +19,16 @@ Just email tpaviot@gmail.com for a request regarding write access to the reposit
 
 How to create a local copy of the repository?
 =============================================
- git clone git://github.com/tpaviot/oce.git
+
+    git clone git://github.com/tpaviot/oce.git
 
 How to stay up to date with latest developements?
 =================================================
- cd oce
- git pull
+
+    cd oce
+    git pull
 
 How to compile on Unix?
 =======================
+
 Read INSTALL.Unix file for instructions on compiling.
