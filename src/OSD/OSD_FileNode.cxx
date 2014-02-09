@@ -945,16 +945,13 @@ void _osd_wnt_set_error ( OSD_Error& err, OSD_WhoAmI who, ... ) {
 
  DWORD              errCode;
  Standard_Character buffer[ 2048 ];
- va_list            arg_ptr;
-
- va_start ( arg_ptr, err );
 
  errCode = GetLastError ();
 
  if (  !FormatMessage (
-         FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ARGUMENT_ARRAY,
+         FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
          0, errCode, MAKELANGID( LANG_NEUTRAL, SUBLANG_NEUTRAL ),
-         buffer, 2048, &arg_ptr
+         buffer, 2048, NULL
         )
  ) {
  
@@ -964,8 +961,6 @@ void _osd_wnt_set_error ( OSD_Error& err, OSD_WhoAmI who, ... ) {
  }  // end if
 
  err.SetValue ( errCode, who, buffer );
-
- va_end ( arg_ptr );
 
 }  // end _set_error
 
