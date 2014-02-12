@@ -25,12 +25,12 @@ set(OCE_VERSION_MINOR 15)
 # (uncomment following line)
 #set(OCE_VERSION_PATCH 0)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-set(OCE_VERSION_DEVEL -dev)
+set(OCE_VERSION_DEVEL)
 
 # bugfix release: add ${OCE_VERSION_PATCH} to OCE_VERSION
 set(OCE_VERSION ${OCE_VERSION_MAJOR}.${OCE_VERSION_MINOR}${OCE_VERSION_DEVEL})
 
-set(OCE_ABI_SOVERSION 7)
+set(OCE_ABI_SOVERSION 8)
 set(OCE_ABI_VERSION ${OCE_ABI_SOVERSION}.0.0)
 
 # Set the minimum version of cmake required to 2.6
@@ -80,7 +80,7 @@ endif(CMAKE_BUILD_TOOL STREQUAL "nmake")
 
 if(MSVC)
 	option_with_default( OCE_INSTALL_PDB_FILES "Install PDB files (debug informations)" ON )
-	option_with_default( OCE_MULTITHREADED_BUILD "Multithreaded build (/CL Option)" ON )
+	option_with_default( OCE_MULTITHREADED_BUILD "Multithreaded build (/MP Option)" ON )
 endif(MSVC)
 
 ############################

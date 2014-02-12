@@ -43,7 +43,6 @@ precompiled binaries if you just want to use it in a supported compiler.
     Some modules of OCE require external libraries. These include
 
     - freetype , required by Visualization
-    - FTGL , required by Visualization
     - TCL , required by DRAW
     - gl2ps and FreeImage , optionally required by Visualization
     - TBB , optionally required to to multithreading
