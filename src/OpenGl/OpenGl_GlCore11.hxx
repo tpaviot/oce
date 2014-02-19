@@ -17,9 +17,7 @@
 #ifndef _OpenGl_GlCore11_H__
 #define _OpenGl_GlCore11_H__
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
+#include <oce-config.h>
 
 // required for correct APIENTRY definition
 #if defined(_WIN32) && !defined(APIENTRY) && !defined(__CYGWIN__) && !defined(__SCITECH_SNAP__)

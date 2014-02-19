@@ -23,9 +23,7 @@
 # include <Standard_values.h>
 #endif
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
+#include <oce-config.h>
 
 #ifdef __BORLANDC__
 #define OCE_IS_DUPLICATE_UINT32_T
