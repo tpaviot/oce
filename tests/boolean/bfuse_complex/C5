@@ -1,0 +1,8 @@
+puts "TODO ?#22911 ALL: Error : The area of the resulting shape is"
+
+restore [locate_data_file c2.brep] c
+restore [locate_data_file box.brep] b
+
+bfuse result c b
+
+set square 131766

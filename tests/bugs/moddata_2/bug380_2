@@ -1,0 +1,16 @@
+ 
+puts "========================"
+puts " OCC380 "
+puts "========================"
+puts ""
+##############################
+##Incorrect result of common operation 
+##############################
+
+restore [locate_data_file OCC380a.rle] a 
+restore [locate_data_file OCC380b.rle] b
+
+bcommon result b a
+
+set square 21.154
+set 2dviewer 0

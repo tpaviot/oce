@@ -1,0 +1,26 @@
+pload QAcommands
+
+puts "======="
+puts "OCC822"
+puts "======="
+puts ""
+#####################################
+## BRepMesh_IncrementalMesh fails on some faces
+#####################################
+## (old topology)
+#####################################
+
+if { [ catch { set info_result [OCC822_2 a1 a2 result 0] } ] } {
+  puts "Faulty OCC822"
+} else {
+    if { [regexp {FAILED} $info_result] } {
+	puts "Faulty OCC822"
+    }
+
+    set ExplodeList [explode result]
+    if {[llength ${ExplodeList}] < 1} {
+	puts "Faulty OCC822"
+    }
+}
+set square 61963.5
+set 3dviewer 1

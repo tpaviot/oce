@@ -1,0 +1,54 @@
+# Errors are different in Debug and Release mode
+puts "TODO ?#23910 ALL: Error : The square of result shape is"
+puts "TODO ?#23910 ALL: Faulty shapes in variables faulty_1 to faulty_"
+puts "TODO ?#23910 ALL: Faulty OCC827"
+
+# Debug on Windows
+puts "TODO ?#23910 ALL: Standard_Failure : Exception in REV Function"
+puts "TODO ?#23910 ALL: result is not a topological shape!!!"
+puts "TODO ?#23910 ALL: TEST INCOMPLETE"
+
+pload QAcommands
+
+puts "========"
+puts "OCC827"
+puts "========"
+puts ""
+###################################
+## BRepAlgoAPI_Fuse fails on cylinder and torus
+###################################
+## (old topology)
+#####################################
+
+#
+# a1 - Cylinder
+# a2 - Torus1
+# a3 - Torus1
+# res1 - Fuse(Torus1 & Cylinder)
+# res2 - Fuse(Torus2 & res1)
+#
+
+if { [ catch { set info_result [OCC827 a1 a2 a3 res1 res2 0] } ] } {
+    puts "Faulty OCC827"
+} else {
+    if { [regexp {FAILED} $info_result] } {
+	puts "Faulty OCC827"
+    }
+    checkshape a1
+    checkshape a2
+    checkshape a3
+    checkshape res1
+
+    set ExplodeList [explode res1]
+    if {[llength ${ExplodeList}] < 1} {
+	puts "Faulty OCC827"
+    }
+
+    set ExplodeList [explode res2]
+    if {[llength ${ExplodeList}] < 1} {
+	puts "Faulty OCC827"
+    }
+    renamevar res2 result
+}
+set square 0
+set 2dviewer 1

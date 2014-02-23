@@ -1,0 +1,25 @@
+puts "TODO ?#22911 ALL: An exception was caught"
+puts "TODO ?#22911 ALL: \\*\\* Exception \\*\\*.*"
+puts "TODO ?OCC12345 ALL: Process killed by CPU limit"
+puts "TODO ?#22911 ALL: TEST INCOMPLETE"
+
+cpulimit 1200
+
+restore [locate_data_file lh3d_ro1.brep] a
+isos a 0
+compound result
+set i 1
+repeat 199 {
+plane p_$i 0 $i*100 0  0 1 0
+mkface f_$i p_$i
+bsection s_$i a f_$i
+compound result s_$i result
+display s_$i
+clear f_$i
+clear p_$i
+set dist [expr $i * 100]
+puts "OK Section:$dist"
+incr i
+}
+
+set length 4.36836e+07

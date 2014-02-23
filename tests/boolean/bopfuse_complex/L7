@@ -1,0 +1,9 @@
+## cts20528
+
+restore [locate_data_file CTO909_outil.brep] a
+restore [locate_data_file CTO902_cts20528-part.rle] b
+
+bop a b
+bopfuse result
+
+set square 98808.8

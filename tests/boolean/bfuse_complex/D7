@@ -1,0 +1,9 @@
+# Original bug : pro6965
+# Date : 11mar98
+
+restore [locate_data_file CTO900_pro6965a.rle] a
+restore [locate_data_file CTO900_pro6965b.rle] b
+
+bfuse result a b 
+
+set square 406922

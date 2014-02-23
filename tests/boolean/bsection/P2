@@ -1,0 +1,7 @@
+restore [locate_data_file CIN901_intcqhmj.rle] m
+explode m
+# m_1 : Sr Revolution
+# m_2 : Sr Reglee
+bsection result m_1 m_2
+
+set length 126.535

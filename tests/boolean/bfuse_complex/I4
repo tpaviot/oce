@@ -1,0 +1,12 @@
+# Original bug : cts20495
+# Date : 13Mai98
+# C6
+
+restore [locate_data_file cts20495a.rle] a
+restore [locate_data_file CTO902_cts20495b.rle] b
+
+bfuse result a b
+
+
+
+set square 54470.6

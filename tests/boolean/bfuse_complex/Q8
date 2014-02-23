@@ -1,0 +1,16 @@
+puts "ID160065"
+puts "Fuse"
+puts ""
+
+restore [locate_data_file CFE900_id260gao.rle] base
+restore [locate_data_file id260065a.rle] cont1
+
+prism tool1 cont1 -86.60254 50 0
+
+bcut rcut1 tool1 base
+
+explode rcut1
+
+bfuse result base rcut1_2
+
+set square 13428.1

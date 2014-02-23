@@ -1,0 +1,7 @@
+# cts21347
+restore [locate_data_file CTO909_part_1.brep] a
+restore [locate_data_file CTO909_tool_2.brep] b
+
+bcut result a b
+
+set square 1.64215e+06

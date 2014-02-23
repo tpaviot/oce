@@ -1,0 +1,47 @@
+puts "============"
+puts "CR24133"
+puts "============"
+puts ""
+#######################################################################
+#  Development of improvement of dimensions implementation
+#  Diameter dimension
+#######################################################################
+pload VISUALIZATION
+
+vinit
+vpoint diamP1 0 0 0
+vpoint diamP2 50 50 0
+vpoint diamP3 100 0 0
+vcircle circle diamP1 diamP2 diamP3 0
+verase diamP1 diamP2 diamP3
+vdimension diameter name=dim1 circle
+vdisplay dim1
+vfit
+vmoveto 208 205
+
+set x_coord 296
+set y_coord 257
+
+checkcolor $x_coord $y_coord 0 1 1
+
+if { $stat != 1 } {
+   puts "Error : Highlighting of diameter dimension with 2d text is wrong."
+}
+
+vinit Viewer2/View2
+vdisplay circle
+vdimension diameter name=dim2 text=3d circle
+vdisplay dim2
+vfit
+vmoveto 208 205
+
+set x_coord 296
+set y_coord 257
+
+checkcolor $x_coord $y_coord 0 1 1
+
+if { $stat != 1 } {
+   puts "Error : Highlighting of diameter dimension with 3d text is wrong."
+}
+
+set only_screen 1

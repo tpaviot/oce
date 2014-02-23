@@ -1,0 +1,5 @@
+restore [locate_data_file a49] a
+restore [locate_data_file b49] b
+bsection result a b
+
+set length 122.155

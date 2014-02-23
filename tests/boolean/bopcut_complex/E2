@@ -1,0 +1,11 @@
+puts "TODO ?#22911 ALL: Error : The bopcut is not valid"
+puts "TODO DEBUG_OCC24121 Debian60-64: Process killed by CPU limit"
+puts "TODO DEBUG_OCC24121 Debian60-64: TEST INCOMPLETE"
+
+restore [locate_data_file OCC228.brep] sh
+explode sh
+
+bop sh_2 sh_1
+bopcut result
+
+set square 0

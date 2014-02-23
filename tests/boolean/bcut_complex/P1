@@ -1,0 +1,8 @@
+## PRO 16663
+
+restore [locate_data_file Shape_2.brep] a
+restore [locate_data_file CTO909_outil_1.brep] b
+
+bcut result a b
+
+set square 343725

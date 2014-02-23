@@ -1,0 +1,28 @@
+# by apn master-master 03.12.2012
+puts "TODO ?OCC12345 ALL: Faulty shapes in variables faulty_1 to faulty_"
+puts "TODO ?OCC12345 ALL: Error : The square of result shape is"
+#puts "TODO OCC12345 ALL: An exception was caught"
+#puts "TODO OCC12345 ALL: \\*\\* Exception \\*\\*.*"
+#puts "TODO OCC12345 ALL: TEST INCOMPLETE"
+
+puts "================"
+puts "OCC152"
+puts "SAM1178"
+puts "================"
+puts ""
+#################################################################
+## SAM1178(#1871): Bad escaped result after a cut operation on the shape.
+#################################################################
+
+restore [locate_data_file OCC152.brep] sh 
+explode sh
+
+checkshape sh_1
+checkshape sh_2
+
+bcut result sh_2 sh_1
+checkshape result
+
+set square 34894.3
+set 2dviewer 0
+

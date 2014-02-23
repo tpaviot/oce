@@ -1,0 +1,9 @@
+puts "TODO ?OCC23748 ALL: ERROR. offsetperform operation not done."
+puts "TODO ?OCC23748 ALL: Tcl Exception: ERROR. offsetperform operation not done."
+puts "TODO ?OCC23748 ALL: TEST INCOMPLETE"
+
+pcone s 9 4 15 270
+
+OFFSETSHAPE -1 {s_5} $calcul $type
+
+set volume 0

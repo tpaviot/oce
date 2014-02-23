@@ -1,0 +1,7 @@
+#cts21588
+restore [locate_data_file CTO909_part_syb.brep] a
+restore [locate_data_file CTO909_tool_syb.brep] b
+
+bfuse result a b
+
+set square 76217.4

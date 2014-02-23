@@ -1,0 +1,30 @@
+## It's impossible to make vdump with non-default parameters (width and height) on remote PC
+puts "TODO ?OCC23813 Windows: Tcl Exception: Dumping failed!"
+puts "TODO ?OCC23813 Windows: TEST INCOMPLETE"
+
+puts "============"
+puts "OCC23813"
+puts "============"
+puts ""
+#######################################################################
+# TKOpenGl, OpenGl_Texture ignores stride image property
+#######################################################################
+
+file delete -force ${imagedir}/texture_412.png
+file delete -force ${imagedir}/texture_409.png
+
+box b 1 2 3 
+vinit
+vsetdispmode 1
+vdisplay b
+vfit
+vdump ${imagedir}/texture_409.png rgb 409 409
+vdump ${imagedir}/texture_412.png rgb 412 412
+
+# texture loaded correctly
+vtexture b ${imagedir}/texture_412.png
+
+# texture is corrupted during uploading to OpenGL
+vtexture b ${imagedir}/texture_409.png
+
+set only_screen 1

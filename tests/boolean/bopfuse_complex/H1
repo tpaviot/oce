@@ -1,0 +1,9 @@
+puts "TODO #22911 ALL: Error : The area of the resulting shape is"
+
+restore [locate_data_file a102] a
+restore [locate_data_file b136] b
+
+bop a b
+bopfuse result
+
+set square 0

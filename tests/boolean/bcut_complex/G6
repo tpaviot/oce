@@ -1,0 +1,10 @@
+# Original bug : cts19305
+# Date : 30mar98
+
+restore [locate_data_file CTO900_cts19305-part.rle] part
+restore [locate_data_file CTO900_cts19305-tool.rle] tool
+
+bcut result part tool
+
+
+set square 76632.9
