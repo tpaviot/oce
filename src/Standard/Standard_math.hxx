@@ -16,7 +16,7 @@
 #include <Standard_Macro.hxx>
 #endif
 
-#if defined(_MSC_VER) || defined(__BORLANDC__)
+#if defined(_MSC_VER) || defined(__BORLANDC__) || defined(__MINGW32__)
 
 #ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
@@ -31,5 +31,14 @@ __Standard_API double __cdecl asinh ( double );
 __Standard_API double __cdecl atanh ( double );
 #endif
 
-#endif  /* _MSC_VER */
+// if __STRICT_ANSI__ is defined when using MinGW, no math defines will be defined
+#ifdef __MINGW32__
+# undef M_SQRT1_2
+# define M_SQRT1_2  0.707106781186547524401
+# undef M_PI_2
+# define M_PI_2     1.57079632679489661923
+# undef M_PI
+# define M_PI       3.14159265358979323846
+#endif /* __MINGW32__ */
 
+#endif  /* _MSC_VER, __BORLANDC__, or __MINGW32__ */
