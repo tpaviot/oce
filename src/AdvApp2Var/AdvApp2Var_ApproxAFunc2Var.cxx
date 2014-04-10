@@ -293,10 +293,12 @@ void AdvApp2Var_ApproxAFunc2Var::InitGrid(const Standard_Integer NbInt)
   Standard_Real deltu = (myLastParInU-myFirstParInU)/NbInt,
                 deltv = (myLastParInV-myFirstParInV)/NbInt;
   for (iint=1;iint<=NbInt-1;iint++) {
-    Result.UpdateInU(myFirstParInU+iint*deltu);
-    Constraints.UpdateInU(myFirstParInU+iint*deltu);
-    Result.UpdateInV(myFirstParInV+iint*deltv);
-    Constraints.UpdateInV(myFirstParInV+iint*deltv);
+    Standard_Real u = myFirstParInU + iint * deltu;
+    Standard_Real v = myFirstParInV + iint * deltv;
+    Result.UpdateInU(u);
+    Constraints.UpdateInU(u);
+    Result.UpdateInV(v);
+    Constraints.UpdateInV(v);
   }
   myResult = Result;
   myConstraints = Constraints;
