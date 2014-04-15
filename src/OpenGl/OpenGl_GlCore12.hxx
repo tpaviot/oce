@@ -17,9 +17,7 @@
 #ifndef _OpenGl_GlCore12_H__
 #define _OpenGl_GlCore12_H__
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
+#include <oce-config.h>
 
 #include <OpenGl_GlCore11.hxx>
 
