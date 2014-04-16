@@ -23,7 +23,9 @@
 #include <BRepBndLib.hxx>
 #include <Bnd_Box.hxx>
 #include <ElCLib.hxx>
+#ifndef OCE_DISABLE_TKSERVICE_FONT
 #include <Font_BRepFont.hxx>
+#endif // OCE_DISABLE_TKSERVICE_FONT
 #include <GC_MakeCircle.hxx>
 #include <GeomAdaptor_Curve.hxx>
 #include <Geom_Circle.hxx>
@@ -36,6 +38,7 @@
 #include <Graphic3d_AspectFillArea3d.hxx>
 #include <Graphic3d_AspectText3d.hxx>
 #include <Graphic3d_Group.hxx>
+#include <NCollection_UtfString.hxx>
 #include <PrsMgr_PresentationManager3d.hxx>
 #include <Prs3d_Arrow.hxx>
 #include <Prs3d_ArrowAspect.hxx>
@@ -304,6 +307,7 @@ TCollection_ExtendedString AIS_Dimension::GetValueString (Standard_Real& theWidt
 
   theWidth = 0.0;
 
+#ifndef OCE_DISABLE_TKSERVICE_FONT
   if (myDrawer->DimensionAspect()->IsText3d())
   {
     // text width produced by BRepFont
@@ -329,7 +333,10 @@ TCollection_ExtendedString AIS_Dimension::GetValueString (Standard_Real& theWidt
       theWidth += (Standard_Real) aFont->AdvanceX (aCurrChar, aNextChar);
     }
   }
-
+#else
+  // Using height as width will generally produce an overestimate of the text's width in pixels.
+  theWidth += anUTFString.Length() * myDrawer->DimensionAspect()->TextAspect()->Height();
+#endif // OCE_DISABLE_TKSERVICE_FONT
   return aValueStr;
 }
 
@@ -404,6 +411,7 @@ void AIS_Dimension::DrawText (const Handle(Prs3d_Presentation)& thePresentation,
                               const TCollection_ExtendedString& theText,
                               const Standard_Integer theLabelPosition)
 {
+#ifndef OCE_DISABLE_TKSERVICE_FONT
   if (myDrawer->DimensionAspect()->IsText3d())
   {
     // getting font parameters
@@ -523,6 +531,7 @@ void AIS_Dimension::DrawText (const Handle(Prs3d_Presentation)& thePresentation,
 
     return;
   }
+#endif OCE_DISABLE_TKSERVICE_FONT
 
   // generate primitives for 2D text
   myDrawer->DimensionAspect()->TextAspect()->Aspect()->SetDisplayType (Aspect_TODT_DIMENSION);
