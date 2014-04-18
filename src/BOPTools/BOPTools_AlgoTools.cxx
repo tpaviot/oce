@@ -1872,6 +1872,7 @@ Standard_Boolean FindPointInFace(const TopoDS_Edge& aE,
     aPOut = aProjPL.NearestPoint();
     //
     gp_Vec aV(aP, aPOut);
+    if (aV.XYZ().Modulus() <= gp::Resolution()) break;
     aDB.SetXYZ(aV.XYZ());
   } while (aDist>Precision::Angular() && --aNbItMax);
   //
