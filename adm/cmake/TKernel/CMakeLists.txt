@@ -57,3 +57,17 @@ endif(OCE_TBB_MALLOC_SUPPORT AND TBB_INCLUDE_DIR AND TBB_MALLOC_LIBRARY)
 
 include(../BuildToolkit.cmake)
 
+# Modules are dlopen'd by OSD_SharedLibrary::DlOpen.  ELF libraries may
+# contain either RPATH or RUNPATH sections to have default library paths.
+# RPATH is transitive, so DRAWEXE's RPATH will be used when loading modules.
+# But the new RUNPATH is not transitive, thus TKernel must contain a RUNPATH
+# section pointing to the right location.
+# The problem is that TKernel does not depend on any other built modules,
+# so CMake won't add it automatically.  We have to force CMake to add this
+# section, hence the BUILD_WITH_INSTALL_RPATH property.
+# This is harmless on non-ELF platforms.
+if (OCE_BUILD_TKERNEL_WITH_INSTALL_RPATH)
+	set_target_properties_install_rpath(${TOOLKIT} "${OCE_INSTALL_LIB_DIR_RPATH};${OCE_INSTALL_PACKAGE_LIB_DIR_RPATH}")
+	set_target_properties(${TOOLKIT} PROPERTIES BUILD_WITH_INSTALL_RPATH ON)
+endif ()
+
