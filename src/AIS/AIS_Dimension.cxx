@@ -531,7 +531,7 @@ void AIS_Dimension::DrawText (const Handle(Prs3d_Presentation)& thePresentation,
 
     return;
   }
-#endif OCE_DISABLE_TKSERVICE_FONT
+#endif // OCE_DISABLE_TKSERVICE_FONT
 
   // generate primitives for 2D text
   myDrawer->DimensionAspect()->TextAspect()->Aspect()->SetDisplayType (Aspect_TODT_DIMENSION);
