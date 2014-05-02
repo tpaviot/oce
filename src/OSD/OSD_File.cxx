@@ -267,17 +267,15 @@ OSD_File OSD_File::BuildTemporary(){
 
 #else 
  OSD_File result;
- char *name = tmpnam((char*) 0) ;
-
+ char name[] = "/tmp/oce.XXXXXX";
+ result.myFileChannel = mkstemp( name );
 
  TCollection_AsciiString aName ( name ) ;
  OSD_Path aPath( aName ) ;
 
  result.SetPath( aPath ) ;
 
- result.myFILE  = fopen( name, "w+" ) ;
-
- result.myFileChannel = fileno( (FILE*)result.myFILE );
+ result.myFILE  = fdopen( result.myFileChannel, "w+" ) ;
 
 #endif
 
