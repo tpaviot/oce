@@ -57,3 +57,9 @@ endif(OCE_TBB_MALLOC_SUPPORT AND TBB_INCLUDE_DIR AND TBB_MALLOC_LIBRARY)
 
 include(../BuildToolkit.cmake)
 
+# fixes: https://github.com/tpaviot/oce/issues/483
+# BuildToolkit.cmake must be included before
+list(FIND CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "${OCE_INSTALL_LIB_DIR_RPATH}" isSystemDir)
+if(NOT "${isSystemDir}" STREQUAL "")
+	set_target_properties(${TOOLKIT} PROPERTIES LINK_FLAGS "-Wl,-rpath -Wl,${OCE_INSTALL_LIB_DIR_RPATH}")
+endif(NOT "${isSystemDir}" STREQUAL "")
