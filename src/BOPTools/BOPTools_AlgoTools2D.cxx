@@ -54,6 +54,7 @@
 #include <BOPCol_IndexedMapOfShape.hxx>
 #include <BOPTools.hxx>
 
+#include <Standard_Real.hxx>
 
 static 
   Standard_Boolean CheckEdgeLength (const TopoDS_Edge& E);
@@ -289,14 +290,14 @@ static
       aUP1=aUPeriod+aDelta;
       //
       if (u2 > aUP2) {
-        k=1;
+        k = Ceiling((u2 - aUP1)/aUPeriod);
         do {
           aUx=u2-k*aUPeriod;
           iCnt = k++;
         } while (aUx >= aUP1);
       }
       else if (u2 < -aUP2) {
-        k=1;
+        k = Ceiling((-aUP1 - u2)/aUPeriod);
         do {
           aUx=u2+k*aUPeriod;
           iCnt = (k++) + 1;

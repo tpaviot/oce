@@ -45,6 +45,8 @@
 #include <TColStd_DataMapOfIntegerInteger.hxx>
 #include <TColgp_SequenceOfVec2d.hxx>
 
+#include <Standard_Real.hxx>
+
 //=======================================================================
 //function : IntTools_FClass2d:IntTools:_FClass2d
 //purpose  : 
@@ -553,6 +555,7 @@ IntTools_FClass2d::IntTools_FClass2d()
   if (RecadreOnPeriodic) {
     
     if (IsUPer) {
+      uu += Ceiling((Umin - uu)/uperiod)*uperiod;
       if (uu < Umin)
         while (uu < Umin) {
           uu += uperiod;
@@ -566,6 +569,7 @@ IntTools_FClass2d::IntTools_FClass2d()
     }// if (IsUPer) {
     
     if (IsVPer) {
+      vv += Ceiling((Vmin - vv)/vperiod)*vperiod;
       if (vv < Vmin)
         while (vv < Vmin){
           vv += vperiod;
@@ -703,6 +707,7 @@ IntTools_FClass2d::IntTools_FClass2d()
     {
       if (IsUPer)
 	{
+	  uu += Ceiling((Umin - uu)/uperiod)*uperiod;
 	  if (uu < Umin)
 	    while (uu < Umin)
 	      uu += uperiod;
@@ -715,6 +720,7 @@ IntTools_FClass2d::IntTools_FClass2d()
 	}
       if (IsVPer)
 	{
+	  vv += Ceiling((Vmin - vv)/vperiod)*vperiod;
 	  if (vv < Vmin)
 	    while (vv < Vmin)
 	      vv += vperiod;
