@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -59,7 +59,10 @@ extern Standard_Boolean TopOpeBRepDS_GettraceDSF();
 extern Standard_Boolean TopOpeBRepDS_GettraceDSP();
 extern Standard_Boolean TopOpeBRepDS_GettraceSPSX(const Standard_Integer i);
 extern Standard_Boolean TopOpeBRep_GettraceNVP(Standard_Integer a,Standard_Integer b,Standard_Integer c,Standard_Integer d,Standard_Integer e);
-extern Standard_Boolean GLOBAL_bvpr = Standard_False;void debvpr(){};
+
+Standard_Boolean GLOBAL_bvpr = Standard_False;
+
+void debvpr(){};
 void debvprmess(Standard_Integer f1,Standard_Integer f2,Standard_Integer il,Standard_Integer vp,Standard_Integer si)
 {cout<<"f1,f2,il,vp,si : "<<f1<<","<<f2<<","<<il<<","<<vp<<","<<si<<endl;cout.flush();debvpr();}
 void debpoint(Standard_Integer i) {cout<<"+ debpoint"<<i<<endl;}

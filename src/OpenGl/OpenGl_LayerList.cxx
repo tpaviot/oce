@@ -1,12 +1,11 @@
-// Created on: 2014-02-02
+// Created on: 2012-02-02
 // Created by: Anton POLETAEV
-// Copyright (c) -1999 Matra Datavision
-// Copyright (c) 2014-2014 OPEN CASCADE SAS
+// Copyright (c) 2012-2014 OPEN CASCADE SAS
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -22,6 +21,7 @@
 
 #include <OpenGl_LayerList.hxx>
 #include <OpenGl_Structure.hxx>
+#include <OpenGl_Workspace.hxx>
 
 #include <InterfaceGraphic_Graphic3d.hxx>
 #include <InterfaceGraphic.hxx>
@@ -36,7 +36,7 @@ OpenGl_LayerList::OpenGl_LayerList (const Standard_Integer theNbPriorities)
    myNbStructures (0)
 {
   // insert default priority layer
-  myLayers.Append (OpenGl_PriorityList (myNbPriorities));
+  myLayers.Append (OpenGl_Layer (myNbPriorities));
   myLayerIds.Bind (0, myLayers.Length());
 }
 
@@ -54,7 +54,7 @@ OpenGl_LayerList::~OpenGl_LayerList ()
 //purpose  :
 //=======================================================================
 
-OpenGl_PriorityList& OpenGl_LayerList::defaultLayer()
+OpenGl_Layer& OpenGl_LayerList::defaultLayer()
 {
   return myLayers.ChangeValue (1);
 }
@@ -90,7 +90,7 @@ void OpenGl_LayerList::AddLayer (const Standard_Integer theLayerId)
     return;
 
   // add the new layer
-  myLayers.Append (OpenGl_PriorityList (myNbPriorities));
+  myLayers.Append (OpenGl_Layer (myNbPriorities));
   myLayerIds.Bind (theLayerId, myLayers.Length());
 }
 
@@ -106,6 +106,24 @@ Standard_Boolean OpenGl_LayerList::HasLayer
 }
 
 //=======================================================================
+//function : Layer
+//purpose  : 
+//=======================================================================
+OpenGl_Layer& OpenGl_LayerList::Layer (const Standard_Integer theLayerId)
+{
+  return myLayers.ChangeValue (myLayerIds.Find (theLayerId));
+}
+
+//=======================================================================
+//function : Layer
+//purpose  : 
+//=======================================================================
+const OpenGl_Layer& OpenGl_LayerList::Layer (const Standard_Integer theLayerId) const
+{
+  return myLayers.Value (myLayerIds.Find (theLayerId));
+}
+
+//=======================================================================
 //function : RemoveLayer
 //purpose  :
 //=======================================================================
@@ -118,8 +136,8 @@ void OpenGl_LayerList::RemoveLayer (const Standard_Integer theLayerId)
   Standard_Integer aRemovePos = myLayerIds.Find (theLayerId);
   
   // move all displayed structures to first layer
-  const OpenGl_PriorityList& aList = myLayers.Value (aRemovePos);
-  defaultLayer ().Append (aList);
+  const OpenGl_PriorityList& aList = myLayers.Value (aRemovePos).PriorityList();
+  defaultLayer ().PriorityList().Append (aList);
 
   // remove layer
   myLayers.Remove (aRemovePos);
@@ -146,8 +164,8 @@ void OpenGl_LayerList::AddStructure (const OpenGl_Structure *theStructure,
 {
   // add structure to associated layer,
   // if layer doesn't exists, display structure in default layer
-  OpenGl_PriorityList& aList = !HasLayer (theLayerId) ? defaultLayer () :
-    myLayers.ChangeValue (myLayerIds.Find (theLayerId));
+  OpenGl_PriorityList& aList = !HasLayer (theLayerId) ? defaultLayer ().PriorityList() :
+    myLayers.ChangeValue (myLayerIds.Find (theLayerId)).PriorityList();
 
   aList.Add (theStructure, thePriority);
   myNbStructures++;
@@ -168,7 +186,7 @@ void OpenGl_LayerList::RemoveStructure (const OpenGl_Structure *theStructure,
   Standard_Integer aSeqPos = !HasLayer (theLayerId) ?
     1 : myLayerIds.Find (theLayerId);
   
-  OpenGl_PriorityList& aList = myLayers.ChangeValue (aSeqPos);
+  OpenGl_PriorityList& aList = myLayers.ChangeValue (aSeqPos).PriorityList();
 
   // remove structure from associated list
   // if the structure is not found there,
@@ -192,7 +210,7 @@ void OpenGl_LayerList::RemoveStructure (const OpenGl_Structure *theStructure,
   OpenGl_SequenceOfLayers::Iterator anIts;
   for (anIts.Init (myLayers); anIts.More (); anIts.Next (), aSeqId++)
   {
-    OpenGl_PriorityList& aScanList = anIts.ChangeValue ();
+    OpenGl_PriorityList& aScanList = anIts.ChangeValue ().PriorityList();
     if (aSeqPos == aSeqId)
       continue;
   
@@ -224,7 +242,7 @@ void OpenGl_LayerList::ChangeLayer (const OpenGl_Structure *theStructure,
   Standard_Integer aSeqPos = !HasLayer (theOldLayerId) ?
     1 : myLayerIds.Find (theOldLayerId);
   
-  OpenGl_PriorityList& aList = myLayers.ChangeValue (aSeqPos);
+  OpenGl_PriorityList& aList = myLayers.ChangeValue (aSeqPos).PriorityList();
   Standard_Integer aPriority;
 
   // take priority and remove structure from list found by <theOldLayerId>
@@ -262,17 +280,22 @@ void OpenGl_LayerList::ChangeLayer (const OpenGl_Structure *theStructure,
 
 void OpenGl_LayerList::Render (const Handle(OpenGl_Workspace) &theWorkspace) const
 {
-  OpenGl_SequenceOfLayers::Iterator anIts;
-  for(anIts.Init (myLayers); anIts.More (); anIts.Next ())
-  {
-    const OpenGl_PriorityList& aList = anIts.Value ();
-    if (aList.NbStructures () > 0)
-    {
-      // separate depth buffers
-      glClear (GL_DEPTH_BUFFER_BIT);
+  OpenGl_GlobalLayerSettings aDefaultSettings;
+  
+  glGetIntegerv (GL_DEPTH_FUNC, &aDefaultSettings.DepthFunc);
+  glGetBooleanv (GL_DEPTH_WRITEMASK, &aDefaultSettings.DepthMask);
 
-      // render priority list
-      aList.Render (theWorkspace);
+  OpenGl_SequenceOfLayers::Iterator anIts;
+  for (anIts.Init (myLayers); anIts.More(); anIts.Next())
+  {
+    const OpenGl_Layer& aLayer = anIts.Value ();
+    if (aLayer.PriorityList().NbStructures () > 0)
+    {
+      // render layer
+      aLayer.Render (theWorkspace, aDefaultSettings);
     }
   }
+
+  glDepthMask (aDefaultSettings.DepthMask);
+  glDepthFunc (aDefaultSettings.DepthFunc);
 }

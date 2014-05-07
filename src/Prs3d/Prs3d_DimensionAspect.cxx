@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -46,9 +46,10 @@ Prs3d_DimensionAspect::Prs3d_DimensionAspect()
   myArrowAspect->SetColor (Quantity_NOC_LAWNGREEN);
   myArrowAspect->SetAngle (M_PI * 20.0 / 180.0);
   myArrowAspect->SetLength (6.0);
-  myExtensionSize     = 6.0;
-  myValueStringFormat = "%g";
-  myToDisplayUnits    = Standard_False;
+  myExtensionSize      = 6.0;
+  myArrowTailSize      = 6.0;
+  myValueStringFormat  = "%g";
+  myToDisplayUnits     = Standard_False;
 }
 
 //=======================================================================
@@ -259,6 +260,24 @@ void Prs3d_DimensionAspect::SetExtensionSize (const Standard_Real theSize)
 Standard_Real Prs3d_DimensionAspect::ExtensionSize() const
 {
   return myExtensionSize;
+}
+
+//=======================================================================
+//function : SetShortExtensionSize
+//purpose  : 
+//=======================================================================
+void Prs3d_DimensionAspect::SetArrowTailSize (const Standard_Real theSize)
+{
+  myArrowTailSize = theSize;
+}
+
+//=======================================================================
+//function : ShortExtensionSize
+//purpose  : 
+//=======================================================================
+Standard_Real Prs3d_DimensionAspect::ArrowTailSize() const
+{
+  return myArrowTailSize;
 }
 
 //=======================================================================

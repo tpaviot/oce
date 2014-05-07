@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -157,11 +157,7 @@ static Standard_Boolean PlaneOfWire (const TopoDS_Wire& W, gp_Pln& P)
   }
   TopoDS_Edge Edge = TopoDS::Edge(anExp.Current());
   Standard_Real first, last;
-  TopLoc_Location loc;
-  Handle(Geom_Curve) curv;
-  curv = BRep_Tool::Curve(Edge, loc, first, last);
-  curv = 
-      Handle(Geom_Curve)::DownCast(curv->Transformed(loc.Transformation()));
+  Handle(Geom_Curve) curv = BRep_Tool::Curve(Edge, first, last);
   if (wClosed) {
     GeomAdaptor_Curve AdC;
     AdC.Load(curv);
@@ -1455,9 +1451,24 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
   Standard_Integer nbs, NbSamples = 0;
   if (theLength <= 2)
     NbSamples = 4;
+  gp_Pln FirstPlane;
+  PlaneOfWire(TopoDS::Wire(myWork(ideb)), FirstPlane);
+  gp_Pnt FirstBary = FirstPlane.Location();
+  gp_Vec NormalOfFirstPlane = FirstPlane.Axis().Direction();
   for (i = ideb+1; i <= ifin; i++)
     {
       const TopoDS_Wire& wire = TopoDS::Wire(myWork(i));
+
+      //Compute offset vector as current bary center projected on first plane
+      //to first bary center
+      gp_Pln CurPlane;
+      PlaneOfWire(wire, CurPlane);
+      gp_Pnt CurBary = CurPlane.Location();
+      gp_Vec aVec(FirstBary, CurBary);
+      gp_Vec anOffsetProj = (aVec * NormalOfFirstPlane) * NormalOfFirstPlane;
+      CurBary.Translate(-anOffsetProj); //projected current bary center
+      gp_Vec Offset(CurBary, FirstBary);
+      
       TopoDS_Wire newwire;
       BRep_Builder BB;
       BB.MakeWire(newwire);
@@ -1481,11 +1492,6 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
       else
 	for (j = 1; j <= theLength; j++)
 	  {
-            // get a vector to superpose SeqVertices(j) on PrevSeq(1)
-            const TopoDS_Vertex& Vprev = TopoDS::Vertex( PrevSeq(1) );
-            const TopoDS_Vertex& V = TopoDS::Vertex( SeqVertices(j) );
-            gp_Vec curToPrevVec( BRep_Tool::Pnt(V), BRep_Tool::Pnt(Vprev) );
-
 	    //Forward
 	    Standard_Real SumDist = 0.;
 	    for (k = j, n = 1; k <= theLength; k++, n++)
@@ -1493,7 +1499,7 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
 		const TopoDS_Vertex& Vprev = TopoDS::Vertex( PrevSeq(n) );
 		gp_Pnt Pprev = BRep_Tool::Pnt(Vprev);
 		const TopoDS_Vertex& V = TopoDS::Vertex( SeqVertices(k) );
-		gp_Pnt P = BRep_Tool::Pnt(V).XYZ() + curToPrevVec.XYZ();
+		gp_Pnt P = BRep_Tool::Pnt(V).XYZ() + Offset.XYZ();
 		SumDist += Pprev.Distance(P);
                 if (NbSamples > 0)
                 {
@@ -1512,7 +1518,7 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
                       (Ecurve.FirstParameter() + nbs*SampleOnCur) :
                       (Ecurve.FirstParameter() + (NbSamples-nbs)*SampleOnCur);
                     gp_Pnt PonPrev = PrevEcurve.Value(ParOnPrev);
-                    gp_Pnt PonCur = Ecurve.Value(ParOnCur).XYZ() + curToPrevVec.XYZ();
+                    gp_Pnt PonCur = Ecurve.Value(ParOnCur).XYZ() + Offset.XYZ();
                     SumDist += PonPrev.Distance(PonCur);
                   }
                 }
@@ -1522,7 +1528,7 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
 		const TopoDS_Vertex& Vprev = TopoDS::Vertex( PrevSeq(n) );
 		gp_Pnt Pprev = BRep_Tool::Pnt(Vprev);
 		const TopoDS_Vertex& V = TopoDS::Vertex( SeqVertices(k) );
-		gp_Pnt P = BRep_Tool::Pnt(V).XYZ() + curToPrevVec.XYZ();
+		gp_Pnt P = BRep_Tool::Pnt(V).XYZ() + Offset.XYZ();
 		SumDist += Pprev.Distance(P);
                 if (NbSamples > 0)
                 {
@@ -1541,7 +1547,7 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
                       (Ecurve.FirstParameter() + nbs*SampleOnCur) :
                       (Ecurve.FirstParameter() + (NbSamples-nbs)*SampleOnCur);
                     gp_Pnt PonPrev = PrevEcurve.Value(ParOnPrev);
-                    gp_Pnt PonCur = Ecurve.Value(ParOnCur).XYZ() + curToPrevVec.XYZ();
+                    gp_Pnt PonCur = Ecurve.Value(ParOnCur).XYZ() + Offset.XYZ();
                     SumDist += PonPrev.Distance(PonCur);
                   }
                 }
@@ -1560,7 +1566,7 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
 		const TopoDS_Vertex& Vprev = TopoDS::Vertex( PrevSeq(n) );
 		gp_Pnt Pprev = BRep_Tool::Pnt(Vprev);
 		const TopoDS_Vertex& V = TopoDS::Vertex( SeqVertices(k) );
-		gp_Pnt P = BRep_Tool::Pnt(V).XYZ() + curToPrevVec.XYZ();
+		gp_Pnt P = BRep_Tool::Pnt(V).XYZ() + Offset.XYZ();
 		SumDist += Pprev.Distance(P);
                 if (NbSamples > 0)
                 {
@@ -1582,7 +1588,7 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
                       (Ecurve.FirstParameter() + (NbSamples-nbs)*SampleOnCur) :
                       (Ecurve.FirstParameter() + nbs*SampleOnCur);
                     gp_Pnt PonPrev = PrevEcurve.Value(ParOnPrev);
-                    gp_Pnt PonCur = Ecurve.Value(ParOnCur).XYZ() + curToPrevVec.XYZ();
+                    gp_Pnt PonCur = Ecurve.Value(ParOnCur).XYZ() + Offset.XYZ();
                     SumDist += PonPrev.Distance(PonCur);
                   }
                 }
@@ -1592,7 +1598,7 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
 		const TopoDS_Vertex& Vprev = TopoDS::Vertex( PrevSeq(n) );
 		gp_Pnt Pprev = BRep_Tool::Pnt(Vprev);
 		const TopoDS_Vertex& V = TopoDS::Vertex( SeqVertices(k) );
-		gp_Pnt P = BRep_Tool::Pnt(V).XYZ() + curToPrevVec.XYZ();
+		gp_Pnt P = BRep_Tool::Pnt(V).XYZ() + Offset.XYZ();
 		SumDist += Pprev.Distance(P);
                 if (NbSamples > 0)
                 {
@@ -1611,7 +1617,7 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
                       (Ecurve.FirstParameter() + (NbSamples-nbs)*SampleOnCur) :
                       (Ecurve.FirstParameter() + nbs*SampleOnCur);
                     gp_Pnt PonPrev = PrevEcurve.Value(ParOnPrev);
-                    gp_Pnt PonCur = Ecurve.Value(ParOnCur).XYZ() + curToPrevVec.XYZ();
+                    gp_Pnt PonCur = Ecurve.Value(ParOnCur).XYZ() + Offset.XYZ();
                     SumDist += PonPrev.Distance(PonCur);
                   }
                 }

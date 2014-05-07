@@ -5,8 +5,8 @@
 --
 -- This file is part of Open CASCADE Technology software library.
 --
--- This library is free software; you can redistribute it and / or modify it
--- under the terms of the GNU Lesser General Public version 2.1 as published
+-- This library is free software; you can redistribute it and/or modify it under
+-- the terms of the GNU Lesser General Public License version 2.1 as published
 -- by the Free Software Foundation, with special exception defined in the file
 -- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 -- distribution for complete text of the license and disclaimer of any warranty.
@@ -39,6 +39,8 @@ uses
 	GenId			from Aspect,
 	TypeOfHighlightMethod	from Aspect,
 	TypeOfUpdate		from Aspect,
+
+	ZLayerSettings      from Graphic3d,
 
 	DataStructureManager	from Graphic3d,
 	AspectFillArea3d	from Graphic3d,
@@ -293,6 +295,17 @@ is
         ---Purpose: Get Z layer ID assigned to structure. If the structure
         -- has no layer ID (deleted from graphic driver), the method returns -1.
 
+        SetZLayerSettings ( me          : mutable;
+                            theLayerId  : Integer from Standard;
+                            theSettings : ZLayerSettings from Graphic3d )
+          is deferred;
+        ---Purpose: Sets the settings for a single Z layer for all managed views.
+
+        ZLayerSettings ( me          : mutable;
+                         theLayerId  : Integer from Standard )
+          returns ZLayerSettings from Graphic3d is deferred;
+        ---Purpose: Returns the settings of a single Z layer.
+        
         AddZLayer ( me : mutable;
                     theLayerId : in out Integer from Standard )
            returns Boolean from Standard is deferred;
@@ -459,9 +472,14 @@ is
 	---Purpose: Suppress the highlighting on the structure <AStructure>.
 	---Category: Private methods
 
-  ReComputeStructures (me: mutable);
+  RecomputeStructures (me: mutable);
   -- Purpose: Recomputes all displayed structures. Used to recompute GL
   -- resources after the last view has been closed without removing objects.
+
+  RecomputeStructures (me: mutable;
+                       theStructures : MapOfStructure from Graphic3d)
+  is private;
+  ---Purpose: Recomputes all structures from theStructures.
 
 --
 

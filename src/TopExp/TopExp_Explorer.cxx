@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -169,7 +169,7 @@ void  TopExp_Explorer::Next()
 	  new (&newStack[i]) TopoDS_Iterator(myStack[i]);
 	  myStack[i].~TopoDS_Iterator();
 	}
-	Standard::Free((Standard_Address&)myStack);
+	Standard::Free(myStack);
 	mySizeOfStack = NewSize;
 	myStack = newStack;
       }
@@ -195,7 +195,7 @@ void  TopExp_Explorer::Next()
 	    new (&newStack[i]) TopoDS_Iterator(myStack[i]);
 	    myStack[i].~TopoDS_Iterator();
 	  }
-	  Standard::Free((Standard_Address&)myStack);
+	  Standard::Free(myStack);
 	  mySizeOfStack = NewSize;
 	  myStack = newStack;
 	}
@@ -231,7 +231,7 @@ void  TopExp_Explorer::Destroy()
   if (myStack) 
     {
       for(int i=0;i<= myTop; i++)myStack[i].~TopoDS_Iterator();
-      Standard::Free((Standard_Address&)myStack);
+      Standard::Free(myStack);
     }
   mySizeOfStack = 0;
   myStack = 0L;

@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -50,10 +50,9 @@ Standard_Address Standard_MMgrRaw::Allocate(const Standard_Size aSize)
 //purpose  : 
 //=======================================================================
 
-void Standard_MMgrRaw::Free(Standard_Address& aStorage)
+void Standard_MMgrRaw::Free(Standard_Address theStorage)
 {
-  free(aStorage);
-  aStorage=NULL;
+  free(theStorage);
 }
 
 //=======================================================================
@@ -61,18 +60,17 @@ void Standard_MMgrRaw::Free(Standard_Address& aStorage)
 //purpose  : 
 //=======================================================================
 
-Standard_Address Standard_MMgrRaw::Reallocate(Standard_Address&   aStorage,
-					      const Standard_Size newSize)
+Standard_Address Standard_MMgrRaw::Reallocate(Standard_Address theStorage,
+					      const Standard_Size theSize)
 {
   // the size is rounded up to 4 since some OCC classes
   // (e.g. TCollection_AsciiString) assume memory to be double word-aligned
-  const Standard_Size aRoundSize = (newSize + 3) & ~0x3;
-  Standard_Address newStorage = (Standard_Address)realloc(aStorage, aRoundSize);
+  const Standard_Size aRoundSize = (theSize + 3) & ~0x3;
+  Standard_Address newStorage = (Standard_Address)realloc(theStorage, aRoundSize);
   if ( ! newStorage )
     Standard_OutOfMemory::Raise("Standard_MMgrRaw::Reallocate(): realloc failed");
   // Note that it is not possible to ensure that additional memory
   // allocated by realloc will be cleared (so as to satisfy myClear mode);
   // in order to do that we would need using memset...
-  aStorage = NULL;
   return newStorage;
 }

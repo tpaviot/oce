@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -48,6 +48,7 @@
 #include <Select3D_SensitiveGroup.hxx>
 #include <Select3D_SensitiveSegment.hxx>
 #include <SelectMgr_Selection.hxx>
+#include <Standard_ProgramError.hxx>
 #include <UnitsAPI.hxx>
 
 IMPLEMENT_STANDARD_HANDLE (AIS_AngleDimension, AIS_Dimension)
@@ -144,18 +145,16 @@ void AIS_AngleDimension::SetMeasuredGeometry (const TopoDS_Edge& theFirstEdge,
 {
   gp_Pln aComputedPlane;
 
-  myFirstShape   = theFirstEdge;
-  mySecondShape  = theSecondEdge;
-  myThirdShape   = TopoDS_Shape();
-  myGeometryType = GeometryType_Edges;
-  myIsValid      = InitTwoEdgesAngle (aComputedPlane);
+  myFirstShape      = theFirstEdge;
+  mySecondShape     = theSecondEdge;
+  myThirdShape      = TopoDS_Shape();
+  myGeometryType    = GeometryType_Edges;
+  myIsGeometryValid = InitTwoEdgesAngle (aComputedPlane);
 
-  if (myIsValid && !myIsPlaneCustom)
+  if (myIsGeometryValid && !myIsPlaneCustom)
   {
-    myPlane = aComputedPlane;
+    ComputePlane();
   }
-
-  myIsValid &= CheckPlane (myPlane);
 
   SetToUpdate();
 }
@@ -175,14 +174,12 @@ void AIS_AngleDimension::SetMeasuredGeometry (const gp_Pnt& theFirstPoint,
   mySecondShape   = BRepLib_MakeVertex (myCenterPoint);
   myThirdShape    = BRepLib_MakeVertex (mySecondPoint);
   myGeometryType  = GeometryType_Points;
-  myIsValid       = IsValidPoints (myFirstPoint, myCenterPoint, mySecondPoint);
+  myIsGeometryValid       = IsValidPoints (myFirstPoint, myCenterPoint, mySecondPoint);
 
-  if (myIsValid && !myIsPlaneCustom)
+  if (myIsGeometryValid && !myIsPlaneCustom)
   {
     ComputePlane();
   }
-
-  myIsValid &= CheckPlane (myPlane);
 
   SetToUpdate();
 }
@@ -195,21 +192,19 @@ void AIS_AngleDimension::SetMeasuredGeometry (const TopoDS_Vertex& theFirstVerte
                                               const TopoDS_Vertex& theSecondVertex,
                                               const TopoDS_Vertex& theThirdVertex)
 {
-  myFirstShape   = theFirstVertex;
-  mySecondShape  = theSecondVertex;
-  myThirdShape   = theThirdVertex;
-  myFirstPoint   = BRep_Tool::Pnt (theFirstVertex);
-  myCenterPoint  = BRep_Tool::Pnt (theSecondVertex);
-  mySecondPoint  = BRep_Tool::Pnt (theThirdVertex);
-  myGeometryType = GeometryType_Points;
-  myIsValid      = IsValidPoints (myFirstPoint, myCenterPoint, mySecondPoint);
+  myFirstShape      = theFirstVertex;
+  mySecondShape     = theSecondVertex;
+  myThirdShape      = theThirdVertex;
+  myFirstPoint      = BRep_Tool::Pnt (theFirstVertex);
+  myCenterPoint     = BRep_Tool::Pnt (theSecondVertex);
+  mySecondPoint     = BRep_Tool::Pnt (theThirdVertex);
+  myGeometryType    = GeometryType_Points;
+  myIsGeometryValid = IsValidPoints (myFirstPoint, myCenterPoint, mySecondPoint);
 
-  if (myIsValid && !myIsPlaneCustom)
+  if (myIsGeometryValid && !myIsPlaneCustom)
   {
     ComputePlane();
   }
-
-  myIsValid &= CheckPlane (myPlane);
 
   SetToUpdate();
 }
@@ -220,18 +215,16 @@ void AIS_AngleDimension::SetMeasuredGeometry (const TopoDS_Vertex& theFirstVerte
 //=======================================================================
 void AIS_AngleDimension::SetMeasuredGeometry (const TopoDS_Face& theCone)
 {
-  myFirstShape   = theCone;
-  mySecondShape  = TopoDS_Shape();
-  myThirdShape   = TopoDS_Shape();
-  myGeometryType = GeometryType_Face;
-  myIsValid      = InitConeAngle();
+  myFirstShape      = theCone;
+  mySecondShape     = TopoDS_Shape();
+  myThirdShape      = TopoDS_Shape();
+  myGeometryType    = GeometryType_Face;
+  myIsGeometryValid = InitConeAngle();
 
-  if (myIsValid && !myIsPlaneCustom)
+  if (myIsGeometryValid && !myIsPlaneCustom)
   {
     ComputePlane();
   }
-
-  myIsValid &= CheckPlane (myPlane);
 
   SetToUpdate();
 }
@@ -243,18 +236,16 @@ void AIS_AngleDimension::SetMeasuredGeometry (const TopoDS_Face& theCone)
 void AIS_AngleDimension::SetMeasuredGeometry (const TopoDS_Face& theFirstFace,
                                               const TopoDS_Face& theSecondFace)
 {
-  myFirstShape   = theFirstFace;
-  mySecondShape  = theSecondFace;
-  myThirdShape   = TopoDS_Shape();
-  myGeometryType = GeometryType_Faces;
-  myIsValid      = InitTwoFacesAngle();
+  myFirstShape      = theFirstFace;
+  mySecondShape     = theSecondFace;
+  myThirdShape      = TopoDS_Shape();
+  myGeometryType    = GeometryType_Faces;
+  myIsGeometryValid = InitTwoFacesAngle();
 
-  if (myIsValid && !myIsPlaneCustom)
+  if (myIsGeometryValid && !myIsPlaneCustom)
   {
     ComputePlane();
   }
-
-  myIsValid &= CheckPlane (myPlane);
 
   SetToUpdate();
 }
@@ -267,18 +258,16 @@ void AIS_AngleDimension::SetMeasuredGeometry (const TopoDS_Face& theFirstFace,
                                               const TopoDS_Face& theSecondFace,
                                               const gp_Pnt& thePoint)
 {
-  myFirstShape   = theFirstFace;
-  mySecondShape  = theSecondFace;
-  myThirdShape   = TopoDS_Shape();
-  myGeometryType = GeometryType_Faces;
-  myIsValid      = InitTwoFacesAngle (thePoint);
+  myFirstShape      = theFirstFace;
+  mySecondShape     = theSecondFace;
+  myThirdShape      = TopoDS_Shape();
+  myGeometryType    = GeometryType_Faces;
+  myIsGeometryValid = InitTwoFacesAngle (thePoint);
 
-  if (myIsValid && !myIsPlaneCustom)
+  if (myIsGeometryValid && !myIsPlaneCustom)
   {
     ComputePlane();
   }
-
-  myIsValid &= CheckPlane (myPlane);
 
   SetToUpdate();
 }
@@ -300,7 +289,7 @@ void AIS_AngleDimension::Init()
 //=======================================================================
 gp_Pnt AIS_AngleDimension::GetCenterOnArc (const gp_Pnt& theFirstAttach,
                                            const gp_Pnt& theSecondAttach,
-                                           const gp_Pnt& theCenter)
+                                           const gp_Pnt& theCenter) const
 {
   // construct plane where the circle and the arc are located
   gce_MakePln aConstructPlane (theFirstAttach, theSecondAttach, theCenter);
@@ -517,7 +506,7 @@ Standard_Boolean AIS_AngleDimension::CheckPlane (const gp_Pln& thePlane)const
 //=======================================================================
 void AIS_AngleDimension::ComputePlane()
 {
-  if (!IsValid())
+  if (!myIsGeometryValid)
   {
     return;
   }
@@ -583,7 +572,7 @@ Standard_Real AIS_AngleDimension::ComputeValue() const
 
   Standard_Real anAngle = aVec2.AngleWithRef (aVec1, GetPlane().Axis().Direction());
 
-  return anAngle > 0.0 ? anAngle : (2.0 * M_PI - anAngle);
+  return anAngle > 0.0 ? anAngle : (2.0 * M_PI + anAngle);
 }
 
 //=======================================================================
@@ -619,31 +608,23 @@ void AIS_AngleDimension::Compute (const Handle(PrsMgr_PresentationManager3d)& /*
     aLabelWidth += aDimensionAspect->TextAspect()->Height() * THE_3D_TEXT_MARGIN * 2.0;
   }
 
-  gp_Pnt aFirstAttach = myCenterPoint.Translated (gp_Vec(myCenterPoint, myFirstPoint).Normalized() * GetFlyout());
-  gp_Pnt aSecondAttach = myCenterPoint.Translated (gp_Vec(myCenterPoint, mySecondPoint).Normalized() * GetFlyout());
+  // Get parameters from aspect or adjust it according with custom text position
+  Standard_Real anExtensionSize = aDimensionAspect->ExtensionSize();
+  Prs3d_DimensionTextHorizontalPosition aHorisontalTextPos = aDimensionAspect->TextHorizontalPosition();
+
+  if (IsTextPositionCustom())
+  {
+    AdjustParameters (myFixedTextPosition,anExtensionSize, aHorisontalTextPos, myFlyout);
+  }
 
   // Handle user-defined and automatic arrow placement
-  bool isArrowsExternal = false;
-  switch (aDimensionAspect->ArrowOrientation())
-  {
-    case Prs3d_DAO_External: isArrowsExternal = true; break;
-    case Prs3d_DAO_Internal: isArrowsExternal = false; break;
-    case Prs3d_DAO_Fit:
-    {
-      gp_Vec anAttachVector (aFirstAttach, aSecondAttach);
-      Standard_Real aDimensionWidth = anAttachVector.Magnitude();
+  Standard_Boolean isArrowsExternal = Standard_False;
+  Standard_Integer aLabelPosition = LabelPosition_None;
 
-      // add margin to ensure a small tail between text and arrow
-      Standard_Real anArrowMargin   = aDimensionAspect->IsText3d() 
-                                    ? aDimensionAspect->TextAspect()->Height() * THE_3D_TEXT_MARGIN
-                                    : 0.0;
+  FitTextAlignment (aHorisontalTextPos, aLabelPosition, isArrowsExternal);
 
-      Standard_Real anArrowsWidth   = (anArrowLength + anArrowMargin) * 2.0;
-
-      isArrowsExternal = aDimensionWidth < aLabelWidth + anArrowsWidth;
-      break;
-    }
-  }
+  gp_Pnt aFirstAttach = myCenterPoint.Translated (gp_Vec(myCenterPoint, myFirstPoint).Normalized() * GetFlyout());
+  gp_Pnt aSecondAttach = myCenterPoint.Translated (gp_Vec(myCenterPoint, mySecondPoint).Normalized() * GetFlyout());
 
   //Arrows positions and directions
   gp_Vec aWPDir = gp_Vec (GetPlane().Axis().Direction());
@@ -670,37 +651,8 @@ void AIS_AngleDimension::Compute (const Handle(PrsMgr_PresentationManager3d)& /*
   aFirstArrowEnd    = aFirstAttach.Translated (-aFirstArrowVec);
   aSecondArrowEnd   = aSecondAttach.Translated (-aSecondArrowVec);
 
-  Standard_Integer aLabelPosition = LabelPosition_None;
-
-  // Handle user-defined and automatic text placement
-  switch (aDimensionAspect->TextHorizontalPosition())
-  {
-    case Prs3d_DTHP_Left  : aLabelPosition |= LabelPosition_Left; break;
-    case Prs3d_DTHP_Right : aLabelPosition |= LabelPosition_Right; break;
-    case Prs3d_DTHP_Center: aLabelPosition |= LabelPosition_HCenter; break;
-    case Prs3d_DTHP_Fit:
-    {
-      gp_Vec anAttachVector (aFirstAttach, aSecondAttach);
-      Standard_Real aDimensionWidth = anAttachVector.Magnitude();
-      Standard_Real anArrowsWidth   = anArrowLength * 2.0;
-      Standard_Real aContentWidth   = isArrowsExternal ? aLabelWidth : aLabelWidth + anArrowsWidth;
-
-      aLabelPosition |= aDimensionWidth < aContentWidth ? LabelPosition_Left : LabelPosition_HCenter;
-      break;
-    }
-  }
-
-  switch (aDimensionAspect->TextVerticalPosition())
-  {
-    case Prs3d_DTVP_Above  : aLabelPosition |= LabelPosition_Above; break;
-    case Prs3d_DTVP_Below  : aLabelPosition |= LabelPosition_Below; break;
-    case Prs3d_DTVP_Center : aLabelPosition |= LabelPosition_VCenter; break;
-  }
-
   // Group1: stenciling text and the angle dimension arc
   Prs3d_Root::NewGroup (thePresentation);
-
-  Standard_Real anExtensionSize = aDimensionAspect->ExtensionSize();
 
   Standard_Integer aHPosition = aLabelPosition & LabelPosition_HMask;
 
@@ -729,7 +681,8 @@ void AIS_AngleDimension::Compute (const Handle(PrsMgr_PresentationManager3d)& /*
       if (theMode == ComputeMode_All || theMode == ComputeMode_Text)
       {
         gp_Vec aDimensionDir (aFirstAttach, aSecondAttach);
-        gp_Pnt aTextPos = GetCenterOnArc (aFirstAttach, aSecondAttach, myCenterPoint);
+        gp_Pnt aTextPos = IsTextPositionCustom() ? myFixedTextPosition
+                                                : GetCenterOnArc (aFirstAttach, aSecondAttach, myCenterPoint);
         gp_Dir aTextDir = aDimensionDir;
 
         DrawText (thePresentation,
@@ -807,7 +760,7 @@ void AIS_AngleDimension::Compute (const Handle(PrsMgr_PresentationManager3d)& /*
     if (aHPosition != LabelPosition_Left)
     {
       DrawExtension (thePresentation,
-                     anExtensionSize,
+                     aDimensionAspect->ArrowTailSize(),
                      aFirstArrowEnd,
                      aFirstExtensionDir,
                      THE_EMPTY_LABEL_STRING,
@@ -819,7 +772,7 @@ void AIS_AngleDimension::Compute (const Handle(PrsMgr_PresentationManager3d)& /*
     if (aHPosition != LabelPosition_Right)
     {
       DrawExtension (thePresentation,
-                     anExtensionSize,
+                     aDimensionAspect->ArrowTailSize(),
                      aSecondArrowEnd,
                      aSecondExtensionDir,
                      THE_EMPTY_LABEL_STRING,
@@ -845,7 +798,7 @@ void AIS_AngleDimension::Compute (const Handle(PrsMgr_PresentationManager3d)& /*
     Prs3d_Root::CurrentGroup (thePresentation)->AddPrimitiveArray (aPrimSegments);
   }
 
-  myIsComputed = Standard_True;
+  mySelectionGeom.IsComputed = Standard_True;
 }
 
 //=======================================================================
@@ -1183,4 +1136,266 @@ Standard_Boolean AIS_AngleDimension::IsValidPoints (const gp_Pnt& theFirstPoint,
       && theSecondPoint.Distance (theCenterPoint) > Precision::Confusion()
       && gp_Vec (theCenterPoint, theFirstPoint).Angle (
            gp_Vec (theCenterPoint, theSecondPoint)) > Precision::Angular();
+}
+
+//=======================================================================
+//function : GetTextPosition
+//purpose  : 
+//=======================================================================
+const gp_Pnt AIS_AngleDimension::GetTextPosition() const
+{
+  if (!IsValid())
+  {
+    return gp::Origin();
+  }
+
+  if (IsTextPositionCustom())
+  {
+    return myFixedTextPosition;
+  }
+
+  // Counts text position according to the dimension parameters
+  gp_Pnt aTextPosition (gp::Origin());
+
+  Handle(Prs3d_DimensionAspect) aDimensionAspect = myDrawer->DimensionAspect();
+
+  // Prepare label string and compute its geometrical width
+  Standard_Real aLabelWidth;
+  TCollection_ExtendedString aLabelString = GetValueString (aLabelWidth);
+
+  gp_Pnt aFirstAttach = myCenterPoint.Translated (gp_Vec(myCenterPoint, myFirstPoint).Normalized() * GetFlyout());
+  gp_Pnt aSecondAttach = myCenterPoint.Translated (gp_Vec(myCenterPoint, mySecondPoint).Normalized() * GetFlyout());
+
+  // Handle user-defined and automatic arrow placement
+  Standard_Boolean isArrowsExternal = Standard_False;
+  Standard_Integer aLabelPosition = LabelPosition_None;
+  FitTextAlignment (aDimensionAspect->TextHorizontalPosition(),
+                    aLabelPosition, isArrowsExternal);
+
+  // Get text position
+  switch (aLabelPosition & LabelPosition_HMask)
+  {
+  case LabelPosition_HCenter:
+    {
+      aTextPosition = GetCenterOnArc (aFirstAttach, aSecondAttach, myCenterPoint);
+    }
+    break;
+  case LabelPosition_Left:
+    {
+      gp_Dir aPlaneNormal = gp_Vec (aFirstAttach, aSecondAttach) ^ gp_Vec (myCenterPoint, aFirstAttach);
+      gp_Dir anExtensionDir = aPlaneNormal ^ gp_Vec (myCenterPoint, aFirstAttach);
+      Standard_Real anExtensionSize = aDimensionAspect->ExtensionSize();
+      Standard_Real anOffset = isArrowsExternal
+          ? anExtensionSize + aDimensionAspect->ArrowAspect()->Length()
+          : anExtensionSize;
+      gp_Vec anExtensionVec  = gp_Vec (anExtensionDir) * -anOffset;
+      aTextPosition = aFirstAttach.Translated (anExtensionVec);
+    }
+    break;
+  case LabelPosition_Right:
+    {
+      gp_Dir aPlaneNormal = gp_Vec (aFirstAttach, aSecondAttach) ^ gp_Vec (myCenterPoint, aFirstAttach);
+      gp_Dir anExtensionDir = aPlaneNormal ^ gp_Vec (myCenterPoint, aSecondAttach);
+      Standard_Real anExtensionSize = aDimensionAspect->ExtensionSize();
+      Standard_Real anOffset = isArrowsExternal
+          ? anExtensionSize + aDimensionAspect->ArrowAspect()->Length()
+          : anExtensionSize;
+      gp_Vec anExtensionVec  = gp_Vec (anExtensionDir) * anOffset;
+      aTextPosition = aSecondAttach.Translated (anExtensionVec);
+    }
+    break;
+  }
+
+  return aTextPosition;
+}
+
+//=======================================================================
+//function : SetTextPosition
+//purpose  : 
+//=======================================================================
+void AIS_AngleDimension::SetTextPosition (const gp_Pnt& theTextPos)
+{
+  if (!IsValid())
+  {
+    return;
+  }
+
+  // The text position point for angle dimension should belong to the working plane.
+  if (!GetPlane().Contains (theTextPos, Precision::Confusion()))
+  {
+    Standard_ProgramError::Raise ("The text position point for angle dimension doesn't belong to the working plane.");
+  }
+
+  myIsTextPositionFixed = Standard_True;
+  myFixedTextPosition = theTextPos;
+}
+
+//=======================================================================
+//function : AdjustParameters
+//purpose  : 
+//=======================================================================
+void AIS_AngleDimension::AdjustParameters (const gp_Pnt& theTextPos,
+                                           Standard_Real& theExtensionSize,
+                                           Prs3d_DimensionTextHorizontalPosition& theAlignment,
+                                           Standard_Real& theFlyout) const
+{
+  Handle(Prs3d_DimensionAspect) aDimensionAspect = myDrawer->DimensionAspect();
+  Standard_Real anArrowLength = aDimensionAspect->ArrowAspect()->Length();
+
+  // Build circle with radius that is equal to distance from text position to the center point.
+  Standard_Real aRadius = gp_Vec (myCenterPoint, theTextPos).Magnitude();
+
+  // Set attach points in positive direction of the flyout.
+  gp_Pnt aFirstAttach = myCenterPoint.Translated (gp_Vec (myCenterPoint, myFirstPoint).Normalized() * aRadius);
+  gp_Pnt aSecondAttach = myCenterPoint.Translated (gp_Vec (myCenterPoint, mySecondPoint).Normalized() * aRadius);
+
+  gce_MakeCirc aConstructCircle (myCenterPoint, GetPlane(), aRadius);
+  if (!aConstructCircle.IsDone())
+  {
+    return;
+  }
+  gp_Circ aCircle = aConstructCircle.Value();
+
+  // Default values
+  theExtensionSize = aDimensionAspect->ArrowAspect()->Length();
+  theAlignment = Prs3d_DTHP_Center;
+
+  Standard_Real aParamBeg = ElCLib::Parameter (aCircle, aFirstAttach);
+  Standard_Real aParamEnd = ElCLib::Parameter (aCircle, aSecondAttach);
+  if (aParamEnd < aParamBeg)
+  {
+    Standard_Real aParam = aParamEnd;
+    aParamEnd = aParamBeg;
+    aParamBeg = aParam;
+  }
+
+  ElCLib::AdjustPeriodic (0.0, M_PI * 2, Precision::PConfusion(), aParamBeg, aParamEnd);
+  Standard_Real aTextPar = ElCLib::Parameter (aCircle , theTextPos);
+
+  // Horizontal center
+  if (aTextPar > aParamBeg && aTextPar < aParamEnd)
+  {
+    theFlyout = aRadius;
+    return;
+  }
+
+  aParamBeg += M_PI;
+  aParamEnd += M_PI;
+  ElCLib::AdjustPeriodic (0.0, M_PI * 2, Precision::PConfusion(), aParamBeg, aParamEnd);
+
+  if (aTextPar > aParamBeg  && aTextPar < aParamEnd)
+  {
+    theFlyout = -aRadius;
+    return;
+  }
+
+  // Text on the extensions
+  gp_Lin aFirstLine = gce_MakeLin (myCenterPoint, myFirstPoint);
+  gp_Lin aSecondLine = gce_MakeLin (myCenterPoint, mySecondPoint);
+  gp_Pnt aFirstTextProj = AIS::Nearest (aFirstLine, theTextPos);
+  gp_Pnt aSecondTextProj = AIS::Nearest (aSecondLine, theTextPos);
+  Standard_Real aFirstDist = aFirstTextProj.Distance (theTextPos);
+  Standard_Real aSecondDist = aSecondTextProj.Distance (theTextPos);
+
+  if (aFirstDist <= aSecondDist)
+  {
+    aRadius = myCenterPoint.Distance (aFirstTextProj);
+    Standard_Real aNewExtensionSize = aFirstDist - anArrowLength;
+    theExtensionSize = aNewExtensionSize < 0.0 ? 0.0 : aNewExtensionSize;
+
+    theAlignment = Prs3d_DTHP_Left;
+
+    gp_Vec aPosFlyoutDir = gp_Vec (myCenterPoint, myFirstPoint).Normalized().Scaled (aRadius);
+
+    theFlyout = aFirstTextProj.Distance (myCenterPoint.Translated (aPosFlyoutDir)) > Precision::Confusion()
+                ? -aRadius : aRadius;
+  }
+  else
+  {
+    aRadius = myCenterPoint.Distance (aSecondTextProj);
+
+    Standard_Real aNewExtensionSize = aSecondDist - anArrowLength;
+
+    theExtensionSize = aNewExtensionSize < 0.0 ? 0.0 : aNewExtensionSize;
+
+    theAlignment = Prs3d_DTHP_Right;
+
+    gp_Vec aPosFlyoutDir = gp_Vec (myCenterPoint, mySecondPoint).Normalized().Scaled (aRadius);
+
+    theFlyout = aSecondTextProj.Distance (myCenterPoint.Translated (aPosFlyoutDir)) > Precision::Confusion()
+                ? -aRadius : aRadius;
+  }
+}
+
+//=======================================================================
+//function : FitTextAlignment
+//purpose  : 
+//=======================================================================
+void AIS_AngleDimension::FitTextAlignment (const Prs3d_DimensionTextHorizontalPosition& theHorizontalTextPos,
+                                           Standard_Integer& theLabelPosition,
+                                           Standard_Boolean& theIsArrowsExternal) const
+{
+  Handle(Prs3d_DimensionAspect) aDimensionAspect = myDrawer->DimensionAspect();
+
+  Quantity_Length anArrowLength = aDimensionAspect->ArrowAspect()->Length();
+
+  // Prepare label string and compute its geometrical width
+  Standard_Real aLabelWidth;
+  TCollection_ExtendedString aLabelString = GetValueString (aLabelWidth);
+
+  // add margins to label width
+  if (aDimensionAspect->IsText3d())
+  {
+    aLabelWidth += aDimensionAspect->TextAspect()->Height() * THE_3D_TEXT_MARGIN * 2.0;
+  }
+
+  gp_Pnt aFirstAttach = myCenterPoint.Translated (gp_Vec (myCenterPoint, myFirstPoint).Normalized() * GetFlyout());
+  gp_Pnt aSecondAttach = myCenterPoint.Translated (gp_Vec (myCenterPoint, mySecondPoint).Normalized() * GetFlyout());
+
+  // Handle user-defined and automatic arrow placement
+  switch (aDimensionAspect->ArrowOrientation())
+  {
+    case Prs3d_DAO_External: theIsArrowsExternal = true; break;
+    case Prs3d_DAO_Internal: theIsArrowsExternal = false; break;
+    case Prs3d_DAO_Fit:
+    {
+      gp_Vec anAttachVector (aFirstAttach, aSecondAttach);
+      Standard_Real aDimensionWidth = anAttachVector.Magnitude();
+
+      // Add margin to ensure a small tail between text and arrow
+      Standard_Real anArrowMargin   = aDimensionAspect->IsText3d() 
+                                    ? aDimensionAspect->TextAspect()->Height() * THE_3D_TEXT_MARGIN
+                                    : 0.0;
+
+      Standard_Real anArrowsWidth   = (anArrowLength + anArrowMargin) * 2.0;
+
+      theIsArrowsExternal = aDimensionWidth < aLabelWidth + anArrowsWidth;
+      break;
+    }
+  }
+
+  // Handle user-defined and automatic text placement
+  switch (theHorizontalTextPos)
+  {
+    case Prs3d_DTHP_Left  : theLabelPosition |= LabelPosition_Left; break;
+    case Prs3d_DTHP_Right : theLabelPosition |= LabelPosition_Right; break;
+    case Prs3d_DTHP_Center: theLabelPosition |= LabelPosition_HCenter; break;
+    case Prs3d_DTHP_Fit:
+    {
+      gp_Vec anAttachVector (aFirstAttach, aSecondAttach);
+      Standard_Real aDimensionWidth = anAttachVector.Magnitude();
+      Standard_Real anArrowsWidth   = anArrowLength * 2.0;
+      Standard_Real aContentWidth   = theIsArrowsExternal ? aLabelWidth : aLabelWidth + anArrowsWidth;
+
+      theLabelPosition |= aDimensionWidth < aContentWidth ? LabelPosition_Left : LabelPosition_HCenter;
+      break;
+    }
+  }
+
+  switch (aDimensionAspect->TextVerticalPosition())
+  {
+    case Prs3d_DTVP_Above  : theLabelPosition |= LabelPosition_Above; break;
+    case Prs3d_DTVP_Below  : theLabelPosition |= LabelPosition_Below; break;
+    case Prs3d_DTVP_Center : theLabelPosition |= LabelPosition_VCenter; break;
+  }
 }

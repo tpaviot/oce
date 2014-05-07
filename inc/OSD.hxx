@@ -47,9 +47,6 @@ class OSD_Host;
 class OSD_Environment;
 class OSD_EnvironmentIterator;
 class OSD_Process;
-class OSD_SharedMemory;
-class OSD_Semaphore;
-class OSD_MailBox;
 class OSD_SharedLibrary;
 class OSD_Thread;
 
@@ -171,9 +168,6 @@ friend class OSD_Host;
 friend class OSD_Environment;
 friend class OSD_EnvironmentIterator;
 friend class OSD_Process;
-friend class OSD_SharedMemory;
-friend class OSD_Semaphore;
-friend class OSD_MailBox;
 friend class OSD_SharedLibrary;
 friend class OSD_Thread;
 

@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -34,6 +34,7 @@
 #include <BRep_TEdge.hxx>
 #include <TColgp_SequenceOfPnt2d.hxx>
 #include <TColStd_SequenceOfReal.hxx>
+#include <TColStd_Array1OfReal.hxx>
 #include <TColGeom2d_SequenceOfCurve.hxx>
 #include <TopTools_SequenceOfShape.hxx>
 #include <Precision.hxx>
@@ -176,9 +177,23 @@ void  BRepTools::AddUVBounds(const TopoDS_Face& F,
     gp_Pnt2d Pa,Pb,Pc;
 
 
-    Standard_Real i, nbp = 20;
+    Standard_Integer i, j, k, nbp = 20;
     if (PC.GetType() == GeomAbs_Line) nbp = 2;
-    Standard_Real step = (pl - pf) / nbp;
+    Standard_Integer NbIntC1 = PC.NbIntervals(GeomAbs_C1);
+    if (NbIntC1 > 1)
+      nbp = 10;
+    TColStd_Array1OfReal SharpPoints(1, NbIntC1+1);
+    PC.Intervals(SharpPoints, GeomAbs_C1);
+    TColStd_Array1OfReal Parameters(1, nbp*NbIntC1+1);
+    k = 1;
+    for (i = 1; i <= NbIntC1; i++)
+    {
+      Standard_Real delta = (SharpPoints(i+1) - SharpPoints(i))/nbp;
+      for (j = 0; j < nbp; j++)
+        Parameters(k++) = SharpPoints(i) + j*delta;
+    }
+    Parameters(nbp*NbIntC1+1) = SharpPoints(NbIntC1+1);
+    
     gp_Pnt2d P;
     PC.D0(pf,P);
     Baux.Add(P);
@@ -187,11 +202,11 @@ void  BRepTools::AddUVBounds(const TopoDS_Face& F,
     Standard_Real dv=0.0;
 
     Pc=P;
-    for (i = 1; i < nbp; i++) {
-      pf += step;
+    for (i = 2; i < Parameters.Upper(); i++) {
+      pf = Parameters(i);
       PC.D0(pf,P);
       Baux.Add(P);
-      if(i==1) { Pb=Pc; Pc=P; } 
+      if(i==2) { Pb=Pc; Pc=P; } 
       else { 
         //-- Calcul de la fleche 
         Pa=Pb; Pb=Pc; Pc=P;     
@@ -608,18 +623,6 @@ void  BRepTools::Dump(const TopoDS_Shape& Sh, Standard_OStream& S)
   SS.Dump(Sh,S);
   SS.Dump(S);
 }
-
-#ifdef DEB
-//=======================================================================
-//function : BRepTools_Write 
-//purpose  : 
-//=======================================================================
-void BRepTools_Write (const TopoDS_Shape& S,
-                      const Standard_CString File)
-{
-  BRepTools::Write (S,File);  
-}
-#endif
 
 //=======================================================================
 //function : Write

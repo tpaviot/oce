@@ -1,9 +1,9 @@
-# Copyright (c) 2014 OPEN CASCADE SAS
+# Copyright (c) 2013-2014 OPEN CASCADE SAS
 #
 # This file is part of Open CASCADE Technology software library.
 #
-# This library is free software; you can redistribute it and / or modify it
-# under the terms of the GNU Lesser General Public version 2.1 as published
+# This library is free software; you can redistribute it and/or modify it under
+# the terms of the GNU Lesser General Public License version 2.1 as published
 # by the Free Software Foundation, with special exception defined in the file
 # OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 # distribution for complete text of the license and disclaimer of any warranty.
@@ -907,10 +907,23 @@ proc _run_test {scriptsdir group gridname casefile echo} {
 	uplevel set gridname $gridname
 	uplevel set dirname  $scriptsdir
 
-	# set variables for saving of images if not yet set
+	# set path for saving of log and images (if not yet set) to temp dir
 	if { ! [uplevel info exists imagedir] } {
-	    uplevel set imagedir [_get_temp_dir]
 	    uplevel set test_image \$casename
+
+            # create subdirectory in temp named after group and grid with timestamp
+            set rootlogdir [_get_temp_dir]
+        
+            set imagedir "${group}-${gridname}-${::casename}-[clock format [clock seconds] -format {%Y-%m-%dT%Hh%Mm%Ss}]"
+            set imagedir [file normalize ${rootlogdir}/$imagedir]
+
+            if { [catch {file mkdir $imagedir}] || ! [file writable $imagedir] ||
+                 ! [catch {glob -directory $imagedir *}] } {
+#                puts "Warning: Cannot create directory \"$imagedir\", or it is not empty; \"${rootlogdir}\" is used"
+                set imagedir $rootlogdir
+            }
+
+            uplevel set imagedir \"$imagedir\"
 	}
 
 	# execute test scripts 

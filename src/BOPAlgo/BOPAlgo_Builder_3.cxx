@@ -6,8 +6,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -16,11 +16,13 @@
 // commercial license or contractual agreement.
 
 #include <BOPAlgo_Builder.hxx>
-
+//
 #include <NCollection_IncAllocator.hxx>
-
+#include <NCollection_UBTreeFiller.hxx>
+//
+#include <Bnd_Box.hxx>
 #include <TopAbs_State.hxx>
-
+//
 #include <TopoDS.hxx>
 #include <TopoDS_Iterator.hxx>
 #include <TopoDS_Solid.hxx>
@@ -31,42 +33,37 @@
 #include <TopoDS_Iterator.hxx>
 #include <TopoDS_Shell.hxx>
 #include <TopoDS_Compound.hxx>
-
+//
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
-
+//
 #include <BRep_Builder.hxx>
 #include <BRepTools.hxx>
 #include <BRepClass3d_SolidClassifier.hxx>
+#include <BRepBndLib.hxx>
 //
 #include <BOPCol_IndexedMapOfShape.hxx>
 #include <BOPCol_MapOfShape.hxx>
 #include <BOPCol_IndexedDataMapOfShapeListOfShape.hxx>
 #include <BOPCol_ListOfShape.hxx>
+#include <BOPCol_BoxBndTree.hxx>
+#include <BOPCol_ListOfInteger.hxx>
+#include <BOPCol_DataMapOfIntegerShape.hxx>
+#include <BOPCol_NCVector.hxx>
+#include <BOPCol_TBB.hxx>
+//
+#include <BOPInt_Context.hxx>
 //
 #include <BOPDS_DS.hxx>
 #include <BOPDS_ShapeInfo.hxx>
 //
 #include <BOPTools.hxx>
 #include <BOPTools_AlgoTools.hxx>
-//
 #include <BOPTools_MapOfSet.hxx>
 #include <BOPTools_Set.hxx>
 //
 #include <BOPAlgo_BuilderSolid.hxx>
 
-#include <BOPCol_DataMapOfIntegerShape.hxx>
-#include <Bnd_Box.hxx>
-#include <BRepBndLib.hxx>
-
-#include <NCollection_UBTreeFiller.hxx>
-#include <BOPDS_BoxBndTree.hxx>
-#include <BOPCol_ListOfInteger.hxx>
-#include <BOPInt_Context.hxx>
-
-
-static
-  Standard_Boolean IsClosedShell(const TopoDS_Shell& aSh);
 
 static
   void OwnInternalShapes(const TopoDS_Shape& ,
@@ -77,6 +74,20 @@ static
                      BOPCol_MapOfShape& aMFence,
                      BOPCol_ListOfShape& theLS);
 
+//=======================================================================
+// BOPAlgo_BuilderSolid
+//
+typedef BOPCol_NCVector
+  <BOPAlgo_BuilderSolid> BOPAlgo_VectorOfBuilderSolid;
+//
+typedef BOPCol_TBBFunctor 
+  <BOPAlgo_BuilderSolid,
+  BOPAlgo_VectorOfBuilderSolid> BOPAlgo_BuilderSolidFunctor;
+//
+typedef BOPCol_TBBCnt 
+  <BOPAlgo_BuilderSolidFunctor,
+  BOPAlgo_VectorOfBuilderSolid> BOPAlgo_BuilderSolidCnt;
+//
 //=======================================================================
 //class     : BOPAlgo_ShapeBox
 //purpose   : Auxiliary class
@@ -146,11 +157,10 @@ void BOPAlgo_Builder::FillImagesSolids()
   Handle(NCollection_IncAllocator) aAlr;
   //
   aAlr=new NCollection_IncAllocator();
-  //
   BOPCol_DataMapOfShapeListOfShape theInParts(100, aAlr);
   BOPCol_DataMapOfShapeShape theDraftSolids(100, aAlr);
   //
-  FillIn3DParts(theInParts, theDraftSolids, aAlr);
+  FillIn3DParts(theInParts, theDraftSolids, aAlr); 
   BuildSplitSolids(theInParts, theDraftSolids, aAlr);
   FillInternalShapes();
   //
@@ -161,9 +171,10 @@ void BOPAlgo_Builder::FillImagesSolids()
 //function : FillIn3DParts
 //purpose  : 
 //=======================================================================
-void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts,
-				    BOPCol_DataMapOfShapeShape& theDraftSolids,
-				    const BOPCol_BaseAllocator& )
+void BOPAlgo_Builder::FillIn3DParts
+  (BOPCol_DataMapOfShapeListOfShape& theInParts,
+   BOPCol_DataMapOfShapeShape& theDraftSolids,
+   const BOPCol_BaseAllocator& )
 {
   Standard_Boolean bHasImage;
   Standard_Integer i, k, aNbS, aNbLIF, nFP, aNbFIN, iIsIN;
@@ -182,7 +193,7 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
   myErrorStatus=0;
   theDraftSolids.Clear();
   //
-  // 1. aDMISB map Index/FaceBox
+  // 1. aDMISB map Index/FaceBox 
   k=0;
   aNbS=myDS->NbSourceShapes();
   for (i=0; i<aNbS; ++i) {
@@ -197,16 +208,16 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
       const BOPCol_ListOfShape& aLS=myImages.Find(aS);
       aItLS.Initialize(aLS);
       for (; aItLS.More(); aItLS.Next()) {
-	const TopoDS_Shape& aSx=aItLS.Value();
-	//
-	Bnd_Box aBox;
-	BRepBndLib::Add(aSx, aBox);
-	//
-	aSB.SetShape(aSx);
-	aSB.SetBox(aBox);
-	//
-	aDMISB.Bind(k, aSB);
-	++k;
+        const TopoDS_Shape& aSx=aItLS.Value();
+        //
+        Bnd_Box aBox;
+        BRepBndLib::Add(aSx, aBox);
+        //
+        aSB.SetShape(aSx);
+        aSB.SetBox(aBox);
+        //
+        aDMISB.Bind(k, aSB);
+        ++k;
       }
     }
     else {
@@ -220,6 +231,23 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
     }
   }//for (i=0; i<aNbS; ++i) {
   //
+  // 1.2. Prepare TreeFiller
+  BOPCol_BoxBndTree aBBTree;
+  NCollection_UBTreeFiller <Standard_Integer, Bnd_Box> aTreeFiller(aBBTree);
+  //
+  aItDMISB.Initialize(aDMISB);
+  for (; aItDMISB.More(); aItDMISB.Next()) {
+    k=aItDMISB.Key();
+    const BOPAlgo_ShapeBox& aSBk=aItDMISB.Value();
+    const Bnd_Box& aBk=aSBk.Box();
+    //
+    aTreeFiller.Add(k, aBk);
+  }
+  //
+  // 1.3. Shake TreeFiller
+  aTreeFiller.Fill();
+  //
+  //---------------------------------------------
   // 2. Solids
   for (i=0; i<aNbS; ++i) {
     const BOPDS_ShapeInfo& aSI=myDS->ShapeInfo(i);
@@ -236,10 +264,7 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
     BOPCol_ListOfShape aLIF(aAlr1);
     BOPCol_IndexedMapOfShape aMF(100, aAlr1);
     BOPCol_IndexedDataMapOfShapeListOfShape aMEF(100, aAlr1);
-    //
-    BOPDS_BoxBndTreeSelector aSelector;
-    BOPDS_BoxBndTree aBBTree;
-    NCollection_UBTreeFiller <Standard_Integer, Bnd_Box> aTreeFiller(aBBTree);
+    BOPCol_BoxBndTreeSelector aSelector;
     Bnd_Box aBoxS;
     //
     const TopoDS_Shape& aS=aSI.Shape();
@@ -252,12 +277,12 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
       const TopoDS_Shape& aShell=aIt.Value();
       bHasImage=myImages.IsBound(aShell);
       if (bHasImage){
-	break;
+        break;
       }
     }
     //
-    // 2.1 Compute Bnd_Box for the solid aS  [ aBoxS ]
-    BuildBndBox(i, aBoxS);
+    // 2.1 Bounding box for the solid aS  [ aBoxS ]
+    aBoxS=aSI.Box();
     //-----
     //
     // 2.2 Build Draft Solid [aSD]
@@ -277,25 +302,7 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
       aMF.Add(aFI);
     }
     //
-    // 2.4. Prepare TreeFiller
-    aItDMISB.Initialize(aDMISB);
-    for (; aItDMISB.More(); aItDMISB.Next()) {
-      k=aItDMISB.Key();
-      const BOPAlgo_ShapeBox& aSBk=aItDMISB.Value();
-      const TopoDS_Shape& aFk=aSBk.Shape();
-      if (aMF.Contains(aFk)) {
-	continue;
-      }
-      //
-      const Bnd_Box& aBk=aSBk.Box();
-      //
-      aTreeFiller.Add(k, aBk);
-    }
-    //
-    // 2.5. Shake TreeFiller
-    aTreeFiller.Fill();
-    //
-    // 2.6. Select boxes of faces that are not out of aBoxS
+    // 2.4. Select boxes of faces that are not out of aBoxS
     aSelector.Clear();
     aSelector.SetBox(aBoxS);
     //
@@ -303,7 +310,7 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
     //
     const BOPCol_ListOfInteger& aLIFP=aSelector.Indices();
     //
-    // 2.7. Collect faces that are IN aSolid [ aLFIN ]
+    // 2.5. Collect faces that are IN aSolid [ aLFIN ]
     BOPCol_ListOfShape aLFP(aAlr1);
     BOPCol_ListOfShape aLCBF(aAlr1);
     BOPCol_MapOfShape aMFDone(100, aAlr1);
@@ -316,8 +323,11 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
       nFP=aItLI.Value();
       const BOPAlgo_ShapeBox& aSBF=aDMISB.Find(nFP);
       const TopoDS_Face& aFP=(*(TopoDS_Face*)&aSBF.Shape());
+      if (aMF.Contains(aFP)) {
+        continue;
+      }
       if (aMFDone.Contains(aFP)) {
-	continue;
+        continue;
       }
       //
       aMFDone.Add(aFP);
@@ -329,19 +339,19 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
       //
       aItLI1.Initialize(aLIFP);
       for (; aItLI1.More(); aItLI1.Next()) {
-	const TopoDS_Shape& aFx=aDMISB.Find(aItLI1.Value()).Shape();
-	if (!aMFDone.Contains(aFx)) {
-	  aLFP.Append(aFx);
-	}
+        const TopoDS_Shape& aFx=aDMISB.Find(aItLI1.Value()).Shape();
+        if (!aMFDone.Contains(aFx)) {
+          aLFP.Append(aFx);
+        }
       }
       //
       aLCBF.Clear();
       //---------------------------------------- 
       {
-	Handle(NCollection_IncAllocator) aAlr2;
-	aAlr2=new NCollection_IncAllocator();
-	//
-	BOPTools_AlgoTools::MakeConnexityBlock(aLFP, aME, aLCBF, aAlr2);
+        Handle(NCollection_IncAllocator) aAlr2;
+        aAlr2=new NCollection_IncAllocator();
+        //
+        BOPTools_AlgoTools::MakeConnexityBlock(aLFP, aME, aLCBF, aAlr2);
       }
       //----------------------------------------
       aItLS.Initialize(aLCBF);
@@ -354,13 +364,13 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
       }
     }// for (; aItLI.More(); aItLI.Next()) {
     //
-    // 2.8. Store the results in theInParts, theDraftSolids
+    // 2.6. Store the results in theInParts, theDraftSolids
     aNbFIN=aLFIN.Extent();
     if (aNbFIN || aNbLIF) {
       aItLS.Initialize(aLIF);
       for (; aItLS.More(); aItLS.Next()) {
-	const TopoDS_Shape& aFI=aItLS.Value();
-	aLFIN.Append(aFI);
+        const TopoDS_Shape& aFI=aItLS.Value();
+        aLFIN.Append(aFI);
       }
       theInParts.Bind(aSolid, aLFIN);
     }
@@ -371,14 +381,13 @@ void BOPAlgo_Builder::FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts
     //---------------------------------------------
   }// for (i=0; i<aNbS; ++i) {
 }
-
 //=======================================================================
 //function : BuildDraftSolid
 //purpose  : 
 //=======================================================================
 void BOPAlgo_Builder::BuildDraftSolid(const TopoDS_Shape& theSolid,
-				      TopoDS_Shape& theDraftSolid,
-				      BOPCol_ListOfShape& theLIF)
+                                      TopoDS_Shape& theDraftSolid,
+                                      BOPCol_ListOfShape& theLIF)
 {
   myErrorStatus=0;
   //
@@ -389,7 +398,7 @@ void BOPAlgo_Builder::BuildDraftSolid(const TopoDS_Shape& theSolid,
   TopoDS_Shell aShD;
   TopoDS_Shape aFSDx, aFx;
   BRep_Builder aBB;
-  BOPCol_ListIteratorOfListOfShape aItS;	
+  BOPCol_ListIteratorOfListOfShape aItS; 
   //
   aOrSd=theSolid.Orientation();
   theDraftSolid.Orientation(aOrSd);
@@ -425,7 +434,9 @@ void BOPAlgo_Builder::BuildDraftSolid(const TopoDS_Shape& theSolid,
               theLIF.Append(aFSDx);
             }
             else {
-              bToReverse=BOPTools_AlgoTools::IsSplitToReverse(aFSDx, aF, myContext); 
+              bToReverse=BOPTools_AlgoTools::IsSplitToReverse(aFSDx, 
+	 aF, 
+	 myContext); 
               if (bToReverse) {
                 aFSDx.Reverse();
               }
@@ -467,14 +478,15 @@ void BOPAlgo_Builder::BuildDraftSolid(const TopoDS_Shape& theSolid,
 //function : BuildSplitSolids
 //purpose  : 
 //=======================================================================
-void BOPAlgo_Builder::BuildSplitSolids(BOPCol_DataMapOfShapeListOfShape& theInParts,
-				       BOPCol_DataMapOfShapeShape& theDraftSolids,
-				       const BOPCol_BaseAllocator&  )
+void BOPAlgo_Builder::BuildSplitSolids
+  (BOPCol_DataMapOfShapeListOfShape& theInParts,
+   BOPCol_DataMapOfShapeShape& theDraftSolids,
+   const BOPCol_BaseAllocator&  )
 {
   myErrorStatus=0;
   //
   Standard_Boolean bFlagSD;
-  Standard_Integer i, aNbS, iErr;
+  Standard_Integer i, aNbS;
   TopExp_Explorer aExp;
   BOPCol_ListIteratorOfListOfShape aIt;
   BOPCol_DataMapIteratorOfDataMapOfShapeShape aIt1;
@@ -485,6 +497,7 @@ void BOPAlgo_Builder::BuildSplitSolids(BOPCol_DataMapOfShapeListOfShape& theInPa
   BOPCol_ListOfShape aSFS(aAlr0), aLSEmpty(aAlr0);
   BOPCol_MapOfShape aMFence(100, aAlr0);
   BOPTools_MapOfSet aMST(100, aAlr0);
+  BOPAlgo_VectorOfBuilderSolid aVBS;
   //
   // 0. Find same domain solids for non-interferred solids
   aNbS=myDS->NbSourceShapes();
@@ -519,6 +532,7 @@ void BOPAlgo_Builder::BuildSplitSolids(BOPCol_DataMapOfShapeListOfShape& theInPa
     }
     //
     const TopoDS_Shape& aS=aSI.Shape();
+    const TopoDS_Solid& aSolid=(*(TopoDS_Solid*)(&aS));
     if(!theDraftSolids.IsBound(aS)) {
       continue;
     }
@@ -548,21 +562,24 @@ void BOPAlgo_Builder::BuildSplitSolids(BOPCol_DataMapOfShapeListOfShape& theInPa
     Handle(NCollection_IncAllocator) aAlr1;
     aAlr1=new NCollection_IncAllocator();  
     //
-    BOPAlgo_BuilderSolid aSB(aAlr1);
+    BOPAlgo_BuilderSolid& aBS=aVBS.Append1();
+    aBS.SetSolid(aSolid);
+    aBS.SetShapes(aSFS);
+  }//for (i=0; i<aNbS; ++i) {
+  //
+  Standard_Integer k, aNbBS;
+  //
+  aNbBS=aVBS.Extent();
+  //
+  //===================================================
+  BOPAlgo_BuilderSolidCnt::Perform(myRunParallel, aVBS);
+  //===================================================
+  //
+  for (k=0; k<aNbBS; ++k) {
+    BOPAlgo_BuilderSolid& aBS=aVBS(k);
+    const TopoDS_Solid& aS=aBS.Solid();
+    const BOPCol_ListOfShape& aLSR=aBS.Areas();
     //
-    //aSB.SetContext(myContext);
-    aSB.SetShapes(aSFS);
-    aSB.Perform();
-    iErr=aSB.ErrorStatus();
-    if (iErr) {
-      myErrorStatus=30; // SolidBuilder failed
-      return;
-    }
-    //
-    const BOPCol_ListOfShape& aLSR=aSB.Areas();
-    //
-    // 1.4 Collect resulting solids and theirs set of faces. 
-    //     Update Images.
     if (!myImages.IsBound(aS)) {
       BOPCol_ListOfShape aLSx;
       //
@@ -587,9 +604,8 @@ void BOPAlgo_Builder::BuildSplitSolids(BOPCol_DataMapOfShapeListOfShape& theInPa
         }
       }
     }
-  }// for (i=0; i<aNbS; ++i) {
+  }
 }
-
 //=======================================================================
 //function :FillInternalShapes 
 //purpose  : 
@@ -652,7 +668,9 @@ void BOPAlgo_Builder::FillInternalShapes()
   for (; aIt.More(); aIt.Next()) {
     const TopoDS_Shape& aS=aIt.Value();
     aType=aS.ShapeType();
-    if (aType==TopAbs_VERTEX || aType==TopAbs_EDGE ||aType==TopAbs_WIRE) {
+    if (aType==TopAbs_VERTEX || 
+        aType==TopAbs_EDGE ||
+        aType==TopAbs_WIRE) {
       if (aMFence.Add(aS)) {
         if (myImages.IsBound(aS)) {
           const BOPCol_ListOfShape &aLSp=myImages.Find(aS);
@@ -808,90 +826,11 @@ void BOPAlgo_Builder::FillInternalShapes()
   aMSx.Clear();
 }
 //=======================================================================
-//function : BuildBndBox
-//purpose  : 
-//=======================================================================
-void BOPAlgo_Builder::BuildBndBox(const Standard_Integer theIndex,
-				  Bnd_Box& aBoxS)
-{
-  Standard_Boolean bIsOpenBox;
-  Standard_Integer nSh, nFc;
-  Standard_Real aTolS, aTolFc;
-  TopAbs_State aState; 
-  BOPCol_ListIteratorOfListOfInteger aItLI, aItLI1;
-  //
-  const BOPDS_ShapeInfo& aSI=myDS->ShapeInfo(theIndex);
-  const TopoDS_Shape& aS=aSI.Shape();
-  const TopoDS_Solid& aSolid=(*(TopoDS_Solid*)(&aS));
-  //
-  bIsOpenBox=Standard_False;
-  //
-  aTolS=0.;
-  const BOPCol_ListOfInteger& aLISh=aSI.SubShapes();
-  aItLI.Initialize(aLISh);
-  for (; aItLI.More(); aItLI.Next()) {
-    nSh=aItLI.Value();
-    const BOPDS_ShapeInfo& aSISh=myDS->ShapeInfo(nSh);
-    if (aSISh.ShapeType()!=TopAbs_SHELL) {
-      continue;
-    }
-    //
-    const BOPCol_ListOfInteger& aLIFc=aSISh.SubShapes();
-    aItLI1.Initialize(aLIFc);
-    for (; aItLI1.More(); aItLI1.Next()) {
-      nFc=aItLI1.Value();
-      const BOPDS_ShapeInfo& aSIFc=myDS->ShapeInfo(nFc);
-      if (aSIFc.ShapeType()!=TopAbs_FACE) {
-	continue;
-      }
-      //
-      const Bnd_Box& aBFc=aSIFc.Box();
-      aBoxS.Add(aBFc);
-      //
-      if (!bIsOpenBox) {
-	bIsOpenBox=(aBFc.IsOpenXmin() || aBFc.IsOpenXmax() ||
-		    aBFc.IsOpenYmin() || aBFc.IsOpenYmax() ||
-		    aBFc.IsOpenZmin() || aBFc.IsOpenZmax()); 
-	if (bIsOpenBox) {
-	  break;
-	}
-      }
-      //
-      const TopoDS_Face& aFc=*((TopoDS_Face*)&aSIFc.Shape());
-      aTolFc=BRep_Tool::Tolerance(aFc);
-      if (aTolFc>aTolS) {
-	aTolS=aTolFc;
-      }
-    }//for (; aItLI1.More(); aItLI1.Next()) {
-    if (bIsOpenBox) {
-      break;
-    }
-    //
-    const TopoDS_Shell& aSh=*((TopoDS_Shell*)&aSISh.Shape());
-    bIsOpenBox=IsClosedShell(aSh);
-    if (bIsOpenBox) {
-      break;
-    }
-  }//for (; aItLI.More(); aItLI.Next()) {
-  //
-  if (bIsOpenBox) {
-    aBoxS.SetWhole();
-  }
-  else {
-    BRepClass3d_SolidClassifier& aSC=myContext->SolidClassifier(aSolid);
-    aSC.PerformInfinitePoint(aTolS);
-    aState=aSC.State();
-    if (aState==TopAbs_IN) {
-      aBoxS.SetWhole();
-    }
-  }
-}
-//=======================================================================
 //function : OwnInternalShapes
 //purpose  : 
 //=======================================================================
-  void OwnInternalShapes(const TopoDS_Shape& theS,
-                         BOPCol_IndexedMapOfShape& theMx)
+void OwnInternalShapes(const TopoDS_Shape& theS,
+                       BOPCol_IndexedMapOfShape& theMx)
 {
   TopoDS_Iterator aIt;
   //
@@ -902,49 +841,6 @@ void BOPAlgo_Builder::BuildBndBox(const Standard_Integer theIndex,
       theMx.Add(aSx);
     }
   }
-}
-//=======================================================================
-//function : IsClosedShell
-//purpose  : 
-//=======================================================================
-Standard_Boolean IsClosedShell(const TopoDS_Shell& aSh)
-{
-  Standard_Boolean bRet;
-  Standard_Integer i, aNbE, aNbF;
-  TopAbs_Orientation aOrF;
-  BOPCol_IndexedDataMapOfShapeListOfShape aMEF; 
-  BOPCol_ListIteratorOfListOfShape aItLS;
-  //
-  bRet=Standard_False;
-  //
-  BOPTools::MapShapesAndAncestors(aSh, TopAbs_EDGE, TopAbs_FACE, aMEF);
-  // 
-  aNbE=aMEF.Extent();
-  for (i=1; i<=aNbE; ++i) {
-    const TopoDS_Edge& aE=*((TopoDS_Edge*)&aMEF.FindKey(i));
-    if (BRep_Tool::Degenerated(aE)) {
-      continue;
-    }
-    //
-    aNbF=0;
-    const BOPCol_ListOfShape& aLF=aMEF(i);
-    aItLS.Initialize(aLF);
-    for (; aItLS.More(); aItLS.Next()) {
-      const TopoDS_Shape& aF=aItLS.Value();
-      aOrF=aF.Orientation();
-      if (aOrF==TopAbs_INTERNAL || aOrF==TopAbs_EXTERNAL) {
-	continue;
-      }
-      ++aNbF;
-    }
-    //
-    if (aNbF==1) {
-      bRet=!bRet; // True
-      break;
-    }
-  }
-  //
-  return bRet;
 }
 //=======================================================================
 //function : TreatCompound

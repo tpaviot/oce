@@ -400,11 +400,12 @@ public:
   //! Recomputes the active selections, flags the others <br>
 //!          Doesn't update presentations <br>
   Standard_EXPORT     void RecomputeSelectionOnly(const Handle(AIS_InteractiveObject)& anIObj) ;
-  //! Checks which presentations are flagged "to be recomputed" <br>
-//!          and recomputes them if they are displayed. <br>
-//!          This method doesn't force any Computation. <br>
-//!          Recomputes Flagged selections if they are activated. <br>
-  Standard_EXPORT     void Update(const Handle(AIS_InteractiveObject)& anIobj,const Standard_Boolean updateviewer = Standard_True) ;
+  //! Updates displayed interactive object by checking and <br>
+//!          recomputing its flagged as "to be recomputed" presentation <br>
+//!          and selection structures. This method does not force any <br>
+//!          recomputation on its own. The method recomputes selections <br>
+//!          even if they are loaded without activation in particular selector. <br>
+  Standard_EXPORT     void Update(const Handle(AIS_InteractiveObject)& theIObj,const Standard_Boolean theUpdateViewer = Standard_True) ;
   
 //! Sets the display mode of seen Interactive Objects. <br>
 //! aMode provides the display mode index of the entity aniobj. <br>

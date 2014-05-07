@@ -5,8 +5,8 @@
 --
 -- This file is part of Open CASCADE Technology software library.
 --
--- This library is free software; you can redistribute it and / or modify it
--- under the terms of the GNU Lesser General Public version 2.1 as published
+-- This library is free software; you can redistribute it and/or modify it under
+-- the terms of the GNU Lesser General Public License version 2.1 as published
 -- by the Free Software Foundation, with special exception defined in the file
 -- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 -- distribution for complete text of the license and disclaimer of any warranty.
@@ -32,7 +32,8 @@ uses XY                  from gp,
      PntOn2S             from IntSurf,
      LineOn2S            from IntSurf,
      Dir                 from gp,
-     Dir2d               from gp
+     Dir2d               from gp,
+     Pnt                 from gp
      
      
 raises OutOfRange from Standard,
@@ -248,14 +249,63 @@ is
 	is static;
 
     AddAPoint ( me    : in out  ; 
-    	    	line  : in  out  LineOn2S  from  IntSurf  ;     
-		POn2S :          PntOn2S   from  IntSurf  ) ;
-	---C++: inline
-		
+    line  : in  out  LineOn2S  from  IntSurf  ;     
+    POn2S :          PntOn2S   from  IntSurf  ) ;
+    ---C++: inline
+    
     ExtendLineInCommonZone(me: in out; theChoixIso: ConstIsoparametric  from IntImp;
-    	    	    	    	       theDirectionFlag: Boolean from Standard)
-    	returns Boolean from Standard
-	is private;
+theDirectionFlag: Boolean from Standard)
+    returns Boolean from Standard
+    is private;
+  
+  DistanceMinimizeByGradient( me    : in out;
+                              theASurf1 , theASurf2  : ThePSurface ;
+                              theU1, theV1, theU2, theV2: out Real from Standard;
+                              theStep0U1V1: Real from Standard = 1.0e-6;
+                              theStep0U2V2: Real from Standard = 1.0e-6)
+    returns Boolean from Standard
+    is private;
+    -- Finds one intersection point of two given surfaces with given 
+    --  initial point.
+  
+  DistanceMinimizeByExtrema(me          : in out;
+                            theASurf1   : ThePSurface ;
+                            theP0       : Pnt from gp;
+                            theU0, theV0: out Real from Standard;
+                            theStep0U: Real from Standard = 1.0;
+                            theStep0V: Real from Standard = 1.0)
+    returns Boolean from Standard
+    is private;
+    -- Finds one intersection point of two given surfaces with given 
+    --  initial point.
+  
+  SeekPointOnBoundary(me    : in out;
+                      theASurf1 , theASurf2  : ThePSurface ;
+                      theU1, theV1, theU2, theV2: Real from Standard;
+                      isTheFirst : Boolean from Standard)
+    returns Boolean from Standard
+    is private;
+    -- Unites and correctly coordinates of work of
+    -- "DistanceMinimizeByGradient" and "DistanceMinimizeByExtrema" functions.
+  
+  
+  PutToBoundary( me    : in out;
+                 theASurf1 , theASurf2  : ThePSurface)
+    -- Tries to extend existing intersection line 
+    --  (as set of points) to surface's boundaries,
+    --  if it is possibly.
+    --  If line is scienter far from boundaries
+    --  or is (almost) parralel with some boundary,
+    --  extending is not required.
+    returns Boolean from Standard;
+
+
+  SeekAdditionalPoints( me    : in out;
+                        theASurf1 , theASurf2  : ThePSurface;
+                        theMinNbPoints : Integer from Standard)
+    returns Boolean from Standard;
+    -- Unites and correctly coordinates of work of
+    -- "DistanceMinimizeByGradient" and "DistanceMinimizeByExtrema" functions.
 
 fields
 

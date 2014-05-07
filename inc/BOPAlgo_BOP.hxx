@@ -45,6 +45,7 @@
 #endif
 class TopoDS_Shape;
 class BOPAlgo_PaveFiller;
+class TopTools_ListOfShape;
 
 
 
@@ -72,6 +73,9 @@ Standard_EXPORT virtual ~BOPAlgo_BOP();
   Standard_EXPORT     void SetOperation(const BOPAlgo_Operation theOperation) ;
   
   Standard_EXPORT     BOPAlgo_Operation Operation() const;
+  //! Returns the  list of shapes generated from the <br>
+//!          shape theS. <br>
+  Standard_EXPORT   virtual const TopTools_ListOfShape& Generated(const TopoDS_Shape& theS) ;
 
 
 

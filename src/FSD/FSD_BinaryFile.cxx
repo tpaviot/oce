@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -1083,7 +1083,7 @@ void FSD_BinaryFile::ReadString(TCollection_AsciiString& aString)
     if (!fread(c,size,1,myStream)) Storage_StreamWriteError::Raise();
     c[size] = '\0';
     aString = c;
-    Standard::Free((Standard_Address&)c);
+    Standard::Free(c);
   }
   else {
     aString.Clear();
@@ -1144,7 +1144,7 @@ void FSD_BinaryFile::ReadExtendedString(TCollection_ExtendedString& aString)
       c[i] = InverseExtChar (c[i]);
 #endif
     aString = c;
-    Standard::Free((Standard_Address&)c);
+    Standard::Free(c);
   }
   else {
     aString.Clear();

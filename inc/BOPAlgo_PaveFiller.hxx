@@ -40,6 +40,9 @@
 #ifndef _Handle_BOPDS_PaveBlock_HeaderFile
 #include <Handle_BOPDS_PaveBlock.hxx>
 #endif
+#ifndef _TopAbs_ShapeEnum_HeaderFile
+#include <TopAbs_ShapeEnum.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -58,8 +61,8 @@
 #ifndef _BOPCol_DataMapOfIntegerReal_HeaderFile
 #include <BOPCol_DataMapOfIntegerReal.hxx>
 #endif
-#ifndef _BOPDS_MapOfPaveBlock_HeaderFile
-#include <BOPDS_MapOfPaveBlock.hxx>
+#ifndef _BOPDS_IndexedMapOfPaveBlock_HeaderFile
+#include <BOPDS_IndexedMapOfPaveBlock.hxx>
 #endif
 #ifndef _BOPCol_ListOfInteger_HeaderFile
 #include <BOPCol_ListOfInteger.hxx>
@@ -75,6 +78,9 @@
 #endif
 #ifndef _BOPDS_ListOfPaveBlock_HeaderFile
 #include <BOPDS_ListOfPaveBlock.hxx>
+#endif
+#ifndef _BOPDS_MapOfPaveBlock_HeaderFile
+#include <BOPDS_MapOfPaveBlock.hxx>
 #endif
 #ifndef _BOPCol_IndexedDataMapOfShapeInteger_HeaderFile
 #include <BOPCol_IndexedDataMapOfShapeInteger.hxx>
@@ -158,6 +164,8 @@ protected:
   
   Standard_EXPORT     void FillShrunkData(Handle(BOPDS_PaveBlock)& thePB) ;
   
+  Standard_EXPORT     void FillShrunkData(const TopAbs_ShapeEnum theType1,const TopAbs_ShapeEnum theType2) ;
+  
   Standard_EXPORT     Standard_Integer PerformVerticesEE(BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks& theMVCPB,BOPCol_BaseAllocator& theAllocator) ;
   
   Standard_EXPORT     Standard_Integer PerformVerticesEF(BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks& theMVCPB,BOPCol_BaseAllocator& theAllocator) ;
@@ -183,7 +191,7 @@ protected:
   
   Standard_EXPORT     void PutBoundPaveOnCurve(const TopoDS_Face& theF1,const TopoDS_Face& theF2,const Standard_Real theTolR3D,BOPDS_Curve& theNC,BOPCol_MapOfInteger& theMVOnIn,BOPCol_MapOfInteger& theMVB) ;
   
-  Standard_EXPORT     Standard_Boolean IsExistingPaveBlock(const Handle(BOPDS_PaveBlock)& thePB,const BOPDS_Curve& theNC,const Standard_Real theTolR3D,const BOPDS_MapOfPaveBlock& theMPB,Handle(BOPDS_PaveBlock)& thePBOut) ;
+  Standard_EXPORT     Standard_Boolean IsExistingPaveBlock(const Handle(BOPDS_PaveBlock)& thePB,const BOPDS_Curve& theNC,const Standard_Real theTolR3D,const BOPDS_IndexedMapOfPaveBlock& theMPB,Handle(BOPDS_PaveBlock)& thePBOut) ;
   
   Standard_EXPORT     Standard_Boolean IsExistingPaveBlock(const Handle(BOPDS_PaveBlock)& thePB,const BOPDS_Curve& theNC,const Standard_Real theTolR3D,const BOPCol_ListOfInteger& theLSE) ;
   
@@ -228,7 +236,7 @@ protected:
   
 //! Adds the existing edges from the map <theMPBOnIn> which interfere <br>
 //! with the vertices from <theMVB> map to the post treatment of section edges. <br>
-  Standard_EXPORT     void ProcessExistingPaveBlocks(const Standard_Integer theInt,const BOPDS_MapOfPaveBlock& theMPBOnIn,BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks& theMSCPB,BOPCol_DataMapOfShapeInteger& theMVI,const BOPCol_MapOfInteger& theMVB,BOPDS_MapOfPaveBlock& theMPB) ;
+  Standard_EXPORT     void ProcessExistingPaveBlocks(const Standard_Integer theInt,const BOPDS_IndexedMapOfPaveBlock& theMPBOnIn,BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks& theMSCPB,BOPCol_DataMapOfShapeInteger& theMVI,const BOPCol_MapOfInteger& theMVB,BOPDS_MapOfPaveBlock& theMPB) ;
   
 //! Replaces existing pave block <thePB> with new pave blocks <theLPB>. <br>
 //! The list <theLPB> contains images of <thePB> which were created in <br>

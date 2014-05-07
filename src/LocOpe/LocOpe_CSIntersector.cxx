@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -51,20 +51,9 @@ static Standard_Boolean LocAfter (const LocOpe_SequenceOfPntFace&,
 				  Standard_Integer&,
 				  Standard_Integer&);
 
-#ifdef DEB				  
-static Standard_Boolean LocBefore (const LocOpe_SequenceOfPntFace&,
-				   const Standard_Integer,
-				   Standard_Integer&,
-				   Standard_Integer&);
-#endif
-
-
 static void AddPoints(IntCurvesFace_Intersector&,
                       LocOpe_SequenceOfPntFace&,
 		      const TopoDS_Face&);
-
-
-
 
 //=======================================================================
 //function : Init

@@ -5,14 +5,15 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
 //
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
+
 
 #include <BRepFill_Evolved.ixx>
 
@@ -125,22 +126,13 @@
 #include <DBRep.hxx>
 #include <DrawTrSurf.hxx>
 #include <stdio.h>
-#endif
-
-#if defined(DRAW) || defined(DEB)
-static Standard_Boolean AffichEdge = Standard_False;
-#endif
-#ifdef DRAW
 static Standard_Boolean AffichGeom = Standard_False;
+static Standard_Boolean AffichEdge = Standard_False;
 static Standard_Integer NbFACES       = 0;
 static Standard_Integer NbTRIMFACES   = 0;
 static Standard_Integer NbVEVOS       = 0;
 static Standard_Integer NbPROFILS     = 0;
 static Standard_Integer NbEDGES       = 0;
-// POP for NT
-#ifndef WNT
-static char name[100];
-#endif
 #endif
 
 static const Standard_Real BRepFill_Confusion() 
@@ -688,6 +680,7 @@ void BRepFill_Evolved::ElementaryPerform (const TopoDS_Face&              Sp,
 
 #ifdef DRAW
   if (AffichEdge) {	  
+    char name[100];
     sprintf(name,"PROFIL_%d",++NbPROFILS);	
     DBRep::Set(name,Pr);
   }
@@ -985,6 +978,7 @@ void BRepFill_Evolved::ElementaryPerform (const TopoDS_Face&              Sp,
 	
 #ifdef DRAW
 	if (AffichEdge) {
+          char name[100];
 	  sprintf(name,"ARCEDGE_%d_%d_%d",i,vv,Ti);	
 	  DBRep::Set(name,CurrentEdge);
 	}
@@ -1070,7 +1064,7 @@ void BRepFill_Evolved::ElementaryPerform (const TopoDS_Face&              Sp,
     }
   }
 
-#ifdef DEB
+#ifdef DRAW
  if (AffichEdge) {
    cout << " End of Construction of edges and vertices on bissectrices"<<endl;
  }
@@ -1135,6 +1129,7 @@ void BRepFill_Evolved::ElementaryPerform (const TopoDS_Face&              Sp,
 	    
 #ifdef DRAW	    
 	    if (AffichEdge) {
+              char name[100];
 	      sprintf(name,"PAREDGE_%d_%d",++NbEDGES,k);	
 	      DBRep::Set(name,S.Value(k));
 	    }
@@ -1172,6 +1167,7 @@ void BRepFill_Evolved::ElementaryPerform (const TopoDS_Face&              Sp,
 	  
 #ifdef DRAW	    
 	  if (AffichEdge) {	  
+            char name[100];
 	    sprintf(name,"PAREDGE_%d_%d",++NbEDGES,k);	
 	    DBRep::Set(name,S.Value(k));
 	  }
@@ -1255,6 +1251,7 @@ void BRepFill_Evolved::ElementaryPerform (const TopoDS_Face&              Sp,
 #ifdef DRAW  
   if (AffichEdge) {	  
     cout <<" End of construction of an elementary volevo."<<endl;	    
+    char name[100];
     sprintf(name,"VEVO_%d",++NbVEVOS);	
     DBRep::Set(name,myShape);
   }
@@ -1361,6 +1358,7 @@ void BRepFill_Evolved::PlanarPerform (const TopoDS_Face&              Sp,
       TopTools_DataMapIteratorOfDataMapOfShapeShape it(MapVP);
       Standard_Integer k = 0;
       for (; it.More(); it.Next()) {
+        char name[100];
 	sprintf(name,"PARALI_%d",++k);	
 	DBRep::Set(name,it.Value());
       }
@@ -1464,6 +1462,7 @@ void BRepFill_Evolved::VerticalPerform (const TopoDS_Face&              Sp,
     
 #ifdef DRAW  
     if (AffichEdge) {	  
+      char name[100];
       sprintf(name,"PARALI_%d",++NbVEVOS);	
       DBRep::Set(name,Base);
     }
@@ -1472,6 +1471,7 @@ void BRepFill_Evolved::VerticalPerform (const TopoDS_Face&              Sp,
     BRepSweep_Prism PS(Base,gp_Vec(0,0,Alt2 - Alt1),Standard_False);
 #ifdef DRAW  
     if (AffichEdge) {	  
+      char name[100];
       sprintf(name,"PRISM_%d",NbVEVOS);	
       DBRep::Set(name,PS.Shape());
     }
@@ -1701,7 +1701,7 @@ const
 
     for (TopoDS_Iterator IteW(IteF.Value()); IteW.More(); IteW.Next()) {
       
-      const TopoDS_Edge& E = TopoDS::Edge(IteW.Value());
+      TopoDS_Edge E = TopoDS::Edge(IteW.Value());
       EdgeVertices(E,V1,V2);
       MapSpine.Bind(V1,V1);
       MapSpine.Bind(V2,V2);
@@ -1733,6 +1733,7 @@ const
 
 #ifdef DRAW
   if (AffichEdge) {
+    char name[100];
     sprintf(name,"workspine");	
     DBRep::Set(name,WorkSpine);
   }
@@ -2215,6 +2216,7 @@ void BRepFill_Evolved::MakePipe(const TopoDS_Edge& SE,
 
 #ifdef DRAW
   if (AffichGeom) {
+    char name[100];
     sprintf(name,"EVOLBASE_%d",++NbFACES);
     DBRep::Set(name,SE);
     sprintf(name,"EVOLPROF_%d",NbFACES);
@@ -2222,11 +2224,12 @@ void BRepFill_Evolved::MakePipe(const TopoDS_Edge& SE,
   }
 #endif
 
-//  BRepFill_Pipe Pipe(BRepLib_MakeWire(SE),GenProf);	
-  BRepFill_Pipe Pipe = BRepFill_Pipe(BRepLib_MakeWire(SE),GenProf);	
+  BRepFill_Pipe Pipe(BRepLib_MakeWire(SE), GenProf);	
+  //BRepFill_Pipe Pipe = BRepFill_Pipe(BRepLib_MakeWire(SE),GenProf);	
   
 #ifdef DRAW
   if (AffichGeom) {
+    char name[100];
     sprintf(name,"EVOL_%d",++NbFACES);
     DBRep::Set(name,Pipe.Shape());
   }
@@ -2304,9 +2307,9 @@ void BRepFill_Evolved::MakeRevol(const TopoDS_Edge&   SE,
   
 #ifdef DRAW  
   if (AffichGeom) {
+    char name[100];
     sprintf(name,"EVOLBASE_%d",++NbFACES);
-    char* Temp = name ;
-    DrawTrSurf::Set(Temp,new Geom_Line(AxeRev));
+    DrawTrSurf::Set(name,new Geom_Line(AxeRev));
 //    DrawTrSurf::Set(name,new Geom_Line(AxeRev));
     sprintf(name,"EVOLPROF_%d",NbFACES);
     DBRep::Set(name,GenProf);
@@ -2408,6 +2411,7 @@ void BRepFill_Evolved::TransformInitWork(const TopLoc_Location& LS,
 
 #ifdef DRAW
   if (AffichEdge) {
+    char name[100];
     sprintf(name,"movedspine");
     TopoDS_Face SL = mySpine;
     DBRep::Set(name,SL);    

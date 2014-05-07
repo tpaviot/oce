@@ -59,6 +59,7 @@ class IntPatch_TheFunctionOfTheInt2SOfThePWalkingInter;
 class TColStd_Array1OfReal;
 class IntSurf_PntOn2S;
 class gp_Dir;
+class gp_Pnt;
 
 
 
@@ -101,6 +102,10 @@ public:
   Standard_EXPORT     void RepartirOuDiviser(Standard_Boolean& DejaReparti,IntImp_ConstIsoparametric& ChoixIso,Standard_Boolean& Arrive) ;
   
         void AddAPoint(Handle(IntSurf_LineOn2S)& line,const IntSurf_PntOn2S& POn2S) ;
+  
+  Standard_EXPORT     Standard_Boolean PutToBoundary(const Handle(Adaptor3d_HSurface)& theASurf1,const Handle(Adaptor3d_HSurface)& theASurf2) ;
+  
+  Standard_EXPORT     Standard_Boolean SeekAdditionalPoints(const Handle(Adaptor3d_HSurface)& theASurf1,const Handle(Adaptor3d_HSurface)& theASurf2,const Standard_Integer theMinNbPoints) ;
 
 
 
@@ -116,6 +121,12 @@ private:
 
   
   Standard_EXPORT     Standard_Boolean ExtendLineInCommonZone(const IntImp_ConstIsoparametric theChoixIso,const Standard_Boolean theDirectionFlag) ;
+  
+  Standard_EXPORT     Standard_Boolean DistanceMinimizeByGradient(const Handle(Adaptor3d_HSurface)& theASurf1,const Handle(Adaptor3d_HSurface)& theASurf2,Standard_Real& theU1,Standard_Real& theV1,Standard_Real& theU2,Standard_Real& theV2,const Standard_Real theStep0U1V1 = 1.0e-6,const Standard_Real theStep0U2V2 = 1.0e-6) ;
+  
+  Standard_EXPORT     Standard_Boolean DistanceMinimizeByExtrema(const Handle(Adaptor3d_HSurface)& theASurf1,const gp_Pnt& theP0,Standard_Real& theU0,Standard_Real& theV0,const Standard_Real theStep0U = 1.0,const Standard_Real theStep0V = 1.0) ;
+  
+  Standard_EXPORT     Standard_Boolean SeekPointOnBoundary(const Handle(Adaptor3d_HSurface)& theASurf1,const Handle(Adaptor3d_HSurface)& theASurf2,const Standard_Real theU1,const Standard_Real theV1,const Standard_Real theU2,const Standard_Real theV2,const Standard_Boolean isTheFirst) ;
 
 
 Standard_Boolean done;

@@ -25,6 +25,9 @@
 #ifndef _Graphic3d_NameOfTexture2D_HeaderFile
 #include <Graphic3d_NameOfTexture2D.hxx>
 #endif
+#ifndef _Image_PixMap_Handle_HeaderFile
+#include <Image_PixMap_Handle.hxx>
+#endif
 #ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
 #endif
@@ -41,6 +44,8 @@ public:
   Standard_EXPORT   Graphic3d_Texture2Dplane(const TCollection_AsciiString& theFileName);
   //! Creates a texture from a predefined texture name set. <br>
   Standard_EXPORT   Graphic3d_Texture2Dplane(const Graphic3d_NameOfTexture2D theNOT);
+  //! Creates a texture from the pixmap. <br>
+  Standard_EXPORT   Graphic3d_Texture2Dplane(const Image_PixMap_Handle& thePixMap);
   //!  Defines the texture projection plane for texture coordinate S <br>
 //! default is <1.0, 0.0, 0.0, 0.0> <br>
   Standard_EXPORT     void SetPlaneS(const Standard_ShortReal A,const Standard_ShortReal B,const Standard_ShortReal C,const Standard_ShortReal D) ;

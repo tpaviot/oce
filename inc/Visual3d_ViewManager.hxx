@@ -37,6 +37,9 @@
 #ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
 #endif
+#ifndef _Visual3d_MapOfZLayerSettings_HeaderFile
+#include <Visual3d_MapOfZLayerSettings.hxx>
+#endif
 #ifndef _Graphic3d_StructureManager_HeaderFile
 #include <Graphic3d_StructureManager.hxx>
 #endif
@@ -57,6 +60,9 @@
 #endif
 #ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
+#endif
+#ifndef _Graphic3d_ZLayerSettings_HeaderFile
+#include <Graphic3d_ZLayerSettings.hxx>
 #endif
 #ifndef _Aspect_TypeOfHighlightMethod_HeaderFile
 #include <Aspect_TypeOfHighlightMethod.hxx>
@@ -175,6 +181,10 @@ public:
   Standard_EXPORT     void ChangeZLayer(const Handle(Graphic3d_Structure)& theStructure,const Standard_Integer theLayerId) ;
   //! Get Z layer ID assigned for the structure. <br>
   Standard_EXPORT     Standard_Integer GetZLayer(const Handle(Graphic3d_Structure)& theStructure) const;
+  //! Sets the settings for a single Z layer for all managed views. <br>
+  Standard_EXPORT     void SetZLayerSettings(const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings theSettings) ;
+  //! Returns the settings of a single Z layer. <br>
+  Standard_EXPORT     Graphic3d_ZLayerSettings ZLayerSettings(const Standard_Integer theLayerId) ;
   //! Add a new top-level Z layer and get its ID as <br>
 //! <theLayerId> value. The method returns Standard_False if the layer <br>
 //! can not be created. The layer mechanism allows to display <br>
@@ -270,6 +280,7 @@ Standard_Boolean MyZBufferAuto;
 Standard_Boolean MyTransparency;
 TColStd_MapOfInteger myLayerIds;
 TColStd_SequenceOfInteger myLayerSeq;
+Visual3d_MapOfZLayerSettings myMapOfZLayerSettings;
 
 
 };

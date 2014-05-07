@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -41,7 +41,7 @@ LRESULT APIENTRY WndProc(HWND hWndFrame, UINT wMsg, WPARAM wParam, LPARAM lParam
     case WM_CREATE :
       {
 	CreateProc(hWndFrame);					
-	hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND);
+	hWndClient = (HWND)GetWindowLongPtr(hWndFrame, CLIENTWND);
 	DrawWindow::hWndClientMDI = hWndClient;
 	if (!Draw_IsConsoleSubsystem)
 	  CreateCommandWindow(hWndFrame,0);					
@@ -58,7 +58,7 @@ LRESULT APIENTRY WndProc(HWND hWndFrame, UINT wMsg, WPARAM wParam, LPARAM lParam
       break;
 
     default :
-      hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND);
+      hWndClient = (HWND)GetWindowLongPtr(hWndFrame, CLIENTWND);
       return(DefFrameProc(hWndFrame, hWndClient, wMsg, wParam, lParam));
   }
   return(0l);
@@ -76,7 +76,7 @@ BOOL CreateProc(HWND hWndFrame)
   if (hWnd != NULL)
   {
     // Save hWnd in the main window in extra memory in 0
-    SetWindowLong(hWndFrame, CLIENTWND, (LONG)hWnd);
+    SetWindowLongPtr(hWndFrame, CLIENTWND, (LONG_PTR)hWnd);
   }
   return(TRUE);
 }
@@ -90,7 +90,7 @@ BOOL CreateProc(HWND hWndFrame)
 BOOL CommandProc(HWND hWndFrame, WPARAM wParam, LPARAM /*lParam*/)
 {
   // Handle on window MDI
-  HWND hWndClient = (HWND)GetWindowLong (hWndFrame, CLIENTWND);
+  HWND hWndClient = (HWND)GetWindowLongPtr (hWndFrame, CLIENTWND);
   switch (LOWORD(wParam))
 	{
 	  case IDM_WINDOW_NEXT :
@@ -134,11 +134,8 @@ BOOL CommandProc(HWND hWndFrame, WPARAM wParam, LPARAM /*lParam*/)
 \*--------------------------------------------------------------------------*/
 VOID DestroyProc(HWND hWnd)
 {
-#ifndef _WIN64
-  HINSTANCE hInst = (HINSTANCE)GetWindowLong(hWnd, GWL_HINSTANCE);
-#else
-  HINSTANCE hInst = (HINSTANCE)GetWindowLong(hWnd, GWLP_HINSTANCE);
-#endif
+  HINSTANCE hInst = (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE);
+
   Destroy_Appli(hInst);
   PostQuitMessage(0);
 }

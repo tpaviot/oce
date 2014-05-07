@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -120,8 +120,11 @@ void TopOpeBRep_Point2d::Dump(const Standard_Integer E1index,const Standard_Inte
 #ifdef DRAW
   cout<<FUN_tool_PRODINP()<<"P"<<Index()<<" "<<P3D.X()<<" "<<P3D.Y()<<" "<<P3D.Z()<<"; # tol = "<<tol<<endl;
 #endif
-  cout<<"     on (1) :"; cout<<" vertex(1) : "; cout<<(isvertex1)? 1:0;
-  cout<<"  T "<<E1index<<"(1) : "; T1.Dump(cout);
+  cout<<"     on (1) :";
+  cout<<" vertex(1) : ";
+  cout<<(isvertex1?1:0);
+  cout<<"  T "<<E1index<<"(1) : ";
+  T1.Dump(cout);
   cout<<" par(1) = "<<par1;
   if (isvertex1) {
     P3D = BRep_Tool::Pnt(V1);
@@ -129,8 +132,11 @@ void TopOpeBRep_Point2d::Dump(const Standard_Integer E1index,const Standard_Inte
   }
   cout<<endl;
   
-  cout<<"     on (2) :"; cout<<" vertex(2) : "; cout<<(isvertex2)? 1:0;
-  cout<<"  T "<<E2index<<"(2) : "; T2.Dump(cout); 
+  cout<<"     on (2) :";
+  cout<<" vertex(2) : ";
+  cout<<(isvertex2?1:0);
+  cout<<"  T "<<E2index<<"(2) : ";
+  T2.Dump(cout);
   cout<<" par(2) = "<<par2;
   if (isvertex2) {
     P3D = BRep_Tool::Pnt(V2);

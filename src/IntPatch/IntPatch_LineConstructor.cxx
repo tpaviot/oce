@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -134,12 +134,12 @@ static void Recadre(const Handle(Adaptor3d_HSurface)& myHS1,
 //=======================================================================
 
 static void Parameters(const Handle(Adaptor3d_HSurface)& myHS1,
-		       const Handle(Adaptor3d_HSurface)& myHS2,
-		       const gp_Pnt& Ptref,
-		       Standard_Real& U1,
-		       Standard_Real& V1,
-		       Standard_Real& U2,
-		       Standard_Real& V2)
+                       const Handle(Adaptor3d_HSurface)& myHS2,
+                       const gp_Pnt& Ptref,
+                       Standard_Real& U1,
+                       Standard_Real& V1,
+                       Standard_Real& U2,
+                       Standard_Real& V2)
 {
   IntSurf_Quadric quad1,quad2;
   GeomAbs_SurfaceType typs = myHS1->Surface().GetType();
@@ -155,6 +155,9 @@ static void Parameters(const Handle(Adaptor3d_HSurface)& myHS1,
     break;
   case GeomAbs_Sphere:
     quad1.SetValue(myHS1->Surface().Sphere());
+    break;
+  case GeomAbs_Torus:
+    quad1.SetValue(myHS1->Surface().Torus());
     break;
   default:
     Standard_ConstructionError::Raise("IntPatch_IntSS::MakeCurve");
@@ -173,6 +176,9 @@ static void Parameters(const Handle(Adaptor3d_HSurface)& myHS1,
     break;
   case GeomAbs_Sphere:
     quad2.SetValue(myHS2->Surface().Sphere());
+    break;
+  case GeomAbs_Torus:
+    quad2.SetValue(myHS2->Surface().Torus());
     break;
   default:
     Standard_ConstructionError::Raise("IntPatch_IntSS::MakeCurve");

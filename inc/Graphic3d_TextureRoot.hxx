@@ -22,6 +22,9 @@
 #ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
 #endif
+#ifndef _Image_PixMap_Handle_HeaderFile
+#include <Image_PixMap_Handle.hxx>
+#endif
 #ifndef _OSD_Path_HeaderFile
 #include <OSD_Path.hxx>
 #endif
@@ -33,9 +36,6 @@
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Image_PixMap_Handle_HeaderFile
-#include <Image_PixMap_Handle.hxx>
 #endif
 class Graphic3d_TextureParams;
 class TCollection_AsciiString;
@@ -80,9 +80,10 @@ public:
   Standard_EXPORT    const TCollection_AsciiString& GetId() const;
   
 //! This method will be called by graphic driver each time when texture resource should be created. <br>
-//! Default implementation will dynamically load image from specified path within this method <br>
+//! Default constructors allow defining the texture source as path to texture image or directly as pixmap. <br>
+//! If the source is defined as path, then the image will be dynamically loaded when this method is called <br>
 //! (and no copy will be preserved in this class instance). <br>
-//! Inheritors may dynamically generate the image or return cached instance. <br>
+//! Inheritors may dynamically generate the image. <br>
 //! Notice, image data should be in Bottom-Up order (see Image_PixMap::IsTopDown())! <br>
 //! @return the image for texture. <br>
   Standard_EXPORT   virtual  Image_PixMap_Handle GetImage() const;
@@ -103,9 +104,14 @@ protected:
 //!  Warning: Note that if <FileName> is NULL the texture must be realized <br>
 //! using LoadTexture(image) method. <br>
   Standard_EXPORT   Graphic3d_TextureRoot(const TCollection_AsciiString& theFileName,const Graphic3d_TypeOfTexture theType);
+  //! Creates a texture from pixmap. <br>
+//! Please note that the implementation expects the image data <br>
+//! to be in Bottom-Up order (see Image_PixMap::IsTopDown()). <br>
+  Standard_EXPORT   Graphic3d_TextureRoot(const Image_PixMap_Handle& thePixmap,const Graphic3d_TypeOfTexture theType);
 
 Handle_Graphic3d_TextureParams myParams;
 TCollection_AsciiString myTexId;
+Image_PixMap_Handle myPixMap;
 OSD_Path myPath;
 
 

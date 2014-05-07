@@ -19,114 +19,90 @@
 #ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
+#ifndef _Handle_Geom_Curve_HeaderFile
+#include <Handle_Geom_Curve.hxx>
 #endif
 #ifndef _BRepAdaptor_Curve_HeaderFile
 #include <BRepAdaptor_Curve.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
-#ifndef _IntTools_SequenceOfCommonPrts_HeaderFile
-#include <IntTools_SequenceOfCommonPrts.hxx>
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
 #endif
 #ifndef _IntTools_Range_HeaderFile
 #include <IntTools_Range.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
+#endif
+#ifndef _IntTools_SequenceOfCommonPrts_HeaderFile
+#include <IntTools_SequenceOfCommonPrts.hxx>
+#endif
+#ifndef _TopAbs_ShapeEnum_HeaderFile
+#include <TopAbs_ShapeEnum.hxx>
+#endif
+class Geom_Curve;
 class TopoDS_Edge;
 class IntTools_Range;
+class IntTools_SequenceOfRanges;
+class BRepAdaptor_Curve;
+class Bnd_Box;
 class IntTools_SequenceOfCommonPrts;
-class IntTools_CommonPrt;
-class IntTools_CArray1OfReal;
 
 
-//! The  class  provides  Edge/Edge  algorithm  to  determine <br>
-//!          common  parts  between two edges in  3-d space. <br>
-//!          Common  parts can be :  Vertices  or Edges. <br>
-//! <br>
+
+//! The class provides Edge/Edge intersection algorithm <br>
+//! based on the intersection between edges bounding boxes. <br>
 class IntTools_EdgeEdge  {
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty constructor <br>
-//! <br>
-  Standard_EXPORT   IntTools_EdgeEdge();
+//! Empty contructor <br>
+      IntTools_EdgeEdge();
+~IntTools_EdgeEdge();
+  
+//! Contructor <br>
+      IntTools_EdgeEdge(const TopoDS_Edge& theEdge1,const TopoDS_Edge& theEdge2);
+  
+//! Contructor <br>
+      IntTools_EdgeEdge(const TopoDS_Edge& theEdge1,const Standard_Real aT11,const Standard_Real aT12,const TopoDS_Edge& theEdge2,const Standard_Real aT21,const Standard_Real aT22);
   
 //! Sets the first edge <br>
-//! <br>
-  Standard_EXPORT     void SetEdge1(const TopoDS_Edge& anEdge) ;
+        void SetEdge1(const TopoDS_Edge& theEdge) ;
   
-//! Sets  the  value of tolerance pipe for the first edge <br>
-//! <br>
-  Standard_EXPORT     void SetTolerance1(const Standard_Real aTolEdge1) ;
+//! Sets the first edge and its range <br>
+        void SetEdge1(const TopoDS_Edge& theEdge,const Standard_Real aT1,const Standard_Real aT2) ;
+  
+//! Sets the range for the first edge <br>
+        void SetRange1(const IntTools_Range& theRange1) ;
+  
+//! Sets the range for the first edge <br>
+        void SetRange1(const Standard_Real aT1,const Standard_Real aT2) ;
   
 //! Sets the second edge <br>
-//! <br>
-  Standard_EXPORT     void SetEdge2(const TopoDS_Edge& anEdge) ;
+        void SetEdge2(const TopoDS_Edge& theEdge) ;
   
-//! Sets  the  value of tolerance pipe for the first edge <br>
-//! <br>
-  Standard_EXPORT     void SetTolerance2(const Standard_Real aTolEdge2) ;
+//! Sets the first edge and its range <br>
+        void SetEdge2(const TopoDS_Edge& theEdge,const Standard_Real aT1,const Standard_Real aT2) ;
   
-//! Sets  the  number of division for the shortest <br>
-//! edge among the two.  The  deflection is not taken <br>
-//! into  account <br>
-//! <br>
-  Standard_EXPORT     void SetDiscretize(const Standard_Integer aDiscret) ;
+//! Sets the range for the second edge <br>
+        void SetRange2(const IntTools_Range& theRange) ;
   
-//! Sets the value of maximum reative deflection between <br>
-//! the two nearest points on a curve. <br>
-//! <br>
-  Standard_EXPORT     void SetDeflection(const Standard_Real aDeflection) ;
+//! Sets the range for the second edge <br>
+        void SetRange2(const Standard_Real aT1,const Standard_Real aT2) ;
   
-//! Sets the criteria of equality of two arguments, <br>
-//! i.e.  |t2-t1|<anEpsT will mean that t2=t1 <br>
-//! <br>
-  Standard_EXPORT     void SetEpsilonT(const Standard_Real anEpsT) ;
-  
-//! Sets the criteria of equality of two functions' values <br>
-//! i.e.  |f(t2)-f(t1)|<anEpsNull will mean that f(t2)=f(t1) <br>
-//! <br>
-  Standard_EXPORT     void SetEpsilonNull(const Standard_Real anEpsNull) ;
-  
-  Standard_EXPORT     void SetRange1(const IntTools_Range& aRange) ;
-  
-  Standard_EXPORT     void SetRange2(const IntTools_Range& aRange) ;
-  
-  Standard_EXPORT     void SetRange1(const Standard_Real aFirst,const Standard_Real aLast) ;
-  
-  Standard_EXPORT     void SetRange2(const Standard_Real aFirst,const Standard_Real aLast) ;
-  
-//! The main method of the algorithm to determine <br>
-//! common  parts  between two edges in  3-d space <br>
-//! <br>
+//! Performs the intersection between edges <br>
   Standard_EXPORT     void Perform() ;
   
-//! True if the common  parts are found <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+//! Returns TRUE if common part(s) is(are) found <br>
+        Standard_Boolean IsDone() const;
   
-//! False if the common parts are coherented  with Edge1, Edge2 <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean Order() const;
-  //! Returns the number that corresponds to the error. <br>
-//! The  list of error-codes is in  ...cxx file <br>
-//! <br>
-  Standard_EXPORT     Standard_Integer ErrorStatus() const;
-  
-//! Returns the common parts (Output) <br>
-//! <br>
-  Standard_EXPORT    const IntTools_SequenceOfCommonPrts& CommonParts() const;
-  
-  Standard_EXPORT    const IntTools_Range& Range1() const;
-  
-  Standard_EXPORT    const IntTools_Range& Range2() const;
+//! Returns common parts <br>
+       const IntTools_SequenceOfCommonPrts& CommonParts() const;
 
 
 
@@ -135,113 +111,68 @@ public:
 protected:
 
   
-//! Fool-proof chechking the input data. <br>
-//! The  following  data is not  available <br>
-//!    *  Degenerated edges is  not  available; <br>
-//!    *  Egdes,  that don't contain 3d-curve. <br>
-//! <br>
-  Standard_EXPORT     void CheckData() ;
+//! Checks the data <br>
+        void CheckData() ;
   
-//! Preparing the main  fields  for  the  algorithm <br>
-//!    *  From-Curve  (myCFrom,myTminFrom,myTmaxFrom), <br>
-//!    *  To  -Curve  (myCTo  ,myTminTo  ,myTmaxTo  ), <br>
-//!    *  myCreiteria=myTol1+myTol2  , <br>
-//!    *  myProjectableRanges. <br>
-//! <br>
+//! Prepares the data <br>
   Standard_EXPORT     void Prepare() ;
   
-//! Returns the flag 1 if it is possible to project <br>
-//! the point from the From-Curve at the  parameter t <br>
-//! to the To-Curve. <br>
-//! Othrwise it returns  0. <br>
-//! <br>
-  Standard_EXPORT     Standard_Integer IsProjectable(const Standard_Real t) const;
-  
-//! Find the range on the curve Curve-To that  corresponds <br>
-//! to  the  given  range on the curve Curve-From. <br>
-//! <br>
-  Standard_EXPORT     Standard_Integer FindRangeOnCurve2(IntTools_CommonPrt& aCP) ;
-  
-//! Find the  value  of  the  parameter  on  the curve Curve-To <br>
-//! that corresponds  to  the  given  parameter  on the curve <br>
-//! Curve-From. <br>
-//! <br>
-  Standard_EXPORT     Standard_Integer GetParameterOnCurve2(const Standard_Real aT1,Standard_Real& aT2) const;
-  
-  Standard_EXPORT     Standard_Integer TreatVertexType(const Standard_Real am1,const Standard_Real am2,IntTools_CommonPrt& aCP) ;
-  
-  Standard_EXPORT     void IsIntersection(const Standard_Real t1,const Standard_Real t2) ;
-  
-  Standard_EXPORT     void FindDerivativeRoot(const IntTools_CArray1OfReal& t,const IntTools_CArray1OfReal& f) ;
-  
-//! Find the Root of the function on given interval <br>
-//! of the argument [ta,tb] using  bisection  method . <br>
-//! IP  - a  flag; <br>
-//! =1  -  use DistanceFunction; <br>
-//! =2  -  use DerivativeFunction; <br>
-//! <br>
-  Standard_EXPORT     Standard_Real FindSimpleRoot(const Standard_Integer IP,const Standard_Real ta,const Standard_Real tb,const Standard_Real fA) ;
-  
-//! Calculates the DistanceFunction D(t). <br>
-//! D(t)=D1(t) - myCriteria; <br>
-//! where <br>
-//! D1(t) -  the lower distance between a point from <br>
-//! the  From-Curve at  parameter t  and <br>
-//! projection point of  this point on To-Curve; <br>
-//! myCriteria=myTol1+myTol2. <br>
-//! <br>
-  Standard_EXPORT     Standard_Real DistanceFunction(const Standard_Real t) ;
-  
-//! Calculates the first derivative of <br>
-//! the DistanceFunction D(t). <br>
-//! <br>
-  Standard_EXPORT     Standard_Real DerivativeFunction(const Standard_Real t) ;
-  
-  Standard_EXPORT     Standard_Boolean CheckTouch(const IntTools_CommonPrt& aCP,Standard_Real& t1,Standard_Real& t2) ;
-  
-  Standard_EXPORT     Standard_Boolean CheckTouchVertex(const IntTools_CommonPrt& aCP,Standard_Real& t1,Standard_Real& t2) const;
-  
+//! Computes Line/Line intersection. <br>
   Standard_EXPORT     void ComputeLineLine() ;
   
-  Standard_EXPORT     Standard_Boolean IsSameCurves() ;
+//! Looking for the exact intersection ranges <br>
+  Standard_EXPORT     void FindSolutions(const IntTools_Range& theR1,const IntTools_Range& theR2,IntTools_SequenceOfRanges& theRanges1,IntTools_SequenceOfRanges& theRanges2) ;
+  
+//! Merges found solutions <br>
+  Standard_EXPORT     void MergeSolutions(const IntTools_SequenceOfRanges& theRanges1,const IntTools_SequenceOfRanges& theRanges2) ;
+  
+//! Looking for the range of the edge whick is in the box <br>
+  Standard_EXPORT   static  Standard_Boolean FindParameters(const BRepAdaptor_Curve& theBAC,const Standard_Real aT1,const Standard_Real aT2,const Standard_Real theRes,const Standard_Real thePTol,const Bnd_Box& theCBox,Standard_Real& aTB1,Standard_Real& aTB2) ;
+  
+//! Checks if edges coincide on the ranges <br>
+  Standard_EXPORT     Standard_Integer CheckCoincidence(const Standard_Real aT11,const Standard_Real aT12,const Standard_Real aT21,const Standard_Real aT22,const Standard_Real theCriteria,const Standard_Real theCurveRes1) ;
+  
+//! Adds common part of the given type to myCommonParts <br>
+  Standard_EXPORT     void AddSolution(const Standard_Real aT11,const Standard_Real aT12,const Standard_Real aT21,const Standard_Real aT22,const TopAbs_ShapeEnum theType) ;
+  
+//! Looking for the minimal distance between edges on the ranges <br>
+  Standard_EXPORT     void FindBestSolution(const Standard_Real aT11,const Standard_Real aT12,const Standard_Real aT21,const Standard_Real aT22,Standard_Real& aT1,Standard_Real& aT2) ;
+  
+//! Checks is there an intersection between edges on the given ranges <br>
+//! (for nearly conicident edges) <br>
+  Standard_EXPORT     Standard_Boolean IsIntersection(const Standard_Real aT11,const Standard_Real aT12,const Standard_Real aT21,const Standard_Real aT22) ;
 
 
+TopoDS_Edge myEdge1;
+TopoDS_Edge myEdge2;
+Handle_Geom_Curve myGeom1;
+Handle_Geom_Curve myGeom2;
+BRepAdaptor_Curve myCurve1;
+BRepAdaptor_Curve myCurve2;
+Standard_Real myTol1;
+Standard_Real myTol2;
+Standard_Real myTol;
+Standard_Real myRes1;
+Standard_Real myRes2;
+Standard_Real myPTol1;
+Standard_Real myPTol2;
+IntTools_Range myRange1;
+IntTools_Range myRange2;
+Standard_Boolean mySwap;
+Standard_Integer myErrorStatus;
+IntTools_SequenceOfCommonPrts myCommonParts;
 
 
 private:
 
 
 
-TopoDS_Edge myEdge1;
-TopoDS_Edge myEdge2;
-Standard_Real myTol1;
-Standard_Real myTol2;
-Standard_Integer myDiscret;
-Standard_Real myEpsT;
-Standard_Real myEpsNull;
-Standard_Real myDeflection;
-BRepAdaptor_Curve myCFrom;
-Standard_Real myTminFrom;
-Standard_Real myTmaxFrom;
-Standard_Real myTolFrom;
-BRepAdaptor_Curve myCTo;
-Standard_Real myTminTo;
-Standard_Real myTmaxTo;
-Standard_Real myTolTo;
-Standard_Real myCriteria;
-Standard_Boolean myIsDone;
-Standard_Integer myErrorStatus;
-IntTools_SequenceOfCommonPrts mySeqOfCommonPrts;
-Standard_Boolean myOrder;
-Standard_Real myPar1;
-Standard_Boolean myParallel;
-IntTools_Range myRange1;
-IntTools_Range myRange2;
 
 
 };
 
 
+#include <IntTools_EdgeEdge.lxx>
 
 
 

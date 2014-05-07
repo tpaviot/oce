@@ -117,7 +117,7 @@ public:
 //!          if a vertex is already in the line, <br>
 //!             its parameter is modified <br>
 //!          else a new point in the line is inserted. <br>
-  Standard_EXPORT     void ComputeVertexParameters(const Standard_Real Tol) ;
+  Standard_EXPORT     void ComputeVertexParameters(const Standard_Real Tol,const Standard_Boolean hasBeenAdded = Standard_False) ;
   
   Standard_EXPORT     Handle_IntSurf_LineOn2S Curve() const;
   

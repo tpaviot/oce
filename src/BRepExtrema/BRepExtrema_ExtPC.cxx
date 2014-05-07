@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -44,8 +44,10 @@ void BRepExtrema_ExtPC::Initialize(const TopoDS_Edge& E)
   Standard_Real U1,U2;
   BRepAdaptor_Curve Curv(E);
   myHC = new BRepAdaptor_HCurve(Curv);
+  Standard_Real Tol = Min(BRep_Tool::Tolerance(E), Precision::Confusion());
+  Tol = Max(Curv.Resolution(Tol), Precision::PConfusion());
   BRep_Tool::Range(E,U1,U2);
-  myExtPC.Initialize(myHC->Curve(),U1,U2);
+  myExtPC.Initialize(myHC->Curve(),U1,U2,Tol);
 }
 
 //=======================================================================

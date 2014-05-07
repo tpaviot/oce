@@ -136,6 +136,9 @@
 #ifndef _Graphic3d_Vertex_HeaderFile
 #include <Graphic3d_Vertex.hxx>
 #endif
+#ifndef _Graphic3d_ZLayerSettings_HeaderFile
+#include <Graphic3d_ZLayerSettings.hxx>
+#endif
 class Graphic3d_GraphicDriver;
 class Visual3d_ViewManager;
 class V3d_Light;
@@ -408,6 +411,10 @@ public:
 //!          directional-light V3d_XnegYneg <br>
 //!          ambient-light <br>
   Standard_EXPORT     void SetDefaultLights() ;
+  //! Sets the settings for a single Z layer. <br>
+  Standard_EXPORT     void SetZLayerSettings(const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings theSettings) ;
+  //! Returns the settings of a single Z layer. <br>
+  Standard_EXPORT     Graphic3d_ZLayerSettings ZLayerSettings(const Standard_Integer theLayerId) ;
   //! Add a new top-level Z layer to all managed views and get <br>
 //! its ID as <theLayerId> value. The Z layers are controlled entirely <br>
 //! by viewer, it is not possible to add a layer to a <br>

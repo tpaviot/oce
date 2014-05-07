@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -139,16 +139,16 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  S1,
     case GeomAbs_Torus: break;
     default:
     {
-	  IntPatch_PrmPrmIntersection interpp;
-	  interpp.Perform(S1,D1,TolArc,TolTang,myFleche,myUVMaxStep);
-	  if (interpp.IsDone())
-	  {
-	    done = Standard_True;
-	    tgte = Standard_False;
-	    empt = interpp.IsEmpty();
-	    const Standard_Integer nblm = interpp.NbLines();
-	    for (Standard_Integer i=1; i<=nblm; i++) slin.Append(interpp.Line(i));
-	  }
+      IntPatch_PrmPrmIntersection interpp;
+      interpp.Perform(S1,D1,TolArc,TolTang,myFleche,myUVMaxStep);
+      if (interpp.IsDone())
+      {
+        done = Standard_True;
+        tgte = Standard_False;
+        empt = interpp.IsEmpty();
+        const Standard_Integer nblm = interpp.NbLines();
+        for (Standard_Integer i=1; i<=nblm; i++) slin.Append(interpp.Line(i));
+      }
     }
     break;
   }
@@ -200,12 +200,12 @@ static void FUN_GetMinMaxXYZPnt( const Handle(Adaptor3d_HSurface)& S,
   for(Standard_Real U = S->FirstUParameter(); U <= S->LastUParameter(); U += DU)
   {
     for(Standard_Real V = S->FirstVParameter(); V <= S->LastVParameter(); V += DV)
-	{
-	  S->D0(U,V,PUV);
+    {
+      S->D0(U,V,PUV);
       const Standard_Real cXYZ = PUV.XYZ().Modulus();
-	  if(cXYZ > tMaxXYZ) { tMaxXYZ = cXYZ; ptMax = PUV; }
-	  if(cXYZ < tMinXYZ) { tMinXYZ = cXYZ; ptMin = PUV; }
-	}
+      if(cXYZ > tMaxXYZ) { tMaxXYZ = cXYZ; ptMax = PUV; }
+      if(cXYZ < tMinXYZ) { tMinXYZ = cXYZ; ptMin = PUV; }
+    }
   }
   pMin = ptMin;
   pMax = ptMax;
@@ -226,19 +226,19 @@ static void FUN_TrimInfSurf(const gp_Pnt& Pmin,
   {
     Standard_Real Umax = -1.e+100, Umin = 1.e+100, Vmax = -1.e+100, Vmin = 1.e+100, cU, cV;
     if(ext1.IsDone())
-	{
+    {
       for(Standard_Integer i = 1; i <= ext1.NbExt(); i++)
       {
-	    const Extrema_POnSurf & pons = ext1.Point(i);
-	    pons.Parameter(cU,cV);
-	    if(cU > Umax) Umax = cU;
-	    if(cU < Umin) Umin = cU;
-	    if(cV > Vmax) Vmax = cV;
-	    if(cV < Vmin) Vmin = cV;
+        const Extrema_POnSurf & pons = ext1.Point(i);
+        pons.Parameter(cU,cV);
+        if(cU > Umax) Umax = cU;
+        if(cU < Umin) Umin = cU;
+        if(cV > Vmax) Vmax = cV;
+        if(cV < Vmin) Vmin = cV;
       }
-	}
+    }
     if(ext2.IsDone())
-	{
+    {
       for(Standard_Integer i = 1; i <= ext2.NbExt(); i++)
       {
         const Extrema_POnSurf & pons = ext2.Point(i);
@@ -248,7 +248,7 @@ static void FUN_TrimInfSurf(const gp_Pnt& Pmin,
         if(cV > Vmax) Vmax = cV;
         if(cV < Vmin) Vmin = cV;
       }
-	}
+    }
     TP = Max(Abs(Umin),Max(Abs(Umax),Max(Abs(Vmin),Abs(Vmax))));
   }
   if(TP == 0.) { TrimS = InfSurf; return; }
@@ -265,18 +265,18 @@ static void FUN_TrimInfSurf(const gp_Pnt& Pmin,
     if(Vinf && !Vsup){ TrimS = InfSurf->VTrim(-tp, InfSurf->LastVParameter(), 1.0e-7); IsTrimed = 1; }
     if(!Vinf && Vsup){ TrimS = InfSurf->VTrim(InfSurf->FirstVParameter(), tp, 1.0e-7); IsTrimed = 1; }
     if(IsTrimed)
-	{
-	  TmpSS = TrimS;
-	  if(Uinf && Usup)  TrimS = TmpSS->UTrim(-tp, tp, 1.0e-7);
-	  if(Uinf && !Usup) TrimS = TmpSS->UTrim(-tp, InfSurf->LastUParameter(), 1.0e-7);
-	  if(!Uinf && Usup) TrimS = TmpSS->UTrim(InfSurf->FirstUParameter(), tp, 1.0e-7);
-	}
+    {
+      TmpSS = TrimS;
+      if(Uinf && Usup)  TrimS = TmpSS->UTrim(-tp, tp, 1.0e-7);
+      if(Uinf && !Usup) TrimS = TmpSS->UTrim(-tp, InfSurf->LastUParameter(), 1.0e-7);
+      if(!Uinf && Usup) TrimS = TmpSS->UTrim(InfSurf->FirstUParameter(), tp, 1.0e-7);
+    }
     else
-	{
-	  if(Uinf && Usup)  TrimS = InfSurf->UTrim(-tp, tp, 1.0e-7);
-	  if(Uinf && !Usup) TrimS = InfSurf->UTrim(-tp, InfSurf->LastUParameter(), 1.0e-7);
-	  if(!Uinf && Usup) TrimS = InfSurf->UTrim(InfSurf->FirstUParameter(), tp, 1.0e-7);
-	}
+    {
+      if(Uinf && Usup)  TrimS = InfSurf->UTrim(-tp, tp, 1.0e-7);
+      if(Uinf && !Usup) TrimS = InfSurf->UTrim(-tp, InfSurf->LastUParameter(), 1.0e-7);
+      if(!Uinf && Usup) TrimS = InfSurf->UTrim(InfSurf->FirstUParameter(), tp, 1.0e-7);
+    }
   }
 }
 //================================================================================
@@ -296,11 +296,11 @@ static void FUN_GetUiso(const Handle(Geom_Surface)& GS,
     Handle(Geom_Curve) gc = GS->UIso(U);
     if(IsVP && (FirstV == 0.0 && LastV == (2.*M_PI))) I = gc;
     else
-	{
-	  Handle(Geom_TrimmedCurve) gtc = new Geom_TrimmedCurve(gc,FirstV,LastV);
-	  //szv:I = Handle(Geom_Curve)::DownCast(gtc);
-	  I = gtc;
-	}
+    {
+      Handle(Geom_TrimmedCurve) gtc = new Geom_TrimmedCurve(gc,FirstV,LastV);
+      //szv:I = Handle(Geom_Curve)::DownCast(gtc);
+      I = gtc;
+    }
   }
   else//OffsetSurface
   {
@@ -310,43 +310,43 @@ static void FUN_GetUiso(const Handle(Geom_Surface)& GS,
     GeomAdaptor_Curve gac(gcbs);
     const GeomAbs_CurveType GACT = gac.GetType();
     if(IsVP || IsVC || GACT == GeomAbs_BSplineCurve || GACT == GeomAbs_BezierCurve || Abs(LastV - FirstV) < 1.e+5)
-	{
-	  Handle(Geom_Curve) gc = gos->UIso(U);
-	  if(IsVP && (FirstV == 0.0 && LastV == (2*M_PI))) I = gc;
-	  else
+    {
+      Handle(Geom_Curve) gc = gos->UIso(U);
+      if(IsVP && (FirstV == 0.0 && LastV == (2*M_PI))) I = gc;
+      else
       {
-	    Handle(Geom_TrimmedCurve) gtc = new Geom_TrimmedCurve(gc,FirstV,LastV);
-	    //szv:I = Handle(Geom_Curve)::DownCast(gtc);
-	    I = gtc;
-	  }
-	}
+        Handle(Geom_TrimmedCurve) gtc = new Geom_TrimmedCurve(gc,FirstV,LastV);
+        //szv:I = Handle(Geom_Curve)::DownCast(gtc);
+        I = gtc;
+      }
+    }
     else//Offset Line, Parab, Hyperb
-	{
-	  Standard_Real VmTr, VMTr;
-	  if(GACT != GeomAbs_Hyperbola)
+    {
+      Standard_Real VmTr, VMTr;
+      if(GACT != GeomAbs_Hyperbola)
       {
-	    if(FirstV >= 0. && LastV >= 0.){ VmTr = FirstV; VMTr = ((LastV - FirstV) > 1.e+4) ? (FirstV + 1.e+4) : LastV; }
-	    else if(FirstV < 0. && LastV < 0.){ VMTr = LastV; VmTr = ((FirstV - LastV) < -1.e+4) ? (LastV - 1.e+4) : FirstV; }
-	    else { VmTr = (FirstV < -1.e+4) ? -1.e+4 : FirstV; VMTr = (LastV > 1.e+4) ? 1.e+4 : LastV; }
-	  }
-	  else//Hyperbola
-	  {
-	    if(FirstV >= 0. && LastV >= 0.)
-		{
-		  if(FirstV > 4.) return;
-		  VmTr = FirstV; VMTr = (LastV > 4.) ? 4. : LastV;
-		}
-	    else if(FirstV < 0. && LastV < 0.)
-		{
-		  if(LastV < -4.) return;
-		  VMTr = LastV; VmTr = (FirstV < -4.) ? -4. : FirstV;
-		}
-	    else { VmTr = (FirstV < -4.) ? -4. : FirstV; VMTr = (LastV > 4.) ? 4. : LastV; }
-	  }
-	  //Make trimmed surface
-	  Handle(Geom_RectangularTrimmedSurface) rts = new Geom_RectangularTrimmedSurface(gos,VmTr,VMTr,Standard_True);
-	  I = rts->UIso(U);
-	}
+        if(FirstV >= 0. && LastV >= 0.){ VmTr = FirstV; VMTr = ((LastV - FirstV) > 1.e+4) ? (FirstV + 1.e+4) : LastV; }
+        else if(FirstV < 0. && LastV < 0.){ VMTr = LastV; VmTr = ((FirstV - LastV) < -1.e+4) ? (LastV - 1.e+4) : FirstV; }
+        else { VmTr = (FirstV < -1.e+4) ? -1.e+4 : FirstV; VMTr = (LastV > 1.e+4) ? 1.e+4 : LastV; }
+      }
+      else//Hyperbola
+      {
+        if(FirstV >= 0. && LastV >= 0.)
+        {
+          if(FirstV > 4.) return;
+          VmTr = FirstV; VMTr = (LastV > 4.) ? 4. : LastV;
+        }
+        else if(FirstV < 0. && LastV < 0.)
+        {
+          if(LastV < -4.) return;
+          VMTr = LastV; VmTr = (FirstV < -4.) ? -4. : FirstV;
+        }
+        else { VmTr = (FirstV < -4.) ? -4. : FirstV; VMTr = (LastV > 4.) ? 4. : LastV; }
+      }
+      //Make trimmed surface
+      Handle(Geom_RectangularTrimmedSurface) rts = new Geom_RectangularTrimmedSurface(gos,VmTr,VMTr,Standard_True);
+      I = rts->UIso(U);
+    }
   }
 }
 //================================================================================
@@ -366,11 +366,11 @@ static void FUN_GetViso(const Handle(Geom_Surface)& GS,
     Handle(Geom_Curve) gc = GS->VIso(V);
     if(IsUP && (FirstU == 0.0 && LastU == (2*M_PI))) I = gc;
     else
-	{
-	  Handle(Geom_TrimmedCurve) gtc = new Geom_TrimmedCurve(gc,FirstU,LastU);
-	  //szv:I = Handle(Geom_Curve)::DownCast(gtc);
-	  I = gtc;
-	}
+    {
+      Handle(Geom_TrimmedCurve) gtc = new Geom_TrimmedCurve(gc,FirstU,LastU);
+      //szv:I = Handle(Geom_Curve)::DownCast(gtc);
+      I = gtc;
+    }
   }
   else//OffsetSurface
   {
@@ -380,43 +380,43 @@ static void FUN_GetViso(const Handle(Geom_Surface)& GS,
     GeomAdaptor_Curve gac(gcbs);
     const GeomAbs_CurveType GACT = gac.GetType();
     if(IsUP || IsUC || GACT == GeomAbs_BSplineCurve || GACT == GeomAbs_BezierCurve || Abs(LastU - FirstU) < 1.e+5)
-	{
-	  Handle(Geom_Curve) gc = gos->VIso(V);
-	  if(IsUP && (FirstU == 0.0 && LastU == (2*M_PI))) I = gc;
-	  else
-	  {
-	    Handle(Geom_TrimmedCurve) gtc = new Geom_TrimmedCurve(gc,FirstU,LastU);
-	    //szv:I = Handle(Geom_Curve)::DownCast(gtc);
-	    I = gtc;
-	  }
-	}
+    {
+      Handle(Geom_Curve) gc = gos->VIso(V);
+      if(IsUP && (FirstU == 0.0 && LastU == (2*M_PI))) I = gc;
+      else
+      {
+        Handle(Geom_TrimmedCurve) gtc = new Geom_TrimmedCurve(gc,FirstU,LastU);
+        //szv:I = Handle(Geom_Curve)::DownCast(gtc);
+        I = gtc;
+      }
+    }
     else//Offset Line, Parab, Hyperb
-	{
-	  Standard_Real UmTr, UMTr;
-	  if(GACT != GeomAbs_Hyperbola)
-	  {
-	    if(FirstU >= 0. && LastU >= 0.){ UmTr = FirstU; UMTr = ((LastU - FirstU) > 1.e+4) ? (FirstU + 1.e+4) : LastU; }
-	    else if(FirstU < 0. && LastU < 0.){ UMTr = LastU; UmTr = ((FirstU - LastU) < -1.e+4) ? (LastU - 1.e+4) : FirstU; }
-	    else { UmTr = (FirstU < -1.e+4) ? -1.e+4 : FirstU; UMTr = (LastU > 1.e+4) ? 1.e+4 : LastU; }
-	  }
-	  else//Hyperbola
-	  {
-	    if(FirstU >= 0. && LastU >= 0.)
-		{
-		  if(FirstU > 4.) return;
-		  UmTr = FirstU; UMTr = (LastU > 4.) ? 4. : LastU;
-		}
-	    else if(FirstU < 0. && LastU < 0.)
-		{
-		  if(LastU < -4.) return;
-		  UMTr = LastU; UmTr = (FirstU < -4.) ? -4. : FirstU;
-		}
-	    else { UmTr = (FirstU < -4.) ? -4. : FirstU; UMTr = (LastU > 4.) ? 4. : LastU; }
-	    }
-	  //Make trimmed surface
-	  Handle(Geom_RectangularTrimmedSurface) rts = new Geom_RectangularTrimmedSurface(gos,UmTr,UMTr,Standard_True);
-	  I = rts->VIso(V);
-	}
+    {
+      Standard_Real UmTr, UMTr;
+      if(GACT != GeomAbs_Hyperbola)
+      {
+        if(FirstU >= 0. && LastU >= 0.){ UmTr = FirstU; UMTr = ((LastU - FirstU) > 1.e+4) ? (FirstU + 1.e+4) : LastU; }
+        else if(FirstU < 0. && LastU < 0.){ UMTr = LastU; UmTr = ((FirstU - LastU) < -1.e+4) ? (LastU - 1.e+4) : FirstU; }
+        else { UmTr = (FirstU < -1.e+4) ? -1.e+4 : FirstU; UMTr = (LastU > 1.e+4) ? 1.e+4 : LastU; }
+      }
+      else//Hyperbola
+      {
+        if(FirstU >= 0. && LastU >= 0.)
+        {
+          if(FirstU > 4.) return;
+          UmTr = FirstU; UMTr = (LastU > 4.) ? 4. : LastU;
+        }
+        else if(FirstU < 0. && LastU < 0.)
+        {
+          if(LastU < -4.) return;
+          UMTr = LastU; UmTr = (FirstU < -4.) ? -4. : FirstU;
+        }
+        else { UmTr = (FirstU < -4.) ? -4. : FirstU; UMTr = (LastU > 4.) ? 4. : LastU; }
+      }
+      //Make trimmed surface
+      Handle(Geom_RectangularTrimmedSurface) rts = new Geom_RectangularTrimmedSurface(gos,UmTr,UMTr,Standard_True);
+      I = rts->VIso(V);
+    }
   }
 }
 //================================================================================
@@ -553,11 +553,11 @@ static void FUN_PL_Intersection(const Handle(Adaptor3d_HSurface)& S1,
   if(ICC.NbPoints() > 0 )
   {
     for(Standard_Integer ip = 1; ip <= ICC.NbPoints(); ip++)
-	{
-	  gp_Pnt2d P = ICC.Point(ip);
-	  gp_Pnt P3d = ElCLib::To3d(gp_Ax2(puvS1,gp_Dir(DV)),P);
-	  SP.Append(P3d);
-	}
+    {
+      gp_Pnt2d P = ICC.Point(ip);
+      gp_Pnt P3d = ElCLib::To3d(gp_Ax2(puvS1,gp_Dir(DV)),P);
+      SP.Append(P3d);
+    }
   }
 }
 //================================================================================
@@ -578,58 +578,58 @@ static void FUN_NewFirstLast(const GeomAbs_CurveType& ga_ct,
     case GeomAbs_Parabola:
     {
       if(Abs(Lst - Fst) > TrVal)
-	  {
-	    if(Fst >= 0. && Lst >= 0.)
+      {
+        if(Fst >= 0. && Lst >= 0.)
         {
-	      NewFst = Fst;
-	      NewLst = ((Fst + TrVal) < Lst) ? (Fst + TrVal) : Lst;
-	    }
-	    if(Fst < 0. && Lst < 0.)
-	    {
-	      NewLst = Lst;
-	      NewFst = ((Lst - TrVal) > Fst) ? (Lst - TrVal) : Fst;
-	    }
-	    else
-	    {
-	      NewFst = (Fst < -TrVal) ? -TrVal : Fst;
-	      NewLst = (Lst > TrVal) ? TrVal : Lst;
-	    }
-	    NeedTr = Standard_True;
-	  }
-	  break;
-    }
-	case GeomAbs_Hyperbola:
-    {
-      if(Abs(Lst - Fst) > 10.)
-	  { 
-	    if(Fst >= 0. && Lst >= 0.)
-	    {
-	      if(Fst > 4.) return;
-	      NewFst = Fst;
-	      NewLst = (Lst > 4.) ? 4. : Lst;
-	    }
-	    if(Fst < 0. && Lst < 0.)
-	    {
-	      if(Lst < -4.) return;
-	      NewLst = Lst;
-	      NewFst = (Fst < -4.) ? -4. : Fst;
-	    }
-	    else
-	    {
-	      NewFst = (Fst < -4.) ? -4. : Fst;
-	      NewLst = (Lst > 4.) ? 4. : Lst;
-	    }
-	    NeedTr = Standard_True;
-	  }
+          NewFst = Fst;
+          NewLst = ((Fst + TrVal) < Lst) ? (Fst + TrVal) : Lst;
+        }
+        if(Fst < 0. && Lst < 0.)
+        {
+          NewLst = Lst;
+          NewFst = ((Lst - TrVal) > Fst) ? (Lst - TrVal) : Fst;
+        }
+        else
+        {
+          NewFst = (Fst < -TrVal) ? -TrVal : Fst;
+          NewLst = (Lst > TrVal) ? TrVal : Lst;
+        }
+        NeedTr = Standard_True;
+      }
       break;
     }
-  default:
+    case GeomAbs_Hyperbola:
+    {
+      if(Abs(Lst - Fst) > 10.)
+      { 
+        if(Fst >= 0. && Lst >= 0.)
+        {
+          if(Fst > 4.) return;
+          NewFst = Fst;
+          NewLst = (Lst > 4.) ? 4. : Lst;
+        }
+        if(Fst < 0. && Lst < 0.)
+        {
+          if(Lst < -4.) return;
+          NewLst = Lst;
+          NewFst = (Fst < -4.) ? -4. : Fst;
+        }
+        else
+        {
+          NewFst = (Fst < -4.) ? -4. : Fst;
+          NewLst = (Lst > 4.) ? 4. : Lst;
+        }
+        NeedTr = Standard_True;
+      }
+      break;
+    }
+    default:
     break;
   }
 }
 //================================================================================
 //function: FUN_TrimBothSurf
-//================================================================================		 
+//================================================================================
 static void FUN_TrimBothSurf(const Handle(Adaptor3d_HSurface)& S1,
                              const GeomAbs_SurfaceType&        T1,
                              const Handle(Adaptor3d_HSurface)& S2,
@@ -684,19 +684,19 @@ static void FUN_TrimBothSurf(const Handle(Adaptor3d_HSurface)& S1,
   if(TrmU1)
   {
     if(TrmV1)
-	{
-	  Handle(Adaptor3d_HSurface) TS = NS1;
-	  NS1 = TS->UTrim(U1S1, U2S1, 1.0e-7);
-	}
+    {
+      Handle(Adaptor3d_HSurface) TS = NS1;
+      NS1 = TS->UTrim(U1S1, U2S1, 1.0e-7);
+    }
     else NS1 = S1->UTrim(U1S1, U2S1, 1.0e-7);
   }
   if(TrmU2)
   {
     if(TrmV2)
-	{
-	  Handle(Adaptor3d_HSurface) TS = NS2;
-	  NS2 = TS->UTrim(U1S2, U2S2, 1.0e-7);
-	}
+    {
+      Handle(Adaptor3d_HSurface) TS = NS2;
+      NS2 = TS->UTrim(U1S2, U2S2, 1.0e-7);
+    }
     else NS2 = S2->UTrim(U1S2, U2S2, 1.0e-7);
   }
 }
@@ -730,84 +730,126 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  theS1,
   GeomAbs_SurfaceType typs1 = theS1->GetType();
   GeomAbs_SurfaceType typs2 = theS2->GetType();
   
+  //treatment of the cases with cone or torus
   Standard_Boolean TreatAsBiParametric = Standard_False;
-  if(typs1 == GeomAbs_Cone)
-  {
-    const gp_Cone Con1 = theS1->Cone();
-    const Standard_Real a1 = Abs(Con1.SemiAngle());
-    if((a1 < 0.02) || (a1 > 1.55))
-    {
-      if(typs2==GeomAbs_Plane)
-      {
-        if(a1 < 0.02)
-        {
-          const gp_Pln Plan2 = theS2->Plane();
-          const gp_Dir axec = Con1.Axis().Direction();
-          const gp_Dir axep = Plan2.Axis().Direction();
-          const Standard_Real ps = Abs(axec.Dot(axep));
-          if(ps < 0.015)
-          {
-            TreatAsBiParametric = Standard_True;
+  Standard_Integer bGeomGeom = 0;
+  //
+  if (typs1 == GeomAbs_Cone  || typs2 == GeomAbs_Cone ||
+      typs1 == GeomAbs_Torus || typs2 == GeomAbs_Torus) {
+    gp_Ax1 aCTAx, aGeomAx;
+    GeomAbs_SurfaceType aCTType;
+    Standard_Boolean bToCheck;
+    //
+    const Handle(Adaptor3d_HSurface)& aCTSurf = 
+      (typs1 == GeomAbs_Cone || typs1 == GeomAbs_Torus) ? theS1 : theS2;
+    const Handle(Adaptor3d_HSurface)& aGeomSurf = 
+      (typs1 == GeomAbs_Cone || typs1 == GeomAbs_Torus) ? theS2 : theS1;
+    //
+    aCTType = aCTSurf->GetType();
+    bToCheck = Standard_False;
+    //
+    if (typs1 == GeomAbs_Cone  || typs2 == GeomAbs_Cone) {
+      const gp_Cone aCon1 = (aCTType == GeomAbs_Cone) ? 
+        aCTSurf->Cone() : aGeomSurf->Cone();
+      Standard_Real a1 = Abs(aCon1.SemiAngle());
+      bToCheck = (a1 < 0.02) || (a1 > 1.55);
+      //
+      if (typs1 == typs2) {
+        const gp_Cone aCon2 = aGeomSurf->Cone();
+        Standard_Real a2 = Abs(aCon2.SemiAngle());
+        bToCheck = bToCheck || (a2 < 0.02) || (a2 > 1.55);
+        //
+        if (a1 > 1.55 && a2 > 1.55) {//quasi-planes: if same domain, treat as canonic
+          const gp_Ax1 A1 = aCon1.Axis(), A2 = aCon2.Axis();
+          if (A1.IsParallel(A2,Precision::Angular())) {
+            const gp_Pnt Apex1 = aCon1.Apex(), Apex2 = aCon2.Apex();
+            const gp_Pln Plan1( Apex1, A1.Direction() );
+            if (Plan1.Distance( Apex2 ) <= Precision::Confusion()) {
+              bToCheck = Standard_False;
+            }
           }
         }
       }
-      else
-        TreatAsBiParametric = Standard_True;
+      //
+      TreatAsBiParametric = bToCheck;
+      if (aCTType == GeomAbs_Cone) {
+        aCTAx = aCon1.Axis();
+      }
     }
-  }
-
-  if(typs2 == GeomAbs_Cone)
-  {
-    const gp_Cone Con2 = theS2->Cone();
-    const Standard_Real a2 = Abs(Con2.SemiAngle());
-    if((a2 < 0.02) || (a2 > 1.55))
-    {
-      if(typs1 == GeomAbs_Plane)
-      {
-        if(a2 < 0.02)
-        {
-          const gp_Pln Plan1 = theS1->Plane();
-          const gp_Dir axec = Con2.Axis().Direction();
-          const gp_Dir axep = Plan1.Axis().Direction();
-          const Standard_Real ps = Abs(axec.Dot(axep));
-          if(ps<0.015)
-          {
-            TreatAsBiParametric = Standard_True;
+    //
+    if (typs1 == GeomAbs_Torus || typs2 == GeomAbs_Torus) {
+      const gp_Torus aTor1 = (aCTType == GeomAbs_Torus) ? 
+        aCTSurf->Torus() : aGeomSurf->Torus();
+      bToCheck = aTor1.MajorRadius() > aTor1.MinorRadius();
+      if (typs1 == typs2) {
+        const gp_Torus aTor2 = aGeomSurf->Torus();
+        bToCheck = aTor2.MajorRadius() > aTor2.MinorRadius();
+      }
+      //
+      if (aCTType == GeomAbs_Torus) {
+        aCTAx = aTor1.Axis();
+      }
+    }
+    //
+    if (bToCheck) {
+      const gp_Lin aL1(aCTAx);
+      //
+      switch (aGeomSurf->GetType()) {
+      case GeomAbs_Plane: {
+        aGeomAx = aGeomSurf->Plane().Axis();
+        if (aCTType == GeomAbs_Cone) {
+          bGeomGeom = 1;
+          if (Abs(aCTSurf->Cone().SemiAngle()) < 0.02) {
+            Standard_Real ps = Abs(aCTAx.Direction().Dot(aGeomAx.Direction()));
+            if(ps < 0.015) {
+              bGeomGeom = 0;
+            }
           }
         }
+        else {
+          if (aCTAx.IsParallel(aGeomAx, Precision::Angular()) ||
+              (aCTAx.IsNormal(aGeomAx, Precision::Angular()) && 
+               (aGeomSurf->Plane().Distance(aCTAx.Location()) < Precision::Confusion()))) {
+            bGeomGeom = 1;
+          }
+        }
+        bToCheck = Standard_False;
+        break;
       }
-      else
-        TreatAsBiParametric = Standard_True;
-    }
-
-    //// modified by jgv, 15.12.02 for OCC565 ////
-    if (typs1 == GeomAbs_Cone && TreatAsBiParametric)
-    {
-      const gp_Cone Con1 = theS1->Cone();
-      const Standard_Real a1 = Abs(Con1.SemiAngle());
-      //if collinear, treat as canonical
-      const gp_Ax1 A1 = Con1.Axis(), A2 = Con2.Axis();
-      const gp_Lin L1(A1);
-      if (A1.IsParallel(A2,Precision::Angular()) && 
-         (L1.Distance(A2.Location()) <= Precision::Confusion()))
-      {
+      case GeomAbs_Sphere: {
+        if (aL1.Distance(aGeomSurf->Sphere().Location()) < Precision::Confusion()) {
+          bGeomGeom = 1;
+        }
+        bToCheck = Standard_False;
+        break;
+      }
+      case GeomAbs_Cylinder:
+        aGeomAx = aGeomSurf->Cylinder().Axis();
+        break;
+      case GeomAbs_Cone: 
+        aGeomAx = aGeomSurf->Cone().Axis();
+        break;
+      case GeomAbs_Torus: 
+        aGeomAx = aGeomSurf->Torus().Axis();
+        break;
+      default: 
+        bToCheck = Standard_False;
+        break;
+      }
+      //
+      if (bToCheck) {
+        if (aCTAx.IsParallel(aGeomAx, Precision::Angular()) &&
+            (aL1.Distance(aGeomAx.Location()) <= Precision::Confusion())) {
+          bGeomGeom = 1;
+        }
+      }
+      //
+      if (bGeomGeom == 1) {
         TreatAsBiParametric = Standard_False;
       }
-      else if (a1 > 1.55 && a2 > 1.55) //quasi-planes: if same domain, treat as canonic
-      {
-        const gp_Ax1 A1 = Con1.Axis(), A2 = Con2.Axis();
-        if (A1.IsParallel(A2,Precision::Angular()))
-        {
-          const gp_Pnt Apex1 = Con1.Apex(), Apex2 = Con2.Apex();
-          const gp_Pln Plan1( Apex1, A1.Direction() );
-          if (Plan1.Distance( Apex2 ) <= Precision::Confusion())
-          {
-            TreatAsBiParametric = Standard_False;
-          }
-        }
-      }
-    }// if (typs1 == GeomAbs_Cone)    {
-  }// if(typs2 == GeomAbs_Cone)  {
+    }
+  }
+  //
 
   if(theD1->DomainIsInfinite() || theD2->DomainIsInfinite()) {
     TreatAsBiParametric= Standard_False;
@@ -837,6 +879,7 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  theS1,
     case GeomAbs_Cylinder:
     case GeomAbs_Sphere:
     case GeomAbs_Cone: ts1 = 1; break;
+    case GeomAbs_Torus: ts1 = bGeomGeom; break;
     default: break;
   }
 
@@ -847,9 +890,12 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  theS1,
     case GeomAbs_Cylinder:
     case GeomAbs_Sphere:
     case GeomAbs_Cone: ts2 = 1; break;
+    case GeomAbs_Torus: ts2 = bGeomGeom; break;
     default: break;
   }
-
+  //
+  // treatment of the cases with torus and any other geom surface
+  //
   // Possible intersection types: 1. ts1 == ts2 == 1 <Geom-Geom>
   //                              2. ts1 != ts2      <Geom-Param>
   //                              3. ts1 == ts2 == 0 <Param-Param>
@@ -886,7 +932,7 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  theS1,
     ParamParamPerfom(theS1, theD1, theS2, theD2, TolArc, TolTang, ListOfPnts, RestrictLine, typs1, typs2);
   }
 }
-		      
+
 //=======================================================================
 //function : Perform
 //purpose  : 
@@ -917,85 +963,127 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  theS1,
 
   GeomAbs_SurfaceType typs1 = theS1->GetType();
   GeomAbs_SurfaceType typs2 = theS2->GetType();
-  
+  //
+  //treatment of the cases with cone or torus
   Standard_Boolean TreatAsBiParametric = Standard_False;
-  if(typs1 == GeomAbs_Cone)
-  {
-    const gp_Cone Con1 = theS1->Cone();
-    const Standard_Real a1 = Abs(Con1.SemiAngle());
-    if((a1 < 0.02) || (a1 > 1.55))
-    {
-      if(typs2==GeomAbs_Plane)
-      {
-        if(a1 < 0.02)
-        {
-          const gp_Pln Plan2 = theS2->Plane();
-          const gp_Dir axec = Con1.Axis().Direction();
-          const gp_Dir axep = Plan2.Axis().Direction();
-          const Standard_Real ps = Abs(axec.Dot(axep));
-          if(ps < 0.015)
-          {
-            TreatAsBiParametric = Standard_True;
+  Standard_Integer bGeomGeom = 0;
+  //
+  if (typs1 == GeomAbs_Cone  || typs2 == GeomAbs_Cone ||
+      typs1 == GeomAbs_Torus || typs2 == GeomAbs_Torus) {
+    gp_Ax1 aCTAx, aGeomAx;
+    GeomAbs_SurfaceType aCTType;
+    Standard_Boolean bToCheck;
+    //
+    const Handle(Adaptor3d_HSurface)& aCTSurf = 
+      (typs1 == GeomAbs_Cone || typs1 == GeomAbs_Torus) ? theS1 : theS2;
+    const Handle(Adaptor3d_HSurface)& aGeomSurf = 
+      (typs1 == GeomAbs_Cone || typs1 == GeomAbs_Torus) ? theS2 : theS1;
+    //
+    aCTType = aCTSurf->GetType();
+    bToCheck = Standard_False;
+    //
+    if (typs1 == GeomAbs_Cone  || typs2 == GeomAbs_Cone) {
+      const gp_Cone aCon1 = (aCTType == GeomAbs_Cone) ? 
+        aCTSurf->Cone() : aGeomSurf->Cone();
+      Standard_Real a1 = Abs(aCon1.SemiAngle());
+      bToCheck = (a1 < 0.02) || (a1 > 1.55);
+      //
+      if (typs1 == typs2) {
+        const gp_Cone aCon2 = aGeomSurf->Cone();
+        Standard_Real a2 = Abs(aCon2.SemiAngle());
+        bToCheck = bToCheck || (a2 < 0.02) || (a2 > 1.55);
+        //
+        if (a1 > 1.55 && a2 > 1.55) {//quasi-planes: if same domain, treat as canonic
+          const gp_Ax1 A1 = aCon1.Axis(), A2 = aCon2.Axis();
+          if (A1.IsParallel(A2,Precision::Angular())) {
+            const gp_Pnt Apex1 = aCon1.Apex(), Apex2 = aCon2.Apex();
+            const gp_Pln Plan1( Apex1, A1.Direction() );
+            if (Plan1.Distance( Apex2 ) <= Precision::Confusion()) {
+              bToCheck = Standard_False;
+            }
           }
         }
       }
-      else
-        TreatAsBiParametric = Standard_True;
+      //
+      TreatAsBiParametric = bToCheck;
+      if (aCTType == GeomAbs_Cone) {
+        aCTAx = aCon1.Axis();
+      }
     }
-  }
-
-  if(typs2 == GeomAbs_Cone)
-  {
-    const gp_Cone Con2 = theS2->Cone();
-    const Standard_Real a2 = Abs(Con2.SemiAngle());
-    if((a2 < 0.02) || (a2 > 1.55))
-    {
-      if(typs1 == GeomAbs_Plane)
-      {
-        if(a2 < 0.02)
-        {
-          const gp_Pln Plan1 = theS1->Plane();
-          const gp_Dir axec = Con2.Axis().Direction();
-          const gp_Dir axep = Plan1.Axis().Direction();
-          const Standard_Real ps = Abs(axec.Dot(axep));
-          if(ps<0.015)
-          {
-            TreatAsBiParametric = Standard_True;
+    //
+    if (typs1 == GeomAbs_Torus || typs2 == GeomAbs_Torus) {
+      const gp_Torus aTor1 = (aCTType == GeomAbs_Torus) ? 
+        aCTSurf->Torus() : aGeomSurf->Torus();
+      bToCheck = aTor1.MajorRadius() > aTor1.MinorRadius();
+      if (typs1 == typs2) {
+        const gp_Torus aTor2 = aGeomSurf->Torus();
+        bToCheck = aTor2.MajorRadius() > aTor2.MinorRadius();
+      }
+      //
+      if (aCTType == GeomAbs_Torus) {
+        aCTAx = aTor1.Axis();
+      }
+    }
+    //
+    if (bToCheck) {
+      const gp_Lin aL1(aCTAx);
+      //
+      switch (aGeomSurf->GetType()) {
+      case GeomAbs_Plane: {
+        aGeomAx = aGeomSurf->Plane().Axis();
+        if (aCTType == GeomAbs_Cone) {
+          bGeomGeom = 1;
+          if (Abs(aCTSurf->Cone().SemiAngle()) < 0.02) {
+            Standard_Real ps = Abs(aCTAx.Direction().Dot(aGeomAx.Direction()));
+            if(ps < 0.015) {
+              bGeomGeom = 0;
+            }
           }
         }
+        else {
+          if (aCTAx.IsParallel(aGeomAx, Precision::Angular()) ||
+              (aCTAx.IsNormal(aGeomAx, Precision::Angular()) && 
+               (aGeomSurf->Plane().Distance(aCTAx.Location()) < Precision::Confusion()))) {
+            bGeomGeom = 1;
+          }
+        }
+        bToCheck = Standard_False;
+        break;
       }
-      else
-        TreatAsBiParametric = Standard_True;
-    }
-
-    //// modified by jgv, 15.12.02 for OCC565 ////
-    if (typs1 == GeomAbs_Cone && TreatAsBiParametric)
-    {
-      const gp_Cone Con1 = theS1->Cone();
-      const Standard_Real a1 = Abs(Con1.SemiAngle());
-      //if collinear, treat as canonical
-      const gp_Ax1 A1 = Con1.Axis(), A2 = Con2.Axis();
-      const gp_Lin L1(A1);
-      if (A1.IsParallel(A2,Precision::Angular()) &&
-         (L1.Distance(A2.Location()) <= Precision::Confusion()))
-      {
+      case GeomAbs_Sphere: {
+        if (aL1.Distance(aGeomSurf->Sphere().Location()) < Precision::Confusion()) {
+          bGeomGeom = 1;
+        }
+        bToCheck = Standard_False;
+        break;
+      }
+      case GeomAbs_Cylinder:
+        aGeomAx = aGeomSurf->Cylinder().Axis();
+        break;
+      case GeomAbs_Cone: 
+        aGeomAx = aGeomSurf->Cone().Axis();
+        break;
+      case GeomAbs_Torus: 
+        aGeomAx = aGeomSurf->Torus().Axis();
+        break;
+      default: 
+        bToCheck = Standard_False;
+        break;
+      }
+      //
+      if (bToCheck) {
+        if (aCTAx.IsParallel(aGeomAx, Precision::Angular()) &&
+            (aL1.Distance(aGeomAx.Location()) <= Precision::Confusion())) {
+          bGeomGeom = 1;
+        }
+      }
+      //
+      if (bGeomGeom == 1) {
         TreatAsBiParametric = Standard_False;
       }
-      else if (a1 > 1.55 && a2 > 1.55) //quasi-planes: if same domain, treat as canonic
-      {
-        const gp_Ax1 A1 = Con1.Axis(), A2 = Con2.Axis();
-        if (A1.IsParallel(A2,Precision::Angular()))
-        {
-          const gp_Pnt Apex1 = Con1.Apex(), Apex2 = Con2.Apex();
-          const gp_Pln Plan1( Apex1, A1.Direction() );
-          if (Plan1.Distance( Apex2 ) <= Precision::Confusion())
-          {
-            TreatAsBiParametric = Standard_False;
-          }
-        }
-      }
-    }// if (typs1 == GeomAbs_Cone)    {
-  }// if(typs2 == GeomAbs_Cone)  {
+    }
+  }
+  //
 
   if(theD1->DomainIsInfinite() || theD2->DomainIsInfinite()) {
     TreatAsBiParametric= Standard_False;
@@ -1016,6 +1104,7 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  theS1,
     case GeomAbs_Cylinder:
     case GeomAbs_Sphere:
     case GeomAbs_Cone: ts1 = 1; break;
+    case GeomAbs_Torus: ts1 = bGeomGeom; break;
     default: break;
   }
 
@@ -1026,9 +1115,10 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  theS1,
     case GeomAbs_Cylinder:
     case GeomAbs_Sphere:
     case GeomAbs_Cone: ts2 = 1; break;
+    case GeomAbs_Torus: ts2 = bGeomGeom; break;
     default: break;
   }
-
+  //
   // Possible intersection types: 1. ts1 == ts2 == 1 <Geom-Geom>
   //                              2. ts1 != ts2      <Geom-Param>
   //                              3. ts1 == ts2 == 0 <Param-Param>
@@ -1215,6 +1305,10 @@ void IntPatch_Intersection::GeomGeomPerfom(const Handle(Adaptor3d_HSurface)& the
             Quad1.SetValue(theS1->Cone());
             break;
 
+          case GeomAbs_Torus:
+            Quad1.SetValue(theS1->Torus());
+            break;
+
           default:
             break;
           }
@@ -1234,6 +1328,10 @@ void IntPatch_Intersection::GeomGeomPerfom(const Handle(Adaptor3d_HSurface)& the
 
           case GeomAbs_Cone:
             Quad2.SetValue(theS2->Cone());
+            break;
+
+          case GeomAbs_Torus:
+            Quad2.SetValue(theS2->Torus());
             break;
 
           default:
@@ -1322,13 +1420,14 @@ void IntPatch_Intersection::GeomParamPerfom(const Handle(Adaptor3d_HSurface)&  t
 
     if (!empt)
     {
-      for(Standard_Integer i = 1; i <= interip.NbLines(); i++)
+      const Standard_Integer aNbLines = interip.NbLines();
+      for(Standard_Integer i = 1; i <= aNbLines; i++)
       {
         if(interip.Line(i)->ArcType() != IntPatch_Walking)
           slin.Append(interip.Line(i));
       }
 
-      for(Standard_Integer i = 1; i <= interip.NbLines(); i++)
+      for(Standard_Integer i = 1; i <= aNbLines; i++)
       {
         if(interip.Line(i)->ArcType() == IntPatch_Walking)
           slin.Append(interip.Line(i));
@@ -1399,7 +1498,7 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  S1,
     IntPatch_PrmPrmIntersection interpp;
     interpp.Perform(S1,D1,S2,D2,U1,V1,U2,V2,TolArc,TolTang,myFleche,myUVMaxStep);
     if (interpp.IsDone())
-	{
+    {
       done = Standard_True;
       tgte = Standard_False;
       empt = interpp.IsEmpty();
@@ -1417,19 +1516,19 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  S1,
 
 
 //void IntPatch_Intersection__MAJ_R(Handle_Adaptor2d_HCurve2d *R1,
-//				     Handle_Adaptor2d_HCurve2d *R2,
-//				     int *NR1,
-//				     int *NR2,
-//				     Standard_Integer nbR1,
-//				     Standard_Integer nbR2,
-//				     const IntPatch_Point& VTX)
+//                                     Handle_Adaptor2d_HCurve2d *R2,
+//                                     int *NR1,
+//                                     int *NR2,
+//                                     Standard_Integer nbR1,
+//                                     Standard_Integer nbR2,
+//                                     const IntPatch_Point& VTX)
 void IntPatch_Intersection__MAJ_R(Handle_Adaptor2d_HCurve2d *,
-				     Handle_Adaptor2d_HCurve2d *,
-				     int *,
-				     int *,
-				     Standard_Integer ,
-				     Standard_Integer ,
-				     const IntPatch_Point& )
+                                  Handle_Adaptor2d_HCurve2d *,
+                                  int *,
+                                  int *,
+                                  Standard_Integer ,
+                                  Standard_Integer ,
+                                  const IntPatch_Point& )
 { 
   /*
   if(VTX.IsOnDomS1()) { 
@@ -1437,9 +1536,9 @@ void IntPatch_Intersection__MAJ_R(Handle_Adaptor2d_HCurve2d *,
     //-- long unsigned ptr= *((long unsigned *)(((Handle_Standard_Transient *)(&(VTX.ArcOnS1())))));
     for(Standard_Integer i=0; i<nbR1;i++) { 
       if(VTX.ArcOnS1()==R1[i]) { 
-	NR1[i]++;
-	printf("\n ******************************");
-	return;
+        NR1[i]++;
+        printf("\n ******************************");
+        return;
       }
     }
     printf("\n R Pas trouvee  (IntPatch)\n");
@@ -1451,10 +1550,10 @@ void IntPatch_Intersection__MAJ_R(Handle_Adaptor2d_HCurve2d *,
 
 //void IntPatch_Intersection::Dump(const Standard_Integer Mode,
 void IntPatch_Intersection::Dump(const Standard_Integer ,
-				    const Handle(Adaptor3d_HSurface)&  S1,
-				    const Handle(Adaptor3d_TopolTool)& D1,
-				    const Handle(Adaptor3d_HSurface)&  S2,
-				    const Handle(Adaptor3d_TopolTool)& D2) const 
+                                 const Handle(Adaptor3d_HSurface)&  S1,
+                                 const Handle(Adaptor3d_TopolTool)& D1,
+                                 const Handle(Adaptor3d_HSurface)&  S2,
+                                 const Handle(Adaptor3d_TopolTool)& D2) const 
 { 
   
   //-- ----------------------------------------------------------------------
@@ -1485,23 +1584,24 @@ void IntPatch_Intersection::Dump(const Standard_Integer ,
     else     if(IType == IntPatch_Restriction) { 
       nbr++;
       Handle(IntPatch_RLine)& rlin =
-	*((Handle(IntPatch_RLine) *)&line);
+        *((Handle(IntPatch_RLine) *)&line);
       if(rlin->IsArcOnS1()) nbr1++;
       if(rlin->IsArcOnS2()) nbr2++;
     }
     else     if(IType == IntPatch_Analytic) nba++;
-    else     { nbg++; 
-	       if(IType == IntPatch_Lin) nbgl++;
-	       else if(IType == IntPatch_Circle) nbgc++;
-	       else if(IType == IntPatch_Parabola) nbgp++;
-	       else if(IType == IntPatch_Hyperbola) nbgh++;
-	       else if(IType == IntPatch_Ellipse) nbge++;
-	     }
+    else     { 
+      nbg++; 
+      if(IType == IntPatch_Lin) nbgl++;
+      else if(IType == IntPatch_Circle) nbgc++;
+      else if(IType == IntPatch_Parabola) nbgp++;
+      else if(IType == IntPatch_Hyperbola) nbgh++;
+      else if(IType == IntPatch_Ellipse) nbge++;
+    }
   }
   
   
   printf("\nDUMP_INT:Lines:%2d Wlin:%2d Restr:%2d(On1:%2d On2:%2d) Ana:%2d Geom:%2d(L:%2d C:%2d E:%2d H:%2d P:%2d)",
-	 nbl,nbw,nbr,nbr1,nbr2,nba,nbg,nbgl,nbgc,nbge,nbgh,nbgp);
+         nbl,nbw,nbr,nbr1,nbr2,nba,nbg,nbgl,nbgc,nbge,nbgh,nbgp);
   
   IntPatch_LineConstructor LineConstructor(2);
   
@@ -1520,47 +1620,47 @@ void IntPatch_Intersection::Dump(const Standard_Integer ,
       nbllc++;
       const Handle(IntPatch_Line)& LineK = LineConstructor.Line(k);
       if (LineK->ArcType() == IntPatch_Analytic) { 
-	Handle(IntPatch_ALine)& alin =
-	  *((Handle(IntPatch_ALine) *)&LineK);
-	nbvtx=alin->NbVertex();
-	nbva+=nbvtx;	nba++;
-	for(v=1;v<=nbvtx;v++) { 
-	  IntPatch_Intersection__MAJ_R(R1,R2,NR1,NR2,nbR1,nbR2,alin->Vertex(v));
-	}
+        Handle(IntPatch_ALine)& alin =
+          *((Handle(IntPatch_ALine) *)&LineK);
+        nbvtx=alin->NbVertex();
+        nbva+=nbvtx;        nba++;
+        for(v=1;v<=nbvtx;v++) { 
+          IntPatch_Intersection__MAJ_R(R1,R2,NR1,NR2,nbR1,nbR2,alin->Vertex(v));
+        }
       }
       else if (LineK->ArcType() == IntPatch_Restriction) {
-	Handle(IntPatch_RLine)& rlin =
-	  *((Handle(IntPatch_RLine) *)&LineK);
-	nbvtx=rlin->NbVertex();
-	nbvr+=nbvtx;	nbr++;
-	for(v=1;v<=nbvtx;v++) { 
-	  IntPatch_Intersection__MAJ_R(R1,R2,NR1,NR2,nbR1,nbR2,rlin->Vertex(v));
-	}
+        Handle(IntPatch_RLine)& rlin =
+          *((Handle(IntPatch_RLine) *)&LineK);
+        nbvtx=rlin->NbVertex();
+        nbvr+=nbvtx;        nbr++;
+        for(v=1;v<=nbvtx;v++) { 
+          IntPatch_Intersection__MAJ_R(R1,R2,NR1,NR2,nbR1,nbR2,rlin->Vertex(v));
+        }
       }
       else if (LineK->ArcType() == IntPatch_Walking) {
-	Handle(IntPatch_WLine)& wlin =
-	  *((Handle(IntPatch_WLine) *)&LineK);
-	nbvtx=wlin->NbVertex();
-	nbvw+=nbvtx;	nbw++;
-	for(v=1;v<=nbvtx;v++) { 
-	  IntPatch_Intersection__MAJ_R(R1,R2,NR1,NR2,nbR1,nbR2,wlin->Vertex(v));
-	}
+        Handle(IntPatch_WLine)& wlin =
+          *((Handle(IntPatch_WLine) *)&LineK);
+        nbvtx=wlin->NbVertex();
+        nbvw+=nbvtx;        nbw++;
+        for(v=1;v<=nbvtx;v++) { 
+          IntPatch_Intersection__MAJ_R(R1,R2,NR1,NR2,nbR1,nbR2,wlin->Vertex(v));
+        }
       }
       else { 
-	Handle(IntPatch_GLine)& glin =
-	  *((Handle(IntPatch_GLine) *)&LineK);
-	nbvtx=glin->NbVertex();
-	nbvg+=nbvtx;	nbg++;
-	for(v=1;v<=nbvtx;v++) { 
-	  IntPatch_Intersection__MAJ_R(R1,R2,NR1,NR2,nbR1,nbR2,glin->Vertex(v));
-	}
+        Handle(IntPatch_GLine)& glin =
+          *((Handle(IntPatch_GLine) *)&LineK);
+        nbvtx=glin->NbVertex();
+        nbvg+=nbvtx;        nbg++;
+        for(v=1;v<=nbvtx;v++) { 
+          IntPatch_Intersection__MAJ_R(R1,R2,NR1,NR2,nbR1,nbR2,glin->Vertex(v));
+        }
       }
     }
   }
   printf("\nDUMP_LC :Lines:%2d WLin:%2d Restr:%2d Ana:%2d Geom:%2d",
-	 nbllc,nbw,nbr,nba,nbg);
+         nbllc,nbw,nbr,nba,nbg);
   printf("\nDUMP_LC :vtx          :%2d     r:%2d    :%2d     :%2d",
-	 nbvw,nbvr,nbva,nbvg);
+         nbvw,nbvr,nbva,nbvg);
 
 
 

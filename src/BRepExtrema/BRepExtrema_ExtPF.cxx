@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -24,6 +24,7 @@
 #include <BRepClass_FaceClassifier.hxx>
 #include <gp_Pnt2d.hxx>
 #include <BRepAdaptor_Surface.hxx>
+#include <Precision.hxx>
 
 //=======================================================================
 //function : BRepExtrema_ExtPF
@@ -48,12 +49,15 @@ void BRepExtrema_ExtPF::Initialize(const TopoDS_Face& TheFace,
   // cette surface doit etre en champ. Extrema ne fait
   // pas de copie et prend seulement un pointeur dessus.
   mySurf.Initialize(TheFace, Standard_False); 
-  const Standard_Real Tol = BRep_Tool::Tolerance(TheFace);
+  Standard_Real Tol = Min(BRep_Tool::Tolerance(TheFace), Precision::Confusion());
+  Standard_Real aTolU, aTolV;
+  aTolU = Max(mySurf.UResolution(Tol), Precision::PConfusion());
+  aTolV = Max(mySurf.VResolution(Tol), Precision::PConfusion()); 
   Standard_Real U1, U2, V1, V2;
   BRepTools::UVBounds(TheFace, U1, U2, V1, V2);
   myExtPS.SetFlag(TheFlag);
   myExtPS.SetAlgo(TheAlgo);
-  myExtPS.Initialize(mySurf, U1, U2, V1, V2, Tol, Tol);
+  myExtPS.Initialize(mySurf, U1, U2, V1, V2, aTolU, aTolV);
 }
 
 //=======================================================================

@@ -1,3 +1,6 @@
+#ifndef _TopoDS_Solid_HeaderFile
+#include <TopoDS_Solid.hxx>
+#endif
 #ifndef _BOPAlgo_BuilderSolid_HeaderFile
 #include <BOPAlgo_BuilderSolid.hxx>
 #endif

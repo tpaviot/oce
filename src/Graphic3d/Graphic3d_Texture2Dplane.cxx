@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -39,6 +39,21 @@ Graphic3d_Texture2Dplane::Graphic3d_Texture2Dplane (const TCollection_AsciiStrin
 // =======================================================================
 Graphic3d_Texture2Dplane::Graphic3d_Texture2Dplane (const Graphic3d_NameOfTexture2D theNOT)
 : Graphic3d_Texture2D (theNOT, Graphic3d_TOT_2D_MIPMAP)
+{
+  myParams->SetModulate (Standard_True);
+  myParams->SetRepeat   (Standard_True);
+  myParams->SetFilter   (Graphic3d_TOTF_TRILINEAR);
+  myParams->SetGenMode  (Graphic3d_TOTM_OBJECT,
+                         Graphic3d_Vec4 (1.0f, 0.0f, 0.0f, 0.0f),
+                         Graphic3d_Vec4 (0.0f, 1.0f, 0.0f, 0.0f));
+}
+
+// =======================================================================
+// function : Graphic3d_Texture2Dplane
+// purpose  :
+// =======================================================================
+Graphic3d_Texture2Dplane::Graphic3d_Texture2Dplane (const Handle(Image_PixMap)& thePixMap)
+: Graphic3d_Texture2D (thePixMap, Graphic3d_TOT_2D_MIPMAP)
 {
   myParams->SetModulate (Standard_True);
   myParams->SetRepeat   (Standard_True);

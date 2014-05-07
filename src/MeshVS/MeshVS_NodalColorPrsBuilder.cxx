@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -62,40 +62,17 @@
 */
 class MeshVS_ImageTexture2D : public Graphic3d_Texture2D
 {
-
 public:
 
-  MeshVS_ImageTexture2D (const Handle(Image_PixMap)& theImg)
-  : Graphic3d_Texture2D ("", Graphic3d_TOT_2D),
-    myImage (theImg)
+  MeshVS_ImageTexture2D (const Handle(Image_PixMap)& theImg) : Graphic3d_Texture2D (theImg, Graphic3d_TOT_2D)
   {
     myParams->SetModulate (Standard_True);
     myParams->SetFilter   (Graphic3d_TOTF_BILINEAR);
   }
 
-  virtual ~MeshVS_ImageTexture2D()
-  {
-    //
-  }
-
-  virtual Standard_Boolean IsDone() const
-  {
-    return !myImage.IsNull() && !myImage->IsEmpty();
-  }
-
-  virtual Handle(Image_PixMap) GetImage() const
-  {
-    return myImage;
-  }
-
-private:
-
-  Handle(Image_PixMap) myImage;
-
 public:
 
   DEFINE_STANDARD_RTTI(MeshVS_ImageTexture2D)
-
 };
 
 DEFINE_STANDARD_HANDLE    (MeshVS_ImageTexture2D, Graphic3d_Texture2D)

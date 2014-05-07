@@ -5,8 +5,8 @@
 
  This file is part of Open CASCADE Technology software library.
 
- This library is free software; you can redistribute it and / or modify it
- under the terms of the GNU Lesser General Public version 2.1 as published
+ This library is free software; you can redistribute it and/or modify it under
+ the terms of the GNU Lesser General Public License version 2.1 as published
  by the Free Software Foundation, with special exception defined in the file
  OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
  distribution for complete text of the license and disclaimer of any warranty.
@@ -48,6 +48,9 @@ int yywrap()
 // add includes for flex 2.91 (Linux version)
 #include <stdlib.h>
 #include <io.h>
+
+// Avoid includion of unistd.h if parser is generated on Linux (flex 2.5.35)
+#define YY_NO_UNISTD_H
 
 // disable MSVC warnings in flex 2.89 code
 #pragma warning(disable:4131 4244 4273 4127)

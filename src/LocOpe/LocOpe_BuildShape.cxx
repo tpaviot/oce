@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -261,7 +261,7 @@ void LocOpe_BuildShape::Perform(const TopTools_ListOfShape& L)
       }
       imbSh.Clear();
     }
-  } while (!imbSh.Extent() == 0);
+  } while (imbSh.Extent() != 0);
 
   Standard_Integer nbsol = lsolid.Extent();
   Standard_Integer nbshl = lshell.Extent();

@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -109,13 +109,13 @@ gp_Pnt AIS_DiameterDimension::AnchorPoint()
 //=======================================================================
 void AIS_DiameterDimension::SetMeasuredGeometry (const gp_Circ& theCircle)
 {
-  myCircle       = theCircle;
-  myGeometryType = GeometryType_Edge;
-  myShape        = BRepLib_MakeEdge (theCircle);
-  myAnchorPoint  = gp::Origin();
-  myIsValid      = IsValidCircle (myCircle);
+  myCircle          = theCircle;
+  myGeometryType    = GeometryType_Edge;
+  myShape           = BRepLib_MakeEdge (theCircle);
+  myAnchorPoint     = gp::Origin();
+  myIsGeometryValid = IsValidCircle (myCircle);
 
-  if (myIsValid && myIsPlaneCustom)
+  if (myIsGeometryValid && myIsPlaneCustom)
   {
     ComputeAnchorPoint();
   }
@@ -124,8 +124,6 @@ void AIS_DiameterDimension::SetMeasuredGeometry (const gp_Circ& theCircle)
     ComputePlane();
     myAnchorPoint = ElCLib::Value (0.0, myCircle);
   }
-
-  myIsValid &= CheckPlane (myPlane);
 
   SetToUpdate();
 }
@@ -139,14 +137,14 @@ void AIS_DiameterDimension::SetMeasuredGeometry (const TopoDS_Shape& theShape)
   gp_Pnt aDummyPnt (gp::Origin());
   Standard_Boolean isClosed = Standard_False;
 
-  myGeometryType = GeometryType_UndefShapes;
-  myShape        = theShape;
-  myAnchorPoint  = gp::Origin();
-  myIsValid      = InitCircularDimension (theShape, myCircle, aDummyPnt, isClosed)
-                 && IsValidCircle (myCircle)
-                 && isClosed;
+  myGeometryType    = GeometryType_UndefShapes;
+  myShape           = theShape;
+  myAnchorPoint     = gp::Origin();
+  myIsGeometryValid = InitCircularDimension (theShape, myCircle, aDummyPnt, isClosed)
+                      && IsValidCircle (myCircle)
+                      && isClosed;
 
-  if (myIsValid && myIsPlaneCustom)
+  if (myIsGeometryValid && myIsPlaneCustom)
   {
     ComputeAnchorPoint();
   }
@@ -155,8 +153,6 @@ void AIS_DiameterDimension::SetMeasuredGeometry (const TopoDS_Shape& theShape)
     ComputePlane();
     myAnchorPoint = ElCLib::Value (0.0, myCircle);
   }
-
-  myIsValid &= CheckPlane (myPlane);
 
   SetToUpdate();
 }
@@ -182,7 +178,7 @@ Standard_Boolean AIS_DiameterDimension::CheckPlane (const gp_Pln& thePlane) cons
 //=======================================================================
 void AIS_DiameterDimension::ComputePlane()
 {
-  if (!IsValid())
+  if (!myIsGeometryValid)
   {
     return;
   }
@@ -202,7 +198,7 @@ void AIS_DiameterDimension::ComputeAnchorPoint()
   GeomAPI_IntCS anIntersector (aCircle, aPlane);
   if (!anIntersector.IsDone())
   {
-    myIsValid = Standard_False;
+    myIsGeometryValid = Standard_False;
     return;
   }
 
@@ -210,7 +206,7 @@ void AIS_DiameterDimension::ComputeAnchorPoint()
   if (anIntersector.NbPoints() != 2)
   {
     myAnchorPoint = ElCLib::Value (0.0, myCircle);
-    myIsValid = Standard_True;
+    myIsGeometryValid = Standard_True;
     return;
   }
 
@@ -296,7 +292,7 @@ void AIS_DiameterDimension::Compute (const Handle(PrsMgr_PresentationManager3d)&
 
   gp_Pnt aFirstPnt (gp::Origin());
   gp_Pnt aSecondPnt (gp::Origin());
-  ComputeSidePoints (myCircle, GetPlane(), aFirstPnt, aSecondPnt);
+  ComputeSidePoints (myCircle, aFirstPnt, aSecondPnt);
 
   DrawLinearDimension (thePresentation, theMode, aFirstPnt, aSecondPnt);
 }
@@ -315,7 +311,7 @@ void AIS_DiameterDimension::ComputeFlyoutSelection (const Handle(SelectMgr_Selec
 
   gp_Pnt aFirstPnt (gp::Origin());
   gp_Pnt aSecondPnt (gp::Origin());
-  ComputeSidePoints (myCircle, GetPlane(), aFirstPnt, aSecondPnt);
+  ComputeSidePoints (myCircle, aFirstPnt, aSecondPnt);
 
   ComputeLinearFlyouts (theSelection, theEntityOwner, aFirstPnt, aSecondPnt);
 }
@@ -324,15 +320,14 @@ void AIS_DiameterDimension::ComputeFlyoutSelection (const Handle(SelectMgr_Selec
 //function : ComputeSidePoints
 //purpose  : 
 //=======================================================================
-void AIS_DiameterDimension::ComputeSidePoints (const gp_Circ& /*theCircle*/,
-                                               const gp_Pln& /*thePlane*/,
+void AIS_DiameterDimension::ComputeSidePoints (const gp_Circ& theCircle,
                                                gp_Pnt& theFirstPnt,
                                                gp_Pnt& theSecondPnt)
 {
   theFirstPnt = AnchorPoint();
 
-  gp_Vec aRadiusVector (myCircle.Location(), theFirstPnt);
-  theSecondPnt = myCircle.Location().Translated (-aRadiusVector);
+  gp_Vec aRadiusVector (theCircle.Location(), theFirstPnt);
+  theSecondPnt = theCircle.Location().Translated (-aRadiusVector);
 }
 
 //=======================================================================
@@ -357,4 +352,36 @@ Standard_Boolean AIS_DiameterDimension::IsValidAnchor (const gp_Circ& theCircle,
 
   return Abs (anAnchorDist - aRadius) > Precision::Confusion()
       && aCirclePlane.Contains (theAnchor, Precision::Confusion());
+}
+
+//=======================================================================
+//function : GetTextPosition
+//purpose  : 
+//=======================================================================
+const gp_Pnt AIS_DiameterDimension::GetTextPosition() const
+{
+  if (IsTextPositionCustom())
+  {
+    return myFixedTextPosition;
+  }
+  
+  // Counts text position according to the dimension parameters
+  return GetTextPositionForLinear (myAnchorPoint, myCircle.Location());
+}
+
+//=======================================================================
+//function : GetTextPosition
+//purpose  : 
+//=======================================================================
+void AIS_DiameterDimension::SetTextPosition (const gp_Pnt& theTextPos)
+{
+  if (!IsValid())
+  {
+    return;
+  }
+
+  myIsTextPositionFixed = Standard_True;
+  myFixedTextPosition = theTextPos;
+
+  SetToUpdate();
 }

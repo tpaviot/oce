@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -115,15 +115,15 @@ Standard_Boolean MAT_Arc::HasNeighbour(const Handle(MAT_Node)& aNode,
 {
   if (aSide == MAT_Left) {
 //    if (aNode == FirstNode())  return (!firstArcLeft  == NULL);
-    if (aNode == FirstNode())  return (!firstArcLeft  == 0);
+    if (aNode == FirstNode())  return (firstArcLeft != 0);
 //    if (aNode == SecondNode()) return (!secondArcLeft == NULL);
-    if (aNode == SecondNode()) return (!secondArcLeft == 0);
+    if (aNode == SecondNode()) return (secondArcLeft != 0);
   }
   else {
 //    if (aNode == FirstNode())  return (!firstArcRight  == NULL);
-    if (aNode == FirstNode())  return (!firstArcRight  == 0);
+    if (aNode == FirstNode())  return (firstArcRight != 0);
 //    if (aNode == SecondNode()) return (!secondArcRight == NULL);
-    if (aNode == SecondNode()) return (!secondArcRight == 0);
+    if (aNode == SecondNode()) return (secondArcRight != 0);
   }
   Standard_DomainError::Raise("MAT_Arc::HasNeighbour");
   return Standard_False;

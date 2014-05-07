@@ -49,6 +49,10 @@ public:
 //! Returns true if the type  <theT> correspond <br>
 //! to a shape having boundary representation <br>
       static  Standard_Boolean HasBRep(const TopAbs_ShapeEnum theT) ;
+  
+//! Returns true if the type <theT> can be participant of <br>
+//! an interference <br>
+      static  Standard_Boolean IsInterfering(const TopAbs_ShapeEnum theT) ;
 
 
 

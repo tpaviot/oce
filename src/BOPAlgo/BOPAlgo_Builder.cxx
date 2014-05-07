@@ -6,8 +6,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -36,13 +36,11 @@ BOPAlgo_Builder::BOPAlgo_Builder()
   myMapFence(100, myAllocator),
   myPaveFiller(NULL),
   myDS(NULL),
-  //myContext(NULL),
   myEntryPoint(0),
   myImages(100, myAllocator),
   myShapesSD(100, myAllocator),
   mySplits(100, myAllocator),
-  myOrigins(100, myAllocator),
-  myRunParallel(Standard_False)
+  myOrigins(100, myAllocator)
 {
 }
 //=======================================================================
@@ -57,13 +55,11 @@ BOPAlgo_Builder::BOPAlgo_Builder
   myMapFence(100, myAllocator),
   myPaveFiller(NULL),
   myDS(NULL),
-  //myContext(NULL),
   myEntryPoint(0),
   myImages(100, myAllocator), 
   myShapesSD(100, myAllocator),
   mySplits(100, myAllocator),
-  myOrigins(100, myAllocator),
-  myRunParallel(Standard_False)
+  myOrigins(100, myAllocator)
 {
 }
 //=======================================================================
@@ -91,22 +87,6 @@ void BOPAlgo_Builder::Clear()
   myShapesSD.Clear();
   mySplits.Clear();
   myOrigins.Clear();
-}
-//=======================================================================
-//function : SetRunParallel
-//purpose  : 
-//=======================================================================
-void BOPAlgo_Builder::SetRunParallel(const Standard_Boolean theFlag)
-{
-  myRunParallel=theFlag;
-}
-//=======================================================================
-//function : RunParallel
-//purpose  : 
-//=======================================================================
-Standard_Boolean BOPAlgo_Builder::RunParallel()const
-{
-  return myRunParallel;
 }
 //=======================================================================
 //function : AddArgument

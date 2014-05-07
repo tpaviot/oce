@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -63,7 +63,7 @@
 
 // for the class
 #include <Graphic3d_MaterialAspect.ixx>
-
+#include <Standard_Assert.hxx>
 //-Aliases
 
 //-Global data definitions
@@ -887,10 +887,8 @@ static Material theMaterials[] = {
 };
 
 Standard_Integer Graphic3d_MaterialAspect::NumberOfMaterials() {
-Standard_Integer n =sizeof(theMaterials)/sizeof(Material);
-  if( n > Graphic3d_NOM_DEFAULT ) {
-    cout << " *** Graphic3d_MaterialAspect::NumberOfMaterials() may return a badvalue due to incoherente size between material name array and enum" << endl;
-  }
+  Standard_STATIC_ASSERT(sizeof(theMaterials)/sizeof(Material) == Graphic3d_NOM_DEFAULT);
+
   return Graphic3d_NOM_DEFAULT;
 }
 
@@ -900,6 +898,48 @@ Standard_CString Graphic3d_MaterialAspect::MaterialName(const Standard_Integer a
         Standard_OutOfRange::Raise(" BAD index of material");
 
   return theMaterials[aRank-1].name;
+}
+
+Graphic3d_NameOfMaterial Graphic3d_MaterialAspect::MaterialFromName (const Standard_CString theName)
+{
+  TCollection_AsciiString aName (theName);
+  aName.LowerCase();
+  aName.Capitalize();
+  const Standard_Integer aNbMaterials = Graphic3d_MaterialAspect::NumberOfMaterials();
+  for (Standard_Integer aMatIter = 1; aMatIter <= aNbMaterials; ++aMatIter)
+  {
+    if (aName == Graphic3d_MaterialAspect::MaterialName (aMatIter))
+    {
+      return Graphic3d_NameOfMaterial(aMatIter - 1);
+    }
+  }
+
+  // parse aliases
+  if (aName == "Plastic")            // Plastified
+  {
+    return Graphic3d_NOM_PLASTIC;
+  }
+  else if (aName == "Shiny_plastic") // Shiny_plastified
+  {
+    return Graphic3d_NOM_SHINY_PLASTIC;
+  }
+  else if (aName == "Plaster")       // Plastered
+  {
+    return Graphic3d_NOM_PLASTER;
+  }
+  else if (aName == "Satin")         // Satined
+  {
+    return Graphic3d_NOM_SATIN;
+  }
+  else if (aName == "Neon_gnc")      // Ionized
+  {
+    return Graphic3d_NOM_NEON_GNC;
+  }
+  else if (aName == "Neon_phc") // Neon
+  {
+    return Graphic3d_NOM_NEON_PHC;
+  }
+  return Graphic3d_NOM_DEFAULT;
 }
 
 Graphic3d_TypeOfMaterial Graphic3d_MaterialAspect::MaterialType(const Standard_Integer aRank) {

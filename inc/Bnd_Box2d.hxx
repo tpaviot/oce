@@ -146,6 +146,8 @@ public:
         Standard_Boolean IsOut(const gp_Trsf2d& T1,const Bnd_Box2d& Other,const gp_Trsf2d& T2) const;
   
   Standard_EXPORT     void Dump() const;
+  //! Computes the squared diagonal of me. <br>
+        Standard_Real SquareExtent() const;
 
 
 
