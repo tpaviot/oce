@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -108,8 +108,6 @@ GccAna_Circ2d3Tan::
 	   Standard_Real dist2 = Center.Distance(Point2);
 
 	   Standard_Real Radius=0;
-	   Standard_Integer nbsol1 = 0;
-//	   Standard_Integer nbsol2 = 0;
 	   Standard_Integer nbsol3 = 0;
 	   Standard_Boolean ok = Standard_False;
      Standard_Real  difference = (((origin1.X()-Center.X())*(-dir1.Y())) + ((origin1.Y()-Center.Y())*(dir1.X())));
@@ -118,7 +116,6 @@ GccAna_Circ2d3Tan::
          (Qualified1.IsUnqualified()))
      {
        ok = Standard_True;
-       nbsol1 = 1;
        Radius = dist1;
      }
 	   if (ok) {

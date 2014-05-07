@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -472,7 +472,6 @@ void ShapeUpgrade_WireDivide::Perform ()
       Standard_Integer numE =0;
       gp_Pnt pntV1 = BRep_Tool::Pnt(V1);
       //gp_Pnt pntV2 = BRep_Tool::Pnt(V2); // pntV2 not used - see below (skl)
-      Standard_Real V1Tol = LimitTolerance( BRep_Tool::Tolerance(V1) );
       //Standard_Real V2Tol = LimitTolerance( BRep_Tool::Tolerance(V2) ); // V2Tol not used - see below (skl)
       
       Handle(ShapeUpgrade_FixSmallCurves) FixSmallCurveTool = GetFixSmallCurveTool(); //gka Precision
@@ -582,7 +581,6 @@ void ShapeUpgrade_WireDivide::Perform ()
 	  if(icurv != nbc)  {
 	    B.MakeVertex (V, P, TolEdge); //tolerance of the edge
 	    pntV1 = P;
-	    V1Tol = LimitTolerance( TolEdge );
 	  }
 	  else V = V2;
 	 // else  V2;

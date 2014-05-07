@@ -2,8 +2,7 @@
 srcdir = @srcdir@
 
 VPATH = @srcdir@ : \
-@top_srcdir@/drv/BRepMesh : @top_srcdir@/src/BRepMesh: \
-@top_srcdir@/drv/IntPoly : @top_srcdir@/src/IntPoly
+@top_srcdir@/drv/BRepMesh : @top_srcdir@/src/BRepMesh
 
 
 AM_CXXFLAGS = 
@@ -14,8 +13,7 @@ AM_CFLAGS =
 
 INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES) $(CSF_TBB_INCLUDES)  \
 -I@top_srcdir@/inc \
--I@top_srcdir@/drv/BRepMesh -I@top_srcdir@/src/BRepMesh \
--I@top_srcdir@/drv/IntPoly -I@top_srcdir@/src/IntPoly
+-I@top_srcdir@/drv/BRepMesh -I@top_srcdir@/src/BRepMesh
 
 
 lib_LTLIBRARIES=libTKMesh.la
@@ -77,14 +75,6 @@ libTKMesh_la_SOURCES = \
 @top_srcdir@/drv/BRepMesh/BRepMesh_ListOfXY_0.cxx \
 @top_srcdir@/drv/BRepMesh/BRepMesh_NodeHasherOfDataStructureOfDelaun_0.cxx \
 @top_srcdir@/drv/BRepMesh/BRepMesh_VertexHasher_0.cxx \
-@top_srcdir@/drv/IntPoly/IntPoly_IndexedMapNodeOfIndexedMapOfPnt2d_0.cxx \
-@top_srcdir@/drv/IntPoly/IntPoly_IndexedMapNodeOfIndexedMapOfPnt_0.cxx \
-@top_srcdir@/drv/IntPoly/IntPoly_IndexedMapOfPnt2d_0.cxx \
-@top_srcdir@/drv/IntPoly/IntPoly_IndexedMapOfPnt_0.cxx \
-@top_srcdir@/drv/IntPoly/IntPoly_SequenceNodeOfSequenceOfSequenceOfPnt2d_0.cxx \
-@top_srcdir@/drv/IntPoly/IntPoly_SequenceNodeOfSequenceOfSequenceOfPnt_0.cxx \
-@top_srcdir@/drv/IntPoly/IntPoly_SequenceOfSequenceOfPnt2d_0.cxx \
-@top_srcdir@/drv/IntPoly/IntPoly_SequenceOfSequenceOfPnt_0.cxx \
 @top_srcdir@/src/BRepMesh/BRepMesh.cxx \
 @top_srcdir@/src/BRepMesh/BRepMesh_BiPoint.cxx \
 @top_srcdir@/src/BRepMesh/BRepMesh_Circ.cxx \
@@ -108,9 +98,5 @@ libTKMesh_la_SOURCES = \
 @top_srcdir@/src/BRepMesh/BRepMesh_Triangle.cxx \
 @top_srcdir@/src/BRepMesh/BRepMesh_Vertex.cxx \
 @top_srcdir@/src/BRepMesh/BRepMesh_VertexInspector.cxx \
-@top_srcdir@/src/BRepMesh/BRepMesh_VertexTool.cxx \
-@top_srcdir@/src/IntPoly/IntPoly_PlaneSection.cxx \
-@top_srcdir@/src/IntPoly/IntPoly_Pnt2dHasher.cxx \
-@top_srcdir@/src/IntPoly/IntPoly_PntHasher.cxx \
-@top_srcdir@/src/IntPoly/IntPoly_ShapeSection.cxx
+@top_srcdir@/src/BRepMesh/BRepMesh_VertexTool.cxx
 

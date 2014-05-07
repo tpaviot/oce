@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -46,12 +46,8 @@ void RWStepDimTol_RWCommonDatum::ReadStep (const Handle(StepData_StepReaderData)
   data->ReadString (num, 1, "shape_aspect.name", ach, aShapeAspect_Name);
 
   Handle(TCollection_HAsciiString) aShapeAspect_Description;
-  Standard_Boolean hasShapeAspect_Description = Standard_True;
   if ( data->IsParamDefined (num,2) ) {
     data->ReadString (num, 2, "shape_aspect.description", ach, aShapeAspect_Description);
-  }
-  else {
-    hasShapeAspect_Description = Standard_False;
   }
 
   Handle(StepRepr_ProductDefinitionShape) aShapeAspect_OfShape;

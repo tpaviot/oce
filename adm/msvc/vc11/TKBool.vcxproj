@@ -920,6 +920,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape_0.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape_0.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfPnt_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfReal_0.cxx">
@@ -932,6 +934,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape_0.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape_0.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal_0.cxx">
@@ -943,6 +947,8 @@
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapOfOrientedShapeListOfShape_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapOfShapeDataMapOfShapeListOfShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapOfShapeHArray2OfShape_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapOfShapeSequenceOfPnt_0.cxx">
     </ClCompile>

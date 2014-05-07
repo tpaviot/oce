@@ -540,15 +540,6 @@
 					RelativePath="..\..\..\src\OSD\OSD_Chronometer.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OSD\OSD_Cmailbox.c">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OSD\OSD_Csemaphore.c">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OSD\OSD_Csharedmemory.c">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OSD\OSD_Directory.cxx">
 				</File>
 				<File
@@ -579,16 +570,10 @@
 					RelativePath="..\..\..\src\OSD\OSD_Function.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OSD\OSD_Getkey.c">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OSD\OSD_Host.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_MAllocHook.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OSD\OSD_MailBox.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_MemInfo.cxx">
@@ -609,13 +594,7 @@
 					RelativePath="..\..\..\src\OSD\OSD_Protection.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OSD\OSD_Semaphore.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OSD\OSD_SharedLibrary.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OSD\OSD_SharedMemory.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_Thread.cxx">

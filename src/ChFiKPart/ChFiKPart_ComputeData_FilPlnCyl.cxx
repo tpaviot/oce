@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -77,13 +77,12 @@ Standard_Boolean ChFiKPart_MakeFillet(TopOpeBRepDS_DataStructure& DStr,
 
   // Parallel cylinder
   Standard_Real    ROff = Cyl.Radius();
-  Standard_Boolean dedans = Standard_False;
 
   if ((Or2 == TopAbs_FORWARD  &&  Cyl.Direct()) ||
       (Or2 == TopAbs_REVERSED && !Cyl.Direct()))
       ROff+=Radius;
   else if (Radius < ROff)  {
-    ROff-=Radius;dedans = Standard_True;
+    ROff-=Radius;
   }
   else {
 #ifdef DEB

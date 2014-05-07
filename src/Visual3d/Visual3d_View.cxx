@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -1671,7 +1671,7 @@ void Visual3d_View::Update (const Handle(Visual3d_Layer)& AnUnderLayer, const Ha
 
         if (MyGraphicDriver->IsDeviceLost())
         {
-          MyViewManager->ReComputeStructures();
+          MyViewManager->RecomputeStructures();
           MyGraphicDriver->ResetDeviceLostFlag();
         }
 
@@ -3021,22 +3021,20 @@ void Visual3d_View::TriedronEcho (const Aspect_TypeOfTriedronEcho AType ) {
 
 }
 
-Standard_Boolean checkFloat(const Standard_Real value)
+static Standard_Boolean checkFloat(const Standard_Real value)
 {
     return value > -FLT_MAX && value < FLT_MAX;
 }
 
-void SetMinMaxValuesCallback(void* Visual3dView)
+static void SetMinMaxValuesCallback(Visual3d_View* theView)
 {
     Standard_Real xmin, ymin, zmin, xmax, ymax, zmax;
-
-    Handle(Visual3d_View) view = (Handle(Visual3d_View)&) Visual3dView;
-    view->MinMaxValues(xmin, ymin, zmin, xmax, ymax, zmax);
+    theView->MinMaxValues(xmin, ymin, zmin, xmax, ymax, zmax);
 
     if (checkFloat(xmin) && checkFloat(ymin) && checkFloat(zmin) &&
         checkFloat(xmax) && checkFloat(ymax) && checkFloat(zmax))
     {
-        Handle(Graphic3d_GraphicDriver) driver = Handle(Graphic3d_GraphicDriver)::DownCast(view->GraphicDriver());
+        Handle(Graphic3d_GraphicDriver) driver = Handle(Graphic3d_GraphicDriver)::DownCast(theView->GraphicDriver());
         driver->GraduatedTrihedronMinMaxValues((Standard_ShortReal)xmin, (Standard_ShortReal)ymin, (Standard_ShortReal)zmin,
                                                (Standard_ShortReal)xmax, (Standard_ShortReal)ymax, (Standard_ShortReal)zmax);
     }
@@ -3668,6 +3666,17 @@ Standard_Boolean Visual3d_View::Export (const Standard_CString       theFileName
   return MyGraphicDriver->Export (theFileName, theFormat, theSortType,
                                   aWidth, aHeight, MyCView, anUnderCLayer, anOverCLayer,
                                   thePrecision, theProgressBarFunc, theProgressObject);
+}
+
+//=======================================================================
+//function : SetZLayerSettings
+//purpose  :
+//=======================================================================
+
+void Visual3d_View::SetZLayerSettings (const Standard_Integer theLayerId,
+                                       const Graphic3d_ZLayerSettings theSettings)
+{
+  MyGraphicDriver->SetZLayerSettings (MyCView, theLayerId, theSettings);
 }
 
 //=======================================================================

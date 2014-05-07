@@ -97,6 +97,7 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_Builder_4.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_CheckResult.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_CheckerSI.cxx \
+@top_srcdir@/src/BOPAlgo/BOPAlgo_CheckerSI_1.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_1.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_2.cxx \
@@ -106,12 +107,15 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_6.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_7.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_8.cxx \
+@top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_9.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_SectionAttribute.cxx \
+@top_srcdir@/src/BOPAlgo/BOPAlgo_ShellSplitter.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_Tools.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_WireEdgeSet.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_WireSplitter.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_WireSplitter_1.cxx \
-@top_srcdir@/src/BOPDS/BOPDS_BoxBndTree.cxx \
+@top_srcdir@/src/BOPCol/BOPCol_Box2DBndTree.cxx \
+@top_srcdir@/src/BOPCol/BOPCol_BoxBndTree.cxx \
 @top_srcdir@/src/BOPDS/BOPDS_CommonBlock.cxx \
 @top_srcdir@/src/BOPDS/BOPDS_Curve.cxx \
 @top_srcdir@/src/BOPDS/BOPDS_DS.cxx \
@@ -151,7 +155,6 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/BRepAlgoAPI/BRepAlgoAPI_Section.cxx \
 @top_srcdir@/src/IntTools/IntTools.cxx \
 @top_srcdir@/src/IntTools/IntTools_BaseRangeSample.cxx \
-@top_srcdir@/src/IntTools/IntTools_BeanBeanIntersector.cxx \
 @top_srcdir@/src/IntTools/IntTools_BeanFaceIntersector.cxx \
 @top_srcdir@/src/IntTools/IntTools_CommonPrt.cxx \
 @top_srcdir@/src/IntTools/IntTools_Compare.cxx \
@@ -161,7 +164,6 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/IntTools/IntTools_CurveRangeSample.cxx \
 @top_srcdir@/src/IntTools/IntTools_CurveRangeSampleMapHasher.cxx \
 @top_srcdir@/src/IntTools/IntTools_EdgeEdge.cxx \
-@top_srcdir@/src/IntTools/IntTools_EdgeEdge_1.cxx \
 @top_srcdir@/src/IntTools/IntTools_EdgeFace.cxx \
 @top_srcdir@/src/IntTools/IntTools_FClass2d.cxx \
 @top_srcdir@/src/IntTools/IntTools_FaceFace.cxx \

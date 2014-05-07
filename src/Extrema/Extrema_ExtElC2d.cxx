@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -94,13 +94,7 @@ Method:
   Standard_Real Dy = D.Dot(y2);
   Standard_Real U1, teta[2];
   gp_Pnt2d O1=C1.Location();
-#ifdef DEB
-  gp_Pnt2d O2= C2.Location();
   gp_Pnt2d P1, P2;
-#else
-  C2.Location();
-  gp_Pnt2d P1, P2;
-#endif
   
   if (Abs(Dy) <= RealEpsilon()) {
     teta[0] = M_PI/2.0;
@@ -146,11 +140,7 @@ Extrema_ExtElC2d::Extrema_ExtElC2d (const gp_Lin2d& C1,
   Standard_Real Dx = D.Dot(x2);
   Standard_Real Dy = D.Dot(y2);
   Standard_Real U1, teta[2], r1 = C2.MajorRadius(), r2 = C2.MinorRadius();
-#ifdef DEB
-  gp_Pnt2d O1=C1.Location(), O2= C2.Location(), P1, P2;
-#else
   gp_Pnt2d O1=C1.Location(), P1, P2;
-#endif
   
   if (Abs(Dy) <= RealEpsilon()) {
     teta[0] = M_PI/2.0;

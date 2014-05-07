@@ -76,6 +76,7 @@ libTKDraw_la_SOURCES = \
 @top_srcdir@/src/Draw/Draw_Circle3D.cxx \
 @top_srcdir@/src/Draw/Draw_Color.cxx \
 @top_srcdir@/src/Draw/Draw_Commands.cxx \
+@top_srcdir@/src/Draw/Draw_Debug.cxx \
 @top_srcdir@/src/Draw/Draw_Display.cxx \
 @top_srcdir@/src/Draw/Draw_Drawable2D.cxx \
 @top_srcdir@/src/Draw/Draw_Drawable3D.cxx \

@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -1025,15 +1025,12 @@ void Geom_BSplineSurface::SetUKnots (const TColStd_Array1OfReal& UK) {
       Upper < 1 || Upper > uknots->Length() ) {
     Standard_OutOfRange::Raise();
   }
-  Standard_Real Eps;
   if (Lower > 1) {
-    Eps = Abs (Epsilon (uknots->Value (Lower-1)));
     if (Abs (UK (Lower) - uknots->Value (Lower-1)) <= gp::Resolution()) {
       Standard_ConstructionError::Raise();
     }
   }
   if (Upper < uknots->Length ()) {
-    Eps = Abs (Epsilon (uknots->Value (Upper+1)));
     if (Abs (UK (Upper) - uknots->Value (Upper+1)) <= gp::Resolution()) {
       Standard_ConstructionError::Raise();
     }
@@ -1042,7 +1039,6 @@ void Geom_BSplineSurface::SetUKnots (const TColStd_Array1OfReal& UK) {
   for (Standard_Integer i = Lower; i <= Upper; i++) {
     uknots->SetValue (i, UK(i));
     if (i != Lower) {
-      Eps = Abs (Epsilon (K1));
       if (Abs (UK(i) - K1) <= gp::Resolution()) {
         Standard_ConstructionError::Raise();
       }
@@ -1114,15 +1110,12 @@ void Geom_BSplineSurface::SetVKnots (const TColStd_Array1OfReal& VK) {
       Upper < 1 || Upper > vknots->Length() ) {
     Standard_OutOfRange::Raise();
   }
-  Standard_Real Eps;
   if (Lower > 1) {
-    Eps = Abs (Epsilon (vknots->Value (Lower-1)));
     if (Abs (VK (Lower) - vknots->Value (Lower-1)) <= gp::Resolution()) {
       Standard_ConstructionError::Raise();
     }
   }
   if (Upper < vknots->Length ()) {
-    Eps = Abs (Epsilon (vknots->Value (Upper+1)));
     if (Abs (VK (Upper) - vknots->Value (Upper+1)) <= gp::Resolution()) {
       Standard_ConstructionError::Raise();
     }
@@ -1131,7 +1124,6 @@ void Geom_BSplineSurface::SetVKnots (const TColStd_Array1OfReal& VK) {
   for (Standard_Integer i = Lower; i <= Upper; i++) {
     vknots->SetValue (i, VK(i));
     if (i != Lower) {
-      Eps = Abs (Epsilon (K1));
       if (Abs (VK(i) - K1) <= gp::Resolution()) {
         Standard_ConstructionError::Raise();
       }

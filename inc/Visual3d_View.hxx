@@ -115,6 +115,9 @@
 #ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
 #endif
+#ifndef _Graphic3d_ZLayerSettings_HeaderFile
+#include <Graphic3d_ZLayerSettings.hxx>
+#endif
 #ifndef _Aspect_TypeOfUpdate_HeaderFile
 #include <Aspect_TypeOfUpdate.hxx>
 #endif
@@ -568,6 +571,8 @@ private:
   Standard_EXPORT     void Compute() ;
   //! Changes the display priority of the structure <AStructure>. <br>
   Standard_EXPORT     void ChangeDisplayPriority(const Handle(Graphic3d_Structure)& AStructure,const Standard_Integer OldPriority,const Standard_Integer NewPriority) ;
+  //! Sets the settings for a single Z layer of specified view. <br>
+  Standard_EXPORT     void SetZLayerSettings(const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings theSettings) ;
   //! Add a new top-level Z layer to the view with ID <br>
 //! <theLayerId>. The z layer mechanism allows to display <br>
 //! structures in higher layers in overlay of structures in lower layers. <br>

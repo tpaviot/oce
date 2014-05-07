@@ -2,8 +2,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -51,13 +51,8 @@ class AdvApp2Var_SysBase {
 				      integer *iercod);
   Standard_EXPORT static integer mnfndeb_();
 
-  Standard_EXPORT static integer mnfnimp_();
   Standard_EXPORT static int do__fio(); 
   Standard_EXPORT static int do__lio ();
-  Standard_EXPORT static int e__wsfe ();
-  Standard_EXPORT static int e__wsle ();
-  Standard_EXPORT static int s__wsfe ();
-  Standard_EXPORT static int s__wsle ();
   Standard_EXPORT int macrai4_(integer *nbelem, 
 				      integer *maxelm, 
 				      integer *itablo,

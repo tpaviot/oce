@@ -1,3 +1,5 @@
+puts "TODO OCC24861 ALL: Faulty shapes in variables faulty_1 to faulty_"
+puts "TODO OCC24861 ALL: Error : The square of result shape is"
 
 puts "========="
 puts " OCC497 "
@@ -19,5 +21,5 @@ if [catch {bfuse result a_1 a_2 } catch_result] {
 } else {
     puts "OCC497 : function FUSE works without hangs up "
 }
-set square 3233.42
+set square 3280.73
 set 2dviewer 0

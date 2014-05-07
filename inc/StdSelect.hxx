@@ -35,7 +35,6 @@ class Prs3d_Drawer;
 class StdSelect_ViewerSelector3d;
 class StdSelect_BRepSelectionTool;
 class StdSelect_BRepOwner;
-class StdSelect_BRepHilighter;
 class StdSelect_EdgeFilter;
 class StdSelect_FaceFilter;
 class StdSelect_ShapeTypeFilter;
@@ -94,7 +93,6 @@ private:
 friend class StdSelect_ViewerSelector3d;
 friend class StdSelect_BRepSelectionTool;
 friend class StdSelect_BRepOwner;
-friend class StdSelect_BRepHilighter;
 friend class StdSelect_EdgeFilter;
 friend class StdSelect_FaceFilter;
 friend class StdSelect_ShapeTypeFilter;

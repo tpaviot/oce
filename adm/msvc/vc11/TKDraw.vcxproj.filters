@@ -2,16 +2,16 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{172AB65F-0E3D-0CEB-042B-279CA09BD5AF}</UniqueIdentifier>
+      <UniqueIdentifier>{6816CF5B-07AF-0F2A-1412-81E09CC158E8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Draw">
-      <UniqueIdentifier>{EA08CA0E-0776-0993-0138-478C26422044}</UniqueIdentifier>
+      <UniqueIdentifier>{B3F5946B-0B46-1096-17C8-46CD3349F871}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DBRep">
-      <UniqueIdentifier>{547902FD-05D2-1433-16A1-15D2C0BF7BEB}</UniqueIdentifier>
+      <UniqueIdentifier>{55EFFFCF-02DC-0455-1518-553B00949A68}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DrawTrSurf">
-      <UniqueIdentifier>{60A7A3C9-00FA-10D6-0FEC-FED1706820FC}</UniqueIdentifier>
+      <UniqueIdentifier>{25274543-0122-000C-09C1-5644138F6499}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +79,9 @@
       <Filter>Source files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Draw\Draw_Commands.cxx">
+      <Filter>Source files\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Draw\Draw_Debug.cxx">
       <Filter>Source files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Draw\Draw_Display.cxx">

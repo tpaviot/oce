@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -291,8 +291,6 @@ void TopOpeBRepBuild_Builder::RegularizeFace
 //	Standard_Integer nlspfsdFFe = lspfsdFFe.Extent();
 #endif    
 	  
-        Standard_Integer nDEB2=0 ;
-	
 	for (TopTools_ListIteratorOfListOfShape it(lspfsdFFe);it.More();it.Next()) {
 	  
 	  // fsdFFe (Cf supra E) a ete splittee, espfdsFFe = arete splittee de fsdFFe
@@ -313,7 +311,6 @@ void TopOpeBRepBuild_Builder::RegularizeFace
 	    
 	    // son decoupage lresplit est stocke dans la DS du Builder
 	    const TopTools_ListOfShape& lresplit = myESplits.Find(espfsdFFe); //Cf supra E''
-	    nDEB2 = lresplit.Extent();
 	    
 	    // on memorise que espfsdFFe est redecoupee ...
 	    myMemoSplit.Add(espfsdFFe);
@@ -321,7 +318,6 @@ void TopOpeBRepBuild_Builder::RegularizeFace
 	    // on stocke le nouveau decoupage de espfsdFFe dans la DS du builder ...
 	    TopTools_ListOfShape& lsp = ChangeSplit(espfsdFFe,stafsdFFe);  
 	    GCopyList(lresplit,lsp);
-	    nDEB2 = lsp.Extent();
 	  }
 	} // it.More
       } // iiista

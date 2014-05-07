@@ -2,8 +2,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -1326,7 +1326,7 @@ int mma1jak_(integer *ndimen,
 {
   /* System generated locals */
   integer somtab_dim1, somtab_offset, diftab_dim1, diftab_offset, 
-  crvjac_dim1, crvjac_offset, cgauss_dim1;
+  crvjac_dim1, crvjac_offset;
 
   /* Local variables */
   integer ibb;
@@ -1389,7 +1389,6 @@ int mma1jak_(integer *ndimen,
     crvjac_dim1 = *ndgjac + 1;
     crvjac_offset = crvjac_dim1;
     crvjac -= crvjac_offset;
-    cgauss_dim1 = *nbroot / 2 + 1;
 
     /* Function Body */
     ibb = AdvApp2Var_SysBase::mnfndeb_();

@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -529,7 +529,7 @@ Standard_Real BRepCheck_Edge::Tolerance()
 
   Standard_Real dist2, tol2, tolCal=0., prm;
   gp_Pnt center, othP;
-  Standard_Integer i, imax;
+  Standard_Integer i;
   for (i= 0; i< NCONTROL; i++) {
     prm = ((NCONTROL-1-i)*First + i*Last)/(NCONTROL-1);
     tol2=dist2=0.;
@@ -541,7 +541,6 @@ Standard_Real BRepCheck_Edge::Tolerance()
     }
     if (tol2>tolCal) {
       tolCal=tol2;
-      imax=i;
     }
   }
   // On prend 5% de marge car au dessus on crontrole severement

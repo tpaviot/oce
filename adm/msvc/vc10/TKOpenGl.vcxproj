@@ -302,6 +302,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_IndexBuffer.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Layer.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_LayerList.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Matrix.cxx">

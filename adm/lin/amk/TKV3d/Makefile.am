@@ -192,6 +192,7 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/AIS/AIS_Chamf2dDimension.cxx \
 @top_srcdir@/src/AIS/AIS_Chamf3dDimension.cxx \
 @top_srcdir@/src/AIS/AIS_Circle.cxx \
+@top_srcdir@/src/AIS/AIS_ColoredShape.cxx \
 @top_srcdir@/src/AIS/AIS_ConcentricRelation.cxx \
 @top_srcdir@/src/AIS/AIS_ConnectedInteractive.cxx \
 @top_srcdir@/src/AIS/AIS_ConnectedShape.cxx \
@@ -393,7 +394,6 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/StdPrs/StdPrs_WFRestrictedFace.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_WFSurface.cxx \
 @top_srcdir@/src/StdSelect/StdSelect.cxx \
-@top_srcdir@/src/StdSelect/StdSelect_BRepHilighter.cxx \
 @top_srcdir@/src/StdSelect/StdSelect_BRepOwner.cxx \
 @top_srcdir@/src/StdSelect/StdSelect_BRepSelectionTool.cxx \
 @top_srcdir@/src/StdSelect/StdSelect_EdgeFilter.cxx \

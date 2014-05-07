@@ -44,28 +44,26 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-      BOPTools_Set();
-virtual ~BOPTools_Set();
+  Standard_EXPORT   BOPTools_Set();
+Standard_EXPORT virtual ~BOPTools_Set();
   
-      BOPTools_Set(const BOPCol_BaseAllocator& theAllocator);
+  Standard_EXPORT   BOPTools_Set(const BOPCol_BaseAllocator& theAllocator);
   
-        BOPTools_Set& Assign(const BOPTools_Set& Other) ;
-      BOPTools_Set& operator =(const BOPTools_Set& Other) 
+  Standard_EXPORT     BOPTools_Set& Assign(const BOPTools_Set& Other) ;
+    BOPTools_Set& operator =(const BOPTools_Set& Other) 
 {
   return Assign(Other);
 }
   
-       const TopoDS_Shape& Shape() const;
+  Standard_EXPORT    const TopoDS_Shape& Shape() const;
   
-        void Add(const TopoDS_Shape& theS,const TopAbs_ShapeEnum theType) ;
+  Standard_EXPORT     void Add(const TopoDS_Shape& theS,const TopAbs_ShapeEnum theType) ;
   
-        void AddEdges(const TopoDS_Shape& theS) ;
+  Standard_EXPORT     Standard_Integer NbShapes() const;
   
-        Standard_Integer NbShapes() const;
+  Standard_EXPORT     Standard_Boolean IsEqual(const BOPTools_Set& aOther) const;
   
-        Standard_Boolean IsEqual(const BOPTools_Set& aOther) const;
-  
-        Standard_Integer HashCode(const Standard_Integer Upper) const;
+  Standard_EXPORT     Standard_Integer HashCode(const Standard_Integer Upper) const;
 
 
 
@@ -74,7 +72,7 @@ virtual ~BOPTools_Set();
 protected:
 
   
-        void Clear() ;
+  Standard_EXPORT     void Clear() ;
 
 
 BOPCol_BaseAllocator myAllocator;
@@ -94,7 +92,6 @@ private:
 };
 
 
-#include <BOPTools_Set.lxx>
 
 
 

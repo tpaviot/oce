@@ -2,19 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{81D38DD6-0403-055A-0581-6AF2D16B8046}</UniqueIdentifier>
+      <UniqueIdentifier>{D1AE4170-0F70-0CC9-1456-7C2258B2C5CF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepOffsetAPI">
-      <UniqueIdentifier>{B275EE55-1186-0451-00FF-D393576E4A35}</UniqueIdentifier>
+      <UniqueIdentifier>{D8AE6C2A-1780-021B-008E-1826A490E972}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Draft">
-      <UniqueIdentifier>{C9DE4ED2-0801-11EA-1881-E94F41523E1A}</UniqueIdentifier>
+      <UniqueIdentifier>{CE44608E-0B67-0996-1070-8618F2CFC264}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepOffset">
-      <UniqueIdentifier>{6B26DEFC-0FE8-108E-0AE7-F9AEC641839F}</UniqueIdentifier>
+      <UniqueIdentifier>{E36C956E-1179-04AC-0463-AC757F561461}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BiTgte">
-      <UniqueIdentifier>{285C2ACB-0ACD-08E5-0C8D-D7F2335E117A}</UniqueIdentifier>
+      <UniqueIdentifier>{540C400F-0289-0663-0175-86B0D2C2BDBA}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

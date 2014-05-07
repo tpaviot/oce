@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -86,9 +86,8 @@ BRepAdaptor_CompCurve::BRepAdaptor_CompCurve(const TopoDS_Wire& W,
   Forward = Standard_True; // Defaut ; The Reverse Edges are parsed.
   if((NbEdge > 2) || ((NbEdge==2) && (!myWire.Closed())) ) {
     TopAbs_Orientation Or = myCurves->Value(1).Edge().Orientation();
-    Standard_Boolean B;
     TopoDS_Vertex VI, VL;
-    B = TopExp::CommonVertex(myCurves->Value(1).Edge(),
+    TopExp::CommonVertex(myCurves->Value(1).Edge(),
 			     myCurves->Value(2).Edge(),
 			     VI);
     VL = TopExp::LastVertex(myCurves->Value(1).Edge());

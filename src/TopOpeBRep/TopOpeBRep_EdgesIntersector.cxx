@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -539,7 +539,9 @@ Standard_Boolean EdgesIntersector_checkT1D(const TopoDS_Edge& E1,const TopoDS_Ed
       TopOpeBRepDS_Transition& T1 = P2D.ChangeTransition(1);
       TopOpeBRepDS_Transition& T2 = P2D.ChangeTransition(2);
       
+#ifdef DEB
       Standard_Boolean newT1=Standard_False, newT2=Standard_False;
+#endif
       Standard_Boolean isvertex12 = isvertex1 && isvertex2;
       Standard_Boolean isvertex22 = isvertex2 && !isvertex12;
       Standard_Boolean isvertex11 = isvertex1 && !isvertex12;
@@ -549,8 +551,10 @@ Standard_Boolean EdgesIntersector_checkT1D(const TopoDS_Edge& E1,const TopoDS_Ed
       if (T1INT && isvertex2 && !isvertex1) {
 	const TopoDS_Vertex& V2 = P2D.Vertex(2);	
 	TopOpeBRepDS_Transition newT; Standard_Boolean computed = ::EdgesIntersector_checkT1D(myEdge1,myEdge2,V2,newT);
-	if (!computed) newT1 = Standard_False;
-	else           T1.Set(newT.Orientation(TopAbs_IN));
+	if (computed) T1.Set(newT.Orientation(TopAbs_IN));
+#ifdef DEB
+	else          newT1 = Standard_False;
+#endif
       }
 
       Standard_Boolean T2INT = (T2.Orientation(TopAbs_IN) == TopAbs_INTERNAL);
@@ -559,8 +563,10 @@ Standard_Boolean EdgesIntersector_checkT1D(const TopoDS_Edge& E1,const TopoDS_Ed
       if (INTEXT2 && isvertex1 && !isvertex2) {
 	const TopoDS_Vertex& V1 = P2D.Vertex(1);
 	TopOpeBRepDS_Transition newT; Standard_Boolean computed = ::EdgesIntersector_checkT1D(myEdge2,myEdge1,V1,newT);
-	if (!computed) newT2 = Standard_False;
-	else           T2.Set(newT.Orientation(TopAbs_IN));
+	if (computed) T2.Set(newT.Orientation(TopAbs_IN));
+#ifdef DEB
+	else          newT2 = Standard_False;
+#endif
       }      
       
       // xpu121098 : cto900I7 (e12on,vG14)

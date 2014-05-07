@@ -146,6 +146,8 @@ Standard_EXPORT virtual ~Adaptor2d_Curve2d(){Delete();}
   
   Standard_EXPORT   virtual  Standard_Integer NbKnots() const;
   
+  Standard_EXPORT   virtual  Standard_Integer NbSamples() const;
+  
   Standard_EXPORT   virtual  Handle_Geom2d_BezierCurve Bezier() const;
   
   Standard_EXPORT   virtual  Handle_Geom2d_BSplineCurve BSpline() const;

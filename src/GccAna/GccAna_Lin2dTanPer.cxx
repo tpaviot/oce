@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -208,7 +208,6 @@ GccAna_Lin2dTanPer::
 
    WellDone = Standard_False;
    NbrSol = 0;
-   Standard_Integer nbsol = 0;
    Standard_Integer signe = 0;
    gp_Circ2d C1 = Qualified1.Qualified();
 
@@ -218,19 +217,16 @@ GccAna_Lin2dTanPer::
    }
    else if (Qualified1.IsEnclosing()) {
 // ==================================
-     nbsol = 1;
      signe = -1;
      qualifier1(1) = GccEnt_enclosing;
    }
    else if (Qualified1.IsOutside()) {
 // ================================
-     nbsol = 1;
      signe = 1;
      qualifier1(1) = GccEnt_outside;
    }
    else if (Qualified1.IsUnqualified()) {
 // ====================================
-     nbsol = 2;
      signe = -1;
      qualifier1(1) = GccEnt_enclosing;
      qualifier1(2) = GccEnt_outside;

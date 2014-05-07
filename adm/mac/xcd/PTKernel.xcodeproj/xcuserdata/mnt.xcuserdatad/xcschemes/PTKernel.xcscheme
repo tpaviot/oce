@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "08A2042A198517F7042415CB"
+               BlueprintIdentifier = "074405130C1A0D3002B60740"
                BuildableName = "libPTKernel.dylib"
                BlueprintName = "PTKernel"
                ReferencedContainer = "container:PTKernel.xcodeproj">

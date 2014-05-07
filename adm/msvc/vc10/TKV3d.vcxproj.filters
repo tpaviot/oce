@@ -2,40 +2,40 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{B391D6B2-173D-1213-0525-B8A8EC5A4E89}</UniqueIdentifier>
+      <UniqueIdentifier>{E836AB45-04CA-187F-161B-FDDCFCB742A5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\V3d">
-      <UniqueIdentifier>{DA1BA204-0D35-0420-09D0-9233F691756A}</UniqueIdentifier>
+      <UniqueIdentifier>{78987316-0609-0DF9-0891-78B2BB1E3D49}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Graphic3d">
-      <UniqueIdentifier>{B390CD2E-0DF2-0AA0-07DB-5D582545EC81}</UniqueIdentifier>
+      <UniqueIdentifier>{49BE2736-05A0-141A-17E7-82C4E84D92FF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Visual3d">
-      <UniqueIdentifier>{AA12865A-04F7-03BA-197C-0CE506902D0D}</UniqueIdentifier>
+      <UniqueIdentifier>{EDE39DDF-0C5B-09B8-00FA-31AB2EDD8CE9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Select3D">
-      <UniqueIdentifier>{7DDE6B19-0B6D-00E6-0FE9-EA99DA1ADEA9}</UniqueIdentifier>
+      <UniqueIdentifier>{4E255717-02C7-07D4-14A9-84ABB424E769}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Prs3d">
-      <UniqueIdentifier>{104919A2-02D9-14E4-064F-291226669163}</UniqueIdentifier>
+      <UniqueIdentifier>{D4DFB59A-16B8-0B9D-197C-3115B387BEC5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdPrs">
-      <UniqueIdentifier>{D30B3358-165B-0CBE-05C0-5A0F55A4CC82}</UniqueIdentifier>
+      <UniqueIdentifier>{FD989C12-14FD-026C-09F6-3FF24C3C667A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SelectMgr">
-      <UniqueIdentifier>{6E9EF048-1528-03FF-1751-33F7C1CECD24}</UniqueIdentifier>
+      <UniqueIdentifier>{6BE08796-0869-0DEC-1276-D683B1601043}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PrsMgr">
-      <UniqueIdentifier>{FE152901-014B-0AEF-0A92-315CEBCB58D0}</UniqueIdentifier>
+      <UniqueIdentifier>{CBB3EDC9-0D16-1639-0701-86FD1F542F38}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AIS">
-      <UniqueIdentifier>{33C432B9-097D-0FD8-064E-4B767D50396B}</UniqueIdentifier>
+      <UniqueIdentifier>{E8117F2D-12F9-0821-10A2-663DE669DCC9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DsgPrs">
-      <UniqueIdentifier>{E9CA886E-0086-1250-109E-51FC518C2D14}</UniqueIdentifier>
+      <UniqueIdentifier>{1E1FB87B-12DF-13E8-06AA-167046251004}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdSelect">
-      <UniqueIdentifier>{E3B5C60B-0B65-163E-0506-02F06DF69610}</UniqueIdentifier>
+      <UniqueIdentifier>{3EAC8A0B-0C5C-1692-0159-B5A8152E08E9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -951,6 +951,9 @@
     <ClCompile Include="..\..\..\src\AIS\AIS_Circle.cxx">
       <Filter>Source files\AIS</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ColoredShape.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_ConcentricRelation.cxx">
       <Filter>Source files\AIS</Filter>
     </ClCompile>
@@ -1174,9 +1177,6 @@
       <Filter>Source files\StdSelect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\StdSelect\StdSelect.cxx">
-      <Filter>Source files\StdSelect</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_BRepHilighter.cxx">
       <Filter>Source files\StdSelect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\StdSelect\StdSelect_BRepOwner.cxx">

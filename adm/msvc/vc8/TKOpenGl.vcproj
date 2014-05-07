@@ -511,6 +511,9 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_IndexBuffer.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Layer.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_LayerList.cxx">
 				</File>
 				<File

@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -110,15 +110,12 @@ GccAna_Circ2d3Tan::
 	     Standard_Real dist2 = L2.Distance(Center);
 	     Standard_Real dist3 = Center.Distance(Point3);
 	     Standard_Real Radius=0;
-	     Standard_Integer nbsol1 = 0;
-	     Standard_Integer nbsol2 = 0;
 	     Standard_Integer nbsol3 = 0;
 	     Standard_Boolean ok = Standard_False;
 	     if (Qualified1.IsEnclosed()) {
 	       if ((((origin1.X()-Center.X())*(-dir1.Y()))+
 		    ((origin1.Y()-Center.Y())*(dir1.X())))<=0){
 		 ok = Standard_True;
-		 nbsol1 = 1;
 		 Radius = dist1;
 	       }
 	     }
@@ -126,31 +123,29 @@ GccAna_Circ2d3Tan::
 	       if ((((origin1.X()-Center.X())*(-dir1.Y()))+
 		    ((origin1.Y()-Center.Y())*(dir1.X())))>=0){
 		 ok = Standard_True;
-		 nbsol1 = 1;
 		 Radius = dist1;
 	       }
 	     }
 	     else if (Qualified1.IsUnqualified()) {
 	       ok = Standard_True;
-	       nbsol1 = 1;
 	       Radius = dist1;
 	     }
 	     if (Qualified2.IsEnclosed()) {
 	       if ((((origin2.X()-Center.X())*(-dir2.Y()))+
 		    ((origin2.Y()-Center.Y())*(dir2.X())))<=0){
-		 if (Abs(dist2-Radius) < Tol) { nbsol2 = 1; }
+		 if (Abs(dist2-Radius) < Tol) { }
 		 else { ok = Standard_False; }
 	       }
 	     }
 	     else if (Qualified2.IsOutside() && ok) {
 	       if ((((origin2.X()-Center.X())*(-dir2.Y()))+
 		    ((origin2.Y()-Center.Y())*(dir2.X())))>=0){
-		 if (Abs(dist2-Radius) < Tol) { nbsol2 = 1; }
+		 if (Abs(dist2-Radius) < Tol) { }
 		 else { ok = Standard_False; }
 	       }
 	     }
 	     else if (Qualified2.IsUnqualified() && ok) {
-	       if (Abs(dist2-Radius) < Tol) { nbsol2 = 1; }
+	       if (Abs(dist2-Radius) < Tol) { }
 	       else { ok = Standard_False; }
 	     }
 	     if (ok) {

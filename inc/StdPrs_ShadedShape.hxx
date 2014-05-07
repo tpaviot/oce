@@ -44,6 +44,8 @@ public:
   Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& thePresentation,const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer) ;
   //! Shades <theShape> with texture coordinates. <br>
   Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& thePresentation,const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer,const Standard_Boolean theHasTexels,const gp_Pnt2d& theUVOrigin,const gp_Pnt2d& theUVRepeat,const gp_Pnt2d& theUVScale) ;
+  //! Validates triangulation within the shape and performs tessellation if necessary. <br>
+  Standard_EXPORT   static  void Tessellate(const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer) ;
 
 
 

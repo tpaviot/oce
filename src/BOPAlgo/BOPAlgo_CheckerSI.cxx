@@ -6,8 +6,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -21,11 +21,14 @@
 #include <Standard_ErrorHandler.hxx>
 #include <Standard_Failure.hxx>
 
+#include <BRepBuilderAPI_Copy.hxx>
+#include <TopTools_ListOfShape.hxx>
+
+#include <BOPCol_MapOfShape.hxx>
+
 #include <BOPDS_DS.hxx>
 #include <BOPDS_IteratorSI.hxx>
 #include <BOPDS_PIteratorSI.hxx>
-#include <BOPInt_Context.hxx>
-
 #include <BOPDS_Interf.hxx>
 #include <BOPDS_MapOfPassKey.hxx>
 #include <BOPDS_PassKey.hxx>
@@ -35,7 +38,10 @@
 #include <BOPDS_VectorOfInterfVF.hxx>
 #include <BOPDS_VectorOfInterfEF.hxx>
 #include <BOPDS_VectorOfInterfFF.hxx>
-#include <BOPDS_VectorOfPoint.hxx>
+
+#include <BOPInt_Context.hxx>
+
+#include <BOPTools.hxx>
 #include <BOPTools_AlgoTools.hxx>
 
 //=======================================================================
@@ -44,9 +50,10 @@
 //=======================================================================
 BOPAlgo_CheckerSI::BOPAlgo_CheckerSI()
 :
-  BOPAlgo_PaveFiller(),
-  myLevelOfCheck(5)
+  BOPAlgo_PaveFiller()
 {
+  myLevelOfCheck=BOPDS_DS::NbInterfTypes()-1;
+  myNonDestructive=Standard_True;
 }
 //=======================================================================
 //function : ~
@@ -61,9 +68,28 @@ BOPAlgo_CheckerSI::~BOPAlgo_CheckerSI()
 //=======================================================================
 void BOPAlgo_CheckerSI::SetLevelOfCheck(const Standard_Integer theLevel)
 {
-  if (theLevel >= 0 && theLevel <= 5) {
+  Standard_Integer aNbLists;
+  //
+  aNbLists=BOPDS_DS::NbInterfTypes();
+  if (theLevel >= 0 && theLevel < aNbLists) {
     myLevelOfCheck = theLevel;
   }
+}
+//=======================================================================
+//function : SetNonDestructive
+//purpose  : 
+//=======================================================================
+void BOPAlgo_CheckerSI::SetNonDestructive(const Standard_Boolean theFlag)
+{
+  myNonDestructive=theFlag;
+}
+//=======================================================================
+//function : NonDestructive
+//purpose  : 
+//=======================================================================
+Standard_Boolean BOPAlgo_CheckerSI::NonDestructive() const 
+{
+  return myNonDestructive;
 }
 //=======================================================================
 //function : Init
@@ -71,12 +97,7 @@ void BOPAlgo_CheckerSI::SetLevelOfCheck(const Standard_Integer theLevel)
 //=======================================================================
 void BOPAlgo_CheckerSI::Init()
 {
-  myErrorStatus = 0;
-  //
-  if (!myArguments.Extent()) {
-    myErrorStatus=10;
-    return;
-  }
+  myErrorStatus=0;
   //
   Clear();
   //
@@ -104,29 +125,65 @@ void BOPAlgo_CheckerSI::Init()
 //=======================================================================
 void BOPAlgo_CheckerSI::Perform()
 {
-  //modified by NIZNHY-PKV Thu Sep 19 08:14:52 2013f
   try {
     OCC_CATCH_SIGNALS
     //
-    BOPAlgo_PaveFiller::Perform();
-    if (myErrorStatus) {
-      return; 
+    myErrorStatus=0;
+    if (myArguments.Extent()!=1) {
+      myErrorStatus=10;
+      return;
     }
     //
-    PostTreat();
+    if (myNonDestructive) {
+      PrepareCopy();
+      if (myErrorStatus) {
+        return; 
+      }
+    }
+    //
+    BOPAlgo_PaveFiller::Perform();
+    //
+    if (!myErrorStatus) {
+      PerformVZ();
+    }
+    //
+    if (!myErrorStatus) {
+      PerformEZ();
+    } 
+    //
+    if (!myErrorStatus) {
+      PerformFZ();
+    }
+    //
+    if (!myErrorStatus) {
+      PerformZZ();
+    }
+    // 
+    if (!myErrorStatus) {
+      PostTreat();
+    }
+    //
+    if (myNonDestructive) {
+      Standard_Integer iErr;
+      //
+      iErr=myErrorStatus; 
+      //
+      PostTreatCopy();
+      if (!myErrorStatus) {
+        myErrorStatus=iErr;
+      }
+    }
   }
+  //
   catch (Standard_Failure) {
-  }  
-  /*  
-  BOPAlgo_PaveFiller::Perform();
-  if (myErrorStatus) {
-   return; 
+    if (myNonDestructive) { 
+      PostTreatCopy();
+    }
+    //
+    myErrorStatus=11;
   }
-  //  
-  PostTreat(); 
-  */
-  //modified by NIZNHY-PKV Thu Sep 19 08:14:56 2013t
 }
+
 //=======================================================================
 //function : PostTreat
 //purpose  : 
@@ -136,7 +193,10 @@ void BOPAlgo_CheckerSI::PostTreat()
   Standard_Integer i, aNb, n1, n2; 
   BOPDS_PassKey aPK;
   //
-  BOPDS_MapOfPassKey& aMPK=*((BOPDS_MapOfPassKey*)&myDS->Interferences());
+  myErrorStatus=0;
+  //
+  BOPDS_MapOfPassKey& aMPK=
+    *((BOPDS_MapOfPassKey*)&myDS->Interferences());
   aMPK.Clear();
   //
   // 0
@@ -145,6 +205,9 @@ void BOPAlgo_CheckerSI::PostTreat()
   for (i=0; i!=aNb; ++i) {
     const BOPDS_InterfVV& aVV=aVVs(i);
     aVV.Indices(n1, n2);
+    if (myDS->IsNewShape(n1) || myDS->IsNewShape(n2)) {
+      continue;
+    }
     aPK.SetIds(n1, n2);
     aMPK.Add(aPK);
   }
@@ -155,6 +218,9 @@ void BOPAlgo_CheckerSI::PostTreat()
   for (i=0; i!=aNb; ++i) {
     const BOPDS_InterfVE& aVE=aVEs(i);
     aVE.Indices(n1, n2);
+    if (myDS->IsNewShape(n1) || myDS->IsNewShape(n2)) {
+      continue;
+    }
     aPK.SetIds(n1, n2);
     aMPK.Add(aPK);
   }
@@ -165,6 +231,9 @@ void BOPAlgo_CheckerSI::PostTreat()
   for (i=0; i!=aNb; ++i) {
     const BOPDS_InterfEE& aEE=aEEs(i);
     aEE.Indices(n1, n2);
+    if (myDS->IsNewShape(n1) || myDS->IsNewShape(n2)) {
+      continue;
+    }
     aPK.SetIds(n1, n2);
     aMPK.Add(aPK);
   }
@@ -175,6 +244,9 @@ void BOPAlgo_CheckerSI::PostTreat()
   for (i=0; i!=aNb; ++i) {
     const BOPDS_InterfVF& aVF=aVFs(i);
     aVF.Indices(n1, n2);
+    if (myDS->IsNewShape(n1) || myDS->IsNewShape(n2)) {
+      continue;
+    }
     aPK.SetIds(n1, n2);
     aMPK.Add(aPK);
   }
@@ -188,6 +260,9 @@ void BOPAlgo_CheckerSI::PostTreat()
       continue;
     }
     aEF.Indices(n1, n2);
+    if (myDS->IsNewShape(n1) || myDS->IsNewShape(n2)) {
+      continue;
+    }
     aPK.SetIds(n1, n2);
     aMPK.Add(aPK);
   }
@@ -212,21 +287,22 @@ void BOPAlgo_CheckerSI::PostTreat()
     //
     iFound=0;
     if (bTangentFaces) {
-      const TopoDS_Face& aF1 = *((TopoDS_Face*)&myDS->Shape(n1));
-      const TopoDS_Face& aF2 = *((TopoDS_Face*)&myDS->Shape(n2));
-      bFlag=BOPTools_AlgoTools::AreFacesSameDomain(aF1, aF2, myContext);
+      const TopoDS_Face& aF1=*((TopoDS_Face*)&myDS->Shape(n1));
+      const TopoDS_Face& aF2=*((TopoDS_Face*)&myDS->Shape(n2));
+      bFlag=BOPTools_AlgoTools::AreFacesSameDomain
+        (aF1, aF2, myContext);
       if (bFlag) {
-	++iFound;
+        ++iFound;
       }
     }
     else {
       for (j=0; j!=aNbC; ++j) {
-	const BOPDS_Curve& aNC=aVC(j);
-	const BOPDS_ListOfPaveBlock& aLPBC=aNC.PaveBlocks();
-	if (aLPBC.Extent()) {
-	  ++iFound;
-	  break;
-	}
+        const BOPDS_Curve& aNC=aVC(j);
+        const BOPDS_ListOfPaveBlock& aLPBC=aNC.PaveBlocks();
+        if (aLPBC.Extent()) {
+          ++iFound;
+          break;
+        }
       }
     }
     //
@@ -237,4 +313,121 @@ void BOPAlgo_CheckerSI::PostTreat()
     aPK.SetIds(n1, n2);
     aMPK.Add(aPK);
   }
+  //
+  //
+  // 6
+  BOPDS_VectorOfInterfVZ& aVZs=myDS->InterfVZ();
+  aNb=aVZs.Extent();
+  for (i=0; i!=aNb; ++i) {
+    //
+    const BOPDS_InterfVZ& aVZ=aVZs(i);
+    aVZ.Indices(n1, n2);
+    if (myDS->IsNewShape(n1) || myDS->IsNewShape(n2)) {
+      continue;
+    }
+    aPK.SetIds(n1, n2);
+    aMPK.Add(aPK);
+  }
+  //
+  // 7
+  BOPDS_VectorOfInterfEZ& aEZs=myDS->InterfEZ();
+  aNb=aEZs.Extent();
+  for (i=0; i!=aNb; ++i) {
+    //
+    const BOPDS_InterfEZ& aEZ=aEZs(i);
+    aEZ.Indices(n1, n2);
+    aPK.SetIds(n1, n2);
+    aMPK.Add(aPK);
+  }
+  //
+  // 8
+  BOPDS_VectorOfInterfFZ& aFZs=myDS->InterfFZ();
+  aNb=aFZs.Extent();
+  for (i=0; i!=aNb; ++i) {
+    //
+    const BOPDS_InterfFZ& aFZ=aFZs(i);
+    aFZ.Indices(n1, n2);
+    aPK.SetIds(n1, n2);
+    aMPK.Add(aPK);
+  }
+  //
+  // 9
+  BOPDS_VectorOfInterfZZ& aZZs=myDS->InterfZZ();
+  aNb=aZZs.Extent();
+  for (i=0; i!=aNb; ++i) {
+    //
+    const BOPDS_InterfZZ& aZZ=aZZs(i);
+    aZZ.Indices(n1, n2);
+    aPK.SetIds(n1, n2);
+    aMPK.Add(aPK);
+  }
 }
+//=======================================================================
+//function : PrepareCopy
+//purpose  : 
+//=======================================================================
+void BOPAlgo_CheckerSI::PrepareCopy()
+{
+  Standard_Boolean bIsDone;
+  BRepBuilderAPI_Copy aCopier;
+  BOPCol_MapOfShape aMSA;
+  BOPCol_MapIteratorOfMapOfShape aItMS;
+  //
+  myErrorStatus=0;
+  //
+  myNewOldMap.Clear();
+  //
+  const TopoDS_Shape& aSA=myArguments.First();
+  //
+  BOPTools::MapShapes(aSA, aMSA);
+  //
+  aCopier.Perform(aSA, Standard_False);
+  bIsDone=aCopier.IsDone();
+  if (!bIsDone) {
+    myErrorStatus=12; 
+    return;
+  }
+  //
+  const TopoDS_Shape& aSC=aCopier.Shape();
+  //
+  aItMS.Initialize(aMSA);
+  for(; aItMS.More(); aItMS.Next()) {
+    const TopoDS_Shape& aSAx=aItMS.Value();
+    const TopoDS_Shape& aSCx=aCopier.Modified(aSAx).First();
+    myNewOldMap.Bind(aSCx, aSAx);
+  }
+  //
+  myArguments.Clear();
+  myArguments.Append(aSC);
+}
+//=======================================================================
+//function : PostTreatCopy
+//purpose  : 
+//=======================================================================
+void BOPAlgo_CheckerSI::PostTreatCopy() 
+{
+  Standard_Integer i, aNb;
+  //
+  myErrorStatus=0;
+  //
+  aNb=myDS->NbSourceShapes();
+  for (i=0; i!=aNb; ++i) {
+    BOPDS_ShapeInfo& aSI=myDS->ChangeShapeInfo(i);
+    const TopoDS_Shape& aSCi=aSI.Shape();
+    if (!myNewOldMap.IsBound(aSCi)) {
+      myErrorStatus=13;
+      return;
+    }
+    //
+    const TopoDS_Shape& aSAi=myNewOldMap.Find(aSCi);
+    aSI.SetShape(aSAi);
+  }
+}
+//
+// myErrorStatus:
+//
+// 10 - The number of the arguments is not 1
+// 11 - Exception is caught
+// 12 - BRepBuilderAPI_Copy is not done
+// 13 - myNewOldMap doe not contain DS shape 
+

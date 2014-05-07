@@ -6,13 +6,39 @@ if (WIN32)
 endif()
 
   list( APPEND TKXMesh_COMPILER_DIRECTORIES "${WOK_LIB_PATH}" )
-  list( APPEND TKXMesh_COMPILER_DIRECTORIES "../../../inc" )
-  list( APPEND TKXMesh_COMPILER_DIRECTORIES "../../../drv/XBRepMesh" )
-  list( APPEND TKXMesh_COMPILER_DIRECTORIES "../../../src/XBRepMesh" )
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}/inc")
+    list( APPEND TKXMesh_COMPILER_DIRECTORIES "${BUILD_PATCH_DIR}/inc" )
+  ENDIF()
+  IF(EXISTS "${CMAKE_SOURCE_DIR}/inc")
+    list( APPEND TKXMesh_COMPILER_DIRECTORIES "${CMAKE_SOURCE_DIR}/inc" )
+  ENDIF()
 
-if (WIN32)
-else()
-endif()
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "")
+    IF(EXISTS "${BUILD_PATCH_DIR}/drv/XBRepMesh")
+      list( APPEND TKXMesh_COMPILER_DIRECTORIES "${BUILD_PATCH_DIR}/drv/XBRepMesh" )
+    ENDIF()
+    IF(EXISTS "${BUILD_PATCH_DIR}/src/XBRepMesh")
+      list( APPEND TKXMesh_COMPILER_DIRECTORIES "${BUILD_PATCH_DIR}/src/XBRepMesh" )
+    ENDIF()
+
+  ENDIF()
+
+  IF(EXISTS "${CMAKE_SOURCE_DIR}/drv/XBRepMesh")
+    list( APPEND TKXMesh_COMPILER_DIRECTORIES "${CMAKE_SOURCE_DIR}/drv/XBRepMesh" )
+  ENDIF()
+  IF(EXISTS "${CMAKE_SOURCE_DIR}/src/XBRepMesh")
+    list( APPEND TKXMesh_COMPILER_DIRECTORIES "${CMAKE_SOURCE_DIR}/src/XBRepMesh" )
+  ENDIF()
+
+IF (WIN32)
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "")
+  ENDIF()
+
+ELSE()
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "")
+  ENDIF()
+
+ENDIF()
 
   list( APPEND TKXMesh_USED_LIBS TKBRep )
   list( APPEND TKXMesh_USED_LIBS TKMath )
@@ -25,17 +51,25 @@ elseif(APPLE)
 else()
 endif()
 
-  list( APPEND TKXMesh_USED_SRCFILES "../../../src/XBRepMesh/XBRepMesh.cxx" )
-  SOURCE_GROUP (XBRepMesh FILES "../../../src/XBRepMesh/XBRepMesh.cxx")
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/XBRepMesh/XBRepMesh.cxx")
+    list( APPEND TKXMesh_USED_SRCFILES "${BUILD_PATCH_DIR}//src/XBRepMesh/XBRepMesh.cxx" )
+    SOURCE_GROUP (XBRepMesh FILES "${BUILD_PATCH_DIR}//src/XBRepMesh/XBRepMesh.cxx")
+  ELSE()
+    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/XBRepMesh/XBRepMesh.cxx")
+      list( APPEND TKXMesh_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/XBRepMesh/XBRepMesh.cxx" )
+      SOURCE_GROUP (XBRepMesh FILES "${CMAKE_SOURCE_DIR}//src/XBRepMesh/XBRepMesh.cxx")
+    ENDIF()
+  ENDIF()
 
-if (WIN32)
-else()
 
-  if (APPLE)
+IF (WIN32)
+ELSE()
 
-  endif()
+  IF (APPLE)
 
-endif()
+  ENDIF()
+
+ENDIF()
 
 if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKXMesh)
  add_library( TKXMesh SHARED ${TKXMesh_USED_SRCFILES} )
@@ -43,13 +77,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKXMesh)
  set_property(TARGET TKXMesh PROPERTY FOLDER ModelingAlgorithms)
 
  install( TARGETS TKXMesh
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/bin"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/lib"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/lib")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
 
  if (MSVC)
   install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKXMesh.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/bin")
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
  endif()
 
 

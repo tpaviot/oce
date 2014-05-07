@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -45,13 +45,12 @@ class Standard_MMgrRoot
   Standard_EXPORT virtual Standard_Address Allocate (const Standard_Size theSize)=0;
   
   //! Reallocate previously allocated memory to contain at least theSize bytes.
-  //! In case of success, aPtr should be nullified and new pointer returned.
-  Standard_EXPORT virtual Standard_Address Reallocate (Standard_Address& aPtr, 
+  //! In case of success, new pointer is returned.
+  Standard_EXPORT virtual Standard_Address Reallocate (Standard_Address thePtr, 
                                                        const Standard_Size theSize)=0;
   
   //! Frees previously allocated memory at specified address.
-  //! The pointer is nullified.
-  Standard_EXPORT virtual void Free(Standard_Address& aPtr)=0;
+  Standard_EXPORT virtual void Free(Standard_Address thePtr)=0;
   
   //! Purge internally cached unused memory blocks (if any) 
   //! by releasing them to the operating system.

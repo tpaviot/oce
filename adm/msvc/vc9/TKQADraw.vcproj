@@ -80,7 +80,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib TKVoxel.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib TKVoxel.lib TKShapeSchema.lib TKPShape.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKQADraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -180,7 +180,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib TKVoxel.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib TKVoxel.lib TKShapeSchema.lib TKPShape.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKQADraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -275,7 +275,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib TKVoxel.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib TKVoxel.lib TKShapeSchema.lib TKPShape.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKQADraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -372,7 +372,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib TKVoxel.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib TKVoxel.lib TKShapeSchema.lib TKPShape.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKQADraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

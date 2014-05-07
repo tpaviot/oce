@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -435,7 +435,7 @@ void AdvApp2Var_ApproxAFunc2Var::ComputePatches(const AdvApprox_Cutting& UChoice
 					 const AdvApp2Var_EvaluatorFunc2Var& Func,
 					 const AdvApp2Var_Criterion& Crit)
 {
-  Standard_Real Udec, Vdec, CritValue, m0=0., m1=0.;
+  Standard_Real Udec, Vdec, CritValue, m1=0.;
   Standard_Boolean Umore, Vmore, CritAbs = (Crit.Type() == AdvApp2Var_Absolute);
   Standard_Integer NbPatch, NbU, NbV, NbInt, NumDec;
   Standard_Integer FirstNA, decision=0;
@@ -445,7 +445,6 @@ void AdvApp2Var_ApproxAFunc2Var::ComputePatches(const AdvApprox_Cutting& UChoice
 // complete the set of constraints 
     ComputeConstraints(UChoice, VChoice, Func, Crit);
     if (decision>0) {
-      m0 = m1;
       m1 = 0.;
     }
 

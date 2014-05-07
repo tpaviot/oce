@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -106,14 +106,13 @@ static Standard_Boolean FUN_keepEinterference
   //  Standard_Boolean k4I = (((shab == TopAbs_FACE) && (stab == TopAbs_OUT)) &&
 //		((shaa == TopAbs_FACE) && (staa == TopAbs_OUT))); 
 #endif
-    Standard_Boolean k4C = Standard_False;
     {
       TopoDS_Vertex Vf,Vr; TopExp::Vertices(TopoDS::Edge(E),Vf,Vr);
       TopTools_ListIteratorOfListOfShape it(DS.ShapeSameDomain(VG));
       for (; it.More(); it.Next()) {
 	const TopoDS_Shape& Vsd = it.Value();
-	if      ( Vsd.IsSame(Vf) ) { k4C = Standard_True; break; }
-	else if ( Vsd.IsSame(Vr) ) { k4C = Standard_True; break; }
+	if      ( Vsd.IsSame(Vf) ) { break; }
+	else if ( Vsd.IsSame(Vr) ) { break; }
       }
     }
 #ifdef DEB

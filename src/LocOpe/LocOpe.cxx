@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -165,7 +165,6 @@ Standard_Boolean LocOpe::TgtFaces(const TopoDS_Edge& E,
   gp_Vec d1,d2;
 
   Standard_Real uu, vv;
-  Standard_Real angle[21];
 
   Standard_Integer i;
   for(i = 0; i <= 20; i++){
@@ -180,7 +179,6 @@ Standard_Boolean LocOpe::TgtFaces(const TopoDS_Edge& E,
     d2 = (du.Crossed(dv)).Normalized();
     if(rev2) d2.Reverse();
     ang = d1.Angle(d2);
-    angle[i] = ang;
     if(ang <= angmin) angmin = ang;
     if(ang >= angmax) angmax = ang;
   }

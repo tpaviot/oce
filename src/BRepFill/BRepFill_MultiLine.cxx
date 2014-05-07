@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -47,12 +47,10 @@
 
 #ifdef DRAW
 #include <DrawTrSurf.hxx>
-#endif
-
-#ifdef DEB
 static Standard_Boolean AffichCurve = Standard_False;
 static Standard_Integer NbProj = 1;
 #endif
+
 //POP pour NT
 #include <stdio.h>
 
@@ -506,9 +504,7 @@ void BRepFill_MultiLine::Curves(Handle(Geom_Curve)& Curve,
 
 #ifdef DRAW
     if ( AffichCurve) {
-//POP pour NT
-      //      char name[100];
-      char* name = new char[100];
+      char name[100];
       sprintf(name,"C2_%d",NbProj);
       DrawTrSurf::Set(name,TLine);
       sprintf(name,"C3_%d",NbProj);
@@ -606,7 +602,7 @@ static gp_Pnt2d ValueOnFace(const Standard_Real        U,
 
   Standard_Real UU =0., Dist = Precision::Infinite(), D1, D2;
 
-  if ( !Ext.NbPoints() == 0 ) {    
+  if ( Ext.NbPoints() != 0 ) {
     UU = Ext.LowerDistanceParameter();
     Dist = Ext.LowerDistance();
   }

@@ -2,28 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{764B91A5-1133-1371-1322-4F49B870DC03}</UniqueIdentifier>
+      <UniqueIdentifier>{A720F066-0232-102D-168A-56BFF855611D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Aspect">
-      <UniqueIdentifier>{7C5BA5D6-043B-10F2-0EA8-93140C092BEB}</UniqueIdentifier>
+      <UniqueIdentifier>{5AF31970-0038-166E-1570-C58673FE1F4B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\InterfaceGraphic">
-      <UniqueIdentifier>{226E8E18-095B-1658-0AB3-8F7D1E5F5059}</UniqueIdentifier>
+      <UniqueIdentifier>{B8B0EEA6-0B68-1591-0296-8E2B51BDFF3C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SelectBasics">
-      <UniqueIdentifier>{940E8894-07BA-0F13-1438-DE9BD0C7998C}</UniqueIdentifier>
+      <UniqueIdentifier>{BFC4370E-0840-13D9-1499-A2E685CC3994}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Image">
-      <UniqueIdentifier>{31EB8EC5-15B9-0D76-0553-B265B43312EF}</UniqueIdentifier>
+      <UniqueIdentifier>{D82C2993-0754-0E07-03B2-BA9681EEFA4C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\WNT">
-      <UniqueIdentifier>{2013454D-032E-0D11-18FA-0C91C736D114}</UniqueIdentifier>
+      <UniqueIdentifier>{729A363E-1571-0F7A-124A-753B6F911BA0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColQuantity">
-      <UniqueIdentifier>{D8A5CE36-1088-15C4-10AD-DF246BCFF260}</UniqueIdentifier>
+      <UniqueIdentifier>{ACB82166-0E7B-197B-0DD5-A588589A72C5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Font">
-      <UniqueIdentifier>{319D5AD5-1861-0FD5-05E1-1402D6C645B2}</UniqueIdentifier>
+      <UniqueIdentifier>{E4F5C5EC-134E-0884-03C9-CF1D1B7FE55D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

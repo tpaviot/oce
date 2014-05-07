@@ -25,6 +25,9 @@
 #ifndef _Graphic3d_NameOfTexture1D_HeaderFile
 #include <Graphic3d_NameOfTexture1D.hxx>
 #endif
+#ifndef _Image_PixMap_Handle_HeaderFile
+#include <Image_PixMap_Handle.hxx>
+#endif
 class TCollection_AsciiString;
 
 
@@ -40,6 +43,8 @@ public:
   Standard_EXPORT   Graphic3d_Texture1Dsegment(const TCollection_AsciiString& theFileName);
   //! Creates a texture from a predefined texture name set. <br>
   Standard_EXPORT   Graphic3d_Texture1Dsegment(const Graphic3d_NameOfTexture1D theNOT);
+  //! Creates a texture from the pixmap. <br>
+  Standard_EXPORT   Graphic3d_Texture1Dsegment(const Image_PixMap_Handle& thePixMap);
   //! Sets the texture application bounds. Defines the way <br>
 //! the texture is stretched across facets. <br>
 //! Default values are <0.0, 0.0, 0.0> , <0.0, 0.0, 1.0> <br>

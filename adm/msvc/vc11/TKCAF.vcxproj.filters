@@ -2,19 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{8B27497C-007D-00E6-0D0F-81F6715A9757}</UniqueIdentifier>
+      <UniqueIdentifier>{55ED9FF6-06AC-0F8E-0F44-3D0BFFDE9A29}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TDataXtd">
-      <UniqueIdentifier>{85D58D38-12A8-135D-1506-BCA34F859A7A}</UniqueIdentifier>
+      <UniqueIdentifier>{5B33A349-15F4-0CD6-05A7-DC171B712679}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TNaming">
-      <UniqueIdentifier>{60D1CE36-024D-1222-0E01-8FB41577D109}</UniqueIdentifier>
+      <UniqueIdentifier>{94EC5192-0340-0D11-0D79-429A2D981DB9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TPrsStd">
-      <UniqueIdentifier>{3CE2A264-1871-03F2-02D1-C386DDCB2047}</UniqueIdentifier>
+      <UniqueIdentifier>{C77F5A67-05F0-03E5-1760-49A7B2A0C2DC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AppStd">
-      <UniqueIdentifier>{B433FC2C-1477-0BCA-1114-EF50407DBC14}</UniqueIdentifier>
+      <UniqueIdentifier>{5925F2AC-1752-141C-04E9-A7621A19BDB6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

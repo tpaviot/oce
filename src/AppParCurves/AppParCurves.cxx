@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -104,8 +104,8 @@ void AppParCurves::SecondDerivativeBernstein(const Standard_Real U,
 //  Standard_Real U1 = 1-U, Y0, Y1, Xs;
   Standard_Real Y0, Y1, Xs;
   Standard_Integer NbPoles = DDA.Length();
-  Standard_Integer id, j, N2, N3, N4, deg = NbPoles-1;
-  N2 = deg-1; N3 = deg-2, N4 = deg*(deg-1);
+  Standard_Integer id, j, N4, deg = NbPoles-1;
+  N4 = deg*(deg-1);
   math_Vector B(1, deg-1);
   B(1) = 1.;
   

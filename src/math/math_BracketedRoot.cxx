@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -28,12 +28,11 @@ math_BracketedRoot::math_BracketedRoot (math_Function& F,
 
     Standard_Real Fa,Fc,a,c=0,d=0,e=0;
     Standard_Real min1,min2,p,q,r,s,tol1,xm;
-    Standard_Boolean Ok;
   
     a = Bound1;
     TheRoot = Bound2;
-    Ok = F.Value(a,Fa);
-    Ok = F.Value(TheRoot,TheError);
+    F.Value(a,Fa);
+    F.Value(TheRoot,TheError);
     if (Fa*TheError > 0.) { Done = Standard_False;}
     else {
       Fc = TheError ;
@@ -95,7 +94,7 @@ math_BracketedRoot::math_BracketedRoot (math_Function& F,
           else {
              TheRoot += (xm > 0. ? Abs(tol1) : -Abs(tol1));
           }
-          Ok = F.Value(TheRoot,TheError);
+          F.Value(TheRoot,TheError);
       }  
      Done = Standard_False;
     }  

@@ -2,31 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{73F65DC3-0A90-04A8-0E6F-2FA7C7B032D8}</UniqueIdentifier>
+      <UniqueIdentifier>{4EE444B6-1214-0230-039A-5D837862551D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepBasic">
-      <UniqueIdentifier>{DA142F66-09A5-0BC3-02E2-6401B6AC6F1C}</UniqueIdentifier>
+      <UniqueIdentifier>{C1EFF006-0B73-06DC-15BF-8A0F45F09CA0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepBasic">
-      <UniqueIdentifier>{B2B45585-10B8-075D-0DDE-65672155D2D0}</UniqueIdentifier>
+      <UniqueIdentifier>{BAF4DD22-0562-03C7-152E-637977BB9BD5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepRepr">
-      <UniqueIdentifier>{837D5A79-0D0B-0CA0-0784-60BCD20CA109}</UniqueIdentifier>
+      <UniqueIdentifier>{F3F09DB3-02A3-168B-029C-518F76A1CCC4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepRepr">
-      <UniqueIdentifier>{208598D2-1068-10DF-150C-9537E4887F79}</UniqueIdentifier>
+      <UniqueIdentifier>{8A668B85-0C09-15CD-07E5-A3CE7046513F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepGeom">
-      <UniqueIdentifier>{6913FC29-0159-0E95-0FFF-D1D0F0EC647A}</UniqueIdentifier>
+      <UniqueIdentifier>{7FFFC056-04DD-0C0F-0D60-E09277AFD922}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepGeom">
-      <UniqueIdentifier>{B88AACF9-0F39-07B6-0CEE-46A15509F5F4}</UniqueIdentifier>
+      <UniqueIdentifier>{D859FF2F-18C6-16D1-0E7C-1D050233E6AD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepShape">
-      <UniqueIdentifier>{F290401D-02A7-07D0-0753-E8811E74E558}</UniqueIdentifier>
+      <UniqueIdentifier>{6D6D16A1-091B-0844-147A-456F7D9A7831}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepShape">
-      <UniqueIdentifier>{7D1991E1-1542-09B1-1335-8D903EF8F26D}</UniqueIdentifier>
+      <UniqueIdentifier>{491548E1-0ECD-0E4B-0A0D-EDB6D37DF040}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

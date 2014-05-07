@@ -25,6 +25,9 @@
 #ifndef _Handle_TColStd_HArray1OfTransient_HeaderFile
 #include <Handle_TColStd_HArray1OfTransient.hxx>
 #endif
+#ifndef _Message_HArrayOfMsg_HeaderFile
+#include <Message_HArrayOfMsg.hxx>
+#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
@@ -61,6 +64,7 @@ class TCollection_AsciiString;
 class TCollection_HAsciiString;
 class TCollection_ExtendedString;
 class TCollection_HExtendedString;
+class Message_Msg;
 class TColStd_HPackedMapOfInteger;
 class TColStd_HSequenceOfHExtendedString;
 class TColStd_SequenceOfHExtendedString;
@@ -101,6 +105,9 @@ class TColStd_SequenceOfHExtendedString;
 //!          the current class type, the same message is searched for the base <br>
 //!          class(es) recursively. <br>
 //! <br>
+//!          Message can be set explicitly for the status; in this case the <br>
+//!          above procedure is not used and supplied message is used as is. <br>
+//! <br>
 //!          The messages are output to the messenger, stored in the field; <br>
 //!          though messenger can be changed, it is guaranteed to be non-null. <br>
 //!          By default, Message::DefaultMessenger() is used. <br>
@@ -134,6 +141,10 @@ public:
 //!          If noRepetitions is True, the parameter will be added only <br>
 //!          if it has not been yet recorded for the same status flag <br>
   Standard_EXPORT     void SetStatus(const Message_Status& theStat,const Handle(TCollection_HExtendedString)& theStr,const Standard_Boolean noRepetitions = Standard_True) ;
+  //! Sets status with preformatted message. This message will be <br>
+//!          used directly to report the status; automatic generation of <br>
+//!          status messages will be disabled for it. <br>
+  Standard_EXPORT     void SetStatus(const Message_Status& theStat,const Message_Msg& theMsg) ;
   //! Returns copy of exec status of algorithm <br>
        const Message_ExecStatus& GetStatus() const;
   //! Returns exec status of algorithm <br>
@@ -205,6 +216,7 @@ private:
 
 Handle_TColStd_HArray1OfTransient myReportIntegers;
 Handle_TColStd_HArray1OfTransient myReportStrings;
+Message_HArrayOfMsg myReportMessages;
 
 
 };

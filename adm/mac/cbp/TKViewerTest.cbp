@@ -71,6 +71,8 @@
 			<Add option="-framework OpenGL" />
 			<Add option="-framework AppKit" />
 			<Add option="-framework IOKit" />
+			<Add option="-framework Tcl" />
+			<Add option="-framework Tk" />
 			<Add option="-framework OpenCL" />
 			<Add library="TKGeomBase" />
 			<Add library="TKFillet" />
@@ -103,16 +105,12 @@
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
 			<Add library="freetype" />
-			<Add library="tcl8.5" />
-			<Add library="tk8.5" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
 			<Add library="objc" />
 			<Add library="objc" />
 			<Add library="freetype" />
 			<Add library="gl2ps" />
-			<Add library="tcl8.5" />
-			<Add library="tk8.5" />
 			<Add library="objc" />
 			<Add library="freetype" />
 		</Linker>

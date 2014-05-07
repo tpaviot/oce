@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -173,8 +173,6 @@ void MeshVS_ElementalColorPrsBuilder::Build ( const Handle(Prs3d_Presentation)& 
   }
 
   //Now we are ready to draw faces with equal colors
-  Aspect_InteriorStyle aStyle;
-  Standard_Integer     aStyleInt;
   Aspect_TypeOfLine    anEdgeType = Aspect_TOL_SOLID;
   Aspect_TypeOfLine    aLineType = Aspect_TOL_SOLID;
   Standard_Integer     anEdgeInt, aLineInt;
@@ -192,9 +190,6 @@ void MeshVS_ElementalColorPrsBuilder::Build ( const Handle(Prs3d_Presentation)& 
   aDrawer->GetBoolean( MeshVS_DA_ShowEdges, anEdgeOn );
   aDrawer->GetBoolean( MeshVS_DA_ColorReflection, IsReflect );
   aDrawer->GetBoolean( MeshVS_DA_SmoothShading, IsMeshSmoothShading );
-
-  if ( aDrawer->GetInteger ( MeshVS_DA_InteriorStyle, aStyleInt) )
-    aStyle = (Aspect_InteriorStyle) aStyleInt;
 
   if ( aDrawer->GetInteger ( MeshVS_DA_EdgeType, anEdgeInt) )
     anEdgeType = (Aspect_TypeOfLine) anEdgeInt;

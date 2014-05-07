@@ -2,19 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{417A4A5C-076D-0D26-0043-79BFEC275AB1}</UniqueIdentifier>
+      <UniqueIdentifier>{8F62DA2A-1441-07D5-169F-06A3D9EF1EF6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepElement">
-      <UniqueIdentifier>{B34E58FD-066D-064A-0EF0-459ADCB9F004}</UniqueIdentifier>
+      <UniqueIdentifier>{D9C4A71F-15CF-149C-1754-F8EC10522BA8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepFEA">
-      <UniqueIdentifier>{3CA5DB3A-04E9-0592-0F44-412F277EBD10}</UniqueIdentifier>
+      <UniqueIdentifier>{B052F8C1-08DC-0E87-08BB-F631DE43F843}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepElement">
-      <UniqueIdentifier>{AE66344B-009E-10AF-0969-B7225A3066FB}</UniqueIdentifier>
+      <UniqueIdentifier>{60346460-04B0-0827-1684-6A5166060B09}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepFEA">
-      <UniqueIdentifier>{B8F9C2E1-126F-0B9F-1778-A88F9E6CD389}</UniqueIdentifier>
+      <UniqueIdentifier>{BE8B453A-10C1-1066-113E-E7370BCEE3DA}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -199,13 +199,11 @@ Standard_Integer MKSOLSHE(Draw_Interpretor&, Standard_Integer narg, const char**
 
   // take all the SHELL args, place them in the solid <sol>
   TopoDS_Solid sol; BB.MakeSolid(sol);
-  Standard_Boolean yashell = Standard_False;
   for (i = i1; i < i2; i++) {
     const TopoDS_Shape& S = DBRep::Get(a[i]);
     if (S.IsNull()) continue;
     if (S.ShapeType() == TopAbs_SHELL) {
       BB.Add(sol,S);
-      yashell = Standard_True;
     }
   }
 
@@ -230,7 +228,7 @@ Standard_Integer MKSOLSHE(Draw_Interpretor&, Standard_Integer narg, const char**
 Standard_Integer GRILLE(Draw_Interpretor& di, Standard_Integer narg, const char** a)
 {
   if (narg != 10) return 1;
-  Standard_Real xmin,ymin,zmin,xmax,ymax,zmax,dx,dy,dz;
+  Standard_Real xmin,ymin,zmin,xmax,ymax,zmax,dx,dy;
   Standard_Integer nbx,nby,nbz;
   xmin = Draw::Atof(a[1]);
   ymin = Draw::Atof(a[2]);
@@ -245,7 +243,6 @@ Standard_Integer GRILLE(Draw_Interpretor& di, Standard_Integer narg, const char*
     return 1;
   if(nbx) dx = (xmax-xmin)/nbx; else dx=0;
   if(nby) dy = (ymax-ymin)/nby; else dy=0;
-  if(nbz) dz = (zmax-zmin)/nbz; else dz=0;
   di<<"compound CE"<<"\n";
   for(Standard_Real x=xmin; x<xmax; x+=dx) { 
     for(Standard_Real y=ymin; y<ymax; y+=dx) { 

@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -234,14 +234,13 @@
 				 const Standard_Real myEpsNull)
 {
   Standard_Integer aType, j, aNbRoots;
-  Standard_Real t, t1, t2, f1, f2, absf1, absf2;
+  Standard_Real t1, t2, f1, f2, absf2;
 
   aNbRoots=mySequenceOfRoots.Length();
 
   for (j=1; j<=aNbRoots; j++) {
     IntTools_Root& aR=mySequenceOfRoots.ChangeValue(j);
     
-    t=aR.Root();
     aR.Interval (t1, t2, f1, f2);
 
     aType=aR.Type();
@@ -263,7 +262,6 @@
       break;
       
     case 2: // Smart;
-      absf1=fabs(f1);
       absf2=fabs(f2);
       if (absf2 < myEpsNull) {
 	aR.SetStateAfter (TopAbs_ON);

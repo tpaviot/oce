@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -51,15 +51,6 @@
 #ifdef DEB
 static Standard_Boolean AffichValue = Standard_False;
 #endif    
-
-static 
-  void Parameters(const Handle(Adaptor3d_HCurve)&   myCurve,
-		  const Handle(Adaptor3d_HSurface)& mySurface,
-		  const gp_Pnt& aP1, 
-		  const Standard_Integer iFirst,
-		  const Standard_Real aTolU, 
-		  Standard_Real& aU, 
-		  Standard_Real& aV);
 
 //=======================================================================
 //function : IsEqual
@@ -432,10 +423,8 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       //       (1) (3) (4) : equation de la couture.
       Standard_Integer NbSolutions = 0;
       Standard_Real A, B, C, D, R, Tol = 1.e-10;
-      Standard_Real U1, U2, V1, V2, aTPC;
+      Standard_Real U1, U2, V1, V2;
       gp_Trsf Trsf;
-      //
-      aTPC=Precision::PConfusion();
       //
       gp_Circ Circle = myCurve->Circle();
       Trsf.SetTransformation(SP.Position());

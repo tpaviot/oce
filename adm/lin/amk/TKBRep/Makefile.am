@@ -152,6 +152,7 @@ libTKBRep_la_SOURCES = \
 @top_srcdir@/src/BRepLProp/BRepLProp_CurveTool.cxx \
 @top_srcdir@/src/BRepLProp/BRepLProp_SurfaceTool.cxx \
 @top_srcdir@/src/BRepTools/BRepTools.cxx \
+@top_srcdir@/src/BRepTools/BRepTools_Debug.cxx \
 @top_srcdir@/src/BRepTools/BRepTools_GTrsfModification.cxx \
 @top_srcdir@/src/BRepTools/BRepTools_Modification.cxx \
 @top_srcdir@/src/BRepTools/BRepTools_Modifier.cxx \

@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -231,9 +231,8 @@ Standard_Integer CSLib_Class2d::InternalSiDansOuOn(const Standard_Real Px,
   Standard_Integer nbc, i, ip1, SH, NH, iRet;
   Standard_Real *Pnts2dX, *Pnts2dY;
   Standard_Real x, y, nx, ny, aX;
-  Standard_Real aYmin, aTol;
+  Standard_Real aYmin;
   //
-  aTol=(Tolu>Tolv)? Tolu : Tolv;
   nbc = 0;
   i   = 0;
   ip1 = 1;

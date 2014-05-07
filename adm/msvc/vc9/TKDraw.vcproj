@@ -482,6 +482,9 @@
 					RelativePath="..\..\..\src\Draw\Draw_Commands.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\Draw\Draw_Debug.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\Draw\Draw_Display.cxx">
 				</File>
 				<File

@@ -2,31 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{B61C1A3E-122B-1448-031C-6FEB4FC1A132}</UniqueIdentifier>
+      <UniqueIdentifier>{D172F55D-015B-0DA6-193C-D7945A4CB6AF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRTopoBRep">
-      <UniqueIdentifier>{3E0BC1D7-0111-0D0B-0554-1E1A7D5D1066}</UniqueIdentifier>
+      <UniqueIdentifier>{6DB36BA1-0F71-0EA4-062E-F50F1FB3DC00}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRBRep">
-      <UniqueIdentifier>{DFB5F612-0424-0BD8-01B1-9F19AF4F447B}</UniqueIdentifier>
+      <UniqueIdentifier>{30964FED-0658-04FE-0FDE-AD2194779B2E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRAlgo">
-      <UniqueIdentifier>{19073282-0557-135A-1822-C4EB4A336D9F}</UniqueIdentifier>
+      <UniqueIdentifier>{6D02614B-1726-02C5-1516-7F380A3833F6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRAppli">
-      <UniqueIdentifier>{6205BAB6-183D-04E3-07F8-A00C999B25A5}</UniqueIdentifier>
+      <UniqueIdentifier>{DB75BF50-02B0-01FD-017E-231DBC75275A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Intrv">
-      <UniqueIdentifier>{C485E633-10C6-0557-0650-EDC345AF1AC7}</UniqueIdentifier>
+      <UniqueIdentifier>{6A9D8A18-04B9-0025-0F51-517FD19EA234}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopBas">
-      <UniqueIdentifier>{071A59F5-060F-07C7-1338-058F4A0283E9}</UniqueIdentifier>
+      <UniqueIdentifier>{AB0CF58D-17CE-0C27-159B-22A5A8A9E756}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopCnx">
-      <UniqueIdentifier>{2245E6B1-131F-0E37-11A5-8BAE014D017B}</UniqueIdentifier>
+      <UniqueIdentifier>{92DFC15A-00C3-1273-00B1-B08A92599F17}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Contap">
-      <UniqueIdentifier>{9C3FBA61-01BC-12A8-1254-1026FB6F3A35}</UniqueIdentifier>
+      <UniqueIdentifier>{DB9FB24D-081F-0111-091C-538D47603FDE}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

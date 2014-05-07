@@ -2,49 +2,49 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{F88307D6-0586-078F-0590-DB0DD368AF2A}</UniqueIdentifier>
+      <UniqueIdentifier>{77B93572-17B0-0CAE-0D87-8D06D3BB40E2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\math">
-      <UniqueIdentifier>{C3F2B627-1478-17F0-16D2-C5F668B45D1F}</UniqueIdentifier>
+      <UniqueIdentifier>{A0E78E9C-1267-099B-1456-3D5694FF201B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ElCLib">
-      <UniqueIdentifier>{4DA74DB2-1946-1961-0D60-CF8D4E45FD53}</UniqueIdentifier>
+      <UniqueIdentifier>{9502778D-0BE7-0F85-0FA6-47818A89956C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ElSLib">
-      <UniqueIdentifier>{FA58635C-02E0-1554-1792-2857AE946BDF}</UniqueIdentifier>
+      <UniqueIdentifier>{B117FE69-113B-0352-15AF-D613EFB6B577}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BSplCLib">
-      <UniqueIdentifier>{36176A53-175A-06F9-02DC-1D5939CCDD74}</UniqueIdentifier>
+      <UniqueIdentifier>{43CF639E-002E-0C41-0509-DCE50B41675E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BSplSLib">
-      <UniqueIdentifier>{DF1837EA-0BD7-12C5-15B6-CB5C7322A75B}</UniqueIdentifier>
+      <UniqueIdentifier>{E9845BCF-1051-03BE-07C4-3EF5DB7F2AA3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PLib">
-      <UniqueIdentifier>{1957553B-0A0A-03D6-0609-897C8B4FA8B9}</UniqueIdentifier>
+      <UniqueIdentifier>{C84E4218-0FFE-04BD-05B2-F8BE5C99A114}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Precision">
-      <UniqueIdentifier>{CE3E28E5-0B28-11F7-1907-A6420C3A274A}</UniqueIdentifier>
+      <UniqueIdentifier>{1E68FB37-0A5B-1889-0B28-61427351B3B5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Poly">
-      <UniqueIdentifier>{E9806B5E-12ED-0F9D-1306-A6A3993EB68F}</UniqueIdentifier>
+      <UniqueIdentifier>{ED46CE4C-1638-0342-054F-CEC64C3CC7CA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CSLib">
-      <UniqueIdentifier>{436D142A-012E-00AD-13C9-B4D33B97DE71}</UniqueIdentifier>
+      <UniqueIdentifier>{60DCF504-1369-1379-17F5-E5E396C0BB79}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Convert">
-      <UniqueIdentifier>{8CFEC57A-11FE-197E-1347-1674DE52B89D}</UniqueIdentifier>
+      <UniqueIdentifier>{541ADCAA-034D-0E7B-1503-69F3A6FB301E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Bnd">
-      <UniqueIdentifier>{D657E4B2-1389-09D3-192B-D7527D68C97F}</UniqueIdentifier>
+      <UniqueIdentifier>{1441295C-0999-0DCF-1318-10B9A60C65BD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\gp">
-      <UniqueIdentifier>{84CAB3F1-01FF-0E0A-0A9B-77305E088EF3}</UniqueIdentifier>
+      <UniqueIdentifier>{EB692A94-0A67-1562-0F8B-AC96B9DB6EE8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColgp">
-      <UniqueIdentifier>{E0FDCB73-03A6-0299-1250-7F8DC133AC6C}</UniqueIdentifier>
+      <UniqueIdentifier>{4E512BBB-1153-09C9-0E3B-11DC89A5E3F4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopLoc">
-      <UniqueIdentifier>{7CF9057C-053A-0D5C-0B98-A7EA640D61A0}</UniqueIdentifier>
+      <UniqueIdentifier>{18D7B11F-0523-173E-0683-B91E9F897A6E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

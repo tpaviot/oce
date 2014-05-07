@@ -547,9 +547,6 @@
 					RelativePath="..\..\..\src\IntTools\IntTools_BaseRangeSample.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\IntTools\IntTools_BeanBeanIntersector.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\IntTools\IntTools_BeanFaceIntersector.cxx">
 				</File>
 				<File
@@ -575,9 +572,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\IntTools\IntTools_EdgeEdge.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\IntTools\IntTools_EdgeEdge_1.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\IntTools\IntTools_EdgeFace.cxx">
@@ -650,6 +644,12 @@
 			<Filter
 				Name="BOPCol"
 				>
+				<File
+					RelativePath="..\..\..\src\BOPCol\BOPCol_Box2DBndTree.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPCol\BOPCol_BoxBndTree.cxx">
+				</File>
 			</Filter>
 			<Filter
 				Name="BOPInt"
@@ -667,9 +667,6 @@
 			<Filter
 				Name="BOPDS"
 				>
-				<File
-					RelativePath="..\..\..\src\BOPDS\BOPDS_BoxBndTree.cxx">
-				</File>
 				<File
 					RelativePath="..\..\..\src\BOPDS\BOPDS_CommonBlock.cxx">
 				</File>
@@ -771,6 +768,9 @@
 					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_CheckerSI.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_CheckerSI_1.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller.cxx">
 				</File>
 				<File
@@ -798,7 +798,13 @@
 					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_8.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_9.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_SectionAttribute.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_ShellSplitter.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_Tools.cxx">

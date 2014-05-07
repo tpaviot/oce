@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -46,20 +46,6 @@
 #include <BRep_CurveRepresentation.hxx>
 #include <BRep_GCurve.hxx>
 
-#ifdef DRAW 
-#include <DBRep.hxx>
-#endif
-#ifdef DEB
-#ifndef WNT
-extern Standard_Integer AffichInt2d;
-#else
-Standard_IMPORT Standard_Boolean AffichInt2d;
-#endif
-static Standard_Integer NbF2d = 0;
-static Standard_Integer NbE2d = 0;
-static Standard_Integer NbNewVertices  = 0;
-#endif
-
 #include <Geom_Line.hxx>
 #include <Geom_TrimmedCurve.hxx>
 #include <GeomConvert_CompCurveToBSplineCurve.hxx>
@@ -94,6 +80,13 @@ static Standard_Integer NbNewVertices  = 0;
 #include <BndLib_Add3dCurve.hxx>
 #include <BRepTools.hxx>
 
+#ifdef DRAW 
+#include <DBRep.hxx>
+Standard_IMPORT extern Standard_Boolean AffichInt2d;
+static Standard_Integer NbF2d = 0;
+static Standard_Integer NbE2d = 0;
+static Standard_Integer NbNewVertices  = 0;
+#endif
 
 //=======================================================================
 //function : CommonVertex
@@ -253,8 +246,7 @@ static void  Store (const TopoDS_Edge&       E1,
 #ifdef DRAW
    if (AffichInt2d) {	  
      if (!OnE1 && !OnE2) {
-       //POP pour NT
-       char* name = new char[100];
+       char name[256];
        sprintf(name,"VV_%d",NbNewVertices++);	
        DBRep::Set(name,V);
      }
@@ -280,8 +272,7 @@ static void EdgeInter(const TopoDS_Face&              F,
 {
 #ifdef DRAW
   if (AffichInt2d) {
-    //POP pour NT
-    char* name = new char[100];
+    char name[256];
     sprintf(name,"E2d_%d_%d",NbF2d,NbE2d++);
     DBRep::Set(name,E1);
     sprintf(name,"E2d_%d_%d",NbF2d,NbE2d++);
@@ -552,8 +543,7 @@ static void RefEdgeInter(const TopoDS_Face&              F,
 {
 #ifdef DRAW
   if (AffichInt2d) {
-    //POP for NT
-    char* name = new char[100];
+    char name[256];
     sprintf(name,"E2d_%d_%d",NbF2d,NbE2d++);
     DBRep::Set(name,E1);
     sprintf(name,"E2d_%d_%d",NbF2d,NbE2d++);
@@ -1410,7 +1400,7 @@ void BRepOffset_Inter2d::Compute (const Handle(BRepAlgo_AsDes)&     AsDes,
 				  const TopTools_IndexedMapOfShape& NewEdges,
 				  const Standard_Real               Tol)
 {
-#ifdef DEB
+#ifdef DRAW
   NbF2d++;
   NbE2d = 0;
 #endif 

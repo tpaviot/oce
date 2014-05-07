@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -860,3 +860,40 @@ Handle(Geom2d_BSplineCurve) Geom2dAdaptor_Curve::BSpline() const
   return *((Handle(Geom2d_BSplineCurve)*)&myCurve);
 }
 
+static Standard_Integer nbPoints(const Handle(Geom2d_Curve)& theCurve) 
+{
+ 
+  Standard_Integer nbs = 10;
+  
+  if(theCurve->IsKind(STANDARD_TYPE( Geom2d_Line)) )
+    nbs = 2;
+  else if(theCurve->IsKind(STANDARD_TYPE( Geom2d_BezierCurve))) 
+  {
+    nbs = 3 + (*((Handle(Geom2d_BezierCurve)*)&theCurve))->NbPoles();
+  }
+  else if(theCurve->IsKind(STANDARD_TYPE( Geom2d_BSplineCurve))) { 
+    nbs =  (*((Handle(Geom2d_BSplineCurve)*)&theCurve))->NbKnots();
+    nbs*= (*((Handle(Geom2d_BSplineCurve)*)&theCurve))->Degree();
+    if(nbs < 2.0) nbs=2;
+  }
+  else if (theCurve->IsKind(STANDARD_TYPE(Geom2d_OffsetCurve)))
+  {
+    Handle(Geom2d_Curve) aCurve = (*((Handle(Geom2d_OffsetCurve)*)&theCurve))->BasisCurve();
+    return Max(nbs, nbPoints(aCurve));
+  }
+
+  else if (theCurve->IsKind(STANDARD_TYPE(Geom2d_TrimmedCurve)))
+  {
+    Handle(Geom2d_Curve) aCurve = (*((Handle(Geom2d_TrimmedCurve)*)&theCurve))->BasisCurve();
+    return Max(nbs, nbPoints(aCurve));
+  }
+  if(nbs>300)
+    nbs = 300;
+  return nbs;
+  
+}
+
+Standard_Integer Geom2dAdaptor_Curve::NbSamples() const
+{
+  return  nbPoints(myCurve);
+}

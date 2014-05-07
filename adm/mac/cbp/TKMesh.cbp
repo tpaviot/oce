@@ -66,8 +66,6 @@
 			<Add directory="../../../inc" />
 			<Add directory="../../../drv/BRepMesh" />
 			<Add directory="../../../src/BRepMesh" />
-			<Add directory="../../../drv/IntPoly" />
-			<Add directory="../../../src/IntPoly" />
 		</Compiler>
 		<Linker>
 			<Add library="TKBRep" />
@@ -152,17 +150,5 @@
 		<Unit filename="../../../src/BRepMesh/BRepMesh_Vertex.cxx" />
 		<Unit filename="../../../src/BRepMesh/BRepMesh_VertexInspector.cxx" />
 		<Unit filename="../../../src/BRepMesh/BRepMesh_VertexTool.cxx" />
-		<Unit filename="../../../drv/IntPoly/IntPoly_IndexedMapNodeOfIndexedMapOfPnt2d_0.cxx" />
-		<Unit filename="../../../drv/IntPoly/IntPoly_IndexedMapNodeOfIndexedMapOfPnt_0.cxx" />
-		<Unit filename="../../../drv/IntPoly/IntPoly_IndexedMapOfPnt2d_0.cxx" />
-		<Unit filename="../../../drv/IntPoly/IntPoly_IndexedMapOfPnt_0.cxx" />
-		<Unit filename="../../../drv/IntPoly/IntPoly_SequenceNodeOfSequenceOfSequenceOfPnt2d_0.cxx" />
-		<Unit filename="../../../drv/IntPoly/IntPoly_SequenceNodeOfSequenceOfSequenceOfPnt_0.cxx" />
-		<Unit filename="../../../drv/IntPoly/IntPoly_SequenceOfSequenceOfPnt2d_0.cxx" />
-		<Unit filename="../../../drv/IntPoly/IntPoly_SequenceOfSequenceOfPnt_0.cxx" />
-		<Unit filename="../../../src/IntPoly/IntPoly_PlaneSection.cxx" />
-		<Unit filename="../../../src/IntPoly/IntPoly_Pnt2dHasher.cxx" />
-		<Unit filename="../../../src/IntPoly/IntPoly_PntHasher.cxx" />
-		<Unit filename="../../../src/IntPoly/IntPoly_ShapeSection.cxx" />
 	</Project>
 </CodeBlocks_project_file>

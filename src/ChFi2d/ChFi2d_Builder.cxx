@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -756,10 +756,9 @@ TopoDS_Edge ChFi2d_Builder::BuildFilletEdge(const TopoDS_Vertex& V,
   //    The first arc is found.                                        +
   //========================================================================
 
-  TopAbs_Orientation O1,O2;
-  TopAbs_Orientation OE1,OE2;
+  TopAbs_Orientation O1;
+  TopAbs_Orientation OE1;
   OE1 = E1.Orientation();
-  OE2 = E2.Orientation();
   E1.Orientation(TopAbs_FORWARD);
   E2.Orientation(TopAbs_FORWARD);
   TopoDS_Shape aLocalShape = E1.EmptyCopied();
@@ -787,12 +786,10 @@ TopoDS_Edge ChFi2d_Builder::BuildFilletEdge(const TopoDS_Vertex& V,
   if (V3.IsSame(V)) {
     param3 = BRep_Tool::Parameter(V3,E2);
     param4 = BRep_Tool::Parameter(V4,E2);
-    O2 = V4.Orientation();
   }
   else {
     param3 = BRep_Tool::Parameter(V4,E2);
     param4 = BRep_Tool::Parameter(V3,E2);
-    O2 = V3.Orientation();
   }
   
   //========================================================================

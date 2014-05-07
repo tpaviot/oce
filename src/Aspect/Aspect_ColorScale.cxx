@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -432,7 +432,6 @@ void Aspect_ColorScale::DrawScale( const Quantity_Color& aBgColor,
 
   TCollection_ExtendedString aTitle = GetTitle();
 
-  Standard_Integer titleWidth = 0;
   Standard_Integer titleHeight = 0;
 
   Standard_Integer aGray = (Standard_Integer)(255 * ( aBgColor.Red() * 11 + aBgColor.Green() * 16 + aBgColor.Blue() * 5 ) / 32);
@@ -440,7 +439,6 @@ void Aspect_ColorScale::DrawScale( const Quantity_Color& aBgColor,
 
   // Draw title
   if ( aTitle.Length() ) {
-    titleWidth = TextWidth( aTitle );
     titleHeight = TextHeight( aTitle ) + 2 * spacer;
     PaintText( aTitle, X + spacer, Y + spacer, aFgColor );
   }
@@ -510,6 +508,9 @@ void Aspect_ColorScale::DrawScale( const Quantity_Color& aBgColor,
     Standard_Integer last1( i1 ), last2( i2 );
     x = X + spacer;
     switch ( labPos ) {
+    case Aspect_TOCSP_NONE:
+    case Aspect_TOCSP_LEFT:
+      break;
     case Aspect_TOCSP_CENTER:
       x += ( colorWidth - textWidth ) / 2;
       break;

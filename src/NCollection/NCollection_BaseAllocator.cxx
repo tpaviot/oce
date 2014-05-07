@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -43,7 +43,7 @@ void* NCollection_BaseAllocator::Allocate(const size_t size)
 
 void  NCollection_BaseAllocator::Free(void *anAddress)
 { 
-  if (anAddress) Standard::Free((Standard_Address&)anAddress); 
+  if (anAddress) Standard::Free(anAddress); 
 }
 
 //=======================================================================
@@ -169,6 +169,11 @@ Standard_EXPORT void StandardCallBack_Reset()
   StandardCallBack_CatchID() = 0;
 }
 
+namespace {
+  // dummy function for break point
+  inline void place_for_break_point () {}
+};
+
 //=======================================================================
 //function : StandardCallBack
 //purpose  : Callback function to register alloc/free calls
@@ -200,7 +205,6 @@ void NCollection_BaseAllocator::StandardCallBack
     // statistics by alive objects
     NCollection_DataMap<Standard_Address, Standard_Size>& aStIDMap = StorageIDMap();
     NCollection_Map<Standard_Size>& aStIDSet = StorageIDSet();
-    int a;
     if (theIsAlloc)
     {
       aStIDMap.Bind(theStorage, ++CurrentID);
@@ -208,7 +212,7 @@ void NCollection_BaseAllocator::StandardCallBack
       if (CurrentID == StandardCallBack_CatchID())
       {
         // Place for break point for allocation of investigated ID
-        a = 1;
+        place_for_break_point();
       }
     }
     else
@@ -220,7 +224,7 @@ void NCollection_BaseAllocator::StandardCallBack
         if (anID == StandardCallBack_CatchID())
         {
           // Place for break point for freeing of investigated ID
-          a = 0;
+          place_for_break_point();
         }
       }
     }

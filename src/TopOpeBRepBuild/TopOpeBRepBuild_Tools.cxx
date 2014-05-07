@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -543,10 +543,8 @@ const Standard_Real PAR_T = 0.43213918;
 {
   TopoDS_Edge aEd=anEdgeObj;
   TopoDS_Face aFS=aFObj;
-  Standard_Real tolE = 0., f2 = 0., l2 = 0., tolpc = 0., tol = 0., f = 0., l = 0., par = 0.;
-  tolE=BRep_Tool::Tolerance(aEd);
+  Standard_Real f2 = 0., l2 = 0., tolpc = 0., f = 0., l = 0., par = 0.;
   Handle(Geom2d_Curve) C2D=FC2D_CurveOnSurface(aEd,aFS,f2,l2,tolpc, Standard_True);
-  tol = Max(tolE,tolpc);
 
   BRepAdaptor_Curve  aCA(aEd);
   f=aCA.FirstParameter();

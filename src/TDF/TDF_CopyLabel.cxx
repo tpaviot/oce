@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -80,7 +80,6 @@ void TDF_CopyLabel::ExternalReferences(const TDF_Label& aRefLabel, const TDF_Lab
 				       Handle(TDF_DataSet)& ds)
 {
 //  TCollection_AsciiString entr1,entr2; //d
-  Standard_Boolean extRefFound = Standard_False;
   for (TDF_AttributeIterator itr(aLabel); itr.More(); itr.Next()) {
     itr.Value()->References(ds);
     const TDF_AttributeMap& attMap = ds->Attributes(); //attMap
@@ -96,7 +95,6 @@ void TDF_CopyLabel::ExternalReferences(const TDF_Label& aRefLabel, const TDF_Lab
         if (aFilter.IsKept(att) && att->Label().IsDifferent(aRefLabel) &&
 	    !att->Label().IsDescendant(aRefLabel)) {
           aExternals.Add(att);
-	  extRefFound = Standard_True;
         }
       }
     }
@@ -117,7 +115,6 @@ void TDF_CopyLabel::ExternalReferences(const TDF_Label& aRefLabel, const TDF_Lab
 //       }
 //     }
 
-    extRefFound = Standard_False;
     ds->Clear();
   }
 }

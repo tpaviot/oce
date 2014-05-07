@@ -19,6 +19,12 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
+#ifndef _BOPCol_DataMapOfShapeShape_HeaderFile
+#include <BOPCol_DataMapOfShapeShape.hxx>
+#endif
 #ifndef _BOPAlgo_PaveFiller_HeaderFile
 #include <BOPAlgo_PaveFiller.hxx>
 #endif
@@ -44,6 +50,16 @@ Standard_EXPORT virtual ~BOPAlgo_CheckerSI();
 //!           4 - V/V, V/E, E/E, V/F and E/F; <br>
 //!           5 - all interferences, default value. <br>
   Standard_EXPORT     void SetLevelOfCheck(const Standard_Integer theLevel) ;
+  //! Sets the flag <theFlag> that defines <br>
+//!  the mode of the treatment: <br>
+//!  the copy of the argument when theFlag is true <br>
+//!  the argument itself  when theFlag is false <br>
+  Standard_EXPORT     void SetNonDestructive(const Standard_Boolean theFlag) ;
+  //! Returns the flag that defines the <br>
+//!  mode of the treatment: <br>
+//!  true when the copy of the argument is used <br>
+//!  false when the argument itself  is used <br>
+  Standard_EXPORT     Standard_Boolean NonDestructive() const;
 
 
 
@@ -53,11 +69,25 @@ protected:
 
   
   Standard_EXPORT   virtual  void Init() ;
-  //! Provides post-tratment actions <br>
+  //! Provides post-treatment actions <br>
   Standard_EXPORT     void PostTreat() ;
+  
+  Standard_EXPORT   virtual  void PerformVZ() ;
+  
+  Standard_EXPORT   virtual  void PerformEZ() ;
+  
+  Standard_EXPORT   virtual  void PerformFZ() ;
+  
+  Standard_EXPORT   virtual  void PerformZZ() ;
+  
+  Standard_EXPORT   virtual  void PrepareCopy() ;
+  //! Provides post-treatment actions for the copy <br>
+  Standard_EXPORT     void PostTreatCopy() ;
 
 
 Standard_Integer myLevelOfCheck;
+Standard_Boolean myNonDestructive;
+BOPCol_DataMapOfShapeShape myNewOldMap;
 
 
 private:

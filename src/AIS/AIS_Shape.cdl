@@ -5,8 +5,8 @@
 --
 -- This file is part of Open CASCADE Technology software library.
 --
--- This library is free software; you can redistribute it and / or modify it
--- under the terms of the GNU Lesser General Public version 2.1 as published
+-- This library is free software; you can redistribute it and/or modify it under
+-- the terms of the GNU Lesser General Public License version 2.1 as published
 -- by the Free Software Foundation, with special exception defined in the file
 -- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 -- distribution for complete text of the license and disclaimer of any warranty.
@@ -61,6 +61,7 @@ uses
     Projector             from Prs3d,
     PresentationManager3d from PrsMgr,
     Selection             from SelectMgr,
+    Drawer                from AIS,
     KindOfInteractive     from AIS,
     Transformation        from Geom,
     Drawer                from Prs3d,
@@ -298,7 +299,21 @@ uses
 		       	aBox : Box from Bnd;
 		       	aDrawer : Drawer from Prs3d) is protected;
     		
-    
+    setColor (me;
+              theDrawer : Drawer from AIS;
+              theColor  : Color  from Quantity)
+    is protected;
+
+    setWidth (me;
+              theDrawer : Drawer from AIS;
+              theWidth  : Real   from Standard)
+    is protected;
+
+    setTransparency (me;
+                     theDrawer : Drawer from AIS;
+                     theValue  : Real   from Standard)
+    is protected;
+
 fields
     myshape            : Shape   from TopoDS   is protected;
     myBB               : Box     from Bnd      is protected;

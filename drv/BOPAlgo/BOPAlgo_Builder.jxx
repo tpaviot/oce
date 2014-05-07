@@ -10,9 +10,6 @@
 #ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
 #endif
-#ifndef _Bnd_Box_HeaderFile
-#include <Bnd_Box.hxx>
-#endif
 #ifndef _BOPAlgo_Builder_HeaderFile
 #include <BOPAlgo_Builder.hxx>
 #endif

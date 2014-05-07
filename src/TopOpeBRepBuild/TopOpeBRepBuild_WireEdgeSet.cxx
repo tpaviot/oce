@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -518,12 +518,6 @@ void TopOpeBRepBuild_WireEdgeSet::IsUVISO(const TopoDS_Edge& E,const TopoDS_Face
   Standard_Boolean trim3d = Standard_True;
   PC = FC2D_CurveOnSurface(E,F,fE,lE,tolpc,trim3d);
   if (PC.IsNull()) Standard_ProgramError::Raise("TopOpeBRepBuild_WireEdgeSet::IsUVISO");
-
-#ifdef DEB
-  Standard_Integer iE = 0, iF = 0;
-  if (LOCAL_PBUILDER_DEB != NULL) iE = LOCAL_PBUILDER_DEB->DataStructure()->Shape(E);
-  if (LOCAL_PBUILDER_DEB != NULL) iF = LOCAL_PBUILDER_DEB->DataStructure()->Shape(F);
-#endif
 
   Handle(Standard_Type) TheType = PC->DynamicType();
   if (TheType == STANDARD_TYPE(Geom2d_Line)) {

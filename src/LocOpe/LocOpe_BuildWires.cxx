@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -161,7 +161,6 @@ void LocOpe_BuildWires::Perform(const TopTools_ListOfShape& L,
 
     TopoDS_Wire newWire;
     B.MakeWire(newWire);
-    Standard_Integer BorneInf;
 
     if (mapV.Contains(VL)) { // on sort avec une boucle a recreer
       TopoDS_Vertex Vf;
@@ -180,14 +179,12 @@ void LocOpe_BuildWires::Perform(const TopTools_ListOfShape& L,
 	}
 	mapV.Remove(Vf);
       }
-      BorneInf = j;
       for (; j<= mapE.Extent(); j++) {
 	B.Add(newWire,mapE(j));
       }
       newWire.Closed(Standard_True);
     }
     else { // on sort sur un bord : wire ouvert...
-      BorneInf = 1;
       mapV.Add(VL);
       for (Standard_Integer j = 1; j <= mapE.Extent(); j++) {
 	B.Add(newWire,mapE(j));

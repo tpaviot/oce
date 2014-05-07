@@ -16,12 +16,16 @@
 #include <Standard_Macro.hxx>
 #endif
 
+#ifndef _TopoDS_Solid_HeaderFile
+#include <TopoDS_Solid.hxx>
+#endif
 #ifndef _BOPAlgo_BuilderArea_HeaderFile
 #include <BOPAlgo_BuilderArea.hxx>
 #endif
 #ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
 #endif
+class TopoDS_Solid;
 
 
 //! The algorithm to build solids from set of faces <br>
@@ -35,6 +39,10 @@ public:
 Standard_EXPORT virtual ~BOPAlgo_BuilderSolid();
   
   Standard_EXPORT   BOPAlgo_BuilderSolid(const BOPCol_BaseAllocator& theAllocator);
+  //! Sets the source solid <theSolid> <br>
+  Standard_EXPORT     void SetSolid(const TopoDS_Solid& theSolid) ;
+  //! Returns the source solid <br>
+  Standard_EXPORT    const TopoDS_Solid& Solid() const;
   //!  Performs the algorithm <br>
   Standard_EXPORT   virtual  void Perform() ;
 
@@ -60,6 +68,7 @@ protected:
   Standard_EXPORT   virtual  void PerformInternalShapes() ;
 
 
+TopoDS_Solid mySolid;
 
 
 private:

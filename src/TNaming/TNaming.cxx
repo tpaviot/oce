@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -279,18 +279,17 @@ void TNaming::Update(const TDF_Label& L,
   L.Root().FindAttribute(TNaming_UsedShapes::GetID(),US);
   TNaming_DataMapOfShapePtrRefShape& amap = US->Map();
 
-  Standard_Boolean Change = Standard_False;
   for (TNaming_Iterator it(L); it.More(); it.Next()) {
     if (!it.OldShape().IsNull()) {
       const TopoDS_Shape& S = it.OldShape();
       if (!M.IsBound(S))
-	if (Rebuild (S,M)) Change = Standard_True;
+	Rebuild (S,M);
       SubstituteShape(S,M(S),amap);
     }
     if (!it.NewShape().IsNull()) {
       const TopoDS_Shape& S = it.NewShape();
       if (!M.IsBound(S)) 
-	if (Rebuild (S,M)) Change = Standard_True;
+	Rebuild (S,M);
       SubstituteShape(S,M(S),amap);
     }
   }

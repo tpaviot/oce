@@ -698,6 +698,8 @@
 			<Depends filename="TKSTL.cbp" />
 			<Depends filename="TKAdvTools.cbp" />
 			<Depends filename="TKVoxel.cbp" />
+			<Depends filename="TKShapeSchema.cbp" />
+			<Depends filename="TKPShape.cbp" />
 		</Project>
 		<Project filename="DRAWEXE.cbp" active="1">
 			<Depends filename="TKDraw.cbp" />

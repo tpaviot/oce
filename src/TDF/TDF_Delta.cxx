@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -154,17 +154,17 @@ void TDF_Delta::Apply()
 
 void TDF_Delta::Labels(TDF_LabelList& aLabelList) const
 {
-  Standard_Boolean inList;
   TDF_LabelMap labMap;
   // If <aLabelList> is not empty...
 #ifdef DEB_DELTA
+  Standard_Boolean inList;
   if (aLabelList.Extent() > 0) cout<<"Previously added as modified label(s) ";
 #endif
   for (TDF_ListIteratorOfLabelList it1(aLabelList);
        it1.More(); it1.Next()) {
+#ifdef DEB_DELTA
     const TDF_Label& lab1 = it1.Value();
     inList = labMap.Add(lab1);
-#ifdef DEB_DELTA
     if (!inList) {
       lab1.EntryDump(cout);cout<<" | ";
     }
@@ -181,9 +181,9 @@ void TDF_Delta::Labels(TDF_LabelList& aLabelList) const
   for (TDF_ListIteratorOfAttributeDeltaList it2(myAttDeltaList);
        it2.More();
        it2.Next()) {
+#ifdef DEB_DELTA
     const TDF_Label& lab1 = it2.Value()->Label();
     inList = labMap.Add(lab1);
-#ifdef DEB_DELTA
     if (!inList) {
       lab1.EntryDump(cout);cout<<" | ";
     }

@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -18,10 +18,12 @@
 #include <Draw_Interpretor.hxx>
 #include <DBRep.hxx>
 #include <DrawTrSurf.hxx>
-#include <AIS_InteractiveContext.hxx>
 #include <ViewerTest.hxx>
-#include <AIS_Shape.hxx>
 #include <TopoDS_Shape.hxx>
+#include <AIS_InteractiveContext.hxx>
+#include <AIS_TexturedShape.hxx>
+#include <Image_PixMap.hxx>
+#include <Image_Color.hxx>
 
 #include <gp_Pnt2d.hxx>
 #include <gp_Ax1.hxx>
@@ -43,6 +45,8 @@
 #include <BRepAlgo_Cut.hxx>
 #include <NCollection_Map.hxx>
 #include <TCollection_HAsciiString.hxx>
+#include <GeomFill_Trihedron.hxx>
+#include <BRepOffsetAPI_MakePipe.hxx>
 
 #define QCOMPARE(val1, val2) \
   di << "Checking " #val1 " == " #val2 << \
@@ -118,10 +122,10 @@ static Standard_Integer OCC23237 (Draw_Interpretor& di, Standard_Integer /*argc*
     aPM.Start();
     aTM.Start();
 
-    // do some operation that will take considerable time compared with time or starting / stopping timers
+    // do some operation that will take considerable time compared with time of starting / stopping timers
     BRepPrimAPI_MakeBox aBox (10., 10., 10.);
     BRepPrimAPI_MakeSphere aSphere (10.);
-    BRepAlgo_Cut (aBox.Shape(), aSphere.Shape());
+    BRepAlgo_Cut aCutter (aBox.Shape(), aSphere.Shape());
 
     aTM.Stop();
     aPM.Stop();
@@ -1428,6 +1432,482 @@ static Standard_Integer OCC24271 (Draw_Interpretor& di,
   return 0;
 }
 
+#define QVERIFY(val1) \
+  di << "Checking " #val1 " == Standard_True" << \
+        ((val1) == Standard_True ? ": OK\n" : ": Error\n")
+
+#include <GeomInt_IntSS.hxx>
+#include <Geom_ConicalSurface.hxx>
+#include <Standard_ErrorHandler.hxx>
+//=======================================================================
+//function : OCC23972
+//purpose  : 
+//=======================================================================
+static void DoGeomIntSSTest (const Handle(Geom_Surface)& theSurf1,
+			     const Handle(Geom_Surface)& theSurf2,
+			     const Standard_Integer theNbSol,
+			     Draw_Interpretor& di)
+{
+  try {
+    OCC_CATCH_SIGNALS
+	 GeomInt_IntSS anInter;
+	 anInter.Perform (theSurf1, theSurf2, Precision::Confusion(), Standard_True);
+	 QVERIFY (anInter.IsDone());
+	 QCOMPARE (anInter.NbLines(), theNbSol);
+  } catch (...) {
+    QVERIFY (Standard_False);
+  }
+}
+
+namespace {
+  static Handle(Geom_ConicalSurface) CreateCone (const gp_Pnt& theLoc,
+						 const gp_Dir& theDir,
+						 const gp_Dir& theXDir,
+						 const Standard_Real theRad,
+						 const Standard_Real theSin,
+						 const Standard_Real theCos)
+  {
+    const Standard_Real anA = atan (theSin / theCos);
+    gp_Ax3 anAxis (theLoc, theDir, theXDir);
+    Handle(Geom_ConicalSurface) aSurf = new Geom_ConicalSurface (anAxis, anA, theRad);
+    return aSurf;
+  }
+}
+
+static Standard_Integer OCC23972 (Draw_Interpretor& di,Standard_Integer n, const char**)
+{
+  if (n != 1) return 1;
+
+  //process specific cones, cannot read them from files because due to rounding the original error
+  //in math_FunctionRoots gets hidden
+  Handle(Geom_Surface) aS1 = CreateCone (
+					 gp_Pnt (123.694345356663, 789.9, 68.15),
+					 gp_Dir (-1, 3.48029791472957e-016, -8.41302743359754e-017),
+					 gp_Dir (-3.48029791472957e-016, -1, -3.17572289932207e-016),
+					 3.28206830417112,
+					 0.780868809443031,
+					 0.624695047554424);
+  Handle(Geom_Surface) aS2 = CreateCone (
+					 gp_Pnt (123.694345356663, 784.9, 68.15),
+					 gp_Dir (-1, -2.5209507537117e-016, -1.49772808948866e-016),
+					 gp_Dir (1.49772808948866e-016, 3.17572289932207e-016, -1),
+					 3.28206830417112,
+					 0.780868809443031,
+					 0.624695047554424);
+  
+  DoGeomIntSSTest (aS1, aS2, 2, di);
+
+  return 0;
+}
+
+#include <ShapeFix_EdgeProjAux.hxx>
+static Standard_Integer OCC24370 (Draw_Interpretor& di, Standard_Integer argc,const char ** argv)
+{
+  if (argc < 5) {
+    di<<"Usage: " << argv[0] << " invalid number of arguments"<<"\n";
+    return 1;
+  }
+
+  TopoDS_Shape aSh = DBRep::Get(argv[1]);
+  if (aSh.IsNull()) {
+    di << argv[0] << " Error: Null input edge\n";
+    return 1;
+  }
+  const TopoDS_Edge& anEdge = TopoDS::Edge (aSh);
+
+  Handle(Geom2d_Curve) aC = DrawTrSurf::GetCurve2d(argv[2]);
+  if (aC.IsNull()) {
+    di << argv[0] << " Error: Null input curve\n";
+    return 1;
+  }
+
+  Handle(Geom_Surface) aS = DrawTrSurf::GetSurface(argv[3]);
+  if (aS.IsNull()) {
+    di << argv[0] << " Error: Null input surface\n";
+    return 1;
+  }
+
+  Standard_Real prec = Draw::Atof(argv[4]);
+  
+  //prepare data
+  TopoDS_Face aFace;
+  BRep_Builder aB;
+  aB.MakeFace (aFace, aS, Precision::Confusion());
+  aB.UpdateEdge (anEdge, aC, aFace, Precision::Confusion());
+  aB.Range (anEdge, aFace, aC->FirstParameter(), aC->LastParameter());
+
+  //call algorithm
+  ShapeFix_EdgeProjAux aProj (aFace, anEdge);
+  aProj.Compute (prec);
+  
+  Standard_Boolean isfirstdone = aProj.IsFirstDone();
+  Standard_Boolean islastdone = aProj.IsLastDone();
+
+  Standard_Real first = 0.;
+  Standard_Real last = 0.;
+  Standard_Integer isfirstdoneInteger = 0;
+  Standard_Integer islastdoneInteger = 0;
+
+
+  if (isfirstdone) {
+    first = aProj.FirstParam();
+    isfirstdoneInteger = 1;
+  }
+ 
+  if (islastdone) {
+    last= aProj.LastParam();
+    islastdoneInteger = 1;
+  }
+
+  di << isfirstdoneInteger << " "<< islastdoneInteger << " "<< first << " "<< last << " \n";
+
+  return 0;
+}
+
+//=======================================================================
+//function : OCC24622
+//purpose  : The command tests sourcing Image_PixMap to AIS_TexturedShape
+//=======================================================================
+static Standard_Integer OCC24622 (Draw_Interpretor& /*theDi*/, Standard_Integer theArgNb, const char** theArgVec)
+{
+  if (theArgNb != 2)
+  {
+    std::cout << "Usage : " << theArgVec[0] << " texture={1D|2D}";
+    return 1;
+  }
+
+  const Handle(AIS_InteractiveContext)& anAISContext = ViewerTest::GetAISContext();
+  if (anAISContext.IsNull())
+  {
+    std::cout << "Please initialize view with \"vinit\".\n";
+    return 1;
+  }
+
+  Handle(Image_PixMap) anImage = new Image_PixMap();
+
+  static const Image_ColorRGB aBitmap[8] =
+  {
+    {{255,   0, 0}}, {{0,  148, 255}}, {{ 0, 148, 255}}, {{255,  94, 0}},
+    {{255, 121, 0}}, {{76, 255,   0}}, {{76, 255,   0}}, {{255, 202, 0}}
+  };
+
+  TCollection_AsciiString aTextureTypeArg (theArgVec[1]);
+  aTextureTypeArg.UpperCase();
+  if (aTextureTypeArg == "1D")
+  {
+    anImage->InitWrapper (Image_PixMap::ImgRGB, (Standard_Byte*)aBitmap, 8, 1);
+  }
+  else if (aTextureTypeArg == "2D")
+  {
+    anImage->InitTrash (Image_PixMap::ImgRGB, 8, 8);
+    Image_PixMapData<Image_ColorRGB>& anImageData = anImage->EditData<Image_ColorRGB>();
+    for (Standard_Integer aRow = 0; aRow < 8; ++aRow)
+    {
+      for (Standard_Integer aCol = 0; aCol < 8; ++aCol)
+      {
+        anImageData.ChangeValue (aRow, aCol) = aBitmap[aRow];
+      }
+    }
+  }
+  else
+  {
+    std::cout << "Please specify type of texture to test {1D|2D}.\n";
+    return 1;
+  }
+
+  TopoDS_Shape aBlankShape = BRepPrimAPI_MakeBox (10.0, 10.0, 10.0).Shape();
+
+  Handle(AIS_TexturedShape) aTexturedShape = new AIS_TexturedShape (aBlankShape);
+  aTexturedShape->SetTexturePixMap (anImage);
+  anAISContext->Display (aTexturedShape, 3, 0);
+
+  return 0;
+}
+
+//=======================================================================
+//function : OCC24667
+//purpose  : 
+//=======================================================================
+static Standard_Integer OCC24667 (Draw_Interpretor& di, Standard_Integer n, const char** a)
+{
+  if (n == 1)
+  {
+    di << "OCC24667 result Wire_spine Profile [Mode [Approx]]" << "\n";
+    di << "Mode = 0 - CorrectedFrenet," << "\n";
+    di << "     = 1 - Frenet," << "\n";
+    di << "     = 2 - DiscreteTrihedron" << "\n";
+    di << "Approx - force C1-approximation if result is C0" << "\n";
+    return 0;
+  }
+
+  if (n > 1 && n < 4) return 1;
+
+  TopoDS_Shape Spine = DBRep::Get(a[2],TopAbs_WIRE);
+  if ( Spine.IsNull()) return 1;
+
+  TopoDS_Shape Profile = DBRep::Get(a[3]);
+  if ( Profile.IsNull()) return 1;
+
+  GeomFill_Trihedron Mode = GeomFill_IsCorrectedFrenet;
+  if (n >= 5)
+  {
+    Standard_Integer iMode = atoi(a[4]);
+    if (iMode == 1)
+      Mode = GeomFill_IsFrenet;
+    else if (iMode == 2)
+      Mode = GeomFill_IsDiscreteTrihedron;
+  }
+
+  Standard_Boolean ForceApproxC1 = Standard_False;
+  if (n >= 6)
+    ForceApproxC1 = Standard_True;
+
+  BRepOffsetAPI_MakePipe aPipe(TopoDS::Wire(Spine),
+                                          Profile,
+                                          Mode,
+                                          ForceApproxC1);
+
+  TopoDS_Shape S = aPipe.Shape();
+  TopoDS_Shape aSF = aPipe.FirstShape();
+  TopoDS_Shape aSL = aPipe.LastShape();
+
+  DBRep::Set(a[1],S);
+
+  TCollection_AsciiString aStrF(a[1], "_f");
+  TCollection_AsciiString aStrL(a[1], "_l");
+
+  DBRep::Set(aStrF.ToCString(), aSF);
+  DBRep::Set(aStrL.ToCString(), aSL);
+
+  return 0;
+}
+
+#include <IGESControl_Reader.hxx>
+#include <IGESControl_Controller.hxx>
+#include <IGESData_IGESEntity.hxx>
+#include <BRepCheck_Analyzer.hxx>
+#include <PTColStd_TransientPersistentMap.hxx>
+#include <PTopoDS_HShape.hxx>
+#include <Storage_Data.hxx>
+#include <TopExp_Explorer.hxx>
+#include <MgtBRep.hxx>
+#include <FSD_File.hxx>
+#include <ShapeSchema.hxx>
+#include <TColStd_HSequenceOfTransient.hxx>
+#include <PTColStd_PersistentTransientMap.hxx>
+#include <Storage_Root.hxx>
+
+static Standard_Integer OCC24565 (Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+{
+  if (argc != 3) {
+    di << "Usage : " << argv[0] << " FileNameIGS FileNameSTOR";
+    return 1;
+  }
+
+  Standard_CString sFileNameIGS = argv[1];
+  Standard_CString sFileNameSTOR = argv[2];
+
+  IGESControl_Reader ICReader;
+
+  /* * * * * * *
+   * Read the IGES file and make sure it is valid
+   *
+   * * * * * * */
+  IGESControl_Controller::Init();
+
+  if (!ICReader.ReadFile(sFileNameIGS)) {
+    printf("%s:%d - Error reading '%s'\n",__FUNCTION__,__LINE__,sFileNameIGS);fflush(stdout);
+    return -1;
+  }
+
+  int nbShapes = ICReader.NbShapes();
+
+  printf("%s:%d - nbShapes = '%d'\n",__FUNCTION__,__LINE__,nbShapes);fflush(stdout);
+
+  TopoDS_Shape Shape;
+  if(nbShapes == 0)
+    {
+      Handle(TColStd_HSequenceOfTransient) faces=ICReader.GiveList("iges-faces");
+      Handle(TColStd_HSequenceOfTransient) surfaceList=ICReader.GiveList("xst-transferrable-roots",faces);
+
+      if (surfaceList.IsNull())
+	{
+	  printf("%s:%d - surfaceList.IsNull()\n",__FUNCTION__,__LINE__);fflush(stdout);
+	  return -1;
+	}
+      BRep_Builder builder;
+      TopoDS_Compound* pC = new TopoDS_Compound();
+      builder.MakeCompound(*pC);
+
+      for (int j=1;j<=surfaceList->Length();j++)
+	{
+	  Handle(IGESData_IGESEntity) igesEntity=Handle(IGESData_IGESEntity)::DownCast(surfaceList->Value(j));
+	  if (igesEntity.IsNull()) continue;
+	  ICReader.ClearShapes();
+	  Standard_Boolean rv;
+	  try {
+	    rv=ICReader.TransferEntity(igesEntity);
+	  }
+	  catch (...) {
+	    rv=Standard_False;
+	  }
+	  if (!rv) {
+	    printf("%s:%d - Error transferring IGES entity\n",__FUNCTION__,__LINE__);fflush(stdout);
+	    printf("%s:%d - FormNumber = %d, TypeNumber = %d\n",__FUNCTION__,__LINE__,igesEntity->FormNumber(),igesEntity->TypeNumber());fflush(stdout);
+	    return -1;
+	  }
+
+	  TopoDS_Shape S;
+	  try {
+	    S=ICReader.Shape();
+	  }
+	  catch(...) {
+	    printf("%s:%d - Error reading IGES entity\n",__FUNCTION__,__LINE__);fflush(stdout);
+	    printf("%s:%d - FormNumber = %d, TypeNumber = %d\n",__FUNCTION__,__LINE__,igesEntity->FormNumber(),igesEntity->TypeNumber());fflush(stdout);
+	    return -1;
+	  }
+	  if (S.IsNull()) {
+	    printf("%s:%d - NULL Surface encountered\n",__FUNCTION__,__LINE__);
+	    return -1;
+	  }
+
+	  try
+	    {
+	      builder.Add(*pC,S);
+	    }
+	  catch(...)
+	    {
+	      printf("%s: Exception adding face.\n",__FUNCTION__);
+	    }
+	}
+      Shape = TopoDS_Shape(*pC);
+    }
+  else
+    {
+      Shape = ICReader.OneShape();
+    }
+  {
+    BRepCheck_Analyzer brca(Shape);
+
+    if(!brca.IsValid())
+      {
+	printf("%s: Invalid shape after reading IGES file.\n",__FUNCTION__);
+      }
+  }
+
+  /* * * * * * *
+   * Write the contents of the Shape to a STOR file
+   *
+   * * * * * * */
+  PTColStd_TransientPersistentMap aMapTP;
+  Handle(PTopoDS_HShape) aPShape_write;
+  Handle(Storage_Data) d_write=new Storage_Data;
+  char Name[32];
+
+  TopExp_Explorer Ex;
+  int i;
+  int max_i = 0;
+
+  for (i=0,Ex.Init(Shape,TopAbs_FACE);Ex.More();i++,Ex.Next())
+    {
+
+      max_i = i;
+      try {
+	aPShape_write=MgtBRep::Translate(Ex.Current(),aMapTP,MgtBRep_WithoutTriangle);
+      }
+      catch (...) {
+	printf("%s: Error translating surface '%d'\n",__FUNCTION__,i);
+      }
+		
+      sprintf(Name,"S%010d",i);
+		
+      {
+	BRepCheck_Analyzer brca(Ex.Current());
+	if(!brca.IsValid())
+	  {
+	    printf("INVALID face '%s' in the shape, which will be written to the STOR file.\n",Name);
+	  }
+      }
+      try {
+	d_write->AddRoot(Name,aPShape_write);
+      }
+      catch (...) {
+	printf("%s: Error adding surface '%d', RootName = '%s'\n",__FUNCTION__,i,Name);
+      }
+    }
+  printf("%s: Going to write %d surfaces.\n",__FUNCTION__,max_i+1);
+
+  FSD_File f_write;
+  if(f_write.Open(sFileNameSTOR, Storage_VSWrite)!=Storage_VSOk)
+    {
+      printf("%s: Error opening file: %s\n", __FUNCTION__,sFileNameSTOR);
+      return -1;
+    }
+  Handle(ShapeSchema) s_write=new ShapeSchema;
+  s_write->Write(f_write,d_write);
+  f_write.Close();
+  printf("%s: Wrote to the STOR file.\n",__FUNCTION__);
+
+  /* * * * * * *
+   * Read the contents of the Shape from a STOR file
+   *
+   * * * * * * */
+  FSD_File f_read;
+  if(f_read.Open(sFileNameSTOR, Storage_VSRead)!=Storage_VSOk)
+    {
+      printf("%s: Error opening file: %s\n", __FUNCTION__,sFileNameSTOR);
+      return -1;
+    }
+  Handle(ShapeSchema) s_read=new ShapeSchema;
+  Handle(Storage_Data) d_read=s_read->Read(f_read);
+
+  Handle(Standard_Persistent) p;
+  Handle(Storage_Root) r;
+  Handle(PTopoDS_HShape) aPShape_read;
+  PTColStd_PersistentTransientMap aMapPT;
+  TopoDS_Shape S_read;
+
+  printf("%s: Extracting %d faces from the STOR file.\n",__FUNCTION__,max_i+1);
+  for(int i = 0; i <= max_i; ++i)
+    {
+      sprintf(Name,"S%010d",i);
+      r=d_read->Find(Name);
+      if(r.IsNull())
+	{
+	  printf("%s:%d '%s' IsNull().\n",__FUNCTION__,__LINE__,Name);fflush(stdout);
+	  continue;
+	}
+      p=r->Object();
+      aPShape_read = Handle(PTopoDS_HShape)::DownCast(p);
+      try {
+	MgtBRep::Translate(aPShape_read,aMapPT,S_read,MgtBRep_WithoutTriangle);
+      }
+      catch (Standard_Failure) {
+	Handle(Standard_Failure) E=Standard_Failure::Caught();
+	std::string str;
+	str="Exception: ";
+	str+=E->DynamicType()->Name();
+	str+=" => ";
+	str+=E->GetMessageString();
+	printf("%s(1): %s: %s\n",__FUNCTION__,Name,str.c_str());fflush(stdout);
+      }
+      catch (...) {
+	printf("%s(1): Unhandled exception in MgtBRep::Translate\n",__FUNCTION__);
+      }
+
+      BRepCheck_Analyzer brca(S_read);
+
+      if(!brca.IsValid())
+	{
+	  printf("%s: Read INVALID face (%s)!\n",__FUNCTION__,Name);
+	}
+    }
+
+  printf("Completed.\n");fflush(stdout);
+
+  return 0;
+}
+
 void QABugs::Commands_19(Draw_Interpretor& theCommands) {
   const char *group = "QABugs";
 
@@ -1451,5 +1931,10 @@ void QABugs::Commands_19(Draw_Interpretor& theCommands) {
   theCommands.Add ("OCC24005", "OCC24005 result", __FILE__, OCC24005, group);
   theCommands.Add ("OCC24137", "OCC24137 face vertex U V [N]", __FILE__, OCC24137, group);
   theCommands.Add ("OCC24271", "Boolean operations on NCollection_Map", __FILE__, OCC24271, group);
+  theCommands.Add ("OCC23972", "OCC23972", __FILE__, OCC23972, group);
+  theCommands.Add ("OCC24370", "OCC24370 edge pcurve surface prec", __FILE__, OCC24370, group);
+  theCommands.Add ("OCC24622", "OCC24622 texture={1D|2D}\n Tests sourcing of 1D/2D pixmaps for AIS_TexturedShape", __FILE__, OCC24622, group);
+  theCommands.Add ("OCC24667", "OCC24667 result Wire_spine Profile [Mode [Approx]], no args to get help", __FILE__, OCC24667, group);
+  theCommands.Add ("OCC24565", "OCC24565 FileNameIGS FileNameSTOR", __FILE__, OCC24565, group);
   return;
 }

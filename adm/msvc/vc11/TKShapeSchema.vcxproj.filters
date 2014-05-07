@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{AF10BD87-0948-0368-1260-91827D0DE380}</UniqueIdentifier>
+      <UniqueIdentifier>{20D98C1A-05FA-0D3E-0D04-0CE0EE832C5C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeSchema">
-      <UniqueIdentifier>{D30F8249-0F19-084B-11D8-3BD869FCE814}</UniqueIdentifier>
+      <UniqueIdentifier>{D5687D0B-11FF-02BF-0CEB-90AA9CB104C7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PCDMShape">
-      <UniqueIdentifier>{E8A4A349-14EC-0C8C-0B1F-4A378282747A}</UniqueIdentifier>
+      <UniqueIdentifier>{B0B618D8-18D1-0AAB-08DB-67B8657B2CA4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

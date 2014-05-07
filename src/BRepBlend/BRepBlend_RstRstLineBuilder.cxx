@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -1421,11 +1421,10 @@ Blend_Status BRepBlend_RstRstLineBuilder::CheckDeflectionOnRst1(const Blend_Poin
   if(!prevpointistangent){
     prevTg = previousP.TangentOnC1();
   }
-  Standard_Real Norme, curNorme;
+  Standard_Real Norme;
   Standard_Real prevNorme = 0.;
   gp_Vec Corde(prevP, Psurf);
   Norme = Corde.SquareMagnitude();
-  if (!curpointistangent) curNorme = Tgsurf.SquareMagnitude();
   if (!prevpointistangent) prevNorme = prevTg.SquareMagnitude();
 
   if (Norme <= tolesp * tolesp) {
@@ -1499,11 +1498,10 @@ Blend_Status BRepBlend_RstRstLineBuilder::CheckDeflectionOnRst2(const Blend_Poin
   if (!prevpointistangent) {
     prevTg = previousP.TangentOnC2();
   }
-  Standard_Real Norme, curNorme;
+  Standard_Real Norme;
   Standard_Real prevNorme = 0.;
   gp_Vec Corde(prevP, Psurf);
   Norme = Corde.SquareMagnitude();
-  if (!curpointistangent) curNorme   = Tgsurf.SquareMagnitude();
   if (!prevpointistangent) prevNorme = prevTg.SquareMagnitude();
 
   if (Norme <= tolesp * tolesp){

@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -61,7 +61,7 @@ static void Normal(const TopoDS_Face&  aFace,
     CSLib_NormalStatus NStat;
     S.Initialize(aFace, Standard_False);
     const TColgp_Array1OfPnt2d& UVNodes = T->UVNodes();
-    if (!S.GetType() == GeomAbs_Plane) {
+    if (S.GetType() != GeomAbs_Plane) {
       for (i = UVNodes.Lower(); i <= UVNodes.Upper(); i++) {
 	U = UVNodes(i).X();
 	V = UVNodes(i).Y();
@@ -117,7 +117,6 @@ void StlTransfer::BuildIncrementalMesh (const TopoDS_Shape&  Shape,
     Standard_ConstructionError::Raise ("StlTransfer::BuildIncrementalMesh");
     }
   
-  Standard_Integer NbVertices, NbTriangles;
   BRepMesh_IncrementalMesh aMesher(Shape, Deflection, Standard_False, 0.5, InParallel);
   for (TopExp_Explorer itf(Shape,TopAbs_FACE); itf.More(); itf.Next()) {
     TopoDS_Face face = TopoDS::Face(itf.Current());
@@ -141,7 +140,7 @@ void StlTransfer::BuildIncrementalMesh (const TopoDS_Shape&  Shape,
       gp_Pnt p = thePoints.Value(i);
       p.Transform(Loc.Transformation());
       p.Coord (X1, Y1, Z1);
-      NbVertices = Mesh->AddVertex (X1, Y1, Z1);
+      Mesh->AddVertex (X1, Y1, Z1);
     }
     try {
       OCC_CATCH_SIGNALS
@@ -174,7 +173,7 @@ void StlTransfer::BuildIncrementalMesh (const TopoDS_Shape&  Shape,
 	    A=V1;B=V2;C=V3;
 	  }
 	}
-	NbTriangles = Mesh->AddTriangle (A, B, C, average.X(), average.Y(), average.Z());
+	Mesh->AddTriangle (A, B, C, average.X(), average.Y(), average.Z());
       }
     }
     catch(Standard_Failure)

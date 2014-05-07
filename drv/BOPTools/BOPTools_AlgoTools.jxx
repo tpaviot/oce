@@ -25,6 +25,9 @@
 #ifndef _IntTools_Range_HeaderFile
 #include <IntTools_Range.hxx>
 #endif
+#ifndef _TopoDS_Shell_HeaderFile
+#include <TopoDS_Shell.hxx>
+#endif
 #ifndef _BOPTools_AlgoTools_HeaderFile
 #include <BOPTools_AlgoTools.hxx>
 #endif

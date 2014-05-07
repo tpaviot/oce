@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -45,6 +45,17 @@ Graphic3d_Texture1D::Graphic3d_Texture1D (const Graphic3d_NameOfTexture1D theNOT
   myPath.SetTrek (Graphic3d_TextureRoot::TexturesFolder());
   myTexId = TCollection_AsciiString ("Graphic3d_Texture1D_")
           + NameOfTexture_to_FileName[theNOT];
+}
+
+// =======================================================================
+// function : Graphic3d_Texture1D
+// purpose  :
+// =======================================================================
+Graphic3d_Texture1D::Graphic3d_Texture1D (const Handle(Image_PixMap)&   thePixMap,
+                                          const Graphic3d_TypeOfTexture theType)
+: Graphic3d_TextureMap (thePixMap, theType),
+  myName (Graphic3d_NOT_1D_UNKNOWN)
+{
 }
 
 // =======================================================================

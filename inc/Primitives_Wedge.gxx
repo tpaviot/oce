@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -605,10 +605,8 @@ const TheWire& Primitives_Wedge::Wire
       dd3 = Primitives_YMax;
       dd4 = Primitives_XMin;
       break;
-#ifndef DEB
     default:
       break;
-#endif
     };
 
     myBuilder.MakeWire(myWires[i]);
@@ -665,26 +663,19 @@ gp_Lin Primitives_Wedge::Line
   gp_Vec VX = myAxes.XDirection();
   gp_Vec VY = myAxes.YDirection();
   gp_Vec VZ = myAxes.Direction();
-  Primitives_Direction dd1,dd2;
   
   switch (i/4) {
     
   case 0 :
     D = myAxes.Direction();
-    dd1 = Primitives_ZMin;
-    dd2 = Primitives_ZMax;
     break;
     
   case 1 :
     D = myAxes.XDirection();
-    dd1 = Primitives_XMin;
-    dd2 = Primitives_XMax;
     break;
     
   case 2 :
     D = myAxes.YDirection();
-    dd1 = Primitives_YMin;
-    dd2 = Primitives_YMax;
     break;
     
   };
@@ -827,10 +818,9 @@ const TheEdge& Primitives_Wedge::Edge
       dd1 = Primitives_YMin;
       dd2 = Primitives_YMax;
       break;
-#ifndef DEB
+
     default:
       break;
-#endif
     };
     
     gp_Lin L = Line(d1,d2);

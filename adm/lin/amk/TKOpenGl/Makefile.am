@@ -56,6 +56,7 @@ libTKOpenGl_la_SOURCES = \
 @top_srcdir@/src/OpenGl/OpenGl_GraphicDriver_Layer.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Group.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_IndexBuffer.cxx \
+@top_srcdir@/src/OpenGl/OpenGl_Layer.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_LayerList.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Matrix.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_PointSprite.cxx \

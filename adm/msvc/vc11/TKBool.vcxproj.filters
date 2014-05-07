@@ -2,28 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{8147B3C8-0DC5-03B9-07E2-A54EB3D1FFF4}</UniqueIdentifier>
+      <UniqueIdentifier>{5D20540F-0A03-12D0-14AE-34776F8D3B64}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRep">
-      <UniqueIdentifier>{FB1F5EDC-1501-1320-0C8A-9907139F7B78}</UniqueIdentifier>
+      <UniqueIdentifier>{364B8CD9-18BC-0F65-05E1-E4C36BD9B291}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRepDS">
-      <UniqueIdentifier>{633D8F35-13D7-1739-132E-6D9E71BD2611}</UniqueIdentifier>
+      <UniqueIdentifier>{5A7815A8-1371-0F73-024F-AD0A2875E5AD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRepBuild">
-      <UniqueIdentifier>{0E3036C7-18EB-16B4-00DC-E8A636F8458B}</UniqueIdentifier>
+      <UniqueIdentifier>{39C8C90A-0F4F-0D2C-0A44-215F59FAF297}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRepTool">
-      <UniqueIdentifier>{9DC56210-1520-17FE-056A-B2011C66D8B3}</UniqueIdentifier>
+      <UniqueIdentifier>{4CD7183B-0865-0448-1481-51A4B51496F0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAlgo">
-      <UniqueIdentifier>{1CD82EAB-0327-02DD-0364-AB1A1A3EA982}</UniqueIdentifier>
+      <UniqueIdentifier>{C17473CC-16B0-0E53-1251-2C3FC50E9E99}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepFill">
-      <UniqueIdentifier>{EABF79DC-083D-0A4B-0413-2330724198BF}</UniqueIdentifier>
+      <UniqueIdentifier>{CE7C7C94-0FA8-15D1-0D7D-9029217C3C7B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepProj">
-      <UniqueIdentifier>{933B52A1-1249-049A-11F1-ECCEC5FAE87F}</UniqueIdentifier>
+      <UniqueIdentifier>{66EA78CA-035E-03D2-0A05-BB5A89351858}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1038,6 +1038,9 @@
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape_0.cxx">
       <Filter>Source files\BRepFill</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape_0.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfPnt_0.cxx">
       <Filter>Source files\BRepFill</Filter>
     </ClCompile>
@@ -1056,6 +1059,9 @@
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape_0.cxx">
       <Filter>Source files\BRepFill</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape_0.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt_0.cxx">
       <Filter>Source files\BRepFill</Filter>
     </ClCompile>
@@ -1072,6 +1078,9 @@
       <Filter>Source files\BRepFill</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapOfShapeDataMapOfShapeListOfShape_0.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapOfShapeHArray2OfShape_0.cxx">
       <Filter>Source files\BRepFill</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_DataMapOfShapeSequenceOfPnt_0.cxx">

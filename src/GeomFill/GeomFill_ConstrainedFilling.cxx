@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -1421,8 +1421,10 @@ void GeomFill_ConstrainedFilling::CheckResult(const Standard_Integer I)
   }
   gp_Pnt pbound[31],pres[31];
   gp_Vec vbound[31],vres[31];
+#ifdef DRAW
   Standard_Real ang[31];
   Standard_Boolean hasang[31];
+#endif
   Handle(GeomFill_Boundary) bou = ptch->Bound(I);
   Standard_Integer k ;
   for ( k = 0; k <= 30; k++){
@@ -1437,10 +1439,14 @@ void GeomFill_ConstrainedFilling::CheckResult(const Standard_Integer I)
 	Standard_Real alpha = Abs(vres[k].Angle(vbound[k]));
 	alpha = Min(alpha,Abs(M_PI-alpha));
 	if(alpha > maxang) maxang = alpha;
+#ifdef DRAW
 	ang[k] = alpha;
 	hasang[k] = 1;
+#endif
       }
+#ifdef DRAW
       else hasang[k] = 0;
+#endif
     }
     if(pres[k].Distance(pbound[k]) > maxdist) maxdist = pres[k].Distance(pbound[k]);
     uu += duu;

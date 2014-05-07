@@ -440,6 +440,7 @@
 		<Unit filename="../../../src/GeomTools/GeomTools.cxx" />
 		<Unit filename="../../../src/GeomTools/GeomTools_Curve2dSet.cxx" />
 		<Unit filename="../../../src/GeomTools/GeomTools_CurveSet.cxx" />
+		<Unit filename="../../../src/GeomTools/GeomTools_Debug.cxx" />
 		<Unit filename="../../../src/GeomTools/GeomTools_SurfaceSet.cxx" />
 		<Unit filename="../../../src/GeomTools/GeomTools_UndefinedTypeHandler.cxx" />
 		<Unit filename="../../../src/GC/GC_MakeArcOfCircle.cxx" />

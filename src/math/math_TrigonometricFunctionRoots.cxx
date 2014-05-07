@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -132,7 +132,7 @@ void math_TrigonometricFunctionRoots::Perform(const Standard_Real A,
   Standard_Real Teta, X;
   Standard_Real Eps, Tol1 = 1.e-15;
   TColStd_Array1OfReal ko(1,5), Zer(1,4);
-  Standard_Boolean Flag3, Flag4;
+  Standard_Boolean Flag4;
   InfiniteStatus = Standard_False;
   Done = Standard_True;
 
@@ -345,7 +345,6 @@ void math_TrigonometricFunctionRoots::Perform(const Standard_Real A,
     X = Teta -MyBorneInf;
     if ((X >= (-Epsilon(Delta))) && (X <= Delta+ Epsilon(Delta))) {
       X = Teta;
-      Flag3 = Standard_False;
 
       // Appel de Newton:
       //OCC541(apo):  Standard_Real TetaNewton=0;  

@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -408,8 +408,11 @@ void TopOpeBRepBuild_Builder::GFillSurfaceTopologySFS(const TopoDS_Shape&,
                                                       TopOpeBRepBuild_ShellFaceSet& /*SFS*/)
 {
   TopAbs_State TB1,TB2; G1.StatesON(TB1,TB2);
-  TopAbs_ShapeEnum t1,t2,ShapeInterf;
-  G1.Type(t1,t2); ShapeInterf = t1;
+  TopAbs_ShapeEnum t1,t2;
+  G1.Type(t1,t2);
+#ifdef DEB
+  TopAbs_ShapeEnum ShapeInterf = t1;
+#endif
   
 #ifdef DEB
   Standard_Integer iSO; Standard_Boolean tSPS = GtraceSPS(SO1,iSO);
@@ -493,20 +496,15 @@ void TopOpeBRepBuild_Builder::GFillShellSFS(const TopoDS_Shape& SH,
       cout<<endl;}
 #endif
   
-  Standard_Integer nlsfs = SFS.ChangeStartShapes().Extent();
   TopOpeBRepTool_ShapeExplorer exFace;
-  Standard_Integer ifor = 0;
   
   // 1/ : toutes les faces HasSameDomain
   for (exFace.Init(SH,TopAbs_FACE); exFace.More(); exFace.Next()) {
-    nlsfs = SFS.ChangeStartShapes().Extent();
     const TopoDS_Shape& FOR = exFace.Current();
-    ifor = myDataStructure->Shape(FOR);
     Standard_Boolean hsd = myDataStructure->HasSameDomain(FOR);
     if ( hsd ) {
       GFillFaceSFS(FOR,LSO2,G1,SFS);
     } // hsd
-    nlsfs = SFS.ChangeStartShapes().Extent();
   } // exFace.More()
   
 #ifdef DEB
@@ -517,14 +515,11 @@ void TopOpeBRepBuild_Builder::GFillShellSFS(const TopoDS_Shape& SH,
   
   // 2/ : toutes les faces non HasSameDomain
   for (exFace.Init(SH,TopAbs_FACE); exFace.More(); exFace.Next()) {
-    nlsfs = SFS.ChangeStartShapes().Extent();
     const TopoDS_Shape& FOR = exFace.Current();
-    ifor = myDataStructure->Shape(FOR);
     Standard_Boolean hsd = myDataStructure->HasSameDomain(FOR);
     if ( !hsd ) {
       GFillFaceSFS(FOR,LSO2,G1,SFS);
     } // hsd
-    nlsfs = SFS.ChangeStartShapes().Extent();
   }
   
 } // GFillShellSFS

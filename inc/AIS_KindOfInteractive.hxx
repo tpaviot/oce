@@ -11,18 +11,22 @@
 //! -   the Datum <br>
 //! -   the Object <br>
 //! -   the Relation <br>
+//! -   the Dimension <br>
 //! -   the None type. <br>
-//!  The Datum is the construction element. These include <br>
+//! The Datum is the construction element. These include <br>
 //! points, lines, axes and planes. The object brings <br>
 //! together topological shapes. The Relation includes <br>
-//! dimensions and constraints. When the object is of an <br>
-//! unknown type, the None type is declared. <br>
+//! dimensions and constraints. The Dimension includes <br>
+//! length, radius, diameter and angle dimensions. <br>
+//! When the object is of an unknown type, the None <br>
+//! type is declared. <br>
 enum AIS_KindOfInteractive {
 AIS_KOI_None,
 AIS_KOI_Datum,
 AIS_KOI_Shape,
 AIS_KOI_Object,
-AIS_KOI_Relation
+AIS_KOI_Relation,
+AIS_KOI_Dimension
 };
 
 #ifndef _Standard_PrimitiveTypes_HeaderFile

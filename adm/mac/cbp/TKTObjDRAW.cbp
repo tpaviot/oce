@@ -68,6 +68,8 @@
 			<Add directory="../../../src/TObjDRAW" />
 		</Compiler>
 		<Linker>
+			<Add option="-framework Tcl" />
+			<Add option="-framework Tk" />
 			<Add option="-framework AppKit" />
 			<Add option="-framework IOKit" />
 			<Add library="TKernel" />
@@ -80,8 +82,6 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
-			<Add library="tcl8.5" />
-			<Add library="tk8.5" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
 			<Add library="objc" />

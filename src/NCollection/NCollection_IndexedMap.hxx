@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -187,13 +187,10 @@ template < class TheKeyType,
   //! ReSize
   void ReSize (const Standard_Integer N)
   {
-    IndexedMapNode** ppNewData1 = NULL;
-    IndexedMapNode** ppNewData2 = NULL;
+    NCollection_ListNode** ppNewData1 = NULL;
+    NCollection_ListNode** ppNewData2 = NULL;
     Standard_Integer newBuck;
-    if (BeginResize (N, newBuck, 
-                     (NCollection_ListNode**&)ppNewData1, 
-                     (NCollection_ListNode**&)ppNewData2,
-                     this->myAllocator)) 
+    if (BeginResize (N, newBuck, ppNewData1, ppNewData2, this->myAllocator)) 
     {
       if (myData1) 
       {
@@ -213,7 +210,7 @@ template < class TheKeyType,
               if (p->Key2() > 0) 
               {
                 iK2 = ::HashCode (p->Key2(), newBuck);
-                p->Next2() = ppNewData2[iK2];
+                p->Next2() = (IndexedMapNode*)ppNewData2[iK2];
                 ppNewData2[iK2] = p;
               }
               p = q;
@@ -221,10 +218,7 @@ template < class TheKeyType,
           }
         }
       }
-      EndResize(N,newBuck,
-                (NCollection_ListNode**&)ppNewData1,
-                (NCollection_ListNode**&)ppNewData2,
-                this->myAllocator);
+      EndResize (N, newBuck, ppNewData1, ppNewData2, this->myAllocator);
     }
   }
 

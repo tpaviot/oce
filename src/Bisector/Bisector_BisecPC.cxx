@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -597,13 +597,12 @@ gp_Vec2d Bisector_BisecPC::DN (const Standard_Real     U,
 Standard_Real Bisector_BisecPC::SearchBound (const Standard_Real U1,
 					     const Standard_Real U2) const
 {
-  Standard_Real Dist1,Dist2,DistMid,U11,U22; 
+  Standard_Real Dist1,DistMid,U11,U22; 
   Standard_Real UMid = 0.;
   Standard_Real Tol      = Precision::PConfusion();
   Standard_Real DistMax2 = distMax*distMax;
   U11 = U1; U22 = U2;
   Dist1 = Distance(U11);
-  Dist2 = Distance(U22);
   
   while ((U22 - U11) > Tol) {
     UMid    = 0.5*( U22 + U11);
@@ -614,7 +613,6 @@ Standard_Real Bisector_BisecPC::SearchBound (const Standard_Real U1,
     }
     else {
       U22    = UMid;
-      Dist2 = DistMid;
     }
   }
   return UMid;

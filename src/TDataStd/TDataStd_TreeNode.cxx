@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -226,7 +226,7 @@ Standard_Boolean TDataStd_TreeNode::Remove ()
   }
 
   if (Father()->HasFirst()) {
-    if (Handle(TDataStd_TreeNode)::DownCast(this) == Father()->First()) {
+    if (this == Father()->First().operator->()) {
       if (HasNext()) {
 	    Father()->SetFirst(Next());
       }
@@ -235,12 +235,7 @@ Standard_Boolean TDataStd_TreeNode::Remove ()
   }
   
   if(Father()->HasLast()) {
-    if (Handle(TDataStd_TreeNode)::DownCast(this) == Father()->Last()) {
-      if(HasPrevious()) {
-        Father()->SetLast(Previous());
-      }
-      else Father()->SetLast(bid);
-    }
+    Father()->SetLast(bid);
   }
 
   SetFather(bid);
@@ -697,6 +692,10 @@ Standard_OStream& TDataStd_TreeNode::Dump (Standard_OStream& anOS) const
   if (myFirst) {
     anOS<<"  First=";
     if (!myFirst->Label().IsNull()) myFirst->Label().EntryDump(anOS);
+  }
+  if (myLast) {
+    anOS<<"  Last=";
+    if (!myLast->Label().IsNull()) myLast->Label().EntryDump(anOS);
   }
   anOS<<endl;
   return anOS;

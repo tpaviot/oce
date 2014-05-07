@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -445,7 +445,8 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 				       const Handle(Adaptor3d_TopolTool)& Domain,
 				       const Handle(Adaptor3d_HSurface)& OtherSurf,
 				       const Standard_Boolean OnFirst,
-				       const Standard_Real Tol )
+				       const Standard_Real Tol,
+               const Standard_Boolean hasBeenAdded)
  {
 
 // Domain est le domaine de restriction de la surface Surf.
@@ -699,13 +700,15 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 	      (!Domain->Has3d() && Standard_Integer(nptCh)+1 < Nbptlin);
 	    if (!isNptLow && !IsSegment2dSmall(Brise,UMinAr,UMaxAr,tolU,tolV)) {
 	      // treat both ends
-	      Standard_Real UMinChP,UMaxChP,UMinArP,UMaxArP;
-	      UMinChP = IntegerPart(UMinCh); UMinArP = IntegerPart(UMinAr);
-	      UMaxChP = IntegerPart(UMaxCh); UMaxArP = IntegerPart(UMaxAr);
-	      Standard_Integer irangCh1,irangCh2,irangAr1,irangAr2;
-	      irangCh1 = Standard_Integer(UMinChP)+1; irangCh2 = Standard_Integer(UMaxChP)+1;
-	      irangAr1 = Standard_Integer(UMinArP)+1; irangAr2 = Standard_Integer(UMaxArP)+1;
-	      UMinChP = UMinCh - UMinChP; UMinArP = UMinAr - UMinArP;
+	      Standard_Real UMinChP,UMinArP,UMaxArP;
+	      UMinChP = IntegerPart(UMinCh);
+              UMinArP = IntegerPart(UMinAr);
+              UMaxArP = IntegerPart(UMaxAr);
+	      Standard_Integer irangAr1,irangAr2;
+	      irangAr1 = Standard_Integer(UMinArP)+1;
+              irangAr2 = Standard_Integer(UMaxArP)+1;
+	      UMinChP = UMinCh - UMinChP;
+              UMinArP = UMinAr - UMinArP;
 	      //UMaxChP = UMaxCh - UMaxChP; UMaxArP = UMaxAr - UMaxArP;
 	      const Standard_Real eps = 1e-10;
 //	      Standard_Boolean isChExtr1 = irangCh1==1 && UMinChP<eps;
@@ -1227,7 +1230,7 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 */
 
     wlin->SetPeriod(pu1,pv1,pu2,pv2);
-    wlin->ComputeVertexParameters(Tol);
+    wlin->ComputeVertexParameters(Tol, hasBeenAdded);
   }
   else {
 #ifdef DEB

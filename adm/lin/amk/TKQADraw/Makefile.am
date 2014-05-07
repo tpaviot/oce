@@ -68,6 +68,8 @@ libTKQADraw_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKSTL/libTKSTL.la \
 ../TKAdvTools/libTKAdvTools.la \
 ../TKVoxel/libTKVoxel.la \
+../TKShapeSchema/libTKShapeSchema.la \
+../TKPShape/libTKPShape.la \
 $(STLPort_LIB) $(CSF_gdi32_LIB) $(CSF_advapi32_LIB) $(CSF_user32_LIB) $(CSF_TBB_LIB) 
 
 libTKQADraw_la_SOURCES = \

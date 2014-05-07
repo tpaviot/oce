@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -662,11 +662,9 @@ Standard_Integer DACTCL_Solve(const math_Vector& a,
      Standard_Integer jr, jd, jh, is, k, id;
      Standard_Integer jh1, idot, idot1, idot2;
      Standard_Real aa, d, dot;
-     Standard_Boolean diag;
 
      jr = 0;
      for (j = 1; j <= Neq; j++) {
-       diag = Standard_False;
        jd = indx(j);
        jh = jd-jr;
        is = j-jh+2;

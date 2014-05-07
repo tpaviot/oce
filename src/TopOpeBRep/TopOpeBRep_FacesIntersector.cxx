@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -1439,13 +1439,12 @@ static Standard_Boolean IsPointOK(const gp_Pnt&            theTestPnt,
   Extrema_ExtPS extPS(theTestPnt,theTestSurface,ExtTol,ExtTol);
   if( extPS.IsDone() && extPS.NbExt() > 0 )
     {
-      Standard_Integer i = 0, minext = 1;
+      Standard_Integer i = 0;
       Standard_Real MinDist2 = 1.e+200;
       for(i = 1; i <= extPS.NbExt(); i++)
 	{
 	  if( extPS.SquareDistance(i) < MinDist2 )
 	    {
-	      minext = i;
 	      MinDist2 = extPS.SquareDistance(i);
 	    }
 	}

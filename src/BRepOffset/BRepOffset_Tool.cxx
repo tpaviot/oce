@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -143,20 +143,17 @@
 
 #ifdef DRAW
 #include <DBRep.hxx>
-#endif
-
-#ifdef DEB       
 Standard_Boolean AffichInter  = Standard_False;
-static Standard_Boolean AffichExtent = Standard_False;
 static Standard_Integer NbNewEdges  = 1;
 static Standard_Integer NbFaces     = 1;
 static Standard_Integer NbFOB       = 1;
 static Standard_Integer NbFTE       = 1;
 static Standard_Integer NbExtE      = 1;
-//POP pour NT
-//char* name = new char[100];
 #endif
 
+#ifdef DEB
+static Standard_Boolean AffichExtent = Standard_False;
+#endif
 
 //=======================================================================
 //function : EdgeVertices
@@ -730,8 +727,7 @@ void BRepOffset_Tool::PipeInter(const TopoDS_Face& F1,
 { 
 #ifdef DRAW
   if (AffichInter) {
-    // POP pour NT
-    char* name = new char[100];
+    char name[256];
     sprintf(name,"FF_%d",NbFaces++);
     DBRep::Set(name,F1);
     sprintf(name,"FF_%d",NbFaces++);
@@ -779,8 +775,7 @@ void BRepOffset_Tool::PipeInter(const TopoDS_Face& F1,
       L2.Append (E.Oriented(O2));
 #ifdef DRAW
       if (AffichInter) {
-    // POP pour NT
-	char* name = new char[100];
+        char name[256];
 	sprintf(name,"EI_%d",NbNewEdges++);	
 	DBRep::Set(name,E.Oriented(O1));
       }
@@ -796,11 +791,9 @@ void BRepOffset_Tool::PipeInter(const TopoDS_Face& F1,
 //=======================================================================
 
 static Standard_Boolean IsAutonomVertex(const TopoDS_Shape& aVertex,
-					const TopoDS_Shape& F1,
-					const TopoDS_Shape& F2,
-                                        const BOPDS_PDS& pDS)
+					const BOPDS_PDS& pDS)
 {
-  Standard_Integer index, indF1, indF2; 
+  Standard_Integer index;
   Standard_Integer aNbVVs, aNbEEs, aNbEFs, aInt;
   //
   index = pDS->Index(aVertex);
@@ -816,9 +809,6 @@ static Standard_Boolean IsAutonomVertex(const TopoDS_Shape& aVertex,
 		}
 	    }
 	}
-  //
-  indF1 = pDS->Index(F1);
-  indF2 = pDS->Index(F2);
   //
   if (!pDS->IsNewShape(index)) {
     return Standard_False;
@@ -870,9 +860,7 @@ static Standard_Boolean IsAutonomVertex(const TopoDS_Shape& aVertex,
 
 static Standard_Boolean AreConnex(const TopoDS_Wire& W1,
 				  const TopoDS_Wire& W2,
-				  const TopoDS_Shape& F1,
-				  const TopoDS_Shape& F2,
-                                  const BOPDS_PDS& pDS)
+				  const BOPDS_PDS& pDS)
 {
   TopoDS_Vertex V11, V12, V21, V22;
   TopExp::Vertices( W1, V11, V12 );
@@ -883,14 +871,14 @@ static Standard_Boolean AreConnex(const TopoDS_Wire& W1,
     {
       Standard_Boolean isCV1 = V11.IsSame(V21) || V11.IsSame(V22);
       Standard_Boolean isCV2 = V12.IsSame(V21) || V12.IsSame(V22);
-      if (isCV1 && !IsAutonomVertex(V11, F1, F2, pDS))
+      if (isCV1 && !IsAutonomVertex(V11, pDS))
 	{
 	  if (!isCV2)
 	    return Standard_False;
-          if (!IsAutonomVertex(V12, F1, F2, pDS))
+          if (!IsAutonomVertex(V12, pDS))
 	    return Standard_False;
 	}
-      if (!isCV1 && !IsAutonomVertex(V12, F1, F2, pDS))
+      if (!isCV1 && !IsAutonomVertex(V12, pDS))
 	return Standard_False;
 
       TopoDS_Vertex CV = (V11.IsSame(V21) || V11.IsSame(V22))? V11 : V12;
@@ -1516,7 +1504,7 @@ static TopoDS_Edge AssembleEdge(const BOPDS_PDS& pDS,
 	{
 	  TopoDS_Vertex V1, V2;
 	  TopExp::Vertices( CurEdge, V1, V2 );
-          if (IsAutonomVertex( V1, F1, F2, pDS ))
+          if (IsAutonomVertex( V1, pDS ))
 	    {
 	      After = Standard_False;
 	      Vfirst = Vlast = V2;
@@ -1579,8 +1567,7 @@ void BRepOffset_Tool::Inter3D(const TopoDS_Face& F1,
 {
 #ifdef DRAW
   if (AffichInter) {
-    // POP pour NT
-    char* name = new char[100];
+    char name[256];
     sprintf(name,"FF_%d",NbFaces++);
     DBRep::Set(name,F1);
     sprintf(name,"FF_%d",NbFaces++);
@@ -1702,7 +1689,7 @@ void BRepOffset_Tool::Inter3D(const TopoDS_Face& F1,
         
 #ifdef DRAW
         if (AffichInter) {
-          char* name = new char[100];
+	  char name[256];
           sprintf(name,"EI_%d",NbNewEdges++);	
           DBRep::Set(name,anEdge.Oriented(O1));
          
@@ -1759,7 +1746,7 @@ void BRepOffset_Tool::Inter3D(const TopoDS_Face& F1,
 	    for (k = 1; k <= wseq.Length(); k++)
 	      {
 		resWire = TopoDS::Wire(wseq(k));
-                if (AreConnex( resWire, aWire, cpF1, cpF2, pDS ))
+                if (AreConnex( resWire, aWire, pDS ))
 		  {
 		    Candidates.Append( 1 );
 		    break;
@@ -1778,7 +1765,7 @@ void BRepOffset_Tool::Inter3D(const TopoDS_Face& F1,
 		    //if (anEdge.IsSame(edges(Candidates.First())))
 		    //continue;
 		    aWire = BRepLib_MakeWire( anEdge );
-                    if (AreConnex( resWire, aWire, cpF1, cpF2, pDS ))
+                    if (AreConnex( resWire, aWire, pDS ))
 		      Candidates.Append( j );
 		  }
 		Standard_Integer minind = 1;
@@ -1823,13 +1810,13 @@ void BRepOffset_Tool::Inter3D(const TopoDS_Face& F1,
 		      {
 			TopoDS_Vertex V1, V2;
 			TopExp::Vertices( anEdge, V1, V2 );
-                        if (!IsAutonomVertex( V1, cpF1, cpF2, pDS ))
+                        if (!IsAutonomVertex( V1, pDS ))
 			  {
 			    StartVertex = V2;
 			    StartEdge = anEdge;
 			    StartFound = Standard_True;
 			  }
-                        else if (!IsAutonomVertex( V2, cpF1, cpF2, pDS ))
+                        else if (!IsAutonomVertex( V2, pDS ))
 			  {
 			    StartVertex = V1;
 			    StartEdge = anEdge;
@@ -1950,8 +1937,7 @@ Standard_Boolean BRepOffset_Tool::TryProject
 {
 #ifdef DRAW
   if (AffichInter) {
-    // POP pour NT
-    char* name = new char[100];
+    char name[256];
     sprintf(name,"FF_%d",NbFaces++);
     DBRep::Set(name,F1);
     sprintf(name,"FF_%d",NbFaces++);
@@ -1994,9 +1980,8 @@ Standard_Boolean BRepOffset_Tool::TryProject
       LInt2.Append (CurE.Oriented(O2));
 #ifdef DRAW
       if (AffichInter) {
-    // POP pour NT
-	char* name = new char[100];
-	sprintf(name,"EI_%d",NbNewEdges++);	
+        char name[256];
+        sprintf(name,"EI_%d",NbNewEdges++);	
 	DBRep::Set(name,CurE.Oriented(O1));
       }
 #endif      
@@ -2021,8 +2006,7 @@ void BRepOffset_Tool::InterOrExtent(const TopoDS_Face& F1,
 {
 #ifdef DRAW
   if (AffichInter) {
-    // POP pour NT
-    char* name = new char[100];
+    char name[256];
     sprintf(name,"FF_%d",NbFaces++);
     DBRep::Set(name,F1);
     sprintf(name,"FF_%d",NbFaces++);
@@ -2071,8 +2055,7 @@ void BRepOffset_Tool::InterOrExtent(const TopoDS_Face& F1,
       L2.Append (E.Oriented(O2));
 #ifdef DRAW
       if (AffichInter) {
-    // POP pour NT
-    char* name = new char[100];
+        char name[256];
 	sprintf(name,"EI_%d",NbNewEdges++);	
 	DBRep::Set(name,E.Oriented(O1));
       }
@@ -2160,7 +2143,7 @@ static void ExtentEdge(const TopoDS_Face& F,
   NE.Orientation(E.Orientation());
 #ifdef DRAW
   if (AffichExtent) {
-    char* name = new char[100];
+    char name[256];
     sprintf (name,"F_%d",NbExtE);
     DBRep::Set(name,EF);
     sprintf (name,"OE_%d",NbExtE);
@@ -3474,8 +3457,7 @@ void BRepOffset_Tool::ExtentFace (const TopoDS_Face&            F,
 {
 #ifdef DRAW
   if (AffichInter) {
-    // POP pour NT
-    char* name = new char[100];
+    char name[256];
     sprintf(name,"FTE_%d",NbFTE++);
     DBRep::Set(name,F);
   }
@@ -3893,8 +3875,7 @@ void BRepOffset_Tool::ExtentFace (const TopoDS_Face&            F,
   
 #ifdef DRAW
   if (AffichInter) {
-    // POP pour NT
-    char* name = new char[100];
+    char name[256];
     sprintf(name,"FOB_%d",NbFOB++);
     DBRep::Set(name,NF);
   }

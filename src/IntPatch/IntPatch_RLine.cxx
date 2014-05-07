@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -104,9 +104,6 @@ void IntPatch_RLine::ComputeVertexParameters(const Standard_Real )
 {
   Standard_Integer i,j,nbvtx;//k;
   
-  Standard_Real ParamMinOnLine,ParamMaxOnLine;
-  if(fipt) { ParamMinOnLine = Vertex(indf).ParameterOnLine(); } else { ParamMinOnLine = -100000.0; } 
-  if(lapt) { ParamMaxOnLine = Vertex(indl).ParameterOnLine(); } else { ParamMaxOnLine =  100000.0; } 
   Standard_Boolean APointDeleted = Standard_False;
   //----------------------------------------------------------
   //--     F i l t r e   s u r   r e s t r i c t i o n s   --

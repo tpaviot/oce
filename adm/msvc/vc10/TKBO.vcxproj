@@ -326,8 +326,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_BaseRangeSample.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\IntTools\IntTools_BeanBeanIntersector.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_BeanFaceIntersector.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_CommonPrt.cxx">
@@ -345,8 +343,6 @@
     <ClCompile Include="..\..\..\src\IntTools\IntTools_CurveRangeSampleMapHasher.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeEdge.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeEdge_1.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeFace.cxx">
     </ClCompile>
@@ -390,13 +386,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Section.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPCol\BOPCol_Box2DBndTree.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPCol\BOPCol_BoxBndTree.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\BOPInt\BOPInt_Context.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPInt\BOPInt_ShrunkRange.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPInt\BOPInt_Tools.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPDS\BOPDS_BoxBndTree.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPDS\BOPDS_CommonBlock.cxx">
     </ClCompile>
@@ -462,6 +460,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_CheckerSI.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_CheckerSI_1.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_1.cxx">
@@ -480,7 +480,11 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_8.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_9.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_SectionAttribute.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_ShellSplitter.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_Tools.cxx">
     </ClCompile>

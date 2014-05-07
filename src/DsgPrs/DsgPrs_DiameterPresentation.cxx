@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -157,7 +157,6 @@ void DsgPrs_DiameterPresentation::Add (const Handle(Prs3d_Presentation)& aPresen
   Standard_Real parEndOfArrow = ElCLib::Parameter(aCircle,AttachmentPoint);
   gp_Pnt EndOfArrow;
   gp_Pnt DrawPosition = AttachmentPoint;// point of attachment
-  Standard_Boolean otherside = Standard_False;
 
   gp_Pnt Center = aCircle.Location();
   gp_Pnt FirstPoint = ElCLib::Value(uFirst, aCircle);
@@ -169,7 +168,6 @@ void DsgPrs_DiameterPresentation::Add (const Handle(Prs3d_Presentation)& aPresen
     if (DsgPrs_InDomain(fpara,lpara,otherpar)) {
       parEndOfArrow = otherpar; // parameter on circle
       EndOfArrow = ElCLib::Value(parEndOfArrow, aCircle);
-      otherside = Standard_True;
     }
     else {
       gp_Dir dir1(gp_Vec(Center, FirstPoint));

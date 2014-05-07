@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -581,13 +581,11 @@ void IntAna_IntQuadQuad::Perform(const gp_Cone& Cone,
 				 const Standard_Real)  
 { 
   //
-  Standard_Boolean UN_SEUL_Z_PAR_THETA, DEUX_Z_PAR_THETA, 
-                   Z_POSITIF, Z_INDIFFERENT, Z_NEGATIF;
+  Standard_Boolean UN_SEUL_Z_PAR_THETA,
+                   Z_POSITIF, Z_NEGATIF;
   //
   UN_SEUL_Z_PAR_THETA=Standard_False;
-  DEUX_Z_PAR_THETA=Standard_True;
   Z_POSITIF=Standard_True;
-  Z_INDIFFERENT=Standard_True;
   Z_NEGATIF=Standard_False;
   //
   Standard_Integer i;

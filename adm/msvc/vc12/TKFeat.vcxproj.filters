@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{CD6356C3-130D-18D0-0C14-6868B8B30F6B}</UniqueIdentifier>
+      <UniqueIdentifier>{3601CDBB-0FB6-0B88-1263-8B937F80ACFB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\LocOpe">
-      <UniqueIdentifier>{B96F8084-12E6-13B9-0565-73F050A64CD6}</UniqueIdentifier>
+      <UniqueIdentifier>{DCB8F38F-005E-15D3-12B4-07054EED720F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepFeat">
-      <UniqueIdentifier>{FEB60C66-0CF5-14EA-0718-E15E8E06C8E1}</UniqueIdentifier>
+      <UniqueIdentifier>{DB384964-1572-0665-0DDA-9FFACD0AD08B}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -466,7 +466,7 @@ Handle(GeomFill_TrihedronLaw) GeomFill_CorrectedFrenet::Copy() const
   gp_Vec Tangent, Normal, BN, cross;
   TColStd_SequenceOfReal parameters;
   TColStd_SequenceOfReal EvolAT;
-  Standard_Real Param = First, LengthMin, L, norm;
+  Standard_Real Param = First, L, norm;
   Standard_Boolean isZero = Standard_True, isConst = Standard_True;
   const Standard_Real minnorm = 1.e-16;
   Standard_Integer i;
@@ -476,7 +476,6 @@ Handle(GeomFill_TrihedronLaw) GeomFill_CorrectedFrenet::Copy() const
   frenet->SetInterval(First, Last); //To have the rigth evaluation at bounds
   GeomFill_SnglrFunc CS(myCurve);
   BndLib_Add3dCurve::Add(CS, First, Last, 1.e-2, Boite);
-  LengthMin = Boite.GetGap()*1.e-4;
     
   aT = gp_Vec(0, 0, 0);
   aN = gp_Vec(0, 0, 0);   

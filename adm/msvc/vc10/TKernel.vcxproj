@@ -316,12 +316,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Chronometer.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Cmailbox.c">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Csemaphore.c">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Csharedmemory.c">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Directory.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_DirectoryIterator.cxx">
@@ -342,13 +336,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Function.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Getkey.c">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Host.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_MAllocHook.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_MailBox.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_MemInfo.cxx">
     </ClCompile>
@@ -362,11 +352,7 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Protection.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Semaphore.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_SharedLibrary.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_SharedMemory.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Thread.cxx">
     </ClCompile>

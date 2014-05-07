@@ -52,6 +52,9 @@
 #ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
 #endif
+#ifndef _Graphic3d_ZLayerSettings_HeaderFile
+#include <Graphic3d_ZLayerSettings.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -159,6 +162,10 @@ public:
   //! Get Z layer ID assigned to structure. If the structure <br>
 //! has no layer ID (deleted from graphic driver), the method returns -1. <br>
   Standard_EXPORT   virtual  Standard_Integer GetZLayer(const Handle(Graphic3d_Structure)& theStructure) const = 0;
+  //! Sets the settings for a single Z layer for all managed views. <br>
+  Standard_EXPORT   virtual  void SetZLayerSettings(const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings theSettings)  = 0;
+  //! Returns the settings of a single Z layer. <br>
+  Standard_EXPORT   virtual  Graphic3d_ZLayerSettings ZLayerSettings(const Standard_Integer theLayerId)  = 0;
   //! Add a new top-level Z layer and get its ID as <br>
 //! <theLayerId> value. The method returns Standard_False if the layer <br>
 //! can not be created. The z layer mechanism allows to display <br>
@@ -206,7 +213,7 @@ public:
   //! Suppress the highlighting on the structure <AStructure>. <br>
   Standard_EXPORT   virtual  void UnHighlight(const Handle(Graphic3d_Structure)& AStructure)  = 0;
   
-  Standard_EXPORT     void ReComputeStructures() ;
+  Standard_EXPORT     void RecomputeStructures() ;
 
 friend class Graphic3d_Structure;
 
@@ -251,6 +258,8 @@ private:
   Standard_EXPORT     void Remove(const Standard_Integer AnId) ;
   //! Sets no detectable the structure <AStructure>. <br>
   Standard_EXPORT     void Undetectable(const Handle(Graphic3d_Structure)& AStructure) ;
+  //! Recomputes all structures from theStructures. <br>
+  Standard_EXPORT     void RecomputeStructures(const Graphic3d_MapOfStructure& theStructures) ;
 
 
 

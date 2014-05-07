@@ -16,6 +16,9 @@
 #ifndef _TCollection_HExtendedString_HeaderFile
 #include <TCollection_HExtendedString.hxx>
 #endif
+#ifndef _Message_Msg_HeaderFile
+#include <Message_Msg.hxx>
+#endif
 #ifndef _TColStd_HPackedMapOfInteger_HeaderFile
 #include <TColStd_HPackedMapOfInteger.hxx>
 #endif

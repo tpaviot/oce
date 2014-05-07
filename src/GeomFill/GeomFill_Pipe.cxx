@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -612,13 +612,11 @@ void GeomFill_Pipe::Init(const Handle(Geom2d_Curve)& Path,
     new Adaptor3d_HCurveOnSurface(Adaptor3d_CurveOnSurface(
 		       new Geom2dAdaptor_HCurve(Path), 
 		       new GeomAdaptor_HSurface(Support)));
-  Standard_Real param =  Path->FirstParameter();
  
   myLoc = new (GeomFill_CurveAndTrihedron) (TLaw);
   myLoc->SetCurve(myAdpPath);
   GeomFill_SectionPlacement Place(myLoc, FirstSect);
   Place.Perform(myAdpPath, Precision::Confusion());
-  param =  Place.ParameterOnPath();
   Sect = Place.Section(Standard_False);
   
 #ifdef DRAW
@@ -648,7 +646,6 @@ void GeomFill_Pipe::Init(const Handle(Geom_Curve)& Path,
   Handle(Geom_Curve) Sect;
   myAdpPath = new (GeomAdaptor_HCurve) 
     (Handle(Geom_Curve)::DownCast(Path->Copy()));
-  Standard_Real param =  Path->FirstParameter();
   gp_Vec V;
   V.SetXYZ(Direction.XYZ());
   Handle (GeomFill_ConstantBiNormal) TLaw = 
@@ -658,7 +655,6 @@ void GeomFill_Pipe::Init(const Handle(Geom_Curve)& Path,
   myLoc->SetCurve(myAdpPath);
   GeomFill_SectionPlacement Place(myLoc, FirstSect);
   Place.Perform(Precision::Confusion());
-  param =  Place.ParameterOnPath();
   Sect = Place.Section(Standard_False);
 
 #ifdef DRAW

@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -955,9 +955,8 @@ private:
        Standard_ConstructionError::Raise("GeomConvert Concatenation Error") ;
      Curve2=C.BSplineCurve();
    }
-   Standard_Boolean   rm;
    Curve2->SetPeriodic();      
-   rm=Curve2->RemoveKnot(Curve2->LastUKnotIndex(),
+   Curve2->RemoveKnot(Curve2->LastUKnotIndex(),
 			 Curve2->Multiplicity(Curve2->LastUKnotIndex())-1,
 			 Precision::Confusion());
    ArrayOfConcatenated->SetValue(0,Curve2);
@@ -1192,9 +1191,8 @@ void  GeomConvert::ConcatC1(TColGeom_Array1OfBSplineCurve&           ArrayOfCurv
        Curve2=C.BSplineCurve();
      }
    }
-   Standard_Boolean   rm;
    Curve2->SetPeriodic();                               //only one C1 curve
-   rm=Curve2->RemoveKnot(Curve2->LastUKnotIndex(),
+   Curve2->RemoveKnot(Curve2->LastUKnotIndex(),
 			 Curve2->Multiplicity(Curve2->LastUKnotIndex())-1,
 			 Precision::Confusion());
    ArrayOfConcatenated->SetValue(0,Curve2);

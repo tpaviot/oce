@@ -114,9 +114,18 @@ public:
 //!   than P split  <Spline>. <br>
 //! Else  the  plan  define  by  P  and  the  tangent  to  the  <Spine> <br>
 //!       intersect <AuxiliarySpine> in Q. <br>
-//! If <KeepContact> the  Normal  is  defined to  assume like  the  sweeped <br>
-//!                  section is  in  contact to  the  <AuxiliarySpine> <br>
-//! Else  the  Normal  is  defined  by the vector  PQ. <br>
+//! If <KeepContact> equals BRepFill_NoContact: The Normal is defined <br>
+//! by the vector PQ. <br>
+//! If <KeepContact> equals BRepFill_Contact: The Normal is defined to <br>
+//! achieve that the sweeped section is in contact to the <br>
+//! auxiliarySpine. The width of section is constant all along the path. <br>
+//! In other words, the auxiliary spine lies on the swept surface, <br>
+//! but not necessarily is a boundary of this surface. However, <br>
+//! the auxiliary spine has to be close enough to the main spine <br>
+//! to provide intersection with any section all along the path. <br>
+//! If <KeepContact> equals BRepFill_ContactOnBorder: The auxiliary spine <br>
+//! becomes a boundary of the swept surface and the width of section varies <br>
+//! along the path. <br>
   Standard_EXPORT     void Set(const TopoDS_Wire& AuxiliarySpine,const Standard_Boolean CurvilinearEquivalence = Standard_True,const BRepFill_TypeOfContact KeepContact = BRepFill_NoContact) ;
   //! Set the flag that indicates attempt to approximate <br>
 //!          a C1-continuous surface if a swept surface proved <br>

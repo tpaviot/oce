@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -24,10 +24,13 @@
 #include <TCollection_ExtendedString.hxx>
 #include <Font_FontAspect.hxx>
 
-typedef void (*minMaxValuesCallback)(void*);
+class Visual3d_View;
+
 class Graphic3d_CGraduatedTrihedron
 {
-  public:
+public:
+  typedef void (*minMaxValuesCallback)(Visual3d_View*);
+public:
     /* Default constructor. Nullifies the view pointer */
     Graphic3d_CGraduatedTrihedron () : xdrawname ( Standard_False ),
     ydrawname ( Standard_False ),
@@ -95,7 +98,7 @@ class Graphic3d_CGraduatedTrihedron
 
     /* Callback function to define boundary box of displayed objects */
     minMaxValuesCallback cbCubicAxes;
-    void* ptrVisual3dView;
+    Visual3d_View* ptrVisual3dView;
 };
 
 const Handle(Standard_Type)& TYPE(Graphic3d_CGraduatedTrihedron);

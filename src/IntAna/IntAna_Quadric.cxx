@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -130,20 +130,8 @@ void IntAna_Quadric::NewCoefficients( Standard_Real& _CXX,Standard_Real& _CYY,St
                                                   //   = X DirX + Y DirY + Z DirZ + Loc
   
   Standard_Real Cxx,Cyy,Czz,Cxy,Cxz,Cyz,Cx,Cy,Cz,Ccte;            
-
-
-#ifdef DEB  
-  gp_Dir DirX = Axis.XDirection();
-  gp_Dir DirY = Axis.YDirection();
-  gp_Dir DirZ = Axis.Direction();
-#else
-  Axis.XDirection();
-  Axis.YDirection();
-  Axis.Direction();
-#endif
   
   gp_Trsf Trans;
-  
   Trans.SetTransformation(Axis);
   Trans.Invert();
   t11=Trans.Value(1,1);  t12=Trans.Value(1,2); t13=Trans.Value(1,3); t14=Trans.Value(1,4);

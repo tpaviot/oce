@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -772,13 +772,12 @@ Standard_Boolean NIS_Triangulated::Intersect
   Standard_Boolean aResult (isFullIn);
 
   if ((myType & Type_Triangulation) && myIsDrawPolygons == Standard_False) {
-    unsigned int iNode = 0;
-    for (; iNode < myNNodes * myNodeCoord; iNode += myNodeCoord)
+    unsigned int nbSteps = (unsigned)myNNodes * myNodeCoord;
+    for (unsigned int iNode = 0; iNode < nbSteps; iNode += myNodeCoord)
     {
-      gp_XYZ aPnt (static_cast<Standard_Real>(mypNodes[iNode+0]),
-                   static_cast<Standard_Real>(mypNodes[iNode+1]), 0.);
+      gp_XYZ aPnt (mypNodes[iNode+0], mypNodes[iNode+1], 0.);
       if (myNodeCoord > 2)
-        aPnt.SetZ (static_cast<Standard_Real>(mypNodes[iNode+2]));
+        aPnt.SetZ (mypNodes[iNode+2]);
       theTrf.Transforms (aPnt);
       if (theBox.IsOut (aPnt)) {
         if (isFullIn) {
@@ -1073,13 +1072,12 @@ Standard_Boolean NIS_Triangulated::Intersect
   Standard_Boolean aResult (isFullIn);
 
   if ((myType & Type_Triangulation) && myIsDrawPolygons == Standard_False) {
-    unsigned int iNode = 0;
-    for (; iNode < myNNodes * myNodeCoord; iNode += myNodeCoord)
+    unsigned int nbSteps = (unsigned)myNNodes * myNodeCoord;
+    for (unsigned int iNode = 0; iNode < nbSteps; iNode += myNodeCoord)
     {
-      gp_XYZ aPnt (static_cast<Standard_Real>(mypNodes[iNode+0]),
-                   static_cast<Standard_Real>(mypNodes[iNode+1]), 0.);
+      gp_XYZ aPnt (mypNodes[iNode+0], mypNodes[iNode+1], 0.);
       if (myNodeCoord > 2)
-        aPnt.SetZ (static_cast<Standard_Real>(mypNodes[iNode+2]));
+        aPnt.SetZ (mypNodes[iNode+2]);
       theTrf.Transforms (aPnt);
 
       gp_XY aP2d(aPnt.X(), aPnt.Y());

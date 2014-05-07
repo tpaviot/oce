@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -47,7 +47,9 @@ void BRepExtrema_ExtFF::Initialize(const TopoDS_Face& F2)
 {
   BRepAdaptor_Surface Surf(F2);
   myHS = new BRepAdaptor_HSurface(Surf);
-  const Standard_Real Tol = BRep_Tool::Tolerance(F2);
+  Standard_Real Tol = Min(BRep_Tool::Tolerance(F2), Precision::Confusion());
+  Tol = Min(Surf.UResolution(Tol), Surf.VResolution(Tol));
+  Tol = Max(Tol, Precision::PConfusion());
   Standard_Real U1, U2, V1, V2;
   BRepTools::UVBounds(F2, U1, U2, V1, V2);
   myExtSS.Initialize(myHS->Surface(), U1, U2, V1, V2, Tol);
@@ -66,7 +68,9 @@ void BRepExtrema_ExtFF::Perform(const TopoDS_Face& F1, const TopoDS_Face& F2)
 
   BRepAdaptor_Surface Surf1(F1);
   Handle(BRepAdaptor_HSurface) HS1 = new BRepAdaptor_HSurface(Surf1);
-  const Standard_Real Tol1 = BRep_Tool::Tolerance(F1);
+  Standard_Real Tol1 = Min(BRep_Tool::Tolerance(F1), Precision::Confusion());
+  Tol1 = Min(Surf1.UResolution(Tol1), Surf1.VResolution(Tol1));
+  Tol1 = Max(Tol1, Precision::PConfusion());
   Standard_Real U1, U2, V1, V2;
   BRepTools::UVBounds(F1, U1, U2, V1, V2);
   myExtSS.Perform(HS1->Surface(), U1, U2, V1, V2, Tol1);

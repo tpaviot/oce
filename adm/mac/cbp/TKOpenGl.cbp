@@ -120,6 +120,7 @@
 		<Unit filename="../../../src/OpenGl/OpenGl_GraphicDriver_Layer.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Group.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_IndexBuffer.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_Layer.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_LayerList.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Matrix.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_PointSprite.cxx" />

@@ -40,26 +40,22 @@
 #ifndef _BOPCol_DataMapOfShapeShape_HeaderFile
 #include <BOPCol_DataMapOfShapeShape.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _BOPAlgo_BuilderShape_HeaderFile
 #include <BOPAlgo_BuilderShape.hxx>
 #endif
 #ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _BOPCol_ListOfInteger_HeaderFile
-#include <BOPCol_ListOfInteger.hxx>
 #endif
 class BOPInt_Context;
 class TopoDS_Shape;
 class BOPAlgo_PaveFiller;
 class TopTools_ListOfShape;
-class Bnd_Box;
 
 
 
@@ -95,16 +91,6 @@ Standard_EXPORT virtual ~BOPAlgo_Builder();
   Standard_EXPORT   virtual const TopTools_ListOfShape& Modified(const TopoDS_Shape& theS) ;
   //! Returns true if the shape theS has been deleted. <br>
   Standard_EXPORT   virtual  Standard_Boolean IsDeleted(const TopoDS_Shape& theS) ;
-  //! Set the flag of parallel processing <br>
-//! if <theFlag> is true  the parallel processing is switched on <br>
-//! if <theFlag> is false the parallel processing is switched off <br>
-//! <br>
-  Standard_EXPORT     void SetRunParallel(const Standard_Boolean theFlag) ;
-  //! Returns the flag of parallel processing <br>
-//! <br>
-//!  Debug <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean RunParallel() const;
   
   Standard_EXPORT    const BOPCol_DataMapOfShapeListOfShape& Images() const;
   
@@ -153,8 +139,6 @@ protected:
   
   Standard_EXPORT     void FillImagesFaces1() ;
   
-  Standard_EXPORT     void FillInternalVertices(BOPCol_ListOfShape& theLF,BOPCol_ListOfInteger& theLIV) ;
-  
   Standard_EXPORT     void FillImagesSolids() ;
   
   Standard_EXPORT     void BuildDraftSolid(const TopoDS_Shape& theSolid,TopoDS_Shape& theDraftSolid,BOPCol_ListOfShape& theLIF) ;
@@ -162,8 +146,6 @@ protected:
   Standard_EXPORT   virtual  void FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts,BOPCol_DataMapOfShapeShape& theDraftSolids,const BOPCol_BaseAllocator& theAllocator) ;
   
   Standard_EXPORT     void BuildSplitSolids(BOPCol_DataMapOfShapeListOfShape& theInParts,BOPCol_DataMapOfShapeShape& theDraftSolids,const BOPCol_BaseAllocator& theAllocator) ;
-  
-  Standard_EXPORT     void BuildBndBox(const Standard_Integer theIndex,Bnd_Box& theBox) ;
   
   Standard_EXPORT     void FillInternalShapes() ;
   
@@ -180,7 +162,6 @@ BOPCol_DataMapOfShapeListOfShape myImages;
 BOPCol_DataMapOfShapeShape myShapesSD;
 BOPCol_DataMapOfShapeListOfShape mySplits;
 BOPCol_DataMapOfShapeShape myOrigins;
-Standard_Boolean myRunParallel;
 
 
 private:

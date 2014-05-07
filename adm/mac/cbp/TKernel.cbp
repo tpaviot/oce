@@ -144,15 +144,6 @@
 		<Unit filename="../../../drv/OSD/OSD_Signal_0.cxx" />
 		<Unit filename="../../../src/OSD/OSD.cxx" />
 		<Unit filename="../../../src/OSD/OSD_Chronometer.cxx" />
-		<Unit filename="../../../src/OSD/OSD_Cmailbox.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../../../src/OSD/OSD_Csemaphore.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../../../src/OSD/OSD_Csharedmemory.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="../../../src/OSD/OSD_Directory.cxx" />
 		<Unit filename="../../../src/OSD/OSD_DirectoryIterator.cxx" />
 		<Unit filename="../../../src/OSD/OSD_Disk.cxx" />
@@ -163,21 +154,15 @@
 		<Unit filename="../../../src/OSD/OSD_FileIterator.cxx" />
 		<Unit filename="../../../src/OSD/OSD_FileNode.cxx" />
 		<Unit filename="../../../src/OSD/OSD_Function.cxx" />
-		<Unit filename="../../../src/OSD/OSD_Getkey.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="../../../src/OSD/OSD_Host.cxx" />
 		<Unit filename="../../../src/OSD/OSD_MAllocHook.cxx" />
-		<Unit filename="../../../src/OSD/OSD_MailBox.cxx" />
 		<Unit filename="../../../src/OSD/OSD_MemInfo.cxx" />
 		<Unit filename="../../../src/OSD/OSD_Path.cxx" />
 		<Unit filename="../../../src/OSD/OSD_PerfMeter.cxx" />
 		<Unit filename="../../../src/OSD/OSD_Printer.cxx" />
 		<Unit filename="../../../src/OSD/OSD_Process.cxx" />
 		<Unit filename="../../../src/OSD/OSD_Protection.cxx" />
-		<Unit filename="../../../src/OSD/OSD_Semaphore.cxx" />
 		<Unit filename="../../../src/OSD/OSD_SharedLibrary.cxx" />
-		<Unit filename="../../../src/OSD/OSD_SharedMemory.cxx" />
 		<Unit filename="../../../src/OSD/OSD_Thread.cxx" />
 		<Unit filename="../../../src/OSD/OSD_Timer.cxx" />
 		<Unit filename="../../../src/OSD/OSD_WNT.cxx" />

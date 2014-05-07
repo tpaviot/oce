@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -123,7 +123,6 @@ GccAna_Circ2d3Tan::
 	     Standard_Real dist2 = L2.Distance(Center);
 	     Standard_Real dist3 = Center.Distance(Point3);
 	     Standard_Integer nbsol1 = 0;
-	     Standard_Integer nbsol2 = 0;
 	     Standard_Integer nbsol3 = 0;
 	     Standard_Boolean ok = Standard_False;
 	     if (Qualified1.IsEnclosed()) {
@@ -157,7 +156,6 @@ GccAna_Circ2d3Tan::
 		 for (Standard_Integer ii = 1 ; ii <= nbsol1 ; ii++) {
 		   if (Abs(dist2-Radius(ii)) < Tol) { 
 		     ok = Standard_True;
-		     nbsol2 = 1;
 		     Radius(1) = Radius(ii);
 		   }
 		 }
@@ -169,7 +167,6 @@ GccAna_Circ2d3Tan::
 		 for (Standard_Integer ii = 1 ; ii <= nbsol1 ; ii++) {
 		   if (Abs(dist2-Radius(ii)) < Tol) { 
 		     ok = Standard_True;
-		     nbsol2 = 1;
 		     Radius(1) = Radius(ii);
 		   }
 		 }
@@ -179,7 +176,6 @@ GccAna_Circ2d3Tan::
 	       for (Standard_Integer ii = 1 ; ii <= nbsol1 ; ii++) {
 		 if (Abs(dist2-Radius(ii)) < Tol) { 
 		   ok = Standard_True;
-		   nbsol2 = 1;
 		   Radius(1) = Radius(ii);
 		 }
 	       }

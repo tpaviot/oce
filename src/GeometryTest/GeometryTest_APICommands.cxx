@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -562,13 +562,8 @@ void GeometryTest::APICommands(Draw_Interpretor& theCommands)
   if (done) return;
 
   done = Standard_True;
-  const char* g;
-
-  g = "GEOMETRY curves and surfaces analysis";
 
   theCommands.Add("proj", "proj curve/surf x y z [extrema algo: g(grad)/t(tree)]",__FILE__, proj);
-
-  g = "GEOMETRY approximations";
 
   theCommands.Add("appro", "appro result nbpoint [curve]",__FILE__, appro);
   theCommands.Add("surfapp","surfapp result nbupoint nbvpoint x y z ....",
@@ -577,8 +572,6 @@ void GeometryTest::APICommands(Draw_Interpretor& theCommands)
   theCommands.Add("grilapp",
        "grilapp result nbupoint nbvpoint X0 dX Y0 dY z11 z12 .. z1nu ....  ",
         __FILE__,grilapp);
-
-  g = "GEOMETRY curves and surfaces analysis";
 
   theCommands.Add("extrema", "extrema curve/surface curve/surface",__FILE__,extrema);
   theCommands.Add("totalextcc", "totalextcc curve curve",__FILE__,totalextcc);

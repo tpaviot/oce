@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -81,9 +81,6 @@ static Standard_Integer sweep (Draw_Interpretor&,
   GeomFill_Trihedron Option = GeomFill_IsCorrectedFrenet;
   Standard_Integer ipath =2, isection =4 , NbSeg=30, MaxDegree = 10;
   Standard_Real Tol = 1.e-4;
-#if DEB
-  static Standard_Boolean AdvApprox_Debug = 1; 
-#endif
 
   if (n < 4 ) return 1;
   
@@ -161,9 +158,6 @@ static Standard_Integer tuyau (Draw_Interpretor&,
                                Standard_Integer n, const char** a)
 {
   if ( n < 4) return 1;
-#if DEB
-  static Standard_Boolean AdvApprox_Debug = 1;
-#endif 
 
   GeomAbs_Shape Cont = GeomAbs_C2;
   GeomFill_Pipe Pipe;

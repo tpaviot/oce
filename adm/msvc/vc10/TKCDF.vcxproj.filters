@@ -2,22 +2,22 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{FE31EC37-0EAB-161C-12F3-DAF7CEC3130E}</UniqueIdentifier>
+      <UniqueIdentifier>{E654938B-0DF6-1803-1745-AAFD3AD72AC7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CDM">
-      <UniqueIdentifier>{1828A241-127C-0F0C-0EF6-F4208B84C126}</UniqueIdentifier>
+      <UniqueIdentifier>{398E88FB-02CC-0967-1678-BB429C123F54}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PCDM">
-      <UniqueIdentifier>{A4B677DC-00F2-0FB8-0222-3409BE6BAE97}</UniqueIdentifier>
+      <UniqueIdentifier>{FBA8F661-112D-18D1-1903-5B898CA351CB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CDF">
-      <UniqueIdentifier>{935B8515-1187-0629-1075-01E1E695D374}</UniqueIdentifier>
+      <UniqueIdentifier>{4F11530F-11F9-0D30-14EE-50F91911E6D5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\UTL">
-      <UniqueIdentifier>{6D93A59F-04FB-0D1E-0607-E3A87147C1D8}</UniqueIdentifier>
+      <UniqueIdentifier>{49AE1694-0FEF-016F-044D-501188AF1A3E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\LDOM">
-      <UniqueIdentifier>{076C5D05-0749-0F5A-01A6-0C76AD437AC2}</UniqueIdentifier>
+      <UniqueIdentifier>{E3FC156B-1934-022C-0A6F-1AE7D1696B38}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

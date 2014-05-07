@@ -163,8 +163,6 @@ math_Vector Vec2t;
 math_Vector Vec2c;
 math_Matrix theError;
 math_IntegerVector myindex;
-Standard_Real ERR3d;
-Standard_Real ERR2d;
 Standard_Real lambda1;
 Standard_Real lambda2;
 Standard_Integer FirstP;

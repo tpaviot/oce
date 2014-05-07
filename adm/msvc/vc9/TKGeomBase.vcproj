@@ -1454,6 +1454,9 @@
 					RelativePath="..\..\..\src\GeomTools\GeomTools_CurveSet.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\GeomTools\GeomTools_Debug.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\GeomTools\GeomTools_SurfaceSet.cxx">
 				</File>
 				<File

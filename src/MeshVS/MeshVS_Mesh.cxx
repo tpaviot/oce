@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -310,31 +310,16 @@ void MeshVS_Mesh::ComputeSelection ( const Handle(SelectMgr_Selection)& theSelec
       {
       case MeshVS_MSM_BOX:
         {
-          Standard_Real min[3], max[3]; Standard_Boolean first = Standard_True;
-          TColStd_MapIteratorOfPackedMapOfInteger anIterN( anAllNodesMap );
-
-          for( ; anIterN.More(); anIterN.Next() )
-            if( myDataSource->GetGeom( anIterN.Key(), Standard_False, aCoords, NbNodes, aType ) ) {
-              if( first )
-              {
-                for( Standard_Integer i=1; i<=3; i++ )
-                  min[i-1] = max[i-1] = aCoords( i );
-                first = Standard_False;
-              }
-              else
-                for( Standard_Integer i=1; i<=3; i++ )
-                {
-                  if( aCoords( i )<min[i-1] )
-                    min[i-1] = aCoords( i );
-                  if( aCoords( i )>max[i-1] )
-                    max[i-1] = aCoords( i );
-                }
-            }
           Bnd_Box box;
-          box.Add( gp_Pnt( min[0], min[1], min[2] ) );
-          box.Add( gp_Pnt( max[0], max[1], max[2] ) );
-
-          theSelection->Add( new Select3D_SensitiveBox( myWholeMeshOwner, box ) );
+          TColStd_MapIteratorOfPackedMapOfInteger anIterN( anAllNodesMap );
+          for( ; anIterN.More(); anIterN.Next() )
+	  {
+            if( myDataSource->GetGeom( anIterN.Key(), Standard_False, aCoords, NbNodes, aType ) ) {
+              box.Add (gp_Pnt (aCoords(1), aCoords(2), aCoords(3)));
+            }
+	  }
+          if (!box.IsVoid())
+            theSelection->Add (new Select3D_SensitiveBox (myWholeMeshOwner, box));
         }
         break;
 

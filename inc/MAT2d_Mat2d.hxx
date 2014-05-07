@@ -98,7 +98,6 @@ MAT_DataMapOfIntegerBisector bisectoronetoremove;
 MAT_DataMapOfIntegerBisector bisectortwotoremove;
 MAT_DataMapOfIntegerBisector bisectormap;
 Handle_MAT_ListOfBisector roots;
-Standard_Integer thecurrentindex;
 Standard_Boolean isDone;
 
 

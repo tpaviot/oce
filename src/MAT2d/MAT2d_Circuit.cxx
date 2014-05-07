@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -531,8 +531,8 @@ void  MAT2d_Circuit::InsertCorner (TColGeom2d_SequenceOfGeometry& Line) const
   if (AffichCircuit) {
     if (Insert) {
       Curve      = Handle(Geom2d_TrimmedCurve)::DownCast(Line.Value(isuiv));
-      gp_Pnt2d P = Curve->StartPoint();
 #ifdef DRAW
+      gp_Pnt2d P = Curve->StartPoint();
       Handle(Draw_Marker2D) dr = new Draw_Marker2D(P,Draw_Plus,Draw_vert); 
       dout << dr;
       dout.Flush();
@@ -798,22 +798,19 @@ static Standard_Boolean IsSharpCorner (const Handle(Geom2d_Geometry)& Geom1,
 #ifdef DEB
   static Standard_Boolean Affich = 0;
   if (Affich) {
+#ifdef DRAW
     Standard_Real DU1 = (OC1.LastParameter() - OC1.FirstParameter())/9.;
     Standard_Real DU2 = (OC2.LastParameter() - OC2.FirstParameter())/9.;
     for (Standard_Integer ki = 0; ki <= 9; ki++) {
       gp_Pnt2d P1 = OC1.Value(OC1.FirstParameter()+ki*DU1);
       gp_Pnt2d P2 = OC2.Value(OC2.FirstParameter()+ki*DU2);
-#ifdef DRAW
       Handle(Draw_Marker2D) dr1 = new Draw_Marker2D(P1,Draw_Plus,Draw_vert);
       Handle(Draw_Marker2D) dr2 = new Draw_Marker2D(P2,Draw_Plus,Draw_rouge); 
       dout << dr1;
       dout << dr2;
     }
     dout.Flush();
-#else
-  }
 #endif
-  
   }
 #endif
   

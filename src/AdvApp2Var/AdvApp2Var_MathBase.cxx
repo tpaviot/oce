@@ -2,8 +2,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -7098,10 +7098,6 @@ int mmpojac_(doublereal *tparam,
 {
   integer c__2 = 2;
   
-    /* Initialized data */
-
-    integer nbcof = -1;
-
     /* System generated locals */
     integer valjac_dim1, i__1, i__2;
 
@@ -7212,8 +7208,6 @@ int mmpojac_(doublereal *tparam,
 	tnorm[ii - 1] = sqrt(aux2 * (kk1 * 2. + (*iordre << 1) + 1) / pow__ii(&
 		c__2, &i__2));
     }
-
-    nbcof = *ncoeff;
 
 /*      END IF */
 
@@ -9885,7 +9879,6 @@ L9999:
   logical colin;
   doublereal valaux;
   integer aux;
-  logical nul;
  
 /* ***********************************************************************
  */
@@ -9953,7 +9946,6 @@ L9999:
     if (*ndimen <= 1 || *ndimen > 3) {
 	goto L9101;
     }
-    nul = FALSE_;
     d__ = 1;
     aux = 0;
     while(d__ <= *ndimen) {

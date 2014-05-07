@@ -2,61 +2,61 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{97F3548E-16C2-03A0-08FB-986CB2085461}</UniqueIdentifier>
+      <UniqueIdentifier>{2B25631A-0B68-10C1-0A6C-116719879A57}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\FSD">
-      <UniqueIdentifier>{DBD44D04-0163-11B4-118B-B8860165C734}</UniqueIdentifier>
+      <UniqueIdentifier>{A6028C8F-0A14-0920-194B-5CACAE4CFC36}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MMgt">
-      <UniqueIdentifier>{F95AEDFC-1700-07D8-0179-919A48281858}</UniqueIdentifier>
+      <UniqueIdentifier>{4264DFFE-126C-0235-1719-1C01178BB8A8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\OSD">
-      <UniqueIdentifier>{564B7037-14C5-0198-0899-D09C0BB4C230}</UniqueIdentifier>
+      <UniqueIdentifier>{082ECCB3-1811-130A-190B-AFAF872CFF4C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Plugin">
-      <UniqueIdentifier>{39182576-1141-07CE-1716-D244828FECAB}</UniqueIdentifier>
+      <UniqueIdentifier>{2D0557CB-16BE-1704-0BFF-4CE52B59A199}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Quantity">
-      <UniqueIdentifier>{FB0E7097-0964-12DF-0933-42AB04E9B201}</UniqueIdentifier>
+      <UniqueIdentifier>{805A8E6B-0B08-1459-1829-EE84E35657A9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Resource">
-      <UniqueIdentifier>{A56AE440-188F-0B48-1405-FA3620F7A6C5}</UniqueIdentifier>
+      <UniqueIdentifier>{954B3277-1859-0845-13EC-D09B0B7310EE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SortTools">
-      <UniqueIdentifier>{E5DF652A-04F9-17E5-0499-E3E0EDC3F044}</UniqueIdentifier>
+      <UniqueIdentifier>{5CADCE19-0BA0-17D5-111E-528E25F2246E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Standard">
-      <UniqueIdentifier>{D331FDB7-0632-162A-14F9-75A84379D447}</UniqueIdentifier>
+      <UniqueIdentifier>{35CB602B-0299-02F1-1112-B5C6A00345B7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdFail">
-      <UniqueIdentifier>{5F92FFDA-11CC-183F-0E86-28CC8A8CB316}</UniqueIdentifier>
+      <UniqueIdentifier>{D612B976-0E24-003E-041C-727F7E104E5A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Storage">
-      <UniqueIdentifier>{41A8B8AA-1118-11D8-0CCE-FE0A224B4454}</UniqueIdentifier>
+      <UniqueIdentifier>{88225748-01E9-1968-1553-31F99CFA7D2C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColStd">
-      <UniqueIdentifier>{731184E8-11AF-03B2-0D45-31D678F763F8}</UniqueIdentifier>
+      <UniqueIdentifier>{3011C10D-077E-0E48-0E2B-CE88475503C9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TCollection">
-      <UniqueIdentifier>{C45C69B8-0988-0AC4-186F-B22B47375EE2}</UniqueIdentifier>
+      <UniqueIdentifier>{6B8357D7-0E62-05C0-10CC-4CF33FF5DBED}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TShort">
-      <UniqueIdentifier>{3650C5EF-0017-1141-1729-57AB0C9ECDA0}</UniqueIdentifier>
+      <UniqueIdentifier>{39B1686A-0B5B-10D8-127D-60C1733CA1BC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Units">
-      <UniqueIdentifier>{CDE277BC-181F-0FD9-0E21-30E10906527E}</UniqueIdentifier>
+      <UniqueIdentifier>{9E63B7AA-0DE7-0CBF-17FD-C1AFFC08CF6B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\UnitsAPI">
-      <UniqueIdentifier>{11CFBF25-038E-09A1-172F-CD49F2B1EBCD}</UniqueIdentifier>
+      <UniqueIdentifier>{69A777A7-0F11-10C0-10DC-83DB8FC3A3B5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Dico">
-      <UniqueIdentifier>{EFEFFCB7-12CD-126C-00E8-8B6840696257}</UniqueIdentifier>
+      <UniqueIdentifier>{30CB3CB6-10C9-1287-0FA6-41FD966FA452}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\NCollection">
-      <UniqueIdentifier>{B76B9D2F-03E7-0AB6-0293-B0C13E5F0DE9}</UniqueIdentifier>
+      <UniqueIdentifier>{8D2E498D-11D6-06B8-07C1-5717DADEFC5C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Message">
-      <UniqueIdentifier>{8A6CE9BF-0DCF-1291-0FDF-732E8AF49363}</UniqueIdentifier>
+      <UniqueIdentifier>{8A3A02EE-10FE-16E9-1049-BAC0209BA90D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -168,15 +168,6 @@
     <ClCompile Include="..\..\..\src\OSD\OSD_Chronometer.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Cmailbox.c">
-      <Filter>Source files\OSD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Csemaphore.c">
-      <Filter>Source files\OSD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Csharedmemory.c">
-      <Filter>Source files\OSD</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Directory.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
@@ -207,16 +198,10 @@
     <ClCompile Include="..\..\..\src\OSD\OSD_Function.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Getkey.c">
-      <Filter>Source files\OSD</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Host.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_MAllocHook.cxx">
-      <Filter>Source files\OSD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_MailBox.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_MemInfo.cxx">
@@ -237,13 +222,7 @@
     <ClCompile Include="..\..\..\src\OSD\OSD_Protection.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Semaphore.cxx">
-      <Filter>Source files\OSD</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_SharedLibrary.cxx">
-      <Filter>Source files\OSD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_SharedMemory.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Thread.cxx">

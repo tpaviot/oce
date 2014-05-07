@@ -417,6 +417,7 @@
 		<Unit filename="../../../src/AIS/AIS_Chamf2dDimension.cxx" />
 		<Unit filename="../../../src/AIS/AIS_Chamf3dDimension.cxx" />
 		<Unit filename="../../../src/AIS/AIS_Circle.cxx" />
+		<Unit filename="../../../src/AIS/AIS_ColoredShape.cxx" />
 		<Unit filename="../../../src/AIS/AIS_ConcentricRelation.cxx" />
 		<Unit filename="../../../src/AIS/AIS_ConnectedInteractive.cxx" />
 		<Unit filename="../../../src/AIS/AIS_ConnectedShape.cxx" />
@@ -492,7 +493,6 @@
 		<Unit filename="../../../drv/StdSelect/StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_0.cxx" />
 		<Unit filename="../../../drv/StdSelect/StdSelect_IndexedDataMapOfOwnerPrs_0.cxx" />
 		<Unit filename="../../../src/StdSelect/StdSelect.cxx" />
-		<Unit filename="../../../src/StdSelect/StdSelect_BRepHilighter.cxx" />
 		<Unit filename="../../../src/StdSelect/StdSelect_BRepOwner.cxx" />
 		<Unit filename="../../../src/StdSelect/StdSelect_BRepSelectionTool.cxx" />
 		<Unit filename="../../../src/StdSelect/StdSelect_EdgeFilter.cxx" />

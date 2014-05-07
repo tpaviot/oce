@@ -2,8 +2,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -589,7 +589,7 @@ TopoDS_Shape  IGESToBRep_TopoCurve::TransferOffsetCurve
     //AddFail(start, "OffsetCurve Transfer Error : Null IGESEntity");
     return  res;
   }
-  if (!start->OffsetType()==1) {
+  if (start->OffsetType() != 1) {
     Message_Msg Msg1100("IGES_1100"); //"Offset distance flag different from 1 not treated"
     SendFail(start,Msg1100);
     //AddFail(start, "Offset distance flag different from 1 not treated");
@@ -609,7 +609,7 @@ TopoDS_Shape  IGESToBRep_TopoCurve::TransferOffsetCurve
 
   while (BaseCrv->IsKind(STANDARD_TYPE(IGESGeom_OffsetCurve))) {
     DeclareAndCast(IGESGeom_OffsetCurve, OffCrv, BaseCrv);
-    if (!OffCrv->OffsetType()==1) {
+    if (OffCrv->OffsetType() != 1) {
        Message_Msg Msg1100("IGES_1100"); //"Offset distance flag different from 1 not treated"
        SendFail(start,Msg1100);
        return  res;
@@ -746,7 +746,7 @@ TopoDS_Shape  IGESToBRep_TopoCurve::Transfer2dOffsetCurve
     return  res;
   }
 
-  if (!start->OffsetType()==1) {
+  if (start->OffsetType() != 1) {
     Message_Msg Msg1100("IGES_1100"); //"Offset distance flag different from 1 not treated"
     SendFail(start,Msg1100);
   }

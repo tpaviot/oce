@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -12,17 +12,15 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-//#if defined(WNT) || defined(LIN)
-#include <stdio.h>
-//#endif
-
 #include <TCollection_ExtendedString.ixx>
 #include <Standard.hxx>
 #include <Standard_ExtString.hxx>
 #include <Standard_NullObject.hxx>
 #include <Standard_OutOfRange.hxx>
-#include <Standard_ctype.hxx>
 #include <TCollection_AsciiString.hxx>
+
+#include <cstdio>
+#include <cctype>
 
 static
   Standard_PExtCharacter Allocate(const Standard_Size aLength);
@@ -288,7 +286,7 @@ void TCollection_ExtendedString::AssignCat
     Standard_ExtString sother = other.mystring;
     Standard_Integer newlength = mylength + otherlength; 
     if (mystring) {
-      mystring = Reallocate((void*&)mystring, (newlength+1)*2 );
+      mystring = Reallocate(mystring, (newlength+1)*2 );
       memcpy( mystring + mylength, sother, (otherlength+1)*2 );
     }
     else {
@@ -328,7 +326,7 @@ void TCollection_ExtendedString::ChangeAll(const Standard_ExtCharacter aChar,
 // ----------------------------------------------------------------------------
 void TCollection_ExtendedString::Clear()
 {
-  if (mystring) Standard::Free((void*&)mystring);
+  if (mystring) Standard::Free(mystring);
 //  mystring = 0L;
   mylength = 0;
   mystring = Allocate((mylength+1)*2);
@@ -345,7 +343,7 @@ void TCollection_ExtendedString::Copy (const TCollection_ExtendedString& fromwhe
     const Standard_Integer newlength = fromwhere.mylength;
     const Standard_Integer size      = (newlength + 1) * 2;
     if (mystring) {
-      mystring = Reallocate((void*&)mystring, size );
+      mystring = Reallocate(mystring, size );
     }
     else {
       mystring = Allocate( size );
@@ -366,7 +364,7 @@ void TCollection_ExtendedString::Copy (const TCollection_ExtendedString& fromwhe
 // ----------------------------------------------------------------------------
 void TCollection_ExtendedString::Destroy()
 {
-  if (mystring) Standard::Free((void*&)mystring);
+  if (mystring) Standard::Free(mystring);
   mystring = 0L;
 }
 
@@ -384,8 +382,7 @@ void TCollection_ExtendedString::Insert(const Standard_Integer where,
                                "Parameter where is negative");
 
   if (mystring) {
-      mystring = Reallocate((void*&)mystring,
-                                                           (mylength+2)*2);
+      mystring = Reallocate(mystring, (mylength+2)*2);
   }
   else {
     mystring = Allocate((mylength+2)*2);
@@ -412,8 +409,7 @@ void TCollection_ExtendedString::Insert(const Standard_Integer            where,
       Standard_Integer newlength = mylength + whatlength;
       
       if (mystring) {
-          mystring = Reallocate(
-                                         (void*&)mystring,(newlength+1)*2);
+          mystring = Reallocate(mystring,(newlength+1)*2);
       }
       else {
         mystring = Allocate((newlength+1)*2);
@@ -656,7 +652,7 @@ void TCollection_ExtendedString::SetValue
     size += (where - 1);  
     if (size >= mylength){
       if (mystring) {
-        mystring = Reallocate ((void*&)mystring,(size+1)*2);
+        mystring = Reallocate (mystring,(size+1)*2);
       }
       else {
         mystring = Allocate((size+1)*2);
@@ -754,10 +750,10 @@ TCollection_ExtendedString TCollection_ExtendedString::Token
   
   if (i < whichone) {
     buftmp[0] = 0;
-    Standard::Free((void*&)buftmp);
+    Standard::Free(buftmp);
   }
   else {
-    Standard::Free((void*&)res.mystring);
+    Standard::Free(res.mystring);
     res.mystring = buftmp;
     for ( res.mylength=0; buftmp[res.mylength]; ++res.mylength );
   }
@@ -914,9 +910,5 @@ Standard_PExtCharacter Allocate(const Standard_Size aLength)
 Standard_PExtCharacter Reallocate(Standard_Address aAddr,
                                   const Standard_Size aLength)
 {
-  Standard_PExtCharacter pChar;
-  //
-  pChar= (Standard_PExtCharacter)Standard::Reallocate(aAddr, aLength);
-  //
-  return pChar;
+  return (Standard_PExtCharacter)Standard::Reallocate(aAddr, aLength);
 }

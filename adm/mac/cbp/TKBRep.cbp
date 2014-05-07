@@ -231,6 +231,7 @@
 		<Unit filename="../../../drv/BRepTools/BRepTools_DataMapNodeOfMapOfVertexPnt2d_0.cxx" />
 		<Unit filename="../../../drv/BRepTools/BRepTools_MapOfVertexPnt2d_0.cxx" />
 		<Unit filename="../../../src/BRepTools/BRepTools.cxx" />
+		<Unit filename="../../../src/BRepTools/BRepTools_Debug.cxx" />
 		<Unit filename="../../../src/BRepTools/BRepTools_GTrsfModification.cxx" />
 		<Unit filename="../../../src/BRepTools/BRepTools_Modification.cxx" />
 		<Unit filename="../../../src/BRepTools/BRepTools_Modifier.cxx" />

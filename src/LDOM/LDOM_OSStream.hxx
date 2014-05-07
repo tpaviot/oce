@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -54,7 +54,7 @@ class LDOM_SBuffer : public streambuf
   // Caller of this function is responsible
   // for memory release after the string usage.
 
-  Standard_Integer Length () const {return myLength;};
+  Standard_Integer Length () const {return myLength;}
   // Returns full length of data contained
 
   Standard_EXPORT void Clear ();
@@ -86,11 +86,11 @@ class LDOM_OSStream : public Standard_OStream
   Standard_EXPORT LDOM_OSStream (const Standard_Integer theMaxBuf);
   // Constructor
 
-  Standard_CString str () const {return myBuffer.str();};
+  Standard_CString str () const {return myBuffer.str();}
 
-  Standard_Integer Length () const {return myBuffer.Length();};
+  Standard_Integer Length () const {return myBuffer.Length();}
 
-  void Clear () { myBuffer.Clear(); };
+  void Clear () { myBuffer.Clear(); }
 
  private:
   LDOM_SBuffer myBuffer;

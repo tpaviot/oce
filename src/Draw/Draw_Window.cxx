@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -179,8 +179,6 @@ static Standard_Boolean tty;        /* Non-zero means standard input is a
                                  * terminal-like device.  Zero means it's
                                  * a file. */
 
-static unsigned long thePixels[MAXCOLOR];
-
 Standard_Integer Draw_WindowScreen = 0;
 Standard_Boolean Draw_BlackBackGround = Standard_True;
 
@@ -193,6 +191,8 @@ Draw_Window* Draw_Window::firstWindow = NULL;
 #if !defined(__APPLE__) || defined(MACOSX_USE_GLX)
 #include <X11/Xutil.h>
 #include <Aspect_DisplayConnection.hxx>
+
+static unsigned long thePixels[MAXCOLOR];
 
 Display* Draw_WindowDisplay = NULL;
 Colormap Draw_WindowColorMap;
@@ -801,8 +801,7 @@ void Draw_Window::Wait (Standard_Boolean wait)
 
 void ProcessEvent(Draw_Window& win, XEvent& xev)
 {
-  Standard_Integer X,Y,button,lenk;
-  char c;
+  Standard_Integer X,Y,button;
   KeySym keysym;
   XComposeStatus stat;
   char chainekey[10];
@@ -829,17 +828,11 @@ void ProcessEvent(Draw_Window& win, XEvent& xev)
     break;
 
   case KeyPress :
-    lenk = XLookupString(&(xev.xkey),
+    XLookupString(&(xev.xkey),
                          chainekey,
                          10,
                          &keysym,
                          &stat);
-    if (lenk==1)
-      c = chainekey[0];
-    else
-      c = '\0';
-
-    //WKeyPress(c,keysym);
     break;
 
   case MotionNotify :
@@ -1360,11 +1353,7 @@ HWND DrawWindow::CreateDrawWindow(HWND hWndClient, int nitem)
   }
   else {
     HANDLE hInstance;
-#ifndef _WIN64
-    hInstance = (HANDLE)GetWindowLong(hWndClient,GWL_HINSTANCE);
-#else
-    hInstance = (HANDLE)GetWindowLong(hWndClient,GWLP_HINSTANCE);
-#endif
+    hInstance = (HANDLE)GetWindowLongPtr(hWndClient,GWLP_HINSTANCE);
 
     return CreateMDIWindow(DRAWCLASS, DRAWTITLE,
                            WS_CAPTION | WS_CHILD | WS_THICKFRAME,
@@ -1379,7 +1368,7 @@ HWND DrawWindow::CreateDrawWindow(HWND hWndClient, int nitem)
 \*--------------------------------------------------------*/
 LRESULT APIENTRY DrawWindow::DrawProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam )
 {
-  DrawWindow* localObjet = (DrawWindow*)GetWindowLong(hWnd, CLIENTWND);
+  DrawWindow* localObjet = (DrawWindow*)GetWindowLongPtr(hWnd, CLIENTWND);
   if (!localObjet)
     {
       if (Draw_IsConsoleSubsystem)
@@ -1521,7 +1510,7 @@ void DrawWindow::Init(Standard_Integer theXLeft, Standard_Integer theYTop,
   SetPosition  (aRect.left, aRect.top);
   SetDimension (aRect.right - aRect.left, aRect.bottom - aRect.top);
   // Save the pointer at the instance associated to the window
-  SetWindowLong(win, CLIENTWND, (LONG)this);
+  SetWindowLongPtr(win, CLIENTWND, (LONG_PTR)this);
   HDC hDC = GetDC(win);
   SetBkColor(hDC, RGB(0, 0, 0));
   myCurrPen  = 3;

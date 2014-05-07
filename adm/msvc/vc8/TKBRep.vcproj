@@ -874,6 +874,9 @@
 					RelativePath="..\..\..\src\BRepTools\BRepTools.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\BRepTools\BRepTools_Debug.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\BRepTools\BRepTools_GTrsfModification.cxx">
 				</File>
 				<File

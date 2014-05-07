@@ -75,6 +75,8 @@
 			<Add option="-framework OpenGL" />
 			<Add option="-framework AppKit" />
 			<Add option="-framework IOKit" />
+			<Add option="-framework Tcl" />
+			<Add option="-framework Tk" />
 			<Add library="TKernel" />
 			<Add library="TKG2d" />
 			<Add library="TKGeomBase" />
@@ -94,8 +96,6 @@
 			<Add library="objc" />
 			<Add library="freeimage" />
 			<Add library="freetype" />
-			<Add library="tcl8.5" />
-			<Add library="tk8.5" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
 			<Add library="objc" />
@@ -122,6 +122,7 @@
 		<Unit filename="../../../src/Draw/Draw_Circle3D.cxx" />
 		<Unit filename="../../../src/Draw/Draw_Color.cxx" />
 		<Unit filename="../../../src/Draw/Draw_Commands.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Debug.cxx" />
 		<Unit filename="../../../src/Draw/Draw_Display.cxx" />
 		<Unit filename="../../../src/Draw/Draw_Drawable2D.cxx" />
 		<Unit filename="../../../src/Draw/Draw_Drawable3D.cxx" />

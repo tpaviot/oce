@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -101,8 +101,8 @@ void TopOpeBRep_EdgesFiller::Insert(const TopoDS_Shape& E1,const TopoDS_Shape& E
     const TopOpeBRep_Point2d P2D = myPEI->Point();
     Standard_Real par1 = P2D.Parameter(1);
     Standard_Real par2 = P2D.Parameter(2);
-    Standard_Integer if1 = 0; if ( ! myF1.IsNull() ) if1 = myPDS->AddShape(myF1,1);
-    Standard_Integer if2 = 0; if ( ! myF2.IsNull() ) if2 = myPDS->AddShape(myF2,2);
+    if ( ! myF1.IsNull() ) myPDS->AddShape(myF1,1);
+    if ( ! myF2.IsNull() ) myPDS->AddShape(myF2,2);
 
 #ifdef DEB
     Standard_Boolean pointofsegment = P2D.IsPointOfSegment();

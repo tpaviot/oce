@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -104,15 +104,18 @@ template < class TheKeyType,
       myMap(NULL),
       myIndex(0) {}
     //! Constructor
-    Iterator (const NCollection_IndexedDataMap& theMap) :
-      myMap((NCollection_IndexedDataMap *) &theMap),
-      myIndex(1) {}
+    Iterator (const NCollection_IndexedDataMap& theMap)
+    : myMap  ((NCollection_IndexedDataMap* )&theMap),
+      myNode (myMap->nodeFromIndex (1)),
+      myIndex (1) {}
     //! Query if the end of collection is reached by iterator
     virtual Standard_Boolean More(void) const
     { return (myIndex <= myMap->Extent()); }
     //! Make a step along the collection
     virtual void Next(void)
-    { myIndex++; }
+    {
+      myNode = myMap->nodeFromIndex (++myIndex);
+    }
     //! Value access
     virtual const TheItemType& Value(void) const
     {  
@@ -120,7 +123,7 @@ template < class TheKeyType,
       if (!More())
         Standard_NoSuchObject::Raise("NCollection_IndexedDataMap::Iterator::Value");
 #endif
-      return myMap->FindFromIndex(myIndex);
+      return myNode->Value();
     }
     //! ChangeValue access
     virtual TheItemType& ChangeValue(void) const
@@ -129,12 +132,21 @@ template < class TheKeyType,
       if (!More())
         Standard_NoSuchObject::Raise("NCollection_IndexedDataMap::Iterator::ChangeValue");
 #endif
-      return myMap->ChangeFromIndex(myIndex);
+      return myNode->ChangeValue();
     }
-    
+    //! Key
+    const TheKeyType& Key() const
+    {
+#if !defined No_Exception && !defined No_Standard_NoSuchObject
+      if (!More())
+        Standard_NoSuchObject::Raise("NCollection_DataMap::Iterator::Key");
+#endif
+      return myNode->Key1();
+    }
   private:
-    NCollection_IndexedDataMap * myMap;   //!< Pointer to the map being iterated
-    Standard_Integer             myIndex; //!< Current index
+    NCollection_IndexedDataMap* myMap;   //!< Pointer to the map being iterated
+    IndexedDataMapNode*         myNode;  //!< Current node
+    Standard_Integer            myIndex; //!< Current index
   };
   
  public:
@@ -197,13 +209,10 @@ template < class TheKeyType,
   //! ReSize
   void ReSize (const Standard_Integer N)
   {
-    IndexedDataMapNode** ppNewData1 = NULL;
-    IndexedDataMapNode** ppNewData2 = NULL;
+    NCollection_ListNode** ppNewData1 = NULL;
+    NCollection_ListNode** ppNewData2 = NULL;
     Standard_Integer newBuck;
-    if (BeginResize (N, newBuck, 
-                     (NCollection_ListNode**&)ppNewData1, 
-                     (NCollection_ListNode**&)ppNewData2,
-                     this->myAllocator)) 
+    if (BeginResize (N, newBuck, ppNewData1, ppNewData2, this->myAllocator)) 
     {
       if (myData1) 
       {
@@ -220,7 +229,7 @@ template < class TheKeyType,
               iK2 = ::HashCode (p->Key2(), newBuck);
               q = (IndexedDataMapNode*) p->Next();
               p->Next()  = ppNewData1[iK1];
-              p->Next2() = ppNewData2[iK2];
+              p->Next2() = (IndexedDataMapNode*)ppNewData2[iK2];
               ppNewData1[iK1] = p;
               ppNewData2[iK2] = p;
               p = q;
@@ -228,10 +237,7 @@ template < class TheKeyType,
           }
         }
       }
-      EndResize(N,newBuck,
-                (NCollection_ListNode**&)ppNewData1,
-                (NCollection_ListNode**&)ppNewData2,
-                this->myAllocator);
+      EndResize (N, newBuck, ppNewData1, ppNewData2, this->myAllocator);
     }
   }
 
@@ -371,16 +377,12 @@ template < class TheKeyType,
     if (theKey2 < 1 || theKey2 > Extent())
       Standard_OutOfRange::Raise ("NCollection_IndexedDataMap::FindKey");
 #endif
-    IndexedDataMapNode * pNode2 =
-      (IndexedDataMapNode *) myData2[::HashCode(theKey2,NbBuckets())];
-    while (pNode2)
+    IndexedDataMapNode* aNode = nodeFromIndex (theKey2);
+    if (aNode == NULL)
     {
-      if (pNode2->Key2() == theKey2)
-        return pNode2->Key1();
-      pNode2 = (IndexedDataMapNode*) pNode2->Next2();
+      Standard_NoSuchObject::Raise ("NCollection_IndexedDataMap::FindKey");
     }
-    Standard_NoSuchObject::Raise("NCollection_IndexedDataMap::FindKey");
-    return pNode2->Key1(); // This for compiler
+    return aNode->Key1();
   }
 
   //! FindFromIndex
@@ -390,16 +392,12 @@ template < class TheKeyType,
     if (theKey2 < 1 || theKey2 > Extent())
       Standard_OutOfRange::Raise ("NCollection_IndexedDataMap::FindFromIndex");
 #endif
-    IndexedDataMapNode * pNode2 =
-      (IndexedDataMapNode *) myData2[::HashCode(theKey2,NbBuckets())];
-    while (pNode2)
+    IndexedDataMapNode* aNode = nodeFromIndex (theKey2);
+    if (aNode == NULL)
     {
-      if (pNode2->Key2() == theKey2)
-        return pNode2->Value();
-      pNode2 = (IndexedDataMapNode*) pNode2->Next2();
+      Standard_NoSuchObject::Raise ("NCollection_IndexedDataMap::FindFromIndex");
     }
-    Standard_NoSuchObject::Raise("NCollection_IndexedDataMap::FindFromIndex");
-    return pNode2->Value(); // This for compiler
+    return aNode->Value();
   }
 
   //! operator ()
@@ -413,16 +411,12 @@ template < class TheKeyType,
     if (theKey2 < 1 || theKey2 > Extent())
       Standard_OutOfRange::Raise("NCollection_IndexedDataMap::ChangeFromIndex");
 #endif
-    IndexedDataMapNode * pNode2 =
-      (IndexedDataMapNode *) myData2[::HashCode(theKey2,NbBuckets())];
-    while (pNode2)
+    IndexedDataMapNode* aNode = nodeFromIndex (theKey2);
+    if (aNode == NULL)
     {
-      if (pNode2->Key2() == theKey2)
-        return pNode2->ChangeValue();
-      pNode2 = (IndexedDataMapNode*) pNode2->Next2();
+      Standard_NoSuchObject::Raise ("NCollection_IndexedDataMap::ChangeFromIndex");
     }
-    Standard_NoSuchObject::Raise("NCollection_IndexedDataMap::FindFromIndex");
-    return pNode2->ChangeValue(); // This for compiler
+    return aNode->ChangeValue();
   }
 
   //! operator ()
@@ -482,6 +476,27 @@ template < class TheKeyType,
     return pNode1->ChangeValue();
   }
 
+  //! Find value for key with copying.
+  //! @return true if key was found
+  Standard_Boolean FindFromKey (const TheKeyType& theKey1,
+                                TheItemType&      theValue) const
+  {
+    if (IsEmpty())
+    {
+      return Standard_False;
+    }
+    for (IndexedDataMapNode* aNode = (IndexedDataMapNode* )myData1[Hasher::HashCode (theKey1, NbBuckets())];
+         aNode != NULL; aNode = (IndexedDataMapNode* )aNode->Next())
+    {
+      if (Hasher::IsEqual (aNode->Key1(), theKey1))
+      {
+        theValue = aNode->Value();
+        return Standard_True;
+      }
+    }
+    return Standard_False;
+  }
+
   //! Clear data. If doReleaseMemory is false then the table of
   //! buckets is not released and will be reused.
   void Clear(const Standard_Boolean doReleaseMemory = Standard_True)
@@ -510,6 +525,25 @@ template < class TheKeyType,
   virtual TYPENAME NCollection_BaseCollection<TheItemType>::Iterator& 
     CreateIterator(void) const
   { return *(new (this->IterAllocator()) Iterator(*this)); }
+
+  //! Find map node associated with specified index.
+  //! Return NULL if not found (exception-free internal implementation).
+  IndexedDataMapNode* nodeFromIndex (const Standard_Integer theKey2) const
+  {
+    if (Extent() == 0)
+    {
+      return NULL;
+    }
+    for (IndexedDataMapNode* aNode = (IndexedDataMapNode* )myData2[::HashCode (theKey2, NbBuckets())];
+         aNode != NULL; aNode = (IndexedDataMapNode* )aNode->Next2())
+    {
+      if (aNode->Key2() == theKey2)
+      {
+        return aNode;
+      }
+    }
+    return NULL;
+  }
 
 };
 

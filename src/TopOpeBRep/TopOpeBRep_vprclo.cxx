@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -171,24 +171,25 @@ void TopOpeBRep_FacesFiller::ProcessVPonclosingR(const TopOpeBRep_VPointInter& V
   if (iOOFace == 0) iOOFace = myDS->AddShape(OOFace,OOShapeIndex);
 
   // current VPoint is on <edge>
+#ifdef DEB
   Standard_Integer SIedgeIndex = 0;
+#endif
   const TopoDS_Edge& edge = TopoDS::Edge(VP.Edge(ShapeIndex));
-  if (myDS->HasShape(edge)) SIedgeIndex = myDS->Shape(edge);
-  else                      myDS->AddShape(edge,ShapeIndex);
+  if (!myDS->HasShape(edge)) myDS->AddShape(edge,ShapeIndex);
+#ifdef DEB
+  else                       SIedgeIndex = myDS->Shape(edge);
+#endif
 
   Standard_Real paredge = VP.EdgeParameter(ShapeIndex);
   
   // dummy if !<hasOOedge>
   Standard_Integer OOedgeIndex = 0; 
-  Standard_Boolean OOclosing,OOisrest; OOclosing = OOisrest = Standard_False;
   TopoDS_Edge OOedge;
   if ( hasOOedge ) {
     TopoDS_Shape OOe;
     if (on2edges) OOe = VP.Edge(OOShapeIndex);
     else          OOe = VP.EdgeON(OOShapeIndex);
     OOedge = TopoDS::Edge(OOe);
-    OOisrest = myDS->IsSectionEdge(OOedge);
-    OOclosing = TopOpeBRepTool_ShapeTool::Closed(OOedge,OOFace);
     if (myDS->HasShape(OOedge)) OOedgeIndex = myDS->Shape(OOedge);
     else                        OOedgeIndex = myDS->AddShape(OOedge,OOShapeIndex);
   }

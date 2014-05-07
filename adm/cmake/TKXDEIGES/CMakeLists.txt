@@ -6,13 +6,39 @@ if (WIN32)
 endif()
 
   list( APPEND TKXDEIGES_COMPILER_DIRECTORIES "${WOK_LIB_PATH}" )
-  list( APPEND TKXDEIGES_COMPILER_DIRECTORIES "../../../inc" )
-  list( APPEND TKXDEIGES_COMPILER_DIRECTORIES "../../../drv/IGESCAFControl" )
-  list( APPEND TKXDEIGES_COMPILER_DIRECTORIES "../../../src/IGESCAFControl" )
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}/inc")
+    list( APPEND TKXDEIGES_COMPILER_DIRECTORIES "${BUILD_PATCH_DIR}/inc" )
+  ENDIF()
+  IF(EXISTS "${CMAKE_SOURCE_DIR}/inc")
+    list( APPEND TKXDEIGES_COMPILER_DIRECTORIES "${CMAKE_SOURCE_DIR}/inc" )
+  ENDIF()
 
-if (WIN32)
-else()
-endif()
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "")
+    IF(EXISTS "${BUILD_PATCH_DIR}/drv/IGESCAFControl")
+      list( APPEND TKXDEIGES_COMPILER_DIRECTORIES "${BUILD_PATCH_DIR}/drv/IGESCAFControl" )
+    ENDIF()
+    IF(EXISTS "${BUILD_PATCH_DIR}/src/IGESCAFControl")
+      list( APPEND TKXDEIGES_COMPILER_DIRECTORIES "${BUILD_PATCH_DIR}/src/IGESCAFControl" )
+    ENDIF()
+
+  ENDIF()
+
+  IF(EXISTS "${CMAKE_SOURCE_DIR}/drv/IGESCAFControl")
+    list( APPEND TKXDEIGES_COMPILER_DIRECTORIES "${CMAKE_SOURCE_DIR}/drv/IGESCAFControl" )
+  ENDIF()
+  IF(EXISTS "${CMAKE_SOURCE_DIR}/src/IGESCAFControl")
+    list( APPEND TKXDEIGES_COMPILER_DIRECTORIES "${CMAKE_SOURCE_DIR}/src/IGESCAFControl" )
+  ENDIF()
+
+IF (WIN32)
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "")
+  ENDIF()
+
+ELSE()
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "")
+  ENDIF()
+
+ENDIF()
 
   list( APPEND TKXDEIGES_USED_LIBS TKBRep )
   list( APPEND TKXDEIGES_USED_LIBS TKernel )
@@ -29,23 +55,45 @@ elseif(APPLE)
 else()
 endif()
 
-  list( APPEND TKXDEIGES_USED_SRCFILES "../../../src/IGESCAFControl/IGESCAFControl.cxx" )
-  SOURCE_GROUP (IGESCAFControl FILES "../../../src/IGESCAFControl/IGESCAFControl.cxx")
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/IGESCAFControl/IGESCAFControl.cxx")
+    list( APPEND TKXDEIGES_USED_SRCFILES "${BUILD_PATCH_DIR}//src/IGESCAFControl/IGESCAFControl.cxx" )
+    SOURCE_GROUP (IGESCAFControl FILES "${BUILD_PATCH_DIR}//src/IGESCAFControl/IGESCAFControl.cxx")
+  ELSE()
+    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/IGESCAFControl/IGESCAFControl.cxx")
+      list( APPEND TKXDEIGES_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/IGESCAFControl/IGESCAFControl.cxx" )
+      SOURCE_GROUP (IGESCAFControl FILES "${CMAKE_SOURCE_DIR}//src/IGESCAFControl/IGESCAFControl.cxx")
+    ENDIF()
+  ENDIF()
 
-  list( APPEND TKXDEIGES_USED_SRCFILES "../../../src/IGESCAFControl/IGESCAFControl_Reader.cxx" )
-  SOURCE_GROUP (IGESCAFControl FILES "../../../src/IGESCAFControl/IGESCAFControl_Reader.cxx")
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/IGESCAFControl/IGESCAFControl_Reader.cxx")
+    list( APPEND TKXDEIGES_USED_SRCFILES "${BUILD_PATCH_DIR}//src/IGESCAFControl/IGESCAFControl_Reader.cxx" )
+    SOURCE_GROUP (IGESCAFControl FILES "${BUILD_PATCH_DIR}//src/IGESCAFControl/IGESCAFControl_Reader.cxx")
+  ELSE()
+    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/IGESCAFControl/IGESCAFControl_Reader.cxx")
+      list( APPEND TKXDEIGES_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/IGESCAFControl/IGESCAFControl_Reader.cxx" )
+      SOURCE_GROUP (IGESCAFControl FILES "${CMAKE_SOURCE_DIR}//src/IGESCAFControl/IGESCAFControl_Reader.cxx")
+    ENDIF()
+  ENDIF()
 
-  list( APPEND TKXDEIGES_USED_SRCFILES "../../../src/IGESCAFControl/IGESCAFControl_Writer.cxx" )
-  SOURCE_GROUP (IGESCAFControl FILES "../../../src/IGESCAFControl/IGESCAFControl_Writer.cxx")
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/IGESCAFControl/IGESCAFControl_Writer.cxx")
+    list( APPEND TKXDEIGES_USED_SRCFILES "${BUILD_PATCH_DIR}//src/IGESCAFControl/IGESCAFControl_Writer.cxx" )
+    SOURCE_GROUP (IGESCAFControl FILES "${BUILD_PATCH_DIR}//src/IGESCAFControl/IGESCAFControl_Writer.cxx")
+  ELSE()
+    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/IGESCAFControl/IGESCAFControl_Writer.cxx")
+      list( APPEND TKXDEIGES_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/IGESCAFControl/IGESCAFControl_Writer.cxx" )
+      SOURCE_GROUP (IGESCAFControl FILES "${CMAKE_SOURCE_DIR}//src/IGESCAFControl/IGESCAFControl_Writer.cxx")
+    ENDIF()
+  ENDIF()
 
-if (WIN32)
-else()
 
-  if (APPLE)
+IF (WIN32)
+ELSE()
 
-  endif()
+  IF (APPLE)
 
-endif()
+  ENDIF()
+
+ENDIF()
 
 if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKXDEIGES)
  add_library( TKXDEIGES SHARED ${TKXDEIGES_USED_SRCFILES} )
@@ -53,13 +101,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKXDEIGES)
  set_property(TARGET TKXDEIGES PROPERTY FOLDER DataExchange)
 
  install( TARGETS TKXDEIGES
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/bin"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/lib"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/lib")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
 
  if (MSVC)
   install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKXDEIGES.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/bin")
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
  endif()
 
 

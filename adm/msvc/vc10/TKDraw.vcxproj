@@ -288,6 +288,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Draw\Draw_Commands.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Draw\Draw_Debug.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Draw\Draw_Display.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Draw\Draw_Drawable2D.cxx">

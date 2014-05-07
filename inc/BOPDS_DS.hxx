@@ -67,6 +67,18 @@
 #ifndef _BOPDS_VectorOfInterfFF_HeaderFile
 #include <BOPDS_VectorOfInterfFF.hxx>
 #endif
+#ifndef _BOPDS_VectorOfInterfVZ_HeaderFile
+#include <BOPDS_VectorOfInterfVZ.hxx>
+#endif
+#ifndef _BOPDS_VectorOfInterfEZ_HeaderFile
+#include <BOPDS_VectorOfInterfEZ.hxx>
+#endif
+#ifndef _BOPDS_VectorOfInterfFZ_HeaderFile
+#include <BOPDS_VectorOfInterfFZ.hxx>
+#endif
+#ifndef _BOPDS_VectorOfInterfZZ_HeaderFile
+#include <BOPDS_VectorOfInterfZZ.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -88,9 +100,6 @@
 #ifndef _BOPCol_ListOfInteger_HeaderFile
 #include <BOPCol_ListOfInteger.hxx>
 #endif
-#ifndef _BOPDS_MapOfPaveBlock_HeaderFile
-#include <BOPDS_MapOfPaveBlock.hxx>
-#endif
 #ifndef _BOPDS_ListOfPave_HeaderFile
 #include <BOPDS_ListOfPave.hxx>
 #endif
@@ -103,6 +112,7 @@ class TopoDS_Shape;
 class BOPDS_PaveBlock;
 class BOPDS_CommonBlock;
 class BOPDS_FaceInfo;
+class Bnd_Box;
 
 
 
@@ -248,7 +258,7 @@ Standard_EXPORT virtual ~BOPDS_DS();
   
 //! Selector <br>
 //! Returns the common block <br>
-  Standard_EXPORT    const Handle_BOPDS_CommonBlock& CommonBlock(const Handle(BOPDS_PaveBlock)& thePB) const;
+  Standard_EXPORT     Handle_BOPDS_CommonBlock CommonBlock(const Handle(BOPDS_PaveBlock)& thePB) const;
   
 //! Modifier <br>
 //! Sets the common block <theCB> <br>
@@ -309,7 +319,7 @@ Standard_EXPORT virtual ~BOPDS_DS();
   
 //! Returns the indices of vertices and pave blocks <br>
 //! that  are On/In for the faces with indices theF1, theF2 <br>
-  Standard_EXPORT     void VerticesOnIn(const Standard_Integer theF1,const Standard_Integer theF2,BOPCol_MapOfInteger& theMI,BOPDS_MapOfPaveBlock& aMPB) const;
+  Standard_EXPORT     void VerticesOnIn(const Standard_Integer theF1,const Standard_Integer theF2,BOPCol_MapOfInteger& theMI,BOPDS_IndexedMapOfPaveBlock& aMPB) const;
   
 //! Returns the indices of edges that are  shared <br>
 //! for the faces with indices theF1, theF2 <br>
@@ -360,6 +370,26 @@ Standard_EXPORT virtual ~BOPDS_DS();
 //! Returns the collection of interferences Face/Face <br>
         BOPDS_VectorOfInterfFF& InterfFF() ;
   
+//! Selector/Modifier <br>
+//! Returns the collection of interferences Vertex/Solid <br>
+        BOPDS_VectorOfInterfVZ& InterfVZ() ;
+  
+//! Selector/Modifier <br>
+//! Returns the collection of interferences Edge/Solid <br>
+        BOPDS_VectorOfInterfEZ& InterfEZ() ;
+  
+//! Selector/Modifier <br>
+//! Returns the collection of interferences Face/Solid <br>
+        BOPDS_VectorOfInterfFZ& InterfFZ() ;
+  
+//! Selector/Modifier <br>
+//! Returns the collection of interferences Solid/Solid <br>
+        BOPDS_VectorOfInterfZZ& InterfZZ() ;
+  
+//! Returns the number of types of the interferences <br>
+//! <br>
+      static  Standard_Integer NbInterfTypes() ;
+  
 //! Modifier <br>
 //! Adds the information about an interference between <br>
 //! shapes with indices theI1, theI2 to the summary <br>
@@ -378,8 +408,10 @@ Standard_EXPORT virtual ~BOPDS_DS();
   
 //! Query <br>
 //! Returns true if the shape with index theI1 is interfered <br>
-//! with any of sub-shapes of the shapes with index theI2 <br>
-  Standard_EXPORT     Standard_Boolean HasInterfShapeSubShapes(const Standard_Integer theI1,const Standard_Integer theI2) const;
+//! with <br>
+//!    any sub-shape of the shape with index theI2  (theFlag=true) <br>
+//!    all sub-shapes of the shape with index theI2 (theFlag=false) <br>
+  Standard_EXPORT     Standard_Boolean HasInterfShapeSubShapes(const Standard_Integer theI1,const Standard_Integer theI2,const Standard_Boolean theFlag = Standard_True) const;
   
 //! Query <br>
 //! Returns true if the shapes with indices theI1, theI2 <br>
@@ -424,6 +456,10 @@ protected:
   Standard_EXPORT     void InitShape(const Standard_Integer theIndex,const TopoDS_Shape& theS,BOPCol_BaseAllocator& theAllocator,BOPCol_DataMapOfShapeInteger& theMSI) ;
   
   Standard_EXPORT     Standard_Boolean CheckCoincidence(const Handle(BOPDS_PaveBlock)& thePB1,const Handle(BOPDS_PaveBlock)& thePB2) ;
+  
+//! Computes bouding box <theBox> for the solid with DS-index <theIndex> <br>
+//! <br>
+  Standard_EXPORT     void BuildBndBoxSolid(const Standard_Integer theIndex,Bnd_Box& theBox) ;
 
 
 BOPCol_BaseAllocator myAllocator;
@@ -444,6 +480,10 @@ BOPDS_VectorOfInterfVF myInterfVF;
 BOPDS_VectorOfInterfEE myInterfEE;
 BOPDS_VectorOfInterfEF myInterfEF;
 BOPDS_VectorOfInterfFF myInterfFF;
+BOPDS_VectorOfInterfVZ myInterfVZ;
+BOPDS_VectorOfInterfEZ myInterfEZ;
+BOPDS_VectorOfInterfFZ myInterfFZ;
+BOPDS_VectorOfInterfZZ myInterfZZ;
 
 
 private:

@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -24,7 +24,7 @@
 #include <BRep_Tool.hxx>
 
 #include <NCollection_UBTreeFiller.hxx>
-#include <BOPDS_BoxBndTree.hxx>
+#include <BOPCol_BoxBndTree.hxx>
 #include <BOPDS_IndexRange.hxx>
 #include <BOPDS_PassKeyBoolean.hxx>
 #include <BOPDS_MapOfPassKeyBoolean.hxx>
@@ -44,7 +44,7 @@
 //function : 
 //purpose  : 
 //=======================================================================
-  BOPDS_IteratorSI::BOPDS_IteratorSI()
+BOPDS_IteratorSI::BOPDS_IteratorSI()
 :
   BOPDS_Iterator()
 {
@@ -53,7 +53,8 @@
 //function : 
 //purpose  : 
 //=======================================================================
-  BOPDS_IteratorSI::BOPDS_IteratorSI(const Handle(NCollection_BaseAllocator)& theAllocator)
+BOPDS_IteratorSI::BOPDS_IteratorSI
+  (const Handle(NCollection_BaseAllocator)& theAllocator)
 :
   BOPDS_Iterator(theAllocator)
 {
@@ -62,18 +63,31 @@
 //function : ~
 //purpose  : 
 //=======================================================================
-  BOPDS_IteratorSI::~BOPDS_IteratorSI()
+BOPDS_IteratorSI::~BOPDS_IteratorSI()
 {
+}
+//=======================================================================
+// function: UpdateByLevelOfCheck
+// purpose: 
+//=======================================================================
+void BOPDS_IteratorSI::UpdateByLevelOfCheck(const Standard_Integer theLevel)
+{
+  Standard_Integer i, aNbInterfTypes;
+  //
+  aNbInterfTypes=BOPDS_DS::NbInterfTypes();
+  for (i=theLevel+1; i<aNbInterfTypes; ++i) {
+    myLists(i).Clear();
+  }
 }
 //=======================================================================
 // function: Intersect
 // purpose: 
 //=======================================================================
-  void BOPDS_IteratorSI::Intersect()
+void BOPDS_IteratorSI::Intersect()
 {
   Standard_Boolean bFlag;
-  Standard_Integer aNbS, i, aNbB;//, iFlag, aNbLV, aNbA
-  Standard_Integer aNbSD, iX, j, iDS, jB, k;;
+  Standard_Integer aNbS, i, aNbB;
+  Standard_Integer aNbSD, iX, j, iDS, jB;
   TopAbs_ShapeEnum aTi, aTj;
   Handle(NCollection_IncAllocator) aAllocator;
   BOPCol_ListIteratorOfListOfInteger aIt;
@@ -89,8 +103,8 @@
   BOPCol_IndexedDataMapOfShapeBox aMSB(100, aAllocator);
   BOPDS_PassKeyBoolean aPKXB; 
   //
-  BOPDS_BoxBndTreeSelector aSelector;
-  BOPDS_BoxBndTree aBBTree;
+  BOPCol_BoxBndTreeSelector aSelector;
+  BOPCol_BoxBndTree aBBTree;
   NCollection_UBTreeFiller <Standard_Integer, Bnd_Box> aTreeFiller(aBBTree);
   //
   // myPairsAvoid, aMSI, aMSB
@@ -98,29 +112,31 @@
   for (i=0; i<aNbS; ++i) {
     const BOPDS_ShapeInfo& aSI=myDS->ShapeInfo(i);
     //
-    if (aSI.HasBRep()) {
-      const TopoDS_Shape& aSi=aSI.Shape();
-      aTi=aSI.ShapeType();
-      if (aTi!=TopAbs_VERTEX) {
-        const BOPCol_ListOfInteger& aLA=aSI.SubShapes();
-        aIt.Initialize(aLA);
-        for (; aIt.More(); aIt.Next()) {
-          iX=aIt.Value();
-          aPKXB.Clear();
-          aPKXB.SetIds(i, iX);
-          aMPA.Add(aPKXB);
-        }
-      }
-      //
-      aPKXB.Clear();
-      aPKXB.SetIds(i, i);
-      aMPA.Add(aPKXB);
-      //
-      const Bnd_Box& aBoxEx=aSI.Box();
-      //
-      aMSI.Bind(aSi, i);
-      aMSB.Add(aSi, aBoxEx);
+    if (!aSI.IsInterfering()) { 
+      continue;
     }
+    //
+    const TopoDS_Shape& aSi=aSI.Shape();
+    aTi=aSI.ShapeType();
+    if (aTi!=TopAbs_VERTEX) {
+      const BOPCol_ListOfInteger& aLA=aSI.SubShapes();
+      aIt.Initialize(aLA);
+      for (; aIt.More(); aIt.Next()) {
+	iX=aIt.Value();
+	aPKXB.Clear();
+	aPKXB.SetIds(i, iX);
+	aMPA.Add(aPKXB);
+      }
+    }
+    //
+    aPKXB.Clear();
+    aPKXB.SetIds(i, i);
+    aMPA.Add(aPKXB);
+    //
+    const Bnd_Box& aBoxEx=aSI.Box();
+    //
+    aMSI.Bind(aSi, i);
+    aMSB.Add(aSi, aBoxEx);
   } // for (i=0; i<aNbS; ++i) {
   // 
   // aMII
@@ -140,7 +156,7 @@
   for (i=0; i<aNbS; ++i) {
     const BOPDS_ShapeInfo& aSI=myDS->ShapeInfo(i);
     aTi=aSI.ShapeType();
-    if (!aSI.HasBRep()){
+    if (!aSI.IsInterfering()){
       continue;
     }
     //
@@ -156,8 +172,6 @@
     }
     //
     const BOPCol_ListOfInteger& aLI=aSelector.Indices();
-    //
-    k=0;
     //
     aIt.Initialize(aLI);
     for (; aIt.More(); aIt.Next()) {
@@ -192,17 +206,4 @@
   //
   aAllocator.Nullify();
   //-----------------------------------------------------scope_1 t
-}
-
-//=======================================================================
-// function: UpdateByLevelOfCheck
-// purpose: 
-//=======================================================================
-  void BOPDS_IteratorSI::UpdateByLevelOfCheck(const Standard_Integer theLevel)
-{
-  Standard_Integer i;
-  //
-  for (i=theLevel+1; i<6; ++i) {
-    myLists(i).Clear();
-  }
 }

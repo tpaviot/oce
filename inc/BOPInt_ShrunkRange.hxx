@@ -51,8 +51,13 @@ public:
 
   
   Standard_EXPORT   BOPInt_ShrunkRange();
+Standard_EXPORT virtual ~BOPInt_ShrunkRange();
   
-  Standard_EXPORT     void SetData(const TopoDS_Edge& aE,const Standard_Real aT1,const Standard_Real aT2,const TopoDS_Vertex& aV1,const TopoDS_Vertex& aV2,const Handle(BOPInt_Context)& ICtx) ;
+  Standard_EXPORT     void SetData(const TopoDS_Edge& aE,const Standard_Real aT1,const Standard_Real aT2,const TopoDS_Vertex& aV1,const TopoDS_Vertex& aV2) ;
+  
+  Standard_EXPORT     void SetContext(const Handle(BOPInt_Context)& aCtx) ;
+  
+  Standard_EXPORT    const Handle_BOPInt_Context& Context() const;
   
   Standard_EXPORT     void SetShrunkRange(const Standard_Real aT1,const Standard_Real aT2) ;
   

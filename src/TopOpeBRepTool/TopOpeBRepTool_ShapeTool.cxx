@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -312,9 +312,6 @@ Standard_Real TopOpeBRepTool_ShapeTool::PeriodizeParameter
 
   Standard_Real Ufirst,Ulast,Vfirst,Vlast;
   Surf->Bounds(Ufirst,Ulast,Vfirst,Vlast);
-  Standard_Real Uperiod = 0., Vperiod = 0.;
-  if (isUperio) Uperiod = Ulast - Ufirst;
-  if (isVperio) Vperiod = Vlast - Vfirst;
 
   Standard_Real first,last,tolpc;
   const Handle(Geom2d_Curve) PC = FC2D_CurveOnSurface(E,F,first,last,tolpc);

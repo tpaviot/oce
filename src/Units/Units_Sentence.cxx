@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -53,9 +53,7 @@ Units_Sentence::Units_Sentence(const Handle(Units_Lexicon)& alexicon,
 			       const Standard_CString astring)
 {
   Standard_Integer index;
-  Standard_Integer k,l;
   Standard_Size i,limchain;
-  char chain[255];
   Handle(Units_Token) token;
   Handle(Units_Token) referencetoken;
   
@@ -63,10 +61,6 @@ Units_Sentence::Units_Sentence(const Handle(Units_Lexicon)& alexicon,
   Handle(Units_TokensSequence) lstlexicon=alexicon->Sequence();
   Units_NoSuchType_Raise_if(lstlexicon.IsNull(),"BAD LEXICON descriptor");
   limchain=strlen(astring);
-  k=0;
-  for(l=0; l<255; l++) {
-    chain[l]=0;
-  }
   i=0;
 
   TCollection_AsciiString tmpstr = astring;
@@ -125,45 +119,6 @@ Units_Sentence::Units_Sentence(const Handle(Units_Lexicon)& alexicon,
     i = i + LastWord.Length();
     tmpstr.Remove(1,LastWord.Length());
   }
-
-//  for(i=1; i<=thesequenceoftokens->Length(); i++) {
-//    token = thesequenceoftokens->Value(i);
-//    cout<<"i="<<i<<"  token:  "<<token->Word().ToCString()<<"   "<<token->Mean().ToCString()
-//      <<"   "<<token->Value()<<endl;
-//  }
-
-/*
-  while(i < limchain) {
-    Standard_Integer itrouv=0;
-    for(index=1; index<=lstlexicon->Length(); index++) {
-      referencetoken = lstlexicon->Value(index);
-      if(i+referencetoken->Length() <= limchain) {
-        if(referencetoken <= &astring[i]) {
-          if(k) {
-            token = new Units_Token(chain,"0");
-            thesequenceoftokens->Append(token);
-            k=0;
-            for(l=0; l<255; l++) {
-              chain[l]=0;
-            }
-          }
-          token = referencetoken->Creates();
-          thesequenceoftokens->Append(token);
-          i = i + token->Length();
-          itrouv=1;
-          break;
-        }
-      }
-    }
-    if(!itrouv) {
-      chain[k++]=astring[i++];
-    }
-  }
-  if(k) {
-    token = new Units_Token(chain, "0");
-    thesequenceoftokens->Append(token);
-  }
-*/
 }
 
 

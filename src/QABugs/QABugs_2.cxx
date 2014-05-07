@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -88,7 +88,6 @@ static Standard_Integer OCC527(Draw_Interpretor& di, Standard_Integer argc, cons
       aFaceBox.Get(X1,Y1,Z1,X2,Y2,Z2);
 
       // Build sections from Zmin to Zmax with step aStep
-      Standard_Boolean wasBuilt = Standard_False;
       double gmaxdist = 0.0, gzmax = Zmax;
       for (double zcur = Zmax; zcur > Zmin; zcur -= aStep)
       {
@@ -138,7 +137,6 @@ static Standard_Integer OCC527(Draw_Interpretor& di, Standard_Integer argc, cons
               Standard_Real  toler = BRep_Tool::Tolerance(aV);
               double dist = pl.Distance(BRep_Tool::Pnt(aV));
               if (dist > lmaxdist) lmaxdist = dist;
-              wasBuilt = Standard_True;
       // If section was built check distance beetwen vertexes and plane of the one
       str[0] =0;
 //       if (wasBuilt) 

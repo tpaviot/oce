@@ -2,8 +2,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -144,11 +144,10 @@ IFSelect_BasicDumper::IFSelect_BasicDumper ()  {  }
     return Standard_True;
   }
   if (type.IsEqual("IFSelect_SelectTextType")) {
-    Standard_Boolean exact;
     const TCollection_AsciiString exname = file.ParamValue(1);
     if (exname.Length() < FIRSTCHAR) return Standard_False;
-    if      (exname.Value(FIRSTCHAR) == 'e') exact = Standard_True;
-    else if (exname.Value(FIRSTCHAR) == 'c') exact = Standard_False;
+    if      (exname.Value(FIRSTCHAR) == 'e') {}
+    else if (exname.Value(FIRSTCHAR) == 'c') {}
     else  return Standard_False;
 //    item = new IFSelect_SelectTextType (file.TextValue(2).ToCString(),exact);
 //    return Standard_True;

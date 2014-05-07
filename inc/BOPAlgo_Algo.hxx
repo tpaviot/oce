@@ -22,6 +22,9 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 
 
 //! provides the root interface for algorithms <br>
@@ -38,6 +41,13 @@ public:
   Standard_EXPORT     Standard_Integer WarningStatus() const;
   
   Standard_EXPORT    const BOPCol_BaseAllocator& Allocator() const;
+  //! Set the flag of parallel processing <br>
+//! if <theFlag> is true  the parallel processing is switched on <br>
+//! if <theFlag> is false the parallel processing is switched off <br>
+//! <br>
+  Standard_EXPORT     void SetRunParallel(const Standard_Boolean theFlag) ;
+  //! Returns the flag of parallel processing <br>
+  Standard_EXPORT     Standard_Boolean RunParallel() const;
 
 
 
@@ -59,6 +69,7 @@ Standard_EXPORT virtual ~BOPAlgo_Algo();
 BOPCol_BaseAllocator myAllocator;
 Standard_Integer myErrorStatus;
 Standard_Integer myWarningStatus;
+Standard_Boolean myRunParallel;
 
 
 private:

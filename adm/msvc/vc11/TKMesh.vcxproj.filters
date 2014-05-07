@@ -2,13 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{3F309028-000B-0A55-172B-057A68A741DA}</UniqueIdentifier>
+      <UniqueIdentifier>{4ECDB89A-065F-17F7-075B-5955FD1C91BE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepMesh">
-      <UniqueIdentifier>{D4846023-0488-0520-1879-8D39B9C8D33B}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\IntPoly">
-      <UniqueIdentifier>{A3D9DE43-1664-16D3-0A40-6D384B8B01B1}</UniqueIdentifier>
+      <UniqueIdentifier>{A483C7DC-15A0-07F9-15FD-9537105200DD}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -215,42 +212,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_VertexTool.cxx">
       <Filter>Source files\BRepMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_IndexedMapNodeOfIndexedMapOfPnt2d_0.cxx">
-      <Filter>Source files\IntPoly</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_IndexedMapNodeOfIndexedMapOfPnt_0.cxx">
-      <Filter>Source files\IntPoly</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_IndexedMapOfPnt2d_0.cxx">
-      <Filter>Source files\IntPoly</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_IndexedMapOfPnt_0.cxx">
-      <Filter>Source files\IntPoly</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_SequenceNodeOfSequenceOfSequenceOfPnt2d_0.cxx">
-      <Filter>Source files\IntPoly</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_SequenceNodeOfSequenceOfSequenceOfPnt_0.cxx">
-      <Filter>Source files\IntPoly</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_SequenceOfSequenceOfPnt2d_0.cxx">
-      <Filter>Source files\IntPoly</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_SequenceOfSequenceOfPnt_0.cxx">
-      <Filter>Source files\IntPoly</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IntPoly\IntPoly_PlaneSection.cxx">
-      <Filter>Source files\IntPoly</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IntPoly\IntPoly_Pnt2dHasher.cxx">
-      <Filter>Source files\IntPoly</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IntPoly\IntPoly_PntHasher.cxx">
-      <Filter>Source files\IntPoly</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IntPoly\IntPoly_ShapeSection.cxx">
-      <Filter>Source files\IntPoly</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -98,10 +98,6 @@ void TopOpeBRep_FaceEdgeIntersector::Perform(const TopoDS_Shape& SF,
   TopLoc_Location loc;
   const Handle(Geom_Curve) C = BRep_Tool::Curve(myEdge,loc,f,l);
   
-#ifdef DEB
-  gp_Trsf Tao1 =
-#endif
-                 loc.Transformation();
   Handle(Geom_Geometry) GGao1 = C->Transformed(loc.Transformation());
   Handle(Geom_Curve)* PGCao1 = (Handle(Geom_Curve)*)&GGao1;
   myCurve.Load(*PGCao1,f,l);

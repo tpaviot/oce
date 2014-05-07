@@ -49,9 +49,6 @@
 #ifndef _IntPatch_SequenceOfIWLineOfTheIWalking_HeaderFile
 #include <IntPatch_SequenceOfIWLineOfTheIWalking.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
 #endif
@@ -60,6 +57,9 @@
 #endif
 #ifndef _Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking_HeaderFile
 #include <Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _IntWalk_StatusDeflection_HeaderFile
 #include <IntWalk_StatusDeflection.hxx>
@@ -161,13 +161,10 @@ Standard_Real UM;
 Standard_Real Vm;
 Standard_Real VM;
 IntSurf_PntOn2S previousPoint;
-Standard_Boolean prevtg;
 gp_Vec previousd3d;
 gp_Dir2d previousd2d;
 TColStd_SequenceOfInteger seqAjout;
 IntPatch_SequenceOfIWLineOfTheIWalking lines;
-Standard_Integer NbPointsConfondusConsecutifs;
-Standard_Integer EpsilonSembleTropGrand;
 
 
 };

@@ -1,11 +1,11 @@
 // Created on: 2013-11-11
 // Created by: Anastasia BORISOVA
-// Copyright (c) 2013 OPEN CASCADE SAS
+// Copyright (c) 2013-2014 OPEN CASCADE SAS
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -25,11 +25,13 @@
 #include <ElCLib.hxx>
 #include <Font_BRepFont.hxx>
 #include <GC_MakeCircle.hxx>
+#include <Geom_Line.hxx>
 #include <GeomAdaptor_Curve.hxx>
 #include <Geom_Circle.hxx>
 #include <Geom_TrimmedCurve.hxx>
 #include <gce_MakeDir.hxx>
 #include <gce_MakeLin.hxx>
+#include <gce_MakePln.hxx>
 #include <Graphic3d_ArrayOfSegments.hxx>
 #include <Graphic3d_ArrayOfTriangles.hxx>
 #include <Graphic3d_AspectLine3d.hxx>
@@ -54,9 +56,12 @@
 #include <Select3D_SensitiveGroup.hxx>
 #include <Select3D_SensitiveCurve.hxx>
 #include <Select3D_SensitiveSegment.hxx>
-#include <Select3D_SensitiveFace.hxx>
 #include <Select3D_SensitiveTriangle.hxx>
+#include <Select3D_SensitiveTriangulation.hxx>
+#include <Poly_Array1OfTriangle.hxx>
+#include <Poly_Triangulation.hxx>
 #include <Standard_CString.hxx>
+#include <Standard_ProgramError.hxx>
 #include <StdPrs_ShadedShape.hxx>
 #include <StdPrs_WFShape.hxx>
 #include <TCollection_AsciiString.hxx>
@@ -68,7 +73,6 @@
 #include <Units_UnitsDictionary.hxx>
 #include <UnitsAPI.hxx>
 #include <UnitsAPI_SystemUnits.hxx>
-#include <Standard_ProgramError.hxx>
 
 IMPLEMENT_STANDARD_HANDLE(AIS_Dimension, AIS_InteractiveObject)
 IMPLEMENT_STANDARD_RTTIEXT(AIS_Dimension, AIS_InteractiveObject)
@@ -76,7 +80,6 @@ IMPLEMENT_STANDARD_RTTIEXT(AIS_Dimension, AIS_InteractiveObject)
 namespace
 {
   // default text strings
-  static const Standard_Utf32Char THE_FILL_CHARACTER ('0');
   static const TCollection_ExtendedString THE_EMPTY_LABEL;
   static const TCollection_AsciiString    THE_UNDEFINED_UNITS;
 
@@ -102,7 +105,7 @@ AIS_Dimension::AIS_Dimension (const AIS_KindOfDimension theType)
   myGeometryType (GeometryType_UndefShapes),
   myIsPlaneCustom (Standard_False),
   myFlyout (0.0),
-  myIsValid (Standard_False),
+  myIsGeometryValid (Standard_False),
   myKindOfDimension (theType)
 {
 }
@@ -152,10 +155,12 @@ void AIS_Dimension::SetCustomPlane (const gp_Pln& thePlane)
   myPlane = thePlane;
   myIsPlaneCustom = Standard_True;
 
+  // Disable fixed (custom) text position
+  UnsetFixedTextPosition();
+
   // Check validity if geometry has been set already.
-  if (myIsValid)
+  if (IsValid())
   {
-    myIsValid &= CheckPlane (myPlane);
     SetToUpdate();
   }
 }
@@ -231,6 +236,9 @@ void AIS_Dimension::SetFlyout (const Standard_Real theFlyout)
   }
 
   myFlyout = theFlyout;
+
+  // Disable fixed text position
+  UnsetFixedTextPosition();
 
   SetToUpdate();
 }
@@ -618,24 +626,7 @@ void AIS_Dimension::DrawLinearDimension (const Handle(Prs3d_Presentation)& thePr
     Standard_ProgramError::Raise ("Can not build presentation for equal points.");
   }
 
-  // compute dimension line points
-  gp_Ax1 aPlaneNormal = GetPlane().Axis();
-  gp_Dir aTargetPointsVector = gce_MakeDir (theFirstPoint, theSecondPoint);
-
-  // compute flyout direction vector
-  gp_Dir aFlyoutVector = aPlaneNormal.Direction() ^ aTargetPointsVector;
-
-  // create lines for layouts
-  gp_Lin aLine1 (theFirstPoint, aFlyoutVector);
-  gp_Lin aLine2 (theSecondPoint, aFlyoutVector);
-
-  // Get flyout end points
-  gp_Pnt aLineBegPoint = ElCLib::Value (ElCLib::Parameter (aLine1, theFirstPoint)  + GetFlyout(), aLine1);
-  gp_Pnt aLineEndPoint = ElCLib::Value (ElCLib::Parameter (aLine2, theSecondPoint) + GetFlyout(), aLine2);
-
   Handle(Prs3d_DimensionAspect) aDimensionAspect = myDrawer->DimensionAspect();
-
-  gp_Lin aDimensionLine = gce_MakeLin (aLineBegPoint, aLineEndPoint);
 
   // For extensions we need to know arrow size, text size and extension size: get it from aspect
   Quantity_Length anArrowLength   = aDimensionAspect->ArrowAspect()->Length();
@@ -651,27 +642,38 @@ void AIS_Dimension::DrawLinearDimension (const Handle(Prs3d_Presentation)& thePr
   }
 
   // handle user-defined and automatic arrow placement
-  bool isArrowsExternal = false;
-  switch (aDimensionAspect->ArrowOrientation())
+  Standard_Boolean isArrowsExternal = Standard_False;
+  Standard_Integer aLabelPosition = LabelPosition_None;
+
+  Prs3d_DimensionTextHorizontalPosition aHorisontalTextPos = aDimensionAspect->TextHorizontalPosition();
+  if (IsTextPositionCustom())
   {
-    case Prs3d_DAO_External: isArrowsExternal = true; break;
-    case Prs3d_DAO_Internal: isArrowsExternal = false; break;
-    case Prs3d_DAO_Fit:
+    if (!AdjustParametersForLinear (myFixedTextPosition, theFirstPoint, theSecondPoint,
+                                    anExtensionSize, aHorisontalTextPos, myFlyout, myPlane, myIsPlaneCustom))
     {
-      // add margin to ensure a small tail between text and arrow
-      Standard_Real anArrowMargin   = aDimensionAspect->IsText3d() 
-                                    ? aDimensionAspect->TextAspect()->Height() * THE_3D_TEXT_MARGIN
-                                    : 0.0;
-
-      Standard_Real aDimensionWidth = aLineBegPoint.Distance (aLineEndPoint);
-      Standard_Real anArrowsWidth   = theIsOneSide 
-                                    ?  anArrowLength + anArrowMargin
-                                    : (anArrowLength + anArrowMargin) * 2.0;
-
-      isArrowsExternal = aDimensionWidth < aLabelWidth + anArrowsWidth;
-      break;
+      Standard_ProgramError::Raise ("Can not adjust plane to the custom label position.");
     }
   }
+
+  FitTextAlignmentForLinear (theFirstPoint, theSecondPoint, theIsOneSide, aHorisontalTextPos,
+                             aLabelPosition, isArrowsExternal);
+
+    // compute dimension line points
+  gp_Ax1 aPlaneNormal = GetPlane().Axis();
+  gp_Dir aTargetPointsVector = gce_MakeDir (theFirstPoint, theSecondPoint);
+
+  // compute flyout direction vector
+  gp_Dir aFlyoutVector = aPlaneNormal.Direction() ^ aTargetPointsVector;
+
+  // create lines for layouts
+  gp_Lin aLine1 (theFirstPoint, aFlyoutVector);
+  gp_Lin aLine2 (theSecondPoint, aFlyoutVector);
+
+  // Get flyout end points
+  gp_Pnt aLineBegPoint = ElCLib::Value (ElCLib::Parameter (aLine1, theFirstPoint)  + GetFlyout(), aLine1);
+  gp_Pnt aLineEndPoint = ElCLib::Value (ElCLib::Parameter (aLine2, theSecondPoint) + GetFlyout(), aLine2);
+
+  gp_Lin aDimensionLine = gce_MakeLin (aLineBegPoint, aLineEndPoint);
 
   // compute arrows positions and directions
   gp_Dir aFirstArrowDir       = aDimensionLine.Direction().Reversed();
@@ -701,32 +703,6 @@ void AIS_Dimension::DrawLinearDimension (const Handle(Prs3d_Presentation)& thePr
   gp_Pnt aCenterLineEnd = isArrowsExternal || theIsOneSide
     ? aLineEndPoint : aSecondArrowEnd;
 
-  Standard_Integer aLabelPosition = LabelPosition_None;
-
-  // handle user-defined and automatic text placement
-  switch (aDimensionAspect->TextHorizontalPosition())
-  {
-    case Prs3d_DTHP_Left  : aLabelPosition |= LabelPosition_Left; break;
-    case Prs3d_DTHP_Right : aLabelPosition |= LabelPosition_Right; break;
-    case Prs3d_DTHP_Center: aLabelPosition |= LabelPosition_HCenter; break;
-    case Prs3d_DTHP_Fit:
-    {
-      Standard_Real aDimensionWidth = aLineBegPoint.Distance (aLineEndPoint);
-      Standard_Real anArrowsWidth   = theIsOneSide ? anArrowLength : 2.0 * anArrowLength;
-      Standard_Real aContentWidth   = isArrowsExternal ? aLabelWidth : aLabelWidth + anArrowsWidth;
-
-      aLabelPosition |= aDimensionWidth < aContentWidth ? LabelPosition_Left : LabelPosition_HCenter;
-      break;
-    }
-  }
-
-  // handle vertical text placement options
-  switch (aDimensionAspect->TextVerticalPosition())
-  {
-    case Prs3d_DTVP_Above  : aLabelPosition |= LabelPosition_Above; break;
-    case Prs3d_DTVP_Below  : aLabelPosition |= LabelPosition_Below; break;
-    case Prs3d_DTVP_Center : aLabelPosition |= LabelPosition_VCenter; break;
-  }
 
   switch (aLabelPosition & LabelPosition_HMask)
   {
@@ -738,7 +714,8 @@ void AIS_Dimension::DrawLinearDimension (const Handle(Prs3d_Presentation)& thePr
       // add label on dimension or extension line to presentation
       Prs3d_Root::NewGroup (thePresentation);
 
-      gp_Pnt aTextPos = (aCenterLineBegin.XYZ() + aCenterLineEnd.XYZ()) * 0.5;
+      gp_Pnt aTextPos = IsTextPositionCustom() ? myFixedTextPosition
+                                              : (aCenterLineBegin.XYZ() + aCenterLineEnd.XYZ()) * 0.5;
       gp_Dir aTextDir = aDimensionLine.Direction();
 
       // add text primitives
@@ -829,12 +806,12 @@ void AIS_Dimension::DrawLinearDimension (const Handle(Prs3d_Presentation)& thePr
         // add arrow extension lines to presentation
         Prs3d_Root::NewGroup (thePresentation);
 
-        DrawExtension (thePresentation, anExtensionSize,
+        DrawExtension (thePresentation, aDimensionAspect->ArrowTailSize(),
                        aFirstArrowEnd, aFirstExtensionDir,
                        THE_EMPTY_LABEL, 0.0, theMode, LabelPosition_None);
         if (!theIsOneSide)
         {
-          DrawExtension (thePresentation, anExtensionSize,
+          DrawExtension (thePresentation, aDimensionAspect->ArrowTailSize(),
                          aSecondArrowEnd, aSecondExtensionDir,
                          THE_EMPTY_LABEL, 0.0, theMode, LabelPosition_None);
         }
@@ -898,7 +875,7 @@ void AIS_Dimension::DrawLinearDimension (const Handle(Prs3d_Presentation)& thePr
         // add extension lines for external arrows
         Prs3d_Root::NewGroup (thePresentation);
 
-        DrawExtension (thePresentation, anExtensionSize,
+        DrawExtension (thePresentation, aDimensionAspect->ArrowTailSize(),
                        aSecondArrowEnd, aSecondExtensionDir,
                        THE_EMPTY_LABEL, 0.0, theMode, LabelPosition_None);
       }
@@ -958,7 +935,7 @@ void AIS_Dimension::DrawLinearDimension (const Handle(Prs3d_Presentation)& thePr
         // add extension lines for external arrows
         Prs3d_Root::NewGroup (thePresentation);
 
-        DrawExtension (thePresentation, anExtensionSize,
+        DrawExtension (thePresentation, aDimensionAspect->ArrowTailSize(),
                        aFirstArrowEnd, aFirstExtensionDir,
                        THE_EMPTY_LABEL, 0.0, theMode, LabelPosition_None);
       }
@@ -984,7 +961,7 @@ void AIS_Dimension::DrawLinearDimension (const Handle(Prs3d_Presentation)& thePr
     Prs3d_Root::CurrentGroup (thePresentation)->AddPrimitiveArray (aPrimSegments);
   }
 
-  myIsComputed = Standard_True;
+  mySelectionGeom.IsComputed = Standard_True;
 }
 
 //=======================================================================
@@ -1142,7 +1119,6 @@ Standard_Boolean AIS_Dimension::InitCircularDimension (const TopoDS_Shape& theSh
         theCircle = aMkCirc.Value()->Circ();
       }
 
-      gp_Vec aVec = gp_Vec (theCircle.Location(), aCurPos).Normalized();
       aFirstPoint = ElCLib::Value (aFirstU, theCircle);
       aLastPoint = ElCLib::Value (aLastU,  theCircle);
     }
@@ -1168,7 +1144,7 @@ Standard_Boolean AIS_Dimension::InitCircularDimension (const TopoDS_Shape& theSh
     }
 
     BRepAdaptor_Curve anAdaptedCurve (anEdge);
-    if (!anAdaptedCurve.GetType() == GeomAbs_Circle)
+    if (anAdaptedCurve.GetType() != GeomAbs_Circle)
     {
       return Standard_False;
     }
@@ -1211,7 +1187,7 @@ Standard_Boolean AIS_Dimension::InitCircularDimension (const TopoDS_Shape& theSh
 void AIS_Dimension::ComputeSelection (const Handle(SelectMgr_Selection)& theSelection,
                                       const Standard_Integer theMode)
 {
-  if (!myIsComputed)
+  if (!mySelectionGeom.IsComputed)
   {
     return;
   }
@@ -1308,13 +1284,21 @@ void AIS_Dimension::ComputeSelection (const Handle(SelectMgr_Selection)& theSele
       gp_Trsf aLabelPlane;
       aLabelPlane.SetTransformation (aTextAxes, gp::XOY());
 
-      TColgp_Array1OfPnt aRectanglePoints (1, 4);
-      aRectanglePoints.ChangeValue (1) = gp_Pnt (-aDx, -aDy, 0.0).Transformed (aLabelPlane);
-      aRectanglePoints.ChangeValue (2) = gp_Pnt (-aDx,  aDy, 0.0).Transformed (aLabelPlane);
-      aRectanglePoints.ChangeValue (3) = gp_Pnt ( aDx,  aDy, 0.0).Transformed (aLabelPlane);
-      aRectanglePoints.ChangeValue (4) = gp_Pnt ( aDx, -aDy, 0.0).Transformed (aLabelPlane);
+      TColgp_Array1OfPnt aRectanglePoints(1, 4);
+      aRectanglePoints.ChangeValue(1) = gp_Pnt (-aDx, -aDy, 0.0).Transformed (aLabelPlane);
+      aRectanglePoints.ChangeValue(2) = gp_Pnt (-aDx,  aDy, 0.0).Transformed (aLabelPlane);
+      aRectanglePoints.ChangeValue(3) = gp_Pnt ( aDx,  aDy, 0.0).Transformed (aLabelPlane);
+      aRectanglePoints.ChangeValue(4) = gp_Pnt ( aDx, -aDy, 0.0).Transformed (aLabelPlane);
 
-      aTextSensitive = new Select3D_SensitiveFace (aSensitiveOwner, aRectanglePoints);
+      Poly_Array1OfTriangle aTriangles(1, 2);
+      aTriangles.ChangeValue(1) = Poly_Triangle(1, 2, 3);
+      aTriangles.ChangeValue(2) = Poly_Triangle(1, 3, 4);
+
+      Handle(Poly_Triangulation) aRectanglePoly = 
+        new Poly_Triangulation(aRectanglePoints, aTriangles);
+
+      aTextSensitive =
+        new Select3D_SensitiveTriangulation (aSensitiveOwner, aRectanglePoly, TopLoc_Location(), Standard_True);
     }
     else
     {
@@ -1356,4 +1340,264 @@ void AIS_Dimension::PointsForArrow (const gp_Pnt& thePeakPnt,
 
   theSidePnt1 = ElCLib::Value ( anEdgeLength, anEdgeLin);
   theSidePnt2 = ElCLib::Value (-anEdgeLength, anEdgeLin);
+}
+
+//=======================================================================
+//function : GetTextPositionForLinear
+//purpose  : 
+//=======================================================================
+gp_Pnt AIS_Dimension::GetTextPositionForLinear (const gp_Pnt& theFirstPoint,
+                                                const gp_Pnt& theSecondPoint,
+                                                const Standard_Boolean theIsOneSide) const
+{
+  if (!IsValid())
+  {
+    return gp::Origin();
+  }
+
+  gp_Pnt aTextPosition (gp::Origin());
+
+  Handle(Prs3d_DimensionAspect) aDimensionAspect = myDrawer->DimensionAspect();
+
+  // Get label alignment and arrow orientation.
+  Standard_Integer aLabelPosition = 0;
+  Standard_Boolean isArrowsExternal = Standard_False;
+  FitTextAlignmentForLinear (theFirstPoint, theSecondPoint, theIsOneSide,
+                             aDimensionAspect->TextHorizontalPosition(),
+                             aLabelPosition, isArrowsExternal);
+
+  // Compute dimension line points.
+  gp_Dir aPlaneNormal = GetPlane().Axis().Direction();
+  gp_Vec aTargetPointsVec (theFirstPoint, theSecondPoint);
+
+  // Compute flyout direction vector
+  gp_Dir aFlyoutVector = aPlaneNormal ^ gp_Dir (aTargetPointsVec);
+
+  // create lines for layouts
+  gp_Lin aLine1 (theFirstPoint, aFlyoutVector);
+  gp_Lin aLine2 (theSecondPoint, aFlyoutVector);
+  // Get flyout end points
+  gp_Pnt aLineBegPoint = ElCLib::Value (ElCLib::Parameter (aLine1, theFirstPoint)  + GetFlyout(), aLine1);
+  gp_Pnt aLineEndPoint = ElCLib::Value (ElCLib::Parameter (aLine2, theSecondPoint) + GetFlyout(), aLine2);
+
+  // Get text position.
+  switch (aLabelPosition & LabelPosition_HMask)
+  {
+  case LabelPosition_Left:
+    {
+      gp_Dir aTargetPointsDir = gce_MakeDir (theFirstPoint, theSecondPoint);
+      Standard_Real anExtensionSize = aDimensionAspect->ExtensionSize();
+
+      Standard_Real anOffset = isArrowsExternal
+                                 ? anExtensionSize + aDimensionAspect->ArrowAspect()->Length()
+                                 : anExtensionSize;
+      gp_Vec anExtensionVec = gp_Vec (aTargetPointsDir) * -anOffset;
+      aTextPosition = aLineEndPoint.Translated (anExtensionVec);
+    }
+    break;
+  case LabelPosition_Right:
+    {
+      gp_Dir aTargetPointsDir = gce_MakeDir (theFirstPoint, theSecondPoint);
+      Standard_Real anExtensionSize = aDimensionAspect->ExtensionSize();
+
+      Standard_Real anOffset = isArrowsExternal
+                                 ? anExtensionSize + aDimensionAspect->ArrowAspect()->Length()
+                                 : anExtensionSize;
+      gp_Vec anExtensionVec = gp_Vec (aTargetPointsDir) * anOffset;
+      aTextPosition = aLineBegPoint.Translated (anExtensionVec);
+    }
+    break;
+  case LabelPosition_HCenter:
+    {
+      aTextPosition = (aLineBegPoint.XYZ() + aLineEndPoint.XYZ()) * 0.5;
+    }
+    break;
+  }
+
+  return aTextPosition;
+}
+
+//=======================================================================
+//function : AdjustParametersForLinear
+//purpose  : 
+//=======================================================================
+Standard_Boolean AIS_Dimension::AdjustParametersForLinear (const gp_Pnt& theTextPos,
+                                                           const gp_Pnt& theFirstPoint,
+                                                           const gp_Pnt& theSecondPoint,
+                                                           Standard_Real& theExtensionSize,
+                                                           Prs3d_DimensionTextHorizontalPosition& theAlignment,
+                                                           Standard_Real& theFlyout,
+                                                           gp_Pln& thePlane,
+                                                           Standard_Boolean& theIsPlaneOld) const
+{
+  Handle(Prs3d_DimensionAspect) aDimensionAspect = myDrawer->DimensionAspect();
+  Standard_Real anArrowLength = aDimensionAspect->ArrowAspect()->Length();
+
+  gp_Dir aTargetPointsDir = gce_MakeDir (theFirstPoint, theSecondPoint);
+  gp_Vec aTargetPointsVec (theFirstPoint, theSecondPoint);
+
+  // Don't set new plane if the text position lies on the attachment points line.
+  gp_Lin aTargetPointsLin (theFirstPoint, aTargetPointsDir);
+  if (!aTargetPointsLin.Contains (theTextPos, Precision::Confusion()))
+  {
+    //Set new automatic plane.
+    thePlane = gce_MakePln (theTextPos, theFirstPoint, theSecondPoint);
+    theIsPlaneOld = Standard_False;
+  }
+
+  // Compute flyout direction vector.
+  gp_Dir aPlaneNormal = GetPlane().Axis().Direction();
+  gp_Dir aPositiveFlyout = aPlaneNormal ^ aTargetPointsDir;
+
+  // Additional check of collinearity of the plane normal and attachment points vector.
+  if (aPlaneNormal.IsParallel (aTargetPointsDir, Precision::Angular()))
+  {
+    return Standard_False;
+  }
+
+  // Set flyout.
+  gp_Vec aFirstToTextVec (theFirstPoint, theTextPos);
+
+  Standard_Real aCos = aFirstToTextVec.Normalized() * gp_Vec (aTargetPointsDir);
+
+  gp_Pnt aTextPosProj = theFirstPoint.Translated
+    (gp_Vec (aTargetPointsDir) * aFirstToTextVec.Magnitude() * aCos);
+
+  // Compute flyout value and direction.
+  gp_Vec aFlyoutVector = gp_Vec (aTextPosProj, theTextPos);
+
+  theFlyout = 0.0;
+  if (aFlyoutVector.Magnitude() > Precision::Confusion())
+  {
+    theFlyout = gp_Dir (aFlyoutVector).IsOpposite (aPositiveFlyout, Precision::Angular())
+                ? -aFlyoutVector.Magnitude()
+                :  aFlyoutVector.Magnitude();
+  }
+  
+  // Compute attach points (through which main dimension line passes).
+  gp_Pnt aFirstAttach  = theFirstPoint.Translated (aFlyoutVector);
+  gp_Pnt aSecondAttach = theSecondPoint.Translated (aFlyoutVector);
+
+  // Set horizontal text alignment.
+  if (aCos < 0.0)
+  {
+    theAlignment = Prs3d_DTHP_Left;
+
+    Standard_Real aNewExtSize = theTextPos.Distance (aFirstAttach) - anArrowLength;
+    theExtensionSize = aNewExtSize < 0.0 ? 0.0 : aNewExtSize;
+  }
+  else if (aTextPosProj.Distance (theFirstPoint) > theFirstPoint.Distance (theSecondPoint))
+  {
+    theAlignment = Prs3d_DTHP_Right;
+
+    Standard_Real aNewExtSize = theTextPos.Distance (aSecondAttach) - anArrowLength;
+    theExtensionSize = aNewExtSize < 0.0 ? 0.0 : aNewExtSize;
+  }
+  else
+  {
+    theAlignment = Prs3d_DTHP_Center;
+  }
+  return Standard_True;
+}
+
+//=======================================================================
+//function : FitTextAlignmentForLinear
+//purpose  : 
+//=======================================================================
+void AIS_Dimension::FitTextAlignmentForLinear (const gp_Pnt& theFirstPoint,
+                                               const gp_Pnt& theSecondPoint,
+                                               const Standard_Boolean theIsOneSide,
+                                               const Prs3d_DimensionTextHorizontalPosition& theHorizontalTextPos,
+                                               Standard_Integer& theLabelPosition,
+                                               Standard_Boolean& theIsArrowsExternal) const
+{
+  theLabelPosition = LabelPosition_None;
+  theIsArrowsExternal = Standard_False;
+
+  // Compute dimension line points
+  gp_Ax1 aPlaneNormal = GetPlane().Axis();
+  gp_Dir aTargetPointsVector = gce_MakeDir (theFirstPoint, theSecondPoint);
+
+  // compute flyout direction vector
+  gp_Dir aFlyoutVector = aPlaneNormal.Direction() ^ aTargetPointsVector;
+
+  // create lines for layouts
+  gp_Lin aLine1 (theFirstPoint, aFlyoutVector);
+  gp_Lin aLine2 (theSecondPoint, aFlyoutVector);
+
+  // Get flyout end points
+  gp_Pnt aLineBegPoint = ElCLib::Value (ElCLib::Parameter (aLine1, theFirstPoint)  + GetFlyout(), aLine1);
+  gp_Pnt aLineEndPoint = ElCLib::Value (ElCLib::Parameter (aLine2, theSecondPoint) + GetFlyout(), aLine2);
+
+  Handle(Prs3d_DimensionAspect) aDimensionAspect = myDrawer->DimensionAspect();
+
+  // For extensions we need to know arrow size, text size and extension size: get it from aspect
+  Quantity_Length anArrowLength = aDimensionAspect->ArrowAspect()->Length();
+
+  // prepare label string and compute its geometrical width
+  Standard_Real aLabelWidth;
+  TCollection_ExtendedString aLabelString = GetValueString (aLabelWidth);
+
+  // Add margins to cut dimension lines for 3d text
+  if (aDimensionAspect->IsText3d())
+  {
+    aLabelWidth += aDimensionAspect->TextAspect()->Height() * THE_3D_TEXT_MARGIN * 2.0;
+  }
+
+  // Handle user-defined and automatic arrow placement
+  switch (aDimensionAspect->ArrowOrientation())
+  {
+    case Prs3d_DAO_External: theIsArrowsExternal = true; break;
+    case Prs3d_DAO_Internal: theIsArrowsExternal = false; break;
+    case Prs3d_DAO_Fit:
+    {
+      // Add margin to ensure a small tail between text and arrow
+      Standard_Real anArrowMargin   = aDimensionAspect->IsText3d() 
+                                    ? aDimensionAspect->TextAspect()->Height() * THE_3D_TEXT_MARGIN
+                                    : 0.0;
+
+      Standard_Real aDimensionWidth = aLineBegPoint.Distance (aLineEndPoint);
+      Standard_Real anArrowsWidth   = theIsOneSide 
+                                      ?  anArrowLength + anArrowMargin
+                                      : (anArrowLength + anArrowMargin) * 2.0;
+
+      theIsArrowsExternal = aDimensionWidth < aLabelWidth + anArrowsWidth;
+      break;
+    }
+  }
+
+  // Handle user-defined and automatic text placement
+  switch (theHorizontalTextPos)
+  {
+    case Prs3d_DTHP_Left  : theLabelPosition |= LabelPosition_Left; break;
+    case Prs3d_DTHP_Right : theLabelPosition |= LabelPosition_Right; break;
+    case Prs3d_DTHP_Center: theLabelPosition |= LabelPosition_HCenter; break;
+    case Prs3d_DTHP_Fit:
+    {
+      Standard_Real aDimensionWidth = aLineBegPoint.Distance (aLineEndPoint);
+      Standard_Real anArrowsWidth   = theIsOneSide ? anArrowLength : 2.0 * anArrowLength;
+      Standard_Real aContentWidth   = theIsArrowsExternal ? aLabelWidth : aLabelWidth + anArrowsWidth;
+
+      theLabelPosition |= aDimensionWidth < aContentWidth ? LabelPosition_Left : LabelPosition_HCenter;
+      break;
+    }
+  }
+
+  // Handle vertical text placement options
+  switch (aDimensionAspect->TextVerticalPosition())
+  {
+    case Prs3d_DTVP_Above  : theLabelPosition |= LabelPosition_Above; break;
+    case Prs3d_DTVP_Below  : theLabelPosition |= LabelPosition_Below; break;
+    case Prs3d_DTVP_Center : theLabelPosition |= LabelPosition_VCenter; break;
+  }
+}
+
+//=======================================================================
+//function : UnsetFixedTextPosition
+//purpose  : 
+//=======================================================================
+void AIS_Dimension::UnsetFixedTextPosition()
+{
+  myIsTextPositionFixed = Standard_False;
+  myFixedTextPosition = gp::Origin();
 }

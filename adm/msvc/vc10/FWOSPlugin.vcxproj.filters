@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{D336B82A-0146-0EC6-13E7-C06415EADCA2}</UniqueIdentifier>
+      <UniqueIdentifier>{BFE56AE6-0BD6-00DE-06E8-662D1C1BABD5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\FWOSDriver">
-      <UniqueIdentifier>{3B1F8999-0C67-0F27-0BD4-EF5AAE2A5EB4}</UniqueIdentifier>
+      <UniqueIdentifier>{AE62DC2D-0EFE-0A35-10A8-F34EF2C3FE26}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

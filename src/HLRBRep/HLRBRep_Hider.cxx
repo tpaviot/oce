@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -328,7 +328,6 @@ void HLRBRep_Hider::Hide(const Standard_Integer FI,
 
 	Standard_Boolean foundHidden = Standard_False;
 	
-	Standard_Integer aStartLevel;
 	if (!ILHidden.IsEmpty()) {    
 
 	  HLRBRep_EdgeIList::ProcessComplex // complex transition on ILHidden
@@ -338,7 +337,6 @@ void HLRBRep_Hider::Hide(const Standard_Integer FI,
 	    level = myDS->HidingStartLevel(E,ed,ILHidden);  // **************
 	  	  HLRAlgo_ListIteratorOfInterferenceList It(ILHidden); 
 	  
-	  aStartLevel = level;
 	  while(It.More()) {           // suppress multi-inside Intersections
 	                               // ***********************************
 	  

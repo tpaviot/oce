@@ -2,8 +2,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -73,11 +73,9 @@ Standard_Boolean  IFSelect_ListEditor::LoadEdited
   if (list.IsNull()) return Standard_False;
   Standard_Integer i, nb = list->Length();
   if (nb > themax) return Standard_False;
-  Interface_ParamType pty = Interface_ParamText;
 
 //   check values
   if (!thedef.IsNull()) {
-    pty = thedef->Type();
     for (i = 1; i <= nb; i ++) {
       Handle(TCollection_HAsciiString) newval = list->Value(i);
       if (!CheckValue (newval,themodl,thedef)) return Standard_False;

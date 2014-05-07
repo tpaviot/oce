@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -390,12 +390,12 @@ Standard_Boolean  TopOpeBRepBuild_PaveSet::HasEqualParameters()
   }
 
   if ( !myHasEqualParameters ) {
-    Standard_Boolean rd; Standard_Real f=0,l;
+    Standard_Boolean rd; Standard_Real f=0;
     {
       TopLoc_Location loc; Standard_Real ff,ll;
       Handle(Geom_Curve) CmyEdge = BRep_Tool::Curve(myEdge,loc,ff,ll);
       if ( CmyEdge.IsNull() ) rd = Standard_False;
-      else { f = ff; l = ll; rd = Standard_True; }
+      else { f = ff; rd = Standard_True; }
     }
     if (rd) {
       for (it1.Initialize(myVertices); 

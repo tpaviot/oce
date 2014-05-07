@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -30,13 +30,13 @@
 #include <stdio.h>
 #include <gp_Vec.hxx>
 
-
 // constants
-static const int HEADER_SIZE           =  84;
-static const int SIZEOF_STL_FACET      =  50;
-static const int STL_MIN_FILE_SIZE     = 284;
-static const int ASCII_LINES_PER_FACET =   7;
-static const int IND_THRESHOLD         = 1000; // increment the indicator every 1k triangles
+static const size_t HEADER_SIZE           =  84;
+static const size_t SIZEOF_STL_FACET      =  50;
+static const size_t STL_MIN_FILE_SIZE     = 284;
+static const size_t ASCII_LINES_PER_FACET =   7;
+
+static const int IND_THRESHOLD = 1000; // increment the indicator every 1k triangles
 
 //=======================================================================
 //function : WriteInteger

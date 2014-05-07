@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -130,6 +130,7 @@ void Extrema_ExtCS::Perform(const Adaptor3d_Curve& C,
       case GeomAbs_BSplineSurface:
       case GeomAbs_SurfaceOfRevolution:
       case GeomAbs_SurfaceOfExtrusion:
+      case GeomAbs_OffsetSurface:
       case GeomAbs_OtherSurface:
 	{
 	  Standard_Real cfirst = myucinf, clast = myucsup;
@@ -139,7 +140,7 @@ void Extrema_ExtCS::Perform(const Adaptor3d_Curve& C,
 	  if(Precision::IsInfinite(Abs(cfirst)) || Precision::IsInfinite(Abs(clast))) {
 
 	    Bnd_Box aSurfBox;
-      BndLib_AddSurface::Add(*myS, ufirst, ulast, vfirst, vlast, Precision::Confusion(), aSurfBox);
+            BndLib_AddSurface::Add(*myS, ufirst, ulast, vfirst, vlast, Precision::Confusion(), aSurfBox);
 	    Standard_Real xmin, ymin, zmin, xmax, ymax, zmax;
 	    aSurfBox.Get(xmin, ymin, zmin, xmax, ymax, zmax);
 	    Standard_Real tmin = Precision::Infinite(), tmax = -tmin;
@@ -207,10 +208,6 @@ void Extrema_ExtCS::Perform(const Adaptor3d_Curve& C,
 	  return;
 	  
 	}
-#ifndef DEB
-      default:
-#endif
-	break;
       }
       break;
     }

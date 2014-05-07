@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{FEEF9E72-1601-029E-1739-5B32D6669139}</UniqueIdentifier>
+      <UniqueIdentifier>{C8F2A10B-05D1-07AD-1736-51860134D0BE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\NIS">
-      <UniqueIdentifier>{C83E1BC6-0A66-1765-01F7-F15CD906B653}</UniqueIdentifier>
+      <UniqueIdentifier>{749B4A57-0D96-1740-10E1-899503962B86}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -36,6 +36,7 @@
 #endif
 class BOPAlgo_WireEdgeSet;
 class TopoDS_Wire;
+class TopoDS_Face;
 
 
 
@@ -57,6 +58,8 @@ Standard_EXPORT virtual ~BOPAlgo_WireSplitter();
   Standard_EXPORT   virtual  void Perform() ;
   
       static  void MakeWire(BOPCol_ListOfShape& theLE,TopoDS_Wire& theW) ;
+  
+  Standard_EXPORT   static  void SplitBlock(const TopoDS_Face& theF,BOPTools_ConnexityBlock& theCB) ;
 
 
 
@@ -70,8 +73,6 @@ protected:
   Standard_EXPORT     void MakeConnexityBlocks() ;
   
   Standard_EXPORT     void MakeWires() ;
-  
-  Standard_EXPORT     void SplitBlock(BOPTools_ConnexityBlock& theCB) ;
 
 
 BOPAlgo_PWireEdgeSet myWES;

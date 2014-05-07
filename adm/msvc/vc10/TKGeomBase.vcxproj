@@ -888,6 +888,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\GeomTools\GeomTools_CurveSet.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomTools\GeomTools_Debug.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\GeomTools\GeomTools_SurfaceSet.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\GeomTools\GeomTools_UndefinedTypeHandler.cxx">

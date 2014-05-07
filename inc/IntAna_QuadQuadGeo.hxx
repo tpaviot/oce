@@ -41,6 +41,7 @@ class gp_Pln;
 class gp_Cylinder;
 class gp_Sphere;
 class gp_Cone;
+class gp_Torus;
 class gp_Pnt;
 class gp_Lin;
 class gp_Circ;
@@ -147,6 +148,26 @@ public:
   Standard_EXPORT   IntAna_QuadQuadGeo(const gp_Cone& Con1,const gp_Cone& Con2,const Standard_Real Tol);
   //! Intersects two cones. <br>
   Standard_EXPORT     void Perform(const gp_Cone& Con1,const gp_Cone& Con2,const Standard_Real Tol) ;
+  //! Creates the intersection beween plane and torus. <br>
+  Standard_EXPORT   IntAna_QuadQuadGeo(const gp_Pln& Pln,const gp_Torus& Tor,const Standard_Real Tol);
+  //! Intersects plane and torus. <br>
+  Standard_EXPORT     void Perform(const gp_Pln& Pln,const gp_Torus& Tor,const Standard_Real Tol) ;
+  //! Creates the intersection beween cylinder and torus. <br>
+  Standard_EXPORT   IntAna_QuadQuadGeo(const gp_Cylinder& Cyl,const gp_Torus& Tor,const Standard_Real Tol);
+  //! Intersects cylinder and torus. <br>
+  Standard_EXPORT     void Perform(const gp_Cylinder& Cyl,const gp_Torus& Tor,const Standard_Real Tol) ;
+  //! Creates the intersection beween cone and torus. <br>
+  Standard_EXPORT   IntAna_QuadQuadGeo(const gp_Cone& Con,const gp_Torus& Tor,const Standard_Real Tol);
+  //! Intersects cone and torus. <br>
+  Standard_EXPORT     void Perform(const gp_Cone& Con,const gp_Torus& Tor,const Standard_Real Tol) ;
+  //! Creates the intersection beween sphere and torus. <br>
+  Standard_EXPORT   IntAna_QuadQuadGeo(const gp_Sphere& Sph,const gp_Torus& Tor,const Standard_Real Tol);
+  //! Intersects sphere and torus. <br>
+  Standard_EXPORT     void Perform(const gp_Sphere& Sph,const gp_Torus& Tor,const Standard_Real Tol) ;
+  //! Creates the intersection beween two toruses. <br>
+  Standard_EXPORT   IntAna_QuadQuadGeo(const gp_Torus& Tor1,const gp_Torus& Tor2,const Standard_Real Tol);
+  //! Intersects two toruses. <br>
+  Standard_EXPORT     void Perform(const gp_Torus& Tor1,const gp_Torus& Tor2,const Standard_Real Tol) ;
   //! Returns Standard_True if the computation was successful. <br>
 //! <br>
         Standard_Boolean IsDone() const;
@@ -196,10 +217,16 @@ Standard_Integer nbint;
 IntAna_ResultType typeres;
 gp_Pnt pt1;
 gp_Pnt pt2;
+gp_Pnt pt3;
+gp_Pnt pt4;
 gp_Dir dir1;
 gp_Dir dir2;
+gp_Dir dir3;
+gp_Dir dir4;
 Standard_Real param1;
 Standard_Real param2;
+Standard_Real param3;
+Standard_Real param4;
 Standard_Real param1bis;
 Standard_Real param2bis;
 Standard_Real myEPSILON_DISTANCE;

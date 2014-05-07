@@ -62,7 +62,10 @@ class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_ConstructionError;
 class TopoDS_Wire;
+class TopTools_MapOfShape;
+class BRepFill_DataMapOfShapeHArray2OfShape;
 class TopoDS_Shape;
+class TopoDS_Edge;
 
 
 //! Topological Sweep Algorithm <br>
@@ -109,7 +112,7 @@ public:
 //!    Degmax     : The maximum degree in v requiered on the surface <br>
 //!    Segmax     : The maximum number of span in v requiered on <br>
 //!                 the surface. <br>
-  Standard_EXPORT     void Build(const BRepFill_TransitionStyle Transition = BRepFill_Modified,const GeomAbs_Shape Continuity = GeomAbs_C2,const GeomFill_ApproxStyle Approx = GeomFill_Location,const Standard_Integer Degmax = 11,const Standard_Integer Segmax = 30) ;
+  Standard_EXPORT     void Build(TopTools_MapOfShape& ReversedEdges,BRepFill_DataMapOfShapeHArray2OfShape& Tapes,const BRepFill_TransitionStyle Transition = BRepFill_Modified,const GeomAbs_Shape Continuity = GeomAbs_C2,const GeomFill_ApproxStyle Approx = GeomFill_Location,const Standard_Integer Degmax = 11,const Standard_Integer Segmax = 30) ;
   //! Say if the Shape is Build. <br>
   Standard_EXPORT     Standard_Boolean IsDone() const;
   //! returns the Sweeping Shape <br>
@@ -140,7 +143,7 @@ private:
   
   Standard_EXPORT     Standard_Boolean BuildWire(const BRepFill_TransitionStyle Transition) ;
   
-  Standard_EXPORT     Standard_Boolean BuildShell(const BRepFill_TransitionStyle Transition,const Standard_Integer Vf,const Standard_Integer Vl,const Standard_Real ExtendFirst = 0.0,const Standard_Real ExtendLast = 0.0) ;
+  Standard_EXPORT     Standard_Boolean BuildShell(const BRepFill_TransitionStyle Transition,const Standard_Integer Vf,const Standard_Integer Vl,TopTools_MapOfShape& ReversedEdges,BRepFill_DataMapOfShapeHArray2OfShape& Tapes,const Standard_Real ExtendFirst = 0.0,const Standard_Real ExtendLast = 0.0) ;
   
   Standard_EXPORT     void PerformCorner(const Standard_Integer Index,const BRepFill_TransitionStyle Transition,const Handle(TopTools_HArray2OfShape)& Bounds) ;
   
@@ -149,6 +152,8 @@ private:
   Standard_EXPORT     Standard_Boolean MergeVertex(const TopoDS_Shape& V1,TopoDS_Shape& V2) const;
   
   Standard_EXPORT     void UpdateVertex(const Standard_Integer Ipath,const Standard_Integer Isec,const Standard_Real Error,const Standard_Real Param,TopoDS_Shape& V) const;
+  
+  Standard_EXPORT     void RebuildTopOrBottomEdge(const TopoDS_Edge& aNewEdge,TopoDS_Edge& anEdge,TopTools_MapOfShape& ReversedEdges) const;
 
 
 Standard_Boolean isDone;

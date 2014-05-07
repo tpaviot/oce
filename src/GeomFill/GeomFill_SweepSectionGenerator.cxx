@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -38,11 +38,10 @@
 
 #ifdef DRAW
 #include <DrawTrSurf.hxx>
-#endif
-#ifdef DEB
 static Standard_Boolean Affich     = Standard_False;
 static Standard_Integer NbSECTIONS = 0;
 #endif
+
 //#define GF_DEB
 //=======================================================================
 //function : GeomFill_SweepSectionGenerator
@@ -580,9 +579,7 @@ void GeomFill_SweepSectionGenerator::Section
     }
 #ifdef DRAW
     if ( Affich) {
-//POP pour NT
-//      char name[100];
-      char* name = new char[100];
+      char name[256];
       sprintf(name,"SECTION_%d",++NbSECTIONS);
       DrawTrSurf::Set(name,myFirstSect->Transformed(cumulTR));
     }
@@ -651,9 +648,7 @@ void GeomFill_SweepSectionGenerator::Section
 
 #ifdef DRAW
       if ( Affich) {
-// POP pour NT
-//	char name[100];
-	char* name = new char[100];
+        char name[256];
 	sprintf(name,"SECTION_%d",++NbSECTIONS);
 	DrawTrSurf::Set(name,BS);
       }

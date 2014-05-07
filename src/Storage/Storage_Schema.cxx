@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -70,7 +70,7 @@ typedef NCollection_DataMap <TCollection_AsciiString,
 //
 Storage_Bucket::~Storage_Bucket()
 {
-  Standard::Free((Standard_Address&)mySpace);
+  Standard::Free (mySpace);
   mySpace = 0L;
   mySpaceSize = 0;
   Clear();
@@ -150,7 +150,7 @@ Storage_BucketOfPersistent::~Storage_BucketOfPersistent()
 {
   Clear();
   delete myBuckets[0];
-  Standard::Free((Standard_Address&)myBuckets);
+  Standard::Free (myBuckets);
   myBuckets = 0L;
 }
 
@@ -191,7 +191,7 @@ void Storage_BucketOfPersistent::Append(const Handle(Standard_Persistent)& sp)
 
   if (myNumberOfBucket > myNumberOfBucketAllocated) {
     Standard_Size e = sizeof(Storage_Bucket*) * myNumberOfBucketAllocated;
-    myBuckets =  (Storage_Bucket**)Standard::Reallocate((Standard_Address&)myBuckets, e * 2);
+    myBuckets =  (Storage_Bucket**)Standard::Reallocate(myBuckets, e * 2);
     myNumberOfBucketAllocated *= 2;
   }
 

@@ -2,28 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{6E4D6AC9-17E0-10D5-14D4-14EA4C222528}</UniqueIdentifier>
+      <UniqueIdentifier>{CEDF19F9-1651-17F0-05F8-E05135F3A0C6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopoDS">
-      <UniqueIdentifier>{B58F387C-0E58-078A-0807-3CF55D10B47B}</UniqueIdentifier>
+      <UniqueIdentifier>{C04F2568-18D2-0669-01E2-F3AE8346491B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopExp">
-      <UniqueIdentifier>{B92E2728-0643-06EB-0219-11215BA4F060}</UniqueIdentifier>
+      <UniqueIdentifier>{69A66CE2-0CA6-009A-18BD-3E47BAD7394A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopTools">
-      <UniqueIdentifier>{A1328BBF-123E-1219-00ED-7A0861BC213D}</UniqueIdentifier>
+      <UniqueIdentifier>{F23EBBEF-0B3E-0CEC-11E8-D317F2C94A39}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRep">
-      <UniqueIdentifier>{2A5E6F59-004A-155D-0EA3-545A8101FC8F}</UniqueIdentifier>
+      <UniqueIdentifier>{27EA3A98-03B3-055B-0BDC-613059AD3096}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepLProp">
-      <UniqueIdentifier>{6C322424-0C01-0DE7-0235-6D0DE1AA603C}</UniqueIdentifier>
+      <UniqueIdentifier>{50FA76B6-0607-001A-188E-CCDC98A699B9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAdaptor">
-      <UniqueIdentifier>{940F4767-15B4-12E0-0A51-A4D05C6B7E33}</UniqueIdentifier>
+      <UniqueIdentifier>{B669063A-0487-0A88-147B-9E4A66268B94}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepTools">
-      <UniqueIdentifier>{2A68D984-07D6-0D94-0C40-6725B9DDBC62}</UniqueIdentifier>
+      <UniqueIdentifier>{95B2098D-0DD7-0675-149B-7B3AEA5910CD}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -451,6 +451,9 @@
       <Filter>Source files\BRepTools</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepTools\BRepTools.cxx">
+      <Filter>Source files\BRepTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepTools\BRepTools_Debug.cxx">
       <Filter>Source files\BRepTools</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepTools\BRepTools_GTrsfModification.cxx">

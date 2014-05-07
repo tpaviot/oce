@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -779,10 +779,6 @@ void Draw::Set(const Standard_CString name,
 	       const Handle(Draw_Drawable3D)& D,
 	       const Standard_Boolean displ)
 {
-  Standard_PCharacter pName;
-  //
-  pName=(Standard_PCharacter)name;
-  //
   if ((name[0] == '.') && (name[1] == '\0')) {
     if (!D.IsNull()) {
       dout.RemoveDrawable(D);
@@ -791,19 +787,19 @@ void Draw::Set(const Standard_CString name,
   }
   else {
     
-    Tcl_UnsetVar(theCommands.Interp(),pName,0);
+    Tcl_UnsetVar(theCommands.Interp(),name,0);
     if (!D.IsNull()) {
       Standard_Integer ival = theVariables.Extent() + 1;
       theVariables.Bind(ival,D);
       // MKV 29.03.05
 #if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 4))) && !defined(USE_NON_CONST)
-      D->Name((const Standard_CString)Tcl_SetVar(theCommands.Interp(),name,name,0));
+      D->Name(Tcl_SetVar(theCommands.Interp(),name,name,0));
 #else
-      D->Name(Tcl_SetVar(theCommands.Interp(),pName,pName,0));
+      D->Name(Tcl_SetVar(theCommands.Interp(),(char*)name,(char*)name,0));
 #endif
     
       // set the trace function
-      Tcl_TraceVar(theCommands.Interp(),pName,TCL_TRACE_UNSETS,
+      Tcl_TraceVar(theCommands.Interp(),name,TCL_TRACE_UNSETS,
 		   tracevar,(ClientData)ival);
       
       if (displ) {
@@ -842,9 +838,10 @@ void Draw::Set(const Standard_CString Name, const Standard_Real val)
 Handle(Draw_Drawable3D) Draw::Get(Standard_CString& name, 
 			          const Standard_Boolean )
 {
+#if !((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 4))) || defined(USE_NON_CONST)
   Standard_PCharacter pName;
-  //
   pName=(Standard_PCharacter)name;
+#endif
   //
   Standard_Boolean pick = ((name[0] == '.') && (name[1] == '\0'));
   Handle(Draw_Drawable3D) D;

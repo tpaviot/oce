@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "145819560E09036F11D203DE"
+               BlueprintIdentifier = "1485117719660ED103A40416"
                BuildableName = "libTKAdvTools.dylib"
                BlueprintName = "TKAdvTools"
                ReferencedContainer = "container:TKAdvTools.xcodeproj">

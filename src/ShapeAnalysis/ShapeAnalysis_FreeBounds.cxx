@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -220,8 +220,7 @@ ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds(const TopoDS_Shape& shape,
     aBox.SetGap(tolerance);
     aTreeFiller.Add(inbW, aBox);
   }
-  Standard_Integer nbFill;
-  nbFill = aTreeFiller.Fill();
+  aTreeFiller.Fill();
   Standard_Integer nsel;
   
   ShapeAnalysis_Edge sae; //szv#4:S4163:12Mar99 moved
@@ -363,7 +362,6 @@ static void SplitWire(const TopoDS_Wire& wire,
       Standard_Boolean SearchBackward = Standard_True;
 
       for(;;) {
-	Standard_Integer ei = ces.Last(); //ei-edge index, number of current edge analyzed for connection
 	Standard_Boolean found;
 	TopoDS_Edge edge;
 	TopoDS_Vertex lvertex;
@@ -403,7 +401,6 @@ static void SplitWire(const TopoDS_Wire& wire,
     
 	//searching for connection among free edges
 	found = Standard_False;
-	ei = ces.Last();
 	edge = sewd->Edge (ces.Last());
 	lvertex = sae.LastVertex (edge);
 	lpoint = BRep_Tool::Pnt (lvertex);

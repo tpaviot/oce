@@ -6,8 +6,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -243,7 +243,7 @@ static
                                      const BOPDS_ListOfPaveBlock& aLPBOut,
                                      const Handle(BOPDS_PaveBlock)& aPBD)
 {
-  Standard_Boolean bXDir, bIsDone, bReject;
+  Standard_Boolean bXDir, bIsDone;
   Standard_Integer nE, aNbPoints, j;
   Standard_Real aTD1, aTD2, aT1, aT2, aTolInter, aX, aDT;
   Standard_Real aTolCmp;
@@ -329,7 +329,6 @@ static
         continue; 
       }
       //
-      bReject=Standard_False;
       if (aPBD->ContainsParameter(aX, aDT)) {
         continue;
       }

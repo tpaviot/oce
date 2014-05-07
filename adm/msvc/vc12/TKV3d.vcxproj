@@ -854,6 +854,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_Circle.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ColoredShape.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_ConcentricRelation.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_ConnectedInteractive.cxx">
@@ -1003,8 +1005,6 @@
     <ClCompile Include="..\..\..\drv\StdSelect\StdSelect_IndexedDataMapOfOwnerPrs_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\StdSelect\StdSelect.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_BRepHilighter.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\StdSelect\StdSelect_BRepOwner.cxx">
     </ClCompile>

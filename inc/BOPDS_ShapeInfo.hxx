@@ -113,10 +113,14 @@ virtual ~BOPDS_ShapeInfo();
   
 //! Query <br>
 //! Returns true if the shape has boundary representation <br>
+        Standard_Boolean HasBRep() const;
+  
+//! Returns true if the shape can be participant of <br>
+//! an interference <br>
 //! <br>
 //!  Flag <br>
 //! <br>
-        Standard_Boolean HasBRep() const;
+        Standard_Boolean IsInterfering() const;
   
 //! Query <br>
 //! Returns true if there is flag. <br>

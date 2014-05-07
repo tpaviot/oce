@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "08BD0CD7107B0B0207C31390"
+               BlueprintIdentifier = "17920EB5044C17F904600122"
                BuildableName = "libTKNIS.dylib"
                BlueprintName = "TKNIS"
                ReferencedContainer = "container:TKNIS.xcodeproj">

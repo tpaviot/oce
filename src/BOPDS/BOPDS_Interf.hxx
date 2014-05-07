@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -57,7 +57,7 @@ class BOPDS_Interf  {
 		  const Standard_Integer theIndex2) {
     myIndex1=theIndex1; 
     myIndex2=theIndex2; 
-  }; 
+  }
   //
   /**
    * Returns the indices of interferred shapes
@@ -70,7 +70,7 @@ class BOPDS_Interf  {
 	       Standard_Integer& theIndex2) const {
 		 theIndex1=myIndex1; 
 		 theIndex2=myIndex2; 
-	       };
+	       }
   //
   /**
    * Sets the index of the first interferred shape
@@ -79,7 +79,7 @@ class BOPDS_Interf  {
    */
   void SetIndex1(const Standard_Integer theIndex) {
     myIndex1=theIndex; 
-  };
+  }
   //
   /**
    * Sets the index of the second interferred shape
@@ -88,7 +88,7 @@ class BOPDS_Interf  {
    */
   void SetIndex2(const Standard_Integer theIndex) {
     myIndex2=theIndex;
-  };
+  }
   //
   /**
    * Returns the index of the first interferred shape
@@ -97,7 +97,7 @@ class BOPDS_Interf  {
    */
   Standard_Integer Index1() const {
     return myIndex1; 
-  };
+  }
   //
   /**
    * Returns the index of the second interferred shape
@@ -106,7 +106,7 @@ class BOPDS_Interf  {
    */
   Standard_Integer Index2() const {
     return myIndex2; 
-  };
+  }
   //
   /**
    * Returns the index of that are opposite to the given index
@@ -125,7 +125,7 @@ class BOPDS_Interf  {
     else {
       return -1;
     }
-  };
+  }
   //
   /**
    * Returns true if the interference contains given index
@@ -145,7 +145,7 @@ class BOPDS_Interf  {
    */
   void SetIndexNew(const Standard_Integer theIndex) {
     myIndexNew=theIndex;
-  };
+  }
   //
   //
   /**
@@ -155,7 +155,7 @@ class BOPDS_Interf  {
    */
   Standard_Integer IndexNew() const {
     return myIndexNew; 
-  };
+  }
   //
   /**
    * Returns true if the interference has index of new shape
@@ -168,7 +168,7 @@ class BOPDS_Interf  {
   Standard_Boolean HasIndexNew(Standard_Integer& theIndex) const {
     theIndex=myIndexNew;
     return (myIndexNew>=0);
-  };
+  }
   //
   /**
    * Returns true if the interference has index of new shape
@@ -177,7 +177,7 @@ class BOPDS_Interf  {
    */
   Standard_Boolean HasIndexNew() const {
     return (myIndexNew>=0);
-  };
+  }
   //
  protected:     
   BOPDS_Interf() :
@@ -185,17 +185,17 @@ class BOPDS_Interf  {
     myIndex2(-1),
     myIndexNew(-1),
     myAllocator(NCollection_BaseAllocator::CommonBaseAllocator()) {
-  };
+  }
   //
   BOPDS_Interf(const Handle(NCollection_BaseAllocator)& theAllocator) :
     myIndex1(-1), 
     myIndex2(-1),
     myIndexNew(-1),
     myAllocator(theAllocator) {
-  };
+  }
   //
   virtual ~BOPDS_Interf() {
-  };
+  }
   
  protected:  	
   Standard_Integer myIndex1;
@@ -218,7 +218,7 @@ class BOPDS_InterfVV  : public BOPDS_Interf {
    *  Constructor
    */
   BOPDS_InterfVV() : BOPDS_Interf() {
-  };
+  }
   //
   /**
    *  Constructor
@@ -227,13 +227,13 @@ class BOPDS_InterfVV  : public BOPDS_Interf {
    */
   BOPDS_InterfVV(const Handle(NCollection_BaseAllocator)& theAllocator) 
     : BOPDS_Interf(theAllocator) {
-  };
+  }
   //
   /**
    *  Destructor
    */
   virtual ~BOPDS_InterfVV() {
-  };
+  }
   //
 };
 /**
@@ -254,7 +254,7 @@ class BOPDS_InterfVE  : public BOPDS_Interf {
     :
       BOPDS_Interf(),
       myParameter(0.) {
-  };
+  }
   //
   /**
    *  Constructor
@@ -265,13 +265,13 @@ class BOPDS_InterfVE  : public BOPDS_Interf {
     :
       BOPDS_Interf(theAllocator),
       myParameter(0.) {
-  };
+  }
   //
   /**
    *  Destructor
    */
   virtual ~BOPDS_InterfVE() {
-  };
+  }
   //
   /**
    *  Modifier
@@ -283,7 +283,7 @@ class BOPDS_InterfVE  : public BOPDS_Interf {
    */
   void SetParameter(const Standard_Real theT) {
     myParameter=theT;
-  };
+  }
   //
   /**
    *  Selector
@@ -295,7 +295,7 @@ class BOPDS_InterfVE  : public BOPDS_Interf {
    */
   Standard_Real Parameter() const {
     return myParameter;
-  };
+  }
   
  protected:
   Standard_Real myParameter;
@@ -319,7 +319,7 @@ class BOPDS_InterfVF  : public BOPDS_Interf {
     : BOPDS_Interf(),
       myU(0.),
       myV(0.) {
-  };
+  }
   //
   /**
    *  Constructor
@@ -330,13 +330,13 @@ class BOPDS_InterfVF  : public BOPDS_Interf {
     : BOPDS_Interf(theAllocator),
       myU(0.),
       myV(0.) {
-  };
+  }
   //
   /**
    *  Destructor
    */  
   virtual ~BOPDS_InterfVF() {
-  };
+  }
   //
   /**
    * Modifier
@@ -352,7 +352,7 @@ class BOPDS_InterfVF  : public BOPDS_Interf {
 	     const Standard_Real theV) {
     myU=theU;
     myV=theV;
-  };
+  }
   //
   /**
    * Selector
@@ -367,7 +367,7 @@ class BOPDS_InterfVF  : public BOPDS_Interf {
   void UV(Standard_Real& theU,Standard_Real& theV) const {
     theU=myU;
     theV=myV;
-  };
+  }
   
  protected:
   Standard_Real myU;
@@ -389,7 +389,7 @@ class BOPDS_InterfEE  : public BOPDS_Interf {
    *  Constructor
    */
   BOPDS_InterfEE() : BOPDS_Interf() {
-  };
+  }
   //
   /**
    *  Constructor
@@ -398,13 +398,13 @@ class BOPDS_InterfEE  : public BOPDS_Interf {
    */
   BOPDS_InterfEE(const Handle(NCollection_BaseAllocator)& theAllocator)
     : BOPDS_Interf(theAllocator) {
-  };
+  }
   //
   /**
    *  Destructor
    */
   virtual ~BOPDS_InterfEE() {
-  };
+  }
   //
   /**
    *  Modifier
@@ -414,7 +414,7 @@ class BOPDS_InterfEE  : public BOPDS_Interf {
    */
   void SetCommonPart(const IntTools_CommonPrt& theCP) {
     myCommonPart=theCP;
-  };
+  }
   //
   /**
    *  Selector
@@ -424,7 +424,7 @@ class BOPDS_InterfEE  : public BOPDS_Interf {
    */
   const IntTools_CommonPrt& CommonPart() const {
     return myCommonPart;
-  };
+  }
   
  protected:
   IntTools_CommonPrt myCommonPart;
@@ -444,7 +444,7 @@ class BOPDS_InterfEF  : public BOPDS_Interf {
    *  Constructor
    */
   BOPDS_InterfEF(): BOPDS_Interf() {
-  };
+  }
   //
   /**
    *  Constructor
@@ -458,13 +458,13 @@ class BOPDS_InterfEF  : public BOPDS_Interf {
    */
   BOPDS_InterfEF(const Handle(NCollection_BaseAllocator)& theAllocator)
     : BOPDS_Interf(theAllocator) {
-  };
+  }
   //
   /**
    *  Destructor
    */
   virtual ~BOPDS_InterfEF() {
-  };
+  }
   //
   /**
    * Modifier
@@ -474,7 +474,7 @@ class BOPDS_InterfEF  : public BOPDS_Interf {
    */
   void SetCommonPart(const IntTools_CommonPrt& theCP){
     myCommonPart=theCP;
-  };
+  }
   //
   /**
    *  Selector
@@ -484,7 +484,7 @@ class BOPDS_InterfEF  : public BOPDS_Interf {
    */
   const IntTools_CommonPrt& CommonPart() const {
     return myCommonPart;
-  };
+  }
   //
  protected:
   IntTools_CommonPrt myCommonPart;
@@ -511,7 +511,7 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
       myTolR2D(1.e-7),
       myCurves(myAllocator),
       myPoints(myAllocator) {
-  };
+  }
   //
   /**
    *  Constructor
@@ -527,14 +527,14 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
       myTolR2D(1.e-7),
       myCurves(myAllocator),
       myPoints(myAllocator) {
-  };
+  }
   */
   //
   /**
    *  Destructor
    */
   virtual ~BOPDS_InterfFF() {
-  };
+  }
   //
   /**
    * Initializer
@@ -622,7 +622,7 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
    */
   const BOPDS_VectorOfCurve& Curves()const{
     return myCurves;
-  };
+  }
   //
   /**
    * Selector/Modifier
@@ -632,7 +632,7 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
    */
   BOPDS_VectorOfCurve& ChangeCurves(){
     return myCurves;
-  };
+  }
   //
   /**
    * Selector
@@ -642,7 +642,7 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
    */
   const BOPDS_VectorOfPoint& Points()const{
     return myPoints;
-  };
+  }
   //
   /**
    * Selector/Modifier
@@ -652,7 +652,7 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
    */
   BOPDS_VectorOfPoint& ChangePoints(){
     return myPoints;
-  };
+  }
   //
  protected:
   Standard_Boolean myTangentFaces;
@@ -660,6 +660,139 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
   Standard_Real myTolR2D;
   BOPDS_VectorOfCurve myCurves;
   BOPDS_VectorOfPoint myPoints;
+};
+
+/**
+ * The class BOPDS_InterfVZ is is to store the information about
+ * the interference of the type vertex/solid. 
+*/
+//=======================================================================
+//function : BOPDS_InterfVZ
+//purpose  : 
+//=======================================================================
+class BOPDS_InterfVZ  : public BOPDS_Interf {
+ public:
+  //
+  /**
+   *  Constructor
+   */
+  BOPDS_InterfVZ() : BOPDS_Interf() {
+  };
+  //
+  /**
+   *  Constructor
+   * @param theAllocator
+   *   allocator to manage the memory
+   */
+  BOPDS_InterfVZ(const Handle(NCollection_BaseAllocator)& theAllocator) 
+    : BOPDS_Interf(theAllocator) {
+  };
+  //
+  /**
+   *  Destructor
+   */
+  virtual ~BOPDS_InterfVZ() {
+  };
+  //
+};
+/**
+ * The class BOPDS_InterfEZ is is to store the information about
+ * the interference of the type edge/solid. 
+*/
+//=======================================================================
+//function : BOPDS_InterfEZ
+//purpose  : 
+//=======================================================================
+class BOPDS_InterfEZ  : public BOPDS_Interf {
+ public:
+  //
+  /**
+   *  Constructor
+   */
+  BOPDS_InterfEZ() : BOPDS_Interf() {
+  };
+  //
+  /**
+   *  Constructor
+   * @param theAllocator
+   *   allocator to manage the memory
+   */
+  BOPDS_InterfEZ(const Handle(NCollection_BaseAllocator)& theAllocator) 
+    : BOPDS_Interf(theAllocator) {
+  };
+  //
+  /**
+   *  Destructor
+   */
+  virtual ~BOPDS_InterfEZ() {
+  };
+  //
+};
+/**
+ * The class BOPDS_InterfFZ is is to store the information about
+ * the interference of the type face/solid. 
+*/
+//=======================================================================
+//function : BOPDS_InterfFZ
+//purpose  : 
+//=======================================================================
+class BOPDS_InterfFZ  : public BOPDS_Interf {
+ public:
+  //
+  /**
+   *  Constructor
+   */
+  BOPDS_InterfFZ() : BOPDS_Interf() {
+  };
+  //
+  /**
+   *  Constructor
+   * @param theAllocator
+   *   allocator to manage the memory
+   */
+  BOPDS_InterfFZ(const Handle(NCollection_BaseAllocator)& theAllocator) 
+    : BOPDS_Interf(theAllocator) {
+  };
+  //
+  /**
+   *  Destructor
+   */
+  virtual ~BOPDS_InterfFZ() {
+  };
+  //
+};
+/**
+ * The class BOPDS_InterfZZ is is to store the information about
+ * the interference of the type solid/solid. 
+*/
+//=======================================================================
+//function : BOPDS_InterfZZ
+//purpose  : 
+//=======================================================================
+class BOPDS_InterfZZ  : public BOPDS_Interf {
+ public:
+  //
+  /**
+   *  Constructor
+   */
+  BOPDS_InterfZZ() : BOPDS_Interf() {
+  };
+  //
+  /**
+   *  Constructor
+   * @param theAllocator
+   *   allocator to manage the memory
+   */
+  BOPDS_InterfZZ(const Handle(NCollection_BaseAllocator)& theAllocator) 
+    : BOPDS_Interf(theAllocator) {
+  };
+  //
+  /**
+   *  Destructor
+   */
+  virtual ~BOPDS_InterfZZ() {
+  };
+  //
 };
 
 #endif

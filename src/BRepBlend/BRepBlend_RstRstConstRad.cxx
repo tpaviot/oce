@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -131,10 +131,8 @@ Standard_Boolean BRepBlend_RstRstConstRad::Values(const math_Vector& X,
 						  math_Vector&       F,
 						  math_Matrix&       D)
 {
-  Standard_Boolean Error;
-
-  Error = Value(X, F);  
-  Error = Derivatives(X, D);
+  Value(X, F);  
+  Derivatives(X, D);
  
   return Standard_True;
 }
@@ -462,9 +460,7 @@ Blend_DecrochStatus BRepBlend_RstRstConstRad::Decroch(const math_Vector& Sol,
   // Normal to the reference surface 2
   NRst2     = d1u.Crossed(d1v);
 
-  Standard_Boolean IsCenter;
-
-  IsCenter = CenterCircleRst1Rst2(PtTmp1, PtTmp2, nplan, Center, NotUsed);
+  CenterCircleRst1Rst2(PtTmp1, PtTmp2, nplan, Center, NotUsed);
 
   norm      = nplan.Crossed(NRst1).Magnitude();
   unsurnorm = 1. / norm;
@@ -603,9 +599,7 @@ void BRepBlend_RstRstConstRad::Section(const Standard_Real Param,
   ptrst1   = cons1.Value(U);
   ptrst2   = cons2.Value(V);
 
-  Standard_Boolean IsCenter;
-
-  IsCenter = CenterCircleRst1Rst2(ptrst1, ptrst2, np, Center, NotUsed);
+  CenterCircleRst1Rst2(ptrst1, ptrst2, np, Center, NotUsed);
 
   C.SetRadius(Abs(ray));
   ns = gp_Vec(Center, ptrst1).Normalized(); 
@@ -778,8 +772,7 @@ void BRepBlend_RstRstConstRad::Section(const Blend_Point& P,
   }
 
   // Calculate the center of the circle
-  Standard_Boolean IsCenter;
-  IsCenter = CenterCircleRst1Rst2(ptrst1, ptrst2, nplan, Center, NotUsed);
+  CenterCircleRst1Rst2(ptrst1, ptrst2, nplan, Center, NotUsed);
 
   // normals to the section with points 
   ns  = gp_Vec(Center, ptrst1).Normalized();  

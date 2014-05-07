@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -938,7 +938,6 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
 {
 
 
-  Standard_Boolean ok;
   Standard_Integer i,j,Nbedges;
   Standard_Real first1,last1,first2,last2, tolint;
   gp_Pnt2d pfirst1,plast1,pfirst2,plast2;
@@ -950,7 +949,6 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
   TopTools_IndexedMapOfOrientedShape EMap;
   TopTools_MapOfOrientedShape auxmape;
   //
-  ok=Standard_True;
   //-- check with proper tolerances if there is no 
   //-- point in the tolerance of a vertex.
   tolint = 1.e-10; 
@@ -1057,7 +1055,6 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
 	    }
 	  }
 	  if(localok==Standard_False) { 
-	    ok=0;
 	    retE1=E1;
 	    if (Update) {
 	      BRepCheck::Add(myMap(myShape),BRepCheck_SelfIntersectingWire);
@@ -1223,23 +1220,20 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
 	      cout << "\n--- BRepCheck Wire: AutoIntersection Phase1 -> Erreur \n" <<endl;
 	      
 #endif
-	      Standard_Boolean yaunvtxproche;
 	      Standard_Real distauvtxleplusproche,VParaOnEdge1,VParaOnEdge2;
 	      gp_Pnt VertexLePlusProche;
 	      //
-	      yaunvtxproche=Standard_False;
 	      VParaOnEdge1 =0.;
 	      VParaOnEdge2 =0.;
 	      distauvtxleplusproche=RealLast();
 	      //Find the nearest common vertex
 	      itl.Initialize( CommonVertices );
 	      for (; itl.More(); itl.Next())   {
-		Standard_Real tolvtt, disptvtx;
+		Standard_Real disptvtx;
 		gp_Pnt p3dvtt;
 		//
 		const TopoDS_Vertex& vtt = TopoDS::Vertex(itl.Value());
 		p3dvtt = BRep_Tool::Pnt(vtt);
-		tolvtt = BRep_Tool::Tolerance(vtt);
 		disptvtx = P3d.Distance(p3dvtt);
 		if (disptvtx < distauvtxleplusproche)	{
 		  VertexLePlusProche = p3dvtt; 
@@ -1346,7 +1340,6 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
 	    } //end of if (localok == Standard_False && !CommonVertices.IsEmpty())
 	    //
 	    if(localok==Standard_False)	  { 
-	      ok=0;
 	      retE1=E1;
 	      retE2=E2;
 	      if (Update) {
@@ -1481,7 +1474,6 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
 	    } //end of for (k = 0; k < 2; k++)
 	    //
 	    if(localok==Standard_False)	  { 
-	      ok=0;
 	      retE1=E1;
 	      retE2=E2;
 	      if (Update) {

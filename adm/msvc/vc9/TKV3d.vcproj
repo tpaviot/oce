@@ -1360,6 +1360,9 @@
 					RelativePath="..\..\..\src\AIS\AIS_Circle.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\AIS\AIS_ColoredShape.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\AIS\AIS_ConcentricRelation.cxx">
 				</File>
 				<File
@@ -1591,9 +1594,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\StdSelect\StdSelect.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\StdSelect\StdSelect_BRepHilighter.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\StdSelect\StdSelect_BRepOwner.cxx">

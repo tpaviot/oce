@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -88,7 +88,6 @@ void TopOpeBRepBuild_Builder::BuildEdges(const Handle(TopOpeBRepDS_HDataStructur
   TopOpeBRepDS_DataStructure& BDS = HDS->ChangeDS();
 
   myNewEdges.Clear();
-  Standard_Integer nc = BDS.NbCurves();
   TopOpeBRepDS_CurveExplorer cex;
 
   Standard_Integer ick = 0;
@@ -106,7 +105,6 @@ void TopOpeBRepBuild_Builder::BuildEdges(const Handle(TopOpeBRepDS_HDataStructur
     BDS.ChangeNbCurves(ick-1);
   }
 
-  nc = BDS.NbCurves();
   for (cex.Init(BDS,Standard_False); cex.More(); cex.Next()) {
     Standard_Integer ic = cex.Index();
     Standard_Integer im = cex.Curve(ic).Mother();

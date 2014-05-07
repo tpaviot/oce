@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -35,14 +35,9 @@
 
 #ifdef DRAW
 #include <DBRep.hxx>
-#endif
-#ifdef DEB
 Standard_Integer NbF = 1;
 static Standard_Boolean Affich = Standard_False;
-//POP pour NT
-//char name[100];
 #endif
-
 
 BRepOffset_MakeLoops::BRepOffset_MakeLoops()
 {
@@ -444,9 +439,8 @@ void BRepOffset_MakeLoops::BuildFaces(const TopTools_ListOfShape&   LF,
       }
       if (ToRebuild) {
 #ifdef DRAW
-//POP for NT
 	if ( Affich) {
-	  char* name = new char[100];
+	  char name[256];
 	  sprintf(name,"CF_%d",NbF++);
 	  DBRep::Set(name,F);
 	}

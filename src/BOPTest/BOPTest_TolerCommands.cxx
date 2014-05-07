@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -213,7 +213,7 @@ void ReduceVertexTolerance (const TopoDS_Shape& aS)
 void ProcessEdge(const TopoDS_Edge& aE, const Standard_Real aTolTreshold)
 {
   Standard_Integer i, aNb=23;
-  Standard_Real aTolE, aD2, aTolMax2, aT1, aT2, aT, dT;
+  Standard_Real aD2, aTolMax2, aT1, aT2, aT, dT;
   gp_Pnt aPC3D, aP3D;
   gp_Pnt2d aPC2D;
 
@@ -277,7 +277,6 @@ void ProcessEdge(const TopoDS_Edge& aE, const Standard_Real aTolTreshold)
     return;
   }
   //
-  aTolE =BRep_Tool::Tolerance(aE);
   //
   aTolMax2=sqrt(aTolMax2); 
   
@@ -296,7 +295,7 @@ void ProcessVertex(const TopoDS_Vertex& aV,
 		   const TopTools_ListOfShape& aLE,
 		   const TopTools_ListOfShape& aLF)
 {
-  Standard_Real aTol, aTol2, aD2, aTolMax2, aTolE, aParam;
+  Standard_Real aTol, aD2, aTolMax2, aTolE, aParam;
   gp_Pnt aPC3D;
   gp_Pnt2d aPC2D;
   TopAbs_Orientation anOrV;
@@ -312,7 +311,6 @@ void ProcessVertex(const TopoDS_Vertex& aV,
   Handle(BRep_TVertex)& TV = *((Handle(BRep_TVertex)*) &aV.TShape());
   const gp_Pnt& aPV3D = TV->Pnt();
   aTol =BRep_Tool::Tolerance(aV);
-  aTol2=aTol*aTol;
   //
   anIt.Initialize(aLE);
   for (; anIt.More(); anIt.Next()) {

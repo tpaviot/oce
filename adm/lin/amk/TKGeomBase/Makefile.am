@@ -390,6 +390,7 @@ libTKGeomBase_la_SOURCES = \
 @top_srcdir@/src/GeomTools/GeomTools.cxx \
 @top_srcdir@/src/GeomTools/GeomTools_Curve2dSet.cxx \
 @top_srcdir@/src/GeomTools/GeomTools_CurveSet.cxx \
+@top_srcdir@/src/GeomTools/GeomTools_Debug.cxx \
 @top_srcdir@/src/GeomTools/GeomTools_SurfaceSet.cxx \
 @top_srcdir@/src/GeomTools/GeomTools_UndefinedTypeHandler.cxx \
 @top_srcdir@/src/Hermit/Hermit.cxx \

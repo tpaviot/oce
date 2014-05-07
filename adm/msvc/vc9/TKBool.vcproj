@@ -1447,6 +1447,9 @@
 					RelativePath="..\..\..\drv\BRepFill\BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape_0.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\drv\BRepFill\BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape_0.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\drv\BRepFill\BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfPnt_0.cxx">
 				</File>
 				<File
@@ -1465,6 +1468,9 @@
 					RelativePath="..\..\..\drv\BRepFill\BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape_0.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\drv\BRepFill\BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape_0.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\drv\BRepFill\BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt_0.cxx">
 				</File>
 				<File
@@ -1481,6 +1487,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\BRepFill\BRepFill_DataMapOfShapeDataMapOfShapeListOfShape_0.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\drv\BRepFill\BRepFill_DataMapOfShapeHArray2OfShape_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\BRepFill\BRepFill_DataMapOfShapeSequenceOfPnt_0.cxx">

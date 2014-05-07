@@ -2,8 +2,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -3434,8 +3434,6 @@ void IFSelect_WorkSession::DumpModel
     if (level == 5 || level ==  8) mode = IFSelect_CountByItem;
     if (level == 6 || level ==  9) mode = IFSelect_ListByItem;
     if (level == 7 || level == 10) mode = IFSelect_EntitiesByItem;
-    Standard_Boolean failsonly = Standard_False;
-    if (level < 8 && level != 4) failsonly = Standard_True;
     PrintCheckList (ModelCheckList(),Standard_False, mode);
   } else {
     if (level == 3) S << "        ********  Check Model (Fails)  ********"<<endl;

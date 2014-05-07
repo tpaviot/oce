@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -406,8 +406,7 @@ void MAT2d_Tool2d::TrimBisec (      Bisector_Bisec&  B1,
   
   //gp_Vec2d             Tan1,Tan2;
   gp_Pnt2d             Ori; //PEdge;
-  Standard_Integer     IPrec,INext;
-  IPrec = (IndexEdge == 1)  ? theCircuit->NumberOfItems() : (IndexEdge - 1);
+  Standard_Integer     INext;
   INext = (IndexEdge == theCircuit->NumberOfItems()) ? 1  : (IndexEdge + 1);
   
   Handle(Standard_Type) EdgeType = theCircuit->Value(IndexEdge)->DynamicType();
@@ -535,7 +534,6 @@ Standard_Boolean MAT2d_Tool2d::Projection (const Standard_Integer IEdge   ,
   Handle(Standard_Type)       Type   = Elt->DynamicType();	
   Handle(Geom2d_TrimmedCurve) Curve; 
   Standard_Integer            INext;   
-  Standard_Real               ParameterOnC;
   Standard_Real               Eps = MAT2d_TOLCONF;//*10.;
 
   if (Type == STANDARD_TYPE(Geom2d_CartesianPoint)) {	
@@ -586,7 +584,6 @@ Standard_Boolean MAT2d_Tool2d::Projection (const Standard_Integer IEdge   ,
       if (Extremas.NbExt() == 0 ) return Standard_False; // Pas de solution!
       for (Standard_Integer i = 1; i <= Extremas.NbExt(); i++) {
 	if (Extremas.SquareDistance(i) < Distance * Distance) {
-	  ParameterOnC  = Extremas.Point(i).Parameter();
 	  Distance      = sqrt (Extremas.SquareDistance(i));
 	}
       }
