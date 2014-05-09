@@ -259,7 +259,9 @@ void BRepMesh_FastDiscret::Perform(const TopoDS_Shape& theShape)
   #else
     // alternative parallelization not yet available
     int i, n = aFaces.size();
+#ifdef _OPENMP
 #pragma omp parallel for private(i)
+#endif
     for (i = 0; i < n; ++i)
       Process (aFaces[i]);
   #endif

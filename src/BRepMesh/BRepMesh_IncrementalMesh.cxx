@@ -260,7 +260,9 @@ void BRepMesh_IncrementalMesh::Update(const TopoDS_Shape& S)
     tbb::parallel_for_each (aFaces.begin(), aFaces.end(), *myMesh.operator->());
   #else
     int i, n = aFaces.size();
+#ifdef _OPENMP
 #pragma omp parallel for private(i)
+#endif
     for (i = 0; i < n; ++i)
       myMesh->Process (aFaces[i]);
   #endif
