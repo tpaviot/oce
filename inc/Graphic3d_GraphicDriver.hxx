@@ -118,6 +118,9 @@
 #ifndef _Graphic3d_SortType_HeaderFile
 #include <Graphic3d_SortType.hxx>
 #endif
+#ifndef _Graphic3d_ZLayerSettings_HeaderFile
+#include <Graphic3d_ZLayerSettings.hxx>
+#endif
 #ifndef _Graphic3d_CLight_HeaderFile
 #include <Graphic3d_CLight.hxx>
 #endif
@@ -414,6 +417,8 @@ public:
   //! Get Z layer ID of structure. If the structure doesn't <br>
 //! exists in graphic driver, the method returns -1. <br>
   Standard_EXPORT   virtual  Standard_Integer GetZLayer(const Graphic3d_CStructure& theCStructure) const = 0;
+  //!  Sets the settings for a single Z layer of specified view. <br>
+  Standard_EXPORT   virtual  void SetZLayerSettings(const Graphic3d_CView& theCView,const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings theSettings)  = 0;
   
   Standard_EXPORT     void PrintBoolean(const Standard_CString AComment,const Standard_Boolean AValue) const;
   

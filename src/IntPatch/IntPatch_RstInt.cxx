@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -445,7 +445,8 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 				       const Handle(Adaptor3d_TopolTool)& Domain,
 				       const Handle(Adaptor3d_HSurface)& OtherSurf,
 				       const Standard_Boolean OnFirst,
-				       const Standard_Real Tol )
+				       const Standard_Real Tol,
+               const Standard_Boolean hasBeenAdded)
  {
 
 // Domain est le domaine de restriction de la surface Surf.
@@ -1229,7 +1230,7 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 */
 
     wlin->SetPeriod(pu1,pv1,pu2,pv2);
-    wlin->ComputeVertexParameters(Tol);
+    wlin->ComputeVertexParameters(Tol, hasBeenAdded);
   }
   else {
 #ifdef DEB

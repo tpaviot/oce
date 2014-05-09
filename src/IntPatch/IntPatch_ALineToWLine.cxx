@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -851,6 +851,9 @@ static
   case GeomAbs_Sphere:
     pu1=M_PI+M_PI;
     break;
+  case GeomAbs_Torus:
+    pu1=pv1=M_PI+M_PI;
+    break;
   default:
     break;
   }
@@ -859,6 +862,9 @@ static
   case GeomAbs_Cone:
   case GeomAbs_Sphere:
     pu2=M_PI+M_PI;
+    break;
+  case GeomAbs_Torus:
+    pu2=pv2=M_PI+M_PI;
     break;
   default:
     break;

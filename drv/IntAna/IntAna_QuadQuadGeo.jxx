@@ -19,6 +19,9 @@
 #ifndef _gp_Cone_HeaderFile
 #include <gp_Cone.hxx>
 #endif
+#ifndef _gp_Torus_HeaderFile
+#include <gp_Torus.hxx>
+#endif
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
 #endif

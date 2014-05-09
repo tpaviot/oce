@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -308,7 +308,7 @@ TopAbs_ShapeEnum TNaming_Name::ShapeType() const
 }
 
 //=======================================================================
-//function : Append
+//function : Paste
 //purpose  : 
 //=======================================================================
 
@@ -317,7 +317,8 @@ void TNaming_Name::Paste (TNaming_Name& into,
 {
   into.myType      = myType;
   into.myShapeType = myShapeType;
-  into.myShape     = myShape; 
+  into.myShape     = myShape;
+  into.myIndex     = myIndex;
   into.myArgs.Clear();
 //  into.myOrientation = myOrientation;
   Handle(TNaming_NamedShape) NS;

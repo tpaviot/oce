@@ -3,8 +3,8 @@
 --
 -- This file is part of Open CASCADE Technology software library.
 --
--- This library is free software; you can redistribute it and / or modify it
--- under the terms of the GNU Lesser General Public version 2.1 as published
+-- This library is free software; you can redistribute it and/or modify it under
+-- the terms of the GNU Lesser General Public License version 2.1 as published
 -- by the Free Software Foundation, with special exception defined in the file
 -- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 -- distribution for complete text of the license and disclaimer of any warranty.
@@ -91,9 +91,9 @@ is
    ---Purpose: Specifies the type of files.
 
  private enumeration WhoAmI is  WDirectory, WDirectoryIterator,
-             WEnvironment, WFile, WFileNode, WFileIterator, WMailBox,
-             WPath, WProcess, WProtection, WSemaphore, WHost, WDisk,
-             WChronometer, WSharedMemory, WTimer, WPackage, WPrinter,
+             WEnvironment, WFile, WFileNode, WFileIterator,
+             WPath, WProcess, WProtection, WHost, WDisk,
+             WChronometer, WTimer, WPackage, WPrinter,
              WEnvironmentIterator;
    ---Purpose: Allows great accuracy for error management.
    --          This is private.
@@ -150,17 +150,8 @@ is
          class Process;
              ---Purpose: Process specific oriented tools
 
-         class SharedMemory;
-             ---Purpose: Manages shared memory.
-
-         class Semaphore;
-             ---Purpose: Manages semaphores.
-
 --         class Mutex is alias Mutex from Standard;
              ---Purpose: Mutex object to synchronize threads within one process
-
-         class MailBox;
-             ---Purpose: Manages asynchronous mail boxes.
 
          class SharedLibrary;
              ---Purpose: Provides tools to load a shared library

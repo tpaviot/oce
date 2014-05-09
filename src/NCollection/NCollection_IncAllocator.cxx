@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -90,7 +90,6 @@ Standard_EXPORT void IncAllocator_SetDebugFlag(const Standard_Boolean theDebug)
  * numbering of allocators.
  */
 //=======================================================================
-#if defined(_DEBUG) && defined(DEB)
 static Standard_Size CurrentID = 0;
 static Standard_Size CATCH_ID = 0;
 
@@ -98,6 +97,7 @@ static Standard_Size CATCH_ID = 0;
 //function : Debug_Create
 //purpose  : Store the allocator address in the internal maps
 //=======================================================================
+
 static void Debug_Create(Standard_Address theAlloc)
 {
   static Standard_Mutex aMutex;
@@ -113,6 +113,7 @@ static void Debug_Create(Standard_Address theAlloc)
 //function : Debug_Destroy
 //purpose  : Forget the allocator address from the internal maps
 //=======================================================================
+
 static void Debug_Destroy(Standard_Address theAlloc)
 {
   static Standard_Mutex aMutex;
@@ -170,7 +171,7 @@ Standard_EXPORT void IncAllocator_PrintAlive()
            << '\n';
   aFileOut.close();
 }
-#endif
+
 //=======================================================================
 //function : NCollection_IncAllocator()
 //purpose  : Constructor

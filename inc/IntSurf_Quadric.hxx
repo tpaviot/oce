@@ -43,6 +43,9 @@
 #ifndef _gp_Cone_HeaderFile
 #include <gp_Cone.hxx>
 #endif
+#ifndef _gp_Torus_HeaderFile
+#include <gp_Torus.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -50,6 +53,7 @@ class gp_Pln;
 class gp_Cylinder;
 class gp_Sphere;
 class gp_Cone;
+class gp_Torus;
 class gp_Pnt;
 class gp_Vec;
 
@@ -71,6 +75,8 @@ public:
   
   Standard_EXPORT   IntSurf_Quadric(const gp_Cone& C);
   
+  Standard_EXPORT   IntSurf_Quadric(const gp_Torus& T);
+  
   Standard_EXPORT     void SetValue(const gp_Pln& P) ;
   
   Standard_EXPORT     void SetValue(const gp_Cylinder& C) ;
@@ -78,6 +84,8 @@ public:
   Standard_EXPORT     void SetValue(const gp_Sphere& S) ;
   
   Standard_EXPORT     void SetValue(const gp_Cone& C) ;
+  
+  Standard_EXPORT     void SetValue(const gp_Torus& T) ;
   
   Standard_EXPORT     Standard_Real Distance(const gp_Pnt& P) const;
   
@@ -94,6 +102,8 @@ public:
         gp_Cylinder Cylinder() const;
   
         gp_Cone Cone() const;
+  
+        gp_Torus Torus() const;
   
   Standard_EXPORT     gp_Pnt Value(const Standard_Real U,const Standard_Real V) const;
   

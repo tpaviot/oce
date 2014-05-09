@@ -35,6 +35,9 @@
 #ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
 #endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
  
 
 #define ThePSurface Handle_Adaptor3d_HSurface

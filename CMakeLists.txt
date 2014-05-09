@@ -511,14 +511,10 @@ if(OCE_DRAW)
 	file(GLOB DRAWRESOURCES_TCL_FILES RELATIVE ${OCE_SOURCE_DIR} src/DrawResources/*.tcl)
 	set(INSTALL_RESOURCE_FILES ${INSTALL_RESOURCE_FILES}
 		${DRAWRESOURCES_TCL_FILES}
-		src/DrawResources/DRAW.doc
-		src/DrawResources/DRAW.info
 		src/DrawResources/DrawDefault
 		src/DrawResources/DrawPlugin
-		src/DrawResources/idoc
 		src/DrawResources/lamp.ico
-		src/DrawResources/mkdoc
-		src/DrawResources/tdoc )
+		src/TObj/TObj.msg )
 endif(OCE_DRAW)
 
 if (OCE_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)

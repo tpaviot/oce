@@ -58,6 +58,7 @@ class TopoDS_Shape;
 class BOPInt_Context;
 class TopoDS_Solid;
 class IntTools_Range;
+class TopoDS_Shell;
 
 
 
@@ -263,6 +264,10 @@ public:
   
 //! Retutns dimension of the shape <theS>. <br>
   Standard_EXPORT   static  Standard_Integer Dimension(const TopoDS_Shape& theS) ;
+  //! Returns true if the  shell <theShell> is open <br>
+  Standard_EXPORT   static  Standard_Boolean IsOpenShell(const TopoDS_Shell& theShell) ;
+  //! Returns true if the solid <theSolid> is inverted <br>
+  Standard_EXPORT   static  Standard_Boolean IsInvertedSolid(const TopoDS_Solid& theSolid) ;
 
 
 

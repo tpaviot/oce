@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -1187,7 +1187,16 @@ void CDM_Document::LoadResources()
     theResourceName+="StoragePlugin";
     TCollection_ExtendedString thePluginId;
     FIND(theDocumentResource,theResourceName,myStoragePluginWasFound,thePluginId);
-    if(myStoragePluginWasFound) myStoragePlugin=UTL::GUID(thePluginId);
+    if(myStoragePluginWasFound)
+    {
+      // Check whether the GUID (as a string) contains blanks before and after the string.
+      // If it is so, remove them.
+      if (thePluginId.Search(' ') != -1)
+        thePluginId.RemoveAll(' ');
+      
+      // Convert to GUID.
+      myStoragePlugin=UTL::GUID(thePluginId);
+    }
     myResourcesAreLoaded=Standard_True;
     
 //    cout << "resource Loaded: " << "Format: " << theFormat << ", FileExtension:" << myFileExtension << ", DataType:" <<  myDataType << ", VersionDataType:" << myVersionDataType << ", Description:" << myDescription << ", Domain:" << myDomain << endl;

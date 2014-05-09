@@ -1,3 +1,5 @@
+puts "TODO ?OCC24472 ALL: Error : Result shape is WRONG because it must contains 70 edges instead of 71"
+puts "TODO ?OCC24472 ALL: Error : Result shape is WRONG because it must contains 139 shapes instead of 140"
 puts "TODO ?OCC23753 ALL: Process killed by CPU limit"
 puts "TODO ?OCC23753 ALL: TEST INCOMPLETE"
 
@@ -10,7 +12,6 @@ puts ""
 #######################################################################
 
 cpulimit 1000
-#cpulimit 4500
 set BugNumber OCC19793
 
 puts "Load first shape ..."

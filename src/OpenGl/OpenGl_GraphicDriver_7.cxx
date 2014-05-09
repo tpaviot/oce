@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -540,9 +540,7 @@ void OpenGl_GraphicDriver::Transparency (const Graphic3d_CView& ACView, const St
 
 void OpenGl_GraphicDriver::Update (const Graphic3d_CView& ACView, const Aspect_CLayer2d& ACUnderLayer, const Aspect_CLayer2d& ACOverLayer)
 {
-  const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
-  if (aCView)
-    aCView->WS->Update(ACView,ACUnderLayer,ACOverLayer);
+  Redraw (ACView, ACUnderLayer, ACOverLayer);
 }
 
 Standard_Boolean OpenGl_GraphicDriver::View (Graphic3d_CView& theCView)
@@ -618,11 +616,23 @@ void OpenGl_GraphicDriver::AddZLayer (const Graphic3d_CView& theCView,
 //function : RemoveZLayer
 //purpose  :
 //=======================================================================
-
 void OpenGl_GraphicDriver::RemoveZLayer (const Graphic3d_CView& theCView,
                                          const Standard_Integer theLayerId)
 {
   const OpenGl_CView* aCView = (const OpenGl_CView *)theCView.ptrView;
   if (aCView)
     aCView->View->RemoveZLayer (theLayerId);
+}
+
+//=======================================================================
+//function : SetZLayerSettings
+//purpose  :
+//=======================================================================
+Standard_EXPORT void OpenGl_GraphicDriver::SetZLayerSettings (const Graphic3d_CView& theCView,
+                                                              const Standard_Integer theLayerId,
+                                                              const Graphic3d_ZLayerSettings theSettings)
+{
+  const OpenGl_CView* aCView = (const OpenGl_CView* )theCView.ptrView;
+  if (aCView)
+    aCView->View->SetZLayerSettings (theLayerId, theSettings);
 }

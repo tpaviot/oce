@@ -220,6 +220,9 @@ public:
 //! Returns the type of the predefined material of rank <aRank> <br>
 //!  Trigger: when <aRank> is < 1 or > NumberOfMaterials. <br>
   Standard_EXPORT   static  Graphic3d_TypeOfMaterial MaterialType(const Standard_Integer aRank) ;
+  
+//! Returns the material for specified name or Graphic3d_NOM_DEFAULT if name is unknown. <br>
+  Standard_EXPORT   static  Graphic3d_NameOfMaterial MaterialFromName(const Standard_CString theName) ;
 
 
 

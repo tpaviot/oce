@@ -47,11 +47,12 @@ public:
   Standard_EXPORT   static  Standard_Address Allocate(const Standard_Size aSize) ;
   //!  Deallocates memory blocks <br>
 //!           aStorage - previously allocated memory block to be freed <br>
-  Standard_EXPORT   static  void Free(Standard_Address& aStorage) ;
+  Standard_EXPORT   static  void Free(const Standard_Address aStorage) ;
+template <typename T> static inline void Free (T*& thePtr) { Free ((void*)thePtr); thePtr = 0; }
   //!  Reallocates memory blocks <br>
 //!           aStorage - previously allocated memory block <br>
 //!           aNewSize - new size in bytes <br>
-  Standard_EXPORT   static  Standard_Address Reallocate(Standard_Address& aStorage,const Standard_Size aNewSize) ;
+  Standard_EXPORT   static  Standard_Address Reallocate(const Standard_Address aStorage,const Standard_Size aNewSize) ;
   //!  Deallocates the storage retained on the free list <br>
 //!           and clears the list. <br>
 //!           Returns non-zero if some memory has been actually freed. <br>

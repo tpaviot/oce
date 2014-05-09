@@ -4,7 +4,7 @@ Travis-CI Build Status :
 oce stands for *o*pencascade *c*ommunity *e*dition.
 
 This project aims at gathering patches/changes/improvements from the OCC
-community over the latest release (currently OCCT 6.7.0).
+community over the latest release (currently OCCT 6.7.1).
 
 We use the following online resources:
   * Sources

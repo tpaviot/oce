@@ -68,7 +68,6 @@ class gp_Elips;
 class Prs3d_Presentation;
 class AIS_Drawer;
 class AIS_Triangulation;
-class AIS_TexturedShape;
 class AIS_Drawer;
 class AIS_InteractiveContext;
 class AIS_GraphicTool;
@@ -362,7 +361,6 @@ private:
 
 
 friend class AIS_Triangulation;
-friend class AIS_TexturedShape;
 friend class AIS_Drawer;
 friend class AIS_InteractiveContext;
 friend class AIS_GraphicTool;

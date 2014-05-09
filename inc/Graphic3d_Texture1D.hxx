@@ -25,6 +25,9 @@
 #ifndef _Graphic3d_TypeOfTexture_HeaderFile
 #include <Graphic3d_TypeOfTexture.hxx>
 #endif
+#ifndef _Image_PixMap_Handle_HeaderFile
+#include <Image_PixMap_Handle.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -59,6 +62,8 @@ protected:
   Standard_EXPORT   Graphic3d_Texture1D(const TCollection_AsciiString& theFileName,const Graphic3d_TypeOfTexture theType);
   
   Standard_EXPORT   Graphic3d_Texture1D(const Graphic3d_NameOfTexture1D theName,const Graphic3d_TypeOfTexture theType);
+  
+  Standard_EXPORT   Graphic3d_Texture1D(const Image_PixMap_Handle& thePixMap,const Graphic3d_TypeOfTexture theType);
 
 
 

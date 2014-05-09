@@ -25,9 +25,9 @@ set nom 0
        set err1 [lindex $che1 [expr [llength $che1] - 2]]
 
           if { $err != "curve" && $err1 != "3d"} {
-          	break
+            break
               } else {
-              set nom [expr $nom + 1]
+                set nom [expr $nom + 1]
               }
     incr j}
 if { $nom == 0} {

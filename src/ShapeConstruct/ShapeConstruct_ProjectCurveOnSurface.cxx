@@ -2,8 +2,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -981,35 +981,6 @@ Standard_Boolean ShapeConstruct_ProjectCurveOnSurface::PerformAdvanced (Handle(G
     c2d = new Geom2d_Line(P0, aDir2d);
   }
 
-  if(c2d.IsNull()) {
-    // try create line using pnt2d
-    Standard_Boolean IsLine = Standard_True;
-    Standard_Integer NbPnt2d = pnt2d.Length();
-    if(NbPnt2d >1) {
-      Standard_Real dist = pnt2d(1).SquareDistance(pnt2d(NbPnt2d));
-      Standard_Real dPreci = Precision::PConfusion()*Precision::PConfusion();
-      if(dist >= dPreci) {
-        gp_Vec2d avec (pnt2d(1),pnt2d(NbPnt2d));
-        gp_Dir2d adir (avec);
-        gp_Lin2d alin (pnt2d(1),adir);
-        for(i = 2; i < NbPnt2d; i++) {
-          Standard_Real devia = alin.SquareDistance(pnt2d(i));
-          Standard_Real dist2 = pnt2d(1).SquareDistance(pnt2d(i));
-          Standard_Real step = pnt2d(1).Distance(pnt2d(NbPnt2d))/(NbPnt2d-1);
-          Standard_Real ddist = Abs(pnt2d(1).Distance(pnt2d(i))-step*(i-1));
-          if( devia>dPreci || (dist2-dist)>dPreci || ddist>1.e-3*step ) {
-            IsLine = Standard_False;
-            i = NbPnt2d;
-          }
-        }
-        if(IsLine) {
-          Handle(Geom2d_Line) g2l = new Geom2d_Line(alin);
-          c2d = new Geom2d_TrimmedCurve(g2l,0,pnt2d(1).Distance(pnt2d(NbPnt2d)));
-        }
-      }  
-    }
-  }
-  
   return isDone;
 }
 
@@ -1408,7 +1379,7 @@ Handle(Geom_Curve) ShapeConstruct_ProjectCurveOnSurface::InterpolateCurve3d(cons
     Standard_Boolean PtEQext1 = Standard_False;
     Standard_Boolean PtEQext2 = Standard_False;
 
-    Standard_Real currd2[2], tp[2];
+    Standard_Real currd2[2], tp[2] = {0, 0};
     Standard_Integer mp[2];
     
     for (Standard_Integer i=0; i<2; i++) {

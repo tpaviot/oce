@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -306,6 +306,11 @@ public:
   //! Get Z layer ID of the structure. If the structure doesn't exists in <br>
   //! graphic driver, the method returns -1. <br>
   Standard_EXPORT Standard_Integer GetZLayer(const Graphic3d_CStructure& theCStructure) const;
+
+  //! Sets the settings for a single Z layer of specified view.
+  Standard_EXPORT void SetZLayerSettings (const Graphic3d_CView& theCView,
+                                          const Standard_Integer theLayerId,
+                                          const Graphic3d_ZLayerSettings theSettings);
 
 public:
 

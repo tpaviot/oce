@@ -174,7 +174,7 @@ public:
 //!           to the object to display before computation  !!! <br>
   Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
   
-  Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
+  Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& theSelection,const Standard_Integer theMode) ;
   
   Standard_EXPORT     void SetColor(const Quantity_NameOfColor aColor) ;
   

@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -296,21 +296,21 @@ void BOPAlgo_ArgumentAnalyzer::TestTypes()
     }
   }
 }
-
-// ================================================================================
-// function: TestSelfInterferences
-// purpose:
-// ================================================================================
+//=======================================================================
+//function : TestSelfInterferences
+//purpose  : 
+//=======================================================================
 void BOPAlgo_ArgumentAnalyzer::TestSelfInterferences()
 {
-  Standard_Integer ii = 0, j;
+  Standard_Integer ii=0, j;
   Standard_Boolean bSelfInt;
 
   for(ii = 0; ii < 2; ii++) {
     const TopoDS_Shape& aS = (ii == 0) ? myShape1 : myShape2;
 
-    if(aS.IsNull())
+    if(aS.IsNull()) {
       continue;
+    }
 
     Standard_Boolean bIsEmpty = (ii == 0) ? myEmpty1 : myEmpty2;
     if (bIsEmpty) {
@@ -319,6 +319,7 @@ void BOPAlgo_ArgumentAnalyzer::TestSelfInterferences()
 
     BOPAlgo_CheckerSI aChecker;
     BOPCol_ListOfShape anArgs;
+    //
     anArgs.Append(aS);
     aChecker.SetArguments(anArgs);
     //
@@ -332,21 +333,64 @@ void BOPAlgo_ArgumentAnalyzer::TestSelfInterferences()
     BOPDS_VectorOfInterfVF& aVFs=theDS->InterfVF();
     BOPDS_VectorOfInterfEF& aEFs=theDS->InterfEF();
     BOPDS_VectorOfInterfFF& aFFs=theDS->InterfFF();
+    BOPDS_VectorOfInterfVZ& aVZs=theDS->InterfVZ();
+    BOPDS_VectorOfInterfEZ& aEZs=theDS->InterfEZ();
+    BOPDS_VectorOfInterfFZ& aFZs=theDS->InterfFZ();
+    BOPDS_VectorOfInterfZZ& aZZs=theDS->InterfZZ();
     //
-    Standard_Integer aNb[6] = {aVVs.Extent(), aVEs.Extent(), aEEs.Extent(), 
-                               aVFs.Extent(), aEFs.Extent(), aFFs.Extent()};
+    Standard_Integer aNbTypeInt, aTypeInt, i, nI1, nI2;
+    Standard_Integer aNb[] = {
+      aVVs.Extent(), aVEs.Extent(), aEEs.Extent(), 
+      aVFs.Extent(), aEFs.Extent(), aFFs.Extent(),
+      aVZs.Extent(), aEZs.Extent(), aFZs.Extent(), 
+      aZZs.Extent()
+    };
     //
-    for (Standard_Integer aTypeInt = 0; aTypeInt < 6; ++aTypeInt) {
-      for (Standard_Integer i = 0; i < aNb[aTypeInt]; ++i) {
-        BOPDS_Interf* aInt = (aTypeInt==0) ? (BOPDS_Interf*)(&aVVs(i)) : 
-          ((aTypeInt==1) ? (BOPDS_Interf*)(&aVEs(i)) :
-           ((aTypeInt==2) ? (BOPDS_Interf*)(&aEEs(i)) : 
-            ((aTypeInt==3) ? (BOPDS_Interf*)(&aVFs(i)) :
-             ((aTypeInt==4) ? (BOPDS_Interf*)(&aEFs(i)) : (BOPDS_Interf*)(&aFFs(i))))));
+    BOPDS_Interf* aInt=NULL;
+    //
+    aNbTypeInt=BOPDS_DS::NbInterfTypes();
+    for (aTypeInt = 0; aTypeInt < aNbTypeInt; ++aTypeInt) {
+      for (i = 0; i < aNb[aTypeInt]; ++i) {
+        switch(aTypeInt) {
+        case 0:
+          aInt=(BOPDS_Interf*)(&aVVs(i));
+          break;
+        case 1:
+          aInt=(BOPDS_Interf*)(&aVEs(i));
+          break;
+        case 2:
+          aInt=(BOPDS_Interf*)(&aEEs(i));
+          break;
+        case 3:
+          aInt=(BOPDS_Interf*)(&aVFs(i));
+          break;
+        case 4:
+          aInt=(BOPDS_Interf*)(&aEFs(i));
+          break;
+        case 5:
+          aInt=(BOPDS_Interf*)(&aFFs(i));
+          break;
+        case 6:
+          aInt=(BOPDS_Interf*)(&aVZs(i));
+          break;
+        case 7:
+          aInt=(BOPDS_Interf*)(&aEZs(i));
+          break;
+        case 8:
+          aInt=(BOPDS_Interf*)(&aFZs(i));
+          break;
+        case 9:
+          aInt=(BOPDS_Interf*)(&aZZs(i));
+          break;
+        default:
+          aInt=NULL;
+        }
         //
-        Standard_Integer nI1 = aInt->Index1();
-        Standard_Integer nI2 = aInt->Index2();
+        aInt->Indices(nI1, nI2);
         if (nI1 == nI2) {
+          continue;
+        } 
+        if (theDS->IsNewShape(nI1) || theDS->IsNewShape(nI2)) {
           continue;
         }
         //
@@ -398,6 +442,7 @@ void BOPAlgo_ArgumentAnalyzer::TestSelfInterferences()
         myResult.Append(aResult);
       }
     }
+    //
     if (iErr) {
       BOPAlgo_CheckResult aResult;
       if(ii == 0) {
@@ -412,9 +457,7 @@ void BOPAlgo_ArgumentAnalyzer::TestSelfInterferences()
       myResult.Append(aResult);
     }
   }
-  
 }
-
 // ================================================================================
 // function: TestSmallEdge
 // purpose:
@@ -520,7 +563,6 @@ void BOPAlgo_ArgumentAnalyzer::TestSmallEdge()
     }
   }
 }
-
 // ================================================================================
 // function: TestRebuildFace
 // purpose:
@@ -699,28 +741,12 @@ void BOPAlgo_ArgumentAnalyzer::TestTangent()
         }
       }
       else if(theType == TopAbs_EDGE) {
-        Standard_Integer aDiscretize = 30;
-        Standard_Real    aDeflection = 0.01;
         const TopoDS_Edge& aE1 = *(TopoDS_Edge*)&(aS1);
         const TopoDS_Edge& aE2 = *(TopoDS_Edge*)&(aS2);
-        
-        IntTools_EdgeEdge aEE;
-        aEE.SetEdge1 (aE1);
-        aEE.SetEdge2 (aE2);
-        aEE.SetTolerance1 (BRep_Tool::Tolerance(aE1));
-        aEE.SetTolerance2 (BRep_Tool::Tolerance(aE2));
-        aEE.SetDiscretize (aDiscretize);
-        aEE.SetDeflection (aDeflection);
-        
-        Standard_Real f = 0., l = 0.;
-        BRep_Tool::Range(aE1, f, l);
-        aEE.SetRange1(f, l);
-        
-        BRep_Tool::Range(aE2, f, l);
-        aEE.SetRange2(f, l);
-        
+        //
+        IntTools_EdgeEdge aEE(aE1, aE2);
+        //
         aEE.Perform();
-        
         if (aEE.IsDone()) {
           const IntTools_SequenceOfCommonPrts& aCPrts = aEE.CommonParts();
           Standard_Integer ii = 0;

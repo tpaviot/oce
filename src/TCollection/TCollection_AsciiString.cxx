@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -12,26 +12,18 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#include <cstdio>
-
 #include <TCollection_AsciiString.ixx>
+#include <TCollection_ExtendedString.hxx>
+
 #include <Standard.hxx>
 #include <Standard_NullObject.hxx>
 #include <Standard_OutOfRange.hxx>
 #include <Standard_NegativeValue.hxx>
 #include <Standard_NumericError.hxx>
-#include <Standard_ctype.hxx>
 
-#include <TCollection_ExtendedString.hxx>
-
-// ###### PLACER LE TYPE NON DEFINI strtol (portabilite) ######
-#ifdef WNT
-# include <cstring>
-#else
-extern "C" {
-     long strtol(const char*, char**, int);
-}
-#endif  // WNT
+#include <cstdio>
+#include <cctype>
+#include <cstring>
 
 // Shortcuts to standard allocate and reallocate functions
 static inline Standard_PCharacter Allocate(const Standard_Size aLength)
@@ -990,14 +982,12 @@ Standard_Integer TCollection_AsciiString::Search
   if (size) {
     int k,j;
     int i = 0;
-    Standard_Boolean find = Standard_False; 
-    while ( i < mylength-size+1 && !find) {
+    while ( i < mylength-size+1 ) {
       k = i++;
       j = 0;
       while (j < size && mystring[k++] == swhat[j++])
-        if (j == size) find = Standard_True;
+        if (j == size) return i;
     }
-    if (find)  return i;
   }
   return -1;
 }
@@ -1013,14 +1003,12 @@ Standard_Integer TCollection_AsciiString::SearchFromEnd
   if (size) {
     int k,j;
     int i = mylength-1;
-    Standard_Boolean find = Standard_False; 
-    while ( i >= size-1 && !find) {
+    while ( i >= size-1 ) {
       k = i--;
       j = size-1;
       while (j >= 0 && mystring[k--] == what[j--])
-        if (j == -1) find = Standard_True;
+        if (j == -1) return i-size+3;
     }
-    if (find)  return i-size+3;
   }
   return -1;
 }
@@ -1037,14 +1025,12 @@ Standard_Integer TCollection_AsciiString::SearchFromEnd
     Standard_CString swhat = what.mystring;  
     int k,j;
     int i = mylength-1;
-    Standard_Boolean find = Standard_False; 
-    while ( i >= size-1 && !find) {
+    while ( i >= size-1 ) {
       k = i--;
       j = size-1;
       while (j >= 0 && mystring[k--] == swhat[j--])
-        if (j == -1) find = Standard_True;
+        if (j == -1) return i-size+3;
     }
-    if (find)  return i-size+3;
   }
   return -1;
 }

@@ -108,6 +108,10 @@ public:
   Standard_EXPORT     void SetExtensionSize(const Standard_Real theSize) ;
   //! Returns extension size. <br>
   Standard_EXPORT     Standard_Real ExtensionSize() const;
+  //! Set size for arrow tail (extension without text). <br>
+  Standard_EXPORT     void SetArrowTailSize(const Standard_Real theSize) ;
+  //! Returns arrow tail size. <br>
+  Standard_EXPORT     Standard_Real ArrowTailSize() const;
   //! Sets "sprintf"-syntax format for formatting dimension value labels. <br>
   Standard_EXPORT     void SetValueStringFormat(const TCollection_AsciiString& theFormat) ;
   //! Returns format. <br>
@@ -136,6 +140,7 @@ Prs3d_DimensionArrowOrientation myArrowOrientation;
 Prs3d_DimensionTextHorizontalPosition myTextHPosition;
 Prs3d_DimensionTextVerticalPosition myTextVPosition;
 Standard_Real myExtensionSize;
+Standard_Real myArrowTailSize;
 TCollection_AsciiString myValueStringFormat;
 Standard_Boolean myToDisplayUnits;
 

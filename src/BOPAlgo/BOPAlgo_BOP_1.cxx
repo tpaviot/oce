@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -136,3 +136,45 @@
   //
   myShape=aRC;
 }
+
+//=======================================================================
+//function : Generated
+//purpose  : 
+//=======================================================================
+const TopTools_ListOfShape& BOPAlgo_BOP::Generated(const TopoDS_Shape& theS)
+{
+  myHistShapes.Clear();
+  if (theS.IsNull() || (myOperation != BOPAlgo_SECTION)) {
+    return myHistShapes;
+  }
+  //
+  TopAbs_ShapeEnum aType = theS.ShapeType();
+  if (aType != TopAbs_FACE) {
+    return myHistShapes;
+  }
+  //
+  Standard_Integer nS = myDS->Index(theS);
+  if (nS < 0) {
+    return myHistShapes;
+  }
+  //
+  if (!myDS->HasFaceInfo(nS)) {
+    return myHistShapes;
+  }
+  //
+  //collect section edges of the face theS
+  Standard_Integer i, aNb, nSp;
+  //
+  const BOPDS_FaceInfo& aFI = myDS->FaceInfo(nS);
+  const BOPDS_IndexedMapOfPaveBlock& aMPBSc = aFI.PaveBlocksSc();
+  aNb = aMPBSc.Extent();
+  for (i = 1; i <= aNb; ++i) {
+    const Handle(BOPDS_PaveBlock)& aPB = aMPBSc(i);
+    nSp = aPB->Edge();
+    const TopoDS_Shape& aSp = myDS->Shape(nSp);
+    myHistShapes.Append(aSp);
+  }
+  //
+  return myHistShapes;
+}
+

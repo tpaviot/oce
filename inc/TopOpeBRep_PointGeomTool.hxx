@@ -33,8 +33,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRep_PointGeomTool();
-  
   Standard_EXPORT   static  TopOpeBRepDS_Point MakePoint(const TopOpeBRep_VPointInter& IP) ;
   
   Standard_EXPORT   static  TopOpeBRepDS_Point MakePoint(const TopOpeBRep_Point2d& P2D) ;

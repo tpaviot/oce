@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -135,7 +135,6 @@ class Draw_Viewer {
   __Draw_API void   RepaintAll  () const;
   __Draw_API void   Repaint2D  () const;
   __Draw_API void   Repaint3D  () const;
-  __Draw_API unsigned long GetWindow   (const Standard_Integer id) const; 
   __Draw_API void   DeleteView  (const Standard_Integer id);
   __Draw_API void   Clear       ();
   __Draw_API void   Clear2D     ();

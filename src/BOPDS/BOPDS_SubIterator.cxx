@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -27,8 +27,8 @@
 #include <BOPCol_DataMapOfIntegerInteger.hxx>
 #include <BOPCol_DataMapOfIntegerMapOfInteger.hxx>
 #include <BOPCol_MapOfInteger.hxx>
+#include <BOPCol_BoxBndTree.hxx>
 //
-#include <BOPDS_BoxBndTree.hxx>
 #include <BOPDS_IndexRange.hxx>
 #include <BOPDS_PassKeyBoolean.hxx>
 #include <BOPDS_MapOfPassKeyBoolean.hxx>
@@ -193,8 +193,8 @@
   BOPDS_MapOfPassKeyBoolean aMPKXB(100, aAllocator);
   BOPCol_IndexedDataMapOfShapeBox aMSB(100, aAllocator);
   //
-  BOPDS_BoxBndTreeSelector aSelector;
-  BOPDS_BoxBndTree aBBTree;
+  BOPCol_BoxBndTreeSelector aSelector;
+  BOPCol_BoxBndTree aBBTree;
   NCollection_UBTreeFiller <Standard_Integer, Bnd_Box> aTreeFiller(aBBTree);
   //
   aIt1.Initialize(*mySubSet1);

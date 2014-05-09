@@ -1,10 +1,11 @@
 // Created by: Peter KURNEV
-// Copyright (c) 1999-2014 OPEN CASCADE SAS
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -27,6 +28,8 @@
 #include <BOPCol_IndexedMapOfShape.hxx>
 #include <BOPCol_MapOfShape.hxx>
 #include <BOPCol_IndexedDataMapOfShapeListOfShape.hxx>
+#include <BOPCol_TBB.hxx>
+#include <BOPCol_NCVector.hxx>
 
 #include <BOPTools.hxx>
 
@@ -35,7 +38,7 @@
 //function : 
 //purpose  : 
 //=======================================================================
-  BOPAlgo_WireSplitter::BOPAlgo_WireSplitter()
+BOPAlgo_WireSplitter::BOPAlgo_WireSplitter()
 :
   BOPAlgo_Algo(),
   myWES(NULL),
@@ -46,7 +49,8 @@
 //function : 
 //purpose  : 
 //=======================================================================
-  BOPAlgo_WireSplitter::BOPAlgo_WireSplitter(const Handle(NCollection_BaseAllocator)& theAllocator)
+BOPAlgo_WireSplitter::BOPAlgo_WireSplitter
+  (const Handle(NCollection_BaseAllocator)& theAllocator)
 :
   BOPAlgo_Algo(theAllocator),
   myWES(NULL),
@@ -57,14 +61,14 @@
 //function : ~
 //purpose  : 
 //=======================================================================
-  BOPAlgo_WireSplitter::~BOPAlgo_WireSplitter()
+BOPAlgo_WireSplitter::~BOPAlgo_WireSplitter()
 {
 }
 //=======================================================================
 //function : SetWES
 //purpose  : 
 //=======================================================================
-  void BOPAlgo_WireSplitter::SetWES(const BOPAlgo_WireEdgeSet& theWES)
+void BOPAlgo_WireSplitter::SetWES(const BOPAlgo_WireEdgeSet& theWES)
 {
   myWES=(BOPAlgo_WireEdgeSet*)&theWES;
 }
@@ -72,7 +76,7 @@
 //function : WES
 //purpose  : 
 //=======================================================================
-  BOPAlgo_WireEdgeSet& BOPAlgo_WireSplitter::WES()
+BOPAlgo_WireEdgeSet& BOPAlgo_WireSplitter::WES()
 {
   return *myWES;
 }
@@ -80,7 +84,7 @@
 // function: CheckData
 // purpose: 
 //=======================================================================
-  void BOPAlgo_WireSplitter::CheckData()
+void BOPAlgo_WireSplitter::CheckData()
 {
   myErrorStatus=0;
   if (!myWES) {
@@ -92,7 +96,7 @@
 //function : Perform
 //purpose  : 
 //=======================================================================
-  void BOPAlgo_WireSplitter::Perform()
+void BOPAlgo_WireSplitter::Perform()
 {
   myErrorStatus=0;
   //
@@ -104,43 +108,12 @@
   MakeConnexityBlocks();
   MakeWires();
 }
-//=======================================================================
-//function : MakeWires
-//purpose  : 
-//=======================================================================
-  void BOPAlgo_WireSplitter::MakeWires()
-{
-  Standard_Boolean bIsRegular;
-  TopoDS_Wire aW;
-  BOPTools_ListIteratorOfListOfConnexityBlock aItCB;
-  BOPCol_ListIteratorOfListOfShape aIt;
-  //
-  aItCB.Initialize(myLCB);
-  for (; aItCB.More(); aItCB.Next()) {
-    BOPTools_ConnexityBlock& aCB=aItCB.ChangeValue();
-    bIsRegular=aCB.IsRegular();
-    if (bIsRegular) {
-      BOPCol_ListOfShape& aLE=aCB.ChangeShapes();
-      BOPAlgo_WireSplitter::MakeWire(aLE, aW);
-      myWES->AddShape(aW);
-    }
-    else {
-      SplitBlock(aCB);
-      //
-      const BOPCol_ListOfShape& aLW=aCB.Loops();
-      aIt.Initialize(aLW);
-      for (; aIt.More(); aIt.Next()) {
-        const TopoDS_Shape& aWx=aIt.Value();
-        myWES->AddShape(aWx);
-      }
-    }
-  }
-}
+
 //=======================================================================
 //function : MakeConnexityBlocks
 //purpose  : 
 //=======================================================================
-  void BOPAlgo_WireSplitter::MakeConnexityBlocks()
+void BOPAlgo_WireSplitter::MakeConnexityBlocks()
 {
   Standard_Boolean bRegular, bClosed;
   Standard_Integer i, j, aNbV, aNbVS, aNbVP, k;
@@ -278,5 +251,107 @@
     //
     aCB.SetRegular(bRegular);
     myLCB.Append(aCB);
+  }
+}
+/////////////////////////////////////////////////////////////////////////
+
+typedef BOPCol_NCVector<BOPTools_ConnexityBlock> \
+  BOPTools_VectorOfConnexityBlock;
+
+//=======================================================================
+//class    : WireSplitterFunctor
+//purpose  : 
+//=======================================================================
+class BOPAlgo_WireSplitterFunctor {
+ protected:
+  TopoDS_Face myFace;
+  BOPTools_VectorOfConnexityBlock* myPVCB;
+  //
+ public:
+  //
+  BOPAlgo_WireSplitterFunctor(const TopoDS_Face& aF,
+			      BOPTools_VectorOfConnexityBlock& aVCB) 
+    : myFace(aF), myPVCB(&aVCB) {
+  }
+  //
+  void operator()( const flexible_range<Standard_Size>& aBR ) const{
+    Standard_Size i, iBeg, iEnd;
+    //
+    BOPTools_VectorOfConnexityBlock& aVCB=*myPVCB;
+    //
+    iBeg=aBR.begin();
+    iEnd=aBR.end();
+    for(i=iBeg; i!=iEnd; ++i) {
+      BOPTools_ConnexityBlock& aCB=aVCB((Standard_Integer)i);
+      //
+      BOPAlgo_WireSplitter::SplitBlock(myFace, aCB);
+    }
+  }
+};
+//=======================================================================
+//class    : BOPAlgo_WireSplitterCnt
+//purpose  : 
+//=======================================================================
+class BOPAlgo_WireSplitterCnt {
+ public:
+  //-------------------------------
+  // Perform
+  Standard_EXPORT 
+    static void Perform(const Standard_Boolean bRunParallel,
+			const TopoDS_Face& aF, 
+			BOPTools_VectorOfConnexityBlock& aVCB) {
+    //
+    BOPAlgo_WireSplitterFunctor aWSF(aF, aVCB);
+    Standard_Size aNbVCB=aVCB.Extent();
+    //
+    if (bRunParallel) {
+      flexible_for(flexible_range<Standard_Size>(0,aNbVCB), aWSF);
+    }
+    else {
+      aWSF.operator()(flexible_range<Standard_Size>(0,aNbVCB));
+    }
+  }
+  //
+};
+//=======================================================================
+//function : MakeWires
+//purpose  : 
+//=======================================================================
+void BOPAlgo_WireSplitter::MakeWires()
+{
+  Standard_Boolean bIsRegular;
+  Standard_Integer aNbVCB, k;
+  TopoDS_Wire aW;
+  BOPTools_ListIteratorOfListOfConnexityBlock aItCB;
+  BOPCol_ListIteratorOfListOfShape aIt;
+  BOPTools_VectorOfConnexityBlock aVCB;
+  //
+  aItCB.Initialize(myLCB);
+  for (; aItCB.More(); aItCB.Next()) {
+    BOPTools_ConnexityBlock& aCB=aItCB.ChangeValue();
+    bIsRegular=aCB.IsRegular();
+    if (bIsRegular) {
+      BOPCol_ListOfShape& aLE=aCB.ChangeShapes();
+      BOPAlgo_WireSplitter::MakeWire(aLE, aW);
+      myWES->AddShape(aW);
+    }
+    else {
+      aVCB.Append(aCB);
+    }
+  }
+  //
+  aNbVCB=aVCB.Extent();
+  const TopoDS_Face& aF=myWES->Face();
+  //===================================================
+  BOPAlgo_WireSplitterCnt::Perform(myRunParallel, aF, aVCB);
+  //===================================================
+  for (k=0; k<aNbVCB; ++k) {
+    const BOPTools_ConnexityBlock& aCB=aVCB(k);
+    const BOPCol_ListOfShape& aLW=aCB.Loops();
+    aIt.Initialize(aLW);
+    for (; aIt.More(); aIt.Next()) {
+      const TopoDS_Shape& aWx=aIt.Value();
+      myWES->AddShape(aWx);
+    }
   }
 }

@@ -28,6 +28,9 @@
 #ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
 #endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
+#endif
 #ifndef _Handle_GccInt_Bisec_HeaderFile
 #include <Handle_GccInt_Bisec.hxx>
 #endif
@@ -57,6 +60,9 @@ public:
 
   //! Constructs bisecting curves between the circle Circle1 and the point Point2. <br>
   Standard_EXPORT   GccAna_CircPnt2dBisec(const gp_Circ2d& Circle1,const gp_Pnt2d& Point2);
+  //! Constructs bisecting curves between the circle Circle1 and the point Point2. <br>
+//!          Tolerance is used. <br>
+  Standard_EXPORT   GccAna_CircPnt2dBisec(const gp_Circ2d& Circle1,const gp_Pnt2d& Point2,const Standard_Real Tolerance);
   //! Returns true (this construction algorithm never fails). <br>
   Standard_EXPORT     Standard_Boolean IsDone() const;
   //! Returns the number of curves, representing solutions computed by this algorithm. <br>
@@ -80,6 +86,9 @@ protected:
 
 private:
 
+  //! Defines the number and the type of solutions <br>
+//!          depending on input data <br>
+  Standard_EXPORT     void DefineSolutions() ;
 
 
 Standard_Boolean WellDone;
@@ -87,6 +96,7 @@ Standard_Integer NbrSol;
 gp_Circ2d circle;
 gp_Pnt2d point;
 Standard_Integer theposition;
+Standard_Real myTolerance;
 
 
 };

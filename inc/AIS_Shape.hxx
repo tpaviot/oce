@@ -67,6 +67,9 @@
 #ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
 #endif
+#ifndef _Handle_AIS_Drawer_HeaderFile
+#include <Handle_AIS_Drawer.hxx>
+#endif
 class TopoDS_Shape;
 class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
@@ -77,6 +80,7 @@ class Quantity_Color;
 class Graphic3d_MaterialAspect;
 class Bnd_Box;
 class Prs3d_Drawer;
+class AIS_Drawer;
 
 
 //! A framework to manage presentation and selection of shapes. <br>
@@ -251,6 +255,12 @@ protected:
   Standard_EXPORT     void LoadRecomputable(const Standard_Integer TheMode) ;
   
   Standard_EXPORT   static  void DisplayBox(const Handle(Prs3d_Presentation)& aPrs,const Bnd_Box& aBox,const Handle(Prs3d_Drawer)& aDrawer) ;
+  
+  Standard_EXPORT     void setColor(const Handle(AIS_Drawer)& theDrawer,const Quantity_Color& theColor) const;
+  
+  Standard_EXPORT     void setWidth(const Handle(AIS_Drawer)& theDrawer,const Standard_Real theWidth) const;
+  
+  Standard_EXPORT     void setTransparency(const Handle(AIS_Drawer)& theDrawer,const Standard_Real theValue) const;
 
 TopoDS_Shape myshape;
 Bnd_Box myBB;

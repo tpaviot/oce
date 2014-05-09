@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -256,7 +256,7 @@ static void RemoveNode(Standard_Boolean                   MapExist ,
 void TNaming_NamedShape::Clear()
 {
   if (Label().IsNull()) {
-#ifdef DEB
+#ifdef DEB_BUILDER
     cout << "attention etat fantomatique" << endl;
 #endif
     return;
@@ -557,7 +557,7 @@ void TNaming_NamedShape::References(const Handle(TDF_DataSet)& aDataSet) const
 void TNaming_NamedShape::Add(TNaming_Node*& pdn )
 { 
   pdn->myAtt             = this;
-  if (!myNode == 0L){
+  if (myNode != 0L){
     pdn->nextSameAttribute = myNode;
   }
   myNode = pdn;
@@ -665,7 +665,7 @@ void TNaming_Builder::Generated(const TopoDS_Shape& newShape)
   TNaming_RefShape* pns;
   
   if (myShapes->myMap.IsBound(newShape)) {
-#ifdef DEB
+#ifdef DEB_BUILDER
     cout <<"TNaming_Builder::Generate : the shape is already in the attribute"<<endl;
 #endif
     pns = myShapes->myMap.ChangeFind(newShape);
@@ -706,7 +706,7 @@ void TNaming_Builder::Delete(const TopoDS_Shape& oldShape)
   if (myShapes->myMap.IsBound(oldShape)) 
     pos = myShapes->myMap.ChangeFind(oldShape); 
   else {
-#ifdef DEB
+#ifdef DEB_BUILDER
     cout <<"TNaming_Builder::Delete : the shape is not in the data"<<endl;
 #endif
     pos = new TNaming_RefShape(oldShape);  
@@ -732,7 +732,7 @@ void TNaming_Builder::Generated(const TopoDS_Shape& oldShape,
   }
 
   if (oldShape.IsSame(newShape)) {
-#ifdef DEB
+#ifdef DEB_BUILDER
     cout <<"TNaming_Builder::Generate : oldShape IsSame newShape"<<endl;
 #endif
     return;
@@ -775,7 +775,7 @@ void TNaming_Builder::Modify(const TopoDS_Shape& oldShape,
   }
 
   if (oldShape.IsSame(newShape)) {
-#ifdef DEB
+#ifdef DEB_BUILDER
     cout <<"TNaming_Builder::Modify : oldShape IsSame newShape"<<endl;
 #endif
     return;

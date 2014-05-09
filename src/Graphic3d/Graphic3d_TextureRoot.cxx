@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -101,6 +101,20 @@ Graphic3d_TextureRoot::Graphic3d_TextureRoot (const TCollection_AsciiString& the
 }
 
 // =======================================================================
+// function : Graphic3d_TextureRoot
+// purpose  :
+// =======================================================================
+Graphic3d_TextureRoot::Graphic3d_TextureRoot (const Handle(Image_PixMap)&   thePixMap,
+                                              const Graphic3d_TypeOfTexture theType)
+: myParams (new Graphic3d_TextureParams()),
+  myPixMap (thePixMap),
+  myType   (theType)
+{
+  myTexId = TCollection_AsciiString ("Graphic3d_TextureRoot_")
+          + TCollection_AsciiString (Standard_Atomic_Increment (&THE_TEXTURE_COUNTER));
+}
+
+// =======================================================================
 // function : Destroy
 // purpose  :
 // =======================================================================
@@ -133,6 +147,13 @@ const Handle(Graphic3d_TextureParams)& Graphic3d_TextureRoot::GetParams() const
 // =======================================================================
 Handle(Image_PixMap) Graphic3d_TextureRoot::GetImage() const
 {
+  // Case 1: texture source is specified as pixmap
+  if (!myPixMap.IsNull())
+  {
+    return myPixMap;
+  }
+
+  // Case 2: texture source is specified as path
   TCollection_AsciiString aFilePath;
   myPath.SystemName (aFilePath);
   if (aFilePath.IsEmpty())
@@ -155,6 +176,13 @@ Handle(Image_PixMap) Graphic3d_TextureRoot::GetImage() const
 // =======================================================================
 Standard_Boolean Graphic3d_TextureRoot::IsDone() const
 {
+  // Case 1: texture source is specified as pixmap
+  if (!myPixMap.IsNull())
+  {
+    return !myPixMap->IsEmpty();
+  }
+
+  // Case 2: texture source is specified as path
   OSD_File aTextureFile (myPath);
   return aTextureFile.Exists();
 }

@@ -2,8 +2,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -193,9 +193,6 @@ _CRTIMP _se_translator_function __cdecl _set_se_translator(_se_translator_functi
 #include <process.h>
 #include <signal.h>
 #include <float.h>
-#if !defined (_MSC_VER) || (_MSC_VER >= 1600)
-#include <stdint.h>
-#endif
 
 static Standard_Boolean fMsgBox;
 static Standard_Boolean fFltExceptions;
@@ -209,15 +206,6 @@ static LONG __fastcall _osd_raise ( DWORD, LPTSTR );
 static BOOL WINAPI     _osd_ctrl_break_handler ( DWORD );
 
 static LONG _osd_debug   ( void );
-
-MB_DESC fatalErrorDesc[] = {
-
-                 { MBT_ICON,   ( intptr_t )IDI_HAND              },
-                 { MBT_BUTTON, IDYES,    TEXT( "Continue" ) },
-                 { MBT_BUTTON, IDNO,     TEXT( "Debugger" ) },
-                 { MBT_BUTTON, IDCANCEL, TEXT( "Stop"     ) }
-
-};
 
 //# define _OSD_FPX ( _EM_INVALID | _EM_DENORMAL | _EM_ZERODIVIDE | _EM_OVERFLOW | _EM_UNDERFLOW )
 # define _OSD_FPX ( _EM_INVALID | _EM_DENORMAL | _EM_ZERODIVIDE | _EM_OVERFLOW )

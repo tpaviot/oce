@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -38,6 +38,7 @@
 #include <Aspect_CLayer2d.hxx>
 #include <Aspect_Handle.hxx>
 #include <Aspect_PrintAlgo.hxx>
+#include <Aspect_PolygonOffsetMode.hxx>
 
 #include <InterfaceGraphic_Graphic3d.hxx>
 #include <InterfaceGraphic_Visual3d.hxx>
@@ -226,6 +227,12 @@ public:
 
   //! @return applied model structure matrix.
   inline const OpenGl_Matrix* ModelMatrix() const { return StructureMatrix_applied; }
+
+  //! Sets and applies current polygon offset.
+  void SetPolygonOffset (int theMode, Standard_ShortReal theFactor, Standard_ShortReal theUnits);
+
+  //! Returns currently applied polygon offset params.
+  const TEL_POFFSET_PARAM& AppliedPolygonOffset() { return PolygonOffset_applied; }
 
 protected:
 
@@ -443,12 +450,11 @@ protected: //! @name fields related to status
   OpenGl_Material myMatBack;  //!< current back  material state
   OpenGl_Material myMatTmp;   //!< temporary variable
 
-  //! Model matrix with applied structure transformations
-  OpenGl_Matrix myModelViewMatrix;
+  OpenGl_Matrix myModelViewMatrix; //!< Model matrix with applied structure transformations
 
-  const TEL_POFFSET_PARAM* PolygonOffset_applied;
+  TEL_POFFSET_PARAM PolygonOffset_applied; //!< Currently applied polygon offset.
 
-  OpenGl_AspectFace myAspectFaceHl; // Hiddenline aspect
+  OpenGl_AspectFace myAspectFaceHl; //!< Hiddenline aspect
 
 public: //! @name type definition
 

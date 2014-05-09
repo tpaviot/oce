@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -136,11 +136,7 @@ HWND CreateMDIClientWindow(HWND hWndFrame)
   ccs.hWindowMenu = NULL;
   ccs.idFirstChild = 0;
 
-#ifndef _WIN64
-  hInstance = (HANDLE)GetWindowLong(hWndFrame, GWL_HINSTANCE);
-#else
-  hInstance = (HANDLE)GetWindowLong(hWndFrame, GWLP_HINSTANCE);
-#endif
+  hInstance = (HANDLE)GetWindowLongPtr(hWndFrame, GWLP_HINSTANCE);
 
   hWndClient = CreateWindow("MDICLIENT",NULL,
 			     									WS_CHILD | WS_CLIPSIBLINGS | 

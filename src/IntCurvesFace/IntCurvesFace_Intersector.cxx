@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -95,7 +95,7 @@ IntCurvesFace_Intersector::IntCurvesFace_Intersector(const TopoDS_Face& Face,
     Standard_Boolean bFlag;
     //
     {
-      Standard_Real dU, dV, dA, dB, aR, aTresh; 
+      Standard_Real dU, dV, dA, dB, aTresh; 
       bFlag=Standard_True;
       //
       aTresh=100.;
@@ -108,14 +108,8 @@ IntCurvesFace_Intersector::IntCurvesFace_Intersector(const TopoDS_Face& Face,
 	dB=dU;
       }
       //
-      aR=dA/dB;
-      if (dB<Precision::PConfusion()) {
+      if (dB < Precision::PConfusion() || dA > dB * aTresh) {
 	bFlag=!bFlag;
-      }
-      else {
-	if (aR>aTresh) {
-	  bFlag=!bFlag;
-	}
       }
     }
     //

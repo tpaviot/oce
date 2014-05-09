@@ -4,5 +4,5 @@ aScriptPath=${BASH_SOURCE%/*}; if [ -d "${aScriptPath}" ]; then cd "$aScriptPath
 
 source "${aScriptPath}/env.sh" "$1" "$2"
 
-echo 'Hint: use "pload ALL" command to load standard commands'
+echo 'Hint: use "pload ALL" command to load standard commands '
 DRAWEXE

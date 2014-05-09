@@ -6,8 +6,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -231,7 +231,7 @@
             }
             //
             const gp_Pnt& aPnew = BRep_Tool::Pnt(aVnew);
-            if (!myContext->IsValidPointForFace(aPnew, aF, aTolE)) {
+            if (!myContext->IsValidPointForFace(aPnew, aF, aTolE+aTolF)) {
               continue;
             }
             //
@@ -537,6 +537,10 @@ Standard_Boolean BOPAlgo_PaveFiller::ForceInterfVF(const Standard_Integer nV,
     BRep_Builder aBB;
     //
     BOPDS_VectorOfInterfVF& aVFs=myDS->InterfVF();
+    if (aVFs.Extent() == 0) {
+      aVFs.Init();
+    }
+    //
     i=aVFs.Append()-1;
     BOPDS_InterfVF& aVF=aVFs(i);
     aVF.SetIndices(nV, nF);

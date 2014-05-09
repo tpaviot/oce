@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -421,6 +421,86 @@ void OSD_Path::SetValues(const TCollection_AsciiString& Nod,
  myName = Nam;
  myExtension = ext;
 }
+
+
+static Standard_Boolean Analyse_VMS(const TCollection_AsciiString& name){
+ if (name.Search("/") != -1)
+  return(Standard_False);
+ if (name.Search("@") != -1)
+  return(Standard_False);
+ if (name.Search("\\") != -1)
+  return(Standard_False);
+
+
+ return Standard_True;
+}
+
+static Standard_Boolean Analyse_DOS(const TCollection_AsciiString& name){
+
+// if (name.Search("$") != -1)
+//  return(Standard_False);
+// if (name.Search(" ") != -1)
+//  return(Standard_False);
+
+ if (name.Search("/") != -1)
+  return(Standard_False);
+ if (name.Search(":") != -1)
+  return(Standard_False);
+  if (name.Search("*") != -1)
+  return(Standard_False);
+ if (name.Search("?") != -1)
+  return(Standard_False);
+ if (name.Search(".") != name.SearchFromEnd("."))
+  return(Standard_False);
+ if (name.Search("\"") != -1)
+  return(Standard_False);
+ if (name.Search("<") != -1)
+  return(Standard_False);
+ if (name.Search(">") != -1)
+  return(Standard_False);
+ if (name.Search("|") != -1)
+  return(Standard_False);
+   
+ return Standard_True;
+ // Rajouter les tests sur les noms de 8 caracteres au maximum et
+ // l'extension de 3 caracteres.
+}
+
+static Standard_Boolean Analyse_MACOS(const TCollection_AsciiString& name){
+ Standard_Integer i = name.Search(":");
+ Standard_Integer l = name.Length();
+
+ if (i == -1)
+  if (l > 31)
+    return(Standard_False);
+  else 
+    return(Standard_True);
+ else
+   return(Standard_True);
+}
+
+static Standard_Boolean Analyse_UNIX(const TCollection_AsciiString& /*name*/)
+{
+// if (name.Search("$") != -1)  Unix filename can have a "$" (LD)
+//  return(Standard_False);
+
+// all characters are allowed in UNIX file name, except null '\0' and slash '/'
+
+// if (name.Search("[") != -1)
+//  return(Standard_False);
+// if (name.Search("]") != -1)
+//  return(Standard_False);
+// if (name.Search("\\") != -1)
+//  return(Standard_False);
+// if (name.Search(" ") != -1) 
+//  return(Standard_False);
+
+  return(Standard_True);
+
+}
+
+
+
 
 
 Standard_Boolean OSD_Path::IsValid(const TCollection_AsciiString& aDependentName,

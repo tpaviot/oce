@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -1059,14 +1059,59 @@ Handle(Adaptor2d_HCurve2d)
 	    (pntproj, Surf->Surface(), U0, V0, TolU, TolV) ;
 	  
 	  if (aLocateExtPS.IsDone())
-	    if (aLocateExtPS.SquareDistance() < DistTol3d * DistTol3d) {  //OCC217
-	    //if (aLocateExtPS.SquareDistance() < Tol3d * Tol3d) {
+          {
+	    if (aLocateExtPS.SquareDistance() < DistTol3d * DistTol3d)
+            {  //OCC217
+              //if (aLocateExtPS.SquareDistance() < Tol3d * Tol3d) {
 	      (aLocateExtPS.Point()).Parameter(U0,V0);
 	      U1 = U0 + usens*uperiod;
 	      V1 = V0 + vsens*vperiod;
 	      Pts2d(i).SetCoord(U1,V1);
 	      myProjIsDone = Standard_True;
 	    }
+            else
+            {
+              Extrema_ExtPS aGlobalExtr(pntproj, Surf->Surface(), TolU, TolV);
+              if (aGlobalExtr.IsDone())
+              {
+                Standard_Real LocalMinSqDist = RealLast();
+                Standard_Integer imin = 0;
+                for (Standard_Integer isol = 1; isol <= aGlobalExtr.NbExt(); isol++)
+                {
+                  Standard_Real aSqDist = aGlobalExtr.SquareDistance(isol);
+                  if (aSqDist < LocalMinSqDist)
+                  {
+                    LocalMinSqDist = aSqDist;
+                    imin = isol;
+                  }
+                }
+                if (LocalMinSqDist < DistTol3d * DistTol3d)
+                {
+                  Standard_Real LocalU, LocalV;
+                  aGlobalExtr.Point(imin).Parameter(LocalU, LocalV);
+                  if (uperiod > 0. && Abs(U0 - LocalU) >= uperiod/2.)
+                  {
+                    if (LocalU > U0)
+                      usens = -1;
+                    else
+                      usens = 1;
+                  }
+                  if (vperiod > 0. && Abs(V0 - LocalV) >= vperiod/2.)
+                  {
+                    if (LocalV > V0)
+                      vsens = -1;
+                    else
+                      vsens = 1;
+                  }
+                  U0 = LocalU; V0 = LocalV;
+                  U1 = U0 + usens*uperiod;
+                  V1 = V0 + vsens*vperiod;
+                  Pts2d(i).SetCoord(U1,V1);
+                  myProjIsDone = Standard_True;
+                }
+              }
+            }
+          }
 	  if(!myProjIsDone && uperiod) {
 	    Standard_Real Uinf, Usup, Uaux;
 	    Uinf = Surf->Surface().FirstUParameter();

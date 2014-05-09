@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -108,13 +108,13 @@ void AIS_LengthDimension::SetMeasuredGeometry (const gp_Pnt& theFirstPoint,
                                                const gp_Pnt& theSecondPoint,
                                                const gp_Pln& thePlane)
 {
-  myFirstPoint   = theFirstPoint;
-  mySecondPoint  = theSecondPoint;
-  myFirstShape   = BRepLib_MakeVertex (myFirstPoint);
-  mySecondShape  = BRepLib_MakeVertex (mySecondPoint);
-  myGeometryType = GeometryType_Points;
+  myFirstPoint      = theFirstPoint;
+  mySecondPoint     = theSecondPoint;
+  myFirstShape      = BRepLib_MakeVertex (myFirstPoint);
+  mySecondShape     = BRepLib_MakeVertex (mySecondPoint);
+  myGeometryType    = GeometryType_Points;
   SetCustomPlane (thePlane);
-  myIsValid      = IsValidPoints (theFirstPoint, theSecondPoint) && CheckPlane (myPlane);
+  myIsGeometryValid = IsValidPoints (theFirstPoint, theSecondPoint);
 
   SetToUpdate();
 }
@@ -126,11 +126,11 @@ void AIS_LengthDimension::SetMeasuredGeometry (const gp_Pnt& theFirstPoint,
 void AIS_LengthDimension::SetMeasuredGeometry (const TopoDS_Edge& theEdge,
                                                const gp_Pln& thePlane)
 {
-  myFirstShape  = theEdge;
-  mySecondShape = TopoDS_Shape();
-  myGeometryType = GeometryType_Edge;
+  myFirstShape      = theEdge;
+  mySecondShape     = TopoDS_Shape();
+  myGeometryType    = GeometryType_Edge;
   SetCustomPlane (thePlane);
-  myIsValid     = InitOneShapePoints (myFirstShape) && CheckPlane (myPlane);
+  myIsGeometryValid = InitOneShapePoints (myFirstShape);
 
   SetToUpdate();
 }
@@ -164,11 +164,12 @@ void AIS_LengthDimension::SetMeasuredShapes (const TopoDS_Shape& theFirstShape,
 {
   gp_Pln aComputedPlane;
   Standard_Boolean isPlaneReturned = Standard_False;
-  myFirstShape   = theFirstShape;
-  mySecondShape  = theSecondShape;
-  myIsValid      = InitTwoShapesPoints (myFirstShape, mySecondShape, aComputedPlane, isPlaneReturned);
 
-  if (myIsValid && !myIsPlaneCustom)
+  myFirstShape      = theFirstShape;
+  mySecondShape     = theSecondShape;
+  myIsGeometryValid = InitTwoShapesPoints (myFirstShape, mySecondShape, aComputedPlane, isPlaneReturned);
+
+  if (myIsGeometryValid && !myIsPlaneCustom)
   {
     if (isPlaneReturned)
     {
@@ -176,11 +177,9 @@ void AIS_LengthDimension::SetMeasuredShapes (const TopoDS_Shape& theFirstShape,
     }
     else
     {
-      myIsValid = Standard_False;
+      myIsGeometryValid = Standard_False;
     }
   }
-
-  myIsValid &= CheckPlane (myPlane);
 
   SetToUpdate();
 }
@@ -707,4 +706,36 @@ Standard_Boolean AIS_LengthDimension::InitOneShapePoints (const TopoDS_Shape& th
   mySecondPoint = aBrepCurve.Value (aBrepCurve.LastParameter());
 
   return IsValidPoints (myFirstPoint, mySecondPoint);
+}
+
+//=======================================================================
+//function : GetTextPosition
+//purpose  : 
+//=======================================================================
+const gp_Pnt AIS_LengthDimension::GetTextPosition() const
+{
+  if (IsTextPositionCustom())
+  {
+    return myFixedTextPosition;
+  }
+
+  // Counts text position according to the dimension parameters
+  return GetTextPositionForLinear (myFirstPoint, mySecondPoint);
+}
+
+//=======================================================================
+//function : SetTextPosition
+//purpose  : 
+//=======================================================================
+void AIS_LengthDimension::SetTextPosition (const gp_Pnt& theTextPos)
+{
+  if (!IsValid())
+  {
+    return;
+  }
+
+  myIsTextPositionFixed = Standard_True;
+  myFixedTextPosition = theTextPos;
+
+  SetToUpdate();
 }

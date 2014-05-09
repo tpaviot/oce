@@ -1,0 +1,6 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BOPAlgo_ShellSplitter_HeaderFile
+#include <BOPAlgo_ShellSplitter.hxx>
+#endif

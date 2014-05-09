@@ -6,8 +6,8 @@
 --
 -- This file is part of Open CASCADE Technology software library.
 --
--- This library is free software; you can redistribute it and / or modify it
--- under the terms of the GNU Lesser General Public version 2.1 as published
+-- This library is free software; you can redistribute it and/or modify it under
+-- the terms of the GNU Lesser General Public License version 2.1 as published
 -- by the Free Software Foundation, with special exception defined in the file
 -- OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 -- distribution for complete text of the license and disclaimer of any warranty.
@@ -102,16 +102,6 @@ is
     ---Purpose: Returns true if the shape theS has been deleted.
     returns Boolean from Standard  
     is redefined;  
-      
-    SetRunParallel(me:out; 
-    	    theFlag:Boolean from Standard); 
-    ---Purpose: Set the flag of parallel processing 
-    -- if <theFlag> is true  the parallel processing is switched on   
-    -- if <theFlag> is false the parallel processing is switched off   
-    --      
-    RunParallel(me) 
-    	returns Boolean from Standard; 
-    ---Purpose: Returns the flag of parallel processing  
     -- 
     --  Debug 
     -- 
@@ -176,11 +166,6 @@ is
  
     FillImagesFaces1 (me:out) 
     is protected;   
-     
-    FillInternalVertices(me:out; 
-        theLF:out ListOfShape from BOPCol; 
-        theLIV:out ListOfInteger from BOPCol)  
-    is protected; 
     --	 
     -- solids
     --
@@ -203,13 +188,8 @@ is
         theInParts:out DataMapOfShapeListOfShape from BOPCol; 
         theDraftSolids:out DataMapOfShapeShape from BOPCol; 
         theAllocator:BaseAllocator from BOPCol)   
-    is protected;  
- 
-    BuildBndBox(me:out;  
-    	theIndex:Integer from Standard; 
-	theBox:  out Box from Bnd) 
-    is protected;
- 
+    is protected;   
+    
     FillInternalShapes(me:out)  
     is protected; 
     --	 
@@ -246,8 +226,6 @@ fields
     --
     mySplits     : DataMapOfShapeListOfShape from BOPCol is protected; 
     myOrigins    : DataMapOfShapeShape from BOPCol is protected; 
-    -- 
-    myRunParallel : Boolean from Standard is protected; 
-    --     
+ 
 end Builder;
 

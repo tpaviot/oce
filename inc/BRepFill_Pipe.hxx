@@ -31,6 +31,12 @@
 #ifndef _Handle_TopTools_HArray2OfShape_HeaderFile
 #include <Handle_TopTools_HArray2OfShape.hxx>
 #endif
+#ifndef _TopTools_MapOfShape_HeaderFile
+#include <TopTools_MapOfShape.hxx>
+#endif
+#ifndef _BRepFill_DataMapOfShapeHArray2OfShape_HeaderFile
+#include <BRepFill_DataMapOfShapeHArray2OfShape.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -93,7 +99,7 @@ public:
 //!          position of the vertex VSpine. <br>//! if the vertex is not in the Spine <br>
   Standard_EXPORT     TopoDS_Shape Section(const TopoDS_Vertex& VSpine) const;
   //! Create a Wire by sweeping the Point along the <spine> <br>//! if the <Spine> is undefined <br>
-  Standard_EXPORT     TopoDS_Wire PipeLine(const gp_Pnt& Point) const;
+  Standard_EXPORT     TopoDS_Wire PipeLine(const gp_Pnt& Point) ;
 
 
 
@@ -116,6 +122,8 @@ private:
   Standard_EXPORT     Standard_Integer FindVertex(const TopoDS_Shape& S,const TopoDS_Vertex& V,Standard_Integer& Init) const;
   
   Standard_EXPORT     void DefineRealSegmax() ;
+  
+  Standard_EXPORT     void RebuildTopOrBottomFace(const TopoDS_Shape& aFace,const Standard_Boolean IsTop) const;
   //! Performs sharing coincident faces in theShape. Also modifies <br>
 //!          myFaces, mySections and myEdges to contain shared shapes. <br>
 //!          Returns the shared shape. If theShape is not modified this <br>
@@ -131,6 +139,9 @@ Handle_BRepFill_LocationLaw myLoc;
 Handle_TopTools_HArray2OfShape mySections;
 Handle_TopTools_HArray2OfShape myFaces;
 Handle_TopTools_HArray2OfShape myEdges;
+TopTools_MapOfShape myReversedEdges;
+BRepFill_DataMapOfShapeHArray2OfShape myTapes;
+Standard_Integer myCurIndexOfSectionEdge;
 TopoDS_Shape myFirst;
 TopoDS_Shape myLast;
 Standard_Integer myDegmax;

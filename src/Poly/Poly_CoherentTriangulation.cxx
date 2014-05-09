@@ -4,8 +4,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -586,7 +586,7 @@ void Poly_CoherentTriangulation::RemoveLink (Poly_CoherentLink& theLink)
           const_cast<Poly_CoherentTriangle *>(pTri[i])->mypLink[2] = 0L;
         else
           Standard_ProgramError::Raise("Poly_CoherentTriangulation::RemoveLink: "
-                                " wrong connectivity between triangles");
+                                       " wrong connectivity between triangles");
       }
     }
   } 
@@ -661,7 +661,7 @@ Standard_Boolean Poly_CoherentTriangulation::FindTriangle
           pTri[1] = &aTri;
       } else
         Standard_ProgramError::Raise("Poly_CoherentTriangulation::FindTriangle : "
-                              " Data incoherence detected");
+                                     " Data incoherence detected");
       if (pTri[0] && pTri[1])
         break;
     }

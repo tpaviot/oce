@@ -5,8 +5,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -43,6 +43,25 @@ Graphic3d_Texture1Dsegment::Graphic3d_Texture1Dsegment (const TCollection_AsciiS
 // =======================================================================
 Graphic3d_Texture1Dsegment::Graphic3d_Texture1Dsegment (const Graphic3d_NameOfTexture1D theNOT)
 : Graphic3d_Texture1D (theNOT, Graphic3d_TOT_1D),
+  myX1 (0.0f),
+  myY1 (0.0f),
+  myZ1 (0.0f),
+  myX2 (0.0f),
+  myY2 (0.0f),
+  myZ2 (0.0f)
+{
+  myParams->SetRepeat (Standard_True);
+  myParams->SetGenMode (Graphic3d_TOTM_OBJECT,
+                        Graphic3d_Vec4 (0.0f, 0.0f, 1.0f, 0.0f),
+                        Graphic3d_Vec4 (0.0f, 0.0f, 0.0f, 0.0f));
+}
+
+// =======================================================================
+// function : Graphic3d_Texture1Dsegment
+// purpose  :
+// =======================================================================
+Graphic3d_Texture1Dsegment::Graphic3d_Texture1Dsegment (const Handle(Image_PixMap)& thePixMap)
+: Graphic3d_Texture1D (thePixMap, Graphic3d_TOT_1D),
   myX1 (0.0f),
   myY1 (0.0f),
   myZ1 (0.0f),
