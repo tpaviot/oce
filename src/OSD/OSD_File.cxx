@@ -860,6 +860,11 @@ Standard_Boolean OSD_File::IsExecutable()
 #pragma comment( lib, "WINSPOOL.LIB" )
 #endif
 
+// ensures GetFileSizeEx() availability under MinGW
+#ifdef __MINGW32__
+# include <winbase.h>
+#endif
+
 #define ACE_HEADER_SIZE (  sizeof ( ACCESS_ALLOWED_ACE ) - sizeof ( DWORD )  )
 
 #define RAISE( arg ) Standard_ProgramError :: Raise (  ( arg )  )
