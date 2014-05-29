@@ -151,6 +151,7 @@ option_with_default( OCE_OCAF "Build application framework" ON )
 option_with_default( OCE_DATAEXCHANGE "Build data exchange" ON )
 option_with_default( OCE_DRAW "Build test harness \(DRAW\)" OFF )
 option_with_default( OCE_VISUALISATION "Build visualisation component" ON )
+option_with_default( OCE_WITH_OPENCL "OpenCL support for shaders and raytracing" OFF )
 option_with_default( OCE_WITH_GL2PS "Build with GL2PS" OFF )
 option_with_default( OCE_WITH_FREEIMAGE "Build with FreeImage" OFF )
 option_with_default( OCE_DISABLE_TKSERVICE_FONT "Disable TKService Font (only without Visualization)" OFF )
@@ -440,6 +441,12 @@ if(OCE_VISUALISATION)
 		set(OPENGL_INCLUDE_DIR /usr/X11R6/include/)
 		set(OPENGL_LIBRARIES /usr/X11R6/lib/libGL.dylib /usr/X11R6/lib/libGLU.dylib)
 	endif (NOT APPLE OR OCE_OSX_USE_COCOA)
+
+	## OpenCL
+	if (OCE_WITH_OPENCL)
+		set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${OCE_SOURCE_DIR}/adm/cmake/config/)
+        find_package(OpenCL REQUIRED)
+	endif (OCE_WITH_OPENCL)
 
 	## GL2PS
 	if(OCE_WITH_GL2PS)
