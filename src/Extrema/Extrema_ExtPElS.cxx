@@ -68,6 +68,7 @@ void Extrema_ExtPElS::Perform(const gp_Pnt&       P,
   Standard_Real U1 = gp_Vec(Pos.XDirection()).AngleWithRef(OPp,myZ); //-M_PI<U1<M_PI
   if (U1 > -ExtPElS_MyEps && U1 < ExtPElS_MyEps) { U1 = 0.; }
   Standard_Real U2 = U1 + M_PI;
+  if(U1 > -Tol && U1 < 0.) {U1 = 0.;}
   if (U1 < 0.) { U1 += 2. * M_PI; }
 
   gp_Pnt Ps;
@@ -165,7 +166,9 @@ void Extrema_ExtPElS::Perform(const gp_Pnt&       P,
   B = MP.Angle(DirZ);
   if (!Same) { U1 += M_PI; }
   U2 = U1 + M_PI;
+  if(U1 > -Tol && U1 < 0.) {U1 = 0.;}
   if (U1 < 0.) { U1 += 2. * M_PI; }
+  if (U2 - 2.*M_PI < Tol && U2 > 2.*M_PI) {U2 = 2. * M_PI; }
   if (U2 > 2.*M_PI) { U2 -= 2. * M_PI; }
   B = MP.Angle(DirZ);
   A = Abs(A);
@@ -257,6 +260,7 @@ void Extrema_ExtPElS::Perform(const gp_Pnt&       P,
     U1 = gp_Vec(Pos.XDirection()).AngleWithRef(OPp,myZ);
     if (U1 > -ExtPElS_MyEps && U1 < ExtPElS_MyEps) { U1 = 0.; }
     U2 = U1 + M_PI;
+    if(U1 > -Tol && U1 < 0.) {U1 = 0.;}
     if (U1 < 0.) { U1 += 2. * M_PI; }
     V = OP.Angle(OPp);
     if (Zp < 0.) { V = -V; }
@@ -322,6 +326,7 @@ void Extrema_ExtPElS::Perform(const gp_Pnt&       P,
   Standard_Real U1 = gp_Vec(Pos.XDirection()).AngleWithRef(OPp,myZ);
   if (U1 > -ExtPElS_MyEps && U1 < ExtPElS_MyEps) { U1 = 0.; }
   Standard_Real U2 = U1 + M_PI;
+  if(U1 > -Tol && U1 < 0.) {U1 = 0.;}
   if (U1 < 0.) { U1 += 2. * M_PI; }
   Standard_Real R = sqrt(R2);
   gp_Vec OO1 = OPp.Divided(R).Multiplied(S.MajorRadius());
@@ -336,6 +341,8 @@ void Extrema_ExtPElS::Perform(const gp_Pnt&       P,
   if (V1 > -ExtPElS_MyEps && V1 < ExtPElS_MyEps) { V1 = 0.; }
   Standard_Real V2 = OO2.AngleWithRef(gp_Vec(P,O2),OO2.Crossed(OZ));
   if (V2 > -ExtPElS_MyEps && V2 < ExtPElS_MyEps) { V2 = 0.; }
+  if(V1 > -Tol && V1 < 0.){ V1 = 0.;}
+  if(V2 > -Tol && V2 < 0.){ V2 = 0.;}
 
   if (V1 < 0.) { V1 += 2. * M_PI; }
   if (V2 < 0.) { V2 += 2. * M_PI; }
