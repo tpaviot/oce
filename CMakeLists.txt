@@ -41,6 +41,11 @@ cmake_minimum_required( VERSION 2.6 )
 if (POLICY CMP0043)
 	cmake_policy(SET CMP0043 OLD)
 endif (POLICY CMP0043)
+# Policy CMP0042 introduced in cmake version 3.0 enables the use of @rpath in an install name via MACOSX_RPATH by default
+# Set to OLD behavior so that all versions use the same behavior, or until minimum cmake version >= 2.8.12 (version where @rpath is available)
+if (POLICY CMP0042)
+	cmake_policy(SET CMP0042 OLD)
+endif (POLICY CMP0042)
 
 # Define helper macro option_with_default
 macro( option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT )
