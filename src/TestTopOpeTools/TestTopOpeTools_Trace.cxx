@@ -16,6 +16,15 @@
 
 #include <TestTopOpeTools_Trace.hxx>
 
+// for intptr_t
+#if defined(_MSC_VER)
+# include <stddef.h>
+#elif defined(__hpux) && !defined(__GNUC__)
+# include <inttypes.h>
+#else
+# include <stdint.h>
+#endif
+
 TestTopOpeTools_Trace::TestTopOpeTools_Trace
 (const Standard_Integer nbmaxentry,
  const TCollection_AsciiString& genre) :
@@ -161,7 +170,7 @@ const t_flag TestTopOpeTools_Trace::Getflag(const Standard_Integer index)
 { return (t_flag)myflag.Value(index); }
 
 const tf_value TestTopOpeTools_Trace::Getfunc(const Standard_Integer index)
-{ return (tf_value)myfunc.Value(index); }
+{ return (tf_value)(intptr_t)myfunc.Value(index); }
 
 const te_ftyp TestTopOpeTools_Trace::Getftyp(const Standard_Integer index)
 {

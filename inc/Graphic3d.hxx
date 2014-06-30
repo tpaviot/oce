@@ -23,7 +23,6 @@
 #include <Aspect_DisplayConnection_Handle.hxx>
 #endif
 class Graphic3d_GraphicDriver;
-class Graphic3d_Strips;
 class Graphic3d_ArrayOfPrimitives;
 class Graphic3d_ArrayOfPoints;
 class Graphic3d_ArrayOfPolylines;
@@ -117,7 +116,6 @@ private:
 
 
 
-friend class Graphic3d_Strips;
 friend class Graphic3d_ArrayOfPrimitives;
 friend class Graphic3d_ArrayOfPoints;
 friend class Graphic3d_ArrayOfPolylines;

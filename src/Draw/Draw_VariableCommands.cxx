@@ -51,6 +51,15 @@ extern Draw_Viewer dout;
 
 #include <OSD_Environment.hxx>
 
+// for intptr_t
+#if defined(_MSC_VER)
+# include <stddef.h>
+#elif defined(__hpux) && !defined(__GNUC__)
+# include <inttypes.h>
+#else
+# include <stdint.h>
+#endif
+
 Standard_Boolean Draw_ParseFailed;
 
 static Standard_Boolean autodisp = Standard_True;
@@ -800,7 +809,7 @@ void Draw::Set(const Standard_CString name,
     
       // set the trace function
       Tcl_TraceVar(theCommands.Interp(),name,TCL_TRACE_UNSETS,
-		   tracevar,(ClientData)ival);
+		   tracevar,(ClientData)(intptr_t)ival);
       
       if (displ) {
 	if (!D->Visible())
