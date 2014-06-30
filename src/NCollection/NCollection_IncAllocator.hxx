@@ -18,14 +18,13 @@
 
 #include <NCollection_BaseAllocator.hxx>
 
-#ifdef __hpux
-# ifdef __GNUC__
-#  include <stdint.h>
-# else
-#  include <inttypes.h>
-# endif
+#if defined(_MSC_VER) && (_MSC_VER < 1600)
+ typedef unsigned __int64 uint64_t;
+#elif defined(__hpux) && !defined(__GNUC__)
+# include <inttypes.h>
+#else
+# include <stdint.h>
 #endif
-
 
 /**
  *  Class NCollection_IncAllocator - incremental memory  allocator. This class
@@ -46,11 +45,7 @@ class NCollection_IncAllocator : public NCollection_BaseAllocator
 {
  public:
   // The type defining the alignement of allocated objects
-#if defined(__hpux)
   typedef uint64_t aligned_t;
-#else
-  typedef void * aligned_t;
-#endif
   
   // ---------- PUBLIC METHODS ----------
 
