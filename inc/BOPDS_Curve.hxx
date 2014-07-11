@@ -34,6 +34,9 @@
 #ifndef _Handle_BOPDS_PaveBlock_HeaderFile
 #include <Handle_BOPDS_PaveBlock.hxx>
 #endif
+#ifndef _BOPDS_PaveBlock_HeaderFile
+#include <BOPDS_PaveBlock.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif

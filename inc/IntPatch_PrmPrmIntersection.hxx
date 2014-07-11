@@ -37,6 +37,9 @@
 #ifndef _Handle_IntPatch_Line_HeaderFile
 #include <Handle_IntPatch_Line.hxx>
 #endif
+#ifndef _IntPatch_Polyhedron_HeaderFile
+#include <IntPatch_Polyhedron.hxx>
+#endif
 #ifndef _Handle_IntSurf_LineOn2S_HeaderFile
 #include <Handle_IntSurf_LineOn2S.hxx>
 #endif
