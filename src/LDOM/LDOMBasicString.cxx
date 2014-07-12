@@ -137,8 +137,10 @@ LDOMBasicString& LDOMBasicString::operator = (const LDOM_NullPtr *)
 
 LDOMBasicString& LDOMBasicString::operator = (const LDOMBasicString& anOther)
 {
-  if (myType == LDOM_AsciiFree && myVal.ptr)
+  if (myType == LDOM_AsciiFree && myVal.ptr) {
+    if (myVal.ptr == anOther.myVal.ptr && myType == anOther.Type()) return * this;
     delete [] (char *) myVal.ptr;
+  }
   myType    = anOther.Type();
   switch (myType) {
   case LDOM_AsciiFree:
