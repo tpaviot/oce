@@ -567,6 +567,10 @@ endif(OCE_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/build_inc
 	${CMAKE_CURRENT_SOURCE_DIR}/inc)
 
+if(OCE_COPY_HEADERS_BUILD)
+	include_directories(${CMAKE_CURRENT_BINARY_DIR}/include)
+endif(OCE_COPY_HEADERS_BUILD)
+ 
 ###################################
 # Architecture-specific libraries #
 ###################################

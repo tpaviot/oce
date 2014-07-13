@@ -33,8 +33,14 @@ function(enable_precompiled_headers PHASE TARGET_NAME PRECOMPILED_HEADER SOURCE_
 				string(TOUPPER "CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE}" _flags_var_name)
 				set(_compiler_FLAGS ${${_flags_var_name}})
 
-				# Directory properties
-				get_directory_property(_directory_flags INCLUDE_DIRECTORIES)
+				# Include directories
+				# (target property INCLUDE_DIRECTORIES was introduced in 2.8.8)
+				if(${CMAKE_VERSION} VERSION_GREATER "2.8.7")
+					get_target_property(_directory_flags ${TARGET_NAME} INCLUDE_DIRECTORIES)
+				else()
+			        get_directory_property(_directory_flags INCLUDE_DIRECTORIES)
+				endif()
+				
 				foreach(item ${_directory_flags})
 					list(APPEND _compiler_FLAGS "-I${item}")
 				endforeach(item)
@@ -177,14 +183,13 @@ foreach(MODULE ${TOOLKIT_MODULES})
 	# required include paths
 endforeach(MODULE ${TOOLKIT_MODULES})
 
-if(TOOLKIT_DEPENDS)
+if(TOOLKIT_DEPENDS AND NOT OCE_COPY_HEADERS_BUILD)
 	foreach(tkit ${TOOLKIT_DEPENDS})
 		set(OCE_${TOOLKIT}_INCLUDE_DIRECTORIES ${OCE_${TOOLKIT}_INCLUDE_DIRECTORIES} ${OCE_${tkit}_INCLUDE_DIRECTORIES})
 	endforeach(tkit ${TOOLKIT_DEPENDS})
 	list(REMOVE_DUPLICATES OCE_${TOOLKIT}_INCLUDE_DIRECTORIES)
-endif(TOOLKIT_DEPENDS)
+endif(TOOLKIT_DEPENDS AND NOT OCE_COPY_HEADERS_BUILD)
 set(OCE_${TOOLKIT}_INCLUDE_DIRECTORIES ${OCE_${TOOLKIT}_INCLUDE_DIRECTORIES} PARENT_SCOPE)
-include_directories(${OCE_${TOOLKIT}_INCLUDE_DIRECTORIES})
 
 # Version info
 if(NOT OCE_NO_LIBRARY_VERSION)
@@ -204,6 +209,15 @@ endif(OCE_COMPILER_SUPPORTS_PCH AND OCE_USE_PCH)
 
 # Add the toolkit target
 add_library(${TOOLKIT} ${OCE_LIBRARY_TYPE} ${TOOLKIT_SOURCE_FILES} ${TOOLKIT_RESOURCES} )
+
+#if cmake is new enough, set include directories per-target 
+#to avoid accumulating unnecessary directories
+if(${CMAKE_VERSION} VERSION_GREATER "2.8.7")
+	set_property(TARGET ${TOOLKIT} APPEND PROPERTY
+                 INCLUDE_DIRECTORIES "${OCE_${TOOLKIT}_INCLUDE_DIRECTORIES}")
+else()
+	include_directories(${OCE_${TOOLKIT}_INCLUDE_DIRECTORIES})
+endif()
 
 if(OCE_COMPILER_SUPPORTS_PCH AND OCE_USE_PCH)
 	if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/Precompiled.h)
