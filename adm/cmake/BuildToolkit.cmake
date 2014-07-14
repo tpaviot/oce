@@ -323,9 +323,14 @@ if( TOOLKIT_HEADER_FILES AND OCE_COPY_HEADERS_BUILD )
     list( APPEND all_destination_header_files ${destination_header_files} )
   endif()
 
-  add_custom_target( copy_${TOOLKIT}_headers ALL
+  add_custom_target( copy_${TOOLKIT}_headers
     DEPENDS ${all_destination_header_files}
   )
+  if(TARGET ${TOOLKIT}_gch)
+    add_dependencies(${TOOLKIT}_gch copy_${TOOLKIT}_headers)
+  else()
+    add_dependencies(${TOOLKIT} copy_${TOOLKIT}_headers)
+  endif()
 
 endif()
 
