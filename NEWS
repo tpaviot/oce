@@ -1,3 +1,35 @@
+Version 0.16 - July 2014
+
+This version is not binary compatible with OCE 0.15, OCE_ABI_SOVERSION
+was incremented.
+
+* Upgraded to OCCT 6.7.1
+
+* Fix a numerical bug in ApproxAFunc2Var due to compiler optimization.
+
+* Speed improvements in BOPTools_AlgoTools2D.
+
+* Many bug and warning fixes detected by static analysis and compilers.
+
+* Force 8 byte alignment in NCollection_IncAllocator to fix bus errors
+  reported on RISC architectures.
+
+* Build system improvements and additions
+  - Readd OCE_DISABLE_TKSERVICE_FONT option, a solution has been found
+    to build TKService without freetype.
+  - Fix Standard_Construction_Error exception in BOP
+  - Fix RPATH issues reported on openSUSE
+  - Fix gl2ps libraries installation
+  - Build improvements and fixes with Mingw
+  - Fix compatibility with CMake 3.0
+  - Enable support for OpenCL
+  - New OCE_COPY_HEADERS_BUILD option to copy header files when building,
+    to get rid of the long list of include directories on command line
+
+Users who contributed to this release:
+  Denis Barbier, Jacob Abel, David Sankel, Jerome Robert, Johannes Obermayr,
+  Conrad Poelman, Peter Lama, He Yuqi, Thomas Paviot
+
 Version 0.15 - February 2014
 
 This version is not binary compatible with OCE 0.14.1, OCE_ABI_SOVERSION
