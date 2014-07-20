@@ -463,7 +463,7 @@ Standard_Boolean OpenGl_Workspace::AddRaytraceStructure (const OpenGl_Structure*
   {
     if (anIts.Value()->Transformation()->mat != NULL)
     {
-      float* aTransform = new float[16];
+      aTransform = new float[16];
 
       for (int i = 0; i < 4; ++i)
         for (int j = 0; j < 4; ++j)
