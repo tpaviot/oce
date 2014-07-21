@@ -334,6 +334,14 @@ if( TOOLKIT_HEADER_FILES AND OCE_COPY_HEADERS_BUILD )
 
 endif()
 
+if(TARGET ${TOOLKIT}_gch)
+	foreach(tkit ${TOOLKIT_DEPENDS})
+		if(TARGET copy_${tkit}_headers)
+			add_dependencies(${TOOLKIT}_gch copy_${tkit}_headers)
+		endif()
+	endforeach(tkit ${TOOLKIT_DEPENDS})
+endif(TARGET ${TOOLKIT}_gch)
+
 ###########
 # INSTALL #
 ###########
