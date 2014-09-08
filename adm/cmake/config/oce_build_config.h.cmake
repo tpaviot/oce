@@ -256,6 +256,9 @@
 /* Whether OCE is build as static lib */
 #cmakedefine OCE_BUILD_STATIC_LIB
 
+/* Whether loading of shared libraries is discarded */
+#cmakedefine OCE_DISCARD_DLL_LOADING
+
 /* Define MACOSX_USE_GLX to use X11 OpenGL on OSX */
 #cmakedefine MACOSX_USE_GLX
 

@@ -126,6 +126,7 @@ void  OSD_SharedLibrary::SetName(const Standard_CString aName)  {
 // ----------------------------------------------------------------
 Standard_Boolean  OSD_SharedLibrary::DlOpen(const OSD_LoadMode aMode ) {
 
+#ifndef OCE_DISCARD_DLL_LOADING
 #ifdef HAVE_DL_H
 if (aMode == OSD_RTLD_LAZY){
 //  myHandle = cxxshl_load(myName, BIND_FIRST | BIND_TOGETHER | BIND_DEFERRED | BIND_VERBOSE | DYNAMIC_PATH, 0L);
@@ -143,6 +144,7 @@ if (aMode == OSD_RTLD_LAZY){
 else if (aMode == OSD_RTLD_NOW){
   myHandle = dlopen (myName,RTLD_NOW);
 }
+#endif
 #endif
 
 if (!BAD(myHandle)){
@@ -162,7 +164,9 @@ else {
 // ----------------------------------------------------------------
 OSD_Function  OSD_SharedLibrary::DlSymb(const Standard_CString aName )const{
 
-#ifndef HAVE_DL_H
+#ifdef OCE_DISCARD_DLL_LOADING
+  return (OSD_Function)NULL;
+#elif !defined(HAVE_DL_H)
 void (*fp)();
 fp =  (void (*)()) dlsym (myHandle,aName);
 if (!BAD(fp)){
@@ -196,10 +200,12 @@ else {
 // ----------------------------------------------------------------
 void OSD_SharedLibrary::DlClose()const{
 
+#ifndef OCE_DISCARD_DLL_LOADING
 #ifndef HAVE_DL_H
  dlclose(myHandle);
 #else
  shl_unload((shl_t)myHandle);
+#endif
 #endif
 
 }
@@ -210,7 +216,10 @@ void OSD_SharedLibrary::DlClose()const{
 //
 // ----------------------------------------------------------------
 Standard_CString OSD_SharedLibrary::DlError()const{
-#ifndef HAVE_DL_H
+#ifdef OCE_DISCARD_DLL_LOADING
+static char errorMessage[] = "Loading of shared libraries had been disabled during compilation";
+return errorMessage;
+#elif !defined(HAVE_DL_H)
 return (char*) dlerror();
 #else
 perror("shl_load, shl_findsym, or shl_unload : perror : ") ;
