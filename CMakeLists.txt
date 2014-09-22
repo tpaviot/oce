@@ -972,6 +972,10 @@ if (OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 		get_target_property(FREETYPE_ARCHIVE_OUTPUT_DIRECTORY freetype ARCHIVE_OUTPUT_DIRECTORY)
 		
 		if(MINGW)
+			# The archive output directory is set for MinGW, since the new methodology (see statement above)
+			# seems not to work with the MinGw generator
+			set(FREETYPE_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
+		
 			set(FREETYPE_LIBRARY ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libfreetype.dll.a CACHE FILEPATH "" FORCE)
 			set(FREETYPE_LIBRARIES ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libfreetype.dll.a CACHE FILEPATH "" FORCE)
 			set(FREETYPE_LIBRARY_DEBUG ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libfreetyped.dll.a CACHE FILEPATH "" FORCE)
@@ -985,6 +989,10 @@ if (OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 			get_target_property(GL2PS_ARCHIVE_OUTPUT_DIRECTORY gl2ps ARCHIVE_OUTPUT_DIRECTORY)
 			
 			if(MINGW)
+				# The archive output directory is set for MinGW, since the new methodology (see statement above)
+				# seems not to work with the MinGw generator
+				set(GL2PS_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
+				
 				set(GL2PS_LIBRARY ${GL2PS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libgl2ps.dll.a CACHE FILEPATH "" FORCE)
 				set(GL2PS_LIBRARY_DEBUG ${GL2PS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libgl2psd.dll.a CACHE FILEPATH "" FORCE)
 			else(MINGW)
@@ -999,6 +1007,10 @@ if (OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 			get_target_property(FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY FreeImage ARCHIVE_OUTPUT_DIRECTORY)
 
 			if(MINGW)
+				# The archive output directory is set for MinGW, since the new methodology (see statement above)
+				# seems not to work with the MinGw generator
+				set(FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
+				
 				set(FREEIMAGE_LIBRARY ${FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libFreeImage.dll.a CACHE FILEPATH "" FORCE)
 				set(FREEIMAGE_LIBRARY_DEBUG ${FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libFreeImaged.dll.a CACHE FILEPATH "" FORCE)
 			else(MINGW)
@@ -1009,6 +1021,10 @@ if (OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 			get_target_property(FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY FreeImagePlus ARCHIVE_OUTPUT_DIRECTORY)
 
 			if(MINGW)
+				# The archive output directory is set for MinGW, since the new methodology (see statement above)
+				# seems not to work with the MinGw generator
+				set(FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
+				
 				set(FREEIMAGEPLUS_LIBRARY ${FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libFreeImagePlus.dll.a CACHE FILEPATH "" FORCE)
 				set(FREEIMAGEPLUS_LIBRARY_DEBUG ${FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libFreeImagePlusd.dll.a CACHE FILEPATH "" FORCE)
 			else(MINGW)
