@@ -6,6 +6,9 @@ oce stands for *o*pencascade *c*ommunity *e*dition.
 This project aims at gathering patches/changes/improvements from the OCC
 community over the latest release (currently OCCT 6.7.1).
 
+Official OCCT documentation and sources are available at
+  http://www.opencascade.org/
+
 We use the following online resources:
   * Sources
        https://github.com/tpaviot/oce
