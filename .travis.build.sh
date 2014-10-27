@@ -3,7 +3,7 @@ set -e
 
 
 #  Default values
-: ${OCE_USE_PCH=ON}
+: ${OCE_USE_PCH=OFF}
 : ${OCE_COPY_HEADERS_BUILD=OFF}
 
 echo "Timestamp" && date
