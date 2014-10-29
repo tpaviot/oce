@@ -68,21 +68,9 @@ endif(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
 message(STATUS "Build ${BIT}bit")
 
 if(NOT CMAKE_CONFIGURATION_TYPES)
-	if( NOT DEFINED OCE_BUILD_TYPE )
-    # If CMAKE_BUILD_TYPE is set, initialize OCE_BUILD_TYPE to that.
-    # Otherwise, default to a Release build.
-    if( CMAKE_BUILD_TYPE )
-      set( OCE_BUILD_TYPE "${CMAKE_BUILD_TYPE}" CACHE STRING "Set from CMAKE_BUILD_TYPE" )
-    else()
-		  set( OCE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Release Debug RelWithDebInfo MinSizeRel None" )
-	    set( CMAKE_BUILD_TYPE ${OCE_BUILD_TYPE} CACHE INTERNAL "Build type, immutable" FORCE )
-    endif(CMAKE_BUILD_TYPE)
-	endif( NOT DEFINED OCE_BUILD_TYPE )
-	#  The "set_property(CACHE" capability first appeared in CMake version 2.8.0
-	#  We test against > 2.8 though, otherwise test is much less readable
-	if (${CMAKE_VERSION} VERSION_GREATER 2.8)
-		set_property(CACHE OCE_BUILD_TYPE PROPERTY STRINGS "Release" "Debug" "RelWithDebInfo" "MinSizeRel" "None")
-	endif (${CMAKE_VERSION} VERSION_GREATER 2.8)
+	if(CMAKE_BUILD_TYPE STREQUAL "")
+		set( CMAKE_BUILD_TYPE "Release" CACHE INTERNAL "Build type, immutable" FORCE )
+	endif(CMAKE_BUILD_TYPE STREQUAL "")
 endif(NOT CMAKE_CONFIGURATION_TYPES)
 
 if(CMAKE_BUILD_TOOL STREQUAL "nmake")
@@ -212,6 +200,9 @@ mark_as_advanced(OCE_ENABLE_DEB_FLAG)
 if(NOT MSVC)
 	option_with_default( OCE_COVERAGE "Build with coverage testing" OFF )
 	mark_as_advanced(OCE_COVERAGE)
+	if(OCE_COVERAGE)
+		set( CMAKE_BUILD_TYPE "Debug" CACHE INTERNAL "Build type, immutable" FORCE )
+	endif(OCE_COVERAGE)
 endif(NOT MSVC)
 
 if( NOT DEFINED OCE_MULTITHREAD_LIBRARY)
@@ -1458,7 +1449,6 @@ if(OCE_COVERAGE)
 	set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -fprofile-arcs -ftest-coverage" CACHE STRING "Extra compile flags required by code coverage" FORCE)
 	set(CMAKE_C_FLAGS_DEBUG "-O0 -g -fprofile-arcs -ftest-coverage" CACHE STRING "Extra compile flags required by code coverage" FORCE)
 	set(CMAKE_MODULE_LINKER_FLAGS_DEBUG "-fprofile-arcs -ftest-coverage" CACHE STRING "Extra linker flags required by code coverage" FORCE)
-	set(OCE_BUILD_TYPE "Debug" CACHE STRING "Build type required by testing framework" FORCE)
 endif(OCE_COVERAGE)
 
 if(OCE_USE_TCL_TEST_FRAMEWORK)

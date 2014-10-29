@@ -43,7 +43,6 @@ rerun cmake after modifying this file.
 
 Here are default flags on Unix
  OCE_BUILD_SHARED_LIB        ON
- OCE_BUILD_TYPE              Release
  OCE_DATAEXCHANGE            ON
  OCE_DRAW                    OFF
  OCE_INSTALL_PREFIX          /usr/local
