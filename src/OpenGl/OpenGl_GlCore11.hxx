@@ -36,6 +36,7 @@
 
 // exclude modern definitions and system-provided glext.h, should be defined before gl.h inclusion
 #define GL_GLEXT_LEGACY
+#define GLX_GLXEXT_LEGACY
 
 // include main OpenGL header provided with system
 #if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
