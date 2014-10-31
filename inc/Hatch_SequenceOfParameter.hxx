@@ -40,6 +40,8 @@ public:
   
       Hatch_SequenceOfParameter();
   
+  Standard_EXPORT   Hatch_SequenceOfParameter(const Hatch_SequenceOfParameter& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Hatch_SequenceOfParameter()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Hatch_SequenceOfParameter(const Hatch_SequenceOfParameter& Other);
 
 
 

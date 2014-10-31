@@ -31,6 +31,8 @@ class gp_Pnt;
 class Geom_Curve;
 class BRepAdaptor_Curve;
 class IntTools_CArray1OfReal;
+class IntTools_Context;
+class IntTools_ShrunkRange;
 class IntTools_Range;
 class IntTools_CommonPrt;
 class IntTools_Root;
@@ -39,7 +41,6 @@ class IntTools_CompareRange;
 class IntTools_EdgeEdge;
 class IntTools_EdgeFace;
 class IntTools_FClass2d;
-class IntTools_LineConstructor;
 class IntTools_MarkedRangeSet;
 class IntTools_BaseRangeSample;
 class IntTools_CurveRangeSample;
@@ -137,6 +138,8 @@ private:
 
 
 
+friend class IntTools_Context;
+friend class IntTools_ShrunkRange;
 friend class IntTools_Range;
 friend class IntTools_CommonPrt;
 friend class IntTools_Root;
@@ -145,7 +148,6 @@ friend class IntTools_CompareRange;
 friend class IntTools_EdgeEdge;
 friend class IntTools_EdgeFace;
 friend class IntTools_FClass2d;
-friend class IntTools_LineConstructor;
 friend class IntTools_MarkedRangeSet;
 friend class IntTools_BaseRangeSample;
 friend class IntTools_CurveRangeSample;

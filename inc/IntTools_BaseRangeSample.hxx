@@ -21,7 +21,7 @@
 #endif
 
 
-
+//! base class for range index management <br>
 class IntTools_BaseRangeSample  {
 public:
 

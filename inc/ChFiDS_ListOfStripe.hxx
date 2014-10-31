@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   ChFiDS_ListOfStripe();
   
+  Standard_EXPORT   ChFiDS_ListOfStripe(const ChFiDS_ListOfStripe& Other);
+  
   Standard_EXPORT     void Assign(const ChFiDS_ListOfStripe& Other) ;
     void operator=(const ChFiDS_ListOfStripe& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ChFiDS_ListOfStripe(const ChFiDS_ListOfStripe& Other);
 
 
 Standard_Address myFirst;

@@ -35,7 +35,7 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-
+//! attribute to store datum <br>
 class XCAFDoc_Datum : public TDF_Attribute {
 
 public:

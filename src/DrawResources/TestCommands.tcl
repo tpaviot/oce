@@ -58,13 +58,15 @@ proc test {group grid casename {echo 0}} {
 # Basic command to run indicated test case in DRAW
 help testgrid {
   Run all tests, or specified group, or one grid
-  Use: testgrid [group [grid]] [options...]
+  Use: testgrid [groupmask [gridmask [casemask]]] [options...]
   Allowed options are:
   -parallel N: run N parallel processes (default is number of CPUs, 0 to disable)
   -refresh N: save summary logs every N seconds (default 600, minimal 1, 0 to disable)
   -outdir dirname: set log directory (should be empty or non-existing)
   -overwrite: force writing logs in existing non-empty directory
   -xml filename: write XML report for Jenkins (in JUnit-like format)
+  Groups, grids, and test cases to be executed can be specified by list of file 
+  masks, separated by spaces or comma; default is all (*).
 }
 proc testgrid {args} {
     global env tcl_platform _tests_verbose
@@ -145,12 +147,14 @@ proc testgrid {args} {
 	}
 
 	# treat arguments not recognized as options as group and grid names
-	if { ! [info exists groupname] } {
-	    set groupname $arg
-	} elseif { ! [info exists gridname] } {
-	    set gridname $arg
+	if { ! [info exists groupmask] } {
+	    set groupmask [split $arg ,]
+	} elseif { ! [info exists gridmask] } {
+	    set gridmask [split $arg ,]
+	} elseif { ! [info exists casemask] } {
+	    set casemask [split $arg ,]
 	} else {
-	    error "Error: cannot interpret argument $narg ($arg): both group and grid names are already defined by previous args!"
+	    error "Error: cannot interpret argument $narg ($arg)"
 	}
     }
 
@@ -158,13 +162,13 @@ proc testgrid {args} {
     set logdir [file normalize [string trim $logdir]]
     if { $logdir == "" } {
 	# if specified logdir is empty string, generate unique name like 
-        # results_<branch>_<timestamp>
-        set prefix "results"
+        # results/<branch>_<timestamp>
+        set prefix ""
         if { ! [catch {exec git branch} gitout] &&
              [regexp {[*] ([\w]+)} $gitout res branch] } {
-            set prefix "${prefix}_$branch"
+            set prefix "${branch}_"
         }
-	set logdir "${prefix}_[clock format [clock seconds] -format {%Y-%m-%dT%H%M}]"
+	set logdir "results/${prefix}[clock format [clock seconds] -format {%Y-%m-%dT%H%M}]"
 	set logdir [file normalize $logdir]
     }
     if { [file isdirectory $logdir] && ! $overwrite && ! [catch {glob -directory $logdir *}] } {
@@ -173,6 +177,11 @@ proc testgrid {args} {
     if { [catch {file mkdir $logdir}] || ! [file writable $logdir] } {
 	error "Error: Cannot create directory \"$logdir\", or it is not writable"
     }
+
+    # masks for search of test groups, grids, and cases
+    if { ! [info exists groupmask] } { set groupmask * }
+    if { ! [info exists gridmask ] } { set gridmask  * }
+    if { ! [info exists casemask ] } { set casemask  * }
 
     ######################################################
     # prepare list of tests to be performed
@@ -200,18 +209,8 @@ proc testgrid {args} {
 	    continue
         }
 
-        # if test group is specified, check that directory with given name exists in this dir
-        # if not, continue to the next test dir
-        if { [info exists groupname] && $groupname != "" } {
-	    if { [file isdirectory $dir/$groupname] } { 
-		set groups $groupname
-	    } else {
-		continue 
-	    }
-	} else {
-	    # else search all directories in the current dir
-	    if [catch {glob -directory $dir -tail -types d *} groups] { continue }
-	}
+	# search all directories in the current dir with specified mask
+	if [catch {glob -directory $dir -tail -types d {*}$groupmask} groups] { continue }
 
 	# iterate by groups
 	if { $_tests_verbose > 0 } { _log_and_puts log "Groups to be executed: $groups" }
@@ -241,9 +240,11 @@ proc testgrid {args} {
 		    continue
 		}
 		
-		# if specific grid is requested, check that it is present; otherwise make complete list
-		if { ! [info exists gridname] || $gridname == "" || $gridname == $gridid || $gridname == $grid } {
-		    lappend gridlist $grid
+		# check that grid fits into the specified mask
+                foreach mask $gridmask {
+		    if { $mask == $gridid || [string match $mask $grid] } {
+		        lappend gridlist $grid
+                    }
 		}
 	    }
 	    close $fd
@@ -271,11 +272,14 @@ proc testgrid {args} {
 		if { $logdir != "" } { file mkdir $logdir/$group/$grid }
 
 		# iterate by all tests in the grid directory
-		if { [catch {glob -directory $griddir -type f *} testfiles] } { continue }
+		if { [catch {glob -directory $griddir -type f {*}$casemask} testfiles] } { continue }
 		foreach casefile [lsort -dictionary $testfiles] {
-		    # filter out begin and end files
+		    # filter out files with reserved names
 		    set casename [file tail $casefile]
-		    if { $casename == "begin" || $casename == "end" } { continue }
+		    if { $casename == "begin" || $casename == "end" ||
+                         $casename == "parse.rules" } {
+                      continue
+                    }
 
 		    lappend tests_list [list $dir $group $grid $casename $casefile]
 		}
@@ -1199,9 +1203,14 @@ proc _log_html {file log {title {}}} {
     # print header
     puts $fd "<html><head><title>$title</title></head><body><h1>$title</h1>"
 
-    # add images if present
+    # add images if present; these should have either PNG, GIF, or JPG extension,
+    # and start with name of the test script, with optional suffix separated
+    # by underscore or dash
     set imgbasename [file rootname [file tail $file]]
-    foreach img [lsort [glob -nocomplain -directory [file dirname $file] -tails ${imgbasename}*.gif ${imgbasename}*.png ${imgbasename}*.jpg]] {
+    foreach img [lsort [glob -nocomplain -directory [file dirname $file] -tails \
+                             ${imgbasename}.gif   ${imgbasename}.png   ${imgbasename}.jpg \
+                             ${imgbasename}_*.gif ${imgbasename}_*.png ${imgbasename}_*.jpg \
+                             ${imgbasename}-*.gif ${imgbasename}-*.png ${imgbasename}-*.jpg]] {
 	puts $fd "<p>[file tail $img]<br><img src=\"$img\"/><p>"
     }
 

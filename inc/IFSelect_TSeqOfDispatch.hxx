@@ -43,6 +43,8 @@ public:
   
       IFSelect_TSeqOfDispatch();
   
+  Standard_EXPORT   IFSelect_TSeqOfDispatch(const IFSelect_TSeqOfDispatch& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IFSelect_TSeqOfDispatch()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IFSelect_TSeqOfDispatch(const IFSelect_TSeqOfDispatch& Other);
 
 
 

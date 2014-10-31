@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   SelectMgr_ListOfFilter();
   
+  Standard_EXPORT   SelectMgr_ListOfFilter(const SelectMgr_ListOfFilter& Other);
+  
   Standard_EXPORT     void Assign(const SelectMgr_ListOfFilter& Other) ;
     void operator=(const SelectMgr_ListOfFilter& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   SelectMgr_ListOfFilter(const SelectMgr_ListOfFilter& Other);
 
 
 Standard_Address myFirst;

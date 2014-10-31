@@ -51,6 +51,8 @@ class GeomPlate_SequenceOfAij;
 
 //! This class computes an average inertial plane with an <br>
 //!          array of points. <br>
+//!          Computes the initial surface (average plane) in the cases <br>
+//!          when the initial surface is not given. <br>
 class GeomPlate_BuildAveragePlane  {
 public:
 

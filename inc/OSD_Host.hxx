@@ -41,6 +41,7 @@ class TCollection_AsciiString;
 
 
 //! Carries information about a Host <br>
+//!          System version ,host name, nodename ... <br>
 class OSD_Host  {
 public:
 

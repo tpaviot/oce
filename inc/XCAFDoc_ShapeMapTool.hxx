@@ -39,7 +39,7 @@ class TDF_RelocationTable;
 class TopTools_IndexedMapOfShape;
 
 
-
+//! attribute containing map of sub shapes <br>
 class XCAFDoc_ShapeMapTool : public TDF_Attribute {
 
 public:

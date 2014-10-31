@@ -40,6 +40,8 @@ public:
   
       GeomInt_SequenceOfParameterAndOrientation();
   
+  Standard_EXPORT   GeomInt_SequenceOfParameterAndOrientation(const GeomInt_SequenceOfParameterAndOrientation& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~GeomInt_SequenceOfParameterAndOrientation()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   GeomInt_SequenceOfParameterAndOrientation(const GeomInt_SequenceOfParameterAndOrientation& Other);
 
 
 

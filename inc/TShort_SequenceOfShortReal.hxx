@@ -42,6 +42,8 @@ public:
   
       TShort_SequenceOfShortReal();
   
+  Standard_EXPORT   TShort_SequenceOfShortReal(const TShort_SequenceOfShortReal& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TShort_SequenceOfShortReal()
 {
@@ -106,8 +108,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TShort_SequenceOfShortReal(const TShort_SequenceOfShortReal& Other);
 
 
 

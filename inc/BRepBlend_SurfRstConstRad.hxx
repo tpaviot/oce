@@ -58,13 +58,15 @@
 #ifndef _Blend_SurfRstFunction_HeaderFile
 #include <Blend_SurfRstFunction.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
 #endif
 class Adaptor3d_HSurface;
 class Adaptor2d_HCurve2d;
 class Adaptor3d_HCurve;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 class gp_Pnt2d;
@@ -80,7 +82,8 @@ class TColgp_Array1OfPnt2d;
 class TColgp_Array1OfVec2d;
 
 
-
+//! Copy of CSConstRad with pcurve on surface <br>
+//!          as support. <br>
 class BRepBlend_SurfRstConstRad  : public Blend_SurfRstFunction {
 public:
 

@@ -428,6 +428,9 @@
 					RelativePath="..\..\..\src\ViewerTest\ViewerTest.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\ViewerTest\ViewerTest_AutoUpdater.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\ViewerTest\ViewerTest_AviCommands.cxx">
 				</File>
 				<File
@@ -444,9 +447,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\ViewerTest\ViewerTest_RelationCommands.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\ViewerTest\ViewerTest_Tool.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\ViewerTest\ViewerTest_ViewerCommands.cxx">

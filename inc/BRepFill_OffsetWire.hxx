@@ -22,11 +22,11 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _TopoDS_Shape_HeaderFile
-#include <TopoDS_Shape.hxx>
-#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
 #endif
 #ifndef _GeomAbs_JoinType_HeaderFile
 #include <GeomAbs_JoinType.hxx>
@@ -51,10 +51,16 @@ class BRepMAT2d_LinkTopoBilo;
 class TopoDS_Shape;
 class TopTools_ListOfShape;
 class BRepFill_IndexedDataMapOfOrientedShapeListOfShape;
+class BRepFill_DataMapOfOrientedShapeListOfShape;
+class TopTools_SequenceOfShape;
+class TColgp_SequenceOfPnt;
+class Bisector_Bisec;
+class BRepFill_TrimEdgeTool;
 
 
 //! Constructs a Offset Wire to a spine (wire or face) <br>
 //!          on the left of spine. <br>
+//!          The Wire or the Face must be planar. <br>
 class BRepFill_OffsetWire  {
 public:
 
@@ -63,9 +69,9 @@ public:
   
   Standard_EXPORT   BRepFill_OffsetWire();
   
-  Standard_EXPORT   BRepFill_OffsetWire(const TopoDS_Face& Spine,const GeomAbs_JoinType Join = GeomAbs_Arc);
+  Standard_EXPORT   BRepFill_OffsetWire(const TopoDS_Face& Spine,const GeomAbs_JoinType Join = GeomAbs_Arc,const Standard_Boolean IsOpenResult = Standard_False);
   //! Initialize the evaluation of Offseting. <br>
-  Standard_EXPORT     void Init(const TopoDS_Face& Spine,const GeomAbs_JoinType Join = GeomAbs_Arc) ;
+  Standard_EXPORT     void Init(const TopoDS_Face& Spine,const GeomAbs_JoinType Join = GeomAbs_Arc,const Standard_Boolean IsOpenResult = Standard_False) ;
   //! Performs  an OffsetWire at  an altitude <Alt> from <br>
 //!          the  face ( According  to  the orientation of  the <br>
 //!          face) <br>
@@ -106,6 +112,8 @@ private:
   Standard_EXPORT     void PrepareSpine() ;
   //! Add the OffsetWire <Other> to <me> and update <myMap> <br>
   Standard_EXPORT     void Add(const BRepFill_OffsetWire& Other) ;
+  
+  Standard_EXPORT     void UpdateDetromp(BRepFill_DataMapOfOrientedShapeListOfShape& Detromp,const TopoDS_Shape& Shape1,const TopoDS_Shape& Shape2,const TopTools_SequenceOfShape& Vertices,const TColgp_SequenceOfPnt& Params,const Bisector_Bisec& Bisec,const Standard_Boolean SOnE,const Standard_Boolean EOnE,const BRepFill_TrimEdgeTool& Trim) const;
   //! Constructs the wires with the trimmed offset edges. <br>
   Standard_EXPORT     void MakeWires() ;
   //! Fix holes between open wires where it is possible <br>
@@ -115,6 +123,7 @@ private:
 TopoDS_Face mySpine;
 TopoDS_Face myWorkSpine;
 Standard_Real myOffset;
+Standard_Boolean myIsOpenResult;
 TopoDS_Shape myShape;
 Standard_Boolean myIsDone;
 GeomAbs_JoinType myJoinType;

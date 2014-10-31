@@ -10,9 +10,6 @@
 #ifndef _Draw_Drawable3D_HeaderFile
 #include <Draw_Drawable3D.hxx>
 #endif
-#ifndef _Draw_Interpretor_HeaderFile
-#include <Draw_Interpretor.hxx>
-#endif
 #ifndef _DrawTrSurf_Triangulation_HeaderFile
 #include <DrawTrSurf_Triangulation.hxx>
 #endif

@@ -46,9 +46,6 @@
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
 #ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
 #endif
@@ -140,9 +137,6 @@ public:
   Standard_EXPORT     Handle_Graphic3d_AspectLine3d Line3dAspect() const;
   //! Returns the values of the current default attributes. <br>
   Standard_EXPORT     Handle_Graphic3d_AspectMarker3d Marker3dAspect() const;
-  //! Returns the coordinates of the boundary box of all <br>
-//!	    structures displayed in the manager <me>. <br>
-  Standard_EXPORT     void MinMaxValues(Standard_Real& XMin,Standard_Real& YMin,Standard_Real& ZMin,Standard_Real& XMax,Standard_Real& YMax,Standard_Real& ZMax) const;
   //! Returns the values of the current default attributes. <br>
   Standard_EXPORT     void PrimitivesAspect(Handle(Graphic3d_AspectLine3d)& CTXL,Handle(Graphic3d_AspectText3d)& CTXT,Handle(Graphic3d_AspectMarker3d)& CTXM,Handle(Graphic3d_AspectFillArea3d)& CTXF) const;
   //! Returns the values of the current default attributes. <br>
@@ -163,7 +157,7 @@ public:
 //! has no layer ID (deleted from graphic driver), the method returns -1. <br>
   Standard_EXPORT   virtual  Standard_Integer GetZLayer(const Handle(Graphic3d_Structure)& theStructure) const = 0;
   //! Sets the settings for a single Z layer for all managed views. <br>
-  Standard_EXPORT   virtual  void SetZLayerSettings(const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings theSettings)  = 0;
+  Standard_EXPORT   virtual  void SetZLayerSettings(const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings& theSettings)  = 0;
   //! Returns the settings of a single Z layer. <br>
   Standard_EXPORT   virtual  Graphic3d_ZLayerSettings ZLayerSettings(const Standard_Integer theLayerId)  = 0;
   //! Add a new top-level Z layer and get its ID as <br>
@@ -208,12 +202,16 @@ public:
   Standard_EXPORT   virtual  Standard_Integer Identification() const;
   //! Returns the structure with the identification number <AId>. <br>
   Standard_EXPORT   virtual  Handle_Graphic3d_Structure Identification(const Standard_Integer AId) const;
+  //! Returns a new identification number for a new structure in the manager. <br>
+  Standard_EXPORT     Standard_Integer NewIdentification() ;
   //! Suppresses the highlighting on all the structures in <me>. <br>
   Standard_EXPORT   virtual  void UnHighlight()  = 0;
   //! Suppress the highlighting on the structure <AStructure>. <br>
   Standard_EXPORT   virtual  void UnHighlight(const Handle(Graphic3d_Structure)& AStructure)  = 0;
   
   Standard_EXPORT     void RecomputeStructures() ;
+  //! Recomputes all structures from theStructures. <br>
+  Standard_EXPORT     void RecomputeStructures(const Graphic3d_MapOfStructure& theStructures) ;
 
 friend class Graphic3d_Structure;
 
@@ -251,15 +249,10 @@ private:
 
   //! Sets detectable the structure <AStructure>. <br>
   Standard_EXPORT     void Detectable(const Handle(Graphic3d_Structure)& AStructure) ;
-  //! Returns a new identification number for a new structure <br>
-//!	    in the manager. <br>
-  Standard_EXPORT     Standard_Integer NewIdentification() ;
   //! Frees the identifieur <AnId>. <br>
   Standard_EXPORT     void Remove(const Standard_Integer AnId) ;
   //! Sets no detectable the structure <AStructure>. <br>
   Standard_EXPORT     void Undetectable(const Handle(Graphic3d_Structure)& AStructure) ;
-  //! Recomputes all structures from theStructures. <br>
-  Standard_EXPORT     void RecomputeStructures(const Graphic3d_MapOfStructure& theStructures) ;
 
 
 

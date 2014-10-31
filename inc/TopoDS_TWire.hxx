@@ -28,7 +28,7 @@
 class TopoDS_TShape;
 
 
-
+//! A set of edges connected by their vertices. <br>
 class TopoDS_TWire : public TopoDS_TShape {
 
 public:

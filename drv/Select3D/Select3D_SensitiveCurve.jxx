@@ -31,6 +31,9 @@
 #ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
 #endif
+#ifndef _gp_XYZ_HeaderFile
+#include <gp_XYZ.hxx>
+#endif
 #ifndef _Select3D_SensitiveCurve_HeaderFile
 #include <Select3D_SensitiveCurve.hxx>
 #endif

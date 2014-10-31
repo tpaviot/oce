@@ -46,10 +46,12 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class TColStd_HArray1OfReal;
 class TColgp_HArray1OfPnt2d;
 class FairCurve_BattenLaw;
-class math_Vector;
 
 
 //! Energy Criterium to minimize in Batten. <br>

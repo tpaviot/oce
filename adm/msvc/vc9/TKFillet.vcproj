@@ -706,21 +706,6 @@
 					RelativePath="..\..\..\drv\BRepBlend\BRepBlend_CSWalking_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\BRepBlend\BRepBlend_Extremity_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepBlend\BRepBlend_HCurve2dTool_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepBlend\BRepBlend_HCurveTool_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepBlend\BRepBlend_Line_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepBlend\BRepBlend_PointOnRst_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\BRepBlend\BRepBlend_SequenceNodeOfSequenceOfLine_0.cxx">
 				</File>
 				<File
@@ -755,6 +740,21 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepBlend\BRepBlend_CurvPointRadInv.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepBlend\BRepBlend_Extremity.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepBlend\BRepBlend_HCurve2dTool.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepBlend\BRepBlend_HCurveTool.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepBlend\BRepBlend_Line.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepBlend\BRepBlend_PointOnRst.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepBlend\BRepBlend_RstRstConstRad.cxx">

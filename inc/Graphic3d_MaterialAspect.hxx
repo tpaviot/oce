@@ -52,6 +52,7 @@ class Quantity_Color;
 
 
 //! This class allows the definition of the type of a surface. <br>
+//!          Aspect attributes of a 3d face. <br>
 //!  Keywords: Material, FillArea, Shininess, Ambient, Color, Diffuse, <br>
 //!	     Specular, Transparency, Emissive, ReflectionMode, <br>
 //!	     BackFace, FrontFace, Reflection, Absorbtion <br>
@@ -111,6 +112,11 @@ public:
 //!  Warning: Raises MaterialDefinitionError if <AValue> is a <br>
 //!	    negative value or greater than 1.0. <br>
   Standard_EXPORT     void SetTransparency(const Standard_Real AValue) ;
+  //! Modifies the refraction index of the material. <br>
+//!  Category: Methods to modify the class definition <br>
+//!  Warning: Raises MaterialDefinitionError if <theValue> is a <br>
+//!	    lesser than 1.0. <br>
+  Standard_EXPORT     void SetRefractionIndex(const Standard_Real theValue) ;
   //! Modifies the ambient colour of the surface. <br>
 //!  Category: Methods to modify the class definition <br>
   Standard_EXPORT     void SetColor(const Quantity_Color& AColor) ;
@@ -161,15 +167,15 @@ public:
 //! for the material of type ASPECT. <br>
   Standard_EXPORT     void Reset() ;
   //! Returns the ambient colour of the surface. <br>
-  Standard_EXPORT     Quantity_Color Color() const;
+  Standard_EXPORT    const Quantity_Color& Color() const;
   //! Returns the ambient colour of the surface. <br>
-  Standard_EXPORT     Quantity_Color AmbientColor() const;
+  Standard_EXPORT    const Quantity_Color& AmbientColor() const;
   //! Returns the diffuse colour of the surface. <br>
-  Standard_EXPORT     Quantity_Color DiffuseColor() const;
+  Standard_EXPORT    const Quantity_Color& DiffuseColor() const;
   //! Returns the specular colour of the surface. <br>
-  Standard_EXPORT     Quantity_Color SpecularColor() const;
+  Standard_EXPORT    const Quantity_Color& SpecularColor() const;
   //! Returns the emissive colour of the surface. <br>
-  Standard_EXPORT     Quantity_Color EmissiveColor() const;
+  Standard_EXPORT    const Quantity_Color& EmissiveColor() const;
   //! Returns the reflection properties of the surface. <br>
   Standard_EXPORT     Standard_Real Ambient() const;
   //! Returns the reflection properties of the surface. <br>
@@ -178,6 +184,8 @@ public:
   Standard_EXPORT     Standard_Real Specular() const;
   //! Returns the transparency coefficient of the surface. <br>
   Standard_EXPORT     Standard_Real Transparency() const;
+  //! Returns the refraction index of the material <br>
+  Standard_EXPORT     Standard_Real RefractionIndex() const;
   //! Returns the emissive coefficient of the surface. <br>
   Standard_EXPORT     Standard_Real Emissive() const;
   //! Returns the luminosity of the surface. <br>
@@ -240,25 +248,26 @@ private:
   Standard_EXPORT     void Init(const Graphic3d_NameOfMaterial AName) ;
 
 
-Standard_ShortReal MyDiffuseCoef;
-Quantity_Color MyDiffuseColor;
-Standard_Boolean MyDiffuseActivity;
-Standard_ShortReal MyAmbientCoef;
-Quantity_Color MyAmbientColor;
-Standard_Boolean MyAmbientActivity;
-Standard_ShortReal MySpecularCoef;
-Quantity_Color MySpecularColor;
-Standard_Boolean MySpecularActivity;
-Standard_ShortReal MyEmissiveCoef;
-Quantity_Color MyEmissiveColor;
-Standard_Boolean MyEmissiveActivity;
-Standard_ShortReal MyTransparencyCoef;
-Standard_ShortReal MyShininess;
-Standard_ShortReal MyEnvReflexion;
-Graphic3d_TypeOfMaterial MyMaterialType;
-Graphic3d_NameOfMaterial MyMaterialName;
-Graphic3d_NameOfMaterial MyRequestedMaterialName;
-TCollection_AsciiString MyStringName;
+Standard_ShortReal myDiffuseCoef;
+Quantity_Color myDiffuseColor;
+Standard_Boolean myDiffuseActivity;
+Standard_ShortReal myAmbientCoef;
+Quantity_Color myAmbientColor;
+Standard_Boolean myAmbientActivity;
+Standard_ShortReal mySpecularCoef;
+Quantity_Color mySpecularColor;
+Standard_Boolean mySpecularActivity;
+Standard_ShortReal myEmissiveCoef;
+Quantity_Color myEmissiveColor;
+Standard_Boolean myEmissiveActivity;
+Standard_ShortReal myTransparencyCoef;
+Standard_ShortReal myRefractionIndex;
+Standard_ShortReal myShininess;
+Standard_ShortReal myEnvReflexion;
+Graphic3d_TypeOfMaterial myMaterialType;
+Graphic3d_NameOfMaterial myMaterialName;
+Graphic3d_NameOfMaterial myRequestedMaterialName;
+TCollection_AsciiString myStringName;
 
 
 };

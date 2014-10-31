@@ -40,6 +40,8 @@ public:
   
       IntRes2d_SequenceOfIntersectionPoint();
   
+  Standard_EXPORT   IntRes2d_SequenceOfIntersectionPoint(const IntRes2d_SequenceOfIntersectionPoint& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntRes2d_SequenceOfIntersectionPoint()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntRes2d_SequenceOfIntersectionPoint(const IntRes2d_SequenceOfIntersectionPoint& Other);
 
 
 

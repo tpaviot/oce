@@ -32,7 +32,7 @@ class TopoDS_Compound;
 
 
 //! A  Builder is used   to  create  Topological  Data <br>
-//!          Structures. <br>
+//!          Structures.It is the root of the Builder class hierarchy. <br>
 //! <br>
 //!          There are three groups of methods in the Builder : <br>
 //! <br>

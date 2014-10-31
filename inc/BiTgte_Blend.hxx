@@ -86,7 +86,7 @@ class BRepOffset_Offset;
 class BRepOffset_Inter3d;
 
 
-
+//! Root class <br>
 class BiTgte_Blend  {
 public:
 

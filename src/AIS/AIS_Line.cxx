@@ -31,10 +31,11 @@
 #include <GeomAdaptor_Curve.hxx>
 #include <AIS_Drawer.hxx>
 #include <GC_MakeSegment.hxx>
-#include <Handle_Geom_Line.hxx>
+#include <Geom_Line.hxx>
 #include <Quantity_Color.hxx>
 #include <AIS_GraphicTool.hxx>
 #include <UnitsAPI.hxx>
+
 //==================================================================
 // function: FindLimits
 // purpose:
@@ -123,9 +124,9 @@ void AIS_Line::Compute(const Handle(PrsMgr_PresentationManager3d)&,
 
 }
 
-void AIS_Line::Compute(const Handle_Prs3d_Projector& aProjector, const Handle_Geom_Transformation& aTransformation, const Handle_Prs3d_Presentation& aPresentation)
+void AIS_Line::Compute(const Handle(Prs3d_Projector)& aProjector, const Handle(Geom_Transformation)& aTransformation, const Handle(Prs3d_Presentation)& aPresentation)
 {
-// Standard_NotImplemented::Raise("AIS_Line::Compute(const Handle_Prs3d_Projector&, const Handle_Geom_Transformation&, const Handle_Prs3d_Presentation&)");
+// Standard_NotImplemented::Raise("AIS_Line::Compute(const Handle(Prs3d_Projector)&, const Handle(Geom_Transformation)&, const Handle(Prs3d_Presentation)&)");
  PrsMgr_PresentableObject::Compute( aProjector , aTransformation , aPresentation) ;
 }
 

@@ -17,7 +17,7 @@
 #define NIS_View_HeaderFile
 
 #include <Handle_NIS_InteractiveObject.hxx>
-#include <V3d_OrthographicView.hxx>
+#include <V3d_View.hxx>
 #include <Standard_DefineHandle.hxx>
 #include <NCollection_List.hxx>
 #include <NCollection_Vector.hxx>
@@ -31,7 +31,7 @@ class gp_Ax1;
 /**
  * Manager of a single window with OpenGL context, used by one or more
  * NIS_InteractiveContext instances.
- * This class inherits V3d_OrthograpicView therefore its instances can be used
+ * This class inherits V3d_View therefore its instances can be used
  * to display any object that is normally handled by Graphic3d/V3d/AIS classes.
  * Also the standard view operations: Pan, Rotate, Zoom, mouse API, etc. are
  * supported due to this inheritance.<p>
@@ -53,7 +53,7 @@ class gp_Ax1;
  * AddContext and RemoveContext.
  */
 
-class NIS_View : public V3d_OrthographicView
+class NIS_View : public V3d_View
 {
  public:
   // ---------- PUBLIC METHODS ----------
@@ -62,13 +62,13 @@ class NIS_View : public V3d_OrthographicView
   /**
    * Attach the view to the window.
    */
-  Standard_EXPORT NIS_View (const Handle_V3d_Viewer&    theViewer,
-                            const Handle_Aspect_Window& theWindow = NULL);
+  Standard_EXPORT NIS_View (const Handle(V3d_Viewer)&    theViewer,
+                            const Handle(Aspect_Window)& theWindow = NULL);
 
   /**
    * Attach the view to the window.
    */
-  Standard_EXPORT void SetWindow(const Handle_Aspect_Window &theWindow);
+  Standard_EXPORT void SetWindow(const Handle(Aspect_Window) &theWindow);
 
   /**
    * Indicate whether to draw hilighted objects on top of all other ones
@@ -131,7 +131,7 @@ class NIS_View : public V3d_OrthographicView
    * Unhilights the hilighted object if it coincides with the given
    * object instance.
    */
-  Standard_EXPORT void  DynamicUnhilight(const Handle_NIS_InteractiveObject&);
+  Standard_EXPORT void  DynamicUnhilight(const Handle(NIS_InteractiveObject)&);
 
   /**
    * Unhilights the currently hilighted object.
@@ -228,7 +228,7 @@ class NIS_View : public V3d_OrthographicView
    *   the selected object picked by the minimal intersection distance among
    *   all contexts attached to this View.
    */
-  Standard_EXPORT Handle_NIS_InteractiveObject
+  Standard_EXPORT Handle(NIS_InteractiveObject)
                         Pick            (const Standard_Integer theX,
                                          const Standard_Integer theY);
 
@@ -247,7 +247,7 @@ class NIS_View : public V3d_OrthographicView
    *   the selected object picked by the minimal intersection distance among
    *   all contexts attached to this View.
    */
-  Standard_EXPORT Handle_NIS_InteractiveObject
+  Standard_EXPORT Handle(NIS_InteractiveObject)
                         Pick            (const gp_Ax1&          theAxis,
                                          const Standard_Real    theOver,
                                          const Standard_Boolean isOnlySel);
@@ -285,7 +285,7 @@ class NIS_View : public V3d_OrthographicView
   // ---------- PRIVATE FIELDS ----------
 
   NCollection_List<NIS_InteractiveContext *>       myContexts;
-  Handle_NIS_InteractiveObject                     myDynHilighted;
+  Handle(NIS_InteractiveObject)                     myDynHilighted;
   Standard_Boolean                                 myIsTopHilight      : 1;
   Standard_Boolean                                 myDoHilightSelected : 1;
   NCollection_Vector<NIS_InteractiveObject *>      myDetected;

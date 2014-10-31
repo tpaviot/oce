@@ -235,7 +235,6 @@
 		<Unit filename="../../../drv/IFSelect/IFSelect_TSeqOfSelection_0.cxx" />
 		<Unit filename="../../../src/IFSelect/IFSelect.cxx" />
 		<Unit filename="../../../src/IFSelect/IFSelect_Act.cxx" />
-		<Unit filename="../../../src/IFSelect/IFSelect_ActFunc.cxx" />
 		<Unit filename="../../../src/IFSelect/IFSelect_Activator.cxx" />
 		<Unit filename="../../../src/IFSelect/IFSelect_AppliedModifiers.cxx" />
 		<Unit filename="../../../src/IFSelect/IFSelect_BasicDumper.cxx" />
@@ -311,13 +310,13 @@
 		<Unit filename="../../../src/IFSelect/IFSelect_Transformer.cxx" />
 		<Unit filename="../../../src/IFSelect/IFSelect_WorkLibrary.cxx" />
 		<Unit filename="../../../src/IFSelect/IFSelect_WorkSession.cxx" />
-		<Unit filename="../../../drv/TransferBRep/TransferBRep_BinderOfShape_0.cxx" />
 		<Unit filename="../../../drv/TransferBRep/TransferBRep_HSequenceOfTransferResultInfo_0.cxx" />
 		<Unit filename="../../../drv/TransferBRep/TransferBRep_OrientedShapeMapper_0.cxx" />
 		<Unit filename="../../../drv/TransferBRep/TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo_0.cxx" />
 		<Unit filename="../../../drv/TransferBRep/TransferBRep_SequenceOfTransferResultInfo_0.cxx" />
 		<Unit filename="../../../drv/TransferBRep/TransferBRep_ShapeMapper_0.cxx" />
 		<Unit filename="../../../src/TransferBRep/TransferBRep.cxx" />
+		<Unit filename="../../../src/TransferBRep/TransferBRep_BinderOfShape.cxx" />
 		<Unit filename="../../../src/TransferBRep/TransferBRep_Reader.cxx" />
 		<Unit filename="../../../src/TransferBRep/TransferBRep_ShapeBinder.cxx" />
 		<Unit filename="../../../src/TransferBRep/TransferBRep_ShapeInfo.cxx" />
@@ -425,7 +424,6 @@
 		<Unit filename="../../../drv/MoniTool/MoniTool_IndexedDataMapOfShapeTransient_0.cxx" />
 		<Unit filename="../../../drv/MoniTool/MoniTool_SequenceNodeOfSequenceOfElement_0.cxx" />
 		<Unit filename="../../../drv/MoniTool/MoniTool_SequenceOfElement_0.cxx" />
-		<Unit filename="../../../drv/MoniTool/MoniTool_TransientElem_0.cxx" />
 		<Unit filename="../../../src/MoniTool/MoniTool_AttrList.cxx" />
 		<Unit filename="../../../src/MoniTool/MoniTool_CaseData.cxx" />
 		<Unit filename="../../../src/MoniTool/MoniTool_DataInfo.cxx" />
@@ -442,8 +440,7 @@
 		<Unit filename="../../../src/MoniTool/MoniTool_Stat.cxx" />
 		<Unit filename="../../../src/MoniTool/MoniTool_Timer.cxx" />
 		<Unit filename="../../../src/MoniTool/MoniTool_TimerSentry.cxx" />
+		<Unit filename="../../../src/MoniTool/MoniTool_TransientElem.cxx" />
 		<Unit filename="../../../src/MoniTool/MoniTool_TypedValue.cxx" />
-		<Unit filename="../../../src/MoniTool/MoniTool_ValueInterpret.cxx" />
-		<Unit filename="../../../src/MoniTool/MoniTool_ValueSatisfies.cxx" />
 	</Project>
 </CodeBlocks_project_file>

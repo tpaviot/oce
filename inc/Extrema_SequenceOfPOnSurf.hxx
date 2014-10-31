@@ -40,6 +40,8 @@ public:
   
       Extrema_SequenceOfPOnSurf();
   
+  Standard_EXPORT   Extrema_SequenceOfPOnSurf(const Extrema_SequenceOfPOnSurf& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Extrema_SequenceOfPOnSurf()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Extrema_SequenceOfPOnSurf(const Extrema_SequenceOfPOnSurf& Other);
 
 
 

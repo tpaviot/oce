@@ -4,9 +4,6 @@
 #ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _FEmTool_ElementsOfRefMatrix_HeaderFile
 #include <FEmTool_ElementsOfRefMatrix.hxx>
 #endif

@@ -30,7 +30,7 @@ class Draw_Color;
 class Draw_Display;
 
 
-
+//! a 3d box <br>
 class Draw_Box : public Draw_Drawable3D {
 
 public:

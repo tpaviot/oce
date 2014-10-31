@@ -72,6 +72,8 @@ public:
 //! Could be null handle if marker aspect has been initialized as <br>
 //! default type of marker. <br>
   Standard_EXPORT    const Graphic3d_MarkerImage_Handle& GetMarkerImage() const;
+  //! Set marker's image texture. <br>
+  Standard_EXPORT     void SetMarkerImage(const Graphic3d_MarkerImage_Handle& theImage) ;
   
   Standard_EXPORT     void SetBitMap(const Standard_Integer theWidth,const Standard_Integer theHeight,const Handle(TColStd_HArray1OfByte)& theTexture) ;
   //! Sets up OpenGL/GLSL shader program. <br>

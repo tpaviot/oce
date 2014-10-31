@@ -50,7 +50,6 @@ class Standard_DimensionError;
 class Standard_DomainError;
 class TColStd_Array2OfInteger;
 class math_Matrix;
-class math_Vector;
 
 
 //! Assemble and solve system from (one dimensional) Finite Elements <br>

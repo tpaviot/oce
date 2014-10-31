@@ -43,6 +43,8 @@ public:
   
       PCDM_SequenceOfDocument();
   
+  Standard_EXPORT   PCDM_SequenceOfDocument(const PCDM_SequenceOfDocument& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~PCDM_SequenceOfDocument()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   PCDM_SequenceOfDocument(const PCDM_SequenceOfDocument& Other);
 
 
 

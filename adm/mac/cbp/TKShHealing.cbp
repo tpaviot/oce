@@ -224,7 +224,6 @@
 		<Unit filename="../../../drv/ShapeProcess/ShapeProcess_StackItemOfDictionaryOfOperator_0.cxx" />
 		<Unit filename="../../../src/ShapeProcess/ShapeProcess.cxx" />
 		<Unit filename="../../../src/ShapeProcess/ShapeProcess_Context.cxx" />
-		<Unit filename="../../../src/ShapeProcess/ShapeProcess_OperFunc.cxx" />
 		<Unit filename="../../../src/ShapeProcess/ShapeProcess_OperLibrary.cxx" />
 		<Unit filename="../../../src/ShapeProcess/ShapeProcess_Operator.cxx" />
 		<Unit filename="../../../src/ShapeProcess/ShapeProcess_ShapeContext.cxx" />

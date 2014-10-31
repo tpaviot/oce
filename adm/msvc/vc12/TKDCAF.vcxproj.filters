@@ -2,32 +2,32 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{2F518F49-04E2-1245-152C-72718079B9EA}</UniqueIdentifier>
+      <UniqueIdentifier>{FA7066FE-086B-0AB2-045C-3ABEDBC84EC2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DDF">
-      <UniqueIdentifier>{9CE197C9-1974-0015-07BE-5E24F5CC6D39}</UniqueIdentifier>
+      <UniqueIdentifier>{AAB5EF08-17E4-0137-0728-6092C243175E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DDocStd">
-      <UniqueIdentifier>{16BC2869-144C-0FCC-16A5-52E5EA749BAB}</UniqueIdentifier>
+      <UniqueIdentifier>{B326B68B-01EE-15DF-0E51-F410535BE1A3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DNaming">
-      <UniqueIdentifier>{98191F99-0350-08F9-0275-003EFD27812D}</UniqueIdentifier>
+      <UniqueIdentifier>{3AD293FD-11EF-0E41-14A6-51AE70935F21}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DDataStd">
-      <UniqueIdentifier>{91EEFBDE-05F6-0BC8-00BD-3A50A38405A7}</UniqueIdentifier>
+      <UniqueIdentifier>{4A7E2F1A-006E-01EE-09B3-2C305719B7F2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DPrsStd">
-      <UniqueIdentifier>{8F4A7F26-00EC-0291-0F4D-E0E3B284F480}</UniqueIdentifier>
+      <UniqueIdentifier>{7BB18B9C-10EE-13E6-0166-042A0A641E89}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DrawDim">
-      <UniqueIdentifier>{D00A8996-12BB-106F-06A5-CA407F5076AB}</UniqueIdentifier>
+      <UniqueIdentifier>{10EF8E6D-0CEC-1074-096B-B299A28475B5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\drv\DDF\DDF_StackIteratorOfTransactionStack_0.cxx">
+    <ClCompile Include="..\..\..\drv\DDF\DDF_ListIteratorOfTransactionStack_0.cxx">
       <Filter>Source files\DDF</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\DDF\DDF_StackNodeOfTransactionStack_0.cxx">
+    <ClCompile Include="..\..\..\drv\DDF\DDF_ListNodeOfTransactionStack_0.cxx">
       <Filter>Source files\DDF</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\DDF\DDF_TransactionStack_0.cxx">

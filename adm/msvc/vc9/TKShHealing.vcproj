@@ -826,9 +826,6 @@
 					RelativePath="..\..\..\src\ShapeProcess\ShapeProcess_Context.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\ShapeProcess\ShapeProcess_OperFunc.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\ShapeProcess\ShapeProcess_OperLibrary.cxx">
 				</File>
 				<File

@@ -41,6 +41,7 @@
 
 //! Implements a function for the Newton algorithm to find the <br>
 //!          solution of Integral(F) = L <br>
+//!          (compute Length  and Derivative of the curve for Newton) <br>
 class CPnts_MyRootFunction  : public math_FunctionWithDerivative {
 public:
 

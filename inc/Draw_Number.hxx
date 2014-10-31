@@ -28,9 +28,11 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class Draw_Display;
 class Draw_Drawable3D;
-class Draw_Interpretor;
 
 
 //! To store nummbers in variables. <br>

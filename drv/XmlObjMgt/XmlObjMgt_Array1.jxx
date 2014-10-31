@@ -1,0 +1,3 @@
+#ifndef _XmlObjMgt_Array1_HeaderFile
+#include <XmlObjMgt_Array1.hxx>
+#endif

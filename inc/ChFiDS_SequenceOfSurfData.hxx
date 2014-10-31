@@ -43,6 +43,8 @@ public:
   
       ChFiDS_SequenceOfSurfData();
   
+  Standard_EXPORT   ChFiDS_SequenceOfSurfData(const ChFiDS_SequenceOfSurfData& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~ChFiDS_SequenceOfSurfData()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ChFiDS_SequenceOfSurfData(const ChFiDS_SequenceOfSurfData& Other);
 
 
 

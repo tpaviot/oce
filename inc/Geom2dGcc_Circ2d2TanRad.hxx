@@ -53,7 +53,7 @@ class Standard_NegativeValue;
 class Geom2dGcc_QualifiedCurve;
 class Geom2d_Point;
 class GccAna_Circ2d2TanRad;
-class Geom2dGcc_MyCirc2d2TanRad;
+class Geom2dGcc_Circ2d2TanRadGeo;
 class gp_Circ2d;
 class gp_Pnt2d;
 
@@ -115,7 +115,7 @@ public:
   
   Standard_EXPORT     void Results(const GccAna_Circ2d2TanRad& Circ) ;
   
-  Standard_EXPORT     void Results(const Geom2dGcc_MyCirc2d2TanRad& Circ) ;
+  Standard_EXPORT     void Results(const Geom2dGcc_Circ2d2TanRadGeo& Circ) ;
   //! This method returns True if the algorithm succeeded. <br>
 //! Note: IsDone protects against a failure arising from a <br>
 //! more internal intersection algorithm, which has reached its numeric limits. <br>

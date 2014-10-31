@@ -40,6 +40,8 @@ public:
   
       IntRes2d_SequenceOfIntersectionSegment();
   
+  Standard_EXPORT   IntRes2d_SequenceOfIntersectionSegment(const IntRes2d_SequenceOfIntersectionSegment& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntRes2d_SequenceOfIntersectionSegment()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntRes2d_SequenceOfIntersectionSegment(const IntRes2d_SequenceOfIntersectionSegment& Other);
 
 
 

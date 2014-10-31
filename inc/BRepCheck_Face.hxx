@@ -53,6 +53,8 @@ public:
   Standard_EXPORT     BRepCheck_Status OrientationOfWires(const Standard_Boolean Update = Standard_False) ;
   
   Standard_EXPORT     void SetUnorientable() ;
+  //! Sets status of Face; <br>
+  Standard_EXPORT     void SetStatus(const BRepCheck_Status theStatus) ;
   
   Standard_EXPORT     Standard_Boolean IsUnorientable() const;
   

@@ -1,0 +1,15 @@
+#ifndef _IntTools_Context_HeaderFile
+#include <IntTools_Context.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _Bnd_Box_HeaderFile
+#include <Bnd_Box.hxx>
+#endif
+#ifndef _IntTools_ShrunkRange_HeaderFile
+#include <IntTools_ShrunkRange.hxx>
+#endif

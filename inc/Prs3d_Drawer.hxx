@@ -46,6 +46,9 @@
 #ifndef _Handle_Prs3d_PointAspect_HeaderFile
 #include <Handle_Prs3d_PointAspect.hxx>
 #endif
+#ifndef _Prs3d_VertexDrawMode_HeaderFile
+#include <Prs3d_VertexDrawMode.hxx>
+#endif
 #ifndef _Handle_Prs3d_PlaneAspect_HeaderFile
 #include <Handle_Prs3d_PlaneAspect.hxx>
 #endif
@@ -88,6 +91,8 @@ class TCollection_AsciiString;
 //! can see that the AIS_Drawer is modified to set the <br>
 //! value of the deviation coefficient using a method <br>
 //! inherited from Prs3d_Drawer. <br>
+//! A drawer includes an instance of the Aspect classes <br>
+//! with particular default values. <br>
 class Prs3d_Drawer : public MMgt_TShared {
 
 public:
@@ -259,8 +264,8 @@ public:
   //! enables the drawing of an arrow at the end of each line. <br>
 //!          By default the arrows are not drawn. <br>
   Standard_EXPORT   virtual  void SetLineArrowDraw(const Standard_Boolean OnOff) ;
-  //! Sets LineArrowDraw on or off by setting the <br>
-//! parameter OnOff to true or false. <br>
+  //! Returns True if drawing an arrow at the end of each edge is enabled <br>
+//! and False otherwise (the default). <br>
   Standard_EXPORT   virtual  Standard_Boolean LineArrowDraw() const;
   //! Returns the attributes for display of arrows. <br>
   Standard_EXPORT   virtual  Handle_Prs3d_ArrowAspect ArrowAspect() ;
@@ -274,6 +279,15 @@ public:
   Standard_EXPORT   virtual  Handle_Prs3d_PointAspect PointAspect() ;
   //! Sets the parameter anAspect for display attributes of points <br>
   Standard_EXPORT   virtual  void SetPointAspect(const Handle(Prs3d_PointAspect)& anAspect) ;
+  //! Sets the mode of visualization of vertices of a TopoDS_Shape instance. <br>
+//! By default, only stand-alone vertices (not belonging topologically to an edge) are drawn, <br>
+//! that corresponds to <b>Prs3d_VDM_Standalone</b> mode. <br>
+//! Switching to <b>Prs3d_VDM_Standalone</b> mode makes all shape's vertices visible. <br>
+//! To inherit this parameter from the global drawer instance ("the link") when it is present, <br>
+//! <b>Prs3d_VDM_Inherited</b> value should be used. <br>
+  Standard_EXPORT   virtual  void SetVertexDrawMode(const Prs3d_VertexDrawMode theMode) ;
+  //! Returns the current mode of visualization of vertices of a TopoDS_Shape instance. <br>
+  Standard_EXPORT   virtual  Prs3d_VertexDrawMode VertexDrawMode() const;
   //! Returns settings for shading aspects. <br>
 //! These settings can be edited. The default values are: <br>
 //! -   Color: Quantity_NOC_YELLOW <br>
@@ -410,6 +424,7 @@ Standard_Real myHLRDeviationCoefficient;
 Standard_Real myDeviationAngle;
 Standard_Real myHLRAngle;
 Handle_Prs3d_PointAspect myPointAspect;
+Prs3d_VertexDrawMode myVertexDrawMode;
 Handle_Prs3d_PlaneAspect myPlaneAspect;
 Handle_Prs3d_ArrowAspect myArrowAspect;
 Standard_Boolean myLineDrawArrow;

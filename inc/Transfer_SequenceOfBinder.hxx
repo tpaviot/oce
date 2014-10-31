@@ -43,6 +43,8 @@ public:
   
       Transfer_SequenceOfBinder();
   
+  Standard_EXPORT   Transfer_SequenceOfBinder(const Transfer_SequenceOfBinder& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Transfer_SequenceOfBinder()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Transfer_SequenceOfBinder(const Transfer_SequenceOfBinder& Other);
 
 
 

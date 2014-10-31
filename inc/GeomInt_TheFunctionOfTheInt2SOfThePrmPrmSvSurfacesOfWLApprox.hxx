@@ -43,6 +43,9 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
 #endif
@@ -53,7 +56,6 @@ class StdFail_UndefinedDerivative;
 class Standard_ConstructionError;
 class Adaptor3d_HSurface;
 class Adaptor3d_HSurfaceTool;
-class math_Vector;
 class math_Matrix;
 class TColStd_Array1OfReal;
 

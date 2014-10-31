@@ -43,9 +43,6 @@
 #ifndef _Geom_BSplineSurface_HeaderFile
 #include <Geom_BSplineSurface.hxx>
 #endif
-#ifndef _Draw_Interpretor_HeaderFile
-#include <Draw_Interpretor.hxx>
-#endif
 #ifndef _DrawTrSurf_HeaderFile
 #include <DrawTrSurf.hxx>
 #endif

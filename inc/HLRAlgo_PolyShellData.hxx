@@ -42,7 +42,7 @@ class TColStd_Array1OfTransient;
 class HLRAlgo_ListOfBPoint;
 
 
-
+//! All the PolyData of a Shell <br>
 class HLRAlgo_PolyShellData : public MMgt_TShared {
 
 public:

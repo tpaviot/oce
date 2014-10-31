@@ -37,7 +37,8 @@ class TColStd_Array1OfInteger;
 //! If you require curves with a minimum continuity for <br>
 //! your computation, it is useful to know the points <br>
 //! between which an arc has a continuity of a given <br>
-//! order. For a BSpline curve, the discontinuities are <br>
+//! order. The continuity order is given at the construction time. <br>
+//! For a BSpline curve, the discontinuities are <br>
 //! localized at the knot values. Between two knot values <br>
 //! the BSpline is infinitely and continuously <br>
 //! differentiable. At a given knot, the continuity is equal <br>

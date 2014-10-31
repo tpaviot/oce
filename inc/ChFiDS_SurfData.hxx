@@ -49,7 +49,8 @@ class ChFiDS_CommonPoint;
 class gp_Pnt2d;
 
 
-
+//! data structure for all information related to  the <br>
+//!          fillet and to 2 faces vis a vis <br>
 class ChFiDS_SurfData : public MMgt_TShared {
 
 public:

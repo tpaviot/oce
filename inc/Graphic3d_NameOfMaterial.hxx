@@ -27,6 +27,10 @@ Graphic3d_NOM_ALUMINIUM,
 Graphic3d_NOM_OBSIDIAN,
 Graphic3d_NOM_NEON_PHC,
 Graphic3d_NOM_JADE,
+Graphic3d_NOM_CHARCOAL,
+Graphic3d_NOM_WATER,
+Graphic3d_NOM_GLASS,
+Graphic3d_NOM_DIAMOND,
 Graphic3d_NOM_DEFAULT,
 Graphic3d_NOM_UserDefined
 };

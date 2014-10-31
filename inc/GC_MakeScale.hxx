@@ -28,7 +28,8 @@ class gp_Pnt;
 
 //! This class implements an elementary construction algorithm for <br>
 //! a scaling transformation in 3D space. The result is a <br>
-//! Geom_Transformation transformation. <br>
+//! Geom_Transformation transformation (a scaling transformation with <br>
+//! the center point <Point> and the scaling value <Scale>). <br>
 //! A MakeScale object provides a framework for: <br>
 //! -   defining the construction of the transformation, <br>
 //! -   implementing the construction algorithm, and <br>

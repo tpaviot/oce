@@ -43,6 +43,8 @@ public:
   
       Graphic3d_SequenceOfStructure();
   
+  Standard_EXPORT   Graphic3d_SequenceOfStructure(const Graphic3d_SequenceOfStructure& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Graphic3d_SequenceOfStructure()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Graphic3d_SequenceOfStructure(const Graphic3d_SequenceOfStructure& Other);
 
 
 

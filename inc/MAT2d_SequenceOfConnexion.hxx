@@ -43,6 +43,8 @@ public:
   
       MAT2d_SequenceOfConnexion();
   
+  Standard_EXPORT   MAT2d_SequenceOfConnexion(const MAT2d_SequenceOfConnexion& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~MAT2d_SequenceOfConnexion()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   MAT2d_SequenceOfConnexion(const MAT2d_SequenceOfConnexion& Other);
 
 
 

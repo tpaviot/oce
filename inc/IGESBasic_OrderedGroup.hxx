@@ -25,7 +25,9 @@ class Standard_OutOfRange;
 //! defines OrderedGroup, Type <402> Form <14> <br>
 //!          in package IGESBasic <br>
 //!          this class defines an Ordered Group with back pointers <br>
-//! <br>
+//!          Allows a collection of a set of entities to be <br>
+//!          maintained as a single entity, but the group is <br>
+//!          ordered. <br>
 //!          It inherits from Group <br>
 class IGESBasic_OrderedGroup : public IGESBasic_Group {
 

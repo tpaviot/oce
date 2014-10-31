@@ -58,7 +58,6 @@ class AppDef_MultiLine;
 class AppDef_MyLineTool;
 class AppDef_ParLeastSquareOfTheGradient;
 class AppDef_ResConstraintOfTheGradient;
-class math_Vector;
 class AppParCurves_MultiCurve;
 
 

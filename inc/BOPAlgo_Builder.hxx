@@ -28,8 +28,8 @@
 #ifndef _BOPDS_PDS_HeaderFile
 #include <BOPDS_PDS.hxx>
 #endif
-#ifndef _Handle_BOPInt_Context_HeaderFile
-#include <Handle_BOPInt_Context.hxx>
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -52,7 +52,7 @@
 #ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
 #endif
-class BOPInt_Context;
+class IntTools_Context;
 class TopoDS_Shape;
 class BOPAlgo_PaveFiller;
 class TopTools_ListOfShape;
@@ -77,6 +77,8 @@ Standard_EXPORT virtual ~BOPAlgo_Builder();
   Standard_EXPORT     BOPDS_PDS PDS() ;
   
   Standard_EXPORT   virtual  void AddArgument(const TopoDS_Shape& theShape) ;
+  
+  Standard_EXPORT   virtual  void SetArguments(const BOPCol_ListOfShape& theShapes) ;
   
   Standard_EXPORT    const BOPCol_ListOfShape& Arguments() const;
   
@@ -112,6 +114,8 @@ protected:
   Standard_EXPORT   virtual  void PrepareHistory() ;
   
   Standard_EXPORT   virtual  void PerformInternal(const BOPAlgo_PaveFiller& thePF) ;
+  
+  Standard_EXPORT   virtual  void PerformInternal1(const BOPAlgo_PaveFiller& thePF) ;
   
   Standard_EXPORT   virtual  void CheckData() ;
   
@@ -156,7 +160,7 @@ BOPCol_ListOfShape myArguments;
 BOPCol_MapOfShape myMapFence;
 BOPAlgo_PPaveFiller myPaveFiller;
 BOPDS_PDS myDS;
-Handle_BOPInt_Context myContext;
+Handle_IntTools_Context myContext;
 Standard_Integer myEntryPoint;
 BOPCol_DataMapOfShapeListOfShape myImages;
 BOPCol_DataMapOfShapeShape myShapesSD;

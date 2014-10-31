@@ -196,12 +196,12 @@ public:
 //!        XYZ P2(P); <br>
 //!        T1.Transforms(P2);                  //using T1 then T2 <br>
 //!        T2.Transforms(P2);                  // P1 = P2 !!! <br>
-//! C++: alias operator *= <br>
-  Standard_EXPORT     void Multiply(const gp_GTrsf& T) ;
+        gp_GTrsf Multiplied(const gp_GTrsf& T) const;
   
 //!  Computes the transformation composed with <me> and T. <br>
-//!  <me> = T * <me> <br>
-        gp_GTrsf Multiplied(const gp_GTrsf& T) const;
+//!  <me> = <me> * T <br>
+//! C++: alias operator *= <br>
+  Standard_EXPORT     void Multiply(const gp_GTrsf& T) ;
   
 //! Computes the product of the transformation T and this <br>
 //! transformation and assigns the result to this transformation. <br>

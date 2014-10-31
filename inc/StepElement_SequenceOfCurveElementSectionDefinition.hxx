@@ -43,6 +43,8 @@ public:
   
       StepElement_SequenceOfCurveElementSectionDefinition();
   
+  Standard_EXPORT   StepElement_SequenceOfCurveElementSectionDefinition(const StepElement_SequenceOfCurveElementSectionDefinition& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~StepElement_SequenceOfCurveElementSectionDefinition()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StepElement_SequenceOfCurveElementSectionDefinition(const StepElement_SequenceOfCurveElementSectionDefinition& Other);
 
 
 

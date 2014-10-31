@@ -104,9 +104,9 @@ public:
       static  void UIntervals(const BRepAdaptor_Surface& S,TColStd_Array1OfReal& T,const GeomAbs_Shape Sh) ;
   
       static  void VIntervals(const BRepAdaptor_Surface& S,TColStd_Array1OfReal& T,const GeomAbs_Shape Sh) ;
-  
+  //! If <First> >= <Last> <br>
       static  Handle_Adaptor3d_HSurface UTrim(const BRepAdaptor_Surface& S,const Standard_Real First,const Standard_Real Last,const Standard_Real Tol) ;
-  
+  //! If <First> >= <Last> <br>
       static  Handle_Adaptor3d_HSurface VTrim(const BRepAdaptor_Surface& S,const Standard_Real First,const Standard_Real Last,const Standard_Real Tol) ;
   
       static  Standard_Boolean IsUClosed(const BRepAdaptor_Surface& S) ;
@@ -185,17 +185,9 @@ private:
 
 };
 
-#define TheSurface BRepAdaptor_Surface
-#define TheSurface_hxx <BRepAdaptor_Surface.hxx>
-#define BRepApprox_SurfaceToolGen BRepApprox_SurfaceTool
-#define BRepApprox_SurfaceToolGen_hxx <BRepApprox_SurfaceTool.hxx>
 
-#include <BRepApprox_SurfaceToolGen.lxx>
+#include <BRepApprox_SurfaceTool.lxx>
 
-#undef TheSurface
-#undef TheSurface_hxx
-#undef BRepApprox_SurfaceToolGen
-#undef BRepApprox_SurfaceToolGen_hxx
 
 
 // other Inline functions and methods (like "C++: function call" methods)

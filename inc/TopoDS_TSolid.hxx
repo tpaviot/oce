@@ -28,7 +28,8 @@
 class TopoDS_TShape;
 
 
-
+//! A Topological part of 3D space, bounded by shells, <br>
+//!          edges and vertices. <br>
 class TopoDS_TSolid : public TopoDS_TShape {
 
 public:

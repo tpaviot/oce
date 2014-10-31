@@ -34,18 +34,11 @@
 #ifndef _Handle_ObjMgt_SeqNodeOfPSeqOfExtRef_HeaderFile
 #include <Handle_ObjMgt_SeqNodeOfPSeqOfExtRef.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class ObjMgt_ExternRef;
 class ObjMgt_SeqNodeOfPSeqOfExtRef;
-class Standard_Persistent;
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class ObjMgt_SeqExplorerOfPSeqOfExtRef;
@@ -106,10 +99,6 @@ public:
   
   Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
   
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
-  
   Standard_EXPORT     void Destroy() ;
 ~ObjMgt_PSeqOfExtRef()
 {
@@ -155,14 +144,6 @@ Standard_Integer Size;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline Handle_Standard_Persistent ShallowCopy(const Handle_ObjMgt_PSeqOfExtRef& me) {
- return me->ShallowCopy();
-}
-
-inline void ShallowDump(const Handle_ObjMgt_PSeqOfExtRef& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

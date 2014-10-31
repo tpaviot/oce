@@ -35,7 +35,7 @@ class Geom2d_BSplineCurve;
 class Geom2d_BoundedCurve;
 
 
-//! Concat sevral curve in an BSplineCurve <br>
+//! This algorithm converts and concat several curve in an BSplineCurve <br>
 class Geom2dConvert_CompCurveToBSplineCurve  {
 public:
 

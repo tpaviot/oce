@@ -75,7 +75,6 @@ class BRepBlend_Extremity;
 class Blend_Point;
 class Blend_Function;
 class Blend_FuncInv;
-class math_Vector;
 class gp_Pnt2d;
 class IntSurf_Transition;
 

@@ -21,7 +21,6 @@
 --      1/08/97 ; PCT : Ajout texture mapping
 --      11/97 ; CAL : retrait de la dependance avec math
 --      11/97 ; CAL : retrait des DataStructure
---      11/97 ; CAL : ajout pointer StructPtr
 --              04/98 ; FGU : ajout champs 'TOR_EMISSION'
 --      16-09-98; BGN: (S3819) Ajout TypeOfTriedronEcho,
 --                             TypeOfTriedronPosition.
@@ -95,12 +94,6 @@ is
     exception MaterialDefinitionError inherits OutOfRange;
     ---Category: Exceptions
 
-    exception PickIdDefinitionError inherits OutOfRange;
-    ---Category: Exceptions
-
-    exception PlotterDefinitionError inherits OutOfRange;
-    ---Category: The exceptions
-
     exception PriorityDefinitionError inherits OutOfRange;
     ---Category: Exceptions
 
@@ -119,32 +112,39 @@ is
 
         enumeration NameOfMaterial is
                     NOM_BRASS,      -- laiton       (PHYSIC)
-                                        NOM_BRONZE,     -- bronze       (PHYSIC)
-                                        NOM_COPPER,     -- cuivre       (PHYSIC)
-                                        NOM_GOLD,       -- or           (PHYSIC)
+                    NOM_BRONZE,     -- bronze       (PHYSIC)
+                    NOM_COPPER,     -- cuivre       (PHYSIC)
+                    NOM_GOLD,       -- or           (PHYSIC)
 
-                                        NOM_PEWTER,     -- etain        (PHYSIC)
+                    NOM_PEWTER,     -- etain        (PHYSIC)
 
-                                        NOM_PLASTER,    -- platre       (GENERIC)
-                                        NOM_PLASTIC,    -- plastic      (GENERIC)
+                    NOM_PLASTER,    -- platre       (GENERIC)
+                    NOM_PLASTIC,    -- plastic      (GENERIC)
 
-                                        NOM_SILVER,     -- argent       (PHYSIC)
+                    NOM_SILVER,     -- argent       (PHYSIC)
 
-                                        NOM_STEEL,      -- acier        (PHYSIC)
+                    NOM_STEEL,      -- acier        (PHYSIC)
 
-                                        NOM_STONE,      -- pierre       (PHYSIC)
+                    NOM_STONE,      -- pierre       (PHYSIC)
 
-                                        NOM_SHINY_PLASTIC,      -- plastique brillant   (GENERIC)
-                                        NOM_SATIN,      --  satin       (GENERIC)
-                                        NOM_METALIZED,  -- metallise New (GENERIC)
-                                        NOM_NEON_GNC,   -- neon      New (GENERIC)
-                                        NOM_CHROME,     -- chrome    New (PHYSIC)
-                                        NOM_ALUMINIUM,  -- aluminium New (PHYSIC)
-                                        NOM_OBSIDIAN,   -- obsidian  New (PHYSIC)
-                                        NOM_NEON_PHC,   -- neon      New (PHYSIC)
-                                        NOM_JADE,       -- jade      New (PHYSIC)
-                        NOM_DEFAULT,
-                        NOM_UserDefined -- owner material
+                    NOM_SHINY_PLASTIC,   -- plastique brillant   (GENERIC)
+                    NOM_SATIN,           --  satin        (GENERIC)
+                    NOM_METALIZED,       -- metallise New (GENERIC)
+                    NOM_NEON_GNC,        -- neon      New (GENERIC)
+                    NOM_CHROME,          -- chrome    New (PHYSIC)
+                    NOM_ALUMINIUM,       -- aluminium New (PHYSIC)
+                    NOM_OBSIDIAN,        -- obsidian  New (PHYSIC)
+                    NOM_NEON_PHC,        -- neon      New (PHYSIC)
+                    NOM_JADE,            -- jade      New (PHYSIC)
+
+                    NOM_CHARCOAL,
+
+                    NOM_WATER,
+                    NOM_GLASS,
+                    NOM_DIAMOND,
+
+                    NOM_DEFAULT,
+                    NOM_UserDefined -- owner material
     end NameOfMaterial;
     ---Purpose: Types of aspect materials.
     ---Category: Enumerations
@@ -336,73 +336,80 @@ is
     -- - ASPECT_MARKER: aspect for marker primitives;
     -- - ASPECT_FILL_AREA: aspect for face primitives.
 
+    enumeration RenderingMode is
+      RM_RASTERIZATION, RM_RAYTRACING
+    end RenderingMode;
+    ---Purpose: Describes rendering modes.
+    -- - RM_RASTERIZATION: enables OpenGL rasterization mode;
+    -- - RM_RAYTRACING: enables GPU ray-tracing mode.
+
     ---------------------------
     -- Category: Imported types
     ---------------------------
 
-    imported PrimitiveArray;
+    imported BndBox4f;
+    ---Purpose: Redefines BVH_Box<Standard_ShortReal, 4> for AABB representation
+    ---Category: Imported types
+    imported Buffer;
+    imported Buffer_Handle;
+    imported BoundBuffer;
+    imported BoundBuffer_Handle;
+    imported IndexBuffer;
+    imported IndexBuffer_Handle;
+
+    imported BndBox4d;
     imported BufferType;
 
     imported CBitFields20;
-    ---Purpose: Defines the C structure
     ---Category: Imported types
 
     imported CBitFields16;
-    ---Purpose: Defines the C structure
     ---Category: Imported types
 
     imported CBitFields8;
-    ---Purpose: Defines the C structure
     ---Category: Imported types
 
     imported CBitFields4;
-    ---Purpose: Defines the C structure
     ---Category: Imported types
 
-    imported CGroup;
-    ---Purpose: Defines the C structure <agroup>
-    ---Category: Imported types
+    imported CAspectFillArea;
+    imported CAspectMarker;
+    imported CAspectLine;
+    imported CAspectText;
 
     imported CStructure;
-    ---Purpose: Defines the C structure <astructure>
     ---Category: Imported types
 
+    pointer CStructurePtr to CStructure from Graphic3d;
+
+    imported CStructure_Handle;
+
     imported CLight;
-    ---Purpose: Defines the C structure <alight>
     ---Category: Imported types
 
     imported CPick;
-    ---Purpose: Defines the C structure <apick>
     ---Category: Imported types
 
     imported CPlane;
-    ---Purpose: Defines the C structure <aplane>
-    ---Category: Imported types
-
-    imported CBounds;
-    ---Purpose: Defines the C structure <abounds>
     ---Category: Imported types
 
     imported CUserDraw;
-    ---Purpose: Defines the C structure <auserdraw>
     ---Category: Imported types
 
     imported CView;
-    ---Purpose: Defines the C structure <aview>
+    ---Category: Imported types
+    
+    imported RenderingParams;
+    ---Purpose: Describes rendering parameters and effects.
     ---Category: Imported types
 
     imported CGraduatedTrihedron;
-    ---Purpose: Defines the C structure of a graduated trihedron.
     ---Category: Imported types
 
     imported ClipPlane;
-    ---Purpose: Describes geometrical and auxiliary properties of clipping
-    -- planes applied on rendering by graphical driver.
     ---Category: Imported types
 
     imported ClipPlane_Handle;
-    ---Purpose: CDL-compatibility handle type definition for
-    -- clip plane objects.
 
     imported CTexture;
 
@@ -411,141 +418,86 @@ is
     
     imported MarkerImage;
     imported MarkerImage_Handle;
+    imported Camera_Handle;
 
     primitive PtrFrameBuffer;
     primitive Vec2;
     primitive Vec3;
     primitive Vec4;
-    primitive Mat4;
-    primitive Mat4d;
+    imported  Mat4;
+    imported  Mat4d;
 
-    primitive ZLayerSettings;
+    imported ZLayerSettings;
 
     --------------------
     -- Category: Classes
     --------------------
 
-    class Strips;
-    ---Purpose: Contains some static functions to strips treatment
-
     deferred class ArrayOfPrimitives;
-    ---Purpose: Contains basic methods for array allocation and filling
 
     class ArrayOfPoints;
-    ---Purpose: Contains points array definition
 
     class ArrayOfPolylines;
-    ---Purpose: Contains polylines array definition
 
     class ArrayOfSegments;
-    ---Purpose: Contains segments array definition
 
     class ArrayOfPolygons;
-    ---Purpose: Contains polygons array definition
 
     class ArrayOfTriangles;
-    ---Purpose: Contains triangles array definition
 
     class ArrayOfTriangleStrips;
-    ---Purpose: Contains triangles strip array definition
 
     class ArrayOfTriangleFans;
-    ---Purpose: Contains triangles fan array definition
 
     class ArrayOfQuadrangles;
-    ---Purpose: Contains quatrangles array definition
 
     class ArrayOfQuadrangleStrips;
-    ---Purpose: Contains quadrangles strip array definition
 
     class AspectLine3d;
-    ---Purpose: Grouping line attributes
     ---Category: Classes
 
     class AspectFillArea3d;
-    ---Purpose: Grouping face attributes
     ---Category: Classes
 
     class AspectMarker3d;
-    ---Purpose: Grouping marker attributes
     ---Category: Classes
 
     class AspectText3d;
-    ---Purpose: Grouping text attributes.
     ---Category: Classes
 
-    class Group;
-    ---Purpose: For grouping together primitives in a structure
+    deferred class Group;
     ---Category: Classes
 
     class MaterialAspect;
-    ---Purpose: Aspect attributes of a 3d face.
     ---Category: Classes
 
     class Structure;
-    ---Purpose: Graphic object.
     ---Category: Classes
+
+    pointer StructurePtr to Structure from Graphic3d;
 
     deferred class GraphicDriver;
-    ---Purpose: Defines a graphic driver for 3d interface
 
     deferred class StructureManager;
-    ---Purpose: Visualiser with which the graphic objects are associated.
     ---Category: Classes
+
+    pointer StructureManagerPtr to StructureManager from Graphic3d;
 
     deferred class DataStructureManager;
-    ---Purpose: Visualiser with which the graphic objects are associated.
     ---Category: Classes
 
-    deferred class Plotter;
-    ---Purpose: Defines the minimal plotter.
-    ---Category: The classes
-
     class Vector;
-    ---Purpose: 3d vector
     ---Category: Classes
 
     imported Vertex;
-    ---Purpose: 3d vertex
     ---Category: Classes
-
-    ---------------------
-    -- Category: Pointers
-    ---------------------
-
-    pointer StructPtr to Structure from Graphic3d;
-    ---Category: Pointers
 
     ---------------------------------
     -- Category: Instantiated classes
     ---------------------------------
 
-    class ListOfPArray instantiates
-        List from TCollection (ArrayOfPrimitives from Graphic3d);
-        ---Category: Instantiated classes
+    imported SequenceOfGroup;
 
-    class SequenceOfAddress instantiates
-            Sequence from TCollection
-            (Address from Standard);
-    ---Category: Instantiated classes
-
-    class SetOfGroup instantiates
-            Set from TCollection (Group from Graphic3d);
-    ---Category: Instantiated classes
-
-    class HSetOfGroup instantiates
-            HSet from TCollection
-            (Group from Graphic3d, SetOfGroup);
-    ---Category: Instantiated classes
-
-    class SequenceOfGroup instantiates
-                Sequence from TCollection (Group from Graphic3d);
-
-    ---Category: Instantiated classes
-
-    class HSequenceOfGroup instantiates
-            HSequence from TCollection
-        (Group from Graphic3d, SequenceOfGroup from Graphic3d);
     ---Category: Instantiated classes
 
     class MapOfStructure instantiates
@@ -623,16 +575,5 @@ is
         ST_BSP_Tree   -- sorting by BSPTree (slow, but fine result )
 
         end SortType;
-
-    ----------------------------
-    -- Category: Package methods
-    ----------------------------
-
-    InitGraphicDriver (theDisplayConnection: DisplayConnection_Handle from Aspect)
-       returns GraphicDriver from Graphic3d
-       raises  DriverDefinitionError from Aspect;
-    ---Purpose: Initialize graphic driver and returns Handle to it.
-
-    
 
 end Graphic3d;

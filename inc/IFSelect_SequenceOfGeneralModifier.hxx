@@ -43,6 +43,8 @@ public:
   
       IFSelect_SequenceOfGeneralModifier();
   
+  Standard_EXPORT   IFSelect_SequenceOfGeneralModifier(const IFSelect_SequenceOfGeneralModifier& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IFSelect_SequenceOfGeneralModifier()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IFSelect_SequenceOfGeneralModifier(const IFSelect_SequenceOfGeneralModifier& Other);
 
 
 

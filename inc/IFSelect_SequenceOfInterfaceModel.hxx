@@ -43,6 +43,8 @@ public:
   
       IFSelect_SequenceOfInterfaceModel();
   
+  Standard_EXPORT   IFSelect_SequenceOfInterfaceModel(const IFSelect_SequenceOfInterfaceModel& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IFSelect_SequenceOfInterfaceModel()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IFSelect_SequenceOfInterfaceModel(const IFSelect_SequenceOfInterfaceModel& Other);
 
 
 

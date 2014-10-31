@@ -33,6 +33,10 @@ class gp_Vec;
 
 
 //! Description of a degenerated boundary (a point). <br>
+//!          Class defining  a degenerated  boundary   for   a <br>
+//!          constrained filling   with  a   point  and  no   other <br>
+//!          constraint. Only used to  simulate an  ordinary bound, <br>
+//!          may not be usefull and desapear soon. <br>
 class GeomFill_DegeneratedBound : public GeomFill_Boundary {
 
 public:

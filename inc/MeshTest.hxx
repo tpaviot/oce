@@ -16,8 +16,9 @@
 #include <Standard_Macro.hxx>
 #endif
 
-class Draw_Interpretor;
-class MeshTest_DrawableMesh;
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 
 
 //! Provides methods for testing the mesh algorithms. <br>
@@ -26,8 +27,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Provides a  mesh  object inherited from Drawable3d <br>
-//!          to draw a triangulation. <br>//! Defines meshing commands <br>
+  //! Defines meshing commands <br>
   Standard_EXPORT   static  void Commands(Draw_Interpretor& DI) ;
   //! Defines plugin commands <br>
   Standard_EXPORT   static  void PluginCommands(Draw_Interpretor& DI) ;
@@ -47,7 +47,6 @@ private:
 
 
 
-friend class MeshTest_DrawableMesh;
 
 };
 

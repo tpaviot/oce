@@ -16,50 +16,87 @@
 #ifndef _OpenGl_Group_Header
 #define _OpenGl_Group_Header
 
-#include <NCollection_List.hxx>
 #include <InterfaceGraphic_Graphic3d.hxx>
+#include <Graphic3d_Group.hxx>
+#include <Graphic3d_Structure.hxx>
 
-#include <OpenGl_Element.hxx>
-
+#include <NCollection_List.hxx>
 #include <OpenGl_AspectLine.hxx>
 #include <OpenGl_AspectFace.hxx>
 #include <OpenGl_AspectMarker.hxx>
 #include <OpenGl_AspectText.hxx>
-
-#include <OpenGl_tsm.hxx>
+#include <OpenGl_Element.hxx>
 
 class OpenGl_Group;
 class OpenGl_Structure;
 
-typedef NCollection_List<const OpenGl_Group*     > OpenGl_ListOfGroup;
-
 struct OpenGl_ElementNode
 {
-  TelType type;
-  OpenGl_Element *elem;
-  OpenGl_ElementNode *next;
+  OpenGl_Element*     elem;
+  OpenGl_ElementNode* next;
   DEFINE_STANDARD_ALLOC
 };
 
-class OpenGl_Group : public OpenGl_Element
+//! Implementation of low-level graphic group.
+class OpenGl_Group : public Graphic3d_Group
 {
 public:
 
-#ifndef HAVE_OPENCL
-  OpenGl_Group();
-#else
-  OpenGl_Group (const OpenGl_Structure* theAncestorStructure);
-#endif
+  //! Create empty group.
+  //! Will throw exception if not created by OpenGl_Structure.
+  Standard_EXPORT OpenGl_Group (const Handle(Graphic3d_Structure)& theStruct);
 
-  void SetAspectLine   (const CALL_DEF_CONTEXTLINE&     theAspect, const Standard_Boolean IsGlobal = Standard_True);
-  void SetAspectFace   (const CALL_DEF_CONTEXTFILLAREA& theAspect, const Standard_Boolean IsGlobal = Standard_True);
-  void SetAspectMarker (const CALL_DEF_CONTEXTMARKER&   theAspect, const Standard_Boolean IsGlobal = Standard_True);
-  void SetAspectText   (const CALL_DEF_CONTEXTTEXT&     theAspect, const Standard_Boolean IsGlobal = Standard_True);
+  Standard_EXPORT virtual void Clear (const Standard_Boolean theToUpdateStructureMgr);
 
-  void AddElement (const TelType, OpenGl_Element * );
+  //! Update line aspect
+  Standard_EXPORT virtual void UpdateAspectLine   (const Standard_Boolean theIsGlobal);
 
-  virtual void Render  (const Handle(OpenGl_Workspace)& theWorkspace) const;
-  virtual void Release (const Handle(OpenGl_Context)&   theGlCtx);
+  //! Update fill aspect
+  Standard_EXPORT virtual void UpdateAspectFace   (const Standard_Boolean theIsGlobal);
+
+  //! Update marker aspect
+  Standard_EXPORT virtual void UpdateAspectMarker (const Standard_Boolean theIsGlobal);
+
+  //! Update text aspect
+  Standard_EXPORT virtual void UpdateAspectText   (const Standard_Boolean theIsGlobal);
+
+  //! Add primitive array element
+  Standard_EXPORT virtual void AddPrimitiveArray (const Graphic3d_TypeOfPrimitiveArray theType,
+                                                  const Handle(Graphic3d_IndexBuffer)& theIndices,
+                                                  const Handle(Graphic3d_Buffer)&      theAttribs,
+                                                  const Handle(Graphic3d_BoundBuffer)& theBounds,
+                                                  const Standard_Boolean               theToEvalMinMax);
+
+  //! Add text element
+  Standard_EXPORT virtual void Text (const Standard_CString                  theTextUtf,
+                                     const Graphic3d_Vertex&                 thePoint,
+                                     const Standard_Real                     theHeight,
+                                     const Quantity_PlaneAngle               theAngle,
+                                     const Graphic3d_TextPath                theTp,
+                                     const Graphic3d_HorizontalTextAlignment theHta,
+                                     const Graphic3d_VerticalTextAlignment   theVta,
+                                     const Standard_Boolean                  theToEvalMinMax);
+
+  //! Add UserDraw element using obsolete API
+  Standard_EXPORT virtual void UserDraw (const Standard_Address theObject,
+                                         const Standard_Boolean theToEvalMinMax,
+                                         const Standard_Boolean theContainsFacet);
+
+  //! Add flipping element
+  Standard_EXPORT virtual void SetFlippingOptions (const Standard_Boolean theIsEnabled,
+                                                   const gp_Ax2&          theRefPlane);
+
+  //! Add stencil test element
+  Standard_EXPORT virtual void SetStencilTestOptions (const Standard_Boolean theIsEnabled);
+
+public:
+
+  OpenGl_Structure* GlStruct() const { return (OpenGl_Structure* )(myStructure->CStructure().operator->()); }
+
+  Standard_EXPORT void AddElement (OpenGl_Element* theElem);
+
+  Standard_EXPORT virtual void Render  (const Handle(OpenGl_Workspace)& theWorkspace) const;
+  Standard_EXPORT virtual void Release (const Handle(OpenGl_Context)&   theGlCtx);
 
   //! Returns first OpenGL element node of the group.
   const OpenGl_ElementNode* FirstNode() const { return myFirst; }
@@ -67,19 +104,18 @@ public:
   //! Returns OpenGL face aspect.
   const OpenGl_AspectFace* AspectFace() const { return myAspectFace; }
 
-#ifdef HAVE_OPENCL
-
   //! Returns modification state for ray-tracing.
   Standard_Size ModificationState() const { return myModificationState; }
 
   //! Is the group ray-tracable (contains ray-tracable elements)?
   Standard_Boolean IsRaytracable() const { return myIsRaytracable; }
 
-#endif
+  //! Accessor to line aspect (to be removed)
+  CALL_DEF_CONTEXTLINE& ChangeContextLine() { return ContextLine; }
 
 protected:
 
-  virtual ~OpenGl_Group();
+  Standard_EXPORT virtual ~OpenGl_Group();
 
 protected:
 
@@ -90,17 +126,16 @@ protected:
 
   OpenGl_ElementNode*    myFirst;
   OpenGl_ElementNode*    myLast;
-  
-#ifdef HAVE_OPENCL
-  const OpenGl_Structure*  myAncestorStructure;
-  Standard_Boolean         myIsRaytracable;
-  Standard_Size            myModificationState;
-#endif
+
+  Standard_Boolean       myIsRaytracable;
+  Standard_Size          myModificationState;
 
 public:
 
-  DEFINE_STANDARD_ALLOC
+  DEFINE_STANDARD_RTTI(OpenGl_Group) // Type definition
 
 };
 
-#endif //_OpenGl_Group_Header
+DEFINE_STANDARD_HANDLE(OpenGl_Group, Graphic3d_Group)
+
+#endif // _OpenGl_Group_Header

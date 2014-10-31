@@ -25,9 +25,6 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _PColStd_FieldOfHArray2OfReal_HeaderFile
 #include <PColStd_FieldOfHArray2OfReal.hxx>
 #endif
@@ -40,10 +37,6 @@
 #ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray2OfReal_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray2OfReal.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_RangeError;
 class Standard_OutOfRange;
 class PColStd_FieldOfHArray2OfReal;
@@ -75,10 +68,6 @@ public:
         Standard_Integer UpperRow() const;
   
   Standard_EXPORT     Standard_Real Value(const Standard_Integer Row,const Standard_Integer Col) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PColStd_HArray2OfReal( )
 {
@@ -169,10 +158,6 @@ PColStd_FieldOfHArray2OfReal Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PColStd_HArray2OfReal& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

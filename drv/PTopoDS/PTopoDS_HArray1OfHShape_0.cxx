@@ -12,9 +12,6 @@
 #ifndef _PTopoDS_HShape_HeaderFile
 #include <PTopoDS_HShape.hxx>
 #endif
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
 #endif

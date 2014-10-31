@@ -22,6 +22,21 @@
 #ifndef _BRepFill_IndexedDataMapOfOrientedShapeListOfShape_HeaderFile
 #include <BRepFill_IndexedDataMapOfOrientedShapeListOfShape.hxx>
 #endif
+#ifndef _BRepFill_DataMapOfOrientedShapeListOfShape_HeaderFile
+#include <BRepFill_DataMapOfOrientedShapeListOfShape.hxx>
+#endif
+#ifndef _TopTools_SequenceOfShape_HeaderFile
+#include <TopTools_SequenceOfShape.hxx>
+#endif
+#ifndef _TColgp_SequenceOfPnt_HeaderFile
+#include <TColgp_SequenceOfPnt.hxx>
+#endif
+#ifndef _Bisector_Bisec_HeaderFile
+#include <Bisector_Bisec.hxx>
+#endif
+#ifndef _BRepFill_TrimEdgeTool_HeaderFile
+#include <BRepFill_TrimEdgeTool.hxx>
+#endif
 #ifndef _BRepFill_OffsetWire_HeaderFile
 #include <BRepFill_OffsetWire.hxx>
 #endif

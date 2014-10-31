@@ -40,7 +40,7 @@ class TopoDS_Edge;
 class TopoDS_Compound;
 
 
-
+//! Fixing face with small size <br>
 class ShapeFix_FixSmallFace : public ShapeFix_Root {
 
 public:

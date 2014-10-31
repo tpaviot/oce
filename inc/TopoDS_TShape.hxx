@@ -40,6 +40,10 @@ class TopoDS_ListOfShape;
 //! A TShape  is a topological  structure describing a <br>
 //!          set of points in a 2D or 3D space. <br>
 //! <br>
+//!          A topological shape is a structure made from other <br>
+//!          shapes.  This is a deferred class  used to support <br>
+//!          topological objects. <br>
+//! <br>
 //!          TShapes are   defined   by  their  optional domain <br>
 //!          (geometry)  and  their  components  (other TShapes <br>
 //!          with  Locations and Orientations).  The components <br>
@@ -67,6 +71,10 @@ public:
         Standard_Boolean Free() const;
   //! Sets the free flag. <br>
         void Free(const Standard_Boolean F) ;
+  //! Returns the locked flag. <br>
+        Standard_Boolean Locked() const;
+  //! Sets the locked flag. <br>
+        void Locked(const Standard_Boolean F) ;
   //! Returns the modification flag. <br>
         Standard_Boolean Modified() const;
   //! Sets the modification flag. <br>

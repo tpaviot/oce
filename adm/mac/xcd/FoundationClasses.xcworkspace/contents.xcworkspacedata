@@ -10,8 +10,5 @@
          <FileRef
             location = "group:TKMath.xcodeproj">
          </FileRef>
-         <FileRef
-            location = "group:TKAdvTools.xcodeproj">
-         </FileRef>
    </Group>
 </Workspace>

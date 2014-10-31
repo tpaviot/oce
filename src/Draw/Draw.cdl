@@ -97,39 +97,21 @@ is
     class Grid;
     
     class Box;
-	---Purpose: a 3d box
-    
+
     class SequenceOfDrawable3D instantiates 
     	Sequence from TCollection (Drawable3D);
 	
     class ProgressIndicator;
 
     imported PInterp;
-	---Purpose: typedef Tcl_Interp * Draw_PInterp;
-    
+
     primitive CommandFunction;
-	---Purpose: typedef Standard_Integer (*Draw_CommandFunction)
-	--          (Draw_Interpretor&, Standard_Integer, char**)
-    
-    class Interpretor;
-	---Purpose: Encapsulate the Tcl interpretor to add commands.
+
+    imported Interpretor;
 
     class Printer;
-	---Purpose: Implements a printer class to connect Message_Messenger 
-	--          tool to Draw_Interpretor output.
-
-    class VMap instantiates
-      DataMap from TCollection(Integer,
-    	    	    	       Drawable3D from Draw,
-                               MapIntegerHasher from TColStd);    
-        
-    private class MapOfFunctions instantiates DataMap from TCollection(AsciiString from TCollection ,Function from OSD, AsciiString from TCollection);
 
     class MapOfAsciiString instantiates IndexedMap from TCollection(AsciiString from TCollection,AsciiString from TCollection); 
-     
-    Load(theDI: out Interpretor from Draw; theKey, theResourceFileName: AsciiString from TCollection)  
---    returns Transient from Standard
-    raises Failure  from Draw;      
      
     Load(theDI: out Interpretor from Draw;
          theKey, theResourceFileName: AsciiString from TCollection;

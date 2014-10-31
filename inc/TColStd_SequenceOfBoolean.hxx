@@ -42,6 +42,8 @@ public:
   
       TColStd_SequenceOfBoolean();
   
+  Standard_EXPORT   TColStd_SequenceOfBoolean(const TColStd_SequenceOfBoolean& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColStd_SequenceOfBoolean()
 {
@@ -106,8 +108,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_SequenceOfBoolean(const TColStd_SequenceOfBoolean& Other);
 
 
 

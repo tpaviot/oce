@@ -57,6 +57,7 @@ class Bnd_Box2d;
 class gp_Lin;
 class Select3D_SensitiveEntity;
 class TopLoc_Location;
+class gp_XYZ;
 
 
 //! A framework to define a sensitive 3D curve. <br>
@@ -103,6 +104,10 @@ public:
 
 protected:
 
+  //! Computes the depth by means of intersection of <br>
+//!          a segment of the curve defined by <theP1, theP2> and <br>
+//!          the eye-line <thePickLine>. <br>
+  Standard_EXPORT     Standard_Boolean ComputeDepth(const gp_Lin& thePickLine,const gp_XYZ& theP1,const gp_XYZ& theP2,Standard_Real& theDepth) const;
 
 
 

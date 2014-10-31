@@ -1,9 +1,0 @@
-#ifndef _TCollection_AsciiString_HeaderFile
-#include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
-#include <TopoDS_Shape.hxx>
-#endif
-#ifndef _SWDRAW_ToVRML_HeaderFile
-#include <SWDRAW_ToVRML.hxx>
-#endif

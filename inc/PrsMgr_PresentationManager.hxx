@@ -16,11 +16,17 @@
 #include <Handle_PrsMgr_PresentationManager.hxx>
 #endif
 
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
+#ifndef _Handle_Graphic3d_StructureManager_HeaderFile
+#include <Handle_Graphic3d_StructureManager.hxx>
 #endif
-#ifndef _TColStd_ListOfTransient_HeaderFile
-#include <TColStd_ListOfTransient.hxx>
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
+#endif
+#ifndef _PrsMgr_ListOfPresentations_HeaderFile
+#include <PrsMgr_ListOfPresentations.hxx>
+#endif
+#ifndef _Handle_V3d_View_HeaderFile
+#include <Handle_V3d_View.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
@@ -28,108 +34,122 @@
 #ifndef _Handle_PrsMgr_PresentableObject_HeaderFile
 #include <Handle_PrsMgr_PresentableObject.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
-#ifndef _Handle_V3d_View_HeaderFile
-#include <Handle_V3d_View.hxx>
+#ifndef _Handle_Prs3d_Presentation_HeaderFile
+#include <Handle_Prs3d_Presentation.hxx>
+#endif
+#ifndef _Quantity_NameOfColor_HeaderFile
+#include <Quantity_NameOfColor.hxx>
+#endif
+#ifndef _Handle_Geom_Transformation_HeaderFile
+#include <Handle_Geom_Transformation.hxx>
+#endif
+#ifndef _Graphic3d_NameOfMaterial_HeaderFile
+#include <Graphic3d_NameOfMaterial.hxx>
+#endif
+#ifndef _Handle_Prs3d_ShadingAspect_HeaderFile
+#include <Handle_Prs3d_ShadingAspect.hxx>
 #endif
 #ifndef _Handle_PrsMgr_Presentation_HeaderFile
 #include <Handle_PrsMgr_Presentation.hxx>
 #endif
+class Graphic3d_StructureManager;
+class V3d_View;
 class Standard_NoSuchObject;
 class PrsMgr_PresentableObject;
-class V3d_View;
+class Prs3d_Presentation;
+class Geom_Transformation;
+class Prs3d_ShadingAspect;
 class PrsMgr_Presentation;
 
 
-//! This class represents any kind of entity able to collect <br>
-//!          representations of an object, to show or erase them. <br>
-//!          Example: StructureManager from Graphic3d <br>
-//!                   View from Graphic2d <br>
+//! A framework to manage 3D displays, graphic entities and their updates. <br>
+//! Used in the AIS package (Application Interactive Services), to enable the advanced user to define the <br>
+//! default display mode of a new interactive object which extends the list of signatures and types. <br>
+//! Definition of new display types is handled by calling the presentation algorithms provided by the StdPrs package. <br>
 class PrsMgr_PresentationManager : public MMgt_TShared {
 
 public:
 
   
-  Standard_EXPORT   virtual  Standard_Boolean Is3D() const = 0;
-  //! Displays the presentation of the object in the given <br>
-//!          Presentation manager with the given mode. <br>
-//!          The mode should be enumerated by the object which <br>
-//!          inherits PresentableObject. <br>
-  Standard_EXPORT     void Display(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) ;
+//! Creates a framework to manage displays and graphic entities with the 3D view theStructureManager. <br>
+  Standard_EXPORT   PrsMgr_PresentationManager(const Handle(Graphic3d_StructureManager)& theStructureManager);
+  //! Displays the presentation of the object in the given Presentation manager with the given mode. <br>
+//!          The mode should be enumerated by the object which inherits PresentableObject. <br>
+  Standard_EXPORT     void Display(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) ;
   //! erases the presentation of the object in the given <br>
 //!          Presentation manager with the given mode. <br>
-  Standard_EXPORT     void Erase(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) ;
+  Standard_EXPORT     void Erase(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) ;
   
-//! Clears the presentation of the presentable object <br>
-//! aPresentableObject in this framework with the <br>
-//! display mode aMode. <br>
-  Standard_EXPORT   virtual  void Clear(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) ;
+//! Clears the presentation of the presentable object thePrsObject in this framework with the display mode theMode. <br>
+  Standard_EXPORT   virtual  void Clear(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) ;
   //! Sets the visibility of presentable object. <br>
-  Standard_EXPORT     void SetVisibility(const Handle(PrsMgr_PresentableObject)& thePresentableObject,const Standard_Integer theMode,const Standard_Boolean theValue) ;
+  Standard_EXPORT     void SetVisibility(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode,const Standard_Boolean theValue) ;
   //! Highlights the presentation of the presentable object <br>
-//! aPresentableObject in this framework with the display mode aMode. <br>
-  Standard_EXPORT     void Highlight(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) ;
+//! thePrsObject in this framework with the display mode theMode. <br>
+  Standard_EXPORT     void Highlight(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) ;
   //! Removes highlighting from the presentation of the <br>
-//! presentable object aPresentableObject in this <br>
-//! framework with the display mode aMode. <br>
-  Standard_EXPORT     void Unhighlight(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) ;
+//! presentable object thePrsObject in this framework with the display mode theMode. <br>
+  Standard_EXPORT     void Unhighlight(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) ;
   
-//! Sets the display priority aNewPrior   of the <br>
-//! presentable object aPresentableObject in this <br>
-//! framework with the display mode aMode. <br>
-  Standard_EXPORT     void SetDisplayPriority(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer amode,const Standard_Integer aNewPrior) const;
+//! Sets the display priority theNewPrior of the <br>
+//! presentable object thePrsObject in this framework with the display mode theMode. <br>
+  Standard_EXPORT     void SetDisplayPriority(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode,const Standard_Integer theNewPrior) const;
   
 //! Returns the display priority of the presentable object <br>
-//! aPresentableObject in this framework with the <br>
-//! display mode aMode. <br>
-  Standard_EXPORT     Standard_Integer DisplayPriority(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer amode) const;
+//! thePrsObject in this framework with the display mode theMode. <br>
+  Standard_EXPORT     Standard_Integer DisplayPriority(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode) const;
   //! Set Z layer ID for all presentations of the object. <br>
-  Standard_EXPORT     void SetZLayer(const Handle(PrsMgr_PresentableObject)& thePresentableObject,const Standard_Integer theLayerId) ;
+  Standard_EXPORT     void SetZLayer(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theLayerId) ;
   //! Get Z layer ID assigned to all presentations of the object. <br>
 //! Method returns -1 value if object has no presentations and is <br>
 //! impossible to get layer index. <br>
-  Standard_EXPORT     Standard_Integer GetZLayer(const Handle(PrsMgr_PresentableObject)& thePresentableObject) const;
+  Standard_EXPORT     Standard_Integer GetZLayer(const Handle(PrsMgr_PresentableObject)& thePrsObject) const;
+  
+  Standard_EXPORT     Standard_Boolean IsDisplayed(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) const;
   //! Returns true if the presentation of the presentable <br>
-//! object aPresentableObject in this framework with the <br>
-//! display mode aMode is displayed. <br>
-  Standard_EXPORT     Standard_Boolean IsDisplayed(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) const;
-  //! Returns true if the presentation of the presentable <br>
-//! object aPresentableObject in this framework with the <br>
-//! display mode aMode is highlighted. <br>
-  Standard_EXPORT     Standard_Boolean IsHighlighted(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) const;
+//! object thePrsObject in this framework with the display mode theMode is highlighted. <br>
+  Standard_EXPORT     Standard_Boolean IsHighlighted(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) const;
   //! Updates the presentation of the presentable object <br>
-//! aPresentableObject in this framework with the display mode aMode. <br>
-  Standard_EXPORT     void Update(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) const;
-  //! initializes the list of Prs to be displayed in transient mode <br>
-  Standard_EXPORT   virtual  void BeginDraw() ;
-  //! Performs an iteration of the transient objects to look <br>
-//! for the presentable objects with the display mode aMode. <br>
-//! Appends the presentation of the presentable object <br>
-//! aPresentableObject with the mode aMode to the list <br>
-//! of objects in immediate mode. <br>
-  Standard_EXPORT     void Add(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) ;
-  //! Performs an iteration of the transient objects to look <br>
-//! for the presentable objects with the display mode aMode. <br>
-//! Removes the presentation of the presentable object <br>
-//! aPresentableObject with the mode aMode from the <br>
-//! list of objects in immediate mode. <br>
-  Standard_EXPORT     void Remove(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) ;
-  //!  Allows rapid drawing of the view aView by avoiding <br>
-//! an update of the whole background. If DoubleBuffer <br>
-//! is true, the background is drawn. <br>
-  Standard_EXPORT   virtual  void EndDraw(const Handle(V3d_View)& aView,const Standard_Boolean DoubleBuffer = Standard_False)  = 0;
-  //! Returns true if immediate (transient) mode is on. <br>
+//! thePrsObject in this framework with the display mode theMode. <br>
+  Standard_EXPORT     void Update(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) const;
+  //! Resets the transient list of presentations previously displayed in immediate mode <br>
+//! and begins accumulation of new list by following AddToImmediateList()/Color()/Highlight() calls. <br>
+  Standard_EXPORT     void BeginImmediateDraw() ;
+  //! Resets the transient list of presentations previously displayed in immediate mode. <br>
+  Standard_EXPORT     void ClearImmediateDraw() ;
+  //! Stores thePrs in the transient list of presentations to be displayed in immediate mode. <br>
+//! Will be taken in account in EndImmediateDraw method. <br>
+  Standard_EXPORT     void AddToImmediateList(const Handle(Prs3d_Presentation)& thePrs) ;
+  //! Allows rapid drawing of the view theView by avoiding an update of the whole background. <br>
+  Standard_EXPORT     void EndImmediateDraw(const Handle(V3d_View)& theView) ;
+  //! Returns true if Presentation Manager is accumulating transient list of presentations to be displayed in immediate mode. <br>
         Standard_Boolean IsImmediateModeOn() const;
+  //! Highlights the graphic object thePrsObject in the color theColor. <br>
+//! thePrsObject has the display mode theMode; <br>
+//! this has the default value of 0, that is, the wireframe display mode. <br>
+  Standard_EXPORT     void Color(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Quantity_NameOfColor theColor = Quantity_NOC_YELLOW,const Standard_Integer theMode = 0) ;
+  //! highlights the boundbox of the presentation <br>
+  Standard_EXPORT     void BoundBox(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) ;
+  
+  Standard_EXPORT     void Connect(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Handle(PrsMgr_PresentableObject)& theOtherObject,const Standard_Integer theMode = 0,const Standard_Integer theOtherMode = 0) ;
+  
+//! Sets the transformation theTransformation for the presentable object thePrsObject. <br>
+//! thePrsObject has the display mode theMode; this has the default value of 0, that is, the wireframe display mode. <br>
+  Standard_EXPORT     void Transform(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Handle(Geom_Transformation)& theTransformation,const Standard_Integer theMode = 0) ;
+  //! Returns the structure manager. <br>
+       const Handle_Graphic3d_StructureManager& StructureManager() const;
+  //! this method will change the color and the aspect of the presentations containing shaded structures. <br>
+  Standard_EXPORT     void SetShadingAspect(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Quantity_NameOfColor theColor,const Graphic3d_NameOfMaterial theMaterial,const Standard_Integer theMode = 0) ;
+  //! this method will change the color and the aspect of the presentations containing shaded structures. <br>
+  Standard_EXPORT     void SetShadingAspect(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Handle(Prs3d_ShadingAspect)& theShadingAspect,const Standard_Integer theMode = 0) ;
   //! Returns true if there is a presentation of the <br>
-//! presentable object aPresentableObject in this <br>
-//! framework, aPresentableObject having the display mode aMode. <br>
-  Standard_EXPORT     Standard_Boolean HasPresentation(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) const;
-  //! Returns the presentation Presentation of the <br>
-//! presentable object aPresentableObject in this <br>
-//! framework. aPresentableObject has the display mode aMode. <br>
-  Standard_EXPORT     Handle_PrsMgr_Presentation Presentation(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) const;
+//! presentable object thePrsObject in this framework, thePrsObject having the display mode theMode. <br>
+  Standard_EXPORT     Standard_Boolean HasPresentation(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) const;
+  //! Returns the presentation Presentation of the presentable object thePrsObject in this framework. thePrsObject has the display mode theMode. <br>
+  Standard_EXPORT     Handle_PrsMgr_Presentation Presentation(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) const;
 
 
 
@@ -138,25 +158,20 @@ public:
 
 protected:
 
-  
-  Standard_EXPORT   PrsMgr_PresentationManager();
-  //! Adds a presentation of the presentable object <br>
-//! aPresentableObject to this framework. <br>
-//! aPresentableObject has the display mode aMode. <br>
-  Standard_EXPORT     void AddPresentation(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) ;
-  //! Removes a presentation of the presentable object <br>
-//! aPresentableObject to this framework. <br>
-//! aPresentableObject has the display mode aMode. <br>
-  Standard_EXPORT     void RemovePresentation(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer aMode = 0) ;
+  //! Adds a presentation of the presentable object thePrsObject to this framework. <br>
+//! thePrsObject has the display mode theMode. <br>
+  Standard_EXPORT     void AddPresentation(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) ;
+  //! Removes a presentation of the presentable object thePrsObject to this framework. thePrsObject has the display mode theMode. <br>
+  Standard_EXPORT     void RemovePresentation(const Handle(PrsMgr_PresentableObject)& thePrsObject,const Standard_Integer theMode = 0) ;
 
-Standard_Boolean myImmediateMode;
-TColStd_ListOfTransient myImmediateList;
+Handle_Graphic3d_StructureManager myStructureManager;
+Standard_Integer myImmediateModeOn;
+PrsMgr_ListOfPresentations myImmediateList;
+Handle_V3d_View myImmediateView;
 
 
 private: 
 
-  //! Creates a new presentation in the presentation manager. <br>
-  Standard_EXPORT   virtual  Handle_PrsMgr_Presentation newPresentation(const Handle(PrsMgr_PresentableObject)& aPresentableObject)  = 0;
 
 
 

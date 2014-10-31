@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   IntSurf_ListOfPntOn2S();
   
+  Standard_EXPORT   IntSurf_ListOfPntOn2S(const IntSurf_ListOfPntOn2S& Other);
+  
   Standard_EXPORT     void Assign(const IntSurf_ListOfPntOn2S& Other) ;
     void operator=(const IntSurf_ListOfPntOn2S& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntSurf_ListOfPntOn2S(const IntSurf_ListOfPntOn2S& Other);
 
 
 Standard_Address myFirst;

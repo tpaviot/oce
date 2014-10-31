@@ -1,9 +1,0 @@
-#ifndef _Aspect_BadAccess_HeaderFile
-#include <Aspect_BadAccess.hxx>
-#endif
-#ifndef _Aspect_WidthMapEntry_HeaderFile
-#include <Aspect_WidthMapEntry.hxx>
-#endif
-#ifndef _Aspect_WidthMap_HeaderFile
-#include <Aspect_WidthMap.hxx>
-#endif

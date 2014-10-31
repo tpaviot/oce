@@ -40,6 +40,8 @@ public:
   
       TDF_LabelSequence();
   
+  Standard_EXPORT   TDF_LabelSequence(const TDF_LabelSequence& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TDF_LabelSequence()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_LabelSequence(const TDF_LabelSequence& Other);
 
 
 

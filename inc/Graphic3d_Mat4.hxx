@@ -18,6 +18,5 @@
 #include <Standard_TypeDef.hxx>
 
 typedef NCollection_Mat4<Standard_ShortReal> Graphic3d_Mat4;
-typedef NCollection_Mat4<Standard_Real>      Graphic3d_Mat4d;
 
 #endif // _Graphic3d_Mat4_HeaderFile

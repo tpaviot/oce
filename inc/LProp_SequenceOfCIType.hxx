@@ -42,6 +42,8 @@ public:
   
       LProp_SequenceOfCIType();
   
+  Standard_EXPORT   LProp_SequenceOfCIType(const LProp_SequenceOfCIType& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~LProp_SequenceOfCIType()
 {
@@ -106,8 +108,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   LProp_SequenceOfCIType(const LProp_SequenceOfCIType& Other);
 
 
 

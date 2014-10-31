@@ -37,7 +37,6 @@
 class StdFail_NotDone;
 class Standard_ConstructionError;
 class math_Matrix;
-class math_Vector;
 
 
 //! This class implements a system resolution C*X = B with <br>

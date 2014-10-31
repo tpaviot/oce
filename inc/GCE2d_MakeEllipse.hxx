@@ -37,7 +37,7 @@ class gp_Pnt2d;
 
 
 //!This class implements the following algorithms used to <br>
-//!          create Ellipse from gp. <br>
+//!          create Ellipse from Geom2d. <br>
 //!          * Create an Ellipse from two apex  and the center. <br>
 //!  Defines an ellipse in 2D space. <br>
 //!  The parametrization range is [0,2*PI]. <br>

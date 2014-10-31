@@ -16,10 +16,14 @@ if { [regexp {Debug mode} [dversion]] } {
   }
 } else {
   if { [regexp {Windows} [dversion]] } {
-    set max_time 70
+    set max_time 65
   } else {
-    set max_time 120
+    set max_time 100
   }
+}
+
+if { [regexp {Mac OS X} [dversion]] } {
+  set max_time 320
 }
 
 dchrono h reset

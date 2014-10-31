@@ -34,6 +34,9 @@
 #ifndef _TestTopOpeDraw_DrawableC3D_HeaderFile
 #include <TestTopOpeDraw_DrawableC3D.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class TColgp_HArray1OfPnt;
 class TestTopOpeDraw_DrawableC3D;
 class TestTopOpeDraw_HArray1OfDrawableP3D;
@@ -41,7 +44,6 @@ class TestTopOpeTools_Mesure;
 class Draw_Color;
 class TCollection_AsciiString;
 class gp_Pnt;
-class Draw_Interpretor;
 class Draw_Display;
 
 

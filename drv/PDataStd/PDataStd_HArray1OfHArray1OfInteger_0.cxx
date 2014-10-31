@@ -12,9 +12,6 @@
 #ifndef _PColStd_HArray1OfInteger_HeaderFile
 #include <PColStd_HArray1OfInteger.hxx>
 #endif
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
 #endif

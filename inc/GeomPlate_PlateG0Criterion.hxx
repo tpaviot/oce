@@ -44,6 +44,7 @@ class AdvApp2Var_Context;
 
 
 
+//! this class contains a specific G0 criterion for GeomPlate_MakeApprox <br>
 class GeomPlate_PlateG0Criterion  : public AdvApp2Var_Criterion {
 public:
 

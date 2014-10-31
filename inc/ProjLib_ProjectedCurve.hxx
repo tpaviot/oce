@@ -71,7 +71,9 @@ class Geom2d_BezierCurve;
 class Geom2d_BSplineCurve;
 
 
-
+//! Compute the 2d-curve.  Try to solve the particular <br>
+//!          case if possible.  Otherwize, an approximation  is <br>
+//!          done. <br>
 class ProjLib_ProjectedCurve  : public Adaptor2d_Curve2d {
 public:
 

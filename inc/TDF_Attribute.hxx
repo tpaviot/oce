@@ -76,6 +76,8 @@ class TDF_IDFilter;
 class TDF_AttributeIndexedMap;
 
 
+//! A class each application has to implement. It is <br>
+//!      used to contain the application data. <br>
 //! This abstract class, alongwith Label, <br>
 //! is one of the cornerstones of Model Editor. <br>
 //! The groundwork is to define the root of <br>

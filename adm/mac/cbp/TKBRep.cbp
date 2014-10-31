@@ -93,6 +93,7 @@
 		<Unit filename="../../../drv/TopoDS/TopoDS_ListIteratorOfListOfShape_0.cxx" />
 		<Unit filename="../../../drv/TopoDS/TopoDS_ListNodeOfListOfShape_0.cxx" />
 		<Unit filename="../../../drv/TopoDS/TopoDS_ListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopoDS/TopoDS_LockedShape_0.cxx" />
 		<Unit filename="../../../drv/TopoDS/TopoDS_UnCompatibleShapes_0.cxx" />
 		<Unit filename="../../../src/TopoDS/TopoDS.cxx" />
 		<Unit filename="../../../src/TopoDS/TopoDS_Builder.cxx" />
@@ -116,9 +117,6 @@
 		<Unit filename="../../../src/TopoDS/TopoDS_TWire.cxx" />
 		<Unit filename="../../../src/TopoDS/TopoDS_Vertex.cxx" />
 		<Unit filename="../../../src/TopoDS/TopoDS_Wire.cxx" />
-		<Unit filename="../../../drv/TopExp/TopExp_StackIteratorOfStackOfIterator_0.cxx" />
-		<Unit filename="../../../drv/TopExp/TopExp_StackNodeOfStackOfIterator_0.cxx" />
-		<Unit filename="../../../drv/TopExp/TopExp_StackOfIterator_0.cxx" />
 		<Unit filename="../../../src/TopExp/TopExp.cxx" />
 		<Unit filename="../../../src/TopExp/TopExp_Explorer.cxx" />
 		<Unit filename="../../../drv/TopTools/TopTools_Array1OfListOfShape_0.cxx" />

@@ -34,6 +34,9 @@
 #ifndef _Handle_GeomTools_UndefinedTypeHandler_HeaderFile
 #include <Handle_GeomTools_UndefinedTypeHandler.hxx>
 #endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
+#endif
 class Geom_Surface;
 class Geom_Curve;
 class Geom2d_Curve;
@@ -77,6 +80,9 @@ public:
   Standard_EXPORT   static  void SetUndefinedTypeHandler(const Handle(GeomTools_UndefinedTypeHandler)& aHandler) ;
   
   Standard_EXPORT   static  Handle_GeomTools_UndefinedTypeHandler GetUndefinedTypeHandler() ;
+  //! Reads the Standard_Real value from the stream. Zero is read <br>
+//!         in case of error <br>
+  Standard_EXPORT   static  void GetReal(Standard_IStream& IS,Standard_Real& theValue) ;
 
 
 

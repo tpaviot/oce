@@ -92,8 +92,7 @@ public:
   //! Creation by converting an extended string to an ascii string. <br>
 //!          If replaceNonAscii is non-null charecter, it will be used <br>
 //!          in place of any non-ascii character found in the source string. <br>
-//!          Otherwise, raises OutOfRange exception if at least one character <br>
-//!          in the source string is not in the "Ascii range". <br>
+//!          Otherwise, creates UTF-8 unicode string. <br>
   Standard_EXPORT   TCollection_AsciiString(const TCollection_ExtendedString& astring,const Standard_Character replaceNonAscii = 0);
   //! Appends <other>  to me. This is an unary operator. <br>
   Standard_EXPORT     void AssignCat(const Standard_Character other) ;

@@ -32,6 +32,7 @@ class PTColStd_PersistentTransientMap;
 //! The TranslateTool class is provided to support the <br>
 //!          translation of inherited parts of topological data <br>
 //!          structures. <br>
+//!          Root of all translation tools. <br>
 class MgtTopoDS_TranslateTool : public MMgt_TShared {
 
 public:

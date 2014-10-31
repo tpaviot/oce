@@ -25,9 +25,6 @@
 #ifndef _PPoly_Triangle_HeaderFile
 #include <PPoly_Triangle.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _PPoly_FieldOfHArray1OfTriangle_HeaderFile
 #include <PPoly_FieldOfHArray1OfTriangle.hxx>
 #endif
@@ -40,10 +37,6 @@
 #ifndef _Handle_PPoly_VArrayNodeOfFieldOfHArray1OfTriangle_HeaderFile
 #include <Handle_PPoly_VArrayNodeOfFieldOfHArray1OfTriangle.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PPoly_Triangle;
@@ -70,10 +63,6 @@ public:
         Standard_Integer Upper() const;
   
   Standard_EXPORT     PPoly_Triangle Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PPoly_HArray1OfTriangle( )
 {
@@ -158,10 +147,6 @@ PPoly_FieldOfHArray1OfTriangle Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PPoly_HArray1OfTriangle& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

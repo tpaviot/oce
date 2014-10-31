@@ -31,8 +31,8 @@
 #ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
 #endif
-#ifndef _Handle_BOPInt_Context_HeaderFile
-#include <Handle_BOPInt_Context.hxx>
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
 #endif
 #ifndef _BOPTools_ListOfCoupleOfShape_HeaderFile
 #include <BOPTools_ListOfCoupleOfShape.hxx>
@@ -55,7 +55,7 @@ class IntTools_Curve;
 class TopoDS_Edge;
 class TopoDS_Face;
 class TopoDS_Shape;
-class BOPInt_Context;
+class IntTools_Context;
 class TopoDS_Solid;
 class IntTools_Range;
 class TopoDS_Shell;
@@ -84,18 +84,18 @@ public:
   //! Returns True if the shape theSplit has opposite <br>
 //!          direction than theShape <br>
 //!          theContext - cashed geometrical tools <br>
-  Standard_EXPORT   static  Standard_Boolean IsSplitToReverse(const TopoDS_Shape& theSplit,const TopoDS_Shape& theShape,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Boolean IsSplitToReverse(const TopoDS_Shape& theSplit,const TopoDS_Shape& theShape,Handle(IntTools_Context)& theContext) ;
   //! Returns True if normal direction of the face <br>
 //!          theShape is not the same as for the face <br>
 //!          theSplit <br>
 //!          theContext - cashed geometrical tools <br>
-  Standard_EXPORT   static  Standard_Boolean IsSplitToReverse(const TopoDS_Face& theSplit,const TopoDS_Face& theShape,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Boolean IsSplitToReverse(const TopoDS_Face& theSplit,const TopoDS_Face& theShape,Handle(IntTools_Context)& theContext) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsSplitToReverse(const TopoDS_Edge& aE1,const TopoDS_Edge& aE2,Handle(BOPInt_Context)& aContext) ;
+  Standard_EXPORT   static  Standard_Boolean IsSplitToReverse(const TopoDS_Edge& aE1,const TopoDS_Edge& aE2,Handle(IntTools_Context)& aContext) ;
   
-  Standard_EXPORT   static  Standard_Boolean AreFacesSameDomain(const TopoDS_Face& theF1,const TopoDS_Face& theF2,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Boolean AreFacesSameDomain(const TopoDS_Face& theF1,const TopoDS_Face& theF2,Handle(IntTools_Context)& theContext) ;
   
-  Standard_EXPORT   static  Standard_Boolean CheckSameGeom(const TopoDS_Face& theF1,const TopoDS_Face& theF2,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Boolean CheckSameGeom(const TopoDS_Face& theF1,const TopoDS_Face& theF2,Handle(IntTools_Context)& theContext) ;
   
   Standard_EXPORT   static  Standard_Integer Sense(const TopoDS_Face& theF1,const TopoDS_Face& theF2) ;
   //! Returns True if the face theFace contains <br>
@@ -107,23 +107,23 @@ public:
 //!           finds the face suitable to produce shell. <br>
 //!           theLCEF - set of faces to search. All faces <br>
 //!           from theLCEF must share edge theEdge <br>
-  Standard_EXPORT   static  Standard_Boolean GetFaceOff(const TopoDS_Edge& theEdge,const TopoDS_Face& theFace,BOPTools_ListOfCoupleOfShape& theLCEF,TopoDS_Face& theFaceOff,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Boolean GetFaceOff(const TopoDS_Edge& theEdge,const TopoDS_Face& theFace,BOPTools_ListOfCoupleOfShape& theLCEF,TopoDS_Face& theFaceOff,Handle(IntTools_Context)& theContext) ;
   //! Returns True if the face theFace is inside of the <br>
 //!          couple of faces theFace1, theFace2. <br>
 //!          The faces theFace, theFace1, theFace2  must <br>
 //!          share the edge theEdge <br>
-  Standard_EXPORT   static  Standard_Integer IsInternalFace(const TopoDS_Face& theFace,const TopoDS_Edge& theEdge,const TopoDS_Face& theFace1,const TopoDS_Face& theFace2,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Integer IsInternalFace(const TopoDS_Face& theFace,const TopoDS_Edge& theEdge,const TopoDS_Face& theFace1,const TopoDS_Face& theFace2,Handle(IntTools_Context)& theContext) ;
   //! Returns True if the face theFace is inside of the <br>
 //!          appropriate couple of faces (from the set theLF)    . <br>
 //!          The faces of the set theLF and theFace  must <br>
 //!          share the edge theEdge <br>
-  Standard_EXPORT   static  Standard_Integer IsInternalFace(const TopoDS_Face& theFace,const TopoDS_Edge& theEdge,BOPCol_ListOfShape& theLF,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Integer IsInternalFace(const TopoDS_Face& theFace,const TopoDS_Edge& theEdge,BOPCol_ListOfShape& theLF,Handle(IntTools_Context)& theContext) ;
   //! Returns True if the face theFace is inside the <br>
 //!          solid theSolid. <br>
 //!          theMEF - Map Edge/Faces for theSolid <br>
 //!          theTol - value of precision of computation <br>
 //!          theContext- cahed geometrical tools <br>
-  Standard_EXPORT   static  Standard_Integer IsInternalFace(const TopoDS_Face& theFace,const TopoDS_Solid& theSolid,BOPCol_IndexedDataMapOfShapeListOfShape& theMEF,const Standard_Real theTol,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Integer IsInternalFace(const TopoDS_Face& theFace,const TopoDS_Solid& theSolid,BOPCol_IndexedDataMapOfShapeListOfShape& theMEF,const Standard_Real theTol,Handle(IntTools_Context)& theContext) ;
   //! For the face theFace gets the edge theEdgeOnF <br>
 //!          that is the same as theEdge <br>
 //!          Returns True if such edge exists <br>
@@ -134,32 +134,32 @@ public:
 //!          theTol - value of precision of computation <br>
 //!          theContext- cahed geometrical tools <br>
 //!          Returns 3-D state. <br>
-  Standard_EXPORT   static  TopAbs_State ComputeState(const gp_Pnt& thePoint,const TopoDS_Solid& theSolid,const Standard_Real theTol,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  TopAbs_State ComputeState(const gp_Pnt& thePoint,const TopoDS_Solid& theSolid,const Standard_Real theTol,Handle(IntTools_Context)& theContext) ;
   //! Computes the 3-D state of the vertex theVertex <br>
 //!          toward solid theSolid. <br>
 //!          theTol - value of precision of computation <br>
 //!          theContext- cahed geometrical tools <br>
 //!          Returns 3-D state. <br>
-  Standard_EXPORT   static  TopAbs_State ComputeState(const TopoDS_Vertex& theVertex,const TopoDS_Solid& theSolid,const Standard_Real theTol,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  TopAbs_State ComputeState(const TopoDS_Vertex& theVertex,const TopoDS_Solid& theSolid,const Standard_Real theTol,Handle(IntTools_Context)& theContext) ;
   //! Computes the 3-D state of the edge theEdge <br>
 //!          toward solid theSolid. <br>
 //!          theTol - value of precision of computation <br>
 //!          theContext- cahed geometrical tools <br>
 //!          Returns 3-D state. <br>
-  Standard_EXPORT   static  TopAbs_State ComputeState(const TopoDS_Edge& theEdge,const TopoDS_Solid& theSolid,const Standard_Real theTol,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  TopAbs_State ComputeState(const TopoDS_Edge& theEdge,const TopoDS_Solid& theSolid,const Standard_Real theTol,Handle(IntTools_Context)& theContext) ;
   //! Computes the 3-D state of the face theFace <br>
 //!          toward solid theSolid. <br>
 //!          theTol - value of precision of computation <br>
 //!          theBounds - set of edges of theFace to avoid <br>
 //!          theContext- cahed geometrical tools <br>
 //!          Returns 3-D state. <br>
-  Standard_EXPORT   static  TopAbs_State ComputeState(const TopoDS_Face& theFace,const TopoDS_Solid& theSolid,const Standard_Real theTol,BOPCol_IndexedMapOfShape& theBounds,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  TopAbs_State ComputeState(const TopoDS_Face& theFace,const TopoDS_Solid& theSolid,const Standard_Real theTol,BOPCol_IndexedMapOfShape& theBounds,Handle(IntTools_Context)& theContext) ;
   //! Computes the 3-D state of the shape theShape <br>
 //!          toward solid theSolid. <br>
 //!          theTol - value of precision of computation <br>
 //!          theContext- cahed geometrical tools <br>
 //!          Returns 3-D state. <br>
-  Standard_EXPORT   static  TopAbs_State ComputeStateByOnePoint(const TopoDS_Shape& theShape,const TopoDS_Solid& theSolid,const Standard_Real theTol,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  TopAbs_State ComputeStateByOnePoint(const TopoDS_Shape& theShape,const TopoDS_Solid& theSolid,const Standard_Real theTol,Handle(IntTools_Context)& theContext) ;
   //! For the list of faces theLS build block <br>
 //!          theLSCB in terms of connexity by edges <br>
 //!          theMapAvoid - set of edges to avoid for <br>
@@ -178,17 +178,17 @@ public:
 //! will be greater than  <aTolMax>, the correction does not <br>
 //! perform. <br>
 //! <br>
-  Standard_EXPORT   static  void CorrectTolerances(const TopoDS_Shape& theS,const Standard_Real theTolMax = 0.0001) ;
+  Standard_EXPORT   static  void CorrectTolerances(const TopoDS_Shape& theS,const Standard_Real theTolMax = 0.0001,const Standard_Boolean theRunParallel = Standard_False) ;
   
 //! Provides valid values of tolerances for the shape <theS> <br>
 //! in  terms of BRepCheck_InvalidCurveOnSurface. <br>
 //! <br>
-  Standard_EXPORT   static  void CorrectCurveOnSurface(const TopoDS_Shape& theS,const Standard_Real theTolMax = 0.0001) ;
+  Standard_EXPORT   static  void CorrectCurveOnSurface(const TopoDS_Shape& theS,const Standard_Real theTolMax = 0.0001,const Standard_Boolean theRunParallel = Standard_False) ;
   
 //! Provides valid values of tolerances for the shape <theS> <br>
 //! in  terms of BRepCheck_InvalidPointOnCurve. <br>
 //! <br>
-  Standard_EXPORT   static  void CorrectPointOnCurve(const TopoDS_Shape& theS,const Standard_Real theTolMax = 0.0001) ;
+  Standard_EXPORT   static  void CorrectPointOnCurve(const TopoDS_Shape& theS,const Standard_Real theTolMax = 0.0001,const Standard_Boolean theRunParallel = Standard_False) ;
   
 //! Make a vertex using 3D-point <aP1> and 3D-tolerance value <aTol> <br>
 //! <br>
@@ -252,15 +252,15 @@ public:
   
 //! Returns TRUE if PaveBlock <aPB> lays on the face <aF>, i.e <br>
 //! the <PB> is IN or ON in 2D of <aF> <br>
-  Standard_EXPORT   static  Standard_Boolean IsBlockInOnFace(const IntTools_Range& aShR,const TopoDS_Face& aF,const TopoDS_Edge& aE,Handle(BOPInt_Context)& aContext) ;
+  Standard_EXPORT   static  Standard_Boolean IsBlockInOnFace(const IntTools_Range& aShR,const TopoDS_Face& aF,const TopoDS_Edge& aE,Handle(IntTools_Context)& aContext) ;
   
 //! Checks if it is possible to compute shrunk range for the edge <aE>. <br>
 //! <br>
-  Standard_EXPORT   static  Standard_Boolean IsMicroEdge(const TopoDS_Edge& theEdge,const Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Boolean IsMicroEdge(const TopoDS_Edge& theEdge,const Handle(IntTools_Context)& theContext) ;
   
 //! Corrects tolerance values of the sub-shapes of the shape <theS> if needed. <br>
 //! <br>
-  Standard_EXPORT   static  void CorrectShapeTolerances(const TopoDS_Shape& theS) ;
+  Standard_EXPORT   static  void CorrectShapeTolerances(const TopoDS_Shape& theS,const Standard_Boolean theRunParallel = Standard_False) ;
   
 //! Retutns dimension of the shape <theS>. <br>
   Standard_EXPORT   static  Standard_Integer Dimension(const TopoDS_Shape& theS) ;

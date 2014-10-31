@@ -19,8 +19,8 @@
 #ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
 #endif
-#ifndef _BRepMAT2d_SequenceOfBasicElt_HeaderFile
-#include <BRepMAT2d_SequenceOfBasicElt.hxx>
+#ifndef _MAT_SequenceOfBasicElt_HeaderFile
+#include <MAT_SequenceOfBasicElt.hxx>
 #endif
 #ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
@@ -29,7 +29,7 @@
 #include <TCollection_MapNodePtr.hxx>
 #endif
 class TopoDS_Shape;
-class BRepMAT2d_SequenceOfBasicElt;
+class MAT_SequenceOfBasicElt;
 class TopTools_ShapeMapHasher;
 class BRepMAT2d_DataMapOfShapeSequenceOfBasicElt;
 class BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt;
@@ -41,11 +41,11 @@ class BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt : public TCollecti
 public:
 
   
-      BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt(const TopoDS_Shape& K,const BRepMAT2d_SequenceOfBasicElt& I,const TCollection_MapNodePtr& n);
+      BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt(const TopoDS_Shape& K,const MAT_SequenceOfBasicElt& I,const TCollection_MapNodePtr& n);
   
         TopoDS_Shape& Key() const;
   
-        BRepMAT2d_SequenceOfBasicElt& Value() const;
+        MAT_SequenceOfBasicElt& Value() const;
 
 
 
@@ -61,15 +61,15 @@ private:
 
 
 TopoDS_Shape myKey;
-BRepMAT2d_SequenceOfBasicElt myValue;
+MAT_SequenceOfBasicElt myValue;
 
 
 };
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem BRepMAT2d_SequenceOfBasicElt
-#define TheItem_hxx <BRepMAT2d_SequenceOfBasicElt.hxx>
+#define TheItem MAT_SequenceOfBasicElt
+#define TheItem_hxx <MAT_SequenceOfBasicElt.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>
 #define TCollection_DataMapNode BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt

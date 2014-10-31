@@ -64,9 +64,6 @@
 #ifndef _Handle_AIS_InteractiveContext_HeaderFile
 #include <Handle_AIS_InteractiveContext.hxx>
 #endif
-#ifndef _Handle_Geom_Transformation_HeaderFile
-#include <Handle_Geom_Transformation.hxx>
-#endif
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
 #endif
@@ -83,7 +80,6 @@ class Quantity_Color;
 class TColStd_ListOfTransient;
 class Graphic3d_MaterialAspect;
 class TColStd_ListOfInteger;
-class Geom_Transformation;
 class Prs3d_Presentation;
 class Prs3d_BasicAspect;
 
@@ -427,18 +423,6 @@ public:
         void State(const Standard_Integer theState) ;
   
         Standard_Integer State() const;
-  //! Transforms all presentations of the object <br>
-//!  and replace the actual transformation matrix if <postConcatenate> is FALSE. <br>
-//! Note that the selection  must be updated only at the end of <br>
-//! object animation when <updateSelection> is TRUE <br>
-  Standard_EXPORT     void SetTransformation(const Handle(Geom_Transformation)& aTranformation,const Standard_Boolean postConcatenate = Standard_False,const Standard_Boolean updateSelection = Standard_True) ;
-  //! Deactivate the current transformation <br>
-  Standard_EXPORT     void UnsetTransformation() ;
-  //! Returns the current transformation associated <br>
-//! to the first available presentation of this object. <br>
-  Standard_EXPORT     Handle_Geom_Transformation Transformation() ;
-  //! Returns TRUE when this object is transformed <br>
-  Standard_EXPORT     Standard_Boolean HasTransformation() const;
   //! Returns TRUE when this object has a presentation <br>
 //!          in the current DisplayMode() <br>
   Standard_EXPORT     Standard_Boolean HasPresentation() const;
@@ -526,7 +510,6 @@ Standard_Integer mySelPriority;
 Standard_Integer myDisplayMode;
 Standard_Integer mySelectionMode;
 Standard_Integer mystate;
-Standard_Boolean myHasTransformation;
 
 
 };

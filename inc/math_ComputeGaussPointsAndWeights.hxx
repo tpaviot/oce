@@ -25,8 +25,10 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class TColStd_HArray1OfReal;
-class math_Vector;
 
 
 

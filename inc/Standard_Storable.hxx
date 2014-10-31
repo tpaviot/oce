@@ -22,9 +22,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 #ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
 #endif
@@ -63,11 +60,6 @@ Standard_EXPORT virtual ~Standard_Storable(){Delete();}
   //! Returns true if the Deep contents of <me> and <br>
 //!         <Other> are memberwise equal. <br>
   Standard_EXPORT     Standard_Boolean IsSimilar(const Standard_Storable& Other) const;
-  //! Prints the contents at the first level of <me> on <br>
-//!         the stream <s>. The Root version of ShallowDump prints <br>
-//!         the name of the class <me> is instance of, followed by <br>
-//!         its memory address. <br>
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& S) const;
 
 
 
@@ -94,10 +86,6 @@ inline Standard_Integer HashCode(const Standard_Storable& me,const Standard_Inte
 
 inline Standard_Boolean IsSimilar(const Standard_Storable& me,const Standard_Storable& Other) {
  return me.IsSimilar(Other);
-}
-
-inline void ShallowDump(const Standard_Storable& me,Standard_OStream& S) {
- me.ShallowDump(S);
 }
 
 

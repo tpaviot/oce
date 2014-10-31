@@ -25,22 +25,18 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
-#include <Handle_TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray2OfPnt_HeaderFile
-#include <Handle_TColgp_HArray2OfPnt.hxx>
-#endif
 #ifndef _Extrema_FuncExtCS_HeaderFile
 #include <Extrema_FuncExtCS.hxx>
 #endif
 #ifndef _Adaptor3d_SurfacePtr_HeaderFile
 #include <Adaptor3d_SurfacePtr.hxx>
 #endif
+#ifndef _Handle_TColgp_HArray2OfPnt_HeaderFile
+#include <Handle_TColgp_HArray2OfPnt.hxx>
+#endif
 #ifndef _Adaptor3d_CurvePtr_HeaderFile
 #include <Adaptor3d_CurvePtr.hxx>
 #endif
-class TColgp_HArray1OfPnt;
 class TColgp_HArray2OfPnt;
 class StdFail_NotDone;
 class Standard_OutOfRange;
@@ -129,12 +125,11 @@ Standard_Real myvsup;
 Standard_Integer mytsample;
 Standard_Integer myusample;
 Standard_Integer myvsample;
-Handle_TColgp_HArray1OfPnt mypoints1;
-Handle_TColgp_HArray2OfPnt mypoints2;
 Standard_Real mytol1;
 Standard_Real mytol2;
 Extrema_FuncExtCS myF;
 Adaptor3d_SurfacePtr myS;
+Handle_TColgp_HArray2OfPnt mySurfPnts;
 
 
 };

@@ -2,22 +2,22 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{44620467-111B-0AA2-03F7-DEDFC735AF66}</UniqueIdentifier>
+      <UniqueIdentifier>{10901466-0A68-056C-02F0-5F5161D7D7C8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CDM">
-      <UniqueIdentifier>{8E59DA6A-0D23-0ED7-1486-3E804757CA78}</UniqueIdentifier>
+      <UniqueIdentifier>{979107CB-0290-1721-1761-70B01A399765}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PCDM">
-      <UniqueIdentifier>{ADB05C51-09C6-0003-1367-3756630890AB}</UniqueIdentifier>
+      <UniqueIdentifier>{028C6B25-0E1E-0FE5-1315-E0B276E48E0C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CDF">
-      <UniqueIdentifier>{51F5A6FD-04F0-101B-06C5-4B0346C3F72D}</UniqueIdentifier>
+      <UniqueIdentifier>{29E78671-18A0-020A-0D57-0460C66D6DD7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\UTL">
-      <UniqueIdentifier>{98ABBF83-17B8-1717-05CB-CE55B85DBC10}</UniqueIdentifier>
+      <UniqueIdentifier>{464BCF01-058A-05FD-082A-DA404BB33652}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\LDOM">
-      <UniqueIdentifier>{E5DC5FBE-08E5-070B-04ED-882DCB767B1C}</UniqueIdentifier>
+      <UniqueIdentifier>{B359F53D-01B1-147C-1820-A205E02FC9F7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -64,15 +64,6 @@
       <Filter>Source files\CDM</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\CDM\CDM_PresentationDirectory_0.cxx">
-      <Filter>Source files\CDM</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\CDM\CDM_StackIteratorOfStackOfDocument_0.cxx">
-      <Filter>Source files\CDM</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\CDM\CDM_StackNodeOfStackOfDocument_0.cxx">
-      <Filter>Source files\CDM</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\CDM\CDM_StackOfDocument_0.cxx">
       <Filter>Source files\CDM</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\CDM\CDM_StdMapNodeOfMapOfDocument_0.cxx">
@@ -163,6 +154,9 @@
       <Filter>Source files\CDF</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\CDF\CDF_DirectoryIterator.cxx">
+      <Filter>Source files\CDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\CDF\CDF_FWOSDriver.cxx">
       <Filter>Source files\CDF</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\CDF\CDF_MetaDataDriver.cxx">

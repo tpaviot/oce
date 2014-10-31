@@ -47,10 +47,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepPrim;..\..\..\src\BRepPrim;..\..\..\drv\Primitives;..\..\..\src\Primitives;..\..\..\drv\BRepSweep;..\..\..\src\BRepSweep;..\..\..\drv\Sweep;..\..\..\src\Sweep;..\..\..\drv\BRepPrimAPI;..\..\..\src\BRepPrimAPI;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepPrim;..\..\..\src\BRepPrim;..\..\..\drv\BRepSweep;..\..\..\src\BRepSweep;..\..\..\drv\Sweep;..\..\..\src\Sweep;..\..\..\drv\BRepPrimAPI;..\..\..\src\BRepPrimAPI;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__Primitives_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -70,7 +70,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__Primitives_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -145,10 +145,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepPrim;..\..\..\src\BRepPrim;..\..\..\drv\Primitives;..\..\..\src\Primitives;..\..\..\drv\BRepSweep;..\..\..\src\BRepSweep;..\..\..\drv\Sweep;..\..\..\src\Sweep;..\..\..\drv\BRepPrimAPI;..\..\..\src\BRepPrimAPI;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepPrim;..\..\..\src\BRepPrim;..\..\..\drv\BRepSweep;..\..\..\src\BRepSweep;..\..\..\drv\Sweep;..\..\..\src\Sweep;..\..\..\drv\BRepPrimAPI;..\..\..\src\BRepPrimAPI;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__Primitives_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -170,7 +170,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__Primitives_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -245,10 +245,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepPrim;..\..\..\src\BRepPrim;..\..\..\drv\Primitives;..\..\..\src\Primitives;..\..\..\drv\BRepSweep;..\..\..\src\BRepSweep;..\..\..\drv\Sweep;..\..\..\src\Sweep;..\..\..\drv\BRepPrimAPI;..\..\..\src\BRepPrimAPI;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepPrim;..\..\..\src\BRepPrim;..\..\..\drv\BRepSweep;..\..\..\src\BRepSweep;..\..\..\drv\Sweep;..\..\..\src\Sweep;..\..\..\drv\BRepPrimAPI;..\..\..\src\BRepPrimAPI;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__Primitives_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL;_OCC64"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__Primitives_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -344,10 +344,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepPrim;..\..\..\src\BRepPrim;..\..\..\drv\Primitives;..\..\..\src\Primitives;..\..\..\drv\BRepSweep;..\..\..\src\BRepSweep;..\..\..\drv\Sweep;..\..\..\src\Sweep;..\..\..\drv\BRepPrimAPI;..\..\..\src\BRepPrimAPI;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepPrim;..\..\..\src\BRepPrim;..\..\..\drv\BRepSweep;..\..\..\src\BRepSweep;..\..\..\drv\Sweep;..\..\..\src\Sweep;..\..\..\drv\BRepPrimAPI;..\..\..\src\BRepPrimAPI;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__Primitives_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL;_OCC64"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -369,7 +369,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__Primitives_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepPrim_DLL;__BRepSweep_DLL;__Sweep_DLL;__BRepPrimAPI_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -424,12 +424,6 @@
 				Name="BRepPrim"
 				>
 				<File
-					RelativePath="..\..\..\drv\BRepPrim\BRepPrim_GWedge_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepPrim\BRepPrim_OneAxis_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\BRepPrim\BRepPrim_Builder.cxx">
 				</File>
 				<File
@@ -440,6 +434,12 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepPrim\BRepPrim_FaceBuilder.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepPrim\BRepPrim_GWedge.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepPrim\BRepPrim_OneAxis.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepPrim\BRepPrim_Revolution.cxx">
@@ -455,29 +455,16 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="Primitives"
-				>
-			</Filter>
-			<Filter
 				Name="BRepSweep"
 				>
-				<File
-					RelativePath="..\..\..\drv\BRepSweep\BRepSweep_Array2OfShapesOfNumLinearRegularSweep_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepSweep\BRepSweep_NumLinearRegularSweep_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepSweep\BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepSweep\BRepSweep_SequenceOfShapesOfNumLinearRegularSweep_0.cxx">
-				</File>
 				<File
 					RelativePath="..\..\..\src\BRepSweep\BRepSweep_Builder.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepSweep\BRepSweep_Iterator.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepSweep\BRepSweep_NumLinearRegularSweep.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepSweep\BRepSweep_Prism.cxx">

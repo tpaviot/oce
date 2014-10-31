@@ -160,12 +160,6 @@ public:
 //!  is not inversible. <br>
         gp_GTrsf2d Inverted() const;
   
-  Standard_EXPORT     void Multiply(const gp_GTrsf2d& T) ;
-    void operator *=(const gp_GTrsf2d& T) 
-{
-  Multiply(T);
-}
-  
 //!  Computes the transformation composed with T and <me>. <br>
 //!  In a C++ implementation you can also write Tcomposed = <me> * T. <br>
 //!  Example : <br>
@@ -183,6 +177,12 @@ public:
       gp_GTrsf2d operator *(const gp_GTrsf2d& T) const
 {
   return Multiplied(T);
+}
+  
+  Standard_EXPORT     void Multiply(const gp_GTrsf2d& T) ;
+    void operator *=(const gp_GTrsf2d& T) 
+{
+  Multiply(T);
 }
   
 //! Computes the product of the transformation T and this <br>

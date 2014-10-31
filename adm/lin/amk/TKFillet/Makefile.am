@@ -51,11 +51,6 @@ $(STLPort_LIB)
 libTKFillet_la_SOURCES = \
 @top_srcdir@/drv/BRepBlend/BRepBlend_AppSurf_0.cxx \
 @top_srcdir@/drv/BRepBlend/BRepBlend_CSWalking_0.cxx \
-@top_srcdir@/drv/BRepBlend/BRepBlend_Extremity_0.cxx \
-@top_srcdir@/drv/BRepBlend/BRepBlend_HCurve2dTool_0.cxx \
-@top_srcdir@/drv/BRepBlend/BRepBlend_HCurveTool_0.cxx \
-@top_srcdir@/drv/BRepBlend/BRepBlend_Line_0.cxx \
-@top_srcdir@/drv/BRepBlend/BRepBlend_PointOnRst_0.cxx \
 @top_srcdir@/drv/BRepBlend/BRepBlend_SequenceNodeOfSequenceOfLine_0.cxx \
 @top_srcdir@/drv/BRepBlend/BRepBlend_SequenceNodeOfSequenceOfPointOnRst_0.cxx \
 @top_srcdir@/drv/BRepBlend/BRepBlend_SequenceOfLine_0.cxx \
@@ -93,6 +88,11 @@ libTKFillet_la_SOURCES = \
 @top_srcdir@/src/BRepBlend/BRepBlend_AppSurface.cxx \
 @top_srcdir@/src/BRepBlend/BRepBlend_BlendTool.cxx \
 @top_srcdir@/src/BRepBlend/BRepBlend_CurvPointRadInv.cxx \
+@top_srcdir@/src/BRepBlend/BRepBlend_Extremity.cxx \
+@top_srcdir@/src/BRepBlend/BRepBlend_HCurve2dTool.cxx \
+@top_srcdir@/src/BRepBlend/BRepBlend_HCurveTool.cxx \
+@top_srcdir@/src/BRepBlend/BRepBlend_Line.cxx \
+@top_srcdir@/src/BRepBlend/BRepBlend_PointOnRst.cxx \
 @top_srcdir@/src/BRepBlend/BRepBlend_RstRstConstRad.cxx \
 @top_srcdir@/src/BRepBlend/BRepBlend_RstRstEvolRad.cxx \
 @top_srcdir@/src/BRepBlend/BRepBlend_RstRstLineBuilder.cxx \

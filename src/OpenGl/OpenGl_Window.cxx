@@ -13,17 +13,22 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#include <OpenGl_GlCore11.hxx>
+#include <OpenGl_GlCore12.hxx>
 
 #include <InterfaceGraphic.hxx>
 
 #include <OpenGl_Window.hxx>
 
 #include <OpenGl_Context.hxx>
-#include <OpenGl_Display.hxx>
+#include <OpenGl_GraphicDriver.hxx>
 
 #include <Aspect_GraphicDeviceDefinitionError.hxx>
 #include <TCollection_AsciiString.hxx>
+#include <TCollection_ExtendedString.hxx>
+
+#if defined(HAVE_EGL) || defined(__ANDROID__)
+  #include <EGL/egl.h>
+#endif
 
 IMPLEMENT_STANDARD_HANDLE(OpenGl_Window,MMgt_TShared)
 IMPLEMENT_STANDARD_RTTIEXT(OpenGl_Window,MMgt_TShared)
@@ -34,7 +39,9 @@ namespace
 {
   static const TEL_COLOUR THE_DEFAULT_BG_COLOR = { { 0.F, 0.F, 0.F, 1.F } };
 
-#if defined(_WIN32)
+#if defined(HAVE_EGL) || defined(__ANDROID__)
+  //
+#elif defined(_WIN32)
 
   // WGL_ARB_pixel_format
 #ifndef WGL_NUMBER_PIXEL_FORMATS_ARB
@@ -126,28 +133,62 @@ namespace
 // function : OpenGl_Window
 // purpose  :
 // =======================================================================
-OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
+OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
                               const CALL_DEF_WINDOW&        theCWindow,
                               Aspect_RenderingContext       theGContext,
                               const Handle(OpenGl_Caps)&    theCaps,
                               const Handle(OpenGl_Context)& theShareCtx)
-: myDisplay (theDisplay),
-  myGlContext (new OpenGl_Context (theCaps)),
+: myGlContext (new OpenGl_Context (theCaps)),
   myOwnGContext (theGContext == 0),
-#if defined(_WIN32)
-  mySysPalInUse (FALSE),
-#endif
   myWidth ((Standard_Integer )theCWindow.dx),
   myHeight ((Standard_Integer )theCWindow.dy),
-  myBgColor (THE_DEFAULT_BG_COLOR),
-  myDither (theDisplay->Dither()),
-  myBackDither (theDisplay->BackDither())
+  myBgColor (THE_DEFAULT_BG_COLOR)
 {
   myBgColor.rgb[0] = theCWindow.Background.r;
   myBgColor.rgb[1] = theCWindow.Background.g;
   myBgColor.rgb[2] = theCWindow.Background.b;
 
-#if defined(_WIN32)
+#if defined(HAVE_EGL) || defined(__ANDROID__)
+  EGLDisplay anEglDisplay = (EGLDisplay )theDriver->getRawGlDisplay();
+  EGLContext anEglContext = (EGLContext )theDriver->getRawGlContext();
+  EGLConfig  anEglConfig  = (EGLConfig  )theDriver->getRawGlConfig();
+  if (anEglDisplay == EGL_NO_DISPLAY
+   || anEglContext == EGL_NO_CONTEXT
+   || anEglConfig == NULL)
+  {
+    Aspect_GraphicDeviceDefinitionError::Raise ("OpenGl_Window, EGL does not provide compatible configurations!");
+    return;
+  }
+
+  EGLSurface anEglSurf = EGL_NO_SURFACE;
+  if (theGContext == (EGLContext )EGL_NO_CONTEXT)
+  {
+    // create new surface
+    anEglSurf = eglCreateWindowSurface (anEglDisplay, anEglConfig, (EGLNativeWindowType )theCWindow.XWindow, NULL);
+    if (anEglSurf == EGL_NO_SURFACE)
+    {
+      Aspect_GraphicDeviceDefinitionError::Raise ("OpenGl_Window, EGL is unable to create surface for window!");
+      return;
+    }
+  }
+  else if (theGContext != anEglContext)
+  {
+    Aspect_GraphicDeviceDefinitionError::Raise ("OpenGl_Window, EGL is used in unsupported combination!");
+    return;
+  }
+  else
+  {
+    anEglSurf = eglGetCurrentSurface(EGL_DRAW);
+    if (anEglSurf == EGL_NO_SURFACE)
+    {
+      Aspect_GraphicDeviceDefinitionError::Raise ("OpenGl_Window, EGL is unable to retrieve current surface!");
+      return;
+    }
+  }
+
+  myGlContext->Init ((Aspect_Drawable )anEglSurf, (Aspect_Display )anEglDisplay, (Aspect_RenderingContext )anEglContext);
+#elif defined(_WIN32)
+  (void )theDriver;
   HWND  aWindow   = (HWND )theCWindow.XWindow;
   HDC   aWindowDC = GetDC (aWindow);
   HGLRC aGContext = (HGLRC )theGContext;
@@ -168,6 +209,21 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
   }
 
   int aPixelFrmtId = ChoosePixelFormat (aWindowDC, &aPixelFrmt);
+
+  // in case of failure try without stereo if any
+  if (aPixelFrmtId == 0 && theCaps->contextStereo)
+  {
+    TCollection_ExtendedString aMsg ("OpenGl_Window::CreateWindow: "
+                                     "ChoosePixelFormat is unable to find stereo supported pixel format. "
+                                     "Choosing similar non stereo format.");
+    myGlContext->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB,
+                              GL_DEBUG_TYPE_OTHER_ARB,
+                              0, GL_DEBUG_SEVERITY_HIGH_ARB, aMsg);
+
+    aPixelFrmt.dwFlags &= ~PFD_STEREO;
+    aPixelFrmtId = ChoosePixelFormat (aWindowDC, &aPixelFrmt);
+  }
+
   if (aPixelFrmtId == 0)
   {
     ReleaseDC (aWindow, aWindowDC);
@@ -179,23 +235,6 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
   }
 
   DescribePixelFormat (aWindowDC, aPixelFrmtId, sizeof(aPixelFrmt), &aPixelFrmt);
-  if (aPixelFrmt.dwFlags & PFD_NEED_PALETTE)
-  {
-    WINDOW_DATA* aWndData = (WINDOW_DATA* )GetWindowLongPtr (aWindow, GWLP_USERDATA);
-
-    mySysPalInUse = (aPixelFrmt.dwFlags & PFD_NEED_SYSTEM_PALETTE) ? TRUE : FALSE;
-    InterfaceGraphic_RealizePalette (aWindowDC, aWndData->hPal, FALSE, mySysPalInUse);
-  }
-
-  if (myDither)
-  {
-    myDither = (aPixelFrmt.cColorBits <= 8);
-  }
-
-  if (myBackDither)
-  {
-    myBackDither = (aPixelFrmt.cColorBits <= 8);
-  }
 
   HGLRC aSlaveCtx = !theShareCtx.IsNull() ? (HGLRC )theShareCtx->myGContext : NULL;
   if (aGContext == NULL)
@@ -360,9 +399,10 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
 
   myGlContext->Init ((Aspect_Handle )aWindow, (Aspect_Handle )aWindowDC, (Aspect_RenderingContext )aGContext);
 #else
-  WINDOW aParent = (WINDOW )theCWindow.XWindow;
-  WINDOW aWindow = 0;
-  DISPLAY* aDisp = (DISPLAY* )myDisplay->GetDisplay();
+  Window aParent = (Window )theCWindow.XWindow;
+  Window aWindow = 0;
+
+  Display*   aDisp     = theDriver->GetDisplayConnection()->GetDisplay();
   GLXContext aGContext = (GLXContext )theGContext;
 
   XWindowAttributes wattr;
@@ -395,7 +435,8 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
     if (aVis != NULL)
     {
       // check Visual for OpenGl context's parameters compability
-      int isGl = 0, isDoubleBuffer = 0, isRGBA = 0, aDepthSize = 0, aStencilSize = 0;
+      int isGl = 0, isDoubleBuffer = 0, isRGBA = 0, isStereo = 0;
+      int aDepthSize = 0, aStencilSize = 0;
 
       if (glXGetConfig (aDisp, aVis, GLX_USE_GL, &isGl) != 0)
         isGl = 0;
@@ -406,13 +447,18 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
       if (glXGetConfig (aDisp, aVis, GLX_DOUBLEBUFFER, &isDoubleBuffer) != 0)
         isDoubleBuffer = 0;
 
+      if (glXGetConfig (aDisp, aVis, GLX_STEREO, &isStereo) != 0)
+        isStereo = 0;
+
       if (glXGetConfig (aDisp, aVis, GLX_DEPTH_SIZE, &aDepthSize) != 0)
         aDepthSize = 0;
 
       if (glXGetConfig (aDisp, aVis, GLX_STENCIL_SIZE, &aStencilSize) != 0)
         aStencilSize = 0;
 
-      if (!isGl || !aDepthSize || !aStencilSize || !isRGBA  || (isDoubleBuffer ? 1 : 0) != (myDisplay->DBuffer()? 1 : 0))
+      if (!isGl || !aDepthSize || !isRGBA  || !aStencilSize ||
+          (isDoubleBuffer ? 1 : 0) != 1 ||
+          (isStereo       ? 1 : 0) != (theCaps->contextStereo ? 1 : 0))
       {
         XFree (aVis);
         aVis = NULL;
@@ -441,12 +487,31 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
       anAttribs[anIter++] = GLX_BLUE_SIZE;
       anAttribs[anIter++] = (wattr.depth <= 8) ? 0 : 1;
 
-      if (myDisplay->DBuffer())
-        anAttribs[anIter++] = GLX_DOUBLEBUFFER;
+      anAttribs[anIter++] = GLX_DOUBLEBUFFER;
+
+      // warning: this flag may be set to None, so it need to be last in anAttribs
+      Standard_Integer aStereoFlagPos = anIter;
+      if (theCaps->contextStereo)
+        anAttribs[anIter++] = GLX_STEREO;
 
       anAttribs[anIter++] = None;
 
       aVis = glXChooseVisual (aDisp, scr, anAttribs);
+
+      // in case of failure try without stereo if any
+      if (aVis == NULL && theCaps->contextStereo)
+      {
+        TCollection_ExtendedString aMsg ("OpenGl_Window::CreateWindow: "
+                                         "glXChooseVisual is unable to find stereo supported pixel format. "
+                                         "Choosing similar non stereo format.");
+        myGlContext->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB,
+                                  GL_DEBUG_TYPE_OTHER_ARB,
+                                  0, GL_DEBUG_SEVERITY_HIGH_ARB, aMsg);
+
+        anAttribs[aStereoFlagPos] = None;
+        aVis = glXChooseVisual (aDisp, scr, anAttribs);
+      }
+
       if (aVis == NULL)
       {
         Aspect_GraphicDeviceDefinitionError::Raise ("OpenGl_Window::CreateWindow: glXChooseVisual failed.");
@@ -506,31 +571,7 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
     }
   }
 
-  /*
-  * Le BackDitherProp est utilise pour le clear du background
-  * Pour eviter une difference de couleurs avec la couleur choisie
-  * par l'application (XWindow) il faut desactiver le dithering
-  * au dessus de 8 plans.
-  *
-  * Pour le DitherProp:
-  * On cherchera a activer le Dithering que si le Visual a au moins
-  * 8 plans pour le GLX_RED_SIZE. Le test est plus sur car on peut
-  * avoir une profondeur superieure a 12 mais avoir besoin du dithering.
-  * (Carte Impact avec GLX_RED_SIZE a 5 par exemple)
-  */
-
-  int aValue;
-  glXGetConfig (aDisp, aVis, GLX_RED_SIZE, &aValue);
-
-  if (myDither)
-    myDither = (aValue < 8);
-
-  if (myBackDither)
-    myBackDither = (aVis->depth <= 8);
-
-  XFree ((char* )aVis);
-
-  myGlContext->Init ((Aspect_Drawable )aWindow, (Aspect_Display )myDisplay->GetDisplay(), (Aspect_RenderingContext )aGContext);
+  myGlContext->Init ((Aspect_Drawable )aWindow, (Aspect_Display )aDisp, (Aspect_RenderingContext )aGContext);
 #endif
   myGlContext->Share (theShareCtx);
 
@@ -543,7 +584,8 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
 // =======================================================================
 OpenGl_Window::~OpenGl_Window()
 {
-  if (!myOwnGContext)
+  if (!myOwnGContext
+   ||  myGlContext.IsNull())
   {
     myGlContext.Nullify();
     return;
@@ -552,7 +594,13 @@ OpenGl_Window::~OpenGl_Window()
   // release "GL" context if it is owned by window
   // Mesa implementation can fail to destroy GL context if it set for current thread.
   // It should be safer to unset thread GL context before its destruction.
-#if defined(_WIN32)
+#if defined(HAVE_EGL) || defined(__ANDROID__)
+  if ((EGLSurface )myGlContext->myWindow != EGL_NO_SURFACE)
+  {
+    eglDestroySurface ((EGLDisplay )myGlContext->myDisplay,
+                       (EGLSurface )myGlContext->myWindow);
+  }
+#elif defined(_WIN32)
   HWND  aWindow          = (HWND  )myGlContext->myWindow;
   HDC   aWindowDC        = (HDC   )myGlContext->myWindowDC;
   HGLRC aWindowGContext  = (HGLRC )myGlContext->myGContext;
@@ -608,9 +656,11 @@ Standard_Boolean OpenGl_Window::Activate()
 // =======================================================================
 void OpenGl_Window::Resize (const CALL_DEF_WINDOW& theCWindow)
 {
-  DISPLAY* aDisp = (DISPLAY* )myDisplay->GetDisplay();
+#if !defined(_WIN32) && !defined(HAVE_EGL) && !defined(__ANDROID__)
+  Display* aDisp = (Display* )myGlContext->myDisplay;
   if (aDisp == NULL)
     return;
+#endif
 
   // If the size is not changed - do nothing
   if ((myWidth == theCWindow.dx) && (myHeight == theCWindow.dy))
@@ -619,7 +669,7 @@ void OpenGl_Window::Resize (const CALL_DEF_WINDOW& theCWindow)
   myWidth  = (Standard_Integer )theCWindow.dx;
   myHeight = (Standard_Integer )theCWindow.dy;
 
-#if !defined(_WIN32)
+#if !defined(_WIN32) && !defined(HAVE_EGL) && !defined(__ANDROID__)
   XResizeWindow (aDisp, myGlContext->myWindow, (unsigned int )myWidth, (unsigned int )myHeight);
   XSync (aDisp, False);
 #endif
@@ -640,6 +690,7 @@ void OpenGl_Window::ReadDepths (const Standard_Integer theX,     const Standard_
   if (theDepths == NULL || !Activate())
     return;
 
+#if !defined(GL_ES_VERSION_2_0)
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity();
   gluOrtho2D (0.0, (GLdouble )myWidth, 0.0, (GLdouble )myHeight);
@@ -650,6 +701,7 @@ void OpenGl_Window::ReadDepths (const Standard_Integer theX,     const Standard_
   DisableFeatures();
   glReadPixels (theX, theY, theWidth, theHeight, GL_DEPTH_COMPONENT, GL_FLOAT, theDepths);
   EnableFeatures();
+#endif
 }
 
 // =======================================================================
@@ -676,7 +728,10 @@ void OpenGl_Window::Init()
   if (!Activate())
     return;
 
-#if defined(_WIN32)
+#if defined(HAVE_EGL) || defined(__ANDROID__)
+ eglQuerySurface ((EGLDisplay )myGlContext->myDisplay, (EGLSurface )myGlContext->myWindow, EGL_WIDTH,  &myWidth);
+ eglQuerySurface ((EGLDisplay )myGlContext->myDisplay, (EGLSurface )myGlContext->myWindow, EGL_HEIGHT, &myHeight);
+#elif defined(_WIN32)
   RECT cr;
   GetClientRect ((HWND )myGlContext->myWindow, &cr);
   myWidth  = cr.right - cr.left;
@@ -687,41 +742,21 @@ void OpenGl_Window::Init()
   unsigned int aDummyU;
   unsigned int aNewWidth  = 0;
   unsigned int aNewHeight = 0;
-  DISPLAY* aDisp = (DISPLAY* )myDisplay->GetDisplay();
+  Display* aDisp = (Display* )myGlContext->myDisplay;
   XGetGeometry (aDisp, myGlContext->myWindow, &aRootWin, &aDummy, &aDummy, &aNewWidth, &aNewHeight, &aDummyU, &aDummyU);
   myWidth  = aNewWidth;
   myHeight = aNewHeight;
 #endif
 
+  glDisable (GL_SCISSOR_TEST);
+#if !defined(GL_ES_VERSION_2_0)
   glMatrixMode (GL_MODELVIEW);
   glViewport (0, 0, myWidth, myHeight);
-
-  glDisable (GL_SCISSOR_TEST);
   glDrawBuffer (GL_BACK);
+#endif
 }
 
 #endif // !__APPLE__
-
-// =======================================================================
-// function : EnablePolygonOffset
-// purpose  : call_subr_enable_polygon_offset
-// =======================================================================
-void OpenGl_Window::EnablePolygonOffset() const
-{
-  Standard_ShortReal aFactor, aUnits;
-  myDisplay->PolygonOffset (aFactor, aUnits);
-  glPolygonOffset (aFactor, aUnits);
-  glEnable (GL_POLYGON_OFFSET_FILL);
-}
-
-// =======================================================================
-// function : DisablePolygonOffset
-// purpose  : call_subr_disable_polygon_offset
-// =======================================================================
-void OpenGl_Window::DisablePolygonOffset() const
-{
-  glDisable (GL_POLYGON_OFFSET_FILL);
-}
 
 // =======================================================================
 // function : EnableFeatures
@@ -729,12 +764,7 @@ void OpenGl_Window::DisablePolygonOffset() const
 // =======================================================================
 void OpenGl_Window::EnableFeatures() const
 {
-  /*glPixelTransferi (GL_MAP_COLOR, GL_TRUE);*/
-
-  if (myDither)
-    glEnable (GL_DITHER);
-  else
-    glDisable (GL_DITHER);
+  //
 }
 
 // =======================================================================
@@ -743,24 +773,27 @@ void OpenGl_Window::EnableFeatures() const
 // =======================================================================
 void OpenGl_Window::DisableFeatures() const
 {
-  glDisable (GL_DITHER);
+#if !defined(GL_ES_VERSION_2_0)
   glPixelTransferi (GL_MAP_COLOR, GL_FALSE);
+#endif
 
   /*
   * Disable stuff that's likely to slow down glDrawPixels.
   * (Omit as much of this as possible, when you know in advance
   * that the OpenGL state will already be set correctly.)
   */
-  glDisable(GL_ALPHA_TEST);
   glDisable(GL_BLEND);
   glDisable(GL_DEPTH_TEST);
-  glDisable(GL_FOG);
-  glDisable(GL_LIGHTING);
-
-  glDisable(GL_LOGIC_OP);
-  glDisable(GL_STENCIL_TEST);
-  glDisable(GL_TEXTURE_1D);
   glDisable(GL_TEXTURE_2D);
+  glDisable(GL_STENCIL_TEST);
+
+#if !defined(GL_ES_VERSION_2_0)
+  glDisable(GL_LIGHTING);
+  glDisable(GL_ALPHA_TEST);
+  glDisable(GL_FOG);
+  glDisable(GL_LOGIC_OP);
+  glDisable(GL_TEXTURE_1D);
+
   glPixelTransferi(GL_MAP_COLOR, GL_FALSE);
   glPixelTransferi(GL_RED_SCALE, 1);
   glPixelTransferi(GL_RED_BIAS, 0);
@@ -778,19 +811,32 @@ void OpenGl_Window::DisableFeatures() const
   * code for simplicity.)
   */
 
+  if ((myGlContext->myGlVerMajor >= 1) && (myGlContext->myGlVerMinor >= 2))
+  {
 #ifdef GL_EXT_convolution
-  glDisable(GL_CONVOLUTION_1D_EXT);
-  glDisable(GL_CONVOLUTION_2D_EXT);
-  glDisable(GL_SEPARABLE_2D_EXT);
+    if (myGlContext->CheckExtension ("GL_CONVOLUTION_1D_EXT"))
+      glDisable(GL_CONVOLUTION_1D_EXT);
+
+    if (myGlContext->CheckExtension ("GL_CONVOLUTION_2D_EXT"))
+      glDisable(GL_CONVOLUTION_2D_EXT);
+
+    if (myGlContext->CheckExtension ("GL_SEPARABLE_2D_EXT"))
+      glDisable(GL_SEPARABLE_2D_EXT);
 #endif
 
 #ifdef GL_EXT_histogram
-  glDisable(GL_HISTOGRAM_EXT);
-  glDisable(GL_MINMAX_EXT);
+    if (myGlContext->CheckExtension ("GL_SEPARABLE_2D_EXT"))
+      glDisable(GL_HISTOGRAM_EXT);
+
+    if (myGlContext->CheckExtension ("GL_MINMAX_EXT"))
+      glDisable(GL_MINMAX_EXT);
 #endif
 
 #ifdef GL_EXT_texture3D
-  glDisable(GL_TEXTURE_3D_EXT);
+    if (myGlContext->CheckExtension ("GL_TEXTURE_3D_EXT"))
+      glDisable(GL_TEXTURE_3D_EXT);
+#endif
+  }
 #endif
 }
 
@@ -800,7 +846,9 @@ void OpenGl_Window::DisableFeatures() const
 // =======================================================================
 void OpenGl_Window::MakeFrontBufCurrent() const
 {
+#if !defined(GL_ES_VERSION_2_0)
   glDrawBuffer (GL_FRONT);
+#endif
 }
 
 // =======================================================================
@@ -809,23 +857,7 @@ void OpenGl_Window::MakeFrontBufCurrent() const
 // =======================================================================
 void OpenGl_Window::MakeBackBufCurrent() const
 {
+#if !defined(GL_ES_VERSION_2_0)
   glDrawBuffer (GL_BACK);
-}
-
-// =======================================================================
-// function : MakeFrontAndBackBufCurrent
-// purpose  : TelMakeFrontAndBackBufCurrent
-// =======================================================================
-void OpenGl_Window::MakeFrontAndBackBufCurrent() const
-{
-  glDrawBuffer (GL_FRONT_AND_BACK);
-}
-
-// =======================================================================
-// function : GetGContext
-// purpose  :
-// =======================================================================
-GLCONTEXT OpenGl_Window::GetGContext() const
-{
-  return (GLCONTEXT )myGlContext->myGContext;
+#endif
 }

@@ -2,16 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{9EB02713-1866-0DF5-00C5-4AB386506123}</UniqueIdentifier>
+      <UniqueIdentifier>{459A46C9-1776-1823-057F-618709E89FAA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\OpenGl">
-      <UniqueIdentifier>{1960CB12-0CD2-01B5-03EA-FA9CDE50D8C3}</UniqueIdentifier>
+      <UniqueIdentifier>{4A86AE6D-12EB-011C-1012-37E6890062D9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_AABB.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_AVIWriter.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
@@ -27,6 +24,12 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_AspectText.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_BVHClipPrimitiveSet.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_BVHTreeSelector.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_CappingAlgo.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
@@ -40,12 +43,6 @@
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Context.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Display.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Display_2.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Element.cxx">
@@ -64,15 +61,6 @@
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_1.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_2.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_3.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_4.cxx">
@@ -102,6 +90,9 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_LayerList.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_LineAttributes.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Matrix.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
@@ -115,9 +106,6 @@
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PriorityList.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_RaytraceSource.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_RenderFilter.cxx">
@@ -147,6 +135,9 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Structure.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_StructureShadow.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Text.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
@@ -165,10 +156,10 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_VertexBuffer.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View.cxx">
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_VertexBufferCompat.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View_1.cxx">
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View_2.cxx">
@@ -183,9 +174,6 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_2.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_3.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_5.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
@@ -193,9 +181,6 @@
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_telem_util.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_telem_view.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
   </ItemGroup>

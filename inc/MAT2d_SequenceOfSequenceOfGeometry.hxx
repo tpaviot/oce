@@ -40,6 +40,8 @@ public:
   
       MAT2d_SequenceOfSequenceOfGeometry();
   
+  Standard_EXPORT   MAT2d_SequenceOfSequenceOfGeometry(const MAT2d_SequenceOfSequenceOfGeometry& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~MAT2d_SequenceOfSequenceOfGeometry()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   MAT2d_SequenceOfSequenceOfGeometry(const MAT2d_SequenceOfSequenceOfGeometry& Other);
 
 
 

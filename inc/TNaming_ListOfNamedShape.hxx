@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   TNaming_ListOfNamedShape();
   
+  Standard_EXPORT   TNaming_ListOfNamedShape(const TNaming_ListOfNamedShape& Other);
+  
   Standard_EXPORT     void Assign(const TNaming_ListOfNamedShape& Other) ;
     void operator=(const TNaming_ListOfNamedShape& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TNaming_ListOfNamedShape(const TNaming_ListOfNamedShape& Other);
 
 
 Standard_Address myFirst;

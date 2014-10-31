@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   DBRep_ListOfHideData();
   
+  Standard_EXPORT   DBRep_ListOfHideData(const DBRep_ListOfHideData& Other);
+  
   Standard_EXPORT     void Assign(const DBRep_ListOfHideData& Other) ;
     void operator=(const DBRep_ListOfHideData& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   DBRep_ListOfHideData(const DBRep_ListOfHideData& Other);
 
 
 Standard_Address myFirst;

@@ -2,61 +2,61 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{9403C838-0DC9-1555-08F2-F8C9817555FD}</UniqueIdentifier>
+      <UniqueIdentifier>{78468565-16C6-1414-1379-4CFEF8F74F86}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESData">
-      <UniqueIdentifier>{606FF305-1290-059E-0AE4-4F19A11BAA9F}</UniqueIdentifier>
+      <UniqueIdentifier>{860F6DE5-070C-1266-1183-949E5B287DB0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESFile">
-      <UniqueIdentifier>{5EE9D074-130F-0EE7-172A-B7206CB1A027}</UniqueIdentifier>
+      <UniqueIdentifier>{53DD14CD-0586-0623-04FB-F7DC69A792D1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESBasic">
-      <UniqueIdentifier>{89983106-0480-01ED-0179-DD019C94CEA6}</UniqueIdentifier>
+      <UniqueIdentifier>{9800B555-00D3-037A-0087-7FA71CB429C7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESGraph">
-      <UniqueIdentifier>{8B1B917B-0CFC-0F1A-15FB-E374C306BD06}</UniqueIdentifier>
+      <UniqueIdentifier>{22ED1B5F-18E3-0E53-0487-E967527E3C09}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESGeom">
-      <UniqueIdentifier>{63E1C017-1742-1186-00A7-D99920D4381D}</UniqueIdentifier>
+      <UniqueIdentifier>{979683C1-0736-136C-138B-2BE6DC4194E4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESDimen">
-      <UniqueIdentifier>{B010F672-0583-08DA-0B5C-F392560C7FE1}</UniqueIdentifier>
+      <UniqueIdentifier>{960B889C-1004-008E-0B3A-45886DFFBEB5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESDraw">
-      <UniqueIdentifier>{9FA6F5F8-17A7-0DCD-009F-1CF99846814B}</UniqueIdentifier>
+      <UniqueIdentifier>{41869E8E-0CE5-0085-1963-2D678EE9D00A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESSolid">
-      <UniqueIdentifier>{D2888260-0FA8-06B6-0FE0-FC396D1E2DDE}</UniqueIdentifier>
+      <UniqueIdentifier>{595895FC-0E6F-11D7-0919-54B4771413AD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESDefs">
-      <UniqueIdentifier>{55682472-137F-0482-0297-C8A5EE05D29D}</UniqueIdentifier>
+      <UniqueIdentifier>{17CDAABB-1543-051C-0F68-1C366D396B32}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESAppli">
-      <UniqueIdentifier>{465FB0F3-06E3-170A-0038-80ABE294A06F}</UniqueIdentifier>
+      <UniqueIdentifier>{ACCF6EC6-165E-0E24-0096-B9E08B44EB7D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESConvGeom">
-      <UniqueIdentifier>{B1034E24-1421-103F-0000-12F50E969E7C}</UniqueIdentifier>
+      <UniqueIdentifier>{C081A2E7-02E0-141F-152E-917957B57C14}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESSelect">
-      <UniqueIdentifier>{7F13825D-07F6-160E-0449-FFD9F33E046C}</UniqueIdentifier>
+      <UniqueIdentifier>{E53E57E5-1723-18AF-0518-5FA636992471}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESToBRep">
-      <UniqueIdentifier>{945EFD8E-02B3-0D83-0CDB-CEB75B67F1BC}</UniqueIdentifier>
+      <UniqueIdentifier>{27A29E72-1332-1934-0149-10C7BDA9528F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomToIGES">
-      <UniqueIdentifier>{2F8B98F7-0132-0269-118E-40D07435A732}</UniqueIdentifier>
+      <UniqueIdentifier>{6B304432-00C6-02A3-0EEC-7DEFA5006C27}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dToIGES">
-      <UniqueIdentifier>{73CD784B-01CE-1478-0E85-ABF6FCE4278E}</UniqueIdentifier>
+      <UniqueIdentifier>{BC9230E2-1297-080E-16CB-0AE749D66CB8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepToIGES">
-      <UniqueIdentifier>{E1116EB3-12CE-143C-050A-3959912763A2}</UniqueIdentifier>
+      <UniqueIdentifier>{7BBFA526-0062-0192-0CEB-33699A5A2ECD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepToIGESBRep">
-      <UniqueIdentifier>{FE37D6E0-0672-09BD-075D-4CD361C9BB49}</UniqueIdentifier>
+      <UniqueIdentifier>{B6BD6E54-09F6-0851-138D-7D1C40C9DF3D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESControl">
-      <UniqueIdentifier>{26CFABB0-09F8-13FC-08FE-EB5443E92CEE}</UniqueIdentifier>
+      <UniqueIdentifier>{5F3961BB-090E-09C7-0AE1-0563E3E0FDD8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

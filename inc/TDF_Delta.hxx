@@ -45,7 +45,9 @@ class TDF_AttributeDeltaList;
 class TCollection_ExtendedString;
 
 
-//! A delta set is available at <aSourceTime>. If <br>
+//! A set of AttributeDelta for a given transaction <br>
+//!        number and reference time number. <br>
+//!        A delta set is available at <aSourceTime>. If <br>
 //!          applied, it restores the TDF_Data in the state it <br>
 //!          was at <aTargetTime>. <br>
 class TDF_Delta : public MMgt_TShared {

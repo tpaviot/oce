@@ -26,16 +26,11 @@
 #include <Standard_Real.hxx>
 #endif
 class Geom2d_Curve;
-class gp_Vec2d;
-class gp_Pnt2d;
-class gp_Dir2d;
-class Geom2dLProp_Curve2dTool;
-class Geom2dLProp_FCurExtOfNumericCurInf2d;
-class Geom2dLProp_FCurNulOfNumericCurInf2d;
 class LProp_CurAndInf;
 
 
-
+//! Computes the locals extremas of curvature and the <br>
+//!          inflections of a bounded curve in 2d. <br>
 class Geom2dLProp_NumericCurInf2d  {
 public:
 
@@ -43,15 +38,17 @@ public:
 
   
   Standard_EXPORT   Geom2dLProp_NumericCurInf2d();
-  
+  //! Computes the locals extremas of curvature. <br>
   Standard_EXPORT     void PerformCurExt(const Handle(Geom2d_Curve)& C,LProp_CurAndInf& Result) ;
-  
+  //! Computes the inflections. <br>
   Standard_EXPORT     void PerformInf(const Handle(Geom2d_Curve)& C,LProp_CurAndInf& Result) ;
-  
+  //! Computes the locals extremas of curvature. <br>
+//!          in the interval of parmeters [UMin,UMax]. <br>
   Standard_EXPORT     void PerformCurExt(const Handle(Geom2d_Curve)& C,const Standard_Real UMin,const Standard_Real UMax,LProp_CurAndInf& Result) ;
-  
+  //! Computes the inflections in the interval of <br>
+//!          parmeters [UMin,UMax]. <br>
   Standard_EXPORT     void PerformInf(const Handle(Geom2d_Curve)& C,const Standard_Real UMin,const Standard_Real UMax,LProp_CurAndInf& Result) ;
-  
+  //! True if the solutions are found. <br>
   Standard_EXPORT     Standard_Boolean IsDone() const;
 
 

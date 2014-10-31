@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   ChFiDS_Regularities();
   
+  Standard_EXPORT   ChFiDS_Regularities(const ChFiDS_Regularities& Other);
+  
   Standard_EXPORT     void Assign(const ChFiDS_Regularities& Other) ;
     void operator=(const ChFiDS_Regularities& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ChFiDS_Regularities(const ChFiDS_Regularities& Other);
 
 
 Standard_Address myFirst;

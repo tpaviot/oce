@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TDataStd_ListOfExtendedString();
   
+  Standard_EXPORT   TDataStd_ListOfExtendedString(const TDataStd_ListOfExtendedString& Other);
+  
   Standard_EXPORT     void Assign(const TDataStd_ListOfExtendedString& Other) ;
     void operator=(const TDataStd_ListOfExtendedString& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDataStd_ListOfExtendedString(const TDataStd_ListOfExtendedString& Other);
 
 
 Standard_Address myFirst;

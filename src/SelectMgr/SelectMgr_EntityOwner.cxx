@@ -25,16 +25,23 @@
 SelectMgr_EntityOwner::SelectMgr_EntityOwner(const Standard_Integer aPriority):
 SelectBasics_EntityOwner(aPriority),
 mySelectable(NULL),
-mystate(0)
+myIsSelected (Standard_False)
 {
 }
 
 SelectMgr_EntityOwner::SelectMgr_EntityOwner(const Handle(SelectMgr_SelectableObject)& aSO,
 					     const Standard_Integer aPriority):
 SelectBasics_EntityOwner(aPriority),
-mystate(0)
+myIsSelected (Standard_False)
 {
   mySelectable = aSO.operator->();
+}
+
+SelectMgr_EntityOwner::SelectMgr_EntityOwner (const Handle(SelectMgr_EntityOwner)& theOwner, const Standard_Integer aPriority)
+:
+  SelectBasics_EntityOwner(aPriority),
+  mySelectable (theOwner->mySelectable)
+{
 }
 
 
@@ -106,25 +113,23 @@ void SelectMgr_EntityOwner::
 Hilight(){}
 
 
-
 //=======================================================================
-//function : about Location
+//function : about Transformation
 //purpose  : 
 //=======================================================================
 
 Standard_Boolean SelectMgr_EntityOwner::HasLocation() const
 {
-  return (HasSelectable() && mySelectable->HasLocation());
+  return (HasSelectable() && mySelectable->HasTransformation());
 }
 
 void SelectMgr_EntityOwner::SetLocation(const TopLoc_Location&)
 {
 }
 
-const TopLoc_Location& SelectMgr_EntityOwner::Location() const
+TopLoc_Location SelectMgr_EntityOwner::Location() const
 {
-  static TopLoc_Location anIdentity;
-  return HasSelectable() ? mySelectable->Location() : anIdentity;
+  return !HasSelectable() ? TopLoc_Location() : TopLoc_Location(mySelectable->Transformation());
 }
 
 void SelectMgr_EntityOwner::ResetLocation()

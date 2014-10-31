@@ -19,23 +19,23 @@
 #ifndef _SelectMgr_SOPtr_HeaderFile
 #include <SelectMgr_SOPtr.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
 #ifndef _SelectBasics_EntityOwner_HeaderFile
 #include <SelectBasics_EntityOwner.hxx>
 #endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
+#endif
 #ifndef _Handle_SelectMgr_SelectableObject_HeaderFile
 #include <Handle_SelectMgr_SelectableObject.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Handle_PrsMgr_PresentationManager_HeaderFile
 #include <Handle_PrsMgr_PresentationManager.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
@@ -43,7 +43,6 @@
 class Standard_NoSuchObject;
 class SelectMgr_SelectableObject;
 class PrsMgr_PresentationManager;
-class PrsMgr_PresentationManager3d;
 class TopLoc_Location;
 
 
@@ -62,10 +61,13 @@ public:
   //! Constructs a framework with the selectable object <br>
 //! anSO being attributed the selection priority aPriority. <br>
   Standard_EXPORT   SelectMgr_EntityOwner(const Handle(SelectMgr_SelectableObject)& aSO,const Standard_Integer aPriority = 0);
+  //! Constructs a framework from existing one <br>
+//! anSO being attributed the selection priority aPriority. <br>
+  Standard_EXPORT   SelectMgr_EntityOwner(const Handle(SelectMgr_EntityOwner)& theOwner,const Standard_Integer aPriority = 0);
   //! Returns true if there is a selectable object to serve as an owner. <br>
   Standard_EXPORT     Standard_Boolean HasSelectable() const;
   //! Returns a selectable object detected in the working context. <br>
-  Standard_EXPORT     Handle_SelectMgr_SelectableObject Selectable() const;
+  Standard_EXPORT   virtual  Handle_SelectMgr_SelectableObject Selectable() const;
   //! Sets the selectable object anSO to be used by the <br>
 //! second constructor above. <br>
   Standard_EXPORT     void Set(const Handle(SelectMgr_SelectableObject)& aSO) ;
@@ -100,8 +102,14 @@ public:
   
   Standard_EXPORT   virtual  void ResetLocation() ;
   
-  Standard_EXPORT   virtual const TopLoc_Location& Location() const;
-  
+  Standard_EXPORT   virtual  TopLoc_Location Location() const;
+  //!Set the state of the owner. <br>
+//! @param theIsSelected [in] shows if owner is selected. <br>
+        void SetSelected(const Standard_Boolean theIsSelected) ;
+  //! @return Standard_True if the owner is selected. <br>
+        Standard_Boolean IsSelected() const;
+  //!Set the state of the owner. <br>
+//! The method is deprecated. Use SetSelected() instead. <br>
         void State(const Standard_Integer aStatus) ;
   
         Standard_Integer State() const;
@@ -129,7 +137,7 @@ private:
 
 
 SelectMgr_SOPtr mySelectable;
-Standard_Integer mystate;
+Standard_Boolean myIsSelected;
 
 
 };

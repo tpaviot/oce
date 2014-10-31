@@ -28,13 +28,15 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class HLRAlgo_Projector;
 class Draw_Display;
 class Draw_Drawable3D;
-class Draw_Interpretor;
 
 
-
+//! Draw Variable Projector to test. <br>
 class HLRTest_Projector : public Draw_Drawable3D {
 
 public:

@@ -7,8 +7,9 @@
 #define _MeshVS_DrawerAttribute_HeaderFile
 
 //! Is it allowed to draw beam and face's edge overlapping with this beam. <br>//! Is mesh drawn with reflective material <br>//! Is colored mesh data representation drawn with reflective material <br>//! What part of face or link will be shown if shrink mode. It is recommended this coeff to be between 0 and 1. <br>//! How many nodes is possible to be in face <br>//! If this parameter is true, the compute method CPU time will be displayed in console window <br>//! If this parameter is true, the compute selection method CPU time will be displayed in console window <br>//! If this parameter is false, the nodes won't be shown in viewer, otherwise will be. <br>//! If this parameter is true, the selectable nodes map will be updated automatically when hidden elements change <br>//! If this parameter is false, the face's edges are not shown <br>
-//!          Warning: in wireframe mode this parameter is ignored <br>//! Is mesh drawing in smooth shading mode <br>//! Is back faces of volume elements should be supressed <br>//! this enumeration describe what type of sensitive entity will be built <br>
-//!          in 0-th selection mode (it means that whole mesh is selected ) <br>
+//!          Warning: in wireframe mode this parameter is ignored <br>//! Is mesh drawing in smooth shading mode <br>//! Is back faces of volume elements should be supressed <br>//! The integer keys for most useful constants attuning mesh presentation appearence <br>
+//!          WARNING: DA_TextExpansionFactor, DA_TextSpace, DA_TextDisplayType have <br>
+//!          no effect and might be removed in the future. <br>
 enum MeshVS_DrawerAttribute {
 MeshVS_DA_InteriorStyle,
 MeshVS_DA_InteriorColor,

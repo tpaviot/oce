@@ -7,9 +7,6 @@
 #ifndef _Draw_Display_HeaderFile
 #include <Draw_Display.hxx>
 #endif
-#ifndef _Draw_Interpretor_HeaderFile
-#include <Draw_Interpretor.hxx>
-#endif
 #ifndef _Draw_Segment2D_HeaderFile
 #include <Draw_Segment2D.hxx>
 #endif

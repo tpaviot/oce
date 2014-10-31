@@ -40,6 +40,8 @@ public:
   
       IntSurf_SequenceOfInteriorPoint();
   
+  Standard_EXPORT   IntSurf_SequenceOfInteriorPoint(const IntSurf_SequenceOfInteriorPoint& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntSurf_SequenceOfInteriorPoint()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntSurf_SequenceOfInteriorPoint(const IntSurf_SequenceOfInteriorPoint& Other);
 
 
 

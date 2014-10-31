@@ -27,7 +27,8 @@ class BRepClass_Edge;
 class gp_Dir2d;
 
 
-//! Implement the Intersector2d required by the classifier. <br>
+//! Intersect an Edge  with a segment. <br>
+//!          Implement the Intersector2d required by the classifier. <br>
 class BRepClass_Intersector  : public Geom2dInt_IntConicCurveOfGInter {
 public:
 

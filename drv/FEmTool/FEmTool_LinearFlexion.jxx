@@ -10,9 +10,6 @@
 #ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _FEmTool_LinearFlexion_HeaderFile
 #include <FEmTool_LinearFlexion.hxx>
 #endif

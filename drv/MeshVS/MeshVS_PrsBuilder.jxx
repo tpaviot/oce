@@ -4,9 +4,6 @@
 #ifndef _MeshVS_Drawer_HeaderFile
 #include <MeshVS_Drawer.hxx>
 #endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
-#include <PrsMgr_PresentationManager3d.hxx>
-#endif
 #ifndef _MeshVS_Mesh_HeaderFile
 #include <MeshVS_Mesh.hxx>
 #endif

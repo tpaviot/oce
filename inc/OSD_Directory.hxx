@@ -23,7 +23,7 @@ class OSD_Path;
 class OSD_Protection;
 
 
-//! Management of directories <br>
+//! Management of directories (a set of directory oriented tools) <br>
 class OSD_Directory  : public OSD_FileNode {
 public:
 

@@ -47,8 +47,8 @@ class Geom_Curve;
 class TopoDS_Edge;
 class IntTools_Range;
 class IntTools_SequenceOfRanges;
-class BRepAdaptor_Curve;
 class Bnd_Box;
+class BRepAdaptor_Curve;
 class IntTools_SequenceOfCommonPrts;
 
 
@@ -120,14 +120,17 @@ protected:
 //! Computes Line/Line intersection. <br>
   Standard_EXPORT     void ComputeLineLine() ;
   
+//! Intermediate function <br>
+  Standard_EXPORT     void FindSolutions(IntTools_SequenceOfRanges& theRanges1,IntTools_SequenceOfRanges& theRanges2,Standard_Boolean& bSplit2) ;
+  
 //! Looking for the exact intersection ranges <br>
-  Standard_EXPORT     void FindSolutions(const IntTools_Range& theR1,const IntTools_Range& theR2,IntTools_SequenceOfRanges& theRanges1,IntTools_SequenceOfRanges& theRanges2) ;
+  Standard_EXPORT     void FindSolutions(const IntTools_Range& theR1,const IntTools_Range& theR2,const Bnd_Box& theBox2,IntTools_SequenceOfRanges& theRanges1,IntTools_SequenceOfRanges& theRanges2) ;
   
 //! Merges found solutions <br>
-  Standard_EXPORT     void MergeSolutions(const IntTools_SequenceOfRanges& theRanges1,const IntTools_SequenceOfRanges& theRanges2) ;
+  Standard_EXPORT     void MergeSolutions(const IntTools_SequenceOfRanges& theRanges1,const IntTools_SequenceOfRanges& theRanges2,const Standard_Boolean bSplit2) ;
   
 //! Looking for the range of the edge whick is in the box <br>
-  Standard_EXPORT   static  Standard_Boolean FindParameters(const BRepAdaptor_Curve& theBAC,const Standard_Real aT1,const Standard_Real aT2,const Standard_Real theRes,const Standard_Real thePTol,const Bnd_Box& theCBox,Standard_Real& aTB1,Standard_Real& aTB2) ;
+  Standard_EXPORT   static  Standard_Boolean FindParameters(const BRepAdaptor_Curve& theBAC,const Standard_Real aT1,const Standard_Real aT2,const Standard_Real theRes,const Standard_Real thePTol,const Standard_Real theResCoeff,const Bnd_Box& theCBox,Standard_Real& aTB1,Standard_Real& aTB2) ;
   
 //! Checks if edges coincide on the ranges <br>
   Standard_EXPORT     Standard_Integer CheckCoincidence(const Standard_Real aT11,const Standard_Real aT12,const Standard_Real aT21,const Standard_Real aT22,const Standard_Real theCriteria,const Standard_Real theCurveRes1) ;
@@ -154,6 +157,8 @@ Standard_Real myTol2;
 Standard_Real myTol;
 Standard_Real myRes1;
 Standard_Real myRes2;
+Standard_Real myResCoeff1;
+Standard_Real myResCoeff2;
 Standard_Real myPTol1;
 Standard_Real myPTol2;
 IntTools_Range myRange1;

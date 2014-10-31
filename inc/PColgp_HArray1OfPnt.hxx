@@ -25,9 +25,6 @@
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _PColgp_FieldOfHArray1OfPnt_HeaderFile
 #include <PColgp_FieldOfHArray1OfPnt.hxx>
 #endif
@@ -40,10 +37,6 @@
 #ifndef _Handle_PColgp_VArrayNodeOfFieldOfHArray1OfPnt_HeaderFile
 #include <Handle_PColgp_VArrayNodeOfFieldOfHArray1OfPnt.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class gp_Pnt;
@@ -70,10 +63,6 @@ public:
         Standard_Integer Upper() const;
   
   Standard_EXPORT     gp_Pnt Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PColgp_HArray1OfPnt( )
 {
@@ -158,10 +147,6 @@ PColgp_FieldOfHArray1OfPnt Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PColgp_HArray1OfPnt& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

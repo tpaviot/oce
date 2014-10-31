@@ -22,14 +22,15 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_IntegerVector_HeaderFile
+#include <math_IntegerVector.hxx>
+#endif
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
 class StdFail_NotDone;
 class Standard_NotImplemented;
 class math_FunctionSet;
-class math_Vector;
-class math_IntegerVector;
 
 
 //! -- This class implements the integration of a set of N <br>

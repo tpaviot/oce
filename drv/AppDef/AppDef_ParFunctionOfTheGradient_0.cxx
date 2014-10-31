@@ -23,9 +23,6 @@
 #ifndef _AppDef_ResConstraintOfTheGradient_HeaderFile
 #include <AppDef_ResConstraintOfTheGradient.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
 #endif

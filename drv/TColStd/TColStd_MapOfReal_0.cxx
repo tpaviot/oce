@@ -5,9 +5,6 @@
 
 #include <TColStd_MapOfReal.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
 #ifndef _TColStd_MapRealHasher_HeaderFile
 #include <TColStd_MapRealHasher.hxx>
 #endif

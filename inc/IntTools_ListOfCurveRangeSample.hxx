@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   IntTools_ListOfCurveRangeSample();
   
+  Standard_EXPORT   IntTools_ListOfCurveRangeSample(const IntTools_ListOfCurveRangeSample& Other);
+  
   Standard_EXPORT     void Assign(const IntTools_ListOfCurveRangeSample& Other) ;
     void operator=(const IntTools_ListOfCurveRangeSample& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_ListOfCurveRangeSample(const IntTools_ListOfCurveRangeSample& Other);
 
 
 Standard_Address myFirst;

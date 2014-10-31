@@ -58,7 +58,9 @@ class Geom2d_Geometry;
 class gp_Trsf2d;
 
 
-
+//! This class provides the bisecting line between two <br>
+//!            geometric elements.The elements are Circles,Lines or <br>
+//!            Points. <br>
 class Bisector_BisecAna : public Bisector_Curve {
 
 public:

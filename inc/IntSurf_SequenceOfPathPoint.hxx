@@ -40,6 +40,8 @@ public:
   
       IntSurf_SequenceOfPathPoint();
   
+  Standard_EXPORT   IntSurf_SequenceOfPathPoint(const IntSurf_SequenceOfPathPoint& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntSurf_SequenceOfPathPoint()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntSurf_SequenceOfPathPoint(const IntSurf_SequenceOfPathPoint& Other);
 
 
 

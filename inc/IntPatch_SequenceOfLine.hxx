@@ -43,6 +43,8 @@ public:
   
       IntPatch_SequenceOfLine();
   
+  Standard_EXPORT   IntPatch_SequenceOfLine(const IntPatch_SequenceOfLine& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntPatch_SequenceOfLine()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntPatch_SequenceOfLine(const IntPatch_SequenceOfLine& Other);
 
 
 

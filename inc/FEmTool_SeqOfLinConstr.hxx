@@ -40,6 +40,8 @@ public:
   
       FEmTool_SeqOfLinConstr();
   
+  Standard_EXPORT   FEmTool_SeqOfLinConstr(const FEmTool_SeqOfLinConstr& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~FEmTool_SeqOfLinConstr()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   FEmTool_SeqOfLinConstr(const FEmTool_SeqOfLinConstr& Other);
 
 
 

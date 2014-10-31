@@ -10,13 +10,11 @@
 //! <br>
 //!          TOHM_COLOR          drawn in the highlight color <br>
 //!                              (default white) <br>
-//!          TOHM_BLINK          blinking <br>
 //!          TOHM_BOUNDBOX       enclosed by the boundary box <br>
 //!                              (default white) <br>
 //! <br>
 enum Aspect_TypeOfHighlightMethod {
 Aspect_TOHM_COLOR,
-Aspect_TOHM_BLINK,
 Aspect_TOHM_BOUNDBOX
 };
 

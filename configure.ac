@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT([OpenCASCADE], [6.7.0])
+AC_INIT([OpenCASCADE], [6.8.0])
 AC_CONFIG_AUX_DIR(make)
 AM_INIT_AUTOMAKE([foreign])
 AC_CANONICAL_HOST
@@ -79,7 +79,7 @@ CSF_SOCKETLibs_LIB=-ldl
 AC_MSG_CHECKING([if platform is 64-bit])
 AC_TRY_COMPILE( [], 
  [int array[((int)sizeof(void*))-6];],
- [AC_MSG_RESULT([yes]); ARCH=64; CPPFLAGS="$CPPFLAGS -D_OCC64"; case $platform in Linux*) CPPFLAGS="$CPPFLAGS -m64";; esac],
+ [AC_MSG_RESULT([yes]); ARCH=64; case $platform in Linux*) CPPFLAGS="$CPPFLAGS -m64";; esac],
  [AC_MSG_RESULT([no]); ARCH=32;] )
 AC_SUBST(ARCH)
 
@@ -334,7 +334,7 @@ else
   #       default compiler search path and any paths the user specified
   #       via CPPFLAGS on the command line.
   AC_CHECK_HEADER( [jni.h], [HAVE_JAVA=yes], [HAVE_JAVA=no
-    AC_MSG_NOTICE("Specify --with-java-include=<DIR> to enalbe Java support")] )
+    AC_MSG_NOTICE("Specify --with-java-include=<DIR> to enable Java support")] )
   if test "xyes" = "x$HAVE_JAVA"; then
     AC_MSG_CHECKING([java JNI version >= 1.2])
     AC_TRY_COMPILE( [#include <jni.h>],
@@ -769,6 +769,35 @@ fi
 
 #---------------------------------------------------------------------
 #
+# Check for VTK Includes
+#  
+#  
+#---------------------------------------------------------------------
+AC_ARG_WITH([vtk-include],
+  [AC_HELP_STRING([--with-vtk-include=DIR],[Location of VTK includes])],
+  [vtk_inc="${withval}"],[vtk_inc=])
+
+if test "xno$vtk_inc" = "xno"; then
+  # user specified --without-vtk-lib
+  HAVE_VTK=no
+  HAVE_VTK_INC=no
+  DISABLE_VTK_REASON_INC="(--with-vtk-include=DIR option was not defined)"
+else
+  CSF_VTK_INCLUDES=""
+  AC_LANG([C++])
+  HAVE_VTK_INC=yes
+  if test ! -d $vtk_inc; then
+    DISABLE_VTK_REASON_INC="($vtk_inc directory is not exists)"
+    AC_MSG_ERROR([$vtk_inc directory is not exists])
+  elif test "x$vtk_inc" != "x"; then
+     CPPFLAGS="-I$vtk_inc $CPPFLAGS";
+  else
+     AC_MSG_NOTICE("--with-vtk-include key is not defined")
+  fi
+fi
+
+#---------------------------------------------------------------------
+#
 # Check for TBB Libraries
 #  
 #  
@@ -975,6 +1004,66 @@ else
   CPPFLAGS="$CPPFLAGS -DNDEBUG  -DNo_Exception"
 fi
 
+#---------------------------------------------------------------------
+#
+# Check for VTK Libraries
+#  
+#  
+#---------------------------------------------------------------------
+AC_ARG_WITH([vtk-library],
+  [AC_HELP_STRING([--with-vtk-library=DIR],[Location of VTK libraries])],
+  [vtk_lib="${withval}"],[vtk_lib=])
+
+if test "xno" = "xno$vtk_lib"; then
+# user specified --without-vtk
+  HAVE_VTK=no
+  DISABLE_VTK_REASON_LIB="(--with-vtk-library=DIR option was not defined)"
+else
+  CSF_VTK_LIB=""
+  HAVE_VTK=yes
+
+  #CPP_FLAGS="-I$vtk $CPPFLAGS"
+  #AC_CHECK_HEADER( [Vtk/vtkConfigure.h], [HAVE_VTK_INC=yes], [HAVE_VTK_INC=no] )
+  if test "x$HAVE_VTK_INC" = "xyes"; then
+    if test ! -d $vtk; then
+      DISABLE_VTK_REASON_LIB="($vtk_lib directory does not exist)"
+      AC_MSG_ERROR([$vtk_lib directory does not exist])
+    elif test "x$vtk_lib" != "x"; then
+      LDFLAGS="-L$vtk_lib $LDFLAGS"
+    fi
+  else
+    HAVE_VTK=no
+  fi
+  
+  if test "x$HAVE_VTK" = "xyes"; then
+    if test "x$vtk_inc" != "x"; then
+      CSF_VTK_INCLUDES=""
+      CSF_OPT_INCLUDES="${CSF_OPT_INCLUDES} -I$vtk_inc -DHAVE_VTK"
+    else
+      HAVE_VTK=no
+    fi
+    if test "x$vtk_lib" != "x"; then
+      CSF_VTK_LIB="-L$vtk_lib -lvtkCommonCore-6.1 -lvtkCommonDataModel-6.1 -lvtkCommonExecutionModel-6.1 -lvtkCommonMath-6.1 -lvtkCommonTransforms-6.1 "
+      CSF_VTK_LIB="${CSF_VTK_LIB} -lvtkRenderingCore-6.1 -lvtkRenderingOpenGL-6.1  -lvtkFiltersGeneral-6.1 -lvtkIOCore-6.1 -lvtkIOImage-6.1 -lvtkImagingCore-6.1 -lvtkInteractionStyle-6.1 "
+    else
+      HAVE_VTK=no
+    fi
+
+    if test "x$HAVE_VTK" = "xyes"; then
+      CSF_OPT_INC="$vtk_inc:${CSF_OPT_INC}"
+      CSF_OPT_LIB="$vtk_lib:${CSF_OPT_LIB}"
+    else
+      DISABLE_VTK_REASON="(VTK was not found)"
+    fi
+  else
+    AC_MSG_NOTICE("Specify --with-vtk-library to enable VTK support")
+    DISABLE_VTK_REASON_LIB="(VTK libraries were not found)"
+  fi
+fi
+
+CSF_VTK="$CSF_VTK_LIB"
+AM_CONDITIONAL( HAVE_VTK, [test "xyes" = "x$HAVE_VTK"] )
+
 #----------------------------------------------------------------------
 #
 # Enalbe/Disable Modules
@@ -1070,6 +1159,11 @@ if test "xyes" = "x$ENABLE_VIS"; then
   if test "xyes" = "x$ENABLE_VIS" -a "xyes" != "x$HAVE_FREETYPE"; then
     AC_MSG_NOTICE([Disabling Visualization: FREETYPE not found])
     DISABLE_VIS_REASON="(FREETYPE not found)"
+    ENABLE_VIS=no
+  fi
+  if test "xyes" = "x$ENABLE_VIS" -a "xyes" != "x$HAVE_VTK"; then
+    AC_MSG_NOTICE([Disabling Visualization: VTK not found])
+    DISABLE_VIS_REASON="(VTK not found)"
     ENABLE_VIS=no
   fi
 else
@@ -1229,6 +1323,9 @@ AC_SUBST(CSF_OPENCL_LIB)
 AC_SUBST(HAVE_QT)
 AC_SUBST(CSF_QT_INCLUDES)
 AC_SUBST(CSF_QT_LIB)
+AC_SUBST(HAVE_VTK)
+AC_SUBST(CSF_VTK_INCLUDES)
+AC_SUBST(CSF_VTK_LIB)
 
 AC_SUBST(CSF_OPT_INC)
 AC_SUBST(CSF_OPT_LIB)
@@ -1255,6 +1352,7 @@ echo "tbb includes  : $HAVE_TBB_INC $DISABLE_TBB_REASON_INC"
 echo "tbb libraries : $HAVE_TBB $DISABLE_TBB_REASON_LIB"
 echo "opencl        : $HAVE_OPENCL $DISABLE_OPENCL_REASON"
 echo "qt            : $HAVE_QT $DISABLE_QT_REASON"
+echo "vtk           : $HAVE_VTK $DISABLE_VTK_REASON"
 echo
 echo "Component                   Build"
 echo "--------------------------  -----"
@@ -1271,7 +1369,6 @@ echo
 AC_OUTPUT([Makefile adm/lin/amk/Makefile custom.sh \
 adm/lin/amk/TKernel/Makefile \
 adm/lin/amk/TKMath/Makefile \
-adm/lin/amk/TKAdvTools/Makefile \
 adm/lin/amk/TKG2d/Makefile \
 adm/lin/amk/TKG3d/Makefile \
 adm/lin/amk/TKGeomBase/Makefile \
@@ -1294,6 +1391,7 @@ adm/lin/amk/TKOpenGl/Makefile \
 adm/lin/amk/TKMeshVS/Makefile \
 adm/lin/amk/TKNIS/Makefile \
 adm/lin/amk/TKVoxel/Makefile \
+adm/lin/amk/TKIVtk/Makefile \
 adm/lin/amk/PTKernel/Makefile \
 adm/lin/amk/TKPShape/Makefile \
 adm/lin/amk/TKCDF/Makefile \
@@ -1334,5 +1432,6 @@ adm/lin/amk/TKDCAF/Makefile \
 adm/lin/amk/TKXDEDRAW/Makefile \
 adm/lin/amk/TKTObjDRAW/Makefile \
 adm/lin/amk/TKQADraw/Makefile \
+adm/lin/amk/TKIVtkDraw/Makefile \
 adm/lin/amk/DRAWEXE/Makefile \
 ])

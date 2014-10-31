@@ -43,6 +43,8 @@ public:
   
       TColGeom_SequenceOfCurve();
   
+  Standard_EXPORT   TColGeom_SequenceOfCurve(const TColGeom_SequenceOfCurve& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColGeom_SequenceOfCurve()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColGeom_SequenceOfCurve(const TColGeom_SequenceOfCurve& Other);
 
 
 

@@ -16,12 +16,14 @@
 #ifndef _OpenGl_ExtGS_H__
 #define _OpenGl_ExtGS_H__
 
-#include <OpenGl_GlCore12.hxx>
+#include <OpenGl_GlFunctions.hxx>
 
 //! Geometry shader as extension is available on OpenGL 2.0+
-struct OpenGl_ExtGS
+struct OpenGl_ExtGS : protected OpenGl_GlFunctions
 {
-  PFNGLPROGRAMPARAMETERIEXTPROC glProgramParameteriEXT;
+#if !defined(GL_ES_VERSION_2_0)
+  using OpenGl_GlFunctions::glProgramParameteriEXT;
+#endif
 };
 
 #endif // _OpenGl_ExtGS_H__

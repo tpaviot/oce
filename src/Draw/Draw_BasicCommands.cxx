@@ -51,26 +51,7 @@ static clock_t CPU_CURRENT; // cpu time already used at last
 #else /* _WIN32 */
 
 #include <sys/resource.h>
-
-#ifdef HAVE_CONFIG_H
-# include <config.h>
-#endif
-
-#ifdef HAVE_STRINGS_H
-# include <strings.h>
-#endif
-
-#if defined(HAVE_TIME_H)
-# include <time.h>
-#endif
-
-#ifdef HAVE_SIGNAL_H
-# include <signal.h>
-#endif
-
-#ifdef HAVE_SYS_SIGNAL_H
-# include <sys/signal.h>
-#endif
+#include <signal.h>
 
 #if defined (__hpux) || defined ( HPUX )
 #define RLIM_INFINITY   0x7fffffff
@@ -310,6 +291,11 @@ static Standard_Integer dversion(Draw_Interpretor& di, Standard_Integer, const c
   di << "OpenCL enabled (HAVE_OPENCL)\n";
 #else
   di << "OpenCL disabled\n";
+#endif
+#ifdef HAVE_VTK
+  di << "VTK enabled (HAVE_VTK)\n";
+#else
+  di << "VTK disabled\n";
 #endif
 #ifdef No_Exception
   di << "Exceptions disabled (No_Exception)\n";
@@ -702,6 +688,99 @@ static int dmeminfo (Draw_Interpretor& theDI,
   return 0;
 }
 
+//==============================================================================
+//function : dtracelevel
+//purpose  :
+//==============================================================================
+
+static int dtracelevel (Draw_Interpretor& theDI,
+                        Standard_Integer  theArgNb,
+                        const char**      theArgVec)
+{
+  Message_Gravity aLevel = Message_Info;
+  if (theArgNb < 1 || theArgNb > 2)
+  {
+    std::cout << "Error: wrong number of arguments! See usage:\n";
+    theDI.PrintHelp (theArgVec[0]);
+    return 1;
+  }
+  else if (theArgNb == 2)
+  {
+    TCollection_AsciiString aVal (theArgVec[1]);
+    aVal.LowerCase();
+    if (aVal == "trace")
+    {
+      aLevel = Message_Trace;
+    }
+    else if (aVal == "info")
+    {
+      aLevel = Message_Info;
+    }
+    else if (aVal == "warn"
+          || aVal == "warning")
+    {
+      aLevel = Message_Warning;
+    }
+    else if (aVal == "alarm")
+    {
+      aLevel = Message_Alarm;
+    }
+    else if (aVal == "fail")
+    {
+      aLevel = Message_Fail;
+    }
+    else
+    {
+      std::cout << "Error: unknown gravity '" << theArgVec[1] << "'!\n";
+      return 1;
+    }
+  }
+
+  Handle(Message_Messenger) aMessenger = Message::DefaultMessenger();
+  if (aMessenger.IsNull())
+  {
+    std::cout << "Error: default messenger is unavailable!\n";
+    return 1;
+  }
+
+  Message_SequenceOfPrinters& aPrinters = aMessenger->ChangePrinters();
+  if (aPrinters.Length() < 1)
+  {
+    std::cout << "Error: no printers registered in default Messenger!\n";
+    return 0;
+  }
+
+  for (Standard_Integer aPrinterIter = 1; aPrinterIter <= aPrinters.Length(); ++aPrinterIter)
+  {
+    Handle(Message_Printer)& aPrinter = aPrinters.ChangeValue (aPrinterIter);
+    if (theArgNb == 1)
+    {
+      if (aPrinterIter == 1)
+      {
+        aLevel = aPrinter->GetTraceLevel();
+      }
+      else if (aLevel == aPrinter->GetTraceLevel())
+      {
+        continue;
+      }
+
+      switch (aPrinter->GetTraceLevel())
+      {
+        case Message_Trace:   theDI << "trace"; break;
+        case Message_Info:    theDI << "info";  break;
+        case Message_Warning: theDI << "warn";  break;
+        case Message_Alarm:   theDI << "alarm"; break;
+        case Message_Fail:    theDI << "fail";  break;
+      }
+      continue;
+    }
+
+    aPrinter->SetTraceLevel (aLevel);
+  }
+
+  return 0;
+}
+
 void Draw::BasicCommands(Draw_Interpretor& theCommands)
 {
   static Standard_Boolean Done = Standard_False;
@@ -711,7 +790,7 @@ void Draw::BasicCommands(Draw_Interpretor& theCommands)
   ios::sync_with_stdio();
 
   const char* g = "DRAW General Commands";
-  
+
   theCommands.Add("batch", "returns 1 in batch mode",
 		  __FILE__,ifbatch,g);
   theCommands.Add("spy","spy [file], Save commands in file. no file close",
@@ -732,13 +811,15 @@ void Draw::BasicCommands(Draw_Interpretor& theCommands)
     " : memory counters for this process",
 	  __FILE__, dmeminfo, g);
 
-  // Logging commands; note that their names are hard-coded in the code 
+  // Logging commands; note that their names are hard-coded in the code
   // of Draw_Interpretor, thus should not be changed without update of that code!
   theCommands.Add("dlog", "manage logging of commands and output; run without args to get help",
 		  __FILE__,dlog,g);
   theCommands.Add("decho", "switch on / off echo of commands to cout; run without args to get help",
 		  __FILE__,decho,g);
-  
+  theCommands.Add("dtracelevel", "dtracelevel [trace|info|warn|alarm|fail]",
+                  __FILE__, dtracelevel, g);
+
   theCommands.Add("dbreak", "raises Tcl exception if user has pressed Control-Break key",
 		  __FILE__,dbreak,g);
   theCommands.Add("dversion", "provides information on OCCT build configuration (version, compiler, OS, C library, etc.)",

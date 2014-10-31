@@ -30,7 +30,7 @@
 #endif
 
 
-
+//! to Update OutLines. <br>
 class HLRAlgo_PolyInternalNode : public MMgt_TShared {
 
 public:

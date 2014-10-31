@@ -38,7 +38,7 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-
+//! attribute to store material <br>
 class XCAFDoc_Material : public TDF_Attribute {
 
 public:

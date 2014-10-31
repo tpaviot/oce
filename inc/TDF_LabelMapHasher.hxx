@@ -25,7 +25,7 @@
 class TDF_Label;
 
 
-
+//! A label hasher for label maps. <br>
 class TDF_LabelMapHasher  {
 public:
 

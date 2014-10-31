@@ -28,7 +28,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class IntTools_SurfaceRangeSample;
 class IntTools_SurfaceRangeSampleMapHasher;
 class IntTools_StdMapNodeOfMapOfSurfaceSample;
@@ -43,6 +42,8 @@ public:
 
   
   Standard_EXPORT   IntTools_MapOfSurfaceSample(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   IntTools_MapOfSurfaceSample(const IntTools_MapOfSurfaceSample& Other);
   
   Standard_EXPORT     IntTools_MapOfSurfaceSample& Assign(const IntTools_MapOfSurfaceSample& Other) ;
     IntTools_MapOfSurfaceSample& operator =(const IntTools_MapOfSurfaceSample& Other) 
@@ -76,8 +77,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_MapOfSurfaceSample(const IntTools_MapOfSurfaceSample& Other);
 
 
 

@@ -78,7 +78,6 @@ class IntPatch_TheSurfFunction;
 class IntPatch_TheIWLineOfTheIWalking;
 class IntPatch_SequenceOfIWLineOfTheIWalking;
 class IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking;
-class math_Vector;
 class TColStd_SequenceOfReal;
 class IntSurf_PntOn2S;
 

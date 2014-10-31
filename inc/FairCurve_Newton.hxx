@@ -22,6 +22,9 @@
 #ifndef _math_NewtonMinimum_HeaderFile
 #include <math_NewtonMinimum.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -29,7 +32,6 @@
 #include <Standard_Boolean.hxx>
 #endif
 class math_MultipleVarFunctionWithHessian;
-class math_Vector;
 
 
 //! Algorithme of Optimization used to make "FairCurve" <br>

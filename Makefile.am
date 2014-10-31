@@ -37,8 +37,7 @@ endif
 ModelingAlgorithms:
 	cd $(top_builddir)/adm/lin/amk && $(MAKE) $(AM_MAKEFLAGS) ModelingAlgorithms
 
-Visualization_PKGS = Textures
-
+Visualization_PKGS = Textures Shaders
 if ENABLE_VIS
   Visualization_DIRS = $(Visualization_PKGS)
 else
@@ -103,8 +102,6 @@ install-exec-local:
 		rm -f $(prefix)/inc/config.h; \
 	fi
 	cd $(prefix)/inc && ln -s ../config.h config.h
-	cd $(top_srcdir) && cp draw.sh $(prefix)
-	cd $(top_srcdir) && cp custom.sh $(prefix)
-	cd $(top_srcdir) && cp env.sh $(prefix)
+	cd $(top_srcdir) && cp *.sh $(prefix)
 
 .PHONY: FoundationClasses ModelingData ModelingAlgorithms Visualization ApplicationFramework DataExchange Draw

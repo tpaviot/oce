@@ -6,71 +6,71 @@
 	objectVersion = 46;
 	objects = {
 
-		189D06DD0EB008DD097206E1 = {isa = PBXBuildFile; fileRef = 144B029E173903B617DA0DA2 ;};
+		05F9010411FE0F4515510032 = {isa = PBXBuildFile; fileRef = 12D20F7213F50B5E0511121C ;};
 
-		0B4506450D1C01D70D4F1189 = {isa = PBXBuildFile; fileRef = 04190908035C1636117F1513 ; };
-		133203C20C9D0571030702CB = {isa = PBXBuildFile; fileRef = 182916490F0F12DF12101651 ; };
-		078F0DEF0C8E13CE0EC30A4D = {isa = PBXBuildFile; fileRef = 191309D310D007BD05A0065E ; };
-		15C606E417C108C40BDE177D = {isa = PBXBuildFile; fileRef = 0A4D0B9C02210AB6106C0E77 ; };
-		054102A1144F024B055A08E8 = {isa = PBXBuildFile; fileRef = 0B9708851570033114AC1893 ; };
+		0D681004184A095C08120013 = {isa = PBXBuildFile; fileRef = 14D311570AA916CA03A101A7 ; };
+		0B3A10DC038A1843097B1252 = {isa = PBXBuildFile; fileRef = 14E217E313F8189105940630 ; };
+		01310DE5197A0CF109A60645 = {isa = PBXBuildFile; fileRef = 171114DD064113630EB3080D ; };
+		02290EE60A9A00CC17581102 = {isa = PBXBuildFile; fileRef = 0AAB08761323176407F707C7 ; };
+		047802A8110611A30691010E = {isa = PBXBuildFile; fileRef = 068A1895065D17D8118B10CC ; };
 
-		113714AD13BE136D104D0025 = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libTKXMesh.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		10AC0B5912A4049300540D01 = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libTKXMesh.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 
-		144B029E173903B617DA0DA2 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XBRepMesh.cxx; path = ../../../src/XBRepMesh/XBRepMesh.cxx; sourceTree = "<group>"; };
+		12D20F7213F50B5E0511121C = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XBRepMesh.cxx; path = ../../../src/XBRepMesh/XBRepMesh.cxx; sourceTree = "<group>"; };
 
-		04190908035C1636117F1513 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKBRep.dylib; path = libTKBRep.dylib; sourceTree = "<group>"; };
-		182916490F0F12DF12101651 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKMath.dylib; path = libTKMath.dylib; sourceTree = "<group>"; };
-		191309D310D007BD05A0065E = {isa = PBXFileReference; lastKnownFileType = file; name = libTKernel.dylib; path = libTKernel.dylib; sourceTree = "<group>"; };
-		0A4D0B9C02210AB6106C0E77 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKG2d.dylib; path = libTKG2d.dylib; sourceTree = "<group>"; };
-		0B9708851570033114AC1893 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKMesh.dylib; path = libTKMesh.dylib; sourceTree = "<group>"; };
+		14D311570AA916CA03A101A7 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKBRep.dylib; path = libTKBRep.dylib; sourceTree = "<group>"; };
+		14E217E313F8189105940630 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKMath.dylib; path = libTKMath.dylib; sourceTree = "<group>"; };
+		171114DD064113630EB3080D = {isa = PBXFileReference; lastKnownFileType = file; name = libTKernel.dylib; path = libTKernel.dylib; sourceTree = "<group>"; };
+		0AAB08761323176407F707C7 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKG2d.dylib; path = libTKG2d.dylib; sourceTree = "<group>"; };
+		068A1895065D17D8118B10CC = {isa = PBXFileReference; lastKnownFileType = file; name = libTKMesh.dylib; path = libTKMesh.dylib; sourceTree = "<group>"; };
 
-		04CE191E0BF30FFC0BAB06E8 = {
+		0EDC160A002F11230957111A = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B4506450D1C01D70D4F1189 ,
-				133203C20C9D0571030702CB ,
-				078F0DEF0C8E13CE0EC30A4D ,
-				15C606E417C108C40BDE177D ,
-				054102A1144F024B055A08E8 ,
+				0D681004184A095C08120013 ,
+				0B3A10DC038A1843097B1252 ,
+				01310DE5197A0CF109A60645 ,
+				02290EE60A9A00CC17581102 ,
+				047802A8110611A30691010E ,
 
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 
-		004F112009670A5A09BD1766 = {
+		0358045B0B5B0666193F08A8 = {
 			isa = PBXGroup;
 			children = (
-				144B029E173903B617DA0DA2 ,
+				12D20F7213F50B5E0511121C ,
 			);
 			name = XBRepMesh;
 			sourceTree = "<group>";
 		};
 
-		0A82026A11290DAD03B90F96 = {
+		0636117F124208E405610E09 = {
 			isa = PBXGroup;
 			children = (
-				04190908035C1636117F1513 ,
-				182916490F0F12DF12101651 ,
-				191309D310D007BD05A0065E ,
-				0A4D0B9C02210AB6106C0E77 ,
-				0B9708851570033114AC1893 ,
+				14D311570AA916CA03A101A7 ,
+				14E217E313F8189105940630 ,
+				171114DD064113630EB3080D ,
+				0AAB08761323176407F707C7 ,
+				068A1895065D17D8118B10CC ,
 
-				02DC15AF091D10270D0415AA ,
-				113714AD13BE136D104D0025 ,
+				0BD20F3F1441131A188009E8 ,
+				10AC0B5912A4049300540D01 ,
 			);
 			sourceTree = "<group>";
 		};
-		02DC15AF091D10270D0415AA = {
+		0BD20F3F1441131A188009E8 = {
 			isa = PBXGroup;
 			children = (
-				004F112009670A5A09BD1766 ,
+				0358045B0B5B0666193F08A8 ,
 			);
 			name = "Source files";
 			sourceTree = "<group>";
 		};
 
-		17EE1164118B0E3D114304A2 = {
+		0CF9069C04F617E109C7154F = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -78,13 +78,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 
-		00680A6510910F7E13110530 = {
+		029300A414E10D0406F31622 = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0823042701E1155812FB0898 ;
+			buildConfigurationList = 18F91781047809BE010D0DBC ;
 			buildPhases = (
-				01F01464067C01C0195516AD ,
-				04CE191E0BF30FFC0BAB06E8 ,
-				17EE1164118B0E3D114304A2 ,
+				14060B020A550296101007CA ,
+				0EDC160A002F11230957111A ,
+				0CF9069C04F617E109C7154F ,
 			);
 			buildRules = (
 			);
@@ -92,42 +92,42 @@
 			);
 			name = TKXMesh;
 			productName = TKXMesh;
-			productReference = 113714AD13BE136D104D0025 ;
+			productReference = 10AC0B5912A4049300540D01 ;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 
-		164903F118EF151F0ED40440 = {
+		161F059C09BC0F7416CA008E = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
 			};
-			buildConfigurationList = 05BF10760A5C121407250E44 ;
+			buildConfigurationList = 0AA017A408240B6518AD15C8 ;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 0A82026A11290DAD03B90F96;
-			productRefGroup = 0A82026A11290DAD03B90F96;
+			mainGroup = 0636117F124208E405610E09;
+			productRefGroup = 0636117F124208E405610E09;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				00680A6510910F7E13110530 ,
+				029300A414E10D0406F31622 ,
 			);
 		};
 
-		01F01464067C01C0195516AD = {
+		14060B020A550296101007CA = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				189D06DD0EB008DD097206E1 ,
+				05F9010411FE0F4515510032 ,
 
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 
-		07C80CB5171F052316C00C8B = {
+		07D403FE0507051401BD042B = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -152,7 +152,7 @@
 			};
 			name = Debug;
 		};
-		0C0813F716B207EB08660AC9 = {
+		1479175E05DE128F113F0D3E = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -170,7 +170,7 @@
 			};
 			name = Release;
 		};
-		197D102E13760DBC15871403 = {
+		117A01CC1328095F15590C4A = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = dylib;
@@ -183,7 +183,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					../../../inc,
-					/Users/mnt/tools/WOK670/site/../lib,
+					/Users/mnt/tools/WOK671/site/../lib,
 					../../../drv/XBRepMesh,
 					../../../src/XBRepMesh,
 					"$(CSF_OPT_INC)",
@@ -195,12 +195,12 @@
 					"$(OTHER_CFLAGS)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK670/site/../lib ../../../drv/XBRepMesh ../../../src/XBRepMesh";
+				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK671/site/../lib ../../../drv/XBRepMesh ../../../src/XBRepMesh";
 				WRAPPER_EXTENSION = dylib;
 			};
 			name = Debug;
 		};
-		19110CCF02D2104009FF1430 = {
+		0BA600E10A9E0C59029F06C1 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = dylib;
@@ -213,7 +213,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					../../../inc,
-					/Users/mnt/tools/WOK670/site/../lib,
+					/Users/mnt/tools/WOK671/site/../lib,
 					../../../drv/XBRepMesh,
 					../../../src/XBRepMesh,
 					"$(CSF_OPT_INC)",
@@ -225,31 +225,31 @@
 					"$(OTHER_CFLAGS)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK670/site/../lib ../../../drv/XBRepMesh ../../../src/XBRepMesh";
+				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK671/site/../lib ../../../drv/XBRepMesh ../../../src/XBRepMesh";
 				WRAPPER_EXTENSION = dylib;
 			};
 			name = Release;
 		};
 
-		05BF10760A5C121407250E44 = {
+		0AA017A408240B6518AD15C8 = {
 			isa = XCConfigurationList;
 		buildConfigurations = (
-				07C80CB5171F052316C00C8B ,
-				0C0813F716B207EB08660AC9 ,
+				07D403FE0507051401BD042B ,
+				1479175E05DE128F113F0D3E ,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0823042701E1155812FB0898 = {
+		18F91781047809BE010D0DBC = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				197D102E13760DBC15871403 ,
-				19110CCF02D2104009FF1430 ,
+				117A01CC1328095F15590C4A ,
+				0BA600E10A9E0C59029F06C1 ,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 
 	};
-	rootObject = 164903F118EF151F0ED40440 ;
+	rootObject = 161F059C09BC0F7416CA008E ;
 }

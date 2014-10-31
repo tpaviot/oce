@@ -5,9 +5,6 @@
 
 #include <TDF_AttributeMap.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
 #ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
 #endif

@@ -43,6 +43,8 @@ public:
   
       StepFEA_SequenceOfElementGeometricRelationship();
   
+  Standard_EXPORT   StepFEA_SequenceOfElementGeometricRelationship(const StepFEA_SequenceOfElementGeometricRelationship& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~StepFEA_SequenceOfElementGeometricRelationship()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StepFEA_SequenceOfElementGeometricRelationship(const StepFEA_SequenceOfElementGeometricRelationship& Other);
 
 
 

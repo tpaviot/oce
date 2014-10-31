@@ -17,9 +17,6 @@
 #ifndef _BRepApprox_SurfaceTool_HeaderFile
 #include <BRepApprox_SurfaceTool.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
 #endif

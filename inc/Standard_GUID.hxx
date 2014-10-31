@@ -122,7 +122,7 @@ public:
   //! Display the GUID with the following format: <br>
 //! <br>
 //!          "00000000-0000-0000-0000-000000000000" <br>
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& aStream) const;
+  Standard_EXPORT     void ShallowDump(Standard_OStream& aStream) const;
   //! Check the format of a GUID string. <br>
 //!          It checks the size, the position of the '-' and the correct size of fields. <br>
   Standard_EXPORT   static  Standard_Boolean CheckGUIDFormat(const Standard_CString aGuid) ;

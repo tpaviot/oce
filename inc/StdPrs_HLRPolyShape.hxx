@@ -44,6 +44,7 @@ class Prs3d_Projector;
 //! obtain an exact result, whereas, when you use <br>
 //! StdPrs_HLRPolyShape, you reduce computation <br>
 //! time but obtain polygonal segments. <br>
+//! The polygonal algorithm is used. <br>
 class StdPrs_HLRPolyShape  : public Prs3d_Root {
 public:
 

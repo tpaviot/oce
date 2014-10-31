@@ -16,30 +16,48 @@
 #include <Standard_Macro.hxx>
 #endif
 
-#ifndef _Handle_TopLoc_SListNodeOfSListOfItemLocation_HeaderFile
-#include <Handle_TopLoc_SListNodeOfSListOfItemLocation.hxx>
+#ifndef _Handle_TopLoc_SListNodeOfItemLocation_HeaderFile
+#include <Handle_TopLoc_SListNodeOfItemLocation.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class TopLoc_SListNodeOfSListOfItemLocation;
+class TopLoc_SListNodeOfItemLocation;
 class Standard_NoSuchObject;
 class TopLoc_ItemLocation;
 
 
-
+//! An SListOfItemLocation is a LISP like list of Items. <br>
+//! An SListOfItemLocation is : <br>
+//!   . Empty. <br>
+//!   . Or it has a Value and a  Tail  which is an other SListOfItemLocation. <br>
+//! <br>
+//! The Tail of an empty list is an empty list. <br>
+//! SListOfItemLocation are  shared.  It  means   that they  can  be <br>
+//! modified through other lists. <br>
+//! SListOfItemLocation may  be used  as Iterators. They  have Next, <br>
+//! More, and value methods. To iterate on the content <br>
+//! of the list S just do. <br>
+//! <br>
+//! SListOfItemLocation Iterator; <br>
+//! for (Iterator = S; Iterator.More(); Iterator.Next()) <br>
+//!   X = Iterator.Value(); <br>
+//! <br>
+//!  Memory usage  is  automatically managed for  SListOfItemLocations <br>
+//!  (using reference counts). <br>
 class TopLoc_SListOfItemLocation  {
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Creates an empty List. <br>
   Standard_EXPORT   TopLoc_SListOfItemLocation();
-  
+  //! Creates a List with <anItem> as value  and <aTail> as tail. <br>
   Standard_EXPORT   TopLoc_SListOfItemLocation(const TopLoc_ItemLocation& anItem,const TopLoc_SListOfItemLocation& aTail);
-  
+  //! Creates a list from an other one. The lists  are shared. <br>
   Standard_EXPORT   TopLoc_SListOfItemLocation(const TopLoc_SListOfItemLocation& Other);
-  
+  //! Sets  a list  from  an  other  one. The  lists are <br>
+//! shared. The list itself is returned. <br>
   Standard_EXPORT     TopLoc_SListOfItemLocation& Assign(const TopLoc_SListOfItemLocation& Other) ;
     TopLoc_SListOfItemLocation& operator =(const TopLoc_SListOfItemLocation& Other) 
 {
@@ -47,35 +65,49 @@ public:
 }
   
         Standard_Boolean IsEmpty() const;
-  
+  //! Sets the list to be empty. <br>
   Standard_EXPORT     void Clear() ;
 ~TopLoc_SListOfItemLocation()
 {
   Clear();
 }
-  
+  //! Returns the current value of the list. An error is <br>
+//! raised  if the list is empty. <br>
   Standard_EXPORT    const TopLoc_ItemLocation& Value() const;
-  
+  //! Returns the current value of the list. An error is <br>
+//! raised if the  list  is empty.   This value may be <br>
+//! modified.   A   method modifying the  value can be <br>
+//! called. The value will be modified in the list. <br>
   Standard_EXPORT     TopLoc_ItemLocation& ChangeValue() ;
-  
+  //! Changes the current value in the list. An error is <br>
+//! raised if the list is empty. <br>
   Standard_EXPORT     void SetValue(const TopLoc_ItemLocation& anItem) ;
-  
+  //! Returns the current tail of  the list. On an empty <br>
+//! list the tail is the list itself. <br>
   Standard_EXPORT    const TopLoc_SListOfItemLocation& Tail() const;
-  
+  //! Returns the current  tail of the list.   This tail <br>
+//! may be modified.  A method modifying the  tail can <br>
+//! be called. The tail will be modified in the list. <br>
   Standard_EXPORT     TopLoc_SListOfItemLocation& ChangeTail() ;
-  
+  //! Changes the current tail  in the list. On an empty <br>
+//! list SetTail is Assign. <br>
   Standard_EXPORT     void SetTail(const TopLoc_SListOfItemLocation& aList) ;
-  
+  //! Replaces the list by a list with <anItem> as Value <br>
+//! and the  list <me> as  tail. <br>
         void Construct(const TopLoc_ItemLocation& anItem) ;
-  
+  //! Returns a new list  with  <anItem> as Value an the <br>
+//! list <me> as tail. <br>
         TopLoc_SListOfItemLocation Constructed(const TopLoc_ItemLocation& anItem) const;
-  
+  //! Replaces the list <me> by its tail. <br>
         void ToTail() ;
-  
+  //! Sets  the iterator  to iterate   on the content of <br>
+//! <aList>. This is Assign(). <br>
         void Initialize(const TopLoc_SListOfItemLocation& aList) ;
-  
+  //! Returns True if the iterator  has a current value. <br>
+//! This is !IsEmpty() <br>
         Standard_Boolean More() const;
-  
+  //! Moves the iterator to the next object in the list. <br>
+//! If the iterator is empty it will  stay empty. This is ToTail() <br>
         void Next() ;
 
 
@@ -92,30 +124,14 @@ private:
 
 
 
-Handle_TopLoc_SListNodeOfSListOfItemLocation myNode;
+Handle_TopLoc_SListNodeOfItemLocation myNode;
 
 
 };
 
-#define Item TopLoc_ItemLocation
-#define Item_hxx <TopLoc_ItemLocation.hxx>
-#define TCollection_SListNode TopLoc_SListNodeOfSListOfItemLocation
-#define TCollection_SListNode_hxx <TopLoc_SListNodeOfSListOfItemLocation.hxx>
-#define Handle_TCollection_SListNode Handle_TopLoc_SListNodeOfSListOfItemLocation
-#define TCollection_SListNode_Type_() TopLoc_SListNodeOfSListOfItemLocation_Type_()
-#define TCollection_SList TopLoc_SListOfItemLocation
-#define TCollection_SList_hxx <TopLoc_SListOfItemLocation.hxx>
 
-#include <TCollection_SList.lxx>
+#include <TopLoc_SListOfItemLocation.lxx>
 
-#undef Item
-#undef Item_hxx
-#undef TCollection_SListNode
-#undef TCollection_SListNode_hxx
-#undef Handle_TCollection_SListNode
-#undef TCollection_SListNode_Type_
-#undef TCollection_SList
-#undef TCollection_SList_hxx
 
 
 // other Inline functions and methods (like "C++: function call" methods)

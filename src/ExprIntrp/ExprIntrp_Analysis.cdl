@@ -25,14 +25,14 @@ uses Generator from ExprIntrp,
     StackOfGeneralExpression from ExprIntrp,
     StackOfGeneralRelation from ExprIntrp,
     StackOfGeneralFunction from ExprIntrp,
-    StackOfInteger from TColStd,
+    ListOfInteger from TColStd,
     SequenceOfGeneralExpression from Expr,
     SequenceOfNamedFunction from ExprIntrp,
     SequenceOfNamedExpression from ExprIntrp,
     NamedFunction from Expr,
     NamedExpression from Expr,
     AsciiString from TCollection,
-    StackOfNames from ExprIntrp
+    ListOfAsciiString from TColStd
     
 is
 
@@ -107,8 +107,8 @@ fields
     myGEStack : StackOfGeneralExpression;
     myGRStack : StackOfGeneralRelation;
     myGFStack : StackOfGeneralFunction;
-    myNameStack : StackOfNames;
-    myValueStack : StackOfInteger;
+    myNameStack : ListOfAsciiString from TColStd;
+    myValueStack : ListOfInteger;
     myFunctions : SequenceOfNamedFunction;
     myNamed : SequenceOfNamedExpression;
     myMaster : Generator;

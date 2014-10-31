@@ -30,25 +30,35 @@ class Standard_DomainError;
 class IntSurf_Transition;
 
 
-
+//! Definition of an intersection point between a line <br>
+//!          and a restriction on a surface. <br>
+//!          Such a point is contains geometrical informations (see <br>
+//!          the Value method) and logical informations. <br>
 class BRepBlend_PointOnRst  {
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Empty constructor. <br>
   Standard_EXPORT   BRepBlend_PointOnRst();
-  
+  //! Creates the PointOnRst on the arc A, at parameter Param, <br>
+//!          with the transition TLine on the walking line, and <br>
+//!          TArc on the arc A. <br>
   Standard_EXPORT   BRepBlend_PointOnRst(const Handle(Adaptor2d_HCurve2d)& A,const Standard_Real Param,const IntSurf_Transition& TLine,const IntSurf_Transition& TArc);
-  
+  //! Sets the values of a point which is on the arc <br>
+//!          A, at parameter Param. <br>
   Standard_EXPORT     void SetArc(const Handle(Adaptor2d_HCurve2d)& A,const Standard_Real Param,const IntSurf_Transition& TLine,const IntSurf_Transition& TArc) ;
-  
+  //! Returns the arc of restriction containing the <br>
+//!          vertex. <br>
        const Handle_Adaptor2d_HCurve2d& Arc() const;
-  
+  //! Returns the transition of the point on the <br>
+//!          line on surface. <br>
        const IntSurf_Transition& TransitionOnLine() const;
-  
+  //! Returns the transition of the point on the arc <br>
+//!          returned by Arc(). <br>
        const IntSurf_Transition& TransitionOnArc() const;
-  
+  //! Returns the parameter of the point on the <br>
+//!          arc returned by the method Arc(). <br>
         Standard_Real ParameterOnArc() const;
 
 
@@ -73,17 +83,9 @@ Standard_Real prm;
 
 };
 
-#define TheArc Handle_Adaptor2d_HCurve2d
-#define TheArc_hxx <Adaptor2d_HCurve2d.hxx>
-#define Blend_PointOnRst BRepBlend_PointOnRst
-#define Blend_PointOnRst_hxx <BRepBlend_PointOnRst.hxx>
 
-#include <Blend_PointOnRst.lxx>
+#include <BRepBlend_PointOnRst.lxx>
 
-#undef TheArc
-#undef TheArc_hxx
-#undef Blend_PointOnRst
-#undef Blend_PointOnRst_hxx
 
 
 // other Inline functions and methods (like "C++: function call" methods)

@@ -30,7 +30,7 @@ class ChFiDS_Stripe;
 class ChFiDS_ListOfStripe;
 
 
-
+//! encapsulation of IndexedDataMapOfVertexListOfStripe <br>
 class ChFiDS_StripeMap  {
 public:
 

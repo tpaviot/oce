@@ -28,7 +28,9 @@
 class TopoDS_TShape;
 
 
-
+//! A  topological part  of a surface   or  of the  2D <br>
+//!          space.  The  boundary  is  a   set of  wires   and <br>
+//!          vertices. <br>
 class TopoDS_TFace : public TopoDS_TShape {
 
 public:

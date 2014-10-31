@@ -52,6 +52,8 @@ class TDF_DataSet;
 
 //! This attribute allow user multirelation tree of labels. <br>
 //! This GraphNode is experimental Graph that not control looping and redundance. <br>
+//! Attribute containg sequence of father's and child's labels. <br>
+//! Provide create and work with Graph in XCAFDocument. <br>
 class XCAFDoc_GraphNode : public TDF_Attribute {
 
 public:

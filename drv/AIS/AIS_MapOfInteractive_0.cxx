@@ -5,9 +5,6 @@
 
 #include <AIS_MapOfInteractive.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
 #ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
 #endif

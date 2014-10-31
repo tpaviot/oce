@@ -32,12 +32,11 @@ package Geom2dGcc
 
 
 uses GccEnt,
-     GccGeo,
      GccAna,
-     GccIter,
      StdFail,
      Geom2dInt,
      Geom2d,
+     GeomAbs,
      TColStd,
      Standard,
      Geom2dAdaptor,
@@ -45,7 +44,8 @@ uses GccEnt,
      Adaptor3d,
      Adaptor2d,
      TColgp,
-     gp
+     gp,
+     math
 
 is
 
@@ -67,68 +67,41 @@ class Lin2d2Tan;
 
 class Lin2dTanObl;
 
-class MyQCurve instantiates QualifiedCurv from GccEnt
-    	    (Curve  from Geom2dAdaptor);
+class QCurve;
 
-class MyCurveTool instantiates CurvePGTool from GccGeo
-    	    (Curve       from Geom2dAdaptor,
-    	     CurveTool   from Geom2dGcc    ,
-    	     OffsetCurve from Adaptor3d);
-	    
-class MyCirc2d2TanOn instantiates Circ2d2TanOn from GccGeo
-    	    (Curve                          from Geom2dAdaptor,
-	     CurveTool                      from Geom2dGcc,
-    	     MyQCurve                       from Geom2dGcc,
-             OffsetCurve                    from Adaptor3d,
-	     HCurve                         from Geom2dAdaptor,
-	     MyCurveTool                    from Geom2dGcc,
-	     TheIntConicCurveOfGInter from Geom2dInt);
-	     
-class MyCirc2d2TanRad instantiates Circ2d2TanRad from GccGeo
-    	    (Curve                           from Geom2dAdaptor ,
-	     CurveTool                       from Geom2dGcc,
-    	     MyQCurve                        from Geom2dGcc,
-             OffsetCurve                     from Adaptor3d, 
-	     HCurve                         from Geom2dAdaptor,	     
-	     MyCurveTool                     from Geom2dGcc,
-	     TheIntConicCurveOfGInter  from Geom2dInt,
-	     GInter                    from Geom2dInt);
+class CurveToolGeo;
 
-class MyCirc2dTanOnRad instantiates Circ2dTanOnRad from GccGeo
-    	    (Curve                           from Geom2dAdaptor ,
-	     CurveTool                       from Geom2dGcc,
-    	     MyQCurve                        from Geom2dGcc,
-	     OffsetCurve                     from Adaptor3d,
-	     HCurve                         from Geom2dAdaptor,	     
-	     MyCurveTool                     from Geom2dGcc,
-	     TheIntConicCurveOfGInter  from Geom2dInt,
-	     GInter                    from Geom2dInt);
+class Circ2d2TanOnGeo;
 
-class MyC2d3Tan instantiates Circ2d3Tan from GccIter	     
-    	    (Curve          from Geom2dAdaptor,
-	     CurveTool      from Geom2dGcc,
-	     MyQCurve       from Geom2dGcc);
-	     
-class MyCirc2dTanCen instantiates Circ2dTanCen from GccGeo	     
-    	    (Curve          from Geom2dAdaptor,
-	     CurveTool      from Geom2dGcc,
-	     ExtPC2d          from Extrema,
-             MyQCurve       from Geom2dGcc);
-	     
-class MyC2d2TanOn instantiates Circ2d2TanOn from GccIter	     
-    	    (Curve          from Geom2dAdaptor,
-	     CurveTool      from Geom2dGcc,
-	     MyQCurve       from Geom2dGcc);
+class Circ2d2TanRadGeo;
 
-class MyL2dTanObl instantiates Lin2dTanObl from GccIter	     
-    	    (Curve          from Geom2dAdaptor,
-	     CurveTool      from Geom2dGcc,
-	     MyQCurve       from Geom2dGcc);
-	     
-class MyL2d2Tan instantiates Lin2d2Tan from GccIter	     
-    	    (Curve          from Geom2dAdaptor,
-	     CurveTool      from Geom2dGcc,
-	     MyQCurve       from Geom2dGcc);
+class Circ2dTanCenGeo;
+
+class Circ2dTanOnRadGeo;
+
+class Circ2d3TanIter;
+private class FunctionTanCuCuCu;
+
+class Circ2d2TanOnIter;
+private class FunctionTanCuCuOnCu;
+
+class Lin2dTanOblIter;
+private class FunctionTanObl;
+
+class Lin2d2TanIter;
+private class FunctionTanCuCu;
+private class FunctionTanCuPnt;
+private class FunctionTanCirCu;
+
+enumeration Type1 is CuCuCu,CiCuCu,CiCiCu,CiLiCu,LiLiCu,LiCuCu;
+
+enumeration Type2 is CuCuOnCu,CiCuOnCu,LiCuOnCu,CuPtOnCu,
+                     CuCuOnLi,CiCuOnLi,LiCuOnLi,CuPtOnLi,
+                     CuCuOnCi,CiCuOnCi,LiCuOnCi,CuPtOnCi;
+
+enumeration Type3 is CuCu,CiCu;
+
+exception IsParallel inherits DomainError from Standard;
 
 Unqualified(Obj : Curve from Geom2dAdaptor) returns QualifiedCurve;
     	---Purpose: Constructs such a qualified curve that the relative

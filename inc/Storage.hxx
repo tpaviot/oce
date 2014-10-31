@@ -31,9 +31,6 @@ class Storage_HSeqOfRoot;
 class Storage_InternalData;
 class Storage_stCONSTclCOM;
 class Storage_TypedCallBack;
-class Storage_SeqOfPersistent;
-class Storage_HSeqOfPersistent;
-class Storage_MapPSDHasher;
 class Storage_PType;
 class Storage_MapOfPers;
 class Storage_MapOfCallBack;
@@ -41,18 +38,14 @@ class Storage_ArrayOfCallBack;
 class Storage_HArrayOfCallBack;
 class Storage_ArrayOfSchema;
 class Storage_HArrayOfSchema;
-class Storage_SeqOfCallBack;
-class Storage_HSeqOfCallBack;
 class Storage_PArray;
 class Storage_HPArray;
 class Storage_SequenceNodeOfSeqOfRoot;
-class Storage_SequenceNodeOfSeqOfPersistent;
 class Storage_IndexedDataMapNodeOfPType;
 class Storage_DataMapNodeOfMapOfPers;
 class Storage_DataMapIteratorOfMapOfPers;
 class Storage_DataMapNodeOfMapOfCallBack;
 class Storage_DataMapIteratorOfMapOfCallBack;
-class Storage_SequenceNodeOfSeqOfCallBack;
 
 
 //! Storage package is used to write and read persistent objects. <br>
@@ -111,9 +104,6 @@ friend class Storage_HSeqOfRoot;
 friend class Storage_InternalData;
 friend class Storage_stCONSTclCOM;
 friend class Storage_TypedCallBack;
-friend class Storage_SeqOfPersistent;
-friend class Storage_HSeqOfPersistent;
-friend class Storage_MapPSDHasher;
 friend class Storage_PType;
 friend class Storage_MapOfPers;
 friend class Storage_MapOfCallBack;
@@ -121,18 +111,14 @@ friend class Storage_ArrayOfCallBack;
 friend class Storage_HArrayOfCallBack;
 friend class Storage_ArrayOfSchema;
 friend class Storage_HArrayOfSchema;
-friend class Storage_SeqOfCallBack;
-friend class Storage_HSeqOfCallBack;
 friend class Storage_PArray;
 friend class Storage_HPArray;
 friend class Storage_SequenceNodeOfSeqOfRoot;
-friend class Storage_SequenceNodeOfSeqOfPersistent;
 friend class Storage_IndexedDataMapNodeOfPType;
 friend class Storage_DataMapNodeOfMapOfPers;
 friend class Storage_DataMapIteratorOfMapOfPers;
 friend class Storage_DataMapNodeOfMapOfCallBack;
 friend class Storage_DataMapIteratorOfMapOfCallBack;
-friend class Storage_SequenceNodeOfSeqOfCallBack;
 
 };
 

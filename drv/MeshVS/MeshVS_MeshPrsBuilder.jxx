@@ -10,11 +10,11 @@
 #ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
 #endif
-#ifndef _Graphic3d_ArrayOfPolylines_HeaderFile
-#include <Graphic3d_ArrayOfPolylines.hxx>
+#ifndef _Graphic3d_ArrayOfSegments_HeaderFile
+#include <Graphic3d_ArrayOfSegments.hxx>
 #endif
-#ifndef _Graphic3d_ArrayOfPolygons_HeaderFile
-#include <Graphic3d_ArrayOfPolygons.hxx>
+#ifndef _Graphic3d_ArrayOfTriangles_HeaderFile
+#include <Graphic3d_ArrayOfTriangles.hxx>
 #endif
 #ifndef _MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #include <MeshVS_HArray1OfSequenceOfInteger.hxx>

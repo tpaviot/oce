@@ -24,7 +24,7 @@
 #endif
 
 
-
+//! Data structure of a triangle. <br>
 class HLRAlgo_TriangleData  {
 public:
 

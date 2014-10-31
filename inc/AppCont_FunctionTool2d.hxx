@@ -32,7 +32,8 @@ class TColgp_Array1OfPnt;
 class TColgp_Array1OfVec;
 
 
-
+//! This class is the inteface between the Function2d <br>
+//!          class and the tool asked by LeastSquare. <br>
 class AppCont_FunctionTool2d  {
 public:
 

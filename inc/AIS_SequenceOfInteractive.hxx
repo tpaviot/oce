@@ -43,6 +43,8 @@ public:
   
       AIS_SequenceOfInteractive();
   
+  Standard_EXPORT   AIS_SequenceOfInteractive(const AIS_SequenceOfInteractive& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~AIS_SequenceOfInteractive()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   AIS_SequenceOfInteractive(const AIS_SequenceOfInteractive& Other);
 
 
 

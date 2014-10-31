@@ -32,7 +32,9 @@ class TColgp_Array1OfVec;
 class TColgp_Array1OfVec2d;
 
 
-
+//! example of MultiLine tool corresponding to the tools of the packages <br>
+//! AppParCurves and Approx. For Approx, the tool will not addd points <br>
+//! if the algorithms want some. <br>
 class AppDef_MyLineTool  {
 public:
 

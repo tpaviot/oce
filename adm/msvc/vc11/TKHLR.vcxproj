@@ -496,57 +496,57 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\TopCnx\TopCnx_EdgeFaceTransition.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_Contour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_HContTool_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_HCurve2dTool_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalkingOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfTheSequenceOfLine_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfSequenceOfPathPointOfTheSearchOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfTheSequenceOfPoint_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfSequenceOfSegmentOfTheSearchOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceOfIWLineOfTheIWalking_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfTheSequenceOfLineOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceOfPathPointOfTheSearch_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfTheSequenceOfPointOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceOfSegmentOfTheSearch_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceOfIWLineOfTheIWalkingOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheHSequenceOfPoint_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceOfPathPointOfTheSearchOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheIWLineOfTheIWalking_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceOfSegmentOfTheSearchOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheIWalking_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheArcFunctionOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_ThePathPointOfTheSearch_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheHSequenceOfPointOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSearchInside_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheIWLineOfTheIWalkingOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSearch_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheIWalkingOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSegmentOfTheSearch_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheLineOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSequenceOfLine_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_ThePathPointOfTheSearchOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSequenceOfPoint_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_ThePointOfContour_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSearchInsideOfContour_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSearchOfContour_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSegmentOfTheSearchOfContour_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSequenceOfLineOfContour_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSequenceOfPointOfContour_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSurfFunctionOfContour_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSurfPropsOfContour_0.cxx">
+    <ClCompile Include="..\..\..\src\Contap\Contap_ArcFunction.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Contap\Contap_ContAna.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_Contour.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_HContTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_HCurve2dTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_Line.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_Point.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_SurfFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_SurfProps.cxx">
     </ClCompile>
 
   </ItemGroup>

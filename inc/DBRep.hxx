@@ -25,6 +25,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
@@ -32,7 +35,6 @@
 #include <Standard_Integer.hxx>
 #endif
 class TopoDS_Shape;
-class Draw_Interpretor;
 class DBRep_Edge;
 class DBRep_ListOfEdge;
 class DBRep_Face;

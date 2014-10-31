@@ -40,6 +40,8 @@ public:
   
       Plate_SequenceOfLinearScalarConstraint();
   
+  Standard_EXPORT   Plate_SequenceOfLinearScalarConstraint(const Plate_SequenceOfLinearScalarConstraint& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Plate_SequenceOfLinearScalarConstraint()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Plate_SequenceOfLinearScalarConstraint(const Plate_SequenceOfLinearScalarConstraint& Other);
 
 
 

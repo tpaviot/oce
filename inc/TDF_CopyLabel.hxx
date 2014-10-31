@@ -41,7 +41,7 @@ class TDF_AttributeMap;
 class TDF_DataSet;
 
 
-
+//! This class gives copy of  source  label  hierarchy <br>
 class TDF_CopyLabel  {
 public:
 

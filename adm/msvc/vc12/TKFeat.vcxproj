@@ -298,8 +298,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\LocOpe\LocOpe_Prism.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\LocOpe\LocOpe_ProjectedWires.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\LocOpe\LocOpe_Revol.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\LocOpe\LocOpe_RevolutionForm.cxx">

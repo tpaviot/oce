@@ -803,9 +803,6 @@
 					RelativePath="..\..\..\src\IFSelect\IFSelect_Act.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\IFSelect\IFSelect_ActFunc.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\IFSelect\IFSelect_Activator.cxx">
 				</File>
 				<File
@@ -1035,9 +1032,6 @@
 				Name="TransferBRep"
 				>
 				<File
-					RelativePath="..\..\..\drv\TransferBRep\TransferBRep_BinderOfShape_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\TransferBRep\TransferBRep_HSequenceOfTransferResultInfo_0.cxx">
 				</File>
 				<File
@@ -1054,6 +1048,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\TransferBRep\TransferBRep.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\TransferBRep\TransferBRep_BinderOfShape.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\TransferBRep\TransferBRep_Reader.cxx">
@@ -1403,9 +1400,6 @@
 					RelativePath="..\..\..\drv\MoniTool\MoniTool_SequenceOfElement_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\MoniTool\MoniTool_TransientElem_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\MoniTool\MoniTool_AttrList.cxx">
 				</File>
 				<File
@@ -1454,13 +1448,10 @@
 					RelativePath="..\..\..\src\MoniTool\MoniTool_TimerSentry.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\MoniTool\MoniTool_TransientElem.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\MoniTool\MoniTool_TypedValue.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\MoniTool\MoniTool_ValueInterpret.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\MoniTool\MoniTool_ValueSatisfies.cxx">
 				</File>
 			</Filter>
 

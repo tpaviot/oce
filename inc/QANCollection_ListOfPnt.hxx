@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   QANCollection_ListOfPnt();
   
+  Standard_EXPORT   QANCollection_ListOfPnt(const QANCollection_ListOfPnt& Other);
+  
   Standard_EXPORT     void Assign(const QANCollection_ListOfPnt& Other) ;
     void operator=(const QANCollection_ListOfPnt& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   QANCollection_ListOfPnt(const QANCollection_ListOfPnt& Other);
 
 
 Standard_Address myFirst;

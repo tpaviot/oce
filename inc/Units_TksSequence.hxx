@@ -43,6 +43,8 @@ public:
   
       Units_TksSequence();
   
+  Standard_EXPORT   Units_TksSequence(const Units_TksSequence& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Units_TksSequence()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Units_TksSequence(const Units_TksSequence& Other);
 
 
 

@@ -24,7 +24,7 @@
 #endif
 
 
-
+//! couple of triangles <br>
 class IntPolyh_Couple  {
 public:
 

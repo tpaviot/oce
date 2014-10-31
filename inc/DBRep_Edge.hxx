@@ -29,7 +29,7 @@ class TopoDS_Edge;
 class Draw_Color;
 
 
-
+//! Display of an edge. Edge + color. <br>
 class DBRep_Edge : public MMgt_TShared {
 
 public:

@@ -42,7 +42,7 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-
+//! attribute to store dimension and tolerance <br>
 class XCAFDoc_DimTol : public TDF_Attribute {
 
 public:

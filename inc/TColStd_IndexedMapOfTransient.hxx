@@ -47,6 +47,8 @@ public:
   
   Standard_EXPORT   TColStd_IndexedMapOfTransient(const Standard_Integer NbBuckets = 1);
   
+  Standard_EXPORT   TColStd_IndexedMapOfTransient(const TColStd_IndexedMapOfTransient& Other);
+  
   Standard_EXPORT     TColStd_IndexedMapOfTransient& Assign(const TColStd_IndexedMapOfTransient& Other) ;
     TColStd_IndexedMapOfTransient& operator =(const TColStd_IndexedMapOfTransient& Other) 
 {
@@ -89,8 +91,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_IndexedMapOfTransient(const TColStd_IndexedMapOfTransient& Other);
 
 
 

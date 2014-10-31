@@ -45,6 +45,7 @@ class Bnd_HArray1OfBox2d;
 
 
 //! Quickly selection of a rectangle in a set of rectangles <br>
+//!          Sort algorithm for 2D rectangles. <br>
 class SelectBasics_SortAlgo  {
 public:
 

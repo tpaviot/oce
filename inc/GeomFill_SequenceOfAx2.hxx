@@ -40,6 +40,8 @@ public:
   
       GeomFill_SequenceOfAx2();
   
+  Standard_EXPORT   GeomFill_SequenceOfAx2(const GeomFill_SequenceOfAx2& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~GeomFill_SequenceOfAx2()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   GeomFill_SequenceOfAx2(const GeomFill_SequenceOfAx2& Other);
 
 
 

@@ -7,11 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKMath", "TKMath.vcproj", "
 		{8F647C70-15C4-0B30-15AB-83D055E27E40} = {8F647C70-15C4-0B30-15AB-83D055E27E40}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKAdvTools", "TKAdvTools.vcproj", "{D15EC1DA-0FAE-0F1B-0DA0-91BDCE442A72}"
-	ProjectSection(ProjectDependencies) = postProject
-		{8F647C70-15C4-0B30-15AB-83D055E27E40} = {8F647C70-15C4-0B30-15AB-83D055E27E40}
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -36,14 +31,6 @@ Global
 		{CEBE0E41-0294-0018-03CE-9A428E878B68}.Debug|x64.Build.0 = Debug|x64
 		{CEBE0E41-0294-0018-03CE-9A428E878B68}.Release|x64.ActiveCfg = Release|x64
 		{CEBE0E41-0294-0018-03CE-9A428E878B68}.Release|x64.Build.0 = Release|x64
-		{D15EC1DA-0FAE-0F1B-0DA0-91BDCE442A72}.Debug|Win32.ActiveCfg = Debug|Win32
-		{D15EC1DA-0FAE-0F1B-0DA0-91BDCE442A72}.Debug|Win32.Build.0 = Debug|Win32
-		{D15EC1DA-0FAE-0F1B-0DA0-91BDCE442A72}.Release|Win32.ActiveCfg = Release|Win32
-		{D15EC1DA-0FAE-0F1B-0DA0-91BDCE442A72}.Release|Win32.Build.0 = Release|Win32
-		{D15EC1DA-0FAE-0F1B-0DA0-91BDCE442A72}.Debug|x64.ActiveCfg = Debug|x64
-		{D15EC1DA-0FAE-0F1B-0DA0-91BDCE442A72}.Debug|x64.Build.0 = Debug|x64
-		{D15EC1DA-0FAE-0F1B-0DA0-91BDCE442A72}.Release|x64.ActiveCfg = Release|x64
-		{D15EC1DA-0FAE-0F1B-0DA0-91BDCE442A72}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

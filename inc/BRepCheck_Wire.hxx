@@ -98,6 +98,8 @@ public:
   Standard_EXPORT     Standard_Boolean GeometricControls() const;
   //! set SelfIntersect() to be checked <br>
   Standard_EXPORT     void GeometricControls(const Standard_Boolean B) ;
+  //! Sets status of Wire; <br>
+  Standard_EXPORT     void SetStatus(const BRepCheck_Status theStatus) ;
 
 
 

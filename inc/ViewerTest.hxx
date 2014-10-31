@@ -16,6 +16,9 @@
 #include <Standard_Macro.hxx>
 #endif
 
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -61,7 +64,6 @@
 #ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
 #endif
-class Draw_Interpretor;
 class TCollection_AsciiString;
 class V3d_View;
 class MMgt_TShared;
@@ -72,7 +74,6 @@ class TColStd_HArray1OfTransient;
 class V3d_Viewer;
 class AIS_InteractiveContext;
 class ViewerTest_EventManager;
-class ViewerTest_Tool;
 class ViewerTest_EventManager;
 class ViewerTest_DoubleMapOfInteractiveAndName;
 class ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName;
@@ -99,7 +100,10 @@ public:
   Standard_EXPORT   static  TCollection_AsciiString GetCurrentViewName() ;
   //! Removes view and clear all maps <br>
 //!          with information about its resources if neccessary <br>
-  Standard_EXPORT   static  void RemoveView(const TCollection_AsciiString& theViewName,const Standard_Boolean isContextRemoved = Standard_True) ;
+  Standard_EXPORT   static  void RemoveView(const TCollection_AsciiString& theViewName,const Standard_Boolean theToRemoveContext = Standard_True) ;
+  //! Removes view and clear all maps <br>
+//!          with information about its resources if neccessary <br>
+  Standard_EXPORT   static  void RemoveView(const Handle(V3d_View)& theView,const Standard_Boolean theToRemoveContext = Standard_True) ;
   //!  waits until a shape of type <aType> is picked in the AIS Viewer and returns it. <br>
 //! if <aType> == TopAbs_Shape, any shape can be picked... <br>
 //! MaxPick  is the Max number before exiting, if no pick is successfull <br>
@@ -200,7 +204,6 @@ private:
 
 
 
-friend class ViewerTest_Tool;
 friend class ViewerTest_EventManager;
 friend class ViewerTest_DoubleMapOfInteractiveAndName;
 friend class ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName;

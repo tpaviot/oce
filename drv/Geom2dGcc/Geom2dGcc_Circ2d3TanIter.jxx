@@ -1,0 +1,21 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _GccEnt_QualifiedCirc_HeaderFile
+#include <GccEnt_QualifiedCirc.hxx>
+#endif
+#ifndef _Geom2dGcc_QCurve_HeaderFile
+#include <Geom2dGcc_QCurve.hxx>
+#endif
+#ifndef _GccEnt_QualifiedLin_HeaderFile
+#include <GccEnt_QualifiedLin.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Circ2d_HeaderFile
+#include <gp_Circ2d.hxx>
+#endif
+#ifndef _Geom2dGcc_Circ2d3TanIter_HeaderFile
+#include <Geom2dGcc_Circ2d3TanIter.hxx>
+#endif

@@ -142,7 +142,6 @@ libTKShHealing_la_SOURCES = \
 @top_srcdir@/src/ShapeFix/ShapeFix_Wireframe.cxx \
 @top_srcdir@/src/ShapeProcess/ShapeProcess.cxx \
 @top_srcdir@/src/ShapeProcess/ShapeProcess_Context.cxx \
-@top_srcdir@/src/ShapeProcess/ShapeProcess_OperFunc.cxx \
 @top_srcdir@/src/ShapeProcess/ShapeProcess_OperLibrary.cxx \
 @top_srcdir@/src/ShapeProcess/ShapeProcess_Operator.cxx \
 @top_srcdir@/src/ShapeProcess/ShapeProcess_ShapeContext.cxx \

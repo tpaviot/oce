@@ -5,9 +5,6 @@
 
 #include <MeshVS_MapOfTwoNodes.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
 #ifndef _MeshVS_TwoNodesHasher_HeaderFile
 #include <MeshVS_TwoNodesHasher.hxx>
 #endif

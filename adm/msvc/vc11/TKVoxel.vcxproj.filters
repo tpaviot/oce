@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{6E03D18B-0FCF-1719-0E00-ECCFA5347966}</UniqueIdentifier>
+      <UniqueIdentifier>{24073305-0BCF-0B83-075F-581595F10CC4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Voxel">
-      <UniqueIdentifier>{0E1AB8BF-1086-06B5-0691-1F834FE5BCBA}</UniqueIdentifier>
+      <UniqueIdentifier>{7D252A41-0FB5-0FE0-1636-76FF8E83EA56}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

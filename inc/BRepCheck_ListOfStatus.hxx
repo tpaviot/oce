@@ -45,6 +45,8 @@ public:
   
   Standard_EXPORT   BRepCheck_ListOfStatus();
   
+  Standard_EXPORT   BRepCheck_ListOfStatus(const BRepCheck_ListOfStatus& Other);
+  
   Standard_EXPORT     void Assign(const BRepCheck_ListOfStatus& Other) ;
     void operator=(const BRepCheck_ListOfStatus& Other) 
 {
@@ -102,8 +104,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRepCheck_ListOfStatus(const BRepCheck_ListOfStatus& Other);
 
 
 Standard_Address myFirst;

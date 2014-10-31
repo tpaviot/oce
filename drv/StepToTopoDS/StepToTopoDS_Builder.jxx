@@ -31,6 +31,9 @@
 #ifndef _StepShape_FaceBasedSurfaceModel_HeaderFile
 #include <StepShape_FaceBasedSurfaceModel.hxx>
 #endif
+#ifndef _Transfer_ActorOfTransientProcess_HeaderFile
+#include <Transfer_ActorOfTransientProcess.hxx>
+#endif
 #ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
 #endif

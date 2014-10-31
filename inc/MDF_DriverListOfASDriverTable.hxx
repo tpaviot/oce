@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   MDF_DriverListOfASDriverTable();
   
+  Standard_EXPORT   MDF_DriverListOfASDriverTable(const MDF_DriverListOfASDriverTable& Other);
+  
   Standard_EXPORT     void Assign(const MDF_DriverListOfASDriverTable& Other) ;
     void operator=(const MDF_DriverListOfASDriverTable& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   MDF_DriverListOfASDriverTable(const MDF_DriverListOfASDriverTable& Other);
 
 
 Standard_Address myFirst;

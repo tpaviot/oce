@@ -5,8 +5,5 @@
 		<Project filename="TKMath.cbp" >
 			<Depends filename="TKernel.cbp" />
 		</Project>
-		<Project filename="TKAdvTools.cbp" >
-			<Depends filename="TKernel.cbp" />
-		</Project>
 	</Workspace>
 </CodeBlocks_workspace_file>

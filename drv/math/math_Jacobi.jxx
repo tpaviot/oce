@@ -4,9 +4,6 @@
 #ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _math_Jacobi_HeaderFile
 #include <math_Jacobi.hxx>
 #endif

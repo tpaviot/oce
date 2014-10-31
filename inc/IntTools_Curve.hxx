@@ -36,7 +36,9 @@ class Geom2d_Curve;
 class gp_Pnt;
 
 
-
+//! class is a container of <br>
+//!          one 3d curve <br>
+//!          two 2d curves <br>
 class IntTools_Curve  {
 public:
 

@@ -272,20 +272,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\DBC\DBC_DBVArray.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\PCollection\PCollection_IsContained_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PCollection\PCollection_IsNotRoot_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PCollection\PCollection_IsNullTree_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PCollection\PCollection_PrivCompareOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PCollection\PCollection_PrivCompareOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PCollection\PCollection_CompareOfInteger.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PCollection\PCollection_CompareOfReal.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\PCollection\PCollection_HAsciiString.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\PCollection\PCollection_HExtendedString.cxx">
@@ -318,56 +304,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\PColStd\PColStd_HArray2OfReal_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HDoubleListOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HDoubleListOfPersistent_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HDoubleListOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HOfAsciiString_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HOfExtendedString_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSequenceOfHAsciiString_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSequenceOfHExtendedString_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSequenceOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSequenceOfPersistent_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSequenceOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSingleListOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSingleListOfPersistent_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSingleListOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqExplorerOfHSequenceOfHAsciiString_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqExplorerOfHSequenceOfHExtendedString_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqExplorerOfHSequenceOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqExplorerOfHSequenceOfPersistent_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqExplorerOfHSequenceOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqNodeOfHSequenceOfHAsciiString_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqNodeOfHSequenceOfHExtendedString_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqNodeOfHSequenceOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqNodeOfHSequenceOfPersistent_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqNodeOfHSequenceOfReal_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayNodeOfFieldOfHArray1OfInteger_0.cxx">
@@ -395,10 +331,6 @@
     <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayTNodeOfFieldOfHArray2OfPersistent_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayTNodeOfFieldOfHArray2OfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PColStd\PColStd_HashAsciiString.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PColStd\PColStd_HashExtendedString.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\PMMgt\PMMgt_PManaged.cxx">
     </ClCompile>

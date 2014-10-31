@@ -40,6 +40,8 @@ public:
   
       IntTools_SequenceOfCurves();
   
+  Standard_EXPORT   IntTools_SequenceOfCurves(const IntTools_SequenceOfCurves& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntTools_SequenceOfCurves()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_SequenceOfCurves(const IntTools_SequenceOfCurves& Other);
 
 
 

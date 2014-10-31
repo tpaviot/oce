@@ -43,6 +43,8 @@ public:
   
       Interface_SequenceOfCheck();
   
+  Standard_EXPORT   Interface_SequenceOfCheck(const Interface_SequenceOfCheck& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Interface_SequenceOfCheck()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Interface_SequenceOfCheck(const Interface_SequenceOfCheck& Other);
 
 
 

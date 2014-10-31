@@ -43,6 +43,8 @@ public:
   
       Expr_SequenceOfGeneralExpression();
   
+  Standard_EXPORT   Expr_SequenceOfGeneralExpression(const Expr_SequenceOfGeneralExpression& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Expr_SequenceOfGeneralExpression()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Expr_SequenceOfGeneralExpression(const Expr_SequenceOfGeneralExpression& Other);
 
 
 

@@ -74,8 +74,10 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns <True>  if S if flaged Closed, if S is a <br>
-//!          Solid,Shell or Compound  returns <True> is S has no free boundaries. <br>
+  //! If S is Solid or Shell, returns True if it has no free boundaries (edges). <br>
+//!          If S is Wire, returns True if it has no free ends (vertices). <br>
+//!          (Internal and External sub-shepes are ignored in this check.) <br>
+//!          For other shape types returns S.Closed(). <br>
   Standard_EXPORT   static  Standard_Boolean IsClosed(const TopoDS_Shape& S) ;
   //! Returns the geometric surface of the face. Returns <br>
 //!          in <L> the location for the surface. <br>

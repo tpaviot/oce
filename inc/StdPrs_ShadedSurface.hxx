@@ -30,6 +30,7 @@ class Adaptor3d_Surface;
 class Prs3d_Drawer;
 
 
+//! Computes the shading presentation of surfaces. <br>
 //! Draws a surface by drawing the isoparametric curves with respect to <br>
 //! a maximal chordial deviation. <br>
 //! The number of isoparametric curves to be drawn and their color are <br>

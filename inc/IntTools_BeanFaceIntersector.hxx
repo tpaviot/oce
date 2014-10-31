@@ -37,8 +37,8 @@
 #ifndef _IntTools_MarkedRangeSet_HeaderFile
 #include <IntTools_MarkedRangeSet.hxx>
 #endif
-#ifndef _Handle_BOPInt_Context_HeaderFile
-#include <Handle_BOPInt_Context.hxx>
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
 #endif
 #ifndef _IntTools_SequenceOfRanges_HeaderFile
 #include <IntTools_SequenceOfRanges.hxx>
@@ -50,7 +50,7 @@
 #include <Standard_Integer.hxx>
 #endif
 class Geom_Surface;
-class BOPInt_Context;
+class IntTools_Context;
 class TopoDS_Edge;
 class TopoDS_Face;
 class BRepAdaptor_Curve;
@@ -122,11 +122,11 @@ public:
   
 //! Sets the intersecton context <br>
 //! <br>
-  Standard_EXPORT     void SetContext(const Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT     void SetContext(const Handle(IntTools_Context)& theContext) ;
   
 //! Gets the intersecton context <br>
 //! <br>
-  Standard_EXPORT    const Handle_BOPInt_Context& Context() const;
+  Standard_EXPORT    const Handle_IntTools_Context& Context() const;
   
 //! Set restrictions for curve <br>
 //! <br>
@@ -201,7 +201,7 @@ Extrema_ExtCS myExtrema;
 GeomAPI_ProjectPointOnSurf myProjector;
 IntTools_MarkedRangeSet myRangeManager;
 Standard_Real myDeflection;
-Handle_BOPInt_Context myContext;
+Handle_IntTools_Context myContext;
 IntTools_SequenceOfRanges myResults;
 Standard_Boolean myIsDone;
 

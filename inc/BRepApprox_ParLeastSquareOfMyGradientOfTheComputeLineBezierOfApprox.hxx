@@ -54,13 +54,11 @@ class Standard_DimensionError;
 class Standard_NoSuchObject;
 class BRepApprox_TheMultiLineOfApprox;
 class BRepApprox_TheMultiLineToolOfApprox;
-class math_Vector;
 class TColStd_Array1OfReal;
 class TColStd_Array1OfInteger;
 class AppParCurves_MultiCurve;
 class AppParCurves_MultiBSpCurve;
 class math_Matrix;
-class math_IntegerVector;
 
 
 

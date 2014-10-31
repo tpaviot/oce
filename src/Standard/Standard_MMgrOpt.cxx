@@ -16,37 +16,15 @@
 #include <Standard_MMgrOpt.hxx>
 #include <Standard_OutOfMemory.hxx>
 #include <Standard_Assert.hxx>
-#ifdef HAVE_CONFIG_H
-# include <config.h>
-#endif
 
 #include <stdio.h>
 
-#ifdef HAVE_STRING_H
-# include <string.h>
-#endif
-
-#ifndef WNT
-# include <stdlib.h>
-# include <errno.h>
-#endif
-
-#ifdef WNT
-#include <windows.h>
+#ifdef _WIN32
+# include <windows.h>
 #else
-# ifdef HAVE_UNISTD_H
-#  include <unistd.h>
-# endif
-# ifdef HAVE_SYS_MMAN_H
-#  include <sys/mman.h>    /* mmap() */
-# endif
+# include <sys/mman.h>    /* mmap() */
 #endif
-#ifdef HAVE_MALLOC_H
-# include <malloc.h>
-#endif
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
+
 #include <fcntl.h>
 //
 #if defined (__sun) || defined(SOLARIS)
@@ -133,24 +111,6 @@ extern "C" int getpagesize() ;
 #define ROUNDUP_CELL(size)             ROUNDUP8(size)
 #define ROUNDDOWN_CELL(size)           ROUNDDOWN8(size)
 #define INDEX_CELL(rsize)              ((rsize) >> 3)
-
-// Minimal granularity: 4 bytes (32-bit systems only)
-#ifndef _OCC64
-//#define ROUNDUP_CELL(size)             ROUNDUP4(size)
-//#define INDEX_CELL(rsize)              ((rsize) >> 2)
-#endif
-
-// Adaptive granularity, less for little blocks and greater for bigger ones: 
-/*
-#if _OCC64
-#define ROUNDUP_CELL(size) ((size)  <= 0x40 ? ROUNDUP8(size) : ROUNDUP16(size))
-#define INDEX_CELL(rsize)  ((rsize) <= 0x40 ? ((rsize) >> 3) : (4 + ((rsize) >> 4)))
-#else
-#define ROUNDUP_CELL(size) ((size)  <= 0x40 ? ROUNDUP4(size) : ROUNDUP8(size))
-#define INDEX_CELL(rsize)  ((rsize) <= 0x40 ? ((rsize) >> 2) : (8 + ((rsize) >> 3)))
-#endif
-*/
-
 
 /* In the allocated block, first bytes are used for storing of memory manager's data.
    (size of block). The minimal size of these data is sizeof(int).
@@ -287,7 +247,7 @@ void Standard_MMgrOpt::Initialize()
       perror("ERR_MEMRY_FAIL");
 #endif
     
-#if defined(IRIX) || defined(__sgi) || defined(SOLARIS) || defined(__sun) || defined(LIN) || defined(linux) || defined(__FreeBSD__)
+#if defined(IRIX) || defined(__sgi) || defined(SOLARIS) || defined(__sun) || defined(LIN) || defined(linux) || defined(__FreeBSD__) || defined(__ANDROID__)
     if ((myMMap = open ("/dev/zero", O_RDWR)) < 0) {
       if ((myMMap = open ("/dev/null", O_RDWR)) < 0){
         myMMap = 0;

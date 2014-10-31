@@ -41,7 +41,8 @@ class TDF_RelocationTable;
 class TDF_DataSet;
 
 
-
+//! This  attribute is  used to  store in the  framework a <br>
+//!        reference to an other label. <br>
 class TDF_Reference : public TDF_Attribute {
 
 public:

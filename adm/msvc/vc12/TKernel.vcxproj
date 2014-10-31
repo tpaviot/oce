@@ -81,11 +81,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -100,7 +100,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;kernel32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -124,11 +124,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win32\vc12\objd\TKernel/</AssemblerListingLocation>
@@ -144,7 +144,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;kernel32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -169,11 +169,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -188,7 +188,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;kernel32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -212,11 +212,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc12\objd\TKernel/</AssemblerListingLocation>
@@ -232,7 +232,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;kernel32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -335,8 +335,6 @@
     <ClCompile Include="..\..\..\src\OSD\OSD_FileIterator.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_FileNode.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Function.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Host.cxx">
     </ClCompile>
@@ -494,23 +492,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_Address.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_AncestorIterator.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_Boolean.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_CLocaleSentry.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_CString.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_Character.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_ErrorHandler.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_ErrorHandlerCallback.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_ExtCharacter.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_ExtString.cxx">
     </ClCompile>
@@ -519,10 +509,6 @@
     <ClCompile Include="..\..\..\src\Standard\Standard_GUID.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_HashCode.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_IStream.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_Integer.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_MMgrOpt.cxx">
     </ClCompile>
@@ -534,21 +520,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Mutex.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_OStream.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Persistent.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Real.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_SStream.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_ShallowDump.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_ShortReal.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Storable.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_Time.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Transient.cxx">
     </ClCompile>
@@ -557,10 +537,6 @@
     <ClCompile Include="..\..\..\src\Standard\Standard_UUID.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_math.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_osd_ffi.c">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_symlink.c">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\StdFail\StdFail_InfiniteSolutions_0.cxx">
     </ClCompile>
@@ -590,10 +566,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_HPArray_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_HSeqOfCallBack_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_HSeqOfPersistent_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_HSeqOfRoot_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_IndexedDataMapNodeOfPType_0.cxx">
@@ -602,21 +574,11 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_MapOfPers_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_MapPSDHasher_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_PArray_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_PType_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_SeqOfCallBack_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_SeqOfPersistent_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_SeqOfRoot_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_SequenceNodeOfSeqOfCallBack_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_SequenceNodeOfSeqOfPersistent_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_SequenceNodeOfSeqOfRoot_0.cxx">
     </ClCompile>
@@ -639,8 +601,6 @@
     <ClCompile Include="..\..\..\src\Storage\Storage_BaseDriver.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Storage\Storage_CallBack.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Storage\Storage_Container.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Storage\Storage_Data.cxx">
     </ClCompile>
@@ -774,12 +734,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_HSequenceOfTransient_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_HSetOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_HSetOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_HSetOfTransient_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_IndexedDataMapOfTransientTransient_0.cxx">
@@ -804,12 +758,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListIteratorOfListOfTransient_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListIteratorOfSetListOfSetOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListIteratorOfSetListOfSetOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListIteratorOfSetListOfSetOfTransient_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListNodeOfListOfAsciiString_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListNodeOfListOfInteger_0.cxx">
@@ -817,12 +765,6 @@
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListNodeOfListOfReal_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListNodeOfListOfTransient_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListNodeOfSetListOfSetOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListNodeOfSetListOfSetOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListNodeOfSetListOfSetOfTransient_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListOfAsciiString_0.cxx">
     </ClCompile>
@@ -853,18 +795,6 @@
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_MapRealHasher_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_MapTransientHasher_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_QueueNodeOfQueueOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_QueueNodeOfQueueOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_QueueNodeOfQueueOfTransient_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_QueueOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_QueueOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_QueueOfTransient_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_SequenceNodeOfSequenceOfAddress_0.cxx">
     </ClCompile>
@@ -902,42 +832,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_SequenceOfTransient_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetIteratorOfSetOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetIteratorOfSetOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetIteratorOfSetOfTransient_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetListOfSetOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetListOfSetOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetListOfSetOfTransient_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetOfTransient_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackIteratorOfStackOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackIteratorOfStackOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackIteratorOfStackOfTransient_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackNodeOfStackOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackNodeOfStackOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackNodeOfStackOfTransient_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackOfInteger_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackOfReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackOfTransient_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_StdMapNodeOfMapOfAsciiString_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_StdMapNodeOfMapOfInteger_0.cxx">
@@ -957,12 +851,6 @@
     <ClCompile Include="..\..\..\drv\TCollection\TCollection_PrivCompareOfReal_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\TCollection\TCollection.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\TCollection\TCollection_AVLBaseNode.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\TCollection\TCollection_Array1Descriptor.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\TCollection\TCollection_Array2Descriptor.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\TCollection\TCollection_AsciiString.cxx">
     </ClCompile>
@@ -1068,6 +956,10 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Dico\Dico_StackItemOfDictionaryOfTransient_0.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_AccAllocator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_AlignedAllocator.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\NCollection\NCollection_BaseAllocator.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\NCollection\NCollection_BaseList.cxx">
@@ -1085,6 +977,8 @@
     <ClCompile Include="..\..\..\src\NCollection\NCollection_IncAllocator.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\NCollection\NCollection_SparseArrayBase.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_WinHeapAllocator.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Message\Message_ListIteratorOfListOfMsg_0.cxx">
     </ClCompile>

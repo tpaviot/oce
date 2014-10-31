@@ -2,28 +2,22 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{D9EC1E81-012F-08D1-0D79-F0A3AC897A67}</UniqueIdentifier>
+      <UniqueIdentifier>{29E0F847-087B-0CC8-16A9-496DE5CDFD07}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepPrim">
-      <UniqueIdentifier>{C327F5F7-1943-1157-0892-0790378D388A}</UniqueIdentifier>
+      <UniqueIdentifier>{9EDEAC32-0E32-15CB-0617-058B7C08B773}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepSweep">
-      <UniqueIdentifier>{7B2D722E-1268-16C0-0CC2-A368D03668F2}</UniqueIdentifier>
+      <UniqueIdentifier>{43F9B55B-0449-0530-0799-1DF151CE3E0A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Sweep">
-      <UniqueIdentifier>{2411859F-1938-04FE-060E-545161AADBDC}</UniqueIdentifier>
+      <UniqueIdentifier>{4B060397-1452-17E8-0FD7-AE76AEF1DAFF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepPrimAPI">
-      <UniqueIdentifier>{48824DC6-1822-0E47-01A3-88848DB67056}</UniqueIdentifier>
+      <UniqueIdentifier>{60A71DC7-13AC-1370-0A29-705FAD998E79}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\drv\BRepPrim\BRepPrim_GWedge_0.cxx">
-      <Filter>Source files\BRepPrim</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepPrim\BRepPrim_OneAxis_0.cxx">
-      <Filter>Source files\BRepPrim</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_Builder.cxx">
       <Filter>Source files\BRepPrim</Filter>
     </ClCompile>
@@ -34,6 +28,12 @@
       <Filter>Source files\BRepPrim</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_FaceBuilder.cxx">
+      <Filter>Source files\BRepPrim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_GWedge.cxx">
+      <Filter>Source files\BRepPrim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_OneAxis.cxx">
       <Filter>Source files\BRepPrim</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_Revolution.cxx">
@@ -48,22 +48,13 @@
     <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_Wedge.cxx">
       <Filter>Source files\BRepPrim</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepSweep\BRepSweep_Array2OfShapesOfNumLinearRegularSweep_0.cxx">
-      <Filter>Source files\BRepSweep</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepSweep\BRepSweep_NumLinearRegularSweep_0.cxx">
-      <Filter>Source files\BRepSweep</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepSweep\BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep_0.cxx">
-      <Filter>Source files\BRepSweep</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepSweep\BRepSweep_SequenceOfShapesOfNumLinearRegularSweep_0.cxx">
-      <Filter>Source files\BRepSweep</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\BRepSweep\BRepSweep_Builder.cxx">
       <Filter>Source files\BRepSweep</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepSweep\BRepSweep_Iterator.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepSweep\BRepSweep_NumLinearRegularSweep.cxx">
       <Filter>Source files\BRepSweep</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepSweep\BRepSweep_Prism.cxx">

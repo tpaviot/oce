@@ -1,9 +1,0 @@
-#ifndef _Aspect_FontStyleDefinitionError_HeaderFile
-#include <Aspect_FontStyleDefinitionError.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
-#include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Aspect_FontStyle_HeaderFile
-#include <Aspect_FontStyle.hxx>
-#endif

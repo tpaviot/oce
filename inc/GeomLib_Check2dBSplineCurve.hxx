@@ -33,8 +33,8 @@ class StdFail_NotDone;
 class Standard_OutOfRange;
 
 
-//! this class is used to  construct the BSpline curve <br>
-//!          from an Approximation ( ApproxAFunction from AdvApprox). <br>
+//!  Checks for the end  tangents : wether or not those <br>
+//!           are reversed <br>
 class GeomLib_Check2dBSplineCurve  {
 public:
 

@@ -32,7 +32,7 @@ class OSD_OSDError;
 class TCollection_AsciiString;
 
 
-//! Management of OSD errors <br>
+//! Accurate management of OSD specific errors. <br>
 class OSD_Error  {
 public:
 

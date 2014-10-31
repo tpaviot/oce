@@ -40,6 +40,8 @@ public:
   
       AdvApp2Var_Strip();
   
+  Standard_EXPORT   AdvApp2Var_Strip(const AdvApp2Var_Strip& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~AdvApp2Var_Strip()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   AdvApp2Var_Strip(const AdvApp2Var_Strip& Other);
 
 
 

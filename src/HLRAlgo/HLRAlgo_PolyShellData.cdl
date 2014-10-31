@@ -15,6 +15,7 @@
 -- commercial license or contractual agreement.
 
 class PolyShellData from HLRAlgo inherits TShared from MMgt
+	---Purpose: All the PolyData of a Shell
 
 uses
     Address            from Standard,
@@ -26,7 +27,7 @@ uses
 
 is
     Create(nbFace : Integer from Standard)
-    returns mutable PolyShellData from HLRAlgo;
+    returns PolyShellData from HLRAlgo;
 
     UpdateGlobalMinMax(me        : mutable;
                        TotMinMax : Address from Standard)

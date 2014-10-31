@@ -416,10 +416,10 @@
 				Name="DDF"
 				>
 				<File
-					RelativePath="..\..\..\drv\DDF\DDF_StackIteratorOfTransactionStack_0.cxx">
+					RelativePath="..\..\..\drv\DDF\DDF_ListIteratorOfTransactionStack_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\DDF\DDF_StackNodeOfTransactionStack_0.cxx">
+					RelativePath="..\..\..\drv\DDF\DDF_ListNodeOfTransactionStack_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\DDF\DDF_TransactionStack_0.cxx">

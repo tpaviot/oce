@@ -19,8 +19,12 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Handle_Geom2d_Curve_HeaderFile
+#include <Handle_Geom2d_Curve.hxx>
+#endif
 class Adaptor2d_Curve2d;
 class Bnd_Box2d;
+class Geom2d_Curve;
 
 
 //! Computes the bounding box for a curve in 2d . <br>
@@ -88,6 +92,23 @@ public:
 //! and P1 and P2 are either two negative infinite real <br>
 //! numbers, or two positive infinite real numbers. <br>
   Standard_EXPORT   static  void Add(const Adaptor2d_Curve2d& C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol,Bnd_Box2d& B) ;
+  //! Adds to the bounding box B the curve C <br>
+//!  B is then enlarged by the tolerance value Tol. <br>
+//! Note: depending on the type of curve, one of the following <br>
+//! representations of the curve C is used to include it in the bounding box B: <br>
+//! -   an exact representation if C is built from a line, a circle or a conic curve, <br>
+//! -   the poles of the curve if C is built from a Bezier curve or a BSpline curve, <br>
+//! -   if not, the points of an approximation of the curve C. <br>
+  Standard_EXPORT   static  void Add(const Handle(Geom2d_Curve)& C,const Standard_Real Tol,Bnd_Box2d& Box) ;
+  //! Adds to the bounding box B the part of curve C <br>
+//!  B is then enlarged by the tolerance value Tol. <br>
+//!  U1, U2 - the parametric range to comute the bounding box; <br>
+//! Note: depending on the type of curve, one of the following <br>
+//! representations of the curve C is used to include it in the bounding box B: <br>
+//! -   an exact representation if C is built from a line, a circle or a conic curve, <br>
+//! -   the poles of the curve if C is built from a Bezier curve or a BSpline curve, <br>
+//! -   if not, the points of an approximation of the curve C. <br>
+  Standard_EXPORT   static  void Add(const Handle(Geom2d_Curve)& C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol,Bnd_Box2d& B) ;
 
 
 

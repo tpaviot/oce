@@ -43,6 +43,8 @@ public:
   
       MoniTool_SequenceOfElement();
   
+  Standard_EXPORT   MoniTool_SequenceOfElement(const MoniTool_SequenceOfElement& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~MoniTool_SequenceOfElement()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   MoniTool_SequenceOfElement(const MoniTool_SequenceOfElement& Other);
 
 
 

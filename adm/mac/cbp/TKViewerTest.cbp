@@ -73,7 +73,6 @@
 			<Add option="-framework IOKit" />
 			<Add option="-framework Tcl" />
 			<Add option="-framework Tk" />
-			<Add option="-framework OpenCL" />
 			<Add library="TKGeomBase" />
 			<Add library="TKFillet" />
 			<Add library="TKBRep" />
@@ -118,13 +117,13 @@
 		<Unit filename="../../../drv/ViewerTest/ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName_0.cxx" />
 		<Unit filename="../../../drv/ViewerTest/ViewerTest_DoubleMapOfInteractiveAndName_0.cxx" />
 		<Unit filename="../../../src/ViewerTest/ViewerTest.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_AutoUpdater.cxx" />
 		<Unit filename="../../../src/ViewerTest/ViewerTest_AviCommands.cxx" />
 		<Unit filename="../../../src/ViewerTest/ViewerTest_EventManager.cxx" />
 		<Unit filename="../../../src/ViewerTest/ViewerTest_FilletCommands.cxx" />
 		<Unit filename="../../../src/ViewerTest/ViewerTest_ObjectCommands.cxx" />
 		<Unit filename="../../../src/ViewerTest/ViewerTest_OpenGlCommands.cxx" />
 		<Unit filename="../../../src/ViewerTest/ViewerTest_RelationCommands.cxx" />
-		<Unit filename="../../../src/ViewerTest/ViewerTest_Tool.cxx" />
 		<Unit filename="../../../src/ViewerTest/ViewerTest_ViewerCommands.cxx" />
 		<Unit filename="../../../src/ViewerTest/ViewerTest_ViewerCommands_1.mm">
 			<Option compile="1" />

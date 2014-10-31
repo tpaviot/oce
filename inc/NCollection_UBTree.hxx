@@ -62,7 +62,12 @@
 
 template <class TheObjType, class TheBndType> class NCollection_UBTree
 {
- public:
+public:
+  //! Memory allocation
+  DEFINE_STANDARD_ALLOC
+  DEFINE_NCOLLECTION_ALLOC
+
+public:
   // ---------- PUBLIC TYPES ----------
 
   /**
@@ -449,7 +454,7 @@ class _HUBTREE : public _HPARENT                                        \
                                                                         \
   _HUBTREE () : myTree(new UBTree) {}                                   \
   /* Empty constructor */                                               \
-  _HUBTREE (const Handle_NCollection_BaseAllocator& theAlloc)           \
+  _HUBTREE (const Handle(NCollection_BaseAllocator)& theAlloc)           \
      : myTree(new UBTree(theAlloc)) {}                                  \
   /* Constructor */                                                     \
                                                                         \

@@ -44,7 +44,7 @@ class TopoDS_Face;
 class Draw_Color;
 
 
-
+//! Display of a face. Face + Array of iso + color. <br>
 class DBRep_Face : public MMgt_TShared {
 
 public:

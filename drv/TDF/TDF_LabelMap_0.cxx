@@ -5,9 +5,6 @@
 
 #include <TDF_LabelMap.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
 #ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
 #endif

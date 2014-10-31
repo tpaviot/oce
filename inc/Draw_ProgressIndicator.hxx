@@ -31,7 +31,9 @@
 #ifndef _Message_ProgressIndicator_HeaderFile
 #include <Message_ProgressIndicator.hxx>
 #endif
-class Draw_Interpretor;
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 
 
 //! Implements ProgressIndicator (interface provided by Message) <br>

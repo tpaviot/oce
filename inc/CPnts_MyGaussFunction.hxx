@@ -33,7 +33,7 @@
 #endif
 
 
-
+//! for implementation, compute values for Gauss <br>
 class CPnts_MyGaussFunction  : public math_Function {
 public:
 

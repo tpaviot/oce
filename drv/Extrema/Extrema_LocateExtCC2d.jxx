@@ -1,0 +1,15 @@
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Adaptor2d_Curve2d_HeaderFile
+#include <Adaptor2d_Curve2d.hxx>
+#endif
+#ifndef _Extrema_POnCurv2d_HeaderFile
+#include <Extrema_POnCurv2d.hxx>
+#endif
+#ifndef _Extrema_LocateExtCC2d_HeaderFile
+#include <Extrema_LocateExtCC2d.hxx>
+#endif

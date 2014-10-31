@@ -28,10 +28,12 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class gp_Pnt2d;
 class Draw_Color;
 class Draw_Display;
-class Draw_Interpretor;
 
 
 

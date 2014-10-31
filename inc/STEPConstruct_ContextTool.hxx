@@ -53,7 +53,8 @@ class STEPConstruct_Part;
 class STEPConstruct_Assembly;
 
 
-//! Gives access to Product Definition Context (one per Model) <br>
+//! Maintains global context tool for writing. <br>
+//!           Gives access to Product Definition Context (one per Model) <br>
 //!           Maintains ApplicationProtocolDefinition entity (common for all <br>
 //!           products) <br>
 //!           Also maintains context specific for AP203 and provides set of <br>

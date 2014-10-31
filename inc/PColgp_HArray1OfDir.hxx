@@ -25,9 +25,6 @@
 #ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _PColgp_FieldOfHArray1OfDir_HeaderFile
 #include <PColgp_FieldOfHArray1OfDir.hxx>
 #endif
@@ -40,10 +37,6 @@
 #ifndef _Handle_PColgp_VArrayNodeOfFieldOfHArray1OfDir_HeaderFile
 #include <Handle_PColgp_VArrayNodeOfFieldOfHArray1OfDir.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class gp_Dir;
@@ -70,10 +63,6 @@ public:
         Standard_Integer Upper() const;
   
   Standard_EXPORT     gp_Dir Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PColgp_HArray1OfDir( )
 {
@@ -158,10 +147,6 @@ PColgp_FieldOfHArray1OfDir Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PColgp_HArray1OfDir& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

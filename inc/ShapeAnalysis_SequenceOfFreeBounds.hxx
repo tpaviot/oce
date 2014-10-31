@@ -43,6 +43,8 @@ public:
   
       ShapeAnalysis_SequenceOfFreeBounds();
   
+  Standard_EXPORT   ShapeAnalysis_SequenceOfFreeBounds(const ShapeAnalysis_SequenceOfFreeBounds& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~ShapeAnalysis_SequenceOfFreeBounds()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ShapeAnalysis_SequenceOfFreeBounds(const ShapeAnalysis_SequenceOfFreeBounds& Other);
 
 
 

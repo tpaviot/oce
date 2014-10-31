@@ -44,6 +44,8 @@ public:
   
   Standard_EXPORT   TopLoc_IndexedMapOfLocation(const Standard_Integer NbBuckets = 1);
   
+  Standard_EXPORT   TopLoc_IndexedMapOfLocation(const TopLoc_IndexedMapOfLocation& Other);
+  
   Standard_EXPORT     TopLoc_IndexedMapOfLocation& Assign(const TopLoc_IndexedMapOfLocation& Other) ;
     TopLoc_IndexedMapOfLocation& operator =(const TopLoc_IndexedMapOfLocation& Other) 
 {
@@ -86,8 +88,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopLoc_IndexedMapOfLocation(const TopLoc_IndexedMapOfLocation& Other);
 
 
 

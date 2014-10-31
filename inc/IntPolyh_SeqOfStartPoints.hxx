@@ -40,6 +40,8 @@ public:
   
       IntPolyh_SeqOfStartPoints();
   
+  Standard_EXPORT   IntPolyh_SeqOfStartPoints(const IntPolyh_SeqOfStartPoints& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntPolyh_SeqOfStartPoints()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntPolyh_SeqOfStartPoints(const IntPolyh_SeqOfStartPoints& Other);
 
 
 

@@ -43,6 +43,8 @@ public:
   
       IntPatch_SequenceOfIWLineOfTheIWalking();
   
+  Standard_EXPORT   IntPatch_SequenceOfIWLineOfTheIWalking(const IntPatch_SequenceOfIWLineOfTheIWalking& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntPatch_SequenceOfIWLineOfTheIWalking()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntPatch_SequenceOfIWLineOfTheIWalking(const IntPatch_SequenceOfIWLineOfTheIWalking& Other);
 
 
 

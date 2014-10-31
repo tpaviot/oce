@@ -40,6 +40,8 @@ public:
   
       XmlLDrivers_SequenceOfNamespaceDef();
   
+  Standard_EXPORT   XmlLDrivers_SequenceOfNamespaceDef(const XmlLDrivers_SequenceOfNamespaceDef& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~XmlLDrivers_SequenceOfNamespaceDef()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   XmlLDrivers_SequenceOfNamespaceDef(const XmlLDrivers_SequenceOfNamespaceDef& Other);
 
 
 

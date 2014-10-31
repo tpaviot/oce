@@ -40,6 +40,8 @@ public:
   
       Intf_SeqOfTangentZone();
   
+  Standard_EXPORT   Intf_SeqOfTangentZone(const Intf_SeqOfTangentZone& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Intf_SeqOfTangentZone()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Intf_SeqOfTangentZone(const Intf_SeqOfTangentZone& Other);
 
 
 

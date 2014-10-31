@@ -44,7 +44,8 @@ class PDF_Attribute;
 class MDF_RRelocationTable;
 
 
-
+//! Retrieval drivers for graphic attributes from <br>
+//!          PPrsStd <br>
 class MPrsStd_PositionRetrievalDriver : public MDF_ARDriver {
 
 public:

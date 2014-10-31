@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TNaming_ListOfIndexedDataMapOfShapeListOfShape();
   
+  Standard_EXPORT   TNaming_ListOfIndexedDataMapOfShapeListOfShape(const TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other);
+  
   Standard_EXPORT     void Assign(const TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other) ;
     void operator=(const TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TNaming_ListOfIndexedDataMapOfShapeListOfShape(const TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other);
 
 
 Standard_Address myFirst;

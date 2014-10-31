@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TopBas_ListOfTestInterference();
   
+  Standard_EXPORT   TopBas_ListOfTestInterference(const TopBas_ListOfTestInterference& Other);
+  
   Standard_EXPORT     void Assign(const TopBas_ListOfTestInterference& Other) ;
     void operator=(const TopBas_ListOfTestInterference& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopBas_ListOfTestInterference(const TopBas_ListOfTestInterference& Other);
 
 
 Standard_Address myFirst;

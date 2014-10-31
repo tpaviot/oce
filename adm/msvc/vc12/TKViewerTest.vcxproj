@@ -254,6 +254,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest_AutoUpdater.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest_AviCommands.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest_EventManager.cxx">
@@ -265,8 +267,6 @@
     <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest_OpenGlCommands.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest_RelationCommands.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest_Tool.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest_ViewerCommands.cxx">
     </ClCompile>

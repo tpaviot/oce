@@ -436,6 +436,9 @@
 					RelativePath="..\..\..\drv\TopoDS\TopoDS_ListOfShape_0.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\drv\TopoDS\TopoDS_LockedShape_0.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\drv\TopoDS\TopoDS_UnCompatibleShapes_0.cxx">
 				</File>
 				<File
@@ -508,15 +511,6 @@
 			<Filter
 				Name="TopExp"
 				>
-				<File
-					RelativePath="..\..\..\drv\TopExp\TopExp_StackIteratorOfStackOfIterator_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TopExp\TopExp_StackNodeOfStackOfIterator_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TopExp\TopExp_StackOfIterator_0.cxx">
-				</File>
 				<File
 					RelativePath="..\..\..\src\TopExp\TopExp.cxx">
 				</File>

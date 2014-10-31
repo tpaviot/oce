@@ -36,9 +36,9 @@ class TopoDS_Edge;
 class TopTools_DataMapOfShapeListOfShape;
 
 
-//! Constructs a sequence of Wires agreed each other <br>
-//!          so that the surface passing through these sections <br>
-//!           is not twisted <br>
+//! Constructs a sequence of Wires (with good orientation <br>
+//!          and origin) agreed each other so that the surface passing <br>
+//!          through these sections is not twisted <br>
 class BRepFill_CompatibleWires  {
 public:
 

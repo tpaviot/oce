@@ -1,0 +1,12 @@
+#ifndef _BRepGProp_Face_HeaderFile
+#include <BRepGProp_Face.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _BRepGProp_Domain_HeaderFile
+#include <BRepGProp_Domain.hxx>
+#endif
+#ifndef _BRepGProp_Sinert_HeaderFile
+#include <BRepGProp_Sinert.hxx>
+#endif

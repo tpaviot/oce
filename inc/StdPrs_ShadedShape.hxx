@@ -34,16 +34,18 @@ class Prs3d_Drawer;
 class gp_Pnt2d;
 
 
-//! unknown. <br>
+//! Auxiliary procedures to prepare Shaded presentation of specified shape. <br>
 class StdPrs_ShadedShape  : public Prs3d_Root {
 public:
 
   DEFINE_STANDARD_ALLOC
 
   //! Shades <theShape>. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& thePresentation,const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer) ;
+//! @param theToExploreSolids when set to true, explodes compound into two groups - with closed Solids and open Shells <br>
+  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& thePresentation,const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer,const Standard_Boolean theToExploreSolids = Standard_True) ;
   //! Shades <theShape> with texture coordinates. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& thePresentation,const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer,const Standard_Boolean theHasTexels,const gp_Pnt2d& theUVOrigin,const gp_Pnt2d& theUVRepeat,const gp_Pnt2d& theUVScale) ;
+//! @param theToExploreSolids when set to true, explodes compound into two groups - with closed Solids and open Shells <br>
+  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& thePresentation,const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer,const Standard_Boolean theHasTexels,const gp_Pnt2d& theUVOrigin,const gp_Pnt2d& theUVRepeat,const gp_Pnt2d& theUVScale,const Standard_Boolean theToExploreSolids = Standard_True) ;
   //! Validates triangulation within the shape and performs tessellation if necessary. <br>
   Standard_EXPORT   static  void Tessellate(const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer) ;
 

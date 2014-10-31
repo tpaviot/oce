@@ -190,7 +190,7 @@ public:
 //! Returns true if the display mode aMode is accepted <br>
 //! for the Interactive Objects in the relation. <br>
 //! ComputeProjPresentation(me; <br>
-//! 	    	    	    aPres    : mutable Presentation from Prs3d; <br>
+//! 	    	    	    aPres    : Presentation from Prs3d; <br>
 //!		    Curve1   : Curve                from Geom; <br>
 //!		    Curve2   : Curve                from Geom; <br>
 //!		    FirstP1  : Pnt                  from gp; <br>

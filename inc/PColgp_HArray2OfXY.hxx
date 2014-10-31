@@ -25,9 +25,6 @@
 #ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _PColgp_FieldOfHArray2OfXY_HeaderFile
 #include <PColgp_FieldOfHArray2OfXY.hxx>
 #endif
@@ -40,10 +37,6 @@
 #ifndef _Handle_PColgp_VArrayNodeOfFieldOfHArray2OfXY_HeaderFile
 #include <Handle_PColgp_VArrayNodeOfFieldOfHArray2OfXY.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_RangeError;
 class Standard_OutOfRange;
 class gp_XY;
@@ -76,10 +69,6 @@ public:
         Standard_Integer UpperRow() const;
   
   Standard_EXPORT     gp_XY Value(const Standard_Integer Row,const Standard_Integer Col) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PColgp_HArray2OfXY( )
 {
@@ -170,10 +159,6 @@ PColgp_FieldOfHArray2OfXY Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PColgp_HArray2OfXY& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

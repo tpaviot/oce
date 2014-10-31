@@ -274,12 +274,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\CDM\CDM_PresentationDirectory_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\CDM\CDM_StackIteratorOfStackOfDocument_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\CDM\CDM_StackNodeOfStackOfDocument_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\CDM\CDM_StackOfDocument_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\CDM\CDM_StdMapNodeOfMapOfDocument_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\CDM\CDM_Application.cxx">
@@ -339,6 +333,8 @@
     <ClCompile Include="..\..\..\src\CDF\CDF_Directory.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\CDF\CDF_DirectoryIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\CDF\CDF_FWOSDriver.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\CDF\CDF_MetaDataDriver.cxx">
     </ClCompile>

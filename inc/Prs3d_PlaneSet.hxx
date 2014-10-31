@@ -31,7 +31,9 @@
 class gp_Pln;
 
 
-
+//! defines a set of planes used for a presentation <br>
+//!          by sections. <br>
+//! <br>
 class Prs3d_PlaneSet : public MMgt_TShared {
 
 public:

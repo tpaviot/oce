@@ -40,6 +40,8 @@ public:
   
       AppParCurves_SequenceOfMultiBSpCurve();
   
+  Standard_EXPORT   AppParCurves_SequenceOfMultiBSpCurve(const AppParCurves_SequenceOfMultiBSpCurve& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~AppParCurves_SequenceOfMultiBSpCurve()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   AppParCurves_SequenceOfMultiBSpCurve(const AppParCurves_SequenceOfMultiBSpCurve& Other);
 
 
 

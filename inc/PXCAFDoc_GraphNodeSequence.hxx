@@ -34,18 +34,11 @@
 #ifndef _Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence_HeaderFile
 #include <Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PXCAFDoc_GraphNode;
 class PXCAFDoc_SeqNodeOfGraphNodeSequence;
-class Standard_Persistent;
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class PXCAFDoc_SeqExplorerOfGraphNodeSequence;
@@ -106,10 +99,6 @@ public:
   
   Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
   
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
-  
   Standard_EXPORT     void Destroy() ;
 ~PXCAFDoc_GraphNodeSequence()
 {
@@ -155,14 +144,6 @@ Standard_Integer Size;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline Handle_Standard_Persistent ShallowCopy(const Handle_PXCAFDoc_GraphNodeSequence& me) {
- return me->ShallowCopy();
-}
-
-inline void ShallowDump(const Handle_PXCAFDoc_GraphNodeSequence& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

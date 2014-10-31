@@ -25,6 +25,10 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Handle_Message_ProgressIndicator_HeaderFile
+#include <Handle_Message_ProgressIndicator.hxx>
+#endif
+class Message_ProgressIndicator;
 
 
 //! provides the root interface for algorithms <br>
@@ -33,6 +37,10 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
+  
+  Standard_EXPORT   static  Standard_Boolean GetParallelMode() ;
+  
+  Standard_EXPORT   static  void SetParallelMode(const Standard_Boolean theNewMode) ;
   
   Standard_EXPORT   virtual  void Perform()  = 0;
   
@@ -48,6 +56,8 @@ public:
   Standard_EXPORT     void SetRunParallel(const Standard_Boolean theFlag) ;
   //! Returns the flag of parallel processing <br>
   Standard_EXPORT     Standard_Boolean RunParallel() const;
+  //! Set the Progress Indicator object. <br>
+  Standard_EXPORT     void SetProgressIndicator(const Handle(Message_ProgressIndicator)& theObj) ;
 
 
 
@@ -64,12 +74,16 @@ Standard_EXPORT virtual ~BOPAlgo_Algo();
   Standard_EXPORT   virtual  void CheckData() ;
   
   Standard_EXPORT   virtual  void CheckResult() ;
+  //! Breaks the execution if the break signal <br>
+//! is indicated by myProgressIndicator. <br>
+  Standard_EXPORT     void UserBreak() const;
 
 
 BOPCol_BaseAllocator myAllocator;
 Standard_Integer myErrorStatus;
 Standard_Integer myWarningStatus;
 Standard_Boolean myRunParallel;
+Handle_Message_ProgressIndicator myProgressIndicator;
 
 
 private:

@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TopOpeBRepBuild_ListOfListOfLoop();
   
+  Standard_EXPORT   TopOpeBRepBuild_ListOfListOfLoop(const TopOpeBRepBuild_ListOfListOfLoop& Other);
+  
   Standard_EXPORT     void Assign(const TopOpeBRepBuild_ListOfListOfLoop& Other) ;
     void operator=(const TopOpeBRepBuild_ListOfListOfLoop& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopOpeBRepBuild_ListOfListOfLoop(const TopOpeBRepBuild_ListOfListOfLoop& Other);
 
 
 Standard_Address myFirst;

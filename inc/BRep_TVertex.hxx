@@ -39,7 +39,7 @@ class TopoDS_TShape;
 //! The TVertex from  BRep inherits  from  the TVertex <br>
 //!          from TopoDS. It contains the geometric data. <br>
 //! <br>
-//!          The  TVertex contains a 3d point and a tolerance. <br>
+//!          The  TVertex contains a 3d point, location and a tolerance. <br>
 //! <br>
 class BRep_TVertex : public TopoDS_TVertex {
 

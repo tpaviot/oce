@@ -39,7 +39,7 @@
 #include <BOPDS_VectorOfInterfEF.hxx>
 #include <BOPDS_VectorOfInterfFF.hxx>
 
-#include <BOPInt_Context.hxx>
+#include <IntTools_Context.hxx>
 
 #include <BOPTools.hxx>
 #include <BOPTools_AlgoTools.hxx>
@@ -115,7 +115,7 @@ void BOPAlgo_CheckerSI::Init()
   myIterator=theIterSI;
   //
   // 3 myContext
-  myContext=new BOPInt_Context;
+  myContext=new IntTools_Context;
   //
   myErrorStatus=0;
 }
@@ -126,6 +126,8 @@ void BOPAlgo_CheckerSI::Init()
 void BOPAlgo_CheckerSI::Perform()
 {
   try {
+    Standard_Integer iErr;
+    //
     OCC_CATCH_SIGNALS
     //
     myErrorStatus=0;
@@ -142,36 +144,22 @@ void BOPAlgo_CheckerSI::Perform()
     }
     //
     BOPAlgo_PaveFiller::Perform();
+    iErr=myErrorStatus; 
     //
-    if (!myErrorStatus) {
-      PerformVZ();
-    }
-    //
-    if (!myErrorStatus) {
-      PerformEZ();
-    } 
-    //
-    if (!myErrorStatus) {
-      PerformFZ();
-    }
-    //
-    if (!myErrorStatus) {
-      PerformZZ();
-    }
-    // 
-    if (!myErrorStatus) {
-      PostTreat();
+    PostTreat();
+    if (myErrorStatus) {
+      iErr=myErrorStatus; 
     }
     //
     if (myNonDestructive) {
-      Standard_Integer iErr;
-      //
-      iErr=myErrorStatus; 
-      //
       PostTreatCopy();
-      if (!myErrorStatus) {
-        myErrorStatus=iErr;
+      if (myErrorStatus) {
+        iErr=myErrorStatus; 
       }
+    }
+    //
+    if (iErr) {
+      myErrorStatus=iErr;
     }
   }
   //
@@ -183,7 +171,6 @@ void BOPAlgo_CheckerSI::Perform()
     myErrorStatus=11;
   }
 }
-
 //=======================================================================
 //function : PostTreat
 //purpose  : 

@@ -54,7 +54,7 @@ class Geom2dGcc_QualifiedCurve;
 class Geom2dAdaptor_Curve;
 class Geom2d_Point;
 class GccAna_Circ2dTanOnRad;
-class Geom2dGcc_MyCirc2dTanOnRad;
+class Geom2dGcc_Circ2dTanOnRadGeo;
 class gp_Circ2d;
 class gp_Pnt2d;
 
@@ -124,7 +124,7 @@ public:
   
   Standard_EXPORT     void Results(const GccAna_Circ2dTanOnRad& Circ) ;
   
-  Standard_EXPORT     void Results(const Geom2dGcc_MyCirc2dTanOnRad& Circ) ;
+  Standard_EXPORT     void Results(const Geom2dGcc_Circ2dTanOnRadGeo& Circ) ;
   //! Returns true if the construction algorithm does not fail <br>
 //! (even if it finds no solution). <br>
 //! Note: IsDone protects against a failure arising from a <br>

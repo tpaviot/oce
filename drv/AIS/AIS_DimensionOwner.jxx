@@ -1,9 +1,6 @@
 #ifndef _SelectMgr_SelectableObject_HeaderFile
 #include <SelectMgr_SelectableObject.hxx>
 #endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
-#include <PrsMgr_PresentationManager3d.hxx>
-#endif
 #ifndef _PrsMgr_PresentationManager_HeaderFile
 #include <PrsMgr_PresentationManager.hxx>
 #endif

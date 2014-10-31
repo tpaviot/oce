@@ -1,3 +1,9 @@
+#ifndef _Extrema_ExtPExtS_HeaderFile
+#include <Extrema_ExtPExtS.hxx>
+#endif
+#ifndef _Extrema_ExtPRevS_HeaderFile
+#include <Extrema_ExtPRevS.hxx>
+#endif
 #ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
 #endif

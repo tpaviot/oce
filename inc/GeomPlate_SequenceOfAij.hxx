@@ -40,6 +40,8 @@ public:
   
       GeomPlate_SequenceOfAij();
   
+  Standard_EXPORT   GeomPlate_SequenceOfAij(const GeomPlate_SequenceOfAij& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~GeomPlate_SequenceOfAij()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   GeomPlate_SequenceOfAij(const GeomPlate_SequenceOfAij& Other);
 
 
 

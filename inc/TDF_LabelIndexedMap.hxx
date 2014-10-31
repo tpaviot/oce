@@ -44,6 +44,8 @@ public:
   
   Standard_EXPORT   TDF_LabelIndexedMap(const Standard_Integer NbBuckets = 1);
   
+  Standard_EXPORT   TDF_LabelIndexedMap(const TDF_LabelIndexedMap& Other);
+  
   Standard_EXPORT     TDF_LabelIndexedMap& Assign(const TDF_LabelIndexedMap& Other) ;
     TDF_LabelIndexedMap& operator =(const TDF_LabelIndexedMap& Other) 
 {
@@ -86,8 +88,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_LabelIndexedMap(const TDF_LabelIndexedMap& Other);
 
 
 

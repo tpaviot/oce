@@ -30,6 +30,8 @@ class TColStd_HArray2OfReal;
 
 
 
+//! contains  all the  parameters  for approximation <br>
+//!         ( tolerancy, computing option, ...) <br>
 class AdvApp2Var_Context  {
 public:
 

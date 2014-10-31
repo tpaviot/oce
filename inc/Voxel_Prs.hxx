@@ -37,8 +37,8 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
@@ -55,7 +55,6 @@
 class Poly_Triangulation;
 class Quantity_Color;
 class Quantity_HArray1OfColor;
-class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
 class SelectMgr_Selection;
 

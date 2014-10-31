@@ -30,6 +30,8 @@ class TDocStd_Document;
 
 
 //! Iterates on Reference attributes. <br>
+//!          This is an iterator giving all the external references <br>
+//!          of a Document. <br>
 class TDocStd_XLinkIterator  {
 public:
 

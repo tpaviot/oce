@@ -81,7 +81,7 @@ class TopOpeBRepDS_Transition;
 class gp_Pnt;
 
 
-
+//! Describes the intersection of two edges on the same surface <br>
 class TopOpeBRep_EdgesIntersector  {
 public:
 

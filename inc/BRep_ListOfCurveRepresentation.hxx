@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   BRep_ListOfCurveRepresentation();
   
+  Standard_EXPORT   BRep_ListOfCurveRepresentation(const BRep_ListOfCurveRepresentation& Other);
+  
   Standard_EXPORT     void Assign(const BRep_ListOfCurveRepresentation& Other) ;
     void operator=(const BRep_ListOfCurveRepresentation& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRep_ListOfCurveRepresentation(const BRep_ListOfCurveRepresentation& Other);
 
 
 Standard_Address myFirst;

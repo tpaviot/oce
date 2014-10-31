@@ -40,6 +40,8 @@ public:
   
       GeomFill_SequenceOfTrsf();
   
+  Standard_EXPORT   GeomFill_SequenceOfTrsf(const GeomFill_SequenceOfTrsf& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~GeomFill_SequenceOfTrsf()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   GeomFill_SequenceOfTrsf(const GeomFill_SequenceOfTrsf& Other);
 
 
 

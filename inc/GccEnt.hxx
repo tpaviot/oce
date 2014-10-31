@@ -22,7 +22,6 @@ class GccEnt_QualifiedCirc;
 class gp_Circ2d;
 class GccEnt_QualifiedLin;
 class GccEnt_QualifiedCirc;
-class GccEnt_QualifiedCurv;
 class GccEnt_Array1OfPosition;
 
 
@@ -102,7 +101,6 @@ private:
 
 friend class GccEnt_QualifiedLin;
 friend class GccEnt_QualifiedCirc;
-friend class GccEnt_QualifiedCurv;
 friend class GccEnt_Array1OfPosition;
 
 };

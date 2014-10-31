@@ -28,7 +28,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class TopoDS_Shape;
 class TopTools_OrientedShapeMapHasher;
 class TopTools_StdMapNodeOfMapOfOrientedShape;
@@ -43,6 +42,8 @@ public:
 
   
   Standard_EXPORT   TopTools_MapOfOrientedShape(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   TopTools_MapOfOrientedShape(const TopTools_MapOfOrientedShape& Other);
   
   Standard_EXPORT     TopTools_MapOfOrientedShape& Assign(const TopTools_MapOfOrientedShape& Other) ;
     TopTools_MapOfOrientedShape& operator =(const TopTools_MapOfOrientedShape& Other) 
@@ -76,8 +77,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopTools_MapOfOrientedShape(const TopTools_MapOfOrientedShape& Other);
 
 
 

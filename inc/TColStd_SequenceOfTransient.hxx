@@ -43,6 +43,8 @@ public:
   
       TColStd_SequenceOfTransient();
   
+  Standard_EXPORT   TColStd_SequenceOfTransient(const TColStd_SequenceOfTransient& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColStd_SequenceOfTransient()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_SequenceOfTransient(const TColStd_SequenceOfTransient& Other);
 
 
 

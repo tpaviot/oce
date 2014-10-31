@@ -42,6 +42,8 @@ public:
   
   Standard_EXPORT   TColStd_ListOfInteger();
   
+  Standard_EXPORT   TColStd_ListOfInteger(const TColStd_ListOfInteger& Other);
+  
   Standard_EXPORT     void Assign(const TColStd_ListOfInteger& Other) ;
     void operator=(const TColStd_ListOfInteger& Other) 
 {
@@ -99,8 +101,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_ListOfInteger(const TColStd_ListOfInteger& Other);
 
 
 Standard_Address myFirst;

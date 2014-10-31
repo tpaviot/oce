@@ -37,7 +37,6 @@
 class StdFail_NotDone;
 class Standard_DimensionError;
 class math_Matrix;
-class math_Vector;
 
 
 //! SVD implements the solution of a set of N linear equations <br>

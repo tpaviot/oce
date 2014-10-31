@@ -50,6 +50,7 @@ enum OpenGl_StateVariable
   // OpenGL clip planes state
   OpenGl_OCC_CLIP_PLANE_EQUATIONS,
   OpenGl_OCC_CLIP_PLANE_SPACES,
+  OpenGl_OCC_CLIP_PLANE_COUNT,
 
   // OpenGL light state
   OpenGl_OCC_LIGHT_SOURCE_COUNT,
@@ -63,6 +64,9 @@ enum OpenGl_StateVariable
   OpenGl_OCCT_DISTINGUISH_MODE,
   OpenGl_OCCT_FRONT_MATERIAL,
   OpenGl_OCCT_BACK_MATERIAL,
+  OpenGl_OCCT_COLOR,
+
+  OpenGl_OCCT_POINT_SIZE,
 
   // DON'T MODIFY THIS ITEM (insert new items before it)
   OpenGl_OCCT_NUMBER_OF_STATE_VARIABLES
@@ -127,6 +131,7 @@ const int MaxStateTypes = 6;
 //! Wrapper for OpenGL program object.
 class OpenGl_ShaderProgram : public OpenGl_Resource
 {
+  friend class OpenGl_Workspace;
 
 public:
 
@@ -155,7 +160,7 @@ public:
   Standard_EXPORT Standard_Boolean Create (const Handle(OpenGl_Context)& theCtx);
 
   //! Destroys shader program.
-  Standard_EXPORT virtual void Release (const OpenGl_Context* theCtx);
+  Standard_EXPORT virtual void Release (OpenGl_Context* theCtx);
 
   //! Attaches shader object to the program object.
   Standard_EXPORT Standard_Boolean AttachShader (const Handle(OpenGl_Context)&      theCtx,
@@ -179,19 +184,16 @@ public:
   //! Fetches uniform variables from proxy shader program.
   Standard_EXPORT Standard_Boolean ApplyVariables (const Handle(OpenGl_Context)& theCtx);
 
-  //! Sets the program object as part of current rendering state.
-  Standard_EXPORT void Bind (const Handle(OpenGl_Context)& theCtx) const;
-
-  //! Binds the program object and applies variables from proxy shader program.
-  Standard_EXPORT Standard_Boolean BindWithVariables (const Handle(OpenGl_Context)& theCtx);
-
-  //! Reverts to fixed-function graphics pipeline (FFP).
-  Standard_EXPORT static void Unbind (const Handle(OpenGl_Context)& theCtx);
-
   //! @return true if current object was initialized
   inline bool IsValid() const
   {
     return myProgramID != NO_PROGRAM;
+  }
+
+  //! @return program ID
+  inline GLuint ProgramId() const
+  {
+    return myProgramID;
   }
 
 private:
@@ -258,6 +260,53 @@ public:
   Standard_EXPORT Standard_Boolean GetAttribute (const Handle(OpenGl_Context)& theCtx,
                                                  GLint                         theIndex,
                                                  OpenGl_Vec4&                  theValue) const;
+
+public:
+
+  //! Wrapper for glBindAttribLocation()
+  Standard_EXPORT Standard_Boolean SetAttributeName (const Handle(OpenGl_Context)& theCtx,
+                                                     GLint                         theIndex,
+                                                     const GLchar*                 theName);
+
+  //! Wrapper for glVertexAttrib1f()
+  Standard_EXPORT Standard_Boolean SetAttribute (const Handle(OpenGl_Context)& theCtx,
+                                                 const GLchar*                 theName,
+                                                 GLfloat                       theValue);
+
+  //! Wrapper for glVertexAttrib1f()
+  Standard_EXPORT Standard_Boolean SetAttribute (const Handle(OpenGl_Context)& theCtx,
+                                                 GLint                         theIndex,
+                                                 GLfloat                       theValue);
+
+  //! Wrapper for glVertexAttrib2fv()
+  Standard_EXPORT Standard_Boolean SetAttribute (const Handle(OpenGl_Context)& theCtx,
+                                                 const GLchar*                 theName,
+                                                 const OpenGl_Vec2&            theValue);
+
+  //! Wrapper for glVertexAttrib2fv()
+  Standard_EXPORT Standard_Boolean SetAttribute (const Handle(OpenGl_Context)& theCtx,
+                                                 GLint                         theIndex,
+                                                 const OpenGl_Vec2&            theValue);
+
+  //! Wrapper for glVertexAttrib3fv()
+  Standard_EXPORT Standard_Boolean SetAttribute (const Handle(OpenGl_Context)& theCtx,
+                                                 const GLchar*                 theName,
+                                                 const OpenGl_Vec3&            theValue);
+
+  //! Wrapper for glVertexAttrib3fv()
+  Standard_EXPORT Standard_Boolean SetAttribute (const Handle(OpenGl_Context)& theCtx,
+                                                 GLint                         theIndex,
+                                                 const OpenGl_Vec3&            theValue);
+
+  //! Wrapper for glVertexAttrib4fv()
+  Standard_EXPORT Standard_Boolean SetAttribute (const Handle(OpenGl_Context)& theCtx,
+                                                 const GLchar*                 theName,
+                                                 const OpenGl_Vec4&            theValue);
+
+  //! Wrapper for glVertexAttrib4fv()
+  Standard_EXPORT Standard_Boolean SetAttribute (const Handle(OpenGl_Context)& theCtx,
+                                                 GLint                         theIndex,
+                                                 const OpenGl_Vec4&            theValue);
 
 public:
 
@@ -456,8 +505,7 @@ protected:
 
 protected:
 
-  //! Defines last modification for variables of each state type.
-  Standard_Size myCurrentState[MaxStateTypes];
+  Standard_Size myCurrentState[MaxStateTypes];  //!< defines last modification for variables of each state type
 
   //! Stores locations of OCCT state uniform variables.
   GLint myStateLocations[OpenGl_OCCT_NUMBER_OF_STATE_VARIABLES];

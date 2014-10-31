@@ -21,6 +21,8 @@
 #include <OpenGl_Element.hxx>
 #include <OpenGl_Light.hxx>
 
+#include <NCollection_List.hxx>
+
 //! Defines interface for OpenGL state.
 class OpenGl_StateInterface
 {
@@ -40,7 +42,9 @@ public:
 
 protected:
 
-  Standard_Size myIndex; //!< Current state index
+  Standard_Size myIndex;      //!< Current state index
+  Standard_Size myNextIndex;  //!< Next state index
+  NCollection_List<Standard_Size> myStateStack; //!< Stack of previous states.
 
 };
 
@@ -53,7 +57,7 @@ public:
   OpenGl_ProjectionState();
 
   //! Sets new projection matrix.
-  void Set (const Tmatrix3& theProjectionMatrix);
+  void Set (const Tmatrix3* theProjectionMatrix);
 
   //! Returns current projection matrix.
   const Tmatrix3& ProjectionMatrix() const;
@@ -78,7 +82,7 @@ public:
   OpenGl_ModelWorldState();
 
   //! Sets new model-world matrix.
-  void Set (const Tmatrix3& theModelWorldMatrix);
+  void Set (const Tmatrix3* theModelWorldMatrix);
 
   //! Returns current model-world matrix.
   const Tmatrix3& ModelWorldMatrix() const;
@@ -103,7 +107,7 @@ public:
   OpenGl_WorldViewState();
   
   //! Sets new world-view matrix.
-  void Set (const Tmatrix3& theWorldViewMatrix);
+  void Set (const Tmatrix3* theWorldViewMatrix);
 
   //! Returns current world-view matrix.
   const Tmatrix3& WorldViewMatrix() const;

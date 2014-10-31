@@ -44,6 +44,8 @@ public:
   
   Standard_EXPORT   Interface_IndexedMapOfAsciiString(const Standard_Integer NbBuckets = 1);
   
+  Standard_EXPORT   Interface_IndexedMapOfAsciiString(const Interface_IndexedMapOfAsciiString& Other);
+  
   Standard_EXPORT     Interface_IndexedMapOfAsciiString& Assign(const Interface_IndexedMapOfAsciiString& Other) ;
     Interface_IndexedMapOfAsciiString& operator =(const Interface_IndexedMapOfAsciiString& Other) 
 {
@@ -86,8 +88,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Interface_IndexedMapOfAsciiString(const Interface_IndexedMapOfAsciiString& Other);
 
 
 

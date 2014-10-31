@@ -28,8 +28,8 @@
 #ifndef _Handle_Geom_Plane_HeaderFile
 #include <Handle_Geom_Plane.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
@@ -60,7 +60,6 @@
 #endif
 class TopoDS_Shape;
 class Geom_Plane;
-class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;

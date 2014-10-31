@@ -43,6 +43,8 @@ public:
   
       Storage_SeqOfRoot();
   
+  Standard_EXPORT   Storage_SeqOfRoot(const Storage_SeqOfRoot& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Storage_SeqOfRoot()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Storage_SeqOfRoot(const Storage_SeqOfRoot& Other);
 
 
 

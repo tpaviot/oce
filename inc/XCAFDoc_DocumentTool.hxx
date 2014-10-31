@@ -59,6 +59,8 @@ class TDF_RelocationTable;
 
 
 //! Defines sections structure of an XDE document. <br>
+//!          attribute marking CAF document as being DECAF document. <br>
+//!          Creates the sections structure of the document. <br>
 class XCAFDoc_DocumentTool : public TDF_Attribute {
 
 public:

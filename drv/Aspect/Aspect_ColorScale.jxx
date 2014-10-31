@@ -13,9 +13,6 @@
 #ifndef _Aspect_SequenceOfColor_HeaderFile
 #include <Aspect_SequenceOfColor.hxx>
 #endif
-#ifndef _Aspect_ColorMap_HeaderFile
-#include <Aspect_ColorMap.hxx>
-#endif
 #ifndef _Aspect_ColorScale_HeaderFile
 #include <Aspect_ColorScale.hxx>
 #endif

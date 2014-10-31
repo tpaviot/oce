@@ -2,68 +2,26 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{A8168CD6-070F-0DD9-01FB-8FDCE5EF42C7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\SWDRAW">
-      <UniqueIdentifier>{0925A848-1445-0909-12E6-C984BF2A32AC}</UniqueIdentifier>
+      <UniqueIdentifier>{5D882A49-0A32-0011-1289-A5D14E506403}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSDRAW">
-      <UniqueIdentifier>{64C79F96-0DBB-1730-0D17-E0B0284D4659}</UniqueIdentifier>
+      <UniqueIdentifier>{D604B55C-0041-0902-1418-A4AA7DB52285}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSDRAWIGES">
-      <UniqueIdentifier>{457E3D36-0342-186E-142C-DDC6791171FA}</UniqueIdentifier>
+      <UniqueIdentifier>{ED6F9123-0CCA-0482-09D1-29CBEE0B972A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSDRAWSTEP">
-      <UniqueIdentifier>{51F6FFA2-0CFF-04A5-0B7F-736568069CEC}</UniqueIdentifier>
+      <UniqueIdentifier>{F183F880-0305-12EE-17FE-0CD39B1898F1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSDRAWSTLVRML">
-      <UniqueIdentifier>{28652680-149B-0FD6-1862-EFD9A5B9EBEA}</UniqueIdentifier>
+      <UniqueIdentifier>{E10D5853-1881-0736-18E2-FA81F86AD5CC}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW.cxx">
-      <Filter>Source files\SWDRAW</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeAnalysis.cxx">
-      <Filter>Source files\SWDRAW</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeBuild.cxx">
-      <Filter>Source files\SWDRAW</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeConstruct.cxx">
-      <Filter>Source files\SWDRAW</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeCustom.cxx">
-      <Filter>Source files\SWDRAW</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeExtend.cxx">
-      <Filter>Source files\SWDRAW</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeFix.cxx">
-      <Filter>Source files\SWDRAW</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeProcess.cxx">
-      <Filter>Source files\SWDRAW</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeProcessAPI.cxx">
-      <Filter>Source files\SWDRAW</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeTool.cxx">
-      <Filter>Source files\SWDRAW</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeUpgrade.cxx">
-      <Filter>Source files\SWDRAW</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ToVRML.cxx">
-      <Filter>Source files\SWDRAW</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\XSDRAW\XSDRAW.cxx">
       <Filter>Source files\XSDRAW</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\XSDRAW\XSDRAW_Functions.cxx">
-      <Filter>Source files\XSDRAW</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\XSDRAW\XSDRAW_Shape.cxx">
       <Filter>Source files\XSDRAW</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\XSDRAW\XSDRAW_Vars.cxx">
@@ -99,7 +57,13 @@
     <ClCompile Include="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_DataSource.cxx">
       <Filter>Source files\XSDRAWSTLVRML</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_DataSource3D.cxx">
+      <Filter>Source files\XSDRAWSTLVRML</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_DrawableMesh.cxx">
+      <Filter>Source files\XSDRAWSTLVRML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_ToVRML.cxx">
       <Filter>Source files\XSDRAWSTLVRML</Filter>
     </ClCompile>
   </ItemGroup>

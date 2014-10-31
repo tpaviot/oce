@@ -424,9 +424,6 @@
 				Name="OpenGl"
 				>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_AABB.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_AVIWriter.cxx">
 				</File>
 				<File
@@ -442,6 +439,12 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_AspectText.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_BVHClipPrimitiveSet.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_BVHTreeSelector.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_CappingAlgo.cxx">
 				</File>
 				<File
@@ -455,12 +458,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Context.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_Display.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_Display_2.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Element.cxx">
@@ -479,15 +476,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_1.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_2.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_3.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_4.cxx">
@@ -517,6 +505,9 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_LayerList.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_LineAttributes.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Matrix.cxx">
 				</File>
 				<File
@@ -530,9 +521,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_PriorityList.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_RaytraceSource.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_RenderFilter.cxx">
@@ -562,6 +550,9 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Structure.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_StructureShadow.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Text.cxx">
 				</File>
 				<File
@@ -580,10 +571,10 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_VertexBuffer.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_View.cxx">
+					RelativePath="..\..\..\src\OpenGl\OpenGl_VertexBufferCompat.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_View_1.cxx">
+					RelativePath="..\..\..\src\OpenGl\OpenGl_View.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_View_2.cxx">
@@ -598,9 +589,6 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace_2.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace_3.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace_5.cxx">
 				</File>
 				<File
@@ -608,9 +596,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_telem_util.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_telem_view.cxx">
 				</File>
 			</Filter>
 

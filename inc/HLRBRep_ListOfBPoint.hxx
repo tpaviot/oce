@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   HLRBRep_ListOfBPoint();
   
+  Standard_EXPORT   HLRBRep_ListOfBPoint(const HLRBRep_ListOfBPoint& Other);
+  
   Standard_EXPORT     void Assign(const HLRBRep_ListOfBPoint& Other) ;
     void operator=(const HLRBRep_ListOfBPoint& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   HLRBRep_ListOfBPoint(const HLRBRep_ListOfBPoint& Other);
 
 
 Standard_Address myFirst;

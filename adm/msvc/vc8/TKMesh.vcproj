@@ -424,157 +424,10 @@
 				Name="BRepMesh"
 				>
 				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_Array1OfBiPoint_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_Array1OfVertexOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfShapeReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfVertexInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfFaceAttribute_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfIntegerPnt_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfShapeReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfVertexInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfFaceAttribute_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfIntegerListOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfIntegerListOfXY_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfIntegerPnt_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfShapePairOfPolygon_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfShapeReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfVertexInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_ElemHasherOfDataStructureOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_HArray1OfVertexOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_HeapSortIndexedVertexOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_HeapSortVertexOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_IDMapOfLinkOfDataStructureOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_IDMapOfNodeOfDataStructureOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_IMapOfElementOfDataStructureOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_IndexedMapNodeOfIndexedMapOfVertex_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_IndexedMapOfVertex_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_LinkHasherOfDataStructureOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_ListIteratorOfListOfVertex_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_ListIteratorOfListOfXY_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_ListNodeOfListOfVertex_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_ListNodeOfListOfXY_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_ListOfVertex_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_ListOfXY_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_NodeHasherOfDataStructureOfDelaun_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_VertexHasher_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BRepMesh\BRepMesh.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BRepMesh\BRepMesh_BiPoint.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BRepMesh\BRepMesh_Circ.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\BRepMesh\BRepMesh_CircleTool.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepMesh\BRepMesh_Classifier.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BRepMesh\BRepMesh_ComparatorOfIndexedVertexOfDelaun.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BRepMesh\BRepMesh_ComparatorOfVertexOfDelaun.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepMesh\BRepMesh_DataStructureOfDelaun.cxx">
@@ -589,7 +442,13 @@
 					RelativePath="..\..\..\src\BRepMesh\BRepMesh_DiscretRoot.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BRepMesh\BRepMesh_Edge.cxx">
+					RelativePath="..\..\..\src\BRepMesh\BRepMesh_EdgeParameterProvider.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepMesh\BRepMesh_EdgeTessellationExtractor.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepMesh\BRepMesh_EdgeTessellator.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepMesh\BRepMesh_FaceAttribute.cxx">
@@ -604,10 +463,10 @@
 					RelativePath="..\..\..\src\BRepMesh\BRepMesh_GeomTool.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BRepMesh\BRepMesh_IncrementalMesh.cxx">
+					RelativePath="..\..\..\src\BRepMesh\BRepMesh_IEdgeTool.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BRepMesh\BRepMesh_PairOfPolygon.cxx">
+					RelativePath="..\..\..\src\BRepMesh\BRepMesh_IncrementalMesh.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepMesh\BRepMesh_SelectorOfDataStructureOfDelaun.cxx">
@@ -616,16 +475,13 @@
 					RelativePath="..\..\..\src\BRepMesh\BRepMesh_ShapeTool.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BRepMesh\BRepMesh_Triangle.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BRepMesh\BRepMesh_Vertex.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BRepMesh\BRepMesh_VertexInspector.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\BRepMesh\BRepMesh_VertexTool.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepMesh\BRepMesh_WireChecker.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepMesh\BRepMesh_WireInterferenceChecker.cxx">
 				</File>
 			</Filter>
 

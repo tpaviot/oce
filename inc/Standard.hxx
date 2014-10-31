@@ -53,6 +53,16 @@ template <typename T> static inline void Free (T*& thePtr) { Free ((void*)thePtr
 //!           aStorage - previously allocated memory block <br>
 //!           aNewSize - new size in bytes <br>
   Standard_EXPORT   static  Standard_Address Reallocate(const Standard_Address aStorage,const Standard_Size aNewSize) ;
+  //!  Allocates aligned memory blocks. <br>
+//! Should be used with CPU instructions which require specific alignment. <br>
+//! For example: SSE requires 16 bytes, AVX requires 32 bytes. <br>
+//! @param theSize  bytes to allocate <br>
+//! @param theAlign alignment in bytes <br>
+  Standard_EXPORT   static  Standard_Address AllocateAligned(const Standard_Size theSize,const Standard_Size theAlign) ;
+  //!  Deallocates memory blocks <br>
+//! @param thePtrAligned the memory block previously allocated with AllocateAligned() <br>
+  Standard_EXPORT   static  void FreeAligned(const Standard_Address thePtrAligned) ;
+template <typename T> static inline void FreeAligned (T*& thePtrAligned) { FreeAligned ((void* )thePtrAligned); thePtrAligned = 0; }
   //!  Deallocates the storage retained on the free list <br>
 //!           and clears the list. <br>
 //!           Returns non-zero if some memory has been actually freed. <br>

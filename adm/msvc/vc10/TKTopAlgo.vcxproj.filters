@@ -2,55 +2,55 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{63353E93-0F3C-0AA3-0E4E-118221764AB7}</UniqueIdentifier>
+      <UniqueIdentifier>{B56FDEBC-0D81-0B26-02FA-63BC3BDAEFBF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntCurvesFace">
-      <UniqueIdentifier>{235E295F-156E-10D2-1729-2A7218A8A170}</UniqueIdentifier>
+      <UniqueIdentifier>{B1EDC177-1197-09F2-101B-96CC714844DF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MAT">
-      <UniqueIdentifier>{FECEC30B-0329-0E6D-12EC-1DEBB45D7CA3}</UniqueIdentifier>
+      <UniqueIdentifier>{A1A2AC2B-1081-0F6E-1136-CFD4A6921282}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MAT2d">
-      <UniqueIdentifier>{A1B184F8-13ED-0F27-1898-12A59D36F96E}</UniqueIdentifier>
+      <UniqueIdentifier>{FD2D343A-0346-0E6B-1032-57A9C44AA359}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Bisector">
-      <UniqueIdentifier>{31DBBFC5-152F-10D1-0A16-684E55EEB44C}</UniqueIdentifier>
+      <UniqueIdentifier>{2A327765-18C4-0370-0D2C-F0D17146924F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepMAT2d">
-      <UniqueIdentifier>{7F217356-02EA-07EA-1174-A7A032063377}</UniqueIdentifier>
+      <UniqueIdentifier>{2FA82BAC-191F-12BF-1247-7F271DE0EE82}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepCheck">
-      <UniqueIdentifier>{1CDC1B2B-0315-0245-172F-58D417CC4943}</UniqueIdentifier>
+      <UniqueIdentifier>{4AA1F98D-08F6-0507-033D-CB32D676AB9B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepBndLib">
-      <UniqueIdentifier>{DDDF8E27-0EAF-072C-0C14-2CD76CF310C7}</UniqueIdentifier>
+      <UniqueIdentifier>{FC550B63-098D-04FE-1571-DCD8A01200B7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepExtrema">
-      <UniqueIdentifier>{D290E5A2-00F4-16E6-0D7A-2040C77CF894}</UniqueIdentifier>
+      <UniqueIdentifier>{ED1D9A43-0335-0F5D-12B3-1F43567DF3E3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepClass">
-      <UniqueIdentifier>{A3F63E37-12E0-09EB-0A95-6998208292F1}</UniqueIdentifier>
+      <UniqueIdentifier>{16FC72B1-1254-03CF-0F89-E21D17E40BED}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepClass3d">
-      <UniqueIdentifier>{7D1638C3-0AE9-10AB-1639-0FA1E44DA11A}</UniqueIdentifier>
+      <UniqueIdentifier>{CB233967-0A8D-05C7-02FC-C5E3CEEF28DD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepLib">
-      <UniqueIdentifier>{8BE7F8C2-0505-18B5-10E8-809F2E529009}</UniqueIdentifier>
+      <UniqueIdentifier>{64053F79-0E56-1210-0D4B-2D2059A6B326}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepGProp">
-      <UniqueIdentifier>{6E5724A1-183B-0950-1506-BAC94BF57261}</UniqueIdentifier>
+      <UniqueIdentifier>{3B8D5AFB-17A7-044C-17A1-C3C891A4DBC9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepIntCurveSurface">
-      <UniqueIdentifier>{28601BBB-0214-0BD9-02D5-DF2F0B89AE66}</UniqueIdentifier>
+      <UniqueIdentifier>{5975C2D4-1249-138D-0B03-1040F518BBD6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepTopAdaptor">
-      <UniqueIdentifier>{18D45C41-0A55-0717-0DFD-5197A8BBB89B}</UniqueIdentifier>
+      <UniqueIdentifier>{D3FEF6E0-14F3-02B9-0A79-1BC5483516BF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepBuilderAPI">
-      <UniqueIdentifier>{55071074-11B4-087F-08DE-5DDA0E96DDBB}</UniqueIdentifier>
+      <UniqueIdentifier>{6869B51F-0B56-1476-1101-E821B2FC540C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepApprox">
-      <UniqueIdentifier>{B75A3FC8-093F-0BAF-0AD3-EF8DD147D0D4}</UniqueIdentifier>
+      <UniqueIdentifier>{F21BD4C0-086B-0C2E-156A-99578B427A79}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -207,9 +207,6 @@
     <ClCompile Include="..\..\..\drv\MAT2d\MAT2d_DataMapOfIntegerVec2d_0.cxx">
       <Filter>Source files\MAT2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\MAT2d\MAT2d_Mat2d_0.cxx">
-      <Filter>Source files\MAT2d</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\MAT2d\MAT2d_SequenceNodeOfSequenceOfConnexion_0.cxx">
       <Filter>Source files\MAT2d</Filter>
     </ClCompile>
@@ -241,6 +238,9 @@
       <Filter>Source files\MAT2d</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\MAT2d\MAT2d_MapBiIntHasher.cxx">
+      <Filter>Source files\MAT2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MAT2d\MAT2d_Mat2d.cxx">
       <Filter>Source files\MAT2d</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\MAT2d\MAT2d_MiniPath.cxx">
@@ -285,9 +285,6 @@
     <ClCompile Include="..\..\..\src\Bisector\Bisector_PolyBis.cxx">
       <Filter>Source files\Bisector</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepMAT2d\BRepMAT2d_BisectingLocus_0.cxx">
-      <Filter>Source files\BRepMAT2d</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepMAT2d\BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape_0.cxx">
       <Filter>Source files\BRepMAT2d</Filter>
     </ClCompile>
@@ -306,10 +303,7 @@
     <ClCompile Include="..\..\..\drv\BRepMAT2d\BRepMAT2d_DataMapOfShapeSequenceOfBasicElt_0.cxx">
       <Filter>Source files\BRepMAT2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepMAT2d\BRepMAT2d_SequenceNodeOfSequenceOfBasicElt_0.cxx">
-      <Filter>Source files\BRepMAT2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepMAT2d\BRepMAT2d_SequenceOfBasicElt_0.cxx">
+    <ClCompile Include="..\..\..\src\BRepMAT2d\BRepMAT2d_BisectingLocus.cxx">
       <Filter>Source files\BRepMAT2d</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepMAT2d\BRepMAT2d_Explorer.cxx">
@@ -489,25 +483,10 @@
     <ClCompile Include="..\..\..\src\BRepLib\BRepLib_MakeWire_1.cxx">
       <Filter>Source files\BRepLib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepGProp\BRepGProp_Cinert_0.cxx">
-      <Filter>Source files\BRepGProp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepGProp\BRepGProp_Sinert_0.cxx">
-      <Filter>Source files\BRepGProp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepGProp\BRepGProp_TFunctionOfVinertGK_0.cxx">
-      <Filter>Source files\BRepGProp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepGProp\BRepGProp_UFunctionOfVinertGK_0.cxx">
-      <Filter>Source files\BRepGProp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepGProp\BRepGProp_VinertGK_0.cxx">
-      <Filter>Source files\BRepGProp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepGProp\BRepGProp_Vinert_0.cxx">
-      <Filter>Source files\BRepGProp</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp.cxx">
+      <Filter>Source files\BRepGProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Cinert.cxx">
       <Filter>Source files\BRepGProp</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Domain.cxx">
@@ -517,6 +496,21 @@
       <Filter>Source files\BRepGProp</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Face.cxx">
+      <Filter>Source files\BRepGProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Sinert.cxx">
+      <Filter>Source files\BRepGProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_TFunction.cxx">
+      <Filter>Source files\BRepGProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_UFunction.cxx">
+      <Filter>Source files\BRepGProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Vinert.cxx">
+      <Filter>Source files\BRepGProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_VinertGK.cxx">
       <Filter>Source files\BRepGProp</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepIntCurveSurface\BRepIntCurveSurface_Inter.cxx">
@@ -600,9 +594,6 @@
     <ClCompile Include="..\..\..\src\BRepBuilderAPI\BRepBuilderAPI_Transform.cxx">
       <Filter>Source files\BRepBuilderAPI</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_ApproxLine_0.cxx">
-      <Filter>Source files\BRepApprox</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_Approx_0.cxx">
       <Filter>Source files\BRepApprox</Filter>
     </ClCompile>
@@ -648,9 +639,6 @@
     <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_0.cxx">
       <Filter>Source files\BRepApprox</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_SurfaceTool_0.cxx">
-      <Filter>Source files\BRepApprox</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_TheComputeLineBezierOfApprox_0.cxx">
       <Filter>Source files\BRepApprox</Filter>
     </ClCompile>
@@ -676,6 +664,12 @@
       <Filter>Source files\BRepApprox</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_0.cxx">
+      <Filter>Source files\BRepApprox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepApprox\BRepApprox_ApproxLine.cxx">
+      <Filter>Source files\BRepApprox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepApprox\BRepApprox_SurfaceTool.cxx">
       <Filter>Source files\BRepApprox</Filter>
     </ClCompile>
   </ItemGroup>

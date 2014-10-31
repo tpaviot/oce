@@ -46,7 +46,7 @@ class HLRAlgo_Array1OfPHDat;
 class HLRAlgo_EdgeStatus;
 
 
-
+//! Data structure of a set of Triangles. <br>
 class HLRAlgo_PolyData : public MMgt_TShared {
 
 public:

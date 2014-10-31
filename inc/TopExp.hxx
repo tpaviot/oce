@@ -28,10 +28,7 @@ class TopTools_IndexedDataMapOfShapeListOfShape;
 class TopoDS_Vertex;
 class TopoDS_Edge;
 class TopoDS_Wire;
-class TopExp_StackOfIterator;
 class TopExp_Explorer;
-class TopExp_StackNodeOfStackOfIterator;
-class TopExp_StackIteratorOfStackOfIterator;
 
 
 //! This package   provides  basic tools  to   explore the <br>
@@ -102,10 +99,7 @@ private:
 
 
 
-friend class TopExp_StackOfIterator;
 friend class TopExp_Explorer;
-friend class TopExp_StackNodeOfStackOfIterator;
-friend class TopExp_StackIteratorOfStackOfIterator;
 
 };
 

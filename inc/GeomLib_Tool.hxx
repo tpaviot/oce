@@ -38,7 +38,8 @@ class Geom2d_Curve;
 class gp_Pnt2d;
 
 
-//!   The methods of this class compute the parameter(s) of a given point on a <br>
+//! Provides various methods with Geom2d and Geom curves and surfaces. <br>
+//! The methods of this class compute the parameter(s) of a given point on a <br>
 //! curve or a surface. The point must be located either <br>
 //! on the curve (surface) itself or relatively to the latter at <br>
 //! a distance less than the tolerance value. <br>

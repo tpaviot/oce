@@ -416,18 +416,6 @@
 				Name="Draw"
 				>
 				<File
-					RelativePath="..\..\..\drv\Draw\Draw_DataMapIteratorOfMapOfFunctions_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Draw\Draw_DataMapIteratorOfVMap_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Draw\Draw_DataMapNodeOfMapOfFunctions_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Draw\Draw_DataMapNodeOfVMap_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Draw\Draw_Failure_0.cxx">
 				</File>
 				<File
@@ -437,16 +425,10 @@
 					RelativePath="..\..\..\drv\Draw\Draw_MapOfAsciiString_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Draw\Draw_MapOfFunctions_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Draw\Draw_SequenceNodeOfSequenceOfDrawable3D_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Draw\Draw_SequenceOfDrawable3D_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Draw\Draw_VMap_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Draw\CommandWindow.cxx">

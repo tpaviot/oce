@@ -1,6 +1,3 @@
-#ifndef _Graphic3d_GraphicDriver_HeaderFile
-#include <Graphic3d_GraphicDriver.hxx>
-#endif
 #ifndef _Graphic3d_PriorityDefinitionError_HeaderFile
 #include <Graphic3d_PriorityDefinitionError.hxx>
 #endif
@@ -37,17 +34,11 @@
 #ifndef _TColStd_Array2OfReal_HeaderFile
 #include <TColStd_Array2OfReal.hxx>
 #endif
-#ifndef _Graphic3d_SequenceOfGroup_HeaderFile
-#include <Graphic3d_SequenceOfGroup.hxx>
-#endif
 #ifndef _Graphic3d_MapOfStructure_HeaderFile
 #include <Graphic3d_MapOfStructure.hxx>
 #endif
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Graphic3d_Plotter_HeaderFile
-#include <Graphic3d_Plotter.hxx>
 #endif
 #ifndef _Graphic3d_Vector_HeaderFile
 #include <Graphic3d_Vector.hxx>

@@ -31,7 +31,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class TNaming_NamedShape;
 class TNaming_NamedShapeHasher;
 class TNaming_StdMapNodeOfMapOfNamedShape;
@@ -46,6 +45,8 @@ public:
 
   
   Standard_EXPORT   TNaming_MapOfNamedShape(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   TNaming_MapOfNamedShape(const TNaming_MapOfNamedShape& Other);
   
   Standard_EXPORT     TNaming_MapOfNamedShape& Assign(const TNaming_MapOfNamedShape& Other) ;
     TNaming_MapOfNamedShape& operator =(const TNaming_MapOfNamedShape& Other) 
@@ -79,8 +80,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TNaming_MapOfNamedShape(const TNaming_MapOfNamedShape& Other);
 
 
 

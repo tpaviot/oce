@@ -48,7 +48,11 @@ class TopTools_ListOfShape;
 class TopoDS_Shape;
 
 
-//! class for the creation of Offseting. <br>
+//! This class compute elemenary offset surface. <br>
+//!          Evaluate the offset generated : <br>
+//!               1 - from a face. <br>
+//!               2 - from an edge. <br>
+//!               3 - from a vertex. <br>
 class BRepOffset_Offset  {
 public:
 

@@ -47,6 +47,7 @@ class gp_Pnt2d;
 class TopoDS_Vertex;
 class gp_Vec2d;
 class gp_Pnt;
+class Adaptor3d_Curve;
 
 
 //! Tool for analyzing the edge. <br>
@@ -149,6 +150,12 @@ public:
 //!          If deviation is greater than tolerance of the edge (i.e. <br>
 //!          incorrect flag) returns False, else returns True. <br>
   Standard_EXPORT     Standard_Boolean CheckSameParameter(const TopoDS_Edge& edge,Standard_Real& maxdev,const Standard_Integer NbControl = 23) ;
+  //! Computes the maximal deviation between the two curve <br>
+//!          representations. <br>
+//!          dev is an input/output parameter and contains the computed <br>
+//!          deviation (should be initialized with 0. for the first call). <br>
+//!          Used by CheckSameParameter(). <br>
+  Standard_EXPORT   static  Standard_Boolean ComputeDeviation(const Adaptor3d_Curve& CRef,const Adaptor3d_Curve& Other,const Standard_Boolean SameParameter,Standard_Real& dev,const Standard_Integer NCONTROL) ;
   //! Checks the first edge is overlapped with second edge. <br>
 //!          If distance between two edges is less then theTolOverlap <br>
 //!          edges is overlapped. <br>

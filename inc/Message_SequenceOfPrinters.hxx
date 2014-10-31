@@ -43,6 +43,8 @@ public:
   
       Message_SequenceOfPrinters();
   
+  Standard_EXPORT   Message_SequenceOfPrinters(const Message_SequenceOfPrinters& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Message_SequenceOfPrinters()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Message_SequenceOfPrinters(const Message_SequenceOfPrinters& Other);
 
 
 

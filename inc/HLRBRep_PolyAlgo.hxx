@@ -76,7 +76,8 @@ class HLRAlgo_PolyInternalData;
 class HLRAlgo_EdgeStatus;
 
 
-//!  A framework to compute the shape as seen in <br>
+//! to remove Hidden lines on Shapes with Triangulations. <br>
+//! A framework to compute the shape as seen in <br>
 //! a projection plane. This is done by calculating <br>
 //! the visible and the hidden parts of the shape. <br>
 //! HLRBRep_PolyAlgo works with three types of entity: <br>

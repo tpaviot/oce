@@ -103,7 +103,6 @@
 		<Unit filename="../../../src/XmlMDataXtd/XmlMDataXtd_PlaneDriver.cxx" />
 		<Unit filename="../../../src/XmlMDataXtd/XmlMDataXtd_PointDriver.cxx" />
 		<Unit filename="../../../src/XmlMDataXtd/XmlMDataXtd_ShapeDriver.cxx" />
-		<Unit filename="../../../drv/XmlMNaming/XmlMNaming_Array1OfShape1_0.cxx" />
 		<Unit filename="../../../src/XmlMNaming/XmlMNaming.cxx" />
 		<Unit filename="../../../src/XmlMNaming/XmlMNaming_NamedShapeDriver.cxx" />
 		<Unit filename="../../../src/XmlMNaming/XmlMNaming_NamingDriver.cxx" />

@@ -12,11 +12,7 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <config.h>
-#endif
-
-#ifndef WNT
+#ifndef _WIN32
 
 #include <OSD_Disk.ixx>
 #include <OSD_WhoAmI.hxx>
@@ -27,27 +23,20 @@ const OSD_WhoAmI Iam = OSD_WDisk;
 extern "C" {
 #endif
 
-  //#include <sys/types.h>
-
-#if defined(HAVE_STATVFS) && defined(HAVE_SYS_STATVFS_H)
-# include <sys/statvfs.h>
-#elif defined(HAVE_STATFS) && defined(HAVE_SYS_VFS_H)
-  // Note: we want to use the "vfs" method on HP, not elsewhere
-# include <sys/vfs.h>
-#elif defined(HAVE_STATFS)
-# include <sys/param.h>
-# include <sys/mount.h>
+#if defined(__ANDROID__)
+  #include <sys/vfs.h>
+  #define statvfs  statfs
+  #define fstatvfs fstatfs
+#else
+  #include <sys/statvfs.h>
+  int statvfs(const char *, struct statvfs *);
 #endif
 
 #ifdef __cplusplus
 }
-#endif                                                       
+#endif
 
 #include <errno.h>
-
-#if defined(HAVE_STATVFS)
-extern "C" {int statvfs(const char *, struct statvfs *); }
-#endif
 
 OSD_Disk::OSD_Disk() : myQuotaSize(0) {}
 
@@ -76,18 +65,6 @@ OSD_Path OSD_Disk::Name()const{
 
 Standard_Integer OSD_Disk::DiskSize(){
 
-#if !defined(HAVE_STATVFS)
-
-struct statfs buffer;
-  if ( statfs (DiskName.ToCString(),&buffer) == 0 ){
-    long BSize512 = buffer.f_bsize / 512 ;
-    return buffer.f_blocks * BSize512 ;
-  }
-  else {
-    myError.SetValue(errno, Iam, "OSD_Disk: statfs failed.");
-
-#else
-
 struct statvfs buffer;
 
   if ( statvfs(DiskName.ToCString(),&buffer) == 0 ){
@@ -96,27 +73,9 @@ struct statvfs buffer;
   }
   else {
     myError.SetValue(errno, Iam, "OSD_Disk: statvfs failed.");
-
-#endif
     return 0;
   }
 }
-
-#if !defined(HAVE_STATVFS)
-Standard_Integer OSD_Disk::DiskFree(){
-
-struct statfs buffer;
-  if ( statfs (DiskName.ToCString(),&buffer) == 0 ){
-    long BSize512 = buffer.f_bsize / 512 ;
-    return buffer.f_bavail * BSize512 ;
-  }
-  else {
-    myError.SetValue(errno, Iam, "OSD_Disk: statfs failed.");
-    return 0;
-  }
-}
-
-#else
 
 Standard_Integer OSD_Disk::DiskFree(){
 
@@ -130,8 +89,6 @@ struct statvfs buffer;
     return 0;
   }
 }
-
-#endif
 
 Standard_Integer OSD_Disk::DiskQuota(){
 //@@@ A faire

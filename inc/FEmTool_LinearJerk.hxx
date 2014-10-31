@@ -34,14 +34,16 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class Standard_NotImplemented;
 class Standard_DomainError;
 class TColStd_HArray2OfInteger;
 class math_Matrix;
-class math_Vector;
 
 
-//! Criterion of LinearFlexion To Hermit-Jacobi  elements <br>
+//! Criterion of LinearJerk To Hermit-Jacobi  elements <br>
 class FEmTool_LinearJerk : public FEmTool_ElementaryCriterion {
 
 public:

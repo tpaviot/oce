@@ -47,6 +47,8 @@ public:
   
   Standard_EXPORT   Expr_MapOfNamedUnknown(const Standard_Integer NbBuckets = 1);
   
+  Standard_EXPORT   Expr_MapOfNamedUnknown(const Expr_MapOfNamedUnknown& Other);
+  
   Standard_EXPORT     Expr_MapOfNamedUnknown& Assign(const Expr_MapOfNamedUnknown& Other) ;
     Expr_MapOfNamedUnknown& operator =(const Expr_MapOfNamedUnknown& Other) 
 {
@@ -89,8 +91,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Expr_MapOfNamedUnknown(const Expr_MapOfNamedUnknown& Other);
 
 
 

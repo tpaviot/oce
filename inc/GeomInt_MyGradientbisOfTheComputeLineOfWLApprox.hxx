@@ -43,7 +43,6 @@ class GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox;
 class AppParCurves_HArray1OfConstraintCouple;
-class math_Vector;
 class AppParCurves_MultiCurve;
 
 

@@ -1,6 +1,12 @@
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
 #endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _Prs3d_Drawer_HeaderFile
+#include <Prs3d_Drawer.hxx>
+#endif
 #ifndef _Prs3d_HeaderFile
 #include <Prs3d.hxx>
 #endif

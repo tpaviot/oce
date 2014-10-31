@@ -1,6 +1,9 @@
 #ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
 #endif
+#ifndef _Adaptor3d_HSurfaceOfLinearExtrusion_HeaderFile
+#include <Adaptor3d_HSurfaceOfLinearExtrusion.hxx>
+#endif
 #ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
 #endif
@@ -9,9 +12,6 @@
 #endif
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Adaptor3d_SurfaceOfLinearExtrusion_HeaderFile
-#include <Adaptor3d_SurfaceOfLinearExtrusion.hxx>
 #endif
 #ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>

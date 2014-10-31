@@ -40,6 +40,8 @@ public:
   
       Plate_SequenceOfPinpointConstraint();
   
+  Standard_EXPORT   Plate_SequenceOfPinpointConstraint(const Plate_SequenceOfPinpointConstraint& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Plate_SequenceOfPinpointConstraint()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Plate_SequenceOfPinpointConstraint(const Plate_SequenceOfPinpointConstraint& Other);
 
 
 

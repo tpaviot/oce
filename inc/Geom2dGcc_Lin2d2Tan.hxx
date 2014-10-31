@@ -46,7 +46,7 @@ class Standard_OutOfRange;
 class Geom2dGcc_QualifiedCurve;
 class gp_Pnt2d;
 class gp_Lin2d;
-class Geom2dGcc_MyL2d2Tan;
+class Geom2dGcc_Lin2d2TanIter;
 class Geom2dAdaptor_Curve;
 
 
@@ -156,7 +156,7 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Boolean Add(const Standard_Integer theIndex,const Geom2dGcc_MyL2d2Tan& theLin,const Standard_Real theTol,const Geom2dAdaptor_Curve& theC1,const Geom2dAdaptor_Curve& theC2) ;
+  Standard_EXPORT     Standard_Boolean Add(const Standard_Integer theIndex,const Geom2dGcc_Lin2d2TanIter& theLin,const Standard_Real theTol,const Geom2dAdaptor_Curve& theC1,const Geom2dAdaptor_Curve& theC2) ;
 
 
 Standard_Boolean WellDone;

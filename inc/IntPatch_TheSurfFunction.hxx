@@ -43,12 +43,14 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class StdFail_UndefinedDerivative;
 class Adaptor3d_HSurface;
 class Adaptor3d_HSurfaceTool;
 class IntSurf_Quadric;
 class IntSurf_QuadricTool;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 class gp_Vec;

@@ -160,7 +160,6 @@
 		<Unit filename="../../../drv/MAT2d/MAT2d_DataMapOfIntegerPnt2d_0.cxx" />
 		<Unit filename="../../../drv/MAT2d/MAT2d_DataMapOfIntegerSequenceOfConnexion_0.cxx" />
 		<Unit filename="../../../drv/MAT2d/MAT2d_DataMapOfIntegerVec2d_0.cxx" />
-		<Unit filename="../../../drv/MAT2d/MAT2d_Mat2d_0.cxx" />
 		<Unit filename="../../../drv/MAT2d/MAT2d_SequenceNodeOfSequenceOfConnexion_0.cxx" />
 		<Unit filename="../../../drv/MAT2d/MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve_0.cxx" />
 		<Unit filename="../../../drv/MAT2d/MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry_0.cxx" />
@@ -172,6 +171,7 @@
 		<Unit filename="../../../src/MAT2d/MAT2d_Connexion.cxx" />
 		<Unit filename="../../../src/MAT2d/MAT2d_CutCurve.cxx" />
 		<Unit filename="../../../src/MAT2d/MAT2d_MapBiIntHasher.cxx" />
+		<Unit filename="../../../src/MAT2d/MAT2d_Mat2d.cxx" />
 		<Unit filename="../../../src/MAT2d/MAT2d_MiniPath.cxx" />
 		<Unit filename="../../../src/MAT2d/MAT2d_SketchExplorer.cxx" />
 		<Unit filename="../../../src/MAT2d/MAT2d_Tool2d.cxx" />
@@ -186,15 +186,13 @@
 		<Unit filename="../../../src/Bisector/Bisector_Inter.cxx" />
 		<Unit filename="../../../src/Bisector/Bisector_PointOnBis.cxx" />
 		<Unit filename="../../../src/Bisector/Bisector_PolyBis.cxx" />
-		<Unit filename="../../../drv/BRepMAT2d/BRepMAT2d_BisectingLocus_0.cxx" />
 		<Unit filename="../../../drv/BRepMAT2d/BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape_0.cxx" />
 		<Unit filename="../../../drv/BRepMAT2d/BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt_0.cxx" />
 		<Unit filename="../../../drv/BRepMAT2d/BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape_0.cxx" />
 		<Unit filename="../../../drv/BRepMAT2d/BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt_0.cxx" />
 		<Unit filename="../../../drv/BRepMAT2d/BRepMAT2d_DataMapOfBasicEltShape_0.cxx" />
 		<Unit filename="../../../drv/BRepMAT2d/BRepMAT2d_DataMapOfShapeSequenceOfBasicElt_0.cxx" />
-		<Unit filename="../../../drv/BRepMAT2d/BRepMAT2d_SequenceNodeOfSequenceOfBasicElt_0.cxx" />
-		<Unit filename="../../../drv/BRepMAT2d/BRepMAT2d_SequenceOfBasicElt_0.cxx" />
+		<Unit filename="../../../src/BRepMAT2d/BRepMAT2d_BisectingLocus.cxx" />
 		<Unit filename="../../../src/BRepMAT2d/BRepMAT2d_Explorer.cxx" />
 		<Unit filename="../../../src/BRepMAT2d/BRepMAT2d_LinkTopoBilo.cxx" />
 		<Unit filename="../../../drv/BRepCheck/BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus_0.cxx" />
@@ -254,16 +252,16 @@
 		<Unit filename="../../../src/BRepLib/BRepLib_MakeVertex.cxx" />
 		<Unit filename="../../../src/BRepLib/BRepLib_MakeWire.cxx" />
 		<Unit filename="../../../src/BRepLib/BRepLib_MakeWire_1.cxx" />
-		<Unit filename="../../../drv/BRepGProp/BRepGProp_Cinert_0.cxx" />
-		<Unit filename="../../../drv/BRepGProp/BRepGProp_Sinert_0.cxx" />
-		<Unit filename="../../../drv/BRepGProp/BRepGProp_TFunctionOfVinertGK_0.cxx" />
-		<Unit filename="../../../drv/BRepGProp/BRepGProp_UFunctionOfVinertGK_0.cxx" />
-		<Unit filename="../../../drv/BRepGProp/BRepGProp_VinertGK_0.cxx" />
-		<Unit filename="../../../drv/BRepGProp/BRepGProp_Vinert_0.cxx" />
 		<Unit filename="../../../src/BRepGProp/BRepGProp.cxx" />
+		<Unit filename="../../../src/BRepGProp/BRepGProp_Cinert.cxx" />
 		<Unit filename="../../../src/BRepGProp/BRepGProp_Domain.cxx" />
 		<Unit filename="../../../src/BRepGProp/BRepGProp_EdgeTool.cxx" />
 		<Unit filename="../../../src/BRepGProp/BRepGProp_Face.cxx" />
+		<Unit filename="../../../src/BRepGProp/BRepGProp_Sinert.cxx" />
+		<Unit filename="../../../src/BRepGProp/BRepGProp_TFunction.cxx" />
+		<Unit filename="../../../src/BRepGProp/BRepGProp_UFunction.cxx" />
+		<Unit filename="../../../src/BRepGProp/BRepGProp_Vinert.cxx" />
+		<Unit filename="../../../src/BRepGProp/BRepGProp_VinertGK.cxx" />
 		<Unit filename="../../../src/BRepIntCurveSurface/BRepIntCurveSurface_Inter.cxx" />
 		<Unit filename="../../../drv/BRepTopAdaptor/BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool_0.cxx" />
 		<Unit filename="../../../drv/BRepTopAdaptor/BRepTopAdaptor_DataMapNodeOfMapOfShapeTool_0.cxx" />
@@ -291,7 +289,6 @@
 		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_NurbsConvert.cxx" />
 		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_Sewing.cxx" />
 		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_Transform.cxx" />
-		<Unit filename="../../../drv/BRepApprox/BRepApprox_ApproxLine_0.cxx" />
 		<Unit filename="../../../drv/BRepApprox/BRepApprox_Approx_0.cxx" />
 		<Unit filename="../../../drv/BRepApprox/BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_0.cxx" />
 		<Unit filename="../../../drv/BRepApprox/BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_0.cxx" />
@@ -307,7 +304,6 @@
 		<Unit filename="../../../drv/BRepApprox/BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_0.cxx" />
 		<Unit filename="../../../drv/BRepApprox/BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_0.cxx" />
 		<Unit filename="../../../drv/BRepApprox/BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_0.cxx" />
-		<Unit filename="../../../drv/BRepApprox/BRepApprox_SurfaceTool_0.cxx" />
 		<Unit filename="../../../drv/BRepApprox/BRepApprox_TheComputeLineBezierOfApprox_0.cxx" />
 		<Unit filename="../../../drv/BRepApprox/BRepApprox_TheComputeLineOfApprox_0.cxx" />
 		<Unit filename="../../../drv/BRepApprox/BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_0.cxx" />
@@ -317,5 +313,7 @@
 		<Unit filename="../../../drv/BRepApprox/BRepApprox_TheMultiLineToolOfApprox_0.cxx" />
 		<Unit filename="../../../drv/BRepApprox/BRepApprox_ThePrmPrmSvSurfacesOfApprox_0.cxx" />
 		<Unit filename="../../../drv/BRepApprox/BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_0.cxx" />
+		<Unit filename="../../../src/BRepApprox/BRepApprox_ApproxLine.cxx" />
+		<Unit filename="../../../src/BRepApprox/BRepApprox_SurfaceTool.cxx" />
 	</Project>
 </CodeBlocks_project_file>

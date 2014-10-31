@@ -43,6 +43,8 @@ public:
   
       TColGeom2d_SequenceOfBoundedCurve();
   
+  Standard_EXPORT   TColGeom2d_SequenceOfBoundedCurve(const TColGeom2d_SequenceOfBoundedCurve& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColGeom2d_SequenceOfBoundedCurve()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColGeom2d_SequenceOfBoundedCurve(const TColGeom2d_SequenceOfBoundedCurve& Other);
 
 
 

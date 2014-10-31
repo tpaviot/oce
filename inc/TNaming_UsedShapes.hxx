@@ -57,7 +57,9 @@ class TDF_RelocationTable;
 class TDF_DataSet;
 
 
-//! Set of Shapes Used in a Data from TDF <br>
+//! Global attribute located under root label to store all <br>
+//!          the shapes handled by the framework <br>
+//!          Set of Shapes Used in a Data from TDF <br>
 //!          Only one instance by Data, it always <br>
 //!          Stored as Attribute of The Root. <br>
 class TNaming_UsedShapes : public TDF_Attribute {

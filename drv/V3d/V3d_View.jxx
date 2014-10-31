@@ -4,9 +4,6 @@
 #ifndef _Aspect_Window_HeaderFile
 #include <Aspect_Window.hxx>
 #endif
-#ifndef _Graphic3d_Plotter_HeaderFile
-#include <Graphic3d_Plotter.hxx>
-#endif
 #ifndef _Aspect_Grid_HeaderFile
 #include <Aspect_Grid.hxx>
 #endif
@@ -55,14 +52,11 @@
 #ifndef _Aspect_ColorScale_HeaderFile
 #include <Aspect_ColorScale.hxx>
 #endif
-#ifndef _Visual3d_ViewOrientation_HeaderFile
-#include <Visual3d_ViewOrientation.hxx>
-#endif
-#ifndef _Visual3d_ViewMapping_HeaderFile
-#include <Visual3d_ViewMapping.hxx>
-#endif
 #ifndef _Aspect_GradientBackground_HeaderFile
 #include <Aspect_GradientBackground.hxx>
+#endif
+#ifndef _gp_Dir_HeaderFile
+#include <gp_Dir.hxx>
 #endif
 #ifndef _Graphic3d_Vector_HeaderFile
 #include <Graphic3d_Vector.hxx>
@@ -72,6 +66,9 @@
 #endif
 #ifndef _gp_Ax3_HeaderFile
 #include <gp_Ax3.hxx>
+#endif
+#ifndef _gp_XYZ_HeaderFile
+#include <gp_XYZ.hxx>
 #endif
 #ifndef _V3d_View_HeaderFile
 #include <V3d_View.hxx>

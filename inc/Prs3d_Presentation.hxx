@@ -16,12 +16,6 @@
 #include <Handle_Prs3d_Presentation.hxx>
 #endif
 
-#ifndef _Handle_Graphic3d_Structure_HeaderFile
-#include <Handle_Graphic3d_Structure.hxx>
-#endif
-#ifndef _Handle_Graphic3d_Group_HeaderFile
-#include <Handle_Graphic3d_Group.hxx>
-#endif
 #ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
 #endif
@@ -30,6 +24,9 @@
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
+#endif
+#ifndef _Handle_Graphic3d_Structure_HeaderFile
+#include <Handle_Graphic3d_Structure.hxx>
 #endif
 #ifndef _Handle_Graphic3d_DataStructureManager_HeaderFile
 #include <Handle_Graphic3d_DataStructureManager.hxx>
@@ -46,14 +43,17 @@
 #ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
 #endif
-class Graphic3d_Structure;
-class Graphic3d_Group;
+#ifndef _Handle_Graphic3d_Group_HeaderFile
+#include <Handle_Graphic3d_Group.hxx>
+#endif
 class Prs3d_Root;
 class Graphic3d_StructureManager;
+class Graphic3d_Structure;
 class Graphic3d_DataStructureManager;
 class TColStd_Array2OfReal;
 class Prs3d_ShadingAspect;
 class Geom_Transformation;
+class Graphic3d_Group;
 
 
 //! Defines a presentation object which can be displayed, <br>
@@ -64,13 +64,16 @@ class Geom_Transformation;
 //! This presentation object is used to give display <br>
 //! attributes defined at this level to <br>
 //! ApplicationInteractiveServices classes at the level above. <br>
+//! A presentation object is attached to a given Viewer. <br>
 class Prs3d_Presentation : public Graphic3d_Structure {
 
 public:
 
   //! Constructs a presentation object <br>
 //! if <Init> is false, no color initialization is done. <br>
-  Standard_EXPORT   Prs3d_Presentation(const Handle(Graphic3d_StructureManager)& aStructureManager,const Standard_Boolean Init = Standard_True);
+  Standard_EXPORT   Prs3d_Presentation(const Handle(Graphic3d_StructureManager)& theStructManager,const Standard_Boolean theToInit = Standard_True);
+  //! Constructs a presentation object. <br>
+  Standard_EXPORT   Prs3d_Presentation(const Handle(Graphic3d_StructureManager)& theStructManager,const Handle(Prs3d_Presentation)& thePrs);
   
   Standard_EXPORT   virtual  Handle_Graphic3d_Structure Compute(const Handle(Graphic3d_DataStructureManager)& aProjector) ;
   //! Returns the new Structure defined for the new visualization <br>
@@ -85,8 +88,9 @@ public:
   Standard_EXPORT     void Color(const Quantity_NameOfColor aColor) ;
   
   Standard_EXPORT     void BoundBox() ;
-  
-  Standard_EXPORT     void Display() ;
+  //! marks the structure <me> representing wired structure needed for <br>
+//!          highlight only so it won't be added to BVH tree. <br>
+  Standard_EXPORT   virtual  void SetIsForHighlight(const Standard_Boolean isForHighlight) ;
   
   Standard_EXPORT     void SetShadingAspect(const Handle(Prs3d_ShadingAspect)& aShadingAspect) ;
   
@@ -101,11 +105,6 @@ public:
   Standard_EXPORT     void Move(const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z) ;
   
   Standard_EXPORT     Handle_Geom_Transformation Transformation() const;
-  //! removes the whole content of the presentation. <br>
-//!          Does not remove the other connected presentations. <br>
-//!	        if WithDestruction == Standard_False then <br>
-//!		clears all the groups of primitives in the structure. <br>
-  Standard_EXPORT   virtual  void Clear(const Standard_Boolean WithDestruction = Standard_True) ;
   
   Standard_EXPORT     void Connect(const Handle(Prs3d_Presentation)& aPresentation) ;
   
@@ -132,11 +131,7 @@ private:
 
   
   Standard_EXPORT     Handle_Graphic3d_Group CurrentGroup() const;
-  
-  Standard_EXPORT     Handle_Graphic3d_Group NewGroup() ;
 
-Handle_Graphic3d_Structure myStruct;
-Handle_Graphic3d_Group myCurrentGroup;
 
 
 };

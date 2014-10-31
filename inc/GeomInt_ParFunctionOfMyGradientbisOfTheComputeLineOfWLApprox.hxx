@@ -58,7 +58,6 @@ class GeomInt_TheMultiLineOfWLApprox;
 class GeomInt_TheMultiLineToolOfWLApprox;
 class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox;
-class math_Vector;
 class AppParCurves_MultiCurve;
 
 

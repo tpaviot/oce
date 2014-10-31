@@ -5,9 +5,6 @@
 
 #include <IntTools_MapOfCurveSample.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
 #ifndef _IntTools_CurveRangeSample_HeaderFile
 #include <IntTools_CurveRangeSample.hxx>
 #endif

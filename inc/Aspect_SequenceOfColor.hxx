@@ -40,6 +40,8 @@ public:
   
       Aspect_SequenceOfColor();
   
+  Standard_EXPORT   Aspect_SequenceOfColor(const Aspect_SequenceOfColor& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Aspect_SequenceOfColor()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Aspect_SequenceOfColor(const Aspect_SequenceOfColor& Other);
 
 
 

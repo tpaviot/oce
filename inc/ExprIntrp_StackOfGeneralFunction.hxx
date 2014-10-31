@@ -19,22 +19,22 @@
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _Handle_Expr_GeneralFunction_HeaderFile
 #include <Handle_Expr_GeneralFunction.hxx>
 #endif
-#ifndef _Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction_HeaderFile
-#include <Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction.hxx>
+#ifndef _Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction_HeaderFile
+#include <Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
 class Standard_NoSuchObject;
-class ExprIntrp_StackIteratorOfStackOfGeneralFunction;
+class ExprIntrp_ListIteratorOfStackOfGeneralFunction;
 class Expr_GeneralFunction;
-class ExprIntrp_StackNodeOfStackOfGeneralFunction;
+class ExprIntrp_ListNodeOfStackOfGeneralFunction;
 
 
 
@@ -46,21 +46,15 @@ public:
   
   Standard_EXPORT   ExprIntrp_StackOfGeneralFunction();
   
-  Standard_EXPORT    const ExprIntrp_StackOfGeneralFunction& Assign(const ExprIntrp_StackOfGeneralFunction& Other) ;
-   const ExprIntrp_StackOfGeneralFunction& operator =(const ExprIntrp_StackOfGeneralFunction& Other) 
+  Standard_EXPORT   ExprIntrp_StackOfGeneralFunction(const ExprIntrp_StackOfGeneralFunction& Other);
+  
+  Standard_EXPORT     void Assign(const ExprIntrp_StackOfGeneralFunction& Other) ;
+    void operator=(const ExprIntrp_StackOfGeneralFunction& Other) 
 {
-  return Assign(Other);
+  Assign(Other);
 }
   
-        Standard_Boolean IsEmpty() const;
-  
-        Standard_Integer Depth() const;
-  
-  Standard_EXPORT    const Handle_Expr_GeneralFunction& Top() const;
-  
-  Standard_EXPORT     void Push(const Handle(Expr_GeneralFunction)& I) ;
-  
-  Standard_EXPORT     void Pop() ;
+  Standard_EXPORT     Standard_Integer Extent() const;
   
   Standard_EXPORT     void Clear() ;
 ~ExprIntrp_StackOfGeneralFunction()
@@ -68,10 +62,38 @@ public:
   Clear();
 }
   
-  Standard_EXPORT     Handle_Expr_GeneralFunction& ChangeTop() ;
+        Standard_Boolean IsEmpty() const;
+  
+  Standard_EXPORT     void Prepend(const Handle(Expr_GeneralFunction)& I) ;
+  
+  Standard_EXPORT     void Prepend(const Handle(Expr_GeneralFunction)& I,ExprIntrp_ListIteratorOfStackOfGeneralFunction& theIt) ;
+  
+  Standard_EXPORT     void Prepend(ExprIntrp_StackOfGeneralFunction& Other) ;
+  
+  Standard_EXPORT     void Append(const Handle(Expr_GeneralFunction)& I) ;
+  
+  Standard_EXPORT     void Append(const Handle(Expr_GeneralFunction)& I,ExprIntrp_ListIteratorOfStackOfGeneralFunction& theIt) ;
+  
+  Standard_EXPORT     void Append(ExprIntrp_StackOfGeneralFunction& Other) ;
+  
+  Standard_EXPORT     Handle_Expr_GeneralFunction& First() const;
+  
+  Standard_EXPORT     Handle_Expr_GeneralFunction& Last() const;
+  
+  Standard_EXPORT     void RemoveFirst() ;
+  
+  Standard_EXPORT     void Remove(ExprIntrp_ListIteratorOfStackOfGeneralFunction& It) ;
+  
+  Standard_EXPORT     void InsertBefore(const Handle(Expr_GeneralFunction)& I,ExprIntrp_ListIteratorOfStackOfGeneralFunction& It) ;
+  
+  Standard_EXPORT     void InsertBefore(ExprIntrp_StackOfGeneralFunction& Other,ExprIntrp_ListIteratorOfStackOfGeneralFunction& It) ;
+  
+  Standard_EXPORT     void InsertAfter(const Handle(Expr_GeneralFunction)& I,ExprIntrp_ListIteratorOfStackOfGeneralFunction& It) ;
+  
+  Standard_EXPORT     void InsertAfter(ExprIntrp_StackOfGeneralFunction& Other,ExprIntrp_ListIteratorOfStackOfGeneralFunction& It) ;
 
 
-friend class ExprIntrp_StackIteratorOfStackOfGeneralFunction;
+friend class ExprIntrp_ListIteratorOfStackOfGeneralFunction;
 
 
 
@@ -83,39 +105,37 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ExprIntrp_StackOfGeneralFunction(const ExprIntrp_StackOfGeneralFunction& Other);
 
 
-Standard_Address myTop;
-Standard_Integer myDepth;
+Standard_Address myFirst;
+Standard_Address myLast;
 
 
 };
 
 #define Item Handle_Expr_GeneralFunction
 #define Item_hxx <Expr_GeneralFunction.hxx>
-#define TCollection_StackNode ExprIntrp_StackNodeOfStackOfGeneralFunction
-#define TCollection_StackNode_hxx <ExprIntrp_StackNodeOfStackOfGeneralFunction.hxx>
-#define TCollection_StackIterator ExprIntrp_StackIteratorOfStackOfGeneralFunction
-#define TCollection_StackIterator_hxx <ExprIntrp_StackIteratorOfStackOfGeneralFunction.hxx>
-#define Handle_TCollection_StackNode Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction
-#define TCollection_StackNode_Type_() ExprIntrp_StackNodeOfStackOfGeneralFunction_Type_()
-#define TCollection_Stack ExprIntrp_StackOfGeneralFunction
-#define TCollection_Stack_hxx <ExprIntrp_StackOfGeneralFunction.hxx>
+#define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralFunction
+#define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralFunction.hxx>
+#define TCollection_ListIterator ExprIntrp_ListIteratorOfStackOfGeneralFunction
+#define TCollection_ListIterator_hxx <ExprIntrp_ListIteratorOfStackOfGeneralFunction.hxx>
+#define Handle_TCollection_ListNode Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction
+#define TCollection_ListNode_Type_() ExprIntrp_ListNodeOfStackOfGeneralFunction_Type_()
+#define TCollection_List ExprIntrp_StackOfGeneralFunction
+#define TCollection_List_hxx <ExprIntrp_StackOfGeneralFunction.hxx>
 
-#include <TCollection_Stack.lxx>
+#include <TCollection_List.lxx>
 
 #undef Item
 #undef Item_hxx
-#undef TCollection_StackNode
-#undef TCollection_StackNode_hxx
-#undef TCollection_StackIterator
-#undef TCollection_StackIterator_hxx
-#undef Handle_TCollection_StackNode
-#undef TCollection_StackNode_Type_
-#undef TCollection_Stack
-#undef TCollection_Stack_hxx
+#undef TCollection_ListNode
+#undef TCollection_ListNode_hxx
+#undef TCollection_ListIterator
+#undef TCollection_ListIterator_hxx
+#undef Handle_TCollection_ListNode
+#undef TCollection_ListNode_Type_
+#undef TCollection_List
+#undef TCollection_List_hxx
 
 
 // other Inline functions and methods (like "C++: function call" methods)

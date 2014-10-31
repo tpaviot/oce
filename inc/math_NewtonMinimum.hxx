@@ -40,7 +40,6 @@
 class StdFail_NotDone;
 class Standard_DimensionError;
 class math_MultipleVarFunctionWithHessian;
-class math_Vector;
 
 
 

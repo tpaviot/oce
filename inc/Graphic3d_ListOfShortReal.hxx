@@ -45,6 +45,8 @@ public:
   
   Standard_EXPORT   Graphic3d_ListOfShortReal();
   
+  Standard_EXPORT   Graphic3d_ListOfShortReal(const Graphic3d_ListOfShortReal& Other);
+  
   Standard_EXPORT     void Assign(const Graphic3d_ListOfShortReal& Other) ;
     void operator=(const Graphic3d_ListOfShortReal& Other) 
 {
@@ -102,8 +104,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Graphic3d_ListOfShortReal(const Graphic3d_ListOfShortReal& Other);
 
 
 Standard_Address myFirst;

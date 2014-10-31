@@ -49,6 +49,9 @@
 #ifndef _Handle_TDF_Data_HeaderFile
 #include <Handle_TDF_Data.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class TDataStd_Real;
 class TFunction_Function;
 class TDataStd_Integer;
@@ -65,7 +68,6 @@ class BRepAlgoAPI_BooleanOperation;
 class TDF_Data;
 class TopTools_ListOfShape;
 class TCollection_AsciiString;
-class Draw_Interpretor;
 class DNaming_BoxDriver;
 class DNaming_CylinderDriver;
 class DNaming_SphereDriver;

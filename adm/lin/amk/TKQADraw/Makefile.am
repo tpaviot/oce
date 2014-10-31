@@ -66,16 +66,12 @@ libTKQADraw_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKXDESTEP/libTKXDESTEP.la \
 ../TKXSDRAW/libTKXSDRAW.la \
 ../TKSTL/libTKSTL.la \
-../TKAdvTools/libTKAdvTools.la \
 ../TKVoxel/libTKVoxel.la \
 ../TKShapeSchema/libTKShapeSchema.la \
 ../TKPShape/libTKPShape.la \
 $(STLPort_LIB) $(CSF_gdi32_LIB) $(CSF_advapi32_LIB) $(CSF_user32_LIB) $(CSF_TBB_LIB) 
 
 libTKQADraw_la_SOURCES = \
-@top_srcdir@/drv/QADNaming/QADNaming_DataMapIteratorOfDataMapOfShapeOfName_0.cxx \
-@top_srcdir@/drv/QADNaming/QADNaming_DataMapNodeOfDataMapOfShapeOfName_0.cxx \
-@top_srcdir@/drv/QADNaming/QADNaming_DataMapOfShapeOfName_0.cxx \
 @top_srcdir@/drv/QANCollection/QANCollection_DataMapIteratorOfDataMapOfRealPnt_0.cxx \
 @top_srcdir@/drv/QANCollection/QANCollection_DataMapNodeOfDataMapOfRealPnt_0.cxx \
 @top_srcdir@/drv/QANCollection/QANCollection_DataMapOfRealPnt_0.cxx \
@@ -87,13 +83,6 @@ libTKQADraw_la_SOURCES = \
 @top_srcdir@/drv/QANCollection/QANCollection_ListIteratorOfListOfPnt_0.cxx \
 @top_srcdir@/drv/QANCollection/QANCollection_ListNodeOfListOfPnt_0.cxx \
 @top_srcdir@/drv/QANCollection/QANCollection_ListOfPnt_0.cxx \
-@top_srcdir@/drv/QANCollection/QANCollection_QueueNodeOfQueueOfPnt_0.cxx \
-@top_srcdir@/drv/QANCollection/QANCollection_QueueOfPnt_0.cxx \
-@top_srcdir@/drv/QANCollection/QANCollection_SListNodeOfSListOfPnt_0.cxx \
-@top_srcdir@/drv/QANCollection/QANCollection_SListOfPnt_0.cxx \
-@top_srcdir@/drv/QANCollection/QANCollection_StackIteratorOfStackOfPnt_0.cxx \
-@top_srcdir@/drv/QANCollection/QANCollection_StackNodeOfStackOfPnt_0.cxx \
-@top_srcdir@/drv/QANCollection/QANCollection_StackOfPnt_0.cxx \
 @top_srcdir@/src/QABugs/QABugs.cxx \
 @top_srcdir@/src/QABugs/QABugs_1.cxx \
 @top_srcdir@/src/QABugs/QABugs_10.cxx \
@@ -125,12 +114,12 @@ libTKQADraw_la_SOURCES = \
 @top_srcdir@/src/QADraw/QADraw.cxx \
 @top_srcdir@/src/QADraw/QADraw_Additional.cxx \
 @top_srcdir@/src/QANCollection/QANCollection.cxx \
-@top_srcdir@/src/QANCollection/QANCollection1.cxx \
-@top_srcdir@/src/QANCollection/QANCollection2.cxx \
-@top_srcdir@/src/QANCollection/QANCollection3.cxx \
-@top_srcdir@/src/QANCollection/QANCollection4.cxx \
-@top_srcdir@/src/QANCollection/QANCollectionTest.cxx \
+@top_srcdir@/src/QANCollection/QANCollection_Alloc.cxx \
 @top_srcdir@/src/QANCollection/QANCollection_Common.cxx \
+@top_srcdir@/src/QANCollection/QANCollection_Perf.cxx \
+@top_srcdir@/src/QANCollection/QANCollection_Simple.cxx \
+@top_srcdir@/src/QANCollection/QANCollection_Stl.cxx \
+@top_srcdir@/src/QANCollection/QANCollection_Test.cxx \
 @top_srcdir@/src/QANewBRepNaming/QANewBRepNaming.cxx \
 @top_srcdir@/src/QANewBRepNaming/QANewBRepNaming_BooleanOperation.cxx \
 @top_srcdir@/src/QANewBRepNaming/QANewBRepNaming_BooleanOperationFeat.cxx \

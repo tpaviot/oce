@@ -41,7 +41,7 @@ class gp_Vec;
 
 
 //! Provides  evaluation   methods on an   algorithmic <br>
-//!          patch   defined by  its   boundaries and  blending <br>
+//!          patch (based on 4 Curves) defined by  its   boundaries and  blending <br>
 //!          functions. <br>
 class GeomFill_CoonsAlgPatch : public MMgt_TShared {
 

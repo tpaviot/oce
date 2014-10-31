@@ -25,10 +25,12 @@
 #ifndef _Handle_HLRTopoBRep_OutLiner_HeaderFile
 #include <Handle_HLRTopoBRep_OutLiner.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class HLRAlgo_Projector;
 class TopoDS_Shape;
 class HLRTopoBRep_OutLiner;
-class Draw_Interpretor;
 class HLRTest_ShapeData;
 class HLRTest_DrawableEdgeTool;
 class HLRTest_DrawablePolyEdgeTool;

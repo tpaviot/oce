@@ -31,8 +31,8 @@
 #ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
 #endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
-#include <Handle_TColStd_HArray1OfReal.hxx>
+#ifndef _Handle_TColStd_HSequenceOfReal_HeaderFile
+#include <Handle_TColStd_HSequenceOfReal.hxx>
 #endif
 #ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
@@ -60,7 +60,7 @@
 #endif
 class Adaptor3d_HSurface;
 class Adaptor2d_HCurve2d;
-class TColStd_HArray1OfReal;
+class TColStd_HSequenceOfReal;
 class Standard_NoSuchObject;
 class Standard_DomainError;
 class Standard_OutOfRange;
@@ -224,7 +224,7 @@ gp_Circ myCirc;
 gp_Lin myLin;
 Handle_Adaptor3d_HSurface myFirstSurf;
 Handle_Adaptor3d_HSurface myLastSurf;
-Handle_TColStd_HArray1OfReal myIntervals;
+Handle_TColStd_HSequenceOfReal myIntervals;
 GeomAbs_Shape myIntCont;
 
 

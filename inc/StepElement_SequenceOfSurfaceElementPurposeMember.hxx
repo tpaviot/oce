@@ -43,6 +43,8 @@ public:
   
       StepElement_SequenceOfSurfaceElementPurposeMember();
   
+  Standard_EXPORT   StepElement_SequenceOfSurfaceElementPurposeMember(const StepElement_SequenceOfSurfaceElementPurposeMember& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~StepElement_SequenceOfSurfaceElementPurposeMember()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StepElement_SequenceOfSurfaceElementPurposeMember(const StepElement_SequenceOfSurfaceElementPurposeMember& Other);
 
 
 

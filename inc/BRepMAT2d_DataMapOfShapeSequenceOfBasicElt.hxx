@@ -34,7 +34,7 @@
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TopoDS_Shape;
-class BRepMAT2d_SequenceOfBasicElt;
+class MAT_SequenceOfBasicElt;
 class TopTools_ShapeMapHasher;
 class BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt;
 class BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt;
@@ -63,20 +63,20 @@ public:
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const TopoDS_Shape& K,const BRepMAT2d_SequenceOfBasicElt& I) ;
+  Standard_EXPORT     Standard_Boolean Bind(const TopoDS_Shape& K,const MAT_SequenceOfBasicElt& I) ;
   
   Standard_EXPORT     Standard_Boolean IsBound(const TopoDS_Shape& K) const;
   
   Standard_EXPORT     Standard_Boolean UnBind(const TopoDS_Shape& K) ;
   
-  Standard_EXPORT    const BRepMAT2d_SequenceOfBasicElt& Find(const TopoDS_Shape& K) const;
-   const BRepMAT2d_SequenceOfBasicElt& operator()(const TopoDS_Shape& K) const
+  Standard_EXPORT    const MAT_SequenceOfBasicElt& Find(const TopoDS_Shape& K) const;
+   const MAT_SequenceOfBasicElt& operator()(const TopoDS_Shape& K) const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     BRepMAT2d_SequenceOfBasicElt& ChangeFind(const TopoDS_Shape& K) ;
-    BRepMAT2d_SequenceOfBasicElt& operator()(const TopoDS_Shape& K) 
+  Standard_EXPORT     MAT_SequenceOfBasicElt& ChangeFind(const TopoDS_Shape& K) ;
+    MAT_SequenceOfBasicElt& operator()(const TopoDS_Shape& K) 
 {
   return ChangeFind(K);
 }

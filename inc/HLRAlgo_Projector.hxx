@@ -42,6 +42,7 @@ class gp_Lin;
 
 
 //! Implements a  projector object. <br>
+//! To transform and project Points and Planes. <br>
 //! This object is designed to be used in the <br>
 //! removal of hidden lines and is returned by the <br>
 //! Prs3d_Projector::Projector function. <br>

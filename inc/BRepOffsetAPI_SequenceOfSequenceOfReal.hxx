@@ -40,6 +40,8 @@ public:
   
       BRepOffsetAPI_SequenceOfSequenceOfReal();
   
+  Standard_EXPORT   BRepOffsetAPI_SequenceOfSequenceOfReal(const BRepOffsetAPI_SequenceOfSequenceOfReal& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~BRepOffsetAPI_SequenceOfSequenceOfReal()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRepOffsetAPI_SequenceOfSequenceOfReal(const BRepOffsetAPI_SequenceOfSequenceOfReal& Other);
 
 
 

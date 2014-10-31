@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   TColStd_ListOfTransient();
   
+  Standard_EXPORT   TColStd_ListOfTransient(const TColStd_ListOfTransient& Other);
+  
   Standard_EXPORT     void Assign(const TColStd_ListOfTransient& Other) ;
     void operator=(const TColStd_ListOfTransient& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_ListOfTransient(const TColStd_ListOfTransient& Other);
 
 
 Standard_Address myFirst;

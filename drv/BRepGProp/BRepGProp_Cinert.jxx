@@ -1,0 +1,9 @@
+#ifndef _BRepAdaptor_Curve_HeaderFile
+#include <BRepAdaptor_Curve.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _BRepGProp_Cinert_HeaderFile
+#include <BRepGProp_Cinert.hxx>
+#endif

@@ -41,7 +41,7 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-
+//! attribute to store centroid <br>
 class XCAFDoc_Centroid : public TDF_Attribute {
 
 public:

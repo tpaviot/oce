@@ -36,10 +36,11 @@ uses
     Curve           from Geom,
     Array1OfPnt     from TColgp,
     Array1OfPnt2d   from TColgp,
-    HArray1OfPnt     from TColgp,
+    HArray1OfPnt    from TColgp,
     Box2d           from Bnd,
-    Location                 from TopLoc, 
-    SensitiveEntity   from Select3D
+    Location        from TopLoc,
+    SensitiveEntity from Select3D,
+    XYZ             from gp
 
 raises
     ConstructionError from Standard,
@@ -50,7 +51,7 @@ is
     Create (OwnerId      : EntityOwner from SelectBasics;
             TheCurve     : Curve from Geom;
             MaxPoints    : Integer = 17)
-     returns mutable SensitiveCurve;
+     returns SensitiveCurve;
         ---Level: Public 
         ---Purpose: Constructs a sensitive curve object defined by the
         -- owner OwnerId, the curve TheCurve, and the
@@ -58,14 +59,14 @@ is
 
     Create (OwnerId      : EntityOwner from SelectBasics;
             ThePoints    : HArray1OfPnt from TColgp)
-     returns mutable SensitiveCurve;
+     returns SensitiveCurve;
         ---Level: Public 
         ---Purpose: Constructs a sensitive curve object defined by the
         -- owner OwnerId and the set of points ThePoints.
         
     Create (OwnerId      : EntityOwner from SelectBasics;
             ThePoints    : Array1OfPnt from TColgp)
-     returns mutable SensitiveCurve;
+     returns SensitiveCurve;
         ---Level: Public 
         ---Purpose: Creation of Sensitive Curve from Points.
         --          Warning : This Method should disappear in the next version...
@@ -119,6 +120,17 @@ is
     is redefined virtual; 
         ---Level: Public 
         ---Purpose: Returns the copy of this
+
+    ComputeDepth(me;
+                 thePickLine : Lin from gp;
+                 theP1       : XYZ from gp;
+                 theP2       : XYZ from gp;
+                 theDepth    : out Real from Standard)
+    ---Purpose: Computes the depth by means of intersection of
+    --          a segment of the curve defined by <theP1, theP2> and
+    --          the eye-line <thePickLine>.
+    returns Boolean from Standard
+    is protected;
 
 fields
     mylastseg : Integer        from Standard;

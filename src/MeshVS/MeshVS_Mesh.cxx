@@ -24,8 +24,6 @@
 #include <Select3D_SensitivePoint.hxx>
 #include <SelectMgr_Selection.hxx>
 
-#include <Aspect_MarkerStyle.hxx>
-#include <Aspect_LineStyle.hxx>
 #include <Aspect_InteriorStyle.hxx>
 
 #include <Prs3d_PointAspect.hxx>
@@ -328,7 +326,7 @@ void MeshVS_Mesh::ComputeSelection ( const Handle(SelectMgr_Selection)& theSelec
           TColStd_MapIteratorOfPackedMapOfInteger anIterN( anAllNodesMap );
           for( ; anIterN.More(); anIterN.Next() )
             if( myDataSource->GetGeom( anIterN.Key(), Standard_False, aCoords, NbNodes, aType ) &&
-                !IsHiddenNode( anIterN.Key() ) )
+                IsSelectableNode( anIterN.Key() ) )
               theSelection->Add( new Select3D_SensitivePoint( myWholeMeshOwner, gp_Pnt ( aCoords(1), aCoords(2), aCoords(3) ) ) );
         }
         break;
@@ -1024,12 +1022,6 @@ void MeshVS_Mesh::HilightOwnerWithColor ( const Handle(PrsMgr_PresentationManage
   if ( myHilighter.IsNull() )
     return;
 
-  SelectMgr_SequenceOfOwner theOwners;
-  //new functionality
-
-  //if ( myHilightPrs.IsNull() )
-  //  myHilightPrs = new Prs3d_Presentation ( PM->StructureManager() );
-
   Handle( Prs3d_Presentation ) aHilightPrs;
   aHilightPrs = GetHilightPresentation( PM );
 
@@ -1113,8 +1105,10 @@ void MeshVS_Mesh::HilightOwnerWithColor ( const Handle(PrsMgr_PresentationManage
     }    
   }
 
-  if( PM->IsImmediateModeOn() )
-    PM->AddToImmediateList( aHilightPrs );
+  if (PM->IsImmediateModeOn())
+  {
+    PM->AddToImmediateList (aHilightPrs);
+  }
   myHilighter->SetDrawer ( 0 );
 }
 

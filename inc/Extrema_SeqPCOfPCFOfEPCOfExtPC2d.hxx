@@ -40,6 +40,8 @@ public:
   
       Extrema_SeqPCOfPCFOfEPCOfExtPC2d();
   
+  Standard_EXPORT   Extrema_SeqPCOfPCFOfEPCOfExtPC2d(const Extrema_SeqPCOfPCFOfEPCOfExtPC2d& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Extrema_SeqPCOfPCFOfEPCOfExtPC2d()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Extrema_SeqPCOfPCFOfEPCOfExtPC2d(const Extrema_SeqPCOfPCFOfEPCOfExtPC2d& Other);
 
 
 

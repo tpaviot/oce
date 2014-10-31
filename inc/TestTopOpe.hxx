@@ -16,13 +16,15 @@
 #include <Standard_Macro.hxx>
 #endif
 
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 #ifndef _Handle_TopOpeBRepBuild_HBuilder_HeaderFile
 #include <Handle_TopOpeBRepBuild_HBuilder.hxx>
 #endif
 #ifndef _Handle_TopOpeBRepDS_HDataStructure_HeaderFile
 #include <Handle_TopOpeBRepDS_HDataStructure.hxx>
 #endif
-class Draw_Interpretor;
 class TopOpeBRepBuild_HBuilder;
 class TopOpeBRepDS_HDataStructure;
 class TopoDS_Shape;

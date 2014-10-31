@@ -12,9 +12,6 @@
 #ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
 #endif
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
 #endif

@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1596071B0FDD196B192901C5"
+               BlueprintIdentifier = "071E07A31763194D0B030241"
                BuildableName = "libTKV3d.dylib"
                BlueprintName = "TKV3d"
                ReferencedContainer = "container:TKV3d.xcodeproj">

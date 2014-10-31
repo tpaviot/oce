@@ -40,12 +40,14 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class StdFail_UndefinedDerivative;
 class BRepAdaptor_Surface;
 class BRepApprox_SurfaceTool;
 class IntSurf_Quadric;
 class IntSurf_QuadricTool;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 class gp_Vec;

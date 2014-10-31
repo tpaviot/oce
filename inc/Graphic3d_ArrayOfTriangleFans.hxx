@@ -27,7 +27,7 @@
 #endif
 
 
-
+//! Contains triangles fan array definition <br>
 class Graphic3d_ArrayOfTriangleFans : public Graphic3d_ArrayOfPrimitives {
 
 public:

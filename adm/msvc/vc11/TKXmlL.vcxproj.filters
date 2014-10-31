@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{15F34B11-17F7-017E-02FF-5320A18355CA}</UniqueIdentifier>
+      <UniqueIdentifier>{19048537-123D-0182-03FA-6D59AA19DF82}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XmlLDrivers">
-      <UniqueIdentifier>{7563EA1F-036A-14BD-04B8-656FD791900C}</UniqueIdentifier>
+      <UniqueIdentifier>{A110FEF6-01C1-17C3-0D04-6BC8E9536D04}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XmlMDF">
-      <UniqueIdentifier>{880E60C6-075D-0E16-03B1-2BB2DDEBE984}</UniqueIdentifier>
+      <UniqueIdentifier>{1A255DE8-0917-1927-1892-B53767486DEB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XmlMDataStd">
-      <UniqueIdentifier>{2FF2B6EE-1827-1657-0F06-2F1E9781793F}</UniqueIdentifier>
+      <UniqueIdentifier>{28770A29-0544-0A9A-195B-D45024D97FE9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XmlMDocStd">
-      <UniqueIdentifier>{3F29D26D-1533-0566-17B1-DEA63571E6A2}</UniqueIdentifier>
+      <UniqueIdentifier>{5CCD35BA-07EA-0574-1156-2B44DFB6B283}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XmlMFunction">
-      <UniqueIdentifier>{DCD374FB-0823-071F-168F-8D8038DD065C}</UniqueIdentifier>
+      <UniqueIdentifier>{81E70956-0053-0A4A-1773-8E0DD82EF5BB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XmlObjMgt">
-      <UniqueIdentifier>{CC92DF1B-05B2-115A-170E-716BCC5C2F3B}</UniqueIdentifier>
+      <UniqueIdentifier>{06F32AA4-04E1-013D-03CC-C1FFF089EB14}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +175,9 @@
       <Filter>Source files\XmlMFunction</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\XmlObjMgt\XmlObjMgt.cxx">
+      <Filter>Source files\XmlObjMgt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XmlObjMgt\XmlObjMgt_Array1.cxx">
       <Filter>Source files\XmlObjMgt</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\XmlObjMgt\XmlObjMgt_GP.cxx">

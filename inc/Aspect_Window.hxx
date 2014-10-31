@@ -46,6 +46,9 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Aspect_Drawable_HeaderFile
+#include <Aspect_Drawable.hxx>
+#endif
 class Aspect_WindowDefinitionError;
 class Aspect_WindowError;
 class Aspect_Background;
@@ -53,7 +56,7 @@ class Quantity_Color;
 class Aspect_GradientBackground;
 
 
-
+//! Defines a window. <br>
 class Aspect_Window : public MMgt_TShared {
 
 public:
@@ -99,6 +102,10 @@ public:
   Standard_EXPORT   virtual  void Position(Standard_Integer& X1,Standard_Integer& Y1,Standard_Integer& X2,Standard_Integer& Y2) const = 0;
   //! Returns The Window SIZE in PIXEL <br>
   Standard_EXPORT   virtual  void Size(Standard_Integer& Width,Standard_Integer& Height) const = 0;
+  //! Returns native Window handle (HWND on Windows, Window with Xlib, and so on) <br>
+  Standard_EXPORT   virtual  Aspect_Drawable NativeHandle() const = 0;
+  //! Returns parent of native Window handle (HWND on Windows, Window with Xlib, and so on) <br>
+  Standard_EXPORT   virtual  Aspect_Drawable NativeParentHandle() const = 0;
 
 
 

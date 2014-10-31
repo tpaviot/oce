@@ -15,9 +15,7 @@
 #ifndef _Standard_DefineHandle_HeaderFile
 #define _Standard_DefineHandle_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class Standard_Transient;
 class Standard_Persistent;
@@ -45,6 +43,8 @@ Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(C1); \
  \
 class Handle(C1) : public Handle(C2) { \
 public: \
+  typedef C1 element_type;\
+  \
   Handle(C1)():Handle(C2)() {} \
   \
   Handle(C1)(const Handle(C1)& aHandle) : Handle(C2)(aHandle) {} \

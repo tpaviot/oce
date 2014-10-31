@@ -29,7 +29,9 @@ class TDF_AttributeMap;
 
 //! This class provides services to build the closure <br>
 //!          of an information set. <br>
-//! <br>
+//!          This class gives services around the transitive <br>
+//!          enclosure of a set of information, starting from a <br>
+//!          list of label. <br>
 //!          You can set closure options by using IDFilter <br>
 //!          (to select or exclude specific attribute IDs) and <br>
 //!          CopyOption objects and by giving to Closure <br>

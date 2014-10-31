@@ -43,7 +43,6 @@ class AppDef_MyLineTool;
 class AppParCurves_MultiCurve;
 class AppParCurves_HArray1OfConstraintCouple;
 class math_Matrix;
-class math_Vector;
 
 
 

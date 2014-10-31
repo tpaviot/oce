@@ -16,9 +16,6 @@
 #ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _FEmTool_ProfileMatrix_HeaderFile
 #include <FEmTool_ProfileMatrix.hxx>
 #endif

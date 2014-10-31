@@ -43,6 +43,8 @@ public:
   
       Convert_SequenceOfArray1OfPoles();
   
+  Standard_EXPORT   Convert_SequenceOfArray1OfPoles(const Convert_SequenceOfArray1OfPoles& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Convert_SequenceOfArray1OfPoles()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Convert_SequenceOfArray1OfPoles(const Convert_SequenceOfArray1OfPoles& Other);
 
 
 

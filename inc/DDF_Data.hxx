@@ -28,13 +28,15 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class TDF_Data;
 class Draw_Display;
 class Draw_Drawable3D;
-class Draw_Interpretor;
 
 
-//! Encapsulates a data framework in a drawable object <br>
+//! Encapsulates a data framework from TDF in a drawable object <br>
 class DDF_Data : public Draw_Drawable3D {
 
 public:

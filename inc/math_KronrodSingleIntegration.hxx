@@ -25,9 +25,11 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class StdFail_NotDone;
 class math_Function;
-class math_Vector;
 
 
 //! This class implements the Gauss-Kronrod method of <br>

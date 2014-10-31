@@ -25,11 +25,11 @@
 #ifndef _ExprIntrp_StackOfGeneralFunction_HeaderFile
 #include <ExprIntrp_StackOfGeneralFunction.hxx>
 #endif
-#ifndef _ExprIntrp_StackOfNames_HeaderFile
-#include <ExprIntrp_StackOfNames.hxx>
+#ifndef _TColStd_ListOfAsciiString_HeaderFile
+#include <TColStd_ListOfAsciiString.hxx>
 #endif
-#ifndef _TColStd_StackOfInteger_HeaderFile
-#include <TColStd_StackOfInteger.hxx>
+#ifndef _TColStd_ListOfInteger_HeaderFile
+#include <TColStd_ListOfInteger.hxx>
 #endif
 #ifndef _ExprIntrp_SequenceOfNamedFunction_HeaderFile
 #include <ExprIntrp_SequenceOfNamedFunction.hxx>
@@ -132,8 +132,8 @@ private:
 ExprIntrp_StackOfGeneralExpression myGEStack;
 ExprIntrp_StackOfGeneralRelation myGRStack;
 ExprIntrp_StackOfGeneralFunction myGFStack;
-ExprIntrp_StackOfNames myNameStack;
-TColStd_StackOfInteger myValueStack;
+TColStd_ListOfAsciiString myNameStack;
+TColStd_ListOfInteger myValueStack;
 ExprIntrp_SequenceOfNamedFunction myFunctions;
 ExprIntrp_SequenceOfNamedExpression myNamed;
 Handle_ExprIntrp_Generator myMaster;

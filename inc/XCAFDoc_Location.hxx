@@ -35,7 +35,7 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-
+//! attribute to store TopLoc_Location <br>
 class XCAFDoc_Location : public TDF_Attribute {
 
 public:

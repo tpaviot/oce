@@ -43,6 +43,8 @@ public:
   
       TransferBRep_SequenceOfTransferResultInfo();
   
+  Standard_EXPORT   TransferBRep_SequenceOfTransferResultInfo(const TransferBRep_SequenceOfTransferResultInfo& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TransferBRep_SequenceOfTransferResultInfo()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TransferBRep_SequenceOfTransferResultInfo(const TransferBRep_SequenceOfTransferResultInfo& Other);
 
 
 

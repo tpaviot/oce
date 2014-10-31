@@ -6,7 +6,7 @@
 #ifndef _gp_TrsfForm_HeaderFile
 #define _gp_TrsfForm_HeaderFile
 
-//! Enumerates all 24 possible variants of generalized <br>
+//! Identifies the type of a geometric transformation. <br>//! Enumerates all 24 possible variants of generalized <br>
 //!          Euler angles, defining general 3d rotation by three <br>
 //!          rotations around main axes of coordinate system, <br>
 //!          in different possible orders. <br>

@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   DBRep_ListOfFace();
   
+  Standard_EXPORT   DBRep_ListOfFace(const DBRep_ListOfFace& Other);
+  
   Standard_EXPORT     void Assign(const DBRep_ListOfFace& Other) ;
     void operator=(const DBRep_ListOfFace& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   DBRep_ListOfFace(const DBRep_ListOfFace& Other);
 
 
 Standard_Address myFirst;

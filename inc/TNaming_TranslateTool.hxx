@@ -24,9 +24,10 @@ class TopoDS_Shape;
 class TColStd_IndexedDataMapOfTransientTransient;
 
 
-//! The TranslateTool class is provided to support the <br>
-//!          translation of topological data structures  Transient <br>
-//!  .       to  Transient. <br>
+//! tool to copy underlying TShape of a Shape. <br>
+//!    The TranslateTool class is provided to support the <br>
+//!    translation of topological data structures  Transient <br>
+//!    to  Transient. <br>
 class TNaming_TranslateTool : public MMgt_TShared {
 
 public:

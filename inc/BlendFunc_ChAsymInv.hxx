@@ -46,7 +46,6 @@
 class Adaptor3d_HSurface;
 class Adaptor3d_HCurve;
 class Adaptor2d_HCurve2d;
-class math_Vector;
 class math_Matrix;
 
 

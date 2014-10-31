@@ -16,13 +16,15 @@
 #include <Standard_Macro.hxx>
 #endif
 
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 #ifndef _Handle_TDataXtd_Constraint_HeaderFile
 #include <Handle_TDataXtd_Constraint.hxx>
 #endif
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
-class Draw_Interpretor;
 class TDataXtd_Constraint;
 class DDataStd_DrawPresentation;
 class DDataStd_DrawDriver;

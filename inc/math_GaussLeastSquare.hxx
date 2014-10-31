@@ -28,13 +28,15 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
 class StdFail_NotDone;
 class Standard_DimensionError;
 class math_Matrix;
-class math_Vector;
 
 
 

@@ -19,8 +19,8 @@
 #ifndef _GccAna_Circ2d2TanOn_HeaderFile
 #include <GccAna_Circ2d2TanOn.hxx>
 #endif
-#ifndef _Geom2dGcc_MyCirc2d2TanOn_HeaderFile
-#include <Geom2dGcc_MyCirc2d2TanOn.hxx>
+#ifndef _Geom2dGcc_Circ2d2TanOnGeo_HeaderFile
+#include <Geom2dGcc_Circ2d2TanOnGeo.hxx>
 #endif
 #ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>

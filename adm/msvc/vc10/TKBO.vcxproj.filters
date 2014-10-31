@@ -2,28 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{3400CD52-179A-0788-0A6E-2B948122C731}</UniqueIdentifier>
+      <UniqueIdentifier>{B4AE5B52-180D-0A29-00EB-391B6635C93E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntTools">
-      <UniqueIdentifier>{439D04EF-0895-0C9F-13AF-271E4734E086}</UniqueIdentifier>
+      <UniqueIdentifier>{2F214002-0221-186E-1773-B6AFA3C51057}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAlgoAPI">
-      <UniqueIdentifier>{80BEA8D6-0ED0-0747-13AD-7FE5B4C1C59C}</UniqueIdentifier>
+      <UniqueIdentifier>{B3FD2F5B-1225-0DCF-0574-225F7EAB7B87}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPCol">
-      <UniqueIdentifier>{94A0568A-03F7-0028-040E-167E11AEAE72}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\BOPInt">
-      <UniqueIdentifier>{3EEE6AE9-0E27-0A55-0384-349789C8ADBC}</UniqueIdentifier>
+      <UniqueIdentifier>{3AFC35D8-0561-02FC-0FA0-0C55A5CADE55}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPDS">
-      <UniqueIdentifier>{06162559-1602-0077-1382-0E314CC6A869}</UniqueIdentifier>
+      <UniqueIdentifier>{CAA9A074-0E8F-145D-153B-959FCC2E3262}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPAlgo">
-      <UniqueIdentifier>{5A88F8BD-1273-1542-18E8-8ECDC366F1CF}</UniqueIdentifier>
+      <UniqueIdentifier>{EDE15C76-080D-0330-187B-906928E7DD97}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPTools">
-      <UniqueIdentifier>{8D624542-1919-0E84-14B2-41EC34FA7837}</UniqueIdentifier>
+      <UniqueIdentifier>{851AD2EA-09E3-137A-0C0B-9218537B3109}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +159,9 @@
     <ClCompile Include="..\..\..\src\IntTools\IntTools_CompareRange.cxx">
       <Filter>Source files\IntTools</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Context.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_Curve.cxx">
       <Filter>Source files\IntTools</Filter>
     </ClCompile>
@@ -186,9 +186,6 @@
     <ClCompile Include="..\..\..\src\IntTools\IntTools_FaceFace.cxx">
       <Filter>Source files\IntTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\IntTools\IntTools_LineConstructor.cxx">
-      <Filter>Source files\IntTools</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_MarkedRangeSet.cxx">
       <Filter>Source files\IntTools</Filter>
     </ClCompile>
@@ -202,6 +199,9 @@
       <Filter>Source files\IntTools</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_Root.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_ShrunkRange.cxx">
       <Filter>Source files\IntTools</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_SurfaceRangeLocalizeData.cxx">
@@ -245,15 +245,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPCol\BOPCol_BoxBndTree.cxx">
       <Filter>Source files\BOPCol</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPInt\BOPInt_Context.cxx">
-      <Filter>Source files\BOPInt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPInt\BOPInt_ShrunkRange.cxx">
-      <Filter>Source files\BOPInt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPInt\BOPInt_Tools.cxx">
-      <Filter>Source files\BOPInt</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPDS\BOPDS_CommonBlock.cxx">
       <Filter>Source files\BOPDS</Filter>
@@ -351,13 +342,16 @@
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_CheckerSI.cxx">
       <Filter>Source files\BOPAlgo</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_CheckerSI_1.cxx">
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_MakerVolume.cxx">
       <Filter>Source files\BOPAlgo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller.cxx">
       <Filter>Source files\BOPAlgo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_1.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_10.cxx">
       <Filter>Source files\BOPAlgo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_2.cxx">

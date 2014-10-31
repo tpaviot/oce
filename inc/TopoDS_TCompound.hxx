@@ -28,7 +28,7 @@
 class TopoDS_TShape;
 
 
-
+//! A TCompound is an all-purpose set of Shapes. <br>
 class TopoDS_TCompound : public TopoDS_TShape {
 
 public:

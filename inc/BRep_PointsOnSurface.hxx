@@ -29,7 +29,7 @@ class Geom_Surface;
 class TopLoc_Location;
 
 
-
+//! Root for points on surface. <br>
 class BRep_PointsOnSurface : public BRep_PointRepresentation {
 
 public:

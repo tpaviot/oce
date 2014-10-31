@@ -43,6 +43,8 @@ public:
   
       ProjLib_SequenceOfHSequenceOfPnt();
   
+  Standard_EXPORT   ProjLib_SequenceOfHSequenceOfPnt(const ProjLib_SequenceOfHSequenceOfPnt& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~ProjLib_SequenceOfHSequenceOfPnt()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ProjLib_SequenceOfHSequenceOfPnt(const ProjLib_SequenceOfHSequenceOfPnt& Other);
 
 
 

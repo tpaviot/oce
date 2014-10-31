@@ -29,7 +29,7 @@ class Vrml_Material;
 
 
 //! qualifies the aspect properties for <br>
-//!          the VRML conversation of points. <br>
+//!          the VRML conversation of a Point Set. <br>
 class VrmlConverter_PointAspect : public MMgt_TShared {
 
 public:

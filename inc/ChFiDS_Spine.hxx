@@ -71,7 +71,7 @@ class TopoDS_Vertex;
 
 
 //! Contains information necessary for construction of <br>
-//!          a 3D fillet : <br>
+//!          a 3D fillet or chamfer: <br>
 //! <br>
 //! <br>
 //!          - guideline composed of edges of the solid, tangents <br>

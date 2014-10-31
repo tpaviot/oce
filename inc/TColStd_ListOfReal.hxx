@@ -45,6 +45,8 @@ public:
   
   Standard_EXPORT   TColStd_ListOfReal();
   
+  Standard_EXPORT   TColStd_ListOfReal(const TColStd_ListOfReal& Other);
+  
   Standard_EXPORT     void Assign(const TColStd_ListOfReal& Other) ;
     void operator=(const TColStd_ListOfReal& Other) 
 {
@@ -102,8 +104,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_ListOfReal(const TColStd_ListOfReal& Other);
 
 
 Standard_Address myFirst;

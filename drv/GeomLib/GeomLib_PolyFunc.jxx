@@ -1,6 +1,3 @@
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _GeomLib_PolyFunc_HeaderFile
 #include <GeomLib_PolyFunc.hxx>
 #endif

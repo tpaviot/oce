@@ -21,7 +21,9 @@
 #endif
 
 
-//!---Purpose All basic Prs3d_xxxAspect must inherits from this class <br>
+//! All basic Prs3d_xxxAspect must inherits from this class <br>
+//!           The aspect classes qualifies how to represent <br>
+//!           a given kind of object. <br>
 class Prs3d_BasicAspect : public MMgt_TShared {
 
 public:

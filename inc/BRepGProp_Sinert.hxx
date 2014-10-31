@@ -22,13 +22,15 @@
 #ifndef _GProp_GProps_HeaderFile
 #include <GProp_GProps.hxx>
 #endif
-class TopoDS_Edge;
 class BRepGProp_Face;
-class BRepGProp_Domain;
 class gp_Pnt;
+class BRepGProp_Domain;
 
 
 
+//!  Computes the global properties of a face in 3D space. <br>
+//!  The face 's requirements to evaluate the global properties <br>
+//!  are defined in the template FaceTool from package GProp. <br>
 class BRepGProp_Sinert  : public GProp_GProps {
 public:
 
@@ -39,6 +41,10 @@ public:
   
   Standard_EXPORT   BRepGProp_Sinert(const BRepGProp_Face& S,const gp_Pnt& SLocation);
   
+//!  Builds a Sinert to evaluate the global properties of <br>
+//!  the face <S>. If isNaturalRestriction is true the domain of S is defined <br>
+//!  with the natural bounds, else it defined with an iterator <br>
+//!  of Edge from TopoDS (see DomainTool from GProp) <br>
   Standard_EXPORT   BRepGProp_Sinert(BRepGProp_Face& S,BRepGProp_Domain& D,const gp_Pnt& SLocation);
   
   Standard_EXPORT   BRepGProp_Sinert(BRepGProp_Face& S,const gp_Pnt& SLocation,const Standard_Real Eps);
@@ -55,6 +61,8 @@ public:
   
   Standard_EXPORT     Standard_Real Perform(BRepGProp_Face& S,BRepGProp_Domain& D,const Standard_Real Eps) ;
   
+//!  If previously used method contained Eps parameter <br>
+//!  get actual relative error of the computation, else return  1.0. <br>
   Standard_EXPORT     Standard_Real GetEpsilon() ;
 
 

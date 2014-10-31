@@ -22,9 +22,6 @@
 #ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
 #endif
-#ifndef _IntSurf_PntOn2S_HeaderFile
-#include <IntSurf_PntOn2S.hxx>
-#endif
 #ifndef _Handle_IntSurf_LineOn2S_HeaderFile
 #include <Handle_IntSurf_LineOn2S.hxx>
 #endif
@@ -70,11 +67,10 @@ protected:
 private: 
 
 
-Handle_Geom_BSplineCurve curvxyz;
-Handle_Geom2d_BSplineCurve curvuv1;
-Handle_Geom2d_BSplineCurve curvuv2;
-IntSurf_PntOn2S pnton2s;
-Handle_IntSurf_LineOn2S linon2s;
+Handle_Geom_BSplineCurve myCurveXYZ;
+Handle_Geom2d_BSplineCurve myCurveUV1;
+Handle_Geom2d_BSplineCurve myCurveUV2;
+Handle_IntSurf_LineOn2S myLineOn2S;
 
 
 };

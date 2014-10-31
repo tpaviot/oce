@@ -28,25 +28,26 @@ raises
     is
     	
     	---Purpose: This class provides tools to manipulate a Sequence node.
-    
+      --          Generic sequence of elements indexed by an integer in the range 1..N.
+
     	Create( TheLast: SeqNode ; TheItem: Item)
-	    returns mutable SeqNode from PCollection;
+	    returns SeqNode from PCollection;
 
     	Create( TheItem: Item ; TheFirst: SeqNode )
-	    returns mutable SeqNode from PCollection;
+	    returns SeqNode from PCollection;
 
     	Create( ThePrevious: SeqNode ; TheNext: SeqNode ; TheItem: Item )
-	    returns mutable SeqNode from PCollection;
+	    returns SeqNode from PCollection;
 
     	Value(me) returns any Item;
         ---Level: Internal
 	    ---Purpose: Returns MyItem.
 	
-    	Next(me) returns mutable SeqNode;
+    	Next(me) returns SeqNode;
         ---Level: Internal
 	    ---Purpose: Returns MyNext.
 
-    	Previous(me) returns mutable SeqNode;
+    	Previous(me) returns SeqNode;
         ---Level: Internal
 	    ---Purpose: Returns MyPrevious.
 
@@ -129,7 +130,7 @@ raises
 is 
 
 
-	Create returns mutable HSequence;
+	Create returns HSequence;
 		---Purpose: Creation of an empty sequence.
 
 
@@ -280,7 +281,7 @@ is
 		--   me = (C B A)           
 
 	SubSequence(me; FromIndex, ToIndex : Integer) 
-		         		returns mutable HSequence
+		         		returns HSequence
 					raises OutOfRange from Standard;
                 ---Level: Public
 		---Purpose: Creation a sub-sequence with the elements from the 
@@ -296,7 +297,7 @@ is
 		--  (B C D)
               
 	Split(me : mutable; Index : Integer) 
-    	    returns mutable HSequence 
+    	    returns HSequence 
             raises OutOfRange from Standard;
                 ---Level: Public
 		---Purpose: Split a sequence into two sub-sequences.
@@ -400,19 +401,6 @@ is
 	       ---Purpose: Returns "LastItem" field 
 	   returns SeqNode
 	   is private;
-
-    	ShallowCopy(me) 
-                returns mutable like me 
-                is redefined;
-                ---Level: Advanced
-	    	---C++: function call
-
-
-    	ShallowDump (me; s: in out OStream) 
-                is redefined;
-                ---Level: Advanced
-    	    	---C++: function call
-
 
     	Destroy(me : mutable);
 	---C++: alias ~

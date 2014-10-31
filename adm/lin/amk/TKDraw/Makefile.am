@@ -47,17 +47,11 @@ libTKDraw_la_SOURCES = \
 @top_srcdir@/drv/DBRep/DBRep_ListOfEdge_0.cxx \
 @top_srcdir@/drv/DBRep/DBRep_ListOfFace_0.cxx \
 @top_srcdir@/drv/DBRep/DBRep_ListOfHideData_0.cxx \
-@top_srcdir@/drv/Draw/Draw_DataMapIteratorOfMapOfFunctions_0.cxx \
-@top_srcdir@/drv/Draw/Draw_DataMapIteratorOfVMap_0.cxx \
-@top_srcdir@/drv/Draw/Draw_DataMapNodeOfMapOfFunctions_0.cxx \
-@top_srcdir@/drv/Draw/Draw_DataMapNodeOfVMap_0.cxx \
 @top_srcdir@/drv/Draw/Draw_Failure_0.cxx \
 @top_srcdir@/drv/Draw/Draw_IndexedMapNodeOfMapOfAsciiString_0.cxx \
 @top_srcdir@/drv/Draw/Draw_MapOfAsciiString_0.cxx \
-@top_srcdir@/drv/Draw/Draw_MapOfFunctions_0.cxx \
 @top_srcdir@/drv/Draw/Draw_SequenceNodeOfSequenceOfDrawable3D_0.cxx \
 @top_srcdir@/drv/Draw/Draw_SequenceOfDrawable3D_0.cxx \
-@top_srcdir@/drv/Draw/Draw_VMap_0.cxx \
 @top_srcdir@/src/DBRep/DBRep.cxx \
 @top_srcdir@/src/DBRep/DBRep_Debug.cxx \
 @top_srcdir@/src/DBRep/DBRep_DrawableShape.cxx \

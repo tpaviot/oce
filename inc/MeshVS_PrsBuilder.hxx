@@ -31,8 +31,8 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
@@ -60,7 +60,6 @@
 #endif
 class MeshVS_DataSource;
 class MeshVS_Drawer;
-class PrsMgr_PresentationManager3d;
 class MeshVS_Mesh;
 class Prs3d_Presentation;
 class SelectBasics_SensitiveEntity;

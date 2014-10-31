@@ -10,16 +10,20 @@ pload QAcommands
 
 if { [regexp {Debug mode} [dversion]] } {
   if { [regexp {Windows} [dversion]] } {
-    set max_time 350
+    set max_time 550
   } else {
     set max_time 550
   }
 } else {
   if { [regexp {Windows} [dversion]] } {
-    set max_time 120
+    set max_time 130
   } else {
-    set max_time 220
+    set max_time 150
   }
+}
+
+if { [regexp {Mac OS X} [dversion]] } {
+  set max_time 260
 }
 
 dchrono h reset

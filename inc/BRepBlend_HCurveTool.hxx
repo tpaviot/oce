@@ -16,11 +16,11 @@
 #include <Standard_Macro.hxx>
 #endif
 
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
-#include <Handle_Adaptor3d_HCurve.hxx>
-#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
+#endif
+#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
+#include <Handle_Adaptor3d_HCurve.hxx>
 #endif
 #ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
@@ -84,9 +84,14 @@ public:
       static  Standard_Real LastParameter(const Handle(Adaptor3d_HCurve)& C) ;
   
       static  GeomAbs_Shape Continuity(const Handle(Adaptor3d_HCurve)& C) ;
-  
+  //! Returns  the number  of  intervals for  continuity <br>
+//!          <S>. May be one if Continuity(myclass) >= <S> <br>
       static  Standard_Integer NbIntervals(const Handle(Adaptor3d_HCurve)& C,const GeomAbs_Shape S) ;
-  
+  //! Stores in <T> the  parameters bounding the intervals <br>
+//!          of continuity <S>. <br>
+//! <br>
+//!          The array must provide  enough room to  accomodate <br>
+//!          for the parameters. i.e. T.Length() > NbIntervals() <br>
       static  void Intervals(const Handle(Adaptor3d_HCurve)& C,TColStd_Array1OfReal& T,const GeomAbs_Shape S) ;
   
       static  Standard_Boolean IsClosed(const Handle(Adaptor3d_HCurve)& C) ;
@@ -94,21 +99,35 @@ public:
       static  Standard_Boolean IsPeriodic(const Handle(Adaptor3d_HCurve)& C) ;
   
       static  Standard_Real Period(const Handle(Adaptor3d_HCurve)& C) ;
-  
+  //! Computes the point of parameter U on the curve. <br>
       static  gp_Pnt Value(const Handle(Adaptor3d_HCurve)& C,const Standard_Real U) ;
-  
+  //! Computes the point of parameter U on the curve. <br>
       static  void D0(const Handle(Adaptor3d_HCurve)& C,const Standard_Real U,gp_Pnt& P) ;
-  
+  //! Computes the point of parameter U on the curve with its <br>
+//!  first derivative. <br>//! Raised if the continuity of the current interval <br>
+//!  is not C1. <br>
       static  void D1(const Handle(Adaptor3d_HCurve)& C,const Standard_Real U,gp_Pnt& P,gp_Vec& V) ;
   
+//!  Returns the point P of parameter U, the first and second <br>
+//!  derivatives V1 and V2. <br>//! Raised if the continuity of the current interval <br>
+//!  is not C2. <br>
       static  void D2(const Handle(Adaptor3d_HCurve)& C,const Standard_Real U,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2) ;
   
+//!  Returns the point P of parameter U, the first, the second <br>
+//!  and the third derivative. <br>//! Raised if the continuity of the current interval <br>
+//!  is not C3. <br>
       static  void D3(const Handle(Adaptor3d_HCurve)& C,const Standard_Real U,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2,gp_Vec& V3) ;
   
+//!  The returned vector gives the value of the derivative for the <br>
+//!  order of derivation N. <br>//! Raised if the continuity of the current interval <br>
+//!  is not CN. <br>//! Raised if N < 1. <br>
       static  gp_Vec DN(const Handle(Adaptor3d_HCurve)& C,const Standard_Real U,const Standard_Integer N) ;
-  
+  //!  Returns the parametric  resolution corresponding <br>
+//!         to the real space resolution <R3d>. <br>
       static  Standard_Real Resolution(const Handle(Adaptor3d_HCurve)& C,const Standard_Real R3d) ;
-  
+  //! Returns  the  type of the   curve  in the  current <br>
+//!          interval :   Line,   Circle,   Ellipse, Hyperbola, <br>
+//!          Parabola, BezierCurve, BSplineCurve, OtherCurve. <br>
       static  GeomAbs_CurveType GetType(const Handle(Adaptor3d_HCurve)& C) ;
   
       static  gp_Lin Line(const Handle(Adaptor3d_HCurve)& C) ;
@@ -145,17 +164,9 @@ private:
 
 };
 
-#define CurveGen Handle_Adaptor3d_HCurve
-#define CurveGen_hxx <Adaptor3d_HCurve.hxx>
-#define BRepBlend_HCurveToolGen BRepBlend_HCurveTool
-#define BRepBlend_HCurveToolGen_hxx <BRepBlend_HCurveTool.hxx>
 
-#include <BRepBlend_HCurveToolGen.lxx>
+#include <BRepBlend_HCurveTool.lxx>
 
-#undef CurveGen
-#undef CurveGen_hxx
-#undef BRepBlend_HCurveToolGen
-#undef BRepBlend_HCurveToolGen_hxx
 
 
 // other Inline functions and methods (like "C++: function call" methods)

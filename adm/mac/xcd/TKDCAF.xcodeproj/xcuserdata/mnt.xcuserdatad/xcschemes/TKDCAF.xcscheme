@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0CCD0C2510DD13EA06DF1279"
+               BlueprintIdentifier = "18A41679113B192F154408A7"
                BuildableName = "libTKDCAF.dylib"
                BlueprintName = "TKDCAF"
                ReferencedContainer = "container:TKDCAF.xcodeproj">

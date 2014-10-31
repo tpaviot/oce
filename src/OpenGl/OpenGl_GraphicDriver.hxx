@@ -18,7 +18,6 @@
 
 #include <Graphic3d_GraphicDriver.hxx>
 #include <Handle_OpenGl_GraphicDriver.hxx>
-#include <Handle_OpenGl_Display.hxx>
 #include <OpenGl_Context.hxx>
 #include <OpenGl_PrinterContext.hxx>
 
@@ -43,13 +42,10 @@
 #include <gp_Ax2.hxx>
 #include <Graphic3d_CView.hxx>
 #include <Graphic3d_CStructure.hxx>
-#include <Graphic3d_CGroup.hxx>
-#include <Graphic3d_TypeOfPrimitive.hxx>
 #include <Graphic3d_CPick.hxx>
 #include <Graphic3d_TextPath.hxx>
 #include <Graphic3d_HorizontalTextAlignment.hxx>
 #include <Graphic3d_VerticalTextAlignment.hxx>
-#include <Graphic3d_PrimitiveArray.hxx>
 #include <Graphic3d_CUserDraw.hxx>
 #include <Graphic3d_CGraduatedTrihedron.hxx>
 #include <Graphic3d_TypeOfComposition.hxx>
@@ -88,60 +84,40 @@ public:
   Standard_Size Increment() { return ++myCounter; }
 
 private:
-  
+
   Standard_Size myCounter;
 };
 
-//! This class defines an OpenGl graphic driver <br>
+//! This class defines an OpenGl graphic driver
 class OpenGl_GraphicDriver : public Graphic3d_GraphicDriver
 {
 public:
 
-  //! Constructor
-  Standard_EXPORT OpenGl_GraphicDriver (const Handle(Aspect_DisplayConnection)& theDisplayConnection);
-
-  //! Constructor
-  Standard_EXPORT OpenGl_GraphicDriver (const Standard_CString theShrName = "TKOpenGl");
-  Standard_EXPORT Standard_Boolean Begin (const Handle(Aspect_DisplayConnection)& theDisplayConnection);
-  Standard_EXPORT void End ();
+  //! Constructor.
+  //! @param theDisp connection to display, required on Linux but optional on other systems
+  //! @param theToStealActiveContext option to use OpenGL context currently bound to the thread rather than creating own one, currently implemented only for Android
+  Standard_EXPORT OpenGl_GraphicDriver (const Handle(Aspect_DisplayConnection)& theDisp,
+                                        const Standard_Boolean                  theToStealActiveContext = Standard_False);
 
   Standard_EXPORT Standard_Integer InquireLightLimit ();
-  Standard_EXPORT void InquireMat (const Graphic3d_CView& ACView, TColStd_Array2OfReal& AMatO, TColStd_Array2OfReal& AMatM);
   Standard_EXPORT Standard_Integer InquireViewLimit ();
-  Standard_EXPORT void Blink (const Graphic3d_CStructure& ACStructure,const Standard_Boolean Create);
-  Standard_EXPORT void BoundaryBox (const Graphic3d_CStructure& ACStructure, const Standard_Boolean Create);
-  Standard_EXPORT void HighlightColor (const Graphic3d_CStructure& ACStructure, const Standard_ShortReal R, const Standard_ShortReal G, const Standard_ShortReal B, const Standard_Boolean Create);
-  Standard_EXPORT void NameSetStructure (const Graphic3d_CStructure& ACStructure);
-
-public: // Methods for graphical groups
-
-  Standard_EXPORT void ClearGroup (const Graphic3d_CGroup& ACGroup);
-  Standard_EXPORT void FaceContextGroup (const Graphic3d_CGroup& theCGroup,
-                                         const Standard_Integer  theNoInsert);
-  Standard_EXPORT void Group (Graphic3d_CGroup& theCGroup);
-  Standard_EXPORT void LineContextGroup (const Graphic3d_CGroup& theCGroup,
-                                         const Standard_Integer  theNoInsert);
-  Standard_EXPORT void MarkerContextGroup (const Graphic3d_CGroup& theCGroup,
-                                           const Standard_Integer  theNoInsert);
-  Standard_EXPORT void RemoveGroup (const Graphic3d_CGroup& theCGroup);
-  Standard_EXPORT void TextContextGroup (const Graphic3d_CGroup& theCGroup,
-                                         const Standard_Integer  theNoInsert);
 
 public: // Methods for graphical structures
 
-  Standard_EXPORT void ClearStructure (const Graphic3d_CStructure& theCStructure);
-  Standard_EXPORT void ContextStructure (const Graphic3d_CStructure& theCStructure);
-  Standard_EXPORT void Connect (const Graphic3d_CStructure& theFather,
-                                const Graphic3d_CStructure& theSon);
-  Standard_EXPORT void Disconnect (const Graphic3d_CStructure& theFather,
-                                   const Graphic3d_CStructure& theSon);
-  Standard_EXPORT void DisplayStructure (const Graphic3d_CView&      theCView,
-                                         const Graphic3d_CStructure& theCStructure,
-                                         const Standard_Integer      thePriority);
-  Standard_EXPORT void EraseStructure (const Graphic3d_CView&      theCView,
-                                       const Graphic3d_CStructure& theCStructure);
-  Standard_EXPORT void RemoveStructure (const Graphic3d_CStructure& theCStructure);
-  Standard_EXPORT void Structure (Graphic3d_CStructure& theCStructure);
+  Standard_EXPORT void DisplayStructure (const Graphic3d_CView& theCView,
+                                         Graphic3d_CStructure&  theCStructure,
+                                         const Standard_Integer thePriority);
+  Standard_EXPORT void EraseStructure (const Graphic3d_CView& theCView,
+                                       Graphic3d_CStructure&  theCStructure);
+  Standard_EXPORT void RemoveStructure (Handle(Graphic3d_CStructure)& theCStructure);
+  Standard_EXPORT Handle(Graphic3d_CStructure) Structure (const Handle(Graphic3d_StructureManager)& theManager);
+
+  Standard_EXPORT Standard_Boolean SetImmediateModeDrawToFront (const Graphic3d_CView& theCView,
+                                                                const Standard_Boolean theDrawToFrontBuffer);
+  Standard_EXPORT void DisplayImmediateStructure (const Graphic3d_CView&      theCView,
+                                                  const Graphic3d_CStructure& theCStructure);
+  Standard_EXPORT void EraseImmediateStructure (const Graphic3d_CView&      theCView,
+                                                const Graphic3d_CStructure& theCStructure);
 
 public:
 
@@ -155,30 +131,26 @@ public:
   Standard_EXPORT void ClipLimit (const Graphic3d_CView& ACView, const Standard_Boolean AWait);
   Standard_EXPORT void DeactivateView (const Graphic3d_CView& ACView);
   Standard_EXPORT void DepthCueing (const Graphic3d_CView& ACView, const Standard_Boolean AFlag);
-  Standard_EXPORT Standard_Boolean ProjectRaster (const Graphic3d_CView& ACView, const Standard_ShortReal AX, const Standard_ShortReal AY, const Standard_ShortReal AZ, Standard_Integer& AU, Standard_Integer& AV);
-  Standard_EXPORT Standard_Boolean UnProjectRaster (const Graphic3d_CView& ACView, const Standard_Integer Axm, const Standard_Integer Aym, const Standard_Integer AXM, const Standard_Integer AYM, const Standard_Integer AU, const Standard_Integer AV, Standard_ShortReal& AX, Standard_ShortReal& AY, Standard_ShortReal& AZ);
-  Standard_EXPORT Standard_Boolean UnProjectRasterWithRay (const Graphic3d_CView& ACView, const Standard_Integer Axm, const Standard_Integer Aym, const Standard_Integer AXM, const Standard_Integer AYM, const Standard_Integer AU, const Standard_Integer AV, Standard_ShortReal& AX, Standard_ShortReal& AY, Standard_ShortReal& AZ, Standard_ShortReal& DX, Standard_ShortReal& DY, Standard_ShortReal& DZ);
   Standard_EXPORT void RatioWindow (const Graphic3d_CView& ACView);
-  Standard_EXPORT void Redraw (const Graphic3d_CView& ACView, const Aspect_CLayer2d& ACUnderLayer, const Aspect_CLayer2d& ACOverLayer, const Standard_Integer x = 0, const Standard_Integer y = 0, const Standard_Integer width = 0, const Standard_Integer height = 0);
+  Standard_EXPORT void Redraw (const Graphic3d_CView& theCView,
+                               const Aspect_CLayer2d& theCUnderLayer,
+                               const Aspect_CLayer2d& theCOverLayer,
+                               const Standard_Integer theX = 0,
+                               const Standard_Integer theY = 0,
+                               const Standard_Integer theWidth  = 0,
+                               const Standard_Integer theHeight = 0);
+  Standard_EXPORT void RedrawImmediate (const Graphic3d_CView& theCView,
+                                        const Aspect_CLayer2d& theCUnderLayer,
+                                        const Aspect_CLayer2d& theCOverLayer);
+  Standard_EXPORT void Invalidate (const Graphic3d_CView& theCView);
   Standard_EXPORT void RemoveView (const Graphic3d_CView& ACView);
   Standard_EXPORT void SetLight (const Graphic3d_CView& ACView);
   Standard_EXPORT void SetClipPlanes (const Graphic3d_CView& theCView);
-  Standard_EXPORT void SetClipPlanes (const Graphic3d_CStructure& theCStructure);
+  Standard_EXPORT void SetCamera (const Graphic3d_CView& theCView);
   Standard_EXPORT void SetVisualisation (const Graphic3d_CView& ACView);
-  Standard_EXPORT void TransformStructure (const Graphic3d_CStructure& ACStructure);
   Standard_EXPORT void Transparency (const Graphic3d_CView& ACView, const Standard_Boolean AFlag);
-  Standard_EXPORT void Update (const Graphic3d_CView& ACView, const Aspect_CLayer2d& ACUnderLayer, const Aspect_CLayer2d& ACOverLayer);
   Standard_EXPORT Standard_Boolean View (Graphic3d_CView& ACView);
-  Standard_EXPORT void ViewMapping (const Graphic3d_CView& ACView, const Standard_Boolean AWait);
-  Standard_EXPORT void ViewOrientation (const Graphic3d_CView& ACView,const Standard_Boolean AWait);
   Standard_EXPORT void Environment (const Graphic3d_CView& ACView);
-  Standard_EXPORT void SetStencilTestOptions (const Graphic3d_CGroup& theCGroup, const Standard_Boolean theIsEnabled);
-  Standard_EXPORT void Text (const Graphic3d_CGroup& ACGroup, const Standard_CString AText, const Graphic3d_Vertex& APoint, const Standard_Real AHeight, const Quantity_PlaneAngle AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
-  Standard_EXPORT void Text (const Graphic3d_CGroup& ACGroup, const Standard_CString AText, const Graphic3d_Vertex& APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True);
-  Standard_EXPORT void Text (const Graphic3d_CGroup& ACGroup, const TCollection_ExtendedString& AText, const Graphic3d_Vertex& APoint, const Standard_Real AHeight, const Quantity_PlaneAngle AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
-  Standard_EXPORT void Text (const Graphic3d_CGroup& ACGroup, const TCollection_ExtendedString& AText, const Graphic3d_Vertex& APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True);
-  Standard_EXPORT void PrimitiveArray (const Graphic3d_CGroup& ACGroup,const Graphic3d_PrimitiveArray& parray,const Standard_Boolean EvalMinMax = Standard_True);
-  Standard_EXPORT void UserDraw (const Graphic3d_CGroup& ACGroup,const Graphic3d_CUserDraw& AUserDraw);
   Standard_EXPORT void ZBufferTriedronSetup (const Quantity_NameOfColor XColor = Quantity_NOC_RED, const Quantity_NameOfColor YColor = Quantity_NOC_GREEN, const Quantity_NameOfColor ZColor = Quantity_NOC_BLUE1, const Standard_Real SizeRatio = 0.8, const Standard_Real AxisDiametr = 0.05, const Standard_Integer NbFacettes = 12);
   Standard_EXPORT void TriedronDisplay (const Graphic3d_CView& ACView, const Aspect_TypeOfTriedronPosition APosition = Aspect_TOTP_CENTER, const Quantity_NameOfColor AColor = Quantity_NOC_WHITE, const Standard_Real AScale = 0.02, const Standard_Boolean AsWireframe = Standard_True);
   Standard_EXPORT void TriedronErase (const Graphic3d_CView& ACView);
@@ -186,14 +158,6 @@ public:
   Standard_EXPORT void GraduatedTrihedronDisplay (const Graphic3d_CView& view, const Graphic3d_CGraduatedTrihedron& cubic);
   Standard_EXPORT void GraduatedTrihedronErase (const Graphic3d_CView& view);
   Standard_EXPORT void GraduatedTrihedronMinMaxValues (const Standard_ShortReal xmin, const Standard_ShortReal ymin, const Standard_ShortReal zmin, const Standard_ShortReal xmax, const Standard_ShortReal ymax, const Standard_ShortReal zmax);
-  Standard_EXPORT Standard_Boolean SetImmediateModeDrawToFront (const Graphic3d_CView& theCView,
-                                                                const Standard_Boolean theDrawToFrontBuffer);
-  Standard_EXPORT Standard_Boolean BeginAddMode (const Graphic3d_CView& ACView);
-  Standard_EXPORT void EndAddMode ();
-  Standard_EXPORT Standard_Boolean BeginImmediatMode(const Graphic3d_CView& ACView, const Aspect_CLayer2d& ACUnderLayer, const Aspect_CLayer2d& ACOverLayer, const Standard_Boolean DoubleBuffer, const Standard_Boolean RetainMode);
-  Standard_EXPORT void ClearImmediatMode (const Graphic3d_CView& ACView,const Standard_Boolean aFlush = Standard_True);
-  Standard_EXPORT void DrawStructure (const Graphic3d_CStructure& ACStructure);
-  Standard_EXPORT void EndImmediatMode (const Standard_Integer Synchronize);
   Standard_EXPORT void Layer (Aspect_CLayer2d& ACLayer);
   Standard_EXPORT void RemoveLayer (const Aspect_CLayer2d& ACLayer);
   Standard_EXPORT void BeginLayer (const Aspect_CLayer2d& ACLayer);
@@ -211,104 +175,112 @@ public:
   Standard_EXPORT void SetTransparency (const Standard_ShortReal ATransparency);
   Standard_EXPORT void UnsetTransparency ();
   Standard_EXPORT void SetLineAttributes (const Standard_Integer Type,const Standard_ShortReal Width);
-  Standard_EXPORT void SetFlippingOptions (const Graphic3d_CGroup& theCGroup, const Standard_Boolean theIsEnabled, const gp_Ax2& theRefPlane);
 
-  //! Set text attributes for under-/overlayer. <br>
-  //! <Font> argument defines the name of the font to be used, <br>
-  //! <Type> argument defines the display type of the text, <br>
-  //! <R> <G> <B> values define the color of decal or subtitle background. <br>
-  //! To set the color of the text you can use the SetColor method. <br>
-  Standard_EXPORT void SetTextAttributes (const Standard_CString FontName,const Standard_Integer Type,const Standard_ShortReal R,const Standard_ShortReal G,const Standard_ShortReal B);
+  //! Set text attributes for under-/overlayer.
+  //! @param theFontName the name of the font to be used
+  //! @param theType     the display type of the text
+  //! theR theG theB values define the color of decal or subtitle background
+  //! To set the color of the text you can use the SetColor method.
+  Standard_EXPORT void SetTextAttributes (const Standard_CString   theFontName,
+                                          const Standard_Integer   theType,
+                                          const Standard_ShortReal theR,
+                                          const Standard_ShortReal theG,
+                                          const Standard_ShortReal theB);
   Standard_EXPORT void Text (const Standard_CString AText,const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal AHeight);
   Standard_EXPORT void TextSize (const Standard_CString AText,const Standard_ShortReal AHeight,Standard_ShortReal& AWidth,Standard_ShortReal& AnAscent,Standard_ShortReal& ADescent) const;
   Standard_EXPORT void SetBackFacingModel (const Graphic3d_CView& aView);
-  //! print the contents of all layers of the view to the printer. <br>
-  //! <hPrnDC> : Pass the PrinterDeviceContext (HDC), <br>
-  //! <showBackground> : When set to FALSE then print the view without background color <br>
-  //! (background is white) <br>
-  //! else set to TRUE for printing with current background color. <br>
-  //! <filename>: If != NULL, then the view will be printed to a file. <br>
-  //! <printAlgorithm>: Select print algorithm: stretch, tile. <br>
-  //! <theScaleFactor>: Scaling coefficient, used internally to scale the <br>
-  //! printings accordingly to the scale factor selected in the printer <br>
-  //! properties dialog. <br>
-  //! Returns Standard_True if the data is passed to the printer, otherwise <br>
-  //! Standard_False if the print operation failed due to the printer errors, <br>
-  //! or lack of system memory. This might be related to insufficient memory <br>
-  //! or some internal errors. All this errors are indicated by the message <br>
-  //! boxes (on level of OpenGl_GraphicDriver). <br>
-  //! Warning: This function can reuse FBO assigned to the view <br>
-  //! Please take it into account if you use it for your purposes; <br>
-  Standard_EXPORT Standard_Boolean Print (const Graphic3d_CView& ACView, const Aspect_CLayer2d& ACUnderLayer, const Aspect_CLayer2d& ACOverLayer, const Aspect_Handle hPrnDC, const Standard_Boolean showBackground, const Standard_CString filename, const Aspect_PrintAlgo printAlgorithm = Aspect_PA_STRETCH, const Standard_Real theScaleFactor = 1.0) const;
+
+  //! Print the contents of all layers of the view to the printer.
+  //! @param thePrinterDC        pass the PrinterDeviceContext (HDC)
+  //! @param theToShowBackground when set to FALSE then print the view without background color (background is white) else set to TRUE for printing with current background color
+  //! @param theFileName         if != NULL, then the view will be printed to a file
+  //! @param thePrintAlgorithm   select print algorithm: stretch, tile
+  //! @param theScaleFactor      scaling coefficient, used internally to scale the printings accordingly to the scale factor selected in the printer properties dialog
+  //! @return Standard_True if the data is passed to the printer, otherwise Standard_False if the print operation failed due to the printer errors,
+  //! or lack of system memory. This might be related to insufficient memory or some internal errors.
+  //! All this errors are indicated by the message boxes (on level of OpenGl_GraphicDriver).
+  //! Warning: This function can reuse FBO assigned to the view, please take it into account if you use it for your purposes.
+  Standard_EXPORT Standard_Boolean Print (const Graphic3d_CView& theCView,
+                                          const Aspect_CLayer2d& theCUnderLayer,
+                                          const Aspect_CLayer2d& theCOverLayer,
+                                          const Aspect_Handle    thePrinterDC,
+                                          const Standard_Boolean theToShowBackground,
+                                          const Standard_CString theFileName,
+                                          const Aspect_PrintAlgo thePrintAlgorithm = Aspect_PA_STRETCH,
+                                          const Standard_Real    theScaleFactor = 1.0) const;
   Standard_EXPORT void SetDepthTestEnabled (const Graphic3d_CView& view,const Standard_Boolean isEnabled) const;
   Standard_EXPORT Standard_Boolean IsDepthTestEnabled (const Graphic3d_CView& view) const;
-  //! Reads depths of shown pixels of the given rectangle (glReadPixels with GL_DEPTH_COMPONENT) <br>
+
+  //! Reads depths of shown pixels of the given rectangle (glReadPixels with GL_DEPTH_COMPONENT)
   Standard_EXPORT void ReadDepths (const Graphic3d_CView& view,const Standard_Integer x,const Standard_Integer y,const Standard_Integer width,const Standard_Integer height,const Standard_Address buffer) const;
-  //! Generate offscreen FBO (needs OpenGL2+ hardware) <br>
-  //! If not supported on hardware returns NULL. <br>
+
+  //! Generate offscreen FBO (needs OpenGL2+ hardware).
+  //! If not supported on hardware returns NULL.
   Standard_EXPORT Graphic3d_PtrFrameBuffer FBOCreate (const Graphic3d_CView& view, const Standard_Integer width, const Standard_Integer height);
-  //! Remove offscreen FBO <br>
+
+  //! Remove offscreen FBO
   Standard_EXPORT void FBORelease (const Graphic3d_CView& view, Graphic3d_PtrFrameBuffer& fboPtr);
-  //! Dump active rendering buffer into specified memory buffer. <br>
+
+  //! Dump active rendering buffer into specified memory buffer.
   Standard_EXPORT Standard_Boolean BufferDump (const Graphic3d_CView&      theCView,
                                                Image_PixMap&               theImage,
                                                const Graphic3d_BufferType& theBufferType);
+
   Standard_EXPORT void SetGLLightEnabled (const Graphic3d_CView& view,const Standard_Boolean isEnabled) const;
+
   Standard_EXPORT Standard_Boolean IsGLLightEnabled (const Graphic3d_CView& view) const;
-  //! Clear visualization data in graphical driver and stop <br>
-  //! displaying the primitives array of the graphical group <theCGroup>. <br>
-  //! This method is internal and should be used by Graphic3d_Group only. <br>
+
   Standard_EXPORT Standard_Integer InquirePlaneLimit();
+
   Standard_EXPORT Standard_ShortReal DefaultTextHeight() const;
+
   Standard_EXPORT void FBOGetDimensions(const Graphic3d_CView& view,const Graphic3d_PtrFrameBuffer fboPtr,Standard_Integer& width,Standard_Integer& height,Standard_Integer& widthMax,Standard_Integer& heightMax);
+
   Standard_EXPORT void FBOChangeViewport(const Graphic3d_CView& view,Graphic3d_PtrFrameBuffer& fboPtr,const Standard_Integer width,const Standard_Integer height);
+
   Standard_EXPORT Standard_Boolean Export(const Standard_CString theFileName,const Graphic3d_ExportFormat theFormat,const Graphic3d_SortType theSortType,const Standard_Integer theWidth,const Standard_Integer theHeight,const Graphic3d_CView& theView,const Aspect_CLayer2d& theLayerUnder,const Aspect_CLayer2d& theLayerOver,const Standard_Real thePrecision = 0.005,const Standard_Address theProgressBarFunc = NULL,const Standard_Address theProgressObject = NULL);
 
-  //! Add a new top-level z layer with ID <theLayerId> for <br>
-  //! the view. Z layers allow drawing structures in higher layers <br>
-  //! in foreground of structures in lower layers. To add a structure <br>
-  //! to desired layer on display it is necessary to set the layer <br>
-  //! index for the structure. <br>
-  Standard_EXPORT void AddZLayer(const Graphic3d_CView& theCView,
-                                 const Standard_Integer theLayerId);
+  //! Add a new top-level z layer with ID theLayerId for the view. Z layers allow drawing structures in higher layers in foreground of structures in lower layers.
+  //! To add a structure to desired layer on display it is necessary to set the layer index for the structure.
+  Standard_EXPORT void AddZLayer (const Graphic3d_CView& theCView,
+                                  const Standard_Integer theLayerId);
 
-  //! Remove Z layer from the specified view. All structures <br>
-  //! displayed at the moment in layer will be displayed in default layer <br>
-  //! ( the bottom-level z layer ). To unset layer index from associated <br>
-  //! structures use method UnsetZLayer (...). <br>
-  Standard_EXPORT void RemoveZLayer(const Graphic3d_CView& theCView,
-                                    const Standard_Integer theLayerId);
+  //! Remove Z layer from the specified view.
+  //! All structures displayed at the moment in layer will be displayed in default layer (the bottom-level z layer).
+  //! To unset layer index from associated structures use method UnsetZLayer (...).
+  Standard_EXPORT void RemoveZLayer (const Graphic3d_CView& theCView,
+                                     const Standard_Integer theLayerId);
 
-  //! Unset Z layer ID for all structures. The structure <br>
-  //! indexes will be set to default layer ( the bottom-level z layer with <br>
-  //! ID = 0 ). <br>
-  Standard_EXPORT void UnsetZLayer(const Standard_Integer theLayerId);
+  //! Unset Z layer ID for all structures.
+  //! The structure indexes will be set to default layer (the bottom-level z layer with ID = 0).
+  Standard_EXPORT void UnsetZLayer (const Standard_Integer theLayerId);
 
-  //! Change Z layer of a structure. The new z layer ID will <br>
-  //! be used to define the associated layer for structure on display. <br>
-  //! It is recommended to take care of redisplaying the structures already <br>
-  //! presented in view with previously set layer index. This is usually <br>
-  //! done by viewer manager. Z layers allow drawing structures in <br>
-  //! higher layers in foreground of structures in lower layers. <br>
-  Standard_EXPORT void ChangeZLayer(const Graphic3d_CStructure& theCStructure,
-                                    const Standard_Integer theLayerId);
+  //! Change Z layer of a structure.
+  //! The new z layer ID will be used to define the associated layer for structure on display.
+  //! It is recommended to take care of redisplaying the structures already presented in view with previously set layer index.
+  //! This is usually done by viewer manager. Z layers allow drawing structures in higher layers in foreground of structures in lower layers.
+  Standard_EXPORT void ChangeZLayer (const Graphic3d_CStructure& theCStructure,
+                                     const Standard_Integer      theLayerId);
 
-  //! Change Z layer of a structure already presented in view. <br>
-  //! It is recommended to update z layer of already <br>
-  //! displayed structures with this method before setting new z layer <br>
-  //! index to the structure. This is usually done by viewer manager. <br>
-  Standard_EXPORT void ChangeZLayer(const Graphic3d_CStructure& theCStructure,
-                                    const Graphic3d_CView& theCView,
-                                    const Standard_Integer theNewLayerId);
+  //! Change Z layer of a structure already presented in view.
+  //! It is recommended to update z layer of already displayed structures with this method before setting new z layer index to the structure.
+  //! This is usually done by viewer manager.
+  Standard_EXPORT void ChangeZLayer (const Graphic3d_CStructure& theCStructure,
+                                     const Graphic3d_CView&      theCView,
+                                     const Standard_Integer      theNewLayerId);
 
-  //! Get Z layer ID of the structure. If the structure doesn't exists in <br>
-  //! graphic driver, the method returns -1. <br>
-  Standard_EXPORT Standard_Integer GetZLayer(const Graphic3d_CStructure& theCStructure) const;
+  //! Get Z layer ID of the structure. If the structure doesn't exists in graphic driver, the method returns -1.
+  Standard_EXPORT Standard_Integer GetZLayer (const Graphic3d_CStructure& theCStructure) const;
 
   //! Sets the settings for a single Z layer of specified view.
   Standard_EXPORT void SetZLayerSettings (const Graphic3d_CView& theCView,
                                           const Standard_Integer theLayerId,
-                                          const Graphic3d_ZLayerSettings theSettings);
+                                          const Graphic3d_ZLayerSettings& theSettings);
+
+  //! Changes priority of a structure within its Z layer for the specified view.
+  Standard_EXPORT void ChangePriority (const Graphic3d_CStructure& theCStructure,
+                                       const Graphic3d_CView& theCView,
+                                       const Standard_Integer theNewPriority);
 
 public:
 
@@ -341,16 +313,20 @@ public:
   Standard_EXPORT OpenGl_UserDrawCallback_t& UserDrawCallback();
 
 public:
-  
-  //! Returns information about OpenCL device used for computations.
-  Standard_EXPORT Standard_Boolean GetOpenClDeviceInfo (const Graphic3d_CView& theCView,
-                      NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString>& theInfo);
-
-private:
 
   //! Method to retrieve valid GL context.
   //! Could return NULL-handle if no window created by this driver.
   Standard_EXPORT const Handle(OpenGl_Context)& GetSharedContext() const;
+
+  //! Marks BVH tree for given priority list as dirty and
+  //! marks primitive set for rebuild.
+  Standard_EXPORT void InvalidateBVHData (Graphic3d_CView& theCView, const Standard_Integer theLayerId);
+
+#if defined(HAVE_EGL) || defined(__ANDROID__)
+  Aspect_Display          getRawGlDisplay() const { return myEglDisplay; }
+  Aspect_RenderingContext getRawGlContext() const { return myEglContext;  }
+  void*                   getRawGlConfig()  const { return myEglConfig; }
+#endif
 
 public:
 
@@ -358,23 +334,32 @@ public:
 
 private:
 
-  Handle(OpenGl_Display)                                          myGlDisplay;
+#if defined(HAVE_EGL) || defined(__ANDROID__)
+  Aspect_Display          myEglDisplay; //!< EGL connection to the Display : EGLDisplay
+  Aspect_RenderingContext myEglContext; //!< EGL rendering context         : EGLContext
+  void*                   myEglConfig;  //!< EGL configuration             : EGLConfig
+#endif
+
   Handle(OpenGl_Caps)                                             myCaps;
   NCollection_DataMap<Standard_Integer, Handle(OpenGl_View)>      myMapOfView;
   NCollection_DataMap<Standard_Integer, Handle(OpenGl_Workspace)> myMapOfWS;
   NCollection_DataMap<Standard_Integer, OpenGl_Structure*>        myMapOfStructure;
-  Handle(OpenGl_Workspace)                                        myImmediateWS;
   mutable Handle(OpenGl_PrinterContext)                           myPrintContext;
   OpenGl_UserDrawCallback_t                                       myUserDrawCallback;
   OpenGl_Text*                                                    myTempText;         //!< variable for compatibility (drawing text in layers)
 
 public:
 
+  //! State counter for OpenGl structures.
   OpenGl_StateCounter* GetStateCounter() const { return &myStateCounter; }
+
+  //! Returns unique ID for primitive arrays.
+  const Standard_Size GetNextPrimitiveArrayUID() const { return myUIDGenerator.Increment(); }
 
 private:
 
-  mutable OpenGl_StateCounter myStateCounter;
+  mutable OpenGl_StateCounter myStateCounter; //!< State counter for OpenGl structures.
+  mutable OpenGl_StateCounter myUIDGenerator; //!< Unique ID counter for primitive arrays.
 
 };
 

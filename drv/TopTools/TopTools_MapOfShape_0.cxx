@@ -5,9 +5,6 @@
 
 #include <TopTools_MapOfShape.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
 #ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
 #endif

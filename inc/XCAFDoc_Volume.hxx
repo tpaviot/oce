@@ -40,7 +40,7 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-
+//! attribute to store volume <br>
 class XCAFDoc_Volume : public TDF_Attribute {
 
 public:

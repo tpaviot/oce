@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TDF_IDList();
   
+  Standard_EXPORT   TDF_IDList(const TDF_IDList& Other);
+  
   Standard_EXPORT     void Assign(const TDF_IDList& Other) ;
     void operator=(const TDF_IDList& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_IDList(const TDF_IDList& Other);
 
 
 Standard_Address myFirst;

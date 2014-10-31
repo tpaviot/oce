@@ -31,7 +31,7 @@
 class TopOpeBRepDS_Transition;
 
 
-
+//! Interference <br>
 class TopOpeBRepDS_SolidSurfaceInterference : public TopOpeBRepDS_Interference {
 
 public:

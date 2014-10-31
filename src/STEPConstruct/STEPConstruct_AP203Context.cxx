@@ -14,26 +14,13 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <config.h>
-#endif
-
 #include <STEPConstruct_AP203Context.ixx>
 
-#ifdef HAVE_PWD_H
+#ifndef _WIN32
 # include <pwd.h>
-#endif
-
-#ifdef HAVE_NETDB_H
 # include <netdb.h>
-#endif
-
-#ifdef WNT
+#else
 # include <winsock2.h>
-#endif
-
-#if defined(HAVE_TIME_H) || defined(WNT)
-# include <time.h>
 #endif
 
 #include <stdio.h>
@@ -180,7 +167,7 @@ Handle(StepBasic_PersonAndOrganization) STEPConstruct_AP203Context::DefaultPerso
     // construct person`s name
     OSD_Process sys;
     Standard_CString usr = sys.UserName().ToCString();
-#ifndef WNT
+#if !defined(_WIN32) && !defined(__ANDROID__)
     if ( usr ) {
       struct passwd *pwd = getpwnam ( usr );
       if ( pwd ) usr = pwd->pw_gecos;

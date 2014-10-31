@@ -19,7 +19,7 @@ class TVertex from BRep inherits TVertex from TopoDS
 	---Purpose: The TVertex from  BRep inherits  from  the TVertex
 	--          from TopoDS. It contains the geometric data.
 	--          
-	--          The  TVertex contains a 3d point and a tolerance.
+	--          The  TVertex contains a 3d point, location and a tolerance.
 	--            
 uses
     Pnt    from gp,
@@ -27,7 +27,7 @@ uses
     ListOfPointRepresentation from BRep
 
 is
-    Create returns mutable TVertex from BRep;
+    Create returns TVertex from BRep;
 
     Tolerance(me) returns Real
 	---C++: inline
@@ -63,7 +63,7 @@ is
 	---C++: return &
     is static;
     
-    EmptyCopy(me) returns mutable TShape from TopoDS;
+    EmptyCopy(me) returns TShape from TopoDS;
 	---Purpose: Returns a copy  of the  TShape  with no sub-shapes.
     
 fields

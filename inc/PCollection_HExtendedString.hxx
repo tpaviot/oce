@@ -186,8 +186,6 @@ public:
   Standard_EXPORT     Standard_Integer UsefullLength() const;
   //! Returns the character of index Index of the string. <br>
   Standard_EXPORT     Standard_ExtCharacter Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PCollection_HExtendedString( )
 {
@@ -224,10 +222,6 @@ DBC_VArrayOfExtCharacter Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PCollection_HExtendedString& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

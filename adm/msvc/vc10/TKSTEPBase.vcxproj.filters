@@ -2,31 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{4EE444B6-1214-0230-039A-5D837862551D}</UniqueIdentifier>
+      <UniqueIdentifier>{43907B2C-11B5-1515-10C9-65ABB2EB6DCA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepBasic">
-      <UniqueIdentifier>{C1EFF006-0B73-06DC-15BF-8A0F45F09CA0}</UniqueIdentifier>
+      <UniqueIdentifier>{7522B0E3-013C-09C2-15F2-E155DECC9ECB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepBasic">
-      <UniqueIdentifier>{BAF4DD22-0562-03C7-152E-637977BB9BD5}</UniqueIdentifier>
+      <UniqueIdentifier>{CD443353-0C3D-1046-0A26-AF50CEE21E61}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepRepr">
-      <UniqueIdentifier>{F3F09DB3-02A3-168B-029C-518F76A1CCC4}</UniqueIdentifier>
+      <UniqueIdentifier>{387C79C7-0B5F-05B2-11E9-26DD0277E64A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepRepr">
-      <UniqueIdentifier>{8A668B85-0C09-15CD-07E5-A3CE7046513F}</UniqueIdentifier>
+      <UniqueIdentifier>{B00DBEF5-056B-068D-0D09-8E256037C686}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepGeom">
-      <UniqueIdentifier>{7FFFC056-04DD-0C0F-0D60-E09277AFD922}</UniqueIdentifier>
+      <UniqueIdentifier>{CAB218E7-086E-095B-05A3-FDDCF7B60F6A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepGeom">
-      <UniqueIdentifier>{D859FF2F-18C6-16D1-0E7C-1D050233E6AD}</UniqueIdentifier>
+      <UniqueIdentifier>{AE109EBC-0CE5-0AB8-0492-4AB0447A6884}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepShape">
-      <UniqueIdentifier>{6D6D16A1-091B-0844-147A-456F7D9A7831}</UniqueIdentifier>
+      <UniqueIdentifier>{63B6F888-0CD5-10C6-04CD-CD57ED478DA2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepShape">
-      <UniqueIdentifier>{491548E1-0ECD-0E4B-0A0D-EDB6D37DF040}</UniqueIdentifier>
+      <UniqueIdentifier>{A38AED2F-1648-123F-1986-1EB30C7D135C}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

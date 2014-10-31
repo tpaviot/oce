@@ -43,6 +43,8 @@ public:
   
       StepElement_SequenceOfCurveElementPurposeMember();
   
+  Standard_EXPORT   StepElement_SequenceOfCurveElementPurposeMember(const StepElement_SequenceOfCurveElementPurposeMember& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~StepElement_SequenceOfCurveElementPurposeMember()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StepElement_SequenceOfCurveElementPurposeMember(const StepElement_SequenceOfCurveElementPurposeMember& Other);
 
 
 

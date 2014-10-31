@@ -2,37 +2,37 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{A1C7CE94-1268-1402-0641-B50B1EECF580}</UniqueIdentifier>
+      <UniqueIdentifier>{B30B9ADB-0C36-0785-0EA4-AB179D9B4C74}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeBuild">
-      <UniqueIdentifier>{E9B7E692-17FC-0B55-0A32-9C72CC34B89F}</UniqueIdentifier>
+      <UniqueIdentifier>{B869032F-095D-041B-1694-42B5BEA9EFF4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeExtend">
-      <UniqueIdentifier>{44FE876A-14E7-0C03-1567-8A2863617CE2}</UniqueIdentifier>
+      <UniqueIdentifier>{C8B98C60-02BE-0D78-072F-04D39DE0F74D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeConstruct">
-      <UniqueIdentifier>{4DF8664E-1265-0871-0535-0693A7C7EBBB}</UniqueIdentifier>
+      <UniqueIdentifier>{8BF4AF46-00A1-05EF-0029-E21EF55EA5DA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeCustom">
-      <UniqueIdentifier>{4565444F-0C93-0F96-0BFF-5ED29853FB65}</UniqueIdentifier>
+      <UniqueIdentifier>{DA952557-035F-0826-110A-86F422062306}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeAnalysis">
-      <UniqueIdentifier>{9DDBF64D-1705-02F5-17D4-FEA2B36BD24A}</UniqueIdentifier>
+      <UniqueIdentifier>{E5789264-14F4-154C-184F-B67E231356C4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeFix">
-      <UniqueIdentifier>{BB08E704-0207-12D1-0D1E-24A04896F0B0}</UniqueIdentifier>
+      <UniqueIdentifier>{A5985EAB-195F-038B-0377-9107FEA3C980}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeUpgrade">
-      <UniqueIdentifier>{93B42401-0AE3-1122-13AB-9311A66BE491}</UniqueIdentifier>
+      <UniqueIdentifier>{02184548-0934-0F1A-182D-AC319FEDE405}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeAlgo">
-      <UniqueIdentifier>{6B0A9498-0874-1085-0324-8EE19C7DF6B3}</UniqueIdentifier>
+      <UniqueIdentifier>{153D2886-0635-0353-15EC-6E608A8421FE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeProcess">
-      <UniqueIdentifier>{CF7C2E2E-09F2-0A59-0050-F579B90A94FA}</UniqueIdentifier>
+      <UniqueIdentifier>{D3BD6CB3-0018-0F75-0BFD-1FB67B0559D1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeProcessAPI">
-      <UniqueIdentifier>{BAD5BAE2-0DDF-0A2D-025F-0C412B8AA578}</UniqueIdentifier>
+      <UniqueIdentifier>{4BC6196B-032C-0BF8-1561-446C59257B83}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -412,9 +412,6 @@
       <Filter>Source files\ShapeProcess</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ShapeProcess\ShapeProcess_Context.cxx">
-      <Filter>Source files\ShapeProcess</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\ShapeProcess\ShapeProcess_OperFunc.cxx">
       <Filter>Source files\ShapeProcess</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ShapeProcess\ShapeProcess_OperLibrary.cxx">

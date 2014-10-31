@@ -523,7 +523,8 @@ static Standard_Boolean GoodOrientation(const Bnd_Box& B,
   Sweep.SetAngularControl(angmin, angmax);
   TopTools_MapOfShape Dummy;
   BRepFill_DataMapOfShapeHArray2OfShape Dummy2;
-  Sweep.Build(Dummy, Dummy2, myStyle, myCont);
+  BRepFill_DataMapOfShapeHArray2OfShape Dummy3;
+  Sweep.Build(Dummy, Dummy2, Dummy3, myStyle, myCont);
   if (Sweep.IsDone()) {
     myShape = Sweep.Shape();
     myShell = TopoDS::Shell(myShape);
@@ -615,6 +616,7 @@ static Standard_Boolean GoodOrientation(const Bnd_Box& B,
       TopoDS_Shell S;
       B.MakeShell(S);
       B.Add(S, StopShape);
+      S.Closed (BRep_Tool::IsClosed (S));
       B.MakeSolid(Sol2);
       B.Add(Sol2, S); // shell => solid (for fusion)
       break;

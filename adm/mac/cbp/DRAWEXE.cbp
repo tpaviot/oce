@@ -97,6 +97,6 @@
 			<Add library="freeimage" />
 			<Add library="freetype" />
 		</Linker>
-		<Unit filename="/Users/mnt/tools/WOK670/wok_entities/LOC/dev/CR671-FINAL1-CR671-FINAL1-occt/src/DRAWEXE/DRAWEXE.cxx" />
+		<Unit filename="/Users/mnt/tools/WOK671/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/DRAWEXE/DRAWEXE.cxx" />
 	</Project>
 </CodeBlocks_project_file>

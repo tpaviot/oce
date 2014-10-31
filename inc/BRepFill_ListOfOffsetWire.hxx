@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   BRepFill_ListOfOffsetWire();
   
+  Standard_EXPORT   BRepFill_ListOfOffsetWire(const BRepFill_ListOfOffsetWire& Other);
+  
   Standard_EXPORT     void Assign(const BRepFill_ListOfOffsetWire& Other) ;
     void operator=(const BRepFill_ListOfOffsetWire& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRepFill_ListOfOffsetWire(const BRepFill_ListOfOffsetWire& Other);
 
 
 Standard_Address myFirst;

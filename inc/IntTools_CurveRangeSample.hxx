@@ -31,7 +31,7 @@
 class IntTools_Range;
 
 
-
+//! class for range index management of curve <br>
 class IntTools_CurveRangeSample  : public IntTools_BaseRangeSample {
 public:
 

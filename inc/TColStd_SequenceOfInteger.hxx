@@ -39,6 +39,8 @@ public:
   
       TColStd_SequenceOfInteger();
   
+  Standard_EXPORT   TColStd_SequenceOfInteger(const TColStd_SequenceOfInteger& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColStd_SequenceOfInteger()
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_SequenceOfInteger(const TColStd_SequenceOfInteger& Other);
 
 
 

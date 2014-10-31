@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05FF083B0259047311550B9E"
+               BlueprintIdentifier = "13CD0CBE169F0B6901021068"
                BuildableName = "libTKOpenGl.dylib"
                BlueprintName = "TKOpenGl"
                ReferencedContainer = "container:TKOpenGl.xcodeproj">

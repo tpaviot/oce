@@ -9,7 +9,6 @@
 //! Definition of the order of selection <br>
 //!      TOO_TOPFIRST    the root structure first <br>
 //!      TOO_BOTTOMFIRST the leaf structure first <br>
-//!      Allows exploration of a PickPath in a PickDescriptor. <br>
 enum Visual3d_TypeOfOrder {
 Visual3d_TOO_TOPFIRST,
 Visual3d_TOO_BOTTOMFIRST

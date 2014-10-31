@@ -43,6 +43,8 @@ public:
   
       NLPlate_SequenceOfHGPPConstraint();
   
+  Standard_EXPORT   NLPlate_SequenceOfHGPPConstraint(const NLPlate_SequenceOfHGPPConstraint& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~NLPlate_SequenceOfHGPPConstraint()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   NLPlate_SequenceOfHGPPConstraint(const NLPlate_SequenceOfHGPPConstraint& Other);
 
 
 

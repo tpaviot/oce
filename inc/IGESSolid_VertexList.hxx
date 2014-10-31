@@ -34,6 +34,7 @@ class gp_Pnt;
 //!          in package IGESSolid <br>
 //!          A vertex is a point in R3. A vertex is the bound of an <br>
 //!          edge and can participate in the bounds of a face. <br>
+//!          It contains one or more vertices. <br>
 class IGESSolid_VertexList : public IGESData_IGESEntity {
 
 public:

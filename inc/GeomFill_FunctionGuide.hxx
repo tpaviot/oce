@@ -43,13 +43,15 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class Adaptor3d_HCurve;
 class GeomFill_SectionLaw;
 class Geom_Curve;
 class Geom_Surface;
 class gp_Pnt;
 class gp_XYZ;
-class math_Vector;
 class math_Matrix;
 class gp_Vec;
 

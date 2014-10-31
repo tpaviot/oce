@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TopOpeBRep_ListOfBipoint();
   
+  Standard_EXPORT   TopOpeBRep_ListOfBipoint(const TopOpeBRep_ListOfBipoint& Other);
+  
   Standard_EXPORT     void Assign(const TopOpeBRep_ListOfBipoint& Other) ;
     void operator=(const TopOpeBRep_ListOfBipoint& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopOpeBRep_ListOfBipoint(const TopOpeBRep_ListOfBipoint& Other);
 
 
 Standard_Address myFirst;

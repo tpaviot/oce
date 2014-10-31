@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   TopOpeBRepBuild_ListOfPave();
   
+  Standard_EXPORT   TopOpeBRepBuild_ListOfPave(const TopOpeBRepBuild_ListOfPave& Other);
+  
   Standard_EXPORT     void Assign(const TopOpeBRepBuild_ListOfPave& Other) ;
     void operator=(const TopOpeBRepBuild_ListOfPave& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopOpeBRepBuild_ListOfPave(const TopOpeBRepBuild_ListOfPave& Other);
 
 
 Standard_Address myFirst;

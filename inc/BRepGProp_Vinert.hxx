@@ -22,14 +22,25 @@
 #ifndef _GProp_GProps_HeaderFile
 #include <GProp_GProps.hxx>
 #endif
-class TopoDS_Edge;
 class BRepGProp_Face;
-class BRepGProp_Domain;
 class gp_Pnt;
 class gp_Pln;
+class BRepGProp_Domain;
 
 
 
+//!  Computes the global properties of a geometric solid <br>
+//!  (3D closed region of space) delimited with : <br>
+//!  . a surface <br>
+//!  . a point and a surface <br>
+//!  . a plane and a surface <br>
+//! <br>
+//!  The surface can be : <br>
+//!  . a surface limited with its parametric values U-V, <br>
+//!  . a surface limited in U-V space with its curves of restriction, <br>
+//! <br>
+//!  The surface 's requirements to evaluate the global properties <br>
+//!  are defined in the template SurfaceTool from package GProp. <br>
 class BRepGProp_Vinert  : public GProp_GProps {
 public:
 
@@ -38,28 +49,110 @@ public:
   
   Standard_EXPORT   BRepGProp_Vinert();
   
+//!  Computes the global properties of a region of 3D space <br>
+//!  delimited with the surface <S> and the point VLocation. S can be closed <br>
+//!  The method is quick and its precision is enough for many cases of analytical <br>
+//!  surfaces. <br>
+//!  Non-adaptive 2D Gauss integration with predefined numbers of Gauss points <br>
+//!  is used. Numbers of points depend on types of surfaces and  curves. <br>
+//!  Errror of the computation is not calculated. <br>
   Standard_EXPORT   BRepGProp_Vinert(const BRepGProp_Face& S,const gp_Pnt& VLocation);
   
+//!  Computes the global properties of a region of 3D space <br>
+//!  delimited with the surface <S> and the point VLocation. S can be closed <br>
+//!  Adaptive 2D Gauss integration is used. <br>
+//!  Parameter Eps sets maximal relative error of computed mass (volume) for face. <br>
+//!  Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values <br>
+//!  for two successive steps of adaptive integration. <br>
   Standard_EXPORT   BRepGProp_Vinert(BRepGProp_Face& S,const gp_Pnt& VLocation,const Standard_Real Eps);
   
+//!  Computes the global properties of the region of 3D space <br>
+//!  delimited with the surface <S> and the point VLocation. <br>
+//!  The method is quick and its precision is enough for many cases of analytical <br>
+//!  surfaces. <br>
+//!  Non-adaptive 2D Gauss integration with predefined numbers of Gauss points <br>
+//!  is used. Numbers of points depend on types of surfaces and  curves. <br>
+//!  Error of the computation is not calculated. <br>
   Standard_EXPORT   BRepGProp_Vinert(const BRepGProp_Face& S,const gp_Pnt& O,const gp_Pnt& VLocation);
   
+//!  Computes the global properties of the region of 3D space <br>
+//!  delimited with the surface <S> and the point VLocation. <br>
+//!  Adaptive 2D Gauss integration is used. <br>
+//!  Parameter Eps sets maximal relative error of computed mass (volume) for face. <br>
+//!  Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values <br>
+//!  for two successive steps of adaptive integration. <br>
+//!          WARNING: if Eps > 0.001 algorithm performs non-adaptive integration. <br>
   Standard_EXPORT   BRepGProp_Vinert(BRepGProp_Face& S,const gp_Pnt& O,const gp_Pnt& VLocation,const Standard_Real Eps);
   
+//!  Computes the global properties of the region of 3D space <br>
+//!  delimited with the surface <S> and the plane Pln. <br>
+//!  The method is quick and its precision is enough for many cases of analytical <br>
+//!  surfaces. <br>
+//!  Non-adaptive 2D Gauss integration with predefined numbers of Gauss points <br>
+//!  is used. Numbers of points depend on types of surfaces and  curves. <br>
+//!  Error of the computation is not calculated. <br>
   Standard_EXPORT   BRepGProp_Vinert(const BRepGProp_Face& S,const gp_Pln& Pl,const gp_Pnt& VLocation);
   
+//!  Computes the global properties of the region of 3D space <br>
+//!  delimited with the surface <S> and the plane Pln. <br>
+//!  Adaptive 2D Gauss integration is used. <br>
+//!  Parameter Eps sets maximal relative error of computed mass (volume) for face. <br>
+//!  Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values <br>
+//!  for two successive steps of adaptive integration. <br>
+//!          WARNING: if Eps > 0.001 algorithm performs non-adaptive integration. <br>
   Standard_EXPORT   BRepGProp_Vinert(BRepGProp_Face& S,const gp_Pln& Pl,const gp_Pnt& VLocation,const Standard_Real Eps);
   
+//!  Computes the global properties of a region of 3D space <br>
+//!  delimited with the surface <S> and the point VLocation. S can be closed <br>
+//!  The method is quick and its precision is enough for many cases of analytical <br>
+//!  surfaces. <br>
+//!  Non-adaptive 2D Gauss integration with predefined numbers of Gauss points <br>
+//!  is used. Numbers of points depend on types of surfaces and  curves. <br>
+//!  Errror of the computation is not calculated. <br>
   Standard_EXPORT   BRepGProp_Vinert(BRepGProp_Face& S,BRepGProp_Domain& D,const gp_Pnt& VLocation);
   
+//!  Computes the global properties of a region of 3D space <br>
+//!  delimited with the surface <S> and the point VLocation. S can be closed <br>
+//!  Adaptive 2D Gauss integration is used. <br>
+//!  Parameter Eps sets maximal relative error of computed mass (volume) for face. <br>
+//!  Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values <br>
+//!  for two successive steps of adaptive integration. <br>
   Standard_EXPORT   BRepGProp_Vinert(BRepGProp_Face& S,BRepGProp_Domain& D,const gp_Pnt& VLocation,const Standard_Real Eps);
   
+//!  Computes the global properties of the region of 3D space <br>
+//!  delimited with the surface <S> and the point VLocation. <br>
+//!  The method is quick and its precision is enough for many cases of analytical <br>
+//!  surfaces. <br>
+//!  Non-adaptive 2D Gauss integration with predefined numbers of Gauss points <br>
+//!  is used. Numbers of points depend on types of surfaces and  curves. <br>
+//!  Error of the computation is not calculated. <br>
   Standard_EXPORT   BRepGProp_Vinert(BRepGProp_Face& S,BRepGProp_Domain& D,const gp_Pnt& O,const gp_Pnt& VLocation);
   
+//!  Computes the global properties of the region of 3D space <br>
+//!  delimited with the surface <S> and the point VLocation. <br>
+//!  Adaptive 2D Gauss integration is used. <br>
+//!  Parameter Eps sets maximal relative error of computed mass (volume) for face. <br>
+//!  Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values <br>
+//!  for two successive steps of adaptive integration. <br>
+//!          WARNING: if Eps > 0.001 algorithm performs non-adaptive integration. <br>
   Standard_EXPORT   BRepGProp_Vinert(BRepGProp_Face& S,BRepGProp_Domain& D,const gp_Pnt& O,const gp_Pnt& VLocation,const Standard_Real Eps);
   
+//!  Computes the global properties of the region of 3D space <br>
+//!  delimited with the surface <S> and the plane Pln. <br>
+//!  The method is quick and its precision is enough for many cases of analytical <br>
+//!  surfaces. <br>
+//!  Non-adaptive 2D Gauss integration with predefined numbers of Gauss points <br>
+//!  is used. Numbers of points depend on types of surfaces and  curves. <br>
+//!  Error of the computation is not calculated. <br>
   Standard_EXPORT   BRepGProp_Vinert(BRepGProp_Face& S,BRepGProp_Domain& D,const gp_Pln& Pl,const gp_Pnt& VLocation);
   
+//!  Computes the global properties of the region of 3D space <br>
+//!  delimited with the surface <S> and the plane Pln. <br>
+//!  Adaptive 2D Gauss integration is used. <br>
+//!  Parameter Eps sets maximal relative error of computed mass (volume) for face. <br>
+//!  Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values <br>
+//!  for two successive steps of adaptive integration. <br>
+//!          WARNING: if Eps > 0.001 algorithm performs non-adaptive integration. <br>
   Standard_EXPORT   BRepGProp_Vinert(BRepGProp_Face& S,BRepGProp_Domain& D,const gp_Pln& Pl,const gp_Pnt& VLocation,const Standard_Real Eps);
   
   Standard_EXPORT     void SetLocation(const gp_Pnt& VLocation) ;
@@ -88,6 +181,8 @@ public:
   
   Standard_EXPORT     Standard_Real Perform(BRepGProp_Face& S,BRepGProp_Domain& D,const gp_Pln& Pl,const Standard_Real Eps) ;
   
+//!  If previously used methods containe Eps parameter <br>
+//!  gets actual relative error of the computation, else returns  1.0. <br>
   Standard_EXPORT     Standard_Real GetEpsilon() ;
 
 

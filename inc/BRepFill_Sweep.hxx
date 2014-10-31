@@ -69,6 +69,8 @@ class TopoDS_Edge;
 
 
 //! Topological Sweep Algorithm <br>
+//!          Computes an  Sweep  shell using a  generating <br>
+//!          wire, an SectionLaw and an LocationLaw. <br>
 class BRepFill_Sweep  {
 public:
 
@@ -112,7 +114,7 @@ public:
 //!    Degmax     : The maximum degree in v requiered on the surface <br>
 //!    Segmax     : The maximum number of span in v requiered on <br>
 //!                 the surface. <br>
-  Standard_EXPORT     void Build(TopTools_MapOfShape& ReversedEdges,BRepFill_DataMapOfShapeHArray2OfShape& Tapes,const BRepFill_TransitionStyle Transition = BRepFill_Modified,const GeomAbs_Shape Continuity = GeomAbs_C2,const GeomFill_ApproxStyle Approx = GeomFill_Location,const Standard_Integer Degmax = 11,const Standard_Integer Segmax = 30) ;
+  Standard_EXPORT     void Build(TopTools_MapOfShape& ReversedEdges,BRepFill_DataMapOfShapeHArray2OfShape& Tapes,BRepFill_DataMapOfShapeHArray2OfShape& Rails,const BRepFill_TransitionStyle Transition = BRepFill_Modified,const GeomAbs_Shape Continuity = GeomAbs_C2,const GeomFill_ApproxStyle Approx = GeomFill_Location,const Standard_Integer Degmax = 11,const Standard_Integer Segmax = 30) ;
   //! Say if the Shape is Build. <br>
   Standard_EXPORT     Standard_Boolean IsDone() const;
   //! returns the Sweeping Shape <br>
@@ -143,7 +145,7 @@ private:
   
   Standard_EXPORT     Standard_Boolean BuildWire(const BRepFill_TransitionStyle Transition) ;
   
-  Standard_EXPORT     Standard_Boolean BuildShell(const BRepFill_TransitionStyle Transition,const Standard_Integer Vf,const Standard_Integer Vl,TopTools_MapOfShape& ReversedEdges,BRepFill_DataMapOfShapeHArray2OfShape& Tapes,const Standard_Real ExtendFirst = 0.0,const Standard_Real ExtendLast = 0.0) ;
+  Standard_EXPORT     Standard_Boolean BuildShell(const BRepFill_TransitionStyle Transition,const Standard_Integer Vf,const Standard_Integer Vl,TopTools_MapOfShape& ReversedEdges,BRepFill_DataMapOfShapeHArray2OfShape& Tapes,BRepFill_DataMapOfShapeHArray2OfShape& Rails,const Standard_Real ExtendFirst = 0.0,const Standard_Real ExtendLast = 0.0) ;
   
   Standard_EXPORT     void PerformCorner(const Standard_Integer Index,const BRepFill_TransitionStyle Transition,const Handle(TopTools_HArray2OfShape)& Bounds) ;
   

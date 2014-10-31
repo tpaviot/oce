@@ -34,7 +34,7 @@ class TopoDS_Shape;
 class BRepTools_Modification;
 
 
-
+//! Performs geometric modifications on a shape. <br>
 class BRepTools_Modifier  {
 public:
 

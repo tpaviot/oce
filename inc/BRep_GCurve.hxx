@@ -28,6 +28,7 @@ class gp_Pnt;
 
 //! Root   class    for    the    geometric     curves <br>
 //!          representation. Contains a range. <br>
+//!          Contains a first and a last parameter. <br>
 class BRep_GCurve : public BRep_CurveRepresentation {
 
 public:

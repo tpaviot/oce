@@ -32,7 +32,7 @@ class TopoDS_Shape;
 class ShapeUpgrade_FaceDivide;
 
 
-
+//! API Tool for converting shapes with C0 geometry into C1 ones <br>
 class ShapeUpgrade_ShapeDivideContinuity  : public ShapeUpgrade_ShapeDivide {
 public:
 

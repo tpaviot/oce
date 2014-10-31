@@ -17,12 +17,12 @@
 #define Poly_ListOfTriangulation_HeaderFile
 
 #include <NCollection_List.hxx>
-#include <Handle_Poly_Triangulation.hxx>
+#include <Poly_Triangulation.hxx>
 
 /**
  * List of Poly_Triangulation instances.
  */
 
-typedef NCollection_List<Handle_Poly_Triangulation> Poly_ListOfTriangulation;
+typedef NCollection_List<Handle(Poly_Triangulation)> Poly_ListOfTriangulation;
 
 #endif

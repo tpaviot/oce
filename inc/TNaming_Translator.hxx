@@ -29,7 +29,7 @@ class TopoDS_Shape;
 class TopTools_DataMapOfShapeShape;
 
 
-
+//! only  for  Shape  Copy  test - to move in DNaming <br>
 class TNaming_Translator  {
 public:
 

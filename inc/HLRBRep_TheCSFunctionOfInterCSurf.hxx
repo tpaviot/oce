@@ -37,10 +37,12 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class HLRBRep_SurfaceTool;
 class gp_Lin;
 class HLRBRep_LineTool;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 

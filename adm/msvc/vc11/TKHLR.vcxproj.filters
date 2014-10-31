@@ -2,31 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{D172F55D-015B-0DA6-193C-D7945A4CB6AF}</UniqueIdentifier>
+      <UniqueIdentifier>{5A4C1BC3-0A93-01C3-1653-7D0FE19DBCA0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRTopoBRep">
-      <UniqueIdentifier>{6DB36BA1-0F71-0EA4-062E-F50F1FB3DC00}</UniqueIdentifier>
+      <UniqueIdentifier>{CAE936D9-0B42-065A-1359-9478666C7260}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRBRep">
-      <UniqueIdentifier>{30964FED-0658-04FE-0FDE-AD2194779B2E}</UniqueIdentifier>
+      <UniqueIdentifier>{C900F205-136F-16C5-11B6-3747803733FF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRAlgo">
-      <UniqueIdentifier>{6D02614B-1726-02C5-1516-7F380A3833F6}</UniqueIdentifier>
+      <UniqueIdentifier>{36CAC583-13E5-13F0-119C-393B3B5FA64B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRAppli">
-      <UniqueIdentifier>{DB75BF50-02B0-01FD-017E-231DBC75275A}</UniqueIdentifier>
+      <UniqueIdentifier>{9EC2A40F-1609-149A-1620-030BC8FA88E9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Intrv">
-      <UniqueIdentifier>{6A9D8A18-04B9-0025-0F51-517FD19EA234}</UniqueIdentifier>
+      <UniqueIdentifier>{32B58222-0179-0973-0DF6-9C7F606EA075}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopBas">
-      <UniqueIdentifier>{AB0CF58D-17CE-0C27-159B-22A5A8A9E756}</UniqueIdentifier>
+      <UniqueIdentifier>{E87799D0-00E3-0803-0A8C-5183EDAC5B07}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopCnx">
-      <UniqueIdentifier>{92DFC15A-00C3-1273-00B1-B08A92599F17}</UniqueIdentifier>
+      <UniqueIdentifier>{8C5C33DF-086F-1107-0E8C-602B88CA2341}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Contap">
-      <UniqueIdentifier>{DB9FB24D-081F-0111-091C-538D47603FDE}</UniqueIdentifier>
+      <UniqueIdentifier>{D08151FD-159D-0F27-063A-DB3506765A63}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -405,82 +405,82 @@
     <ClCompile Include="..\..\..\src\TopCnx\TopCnx_EdgeFaceTransition.cxx">
       <Filter>Source files\TopCnx</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_Contour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_HContTool_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_HCurve2dTool_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalkingOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfTheSequenceOfLine_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfSequenceOfPathPointOfTheSearchOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfTheSequenceOfPoint_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfSequenceOfSegmentOfTheSearchOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceOfIWLineOfTheIWalking_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfTheSequenceOfLineOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceOfPathPointOfTheSearch_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceNodeOfTheSequenceOfPointOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceOfSegmentOfTheSearch_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceOfIWLineOfTheIWalkingOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheHSequenceOfPoint_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceOfPathPointOfTheSearchOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheIWLineOfTheIWalking_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_SequenceOfSegmentOfTheSearchOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheIWalking_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheArcFunctionOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_ThePathPointOfTheSearch_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheHSequenceOfPointOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSearchInside_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheIWLineOfTheIWalkingOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSearch_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheIWalkingOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSegmentOfTheSearch_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheLineOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSequenceOfLine_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_ThePathPointOfTheSearchOfContour_0.cxx">
+    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSequenceOfPoint_0.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_ThePointOfContour_0.cxx">
-      <Filter>Source files\Contap</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSearchInsideOfContour_0.cxx">
-      <Filter>Source files\Contap</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSearchOfContour_0.cxx">
-      <Filter>Source files\Contap</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSegmentOfTheSearchOfContour_0.cxx">
-      <Filter>Source files\Contap</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSequenceOfLineOfContour_0.cxx">
-      <Filter>Source files\Contap</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSequenceOfPointOfContour_0.cxx">
-      <Filter>Source files\Contap</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSurfFunctionOfContour_0.cxx">
-      <Filter>Source files\Contap</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Contap\Contap_TheSurfPropsOfContour_0.cxx">
+    <ClCompile Include="..\..\..\src\Contap\Contap_ArcFunction.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Contap\Contap_ContAna.cxx">
+      <Filter>Source files\Contap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_Contour.cxx">
+      <Filter>Source files\Contap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_HContTool.cxx">
+      <Filter>Source files\Contap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_HCurve2dTool.cxx">
+      <Filter>Source files\Contap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_Line.cxx">
+      <Filter>Source files\Contap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_Point.cxx">
+      <Filter>Source files\Contap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_SurfFunction.cxx">
+      <Filter>Source files\Contap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Contap\Contap_SurfProps.cxx">
       <Filter>Source files\Contap</Filter>
     </ClCompile>
   </ItemGroup>

@@ -16,8 +16,8 @@
 #include <Handle_PrsMgr_Prs.hxx>
 #endif
 
-#ifndef _PrsMgr_Presentation3dPointer_HeaderFile
-#include <PrsMgr_Presentation3dPointer.hxx>
+#ifndef _PrsMgr_PresentationPointer_HeaderFile
+#include <PrsMgr_PresentationPointer.hxx>
 #endif
 #ifndef _Prs3d_Presentation_HeaderFile
 #include <Prs3d_Presentation.hxx>
@@ -46,7 +46,7 @@ class PrsMgr_Prs : public Prs3d_Presentation {
 public:
 
   
-  Standard_EXPORT   PrsMgr_Prs(const Handle(Graphic3d_StructureManager)& aStructureManager,const PrsMgr_Presentation3dPointer& aPresentation,const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d);
+  Standard_EXPORT   PrsMgr_Prs(const Handle(Graphic3d_StructureManager)& theStructManager,const PrsMgr_PresentationPointer& thePresentation,const PrsMgr_TypeOfPresentation3d theTypeOfPresentation3d);
   
   Standard_EXPORT     void Compute() ;
   
@@ -79,7 +79,7 @@ protected:
 private: 
 
 
-PrsMgr_Presentation3dPointer myPresentation3d;
+PrsMgr_PresentationPointer myPresentation3d;
 
 
 };

@@ -76,6 +76,9 @@
 #ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Handle_BRepAdaptor_HCurve2d_HeaderFile
 #include <Handle_BRepAdaptor_HCurve2d.hxx>
 #endif
@@ -118,7 +121,6 @@ class ChFiDS_SurfData;
 class ChFiDS_HElSpine;
 class BRepAdaptor_HSurface;
 class Adaptor3d_TopolTool;
-class math_Vector;
 class BRepAdaptor_HCurve2d;
 class BRepBlend_Line;
 class Adaptor3d_HSurface;

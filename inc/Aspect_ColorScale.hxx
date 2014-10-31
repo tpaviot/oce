@@ -46,18 +46,14 @@
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
-#ifndef _Handle_Aspect_ColorMap_HeaderFile
-#include <Handle_Aspect_ColorMap.hxx>
-#endif
 class Quantity_Color;
 class TCollection_ExtendedString;
 class TCollection_AsciiString;
 class TColStd_SequenceOfExtendedString;
 class Aspect_SequenceOfColor;
-class Aspect_ColorMap;
 
 
-
+//! Defines a color scale for viewer. <br>
 class Aspect_ColorScale : public MMgt_TShared {
 
 public:
@@ -132,8 +128,6 @@ public:
   Standard_EXPORT     void SetColor(const Quantity_Color& aColor,const Standard_Integer anIndex = -1) ;
   //! Sets the color scale labels. <br>
   Standard_EXPORT     void SetLabels(const TColStd_SequenceOfExtendedString& aSeq) ;
-  //! Sets the color scale colors. <br>
-  Standard_EXPORT     void SetColors(const Handle(Aspect_ColorMap)& aMap) ;
   //! Sets the color scale colors. <br>
   Standard_EXPORT     void SetColors(const Aspect_SequenceOfColor& aSeq) ;
   //! Sets the color scale labels position concerning color filled rectangles. <br>

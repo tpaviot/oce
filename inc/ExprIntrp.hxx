@@ -34,17 +34,14 @@ class ExprIntrp_SequenceOfNamedExpression;
 class ExprIntrp_StackOfGeneralExpression;
 class ExprIntrp_StackOfGeneralRelation;
 class ExprIntrp_StackOfGeneralFunction;
-class ExprIntrp_StackOfNames;
 class ExprIntrp_SequenceNodeOfSequenceOfNamedFunction;
 class ExprIntrp_SequenceNodeOfSequenceOfNamedExpression;
-class ExprIntrp_StackNodeOfStackOfGeneralExpression;
-class ExprIntrp_StackIteratorOfStackOfGeneralExpression;
-class ExprIntrp_StackNodeOfStackOfGeneralRelation;
-class ExprIntrp_StackIteratorOfStackOfGeneralRelation;
-class ExprIntrp_StackNodeOfStackOfGeneralFunction;
-class ExprIntrp_StackIteratorOfStackOfGeneralFunction;
-class ExprIntrp_StackNodeOfStackOfNames;
-class ExprIntrp_StackIteratorOfStackOfNames;
+class ExprIntrp_ListNodeOfStackOfGeneralExpression;
+class ExprIntrp_ListIteratorOfStackOfGeneralExpression;
+class ExprIntrp_ListNodeOfStackOfGeneralRelation;
+class ExprIntrp_ListIteratorOfStackOfGeneralRelation;
+class ExprIntrp_ListNodeOfStackOfGeneralFunction;
+class ExprIntrp_ListIteratorOfStackOfGeneralFunction;
 
 
 //! Describes an interpreter for GeneralExpressions, <br>
@@ -83,17 +80,14 @@ friend class ExprIntrp_SequenceOfNamedExpression;
 friend class ExprIntrp_StackOfGeneralExpression;
 friend class ExprIntrp_StackOfGeneralRelation;
 friend class ExprIntrp_StackOfGeneralFunction;
-friend class ExprIntrp_StackOfNames;
 friend class ExprIntrp_SequenceNodeOfSequenceOfNamedFunction;
 friend class ExprIntrp_SequenceNodeOfSequenceOfNamedExpression;
-friend class ExprIntrp_StackNodeOfStackOfGeneralExpression;
-friend class ExprIntrp_StackIteratorOfStackOfGeneralExpression;
-friend class ExprIntrp_StackNodeOfStackOfGeneralRelation;
-friend class ExprIntrp_StackIteratorOfStackOfGeneralRelation;
-friend class ExprIntrp_StackNodeOfStackOfGeneralFunction;
-friend class ExprIntrp_StackIteratorOfStackOfGeneralFunction;
-friend class ExprIntrp_StackNodeOfStackOfNames;
-friend class ExprIntrp_StackIteratorOfStackOfNames;
+friend class ExprIntrp_ListNodeOfStackOfGeneralExpression;
+friend class ExprIntrp_ListIteratorOfStackOfGeneralExpression;
+friend class ExprIntrp_ListNodeOfStackOfGeneralRelation;
+friend class ExprIntrp_ListIteratorOfStackOfGeneralRelation;
+friend class ExprIntrp_ListNodeOfStackOfGeneralFunction;
+friend class ExprIntrp_ListIteratorOfStackOfGeneralFunction;
 
 };
 

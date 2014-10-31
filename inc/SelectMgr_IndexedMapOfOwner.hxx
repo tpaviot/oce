@@ -47,6 +47,8 @@ public:
   
   Standard_EXPORT   SelectMgr_IndexedMapOfOwner(const Standard_Integer NbBuckets = 1);
   
+  Standard_EXPORT   SelectMgr_IndexedMapOfOwner(const SelectMgr_IndexedMapOfOwner& Other);
+  
   Standard_EXPORT     SelectMgr_IndexedMapOfOwner& Assign(const SelectMgr_IndexedMapOfOwner& Other) ;
     SelectMgr_IndexedMapOfOwner& operator =(const SelectMgr_IndexedMapOfOwner& Other) 
 {
@@ -89,8 +91,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   SelectMgr_IndexedMapOfOwner(const SelectMgr_IndexedMapOfOwner& Other);
 
 
 

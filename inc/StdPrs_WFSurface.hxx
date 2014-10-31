@@ -33,7 +33,10 @@ class Adaptor3d_HSurface;
 class Prs3d_Drawer;
 
 
-
+//! Computes the wireframe presentation of surfaces <br>
+//!          by displaying a given number of U and/or V isoparametric <br>
+//!         curves. The isoparametric curves are drawn with respect <br>
+//!          to a given number of points. <br>
 class StdPrs_WFSurface  : public Prs3d_Root {
 public:
 

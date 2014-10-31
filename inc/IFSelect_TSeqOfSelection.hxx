@@ -43,6 +43,8 @@ public:
   
       IFSelect_TSeqOfSelection();
   
+  Standard_EXPORT   IFSelect_TSeqOfSelection(const IFSelect_TSeqOfSelection& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IFSelect_TSeqOfSelection()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IFSelect_TSeqOfSelection(const IFSelect_TSeqOfSelection& Other);
 
 
 

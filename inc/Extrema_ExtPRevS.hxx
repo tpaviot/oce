@@ -9,15 +9,15 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
-#ifndef _Standard_DefineAlloc_HeaderFile
-#include <Standard_DefineAlloc.hxx>
+#ifndef _Standard_DefineHandle_HeaderFile
+#include <Standard_DefineHandle.hxx>
 #endif
-#ifndef _Standard_Macro_HeaderFile
-#include <Standard_Macro.hxx>
+#ifndef _Handle_Extrema_ExtPRevS_HeaderFile
+#include <Handle_Extrema_ExtPRevS.hxx>
 #endif
 
-#ifndef _Adaptor3d_SurfacePtr_HeaderFile
-#include <Adaptor3d_SurfacePtr.hxx>
+#ifndef _Handle_Adaptor3d_HSurfaceOfRevolution_HeaderFile
+#include <Handle_Adaptor3d_HSurfaceOfRevolution.hxx>
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
@@ -37,31 +37,33 @@
 #ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
 #endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+class Adaptor3d_HSurfaceOfRevolution;
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class gp_Pnt;
-class Adaptor3d_SurfaceOfRevolution;
 class Extrema_POnSurf;
 
 
 //! It calculates all the extremum (minimum and <br>
 //!          maximum) distances between a point and a surface <br>
 //!          of revolution. <br>
-class Extrema_ExtPRevS  {
-public:
+class Extrema_ExtPRevS : public Standard_Transient {
 
-  DEFINE_STANDARD_ALLOC
+public:
 
   
   Standard_EXPORT   Extrema_ExtPRevS();
   //! It calculates all the distances between a point <br>
 //!          from gp and a SurfacePtr from Adaptor3d. <br>
-  Standard_EXPORT   Extrema_ExtPRevS(const gp_Pnt& P,const Adaptor3d_SurfaceOfRevolution& S,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV);
+  Standard_EXPORT   Extrema_ExtPRevS(const gp_Pnt& P,const Handle(Adaptor3d_HSurfaceOfRevolution)& S,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV);
   //! It calculates all the distances between a point <br>
 //!          from gp and a SurfacePtr from Adaptor3d. <br>
-  Standard_EXPORT   Extrema_ExtPRevS(const gp_Pnt& P,const Adaptor3d_SurfaceOfRevolution& S,const Standard_Real TolU,const Standard_Real TolV);
+  Standard_EXPORT   Extrema_ExtPRevS(const gp_Pnt& P,const Handle(Adaptor3d_HSurfaceOfRevolution)& S,const Standard_Real TolU,const Standard_Real TolV);
   
-  Standard_EXPORT     void Initialize(const Adaptor3d_SurfaceOfRevolution& S,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV) ;
+  Standard_EXPORT     void Initialize(const Handle(Adaptor3d_HSurfaceOfRevolution)& S,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV) ;
   
   Standard_EXPORT     void Perform(const gp_Pnt& P) ;
   //! Returns True if the distances are found. <br>
@@ -76,18 +78,17 @@ public:
 
 
 
+  DEFINE_STANDARD_RTTI(Extrema_ExtPRevS)
 
 protected:
 
 
 
 
-
-private:
-
+private: 
 
 
-Adaptor3d_SurfacePtr myS;
+Handle_Adaptor3d_HSurfaceOfRevolution myS;
 Standard_Real myvinf;
 Standard_Real myvsup;
 Standard_Real mytolv;

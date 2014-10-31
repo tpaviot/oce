@@ -52,6 +52,12 @@
 #ifndef _Handle_StepShape_FaceBasedSurfaceModel_HeaderFile
 #include <Handle_StepShape_FaceBasedSurfaceModel.hxx>
 #endif
+#ifndef _Handle_Transfer_ActorOfTransientProcess_HeaderFile
+#include <Handle_Transfer_ActorOfTransientProcess.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 class StdFail_NotDone;
 class StepShape_ManifoldSolidBrep;
 class Transfer_TransientProcess;
@@ -63,6 +69,7 @@ class StepToTopoDS_NMTool;
 class StepShape_GeometricSet;
 class StepShape_EdgeBasedWireframeModel;
 class StepShape_FaceBasedSurfaceModel;
+class Transfer_ActorOfTransientProcess;
 class TopoDS_Shape;
 
 
@@ -102,7 +109,7 @@ public:
   
   Standard_EXPORT     void Init(const Handle(StepShape_FaceBasedSurfaceModel)& S,const Handle(Transfer_TransientProcess)& TP) ;
   
-  Standard_EXPORT     void Init(const Handle(StepShape_GeometricSet)& S,const Handle(Transfer_TransientProcess)& TP) ;
+  Standard_EXPORT     void Init(const Handle(StepShape_GeometricSet)& S,const Handle(Transfer_TransientProcess)& TP,const Handle(Transfer_ActorOfTransientProcess)& RA = NULL,const Standard_Boolean isManifold = Standard_False) ;
   
   Standard_EXPORT    const TopoDS_Shape& Value() const;
   

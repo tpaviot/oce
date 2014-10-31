@@ -26,7 +26,8 @@ class TopoDS_Edge;
 class TopoDS_Shape;
 
 
-//! Makes vertices to be shared to connect edges, <br>
+//! Rebuilds edges to connect with new vertices, was moved from ShapeBuild. <br>
+//!           Makes vertices to be shared to connect edges, <br>
 //!           updates positions and tolerances for shared vertices. <br>
 //!           Accepts edges bounded by two vertices each. <br>
 class ShapeFix_EdgeConnect  {

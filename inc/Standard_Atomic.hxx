@@ -55,7 +55,7 @@ int Standard_Atomic_Decrement (volatile int* theValue)
   return __sync_sub_and_fetch (theValue, 1);
 }
 
-#elif defined(_WIN32) || defined(__WIN32__)
+#elif defined(_WIN32)
 extern "C" {
   long _InterlockedIncrement (volatile long* lpAddend);
   long _InterlockedDecrement (volatile long* lpAddend);
@@ -93,6 +93,25 @@ int Standard_Atomic_Increment (volatile int* theValue)
 int Standard_Atomic_Decrement (volatile int* theValue)
 {
   return OSAtomicDecrement32Barrier (theValue);
+}
+
+#elif defined(__ANDROID__)
+
+// Atomic operations that were exported by the C library didn't
+// provide any memory barriers, which created potential issues on
+// multi-core devices. Starting from ndk version r7b they are defined as
+// inlined calls to GCC sync builtins, which always provide a full barrier.
+// It is strongly recommended to use newer versions of ndk.
+#include <sys/atomics.h>
+
+int Standard_Atomic_Increment (volatile int* theValue)
+{
+  return __atomic_inc (theValue) + 1; // analog of __sync_fetch_and_add
+}
+
+int Standard_Atomic_Decrement (volatile int* theValue)
+{
+  return __atomic_dec (theValue) - 1; // analog of __sync_fetch_and_sub
 }
 
 #elif defined(__GNUC__) && (defined(__i386__) || defined(__x86_64))

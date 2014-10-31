@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   HLRTopoBRep_ListOfVData();
   
+  Standard_EXPORT   HLRTopoBRep_ListOfVData(const HLRTopoBRep_ListOfVData& Other);
+  
   Standard_EXPORT     void Assign(const HLRTopoBRep_ListOfVData& Other) ;
     void operator=(const HLRTopoBRep_ListOfVData& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   HLRTopoBRep_ListOfVData(const HLRTopoBRep_ListOfVData& Other);
 
 
 Standard_Address myFirst;

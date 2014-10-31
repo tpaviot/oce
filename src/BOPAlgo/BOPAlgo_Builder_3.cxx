@@ -14,8 +14,10 @@
 //
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
-
+//
 #include <BOPAlgo_Builder.hxx>
+//
+#include <Precision.hxx>
 //
 #include <NCollection_IncAllocator.hxx>
 #include <NCollection_UBTreeFiller.hxx>
@@ -52,7 +54,7 @@
 #include <BOPCol_NCVector.hxx>
 #include <BOPCol_TBB.hxx>
 //
-#include <BOPInt_Context.hxx>
+#include <IntTools_Context.hxx>
 //
 #include <BOPDS_DS.hxx>
 #include <BOPDS_ShapeInfo.hxx>
@@ -121,11 +123,12 @@ class BOPAlgo_ShapeBox {
   Bnd_Box myBox;
 };
 //
-typedef NCollection_DataMap\
-  <Standard_Integer, BOPAlgo_ShapeBox, TColStd_MapIntegerHasher> \
-  BOPAlgo_DataMapOfIntegerShapeBox; 
+typedef NCollection_DataMap
+  <Standard_Integer,
+  BOPAlgo_ShapeBox, 
+  TColStd_MapIntegerHasher> BOPAlgo_DataMapOfIntegerShapeBox; 
 //
-typedef BOPAlgo_DataMapOfIntegerShapeBox::Iterator \
+typedef BOPAlgo_DataMapOfIntegerShapeBox::Iterator 
   BOPAlgo_DataMapIteratorOfDataMapOfIntegerShapeBox; 
 // 
 
@@ -255,6 +258,7 @@ void BOPAlgo_Builder::FillIn3DParts
       continue;
     }
     // 
+    UserBreak();
     //---------------------------------------------
     Handle(NCollection_IncAllocator) aAlr1;
     //
@@ -332,7 +336,9 @@ void BOPAlgo_Builder::FillIn3DParts
       //
       aMFDone.Add(aFP);
       //
-      iIsIN=BOPTools_AlgoTools::IsInternalFace(aFP, aSD, aMEF, 1.e-14, myContext);
+      iIsIN=BOPTools_AlgoTools::IsInternalFace(aFP, aSD, aMEF,
+                                               Precision::Confusion(),
+                                               myContext);
       //
       aLFP.Clear();
       aLFP.Append(aFP);
@@ -434,9 +440,8 @@ void BOPAlgo_Builder::BuildDraftSolid(const TopoDS_Shape& theSolid,
               theLIF.Append(aFSDx);
             }
             else {
-              bToReverse=BOPTools_AlgoTools::IsSplitToReverse(aFSDx, 
-	 aF, 
-	 myContext); 
+              bToReverse=BOPTools_AlgoTools::IsSplitToReverse
+                (aFSDx, aF, myContext); 
               if (bToReverse) {
                 aFSDx.Reverse();
               }
@@ -470,6 +475,7 @@ void BOPAlgo_Builder::BuildDraftSolid(const TopoDS_Shape& theSolid,
     } //for (; aIt2.More(); aIt2.Next()) {
     //
     if (iFlag) {
+      aShD.Closed (BRep_Tool::IsClosed (aShD));
       aBB.Add(theDraftSolid, aShD);
     }
   } //for (; aIt1.More(); aIt1.Next()) {
@@ -565,6 +571,8 @@ void BOPAlgo_Builder::BuildSplitSolids
     BOPAlgo_BuilderSolid& aBS=aVBS.Append1();
     aBS.SetSolid(aSolid);
     aBS.SetShapes(aSFS);
+    aBS.SetRunParallel(myRunParallel);
+    aBS.SetProgressIndicator(myProgressIndicator);
   }//for (i=0; i<aNbS; ++i) {
   //
   Standard_Integer k, aNbBS;
@@ -640,7 +648,8 @@ void BOPAlgo_Builder::FillInternalShapes()
   // 1.1 Shapes from pure arguments aMSI 
   // 1.1.1 vertex, edge, wire
   //
-  aIt.Initialize(myArguments);
+  const BOPCol_ListOfShape& aArguments=myDS->Arguments();
+  aIt.Initialize(aArguments);
   for (; aIt.More(); aIt.Next()) {
     const TopoDS_Shape& aS=aIt.Value();
     TreatCompound(aS, aMFence, aLSC);
@@ -700,6 +709,8 @@ void BOPAlgo_Builder::FillInternalShapes()
     if (aSI.ShapeType()!=TopAbs_SOLID) {
       continue;
     }
+    //
+    UserBreak();
     //
     const TopoDS_Shape& aS=aSI.Shape();
     //

@@ -42,8 +42,8 @@ class Standard_Transient;
 class Standard_Type;
 
 
-//! Defines an Iterator on Entities, complying with GraphTools <br>
-//!           needs. Allows considering of various criteria <br>
+//! Defines an Iterator on Entities. <br>
+//!           Allows considering of various criteria <br>
 class Interface_EntityIterator  {
 public:
 
@@ -77,7 +77,7 @@ public:
   //! Sets iteration to the next entity (vertex) to give <br>
   Standard_EXPORT     void Next() const;
   //! Returns the current Entity iterated, to be used by Interface <br>
-//!           tools or by GraphTools (where Entity is a Vertex) <br>
+//!           tools <br>
   Standard_EXPORT    const Handle_Standard_Transient& Value() const;
   //! Returns the content of the Iterator, accessed through a Handle <br>
 //!           to be used by a frontal-engine logic <br>

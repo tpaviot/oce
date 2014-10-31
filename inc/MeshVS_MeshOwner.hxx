@@ -31,8 +31,8 @@
 #ifndef _SelectMgr_SOPtr_HeaderFile
 #include <SelectMgr_SOPtr.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
@@ -45,7 +45,6 @@
 #endif
 class MeshVS_DataSource;
 class TColStd_HPackedMapOfInteger;
-class PrsMgr_PresentationManager3d;
 class PrsMgr_PresentationManager;
 
 

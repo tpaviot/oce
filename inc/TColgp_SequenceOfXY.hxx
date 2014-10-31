@@ -40,6 +40,8 @@ public:
   
       TColgp_SequenceOfXY();
   
+  Standard_EXPORT   TColgp_SequenceOfXY(const TColgp_SequenceOfXY& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColgp_SequenceOfXY()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColgp_SequenceOfXY(const TColgp_SequenceOfXY& Other);
 
 
 

@@ -494,9 +494,6 @@
 					RelativePath="..\..\..\src\LocOpe\LocOpe_Prism.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\LocOpe\LocOpe_ProjectedWires.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\LocOpe\LocOpe_Revol.cxx">
 				</File>
 				<File

@@ -29,7 +29,7 @@ class TopTools_HSequenceOfShape;
 class TopoDS_Shape;
 
 
-
+//! Dumps shape contents <br>
 class ShapeAnalysis_ShapeContents  {
 public:
 

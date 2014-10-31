@@ -38,8 +38,9 @@ class Adaptor3d_Curve;
 class Adaptor2d_Curve2d;
 
 
-//! This classe defines an algorithm to create a set of points at the <br>
-//!  positions of constant deflection of a given curve or a trimmed <br>
+//! This class defines an algorithm to create a set of points <br>
+//! (with a given chordal deviation) at the <br>
+//!  positions of constant deflection of a given parametrized curve or a trimmed <br>
 //!  circle. <br>
 //!  The continuity of the curve must be at least C2. <br>
 //! <br>

@@ -52,12 +52,14 @@
 #ifndef _Blend_CSFunction_HeaderFile
 #include <Blend_CSFunction.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
 #endif
 class Adaptor3d_HSurface;
 class Adaptor3d_HCurve;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 class gp_Pnt2d;

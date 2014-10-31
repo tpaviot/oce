@@ -1,0 +1,12 @@
+#ifndef _TopLoc_SListNodeOfItemLocation_HeaderFile
+#include <TopLoc_SListNodeOfItemLocation.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _TopLoc_ItemLocation_HeaderFile
+#include <TopLoc_ItemLocation.hxx>
+#endif
+#ifndef _TopLoc_SListOfItemLocation_HeaderFile
+#include <TopLoc_SListOfItemLocation.hxx>
+#endif

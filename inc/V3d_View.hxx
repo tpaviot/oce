@@ -16,8 +16,17 @@
 #include <Handle_V3d_View.hxx>
 #endif
 
-#ifndef _V3d_TypeOfView_HeaderFile
-#include <V3d_TypeOfView.hxx>
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
+#endif
+#ifndef _gp_Dir_HeaderFile
+#include <gp_Dir.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _Graphic3d_Camera_Handle_HeaderFile
+#include <Graphic3d_Camera_Handle.hxx>
 #endif
 #ifndef _V3d_ViewerPointer_HeaderFile
 #include <V3d_ViewerPointer.hxx>
@@ -27,12 +36,6 @@
 #endif
 #ifndef _Handle_Visual3d_View_HeaderFile
 #include <Handle_Visual3d_View.hxx>
-#endif
-#ifndef _Visual3d_ViewMapping_HeaderFile
-#include <Visual3d_ViewMapping.hxx>
-#endif
-#ifndef _Visual3d_ViewOrientation_HeaderFile
-#include <Visual3d_ViewOrientation.hxx>
 #endif
 #ifndef _Visual3d_ContextView_HeaderFile
 #include <Visual3d_ContextView.hxx>
@@ -52,17 +55,11 @@
 #ifndef _Handle_Aspect_Window_HeaderFile
 #include <Handle_Aspect_Window.hxx>
 #endif
-#ifndef _Handle_Graphic3d_Plotter_HeaderFile
-#include <Handle_Graphic3d_Plotter.hxx>
-#endif
 #ifndef _TColStd_ListIteratorOfListOfTransient_HeaderFile
 #include <TColStd_ListIteratorOfListOfTransient.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
@@ -75,9 +72,6 @@
 #endif
 #ifndef _Handle_V3d_LayerMgr_HeaderFile
 #include <Handle_V3d_LayerMgr.hxx>
-#endif
-#ifndef _V3d_TypeOfProjectionModel_HeaderFile
-#include <V3d_TypeOfProjectionModel.hxx>
 #endif
 #ifndef _TColStd_Array2OfReal_HeaderFile
 #include <TColStd_Array2OfReal.hxx>
@@ -99,6 +93,9 @@
 #endif
 #ifndef _Handle_V3d_Viewer_HeaderFile
 #include <Handle_V3d_Viewer.hxx>
+#endif
+#ifndef _V3d_TypeOfView_HeaderFile
+#include <V3d_TypeOfView.hxx>
 #endif
 #ifndef _Aspect_RenderingContext_HeaderFile
 #include <Aspect_RenderingContext.hxx>
@@ -202,6 +199,9 @@
 #ifndef _Image_PixMap_HeaderFile
 #include <Image_PixMap.hxx>
 #endif
+#ifndef _V3d_StereoDumpOptions_HeaderFile
+#include <V3d_StereoDumpOptions.hxx>
+#endif
 #ifndef _V3d_TypeOfBackfacingModel_HeaderFile
 #include <V3d_TypeOfBackfacingModel.hxx>
 #endif
@@ -211,9 +211,11 @@
 #ifndef _Graphic3d_SequenceOfHClipPlane_HeaderFile
 #include <Graphic3d_SequenceOfHClipPlane.hxx>
 #endif
+#ifndef _Graphic3d_RenderingParams_HeaderFile
+#include <Graphic3d_RenderingParams.hxx>
+#endif
 class Visual3d_View;
 class Aspect_Window;
-class Graphic3d_Plotter;
 class Aspect_Grid;
 class V3d_LayerMgr;
 class Graphic3d_Structure;
@@ -229,12 +231,12 @@ class V3d_Light;
 class TCollection_ExtendedString;
 class TCollection_AsciiString;
 class Aspect_ColorScale;
-class Visual3d_ViewOrientation;
-class Visual3d_ViewMapping;
 class Aspect_GradientBackground;
+class gp_Dir;
 class Graphic3d_Vector;
 class TColStd_Array2OfReal;
 class gp_Ax3;
+class gp_XYZ;
 
 
 //! Defines the application object VIEW for the <br>
@@ -243,6 +245,7 @@ class gp_Ax3;
 //!          and inquiring the parameters linked to the view. <br>
 //!          (Projection,Mapping,Zclipping,DepthCueing,AntiAliasing <br>
 //!           et Conversions) . <br>
+//!          Provides a set of services common to all types of view. <br>
 //!  Warning: The default parameters are defined by the class <br>
 //!          Viewer (Example : SetDefaultViewSize()). <br>
 //!          Certain methods are mouse oriented, and it is <br>
@@ -257,10 +260,10 @@ class V3d_View : public MMgt_TShared {
 
 public:
 
-  //! Initialises the view. <br>
+  //! Initializes the view. <br>
   Standard_EXPORT   V3d_View(const Handle(V3d_Viewer)& VM,const V3d_TypeOfView Type = V3d_ORTHOGRAPHIC);
-  //! Initialises the view by copying. <br>
-  Standard_EXPORT   V3d_View(const Handle(V3d_Viewer)& VM,const Handle(V3d_View)& V,const V3d_TypeOfView Type = V3d_ORTHOGRAPHIC);
+  //! Initializes the view by copying. <br>
+  Standard_EXPORT   V3d_View(const Handle(V3d_Viewer)& theVM,const Handle(V3d_View)& theView);
   //! Activates the view in the window specified and Map the <br>
 //!          Window to the screen. <br>//!  Warning! raises MultiplyDefined from Standard <br>
 //!      if the view is already activated in a window. <br>
@@ -290,6 +293,10 @@ public:
 //!          Must be called if the view is shown. <br>
 //!          (Ex: DeIconification ) . <br>
   Standard_EXPORT     void Redraw() const;
+  //! Updates layer of immediate presentations. <br>
+  Standard_EXPORT     void RedrawImmediate() const;
+  //! Invalidates view content but does not redraw it. <br>
+  Standard_EXPORT     void Invalidate() const;
   //! Redisplays the view area after esxposure. <br>
 //! [x,y] define the min xy area position <br>
 //! [width,height] the size of the area in pixel unit. <br>
@@ -308,6 +315,12 @@ public:
   Standard_EXPORT     Standard_Boolean IsEmpty() const;
   //! Updates the lights of the view. The view is redrawn. <br>
   Standard_EXPORT     void UpdateLights() const;
+  //! If automatic z-range fitting is turned on, adjusts Z-min and Z-max <br>
+//!          projection volume planes with call to ZFitAll. <br>
+  Standard_EXPORT     void AutoZFit() ;
+  //! Change Z-min and Z-max planes of projection volume to match the <br>
+//!          displayed objects. <br>
+  Standard_EXPORT     void ZFitAll(const Standard_Real theScaleFactor = 1.0) ;
   //! Defines the background colour of the view <br>
 //!          by supplying : <br>
 //!          the colour definition type, <br>
@@ -483,7 +496,7 @@ public:
   //! places the point of the view corresponding <br>
 //!          at the pixel position x,y at the center of the window <br>
 //!          and updates the view. <br>
-  Standard_EXPORT     void Place(const Standard_Integer x,const Standard_Integer y,const Quantity_Factor aZoomFactor = 1) ;
+  Standard_EXPORT     void Place(const Standard_Integer theXp,const Standard_Integer theYp,const Quantity_Factor theZoomFactor = 1) ;
   //! Rotation of the view point around the frame of reference <br>
 //!          of the screen for which the origin is the eye of the <br>
 //!          projection with a relative angular value in RADIANS <br>
@@ -520,28 +533,34 @@ public:
   Standard_EXPORT     void SetUp(const Quantity_Parameter Vx,const Quantity_Parameter Vy,const Quantity_Parameter Vz) ;
   //! Defines the orientation(SO) of the high point. <br>
   Standard_EXPORT     void SetUp(const V3d_TypeOfOrientation Orientation) ;
-  //! Modifies the orientation of the view. <br>
-  Standard_EXPORT     void SetViewOrientation(const Visual3d_ViewOrientation& VO) ;
   //! Saves the current state of the orientation of the view <br>
 //!          which will be the return state at ResetViewOrientation. <br>
   Standard_EXPORT     void SetViewOrientationDefault() ;
   //! Resets the orientation of the view. <br>
 //!          Updates the view <br>
   Standard_EXPORT     void ResetViewOrientation() ;
-  //!       translates the center of the view and zooms the view. <br>
-//!       Updates the view. <br>
-  Standard_EXPORT     void Panning(const Quantity_Length Dx,const Quantity_Length Dy,const Quantity_Factor aZoomFactor = 1,const Standard_Boolean Start = Standard_True) ;
-  //! Defines the centre of the view. <br>
-//!          Updates the view. <br>
-  Standard_EXPORT     void SetCenter(const V3d_Coordinate Xc,const V3d_Coordinate Yc) ;
-  //! Defines the centre of the view from a pixel position. <br>
-//!          Updates the view. <br>
-  Standard_EXPORT     void SetCenter(const Standard_Integer X,const Standard_Integer Y) ;
-  //! Defines the size of the view while preserving the <br>
-//!          center and height/width ratio of the window supporting <br>
-//!          the view. <br>
-//!          NOTE than the Depth of the View is NOT modified . <br>
-  Standard_EXPORT     void SetSize(const Quantity_Length Size) ;
+  //! Translates the center of the view along "x" and "y" axes of <br>
+//! view projection. Can be used to perform interactive panning operation. <br>
+//! In that case the DXv, DXy parameters specify panning relative to the <br>
+//! point where the operation is started. <br>
+//! @param theDXv [in] the relative panning on "x" axis of view projection, in view space coordinates. <br>
+//! @param theDYv [in] the relative panning on "y" axis of view projection, in view space coordinates. <br>
+//! @param theZoomFactor [in] the zooming factor. <br>
+//! @param theToStart [in] pass TRUE when starting panning to remember view <br>
+//! state prior to panning for relative arguments. If panning is started, <br>
+//! passing {0, 0} for {theDXv, theDYv} will return view to initial state. <br>
+//! Performs update of view. <br>
+  Standard_EXPORT     void Panning(const Standard_Real theDXv,const Standard_Real theDYv,const Quantity_Factor theZoomFactor = 1,const Standard_Boolean theToStart = Standard_True) ;
+  //! Relocates center of screen to the point, determined by <br>
+//! {Xp, Yp} pixel coordinates relative to the bottom-left corner of <br>
+//! screen. To calculate pixel coordinates for any point from world <br>
+//! coordinate space, it can be projected using "Project". <br>
+//! @param theXp [in] the x coordinate. <br>
+//! @param theYp [in] the y coordinate. <br>
+  Standard_EXPORT     void SetCenter(const Standard_Integer theXp,const Standard_Integer theYp) ;
+  //! Defines the view projection size in its maximum dimension, <br>
+//!          keeping the inital height/width ratio unchanged. <br>
+  Standard_EXPORT     void SetSize(const Quantity_Length theSize) ;
   //! Defines the Depth size of the view <br>
 //!          Front Plane will be set to Size/2. <br>
 //!          Back  Plane will be set to -Size/2. <br>
@@ -566,46 +585,38 @@ public:
 //! || 0   0   0   1 || <br>
 //! Updates the view. <br>
   Standard_EXPORT     void SetAxialScale(const Standard_Real Sx,const Standard_Real Sy,const Standard_Real Sz) ;
-  //! Automatic zoom/panning. Objects in the view are visualised <br>
-//!          so as to occupy the maximum space while respecting the <br>
-//!          margin coefficient and the initial height /width ratio. <br>
-//!          NOTE than the original Z size of the view is NOT modified . <br>
-  Standard_EXPORT     void FitAll(const Quantity_Coefficient Coef = 0.01,const Standard_Boolean FitZ = Standard_False,const Standard_Boolean update = Standard_True) ;
-  //! Automatic Depth Panning. Objects visible in the view are <br>
-//!          visualised so as to occupy the maximum Z amount of space <br>
-//!          while respecting the margin coefficient . <br>
-//!          NOTE than the original XY size of the view is NOT modified . <br>
-  Standard_EXPORT     void ZFitAll(const Quantity_Coefficient Coef = 1.0) ;
+  //! Adjust view parameters to fit the displayed scene, respecting height / width ratio. <br>
+//!          The Z clipping range (depth range) is fitted if AutoZFit flag is TRUE. <br>
+//!          Throws program error exception if margin coefficient is < 0 or >= 1. <br>
+//!          Updates the view. <br>
+//!          @param theMargin [in] the margin coefficient for view borders. <br>
+//!          @param theToUpdate [in] flag to perform view update. <br>
+  Standard_EXPORT     void FitAll(const Quantity_Coefficient theMargin = 0.01,const Standard_Boolean theToUpdate = Standard_True) ;
   //! Adjusts the viewing volume so as not to clip the displayed objects by front and back <br>
 //!          and back clipping planes. Also sets depth value automatically depending on the <br>
 //!          calculated Z size and Aspect parameter. <br>
 //!          NOTE than the original XY size of the view is NOT modified . <br>
   Standard_EXPORT     void DepthFitAll(const Quantity_Coefficient Aspect = 0.01,const Quantity_Coefficient Margin = 0.01) ;
-  //! Centres the defined projection window so that it occupies <br>
+  //! Centers the defined projection window so that it occupies <br>
 //!          the maximum space while respecting the initial <br>
 //!          height/width ratio. <br>
 //!          NOTE than the original Z size of the view is NOT modified . <br>
-  Standard_EXPORT     void FitAll(const V3d_Coordinate Umin,const V3d_Coordinate Vmin,const V3d_Coordinate Umax,const V3d_Coordinate Vmax) ;
-  //! Centres the defined PIXEL window so that it occupies <br>
-//!          the maximum space while respecting the initial <br>
-//!          height/width ratio. <br>
-//!          NOTE than the original Z size of the view is NOT modified . <br>
-  Standard_EXPORT     void WindowFit(const Standard_Integer Xmin,const Standard_Integer Ymin,const Standard_Integer Xmax,const Standard_Integer Ymax) ;
-  //! Sets Z and XY size of the view according to given values <br>
-//!          with respecting the initial view depth (eye position). <br>
-//!          Width/heigth aspect ratio should be preserved by the caller <br>
-//!          of this method similarly to SetSize() to avoid unexpected <br>
-//!          visual results like non-uniform scaling of objects in the view. <br>
-  Standard_EXPORT     void SetViewingVolume(const Standard_Real Left,const Standard_Real Right,const Standard_Real Bottom,const Standard_Real Top,const Standard_Real ZNear,const Standard_Real ZFar) ;
-  //! Modifies the mapping of the view. <br>
-  Standard_EXPORT     void SetViewMapping(const Visual3d_ViewMapping& VM) ;
+  Standard_EXPORT     void FitAll(const Standard_Real theMinXv,const Standard_Real theMinYv,const Standard_Real theMaxXv,const Standard_Real theMaxYv) ;
+  //! Centers the defined PIXEL window so that it occupies <br>
+//! the maximum space while respecting the initial height/width ratio. <br>
+//! NOTE than the original Z size of the view is NOT modified. <br>
+//! @param theMinXp [in] pixel coordinates of minimal corner on x screen axis. <br>
+//! @param theMinYp [in] pixel coordinates of minimal corner on y screen axis. <br>
+//! @param theMaxXp [in] pixel coordinates of maximal corner on x screen axis. <br>
+//! @param theMaxYp [in] pixel coordinates of maximal corner on y screen axis. <br>
+  Standard_EXPORT     void WindowFit(const Standard_Integer theMinXp,const Standard_Integer theMinYp,const Standard_Integer theMaxXp,const Standard_Integer theMaxYp) ;
   //! Saves the current view mapping. This will be the <br>
 //!          state returned from ResetViewmapping. <br>
   Standard_EXPORT     void SetViewMappingDefault() ;
-  //! Resets the centring of the view. <br>
+  //! Resets the centering of the view. <br>
 //!          Updates the view <br>
   Standard_EXPORT     void ResetViewMapping() ;
-  //! Resets the centring and the orientation of the view <br>
+  //! Resets the centering and the orientation of the view <br>
 //!          Updates the view <br>
 //! <br>
   Standard_EXPORT     void Reset(const Standard_Boolean update = Standard_True) ;
@@ -636,18 +647,19 @@ public:
 //!           in the reference frame of the view corresponding <br>
 //!           to the intersection with the projection plane <br>
 //!           of the eye/view point vector and display the grid marker. <br>
-//!  Warning: When the grid is not active the result is identical <br>
-//!     to the above Convert() method. <br>
-//! How to use : <br>
+//!  Warning: When the grid is not active the result is identical to the above Convert() method. <br>
+//! How to use: <br>
 //! 1) Enable the grid echo display <br>
 //!    myViewer->SetGridEcho(Standard_True); <br>
-//! 2) When application receive a move event : <br>
+//! 2) When application receive a move event: <br>
 //!   2.1) Check if any object is detected <br>
 //!     if( myInteractiveContext->MoveTo(x,y) == AIS_SOD_Nothing ) { <br>
 //!   2.2) Check if the grid is active <br>
 //!     if( myViewer->Grid()->IsActive() ) { <br>
 //!   2.3) Display the grid echo and gets the grid point <br>
 //!       myView->ConvertToGrid(x,y,X,Y,Z); <br>
+//!       myView->Viewer()->ShowGridEcho (myView, Graphic3d_Vertex (X,Y,Z)); <br>
+//!       myView->RedrawImmediate(); <br>
 //!   2.4) Else this is the standard case <br>
 //!     } else myView->Convert(x,y,X,Y,Z); <br>
   Standard_EXPORT     void ConvertToGrid(const Standard_Integer Xp,const Standard_Integer Yp,V3d_Coordinate& Xg,V3d_Coordinate& Yg,V3d_Coordinate& Zg) const;
@@ -674,8 +686,6 @@ public:
   Standard_EXPORT     Quantity_Factor Scale() const;
   //! Returns the current values of the anisotropic (axial) scale factors. <br>
   Standard_EXPORT     void AxialScale(Standard_Real& Sx,Standard_Real& Sy,Standard_Real& Sz) const;
-  //! Returns the centre of the view. <br>
-  Standard_EXPORT     void Center(V3d_Coordinate& Xc,V3d_Coordinate& Yc) const;
   //! Returns the height and width of the view. <br>
   Standard_EXPORT     void Size(Quantity_Length& Width,Quantity_Length& Height) const;
   //! Returns the Depth of the view . <br>
@@ -745,31 +755,43 @@ public:
   Standard_EXPORT     Handle_Aspect_Window Window() const;
   //! Returns the Type of the View <br>
   Standard_EXPORT     V3d_TypeOfView Type() const;
-  //! translates the center of the view and zooms the view. <br>
-//!       and updates the view. <br>
-  Standard_EXPORT     void Pan(const Standard_Integer Dx,const Standard_Integer Dy,const Quantity_Factor aZoomFactor = 1) ;
+  //! Translates the center of the view along "x" and "y" axes of <br>
+//! view projection. Can be used to perform interactive panning operation. <br>
+//! In that case the DXp, DXp parameters specify panning relative to the <br>
+//! point where the operation is started. <br>
+//! @param theDXp [in] the relative panning on "x" axis of view projection, in pixels. <br>
+//! @param theDYp [in] the relative panning on "y" axis of view projection, in pixels. <br>
+//! @param theZoomFactor [in] the zooming factor. <br>
+//! @param theToStart [in] pass TRUE when starting panning to remember view <br>
+//! state prior to panning for relative arguments. Passing 0 for relative <br>
+//! panning parameter should return view panning to initial state. <br>
+//! Performs update of view. <br>
+  Standard_EXPORT     void Pan(const Standard_Integer theDXp,const Standard_Integer theDYp,const Quantity_Factor theZoomFactor = 1,const Standard_Boolean theToStart = Standard_True) ;
   //! Zoom the view according to a zoom factor computed <br>
-//! from the distance between the 2 mouse position <X1,Y1>,<X2,Y2> <br>
-  Standard_EXPORT     void Zoom(const Standard_Integer X1,const Standard_Integer Y1,const Standard_Integer X2,const Standard_Integer Y2) ;
-  //! Zoom the view according to a zoom factor computed <br>
-//! from the distance between the last and new mouse position <X,Y> <br>
-  Standard_EXPORT     void Zoom(const Standard_Integer X,const Standard_Integer Y) ;
-  //! Defines the point (pixel) of zooming (for the method ZoomAtPoint()). <br>
-  Standard_EXPORT     void StartZoomAtPoint(const Standard_Integer xpix,const Standard_Integer ypix) ;
+//! from the distance between the 2 mouse position. <br>
+//! @param theXp1 [in] the x coordinate of first mouse position, in pixels. <br>
+//! @param theYp1 [in] the y coordinate of first mouse position, in pixels. <br>
+//! @param theXp2 [in] the x coordinate of second mouse position, in pixels. <br>
+//! @param theYp2 [in] the y coordinate of second mouse position, in pixels. <br>
+  Standard_EXPORT     void Zoom(const Standard_Integer theXp1,const Standard_Integer theYp1,const Standard_Integer theXp2,const Standard_Integer theYp2) ;
+  //! Defines starting point for ZoomAtPoint view operation. <br>
+//! @param theXp [in] the x mouse coordinate, in pixels. <br>
+//! @param theYp [in] the y mouse coordinate, in pixels. <br>
+  Standard_EXPORT     void StartZoomAtPoint(const Standard_Integer theXp,const Standard_Integer theYp) ;
   //! Zooms the model at a pixel defined by the method StartZoomAtPoint(). <br>
-  Standard_EXPORT     void ZoomAtPoint(const Standard_Integer mouseStartX,const Standard_Integer mouseStartY,const Standard_Integer mouseEndX,const Standard_Integer mouseEndY) ;
+  Standard_EXPORT     void ZoomAtPoint(const Standard_Integer theMouseStartX,const Standard_Integer theMouseStartY,const Standard_Integer theMouseEndX,const Standard_Integer theMouseEndY) ;
   //! Performs  anisotropic scaling  of  <me>  view  along  the  given  <Axis>. <br>
 //! The  scale  factor  is  calculated on a basis of <br>
 //! the mouse pointer displacement <Dx,Dy>. <br>
 //! The  calculated  scale  factor  is  then  passed  to  SetAxialScale(Sx,  Sy,  Sz)  method. <br>
   Standard_EXPORT     void AxialScale(const Standard_Integer Dx,const Standard_Integer Dy,const V3d_TypeOfAxe Axis) ;
-  //! Begin the rotation of the view arround the screen axis <br>
+  //! Begin the rotation of the view around the screen axis <br>
 //! according to the mouse position <X,Y>. <br>
 //!  Warning: Enable rotation around the Z screen axis when <zRotationThreshold> <br>
 //! factor is > 0 soon the distance from the start point and the center <br>
 //! of the view is > (medium viewSize * <zRotationThreshold> ). <br>
 //! Generally a value of 0.4 is usable to rotate around XY screen axis <br>
-//! inside the circular treshold area and to rotate around Z screen axis <br>
+//! inside the circular threshold area and to rotate around Z screen axis <br>
 //! outside this area. <br>
   Standard_EXPORT     void StartRotation(const Standard_Integer X,const Standard_Integer Y,const Quantity_Ratio zRotationThreshold = 0.0) ;
   //! Continues the rotation of the view <br>
@@ -782,43 +804,12 @@ public:
   Standard_EXPORT     Quantity_Length Focale() const;
   //! Returns the associated Visual3d view. <br>
   Standard_EXPORT     Handle_Visual3d_View View() const;
-  //! Returns the current mapping of the view. <br>
-  Standard_EXPORT     Visual3d_ViewMapping ViewMapping() const;
-  //! Returns the current orientation of the view. <br>
-  Standard_EXPORT     Visual3d_ViewOrientation ViewOrientation() const;
-  //! Begins any graphics in the view <aView> <br>
-//!          Redraw any structured graphics in the back buffer before <br>
-//!          if <DoubleBuffer> is TRUE. <br>
-//!          Restore the front buffer from the back before <br>
-//!          if <DoubleBuffer> is FALSE. <br>
-//!          if <RetainMode> is TRUE. <br>
-//!          the graphic managed itself exposure,resizing ... <br>
-//!          if <RetainMode> is FALSE. <br>
-//!          the application must managed itself exposure,resizing ... <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean TransientManagerBeginDraw(const Standard_Boolean DoubleBuffer = Standard_False,const Standard_Boolean RetainMode = Standard_False) const;
-  //! Clear all transient graphics in the view <aView> <br>
-  Standard_EXPORT     void TransientManagerClearDraw() const;
-  //! Begins any add graphics in the view <aView> <br>
-//!          Redraw any structured graphics in the back buffer before <br>
-//!          the application must managed itself exposure,resizing ... <br>
-//!  Warning: Returns TRUE if transient drawing is enabled in <br>
-//!         the associated view. <br>
-//!          Returns FALSE ,if nothing works because something <br>
-//!         is wrong for the transient principle : <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean TransientManagerBeginAddDraw() const;
   //! Switches computed HLR mode in the view <br>
   Standard_EXPORT     void SetComputedMode(const Standard_Boolean aMode) ;
   //! Returns the computed HLR mode state <br>
   Standard_EXPORT     Standard_Boolean ComputedMode() const;
   //! idem than WindowFit <br>
   Standard_EXPORT     void WindowFitAll(const Standard_Integer Xmin,const Standard_Integer Ymin,const Standard_Integer Xmax,const Standard_Integer Ymax) ;
-  //! Set a plotter for plotting the contents of the view <br>
-//!          field MyPlotter <br>
-  Standard_EXPORT   virtual  void SetPlotter(const Handle(Graphic3d_Plotter)& aPlotter) ;
-  //! Create a 2D View for plotting the contents of the view <br>
-  Standard_EXPORT     void Plot() ;
   //! Defines or Updates the definition of the <br>
 //!          grid in <me> <br>
   Standard_EXPORT     void SetGrid(const gp_Ax3& aPlane,const Handle(Aspect_Grid)& aGrid) ;
@@ -858,16 +849,17 @@ public:
 //!  you use it for your purposes; <br>
 //!  Warning: Works only under Windows. <br>
   Standard_EXPORT     Standard_Boolean Print(const Aspect_Handle hPrnDC = 0,const Standard_Boolean showDialog = Standard_True,const Standard_Boolean showBackground = Standard_True,const Standard_CString filename = NULL,const Aspect_PrintAlgo printAlgorithm = Aspect_PA_STRETCH) const;
-  //! dump the full contents of the view <br>
-//!        to a pixmap of pixel size <theWidth>*<theHeight> and <br>
-//!        buffer type <theBufferType>. If <theForceCentered> is true <br>
-//!        view scene will be centered. <br>
-//!       Pixmap will be automatically (re)allocated when needed. <br>
-  Standard_EXPORT     Standard_Boolean ToPixMap(Image_PixMap& theImage,const Standard_Integer theWidth,const Standard_Integer theHeight,const Graphic3d_BufferType& theBufferType = Graphic3d_BT_RGB,const Standard_Boolean theForceCentered = Standard_True) ;
-  //! Manages projection model <br>
-  Standard_EXPORT     void SetProjModel(const V3d_TypeOfProjectionModel amOdel = V3d_TPM_SCREEN) ;
-  //! Returns the current projection model <br>
-  Standard_EXPORT     V3d_TypeOfProjectionModel ProjModel() const;
+  //! Dumps the full contents of the view <br>
+//!           to a pixmap of pixel size <theWidth> * <theHeight> and <br>
+//!           buffer type <theBufferType>. If <theToKeepAspect> is true <br>
+//!           the aspect ratio of view will be kept if <theWidth> and <theHeight> <br>
+//!           define another ratio. <br>
+//!           Pixmap will be automatically (re)allocated when needed. <br>
+//!           When dumping stereographic camera - the corresponding <br>
+//!           middle-point monographic projection will be used for dumping by default. <br>
+//!           <theStereoOptions> flags are to be used for dumping then left or <br>
+//!           right eye projections. <br>
+  Standard_EXPORT     Standard_Boolean ToPixMap(Image_PixMap& theImage,const Standard_Integer theWidth,const Standard_Integer theHeight,const Graphic3d_BufferType& theBufferType = Graphic3d_BT_RGB,const Standard_Boolean theToKeepAspect = Standard_True,const V3d_StereoDumpOptions theStereoOptions = V3d_SDO_MONO) ;
   //! Manages display of the back faces <br>
 //! When <aModel> is TOBM_AUTOMATIC the object backfaces <br>
 //! are displayed only for surface objects and <br>
@@ -892,7 +884,7 @@ public:
   //! Adds clip plane to the view. The composition of clip planes truncates the <br>
 //! rendering space to convex volume. Number of supported clip planes can be consulted <br>
 //! by PlaneLimit method of associated Visual3d_View. Please be aware that the planes <br>
-//! which exceed the limit are igonred during rendering. <br>
+//! which exceed the limit are ignored during rendering. <br>
 //! @param thePlane [in] the clip plane to be added to view. <br>
   Standard_EXPORT   virtual  void AddClipPlane(const Graphic3d_ClipPlane_Handle& thePlane) ;
   //! Removes clip plane from the view. <br>
@@ -903,28 +895,26 @@ public:
 //! truncates the rendering space to convex volume. Number of supported <br>
 //! clip planes can be consulted by PlaneLimit method of associated <br>
 //! Visual3d_View. Please be aware that the planes which exceed the limit <br>
-//! are igonred during rendering. <br>
+//! are ignored during rendering. <br>
 //! @param thePlanes [in] the clip planes to set. <br>
   Standard_EXPORT     void SetClipPlanes(const Graphic3d_SequenceOfHClipPlane& thePlanes) ;
   //! Get clip planes. <br>
 //! @return sequence clip planes that have been set for the view <br>
   Standard_EXPORT    const Graphic3d_SequenceOfHClipPlane& GetClipPlanes() const;
-  //! enables OpenCL-based ray-tracing mode <br>
-  Standard_EXPORT     void SetRaytracingMode() ;
-  //! enables OpenGL-based rasterization mode <br>
-  Standard_EXPORT     void SetRasterizationMode() ;
-  //! enables sharp shadows in OpenCL-based ray-tracing mode <br>
-  Standard_EXPORT     void EnableRaytracedShadows() ;
-  //! enables specular reflections in OpenCL-based ray-tracing mode <br>
-  Standard_EXPORT     void EnableRaytracedReflections() ;
-  //! enables antialiasing in OpenCL-based ray-tracing mode <br>
-  Standard_EXPORT     void EnableRaytracedAntialiasing() ;
-  //! disables sharp shadows in OpenCL-based ray-tracing mode <br>
-  Standard_EXPORT     void DisableRaytracedShadows() ;
-  //! disables specular reflections in OpenCL-based ray-tracing mode <br>
-  Standard_EXPORT     void DisableRaytracedReflections() ;
-  //! disables antialiasing in OpenCL-based ray-tracing mode <br>
-  Standard_EXPORT     void DisableRaytracedAntialiasing() ;
+  //! Change camera used by view. <br>
+  Standard_EXPORT     void SetCamera(const Graphic3d_Camera_Handle& theCamera) ;
+  //! Returns camera object of the view. <br>
+//! @return: handle to camera object, or NULL if 3D view does not use <br>
+//! the camera approach. <br>
+  Standard_EXPORT    const Graphic3d_Camera_Handle& Camera() const;
+  //! Returns current rendering parameters and effect settings. <br>
+  Standard_EXPORT    const Graphic3d_RenderingParams& RenderingParams() const;
+  //! Returns reference to current rendering parameters and effect settings. <br>
+  Standard_EXPORT     Graphic3d_RenderingParams& ChangeRenderingParams() ;
+  //! @return flag value of objects culling mechanism <br>
+  Standard_EXPORT     Standard_Boolean IsCullingEnabled() const;
+  //! Turn on/off automatic culling of objects outside frustrum (ON by default) <br>
+  Standard_EXPORT     void SetFrustumCulling(const Standard_Boolean theMode) ;
 
 
 friend   //! Activates all of the views of a viewer attached <br>
@@ -949,11 +939,40 @@ protected:
 
   
   Standard_EXPORT     void ImmediateUpdate() const;
+  //! Transform camera eye, center and scale to fit in the <br>
+//! passed bounding box specified in WCS. <br>
+//! @param theCamera [in] the camera. <br>
+//! @param theMinCorner [in] the minimal corner of bounding box. <br>
+//! @param theMaxCorner [in] the maximal corner of bounding box. <br>
+//! @param theMargin [in] the margin coefficient for view borders. <br>
+//! @param theResolution [in] the minimum size of projection of <br>
+//!        bounding box in Xv or Yv direction when it considered to <br>
+//!        be a thin plane or point (without a volume). <br>
+//!        In this case only the center of camera is adjusted. <br>
+//! @param theToEnlargeIfLine [in] if passed TRUE - in cases when the <br>
+//! whole bounding box projected into thin line going along <br>
+//! Z-axis of screen, the view plane is enlarged such that <br>
+//! we see the whole line on rotation, otherwise only the <br>
+//! center of camera is adjusted. <br>
+//! @return TRUE if the fit all operation can be done. <br>
+  Standard_EXPORT     Standard_Boolean FitMinMax(const Graphic3d_Camera_Handle& theCamera,const gp_XYZ& theMinCorner,const gp_XYZ& theMaxCorner,const Standard_Real theMargin,const Standard_Real theResolution = 0.0,const Standard_Boolean theToEnlargeIfLine = Standard_True) const;
+  //! Scales camera to fit the view frame of defined width and height <br>
+//! keeping the aspect. For orthogonal camera the method changes scale, <br>
+//! for perspective adjusts Eye location about the Center point. <br>
+//! @param theSizeXv [in] size of viewport frame on "x" axis. <br>
+//! @param theSizeYv [in] size of viewport frame on "y" axis. <br>
+  Standard_EXPORT     void Scale(const Graphic3d_Camera_Handle& theCamera,const Standard_Real theSizeXv,const Standard_Real theSizeYv) const;
+  
+  Standard_EXPORT     void Translate(const Graphic3d_Camera_Handle& theCamera,const Standard_Real theDXv,const Standard_Real theDYv) const;
 
-V3d_TypeOfView MyType;
+Standard_Real myOldMouseX;
+Standard_Real myOldMouseY;
+gp_Dir myCamStartOpUp;
+gp_Pnt myCamStartOpEye;
+Standard_Real myCamStartOpBnd[6];
+gp_Pnt myCamStartOpCenter;
+Graphic3d_Camera_Handle myCamera;
 Handle_Visual3d_View MyView;
-Visual3d_ViewMapping MyViewMapping;
-V3d_TypeOfProjectionModel MyProjModel;
 Standard_Boolean myImmediateUpdate;
 
 
@@ -965,18 +984,9 @@ private:
   Standard_EXPORT     void FitAll(const Handle(Aspect_Window)& aWindow,const V3d_Coordinate Umin,const V3d_Coordinate Vmin,const V3d_Coordinate Umax,const V3d_Coordinate Vmax) ;
   //! Determines the screen axes in the reference <br>
 //!          framework of the view. <br>
-  Standard_EXPORT   static  Standard_Boolean ScreenAxis(const Graphic3d_Vector& Vpn,const Graphic3d_Vector& Vup,Graphic3d_Vector& Xaxe,Graphic3d_Vector& Yaxe,Graphic3d_Vector& Zaxe) ;
-  
-  Standard_EXPORT   static  void InitMatrix(TColStd_Array2OfReal& Matrix) ;
-  
-  Standard_EXPORT   static  Standard_Boolean Multiply(const TColStd_Array2OfReal& Left,const TColStd_Array2OfReal& Right,TColStd_Array2OfReal& Matrix) ;
-  //! Determines the rotation matrice around an axis <br>
-//!          for a given angle. <br>
-  Standard_EXPORT   static  void RotAxis(const Graphic3d_Vertex& Vrp,const Graphic3d_Vector& Axe,const Quantity_PlaneAngle Angle,TColStd_Array2OfReal& Matrix) ;
-  //! Transforms the point P according to the matrice Matrix . <br>
-  Standard_EXPORT   static  Graphic3d_Vertex TrsPoint(const Graphic3d_Vertex& P,const TColStd_Array2OfReal& Matrix) ;
-  //! Transforms the vector V according to the matrice Matrix . <br>
-  Standard_EXPORT   static  Graphic3d_Vector TrsPoint(const Graphic3d_Vector& V,const TColStd_Array2OfReal& Matrix) ;
+  Standard_EXPORT   static  Standard_Boolean ScreenAxis(const gp_Dir& Vpn,const gp_Dir& Vup,Graphic3d_Vector& Xaxe,Graphic3d_Vector& Yaxe,Graphic3d_Vector& Zaxe) ;
+  //! Transforms the Vertex V according to the matrice Matrix . <br>
+  Standard_EXPORT   static  Graphic3d_Vertex TrsPoint(const Graphic3d_Vertex& V,const TColStd_Array2OfReal& Matrix) ;
   //! Returns the objects number and the projection window <br>
 //!          of the objects contained in the view. <br>
   Standard_EXPORT     Standard_Integer MinMax(V3d_Coordinate& Umin,V3d_Coordinate& Vmin,V3d_Coordinate& Umax,V3d_Coordinate& Vmax) const;
@@ -993,14 +1003,12 @@ private:
 
 V3d_ViewerPointer MyViewer;
 V3d_ListOfTransient MyActiveLights;
-Visual3d_ViewOrientation MyViewOrientation;
 Visual3d_ContextView MyViewContext;
 Aspect_Background MyBackground;
 Aspect_GradientBackground MyGradientBackground;
 Graphic3d_Vector MyDefaultViewAxis;
 Graphic3d_Vertex MyDefaultViewPoint;
 Handle_Aspect_Window MyWindow;
-Handle_Graphic3d_Plotter MyPlotter;
 TColStd_ListIteratorOfListOfTransient myActiveLightsIterator;
 Standard_Integer sx;
 Standard_Integer sy;
@@ -1020,6 +1028,12 @@ TColStd_Array2OfReal MyTrsf;
 Handle_Graphic3d_Structure MyGridEchoStructure;
 Handle_Graphic3d_Group MyGridEchoGroup;
 Standard_Boolean MyTransparencyFlag;
+Graphic3d_Vector myXscreenAxis;
+Graphic3d_Vector myYscreenAxis;
+Graphic3d_Vector myZscreenAxis;
+Graphic3d_Vector myViewAxis;
+Graphic3d_Vertex myGravityReferencePoint;
+gp_Pnt myCamProjectionShift;
 
 
 };

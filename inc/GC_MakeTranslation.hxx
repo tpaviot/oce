@@ -24,7 +24,7 @@ class gp_Vec;
 class gp_Pnt;
 
 
-//! This class mplements elementary construction algorithms for a <br>
+//! This class implements elementary construction algorithms for a <br>
 //! translation in 3D space. The result is a <br>
 //! Geom_Transformation transformation. <br>
 //! A MakeTranslation object provides a framework for: <br>

@@ -75,6 +75,8 @@ public:
 //!          If there already was defined the message identified by the <br>
 //!          same keyword, it is replaced with the new one. <br>
   Standard_EXPORT   static  Standard_Boolean AddMsg(const TCollection_AsciiString& key,const TCollection_ExtendedString& text) ;
+  //! Returns True if message with specified keyword is registered <br>
+  Standard_EXPORT   static  Standard_Boolean HasMsg(const TCollection_AsciiString& key) ;
   
   Standard_EXPORT   static const TCollection_ExtendedString& Msg(const Standard_CString key) ;
   //! Gives the text for the message identified by the keyword <key> <br>

@@ -44,7 +44,8 @@ class TDF_Attribute;
 class MDF_SRelocationTable;
 
 
-
+//! Storage driver for graphic attributes from <br>
+//!          TPrsStd <br>
 class MPrsStd_PositionStorageDriver : public MDF_ASDriver {
 
 public:

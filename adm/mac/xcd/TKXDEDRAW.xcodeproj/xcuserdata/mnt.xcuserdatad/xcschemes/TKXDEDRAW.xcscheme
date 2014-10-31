@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05A70FE201830C9B16441566"
+               BlueprintIdentifier = "0E2A16DA17D907CA0CC20E8C"
                BuildableName = "libTKXDEDRAW.dylib"
                BlueprintName = "TKXDEDRAW"
                ReferencedContainer = "container:TKXDEDRAW.xcodeproj">

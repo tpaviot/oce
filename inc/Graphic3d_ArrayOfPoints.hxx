@@ -27,7 +27,7 @@
 #endif
 
 
-
+//! Contains points array definition <br>
 class Graphic3d_ArrayOfPoints : public Graphic3d_ArrayOfPrimitives {
 
 public:
@@ -36,7 +36,8 @@ public:
 //! a single pixel point is drawn at each vertex. <br>
 //! The array must be filled using the AddVertex(Point) method. <br>
 //! When <hasVColors> is TRUE , you must use only AddVertex(Point,Color) method. <br>
-  Standard_EXPORT   Graphic3d_ArrayOfPoints(const Standard_Integer maxVertexs,const Standard_Boolean hasVColors = Standard_False);
+//! When <hasVNormals> is TRUE , you must use only AddVertex(Point,Normal) method. <br>
+  Standard_EXPORT   Graphic3d_ArrayOfPoints(const Standard_Integer maxVertexs,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasVNormals = Standard_False);
 
 
 

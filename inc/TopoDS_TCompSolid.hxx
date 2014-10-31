@@ -28,7 +28,7 @@
 class TopoDS_TShape;
 
 
-
+//! A set of solids connected by their faces. <br>
 class TopoDS_TCompSolid : public TopoDS_TShape {
 
 public:

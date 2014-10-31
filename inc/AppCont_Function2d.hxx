@@ -27,6 +27,8 @@ class gp_Vec2d;
 
 
 //! deferred class describing a continous 2d function f(u) <br>
+//!          This class must be provided by the user to use the <br>
+//!          approximation algorithm FittingCurve2d. <br>
 class AppCont_Function2d  {
 public:
 

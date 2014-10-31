@@ -91,7 +91,7 @@ public:
   //! Returns true if this framework has a location defined. <br>
   Standard_EXPORT   virtual  Standard_Boolean HasLocation() const;
   
-  Standard_EXPORT   virtual const TopLoc_Location& Location() const;
+  Standard_EXPORT   virtual const TopLoc_Location Location() const;
   //! sets the location to Identity <br>
   Standard_EXPORT   virtual  void ResetLocation() ;
   

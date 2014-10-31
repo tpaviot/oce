@@ -446,15 +446,6 @@
 					RelativePath="..\..\..\src\V3d\V3d_Light.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\V3d\V3d_ListOfTransient.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\V3d\V3d_OrthographicView.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\V3d\V3d_PerspectiveView.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\V3d\V3d_Plane.cxx">
 				</File>
 				<File
@@ -528,37 +519,16 @@
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_GroupDefinitionError_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_HSequenceOfGroup_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_HSequenceOfStructure_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_HSetOfGroup_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_InitialisationError_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_ListIteratorOfListOfPArray_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_ListIteratorOfListOfShortReal_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_ListIteratorOfSetListOfSetOfGroup_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_ListNodeOfListOfPArray_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_ListNodeOfListOfShortReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_ListNodeOfSetListOfSetOfGroup_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_ListOfPArray_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_ListOfShortReal_0.cxx">
@@ -573,40 +543,13 @@
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_MaterialDefinitionError_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_PickIdDefinitionError_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_PlotterDefinitionError_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_PriorityDefinitionError_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfAddress_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfGroup_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfStructure_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfAddress_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfGroup_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfStructure_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_SetIteratorOfSetOfGroup_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_SetListOfSetOfGroup_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_SetOfGroup_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_StdMapNodeOfMapOfStructure_0.cxx">
@@ -619,9 +562,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_VectorError_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPoints.cxx">
@@ -666,46 +606,10 @@
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_AspectText3d.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CBitFields16.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CBitFields20.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CBitFields4.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CBitFields8.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CBounds.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CGraduatedTrihedron.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CGroup.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CLight.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CPick.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CStructure.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CTexture.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CTransPersStruct.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CUserDraw.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CView.cxx">
+					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Camera.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_ClipPlane.cxx">
@@ -720,28 +624,10 @@
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_1.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_10.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_13.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_2.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_8.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_MarkerImage.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_MaterialAspect.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Plotter.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_ShaderObject.cxx">
@@ -751,9 +637,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_ShaderVariable.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Strips.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Structure.cxx">
@@ -811,13 +694,10 @@
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_DepthCueingDefinitionError_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_HSequenceOfPickPath_0.cxx">
+					RelativePath="..\..\..\drv\Visual3d\Visual3d_HSequenceOfLight_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_HSetOfLight_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_HSetOfView_0.cxx">
+					RelativePath="..\..\..\drv\Visual3d\Visual3d_HSequenceOfView_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_LayerDefinitionError_0.cxx">
@@ -826,49 +706,22 @@
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_LightDefinitionError_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfLight_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfView_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_ListNodeOfSetListOfSetOfLight_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_ListNodeOfSetListOfSetOfView_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_PickError_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_SequenceNodeOfSequenceOfPickPath_0.cxx">
+					RelativePath="..\..\..\drv\Visual3d\Visual3d_SequenceNodeOfSequenceOfLight_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_SequenceOfPickPath_0.cxx">
+					RelativePath="..\..\..\drv\Visual3d\Visual3d_SequenceNodeOfSequenceOfView_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfLight_0.cxx">
+					RelativePath="..\..\..\drv\Visual3d\Visual3d_SequenceOfLight_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfView_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfLight_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfView_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetOfLight_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_SetOfView_0.cxx">
+					RelativePath="..\..\..\drv\Visual3d\Visual3d_SequenceOfView_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_TransformError_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Visual3d\Visual3d_TransientDefinitionError_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Visual3d\Visual3d_ViewDefinitionError_0.cxx">
@@ -901,28 +754,10 @@
 					RelativePath="..\..\..\src\Visual3d\Visual3d_Light.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Visual3d\Visual3d_PickDescriptor.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Visual3d\Visual3d_PickPath.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Visual3d\Visual3d_TransientManager.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\Visual3d\Visual3d_View.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Visual3d\Visual3d_ViewManager.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Visual3d\Visual3d_ViewMapping.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Visual3d\Visual3d_ViewOrientation.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Visual3d\Visual3d_View_Print.cxx">
 				</File>
 			</Filter>
 			<Filter
@@ -1039,6 +874,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Prs3d\Prs3d_Presentation.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Prs3d\Prs3d_PresentationShadow.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Prs3d\Prs3d_Projector.cxx">
@@ -1245,13 +1083,7 @@
 					RelativePath="..\..\..\src\PrsMgr\PrsMgr_Presentation.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\PrsMgr\PrsMgr_Presentation3d.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\PrsMgr\PrsMgr_PresentationManager.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\PrsMgr\PrsMgr_PresentationManager3d.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\PrsMgr\PrsMgr_Prs.cxx">
@@ -1369,9 +1201,6 @@
 					RelativePath="..\..\..\src\AIS\AIS_ConnectedInteractive.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\AIS\AIS_ConnectedShape.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\AIS\AIS_DiameterDimension.cxx">
 				</File>
 				<File
@@ -1450,9 +1279,6 @@
 					RelativePath="..\..\..\src\AIS\AIS_MultipleConnectedInteractive.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\AIS\AIS_MultipleConnectedShape.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\AIS\AIS_OffsetDimension.cxx">
 				</File>
 				<File
@@ -1469,6 +1295,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\AIS\AIS_Point.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\AIS\AIS_PointCloud.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\AIS\AIS_RadiusDimension.cxx">

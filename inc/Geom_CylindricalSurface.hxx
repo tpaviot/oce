@@ -48,6 +48,10 @@ class Geom_Geometry;
 
 //! This class defines the infinite cylindrical surface. <br>
 //! <br>
+//!  Every cylindrical surface is set by the following equation: <br>
+//!      S(U,V) = Location + R*cos(U)*XAxis + R*sin(U)*YAxis + V*ZAxis, <br>
+//!  where R is cylinder radius. <br>
+//! <br>
 //!  The local coordinate system of the CylindricalSurface is defined <br>
 //!  with an axis placement (see class ElementarySurface). <br>
 //! <br>

@@ -37,7 +37,7 @@ class gp_Pnt2d;
 
 
 //! This class implements the following algorithms used <br>
-//!           to create Cirlec from Geom2d. <br>
+//!           to create Circle from Geom2d. <br>
 //! <br>
 //!           * Create a Circle parallel to another and passing <br>
 //!             though a point. <br>

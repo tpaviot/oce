@@ -589,6 +589,9 @@
 					RelativePath="..\..\..\src\XmlObjMgt\XmlObjMgt.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\XmlObjMgt\XmlObjMgt_Array1.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\XmlObjMgt\XmlObjMgt_GP.cxx">
 				</File>
 				<File

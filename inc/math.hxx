@@ -19,12 +19,12 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class math_Vector;
-class math_Vector;
-class math_IntegerVector;
 class math_Matrix;
 class math_Function;
 class math_FunctionWithDerivative;
@@ -70,11 +70,7 @@ class math_ValueAndWeight;
 class math_Array1OfValueAndWeight;
 class math_CompareOfValueAndWeight;
 class math_QuickSortOfValueAndWeight;
-class math_SingleTab;
 class math_DoubleTab;
-class math_SingleTabOfReal;
-class math_SingleTabOfInteger;
-class math_DoubleTabOfReal;
 
 
 
@@ -132,8 +128,6 @@ private:
 
 
 
-friend class math_Vector;
-friend class math_IntegerVector;
 friend class math_Matrix;
 friend class math_Function;
 friend class math_FunctionWithDerivative;
@@ -179,11 +173,7 @@ friend class math_ValueAndWeight;
 friend class math_Array1OfValueAndWeight;
 friend class math_CompareOfValueAndWeight;
 friend class math_QuickSortOfValueAndWeight;
-friend class math_SingleTab;
 friend class math_DoubleTab;
-friend class math_SingleTabOfReal;
-friend class math_SingleTabOfInteger;
-friend class math_DoubleTabOfReal;
 
 };
 

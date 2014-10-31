@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TestTopOpeDraw_ListOfPnt2d();
   
+  Standard_EXPORT   TestTopOpeDraw_ListOfPnt2d(const TestTopOpeDraw_ListOfPnt2d& Other);
+  
   Standard_EXPORT     void Assign(const TestTopOpeDraw_ListOfPnt2d& Other) ;
     void operator=(const TestTopOpeDraw_ListOfPnt2d& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TestTopOpeDraw_ListOfPnt2d(const TestTopOpeDraw_ListOfPnt2d& Other);
 
 
 Standard_Address myFirst;

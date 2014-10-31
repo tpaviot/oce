@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0342144105320A4C06010FF1"
+               BlueprintIdentifier = "13D1066A155408E80CD50EC1"
                BuildableName = "libTKVoxel.dylib"
                BlueprintName = "TKVoxel"
                ReferencedContainer = "container:TKVoxel.xcodeproj">

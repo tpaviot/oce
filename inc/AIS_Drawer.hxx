@@ -55,6 +55,9 @@
 #ifndef _Handle_Prs3d_PointAspect_HeaderFile
 #include <Handle_Prs3d_PointAspect.hxx>
 #endif
+#ifndef _Prs3d_VertexDrawMode_HeaderFile
+#include <Prs3d_VertexDrawMode.hxx>
+#endif
 #ifndef _Handle_Prs3d_ShadingAspect_HeaderFile
 #include <Handle_Prs3d_ShadingAspect.hxx>
 #endif
@@ -239,6 +242,8 @@ public:
 //!          Prs3d_WFDeflectionSurface <br>
 //!          Prs3d_WFDeflectionRestrictedFace <br>
   Standard_EXPORT     Handle_Prs3d_IsoAspect UIsoAspect() ;
+  //! Returns true if the Drawer has a UIso aspect setting active. <br>
+        Standard_Boolean HasUIsoAspect() const;
   //! Defines the attributes which are used when drawing an <br>
 //!          V isoparametric curve of a face. Defines the number <br>
 //!          of V isoparametric curves to be drawn for a single face. <br>
@@ -252,6 +257,8 @@ public:
 //!          Prs3d_WFDeflectionSurface <br>
 //!          Prs3d_WFDeflectionRestrictedFace <br>
   Standard_EXPORT     Handle_Prs3d_IsoAspect VIsoAspect() ;
+  //! Returns true if the Drawer has a VIso aspect setting active. <br>
+        Standard_Boolean HasVIsoAspect() const;
   //! Returns a link with <br>
 //! Prs3d_Drawer_FreeBoundaryAspect. Stores the <br>
 //! values for presentation of free boundaries, in other <br>
@@ -261,6 +268,8 @@ public:
 //! Type of line: Aspect_TOL_SOLID Width: 1. <br>
 //! These attributes are used by Prs3d_WFShape. <br>
   Standard_EXPORT     Handle_Prs3d_LineAspect FreeBoundaryAspect() ;
+  //! Returns true if the Drawer has a free boundary aspect setting active. <br>
+        Standard_Boolean HasFreeBoundaryAspect() const;
   //! returns True if the drawing of the free boundaries is enabled. <br>
   Standard_EXPORT     Standard_Boolean FreeBoundaryDraw() const;
   //! Returns a link with Prs3d_Drawer_WireAspect. <br>
@@ -292,6 +301,8 @@ public:
 //!          These attributes are used by the following algorithms: <br>
 //!          Prs3d_WFShape <br>
   Standard_EXPORT     Handle_Prs3d_LineAspect UnFreeBoundaryAspect() ;
+  //! Returns true if the Drawer has an unfree boundary aspect setting active. <br>
+        Standard_Boolean HasUnFreeBoundaryAspect() const;
   //! Returns True if the drawing of the shared boundaries <br>
 //! is enabled. True is the default setting. <br>
   Standard_EXPORT     Standard_Boolean UnFreeBoundaryDraw() const;
@@ -324,6 +335,19 @@ public:
   Standard_EXPORT     Handle_Prs3d_PointAspect PointAspect() ;
   //! Returns true if the Drawer has a point aspect setting active. <br>
         Standard_Boolean HasPointAspect() const;
+  //! Sets the mode of visualization of vertices by AIS_Shape and helper algorithms. <br>
+//! By default, only isolated vertices not belonging to any face are drawn, <br>
+//! that corresponds to <b>Prs3d_VDM_Isolated</b> mode. <br>
+//! Switching to <b>Prs3d_VDM_Isolated</b> mode makes all shape's vertices visible. <br>
+//! To inherit this parameter from the global drawer instance ("the link") when it is present, <br>
+//! <b>Prs3d_VDM_Inherited</b> value should be used. <br>
+  Standard_EXPORT     void SetVertexDrawMode(const Prs3d_VertexDrawMode theMode) ;
+  //! Returns the current mode of visualization of vertices of a TopoDS_Shape instance. <br>
+  Standard_EXPORT     Prs3d_VertexDrawMode VertexDrawMode() const;
+  //! Returns true if the vertex draw mode is not equal to <b>Prs3d_VDM_Inherited</b>. <br>
+//! This means that individual vertex draw mode value (i.e. not inherited from the global <br>
+//! drawer) is used for a specific interactive object. <br>
+        Standard_Boolean IsOwnVertexDrawMode() const;
   
 //! Returns a link with Prs3d_Drawer_ShadingAspect, <br>
 //! which provides settings for shading aspects. <br>

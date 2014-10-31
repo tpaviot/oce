@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{5A89B8D0-101F-0B16-0E40-E70A0943F107}</UniqueIdentifier>
+      <UniqueIdentifier>{E4625FAF-0F7F-05D4-06D0-A463C5922620}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ViewerTest">
-      <UniqueIdentifier>{85414708-177A-0C06-0714-43AC5BE8BE4D}</UniqueIdentifier>
+      <UniqueIdentifier>{05003194-0817-0E85-189F-F5249534E15D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,6 +19,9 @@
       <Filter>Source files\ViewerTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest.cxx">
+      <Filter>Source files\ViewerTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest_AutoUpdater.cxx">
       <Filter>Source files\ViewerTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest_AviCommands.cxx">
@@ -37,9 +40,6 @@
       <Filter>Source files\ViewerTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest_RelationCommands.cxx">
-      <Filter>Source files\ViewerTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest_Tool.cxx">
       <Filter>Source files\ViewerTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ViewerTest\ViewerTest_ViewerCommands.cxx">

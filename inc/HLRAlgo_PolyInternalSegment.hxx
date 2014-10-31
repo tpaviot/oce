@@ -24,7 +24,7 @@
 #endif
 
 
-
+//! to Update OutLines. <br>
 class HLRAlgo_PolyInternalSegment  {
 public:
 

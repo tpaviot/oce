@@ -28,7 +28,7 @@
 class Geom_Surface;
 
 
-//! A Geom poimt and a tolerance. <br>
+//! A Geom surface and a tolerance. <br>
 class TopOpeBRepDS_Surface  {
 public:
 

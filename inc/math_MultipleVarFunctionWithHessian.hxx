@@ -25,10 +25,12 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-class math_Vector;
 class math_Matrix;
 
 
@@ -38,6 +40,9 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
+  
+  Standard_EXPORT   virtual  void Delete() ;
+Standard_EXPORT virtual ~math_MultipleVarFunctionWithHessian(){Delete();}
   //! returns the number of variables of the function. <br>
   Standard_EXPORT   virtual  Standard_Integer NbVariables() const = 0;
   //! computes the values of the Functions <F> for the <br>

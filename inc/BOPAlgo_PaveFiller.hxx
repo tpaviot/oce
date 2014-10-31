@@ -25,8 +25,8 @@
 #ifndef _BOPDS_PIterator_HeaderFile
 #include <BOPDS_PIterator.hxx>
 #endif
-#ifndef _Handle_BOPInt_Context_HeaderFile
-#include <Handle_BOPInt_Context.hxx>
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
 #endif
 #ifndef _BOPAlgo_SectionAttribute_HeaderFile
 #include <BOPAlgo_SectionAttribute.hxx>
@@ -91,7 +91,7 @@
 #ifndef _BOPDS_VectorOfCurve_HeaderFile
 #include <BOPDS_VectorOfCurve.hxx>
 #endif
-class BOPInt_Context;
+class IntTools_Context;
 class BOPDS_DS;
 class BOPAlgo_SectionAttribute;
 class BOPDS_PaveBlock;
@@ -123,7 +123,7 @@ Standard_EXPORT virtual ~BOPAlgo_PaveFiller();
   Standard_EXPORT    const BOPCol_ListOfShape& Arguments() const;
 Standard_EXPORT void SetArguments(const BOPCol_ListOfShape& theLS);
   
-  Standard_EXPORT     Handle_BOPInt_Context Context() ;
+  Standard_EXPORT     Handle_IntTools_Context Context() ;
   
   Standard_EXPORT     void SetSectionAttribute(const BOPAlgo_SectionAttribute& theSecAttr) ;
   
@@ -136,9 +136,13 @@ Standard_EXPORT void SetArguments(const BOPCol_ListOfShape& theLS);
 protected:
 
   
+  Standard_EXPORT   virtual  void PerformInternal() ;
+  
   Standard_EXPORT   virtual  void Clear() ;
   
   Standard_EXPORT   virtual  void Init() ;
+  
+  Standard_EXPORT     void Prepare() ;
   
   Standard_EXPORT   virtual  void PerformVV() ;
   
@@ -151,6 +155,14 @@ protected:
   Standard_EXPORT   virtual  void PerformEF() ;
   
   Standard_EXPORT   virtual  void PerformFF() ;
+  
+  Standard_EXPORT   virtual  void PerformVZ() ;
+  
+  Standard_EXPORT   virtual  void PerformEZ() ;
+  
+  Standard_EXPORT   virtual  void PerformFZ() ;
+  
+  Standard_EXPORT   virtual  void PerformZZ() ;
   
   Standard_EXPORT     void TreatVerticesEE() ;
   
@@ -189,7 +201,7 @@ protected:
 //! other - checks both types of intersections. <br>
   Standard_EXPORT     Standard_Boolean ExtendedTolerance(const Standard_Integer nV,const BOPCol_MapOfInteger& aMI,Standard_Real& aTolVExt,const Standard_Integer aType = 0) ;
   
-  Standard_EXPORT     void PutBoundPaveOnCurve(const TopoDS_Face& theF1,const TopoDS_Face& theF2,const Standard_Real theTolR3D,BOPDS_Curve& theNC,BOPCol_MapOfInteger& theMVOnIn,BOPCol_MapOfInteger& theMVB) ;
+  Standard_EXPORT     void PutBoundPaveOnCurve(const TopoDS_Face& theF1,const TopoDS_Face& theF2,const Standard_Real theTolR3D,BOPDS_Curve& theNC,BOPCol_MapOfInteger& theMVB) ;
   
   Standard_EXPORT     Standard_Boolean IsExistingPaveBlock(const Handle(BOPDS_PaveBlock)& thePB,const BOPDS_Curve& theNC,const Standard_Real theTolR3D,const BOPDS_IndexedMapOfPaveBlock& theMPB,Handle(BOPDS_PaveBlock)& thePBOut) ;
   
@@ -284,7 +296,7 @@ protected:
 BOPCol_ListOfShape myArguments;
 BOPDS_PDS myDS;
 BOPDS_PIterator myIterator;
-Handle_BOPInt_Context myContext;
+Handle_IntTools_Context myContext;
 BOPAlgo_SectionAttribute mySectionAttribute;
 
 

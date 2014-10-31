@@ -43,6 +43,8 @@ public:
   
       TDF_AttributeSequence();
   
+  Standard_EXPORT   TDF_AttributeSequence(const TDF_AttributeSequence& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TDF_AttributeSequence()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_AttributeSequence(const TDF_AttributeSequence& Other);
 
 
 

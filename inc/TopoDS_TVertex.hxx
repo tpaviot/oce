@@ -24,7 +24,8 @@
 #endif
 
 
-
+//! A  Vertex is a topological  point in  two or three <br>
+//!          dimensions. <br>
 class TopoDS_TVertex : public TopoDS_TShape {
 
 public:

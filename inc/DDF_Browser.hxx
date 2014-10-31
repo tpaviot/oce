@@ -31,18 +31,20 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
 class TDF_Data;
 class Draw_Display;
 class Draw_Drawable3D;
-class Draw_Interpretor;
 class TCollection_AsciiString;
 class TDF_Label;
 
 
-//! Browses a data framework. <br>
+//! Browses a data framework from TDF. <br>
 class DDF_Browser : public Draw_Drawable3D {
 
 public:

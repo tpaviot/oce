@@ -244,8 +244,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_AABB.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_AVIWriter.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_AspectFace.cxx">
@@ -256,6 +254,10 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_AspectText.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_BVHClipPrimitiveSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_BVHTreeSelector.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_CappingAlgo.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_CappingPlaneResource.cxx">
@@ -265,10 +267,6 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Clipping.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Context.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Display.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Display_2.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Element.cxx">
     </ClCompile>
@@ -281,12 +279,6 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraduatedTrihedron.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_1.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_2.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_3.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_4.cxx">
     </ClCompile>
@@ -306,6 +298,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_LayerList.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_LineAttributes.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Matrix.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PointSprite.cxx">
@@ -315,8 +309,6 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PrinterContext.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PriorityList.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_RaytraceSource.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_RenderFilter.cxx">
     </ClCompile>
@@ -336,6 +328,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Structure.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_StructureShadow.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Text.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_TextFormatter.cxx">
@@ -348,9 +342,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_VertexBuffer.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View.cxx">
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_VertexBufferCompat.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View_1.cxx">
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View_2.cxx">
     </ClCompile>
@@ -360,15 +354,11 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_2.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_3.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_5.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_Raytrace.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_telem_util.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_telem_view.cxx">
     </ClCompile>
 
   </ItemGroup>

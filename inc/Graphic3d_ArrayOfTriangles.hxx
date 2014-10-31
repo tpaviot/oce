@@ -27,7 +27,7 @@
 #endif
 
 
-
+//! Contains triangles array definition <br>
 class Graphic3d_ArrayOfTriangles : public Graphic3d_ArrayOfPrimitives {
 
 public:
@@ -67,15 +67,12 @@ public:
 //! When <hasTexels> is TRUE , you must use one of <br>
 //!      AddVertex(Point,Texel) <br>
 //!  or  AddVertex(Point,Normal,Texel) methods. <br>
-//! When <hasEdgeInfos> is TRUE , <maxEdges> must be > 0 and <br>
-//!      you must use the <br>
-//!      AddEdge(number,visibillity) method. <br>
 //!  Warning: <br>
 //! the user is responsible about the orientation of the triangle <br>
 //! depending of the order of the created vertex or edges and this <br>
 //! orientation must be coherent with the vertex normal optionnaly <br>
 //! given at each vertex (See the Orientate() methods). <br>
-  Standard_EXPORT   Graphic3d_ArrayOfTriangles(const Standard_Integer maxVertexs,const Standard_Integer maxEdges = 0,const Standard_Boolean hasVNormals = Standard_False,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasTexels = Standard_False,const Standard_Boolean hasEdgeInfos = Standard_False);
+  Standard_EXPORT   Graphic3d_ArrayOfTriangles(const Standard_Integer maxVertexs,const Standard_Integer maxEdges = 0,const Standard_Boolean hasVNormals = Standard_False,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasTexels = Standard_False);
 
 
 

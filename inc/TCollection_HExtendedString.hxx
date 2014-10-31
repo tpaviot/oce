@@ -179,10 +179,6 @@ public:
   //! Displays <me> . <br>
   Standard_EXPORT     void Print(Standard_OStream& astream) const;
   
-  Standard_EXPORT     Handle_TCollection_HExtendedString ShallowCopy() const;
-  
-  Standard_EXPORT     void ShallowDump(Standard_OStream& s) const;
-  
   Standard_EXPORT     Standard_Boolean IsSameState(const Handle(TCollection_HExtendedString)& other) const;
 
 
@@ -210,10 +206,6 @@ TCollection_ExtendedString myString;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline Handle_TCollection_HExtendedString ShallowCopy(const Handle_TCollection_HExtendedString& me) {
- return me->ShallowCopy();
-}
-
 
 
 #endif

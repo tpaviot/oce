@@ -41,9 +41,9 @@ class TColgp_SequenceOfXYZ;
 
 
 //! A  mesh domain is  a set of triangles defined with <br>
-//!          three geometric vertices. The  mesh domain has its <br>
-//!          own deflection. <br>
-//! <br>
+//!          three geometric vertices and a given orientation. <br>
+//!           The  mesh domain has its own deflection. <br>
+//!          Internal class used to classify the triangles of each domain. <br>
 class StlMesh_MeshDomain : public MMgt_TShared {
 
 public:

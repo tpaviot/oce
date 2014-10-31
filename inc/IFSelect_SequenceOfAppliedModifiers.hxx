@@ -43,6 +43,8 @@ public:
   
       IFSelect_SequenceOfAppliedModifiers();
   
+  Standard_EXPORT   IFSelect_SequenceOfAppliedModifiers(const IFSelect_SequenceOfAppliedModifiers& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IFSelect_SequenceOfAppliedModifiers()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IFSelect_SequenceOfAppliedModifiers(const IFSelect_SequenceOfAppliedModifiers& Other);
 
 
 

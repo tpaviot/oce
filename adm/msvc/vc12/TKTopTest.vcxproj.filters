@@ -2,37 +2,40 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{F1BFA6C5-1407-02D1-0A0B-3FD8829F440F}</UniqueIdentifier>
+      <UniqueIdentifier>{09213966-003E-0A00-0F44-9DD7FECF704B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TestTopOpeDraw">
-      <UniqueIdentifier>{2D68E874-0616-0DA4-0DCC-FC39C4349F79}</UniqueIdentifier>
+      <UniqueIdentifier>{D5776CF9-1904-05AC-03DE-0383D7C4C14B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TestTopOpeTools">
-      <UniqueIdentifier>{D1E67B37-0E5C-0601-1686-C70F02AA5151}</UniqueIdentifier>
+      <UniqueIdentifier>{6E2E9A9B-0BEA-14B3-0EAC-0F2304C3E76F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TestTopOpe">
-      <UniqueIdentifier>{C0D40FFA-06A3-0A54-0C50-C787147532F5}</UniqueIdentifier>
+      <UniqueIdentifier>{8F5B115A-0D81-139C-1413-5B79577B5060}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepTest">
-      <UniqueIdentifier>{649D1E18-0099-10D0-1393-C07EFCD0F7B4}</UniqueIdentifier>
+      <UniqueIdentifier>{D9E0D2E3-18A3-03C3-090C-CD6B022C632E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeometryTest">
-      <UniqueIdentifier>{36767019-01DF-0D47-0927-331B49445D6A}</UniqueIdentifier>
+      <UniqueIdentifier>{2376A394-0047-145D-122C-729FCC591C42}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRTest">
-      <UniqueIdentifier>{510D9385-0656-0D79-0522-6591D4492C61}</UniqueIdentifier>
+      <UniqueIdentifier>{4E4EFB62-1421-0970-0457-00E5A6E5299B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MeshTest">
-      <UniqueIdentifier>{00C212AC-1088-0FC8-0071-C80F87738E6C}</UniqueIdentifier>
+      <UniqueIdentifier>{0EA2734C-019C-12C9-0C68-2E50B1B3D091}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomliteTest">
-      <UniqueIdentifier>{8B5EF150-079C-098B-017B-919BE7926123}</UniqueIdentifier>
+      <UniqueIdentifier>{41FA1BC8-06E8-0D06-11F8-CE85B4AC14D7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DrawFairCurve">
-      <UniqueIdentifier>{27572E2C-074B-07A2-1174-700BED1F206D}</UniqueIdentifier>
+      <UniqueIdentifier>{8C5CBC11-0E4D-16BA-1144-A3C2271FC20F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPTest">
-      <UniqueIdentifier>{89EC464F-11B8-07CC-185B-CD7C4098534A}</UniqueIdentifier>
+      <UniqueIdentifier>{FD851C42-11E0-00C0-0598-5C7EB6831CF9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\SWDRAW">
+      <UniqueIdentifier>{E333B325-0BA8-0111-0012-97788C6B6CAA}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +323,33 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTest\BOPTest_TolerCommands.cxx">
       <Filter>Source files\BOPTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW.cxx">
+      <Filter>Source files\SWDRAW</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeAnalysis.cxx">
+      <Filter>Source files\SWDRAW</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeCustom.cxx">
+      <Filter>Source files\SWDRAW</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeExtend.cxx">
+      <Filter>Source files\SWDRAW</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeFix.cxx">
+      <Filter>Source files\SWDRAW</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeProcess.cxx">
+      <Filter>Source files\SWDRAW</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeProcessAPI.cxx">
+      <Filter>Source files\SWDRAW</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeTool.cxx">
+      <Filter>Source files\SWDRAW</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SWDRAW\SWDRAW_ShapeUpgrade.cxx">
+      <Filter>Source files\SWDRAW</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

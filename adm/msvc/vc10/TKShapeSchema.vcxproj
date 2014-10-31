@@ -306,62 +306,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PCDM_Document.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_FieldOfHArray1OfBSplineCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_FieldOfHArray1OfBezierCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_FieldOfHArray1OfBoundedCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_FieldOfHArray1OfCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_HArray1OfBSplineCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_HArray1OfBezierCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_HArray1OfBoundedCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_HArray1OfCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray1OfBSplineCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray1OfBezierCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray1OfBoundedCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray1OfBoundedSurface.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray1OfCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray1OfSurface.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray2OfBSplineSurface.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray2OfBezierSurface.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray2OfBoundedSurface.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray2OfSurface.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray1OfBSplineCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray1OfBezierCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray1OfBoundedCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray1OfBoundedSurface.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray1OfCurve.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray1OfSurface.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray2OfBSplineSurface.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray2OfBezierSurface.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray2OfBoundedSurface.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray2OfSurface.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColStd_FieldOfHArray1OfInteger.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColStd_FieldOfHArray1OfReal.cxx">

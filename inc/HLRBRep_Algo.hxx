@@ -29,7 +29,8 @@ class TopoDS_Shape;
 class MMgt_TShared;
 
 
-//! A framework to compute a shape as seen in a projection plane. This is done by <br>
+//! Inherited  from InternalAlgo  to  provide  methods with Shape from TopoDS. <br>
+//!          A framework to compute a shape as seen in a projection plane. This is done by <br>
 //! calculating the visible and the hidden parts of the shape. <br>
 //! HLRBRep_Algo works with three types of entity: <br>
 //! -   shapes to be visualized <br>

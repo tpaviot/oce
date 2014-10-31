@@ -57,7 +57,6 @@ class TColgp_Array1OfVec2d;
 class TColStd_Array1OfInteger;
 class gp_Pnt;
 class Blend_Point;
-class math_Vector;
 
 
 //! Function to approximate by AppSurface <br>

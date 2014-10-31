@@ -19,6 +19,9 @@
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -26,7 +29,6 @@
 #include <Standard_Real.hxx>
 #endif
 class TopoDS_Shape;
-class Draw_Interpretor;
 class gp_Pnt;
 class TopoDS_Edge;
 class gp_Lin;

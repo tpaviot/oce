@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   Law_Laws();
   
+  Standard_EXPORT   Law_Laws(const Law_Laws& Other);
+  
   Standard_EXPORT     void Assign(const Law_Laws& Other) ;
     void operator=(const Law_Laws& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Law_Laws(const Law_Laws& Other);
 
 
 Standard_Address myFirst;

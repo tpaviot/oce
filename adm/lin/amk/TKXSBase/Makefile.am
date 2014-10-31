@@ -103,7 +103,6 @@ libTKXSBase_la_SOURCES = \
 @top_srcdir@/drv/MoniTool/MoniTool_IndexedDataMapOfShapeTransient_0.cxx \
 @top_srcdir@/drv/MoniTool/MoniTool_SequenceNodeOfSequenceOfElement_0.cxx \
 @top_srcdir@/drv/MoniTool/MoniTool_SequenceOfElement_0.cxx \
-@top_srcdir@/drv/MoniTool/MoniTool_TransientElem_0.cxx \
 @top_srcdir@/drv/StepData/StepData_Array1OfField_0.cxx \
 @top_srcdir@/drv/StepData/StepData_FileRecognizer_0.cxx \
 @top_srcdir@/drv/StepData/StepData_GlobalNodeOfWriterLib_0.cxx \
@@ -133,7 +132,6 @@ libTKXSBase_la_SOURCES = \
 @top_srcdir@/drv/Transfer/Transfer_TransferMapOfProcessForFinder_0.cxx \
 @top_srcdir@/drv/Transfer/Transfer_TransferMapOfProcessForTransient_0.cxx \
 @top_srcdir@/drv/Transfer/Transfer_TransientMapper_0.cxx \
-@top_srcdir@/drv/TransferBRep/TransferBRep_BinderOfShape_0.cxx \
 @top_srcdir@/drv/TransferBRep/TransferBRep_HSequenceOfTransferResultInfo_0.cxx \
 @top_srcdir@/drv/TransferBRep/TransferBRep_OrientedShapeMapper_0.cxx \
 @top_srcdir@/drv/TransferBRep/TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo_0.cxx \
@@ -160,7 +158,6 @@ libTKXSBase_la_SOURCES = \
 @top_srcdir@/src/IFGraph/IFGraph_SubPartsIterator.cxx \
 @top_srcdir@/src/IFSelect/IFSelect.cxx \
 @top_srcdir@/src/IFSelect/IFSelect_Act.cxx \
-@top_srcdir@/src/IFSelect/IFSelect_ActFunc.cxx \
 @top_srcdir@/src/IFSelect/IFSelect_Activator.cxx \
 @top_srcdir@/src/IFSelect/IFSelect_AppliedModifiers.cxx \
 @top_srcdir@/src/IFSelect/IFSelect_BasicDumper.cxx \
@@ -292,9 +289,8 @@ libTKXSBase_la_SOURCES = \
 @top_srcdir@/src/MoniTool/MoniTool_Stat.cxx \
 @top_srcdir@/src/MoniTool/MoniTool_Timer.cxx \
 @top_srcdir@/src/MoniTool/MoniTool_TimerSentry.cxx \
+@top_srcdir@/src/MoniTool/MoniTool_TransientElem.cxx \
 @top_srcdir@/src/MoniTool/MoniTool_TypedValue.cxx \
-@top_srcdir@/src/MoniTool/MoniTool_ValueInterpret.cxx \
-@top_srcdir@/src/MoniTool/MoniTool_ValueSatisfies.cxx \
 @top_srcdir@/src/RWHeaderSection/RWHeaderSection.cxx \
 @top_srcdir@/src/RWHeaderSection/RWHeaderSection_GeneralModule.cxx \
 @top_srcdir@/src/RWHeaderSection/RWHeaderSection_RWFileDescription.cxx \
@@ -367,6 +363,7 @@ libTKXSBase_la_SOURCES = \
 @top_srcdir@/src/Transfer/Transfer_TransientProcess.cxx \
 @top_srcdir@/src/Transfer/Transfer_VoidBinder.cxx \
 @top_srcdir@/src/TransferBRep/TransferBRep.cxx \
+@top_srcdir@/src/TransferBRep/TransferBRep_BinderOfShape.cxx \
 @top_srcdir@/src/TransferBRep/TransferBRep_Reader.cxx \
 @top_srcdir@/src/TransferBRep/TransferBRep_ShapeBinder.cxx \
 @top_srcdir@/src/TransferBRep/TransferBRep_ShapeInfo.cxx \

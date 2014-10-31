@@ -2,34 +2,34 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{F2D03A24-163B-069A-1342-E1F1A0BE4057}</UniqueIdentifier>
+      <UniqueIdentifier>{827CCF6D-1478-0F61-13EB-034AC9230778}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ChFiDS">
-      <UniqueIdentifier>{721C71EA-09CA-0247-0B39-E14B40138977}</UniqueIdentifier>
+      <UniqueIdentifier>{BF6FF895-1612-007A-12EF-14434D4E98B0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ChFi2d">
-      <UniqueIdentifier>{A5FEDA2F-0252-034B-062B-BBD8AC8E36D8}</UniqueIdentifier>
+      <UniqueIdentifier>{0A4C8232-0D4D-0028-0D00-46883C9A486A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ChFi3d">
-      <UniqueIdentifier>{B2AC86D5-162D-1475-1759-AF50CDE1E802}</UniqueIdentifier>
+      <UniqueIdentifier>{0868158E-1623-1255-15B5-675E475EA024}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ChFiKPart">
-      <UniqueIdentifier>{4713AA15-1527-1324-0C8F-2A42B7823A03}</UniqueIdentifier>
+      <UniqueIdentifier>{63C5BB84-13DB-06B7-07B6-2CE0613F197F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Blend">
-      <UniqueIdentifier>{AEAA9AE4-0E53-0511-0AEF-E3FF488D0A62}</UniqueIdentifier>
+      <UniqueIdentifier>{A31F0934-006C-1841-046C-885CFE912E1F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepBlend">
-      <UniqueIdentifier>{A4C051A4-0D21-127F-0376-BCF6B8E9CBBF}</UniqueIdentifier>
+      <UniqueIdentifier>{6B1C7E91-01A9-0068-0AB7-3049FB493D6F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BlendFunc">
-      <UniqueIdentifier>{3F9840F2-14B7-0E6F-0AFF-F9F18E61D987}</UniqueIdentifier>
+      <UniqueIdentifier>{606675EE-14C9-0FA5-146B-864DB958E3D5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepFilletAPI">
-      <UniqueIdentifier>{1034EE20-121E-155E-0401-C706837C96DB}</UniqueIdentifier>
+      <UniqueIdentifier>{D5D4ED78-1448-0BA6-1945-1A28FA784172}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\FilletSurf">
-      <UniqueIdentifier>{9443336C-1502-193E-14C6-F83700E2F686}</UniqueIdentifier>
+      <UniqueIdentifier>{10D34F0A-00A3-06DC-0BF5-D184C7642643}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -303,21 +303,6 @@
     <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_CSWalking_0.cxx">
       <Filter>Source files\BRepBlend</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_Extremity_0.cxx">
-      <Filter>Source files\BRepBlend</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_HCurve2dTool_0.cxx">
-      <Filter>Source files\BRepBlend</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_HCurveTool_0.cxx">
-      <Filter>Source files\BRepBlend</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_Line_0.cxx">
-      <Filter>Source files\BRepBlend</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_PointOnRst_0.cxx">
-      <Filter>Source files\BRepBlend</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_SequenceNodeOfSequenceOfLine_0.cxx">
       <Filter>Source files\BRepBlend</Filter>
     </ClCompile>
@@ -352,6 +337,21 @@
       <Filter>Source files\BRepBlend</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_CurvPointRadInv.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_Extremity.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_HCurve2dTool.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_HCurveTool.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_Line.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_PointOnRst.cxx">
       <Filter>Source files\BRepBlend</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_RstRstConstRad.cxx">

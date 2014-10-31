@@ -40,6 +40,8 @@ public:
   
       TColStd_SequenceOfAsciiString();
   
+  Standard_EXPORT   TColStd_SequenceOfAsciiString(const TColStd_SequenceOfAsciiString& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColStd_SequenceOfAsciiString()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_SequenceOfAsciiString(const TColStd_SequenceOfAsciiString& Other);
 
 
 

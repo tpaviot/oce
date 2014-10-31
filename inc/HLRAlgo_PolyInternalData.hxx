@@ -48,7 +48,7 @@ class HLRAlgo_Array1OfPISeg;
 class HLRAlgo_Array1OfPINod;
 
 
-
+//! to Update OutLines. <br>
 class HLRAlgo_PolyInternalData : public MMgt_TShared {
 
 public:

@@ -40,6 +40,8 @@ public:
   
       TColgp_SequenceOfVec();
   
+  Standard_EXPORT   TColgp_SequenceOfVec(const TColgp_SequenceOfVec& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColgp_SequenceOfVec()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColgp_SequenceOfVec(const TColgp_SequenceOfVec& Other);
 
 
 

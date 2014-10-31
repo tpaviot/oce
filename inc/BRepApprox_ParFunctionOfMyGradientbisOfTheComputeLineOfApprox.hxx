@@ -58,7 +58,6 @@ class BRepApprox_TheMultiLineOfApprox;
 class BRepApprox_TheMultiLineToolOfApprox;
 class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
 class BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox;
-class math_Vector;
 class AppParCurves_MultiCurve;
 
 

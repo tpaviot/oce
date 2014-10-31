@@ -74,6 +74,7 @@ class TShort_Array1OfShortReal;
 //! exact representation of a surface. A triangular <br>
 //! representation induces simpler and more robust adjusting, <br>
 //! faster performances, and the results are as good. <br>
+//! This is a Transient class. <br>
 class Poly_Triangulation : public MMgt_TShared {
 
 public:

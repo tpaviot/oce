@@ -22,6 +22,18 @@
 #ifndef _Graphic3d_Texture2D_HeaderFile
 #include <Graphic3d_Texture2D.hxx>
 #endif
+#ifndef _MeshVS_HArray1OfSequenceOfInteger_HeaderFile
+#include <MeshVS_HArray1OfSequenceOfInteger.hxx>
+#endif
+#ifndef _TColStd_Array1OfInteger_HeaderFile
+#include <TColStd_Array1OfInteger.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _Graphic3d_ArrayOfPrimitives_HeaderFile
+#include <Graphic3d_ArrayOfPrimitives.hxx>
+#endif
 #ifndef _MeshVS_NodalColorPrsBuilder_HeaderFile
 #include <MeshVS_NodalColorPrsBuilder.hxx>
 #endif

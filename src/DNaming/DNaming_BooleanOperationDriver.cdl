@@ -24,7 +24,7 @@ uses
      BooleanOperation from BRepAlgoAPI
 
 is
-    Create returns mutable BooleanOperationDriver from DNaming;
+    Create returns BooleanOperationDriver from DNaming;
     ---Purpose: Constructor
 
     ---Purpose: validation
@@ -55,6 +55,9 @@ is
     is redefined;
  
     LoadNamingDS(me; theResultLabel : Label from TDF; MS : in out BooleanOperation from BRepAlgoAPI)  
+    is private; 
+
+    LoadSectionNDS(me; theResultLabel : Label from TDF; MS : in out BooleanOperation from BRepAlgoAPI)  
     is private; 
 
     CheckAndLoad(me; theMkOpe : in out BooleanOperation from BRepAlgoAPI; 

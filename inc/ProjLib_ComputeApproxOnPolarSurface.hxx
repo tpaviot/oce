@@ -44,7 +44,11 @@ class Adaptor3d_HSurface;
 class Adaptor2d_HCurve2d;
 
 
-
+//! Approximate the  projection  of a  3d curve  on an <br>
+//!          polar  surface  and  stores the result  in  Approx. <br>
+//!          The result is a  2d curve.  The evaluation of  the <br>
+//!          current  point of the  2d  curve is done with  the <br>
+//!          evaluation of the extrema  P3d - Surface. <br>
 class ProjLib_ComputeApproxOnPolarSurface  {
 public:
 

@@ -32,7 +32,7 @@ class Geom_Curve;
 class TopLoc_Location;
 
 
-
+//! Representation by a parameter on a 3D curve. <br>
 class BRep_PointOnCurve : public BRep_PointRepresentation {
 
 public:

@@ -31,41 +31,45 @@
 #ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
 #endif
+#ifndef _GeomAbs_JoinType_HeaderFile
+#include <GeomAbs_JoinType.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
+#ifndef _Handle_Geom2d_Geometry_HeaderFile
+#include <Handle_Geom2d_Geometry.hxx>
 #endif
 #ifndef _Handle_MAT2d_Connexion_HeaderFile
 #include <Handle_MAT2d_Connexion.hxx>
 #endif
-#ifndef _Handle_Geom2d_Geometry_HeaderFile
-#include <Handle_Geom2d_Geometry.hxx>
-#endif
 class MAT2d_SequenceOfSequenceOfGeometry;
 class TColStd_SequenceOfBoolean;
+class Geom2d_Geometry;
 class MAT2d_Connexion;
 class TColGeom2d_SequenceOfGeometry;
 class MAT2d_BiInt;
 class MAT2d_SequenceOfConnexion;
 class MAT2d_MiniPath;
-class Geom2d_Geometry;
 class TColStd_SequenceOfInteger;
 
 
 //! Constructs a circuit on a set of lines. <br>
-//! <br>
+//!          EquiCircuit gives a Circuit passing by all the lines <br>
+//!          in a set and all the connexions of the minipath associated. <br>
 //! <br>
 class MAT2d_Circuit : public MMgt_TShared {
 
 public:
 
   
-  Standard_EXPORT   MAT2d_Circuit();
+  Standard_EXPORT   MAT2d_Circuit(const GeomAbs_JoinType aJoinType = GeomAbs_Arc,const Standard_Boolean IsOpenResult = Standard_False);
   
   Standard_EXPORT     void Perform(MAT2d_SequenceOfSequenceOfGeometry& aFigure,const TColStd_SequenceOfBoolean& IsClosed,const Standard_Integer IndRefLine,const Standard_Boolean Trigo) ;
   //! Returns the Number of Items . <br>
@@ -98,6 +102,8 @@ protected:
 private: 
 
   
+  Standard_EXPORT     Standard_Boolean IsSharpCorner(const Handle(Geom2d_Geometry)& Geom1,const Handle(Geom2d_Geometry)& Geom2,const Standard_Real Direction) const;
+  
   Standard_EXPORT     Standard_Boolean PassByLast(const Handle(MAT2d_Connexion)& C1,const Handle(MAT2d_Connexion)& C2) const;
   
   Standard_EXPORT     Standard_Real Side(const Handle(MAT2d_Connexion)& C,const TColGeom2d_SequenceOfGeometry& Line) const;
@@ -119,6 +125,8 @@ TColGeom2d_SequenceOfGeometry geomElements;
 MAT2d_DataMapOfIntegerConnexion connexionMap;
 MAT2d_DataMapOfBiIntSequenceOfInteger linkRefEqui;
 TColStd_SequenceOfInteger linesLength;
+GeomAbs_JoinType myJoinType;
+Standard_Boolean myIsOpenResult;
 
 
 };

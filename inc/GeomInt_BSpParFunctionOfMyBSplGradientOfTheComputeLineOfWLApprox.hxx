@@ -49,6 +49,9 @@
 #ifndef _math_MultipleVarFunctionWithGradient_HeaderFile
 #include <math_MultipleVarFunctionWithGradient.hxx>
 #endif
+#ifndef _math_IntegerVector_HeaderFile
+#include <math_IntegerVector.hxx>
+#endif
 #ifndef _AppParCurves_Constraint_HeaderFile
 #include <AppParCurves_Constraint.hxx>
 #endif
@@ -57,12 +60,10 @@ class AppParCurves_HArray1OfConstraintCouple;
 class GeomInt_TheMultiLineOfWLApprox;
 class GeomInt_TheMultiLineToolOfWLApprox;
 class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
-class math_Vector;
 class TColStd_Array1OfReal;
 class TColStd_Array1OfInteger;
 class AppParCurves_MultiBSpCurve;
 class math_Matrix;
-class math_IntegerVector;
 
 
 

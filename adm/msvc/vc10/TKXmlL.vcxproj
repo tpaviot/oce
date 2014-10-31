@@ -346,6 +346,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\XmlObjMgt\XmlObjMgt.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\XmlObjMgt\XmlObjMgt_Array1.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\XmlObjMgt\XmlObjMgt_GP.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\XmlObjMgt\XmlObjMgt_Persistent.cxx">

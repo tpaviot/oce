@@ -19,9 +19,6 @@
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
 #endif
-#ifndef _Draw_Interpretor_HeaderFile
-#include <Draw_Interpretor.hxx>
-#endif
 #ifndef _Draw_Display_HeaderFile
 #include <Draw_Display.hxx>
 #endif

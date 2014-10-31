@@ -41,7 +41,7 @@ class TopoDS_Vertex;
 class TopoDS_Edge;
 
 
-//! This class is auxiliary class used in ComposeShell. <br>
+//! This class is auxiliary class (data storage) used in ComposeShell. <br>
 //!          It is intended for representing segment of the wire <br>
 //!          (or whole wire). The segment itself is represented by <br>
 //!          ShapeExtend_WireData. In addition, some associated data <br>

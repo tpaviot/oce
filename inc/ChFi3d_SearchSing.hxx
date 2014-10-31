@@ -31,7 +31,8 @@
 class Geom_Curve;
 
 
-//! F(t) = (C1(t) - C2(t)).(C1'(t) - C2'(t)); <br>
+//! Searches   singularities on fillet. <br>
+//!          F(t) = (C1(t) - C2(t)).(C1'(t) - C2'(t)); <br>
 class ChFi3d_SearchSing  : public math_FunctionWithDerivative {
 public:
 

@@ -1,9 +1,0 @@
-#ifndef _V3d_Viewer_HeaderFile
-#include <V3d_Viewer.hxx>
-#endif
-#ifndef _AIS_InteractiveContext_HeaderFile
-#include <AIS_InteractiveContext.hxx>
-#endif
-#ifndef _ViewerTest_Tool_HeaderFile
-#include <ViewerTest_Tool.hxx>
-#endif

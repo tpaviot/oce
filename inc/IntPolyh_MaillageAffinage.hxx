@@ -61,7 +61,7 @@ class IntPolyh_Triangle;
 class IntPolyh_SectionLine;
 
 
-
+//! Provide the algorythms used in the package <br>
 class IntPolyh_MaillageAffinage  {
 public:
 

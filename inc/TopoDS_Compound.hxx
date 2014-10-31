@@ -29,6 +29,7 @@
 //! - has an orientation for the underlying compound, in <br>
 //!   terms of its geometry (as opposed to orientation in <br>
 //!   relation to other shapes). <br>
+//!   Casts shape S to the more specialized return type, Compound. <br>
 class TopoDS_Compound  : public TopoDS_Shape {
 public:
 

@@ -84,6 +84,8 @@
 			<Add directory="../../../src/DrawFairCurve" />
 			<Add directory="../../../drv/BOPTest" />
 			<Add directory="../../../src/BOPTest" />
+			<Add directory="../../../drv/SWDRAW" />
+			<Add directory="../../../src/SWDRAW" />
 		</Compiler>
 		<Linker>
 			<Add option="-framework Tcl" />
@@ -110,6 +112,7 @@
 			<Add library="TKBool" />
 			<Add library="TKOffset" />
 			<Add library="TKFeat" />
+			<Add library="TKShHealing" />
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
@@ -218,5 +221,14 @@
 		<Unit filename="../../../src/BOPTest/BOPTest_Objects.cxx" />
 		<Unit filename="../../../src/BOPTest/BOPTest_PartitionCommands.cxx" />
 		<Unit filename="../../../src/BOPTest/BOPTest_TolerCommands.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeAnalysis.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeCustom.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeExtend.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeFix.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeProcess.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeProcessAPI.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeTool.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeUpgrade.cxx" />
 	</Project>
 </CodeBlocks_project_file>

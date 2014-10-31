@@ -28,14 +28,14 @@
 #ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
 #endif
-#ifndef _Handle_LocOpe_ProjectedWires_HeaderFile
-#include <Handle_LocOpe_ProjectedWires.hxx>
+#ifndef _Handle_LocOpe_WiresOnShape_HeaderFile
+#include <Handle_LocOpe_WiresOnShape.hxx>
 #endif
 class StdFail_NotDone;
 class Standard_NullObject;
 class Standard_NoSuchObject;
 class TopoDS_Shape;
-class LocOpe_ProjectedWires;
+class LocOpe_WiresOnShape;
 class TopTools_ListOfShape;
 
 
@@ -52,7 +52,7 @@ public:
   //! Initializes the algorithm on the shape <S>. <br>
         void Init(const TopoDS_Shape& S) ;
   
-  Standard_EXPORT     void Perform(const Handle(LocOpe_ProjectedWires)& PW) ;
+  Standard_EXPORT     void Perform(const Handle(LocOpe_WiresOnShape)& PW) ;
   
         Standard_Boolean IsDone() const;
   //! Returns the new shape <br>

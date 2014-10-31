@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TColStd_IndexedMapOfInteger(const Standard_Integer NbBuckets = 1);
   
+  Standard_EXPORT   TColStd_IndexedMapOfInteger(const TColStd_IndexedMapOfInteger& Other);
+  
   Standard_EXPORT     TColStd_IndexedMapOfInteger& Assign(const TColStd_IndexedMapOfInteger& Other) ;
     TColStd_IndexedMapOfInteger& operator =(const TColStd_IndexedMapOfInteger& Other) 
 {
@@ -85,8 +87,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_IndexedMapOfInteger(const TColStd_IndexedMapOfInteger& Other);
 
 
 

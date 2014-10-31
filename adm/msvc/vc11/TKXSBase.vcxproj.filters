@@ -2,52 +2,52 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{CB1FCB59-03AF-0685-08D4-20F4638C9757}</UniqueIdentifier>
+      <UniqueIdentifier>{14A539B6-136E-0EFF-032B-17C5118B1EBC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Interface">
-      <UniqueIdentifier>{23EFCF65-145A-0B4B-0C7D-0251281E2B90}</UniqueIdentifier>
+      <UniqueIdentifier>{8F088527-01D6-07E2-185C-8934FEF6247C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Transfer">
-      <UniqueIdentifier>{BE054194-190C-00CC-12F0-7255D460EB2B}</UniqueIdentifier>
+      <UniqueIdentifier>{D56DCCE1-0466-13A8-03C7-07CB64BA3A41}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IFGraph">
-      <UniqueIdentifier>{EF8DB0D3-14A9-162F-0AE6-978FA958B280}</UniqueIdentifier>
+      <UniqueIdentifier>{46B3871B-07C6-019E-1258-04D54A4F2DE8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IFSelect">
-      <UniqueIdentifier>{2F0BD60B-0A85-18BE-0CAF-8A9AF7C3FF22}</UniqueIdentifier>
+      <UniqueIdentifier>{4F136F68-173A-05C1-12B1-C2B54109F736}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TransferBRep">
-      <UniqueIdentifier>{A3139FB5-0BC3-08AD-186B-3967B4C7859F}</UniqueIdentifier>
+      <UniqueIdentifier>{4513610F-050D-16D5-0621-4DEC8DE52244}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSControl">
-      <UniqueIdentifier>{158C2C8A-0472-0F83-14E1-6FB0F8CB7F8C}</UniqueIdentifier>
+      <UniqueIdentifier>{2C9F54D9-0769-03B8-1663-32E699C1740B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepData">
-      <UniqueIdentifier>{22C5DD6E-0AE6-07AD-019C-3DF544B14819}</UniqueIdentifier>
+      <UniqueIdentifier>{A9BA92D1-1420-189C-00D3-FEA6515931B0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepFile">
-      <UniqueIdentifier>{F483840E-18FD-129D-167F-15F79B32E7D3}</UniqueIdentifier>
+      <UniqueIdentifier>{CD352CE5-02DF-162A-178D-CD0FBCC40BD9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HeaderSection">
-      <UniqueIdentifier>{11DC9EFA-147A-1446-0D0F-857DD9094B78}</UniqueIdentifier>
+      <UniqueIdentifier>{E5DFBF8C-0595-0127-05A2-8A33EF5795D4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWHeaderSection">
-      <UniqueIdentifier>{39E17630-0A26-0524-0F75-0E00964895A0}</UniqueIdentifier>
+      <UniqueIdentifier>{2DA0DC19-09BD-0519-0845-A05E5E936F2E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\APIHeaderSection">
-      <UniqueIdentifier>{57736D75-0028-0456-10FD-CCDFEC8124CE}</UniqueIdentifier>
+      <UniqueIdentifier>{68401304-15E8-14EA-1075-A9700CFB2BDC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepSelect">
-      <UniqueIdentifier>{9765ABB9-14D8-0F40-0B09-26A5FB5B2CE6}</UniqueIdentifier>
+      <UniqueIdentifier>{FC97CB15-1256-13E7-0CBB-15D1796B758B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\UnitsMethods">
-      <UniqueIdentifier>{E0CB67E4-04A4-03E1-1594-89BCFBD60D45}</UniqueIdentifier>
+      <UniqueIdentifier>{F21FDF40-0451-0BED-1751-09CBF62DA245}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSAlgo">
-      <UniqueIdentifier>{015DA76A-08B3-008D-1765-E906F0C69F09}</UniqueIdentifier>
+      <UniqueIdentifier>{F8741B48-1031-15A2-0666-079C81B40754}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MoniTool">
-      <UniqueIdentifier>{F31ABBD6-0B21-06EF-160A-DD53FDB515D9}</UniqueIdentifier>
+      <UniqueIdentifier>{4D312FDD-0225-0A24-1865-FCDEF29106CA}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -426,9 +426,6 @@
     <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Act.cxx">
       <Filter>Source files\IFSelect</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ActFunc.cxx">
-      <Filter>Source files\IFSelect</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Activator.cxx">
       <Filter>Source files\IFSelect</Filter>
     </ClCompile>
@@ -654,9 +651,6 @@
     <ClCompile Include="..\..\..\src\IFSelect\IFSelect_WorkSession.cxx">
       <Filter>Source files\IFSelect</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TransferBRep\TransferBRep_BinderOfShape_0.cxx">
-      <Filter>Source files\TransferBRep</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TransferBRep\TransferBRep_HSequenceOfTransferResultInfo_0.cxx">
       <Filter>Source files\TransferBRep</Filter>
     </ClCompile>
@@ -673,6 +667,9 @@
       <Filter>Source files\TransferBRep</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep.cxx">
+      <Filter>Source files\TransferBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_BinderOfShape.cxx">
       <Filter>Source files\TransferBRep</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_Reader.cxx">
@@ -978,9 +975,6 @@
     <ClCompile Include="..\..\..\drv\MoniTool\MoniTool_SequenceOfElement_0.cxx">
       <Filter>Source files\MoniTool</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\MoniTool\MoniTool_TransientElem_0.cxx">
-      <Filter>Source files\MoniTool</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\MoniTool\MoniTool_AttrList.cxx">
       <Filter>Source files\MoniTool</Filter>
     </ClCompile>
@@ -1029,13 +1023,10 @@
     <ClCompile Include="..\..\..\src\MoniTool\MoniTool_TimerSentry.cxx">
       <Filter>Source files\MoniTool</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_TransientElem.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\MoniTool\MoniTool_TypedValue.cxx">
-      <Filter>Source files\MoniTool</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_ValueInterpret.cxx">
-      <Filter>Source files\MoniTool</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_ValueSatisfies.cxx">
       <Filter>Source files\MoniTool</Filter>
     </ClCompile>
   </ItemGroup>

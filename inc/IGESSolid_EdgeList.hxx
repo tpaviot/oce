@@ -49,6 +49,7 @@ class IGESSolid_VertexList;
 //! defines EdgeList, Type <504> Form <1> <br>
 //!          in package IGESSolid <br>
 //!          EdgeList is defined as a segment joining two vertices <br>
+//!          It contains one or more edge tuples. <br>
 class IGESSolid_EdgeList : public IGESData_IGESEntity {
 
 public:

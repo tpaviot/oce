@@ -71,11 +71,11 @@ public:
 //!          the path is an exploration of the tree which contains <br>
 //!          the connexions and their reverses. <br>
 //!          if the tree of connexions is <br>
-//!                  A <br>
-//!                 / \ <br>
-//!                B   E <br>
-//!               / \   \ <br>
-//!              C   D   F <br>
+//!                   A <br>
+//!                 / | <br>
+//!                B  E <br>
+//!              / |  | <br>
+//!             C  D  F <br>
 //! <br>
 //!          the path is A->B, B->C, C->B, B->D, D->B, B->A, A->E, <br>
 //!                      E->F, F->E, E->A. <br>

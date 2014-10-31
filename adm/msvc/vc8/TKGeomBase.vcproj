@@ -644,9 +644,6 @@
 				<File
 					RelativePath="..\..\..\src\AppParCurves\AppParCurves_MultiPoint.cxx">
 				</File>
-				<File
-					RelativePath="..\..\..\src\AppParCurves\AppParCurves_SmoothCriterion.cxx">
-				</File>
 			</Filter>
 			<Filter
 				Name="FEmTool"
@@ -762,40 +759,22 @@
 					RelativePath="..\..\..\drv\Extrema\Extrema_Array2OfPOnSurf_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_CCFOfECC2dOfExtCC2d_0.cxx">
+					RelativePath="..\..\..\drv\Extrema\Extrema_CCLocFOfLocECC2d_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_CCFOfECCOfExtCC_0.cxx">
+					RelativePath="..\..\..\drv\Extrema\Extrema_CCLocFOfLocECC_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_CCFOfELCC2dOfLocateExtCC2d_0.cxx">
+					RelativePath="..\..\..\drv\Extrema\Extrema_ECC2d_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_CCFOfELCCOfLocateExtCC_0.cxx">
+					RelativePath="..\..\..\drv\Extrema\Extrema_ECC_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_CCLocFOfLocECC2dOfLocateExtCC2d_0.cxx">
+					RelativePath="..\..\..\drv\Extrema\Extrema_ELCC2d_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_CCLocFOfLocECCOfLocateExtCC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_CCache2dOfExtCC2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_CCacheOfExtCC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_ECC2dOfExtCC2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_ECCOfExtCC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_ELCC2dOfLocateExtCC2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_ELCCOfLocateExtCC_0.cxx">
+					RelativePath="..\..\..\drv\Extrema\Extrema_ELCC_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_ELPCOfLocateExtPC2d_0.cxx">
@@ -814,12 +793,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_EPCOfExtPC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_ExtCC2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_ExtCC_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_ExtPC2d_0.cxx">
@@ -849,28 +822,16 @@
 					RelativePath="..\..\..\drv\Extrema\Extrema_HArray2OfPOnSurf_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_LCCache2dOfLocateExtCC2d_0.cxx">
+					RelativePath="..\..\..\drv\Extrema\Extrema_LocECC2d_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_LCCacheOfLocateExtCC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_LocECC2dOfLocateExtCC2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_LocECCOfLocateExtCC_0.cxx">
+					RelativePath="..\..\..\drv\Extrema\Extrema_LocECC_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_LocEPCOfLocateExtPC2d_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_LocEPCOfLocateExtPC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_LocateExtCC2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_LocateExtCC_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_LocateExtPC2d_0.cxx">
@@ -921,22 +882,10 @@
 					RelativePath="..\..\..\drv\Extrema\Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCFOfECC2dOfExtCC2d_0.cxx">
+					RelativePath="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCLocFOfLocECC2d_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCFOfECCOfExtCC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCFOfELCC2dOfLocateExtCC2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCFOfELCCOfLocateExtCC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCLocFOfLocECC2dOfLocateExtCC2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCLocFOfLocECCOfLocateExtCC_0.cxx">
+					RelativePath="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCLocFOfLocECC_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d_0.cxx">
@@ -957,22 +906,10 @@
 					RelativePath="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCFOfECC2dOfExtCC2d_0.cxx">
+					RelativePath="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCFOfECCOfExtCC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCFOfELCC2dOfLocateExtCC2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCFOfELCCOfLocateExtCC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2dOfLocateExtCC2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECCOfLocateExtCC_0.cxx">
+					RelativePath="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSequenceOfPOnCurv2d_0.cxx">
@@ -997,6 +934,12 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Extrema\Extrema_CurveTool.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Extrema\Extrema_ExtCC.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Extrema\Extrema_ExtCC2d.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Extrema\Extrema_ExtCS.cxx">
@@ -1060,6 +1003,18 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Extrema\Extrema_GenLocateExtSS.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Extrema\Extrema_GlobOptFuncCC.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Extrema\Extrema_GlobOptFuncCS.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Extrema\Extrema_LocateExtCC.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Extrema\Extrema_LocateExtCC2d.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Extrema\Extrema_POnSurf.cxx">
@@ -1345,12 +1300,6 @@
 				<File
 					RelativePath="..\..\..\src\BndLib\BndLib_AddSurface.cxx">
 				</File>
-				<File
-					RelativePath="..\..\..\src\BndLib\BndLib_Compute2d.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BndLib\BndLib_Compute3d.cxx">
-				</File>
 			</Filter>
 			<Filter
 				Name="AppDef"
@@ -1387,9 +1336,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\AppDef\AppDef_MyBSplGradientOfBSplineCompute_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\AppDef\AppDef_MyCriterionOfTheVariational_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\AppDef\AppDef_MyGradientOfCompute_0.cxx">
@@ -1437,7 +1383,7 @@
 					RelativePath="..\..\..\drv\AppDef\AppDef_TheResol_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\AppDef\AppDef_TheVariational_0.cxx">
+					RelativePath="..\..\..\src\AppDef\AppDef_LinearCriteria.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\AppDef\AppDef_MultiLine.cxx">
@@ -1447,6 +1393,12 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\AppDef\AppDef_MyLineTool.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\AppDef\AppDef_SmoothCriterion.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\AppDef\AppDef_Variational.cxx">
 				</File>
 			</Filter>
 			<Filter

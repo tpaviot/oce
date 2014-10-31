@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{B49620CE-0A71-047D-15CE-6553D061978F}</UniqueIdentifier>
+      <UniqueIdentifier>{17E5849D-0EF4-1497-1947-F162556EE918}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XmlXCAFDrivers">
-      <UniqueIdentifier>{2562D2B7-1082-026F-167F-831DDB1D4E0F}</UniqueIdentifier>
+      <UniqueIdentifier>{8935C0B2-0082-0F15-05AC-26613FBA765A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XmlMXCAFDoc">
-      <UniqueIdentifier>{EFBF75C0-16DE-0673-0A6B-B6A7BFBEF3A1}</UniqueIdentifier>
+      <UniqueIdentifier>{B04D2589-16AB-0F63-0973-38690175CE9D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

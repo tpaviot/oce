@@ -40,6 +40,8 @@ public:
   
       IntTools_SequenceOfRoots();
   
+  Standard_EXPORT   IntTools_SequenceOfRoots(const IntTools_SequenceOfRoots& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntTools_SequenceOfRoots()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_SequenceOfRoots(const IntTools_SequenceOfRoots& Other);
 
 
 

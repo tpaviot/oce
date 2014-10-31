@@ -20,17 +20,26 @@
 
 #include <locale.h>
 
-//! "xlocale.h" available in Mac OS X and glibc (Linux) for a long time as an extension
-//! and become part of POSIX since '2008.
-//! Notice that this is impossible to test (_POSIX_C_SOURCE >= 200809L)
-//! since POSIX didn't declared such identifier.
-//! We check _GNU_SOURCE for glibc extensions here and it is always defined by g++ compiler.
-#if defined(__APPLE__) || defined(_GNU_SOURCE) || defined(HAVE_XLOCALE_H)
-  #include <xlocale.h>
-  #ifndef HAVE_XLOCALE_H
+#ifndef HAVE_XLOCALE_H
+  //! "xlocale.h" available in Mac OS X and glibc (Linux) for a long time as an extension
+  //! and become part of POSIX since '2008.
+  //! Notice that this is impossible to test (_POSIX_C_SOURCE >= 200809L)
+  //! since POSIX didn't declared such identifier.
+  #if defined(__APPLE__)
     #define HAVE_XLOCALE_H
   #endif
+
+  //! We check _GNU_SOURCE for glibc extensions here and it is always defined by g++ compiler.
+  #if defined(_GNU_SOURCE) && !defined(__ANDROID__)
+    #define HAVE_XLOCALE_H
+  #endif
+#endif // ifndef HAVE_LOCALE_H
+
+#ifdef HAVE_XLOCALE_H
+  #include <xlocale.h>
 #endif
+
+#if !defined(__ANDROID__)
 
 //! This class intended to temporary switch C locale and logically equivalent to setlocale(LC_ALL, "C").
 //! It is intended to format text regardless of user locale settings (for import/export functionality).
@@ -50,7 +59,7 @@ public:
   Standard_EXPORT Standard_CLocaleSentry();
 
   //! Restore previous locale.
-  Standard_EXPORT virtual ~Standard_CLocaleSentry();
+  Standard_EXPORT ~Standard_CLocaleSentry();
 
 public:
 
@@ -80,5 +89,18 @@ private:
   Standard_CLocaleSentry& operator= (const Standard_CLocaleSentry& );
 
 };
+
+#else
+
+//! C/C++ runtime on Android currently supports only C-locale, no need to call anything.
+class Standard_CLocaleSentry
+{
+public:
+  Standard_CLocaleSentry() {}
+  typedef void* clocale_t;
+  static clocale_t GetCLocale() { return 0; }
+};
+
+#endif // __ANDROID__
 
 #endif // _Standard_CLocaleSentry_H__

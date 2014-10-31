@@ -496,8 +496,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\ShapeProcess\ShapeProcess_Context.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\ShapeProcess\ShapeProcess_OperFunc.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\ShapeProcess\ShapeProcess_OperLibrary.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\ShapeProcess\ShapeProcess_Operator.cxx">

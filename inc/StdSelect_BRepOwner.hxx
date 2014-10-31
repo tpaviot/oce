@@ -37,8 +37,8 @@
 #ifndef _Handle_PrsMgr_PresentationManager_HeaderFile
 #include <Handle_PrsMgr_PresentationManager.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
@@ -47,7 +47,6 @@ class StdSelect_Shape;
 class TopoDS_Shape;
 class SelectMgr_SelectableObject;
 class PrsMgr_PresentationManager;
-class PrsMgr_PresentationManager3d;
 class TopLoc_Location;
 
 
@@ -56,6 +55,8 @@ class TopLoc_Location;
 //!          Used in Dynamic Selection Mechanism. <br>
 //!          A BRepOwner has an Owner (the shape it represents) <br>
 //!          and Users (One or More Transient entities). <br>
+//!          The highlight-unhighlight methods are empty and <br>
+//!          must be redefined by each User. <br>
 class StdSelect_BRepOwner : public SelectMgr_EntityOwner {
 
 public:

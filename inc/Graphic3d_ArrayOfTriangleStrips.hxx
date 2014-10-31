@@ -27,7 +27,7 @@
 #endif
 
 
-
+//! Contains triangles strip array definition <br>
 class Graphic3d_ArrayOfTriangleStrips : public Graphic3d_ArrayOfPrimitives {
 
 public:

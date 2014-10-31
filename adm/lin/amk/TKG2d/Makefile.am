@@ -43,26 +43,18 @@ libTKG2d_la_SOURCES = \
 @top_srcdir@/drv/Geom2d/Geom2d_UndefinedValue_0.cxx \
 @top_srcdir@/drv/Geom2dAdaptor/Geom2dAdaptor_GHCurve_0.cxx \
 @top_srcdir@/drv/Geom2dLProp/Geom2dLProp_CLProps2d_0.cxx \
-@top_srcdir@/drv/Geom2dLProp/Geom2dLProp_FCurExtOfNumericCurInf2d_0.cxx \
-@top_srcdir@/drv/Geom2dLProp/Geom2dLProp_FCurNulOfNumericCurInf2d_0.cxx \
-@top_srcdir@/drv/Geom2dLProp/Geom2dLProp_NumericCurInf2d_0.cxx \
 @top_srcdir@/drv/LProp/LProp_BadContinuity_0.cxx \
 @top_srcdir@/drv/LProp/LProp_NotDefined_0.cxx \
 @top_srcdir@/drv/LProp/LProp_SequenceNodeOfSequenceOfCIType_0.cxx \
 @top_srcdir@/drv/LProp/LProp_SequenceOfCIType_0.cxx \
 @top_srcdir@/drv/TColGeom2d/TColGeom2d_Array1OfBSplineCurve_0.cxx \
 @top_srcdir@/drv/TColGeom2d/TColGeom2d_Array1OfBezierCurve_0.cxx \
-@top_srcdir@/drv/TColGeom2d/TColGeom2d_Array1OfBoundedCurve_0.cxx \
 @top_srcdir@/drv/TColGeom2d/TColGeom2d_Array1OfCurve_0.cxx \
-@top_srcdir@/drv/TColGeom2d/TColGeom2d_Array1OfGeometry_0.cxx \
 @top_srcdir@/drv/TColGeom2d/TColGeom2d_HArray1OfBSplineCurve_0.cxx \
 @top_srcdir@/drv/TColGeom2d/TColGeom2d_HArray1OfBezierCurve_0.cxx \
-@top_srcdir@/drv/TColGeom2d/TColGeom2d_HArray1OfBoundedCurve_0.cxx \
 @top_srcdir@/drv/TColGeom2d/TColGeom2d_HArray1OfCurve_0.cxx \
-@top_srcdir@/drv/TColGeom2d/TColGeom2d_HArray1OfGeometry_0.cxx \
 @top_srcdir@/drv/TColGeom2d/TColGeom2d_HSequenceOfBoundedCurve_0.cxx \
 @top_srcdir@/drv/TColGeom2d/TColGeom2d_HSequenceOfCurve_0.cxx \
-@top_srcdir@/drv/TColGeom2d/TColGeom2d_HSequenceOfGeometry_0.cxx \
 @top_srcdir@/drv/TColGeom2d/TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve_0.cxx \
 @top_srcdir@/drv/TColGeom2d/TColGeom2d_SequenceNodeOfSequenceOfCurve_0.cxx \
 @top_srcdir@/drv/TColGeom2d/TColGeom2d_SequenceNodeOfSequenceOfGeometry_0.cxx \
@@ -106,6 +98,9 @@ libTKG2d_la_SOURCES = \
 @top_srcdir@/src/Geom2dAdaptor/Geom2dAdaptor_HCurve.cxx \
 @top_srcdir@/src/Geom2dLProp/Geom2dLProp_CurAndInf2d.cxx \
 @top_srcdir@/src/Geom2dLProp/Geom2dLProp_Curve2dTool.cxx \
+@top_srcdir@/src/Geom2dLProp/Geom2dLProp_FuncCurExt.cxx \
+@top_srcdir@/src/Geom2dLProp/Geom2dLProp_FuncCurNul.cxx \
+@top_srcdir@/src/Geom2dLProp/Geom2dLProp_NumericCurInf2d.cxx \
 @top_srcdir@/src/LProp/LProp_AnalyticCurInf.cxx \
 @top_srcdir@/src/LProp/LProp_CurAndInf.cxx
 

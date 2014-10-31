@@ -43,6 +43,8 @@ public:
   
       Units_QtsSequence();
   
+  Standard_EXPORT   Units_QtsSequence(const Units_QtsSequence& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Units_QtsSequence()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Units_QtsSequence(const Units_QtsSequence& Other);
 
 
 

@@ -40,10 +40,12 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class Standard_OutOfRange;
 class gp_Pnt;
 class Adaptor3d_Surface;
-class math_Vector;
 class math_Matrix;
 class Extrema_POnSurf;
 

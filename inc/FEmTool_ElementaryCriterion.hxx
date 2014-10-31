@@ -31,12 +31,14 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class TColStd_HArray2OfReal;
 class Standard_NotImplemented;
 class Standard_DomainError;
 class TColStd_HArray2OfInteger;
 class math_Matrix;
-class math_Vector;
 
 
 //!  defined J Criteria to used in minimisation <br>

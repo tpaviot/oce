@@ -24,7 +24,7 @@
 #endif
 
 
-
+//! Basic class root of all the Maps. <br>
 class TCollection_MapNode : public MMgt_TShared {
 
 public:

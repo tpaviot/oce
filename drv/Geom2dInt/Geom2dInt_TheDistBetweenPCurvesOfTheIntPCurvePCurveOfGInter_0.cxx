@@ -11,9 +11,6 @@
 #ifndef _Geom2dInt_Geom2dCurveTool_HeaderFile
 #include <Geom2dInt_Geom2dCurveTool.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
 #endif

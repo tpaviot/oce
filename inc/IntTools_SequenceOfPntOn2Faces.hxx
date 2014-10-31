@@ -40,6 +40,8 @@ public:
   
       IntTools_SequenceOfPntOn2Faces();
   
+  Standard_EXPORT   IntTools_SequenceOfPntOn2Faces(const IntTools_SequenceOfPntOn2Faces& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntTools_SequenceOfPntOn2Faces()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_SequenceOfPntOn2Faces(const IntTools_SequenceOfPntOn2Faces& Other);
 
 
 

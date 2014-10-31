@@ -28,10 +28,12 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class OSD_Timer;
 class Draw_Display;
 class Draw_Drawable3D;
-class Draw_Interpretor;
 
 
 //! Class to store chronometer variables. <br>

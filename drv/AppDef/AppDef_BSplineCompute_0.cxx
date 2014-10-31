@@ -47,9 +47,6 @@
 #ifndef _AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_HeaderFile
 #include <AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
 #endif

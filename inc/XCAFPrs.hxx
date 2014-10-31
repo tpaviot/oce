@@ -29,7 +29,6 @@ class TopoDS_Shape;
 class XCAFPrs_DataMapOfStyleShape;
 class XCAFPrs_Style;
 class XCAFPrs_Driver;
-class XCAFPrs_AISObject;
 class XCAFPrs_Style;
 class XCAFPrs_DataMapOfShapeStyle;
 class XCAFPrs_DataMapOfStyleShape;
@@ -87,7 +86,6 @@ private:
 
 
 friend class XCAFPrs_Driver;
-friend class XCAFPrs_AISObject;
 friend class XCAFPrs_Style;
 friend class XCAFPrs_DataMapOfShapeStyle;
 friend class XCAFPrs_DataMapOfStyleShape;

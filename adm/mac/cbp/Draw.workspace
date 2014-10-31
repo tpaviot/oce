@@ -34,6 +34,7 @@
 			<Depends filename="TKBool.cbp" />
 			<Depends filename="TKOffset.cbp" />
 			<Depends filename="TKFeat.cbp" />
+			<Depends filename="TKShHealing.cbp" />
 		</Project>
 		<Project filename="TKViewerTest.cbp" >
 			<Depends filename="TKGeomBase.cbp" />
@@ -73,7 +74,6 @@
 			<Depends filename="TKG2d.cbp" />
 			<Depends filename="TKSTEPBase.cbp" />
 			<Depends filename="TKTopAlgo.cbp" />
-			<Depends filename="TKShHealing.cbp" />
 			<Depends filename="TKGeomBase.cbp" />
 			<Depends filename="TKGeomAlgo.cbp" />
 			<Depends filename="TKMesh.cbp" />
@@ -175,7 +175,6 @@
 			<Depends filename="TKXDESTEP.cbp" />
 			<Depends filename="TKXSDRAW.cbp" />
 			<Depends filename="TKSTL.cbp" />
-			<Depends filename="TKAdvTools.cbp" />
 			<Depends filename="TKVoxel.cbp" />
 			<Depends filename="TKShapeSchema.cbp" />
 			<Depends filename="TKPShape.cbp" />

@@ -27,7 +27,7 @@
 #endif
 
 
-
+//! Contains polylines array definition <br>
 class Graphic3d_ArrayOfPolylines : public Graphic3d_ArrayOfPrimitives {
 
 public:
@@ -104,10 +104,7 @@ public:
 //! When <hasBColors> is TRUE , <maxBounds> must be > 0 and <br>
 //!      you must use the <br>
 //!      AddBound(number,Color) method. <br>
-//! When <hasEdgeInfos> is TRUE , <maxEdges> must be > 0 and <br>
-//!      you must use the <br>
-//!      AddEdge(number,visibillity) method. <br>
-  Standard_EXPORT   Graphic3d_ArrayOfPolylines(const Standard_Integer maxVertexs,const Standard_Integer maxBounds = 0,const Standard_Integer maxEdges = 0,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasBColors = Standard_False,const Standard_Boolean hasEdgeInfos = Standard_False);
+  Standard_EXPORT   Graphic3d_ArrayOfPolylines(const Standard_Integer maxVertexs,const Standard_Integer maxBounds = 0,const Standard_Integer maxEdges = 0,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasBColors = Standard_False);
 
 
 

@@ -28,6 +28,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
@@ -36,7 +39,6 @@ class Standard_OutOfRange;
 class Standard_DimensionError;
 class Standard_ConstructionError;
 class math_Matrix;
-class math_Vector;
 
 
 //! This class implements the least square solution of a set of <br>

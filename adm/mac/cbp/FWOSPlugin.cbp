@@ -75,7 +75,6 @@
 			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../src/FWOSDriver/FWOSDriver.cxx" />
-		<Unit filename="../../../src/FWOSDriver/FWOSDriver_Driver.cxx" />
 		<Unit filename="../../../src/FWOSDriver/FWOSDriver_DriverFactory.cxx" />
 	</Project>
 </CodeBlocks_project_file>

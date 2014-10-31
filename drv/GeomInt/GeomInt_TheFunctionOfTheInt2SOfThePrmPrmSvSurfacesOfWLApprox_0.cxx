@@ -17,9 +17,6 @@
 #ifndef _Adaptor3d_HSurfaceTool_HeaderFile
 #include <Adaptor3d_HSurfaceTool.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
 #endif

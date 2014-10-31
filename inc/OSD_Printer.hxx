@@ -34,7 +34,7 @@ class OSD_OSDError;
 class TCollection_AsciiString;
 
 
-//! Selects a printer. <br>
+//! Selects a printer (used by File). <br>
 class OSD_Printer  {
 public:
 

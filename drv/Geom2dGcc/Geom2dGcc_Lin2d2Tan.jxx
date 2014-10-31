@@ -16,8 +16,8 @@
 #ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
 #endif
-#ifndef _Geom2dGcc_MyL2d2Tan_HeaderFile
-#include <Geom2dGcc_MyL2d2Tan.hxx>
+#ifndef _Geom2dGcc_Lin2d2TanIter_HeaderFile
+#include <Geom2dGcc_Lin2d2TanIter.hxx>
 #endif
 #ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>

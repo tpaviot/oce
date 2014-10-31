@@ -43,6 +43,8 @@ public:
   
       StlMesh_SequenceOfMesh();
   
+  Standard_EXPORT   StlMesh_SequenceOfMesh(const StlMesh_SequenceOfMesh& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~StlMesh_SequenceOfMesh()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StlMesh_SequenceOfMesh(const StlMesh_SequenceOfMesh& Other);
 
 
 

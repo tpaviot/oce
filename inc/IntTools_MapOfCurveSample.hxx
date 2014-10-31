@@ -28,7 +28,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class IntTools_CurveRangeSample;
 class IntTools_CurveRangeSampleMapHasher;
 class IntTools_StdMapNodeOfMapOfCurveSample;
@@ -43,6 +42,8 @@ public:
 
   
   Standard_EXPORT   IntTools_MapOfCurveSample(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   IntTools_MapOfCurveSample(const IntTools_MapOfCurveSample& Other);
   
   Standard_EXPORT     IntTools_MapOfCurveSample& Assign(const IntTools_MapOfCurveSample& Other) ;
     IntTools_MapOfCurveSample& operator =(const IntTools_MapOfCurveSample& Other) 
@@ -76,8 +77,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_MapOfCurveSample(const IntTools_MapOfCurveSample& Other);
 
 
 

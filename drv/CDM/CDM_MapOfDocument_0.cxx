@@ -5,9 +5,6 @@
 
 #include <CDM_MapOfDocument.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
 #ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
 #endif

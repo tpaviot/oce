@@ -70,8 +70,6 @@
 			<Add directory="../../../src/BRepAlgoAPI" />
 			<Add directory="../../../drv/BOPCol" />
 			<Add directory="../../../src/BOPCol" />
-			<Add directory="../../../drv/BOPInt" />
-			<Add directory="../../../src/BOPInt" />
 			<Add directory="../../../drv/BOPDS" />
 			<Add directory="../../../src/BOPDS" />
 			<Add directory="../../../drv/BOPAlgo" />
@@ -88,6 +86,7 @@
 			<Add library="TKG3d" />
 			<Add library="TKGeomAlgo" />
 			<Add library="TKGeomBase" />
+			<Add library="TKPrim" />
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
@@ -137,6 +136,7 @@
 		<Unit filename="../../../src/IntTools/IntTools_CommonPrt.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_Compare.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_CompareRange.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_Context.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_Curve.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_CurveRangeLocalizeData.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_CurveRangeSample.cxx" />
@@ -145,12 +145,12 @@
 		<Unit filename="../../../src/IntTools/IntTools_EdgeFace.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_FClass2d.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_FaceFace.cxx" />
-		<Unit filename="../../../src/IntTools/IntTools_LineConstructor.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_MarkedRangeSet.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_PntOn2Faces.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_PntOnFace.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_Range.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_Root.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_ShrunkRange.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_SurfaceRangeLocalizeData.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_SurfaceRangeSample.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_SurfaceRangeSampleMapHasher.cxx" />
@@ -165,9 +165,6 @@
 		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Section.cxx" />
 		<Unit filename="../../../src/BOPCol/BOPCol_Box2DBndTree.cxx" />
 		<Unit filename="../../../src/BOPCol/BOPCol_BoxBndTree.cxx" />
-		<Unit filename="../../../src/BOPInt/BOPInt_Context.cxx" />
-		<Unit filename="../../../src/BOPInt/BOPInt_ShrunkRange.cxx" />
-		<Unit filename="../../../src/BOPInt/BOPInt_Tools.cxx" />
 		<Unit filename="../../../src/BOPDS/BOPDS_CommonBlock.cxx" />
 		<Unit filename="../../../src/BOPDS/BOPDS_Curve.cxx" />
 		<Unit filename="../../../src/BOPDS/BOPDS_DS.cxx" />
@@ -200,9 +197,10 @@
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Builder_4.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_CheckResult.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_CheckerSI.cxx" />
-		<Unit filename="../../../src/BOPAlgo/BOPAlgo_CheckerSI_1.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_MakerVolume.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_1.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_10.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_2.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_3.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_4.cxx" />

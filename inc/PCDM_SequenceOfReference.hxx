@@ -40,6 +40,8 @@ public:
   
       PCDM_SequenceOfReference();
   
+  Standard_EXPORT   PCDM_SequenceOfReference(const PCDM_SequenceOfReference& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~PCDM_SequenceOfReference()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   PCDM_SequenceOfReference(const PCDM_SequenceOfReference& Other);
 
 
 

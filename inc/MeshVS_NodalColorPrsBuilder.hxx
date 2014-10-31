@@ -61,6 +61,12 @@
 #ifndef _Handle_Graphic3d_Texture2D_HeaderFile
 #include <Handle_Graphic3d_Texture2D.hxx>
 #endif
+#ifndef _Handle_MeshVS_HArray1OfSequenceOfInteger_HeaderFile
+#include <Handle_MeshVS_HArray1OfSequenceOfInteger.hxx>
+#endif
+#ifndef _Handle_Graphic3d_ArrayOfPrimitives_HeaderFile
+#include <Handle_Graphic3d_ArrayOfPrimitives.hxx>
+#endif
 class MeshVS_Mesh;
 class MeshVS_DataSource;
 class Prs3d_Presentation;
@@ -69,6 +75,10 @@ class Quantity_Color;
 class Aspect_SequenceOfColor;
 class TColStd_DataMapOfIntegerReal;
 class Graphic3d_Texture2D;
+class MeshVS_HArray1OfSequenceOfInteger;
+class TColStd_Array1OfInteger;
+class TColStd_Array1OfReal;
+class Graphic3d_ArrayOfPrimitives;
 
 
 //! This class provides methods to create presentation of nodes with assigned color. <br>
@@ -125,6 +135,8 @@ public:
   Standard_EXPORT     void SetTextureCoord(const Standard_Integer theID,const Standard_Real theCoord) ;
   //! Return correspondence between node IDs and texture coordinate (range [0, 1]) <br>
   Standard_EXPORT     Standard_Real GetTextureCoord(const Standard_Integer theID) ;
+  //! Add to array polygons or polylines representing volume <br>
+  Standard_EXPORT     void AddVolumePrs(const Handle(MeshVS_HArray1OfSequenceOfInteger)& theTopo,const TColStd_Array1OfInteger& theNodes,const TColStd_Array1OfReal& theCoords,const Handle(Graphic3d_ArrayOfPrimitives)& theArray,const Standard_Boolean theIsShaded,const Standard_Integer theNbColors,const Standard_Integer theNbTexColors,const Standard_Real theColorRatio) const;
 
 
 

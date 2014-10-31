@@ -40,8 +40,8 @@
 #ifndef _Prs3d_TypeOfHLR_HeaderFile
 #include <Prs3d_TypeOfHLR.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
@@ -64,14 +64,10 @@
 #ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
 #endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
-#include <Handle_Prs3d_Drawer.hxx>
-#endif
 #ifndef _Handle_AIS_Drawer_HeaderFile
 #include <Handle_AIS_Drawer.hxx>
 #endif
 class TopoDS_Shape;
-class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;
@@ -79,7 +75,6 @@ class SelectMgr_Selection;
 class Quantity_Color;
 class Graphic3d_MaterialAspect;
 class Bnd_Box;
-class Prs3d_Drawer;
 class AIS_Drawer;
 
 
@@ -233,8 +228,6 @@ public:
 //! -   mode 7 - Compsolid <br>
 //! -   mode 8 - Compound <br>
   Standard_EXPORT   static  Standard_Integer SelectionMode(const TopAbs_ShapeEnum aShapeType) ;
-  
-  Standard_EXPORT   static  Standard_Real GetDeflection(const TopoDS_Shape& aShape,const Handle(Prs3d_Drawer)& aDrawer) ;
 
 
 
@@ -253,8 +246,6 @@ protected:
   Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
   
   Standard_EXPORT     void LoadRecomputable(const Standard_Integer TheMode) ;
-  
-  Standard_EXPORT   static  void DisplayBox(const Handle(Prs3d_Presentation)& aPrs,const Bnd_Box& aBox,const Handle(Prs3d_Drawer)& aDrawer) ;
   
   Standard_EXPORT     void setColor(const Handle(AIS_Drawer)& theDrawer,const Quantity_Color& theColor) const;
   

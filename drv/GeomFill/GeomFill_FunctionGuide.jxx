@@ -16,9 +16,6 @@
 #ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
 #endif

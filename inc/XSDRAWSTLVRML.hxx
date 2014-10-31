@@ -16,11 +16,15 @@
 #include <Standard_Macro.hxx>
 #endif
 
-class Draw_Interpretor;
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class XSDRAWSTLVRML_DataSource;
+class XSDRAWSTLVRML_DataSource3D;
 class XSDRAWSTLVRML_DrawableMesh;
 class XSDRAWSTLVRML_ElemNodesMap;
 class XSDRAWSTLVRML_CoordsMap;
+class XSDRAWSTLVRML_ToVRML;
 class XSDRAWSTLVRML_DataMapNodeOfElemNodesMap;
 class XSDRAWSTLVRML_DataMapIteratorOfElemNodesMap;
 class XSDRAWSTLVRML_DataMapNodeOfCoordsMap;
@@ -33,7 +37,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Inits commands for writing to STL and VRML formats <br>
+  //! A utility which writes a Shape to VRML format <br>//! Inits commands for writing to STL and VRML formats <br>
   Standard_EXPORT   static  void InitCommands(Draw_Interpretor& theCommands) ;
   //! Loads all Draw commands of TKXSDRAW. Used for plugin. <br>
   Standard_EXPORT   static  void Factory(Draw_Interpretor& theDI) ;
@@ -54,9 +58,11 @@ private:
 
 
 friend class XSDRAWSTLVRML_DataSource;
+friend class XSDRAWSTLVRML_DataSource3D;
 friend class XSDRAWSTLVRML_DrawableMesh;
 friend class XSDRAWSTLVRML_ElemNodesMap;
 friend class XSDRAWSTLVRML_CoordsMap;
+friend class XSDRAWSTLVRML_ToVRML;
 friend class XSDRAWSTLVRML_DataMapNodeOfElemNodesMap;
 friend class XSDRAWSTLVRML_DataMapIteratorOfElemNodesMap;
 friend class XSDRAWSTLVRML_DataMapNodeOfCoordsMap;

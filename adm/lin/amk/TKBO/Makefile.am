@@ -5,7 +5,6 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/IntTools : @top_srcdir@/src/IntTools: \
 @top_srcdir@/drv/BRepAlgoAPI : @top_srcdir@/src/BRepAlgoAPI: \
 @top_srcdir@/drv/BOPCol : @top_srcdir@/src/BOPCol: \
-@top_srcdir@/drv/BOPInt : @top_srcdir@/src/BOPInt: \
 @top_srcdir@/drv/BOPDS : @top_srcdir@/src/BOPDS: \
 @top_srcdir@/drv/BOPAlgo : @top_srcdir@/src/BOPAlgo: \
 @top_srcdir@/drv/BOPTools : @top_srcdir@/src/BOPTools
@@ -22,7 +21,6 @@ INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES)  \
 -I@top_srcdir@/drv/IntTools -I@top_srcdir@/src/IntTools \
 -I@top_srcdir@/drv/BRepAlgoAPI -I@top_srcdir@/src/BRepAlgoAPI \
 -I@top_srcdir@/drv/BOPCol -I@top_srcdir@/src/BOPCol \
--I@top_srcdir@/drv/BOPInt -I@top_srcdir@/src/BOPInt \
 -I@top_srcdir@/drv/BOPDS -I@top_srcdir@/src/BOPDS \
 -I@top_srcdir@/drv/BOPAlgo -I@top_srcdir@/src/BOPAlgo \
 -I@top_srcdir@/drv/BOPTools -I@top_srcdir@/src/BOPTools
@@ -40,6 +38,7 @@ libTKBO_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKG3d/libTKG3d.la \
 ../TKGeomAlgo/libTKGeomAlgo.la \
 ../TKGeomBase/libTKGeomBase.la \
+../TKPrim/libTKPrim.la \
 $(STLPort_LIB) 
 
 libTKBO_la_SOURCES = \
@@ -97,9 +96,10 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_Builder_4.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_CheckResult.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_CheckerSI.cxx \
-@top_srcdir@/src/BOPAlgo/BOPAlgo_CheckerSI_1.cxx \
+@top_srcdir@/src/BOPAlgo/BOPAlgo_MakerVolume.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_1.cxx \
+@top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_10.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_2.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_3.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_4.cxx \
@@ -133,9 +133,6 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/BOPDS/BOPDS_ShapeInfo.cxx \
 @top_srcdir@/src/BOPDS/BOPDS_SubIterator.cxx \
 @top_srcdir@/src/BOPDS/BOPDS_Tools.cxx \
-@top_srcdir@/src/BOPInt/BOPInt_Context.cxx \
-@top_srcdir@/src/BOPInt/BOPInt_ShrunkRange.cxx \
-@top_srcdir@/src/BOPInt/BOPInt_Tools.cxx \
 @top_srcdir@/src/BOPTools/BOPTools.cxx \
 @top_srcdir@/src/BOPTools/BOPTools_AlgoTools.cxx \
 @top_srcdir@/src/BOPTools/BOPTools_AlgoTools2D.cxx \
@@ -159,6 +156,7 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/IntTools/IntTools_CommonPrt.cxx \
 @top_srcdir@/src/IntTools/IntTools_Compare.cxx \
 @top_srcdir@/src/IntTools/IntTools_CompareRange.cxx \
+@top_srcdir@/src/IntTools/IntTools_Context.cxx \
 @top_srcdir@/src/IntTools/IntTools_Curve.cxx \
 @top_srcdir@/src/IntTools/IntTools_CurveRangeLocalizeData.cxx \
 @top_srcdir@/src/IntTools/IntTools_CurveRangeSample.cxx \
@@ -167,12 +165,12 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/IntTools/IntTools_EdgeFace.cxx \
 @top_srcdir@/src/IntTools/IntTools_FClass2d.cxx \
 @top_srcdir@/src/IntTools/IntTools_FaceFace.cxx \
-@top_srcdir@/src/IntTools/IntTools_LineConstructor.cxx \
 @top_srcdir@/src/IntTools/IntTools_MarkedRangeSet.cxx \
 @top_srcdir@/src/IntTools/IntTools_PntOn2Faces.cxx \
 @top_srcdir@/src/IntTools/IntTools_PntOnFace.cxx \
 @top_srcdir@/src/IntTools/IntTools_Range.cxx \
 @top_srcdir@/src/IntTools/IntTools_Root.cxx \
+@top_srcdir@/src/IntTools/IntTools_ShrunkRange.cxx \
 @top_srcdir@/src/IntTools/IntTools_SurfaceRangeLocalizeData.cxx \
 @top_srcdir@/src/IntTools/IntTools_SurfaceRangeSample.cxx \
 @top_srcdir@/src/IntTools/IntTools_SurfaceRangeSampleMapHasher.cxx \

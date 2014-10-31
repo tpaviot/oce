@@ -1,4 +1,4 @@
-OCCT CSharp sample {#samples_csharp}
+OCCT CSharp sample {#samples_csharp_occt}
 ================== 
 	
 This sample demonstrates simple way of using OCCT libraries in .Net application
@@ -14,7 +14,7 @@ The sample implements two approaches for organizing user interface with C#.
 Both applications provide the same functionality as the standard OCCT 
 Import/Export sample.
 First project is called "IE_WinForms" and uses Windows Forms for GUI.
-Second application is called "IE_WPF" and uses Windows Presentation Foundation.
+Second application is called "IE_WPF_WinForms" and uses Windows Presentation Foundation.
 
 Note a few important details:
 
@@ -39,7 +39,7 @@ Note a few important details:
   control embedding OCCT viewer.
 
 Run msvc.bat to start MS Visual Studio for building the sample.
-Note that project files are provided only for VS 2008, you can open them in
+Note that project files are provided only for VS 2010, you can open them in
 newer versions of Visual Studio using automatic converter.
 After conversion check option "Target framework" in properties of C# projects 
 (tab "Application") to ensure that it corresponds to the version set in
@@ -51,4 +51,4 @@ Note that all batch scripts use configuration defined in OCCT custom.bat file
 as default; you can provide arguments specifying VS version, bitness, and mode
 to override these settings, e.g.:
 
-> msvc.bat vc9 win64 Debug
+> msvc.bat vc10 win64 Debug

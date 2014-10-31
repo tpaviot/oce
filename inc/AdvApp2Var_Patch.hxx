@@ -46,6 +46,8 @@ class TColgp_HArray2OfPnt;
 
 
 
+//! used to store results on a domain [Ui,Ui+1]x[Vj,Vj+1] <br>
+//! <br>
 class AdvApp2Var_Patch  {
 public:
 

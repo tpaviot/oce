@@ -16,6 +16,7 @@
 #include <AIS_TexturedShape.hxx>
 
 #include <AIS_Drawer.hxx>
+#include <AIS_GraphicTool.hxx>
 #include <AIS_InteractiveContext.hxx>
 #include <BRepTools.hxx>
 #include <gp_Pnt2d.hxx>
@@ -25,11 +26,14 @@
 #include <Graphic3d_Texture2Dmanual.hxx>
 #include <Precision.hxx>
 #include <Prs3d_Presentation.hxx>
+#include <PrsMgr_ModedPresentation.hxx>
 #include <Prs3d_Root.hxx>
+#include <Prs3d_LineAspect.hxx>
 #include <Prs3d_ShadingAspect.hxx>
 #include <PrsMgr_PresentationManager3d.hxx>
 #include <Standard_ErrorHandler.hxx>
 #include <StdPrs_ShadedShape.hxx>
+#include <StdPrs_ToolShadedShape.hxx>
 #include <StdPrs_WFDeflectionShape.hxx>
 #include <StdPrs_WFShape.hxx>
 #include <TopExp_Explorer.hxx>
@@ -188,15 +192,133 @@ void AIS_TexturedShape::DisableTextureModulate()
 }
 
 //=======================================================================
+//function : SetColor
+//purpose  :
+//=======================================================================
+
+void AIS_TexturedShape::SetColor (const Quantity_Color& theColor)
+{
+  AIS_Shape::SetColor (theColor);
+
+  for (Standard_Integer aPrsIt = 1; aPrsIt <= Presentations().Length(); ++aPrsIt)
+  {
+    const PrsMgr_ModedPresentation& aPrsModed = Presentations().Value (aPrsIt);
+
+    if (aPrsModed.Mode() != 3)
+      continue;
+
+    updateAttributes (aPrsModed.Presentation()->Presentation());
+  }
+}
+
+//=======================================================================
+//function : UnsetColor
+//purpose  :
+//=======================================================================
+
+void AIS_TexturedShape::UnsetColor()
+{
+  AIS_Shape::UnsetColor();
+
+  for (Standard_Integer aPrsIt = 1; aPrsIt <= Presentations().Length(); ++aPrsIt)
+  {
+    const PrsMgr_ModedPresentation& aPrsModed = Presentations().Value (aPrsIt);
+
+    if (aPrsModed.Mode() != 3)
+      continue;
+    
+    Handle(Prs3d_Presentation) aPrs = aPrsModed.Presentation()->Presentation();
+    Handle(Graphic3d_Group)    aGroup = Prs3d_Root::CurrentGroup (aPrs);
+
+    Handle(Graphic3d_AspectFillArea3d) anAreaAsp = myDrawer->Link()->ShadingAspect()->Aspect();
+    Handle(Graphic3d_AspectLine3d)     aLineAsp  = myDrawer->Link()->LineAspect()->Aspect();
+    Quantity_Color aColor;
+    AIS_GraphicTool::GetInteriorColor (myDrawer->Link(), aColor);
+    anAreaAsp->SetInteriorColor (aColor);
+    aPrs->SetPrimitivesAspect (anAreaAsp);
+    aPrs->SetPrimitivesAspect (aLineAsp);
+    // Check if aspect of given type is set for the group, 
+    // because setting aspect for group with no already set aspect
+    // can lead to loss of presentation data
+    if (aGroup->IsGroupPrimitivesAspectSet (Graphic3d_ASPECT_FILL_AREA))
+    {
+      aGroup->SetGroupPrimitivesAspect (anAreaAsp);
+    }
+    if (aGroup->IsGroupPrimitivesAspectSet (Graphic3d_ASPECT_LINE))
+    {
+      aGroup->SetGroupPrimitivesAspect (aLineAsp);
+    }
+
+    updateAttributes (aPrs);
+  }
+}
+
+//=======================================================================
+//function : SetMaterial
+//purpose  : 
+//=======================================================================
+
+void AIS_TexturedShape::SetMaterial (const Graphic3d_MaterialAspect& theMat)
+{
+  AIS_Shape::SetMaterial (theMat);
+
+  for (Standard_Integer aPrsIt = 1; aPrsIt <= Presentations().Length(); ++aPrsIt)
+  {
+    const PrsMgr_ModedPresentation& aPrsModed = Presentations().Value (aPrsIt);
+    
+    if (aPrsModed.Mode() != 3)
+      continue;
+    
+    updateAttributes (aPrsModed.Presentation()->Presentation());
+  }
+}
+
+//=======================================================================
+//function : UnsetMaterial
+//purpose  : 
+//=======================================================================
+void AIS_TexturedShape::UnsetMaterial()
+{
+  AIS_Shape::UnsetMaterial();
+
+  for (Standard_Integer aPrsIt = 1; aPrsIt <= Presentations().Length(); ++aPrsIt)
+  {
+    const PrsMgr_ModedPresentation& aPrsModed = Presentations().Value (aPrsIt);
+
+    if (aPrsModed.Mode() != 3)
+      continue;
+
+    updateAttributes (aPrsModed.Presentation()->Presentation());
+  }
+}
+
+//=======================================================================
 //function : UpdateAttributes
 //purpose  :
 //=======================================================================
 
 void AIS_TexturedShape::UpdateAttributes()
 {
-  Prs3d_ShadingAspect aDummy;
-  myAspect = aDummy.Aspect();
-  Handle(Prs3d_Presentation) aPrs = Presentation();
+  updateAttributes (Presentation());
+}
+
+//=======================================================================
+//function : updateAttributes
+//purpose  :
+//=======================================================================
+
+void AIS_TexturedShape::updateAttributes (const Handle(Prs3d_Presentation)& thePrs)
+{
+  myAspect = new Graphic3d_AspectFillArea3d (*myDrawer->ShadingAspect()->Aspect());
+  if (HasPolygonOffsets())
+  {
+    // Issue 23115: copy polygon offset settings passed through myDrawer
+    Standard_Integer aMode;
+    Standard_ShortReal aFactor, aUnits;
+    PolygonOffsets (aMode, aFactor, aUnits);
+    myAspect->SetPolygonOffsets (aMode, aFactor, aUnits);
+  }
+
   if (!myToMapTexture)
   {
     myAspect->SetTextureMapOff();
@@ -217,11 +339,11 @@ void AIS_TexturedShape::UpdateAttributes()
   }
 
   myAspect->SetTextureMapOn();
-
   myAspect->SetTextureMap (myTexture);
   if (!myTexture->IsDone())
   {
-    std::cout << "An error occurred while building texture \n";
+    std::cout << "An error occurred while building texture\n";
+    myAspect->SetTextureMapOff();
     return;
   }
 
@@ -235,7 +357,26 @@ void AIS_TexturedShape::UpdateAttributes()
   else
     myAspect->SetEdgeOff();
 
-  Prs3d_Root::CurrentGroup (aPrs)->SetGroupPrimitivesAspect (myAspect);
+  // manage back face culling in consistent way (as in StdPrs_ShadedShape::Add())
+  if (StdPrs_ToolShadedShape::IsClosed (myshape))
+  {
+    myAspect->SuppressBackFace();
+  }
+  else
+  {
+    myAspect->AllowBackFace();
+  }
+
+  // Go through all groups to change fill aspect for all primitives
+  for (Graphic3d_SequenceOfGroup::Iterator aGroupIt (thePrs->Groups()); aGroupIt.More(); aGroupIt.Next())
+  {
+    const Handle(Graphic3d_Group)& aGroup = aGroupIt.Value();
+
+    if (aGroup->IsGroupPrimitivesAspectSet (Graphic3d_ASPECT_FILL_AREA))
+    {
+      aGroup->SetGroupPrimitivesAspect (myAspect);
+    }
+  }
 }
 
 //=======================================================================
@@ -282,23 +423,26 @@ void AIS_TexturedShape::Compute (const Handle(PrsMgr_PresentationManager3d)& /*t
       break;
     }
     case AIS_Shaded:
+    case 3: // texture mapping on triangulation
     {
       Standard_Real prevangle;
       Standard_Real newangle;
       Standard_Real prevcoeff;
       Standard_Real newcoeff;
 
-      Standard_Boolean isOwnDeviationAngle = OwnDeviationAngle(newangle,prevangle);
+      Standard_Boolean isOwnDeviationAngle       = OwnDeviationAngle(newangle,prevangle);
       Standard_Boolean isOwnDeviationCoefficient = OwnDeviationCoefficient(newcoeff,prevcoeff);
       if (((Abs (newangle - prevangle) > Precision::Angular()) && isOwnDeviationAngle) ||
           ((Abs (newcoeff - prevcoeff) > Precision::Confusion()) && isOwnDeviationCoefficient)) {
         BRepTools::Clean (myshape);
       }
+
       if (myshape.ShapeType() > TopAbs_FACE)
       {
         StdPrs_WFDeflectionShape::Add (thePrs, myshape, myDrawer);
         break;
       }
+
       myDrawer->SetShadingAspectGlobal (Standard_False);
       if (IsInfinite())
       {
@@ -308,7 +452,19 @@ void AIS_TexturedShape::Compute (const Handle(PrsMgr_PresentationManager3d)& /*t
       try
       {
         OCC_CATCH_SIGNALS
-        StdPrs_ShadedShape::Add (thePrs, myshape, myDrawer);
+        if (theMode == AIS_Shaded)
+        {
+          StdPrs_ShadedShape::Add (thePrs, myshape, myDrawer);
+        }
+        else
+        {
+          StdPrs_ShadedShape::Add (thePrs, myshape, myDrawer,
+                                   Standard_True,
+                                   myIsCustomOrigin ? myUVOrigin : gp_Pnt2d (0.0, 0.0),
+                                   myUVRepeat,
+                                   myToScale        ? myUVScale  : gp_Pnt2d (1.0, 1.0));
+          updateAttributes (thePrs);
+        }
       }
       catch (Standard_Failure)
       {
@@ -325,85 +481,7 @@ void AIS_TexturedShape::Compute (const Handle(PrsMgr_PresentationManager3d)& /*t
       }
       else
       {
-        AIS_Shape::DisplayBox (thePrs, BoundingBox(), myDrawer);
-      }
-      break;
-    }
-    case 3: // texture mapping on triangulation
-    {
-      BRepTools::Clean  (myshape);
-      BRepTools::Update (myshape);
-
-      {
-        Handle(Prs3d_ShadingAspect) aPrs3d_ShadingAspect = new Prs3d_ShadingAspect();
-        myAspect = aPrs3d_ShadingAspect->Aspect();
-
-        // Issue 23115: copy polygon offset settings passed through myDrawer
-        if (HasPolygonOffsets())
-        {
-          Standard_Integer aMode;
-          Standard_ShortReal aFactor, aUnits;
-          PolygonOffsets(aMode, aFactor, aUnits);
-          myAspect->SetPolygonOffsets(aMode, aFactor, aUnits);
-        }
-      }
-      if (!myToMapTexture)
-      {
-        myAspect->SetTextureMapOff();
-        return;
-      }
-      myAspect->SetTextureMapOn();
-
-      if (!myTexturePixMap.IsNull())
-      {
-        myTexture = new Graphic3d_Texture2Dmanual (myTexturePixMap);
-      }
-      else if (myPredefTexture != Graphic3d_NOT_2D_UNKNOWN)
-      {
-        myTexture = new Graphic3d_Texture2Dmanual (myPredefTexture);
-      }
-      else
-      {
-        myTexture = new Graphic3d_Texture2Dmanual (myTextureFile.ToCString());
-      }
-
-      if (!myTexture->IsDone())
-      {
-        std::cout << "An error occurred while building texture \n";
-        return;
-      }
-
-      if (myModulate)
-        myTexture->EnableModulate();
-      else
-        myTexture->DisableModulate();
-
-      myAspect->SetTextureMap (myTexture);
-      if (myToShowTriangles)
-        myAspect->SetEdgeOn();
-      else
-        myAspect->SetEdgeOff();
-
-      if (myToRepeat)
-        myTexture->EnableRepeat();
-      else
-        myTexture->DisableRepeat();
-
-      try
-      {
-        OCC_CATCH_SIGNALS
-        StdPrs_ShadedShape::Add (thePrs, myshape, myDrawer,
-                                 Standard_True,
-                                 myIsCustomOrigin ? myUVOrigin : gp_Pnt2d (0.0, 0.0),
-                                 myUVRepeat,
-                                 myToScale        ? myUVScale  : gp_Pnt2d (1.0, 1.0));
-        // within primitive arrays - object should be in one group of primitives
-        Prs3d_Root::CurrentGroup (thePrs)->SetGroupPrimitivesAspect (myAspect);
-      }
-      catch (Standard_Failure)
-      {
-        std::cout << "AIS_TexturedShape::Compute() in ShadingMode failed \n";
-        StdPrs_WFShape::Add (thePrs, myshape, myDrawer);
+        StdPrs_WFDeflectionRestrictedFace::AddBox (thePrs, BoundingBox(), myDrawer);
       }
       break;
     }

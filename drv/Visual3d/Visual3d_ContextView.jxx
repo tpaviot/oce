@@ -16,8 +16,8 @@
 #ifndef _Visual3d_Light_HeaderFile
 #include <Visual3d_Light.hxx>
 #endif
-#ifndef _Visual3d_HSetOfLight_HeaderFile
-#include <Visual3d_HSetOfLight.hxx>
+#ifndef _Visual3d_HSequenceOfLight_HeaderFile
+#include <Visual3d_HSequenceOfLight.hxx>
 #endif
 #ifndef _Visual3d_ContextView_HeaderFile
 #include <Visual3d_ContextView.hxx>

@@ -40,6 +40,8 @@ public:
   
       BRepBlend_SequenceOfPointOnRst();
   
+  Standard_EXPORT   BRepBlend_SequenceOfPointOnRst(const BRepBlend_SequenceOfPointOnRst& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~BRepBlend_SequenceOfPointOnRst()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRepBlend_SequenceOfPointOnRst(const BRepBlend_SequenceOfPointOnRst& Other);
 
 
 

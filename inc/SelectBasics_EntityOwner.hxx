@@ -59,7 +59,7 @@ public:
   
   Standard_EXPORT   virtual  void ResetLocation()  = 0;
   
-  Standard_EXPORT   virtual const TopLoc_Location& Location() const = 0;
+  Standard_EXPORT   virtual  TopLoc_Location Location() const = 0;
 
 
 

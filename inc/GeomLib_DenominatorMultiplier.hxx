@@ -31,8 +31,9 @@ class Standard_ConstructionError;
 class TColStd_Array1OfReal;
 
 
-//! this class is used to  construct the BSpline curve <br>
-//!          from an Approximation ( ApproxAFunction from AdvApprox). <br>
+//! this defines an evaluator for a function of 2 variables <br>
+//!          that will be used by CancelDenominatorDerivative in one <br>
+//!          direction. <br>
 class GeomLib_DenominatorMultiplier  {
 public:
 

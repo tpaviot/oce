@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   IntTools_ListOfSurfaceRangeSample();
   
+  Standard_EXPORT   IntTools_ListOfSurfaceRangeSample(const IntTools_ListOfSurfaceRangeSample& Other);
+  
   Standard_EXPORT     void Assign(const IntTools_ListOfSurfaceRangeSample& Other) ;
     void operator=(const IntTools_ListOfSurfaceRangeSample& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_ListOfSurfaceRangeSample(const IntTools_ListOfSurfaceRangeSample& Other);
 
 
 Standard_Address myFirst;

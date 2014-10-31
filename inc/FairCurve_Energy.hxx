@@ -38,7 +38,6 @@
 #include <Standard_Real.hxx>
 #endif
 class TColgp_HArray1OfPnt2d;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt2d;
 

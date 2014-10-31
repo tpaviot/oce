@@ -5,9 +5,6 @@
 
 #include <TopLoc_MapOfLocation.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
 #ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
 #endif

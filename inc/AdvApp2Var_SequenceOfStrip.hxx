@@ -40,6 +40,8 @@ public:
   
       AdvApp2Var_SequenceOfStrip();
   
+  Standard_EXPORT   AdvApp2Var_SequenceOfStrip(const AdvApp2Var_SequenceOfStrip& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~AdvApp2Var_SequenceOfStrip()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   AdvApp2Var_SequenceOfStrip(const AdvApp2Var_SequenceOfStrip& Other);
 
 
 

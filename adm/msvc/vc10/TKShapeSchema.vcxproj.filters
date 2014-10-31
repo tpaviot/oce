@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{0DB46C5C-065C-0F30-107F-AC61662E70E9}</UniqueIdentifier>
+      <UniqueIdentifier>{CD1D9034-05A6-1805-18F1-43E1828A3D3A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeSchema">
-      <UniqueIdentifier>{F6D2A0B7-04DA-02CA-0F0A-96F45883D340}</UniqueIdentifier>
+      <UniqueIdentifier>{B9C54574-1266-0504-0D76-C83947288CB9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PCDMShape">
-      <UniqueIdentifier>{A21D6023-18D1-15E9-0A16-9FE721FF28DF}</UniqueIdentifier>
+      <UniqueIdentifier>{2EE406C7-1620-04AB-02EA-CD8454AAD24B}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -103,90 +103,6 @@
       <Filter>Source files\ShapeSchema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PCDM_Document.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_FieldOfHArray1OfBSplineCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_FieldOfHArray1OfBezierCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_FieldOfHArray1OfBoundedCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_FieldOfHArray1OfCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_HArray1OfBSplineCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_HArray1OfBezierCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_HArray1OfBoundedCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom2d_HArray1OfCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray1OfBSplineCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray1OfBezierCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray1OfBoundedCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray1OfBoundedSurface.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray1OfCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray1OfSurface.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray2OfBSplineSurface.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray2OfBezierSurface.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray2OfBoundedSurface.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_FieldOfHArray2OfSurface.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray1OfBSplineCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray1OfBezierCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray1OfBoundedCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray1OfBoundedSurface.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray1OfCurve.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray1OfSurface.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray2OfBSplineSurface.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray2OfBezierSurface.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray2OfBoundedSurface.cxx">
-      <Filter>Source files\ShapeSchema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColPGeom_HArray2OfSurface.cxx">
       <Filter>Source files\ShapeSchema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\ShapeSchema\ShapeSchema_PColStd_FieldOfHArray1OfInteger.cxx">

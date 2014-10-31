@@ -42,7 +42,10 @@ class StdFail_NotDone;
 class TColStd_HArray2OfInteger;
 
 
-
+//! Convert a grid of Polynomial Surfaces <br>
+//!          that are have continuity CM to an <br>
+//!          Bspline Surface that has continuity <br>
+//!          CM <br>
 class Convert_GridPolynomialToPoles  {
 public:
 

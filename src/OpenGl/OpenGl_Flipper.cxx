@@ -53,7 +53,7 @@ OpenGl_Flipper::OpenGl_Flipper (const gp_Ax2& theReferenceSystem)
 // function : Release
 // purpose  :
 // =======================================================================
-void OpenGl_Flipper::Release (const Handle(OpenGl_Context)& )
+void OpenGl_Flipper::Release (OpenGl_Context*)
 {
   //
 }
@@ -65,8 +65,10 @@ void OpenGl_Flipper::Release (const Handle(OpenGl_Context)& )
 void OpenGl_Flipper::Render (const Handle(OpenGl_Workspace)& theWorkspace) const
 {
   // Check if rendering is to be in immediate mode
-  const Standard_Boolean isImmediate = (theWorkspace->NamedStatus & (OPENGL_NS_ADD | OPENGL_NS_IMMEDIATE)) != 0;
+  const Standard_Boolean isImmediate = (theWorkspace->NamedStatus & OPENGL_NS_IMMEDIATE) != 0;
   const Handle(OpenGl_Context)& aContext = theWorkspace->GetGlContext();
+
+#if !defined(GL_ES_VERSION_2_0)
   GLint aCurrMode = GL_MODELVIEW;
   glGetIntegerv (GL_MATRIX_MODE, &aCurrMode);
 
@@ -92,7 +94,7 @@ void OpenGl_Flipper::Render (const Handle(OpenGl_Workspace)& theWorkspace) const
                                     { 0.f, 0.f, 1.f, 0.f },
                                     { 0.f, 0.f, 0.f, 1.f } };
 
-      aContext->ShaderManager()->RevertModelWorldStateTo (aModelWorldState);
+      aContext->ShaderManager()->RevertModelWorldStateTo (&aModelWorldState);
     }
     else
     {
@@ -114,8 +116,8 @@ void OpenGl_Flipper::Render (const Handle(OpenGl_Workspace)& theWorkspace) const
       Tmatrix3 aProjection;
       glGetFloatv (GL_PROJECTION_MATRIX, *aProjection);
 
-      aContext->ShaderManager()->UpdateWorldViewStateTo (aWorldView);
-      aContext->ShaderManager()->UpdateProjectionStateTo (aProjection);
+      aContext->ShaderManager()->UpdateWorldViewStateTo (&aWorldView);
+      aContext->ShaderManager()->UpdateProjectionStateTo (&aProjection);
     }
 
     if (aCurrMode != GL_MODELVIEW)
@@ -198,4 +200,5 @@ void OpenGl_Flipper::Render (const Handle(OpenGl_Workspace)& theWorkspace) const
   {
     glMatrixMode (aCurrMode);
   }
+#endif
 }

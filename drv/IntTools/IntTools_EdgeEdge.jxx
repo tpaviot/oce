@@ -10,11 +10,11 @@
 #ifndef _IntTools_SequenceOfRanges_HeaderFile
 #include <IntTools_SequenceOfRanges.hxx>
 #endif
-#ifndef _BRepAdaptor_Curve_HeaderFile
-#include <BRepAdaptor_Curve.hxx>
-#endif
 #ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
+#endif
+#ifndef _BRepAdaptor_Curve_HeaderFile
+#include <BRepAdaptor_Curve.hxx>
 #endif
 #ifndef _IntTools_SequenceOfCommonPrts_HeaderFile
 #include <IntTools_SequenceOfCommonPrts.hxx>

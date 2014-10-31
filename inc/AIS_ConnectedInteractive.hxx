@@ -19,6 +19,9 @@
 #ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
 #endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
 #ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
 #endif
@@ -34,8 +37,8 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
@@ -51,36 +54,26 @@
 #endif
 class AIS_InteractiveObject;
 class Standard_NotImplemented;
-class TopLoc_Location;
-class PrsMgr_PresentationManager3d;
+class gp_Trsf;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;
 class SelectMgr_Selection;
+class TopoDS_Shape;
 
 
-//! Defines an Interactive Object through a connection to <br>
-//! another Interactive   Object, which serves as a <br>
-//! reference, and which is located elsewhere in the viewer. <br>
+//! Creates an arbitrary located instance of another Interactive Object, <br>
+//! which serves as a reference. <br>
 //! This allows you to use the Connected Interactive <br>
 //! Object without having to recalculate presentation, <br>
 //! selection or graphic structure. These are deduced <br>
 //! from your reference object. <br>
 //! The relation between the connected interactive object <br>
 //! and its source is generally one of geometric transformation. <br>
-//! AIS_ConnectedInteractive class doesn't support selection <br>
-//! modes different from 0. Descendants should redefine ComputeSelection() <br>
-//! method in order to handle other selection modes and generate connected <br>
-//! sensitive entities properly. Refer to AIS_ConnectedShape class <br>
-//! for exisiting implementation of a connected interactive object <br>
-//! for AIS_Shape that supports all standard sub-shape selection modes. <br>
-//! Warning <br>
-//! An Interactive entity which is view (or projector) <br>
-//! dependent requires recalculation of views in hidden <br>
-//! parts mode depending on the position of the <br>
-//! projector in each view. You should derive the entity's <br>
-//! inheritance from ConnectedInteractive and redefine <br>
-//! its compute method to enable this type of calculation. <br>
+//! AIS_ConnectedInteractive class supports selection mode 0 for any InteractiveObject and <br>
+//! all standard modes if its reference based on AIS_Shape. <br>
+//! Descendants may redefine ComputeSelection() though. <br>
+//! Also ConnectedInteractive will handle HLR if its reference based on AIS_Shape. <br>
 class AIS_ConnectedInteractive : public AIS_InteractiveObject {
 
 public:
@@ -96,14 +89,12 @@ public:
   //! Returns 1 <br>
   Standard_EXPORT   virtual  Standard_Integer Signature() const;
   //! Establishes the connection between the Connected <br>
-//! Interactive Object, anotherIobj, and its reference <br>
-//! entity. If a previous connection with an Interactive <br>
-//! Object already exists, it is removed by Disconnect. <br>
-//! The second syntax also initiates the location of the <br>
-//! Connected Interactive Object. <br>
+//! Interactive Object, anotherIobj, and its reference. <br>
   Standard_EXPORT   virtual  void Connect(const Handle(AIS_InteractiveObject)& anotherIObj) ;
-  
-  Standard_EXPORT   virtual  void Connect(const Handle(AIS_InteractiveObject)& anotherIobj,const TopLoc_Location& aLocation) ;
+  //! Establishes the connection between the Connected <br>
+//! Interactive Object, anotherIobj, and its reference. <br>
+//! Locates instance in aLocation. <br>
+  Standard_EXPORT   virtual  void Connect(const Handle(AIS_InteractiveObject)& anotherIobj,const gp_Trsf& aLocation) ;
   
 //! Returns true if there is a connection established <br>
 //! between the presentation and its source reference. <br>
@@ -115,24 +106,9 @@ public:
 //! presentation will no longer be displayed. <br>
 //! Warning Must be done before deleting the presentation. <br>
   Standard_EXPORT     void Disconnect() ;
-  //! Computes the presentation according to a point of view <br>
-//!          given by <aProjector>. <br>
-//!          To be Used when the associated degenerated Presentations <br>
-//!          have been transformed by <aTrsf> which is not a Pure <br>
-//!          Translation. The HLR Prs can't be deducted automatically <br>
-//!          WARNING :<aTrsf> must be applied <br>
-//!           to the object to display before computation  !!! <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
-  
-  Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
-  
+  //!  Informs the graphic context that the interactive Object <br>
+//! may be decomposed into sub-shapes for dynamic selection. <br>
       virtual  Standard_Boolean AcceptShapeDecomposition() const;
-  
-  Standard_EXPORT   virtual  void UpdateLocation() ;
-  //! For this class, the  location effect is treated in the <br>
-//!           compute   &     computeSelection  methods.  So     the <br>
-//!        UpdateLocation Methods are redefined to do nothing else <br>
-  Standard_EXPORT   virtual  void UpdateLocation(const Handle(SelectMgr_Selection)& aSel) ;
 
 
 
@@ -143,7 +119,6 @@ protected:
 
 
 Handle_AIS_InteractiveObject myReference;
-Handle_AIS_InteractiveObject myOldReference;
 
 
 private: 
@@ -158,11 +133,32 @@ private:
 //!          presentation of this last object, with <br>
 //!          a transformation if there's one stored. <br>
   Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
+  //! Computes the presentation according to a point of view <br>
+//!          given by <aProjector>. <br>
+//!          To be Used when the associated degenerated Presentations <br>
+//!          have been transformed by <aTrsf> which is not a Pure <br>
+//!          Translation. The HLR Prs can't be deducted automatically <br>
+//!          WARNING :<aTrsf> must be applied <br>
+//!           to the object to display before computation  !!! <br>
+  Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
+  //! Computes the presentation according to a point of view <br>
+//!          given by <aProjector>. <br>
+  Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
   //! Generates sensitive entities by copying <br>
 //! them from myReference selection, creates and sets an entity <br>
-//! owner for this entities and adds them to aSelection <br>
-  Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
+//! owner for this entities and adds them to theSelection <br>
+  Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& theSelection,const Standard_Integer theMode) ;
+  //! Generates sensitive entities by copying <br>
+//! them from myReference sub shapes selection, creates and sets an entity <br>
+//! owner for this entities and adds them to theSelection <br>
+  Standard_EXPORT     void computeSubShapeSelection(const Handle(SelectMgr_Selection)& theSelection,const Standard_Integer theMode) ;
+  
+  Standard_EXPORT     void updateShape(const Standard_Boolean WithLocation = Standard_True) ;
+  //! Computes the presentation according to a point of view <br>
+//!          given by <aProjector>. <br>
+  Standard_EXPORT     void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation,const TopoDS_Shape& aShape) ;
 
+TopoDS_Shape myShape;
 
 
 };

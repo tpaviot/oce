@@ -31,7 +31,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class TDF_Attribute;
 class TColStd_MapTransientHasher;
 class TDF_StdMapNodeOfAttributeMap;
@@ -46,6 +45,8 @@ public:
 
   
   Standard_EXPORT   TDF_AttributeMap(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   TDF_AttributeMap(const TDF_AttributeMap& Other);
   
   Standard_EXPORT     TDF_AttributeMap& Assign(const TDF_AttributeMap& Other) ;
     TDF_AttributeMap& operator =(const TDF_AttributeMap& Other) 
@@ -79,8 +80,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_AttributeMap(const TDF_AttributeMap& Other);
 
 
 

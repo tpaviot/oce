@@ -29,7 +29,8 @@ class gp_Pnt2d;
 class TColgp_Array1OfPnt2d;
 
 
-
+//! give Tools for sorting Selection results <br>
+//!          (example : sensitive entities matching) <br>
 class SelectBasics_BasicTool  {
 public:
 

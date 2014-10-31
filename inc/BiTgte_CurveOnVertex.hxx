@@ -64,7 +64,8 @@ class Geom_BezierCurve;
 class Geom_BSplineCurve;
 
 
-
+//! private class used  to create a filler rolling  on <br>
+//!          an edge. <br>
 class BiTgte_CurveOnVertex  : public Adaptor3d_Curve {
 public:
 

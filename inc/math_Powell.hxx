@@ -40,7 +40,6 @@
 class StdFail_NotDone;
 class Standard_DimensionError;
 class math_MultipleVarFunction;
-class math_Vector;
 class math_Matrix;
 
 

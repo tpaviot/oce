@@ -95,9 +95,6 @@ is
     exception ZClippingDefinitionError inherits OutOfRange;
     ---Category: The exceptions
 
-    exception TransientDefinitionError inherits OutOfRange;
-    ---Category: The exceptions
-
     exception LayerDefinitionError inherits OutOfRange;
     ---Category: The exceptions
 
@@ -129,21 +126,15 @@ is
     --      TOLS_SPOT       spot light
 
     enumeration TypeOfModel is  TOM_NONE,
-                    TOM_INTERP_COLOR,
                     TOM_FACET,
-                    TOM_VERTEX
+                    TOM_VERTEX,
+                    TOM_FRAGMENT
     end TypeOfModel;
     ---Purpose: Definition of the rendering (colour shading) model
-    --  TOM_NONE        No interpolation, constant shading
-    --              (FLAT Shading)
-    --  TOM_INTERP_COLOR    Linear interpolation of color
-    --              (Gouraud Shading)
-    --  TOM_FACET       Interpolation of color based on
-    --              dot products
-    --              (Quick Phong Shading)
-    --  TOM_VERTEX      Interpolation of color based on
-    --              normals
-    --              (Phong Shading)
+    --  Visual3d_TOM_NONE     No lighting, only white ambient light
+    --  Visual3d_TOM_FACET    No interpolation, constant shading      (Flat    Shading)
+    --  Visual3d_TOM_VERTEX   Interpolation of color based on normals (Gouraud Shading)
+    --  Visual3d_TOM_FRAGMENT Interpolation of color based on normals (Phong   Shading)
     ---Category: The enumerations
 
     enumeration TypeOfOrder is  TOO_TOPFIRST,
@@ -152,7 +143,6 @@ is
     ---Purpose: Definition of the order of selection
     --      TOO_TOPFIRST    the root structure first
     --      TOO_BOTTOMFIRST the leaf structure first
-    --      Allows exploration of a PickPath in a PickDescriptor.
     ---Category: The enumerations
 
     enumeration TypeOfProjection is TOP_PERSPECTIVE,
@@ -202,85 +192,24 @@ is
     ------------------------
 
     class ContextPick;
-    ---Purpose: This class allows the creation and update of a
-    --      pick context for one view of the viewer.
-    --      A context allows the control of different parameters
-    --      before the activation of a pick :
-    --
-    --      * pick aperture.
-    --      * the depth of pick, the number of sub-structures selected.
-    --      * the order of picking, the possibility to traverse
-    --        the pick structures starting from the roots or the leaves.
     ---Category: The classes
 
     class ContextView;
-    ---Purpose: This class manages the creation and update of a
-    --      visualisation context for one view in the viewer.
-    --
-    --      A context is defined by :
-    --      * Antialiasing.
-    --      * ZClipping.
-    --      * Depth-cueing.
-    --      * The type of visualisation.
-    --      * The light sources.
     ---Category: The classes
 
     class Light;
-    ---Purpose: This class defines and updates light sources.
-    --      There is no limit to the number of light sources defined.
-    --      Only the number of active sources is limited.
-    ---Category: The classes
-
-    class PickDescriptor;
-    ---Purpose: A PickDescriptor contains information on the picks.
-    --      It contains a certain number of PickPaths.
-    ---Category: The classes
-
-    class PickPath;
-    ---Purpose: A PickPath is a vector ( elem_num, pick_id, struct_id ).
-    --      It is one of the constituents of a PickDescriptor.
-    --      There are many Pickpaths in a PickDescriptor.
-    --      Each PickPath describes a structure or an sub-structure.
-    --      The pick-id is set by the SetPickId method from Group.
     ---Category: The classes
 
     class View;
-    ---Purpose: Creation and editing of a view in a 3D visualiser.
-    --
-    --      A 3D view is composed of an 'orientation' part defined
-    --      by the position of the observer, the viewing direction,
-    --      and a 'mapping' part defined by the type of projection
-    --      (parallel or perspective), and by the window-viewport
-    --      couple which allows passage from the projected coordinate
-    --      space into the screen space.
     ---Category: The classes
 
     class ViewManager;
-    ---Purpose: 3D Visualiser
-    ---Category: The classes
-
-    class ViewMapping;
-    ---Purpose: This class describes a projection and a system of
-    --      coordinates called NPC.(Normalized Projection Coordinates)
-    ---Category: The classes
-
-    class ViewOrientation;
-    ---Purpose: This class describes the manner in which the
-    --      observer looks at the visualised scene.
-    --      It defines a coordinates system called VRC
-    --      (View Reference Coordinates) with 3 axes U,V,N
-    ---Category: The classes
-
-    class TransientManager;
-    ---Purpose: 3D Transient Visualiser
     ---Category: The classes
 
     class Layer;
-    ---Purpose: 2D Layer
     ---Category: The classes
 
         class LayerItem;
-    ---Purpose: 2D Layer presentation unit
     ---Category: The classes
 
         ---------------------
@@ -301,31 +230,20 @@ is
 
         imported NListOfLayerItem;
     
-    class SequenceOfPickPath instantiates
-            Sequence from TCollection (PickPath from Visual3d);
+    class SequenceOfLight instantiates
+            Sequence from TCollection (Light from Visual3d);
     ---Category: Instantiated classes
 
-    class HSequenceOfPickPath instantiates
-            HSequence from TCollection
-            (PickPath from Visual3d, SequenceOfPickPath);
+    class HSequenceOfLight instantiates
+            HSequence from TCollection (Light from Visual3d, SequenceOfLight);
     ---Category: Instantiated classes
 
-    class SetOfLight instantiates
-            Set from TCollection (Light from Visual3d);
+    class SequenceOfView instantiates
+            Sequence from TCollection (View from Visual3d);
     ---Category: Instantiated classes
 
-    class HSetOfLight instantiates
-            HSet from TCollection
-            (Light from Visual3d, SetOfLight);
-    ---Category: Instantiated classes
-
-    class SetOfView instantiates
-            Set from TCollection (View from Visual3d);
-    ---Category: Instantiated classes
-
-    class HSetOfView instantiates
-            HSet from TCollection
-            (View from Visual3d, SetOfView);
+    class HSequenceOfView instantiates
+            HSequence from TCollection (View from Visual3d, SequenceOfView);
     ---Category: Instantiated classes
 
 end Visual3d;

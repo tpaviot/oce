@@ -44,6 +44,8 @@ class AdvApp2Var_Node;
 
 
 
+//! used to store constraints on a line U = Ui or V = Vj <br>
+//! <br>
 class AdvApp2Var_Iso  {
 public:
 

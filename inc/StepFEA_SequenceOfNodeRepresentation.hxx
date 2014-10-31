@@ -43,6 +43,8 @@ public:
   
       StepFEA_SequenceOfNodeRepresentation();
   
+  Standard_EXPORT   StepFEA_SequenceOfNodeRepresentation(const StepFEA_SequenceOfNodeRepresentation& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~StepFEA_SequenceOfNodeRepresentation()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StepFEA_SequenceOfNodeRepresentation(const StepFEA_SequenceOfNodeRepresentation& Other);
 
 
 

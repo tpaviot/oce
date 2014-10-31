@@ -41,7 +41,7 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-
+//! attribute to store color <br>
 class XCAFDoc_Color : public TDF_Attribute {
 
 public:

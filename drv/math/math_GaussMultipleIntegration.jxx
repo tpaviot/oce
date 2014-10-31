@@ -4,12 +4,6 @@
 #ifndef _math_MultipleVarFunction_HeaderFile
 #include <math_MultipleVarFunction.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
-#ifndef _math_IntegerVector_HeaderFile
-#include <math_IntegerVector.hxx>
-#endif
 #ifndef _math_GaussMultipleIntegration_HeaderFile
 #include <math_GaussMultipleIntegration.hxx>
 #endif

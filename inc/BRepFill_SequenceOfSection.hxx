@@ -40,6 +40,8 @@ public:
   
       BRepFill_SequenceOfSection();
   
+  Standard_EXPORT   BRepFill_SequenceOfSection(const BRepFill_SequenceOfSection& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~BRepFill_SequenceOfSection()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRepFill_SequenceOfSection(const BRepFill_SequenceOfSection& Other);
 
 
 

@@ -25,15 +25,18 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class Standard_OutOfRange;
 class BRepBlend_Line;
 class Blend_Function;
 class Blend_AppFunction;
-class math_Vector;
 class Blend_Point;
 
 
 //! Function to approximate by AppSurface <br>
+//!          for Surface/Surface contact. <br>
 class BRepBlend_AppFunc : public BRepBlend_AppFuncRoot {
 
 public:

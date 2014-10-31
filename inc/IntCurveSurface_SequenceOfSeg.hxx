@@ -40,6 +40,8 @@ public:
   
       IntCurveSurface_SequenceOfSeg();
   
+  Standard_EXPORT   IntCurveSurface_SequenceOfSeg(const IntCurveSurface_SequenceOfSeg& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntCurveSurface_SequenceOfSeg()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntCurveSurface_SequenceOfSeg(const IntCurveSurface_SequenceOfSeg& Other);
 
 
 

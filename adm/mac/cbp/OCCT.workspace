@@ -5,9 +5,6 @@
 		<Project filename="TKMath.cbp" >
 			<Depends filename="TKernel.cbp" />
 		</Project>
-		<Project filename="TKAdvTools.cbp" >
-			<Depends filename="TKernel.cbp" />
-		</Project>
 		<Project filename="TKG2d.cbp" >
 			<Depends filename="TKernel.cbp" />
 			<Depends filename="TKMath.cbp" />
@@ -56,16 +53,6 @@
 			<Depends filename="TKG3d.cbp" />
 			<Depends filename="TKTopAlgo.cbp" />
 		</Project>
-		<Project filename="TKBO.cbp" >
-			<Depends filename="TKBRep.cbp" />
-			<Depends filename="TKTopAlgo.cbp" />
-			<Depends filename="TKMath.cbp" />
-			<Depends filename="TKernel.cbp" />
-			<Depends filename="TKG2d.cbp" />
-			<Depends filename="TKG3d.cbp" />
-			<Depends filename="TKGeomAlgo.cbp" />
-			<Depends filename="TKGeomBase.cbp" />
-		</Project>
 		<Project filename="TKHLR.cbp" >
 			<Depends filename="TKBRep.cbp" />
 			<Depends filename="TKernel.cbp" />
@@ -95,6 +82,17 @@
 			<Depends filename="TKG3d.cbp" />
 			<Depends filename="TKGeomBase.cbp" />
 			<Depends filename="TKGeomAlgo.cbp" />
+		</Project>
+		<Project filename="TKBO.cbp" >
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKGeomAlgo.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKPrim.cbp" />
 		</Project>
 		<Project filename="TKXMesh.cbp" >
 			<Depends filename="TKBRep.cbp" />
@@ -555,6 +553,7 @@
 			<Depends filename="TKBool.cbp" />
 			<Depends filename="TKOffset.cbp" />
 			<Depends filename="TKFeat.cbp" />
+			<Depends filename="TKShHealing.cbp" />
 		</Project>
 		<Project filename="TKViewerTest.cbp" >
 			<Depends filename="TKGeomBase.cbp" />
@@ -594,7 +593,6 @@
 			<Depends filename="TKG2d.cbp" />
 			<Depends filename="TKSTEPBase.cbp" />
 			<Depends filename="TKTopAlgo.cbp" />
-			<Depends filename="TKShHealing.cbp" />
 			<Depends filename="TKGeomBase.cbp" />
 			<Depends filename="TKGeomAlgo.cbp" />
 			<Depends filename="TKMesh.cbp" />
@@ -696,7 +694,6 @@
 			<Depends filename="TKXDESTEP.cbp" />
 			<Depends filename="TKXSDRAW.cbp" />
 			<Depends filename="TKSTL.cbp" />
-			<Depends filename="TKAdvTools.cbp" />
 			<Depends filename="TKVoxel.cbp" />
 			<Depends filename="TKShapeSchema.cbp" />
 			<Depends filename="TKPShape.cbp" />

@@ -43,6 +43,8 @@ public:
   
       Transfer_SequenceOfFinder();
   
+  Standard_EXPORT   Transfer_SequenceOfFinder(const Transfer_SequenceOfFinder& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Transfer_SequenceOfFinder()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Transfer_SequenceOfFinder(const Transfer_SequenceOfFinder& Other);
 
 
 

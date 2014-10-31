@@ -18,6 +18,7 @@ export HAVE_TBB="false";
 export HAVE_OPENCL="false";
 export HAVE_FREEIMAGE="false";
 export HAVE_GL2PS="false";
+export HAVE_VTK="false";
 export MACOSX_USE_GLX="false";
 export CSF_OPT_INC=""
 export CSF_OPT_LIB32=""
@@ -92,7 +93,9 @@ fi
 if [ "$HAVE_GL2PS" == "true" ]; then
   export CSF_OPT_CMPL="${CSF_OPT_CMPL} -DHAVE_GL2PS"
 fi
-
+if [ "$HAVE_VTK" == "true" ]; then
+  export CSF_OPT_CMPL="${CSF_OPT_CMPL} -DHAVE_VTK"
+fi
 # Option to compile OCCT with X11 libs on Mac OS X
 if [ "$MACOSX_USE_GLX" == "true" ]; then
   export CSF_OPT_CMPL="${CSF_OPT_CMPL} -DMACOSX_USE_GLX"
@@ -179,11 +182,6 @@ export CSF_PluginDefaults="${CASROOT}/src/StdResource"
 export CSF_XCAFDefaults="${CASROOT}/src/StdResource"
 export CSF_TObjDefaults="${CASROOT}/src/StdResource"
 export CSF_StandardLiteDefaults="${CASROOT}/src/StdResource"
-if [ "$WOKSTATION" == "mac" ]; then
-  export CSF_GraphicShr="libTKOpenGl.dylib"
-else
-  export CSF_GraphicShr="libTKOpenGl.so"
-fi
 export CSF_UnitsLexicon="${CASROOT}/src/UnitsAPI/Lexi_Expr.dat"
 export CSF_UnitsDefinition="${CASROOT}/src/UnitsAPI/Units.dat"
 export CSF_IGESDefaults="${CASROOT}/src/XSTEPResource"

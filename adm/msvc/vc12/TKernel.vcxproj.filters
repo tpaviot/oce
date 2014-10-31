@@ -2,61 +2,61 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{1D0AEF0B-0724-1140-0F65-08D09FB8B136}</UniqueIdentifier>
+      <UniqueIdentifier>{D88DD534-15A7-1759-001E-7E88C4451AE3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\FSD">
-      <UniqueIdentifier>{7A610277-1821-144D-0606-A09589B98D99}</UniqueIdentifier>
+      <UniqueIdentifier>{E839047F-0C9E-1393-040E-4CAC3DBFD975}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MMgt">
-      <UniqueIdentifier>{FF5D9F65-0CBE-01C5-003F-4573378F3D40}</UniqueIdentifier>
+      <UniqueIdentifier>{5DB9BDC4-09A4-0AE6-0750-7BCFFC93E085}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\OSD">
-      <UniqueIdentifier>{FE75A9DD-183A-110C-0518-46766E0963B3}</UniqueIdentifier>
+      <UniqueIdentifier>{7942B9C0-0D91-0139-072C-CFBD288BBBAB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Plugin">
-      <UniqueIdentifier>{70B8CC77-088D-0B85-10A8-0EA42239EEAE}</UniqueIdentifier>
+      <UniqueIdentifier>{CE176E76-167C-1313-0500-417813322786}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Quantity">
-      <UniqueIdentifier>{64F18622-0B6A-00F8-18FB-6CFC3C23F91C}</UniqueIdentifier>
+      <UniqueIdentifier>{C0F4784F-177F-15C8-16F8-39EE80593FAC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Resource">
-      <UniqueIdentifier>{B7BB1615-14AE-0111-1146-9F716ECFED97}</UniqueIdentifier>
+      <UniqueIdentifier>{636307EF-16E8-0584-0937-8A85342F314E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SortTools">
-      <UniqueIdentifier>{F75A0CB3-195C-18CA-0251-AC442BAF70BB}</UniqueIdentifier>
+      <UniqueIdentifier>{4E101580-0DCB-1587-0719-03CA95E9209F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Standard">
-      <UniqueIdentifier>{12174AAB-0264-1094-0C43-4199F8E39DBE}</UniqueIdentifier>
+      <UniqueIdentifier>{5CCCA1D7-00EF-0264-0D24-D1D69C60DB46}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdFail">
-      <UniqueIdentifier>{8926F0A5-116B-15E2-1414-7508427152F0}</UniqueIdentifier>
+      <UniqueIdentifier>{DBD786A2-0EA2-145A-0BAC-F6D20F58F60D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Storage">
-      <UniqueIdentifier>{FC140598-072E-0FFC-0F43-D2F27A2D3765}</UniqueIdentifier>
+      <UniqueIdentifier>{82091AC2-1729-15A9-0A62-EEC62D14DD5A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColStd">
-      <UniqueIdentifier>{8FDE0843-0971-05D2-16D9-517CF1E1C1C3}</UniqueIdentifier>
+      <UniqueIdentifier>{D06324B1-1805-02F6-15E8-07D5C964AA38}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TCollection">
-      <UniqueIdentifier>{7826B203-0D6C-18E9-08CE-313C37687037}</UniqueIdentifier>
+      <UniqueIdentifier>{E36ABD67-1886-011A-0738-12E3B222CEA5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TShort">
-      <UniqueIdentifier>{9F4BEA13-171E-14FC-025F-8ACC7F77E19F}</UniqueIdentifier>
+      <UniqueIdentifier>{2CC42530-0234-1238-0427-816416D1FE5C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Units">
-      <UniqueIdentifier>{7DB0D73E-0F61-01A8-01D8-818E38A027D2}</UniqueIdentifier>
+      <UniqueIdentifier>{924C7CED-07DC-1028-1064-DF41994BB321}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\UnitsAPI">
-      <UniqueIdentifier>{96822B23-0B39-01A1-06BA-14A0D14A2D2F}</UniqueIdentifier>
+      <UniqueIdentifier>{DD523F34-0ECB-0BDB-0A5E-26FA39F5EAA1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Dico">
-      <UniqueIdentifier>{DC7FE3C5-0158-0768-0259-71F97DB2A336}</UniqueIdentifier>
+      <UniqueIdentifier>{FF02FC11-02D8-0344-02D0-CA2DCE8567B1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\NCollection">
-      <UniqueIdentifier>{F95C3BB1-0BB3-0717-0CFC-735F9487EE4A}</UniqueIdentifier>
+      <UniqueIdentifier>{5AD13AC5-082F-0888-1513-2F286103FB73}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Message">
-      <UniqueIdentifier>{2D5BD54E-123E-0051-07FA-52357B352595}</UniqueIdentifier>
+      <UniqueIdentifier>{713C0DA1-0139-112F-15D2-5F5A7A2D3939}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -193,9 +193,6 @@
       <Filter>Source files\OSD</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_FileNode.cxx">
-      <Filter>Source files\OSD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Function.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Host.cxx">
@@ -432,13 +429,7 @@
     <ClCompile Include="..\..\..\src\Standard\Standard.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_Address.cxx">
-      <Filter>Source files\Standard</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_AncestorIterator.cxx">
-      <Filter>Source files\Standard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_Boolean.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_CLocaleSentry.cxx">
@@ -447,16 +438,10 @@
     <ClCompile Include="..\..\..\src\Standard\Standard_CString.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_Character.cxx">
-      <Filter>Source files\Standard</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_ErrorHandler.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_ErrorHandlerCallback.cxx">
-      <Filter>Source files\Standard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_ExtCharacter.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_ExtString.cxx">
@@ -469,12 +454,6 @@
       <Filter>Source files\Standard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_HashCode.cxx">
-      <Filter>Source files\Standard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_IStream.cxx">
-      <Filter>Source files\Standard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_Integer.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_MMgrOpt.cxx">
@@ -492,9 +471,6 @@
     <ClCompile Include="..\..\..\src\Standard\Standard_Mutex.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_OStream.cxx">
-      <Filter>Source files\Standard</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Persistent.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
@@ -504,16 +480,10 @@
     <ClCompile Include="..\..\..\src\Standard\Standard_SStream.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_ShallowDump.cxx">
-      <Filter>Source files\Standard</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_ShortReal.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Storable.cxx">
-      <Filter>Source files\Standard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_Time.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Transient.cxx">
@@ -526,12 +496,6 @@
       <Filter>Source files\Standard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_math.cxx">
-      <Filter>Source files\Standard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_osd_ffi.c">
-      <Filter>Source files\Standard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Standard\Standard_symlink.c">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\StdFail\StdFail_InfiniteSolutions_0.cxx">
@@ -576,12 +540,6 @@
     <ClCompile Include="..\..\..\drv\Storage\Storage_HPArray_0.cxx">
       <Filter>Source files\Storage</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_HSeqOfCallBack_0.cxx">
-      <Filter>Source files\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_HSeqOfPersistent_0.cxx">
-      <Filter>Source files\Storage</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_HSeqOfRoot_0.cxx">
       <Filter>Source files\Storage</Filter>
     </ClCompile>
@@ -594,28 +552,13 @@
     <ClCompile Include="..\..\..\drv\Storage\Storage_MapOfPers_0.cxx">
       <Filter>Source files\Storage</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_MapPSDHasher_0.cxx">
-      <Filter>Source files\Storage</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_PArray_0.cxx">
       <Filter>Source files\Storage</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_PType_0.cxx">
       <Filter>Source files\Storage</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_SeqOfCallBack_0.cxx">
-      <Filter>Source files\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_SeqOfPersistent_0.cxx">
-      <Filter>Source files\Storage</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_SeqOfRoot_0.cxx">
-      <Filter>Source files\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_SequenceNodeOfSeqOfCallBack_0.cxx">
-      <Filter>Source files\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Storage\Storage_SequenceNodeOfSeqOfPersistent_0.cxx">
       <Filter>Source files\Storage</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Storage\Storage_SequenceNodeOfSeqOfRoot_0.cxx">
@@ -649,9 +592,6 @@
       <Filter>Source files\Storage</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Storage\Storage_CallBack.cxx">
-      <Filter>Source files\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Storage\Storage_Container.cxx">
       <Filter>Source files\Storage</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Storage\Storage_Data.cxx">
@@ -852,15 +792,6 @@
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_HSequenceOfTransient_0.cxx">
       <Filter>Source files\TColStd</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_HSetOfInteger_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_HSetOfReal_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_HSetOfTransient_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient_0.cxx">
       <Filter>Source files\TColStd</Filter>
     </ClCompile>
@@ -897,15 +828,6 @@
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListIteratorOfListOfTransient_0.cxx">
       <Filter>Source files\TColStd</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListIteratorOfSetListOfSetOfInteger_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListIteratorOfSetListOfSetOfReal_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListIteratorOfSetListOfSetOfTransient_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListNodeOfListOfAsciiString_0.cxx">
       <Filter>Source files\TColStd</Filter>
     </ClCompile>
@@ -916,15 +838,6 @@
       <Filter>Source files\TColStd</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListNodeOfListOfTransient_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListNodeOfSetListOfSetOfInteger_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListNodeOfSetListOfSetOfReal_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListNodeOfSetListOfSetOfTransient_0.cxx">
       <Filter>Source files\TColStd</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_ListOfAsciiString_0.cxx">
@@ -970,24 +883,6 @@
       <Filter>Source files\TColStd</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_MapTransientHasher_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_QueueNodeOfQueueOfInteger_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_QueueNodeOfQueueOfReal_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_QueueNodeOfQueueOfTransient_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_QueueOfInteger_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_QueueOfReal_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_QueueOfTransient_0.cxx">
       <Filter>Source files\TColStd</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_SequenceNodeOfSequenceOfAddress_0.cxx">
@@ -1044,60 +939,6 @@
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_SequenceOfTransient_0.cxx">
       <Filter>Source files\TColStd</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetIteratorOfSetOfInteger_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetIteratorOfSetOfReal_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetIteratorOfSetOfTransient_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetListOfSetOfInteger_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetListOfSetOfReal_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetListOfSetOfTransient_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetOfInteger_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetOfReal_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_SetOfTransient_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackIteratorOfStackOfInteger_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackIteratorOfStackOfReal_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackIteratorOfStackOfTransient_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackNodeOfStackOfInteger_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackNodeOfStackOfReal_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackNodeOfStackOfTransient_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackOfInteger_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackOfReal_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColStd\TColStd_StackOfTransient_0.cxx">
-      <Filter>Source files\TColStd</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColStd\TColStd_StdMapNodeOfMapOfAsciiString_0.cxx">
       <Filter>Source files\TColStd</Filter>
     </ClCompile>
@@ -1126,15 +967,6 @@
       <Filter>Source files\TCollection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\TCollection\TCollection.cxx">
-      <Filter>Source files\TCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\TCollection\TCollection_AVLBaseNode.cxx">
-      <Filter>Source files\TCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\TCollection\TCollection_Array1Descriptor.cxx">
-      <Filter>Source files\TCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\TCollection\TCollection_Array2Descriptor.cxx">
       <Filter>Source files\TCollection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\TCollection\TCollection_AsciiString.cxx">
@@ -1293,6 +1125,12 @@
     <ClCompile Include="..\..\..\drv\Dico\Dico_StackItemOfDictionaryOfTransient_0.cxx">
       <Filter>Source files\Dico</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_AccAllocator.cxx">
+      <Filter>Source files\NCollection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_AlignedAllocator.cxx">
+      <Filter>Source files\NCollection</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\NCollection\NCollection_BaseAllocator.cxx">
       <Filter>Source files\NCollection</Filter>
     </ClCompile>
@@ -1318,6 +1156,9 @@
       <Filter>Source files\NCollection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\NCollection\NCollection_SparseArrayBase.cxx">
+      <Filter>Source files\NCollection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_WinHeapAllocator.cxx">
       <Filter>Source files\NCollection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Message\Message_ListIteratorOfListOfMsg_0.cxx">

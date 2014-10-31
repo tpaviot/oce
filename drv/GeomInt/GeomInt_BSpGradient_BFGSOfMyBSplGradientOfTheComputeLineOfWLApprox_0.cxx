@@ -23,9 +23,6 @@
 #ifndef _math_MultipleVarFunctionWithGradient_HeaderFile
 #include <math_MultipleVarFunctionWithGradient.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
  
 
 #define MultiLine GeomInt_TheMultiLineOfWLApprox

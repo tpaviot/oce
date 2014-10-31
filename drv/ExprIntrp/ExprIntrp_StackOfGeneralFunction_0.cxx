@@ -8,26 +8,26 @@
 #ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
 #endif
-#ifndef _ExprIntrp_StackIteratorOfStackOfGeneralFunction_HeaderFile
-#include <ExprIntrp_StackIteratorOfStackOfGeneralFunction.hxx>
+#ifndef _ExprIntrp_ListIteratorOfStackOfGeneralFunction_HeaderFile
+#include <ExprIntrp_ListIteratorOfStackOfGeneralFunction.hxx>
 #endif
 #ifndef _Expr_GeneralFunction_HeaderFile
 #include <Expr_GeneralFunction.hxx>
 #endif
-#ifndef _ExprIntrp_StackNodeOfStackOfGeneralFunction_HeaderFile
-#include <ExprIntrp_StackNodeOfStackOfGeneralFunction.hxx>
+#ifndef _ExprIntrp_ListNodeOfStackOfGeneralFunction_HeaderFile
+#include <ExprIntrp_ListNodeOfStackOfGeneralFunction.hxx>
 #endif
  
 
 #define Item Handle_Expr_GeneralFunction
 #define Item_hxx <Expr_GeneralFunction.hxx>
-#define TCollection_StackNode ExprIntrp_StackNodeOfStackOfGeneralFunction
-#define TCollection_StackNode_hxx <ExprIntrp_StackNodeOfStackOfGeneralFunction.hxx>
-#define TCollection_StackIterator ExprIntrp_StackIteratorOfStackOfGeneralFunction
-#define TCollection_StackIterator_hxx <ExprIntrp_StackIteratorOfStackOfGeneralFunction.hxx>
-#define Handle_TCollection_StackNode Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction
-#define TCollection_StackNode_Type_() ExprIntrp_StackNodeOfStackOfGeneralFunction_Type_()
-#define TCollection_Stack ExprIntrp_StackOfGeneralFunction
-#define TCollection_Stack_hxx <ExprIntrp_StackOfGeneralFunction.hxx>
-#include <TCollection_Stack.gxx>
+#define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralFunction
+#define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralFunction.hxx>
+#define TCollection_ListIterator ExprIntrp_ListIteratorOfStackOfGeneralFunction
+#define TCollection_ListIterator_hxx <ExprIntrp_ListIteratorOfStackOfGeneralFunction.hxx>
+#define Handle_TCollection_ListNode Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction
+#define TCollection_ListNode_Type_() ExprIntrp_ListNodeOfStackOfGeneralFunction_Type_()
+#define TCollection_List ExprIntrp_StackOfGeneralFunction
+#define TCollection_List_hxx <ExprIntrp_StackOfGeneralFunction.hxx>
+#include <TCollection_List.gxx>
 

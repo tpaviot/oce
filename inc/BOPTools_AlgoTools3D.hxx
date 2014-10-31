@@ -28,15 +28,15 @@
 #ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
 #endif
-#ifndef _Handle_BOPInt_Context_HeaderFile
-#include <Handle_BOPInt_Context.hxx>
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
 #endif
 class TopoDS_Edge;
 class TopoDS_Face;
 class gp_Dir;
 class Geom_Surface;
 class gp_Pnt;
-class BOPInt_Context;
+class IntTools_Context;
 class gp_Pnt2d;
 class TopoDS_Shape;
 
@@ -87,7 +87,7 @@ public:
 //! edge, but in point that is near to the edge towards to <br>
 //! the face material (so, we'll have approx. normal) <br>
 //! <br>
-  Standard_EXPORT   static  void GetApproxNormalToFaceOnEdge(const TopoDS_Edge& aE,const TopoDS_Face& aF,const Standard_Real aT,gp_Pnt& aPx,gp_Dir& aD,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  void GetApproxNormalToFaceOnEdge(const TopoDS_Edge& aE,const TopoDS_Face& aF,const Standard_Real aT,gp_Pnt& aPx,gp_Dir& aD,Handle(IntTools_Context)& theContext) ;
   
   Standard_EXPORT   static  void GetApproxNormalToFaceOnEdge(const TopoDS_Edge& theE,const TopoDS_Face& theF,const Standard_Real aT,gp_Pnt& aP,gp_Dir& aDNF,const Standard_Real aDt2D) ;
   
@@ -103,14 +103,14 @@ public:
 //! material of the face <aF>. The value of shifting in <br>
 //!  2D is  dt2D=BOPTools_AlgoTools3D::MinStepIn2d() <br>
 //! <br>
-  Standard_EXPORT   static  void PointNearEdge(const TopoDS_Edge& aE,const TopoDS_Face& aF,const Standard_Real aT,gp_Pnt2d& aP2D,gp_Pnt& aPx,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  void PointNearEdge(const TopoDS_Edge& aE,const TopoDS_Face& aF,const Standard_Real aT,gp_Pnt2d& aP2D,gp_Pnt& aPx,Handle(IntTools_Context)& theContext) ;
   
 //! Compute the point <aPx>,  (<aP2D>)  that is near to <br>
 //! the edge <aE>   at arbitrary  parameter  towards to the <br>
 //! material of the face <aF>. The value of shifting in <br>
 //!  2D is  dt2D=BOPTools_AlgoTools3D::MinStepIn2d() <br>
 //! <br>
-  Standard_EXPORT   static  void PointNearEdge(const TopoDS_Edge& aE,const TopoDS_Face& aF,gp_Pnt2d& aP2D,gp_Pnt& aPx,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  void PointNearEdge(const TopoDS_Edge& aE,const TopoDS_Face& aF,gp_Pnt2d& aP2D,gp_Pnt& aPx,Handle(IntTools_Context)& theContext) ;
   
 //! Returns simple step value that is used in 2D-computations <br>
 //! = 1.e-5 <br>
@@ -130,7 +130,7 @@ public:
 //!          <theP2D> -  2D  representation of <theP> <br> <br>
 //!          on the surface of <theF> <br> <br>
 //!          Returns 0 in case of success. <br> <br>
-  Standard_EXPORT   static  Standard_Integer PointInFace(const TopoDS_Face& theF,gp_Pnt& theP,gp_Pnt2d& theP2D,Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT   static  Standard_Integer PointInFace(const TopoDS_Face& theF,gp_Pnt& theP,gp_Pnt2d& theP2D,Handle(IntTools_Context)& theContext) ;
 
 
 

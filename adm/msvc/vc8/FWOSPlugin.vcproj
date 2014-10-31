@@ -427,9 +427,6 @@
 					RelativePath="..\..\..\src\FWOSDriver\FWOSDriver.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\FWOSDriver\FWOSDriver_Driver.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\FWOSDriver\FWOSDriver_DriverFactory.cxx">
 				</File>
 			</Filter>

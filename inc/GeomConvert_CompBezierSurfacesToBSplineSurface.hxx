@@ -48,7 +48,8 @@ class TColStd_Array1OfReal;
 
 
 //! An algorithm to convert a grid of adjacent <br>
-//! non-rational Bezier surfaces into a BSpline surface. <br>
+//! non-rational Bezier surfaces (with continuity CM) into a <br>
+//! BSpline surface (with continuity CM). <br>
 //! A CompBezierSurfacesToBSplineSurface object <br>
 //! provides a framework for: <br>
 //! -   defining the grid of adjacent Bezier surfaces <br>

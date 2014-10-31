@@ -47,10 +47,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\PColPGeom;..\..\..\src\PColPGeom;..\..\..\drv\PColPGeom2d;..\..\..\src\PColPGeom2d;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__PColPGeom_DLL;__PColPGeom2d_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -70,7 +70,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__PColPGeom_DLL;__PColPGeom2d_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -145,10 +145,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\PColPGeom;..\..\..\src\PColPGeom;..\..\..\drv\PColPGeom2d;..\..\..\src\PColPGeom2d;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__PColPGeom_DLL;__PColPGeom2d_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -170,7 +170,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__PColPGeom_DLL;__PColPGeom2d_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -245,10 +245,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\PColPGeom;..\..\..\src\PColPGeom;..\..\..\drv\PColPGeom2d;..\..\..\src\PColPGeom2d;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__PColPGeom_DLL;__PColPGeom2d_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__PColPGeom_DLL;__PColPGeom2d_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -344,10 +344,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\PColPGeom;..\..\..\src\PColPGeom;..\..\..\drv\PColPGeom2d;..\..\..\src\PColPGeom2d;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__PColPGeom_DLL;__PColPGeom2d_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -369,7 +369,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__PColPGeom_DLL;__PColPGeom2d_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -1103,182 +1103,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\PTopLoc\PTopLoc_Location.cxx">
-				</File>
-			</Filter>
-			<Filter
-				Name="PColPGeom"
-				>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray1OfBSplineCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray1OfBezierCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray1OfBoundedCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray1OfBoundedSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray1OfCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray1OfSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray2OfBSplineSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray2OfBezierSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray2OfBoundedSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray2OfSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_HArray1OfBSplineCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_HArray1OfBezierCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_HArray1OfBoundedCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_HArray1OfBoundedSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_HArray1OfCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_HArray1OfSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_HArray2OfBSplineSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_HArray2OfBezierSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_HArray2OfBoundedSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_HArray2OfSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray1OfBSplineCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray1OfBezierCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray1OfBoundedCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray1OfBoundedSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray1OfCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray1OfSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray2OfBSplineSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray2OfBezierSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray2OfBoundedSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray2OfSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray1OfBSplineCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray1OfBezierCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray1OfBoundedCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray1OfBoundedSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray1OfCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray1OfSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray2OfBSplineSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray2OfBezierSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray2OfBoundedSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray2OfSurface_0.cxx">
-				</File>
-			</Filter>
-			<Filter
-				Name="PColPGeom2d"
-				>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_FieldOfHArray1OfBSplineCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_FieldOfHArray1OfBezierCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_FieldOfHArray1OfBoundedCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_FieldOfHArray1OfCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_HArray1OfBSplineCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_HArray1OfBezierCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_HArray1OfBoundedCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_HArray1OfCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayNodeOfFieldOfHArray1OfBSplineCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayNodeOfFieldOfHArray1OfBezierCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayNodeOfFieldOfHArray1OfBoundedCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayNodeOfFieldOfHArray1OfCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayTNodeOfFieldOfHArray1OfBSplineCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayTNodeOfFieldOfHArray1OfBezierCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayTNodeOfFieldOfHArray1OfBoundedCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayTNodeOfFieldOfHArray1OfCurve_0.cxx">
 				</File>
 			</Filter>
 			<Filter

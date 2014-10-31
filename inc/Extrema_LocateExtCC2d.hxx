@@ -25,34 +25,33 @@
 #ifndef _Extrema_POnCurv2d_HeaderFile
 #include <Extrema_POnCurv2d.hxx>
 #endif
-#ifndef _Handle_Extrema_LCCache2dOfLocateExtCC2d_HeaderFile
-#include <Handle_Extrema_LCCache2dOfLocateExtCC2d.hxx>
-#endif
 class Standard_DomainError;
 class StdFail_NotDone;
 class Adaptor2d_Curve2d;
-class Extrema_Curve2dTool;
-class Extrema_LCCache2dOfLocateExtCC2d;
-class Extrema_ELCC2dOfLocateExtCC2d;
-class Extrema_CCFOfELCC2dOfLocateExtCC2d;
-class Extrema_LocECC2dOfLocateExtCC2d;
-class Extrema_CCLocFOfLocECC2dOfLocateExtCC2d;
 class Extrema_POnCurv2d;
 
 
-
+//! It calculates the distance between two curves with <br>
+//!          a close point; these distances can be maximum or <br>
+//!          minimum. <br>
 class Extrema_LocateExtCC2d  {
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Calculates the distance with a close point. The <br>
+//!          close point is defined by a parameter value on each <br>
+//!          curve. <br>
+//!          The function F(u,v)=distance(C1(u),C2(v)) has an <br>
+//!          extremun when gradient(f)=0. The algorithm searchs <br>
+//!          the zero near the close point. <br>
   Standard_EXPORT   Extrema_LocateExtCC2d(const Adaptor2d_Curve2d& C1,const Adaptor2d_Curve2d& C2,const Standard_Real U0,const Standard_Real V0);
-  
+  //! Returns True if the distance is found. <br>
   Standard_EXPORT     Standard_Boolean IsDone() const;
-  
+  //! Returns the value of the extremum square distance. <br>
   Standard_EXPORT     Standard_Real SquareDistance() const;
-  
+  //! Returns the points of the extremum distance. <br>
+//!          P1 is on the first curve, P2 on the second one. <br>
   Standard_EXPORT     void Point(Extrema_POnCurv2d& P1,Extrema_POnCurv2d& P2) const;
 
 

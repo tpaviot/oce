@@ -53,9 +53,6 @@
 #ifndef _Blend_CSFunction_HeaderFile
 #include <Blend_CSFunction.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _IntSurf_Transition_HeaderFile
 #include <IntSurf_Transition.hxx>
 #endif

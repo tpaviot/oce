@@ -63,7 +63,6 @@
 #endif
 class Adaptor3d_HSurface;
 class Adaptor3d_HCurve;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 class gp_Vec;

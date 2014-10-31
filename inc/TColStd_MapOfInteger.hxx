@@ -28,7 +28,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class TColStd_MapIntegerHasher;
 class TColStd_StdMapNodeOfMapOfInteger;
 class TColStd_MapIteratorOfMapOfInteger;
@@ -42,6 +41,8 @@ public:
 
   
   Standard_EXPORT   TColStd_MapOfInteger(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   TColStd_MapOfInteger(const TColStd_MapOfInteger& Other);
   
   Standard_EXPORT     TColStd_MapOfInteger& Assign(const TColStd_MapOfInteger& Other) ;
     TColStd_MapOfInteger& operator =(const TColStd_MapOfInteger& Other) 
@@ -75,8 +76,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_MapOfInteger(const TColStd_MapOfInteger& Other);
 
 
 

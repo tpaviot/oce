@@ -2,68 +2,68 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{77B93572-17B0-0CAE-0D87-8D06D3BB40E2}</UniqueIdentifier>
+      <UniqueIdentifier>{85450F77-0009-022A-1578-C143632F47A4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\math">
-      <UniqueIdentifier>{A0E78E9C-1267-099B-1456-3D5694FF201B}</UniqueIdentifier>
+      <UniqueIdentifier>{0897FC73-1823-03B8-13F5-B1D0A2F85F6D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ElCLib">
-      <UniqueIdentifier>{9502778D-0BE7-0F85-0FA6-47818A89956C}</UniqueIdentifier>
+      <UniqueIdentifier>{40FBF6E5-0BAA-0EB0-1050-334130FCE079}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ElSLib">
-      <UniqueIdentifier>{B117FE69-113B-0352-15AF-D613EFB6B577}</UniqueIdentifier>
+      <UniqueIdentifier>{F539E10A-02A2-0F83-114B-35994AE2E38A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BSplCLib">
-      <UniqueIdentifier>{43CF639E-002E-0C41-0509-DCE50B41675E}</UniqueIdentifier>
+      <UniqueIdentifier>{C87B0440-1414-0631-0919-1B1EDD87564D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BSplSLib">
-      <UniqueIdentifier>{E9845BCF-1051-03BE-07C4-3EF5DB7F2AA3}</UniqueIdentifier>
+      <UniqueIdentifier>{3302057C-1564-043F-0D6D-70DB4F4E530D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PLib">
-      <UniqueIdentifier>{C84E4218-0FFE-04BD-05B2-F8BE5C99A114}</UniqueIdentifier>
+      <UniqueIdentifier>{2E91B7E6-1256-123B-139D-23836F89EC7B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Precision">
-      <UniqueIdentifier>{1E68FB37-0A5B-1889-0B28-61427351B3B5}</UniqueIdentifier>
+      <UniqueIdentifier>{048D5CFD-0D91-07E1-07AD-0B235B3E6AFC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Poly">
-      <UniqueIdentifier>{ED46CE4C-1638-0342-054F-CEC64C3CC7CA}</UniqueIdentifier>
+      <UniqueIdentifier>{E1E6D43F-124E-0B14-029C-9F374DE7B8A7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CSLib">
-      <UniqueIdentifier>{60DCF504-1369-1379-17F5-E5E396C0BB79}</UniqueIdentifier>
+      <UniqueIdentifier>{0C1C84F2-1973-0C96-122A-C1E6EC1FC31E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Convert">
-      <UniqueIdentifier>{541ADCAA-034D-0E7B-1503-69F3A6FB301E}</UniqueIdentifier>
+      <UniqueIdentifier>{430F2759-065F-15E9-0CE0-FF2AD95631FF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Bnd">
-      <UniqueIdentifier>{1441295C-0999-0DCF-1318-10B9A60C65BD}</UniqueIdentifier>
+      <UniqueIdentifier>{EC91DCE5-13DA-1022-1723-BCA68859334D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BVH">
+      <UniqueIdentifier>{372DF46A-0F0B-1432-0134-FD849A0CB5A3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\gp">
-      <UniqueIdentifier>{EB692A94-0A67-1562-0F8B-AC96B9DB6EE8}</UniqueIdentifier>
+      <UniqueIdentifier>{6919CDA1-1969-060D-04E3-F57D31EE2195}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColgp">
-      <UniqueIdentifier>{4E512BBB-1153-09C9-0E3B-11DC89A5E3F4}</UniqueIdentifier>
+      <UniqueIdentifier>{DEFC4048-14CD-0980-181D-0BCB083E7BC7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopLoc">
-      <UniqueIdentifier>{18D7B11F-0523-173E-0683-B91E9F897A6E}</UniqueIdentifier>
+      <UniqueIdentifier>{30850786-0CE6-071B-188D-DE6E201019AF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Expr">
+      <UniqueIdentifier>{065104CB-0A68-1877-0425-940A974346FB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\ExprIntrp">
+      <UniqueIdentifier>{E915B218-05EF-0AA2-0A5F-6B43F43A5DED}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\drv\math\math_Array1OfValueAndWeight_0.cxx">
       <Filter>Source files\math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\math\math_DoubleTabOfReal_0.cxx">
-      <Filter>Source files\math</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\math\math_NotSquare_0.cxx">
       <Filter>Source files\math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\math\math_QuickSortOfValueAndWeight_0.cxx">
-      <Filter>Source files\math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\math\math_SingleTabOfInteger_0.cxx">
-      <Filter>Source files\math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\math\math_SingleTabOfReal_0.cxx">
       <Filter>Source files\math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\math\math_SingularMatrix_0.cxx">
@@ -100,6 +100,9 @@
       <Filter>Source files\math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_DirectPolynomialRoots.cxx">
+      <Filter>Source files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_DoubleTab.cxx">
       <Filter>Source files\math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_EigenValuesSearcher.cxx">
@@ -150,6 +153,9 @@
     <ClCompile Include="..\..\..\src\math\math_GaussSingleIntegration.cxx">
       <Filter>Source files\math</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_GlobOptMin.cxx">
+      <Filter>Source files\math</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Householder.cxx">
       <Filter>Source files\math</Filter>
     </ClCompile>
@@ -190,6 +196,12 @@
       <Filter>Source files\math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_NewtonMinimum.cxx">
+      <Filter>Source files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_PSO.cxx">
+      <Filter>Source files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_PSOParticlesPool.cxx">
       <Filter>Source files\math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Powell.cxx">
@@ -417,6 +429,12 @@
     <ClCompile Include="..\..\..\src\Bnd\Bnd_Sphere.cxx">
       <Filter>Source files\Bnd</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\BVH\BVH.cxx">
+      <Filter>Source files\BVH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BVH\BVH_Properties.cxx">
+      <Filter>Source files\BVH</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\gp\gp_VectorWithNullMagnitude_0.cxx">
       <Filter>Source files\gp</Filter>
     </ClCompile>
@@ -588,15 +606,6 @@
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_Array2OfXY_0.cxx">
       <Filter>Source files\TColgp</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColgp\TColgp_DataMapIteratorOfDataMapOfIntegerCirc2d_0.cxx">
-      <Filter>Source files\TColgp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColgp\TColgp_DataMapNodeOfDataMapOfIntegerCirc2d_0.cxx">
-      <Filter>Source files\TColgp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColgp\TColgp_DataMapOfIntegerCirc2d_0.cxx">
-      <Filter>Source files\TColgp</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_HArray1OfCirc2d_0.cxx">
       <Filter>Source files\TColgp</Filter>
     </ClCompile>
@@ -750,12 +759,6 @@
     <ClCompile Include="..\..\..\drv\TopLoc\TopLoc_MapOfLocation_0.cxx">
       <Filter>Source files\TopLoc</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TopLoc\TopLoc_SListNodeOfSListOfItemLocation_0.cxx">
-      <Filter>Source files\TopLoc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TopLoc\TopLoc_SListOfItemLocation_0.cxx">
-      <Filter>Source files\TopLoc</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TopLoc\TopLoc_StdMapNodeOfMapOfLocation_0.cxx">
       <Filter>Source files\TopLoc</Filter>
     </ClCompile>
@@ -767,6 +770,288 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\TopLoc\TopLoc_Location.cxx">
       <Filter>Source files\TopLoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopLoc\TopLoc_SListNodeOfItemLocation.cxx">
+      <Filter>Source files\TopLoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopLoc\TopLoc_SListOfItemLocation.cxx">
+      <Filter>Source files\TopLoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_Array1OfGeneralExpression_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_Array1OfNamedUnknown_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_Array1OfSingleRelation_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_ExprFailure_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_IndexedMapNodeOfMapOfNamedUnknown_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_InvalidAssignment_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_InvalidFunction_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_InvalidOperand_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_MapOfNamedUnknown_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_NotAssigned_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_NotEvaluable_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_SequenceNodeOfSequenceOfGeneralExpression_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_SequenceNodeOfSequenceOfGeneralRelation_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_SequenceOfGeneralExpression_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_SequenceOfGeneralRelation_0.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Absolute.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArcCosine.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArcSine.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArcTangent.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArgCosh.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArgSinh.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArgTanh.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_BinaryExpression.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_BinaryFunction.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Cosh.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Cosine.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Difference.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Different.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Division.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Equal.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Exponential.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Exponentiate.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_FunctionDerivative.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GeneralExpression.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GeneralFunction.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GeneralRelation.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GreaterThan.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GreaterThanOrEqual.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_LessThan.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_LessThanOrEqual.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_LogOf10.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_LogOfe.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NamedConstant.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NamedExpression.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NamedFunction.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NamedUnknown.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NumericValue.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Operators.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_PolyExpression.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_PolyFunction.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Product.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_RUIterator.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_RelationIterator.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Sign.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Sine.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_SingleRelation.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Sinh.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Square.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_SquareRoot.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Sum.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_SystemRelation.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Tangent.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Tanh.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_UnaryExpression.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_UnaryFunction.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_UnaryMinus.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_UnknownIterator.cxx">
+      <Filter>Source files\Expr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp.tab.c">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_ListIteratorOfStackOfGeneralExpression_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_ListIteratorOfStackOfGeneralFunction_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_ListIteratorOfStackOfGeneralRelation_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_ListNodeOfStackOfGeneralExpression_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_ListNodeOfStackOfGeneralFunction_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_ListNodeOfStackOfGeneralRelation_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceNodeOfSequenceOfNamedExpression_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceNodeOfSequenceOfNamedFunction_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceOfNamedExpression_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceOfNamedFunction_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfGeneralExpression_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfGeneralFunction_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfGeneralRelation_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_SyntaxError_0.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\lex.ExprIntrp.c">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_Analysis.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_GenExp.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_GenFct.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_GenRel.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_Generator.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_yaccintrf.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_yacclex.cxx">
+      <Filter>Source files\ExprIntrp</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

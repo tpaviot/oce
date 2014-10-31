@@ -449,9 +449,6 @@
 					RelativePath="..\..\..\drv\TDF\TDF_DataMapIteratorOfLabelIntegerMap_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\TDF\TDF_DataMapIteratorOfLabelLabelMap_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\TDF\TDF_DataMapNodeOfAttributeDataMap_0.cxx">
 				</File>
 				<File
@@ -459,9 +456,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TDF\TDF_DataMapNodeOfLabelIntegerMap_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TDF\TDF_DataMapNodeOfLabelLabelMap_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TDF\TDF_DeltaList_0.cxx">
@@ -513,9 +507,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TDF\TDF_LabelIntegerMap_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TDF\TDF_LabelLabelMap_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TDF\TDF_LabelList_0.cxx">

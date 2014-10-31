@@ -30,7 +30,6 @@ class CDM_MessageDriver;
 class XmlMNaming_NamedShapeDriver;
 class XmlMNaming_NamingDriver;
 class XmlMNaming_Shape1;
-class XmlMNaming_Array1OfShape1;
 
 
 
@@ -64,7 +63,6 @@ private:
 friend class XmlMNaming_NamedShapeDriver;
 friend class XmlMNaming_NamingDriver;
 friend class XmlMNaming_Shape1;
-friend class XmlMNaming_Array1OfShape1;
 
 };
 

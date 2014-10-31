@@ -25,7 +25,6 @@
 class gp_Pnt;
 class gp_XYZ;
 class Intf_Polygon2d;
-class Intf_ToolPolyhedron;
 class Intf_Array1OfLin;
 class Intf_SectionPoint;
 class Intf_SeqOfSectionPoint;
@@ -36,9 +35,7 @@ class Intf_SeqOfTangentZone;
 class Intf_Interference;
 class Intf_Tool;
 class Intf_InterferencePolygon2d;
-class Intf_InterferencePolygon3d;
 class Intf_InterferencePolygonPolyhedron;
-class Intf_InterferencePolyhedron;
 class Intf_SequenceNodeOfSeqOfSectionPoint;
 class Intf_SequenceNodeOfSeqOfTangentZone;
 class Intf_SequenceNodeOfSeqOfSectionLine;
@@ -54,12 +51,9 @@ public:
   DEFINE_STANDARD_ALLOC
 
   //! Computes   the  interference between   two polygons in  2d. <br>
-//!          Result : points of intersections and zones of tangence. <br>//! Computes  the   interference  between  two  polygon  in 3d. <br>
-//!          Section points, common perpendicular and projections. <br>//! Computes the interference  between a polygon or  a straight <br>
+//!          Result : points of intersections and zones of tangence. <br>//! Computes the interference  between a polygon or  a straight <br>
 //!          line and a polyhedron.   Points of intersection  and zones <br>
-//!          of tangence. <br>//! Compute the  interference  between two polyhedron.  Points <br>
-//!          of intersection ,  polylines  of intersection and zones of <br>
-//!          tangence. <br>//! Give the plane equation of the triangle <P1> <P2> <P3>. <br>
+//!          of tangence. <br>//! Give the plane equation of the triangle <P1> <P2> <P3>. <br>
   Standard_EXPORT   static  void PlaneEquation(const gp_Pnt& P1,const gp_Pnt& P2,const gp_Pnt& P3,gp_XYZ& NormalVector,Standard_Real& PolarDistance) ;
   //! Compute if the triangle <P1> <P2> <P3> contain <ThePnt>. <br>
   Standard_EXPORT   static  Standard_Boolean Contain(const gp_Pnt& P1,const gp_Pnt& P2,const gp_Pnt& P3,const gp_Pnt& ThePnt) ;
@@ -80,7 +74,6 @@ private:
 
 
 friend class Intf_Polygon2d;
-friend class Intf_ToolPolyhedron;
 friend class Intf_Array1OfLin;
 friend class Intf_SectionPoint;
 friend class Intf_SeqOfSectionPoint;
@@ -91,9 +84,7 @@ friend class Intf_SeqOfTangentZone;
 friend class Intf_Interference;
 friend class Intf_Tool;
 friend class Intf_InterferencePolygon2d;
-friend class Intf_InterferencePolygon3d;
 friend class Intf_InterferencePolygonPolyhedron;
-friend class Intf_InterferencePolyhedron;
 friend class Intf_SequenceNodeOfSeqOfSectionPoint;
 friend class Intf_SequenceNodeOfSeqOfTangentZone;
 friend class Intf_SequenceNodeOfSeqOfSectionLine;

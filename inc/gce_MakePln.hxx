@@ -34,7 +34,7 @@ class gp_Ax1;
 
 
 //! This class implements the following algorithms used <br>
-//!           to create a Pln from gp. <br>
+//!           to create a Plane from gp. <br>
 //!           * Create a Pln parallel to another and passing <br>
 //!             through a point. <br>
 //!           * Create a Pln passing through 3 points. <br>

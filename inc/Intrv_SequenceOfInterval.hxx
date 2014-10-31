@@ -40,6 +40,8 @@ public:
   
       Intrv_SequenceOfInterval();
   
+  Standard_EXPORT   Intrv_SequenceOfInterval(const Intrv_SequenceOfInterval& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Intrv_SequenceOfInterval()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Intrv_SequenceOfInterval(const Intrv_SequenceOfInterval& Other);
 
 
 

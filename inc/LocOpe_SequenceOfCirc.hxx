@@ -40,6 +40,8 @@ public:
   
       LocOpe_SequenceOfCirc();
   
+  Standard_EXPORT   LocOpe_SequenceOfCirc(const LocOpe_SequenceOfCirc& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~LocOpe_SequenceOfCirc()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   LocOpe_SequenceOfCirc(const LocOpe_SequenceOfCirc& Other);
 
 
 

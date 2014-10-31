@@ -43,6 +43,8 @@ public:
   
       Units_UtsSequence();
   
+  Standard_EXPORT   Units_UtsSequence(const Units_UtsSequence& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Units_UtsSequence()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Units_UtsSequence(const Units_UtsSequence& Other);
 
 
 

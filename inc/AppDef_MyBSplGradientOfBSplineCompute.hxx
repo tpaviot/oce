@@ -42,7 +42,6 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute;
 class AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute;
 class AppParCurves_HArray1OfConstraintCouple;
-class math_Vector;
 class TColStd_Array1OfReal;
 class TColStd_Array1OfInteger;
 class AppParCurves_MultiBSpCurve;

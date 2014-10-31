@@ -58,6 +58,8 @@ class TDF_DataSet;
 
 
 //! to create a PatternStd <br>
+//! (LinearPattern, CircularPattern, RectangularPattern, <br>
+//!  RadialCircularPattern, MirrorPattern) <br>
 class TDataXtd_PatternStd : public TDataXtd_Pattern {
 
 public:

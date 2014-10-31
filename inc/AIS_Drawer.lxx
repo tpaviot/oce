@@ -69,7 +69,7 @@ inline void AIS_Drawer::SetDeviationAngle()
   myhasOwnDeviationAngle = Standard_False;
 }
 
-inline void AIS_Drawer::SetHLRAngle() 
+inline void AIS_Drawer::SetHLRAngle()
 {
   myhasOwnHLRDeviationAngle = Standard_False;
 }
@@ -119,6 +119,11 @@ inline Standard_Boolean AIS_Drawer::HasPointAspect() const
   return !myPointAspect.IsNull();
 }
 
+inline Standard_Boolean AIS_Drawer::IsOwnVertexDrawMode() const
+{
+  return (myVertexDrawMode != Prs3d_VDM_Inherited);
+}
+
 inline Standard_Boolean AIS_Drawer::HasDatumAspect() const
 {
   return !myDatumAspect.IsNull();
@@ -127,6 +132,26 @@ inline Standard_Boolean AIS_Drawer::HasDatumAspect() const
 inline Standard_Boolean AIS_Drawer::HasPlaneAspect() const
 {
   return !myPlaneAspect.IsNull();
+}
+
+inline Standard_Boolean AIS_Drawer::HasUIsoAspect() const
+{
+  return !myUIsoAspect.IsNull();
+}
+
+inline Standard_Boolean AIS_Drawer::HasVIsoAspect() const
+{
+  return !myVIsoAspect.IsNull();
+}
+
+inline Standard_Boolean AIS_Drawer::HasFreeBoundaryAspect() const
+{
+  return !myFreeBoundaryAspect.IsNull();
+}
+
+inline Standard_Boolean AIS_Drawer::HasUnFreeBoundaryAspect() const
+{
+  return !myUnFreeBoundaryAspect.IsNull();
 }
 
 inline Standard_Boolean AIS_Drawer::IsOwnFaceBoundaryDraw() const

@@ -65,7 +65,7 @@ class TopOpeBRepDS_Transition;
 class TopoDS_Vertex;
 
 
-
+//! Describes the intersection of a face and an edge. <br>
 class TopOpeBRep_FaceEdgeIntersector  {
 public:
 

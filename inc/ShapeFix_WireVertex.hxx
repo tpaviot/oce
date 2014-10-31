@@ -33,7 +33,8 @@ class ShapeExtend_WireData;
 class ShapeAnalysis_WireVertex;
 
 
-//! Fixes vertices in the wire on the basis of pre-analysis <br>
+//! Fixing disconnected edges in the wire <br>
+//!          Fixes vertices in the wire on the basis of pre-analysis <br>
 //!          made by ShapeAnalysis_WireVertex (given as argument). <br>
 //!          The Wire has formerly been loaded in a ShapeExtend_WireData. <br>
 class ShapeFix_WireVertex  {

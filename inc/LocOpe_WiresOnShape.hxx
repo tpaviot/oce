@@ -34,8 +34,8 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _LocOpe_ProjectedWires_HeaderFile
-#include <LocOpe_ProjectedWires.hxx>
+#ifndef _MMgt_TShared_HeaderFile
+#include <MMgt_TShared.hxx>
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
@@ -49,7 +49,7 @@ class TopoDS_Vertex;
 
 
 
-class LocOpe_WiresOnShape : public LocOpe_ProjectedWires {
+class LocOpe_WiresOnShape : public MMgt_TShared {
 
 public:
 
@@ -95,6 +95,12 @@ public:
 //!          edge in <P>. <br>
 //!          Else returns <Standard_False>. <br>
   Standard_EXPORT     Standard_Boolean OnEdge(const TopoDS_Vertex& V,TopoDS_Edge& E,Standard_Real& P) ;
+  //! If the vertex <V> lies on  an edge of the original <br>
+//!          shape,  returns     <Standard_True> and   sets the <br>
+//!          concerned edge in  <E>,  and the parameter on  the <br>
+//!          edge in <P>. <br>
+//!          Else returns <Standard_False>. <br>
+  Standard_EXPORT     Standard_Boolean OnEdge(const TopoDS_Vertex& V,const TopoDS_Edge& EdgeFrom,TopoDS_Edge& E,Standard_Real& P) ;
   //! tells is the face to be split by section or not <br>
         Standard_Boolean IsFaceWithSection(const TopoDS_Shape& aFace) const;
 

@@ -43,6 +43,8 @@ public:
   
       StepElement_SequenceOfElementMaterial();
   
+  Standard_EXPORT   StepElement_SequenceOfElementMaterial(const StepElement_SequenceOfElementMaterial& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~StepElement_SequenceOfElementMaterial()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StepElement_SequenceOfElementMaterial(const StepElement_SequenceOfElementMaterial& Other);
 
 
 

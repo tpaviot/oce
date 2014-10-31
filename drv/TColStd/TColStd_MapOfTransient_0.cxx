@@ -5,9 +5,6 @@
 
 #include <TColStd_MapOfTransient.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
 #ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
 #endif

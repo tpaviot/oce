@@ -47,9 +47,6 @@
 #ifndef _GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
 #endif

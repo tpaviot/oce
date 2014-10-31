@@ -112,6 +112,12 @@ protected:
   Standard_EXPORT   virtual  void CheckShapeSection(const Storage_Position& thePos,Standard_IStream& theIS) ;
   
   Standard_EXPORT   virtual  void PropagateDocumentVersion(const Standard_Integer theVersion) ;
+  //! Check a file version(in which file was written) with a current version. <br>
+//!          Redefining this method is a chance for application to read files <br>
+//!          written by newer applications. <br>
+//!          The default implementation: if the version of the file is greater than the <br>
+//!          current or lesser than 2, then return false, else true <br>
+  Standard_EXPORT   virtual  Standard_Boolean CheckDocumentVersion(const Standard_Integer theFileVersion,const Standard_Integer theCurVersion) ;
   //! write  theMessage  to  the  MessageDriver  of  the <br>
 //!          Application <br>
   Standard_EXPORT     void WriteMessage(const TCollection_ExtendedString& theMessage) ;

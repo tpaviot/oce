@@ -17,20 +17,8 @@
 #include <Standard_RangeError.hxx>
 #include <Standard_NumericError.hxx>
 #include <Standard_NullValue.hxx>
-#ifndef _Standard_Stream_HeaderFile
 #include <Standard_Stream.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-
-const Handle_Standard_Type& Standard_Real_Type_() 
-{
-  static Handle_Standard_Type _aType = 
-    new Standard_Type("Standard_Real",sizeof(Standard_Real),0,NULL);
-  
-  return _aType;
-}
 
 // ------------------------------------------------------------------
 // Hascode : Computes a hascoding value for a given real
@@ -50,14 +38,6 @@ Standard_Integer HashCode(const Standard_Real me, const Standard_Integer Upper)
   U.R = me ;
   return HashCode( ( U.I[0] ^ U.I[1] ) , Upper ) ;
   }
-
-// ------------------------------------------------------------------
-// ShallowCopy : Makes a copy of a real value
-// ------------------------------------------------------------------
-Standard_Real ShallowCopy (const Standard_Real me) 
-{
-  return me;
-}
 
 //-------------------------------------------------------------------
 // ACos : Returns the value of the arc cosine of a real
@@ -248,14 +228,6 @@ double NextAfter(const double x, const double y)
   }
   return res.real;
 }
-
-// ------------------------------------------------------------------
-// ShallowDump : Writes a real  value
-// ------------------------------------------------------------------
-Standard_EXPORT void              ShallowDump(const Standard_Real Value, 
-					      Standard_OStream& s)
-{ s << Value << " Standard_Real" << "\n"; }
-
 
 //-------------------------------------------------------------------
 // ATanh : Returns the value of the hyperbolic arc tangent of a real

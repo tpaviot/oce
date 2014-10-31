@@ -14,18 +14,12 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
 #ifndef AdvApp2Var_EvaluatorFunc2Var_HeaderFile
 #define AdvApp2Var_EvaluatorFunc2Var_HeaderFile
+
+#include <Standard_Integer.hxx>
+#include <Standard_Real.hxx>
+#include <Standard_PrimitiveTypes.hxx>
 
 // History - the C function pointer converted to a virtual class
 // in order to get rid of usage of static functions and static data
@@ -41,8 +35,8 @@ public:
 
   //! Function evaluation method to be defined by descendant
   virtual void Evaluate (Standard_Integer* theDimension,
-                         Standard_Real*    theUStartEnd,
-                         Standard_Real*    theVStartEnd,
+                         Standard_Real*    theUStartEnd,  //!< First and last parameters in U
+                         Standard_Real*    theVStartEnd,  //!< First and last parameters in V
                          Standard_Integer* theFavorIso,   //!< Choice of constante, 1 for U, 2 for V
                          Standard_Real*    theConstParam, //!< Value of constant parameter
                          Standard_Integer* theNbParams,   //!< Number of parameters N

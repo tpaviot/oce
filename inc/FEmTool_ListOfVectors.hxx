@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   FEmTool_ListOfVectors();
   
+  Standard_EXPORT   FEmTool_ListOfVectors(const FEmTool_ListOfVectors& Other);
+  
   Standard_EXPORT     void Assign(const FEmTool_ListOfVectors& Other) ;
     void operator=(const FEmTool_ListOfVectors& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   FEmTool_ListOfVectors(const FEmTool_ListOfVectors& Other);
 
 
 Standard_Address myFirst;

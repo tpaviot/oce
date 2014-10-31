@@ -43,6 +43,8 @@ public:
   
       STEPSelections_SequenceOfAssemblyComponent();
   
+  Standard_EXPORT   STEPSelections_SequenceOfAssemblyComponent(const STEPSelections_SequenceOfAssemblyComponent& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~STEPSelections_SequenceOfAssemblyComponent()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   STEPSelections_SequenceOfAssemblyComponent(const STEPSelections_SequenceOfAssemblyComponent& Other);
 
 
 

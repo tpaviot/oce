@@ -48,6 +48,7 @@ class TDF_RelocationTable;
 //!          of TopoDS_Shape in and from TDocStd_Document <br>
 //!          A Document is intended to hold different <br>
 //!          attributes of ONE shape and it's sub-shapes <br>
+//!          Provide tools for management of Colors section of document. <br>
 class XCAFDoc_ColorTool : public TDF_Attribute {
 
 public:

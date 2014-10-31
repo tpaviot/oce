@@ -40,7 +40,7 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-
+//! attribute to store area <br>
 class XCAFDoc_Area : public TDF_Attribute {
 
 public:

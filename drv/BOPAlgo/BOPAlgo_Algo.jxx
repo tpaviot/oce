@@ -1,3 +1,6 @@
+#ifndef _Message_ProgressIndicator_HeaderFile
+#include <Message_ProgressIndicator.hxx>
+#endif
 #ifndef _BOPAlgo_Algo_HeaderFile
 #include <BOPAlgo_Algo.hxx>
 #endif

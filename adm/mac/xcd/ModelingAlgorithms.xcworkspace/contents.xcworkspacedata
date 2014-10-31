@@ -14,9 +14,6 @@
             location = "group:TKPrim.xcodeproj">
          </FileRef>
          <FileRef
-            location = "group:TKBO.xcodeproj">
-         </FileRef>
-         <FileRef
             location = "group:TKHLR.xcodeproj">
          </FileRef>
          <FileRef
@@ -24,6 +21,9 @@
          </FileRef>
          <FileRef
             location = "group:TKShHealing.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBO.xcodeproj">
          </FileRef>
          <FileRef
             location = "group:TKXMesh.xcodeproj">

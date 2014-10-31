@@ -42,6 +42,8 @@ public:
   
       TColStd_SequenceOfReal();
   
+  Standard_EXPORT   TColStd_SequenceOfReal(const TColStd_SequenceOfReal& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColStd_SequenceOfReal()
 {
@@ -106,8 +108,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_SequenceOfReal(const TColStd_SequenceOfReal& Other);
 
 
 

@@ -64,7 +64,7 @@ class TopTools_IndexedMapOfShape;
 class TopOpeBRep_LineInter;
 
 
-
+//! Describes the intersection of two faces. <br>
 class TopOpeBRep_FacesIntersector  {
 public:
 

@@ -26,6 +26,5 @@ $(STLPort_LIB)
 
 libFWOSPlugin_la_SOURCES = \
 @top_srcdir@/src/FWOSDriver/FWOSDriver.cxx \
-@top_srcdir@/src/FWOSDriver/FWOSDriver_Driver.cxx \
 @top_srcdir@/src/FWOSDriver/FWOSDriver_DriverFactory.cxx
 

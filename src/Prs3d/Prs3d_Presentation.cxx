@@ -50,39 +50,53 @@ static void MakeGraphicTrsf (const Handle(Geom_Transformation)& aGeomTrsf,
 
 //=======================================================================
 //function : Prs3d_Presentation
-//purpose  : 
+//purpose  :
 //=======================================================================
-Prs3d_Presentation::Prs3d_Presentation 
-  (const Handle(Graphic3d_StructureManager)& aViewer,
-   const Standard_Boolean                    Init):
-  Graphic3d_Structure(aViewer) 
+Prs3d_Presentation::Prs3d_Presentation (const Handle(Graphic3d_StructureManager)& theViewer,
+                                        const Standard_Boolean                    theToInit)
+: Graphic3d_Structure (theViewer)
 {
-  if (Init) {
-    Graphic3d_MaterialAspect aMat (Graphic3d_NOM_BRASS);
-    Quantity_Color Col;
-    // Ceci permet de recuperer la couleur associee
-    // au materiau defini par defaut.
-//POP pour K4L
-    Col = aMat.AmbientColor ();
-//    Col = aMat.Color ();
-
-    // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets 
-    // It is necessary to set default polygon offsets for a new presentation
-    Handle(Graphic3d_AspectFillArea3d) aDefAspect = 
-      new Graphic3d_AspectFillArea3d (Aspect_IS_SOLID,
-                                      Col,
-                                      Col,
-                                      Aspect_TOL_SOLID,
-                                      1.0,
-                                      Graphic3d_NOM_BRASS,
-                                      Graphic3d_NOM_BRASS);
-    aDefAspect->SetPolygonOffsets( Aspect_POM_Fill, 1., 0. );
-    SetPrimitivesAspect( aDefAspect );
-    // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets 
+  if (!theToInit)
+  {
+    return;
   }
 
-//  myStruct = Handle(Graphic3d_Structure)::DownCast(This ());
-//  myCurrentGroup = new Graphic3d_Group(myStruct);
+  Graphic3d_MaterialAspect aMat (Graphic3d_NOM_BRASS);
+  Quantity_Color aColor = aMat.AmbientColor();
+  // It is necessary to set default polygon offsets for a new presentation
+  Handle(Graphic3d_AspectFillArea3d) aDefAspect =
+    new Graphic3d_AspectFillArea3d (Aspect_IS_SOLID,
+                                    aColor,
+                                    aColor,
+                                    Aspect_TOL_SOLID,
+                                    1.0,
+                                    Graphic3d_NOM_BRASS,
+                                    Graphic3d_NOM_BRASS);
+  aDefAspect->SetPolygonOffsets (Aspect_POM_Fill, 1.0f, 0.0f);
+  SetPrimitivesAspect (aDefAspect);
+}
+
+//=======================================================================
+//function : Prs3d_Presentation
+//purpose  :
+//=======================================================================
+Prs3d_Presentation::Prs3d_Presentation (const Handle(Graphic3d_StructureManager)& theViewer,
+                                        const Handle(Prs3d_Presentation)&         thePrs)
+: Graphic3d_Structure (theViewer, thePrs)
+{
+  Graphic3d_MaterialAspect aMat (Graphic3d_NOM_BRASS);
+  Quantity_Color aColor = aMat.AmbientColor();
+  // It is necessary to set default polygon offsets for a new presentation
+  Handle(Graphic3d_AspectFillArea3d) aDefAspect =
+    new Graphic3d_AspectFillArea3d (Aspect_IS_SOLID,
+                                    aColor,
+                                    aColor,
+                                    Aspect_TOL_SOLID,
+                                    1.0,
+                                    Graphic3d_NOM_BRASS,
+                                    Graphic3d_NOM_BRASS);
+  aDefAspect->SetPolygonOffsets (Aspect_POM_Fill, 1.0f, 0.0f);
+  SetPrimitivesAspect (aDefAspect);
 }
 
 //=======================================================================
@@ -181,8 +195,7 @@ TColStd_Array2OfReal matrix(1,4,1,4);
   trsf.SetValues(
         matrix.Value(1,1),matrix.Value(1,2),matrix.Value(1,3),matrix.Value(1,4),
         matrix.Value(2,1),matrix.Value(2,2),matrix.Value(2,3),matrix.Value(2,4),
-        matrix.Value(3,1),matrix.Value(3,2),matrix.Value(3,3),matrix.Value(3,4),
-        0.001,0.0001);  
+        matrix.Value(3,1),matrix.Value(3,2),matrix.Value(3,3),matrix.Value(3,4));  
   Handle(Geom_Transformation) gtrsf = new Geom_Transformation(trsf); 
 
   return gtrsf;
@@ -230,20 +243,6 @@ void Prs3d_Presentation::Move  (const Quantity_Length X,
   SetTransform(Array, Graphic3d_TOC_POSTCONCATENATE);
 }
 
-
-//=======================================================================
-//function : Clear
-//purpose  : 
-//=======================================================================
-void Prs3d_Presentation::Clear(const Standard_Boolean WithDestruction)
-{
-  Graphic3d_Structure::Clear(WithDestruction);
-  // myCurrentGroup.Nullify();
-  myCurrentGroup = NULL;
-
-}
-
-
 //=======================================================================
 //function : Connect
 //purpose  : 
@@ -280,36 +279,23 @@ void Prs3d_Presentation::RemoveAll ()
 //=======================================================================
 Handle(Graphic3d_Group) Prs3d_Presentation::CurrentGroup () const 
 {
-  if(myCurrentGroup.IsNull()){
-    void *ptr = (void*) this;
-    Prs3d_Presentation* p = (Prs3d_Presentation *)ptr;
-    p->NewGroup();
+  if (Groups().IsEmpty())
+  {
+    return const_cast<Prs3d_Presentation* >(this)->NewGroup();
   }
-  return myCurrentGroup;
+  return Groups().Last();
 }
 
-
 //=======================================================================
-//function : NewGroup
-//purpose  : 
 //=======================================================================
-Handle(Graphic3d_Group) Prs3d_Presentation::NewGroup ()
+//function : SetIsForHighlight
+//purpose  :
+//=======================================================================
+void Prs3d_Presentation::SetIsForHighlight (const Standard_Boolean isForHighlight)
 {
-  myCurrentGroup = new Graphic3d_Group(this);
-  return myCurrentGroup;
+  Graphic3d_Structure::SetIsForHighlight (isForHighlight);
 }
 
-//=======================================================================
-//function : Display
-//purpose  : 
-//=======================================================================
-void Prs3d_Presentation::Display ()
-{
-  Graphic3d_Structure::Display();
-}
-
-
-//=======================================================================
 //function : Compute
 //purpose  : 
 //=======================================================================
@@ -325,8 +311,8 @@ Handle(Graphic3d_Structure) Prs3d_Presentation::
 //purpose  : 
 //=======================================================================
 
-void Prs3d_Presentation::Compute(const Handle_Graphic3d_DataStructureManager& aDataStruct, 
-                                 Handle_Graphic3d_Structure& aStruct)
+void Prs3d_Presentation::Compute(const Handle(Graphic3d_DataStructureManager)& aDataStruct, 
+                                 Handle(Graphic3d_Structure)& aStruct)
 {
  Graphic3d_Structure::Compute(aDataStruct,aStruct );
 }
@@ -336,7 +322,7 @@ void Prs3d_Presentation::Compute(const Handle_Graphic3d_DataStructureManager& aD
 //purpose  : 
 //=======================================================================
 
-Handle_Graphic3d_Structure Prs3d_Presentation::Compute(const Handle_Graphic3d_DataStructureManager& aDataStruc, 
+Handle(Graphic3d_Structure) Prs3d_Presentation::Compute(const Handle(Graphic3d_DataStructureManager)& aDataStruc, 
                                                        const TColStd_Array2OfReal& anArray)
 {
  return Graphic3d_Structure::Compute(aDataStruc,anArray);
@@ -347,9 +333,9 @@ Handle_Graphic3d_Structure Prs3d_Presentation::Compute(const Handle_Graphic3d_Da
 //purpose  : 
 //=======================================================================
 
-void Prs3d_Presentation::Compute(const Handle_Graphic3d_DataStructureManager& aDataStruc,
+void Prs3d_Presentation::Compute(const Handle(Graphic3d_DataStructureManager)& aDataStruc,
                                  const TColStd_Array2OfReal& anArray,
-                                 Handle_Graphic3d_Structure& aStruc)
+                                 Handle(Graphic3d_Structure)& aStruc)
 {
  Graphic3d_Structure::Compute(aDataStruc,anArray,aStruc);
 }

@@ -40,6 +40,8 @@ public:
   
       TopOpeBRep_SequenceOfPoint2d();
   
+  Standard_EXPORT   TopOpeBRep_SequenceOfPoint2d(const TopOpeBRep_SequenceOfPoint2d& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TopOpeBRep_SequenceOfPoint2d()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopOpeBRep_SequenceOfPoint2d(const TopOpeBRep_SequenceOfPoint2d& Other);
 
 
 

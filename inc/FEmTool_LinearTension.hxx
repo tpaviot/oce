@@ -34,11 +34,13 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class Standard_NotImplemented;
 class Standard_DomainError;
 class TColStd_HArray2OfInteger;
 class math_Matrix;
-class math_Vector;
 
 
 //! Criterium of LinearTension To Hermit-Jacobi  elements <br>

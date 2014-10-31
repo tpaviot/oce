@@ -15,9 +15,6 @@
 #ifndef _PColgp_SeqNodeOfHSequenceOfPnt_HeaderFile
 #include <PColgp_SeqNodeOfHSequenceOfPnt.hxx>
 #endif
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
 #endif

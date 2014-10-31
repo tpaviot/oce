@@ -16,23 +16,27 @@
 
 #include <Extrema_GenExtCS.ixx>
 
-#include <math_Vector.hxx>
-#include <math_FunctionSetRoot.hxx>
-#include <Precision.hxx>
-
-#include <Geom_Line.hxx>
 #include <Adaptor3d_HCurve.hxx>
-#include <GeomAdaptor_Curve.hxx>
-
 #include <Extrema_ExtCC.hxx>
-#include <Extrema_POnCurv.hxx>
 #include <Extrema_ExtPS.hxx>
+#include <Extrema_GlobOptFuncCS.hxx>
+#include <Extrema_POnCurv.hxx>
+#include <Geom_Line.hxx>
+#include <GeomAdaptor_Curve.hxx>
+#include <math_FunctionSetRoot.hxx>
+#include <math_PSO.hxx>
+#include <math_PSOParticlesPool.hxx>
+#include <math_Vector.hxx>
+#include <Precision.hxx>
+#include <TColgp_HArray1OfPnt.hxx>
+
+const Standard_Real aMaxParamVal = 1.0e+10;
+const Standard_Real aBorderDivisor = 1.0e+4;
 
 //=======================================================================
 //function : Extrema_GenExtCS
 //purpose  : 
 //=======================================================================
-
 Extrema_GenExtCS::Extrema_GenExtCS()
 {
   myDone = Standard_False;
@@ -43,14 +47,13 @@ Extrema_GenExtCS::Extrema_GenExtCS()
 //function : Extrema_GenExtCS
 //purpose  : 
 //=======================================================================
-
- Extrema_GenExtCS::Extrema_GenExtCS(const Adaptor3d_Curve& C, 
-				    const Adaptor3d_Surface& S, 
-				    const Standard_Integer NbT, 
-				    const Standard_Integer NbU, 
-				    const Standard_Integer NbV, 
-				    const Standard_Real Tol1, 
-				    const Standard_Real Tol2)
+Extrema_GenExtCS::Extrema_GenExtCS(const Adaptor3d_Curve& C,
+                                   const Adaptor3d_Surface& S,
+                                   const Standard_Integer NbT,
+                                   const Standard_Integer NbU,
+                                   const Standard_Integer NbV,
+                                   const Standard_Real Tol1,
+                                   const Standard_Real Tol2)
 {
   Initialize(S, NbU, NbV, Tol2);
   Perform(C, NbT, Tol1);
@@ -61,19 +64,19 @@ Extrema_GenExtCS::Extrema_GenExtCS()
 //purpose  : 
 //=======================================================================
 
- Extrema_GenExtCS::Extrema_GenExtCS(const Adaptor3d_Curve& C, 
-				    const Adaptor3d_Surface& S, 
-				    const Standard_Integer NbT, 
-				    const Standard_Integer NbU, 
-				    const Standard_Integer NbV, 
-				    const Standard_Real tmin, 
-				    const Standard_Real tsup, 
-				    const Standard_Real Umin, 
-				    const Standard_Real Usup,
-				    const Standard_Real Vmin, 
-				    const Standard_Real Vsup, 
-				    const Standard_Real Tol1, 
-				    const Standard_Real Tol2)
+Extrema_GenExtCS::Extrema_GenExtCS (const Adaptor3d_Curve& C,
+                                    const Adaptor3d_Surface& S,
+                                    const Standard_Integer NbT,
+                                    const Standard_Integer NbU,
+                                    const Standard_Integer NbV,
+                                    const Standard_Real tmin,
+                                    const Standard_Real tsup,
+                                    const Standard_Real Umin,
+                                    const Standard_Real Usup,
+                                    const Standard_Real Vmin,
+                                    const Standard_Real Vsup,
+                                    const Standard_Real Tol1,
+                                    const Standard_Real Tol2)
 {
   Initialize(S, NbU, NbV, Umin,Usup,Vmin,Vsup,Tol2);
   Perform(C, NbT, tmin, tsup, Tol1);
@@ -83,11 +86,10 @@ Extrema_GenExtCS::Extrema_GenExtCS()
 //function : Initialize
 //purpose  : 
 //=======================================================================
-
-void Extrema_GenExtCS::Initialize(const Adaptor3d_Surface& S, 
-				  const Standard_Integer NbU, 
-				  const Standard_Integer NbV, 
-				  const Standard_Real Tol2)
+void Extrema_GenExtCS::Initialize (const Adaptor3d_Surface& S,
+                                   const Standard_Integer NbU,
+                                   const Standard_Integer NbV,
+                                   const Standard_Real Tol2)
 {
   myumin = S.FirstUParameter();
   myusup = S.LastUParameter();
@@ -100,15 +102,14 @@ void Extrema_GenExtCS::Initialize(const Adaptor3d_Surface& S,
 //function : Initialize
 //purpose  : 
 //=======================================================================
-
-void Extrema_GenExtCS::Initialize(const Adaptor3d_Surface& S, 
-				  const Standard_Integer NbU, 
-				  const Standard_Integer NbV, 
-				  const Standard_Real Umin, 
-				  const Standard_Real Usup, 
-				  const Standard_Real Vmin, 
-				  const Standard_Real Vsup, 
-				  const Standard_Real Tol2)
+void Extrema_GenExtCS::Initialize (const Adaptor3d_Surface& S,
+                                   const Standard_Integer NbU,
+                                   const Standard_Integer NbV,
+                                   const Standard_Real Umin,
+                                   const Standard_Real Usup,
+                                   const Standard_Real Vmin,
+                                   const Standard_Real Vsup,
+                                   const Standard_Real Tol2)
 {
   myS = (Adaptor3d_SurfacePtr)&S;
   myusample = NbU;
@@ -118,16 +119,40 @@ void Extrema_GenExtCS::Initialize(const Adaptor3d_Surface& S,
   myvmin = Vmin;
   myvsup = Vsup;
   mytol2 = Tol2;
+
+  const Standard_Real aTrimMaxU = Precision::IsInfinite (myusup) ?  aMaxParamVal : myusup;
+  const Standard_Real aTrimMinU = Precision::IsInfinite (myumin) ? -aMaxParamVal : myumin;
+  const Standard_Real aTrimMaxV = Precision::IsInfinite (myvsup) ?  aMaxParamVal : myvsup;
+  const Standard_Real aTrimMinV = Precision::IsInfinite (myvmin) ? -aMaxParamVal : myvmin;
+
+  const Standard_Real aMinU = aTrimMinU + (aTrimMaxU - aTrimMinU) / aBorderDivisor;
+  const Standard_Real aMinV = aTrimMinV + (aTrimMaxV - aTrimMinV) / aBorderDivisor;
+  const Standard_Real aMaxU = aTrimMaxU - (aTrimMaxU - aTrimMinU) / aBorderDivisor;
+  const Standard_Real aMaxV = aTrimMaxV - (aTrimMaxV - aTrimMinV) / aBorderDivisor;
+  
+  const Standard_Real aStepSU = (aMaxU - aMinU) / myusample;
+  const Standard_Real aStepSV = (aMaxV - aMinV) / myvsample;
+
+  mySurfPnts = new TColgp_HArray2OfPnt (0, myusample, 0, myvsample);
+
+  Standard_Real aSU = aMinU;
+  for (Standard_Integer aSUI = 0; aSUI <= myusample; aSUI++, aSU += aStepSU)
+  {
+    Standard_Real aSV = aMinV;
+    for (Standard_Integer aSVI = 0; aSVI <= myvsample; aSVI++, aSV += aStepSV)
+    {
+      mySurfPnts->ChangeValue (aSUI, aSVI) = myS->Value (aSU, aSV);
+    }
+  }
 }
 
 //=======================================================================
 //function : Perform
 //purpose  : 
 //=======================================================================
-
 void Extrema_GenExtCS::Perform(const Adaptor3d_Curve& C, 
-			       const Standard_Integer NbT,
-			       const Standard_Real Tol1)
+  const Standard_Integer NbT,
+  const Standard_Real Tol1)
 {
   mytmin = C.FirstParameter();
   mytsup = C.LastParameter();
@@ -138,12 +163,11 @@ void Extrema_GenExtCS::Perform(const Adaptor3d_Curve& C,
 //function : Perform
 //purpose  : 
 //=======================================================================
-
-void Extrema_GenExtCS::Perform(const Adaptor3d_Curve& C, 
-			       const Standard_Integer NbT,
-			       const Standard_Real tmin, 
-			       const Standard_Real tsup, 
-			       const Standard_Real Tol1)
+void Extrema_GenExtCS::Perform (const Adaptor3d_Curve& C,
+                                const Standard_Integer NbT,
+                                const Standard_Real tmin,
+                                const Standard_Real tsup,
+                                const Standard_Real Tol1)
 {
   myDone = Standard_False;
   myF.Initialize(C,*myS);
@@ -155,30 +179,30 @@ void Extrema_GenExtCS::Perform(const Adaptor3d_Curve& C,
 
   Standard_Real trimusup = myusup, trimumin = myumin,trimvsup = myvsup,trimvmin = myvmin;
   if (Precision::IsInfinite(trimusup)){
-    trimusup = 1.0e+10;
+    trimusup = aMaxParamVal;
   }
   if (Precision::IsInfinite(trimvsup)){
-    trimvsup = 1.0e+10;
+    trimvsup = aMaxParamVal;
   }
   if (Precision::IsInfinite(trimumin)){
-    trimumin = -1.0e+10;
+    trimumin = -aMaxParamVal;
   }
   if (Precision::IsInfinite(trimvmin)){
-    trimvmin = -1.0e+10;
+    trimvmin = -aMaxParamVal;
   }
   //
   math_Vector Tol(1, 3);
   Tol(1) = mytol1;
   Tol(2) = mytol2;
   Tol(3) = mytol2;
-  math_Vector UV(1,3), UVinf(1,3), UVsup(1,3);
-  UVinf(1) = mytmin;
-  UVinf(2) = trimumin;
-  UVinf(3) = trimvmin;
+  math_Vector TUV(1,3), TUVinf(1,3), TUVsup(1,3);
+  TUVinf(1) = mytmin;
+  TUVinf(2) = trimumin;
+  TUVinf(3) = trimvmin;
 
-  UVsup(1) = mytsup;
-  UVsup(2) = trimusup;
-  UVsup(3) = trimvsup;
+  TUVsup(1) = mytsup;
+  TUVsup(2) = trimusup;
+  TUVsup(3) = trimvsup;
   // 18/02/02 akm vvv : (OCC163) bad extremas - extrusion surface versus the line.
   //                    Try to preset the initial solution as extrema between
   //                    extrusion direction and the curve.
@@ -189,7 +213,7 @@ void Extrema_GenExtCS::Perform(const Adaptor3d_Curve& C,
     Standard_Real dfUFirst = aCurve->FirstParameter();
     // Create iso line of U=U0
     GeomAdaptor_Curve anAx(new Geom_Line(aCurve->Value(dfUFirst), aDir),
-                           trimvmin, trimvsup);
+      trimvmin, trimvsup);
     Extrema_ExtCC aLocator(C, anAx);
     if (aLocator.IsDone() && aLocator.NbExt()>0)
     {
@@ -198,168 +222,119 @@ void Extrema_GenExtCS::Perform(const Adaptor3d_Curve& C,
       Extrema_POnCurv aP1, aP2;
       for (iExt=1; iExt<=aLocator.NbExt(); iExt++)
       {
-  aLocator.Points (iExt, aP1, aP2);
-  // Parameter on curve
-  UV(1) = aP1.Parameter();
-  // To find parameters on surf, try ExtPS
-  Extrema_ExtPS aPreciser (aP1.Value(), *myS, mytol2, mytol2);
-  if (aPreciser.IsDone())
-  {
-    // Managed to find extremas between point and surface
-    Standard_Integer iPExt;
-    for (iPExt=1; iPExt<=aPreciser.NbExt(); iPExt++)
-    {
-      aPreciser.Point(iPExt).Parameter(UV(2),UV(3));
-      math_FunctionSetRoot S1 (myF,UV,Tol,UVinf,UVsup);
-    }
-  }
-  else
-  {
-    // Failed... try the point on iso line
-    UV(2) = dfUFirst;
-    UV(3) = aP2.Parameter();
-    math_FunctionSetRoot S1 (myF,UV,Tol,UVinf,UVsup);
-  }
+        aLocator.Points (iExt, aP1, aP2);
+        // Parameter on curve
+        TUV(1) = aP1.Parameter();
+        // To find parameters on surf, try ExtPS
+        Extrema_ExtPS aPreciser (aP1.Value(), *myS, mytol2, mytol2);
+        if (aPreciser.IsDone())
+        {
+          // Managed to find extremas between point and surface
+          Standard_Integer iPExt;
+          for (iPExt=1; iPExt<=aPreciser.NbExt(); iPExt++)
+          {
+            aPreciser.Point(iPExt).Parameter(TUV(2),TUV(3));
+            math_FunctionSetRoot S1 (myF,TUV,Tol,TUVinf,TUVsup);
+          }
+        }
+        else
+        {
+          // Failed... try the point on iso line
+          TUV(2) = dfUFirst;
+          TUV(3) = aP2.Parameter();
+          math_FunctionSetRoot S1 (myF,TUV,Tol,TUVinf,TUVsup);
+        }
       } // for (iExt=1; iExt<=aLocator.NbExt(); iExt++)
     } // if (aLocator.IsDone() && aLocator.NbExt()>0)
   } // if (myS.Type() == GeomAbs_ExtrusionSurface)
   else
   {
-    Standard_Real aCUAdd = (mytsup - mytmin) / mytsample;
-    Standard_Real aSUAdd = (myusup - myumin) / myusample;
-    Standard_Real aSVAdd = (myvsup - myvmin) / myvsample;
-    TColgp_HArray1OfPnt aCPs(1, mytsample);
-    TColgp_HArray2OfPnt aSPs(1, myusample, 1, myvsample);
-    Standard_Integer aRestIterCount = 3;
-      // The value is calculated by the bug CR23830.
-    Standard_Integer aCUDen = 2, aSUDen = 2, aSVDen = 2;
-    Standard_Boolean anAreAvSqsInited = Standard_False;
-    Standard_Real aCUSq = 0, aSUSq = 0, aSVSq = 0;
-    while (aRestIterCount--)
+    // Number of particles used in PSO algorithm (particle swarm optimization).
+    const Standard_Integer aNbParticles = 32;
+
+    math_PSOParticlesPool aParticles(aNbParticles, 3);
+
+    math_Vector aMinTUV(1,3);
+    aMinTUV = TUVinf + (TUVsup - TUVinf) / aBorderDivisor;
+
+    math_Vector aMaxTUV(1,3); 
+    aMaxTUV = TUVsup - (TUVsup - TUVinf) / aBorderDivisor;
+
+    Standard_Real aStepCU = (aMaxTUV(1) - aMinTUV(1)) / mytsample;
+    Standard_Real aStepSU = (aMaxTUV(2) - aMinTUV(2)) / myusample;
+    Standard_Real aStepSV = (aMaxTUV(3) - aMinTUV(3)) / myvsample;
+
+    // Correct number of curve samples in case of low resolution
+    Standard_Real aScaleFactor = 5.0;
+    Standard_Real aResolutionCU = aStepCU / C.Resolution (1.0);
+
+    Standard_Real aMinResolution = aScaleFactor * Min (aResolutionCU,
+      Min (aStepSU / myS->UResolution (1.0), aStepSV / myS->VResolution (1.0)));
+
+    if (aMinResolution > Epsilon (1.0))
     {
-      Standard_Real aMinCU = 0., aMinSU = 0., aMinSV = 0., aMaxCU = 0., aMaxSU = 0., aMaxSV = 0.;
-      Standard_Real aMinSqDist = DBL_MAX, aMaxSqDist = -DBL_MAX;
-      for (Standard_Integer aSUNom = 1; aSUNom < aSUDen; aSUNom += 2)
+      if (aResolutionCU > aMinResolution)
       {
-        Standard_Real aSU0 = myumin + (aSUNom * aSUAdd) / aSUDen;
-        for (Standard_Integer aSVNom = 1; aSVNom < aSVDen; aSVNom += 2)
-        {
-          Standard_Real aSV0 = myvmin + (aSVNom * aSVAdd) / aSVDen;
-          for (Standard_Integer aCUNom = 1; aCUNom < aCUDen; aCUNom += 2)
-          {
-            Standard_Real aCU0 = mytmin + (aCUNom * aCUAdd) / aCUDen;
-            Standard_Real aCU = aCU0;
-            for (Standard_Integer aCUI = 1; aCUI <= mytsample;
-              aCUI++, aCU += aCUAdd)
-            {
-              aCPs.SetValue(aCUI, C.Value(aCU));
-            }
-            //
-            aCU = aCU0;
-            Standard_Real aSU = aSU0;
-            for (Standard_Integer aSUI = 1; aSUI <= myusample;
-              aSUI++, aSU += aSUAdd)
-            {
-              Standard_Real aSV = aSV0;
-              for (Standard_Integer aSVI = 1; aSVI <= myvsample;
-                aSVI++, aSV += aSVAdd)
-              {
-                gp_Pnt aSP = myS->Value(aSU, aSV);
-                aSPs.ChangeValue(aSUI, aSVI) = aSP;
-                Standard_Real aCU = aCU0;
-                for (Standard_Integer aCUI = 1; aCUI <= mytsample;
-                  aCUI++, aCU += aCUAdd)
-                {
-                  Standard_Real aSqDist = aSP.SquareDistance(aCPs.Value(aCUI));
-                  if (aSqDist < aMinSqDist)
-                  {
-                    aMinSqDist = aSqDist;
-                    aMinCU = aCU;
-                    aMinSU = aSU;
-                    aMinSV = aSV;
-                  }
-                  if (aMaxSqDist < aSqDist)
-                  {
-                    aMaxSqDist = aSqDist;
-                    aMaxCU = aCU;
-                    aMaxSU = aSU;
-                    aMaxSV = aSV;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      // Find min approximation.
-      UV(1) = aMinCU;
-      UV(2) = aMinSU;
-      UV(3) = aMinSV;
-      math_FunctionSetRoot anA(myF, UV, Tol, UVinf, UVsup, 100, aRestIterCount);
-      // Find max approximation.
-      if (!anA.IsDivergent() || !aRestIterCount)
-      {
-        UV(1) = aMaxCU;
-        UV(2) = aMaxSU;
-        UV(3) = aMaxSV;
-        math_FunctionSetRoot aFunc(myF, UV, Tol, UVinf, UVsup);
-        break;
-      }
-      //
-      if (!anAreAvSqsInited)
-      {
-        anAreAvSqsInited = Standard_True;
-        //
-        const gp_Pnt * aCP1 = &aCPs.Value(1);
-        for (Standard_Integer aCUI = 2; aCUI <= mytsample; aCUI++)
-        {
-          const gp_Pnt & aCP2 = aCPs.Value(aCUI);
-          aCUSq += aCP1->SquareDistance(aCP2);
-          aCP1 = &aCP2;
-        }
-        aCUSq /= mytsample - 1;
-        //
-        for (Standard_Integer aSVI = 1; aSVI <= myvsample; aSVI++)
-        {
-          const gp_Pnt * aSP1 = &aSPs.Value(1, aSVI);
-          for (Standard_Integer aSUI = 2; aSUI <= myusample; aSUI++)
-          {
-            const gp_Pnt & aSP2 = aSPs.Value(aSUI, aSVI);
-            aSUSq += aSP1->SquareDistance(aSP2);
-            aSP1 = &aSP2;
-          }
-        }
-        aSUSq /= myvsample * (myusample - 1);
-        //
-        for (Standard_Integer aSUI = 1; aSUI <= myusample; aSUI++)
-        {
-          const gp_Pnt * aSP1 = &aSPs.Value(aSUI, 1);
-          for (Standard_Integer aSVI = 2; aSVI <= myvsample; aSVI++)
-          {
-            const gp_Pnt & aSP2 = aSPs.Value(aSUI, aSVI);
-            aSVSq += aSP1->SquareDistance(aSP2);
-            aSP1 = &aSP2;
-          }
-        }
-        aSVSq /= myusample * (myvsample - 1);
-      }
-      //
-      if ((aSUSq <= aCUSq) && (aSVSq <= aCUSq))
-      {
-        aCUDen += aCUDen;
-        aCUSq /= 4;
-      }
-      else if ((aCUSq <= aSUSq) && (aSVSq <= aSUSq))
-      {
-        aSUDen += aSUDen;
-        aSUSq /= 4;
-      }
-      else
-      {
-        aSVDen += aSVDen;
-        aSVSq /= 4;
+        const Standard_Integer aMaxNbNodes = 50;
+
+        mytsample = Min(aMaxNbNodes,
+                        RealToInt(mytsample * aResolutionCU / aMinResolution));
+
+        aStepCU = (aMaxTUV(1) - aMinTUV(1)) / mytsample;
       }
     }
+
+    // Pre-compute curve sample points.
+    TColgp_HArray1OfPnt aCurvPnts (0, mytsample);
+
+    Standard_Real aCU = aMinTUV(1);
+    for (Standard_Integer aCUI = 0; aCUI <= mytsample; aCUI++, aCU += aStepCU)
+      aCurvPnts.SetValue (aCUI, C.Value (aCU));
+
+    PSO_Particle* aParticle = aParticles.GetWorstParticle();
+    // Select specified number of particles from pre-computed set of samples
+    Standard_Real aSU = aMinTUV(2);
+    for (Standard_Integer aSUI = 0; aSUI <= myusample; aSUI++, aSU += aStepSU)
+    {
+      Standard_Real aSV = aMinTUV(3);
+      for (Standard_Integer aSVI = 0; aSVI <= myvsample; aSVI++, aSV += aStepSV)
+      {
+        Standard_Real aCU = aMinTUV(1);
+        for (Standard_Integer aCUI = 0; aCUI <= mytsample; aCUI++, aCU += aStepCU)
+        {
+          Standard_Real aSqDist = mySurfPnts->Value(aSUI, aSVI).SquareDistance(aCurvPnts.Value(aCUI)); 
+
+          if (aSqDist < aParticle->Distance)
+          {
+            aParticle->Position[0] = aCU;
+            aParticle->Position[1] = aSU;
+            aParticle->Position[2] = aSV;
+
+            aParticle->BestPosition[0] = aCU;
+            aParticle->BestPosition[1] = aSU;
+            aParticle->BestPosition[2] = aSV;
+
+            aParticle->Distance     = aSqDist;
+            aParticle->BestDistance = aSqDist;
+
+            aParticle = aParticles.GetWorstParticle();
+          }
+        }
+      }
+    }
+
+    math_Vector aStep(1,3);
+    aStep(1) = aStepCU;
+    aStep(2) = aStepSU;
+    aStep(3) = aStepSV;
+
+    // Find min approximation
+    Standard_Real aValue;
+    Extrema_GlobOptFuncCS aFunc(&C, myS);
+    math_PSO aPSO(&aFunc, TUVinf, TUVsup, aStep);
+    aPSO.Perform(aParticles, aNbParticles, aValue, TUV);
+
+    math_FunctionSetRoot anA (myF, TUV, Tol, TUVinf, TUVsup, 100, Standard_False);
   }
 
   myDone = Standard_True;
@@ -369,7 +344,6 @@ void Extrema_GenExtCS::Perform(const Adaptor3d_Curve& C,
 //function : IsDone
 //purpose  : 
 //=======================================================================
-
 Standard_Boolean Extrema_GenExtCS::IsDone() const 
 {
   return myDone;
@@ -379,7 +353,6 @@ Standard_Boolean Extrema_GenExtCS::IsDone() const
 //function : NbExt
 //purpose  : 
 //=======================================================================
-
 Standard_Integer Extrema_GenExtCS::NbExt() const 
 {
   if (!IsDone()) { StdFail_NotDone::Raise(); }
@@ -390,7 +363,6 @@ Standard_Integer Extrema_GenExtCS::NbExt() const
 //function : Value
 //purpose  : 
 //=======================================================================
-
 Standard_Real Extrema_GenExtCS::SquareDistance(const Standard_Integer N) const 
 {
   if (!IsDone()) { StdFail_NotDone::Raise(); }
@@ -401,7 +373,6 @@ Standard_Real Extrema_GenExtCS::SquareDistance(const Standard_Integer N) const
 //function : PointOnCurve
 //purpose  : 
 //=======================================================================
-
 const Extrema_POnCurv& Extrema_GenExtCS::PointOnCurve(const Standard_Integer N) const 
 {
   if (!IsDone()) { StdFail_NotDone::Raise(); }
@@ -412,7 +383,6 @@ const Extrema_POnCurv& Extrema_GenExtCS::PointOnCurve(const Standard_Integer N) 
 //function : PointOnSurface
 //purpose  : 
 //=======================================================================
-
 const Extrema_POnSurf& Extrema_GenExtCS::PointOnSurface(const Standard_Integer N) const 
 {
   if (!IsDone()) { StdFail_NotDone::Raise(); }
@@ -423,7 +393,6 @@ const Extrema_POnSurf& Extrema_GenExtCS::PointOnSurface(const Standard_Integer N
 //function : BidonSurface
 //purpose  : 
 //=======================================================================
-
 Adaptor3d_SurfacePtr Extrema_GenExtCS::BidonSurface() const 
 {
   return (Adaptor3d_SurfacePtr)0L;
@@ -433,7 +402,6 @@ Adaptor3d_SurfacePtr Extrema_GenExtCS::BidonSurface() const
 //function : BidonCurve
 //purpose  : 
 //=======================================================================
-
 Adaptor3d_CurvePtr Extrema_GenExtCS::BidonCurve() const 
 {
   return (Adaptor3d_CurvePtr)0L;

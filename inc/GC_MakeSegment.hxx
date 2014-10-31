@@ -32,7 +32,9 @@ class gp_Lin;
 
 
 //! Implements construction algorithms for a line <br>
-//! segment in 3D space. The result is a Geom_TrimmedCurve curve. <br>
+//! segment in 3D space. <br>
+//! Makes a segment of Line from the 2 points <P1> and <P2>. <br>
+//! The result is a Geom_TrimmedCurve curve. <br>
 //! A MakeSegment object provides a framework for: <br>
 //! -   defining the construction of the line segment, <br>
 //! -   implementing the construction algorithm, and <br>

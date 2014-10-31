@@ -43,6 +43,8 @@ public:
   
       SelectMgr_SequenceOfFilter();
   
+  Standard_EXPORT   SelectMgr_SequenceOfFilter(const SelectMgr_SequenceOfFilter& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~SelectMgr_SequenceOfFilter()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   SelectMgr_SequenceOfFilter(const SelectMgr_SequenceOfFilter& Other);
 
 
 

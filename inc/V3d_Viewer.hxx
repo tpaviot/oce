@@ -94,14 +94,11 @@
 #ifndef _Handle_Graphic3d_AspectMarker3d_HeaderFile
 #include <Handle_Graphic3d_AspectMarker3d.hxx>
 #endif
+#ifndef _Graphic3d_Vertex_HeaderFile
+#include <Graphic3d_Vertex.hxx>
+#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_V3d_Viewer_HeaderFile
-#include <Handle_V3d_Viewer.hxx>
-#endif
-#ifndef _V3d_HeaderFile
-#include <V3d.hxx>
 #endif
 #ifndef _Standard_ExtString_HeaderFile
 #include <Standard_ExtString.hxx>
@@ -132,9 +129,6 @@
 #endif
 #ifndef _Handle_Aspect_Grid_HeaderFile
 #include <Handle_Aspect_Grid.hxx>
-#endif
-#ifndef _Graphic3d_Vertex_HeaderFile
-#include <Graphic3d_Vertex.hxx>
 #endif
 #ifndef _Graphic3d_ZLayerSettings_HeaderFile
 #include <Graphic3d_ZLayerSettings.hxx>
@@ -198,6 +192,10 @@ public:
 //!            all the views of the Viewer are exposed, as for <br>
 //!           example in a global DeIconification. <br>
   Standard_EXPORT     void Redraw() const;
+  //! Updates layer of immediate presentations. <br>
+  Standard_EXPORT     void RedrawImmediate() const;
+  //! Invalidates viewer content but does not redraw it. <br>
+  Standard_EXPORT     void Invalidate() const;
   //! Suppresses the Viewer. <br>
   Standard_EXPORT     void Remove() ;
   //! Erase all Objects in All the views. <br>
@@ -411,8 +409,14 @@ public:
 //!          directional-light V3d_XnegYneg <br>
 //!          ambient-light <br>
   Standard_EXPORT     void SetDefaultLights() ;
+  
+//! Display grid echo at requested point in the view. <br>
+  Standard_EXPORT     void ShowGridEcho(const Handle(V3d_View)& theView,const Graphic3d_Vertex& thePoint) ;
+  
+//! Temporarly hide grid echo. <br>
+  Standard_EXPORT     void HideGridEcho(const Handle(V3d_View)& theView) ;
   //! Sets the settings for a single Z layer. <br>
-  Standard_EXPORT     void SetZLayerSettings(const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings theSettings) ;
+  Standard_EXPORT     void SetZLayerSettings(const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings& theSettings) ;
   //! Returns the settings of a single Z layer. <br>
   Standard_EXPORT     Graphic3d_ZLayerSettings ZLayerSettings(const Standard_Integer theLayerId) ;
   //! Add a new top-level Z layer to all managed views and get <br>
@@ -441,8 +445,6 @@ public:
 
 friend class V3d_View;
 friend class V3d_Light;
-friend   //! test. <br>
-  Standard_EXPORT   void V3d::SetPlane(const Handle(V3d_Viewer)& aViewer,const Quantity_Length x1,const Quantity_Length y1,const Quantity_Length z1,const Quantity_Length x2,const Quantity_Length y2,const Quantity_Length z2) ;
 
 
   DEFINE_STANDARD_RTTI(V3d_Viewer)
@@ -466,9 +468,6 @@ private:
   Standard_EXPORT     void AddLight(const Handle(V3d_Light)& MyLight) ;
   
   Standard_EXPORT     Standard_Boolean IsActive(const Handle(V3d_View)& aView) const;
-  
-//! Display grid echo at requested point in the view. <br>
-  Standard_EXPORT     void ShowGridEcho(const Handle(V3d_View)& aView,const Graphic3d_Vertex& aPoint) ;
 
 Standard_Integer myNextCount;
 Handle_Graphic3d_GraphicDriver myDriver;
@@ -506,6 +505,7 @@ Standard_Boolean myGridEcho;
 Handle_Graphic3d_Structure myGridEchoStructure;
 Handle_Graphic3d_Group myGridEchoGroup;
 Handle_Graphic3d_AspectMarker3d myGridEchoAspect;
+Graphic3d_Vertex myGridEchoLastVert;
 
 
 };

@@ -19,6 +19,9 @@
 #ifndef _TColStd_IndexedDataMapOfTransientTransient_HeaderFile
 #include <TColStd_IndexedDataMapOfTransientTransient.hxx>
 #endif
+#ifndef _TColStd_IndexedMapOfTransient_HeaderFile
+#include <TColStd_IndexedMapOfTransient.hxx>
+#endif
 #ifndef _TColStd_SequenceOfTransient_HeaderFile
 #include <TColStd_SequenceOfTransient.hxx>
 #endif
@@ -175,7 +178,7 @@ private:
 
 
 TColStd_IndexedDataMapOfTransientTransient myMapOfStyles;
-TColStd_SequenceOfTransient myStyles;
+TColStd_IndexedMapOfTransient myStyles;
 TColStd_SequenceOfTransient myPSA;
 
 

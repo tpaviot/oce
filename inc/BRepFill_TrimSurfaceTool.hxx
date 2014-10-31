@@ -46,7 +46,8 @@ class gp_Pnt2d;
 class Geom_Curve;
 
 
-
+//! Compute the Pcurves and  the 3d curves resulting <br>
+//!        of the trimming of a face by an extruded surface. <br>
 class BRepFill_TrimSurfaceTool  {
 public:
 

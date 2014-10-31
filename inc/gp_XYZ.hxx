@@ -80,6 +80,8 @@ public:
 //! Raises OutOfRange if Index != {1, 2, 3}. <br>
         Standard_Real Coord(const Standard_Integer Index) const;
   
+        Standard_Real& ChangeCoord(const Standard_Integer theIndex) ;
+  
         void Coord(Standard_Real& X,Standard_Real& Y,Standard_Real& Z) const;
   //! Returns the X coordinate <br>
         Standard_Real X() const;

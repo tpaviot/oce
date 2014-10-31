@@ -2,52 +2,46 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{BE240EE3-11E8-0F31-0C95-131EB043B870}</UniqueIdentifier>
+      <UniqueIdentifier>{670B4321-09B8-18FD-0FDA-9AAB23598A38}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PBRep">
-      <UniqueIdentifier>{01FEBF4F-0693-029F-12FD-ECB8944A2400}</UniqueIdentifier>
+      <UniqueIdentifier>{816CF801-0467-0275-154F-6C58F744C3EF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PTopoDS">
-      <UniqueIdentifier>{81A19749-0A80-0BE2-0AFB-A0449EF9085F}</UniqueIdentifier>
+      <UniqueIdentifier>{9BAE35BC-1935-15A9-14EF-F079179E0843}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PGeom">
-      <UniqueIdentifier>{94AC8D7C-0957-0CD5-031F-FA604DC86D94}</UniqueIdentifier>
+      <UniqueIdentifier>{3087D982-05CF-083A-0A62-378A01455933}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PGeom2d">
-      <UniqueIdentifier>{923A01C1-1615-100A-0DDE-7DEA7CAD8A39}</UniqueIdentifier>
+      <UniqueIdentifier>{E35ACD75-190E-070A-0AD5-0A15AA1480BF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PPoly">
-      <UniqueIdentifier>{4DB78244-04C1-0D97-1769-DE814DFB0366}</UniqueIdentifier>
+      <UniqueIdentifier>{10A00E27-032C-0116-1648-B185D5C99F50}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PColgp">
-      <UniqueIdentifier>{9C29D6C7-024D-0BAB-0504-A3B52FCC40C9}</UniqueIdentifier>
+      <UniqueIdentifier>{FA6B3D89-18EB-0767-0AAD-B7804446250B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PTopLoc">
-      <UniqueIdentifier>{B1846FF6-07F3-007D-0012-7E56725D7F23}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\PColPGeom">
-      <UniqueIdentifier>{460BF3CB-1576-0321-0A06-838BE354E76C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\PColPGeom2d">
-      <UniqueIdentifier>{25771D2A-0FE5-1252-1053-53647FEAD010}</UniqueIdentifier>
+      <UniqueIdentifier>{2A02239F-07D8-0FAB-1121-23012F22BDF6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MgtBRep">
-      <UniqueIdentifier>{020B88D4-0452-146C-10AB-CA55F3D0F20F}</UniqueIdentifier>
+      <UniqueIdentifier>{E57E44EC-08DE-072A-0AED-F67F5120CC78}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MgtGeom">
-      <UniqueIdentifier>{C3DDAC00-1353-0021-0A48-51A60D6CA4C5}</UniqueIdentifier>
+      <UniqueIdentifier>{4FEA3F49-0C49-0233-097C-5EC538E5F8DA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MgtGeom2d">
-      <UniqueIdentifier>{B5BE40AD-02A3-03CA-1344-BC97757B8858}</UniqueIdentifier>
+      <UniqueIdentifier>{34D38CA2-00C5-0342-02B4-C60D4A92A979}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MgtPoly">
-      <UniqueIdentifier>{344EC862-03BA-117B-0FF0-F90A4812192A}</UniqueIdentifier>
+      <UniqueIdentifier>{B45E4EE9-02ED-0BB5-019C-B5F65F41F69F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MgtTopLoc">
-      <UniqueIdentifier>{3220BE90-0BBC-1692-0112-D2AC4E2E6C2F}</UniqueIdentifier>
+      <UniqueIdentifier>{A67CDD74-164D-0ED3-11CC-F2C7AE137726}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MgtTopoDS">
-      <UniqueIdentifier>{C0ACD669-062C-0D78-133C-ED34720E2E7C}</UniqueIdentifier>
+      <UniqueIdentifier>{F36B9FF1-03E9-05DC-0FF4-9CF01B578628}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -707,174 +701,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\PTopLoc\PTopLoc_Location.cxx">
       <Filter>Source files\PTopLoc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray1OfBSplineCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray1OfBezierCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray1OfBoundedCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray1OfBoundedSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray1OfCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray1OfSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray2OfBSplineSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray2OfBezierSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray2OfBoundedSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_FieldOfHArray2OfSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_HArray1OfBSplineCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_HArray1OfBezierCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_HArray1OfBoundedCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_HArray1OfBoundedSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_HArray1OfCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_HArray1OfSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_HArray2OfBSplineSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_HArray2OfBezierSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_HArray2OfBoundedSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_HArray2OfSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray1OfBSplineCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray1OfBezierCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray1OfBoundedCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray1OfBoundedSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray1OfCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray1OfSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray2OfBSplineSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray2OfBezierSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray2OfBoundedSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayNodeOfFieldOfHArray2OfSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray1OfBSplineCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray1OfBezierCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray1OfBoundedCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray1OfBoundedSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray1OfCurve_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray1OfSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray2OfBSplineSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray2OfBezierSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray2OfBoundedSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom\PColPGeom_VArrayTNodeOfFieldOfHArray2OfSurface_0.cxx">
-      <Filter>Source files\PColPGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_FieldOfHArray1OfBSplineCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_FieldOfHArray1OfBezierCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_FieldOfHArray1OfBoundedCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_FieldOfHArray1OfCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_HArray1OfBSplineCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_HArray1OfBezierCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_HArray1OfBoundedCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_HArray1OfCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayNodeOfFieldOfHArray1OfBSplineCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayNodeOfFieldOfHArray1OfBezierCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayNodeOfFieldOfHArray1OfBoundedCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayNodeOfFieldOfHArray1OfCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayTNodeOfFieldOfHArray1OfBSplineCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayTNodeOfFieldOfHArray1OfBezierCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayTNodeOfFieldOfHArray1OfBoundedCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColPGeom2d\PColPGeom2d_VArrayTNodeOfFieldOfHArray1OfCurve_0.cxx">
-      <Filter>Source files\PColPGeom2d</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\MgtBRep\MgtBRep.cxx">
       <Filter>Source files\MgtBRep</Filter>

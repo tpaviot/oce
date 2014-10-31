@@ -47,9 +47,6 @@
 #ifndef _BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
 #endif

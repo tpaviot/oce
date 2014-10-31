@@ -72,6 +72,8 @@ private:
   
   Standard_EXPORT     void LoadNamingDS(const TDF_Label& theResultLabel,BRepAlgoAPI_BooleanOperation& MS) const;
   
+  Standard_EXPORT     void LoadSectionNDS(const TDF_Label& theResultLabel,BRepAlgoAPI_BooleanOperation& MS) const;
+  
   Standard_EXPORT     Standard_Boolean CheckAndLoad(BRepAlgoAPI_BooleanOperation& theMkOpe,const Handle(TFunction_Function)& theFunction) const;
 
 

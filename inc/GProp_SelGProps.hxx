@@ -30,8 +30,8 @@ class gp_Torus;
 
 
 
-//!          Computes the global properties of an elementary <br>
-//!          surface (surface of the gp package) <br>
+//!          Computes the global properties of a bounded <br>
+//!          elementary surface in 3d (surface of the gp package) <br>
 class GProp_SelGProps  : public GProp_GProps {
 public:
 

@@ -16,7 +16,7 @@
 #ifndef _TopTools_MutexForShapeProvider_HeaderFile
 #define _TopTools_MutexForShapeProvider_HeaderFile
 
-#include <Handle_TopoDS_TShape.hxx>
+#include <TopoDS_TShape.hxx>
 #include <NCollection_DataMap.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 
@@ -54,7 +54,7 @@ private:
   TopTools_MutexForShapeProvider & operator = (const TopTools_MutexForShapeProvider &);
 
 
-  NCollection_DataMap<Handle_TopoDS_TShape, Standard_Mutex *> myMap;
+  NCollection_DataMap<Handle(TopoDS_TShape), Standard_Mutex *> myMap;
 
 };
 

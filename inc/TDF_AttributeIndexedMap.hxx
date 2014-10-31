@@ -47,6 +47,8 @@ public:
   
   Standard_EXPORT   TDF_AttributeIndexedMap(const Standard_Integer NbBuckets = 1);
   
+  Standard_EXPORT   TDF_AttributeIndexedMap(const TDF_AttributeIndexedMap& Other);
+  
   Standard_EXPORT     TDF_AttributeIndexedMap& Assign(const TDF_AttributeIndexedMap& Other) ;
     TDF_AttributeIndexedMap& operator =(const TDF_AttributeIndexedMap& Other) 
 {
@@ -89,8 +91,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_AttributeIndexedMap(const TDF_AttributeIndexedMap& Other);
 
 
 

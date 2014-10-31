@@ -30,6 +30,8 @@ class gp_Pnt2d;
 
 
 
+//!  *** Class2d    : Low level algorithm for 2d classification <br>
+//!  this class was moved from package BRepTopAdaptor <br>
 class CSLib_Class2d  {
 public:
 

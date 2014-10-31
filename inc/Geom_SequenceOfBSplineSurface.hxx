@@ -43,6 +43,8 @@ public:
   
       Geom_SequenceOfBSplineSurface();
   
+  Standard_EXPORT   Geom_SequenceOfBSplineSurface(const Geom_SequenceOfBSplineSurface& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Geom_SequenceOfBSplineSurface()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Geom_SequenceOfBSplineSurface(const Geom_SequenceOfBSplineSurface& Other);
 
 
 

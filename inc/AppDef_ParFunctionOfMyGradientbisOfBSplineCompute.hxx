@@ -58,7 +58,6 @@ class AppDef_MultiLine;
 class AppDef_MyLineTool;
 class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 class AppDef_ResConstraintOfMyGradientbisOfBSplineCompute;
-class math_Vector;
 class AppParCurves_MultiCurve;
 
 

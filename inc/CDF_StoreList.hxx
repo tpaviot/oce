@@ -19,8 +19,8 @@
 #ifndef _CDM_MapOfDocument_HeaderFile
 #include <CDM_MapOfDocument.hxx>
 #endif
-#ifndef _CDM_StackOfDocument_HeaderFile
-#include <CDM_StackOfDocument.hxx>
+#ifndef _CDM_ListOfDocument_HeaderFile
+#include <CDM_ListOfDocument.hxx>
 #endif
 #ifndef _CDM_MapIteratorOfMapOfDocument_HeaderFile
 #include <CDM_MapIteratorOfMapOfDocument.hxx>
@@ -83,7 +83,7 @@ private:
   Standard_EXPORT     void Add(const Handle(CDM_Document)& aDocument) ;
 
 CDM_MapOfDocument myItems;
-CDM_StackOfDocument myStack;
+CDM_ListOfDocument myStack;
 CDM_MapIteratorOfMapOfDocument myIterator;
 Handle_CDM_Document myMainDocument;
 

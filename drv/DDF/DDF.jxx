@@ -10,9 +10,6 @@
 #ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
 #endif
-#ifndef _Draw_Interpretor_HeaderFile
-#include <Draw_Interpretor.hxx>
-#endif
 #ifndef _DDF_HeaderFile
 #include <DDF.hxx>
 #endif

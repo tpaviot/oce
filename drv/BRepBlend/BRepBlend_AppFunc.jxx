@@ -10,9 +10,6 @@
 #ifndef _Blend_AppFunction_HeaderFile
 #include <Blend_AppFunction.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _Blend_Point_HeaderFile
 #include <Blend_Point.hxx>
 #endif

@@ -15,15 +15,9 @@
 #ifndef _Standard_Transient_proto_HeaderFile
 #define _Standard_Transient_proto_HeaderFile
 
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
 
 class Handle_Standard_Transient;
 class Standard_Type;
@@ -56,8 +50,6 @@ class Standard_Transient
     //! Memory deallocator for transient classes
     Standard_EXPORT virtual void Delete() const;
 
-    Standard_EXPORT virtual void ShallowDump(Standard_OStream& ) const;
-    
     //! Returns a type information object about this object.
     Standard_EXPORT virtual const Handle_Standard_Type& DynamicType() const;
 

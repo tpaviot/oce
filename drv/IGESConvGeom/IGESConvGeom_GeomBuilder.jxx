@@ -13,12 +13,6 @@
 #ifndef _IGESGeom_CopiousData_HeaderFile
 #include <IGESGeom_CopiousData.hxx>
 #endif
-#ifndef _TColgp_HArray1OfXY_HeaderFile
-#include <TColgp_HArray1OfXY.hxx>
-#endif
-#ifndef _TColgp_HArray1OfXYZ_HeaderFile
-#include <TColgp_HArray1OfXYZ.hxx>
-#endif
 #ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
 #endif

@@ -16,8 +16,8 @@
 #include <Handle_StepShape_ManifoldSolidBrep.hxx>
 #endif
 
-#ifndef _Handle_StepShape_ClosedShell_HeaderFile
-#include <Handle_StepShape_ClosedShell.hxx>
+#ifndef _Handle_StepShape_ConnectedFaceSet_HeaderFile
+#include <Handle_StepShape_ConnectedFaceSet.hxx>
 #endif
 #ifndef _StepShape_SolidModel_HeaderFile
 #include <StepShape_SolidModel.hxx>
@@ -25,8 +25,12 @@
 #ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
 #endif
-class StepShape_ClosedShell;
+#ifndef _Handle_StepShape_ClosedShell_HeaderFile
+#include <Handle_StepShape_ClosedShell.hxx>
+#endif
+class StepShape_ConnectedFaceSet;
 class TCollection_HAsciiString;
+class StepShape_ClosedShell;
 
 
 
@@ -41,9 +45,11 @@ public:
   
   Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_ClosedShell)& aOuter) ;
   
-  Standard_EXPORT     void SetOuter(const Handle(StepShape_ClosedShell)& aOuter) ;
+  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_ConnectedFaceSet)& aOuter) ;
   
-  Standard_EXPORT     Handle_StepShape_ClosedShell Outer() const;
+  Standard_EXPORT     void SetOuter(const Handle(StepShape_ConnectedFaceSet)& aOuter) ;
+  
+  Standard_EXPORT     Handle_StepShape_ConnectedFaceSet Outer() const;
 
 
 
@@ -58,7 +64,7 @@ protected:
 private: 
 
 
-Handle_StepShape_ClosedShell outer;
+Handle_StepShape_ConnectedFaceSet outer;
 
 
 };

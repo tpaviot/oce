@@ -13,8 +13,8 @@
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
 #endif
-#ifndef _BOPInt_Context_HeaderFile
-#include <BOPInt_Context.hxx>
+#ifndef _IntTools_Context_HeaderFile
+#include <IntTools_Context.hxx>
 #endif
 #ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>

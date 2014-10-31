@@ -28,7 +28,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class TopLoc_Location;
 class TopLoc_MapLocationHasher;
 class TopLoc_StdMapNodeOfMapOfLocation;
@@ -43,6 +42,8 @@ public:
 
   
   Standard_EXPORT   TopLoc_MapOfLocation(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   TopLoc_MapOfLocation(const TopLoc_MapOfLocation& Other);
   
   Standard_EXPORT     TopLoc_MapOfLocation& Assign(const TopLoc_MapOfLocation& Other) ;
     TopLoc_MapOfLocation& operator =(const TopLoc_MapOfLocation& Other) 
@@ -76,8 +77,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopLoc_MapOfLocation(const TopLoc_MapOfLocation& Other);
 
 
 

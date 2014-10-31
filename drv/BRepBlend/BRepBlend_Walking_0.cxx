@@ -56,9 +56,6 @@
 #ifndef _Blend_FuncInv_HeaderFile
 #include <Blend_FuncInv.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
 #endif

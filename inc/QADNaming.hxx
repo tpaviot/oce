@@ -31,15 +31,14 @@
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class TopoDS_Shape;
 class TDF_Data;
 class TopTools_ListOfShape;
 class TCollection_AsciiString;
 class TDF_Label;
-class Draw_Interpretor;
-class QADNaming_DataMapOfShapeOfName;
-class QADNaming_DataMapNodeOfDataMapOfShapeOfName;
-class QADNaming_DataMapIteratorOfDataMapOfShapeOfName;
 
 
 
@@ -86,9 +85,6 @@ private:
 
 
 
-friend class QADNaming_DataMapOfShapeOfName;
-friend class QADNaming_DataMapNodeOfDataMapOfShapeOfName;
-friend class QADNaming_DataMapIteratorOfDataMapOfShapeOfName;
 
 };
 

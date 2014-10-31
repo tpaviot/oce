@@ -2,106 +2,106 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{5E1E17D0-1049-14A9-16F3-600930FB60C5}</UniqueIdentifier>
+      <UniqueIdentifier>{C09A752D-082E-087A-0643-89E6376954DB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Hatch">
-      <UniqueIdentifier>{8E2D3233-0639-17DB-0D32-B12677545B4B}</UniqueIdentifier>
+      <UniqueIdentifier>{41FA2D78-0533-186A-0DF2-8646F89D6042}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomInt">
-      <UniqueIdentifier>{35A460FB-0862-09E7-08EC-4AD6AF548DC6}</UniqueIdentifier>
+      <UniqueIdentifier>{1AB6671B-0440-18C1-07E0-1E25C942B44F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntStart">
-      <UniqueIdentifier>{27D96A13-1251-07AD-087B-5A4B24FB6199}</UniqueIdentifier>
+      <UniqueIdentifier>{4BD00204-0C06-04AB-10BC-CC39D5E8EA8A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\IntWalk">
+      <UniqueIdentifier>{7E44F63E-0C7A-0C44-0E92-15DA71B858C3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntImp">
-      <UniqueIdentifier>{C48C84CE-15FB-13F5-1341-CE6FB006BC70}</UniqueIdentifier>
+      <UniqueIdentifier>{CBAA2D51-0D9C-0C3B-1553-7C6793741D13}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntCurveSurface">
-      <UniqueIdentifier>{3D7F70D7-009E-1624-06EA-07A7998C5865}</UniqueIdentifier>
+      <UniqueIdentifier>{20F3A8E5-0878-130E-064F-889A294101B6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntSurf">
-      <UniqueIdentifier>{FF5D0433-096E-0577-0BE7-513DE8B76196}</UniqueIdentifier>
+      <UniqueIdentifier>{D77D6706-1328-11AC-092E-4CE47D2CF8DB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntPatch">
-      <UniqueIdentifier>{67D7D6A8-0130-0180-0DF9-8CB2651440AA}</UniqueIdentifier>
+      <UniqueIdentifier>{862A5F94-0315-0A9A-08D6-4EA5F4715727}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dInt">
-      <UniqueIdentifier>{A17A4736-07F0-0A27-1263-1F332456A1E2}</UniqueIdentifier>
+      <UniqueIdentifier>{10F88CB2-11AD-0D9B-0E5E-33D87DCA2552}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntImpParGen">
-      <UniqueIdentifier>{9E316EDB-1560-1930-00B0-7568AA2A7EFB}</UniqueIdentifier>
+      <UniqueIdentifier>{583F69DA-1607-0F48-1354-8F636BC8385A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntRes2d">
-      <UniqueIdentifier>{F6AE0F21-1873-0F87-15B5-BB4D92E1D730}</UniqueIdentifier>
+      <UniqueIdentifier>{EBB74534-0111-1648-13B0-DB3C88631A2F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntCurve">
-      <UniqueIdentifier>{F6A7D888-196B-0311-03A0-DAD99402C49C}</UniqueIdentifier>
+      <UniqueIdentifier>{4C416865-0412-17CD-0484-2E9ADCB9091A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopTrans">
-      <UniqueIdentifier>{BA07D465-17A8-0ED7-0CD5-3371304C1C78}</UniqueIdentifier>
+      <UniqueIdentifier>{04A1ECE2-15BD-0F39-08A4-263AD6E0CDBB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Intf">
-      <UniqueIdentifier>{E12A3BE9-0CB0-0612-0413-286A0648DB14}</UniqueIdentifier>
+      <UniqueIdentifier>{E2DE99B8-0331-0AC3-0B0E-1A02F7B8CB9F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ApproxInt">
-      <UniqueIdentifier>{271338D5-0B45-079B-0AE6-FC5587532610}</UniqueIdentifier>
+      <UniqueIdentifier>{405A0C5D-0E95-0E17-1061-DAE7237CE84E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GccAna">
-      <UniqueIdentifier>{E7E49AA5-12D5-16A6-110F-D1914798E6E5}</UniqueIdentifier>
+      <UniqueIdentifier>{777C02C6-0BE5-180F-1734-3AE6ABFE1A02}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GccEnt">
-      <UniqueIdentifier>{5EC63B52-0407-0BF7-0B6D-3B08BABA2A07}</UniqueIdentifier>
+      <UniqueIdentifier>{5DB4491E-04AF-019C-0702-E3C3B645F529}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GccInt">
-      <UniqueIdentifier>{1D4F2CD3-10EE-17F5-1138-089C0E3D9391}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\GccIter">
-      <UniqueIdentifier>{A351BFD4-025F-05D7-00F5-469E424000BC}</UniqueIdentifier>
+      <UniqueIdentifier>{E25D0A84-0F4D-0EFA-0429-1267EA646883}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HatchGen">
-      <UniqueIdentifier>{F03F7D0D-045B-0968-0521-CF9785E4A668}</UniqueIdentifier>
+      <UniqueIdentifier>{09A68379-0F92-0876-1789-96D00D3520F7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dHatch">
-      <UniqueIdentifier>{6934E070-1505-0558-0B5F-AF2A6C0A25A0}</UniqueIdentifier>
+      <UniqueIdentifier>{07590FC6-06C5-08DD-00BE-6D266AF519AE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Law">
-      <UniqueIdentifier>{2C49A829-161C-1022-0345-A5069E55890B}</UniqueIdentifier>
+      <UniqueIdentifier>{68FA4860-12FE-18B9-0921-75144886AB35}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AppBlend">
-      <UniqueIdentifier>{986ACAF8-0844-1350-0907-612896AF9E68}</UniqueIdentifier>
+      <UniqueIdentifier>{525A2FC9-0144-0D9B-0F74-21F1D48BB4A6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Plate">
-      <UniqueIdentifier>{C8D5CA14-1752-04A2-0502-C13BEE459A22}</UniqueIdentifier>
+      <UniqueIdentifier>{013FB55F-1549-067E-148F-CBE1C2529653}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomPlate">
-      <UniqueIdentifier>{8A5B7487-0E4C-0450-0194-C1526B0A0123}</UniqueIdentifier>
+      <UniqueIdentifier>{0B29FA5F-0A4C-09F4-09BE-64E65E50532B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\LocalAnalysis">
-      <UniqueIdentifier>{D0D6B51C-1020-0FC0-0E22-9A8199B26732}</UniqueIdentifier>
+      <UniqueIdentifier>{84652500-14C7-0D9D-13D5-F51FD0FB9F8A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomAPI">
-      <UniqueIdentifier>{95089736-1009-171E-028F-8CBE923396D0}</UniqueIdentifier>
+      <UniqueIdentifier>{A72DF0CB-014B-0BB3-14A8-E4F6E10C628D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomFill">
-      <UniqueIdentifier>{F25CE00A-0962-057B-114A-0ABDD434B28C}</UniqueIdentifier>
+      <UniqueIdentifier>{1A38DB78-0A81-103C-1758-5D4F2FF9CFC7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dAPI">
-      <UniqueIdentifier>{B64692BD-1517-08BE-188C-590C53384C82}</UniqueIdentifier>
+      <UniqueIdentifier>{B83E6D50-0860-080A-14C5-CF174A022E77}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dGcc">
-      <UniqueIdentifier>{2719144D-05C5-02F7-05DB-EF9F25B93827}</UniqueIdentifier>
+      <UniqueIdentifier>{389FC408-0437-03D7-055F-CABD003E715C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\FairCurve">
-      <UniqueIdentifier>{15BE27B7-12D9-0FF7-0B9D-5D346E1D3DA4}</UniqueIdentifier>
+      <UniqueIdentifier>{847204B5-0AD6-171C-1226-6A383E929189}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\NLPlate">
-      <UniqueIdentifier>{B9EAF80F-0BA8-1521-1820-6DFB949FC95C}</UniqueIdentifier>
+      <UniqueIdentifier>{90C67CCD-0715-0BC1-07F1-3FCB7245C4AD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntPolyh">
-      <UniqueIdentifier>{5CD30862-13B8-133F-1441-6B88C7E0CA43}</UniqueIdentifier>
+      <UniqueIdentifier>{7372ED97-00B1-006F-0AA7-6831A3930217}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopClass">
-      <UniqueIdentifier>{FF1EB3F3-0524-0747-04AB-5AA11304EA2A}</UniqueIdentifier>
+      <UniqueIdentifier>{6E344C62-16C4-12EF-15D2-4B684CAC6FE3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +204,9 @@
     <ClCompile Include="..\..\..\drv\GeomInt\GeomInt_WLApprox_0.cxx">
       <Filter>Source files\GeomInt</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt.cxx">
+      <Filter>Source files\GeomInt</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\GeomInt\GeomInt_IntSS.cxx">
       <Filter>Source files\GeomInt</Filter>
     </ClCompile>
@@ -221,6 +224,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntStart\IntStart_SITopolTool.cxx">
       <Filter>Source files\IntStart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntWalk\IntWalk_TheFunctionOfTheInt2S_0.cxx">
+      <Filter>Source files\IntWalk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntWalk\IntWalk_TheInt2S_0.cxx">
+      <Filter>Source files\IntWalk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntWalk\IntWalk_PWalking.cxx">
+      <Filter>Source files\IntWalk</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntImp\IntImp_ComputeTangence.cxx">
       <Filter>Source files\IntImp</Filter>
@@ -339,9 +351,6 @@
     <ClCompile Include="..\..\..\src\IntSurf\IntSurf_Transition.cxx">
       <Filter>Source files\IntSurf</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPatch\IntPatch_CSFunction_0.cxx">
-      <Filter>Source files\IntPatch</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\IntPatch\IntPatch_CurvIntSurf_0.cxx">
       <Filter>Source files\IntPatch</Filter>
     </ClCompile>
@@ -375,22 +384,10 @@
     <ClCompile Include="..\..\..\drv\IntPatch\IntPatch_SequenceOfSegmentOfTheSOnBounds_0.cxx">
       <Filter>Source files\IntPatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPatch\IntPatch_TheFunctionOfTheInt2SOfThePWalkingInter_0.cxx">
-      <Filter>Source files\IntPatch</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\IntPatch\IntPatch_TheIWLineOfTheIWalking_0.cxx">
       <Filter>Source files\IntPatch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\IntPatch\IntPatch_TheIWalking_0.cxx">
-      <Filter>Source files\IntPatch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPatch\IntPatch_TheInt2SOfThePWalkingInter_0.cxx">
-      <Filter>Source files\IntPatch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPatch\IntPatch_TheInterfPolyhedron_0.cxx">
-      <Filter>Source files\IntPatch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\IntPatch\IntPatch_ThePWalkingInter_0.cxx">
       <Filter>Source files\IntPatch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\IntPatch\IntPatch_ThePathPointOfTheSOnBounds_0.cxx">
@@ -417,6 +414,9 @@
     <ClCompile Include="..\..\..\src\IntPatch\IntPatch_ArcFunction.cxx">
       <Filter>Source files\IntPatch</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_CSFunction.cxx">
+      <Filter>Source files\IntPatch</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\IntPatch\IntPatch_GLine.cxx">
       <Filter>Source files\IntPatch</Filter>
     </ClCompile>
@@ -430,6 +430,9 @@
       <Filter>Source files\IntPatch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntPatch\IntPatch_ImpPrmIntersection.cxx">
+      <Filter>Source files\IntPatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_InterferencePolyhedron.cxx">
       <Filter>Source files\IntPatch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntPatch\IntPatch_Intersection.cxx">
@@ -480,9 +483,6 @@
     <ClCompile Include="..\..\..\drv\Geom2dInt\Geom2dInt_GInter_0.cxx">
       <Filter>Source files\Geom2dInt</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dInt\Geom2dInt_Geom2dCurveTool_0.cxx">
-      <Filter>Source files\Geom2dInt</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Geom2dInt\Geom2dInt_IntConicCurveOfGInter_0.cxx">
       <Filter>Source files\Geom2dInt</Filter>
     </ClCompile>
@@ -520,6 +520,9 @@
       <Filter>Source files\Geom2dInt</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Geom2dInt\Geom2dInt_TheProjPCurOfGInter_0.cxx">
+      <Filter>Source files\Geom2dInt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_Geom2dCurveTool.cxx">
       <Filter>Source files\Geom2dInt</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntImpParGen\IntImpParGen.cxx">
@@ -816,9 +819,6 @@
     <ClCompile Include="..\..\..\src\GccInt\GccInt_Bisec.cxx">
       <Filter>Source files\GccInt</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\GccIter\GccIter_IsParallel_0.cxx">
-      <Filter>Source files\GccIter</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\HatchGen\HatchGen_Domains_0.cxx">
       <Filter>Source files\HatchGen</Filter>
     </ClCompile>
@@ -849,40 +849,40 @@
     <ClCompile Include="..\..\..\src\HatchGen\HatchGen_PointOnHatching.cxx">
       <Filter>Source files\HatchGen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_ClassifierOfHatcher_0.cxx">
+    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_Classifier_0.cxx">
       <Filter>Source files\Geom2dHatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_DataMapIteratorOfHatchingsOfHatcher_0.cxx">
+    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_DataMapIteratorOfHatchings_0.cxx">
       <Filter>Source files\Geom2dHatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_DataMapIteratorOfMapOfElementsOfElementsOfHatcher_0.cxx">
+    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_DataMapIteratorOfMapOfElements_0.cxx">
       <Filter>Source files\Geom2dHatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_DataMapNodeOfHatchingsOfHatcher_0.cxx">
+    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_DataMapNodeOfHatchings_0.cxx">
       <Filter>Source files\Geom2dHatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_DataMapNodeOfMapOfElementsOfElementsOfHatcher_0.cxx">
+    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_DataMapNodeOfMapOfElements_0.cxx">
       <Filter>Source files\Geom2dHatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_ElementOfHatcher_0.cxx">
+    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_FClass2dOfClassifier_0.cxx">
       <Filter>Source files\Geom2dHatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_ElementsOfHatcher_0.cxx">
+    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_Hatchings_0.cxx">
       <Filter>Source files\Geom2dHatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_FClass2dOfClassifierOfHatcher_0.cxx">
+    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_MapOfElements_0.cxx">
       <Filter>Source files\Geom2dHatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_Hatcher_0.cxx">
+    <ClCompile Include="..\..\..\src\Geom2dHatch\Geom2dHatch_Element.cxx">
       <Filter>Source files\Geom2dHatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_HatchingOfHatcher_0.cxx">
+    <ClCompile Include="..\..\..\src\Geom2dHatch\Geom2dHatch_Elements.cxx">
       <Filter>Source files\Geom2dHatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_HatchingsOfHatcher_0.cxx">
+    <ClCompile Include="..\..\..\src\Geom2dHatch\Geom2dHatch_Hatcher.cxx">
       <Filter>Source files\Geom2dHatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dHatch\Geom2dHatch_MapOfElementsOfElementsOfHatcher_0.cxx">
+    <ClCompile Include="..\..\..\src\Geom2dHatch\Geom2dHatch_Hatching.cxx">
       <Filter>Source files\Geom2dHatch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Geom2dHatch\Geom2dHatch_Intersector.cxx">
@@ -1311,52 +1311,7 @@
     <ClCompile Include="..\..\..\src\Geom2dAPI\Geom2dAPI_ProjectPointOnCurve.cxx">
       <Filter>Source files\Geom2dAPI</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_FuncTCirCuOfMyL2d2Tan_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_FuncTCuCuCuOfMyC2d3Tan_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_FuncTCuCuOfMyL2d2Tan_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_FuncTCuCuOnCuOfMyC2d2TanOn_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_FuncTCuPtOfMyL2d2Tan_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_FuncTOblOfMyL2dTanObl_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_MyC2d2TanOn_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_MyC2d3Tan_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_MyCirc2d2TanOn_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_MyCirc2d2TanRad_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_MyCirc2dTanCen_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_MyCirc2dTanOnRad_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_MyCurveTool_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_MyL2d2Tan_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_MyL2dTanObl_0.cxx">
-      <Filter>Source files\Geom2dGcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_MyQCurve_0.cxx">
+    <ClCompile Include="..\..\..\drv\Geom2dGcc\Geom2dGcc_IsParallel_0.cxx">
       <Filter>Source files\Geom2dGcc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc.cxx">
@@ -1365,25 +1320,73 @@
     <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d2TanOn.cxx">
       <Filter>Source files\Geom2dGcc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d2TanOnGeo.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d2TanOnIter.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d2TanRad.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d2TanRadGeo.cxx">
       <Filter>Source files\Geom2dGcc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d3Tan.cxx">
       <Filter>Source files\Geom2dGcc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d3TanIter.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2dTanCen.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2dTanCenGeo.cxx">
       <Filter>Source files\Geom2dGcc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2dTanOnRad.cxx">
       <Filter>Source files\Geom2dGcc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2dTanOnRadGeo.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_CurveTool.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_CurveToolGeo.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_FunctionTanCirCu.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_FunctionTanCuCu.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_FunctionTanCuCuCu.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_FunctionTanCuCuOnCu.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_FunctionTanCuPnt.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_FunctionTanObl.cxx">
       <Filter>Source files\Geom2dGcc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Lin2d2Tan.cxx">
       <Filter>Source files\Geom2dGcc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Lin2d2TanIter.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Lin2dTanObl.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Lin2dTanOblIter.cxx">
+      <Filter>Source files\Geom2dGcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_QCurve.cxx">
       <Filter>Source files\Geom2dGcc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_QualifiedCurve.cxx">
@@ -1422,16 +1425,16 @@
     <ClCompile Include="..\..\..\src\FairCurve\FairCurve_Newton.cxx">
       <Filter>Source files\FairCurve</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\NLPlate\NLPlate_ListIteratorOfStackOfPlate_0.cxx">
+      <Filter>Source files\NLPlate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\NLPlate\NLPlate_ListNodeOfStackOfPlate_0.cxx">
+      <Filter>Source files\NLPlate</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\NLPlate\NLPlate_SequenceNodeOfSequenceOfHGPPConstraint_0.cxx">
       <Filter>Source files\NLPlate</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\NLPlate\NLPlate_SequenceOfHGPPConstraint_0.cxx">
-      <Filter>Source files\NLPlate</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\NLPlate\NLPlate_StackIteratorOfStackOfPlate_0.cxx">
-      <Filter>Source files\NLPlate</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\NLPlate\NLPlate_StackNodeOfStackOfPlate_0.cxx">
       <Filter>Source files\NLPlate</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\NLPlate\NLPlate_StackOfPlate_0.cxx">

@@ -37,11 +37,13 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class Adaptor3d_HSurface;
 class Adaptor3d_HCurve;
 class Adaptor3d_HSurfaceTool;
 class IntCurveSurface_TheHCurveTool;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 

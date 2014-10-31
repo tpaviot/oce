@@ -31,7 +31,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class TColStd_MapRealHasher;
 class TColStd_StdMapNodeOfMapOfReal;
 class TColStd_MapIteratorOfMapOfReal;
@@ -45,6 +44,8 @@ public:
 
   
   Standard_EXPORT   TColStd_MapOfReal(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   TColStd_MapOfReal(const TColStd_MapOfReal& Other);
   
   Standard_EXPORT     TColStd_MapOfReal& Assign(const TColStd_MapOfReal& Other) ;
     TColStd_MapOfReal& operator =(const TColStd_MapOfReal& Other) 
@@ -78,8 +79,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_MapOfReal(const TColStd_MapOfReal& Other);
 
 
 

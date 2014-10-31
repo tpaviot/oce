@@ -25,10 +25,11 @@
 class TopoDS_Shape;
 
 
-//! Conversion of the complete geometry of a shape into <br>
-//! NURBS geometry. For example, all curves supporting <br>
-//! edges of the basis shape are converted into BSpline <br>
-//! curves, and all surfaces supporting its faces are <br>
+//! Conversion of the complete geometry of a shape <br>
+//! (all 3D analytical representation of surfaces and curves) <br>
+//! into NURBS geometry (execpt for Planes). For example, <br>
+//! all curves supporting edges of the basis shape are converted <br>
+//! into BSpline curves, and all surfaces supporting its faces are <br>
 //! converted into BSpline surfaces. <br>
 class BRepBuilderAPI_NurbsConvert  : public BRepBuilderAPI_ModifyShape {
 public:

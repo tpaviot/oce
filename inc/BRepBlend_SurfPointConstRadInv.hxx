@@ -37,14 +37,17 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class Adaptor3d_HSurface;
 class Adaptor3d_HCurve;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 
 
-//! This function  is used  to find a  solution on  a done <br>
+//! Function of reframing between a point and a surface. <br>
+//!          This function  is used  to find a  solution on  a done <br>
 //!          point   of   the curve when   using  SurfRstConsRad or <br>
 //!          CSConstRad... <br>
 //!          The vector <X>  used in Value, Values and  Derivatives <br>

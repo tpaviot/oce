@@ -109,7 +109,6 @@
 #include <Geom_OffsetCurve.hxx>
 
 #include <TColStd_HSequenceOfReal.hxx>
-#include <Handle_Geom2dAdaptor_HCurve.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
 #include <Geom2dAdaptor_HCurve.hxx>
 #include <GeomAPI_ProjectPointOnCurve.hxx>
@@ -730,7 +729,7 @@ Standard_Boolean ShapeFix_Wire::FixEdgeCurves()
         Standard_Real fp2d,lp2d;
         if(sae.PCurve(sbwd->Edge(i),face,C2d,fp2d,lp2d)) {
           if( fabs(First-fp2d)>Precision::PConfusion() ||
-              fabs(Last-fp2d)>Precision::PConfusion() ) {
+              fabs(Last-lp2d)>Precision::PConfusion() ) {
             BRep_Builder B;
             B.SameRange(sbwd->Edge(i),Standard_False);
           }
@@ -1338,6 +1337,9 @@ Standard_Boolean ShapeFix_Wire::FixShifted()
     }
 
     TopoDS_Vertex V = sae.FirstVertex ( E2 );
+    if (V.IsNull())
+      continue;
+
     gp_Pnt p = BRep_Tool::Pnt ( V );
   
     Standard_Real a1 = 0., b1 = 0., a2 = 0., b2 = 0.;

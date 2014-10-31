@@ -15,9 +15,6 @@
 #ifndef _PColgp_SeqNodeOfHSequenceOfVec_HeaderFile
 #include <PColgp_SeqNodeOfHSequenceOfVec.hxx>
 #endif
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
 #endif

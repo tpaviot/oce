@@ -43,6 +43,8 @@ public:
   
       StepRepr_SequenceOfRepresentationItem();
   
+  Standard_EXPORT   StepRepr_SequenceOfRepresentationItem(const StepRepr_SequenceOfRepresentationItem& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~StepRepr_SequenceOfRepresentationItem()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StepRepr_SequenceOfRepresentationItem(const StepRepr_SequenceOfRepresentationItem& Other);
 
 
 

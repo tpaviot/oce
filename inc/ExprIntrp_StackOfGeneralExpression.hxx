@@ -19,22 +19,22 @@
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _Handle_Expr_GeneralExpression_HeaderFile
 #include <Handle_Expr_GeneralExpression.hxx>
 #endif
-#ifndef _Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression_HeaderFile
-#include <Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression.hxx>
+#ifndef _Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression_HeaderFile
+#include <Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
 class Standard_NoSuchObject;
-class ExprIntrp_StackIteratorOfStackOfGeneralExpression;
+class ExprIntrp_ListIteratorOfStackOfGeneralExpression;
 class Expr_GeneralExpression;
-class ExprIntrp_StackNodeOfStackOfGeneralExpression;
+class ExprIntrp_ListNodeOfStackOfGeneralExpression;
 
 
 
@@ -46,21 +46,15 @@ public:
   
   Standard_EXPORT   ExprIntrp_StackOfGeneralExpression();
   
-  Standard_EXPORT    const ExprIntrp_StackOfGeneralExpression& Assign(const ExprIntrp_StackOfGeneralExpression& Other) ;
-   const ExprIntrp_StackOfGeneralExpression& operator =(const ExprIntrp_StackOfGeneralExpression& Other) 
+  Standard_EXPORT   ExprIntrp_StackOfGeneralExpression(const ExprIntrp_StackOfGeneralExpression& Other);
+  
+  Standard_EXPORT     void Assign(const ExprIntrp_StackOfGeneralExpression& Other) ;
+    void operator=(const ExprIntrp_StackOfGeneralExpression& Other) 
 {
-  return Assign(Other);
+  Assign(Other);
 }
   
-        Standard_Boolean IsEmpty() const;
-  
-        Standard_Integer Depth() const;
-  
-  Standard_EXPORT    const Handle_Expr_GeneralExpression& Top() const;
-  
-  Standard_EXPORT     void Push(const Handle(Expr_GeneralExpression)& I) ;
-  
-  Standard_EXPORT     void Pop() ;
+  Standard_EXPORT     Standard_Integer Extent() const;
   
   Standard_EXPORT     void Clear() ;
 ~ExprIntrp_StackOfGeneralExpression()
@@ -68,10 +62,38 @@ public:
   Clear();
 }
   
-  Standard_EXPORT     Handle_Expr_GeneralExpression& ChangeTop() ;
+        Standard_Boolean IsEmpty() const;
+  
+  Standard_EXPORT     void Prepend(const Handle(Expr_GeneralExpression)& I) ;
+  
+  Standard_EXPORT     void Prepend(const Handle(Expr_GeneralExpression)& I,ExprIntrp_ListIteratorOfStackOfGeneralExpression& theIt) ;
+  
+  Standard_EXPORT     void Prepend(ExprIntrp_StackOfGeneralExpression& Other) ;
+  
+  Standard_EXPORT     void Append(const Handle(Expr_GeneralExpression)& I) ;
+  
+  Standard_EXPORT     void Append(const Handle(Expr_GeneralExpression)& I,ExprIntrp_ListIteratorOfStackOfGeneralExpression& theIt) ;
+  
+  Standard_EXPORT     void Append(ExprIntrp_StackOfGeneralExpression& Other) ;
+  
+  Standard_EXPORT     Handle_Expr_GeneralExpression& First() const;
+  
+  Standard_EXPORT     Handle_Expr_GeneralExpression& Last() const;
+  
+  Standard_EXPORT     void RemoveFirst() ;
+  
+  Standard_EXPORT     void Remove(ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
+  
+  Standard_EXPORT     void InsertBefore(const Handle(Expr_GeneralExpression)& I,ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
+  
+  Standard_EXPORT     void InsertBefore(ExprIntrp_StackOfGeneralExpression& Other,ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
+  
+  Standard_EXPORT     void InsertAfter(const Handle(Expr_GeneralExpression)& I,ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
+  
+  Standard_EXPORT     void InsertAfter(ExprIntrp_StackOfGeneralExpression& Other,ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
 
 
-friend class ExprIntrp_StackIteratorOfStackOfGeneralExpression;
+friend class ExprIntrp_ListIteratorOfStackOfGeneralExpression;
 
 
 
@@ -83,39 +105,37 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ExprIntrp_StackOfGeneralExpression(const ExprIntrp_StackOfGeneralExpression& Other);
 
 
-Standard_Address myTop;
-Standard_Integer myDepth;
+Standard_Address myFirst;
+Standard_Address myLast;
 
 
 };
 
 #define Item Handle_Expr_GeneralExpression
 #define Item_hxx <Expr_GeneralExpression.hxx>
-#define TCollection_StackNode ExprIntrp_StackNodeOfStackOfGeneralExpression
-#define TCollection_StackNode_hxx <ExprIntrp_StackNodeOfStackOfGeneralExpression.hxx>
-#define TCollection_StackIterator ExprIntrp_StackIteratorOfStackOfGeneralExpression
-#define TCollection_StackIterator_hxx <ExprIntrp_StackIteratorOfStackOfGeneralExpression.hxx>
-#define Handle_TCollection_StackNode Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression
-#define TCollection_StackNode_Type_() ExprIntrp_StackNodeOfStackOfGeneralExpression_Type_()
-#define TCollection_Stack ExprIntrp_StackOfGeneralExpression
-#define TCollection_Stack_hxx <ExprIntrp_StackOfGeneralExpression.hxx>
+#define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralExpression
+#define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralExpression.hxx>
+#define TCollection_ListIterator ExprIntrp_ListIteratorOfStackOfGeneralExpression
+#define TCollection_ListIterator_hxx <ExprIntrp_ListIteratorOfStackOfGeneralExpression.hxx>
+#define Handle_TCollection_ListNode Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression
+#define TCollection_ListNode_Type_() ExprIntrp_ListNodeOfStackOfGeneralExpression_Type_()
+#define TCollection_List ExprIntrp_StackOfGeneralExpression
+#define TCollection_List_hxx <ExprIntrp_StackOfGeneralExpression.hxx>
 
-#include <TCollection_Stack.lxx>
+#include <TCollection_List.lxx>
 
 #undef Item
 #undef Item_hxx
-#undef TCollection_StackNode
-#undef TCollection_StackNode_hxx
-#undef TCollection_StackIterator
-#undef TCollection_StackIterator_hxx
-#undef Handle_TCollection_StackNode
-#undef TCollection_StackNode_Type_
-#undef TCollection_Stack
-#undef TCollection_Stack_hxx
+#undef TCollection_ListNode
+#undef TCollection_ListNode_hxx
+#undef TCollection_ListIterator
+#undef TCollection_ListIterator_hxx
+#undef Handle_TCollection_ListNode
+#undef TCollection_ListNode_Type_
+#undef TCollection_List
+#undef TCollection_List_hxx
 
 
 // other Inline functions and methods (like "C++: function call" methods)

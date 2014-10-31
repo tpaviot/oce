@@ -67,6 +67,7 @@ class gp_Pnt;
 
 
 //! A framework providing advanced tolerance control. <br>
+//! It is used to build Shapes. <br>
 //! If tolerance control is required, you are advised to: <br>
 //! 1. build a default precision for topology, using the <br>
 //! classes provided in the BRepAPI package <br>

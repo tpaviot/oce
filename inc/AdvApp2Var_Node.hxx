@@ -38,6 +38,8 @@ class gp_Pnt;
 
 
 
+//! used to store constraints on a (Ui,Vj) point <br>
+//! <br>
 class AdvApp2Var_Node  {
 public:
 

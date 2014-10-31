@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   HLRAlgo_ListOfBPoint();
   
+  Standard_EXPORT   HLRAlgo_ListOfBPoint(const HLRAlgo_ListOfBPoint& Other);
+  
   Standard_EXPORT     void Assign(const HLRAlgo_ListOfBPoint& Other) ;
     void operator=(const HLRAlgo_ListOfBPoint& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   HLRAlgo_ListOfBPoint(const HLRAlgo_ListOfBPoint& Other);
 
 
 Standard_Address myFirst;

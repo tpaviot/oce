@@ -27,7 +27,7 @@
 #endif
 
 
-
+//! Contains quadrangles strip array definition <br>
 class Graphic3d_ArrayOfQuadrangleStrips : public Graphic3d_ArrayOfPrimitives {
 
 public:

@@ -29,7 +29,7 @@ class TopoDS_Face;
 class TopoDS_Shell;
 
 
-
+//! Rebuilds connectivity between faces in shell <br>
 class ShapeFix_FaceConnect  {
 public:
 

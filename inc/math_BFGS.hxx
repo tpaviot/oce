@@ -37,7 +37,6 @@
 class StdFail_NotDone;
 class Standard_DimensionError;
 class math_MultipleVarFunctionWithGradient;
-class math_Vector;
 
 
 

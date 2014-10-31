@@ -31,6 +31,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _BRepCheck_Status_HeaderFile
+#include <BRepCheck_Status.hxx>
+#endif
 class BRep_CurveRepresentation;
 class Adaptor3d_HCurve;
 class TopoDS_Edge;
@@ -56,6 +59,11 @@ public:
   Standard_EXPORT     void GeometricControls(const Standard_Boolean B) ;
   
   Standard_EXPORT     Standard_Real Tolerance() ;
+  //! Sets status of Edge; <br>
+  Standard_EXPORT     void SetStatus(const BRepCheck_Status theStatus) ;
+  //! Checks, if polygon on triangulation of heEdge <br>
+//! is out of 3D-curve of this edge. <br>
+  Standard_EXPORT     BRepCheck_Status CheckPolygonOnTriangulation(const TopoDS_Edge& theEdge) ;
 
 
 

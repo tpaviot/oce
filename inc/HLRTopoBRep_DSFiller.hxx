@@ -31,7 +31,7 @@ class HLRTopoBRep_Data;
 class BRepTopAdaptor_MapOfShapeTool;
 class TopoDS_Face;
 class TopoDS_Vertex;
-class Contap_ThePointOfContour;
+class Contap_Point;
 class TopoDS_Edge;
 
 
@@ -62,11 +62,11 @@ private:
   Standard_EXPORT   static  void InsertFace(const Standard_Integer FI,const TopoDS_Face& F,Contap_Contour& FO,HLRTopoBRep_Data& DS,const Standard_Boolean withPCurve) ;
   //! Make a  vertex  from an intersection  point <P>and <br>
 //!          store it in the data structure <DS>. <br>
-  Standard_EXPORT   static  TopoDS_Vertex MakeVertex(const Contap_ThePointOfContour& P,const Standard_Real tol,HLRTopoBRep_Data& DS) ;
+  Standard_EXPORT   static  TopoDS_Vertex MakeVertex(const Contap_Point& P,const Standard_Real tol,HLRTopoBRep_Data& DS) ;
   //! Insert a vertex    from an internal   intersection <br>
 //!          point <P> on restriction <E>  and store it in  the <br>
 //!          data structure <DS>. <br>
-  Standard_EXPORT   static  void InsertVertex(const Contap_ThePointOfContour& P,const Standard_Real tol,const TopoDS_Edge& E,HLRTopoBRep_Data& DS) ;
+  Standard_EXPORT   static  void InsertVertex(const Contap_Point& P,const Standard_Real tol,const TopoDS_Edge& E,HLRTopoBRep_Data& DS) ;
   //! Split all  the edges  with  vertices in   the data <br>
 //!          structure. <br>
   Standard_EXPORT   static  void ProcessEdges(HLRTopoBRep_Data& DS) ;

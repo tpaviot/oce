@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   SelectBasics_ListOfBox2d();
   
+  Standard_EXPORT   SelectBasics_ListOfBox2d(const SelectBasics_ListOfBox2d& Other);
+  
   Standard_EXPORT     void Assign(const SelectBasics_ListOfBox2d& Other) ;
     void operator=(const SelectBasics_ListOfBox2d& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   SelectBasics_ListOfBox2d(const SelectBasics_ListOfBox2d& Other);
 
 
 Standard_Address myFirst;

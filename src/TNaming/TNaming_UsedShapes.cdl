@@ -16,7 +16,9 @@
 
 private class UsedShapes from TNaming inherits Attribute from TDF
 
-	---Purpose: Set of Shapes Used in a Data from TDF
+	---Purpose: Global attribute located under root label to store all
+  --          the shapes handled by the framework
+  --          Set of Shapes Used in a Data from TDF
 	--          Only one instance by Data, it always
 	--          Stored as Attribute of The Root.
 
@@ -34,7 +36,7 @@ uses
 
 is
 
-    Create returns mutable UsedShapes from TNaming 
+    Create returns UsedShapes from TNaming 
     is private;
 
     Destroy(me : mutable);
@@ -54,7 +56,7 @@ is
 	---Purpose: Returns the ID: 2a96b614-ec8b-11d0-bee7-080009dc3333.
     	---C++: return const &
     
-    BackupCopy(me) returns mutable Attribute from TDF
+    BackupCopy(me) returns Attribute from TDF
     is redefined;
 	---Purpose: Copies  the attribute  contents into  a  new other
 	--          attribute. It is used by Backup().
@@ -95,14 +97,14 @@ is
     -- ----------------
 
     NewEmpty(me)
-    	returns mutable Attribute from TDF
+    	returns Attribute from TDF
     	is redefined;
 	---Purpose: Returns an new empty attribute from the good end
 	--          type. It is used by the copy algorithm.
 
     Paste(me;
-    	  intoAttribute    : mutable Attribute from TDF;
-	  aRelocTationable : mutable RelocationTable from TDF)
+    	  intoAttribute    : Attribute from TDF;
+	  aRelocTationable : RelocationTable from TDF)
  	is redefined;
 	---Purpose: This method is different from the "Copy" one,
 	--          because it is used when copying an attribute from

@@ -30,8 +30,11 @@ class Adaptor3d_Surface;
 class Prs3d_Drawer;
 
 
-//! The number of lines to be drawn is controlled <br>
-//! by the NetworkNumber of the given Drawer. <br>
+//! Computes the presentation of surfaces by drawing a <br>
+//!          double network of lines linking the poles of the surface <br>
+//!          in the two parametric direction. <br>
+//!          The number of lines to be drawn is controlled <br>
+//!          by the NetworkNumber of the given Drawer. <br>
 class StdPrs_WFPoleSurface  : public Prs3d_Root {
 public:
 

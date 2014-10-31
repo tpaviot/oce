@@ -43,6 +43,8 @@ public:
   
       SelectMgr_SequenceOfOwner();
   
+  Standard_EXPORT   SelectMgr_SequenceOfOwner(const SelectMgr_SequenceOfOwner& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~SelectMgr_SequenceOfOwner()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   SelectMgr_SequenceOfOwner(const SelectMgr_SequenceOfOwner& Other);
 
 
 

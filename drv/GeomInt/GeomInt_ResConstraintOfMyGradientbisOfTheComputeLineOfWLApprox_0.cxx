@@ -23,9 +23,6 @@
 #ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
  
 
 #define MultiLine GeomInt_TheMultiLineOfWLApprox

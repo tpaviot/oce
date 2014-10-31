@@ -16,17 +16,17 @@
 #ifndef _OpenGl_ArbDbg_H__
 #define _OpenGl_ArbDbg_H__
 
-#include <OpenGl_GlCore12.hxx>
+#include <OpenGl_GlFunctions.hxx>
 
 //! Debug context routines
-struct OpenGl_ArbDbg
+struct OpenGl_ArbDbg : protected OpenGl_GlFunctions
 {
-
-  PFNGLDEBUGMESSAGECONTROLARBPROC  glDebugMessageControlARB;
-  PFNGLDEBUGMESSAGEINSERTARBPROC   glDebugMessageInsertARB;
-  PFNGLDEBUGMESSAGECALLBACKARBPROC glDebugMessageCallbackARB;
-  PFNGLGETDEBUGMESSAGELOGARBPROC   glGetDebugMessageLogARB;
-
+#if !defined(GL_ES_VERSION_2_0)
+  using OpenGl_GlFunctions::glDebugMessageControlARB;
+  using OpenGl_GlFunctions::glDebugMessageInsertARB;
+  using OpenGl_GlFunctions::glDebugMessageCallbackARB;
+  using OpenGl_GlFunctions::glGetDebugMessageLogARB;
+#endif
 };
 
 #endif // _OpenGl_ArbDbg_H__

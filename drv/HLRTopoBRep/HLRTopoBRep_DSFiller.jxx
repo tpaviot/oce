@@ -16,8 +16,8 @@
 #ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
 #endif
-#ifndef _Contap_ThePointOfContour_HeaderFile
-#include <Contap_ThePointOfContour.hxx>
+#ifndef _Contap_Point_HeaderFile
+#include <Contap_Point.hxx>
 #endif
 #ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>

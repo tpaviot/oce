@@ -13,6 +13,7 @@
 -- commercial license or contractual agreement.
 
 class ArrayOfQuadrangleStrips from Graphic3d inherits ArrayOfPrimitives from Graphic3d 
+    ---Purpose: Contains quadrangles strip array definition
 
 is
 
@@ -24,7 +25,7 @@ is
                 hasVColors: Boolean from Standard = Standard_False;
                 hasSColors: Boolean from Standard = Standard_False;
                 hasTexels: Boolean from Standard = Standard_False)
-	returns mutable ArrayOfQuadrangleStrips from Graphic3d;
+	returns ArrayOfQuadrangleStrips from Graphic3d;
         ---Purpose: Creates an array of quadrangle strips,
 	-- a polygon can be filled as:
 	-- 1) creating a single strip defined with his vertexs.

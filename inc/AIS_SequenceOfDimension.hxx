@@ -43,6 +43,8 @@ public:
   
       AIS_SequenceOfDimension();
   
+  Standard_EXPORT   AIS_SequenceOfDimension(const AIS_SequenceOfDimension& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~AIS_SequenceOfDimension()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   AIS_SequenceOfDimension(const AIS_SequenceOfDimension& Other);
 
 
 

@@ -25,9 +25,6 @@
 #ifndef _Handle_PTopoDS_HShape_HeaderFile
 #include <Handle_PTopoDS_HShape.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _PTopoDS_FieldOfHArray1OfHShape_HeaderFile
 #include <PTopoDS_FieldOfHArray1OfHShape.hxx>
 #endif
@@ -40,11 +37,7 @@
 #ifndef _Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape_HeaderFile
 #include <Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PTopoDS_HShape;
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PTopoDS_FieldOfHArray1OfHShape;
@@ -70,10 +63,6 @@ public:
         Standard_Integer Upper() const;
   
   Standard_EXPORT     Handle_PTopoDS_HShape Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PTopoDS_HArray1OfHShape( )
 {
@@ -158,10 +147,6 @@ PTopoDS_FieldOfHArray1OfHShape Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PTopoDS_HArray1OfHShape& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

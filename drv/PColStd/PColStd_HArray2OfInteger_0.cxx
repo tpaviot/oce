@@ -9,9 +9,6 @@
 #include <Standard_Type.hxx>
 #endif
 
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
 #endif

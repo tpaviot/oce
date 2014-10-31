@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TDF_LabelList();
   
+  Standard_EXPORT   TDF_LabelList(const TDF_LabelList& Other);
+  
   Standard_EXPORT     void Assign(const TDF_LabelList& Other) ;
     void operator=(const TDF_LabelList& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_LabelList(const TDF_LabelList& Other);
 
 
 Standard_Address myFirst;

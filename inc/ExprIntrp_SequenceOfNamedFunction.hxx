@@ -43,6 +43,8 @@ public:
   
       ExprIntrp_SequenceOfNamedFunction();
   
+  Standard_EXPORT   ExprIntrp_SequenceOfNamedFunction(const ExprIntrp_SequenceOfNamedFunction& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~ExprIntrp_SequenceOfNamedFunction()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ExprIntrp_SequenceOfNamedFunction(const ExprIntrp_SequenceOfNamedFunction& Other);
 
 
 

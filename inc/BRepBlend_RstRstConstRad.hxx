@@ -58,6 +58,9 @@
 #ifndef _Blend_RstRstFunction_HeaderFile
 #include <Blend_RstRstFunction.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Blend_DecrochStatus_HeaderFile
 #include <Blend_DecrochStatus.hxx>
 #endif
@@ -67,7 +70,6 @@
 class Adaptor3d_HSurface;
 class Adaptor2d_HCurve2d;
 class Adaptor3d_HCurve;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 class gp_Pnt2d;
@@ -83,7 +85,8 @@ class TColgp_Array1OfPnt2d;
 class TColgp_Array1OfVec2d;
 
 
-
+//! Copy of CSConstRad with a pcurve on surface <br>
+//!          as support. <br>
 class BRepBlend_RstRstConstRad  : public Blend_RstRstFunction {
 public:
 

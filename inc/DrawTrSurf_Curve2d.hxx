@@ -40,11 +40,13 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class Geom2d_Curve;
 class Draw_Color;
 class Draw_Display;
 class Draw_Drawable3D;
-class Draw_Interpretor;
 
 
 //! This class defines a drawable curve in 2d space. <br>

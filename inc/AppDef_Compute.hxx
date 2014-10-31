@@ -52,6 +52,9 @@
 #ifndef _AppParCurves_Constraint_HeaderFile
 #include <AppParCurves_Constraint.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class TColStd_HArray1OfReal;
 class AppParCurves_HArray1OfConstraintCouple;
 class AppDef_MultiLine;
@@ -61,7 +64,6 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute;
 class AppDef_ResConstraintOfMyGradientOfCompute;
 class AppDef_ParFunctionOfMyGradientOfCompute;
 class AppDef_Gradient_BFGSOfMyGradientOfCompute;
-class math_Vector;
 class AppParCurves_MultiCurve;
 class AppParCurves_MultiBSpCurve;
 class TColStd_Array1OfReal;

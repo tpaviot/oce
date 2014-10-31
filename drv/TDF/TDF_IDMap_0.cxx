@@ -5,9 +5,6 @@
 
 #include <TDF_IDMap.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
 #ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
 #endif

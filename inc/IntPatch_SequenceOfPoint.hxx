@@ -40,6 +40,8 @@ public:
   
       IntPatch_SequenceOfPoint();
   
+  Standard_EXPORT   IntPatch_SequenceOfPoint(const IntPatch_SequenceOfPoint& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntPatch_SequenceOfPoint()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntPatch_SequenceOfPoint(const IntPatch_SequenceOfPoint& Other);
 
 
 

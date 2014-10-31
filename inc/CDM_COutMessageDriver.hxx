@@ -24,7 +24,7 @@
 #endif
 
 
-
+//! aMessageDriver for output to COUT (only ASCII strings) <br>
 class CDM_COutMessageDriver : public CDM_MessageDriver {
 
 public:

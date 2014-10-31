@@ -43,6 +43,8 @@ public:
   
       TDocStd_SequenceOfApplicationDelta();
   
+  Standard_EXPORT   TDocStd_SequenceOfApplicationDelta(const TDocStd_SequenceOfApplicationDelta& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TDocStd_SequenceOfApplicationDelta()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDocStd_SequenceOfApplicationDelta(const TDocStd_SequenceOfApplicationDelta& Other);
 
 
 

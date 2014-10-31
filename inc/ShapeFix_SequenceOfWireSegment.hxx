@@ -40,6 +40,8 @@ public:
   
       ShapeFix_SequenceOfWireSegment();
   
+  Standard_EXPORT   ShapeFix_SequenceOfWireSegment(const ShapeFix_SequenceOfWireSegment& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~ShapeFix_SequenceOfWireSegment()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ShapeFix_SequenceOfWireSegment(const ShapeFix_SequenceOfWireSegment& Other);
 
 
 

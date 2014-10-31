@@ -43,6 +43,8 @@ public:
   
       Approx_SequenceOfHArray1OfReal();
   
+  Standard_EXPORT   Approx_SequenceOfHArray1OfReal(const Approx_SequenceOfHArray1OfReal& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Approx_SequenceOfHArray1OfReal()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Approx_SequenceOfHArray1OfReal(const Approx_SequenceOfHArray1OfReal& Other);
 
 
 

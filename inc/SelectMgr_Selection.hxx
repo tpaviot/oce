@@ -83,6 +83,12 @@ public:
   //! Constructs a selection object defined by the selection mode IdMode. <br>
 //! The default setting 0 is the selection mode for a shape in its entirety. <br>
   Standard_EXPORT   SelectMgr_Selection(const Standard_Integer IdMode = 0);
+  
+  Standard_EXPORT     void Destroy() ;
+~SelectMgr_Selection()
+{
+  Destroy();
+}
   //! Adds the sensitive primitive aprimitive to the list of <br>
 //! stored entities in this object. <br>
 //! Raises NullObject if the primitive is a null handle. <br>
@@ -113,7 +119,6 @@ public:
         SelectMgr_TypeOfUpdate UpdateStatus() const;
   
         void UpdateStatus(const SelectMgr_TypeOfUpdate UpdateFlag) ;
-
 
 
 

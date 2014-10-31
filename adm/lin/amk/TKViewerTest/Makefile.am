@@ -49,13 +49,13 @@ libTKViewerTest_la_SOURCES = \
 @top_srcdir@/drv/ViewerTest/ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName_0.cxx \
 @top_srcdir@/drv/ViewerTest/ViewerTest_DoubleMapOfInteractiveAndName_0.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest.cxx \
+@top_srcdir@/src/ViewerTest/ViewerTest_AutoUpdater.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_AviCommands.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_EventManager.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_FilletCommands.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_ObjectCommands.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_OpenGlCommands.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_RelationCommands.cxx \
-@top_srcdir@/src/ViewerTest/ViewerTest_Tool.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_ViewerCommands.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_VoxelCommands.cxx
 

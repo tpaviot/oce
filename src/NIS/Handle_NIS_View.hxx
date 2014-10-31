@@ -17,11 +17,11 @@
 #define Handle_NIS_View_HeaderFile
 
 #include <Standard_DefineHandle.hxx>
-#include <Handle_V3d_OrthographicView.hxx>
+#include <Handle_V3d_View.hxx>
 
 class NIS_View;
 
 // Definition of HANDLE object using Standard_DefineHandle.hxx
-DEFINE_STANDARD_HANDLE (NIS_View, V3d_OrthographicView)
+DEFINE_STANDARD_HANDLE (NIS_View, V3d_View)
 
 #endif

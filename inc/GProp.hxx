@@ -23,19 +23,10 @@ class gp_Pnt;
 class gp_Mat;
 class GProp_GProps;
 class GProp_PGProps;
-class GProp_CGProps;
 class GProp_CelGProps;
-class GProp_SGProps;
 class GProp_SelGProps;
-class GProp_VGProps;
-class GProp_VGPropsGK;
-class GProp_UFunction;
-class GProp_TFunction;
 class GProp_VelGProps;
 class GProp_PrincipalProps;
-class GProp_CurveTool;
-class GProp_FaceTool;
-class GProp_DomainTool;
 class GProp_PEquation;
 
 
@@ -91,19 +82,10 @@ private:
 
 friend class GProp_GProps;
 friend class GProp_PGProps;
-friend class GProp_CGProps;
 friend class GProp_CelGProps;
-friend class GProp_SGProps;
 friend class GProp_SelGProps;
-friend class GProp_VGProps;
-friend class GProp_VGPropsGK;
-friend class GProp_UFunction;
-friend class GProp_TFunction;
 friend class GProp_VelGProps;
 friend class GProp_PrincipalProps;
-friend class GProp_CurveTool;
-friend class GProp_FaceTool;
-friend class GProp_DomainTool;
 friend class GProp_PEquation;
 
 };

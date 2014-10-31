@@ -69,6 +69,7 @@ Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Trsf2d);
 //! <br>
 //!   where {V1, V2} defines the vectorial part of the transformation <br>
 //!   and T defines the translation part of the transformation. <br>
+//!  This transformation never change the nature of the objects. <br>
 class gp_Trsf2d  {
 
 public:
@@ -167,17 +168,8 @@ public:
   return Multiplied(T);
 }
   
-//!  Computes the transformation composed from <T> and  <me>. <br>
-//!  In a C++ implementation you can also write Tcomposed = <me> * T. <br>
-//!  Example : <br>
-//!      Trsf2d T1, T2, Tcomp; ............... <br>
-//!      //composition : <br>
-//!        Tcomp = T2.Multiplied(T1);         // or   (Tcomp = T2 * T1) <br>
-//!      // transformation of a point <br>
-//!        Pnt2d P1(10.,3.,4.); <br>
-//!        Pnt2d P2 = P1.Transformed(Tcomp);  //using Tcomp <br>
-//!        Pnt2d P3 = P1.Transformed(T1);     //using T1 then T2 <br>
-//!        P3.Transform(T2);                  // P3 = P2 !!! <br>
+//!  Computes the transformation composed from <me> and T. <br>
+//!  <me> = <me> * T <br>
   Standard_EXPORT     void Multiply(const gp_Trsf2d& T) ;
     void operator *=(const gp_Trsf2d& T) 
 {
@@ -202,6 +194,17 @@ public:
         void Transforms(Standard_Real& X,Standard_Real& Y) const;
   //! Transforms  a doublet XY with a Trsf2d <br>
         void Transforms(gp_XY& Coord) const;
+  //! Sets the coefficients  of the transformation. The <br>
+//!         transformation  of the  point  x,y is  the point <br>
+//!         x',y' with : <br>
+//! <br>
+//!         x' = a11 x + a12 y + a13 <br>
+//!         y' = a21 x + a22 y + a23 <br>
+//! <br>
+//!         The method Value(i,j) will return aij. <br>
+//!         Raises ConstructionError if the determinant of the aij is null. <br>
+//!         If the matrix as not a uniform scale it will be orthogonalized before future using. <br>
+  Standard_EXPORT     void SetValues(const Standard_Real a11,const Standard_Real a12,const Standard_Real a13,const Standard_Real a21,const Standard_Real a22,const Standard_Real a23) ;
     Standard_Real _CSFDB_Getgp_Trsf2dscale() const { return scale; }
     void _CSFDB_Setgp_Trsf2dscale(const Standard_Real p) { scale = p; }
     gp_TrsfForm _CSFDB_Getgp_Trsf2dshape() const { return shape; }
@@ -214,6 +217,8 @@ friend class gp_GTrsf2d;
 
 protected:
 
+  //! Makes orthogonalization of "matrix" <br>
+  Standard_EXPORT     void Orthogonalize() ;
 
 
 

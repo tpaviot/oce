@@ -22,9 +22,6 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _PColStd_FieldOfHArray2OfInteger_HeaderFile
 #include <PColStd_FieldOfHArray2OfInteger.hxx>
 #endif
@@ -37,10 +34,6 @@
 #ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray2OfInteger_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray2OfInteger.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_RangeError;
 class Standard_OutOfRange;
 class PColStd_FieldOfHArray2OfInteger;
@@ -72,10 +65,6 @@ public:
         Standard_Integer UpperRow() const;
   
   Standard_EXPORT     Standard_Integer Value(const Standard_Integer Row,const Standard_Integer Col) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PColStd_HArray2OfInteger( )
 {
@@ -166,10 +155,6 @@ PColStd_FieldOfHArray2OfInteger Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PColStd_HArray2OfInteger& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

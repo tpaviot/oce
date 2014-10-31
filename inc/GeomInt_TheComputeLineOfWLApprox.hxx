@@ -43,6 +43,9 @@
 #ifndef _AppParCurves_Constraint_HeaderFile
 #include <AppParCurves_Constraint.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class TColStd_HArray1OfReal;
 class TColStd_HArray1OfInteger;
 class AppParCurves_HArray1OfConstraintCouple;
@@ -57,7 +60,6 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox;
-class math_Vector;
 class TColStd_Array1OfReal;
 class TColStd_Array1OfInteger;
 class AppParCurves_MultiBSpCurve;

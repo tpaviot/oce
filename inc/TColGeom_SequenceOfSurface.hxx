@@ -43,6 +43,8 @@ public:
   
       TColGeom_SequenceOfSurface();
   
+  Standard_EXPORT   TColGeom_SequenceOfSurface(const TColGeom_SequenceOfSurface& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColGeom_SequenceOfSurface()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColGeom_SequenceOfSurface(const TColGeom_SequenceOfSurface& Other);
 
 
 

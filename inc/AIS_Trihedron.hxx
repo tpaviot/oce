@@ -49,8 +49,8 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
@@ -73,11 +73,10 @@ class AIS_Axis;
 class AIS_Point;
 class AIS_Plane;
 class AIS_InteractiveContext;
-class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;
-class TopLoc_Location;
+class gp_Trsf;
 class SelectMgr_Selection;
 class Quantity_Color;
 class TColgp_Array1OfPnt;
@@ -154,7 +153,7 @@ public:
 //!           to the object to display before computation  !!! <br>
   Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
   
-  Standard_EXPORT     void SetLocation(const TopLoc_Location& aLoc) ;
+  Standard_EXPORT     void SetLocalTransformation(const gp_Trsf& theTransformation) ;
   //! Returns index 3, selection of the planes XOY, YOZ, XOZ. <br>
   Standard_EXPORT   virtual  Standard_Integer Signature() const;
   //! Indicates that the type of Interactive Object is datum. <br>

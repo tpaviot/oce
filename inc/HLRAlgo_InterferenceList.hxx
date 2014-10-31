@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   HLRAlgo_InterferenceList();
   
+  Standard_EXPORT   HLRAlgo_InterferenceList(const HLRAlgo_InterferenceList& Other);
+  
   Standard_EXPORT     void Assign(const HLRAlgo_InterferenceList& Other) ;
     void operator=(const HLRAlgo_InterferenceList& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   HLRAlgo_InterferenceList(const HLRAlgo_InterferenceList& Other);
 
 
 Standard_Address myFirst;

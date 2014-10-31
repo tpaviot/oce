@@ -1,0 +1,12 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Blend_Point_HeaderFile
+#include <Blend_Point.hxx>
+#endif
+#ifndef _BRepBlend_Extremity_HeaderFile
+#include <BRepBlend_Extremity.hxx>
+#endif
+#ifndef _BRepBlend_Line_HeaderFile
+#include <BRepBlend_Line.hxx>
+#endif

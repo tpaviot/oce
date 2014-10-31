@@ -40,6 +40,8 @@ public:
   
       Hatch_SequenceOfLine();
   
+  Standard_EXPORT   Hatch_SequenceOfLine(const Hatch_SequenceOfLine& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Hatch_SequenceOfLine()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Hatch_SequenceOfLine(const Hatch_SequenceOfLine& Other);
 
 
 

@@ -58,6 +58,7 @@ class PTopoDS_HShape;
 
 //! The TranslateTool class is provided to support the <br>
 //!          translation of BRep topological data structures. <br>
+//!          Used to call the MgtTopoDS methods. <br>
 class MgtBRep_TranslateTool : public MgtTopoDS_TranslateTool {
 
 public:

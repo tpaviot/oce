@@ -23,13 +23,34 @@
 
 #include <tcl.h>
 #include <Draw_Interpretor.hxx>
+#include <Draw_Window.hxx>
 #include <Draw_Appli.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <Image_AlienPixMap.hxx>
+#include <NCollection_List.hxx>
 
 extern Draw_Interpretor theCommands;
 extern Standard_Boolean Draw_VirtualWindows;
 static Tcl_Interp *interp;        /* Interpreter for this application. */
+static NCollection_List<Draw_Window::FCallbackBeforeTerminate> MyCallbacks;
+
+void Draw_Window::AddCallbackBeforeTerminate(FCallbackBeforeTerminate theCB)
+{
+  MyCallbacks.Append(theCB);
+}
+
+void Draw_Window::RemoveCallbackBeforeTerminate(FCallbackBeforeTerminate theCB)
+{
+  NCollection_List<Draw_Window::FCallbackBeforeTerminate>::Iterator Iter(MyCallbacks);
+  for(; Iter.More(); Iter.Next())
+  {
+    if (Iter.Value() == theCB)
+    {
+      MyCallbacks.Remove(Iter);
+      break;
+    }
+  }
+}
 
 /*
  *----------------------------------------------------------------------
@@ -94,43 +115,9 @@ defaultPrompt:
 
 #if !defined(_WIN32) && !defined(__WIN32__)
 
-#ifdef HAVE_CONFIG_H
-# include <config.h>
-#endif
-
 #include <OSD_Timer.hxx>
-
-#ifdef HAVE_SYS_TIME_H
-# include <sys/time.h>
-#endif
-
-#ifdef HAVE_SYS_TYPES_H
-# include <sys/types.h>
-#endif
-
-#ifdef HAVE_SYS_SELECT_H
-#include <sys/select.h>
-#endif
-
-#ifdef HAVE_SYS_FILIO_H
-#include <sys/filio.h>
-#else
-#include <sys/ioctl.h>
-#endif
-
-#include <fcntl.h>
-
-#ifdef HAVE_UNISTD_H
-# include <unistd.h>
-#endif
-
 #include <Draw_Window.hxx>
-
-#ifdef HAVE_STRINGS_H
-# include <strings.h>
-#endif
-
-#include <stdio.h>
+#include <unistd.h>
 
 #if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
   // use forward declaration for small subset of used Tk functions
@@ -1075,6 +1062,11 @@ void Run_Appli(Standard_Boolean (*interprete) (const char*))
     }
 
 #endif
+  NCollection_List<Draw_Window::FCallbackBeforeTerminate>::Iterator Iter(MyCallbacks);
+  for(; Iter.More(); Iter.Next())
+  {
+      (*Iter.Value())();
+  }
 }
 
 //======================================================
@@ -2057,6 +2049,11 @@ static DWORD WINAPI readStdinThreadFunc(VOID)
 \*--------------------------------------------------------*/
 void exitProc(ClientData /*dc*/)
 {
+  NCollection_List<Draw_Window::FCallbackBeforeTerminate>::Iterator Iter(MyCallbacks);
+  for(; Iter.More(); Iter.Next())
+  {
+      (*Iter.Value())();
+  }
   HANDLE proc = GetCurrentProcess();
   TerminateProcess(proc, 0);
 }
@@ -2113,7 +2110,7 @@ static DWORD WINAPI tkLoop(VOID)
 #endif //#ifdef _TK
 
   // set signal handler in the new thread
-  OSD::SetSignal();
+  OSD::SetSignal(Standard_False);
 
   // inform the others that we have started
   isTkLoopStarted = true;

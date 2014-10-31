@@ -40,6 +40,8 @@ public:
   
       HatchGen_PointsOnHatching();
   
+  Standard_EXPORT   HatchGen_PointsOnHatching(const HatchGen_PointsOnHatching& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~HatchGen_PointsOnHatching()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   HatchGen_PointsOnHatching(const HatchGen_PointsOnHatching& Other);
 
 
 

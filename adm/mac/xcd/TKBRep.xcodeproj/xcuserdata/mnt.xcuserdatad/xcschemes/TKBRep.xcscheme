@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "06A50C930B9408E21841105D"
+               BlueprintIdentifier = "15D911CA0E0613D811EA0312"
                BuildableName = "libTKBRep.dylib"
                BlueprintName = "TKBRep"
                ReferencedContainer = "container:TKBRep.xcodeproj">

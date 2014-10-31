@@ -25,11 +25,8 @@
 #ifndef _Aspect_Handle_HeaderFile
 #include <Aspect_Handle.hxx>
 #endif
-#ifndef _WNT_WindowData_HeaderFile
-#include <WNT_WindowData.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
-#include <Standard_Address.hxx>
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Aspect_Window_HeaderFile
 #include <Aspect_Window.hxx>
@@ -43,14 +40,17 @@
 #ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
 #endif
+#ifndef _Standard_Address_HeaderFile
+#include <Standard_Address.hxx>
+#endif
 #ifndef _Aspect_TypeOfResize_HeaderFile
 #include <Aspect_TypeOfResize.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _Quantity_Ratio_HeaderFile
 #include <Quantity_Ratio.hxx>
+#endif
+#ifndef _Aspect_Drawable_HeaderFile
+#include <Aspect_Drawable.hxx>
 #endif
 class WNT_WClass;
 class Aspect_WindowDefinitionError;
@@ -70,8 +70,6 @@ public:
   //! Creates a Window based on the existing window handle. <br>
 //!          This handle equals ( aPart1 << 16 ) + aPart2. <br>
   Standard_EXPORT   WNT_Window(const Aspect_Handle aHandle,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY);
-  //! Creates a Window based on the existing window <aHandle>. <br>
-  Standard_EXPORT   WNT_Window(const Standard_Integer aPart1,const Standard_Integer aPart2,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY);
   //! Destroies the Window and all resourses attached to it. <br>
   Standard_EXPORT   virtual  void Destroy() ;
 ~WNT_Window()
@@ -94,17 +92,9 @@ public:
   Standard_EXPORT   virtual  Aspect_TypeOfResize DoResize() const;
   //! Apply the mapping change to the window <me> <br>
 //! and returns TRUE if the window is mapped at screen. <br>
-  Standard_EXPORT   virtual  Standard_Boolean DoMapping() const;
+      virtual  Standard_Boolean DoMapping() const;
   //! Changes variables due to window position. <br>
   Standard_EXPORT     void SetPos(const Standard_Integer X,const Standard_Integer Y,const Standard_Integer X1,const Standard_Integer Y1) ;
-  //! Sets user defined flags in the extra window data area. <br>
-//!          Supported flags WDF_* are listed in InterfaceGraphic_WNT.hxx <br>
-//!          In particular, the window backround can be turned off using this method. <br>
-  Standard_EXPORT     void SetFlags(const Standard_Integer aFlags) ;
-  //! Reset specified flags in the extra window data area. <br>
-//!          Supported flags WDF_* are listed in InterfaceGraphic_WNT.hxx <br>
-//!          In particular, the window backround can be turned on using this method. <br>
-  Standard_EXPORT     void ResetFlags(const Standard_Integer aFlags) ;
   //! Returns True if the window <me> is opened <br>
 //!	        and False if the window is closed. <br>
   Standard_EXPORT   virtual  Standard_Boolean IsMapped() const;
@@ -119,6 +109,10 @@ public:
         Aspect_Handle HWindow() const;
   //! Returns the Windows NT handle parent of the created window <me>. <br>
         Aspect_Handle HParentWindow() const;
+  //! Returns native Window handle (HWND) <br>
+      virtual  Aspect_Drawable NativeHandle() const;
+  //! Returns parent of native Window handle (HWND on Windows, Window with Xlib, and so on) <br>
+      virtual  Aspect_Drawable NativeParentHandle() const;
 
 
 
@@ -134,14 +128,11 @@ Standard_Integer aYBottom;
 Handle_WNT_WClass myWClass;
 Aspect_Handle myHWindow;
 Aspect_Handle myHParentWindow;
-WNT_WindowData myExtraData;
-Standard_Address myUsrData;
+Standard_Boolean myIsForeign;
 
 
 private: 
 
-  //! private method <br>
-  Standard_EXPORT     void doCreate(const Aspect_Handle aHandle,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY) ;
 
 
 

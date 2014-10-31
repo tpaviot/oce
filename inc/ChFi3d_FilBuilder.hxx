@@ -55,6 +55,9 @@
 #ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Handle_BRepAdaptor_HCurve2d_HeaderFile
 #include <Handle_BRepAdaptor_HCurve2d.hxx>
 #endif
@@ -81,7 +84,6 @@ class ChFiDS_HElSpine;
 class ChFiDS_Spine;
 class BRepAdaptor_HSurface;
 class Adaptor3d_TopolTool;
-class math_Vector;
 class BRepAdaptor_HCurve2d;
 class ChFiDS_SequenceOfSurfData;
 class BRepBlend_Line;
@@ -89,7 +91,7 @@ class ChFiDS_Stripe;
 class ChFiDS_ListOfStripe;
 
 
-//! Tool  of  construction of  fillets 3d on  edges. <br>
+//! Tool  of  construction of  fillets 3d on  edges (on a solid). <br>
 class ChFi3d_FilBuilder  : public ChFi3d_Builder {
 public:
 

@@ -16,13 +16,13 @@
 #ifndef Poly_CoherentTriangulation_HeaderFile
 #define Poly_CoherentTriangulation_HeaderFile
 
-#include <Handle_Poly_Triangulation.hxx>
+#include <Poly_Triangulation.hxx>
 #include <Poly_CoherentNode.hxx>
 #include <Poly_CoherentTriangle.hxx>
 #include <Poly_CoherentLink.hxx>
 #include <NCollection_Vector.hxx>
 
-class Handle_Poly_CoherentTriangulation;
+class Handle(Poly_CoherentTriangulation);
 class Poly_CoherentTriangulation;
 template <class A> class NCollection_List;
 
@@ -33,90 +33,69 @@ typedef NCollection_Vector<Poly_CoherentNode>::Iterator
 typedef NCollection_Vector<Poly_CoherentLink>::Iterator
                                 Poly_BaseIteratorOfCoherentLink;
 
+//! Definition of HANDLE object using Standard_DefineHandle.hxx
+#include <Standard_DefineHandle.hxx>
+class Poly_CoherentTriangulation;
+DEFINE_STANDARD_HANDLE (Poly_CoherentTriangulation, Standard_Transient)
+
 /**
  * Triangulation structure that allows to:
  * <ul>
- * <li>Store the connectivity of each triangle with up to 3 neighbouring ones
- *     and with the corresponding 3rd nodes on them,</li>
- * <li>Store the connectivity of each node with all triangles that share this
- *     node</li>
+ * <li>Store the connectivity of each triangle with up to 3 neighbouring ones and with the corresponding 3rd nodes on them,</li>
+ * <li>Store the connectivity of each node with all triangles that share this node</li>
  * <li>Add nodes and triangles to the structure,</li>
  * <li>Find all triangles sharing a single or a couple of nodes</li>
  * <li>Remove triangles from structure</li>
- * <li>Optionally create Links between pairs of nodes according to the current
- *     triangulation. 
+ * <li>Optionally create Links between pairs of nodes according to the current triangulation.</li>
  * <li>Convert from/to Poly_Triangulation structure.</li>
  * </ul>
- * This class is useful for algorithms that need to analyse and/or edit a
- * triangulated mesh -- for example for mesh refining. The connectivity model
- * follows the idea that all Triangles in a mesh should have coherent orientation
- * like on a surface of a solid body. Connections between more than 2 triangles
- * are not suppoorted.
+ *
+ * This class is useful for algorithms that need to analyse and/or edit a triangulated mesh -- for example for mesh refining.
+ * The connectivity model follows the idea that all Triangles in a mesh should have coherent orientation like on a surface of a solid body.
+ * Connections between more than 2 triangles are not suppoorted.
+ *
  * @section Poly_CoherentTriangulation Architecture
  * The data types used in this structure are:
  * <ul>
- * <li><b>Poly_CoherentNode</b>: Inherits go_XYZ therefore provides the full
- *     public API of gp_XYZ. Contains references to all incident triangles. You
- *     can add new nodes but you cannot remove existing ones. However each node
- *     that has no referenced triangle is considered as "free" (use the method
- *     IsFreeNode() to check this). Free nodes are not available to further
- *     processing, particularly they are not exported in Poly_Triangulation.
+ * <li><b>Poly_CoherentNode</b>: Inherits go_XYZ therefore provides the full public API of gp_XYZ.
+ * Contains references to all incident triangles. You can add new nodes but you cannot remove existing ones.
+ * However each node that has no referenced triangle is considered as "free" (use the method IsFreeNode() to check this).
+ * Free nodes are not available to further processing, particularly they are not exported in Poly_Triangulation.
  * </li>
- * <li><b>Poly_CoherentTriangle</b>: Main data type. Refers three Nodes, three
- *     connected Triangles, three opposite (connected) Nodes and three Links.
- *     If there is boundary then 1, 2 or 3 references to Triangles/connected
- *     Nodes/Links are assigned to NULL (for pointers) or -1 (for integer
- *     node index).
- *     <br>
- *     You can find a triangle by one node using its triangle iterator or by
- *     two nodes - creating a temporary Poly_CoherentLink and calling the method
- *     FindTriangle().
- *     <br>
- *     Triangles can be removed but they are never deleted from
- *     the containing array. Removed triangles have all nodes equal to -1. You
- *     can use the method IsEmpty() to check that.
+ * <li><b>Poly_CoherentTriangle</b>: Main data type. Refers three Nodes, three connected Triangles, three opposite (connected) Nodes and three Links.
+ * If there is boundary then 1, 2 or 3 references to Triangles/connected Nodes/Links are assigned to NULL (for pointers) or -1 (for integer node index).
+ *
+ * You can find a triangle by one node using its triangle iterator or by
+ * two nodes - creating a temporary Poly_CoherentLink and calling the method FindTriangle().
+ *
+ * Triangles can be removed but they are never deleted from the containing array. Removed triangles have all nodes equal to -1.
+ * You can use the method IsEmpty() to check that.
  * </li>
- * <li><b>Poly_CoherentLink</b>: Auxiliary data type. Normally the array of
- *     Links is empty, because for many algorithms it is sufficient to define
- *     only Triangles. You can explicitly create the Links at least once,
- *     calling the method ComputeLinks(). Each Link is oriented couple of
- *     Poly_CoherentNode (directed to the ascending Node index). It refers
- *     two connected triangulated Nodes - on the left and on the right,
- *     therefore a Poly_CoherentLink instance refers the full set of nodes
- *     that constitute a couple of connected Triangles. A boundary Link has
- *     either the first (left) or the second (right) connected node index
- *     equal to -1.
- *     <br>
- *     When the array of Links is created, all subsequent calls to AddTriangle
- *     and RemoveTriangle try to preserve the connectivity Triangle-Link in
- *     addition to the connectivity Triangle-Triangle. Particularly, new Links
- *     are created by method AddTriangle() and existing ones are removed by
- *     method RemoveTriangle(), in each case whenever necessary.
- *     <br>
- *     Similarly to Poly_CoherentTriangle, a Link can be removed but not
- *     destroyed separately from others. Removed Link can be recogniosed using
- *     the method IsEmpty(). To destroy all Links, call the method ClearLinks(),
- *     this method also nullifies Link references in all Triangles. 
+ * <li><b>Poly_CoherentLink</b>: Auxiliary data type. Normally the array of Links is empty, because for many algorithms it is sufficient to define only Triangles.
+ * You can explicitly create the Links at least once, calling the method ComputeLinks(). Each Link is oriented couple of Poly_CoherentNode (directed to the ascending Node index).
+ * It refers two connected triangulated Nodes - on the left and on the right,
+ * therefore a Poly_CoherentLink instance refers the full set of nodes that constitute a couple of connected Triangles.
+ * A boundary Link has either the first (left) or the second (right) connected node index equal to -1.
+ *
+ * When the array of Links is created, all subsequent calls to AddTriangle and RemoveTriangle try to preserve the connectivity Triangle-Link in addition to the connectivity Triangle-Triangle.
+ * Particularly, new Links are created by method AddTriangle() and existing ones are removed by method RemoveTriangle(), in each case whenever necessary.
+ *
+ * Similarly to Poly_CoherentTriangle, a Link can be removed but not destroyed separately from others.
+ * Removed Link can be recogniosed using the method IsEmpty(). To destroy all Links, call the method ClearLinks(),
+ * this method also nullifies Link references in all Triangles.
  * </li>
- * All objects (except for free Nodes and empty Triangles and Links) can be
- * visited by the corresponding Iterator. Direct access is provided only for
- * Nodes (needed to resolve Node indexed commonly used as reference). Triangles
- * and Links can be retrieved by their index only internally, the public API
- * provides only references or pointers to C++ objects. If you need a direct
- * access to Triangles and Links, you can subclass Poly_CoherentTriangulation
- * and use the protected API for your needs.
- * <br>
- * Memory management: All data objects are stored in NCollection_Vector
- * containers that prove to be efficient for the performance. In addition
- * references to triangles are stored in ring lists, with an instance of such
- * list per Poly_CoherentNode. These lists are allocated in a memory allocator
- * that is provided in the constructor of Poly_CoherentTriangulation. By default
- * the standard OCCT allocator (aka NCollection_BaseAllocator) is used. But if
- * you need to increase the performance you can use NCollection_IncAllocator
- * instead.
+ * All objects (except for free Nodes and empty Triangles and Links) can be visited by the corresponding Iterator.
+ * Direct access is provided only for Nodes (needed to resolve Node indexed commonly used as reference).
+ * Triangles and Links can be retrieved by their index only internally, the public API provides only references or pointers to C++ objects.
+ * If you need a direct access to Triangles and Links, you can subclass Poly_CoherentTriangulation and use the protected API for your needs.
+ *
+ * Memory management: All data objects are stored in NCollection_Vector containers that prove to be efficient for the performance.
+ * In addition references to triangles are stored in ring lists, with an instance of such list per Poly_CoherentNode.
+ * These lists are allocated in a memory allocator that is provided in the constructor of Poly_CoherentTriangulation.
+ * By default the standard OCCT allocator (aka NCollection_BaseAllocator) is used.
+ * But if you need to increase the performance you can use NCollection_IncAllocator instead.
  * </ul>
  */
-
 class Poly_CoherentTriangulation : public Standard_Transient
 {
  public:
@@ -129,7 +108,7 @@ class Poly_CoherentTriangulation : public Standard_Transient
   public:
     //! Constructor
     Standard_EXPORT IteratorOfTriangle
-                          (const Handle_Poly_CoherentTriangulation& theTri);
+                          (const Handle(Poly_CoherentTriangulation)& theTri);
     //! Make step
     Standard_EXPORT virtual void Next ();
   };
@@ -142,7 +121,7 @@ class Poly_CoherentTriangulation : public Standard_Transient
   public:
     //! Constructor
     Standard_EXPORT IteratorOfNode
-                        (const Handle_Poly_CoherentTriangulation& theTri);
+                        (const Handle(Poly_CoherentTriangulation)& theTri);
     //! Make step
     Standard_EXPORT virtual void Next ();
   };
@@ -155,7 +134,7 @@ class Poly_CoherentTriangulation : public Standard_Transient
   public:
     //! Constructor
     Standard_EXPORT IteratorOfLink
-                        (const Handle_Poly_CoherentTriangulation& theTri);
+                        (const Handle(Poly_CoherentTriangulation)& theTri);
     //! Make step
     Standard_EXPORT virtual void Next ();
   };
@@ -178,15 +157,15 @@ class Poly_CoherentTriangulation : public Standard_Transient
    * Empty constructor.
    */
   Standard_EXPORT Poly_CoherentTriangulation
-                (const Handle_NCollection_BaseAllocator& theAlloc = 0L);
+                (const Handle(NCollection_BaseAllocator)& theAlloc = 0L);
 
   /**
    * Constructor. It does not create Links, you should call ComputeLinks
    * following this constructor if you need these links.
    */
   Standard_EXPORT Poly_CoherentTriangulation
-                (const Handle_Poly_Triangulation&        theTriangulation,
-                 const Handle_NCollection_BaseAllocator& theAlloc = 0L);
+                (const Handle(Poly_Triangulation)&        theTriangulation,
+                 const Handle(NCollection_BaseAllocator)& theAlloc = 0L);
 
   /**
    * Destructor.
@@ -196,7 +175,7 @@ class Poly_CoherentTriangulation : public Standard_Transient
   /**
    * Create an instance of Poly_Triangulation from this object.
    */
-  Standard_EXPORT Handle_Poly_Triangulation
+  Standard_EXPORT Handle(Poly_Triangulation)
                                    GetTriangulation () const;
 
   /**
@@ -370,7 +349,7 @@ class Poly_CoherentTriangulation : public Standard_Transient
    * Query the allocator of elements, this allocator can be used for other
    * objects 
    */
-  inline const Handle_NCollection_BaseAllocator&
+  inline const Handle(NCollection_BaseAllocator)&
                                 Allocator       () const
   {
     return myAlloc;
@@ -378,8 +357,8 @@ class Poly_CoherentTriangulation : public Standard_Transient
   /**
    * Create a copy of this Triangulation, using the given allocator.
    */
-  Standard_EXPORT Handle_Poly_CoherentTriangulation  Clone
-                (const Handle_NCollection_BaseAllocator& theAlloc) const;
+  Standard_EXPORT Handle(Poly_CoherentTriangulation)  Clone
+                (const Handle(NCollection_BaseAllocator)& theAlloc) const;
 
   /**
    * Debugging output.
@@ -397,7 +376,7 @@ class Poly_CoherentTriangulation : public Standard_Transient
   NCollection_Vector<Poly_CoherentTriangle> myTriangles;
   NCollection_Vector<Poly_CoherentNode>     myNodes;
   NCollection_Vector<Poly_CoherentLink>     myLinks;
-  Handle_NCollection_BaseAllocator          myAlloc;
+  Handle(NCollection_BaseAllocator)          myAlloc;
   Standard_Real                             myDeflection;
 
  public:
@@ -409,6 +388,6 @@ DEFINE_STANDARD_RTTI (Poly_CoherentTriangulation)
   friend class IteratorOfLink;
 };
 
-#include <Handle_Poly_CoherentTriangulation.hxx>
+#include <Poly_CoherentTriangulation.hxx>
 
 #endif

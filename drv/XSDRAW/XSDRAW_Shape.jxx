@@ -1,6 +1,0 @@
-#ifndef _Draw_Interpretor_HeaderFile
-#include <Draw_Interpretor.hxx>
-#endif
-#ifndef _XSDRAW_Shape_HeaderFile
-#include <XSDRAW_Shape.hxx>
-#endif

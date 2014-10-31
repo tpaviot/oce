@@ -60,7 +60,6 @@ libTKTopAlgo_la_LIBADD = $(CSF_OPT_LIBS) \
 $(STLPort_LIB) 
 
 libTKTopAlgo_la_SOURCES = \
-@top_srcdir@/drv/BRepApprox/BRepApprox_ApproxLine_0.cxx \
 @top_srcdir@/drv/BRepApprox/BRepApprox_Approx_0.cxx \
 @top_srcdir@/drv/BRepApprox/BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_0.cxx \
 @top_srcdir@/drv/BRepApprox/BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_0.cxx \
@@ -76,7 +75,6 @@ libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/drv/BRepApprox/BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_0.cxx \
 @top_srcdir@/drv/BRepApprox/BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_0.cxx \
 @top_srcdir@/drv/BRepApprox/BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_0.cxx \
-@top_srcdir@/drv/BRepApprox/BRepApprox_SurfaceTool_0.cxx \
 @top_srcdir@/drv/BRepApprox/BRepApprox_TheComputeLineBezierOfApprox_0.cxx \
 @top_srcdir@/drv/BRepApprox/BRepApprox_TheComputeLineOfApprox_0.cxx \
 @top_srcdir@/drv/BRepApprox/BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_0.cxx \
@@ -103,21 +101,12 @@ libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/drv/BRepClass3d/BRepClass3d_MapOfInter_0.cxx \
 @top_srcdir@/drv/BRepClass3d/BRepClass3d_SolidPassiveClassifier_0.cxx \
 @top_srcdir@/drv/BRepExtrema/BRepExtrema_UnCompatibleShape_0.cxx \
-@top_srcdir@/drv/BRepGProp/BRepGProp_Cinert_0.cxx \
-@top_srcdir@/drv/BRepGProp/BRepGProp_Sinert_0.cxx \
-@top_srcdir@/drv/BRepGProp/BRepGProp_TFunctionOfVinertGK_0.cxx \
-@top_srcdir@/drv/BRepGProp/BRepGProp_UFunctionOfVinertGK_0.cxx \
-@top_srcdir@/drv/BRepGProp/BRepGProp_VinertGK_0.cxx \
-@top_srcdir@/drv/BRepGProp/BRepGProp_Vinert_0.cxx \
-@top_srcdir@/drv/BRepMAT2d/BRepMAT2d_BisectingLocus_0.cxx \
 @top_srcdir@/drv/BRepMAT2d/BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape_0.cxx \
 @top_srcdir@/drv/BRepMAT2d/BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt_0.cxx \
 @top_srcdir@/drv/BRepMAT2d/BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape_0.cxx \
 @top_srcdir@/drv/BRepMAT2d/BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt_0.cxx \
 @top_srcdir@/drv/BRepMAT2d/BRepMAT2d_DataMapOfBasicEltShape_0.cxx \
 @top_srcdir@/drv/BRepMAT2d/BRepMAT2d_DataMapOfShapeSequenceOfBasicElt_0.cxx \
-@top_srcdir@/drv/BRepMAT2d/BRepMAT2d_SequenceNodeOfSequenceOfBasicElt_0.cxx \
-@top_srcdir@/drv/BRepMAT2d/BRepMAT2d_SequenceOfBasicElt_0.cxx \
 @top_srcdir@/drv/BRepTopAdaptor/BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool_0.cxx \
 @top_srcdir@/drv/BRepTopAdaptor/BRepTopAdaptor_DataMapNodeOfMapOfShapeTool_0.cxx \
 @top_srcdir@/drv/BRepTopAdaptor/BRepTopAdaptor_MapOfShapeTool_0.cxx \
@@ -163,13 +152,14 @@ libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/drv/MAT2d/MAT2d_DataMapOfIntegerPnt2d_0.cxx \
 @top_srcdir@/drv/MAT2d/MAT2d_DataMapOfIntegerSequenceOfConnexion_0.cxx \
 @top_srcdir@/drv/MAT2d/MAT2d_DataMapOfIntegerVec2d_0.cxx \
-@top_srcdir@/drv/MAT2d/MAT2d_Mat2d_0.cxx \
 @top_srcdir@/drv/MAT2d/MAT2d_SequenceNodeOfSequenceOfConnexion_0.cxx \
 @top_srcdir@/drv/MAT2d/MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve_0.cxx \
 @top_srcdir@/drv/MAT2d/MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry_0.cxx \
 @top_srcdir@/drv/MAT2d/MAT2d_SequenceOfConnexion_0.cxx \
 @top_srcdir@/drv/MAT2d/MAT2d_SequenceOfSequenceOfCurve_0.cxx \
 @top_srcdir@/drv/MAT2d/MAT2d_SequenceOfSequenceOfGeometry_0.cxx \
+@top_srcdir@/src/BRepApprox/BRepApprox_ApproxLine.cxx \
+@top_srcdir@/src/BRepApprox/BRepApprox_SurfaceTool.cxx \
 @top_srcdir@/src/BRepBndLib/BRepBndLib.cxx \
 @top_srcdir@/src/BRepBuilderAPI/BRepBuilderAPI.cxx \
 @top_srcdir@/src/BRepBuilderAPI/BRepBuilderAPI_Collect.cxx \
@@ -216,9 +206,15 @@ libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/src/BRepExtrema/BRepExtrema_ExtPF.cxx \
 @top_srcdir@/src/BRepExtrema/BRepExtrema_Poly.cxx \
 @top_srcdir@/src/BRepGProp/BRepGProp.cxx \
+@top_srcdir@/src/BRepGProp/BRepGProp_Cinert.cxx \
 @top_srcdir@/src/BRepGProp/BRepGProp_Domain.cxx \
 @top_srcdir@/src/BRepGProp/BRepGProp_EdgeTool.cxx \
 @top_srcdir@/src/BRepGProp/BRepGProp_Face.cxx \
+@top_srcdir@/src/BRepGProp/BRepGProp_Sinert.cxx \
+@top_srcdir@/src/BRepGProp/BRepGProp_TFunction.cxx \
+@top_srcdir@/src/BRepGProp/BRepGProp_UFunction.cxx \
+@top_srcdir@/src/BRepGProp/BRepGProp_Vinert.cxx \
+@top_srcdir@/src/BRepGProp/BRepGProp_VinertGK.cxx \
 @top_srcdir@/src/BRepIntCurveSurface/BRepIntCurveSurface_Inter.cxx \
 @top_srcdir@/src/BRepLib/BRepLib.cxx \
 @top_srcdir@/src/BRepLib/BRepLib_Command.cxx \
@@ -234,6 +230,7 @@ libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/src/BRepLib/BRepLib_MakeVertex.cxx \
 @top_srcdir@/src/BRepLib/BRepLib_MakeWire.cxx \
 @top_srcdir@/src/BRepLib/BRepLib_MakeWire_1.cxx \
+@top_srcdir@/src/BRepMAT2d/BRepMAT2d_BisectingLocus.cxx \
 @top_srcdir@/src/BRepMAT2d/BRepMAT2d_Explorer.cxx \
 @top_srcdir@/src/BRepMAT2d/BRepMAT2d_LinkTopoBilo.cxx \
 @top_srcdir@/src/BRepTopAdaptor/BRepTopAdaptor_FClass2d.cxx \
@@ -265,6 +262,7 @@ libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/src/MAT2d/MAT2d_Connexion.cxx \
 @top_srcdir@/src/MAT2d/MAT2d_CutCurve.cxx \
 @top_srcdir@/src/MAT2d/MAT2d_MapBiIntHasher.cxx \
+@top_srcdir@/src/MAT2d/MAT2d_Mat2d.cxx \
 @top_srcdir@/src/MAT2d/MAT2d_MiniPath.cxx \
 @top_srcdir@/src/MAT2d/MAT2d_SketchExplorer.cxx \
 @top_srcdir@/src/MAT2d/MAT2d_Tool2d.cxx

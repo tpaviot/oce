@@ -23,6 +23,8 @@ class BoundWithSurf from GeomFill inherits Boundary from GeomFill
  	--          the computations are done with a CurveOnSurf and a
  	--          normals field  defined by the normalized normal to
  	--          the surface along the PCurve.
+  --          Contains fields  to allow a reparametrization of curve
+  --          and normals field.
 
 uses
     Pnt            from gp,
@@ -35,7 +37,7 @@ is
     Create(CurveOnSurf : CurveOnSurface from Adaptor3d;
            Tol3d       : Real from Standard;
     	   Tolang      : Real from Standard)
-    returns mutable BoundWithSurf from GeomFill;
+    returns BoundWithSurf from GeomFill;
     	---Purpose:
     	-- Constructs a boundary object defined by the 3d curve CurveOnSurf.
     	-- The surface to be filled along this boundary will be in the

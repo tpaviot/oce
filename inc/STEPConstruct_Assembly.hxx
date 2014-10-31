@@ -49,7 +49,7 @@ class Interface_InterfaceModel;
 class StepShape_ContextDependentShapeRepresentation;
 
 
-//! This operator creates an item of an assembly, from its <br>
+//! This operator creates and checks an item of an assembly, from its <br>
 //!           basic data : a ShapeRepresentation, a Location ... <br>
 //! <br>
 //!           Three ways of coding such item from a ShapeRepresentation : <br>

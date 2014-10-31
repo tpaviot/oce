@@ -36,7 +36,7 @@ class Quantity_Date;
 
 
 //! A class for 'File' and 'Directory' grouping common <br>
-//!          methods. <br>
+//!          methods (file/directory manipulation tools). <br>
 //!          The "file oriented" name means files or directories which are <br>
 //!          in fact hard coded as files. <br>
 class OSD_FileNode  {

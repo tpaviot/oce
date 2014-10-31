@@ -33,6 +33,7 @@ class Geom_Surface;
 //! An interface between the services provided by any <br>
 //! surface from the package Geom and those required <br>
 //! of the surface by algorithms which use it. <br>
+//! Provides a  surface handled by reference. <br>
 class GeomAdaptor_HSurface : public GeomAdaptor_GHSurface {
 
 public:

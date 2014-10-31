@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   TDF_AttributeList();
   
+  Standard_EXPORT   TDF_AttributeList(const TDF_AttributeList& Other);
+  
   Standard_EXPORT     void Assign(const TDF_AttributeList& Other) ;
     void operator=(const TDF_AttributeList& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_AttributeList(const TDF_AttributeList& Other);
 
 
 Standard_Address myFirst;

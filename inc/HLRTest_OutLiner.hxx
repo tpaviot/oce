@@ -28,11 +28,13 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class HLRTopoBRep_OutLiner;
 class TopoDS_Shape;
 class Draw_Display;
 class Draw_Drawable3D;
-class Draw_Interpretor;
 
 
 

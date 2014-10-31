@@ -35,7 +35,7 @@ class HLRBRep_PolyAlgo;
 class Draw_Display;
 
 
-
+//! Used to display the results. <br>
 class HLRTest_DrawablePolyEdgeTool : public Draw_Drawable3D {
 
 public:

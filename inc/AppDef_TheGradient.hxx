@@ -43,7 +43,6 @@ class AppDef_ResConstraintOfTheGradient;
 class AppDef_ParFunctionOfTheGradient;
 class AppDef_Gradient_BFGSOfTheGradient;
 class AppParCurves_HArray1OfConstraintCouple;
-class math_Vector;
 class AppParCurves_MultiCurve;
 
 

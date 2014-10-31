@@ -40,6 +40,8 @@ public:
   
       IntSurf_SequenceOfCouple();
   
+  Standard_EXPORT   IntSurf_SequenceOfCouple(const IntSurf_SequenceOfCouple& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntSurf_SequenceOfCouple()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntSurf_SequenceOfCouple(const IntSurf_SequenceOfCouple& Other);
 
 
 

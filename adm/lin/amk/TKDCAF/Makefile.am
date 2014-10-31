@@ -53,8 +53,8 @@ libTKDCAF_la_LIBADD = $(CSF_OPT_LIBS) \
 $(STLPort_LIB) 
 
 libTKDCAF_la_SOURCES = \
-@top_srcdir@/drv/DDF/DDF_StackIteratorOfTransactionStack_0.cxx \
-@top_srcdir@/drv/DDF/DDF_StackNodeOfTransactionStack_0.cxx \
+@top_srcdir@/drv/DDF/DDF_ListIteratorOfTransactionStack_0.cxx \
+@top_srcdir@/drv/DDF/DDF_ListNodeOfTransactionStack_0.cxx \
 @top_srcdir@/drv/DDF/DDF_TransactionStack_0.cxx \
 @top_srcdir@/drv/DNaming/DNaming_DataMapIteratorOfDataMapOfShapeOfName_0.cxx \
 @top_srcdir@/drv/DNaming/DNaming_DataMapNodeOfDataMapOfShapeOfName_0.cxx \

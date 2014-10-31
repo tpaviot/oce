@@ -22,14 +22,14 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _StdSelect_SensitivityMode_HeaderFile
 #include <StdSelect_SensitivityMode.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Handle_Graphic3d_Group_HeaderFile
 #include <Handle_Graphic3d_Group.hxx>
@@ -63,53 +63,53 @@ class SelectMgr_EntityOwner;
 
 
 //! Selector Usable by Viewers from V3d <br>
-//! <br>
+//!          Accepts Only Sensitive Entities inheriting Select3D entities... <br>
 class StdSelect_ViewerSelector3d : public SelectMgr_ViewerSelector {
 
 public:
 
   //! Constructs an empty 3D selector object. <br>
   Standard_EXPORT   StdSelect_ViewerSelector3d();
-  //! Constructs a 3D selector object defined by the projector aProj. <br>
-  Standard_EXPORT   StdSelect_ViewerSelector3d(const Handle(Select3D_Projector)& aProj);
+  //! Constructs a 3D selector object defined by the projector <theProj>. <br>
+  Standard_EXPORT   StdSelect_ViewerSelector3d(const Handle(Select3D_Projector)& theProj);
   //! Processes the projection of the sensitive  primitives <br>
 //!          in the active view ; to be done before the selection action... <br>
-  Standard_EXPORT     void Convert(const Handle(SelectMgr_Selection)& aSelection) ;
-  //! Sets the new projector aProj to replace the one used at construction time. <br>
-  Standard_EXPORT     void Set(const Handle(Select3D_Projector)& aProj) ;
+  Standard_EXPORT     void Convert(const Handle(SelectMgr_Selection)& theSel) ;
+  //! Sets the new projector <theProj> to replace the one used at construction time. <br>
+  Standard_EXPORT     void Set(const Handle(Select3D_Projector)& theProj) ;
   //! Sets the selection sensitivity mode. SM_WINDOW mode <br>
 //! uses the specified pixel tolerance to compute the sensitivity <br>
 //! value, SM_VIEW mode allows to define the sensitivity manually. <br>
-  Standard_EXPORT     void SetSensitivityMode(const StdSelect_SensitivityMode aMode) ;
+  Standard_EXPORT     void SetSensitivityMode(const StdSelect_SensitivityMode theMode) ;
   //! Returns the selection sensitivity mode. <br>
         StdSelect_SensitivityMode SensitivityMode() const;
-  //! Sets the pixel tolerance aTolerance. <br>
-  Standard_EXPORT     void SetPixelTolerance(const Standard_Integer aTolerance) ;
+  //! Sets the pixel tolerance <theTolerance>. <br>
+  Standard_EXPORT     void SetPixelTolerance(const Standard_Integer theTolerance) ;
   //! Returns the pixel tolerance. <br>
         Standard_Integer PixelTolerance() const;
   //! Picks the sensitive entity at the pixel coordinates of <br>
-//! the mouse Xpix and Ypix.   The selector looks for touched areas and owners. <br>
-  Standard_EXPORT     void Pick(const Standard_Integer XPix,const Standard_Integer YPix,const Handle(V3d_View)& aView) ;
+//! the mouse <theXPix> and <theYPix>. The selector looks for touched areas and owners. <br>
+  Standard_EXPORT     void Pick(const Standard_Integer theXPix,const Standard_Integer theYPix,const Handle(V3d_View)& theView) ;
   //! Picks the sensitive entity according to the minimum <br>
-//! and maximum pixel values XPMin, YPMin, XPMax <br>
-//! and YPMax   defining a 2D area for selection in the 3D view aView. <br>
-  Standard_EXPORT     void Pick(const Standard_Integer XPMin,const Standard_Integer YPMin,const Standard_Integer XPMax,const Standard_Integer YPMax,const Handle(V3d_View)& aView) ;
-  //! pick action  - input pixel values for polyline selection for selection. <br>
-  Standard_EXPORT     void Pick(const TColgp_Array1OfPnt2d& Polyline,const Handle(V3d_View)& aView) ;
+//! and maximum pixel values <theXPMin>, <theYPMin>, <theXPMax> <br>
+//! and <theYPMax> defining a 2D area for selection in the 3D view aView. <br>
+  Standard_EXPORT     void Pick(const Standard_Integer theXPMin,const Standard_Integer theYPMin,const Standard_Integer theXPMax,const Standard_Integer theYPMax,const Handle(V3d_View)& theView) ;
+  //! pick action - input pixel values for polyline selection for selection. <br>
+  Standard_EXPORT     void Pick(const TColgp_Array1OfPnt2d& thePolyline,const Handle(V3d_View)& theView) ;
   //! Returns the current Projector. <br>
        const Handle_Select3D_Projector& Projector() const;
-  //! Displays sensitive areas found in the view aView. <br>
-  Standard_EXPORT     void DisplayAreas(const Handle(V3d_View)& aView) ;
+  //! Displays sensitive areas found in the view <theView>. <br>
+  Standard_EXPORT     void DisplayAreas(const Handle(V3d_View)& theView) ;
   //! Clears the view aView of sensitive areas found in it. <br>
-  Standard_EXPORT     void ClearAreas(const Handle(V3d_View)& aView) ;
-  //! Displays the selection aSel found in the view aView. <br>
-  Standard_EXPORT     void DisplaySensitive(const Handle(V3d_View)& aView) ;
+  Standard_EXPORT     void ClearAreas(const Handle(V3d_View)& theView) ;
+  //! Displays sensitives in view <theView>. <br>
+  Standard_EXPORT     void DisplaySensitive(const Handle(V3d_View)& theView) ;
   
-  Standard_EXPORT     void ClearSensitive(const Handle(V3d_View)& aView) ;
+  Standard_EXPORT     void ClearSensitive(const Handle(V3d_View)& theView) ;
   
-  Standard_EXPORT     void DisplaySensitive(const Handle(SelectMgr_Selection)& aSel,const Handle(V3d_View)& aView,const Standard_Boolean ClearOthers = Standard_True) ;
+  Standard_EXPORT     void DisplaySensitive(const Handle(SelectMgr_Selection)& theSel,const Handle(V3d_View)& theView,const Standard_Boolean theToClearOthers = Standard_True) ;
   
-  Standard_EXPORT     void DisplayAreas(const Handle(SelectMgr_Selection)& aSel,const Handle(V3d_View)& aView,const Standard_Boolean ClearOthers = Standard_True) ;
+  Standard_EXPORT     void DisplayAreas(const Handle(SelectMgr_Selection)& theSel,const Handle(V3d_View)& theView,const Standard_Boolean theToClearOthers = Standard_True) ;
 
 
 
@@ -141,21 +141,23 @@ protected:
 private: 
 
   
-  Standard_EXPORT     Standard_Boolean UpdateProj(const Handle(V3d_View)& aView) ;
+  Standard_EXPORT     Standard_Boolean UpdateProj(const Handle(V3d_View)& theView) ;
   
-  Standard_EXPORT     void ComputeSensitivePrs(const Handle(SelectMgr_Selection)& aSel) ;
+  Standard_EXPORT     void ComputeSensitivePrs(const Handle(SelectMgr_Selection)& theSel) ;
   
-  Standard_EXPORT     void ComputeAreasPrs(const Handle(SelectMgr_Selection)& aSel) ;
+  Standard_EXPORT     void ComputeAreasPrs(const Handle(SelectMgr_Selection)& theSel) ;
 
-Handle_Select3D_Projector myprj;
-Standard_Real mycoeff[14];
-Standard_Real myprevcoeff[14];
-Standard_Real mycenter[2];
-Standard_Real myprevcenter[2];
-Standard_Real mylastzoom;
-StdSelect_SensitivityMode mysensmode;
-Standard_Integer mypixtol;
-Standard_Boolean myupdatetol;
+Handle_Select3D_Projector myProjector;
+Standard_Real myPrevAt[3];
+Standard_Real myPrevUp[3];
+Standard_Real myPrevProj[3];
+Standard_Real myPrevAxialScale[3];
+Standard_Real myPrevFOV;
+Standard_Real myPrevScale;
+Standard_Boolean myPrevOrthographic;
+StdSelect_SensitivityMode mySensMode;
+Standard_Integer myPixelTolerance;
+Standard_Boolean myToUpdateTolerance;
 Handle_Graphic3d_Group myareagroup;
 Handle_Graphic3d_Group mysensgroup;
 Handle_Graphic3d_Structure mystruct;

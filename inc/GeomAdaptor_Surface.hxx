@@ -73,6 +73,7 @@ class Adaptor3d_HCurve;
 //! An interface between the services provided by any <br>
 //! surface from the package Geom and those required <br>
 //! of the surface by algorithms which use it. <br>
+//! Creation of the loaded surface the surface is C1 by piece <br>
 class GeomAdaptor_Surface  : public Adaptor3d_Surface {
 public:
 

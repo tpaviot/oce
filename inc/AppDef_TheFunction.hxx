@@ -58,7 +58,6 @@ class AppDef_MultiLine;
 class AppDef_MyLineTool;
 class AppDef_TheLeastSquares;
 class AppDef_TheResol;
-class math_Vector;
 class AppParCurves_MultiCurve;
 
 

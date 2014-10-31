@@ -57,7 +57,8 @@ class TopoDS_Vertex;
 class TopTools_IndexedDataMapOfShapeListOfShape;
 
 
-//! Perform the gluing topological operation. <br>
+//! Perform the gluing topological operation <br>
+//!          (topological  sewing  of  two  topological  objects). <br>
 class QANewModTopOpe_Glue  : public BRepAlgoAPI_BooleanOperation {
 public:
 

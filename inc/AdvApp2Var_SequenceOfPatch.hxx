@@ -40,6 +40,8 @@ public:
   
       AdvApp2Var_SequenceOfPatch();
   
+  Standard_EXPORT   AdvApp2Var_SequenceOfPatch(const AdvApp2Var_SequenceOfPatch& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~AdvApp2Var_SequenceOfPatch()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   AdvApp2Var_SequenceOfPatch(const AdvApp2Var_SequenceOfPatch& Other);
 
 
 

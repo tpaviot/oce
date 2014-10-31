@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   BRepOffset_ListOfInterval();
   
+  Standard_EXPORT   BRepOffset_ListOfInterval(const BRepOffset_ListOfInterval& Other);
+  
   Standard_EXPORT     void Assign(const BRepOffset_ListOfInterval& Other) ;
     void operator=(const BRepOffset_ListOfInterval& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRepOffset_ListOfInterval(const BRepOffset_ListOfInterval& Other);
 
 
 Standard_Address myFirst;

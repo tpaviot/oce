@@ -40,6 +40,8 @@ public:
   
       IntTools_SequenceOfCommonPrts();
   
+  Standard_EXPORT   IntTools_SequenceOfCommonPrts(const IntTools_SequenceOfCommonPrts& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntTools_SequenceOfCommonPrts()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_SequenceOfCommonPrts(const IntTools_SequenceOfCommonPrts& Other);
 
 
 

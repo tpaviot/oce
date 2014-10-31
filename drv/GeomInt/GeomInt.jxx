@@ -1,0 +1,3 @@
+#ifndef _GeomInt_HeaderFile
+#include <GeomInt.hxx>
+#endif

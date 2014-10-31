@@ -110,12 +110,6 @@ public:
 //! <br>
   Standard_EXPORT     Standard_Integer NumberOfAncestor() const;
   
-//!   Prints the Information about type. <br>
-  Standard_EXPORT     void ShallowDump() const;
-  
-//!   Prints the Information about type. <br>
-  Standard_EXPORT     void ShallowDump(Standard_OStream& S) const;
-  
 //!   Prints on the stream <s> the name of Type. <br>
 //!  Warning: <br>
 //!   The operator "OStream& operator<< (Standard_OStream&, <br>
@@ -163,14 +157,6 @@ Standard_Address myAncestors;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_Standard_Type& me) {
- me->ShallowDump();
-}
-
-inline void ShallowDump(const Handle_Standard_Type& me,Standard_OStream& S) {
- me->ShallowDump(S);
-}
-
 
 
 #endif

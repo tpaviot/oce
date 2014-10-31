@@ -49,8 +49,8 @@
 #ifndef _Handle_AIS_InteractiveContext_HeaderFile
 #include <Handle_AIS_InteractiveContext.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
@@ -71,7 +71,6 @@ class Geom_Plane;
 class Geom_Axis2Placement;
 class gp_Pnt;
 class AIS_InteractiveContext;
-class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;

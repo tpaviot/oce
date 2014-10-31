@@ -16,8 +16,8 @@
 #include <Standard_Macro.hxx>
 #endif
 
-#ifndef _Handle_BOPInt_Context_HeaderFile
-#include <Handle_BOPInt_Context.hxx>
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
 #endif
 #ifndef _BOPCol_ListOfShape_HeaderFile
 #include <BOPCol_ListOfShape.hxx>
@@ -31,7 +31,7 @@
 #ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
 #endif
-class BOPInt_Context;
+class IntTools_Context;
 
 
 //! The root class for algorithms to build <br>
@@ -42,7 +42,7 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT     void SetContext(const Handle(BOPInt_Context)& theContext) ;
+  Standard_EXPORT     void SetContext(const Handle(IntTools_Context)& theContext) ;
   
   Standard_EXPORT    const BOPCol_ListOfShape& Shapes() const;
 Standard_EXPORT void SetShapes(const BOPCol_ListOfShape& theLS);
@@ -72,7 +72,7 @@ Standard_EXPORT virtual ~BOPAlgo_BuilderArea();
   Standard_EXPORT   virtual  void PerformInternalShapes()  = 0;
 
 
-Handle_BOPInt_Context myContext;
+Handle_IntTools_Context myContext;
 BOPCol_ListOfShape myShapes;
 BOPCol_ListOfShape myLoops;
 BOPCol_ListOfShape myLoopsInternal;

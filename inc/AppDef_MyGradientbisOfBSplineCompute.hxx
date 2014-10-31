@@ -43,7 +43,6 @@ class AppDef_ResConstraintOfMyGradientbisOfBSplineCompute;
 class AppDef_ParFunctionOfMyGradientbisOfBSplineCompute;
 class AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute;
 class AppParCurves_HArray1OfConstraintCouple;
-class math_Vector;
 class AppParCurves_MultiCurve;
 
 

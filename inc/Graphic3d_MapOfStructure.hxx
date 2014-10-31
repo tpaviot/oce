@@ -31,7 +31,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class Graphic3d_Structure;
 class TColStd_MapTransientHasher;
 class Graphic3d_StdMapNodeOfMapOfStructure;
@@ -46,6 +45,8 @@ public:
 
   
   Standard_EXPORT   Graphic3d_MapOfStructure(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   Graphic3d_MapOfStructure(const Graphic3d_MapOfStructure& Other);
   
   Standard_EXPORT     Graphic3d_MapOfStructure& Assign(const Graphic3d_MapOfStructure& Other) ;
     Graphic3d_MapOfStructure& operator =(const Graphic3d_MapOfStructure& Other) 
@@ -79,8 +80,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Graphic3d_MapOfStructure(const Graphic3d_MapOfStructure& Other);
 
 
 

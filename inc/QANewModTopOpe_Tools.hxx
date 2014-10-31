@@ -37,7 +37,7 @@ class TopoDS_Edge;
 class TopTools_IndexedDataMapOfShapeListOfShape;
 
 
-
+//! to  provide  several  tools  for  porting  to  OCC  5.0  (mkk) <br>
 class QANewModTopOpe_Tools  {
 public:
 

@@ -40,6 +40,8 @@ public:
   
       IntTools_SequenceOfRanges();
   
+  Standard_EXPORT   IntTools_SequenceOfRanges(const IntTools_SequenceOfRanges& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntTools_SequenceOfRanges()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_SequenceOfRanges(const IntTools_SequenceOfRanges& Other);
 
 
 

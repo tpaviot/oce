@@ -31,6 +31,7 @@ class gp_Vec;
 
 //! Root class to define a boundary  which will form part of a <br>
 //! contour around a gap requiring filling. <br>
+//! Any  new type  of  constrained boundary must inherit this class. <br>
 //! The GeomFill package provides two classes to define constrained boundaries: <br>
 //! -   GeomFill_SimpleBound to define an unattached boundary <br>
 //! -   GeomFill_BoundWithSurf to define a boundary attached to a surface. <br>

@@ -98,8 +98,8 @@ public:
   Standard_EXPORT     void SystemName(TCollection_AsciiString& FullName,const OSD_SysType aType = OSD_Default) const;
   //! Returns system dependent path resolving logical symbols. <br>
   Standard_EXPORT     void ExpandedName(TCollection_AsciiString& aName) ;
-  //! Returns TRUE if <aDependentName> is valid for this SysType. <br>
-  Standard_EXPORT     Standard_Boolean IsValid(const TCollection_AsciiString& aDependentName,const OSD_SysType aSysType = OSD_Default) const;
+  //! Returns TRUE if <theDependentName> is valid for this SysType. <br>
+  Standard_EXPORT   static  Standard_Boolean IsValid(const TCollection_AsciiString& theDependentName,const OSD_SysType theSysType = OSD_Default) ;
   //! This removes the last directory name in <aTrek> <br>
 //!          and returns result. <br>
 //!          ex:  me = "|usr|bin|todo.sh" <br>
@@ -206,7 +206,7 @@ TCollection_AsciiString myTrek;
 TCollection_AsciiString myName;
 TCollection_AsciiString myExtension;
 Standard_Boolean myUNCFlag;
-OSD_SysType SysDep;
+OSD_SysType mySysDep;
 
 
 };

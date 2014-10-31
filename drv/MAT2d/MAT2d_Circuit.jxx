@@ -4,6 +4,9 @@
 #ifndef _TColStd_SequenceOfBoolean_HeaderFile
 #include <TColStd_SequenceOfBoolean.hxx>
 #endif
+#ifndef _Geom2d_Geometry_HeaderFile
+#include <Geom2d_Geometry.hxx>
+#endif
 #ifndef _MAT2d_Connexion_HeaderFile
 #include <MAT2d_Connexion.hxx>
 #endif
@@ -18,9 +21,6 @@
 #endif
 #ifndef _MAT2d_MiniPath_HeaderFile
 #include <MAT2d_MiniPath.hxx>
-#endif
-#ifndef _Geom2d_Geometry_HeaderFile
-#include <Geom2d_Geometry.hxx>
 #endif
 #ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>

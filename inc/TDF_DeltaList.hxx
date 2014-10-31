@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   TDF_DeltaList();
   
+  Standard_EXPORT   TDF_DeltaList(const TDF_DeltaList& Other);
+  
   Standard_EXPORT     void Assign(const TDF_DeltaList& Other) ;
     void operator=(const TDF_DeltaList& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_DeltaList(const TDF_DeltaList& Other);
 
 
 Standard_Address myFirst;

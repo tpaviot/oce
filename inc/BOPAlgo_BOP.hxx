@@ -16,11 +16,11 @@
 #include <Standard_Macro.hxx>
 #endif
 
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _BOPAlgo_Operation_HeaderFile
 #include <BOPAlgo_Operation.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
@@ -36,6 +36,9 @@
 #endif
 #ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
+#endif
+#ifndef _TopAbs_ShapeEnum_HeaderFile
+#include <TopAbs_ShapeEnum.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
@@ -61,18 +64,14 @@ Standard_EXPORT virtual ~BOPAlgo_BOP();
   Standard_EXPORT   BOPAlgo_BOP(const BOPCol_BaseAllocator& theAllocator);
   //!  Clears internal fields and arguments <br>
   Standard_EXPORT   virtual  void Clear() ;
-  //!  Adds Object argument of the operation <br>
-  Standard_EXPORT   virtual  void AddArgument(const TopoDS_Shape& theShape) ;
   //!  Adds Tool argument of the operation <br>
   Standard_EXPORT   virtual  void AddTool(const TopoDS_Shape& theShape) ;
-  
-  Standard_EXPORT    const TopoDS_Shape& Object() const;
-  
-  Standard_EXPORT    const TopoDS_Shape& Tool() const;
   
   Standard_EXPORT     void SetOperation(const BOPAlgo_Operation theOperation) ;
   
   Standard_EXPORT     BOPAlgo_Operation Operation() const;
+  
+  Standard_EXPORT   virtual  void Perform() ;
   //! Returns the  list of shapes generated from the <br>
 //!          shape theS. <br>
   Standard_EXPORT   virtual const TopTools_ListOfShape& Generated(const TopoDS_Shape& theS) ;
@@ -88,8 +87,10 @@ protected:
   //!  Provides preparing actions <br>
   Standard_EXPORT   virtual  void Prepare() ;
   //!  Performs calculations using prepared Filler <br>
-//!           object theDSF <br>
-  Standard_EXPORT   virtual  void PerformInternal(const BOPAlgo_PaveFiller& thePF) ;
+//!           object <thePF> <br>
+  Standard_EXPORT   virtual  void PerformInternal1(const BOPAlgo_PaveFiller& thePF) ;
+  
+  Standard_EXPORT   virtual  void BuildResult(const TopAbs_ShapeEnum theType) ;
   
   Standard_EXPORT     void BuildShape() ;
   
@@ -102,9 +103,7 @@ protected:
   Standard_EXPORT     Standard_Boolean IsBoundSplits(const TopoDS_Shape& theS,BOPCol_IndexedDataMapOfShapeListOfShape& theMEF) ;
 
 
-Standard_Integer myNbArgs;
 BOPAlgo_Operation myOperation;
-TopoDS_Shape myArgs[2];
 Standard_Integer myDims[2];
 TopoDS_Shape myRC;
 BOPCol_ListOfShape myTools;

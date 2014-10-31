@@ -36,7 +36,9 @@ class Adaptor3d_HCurveOnSurface;
 class Adaptor3d_HCurve;
 
 
-
+//! same as CurveConstraint from GeomPlate <br>
+//!          with BRepAdaptor_Surface instead of <br>
+//!          GeomAdaptor_Surface <br>
 class BRepFill_CurveConstraint : public GeomPlate_CurveConstraint {
 
 public:

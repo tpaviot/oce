@@ -24,7 +24,7 @@
 #endif
 
 
-
+//! class for instantiation of AppBlend <br>
 class GeomFill_Line : public MMgt_TShared {
 
 public:

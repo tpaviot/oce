@@ -4,8 +4,8 @@
 #ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
 #endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
-#include <TColStd_HArray1OfReal.hxx>
+#ifndef _TColStd_HSequenceOfReal_HeaderFile
+#include <TColStd_HSequenceOfReal.hxx>
 #endif
 #ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>

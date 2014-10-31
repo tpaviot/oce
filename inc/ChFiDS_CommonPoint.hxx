@@ -45,7 +45,9 @@ class gp_Pnt;
 class gp_Vec;
 
 
-
+//! point    start/end of  fillet common  to  2 adjacent  filets <br>
+//!          and  to an edge on  one of 2 faces participating <br>
+//!          in  the construction of  the  fillet <br>
 class ChFiDS_CommonPoint  {
 public:
 

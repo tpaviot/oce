@@ -43,6 +43,8 @@ public:
   
       SelectMgr_SequenceOfSelection();
   
+  Standard_EXPORT   SelectMgr_SequenceOfSelection(const SelectMgr_SequenceOfSelection& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~SelectMgr_SequenceOfSelection()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   SelectMgr_SequenceOfSelection(const SelectMgr_SequenceOfSelection& Other);
 
 
 

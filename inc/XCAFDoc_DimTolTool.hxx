@@ -53,7 +53,9 @@ class TDF_RelocationTable;
 //! Provides tools to store and retrieve attributes (colors) <br>
 //!          of TopoDS_Shape in and from TDocStd_Document <br>
 //!          A Document is intended to hold different <br>
-//!          attributes of ONE shape and it's sub-shapes <br>
+//!          attributes of ONE shape and it's sub-shapes. <br>
+//!          Attribute containing DimTol section of DECAF document. <br>
+//!          Provide tools for management of DimTol section of document. <br>
 class XCAFDoc_DimTolTool : public TDF_Attribute {
 
 public:

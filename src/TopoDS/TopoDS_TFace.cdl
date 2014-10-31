@@ -15,19 +15,22 @@
 -- commercial license or contractual agreement.
 
 class TFace from TopoDS inherits TShape from TopoDS
+	---Purpose: A  topological part  of a surface   or  of the  2D
+	--          space.  The  boundary  is  a   set of  wires   and
+	--          vertices.
 
 uses
     ShapeEnum from TopAbs
 
 is
-    Create returns mutable TFace from TopoDS;
+    Create returns TFace from TopoDS;
     ---C++: inline
     ---Purpose: Creates an empty TFace.
     	
     ShapeType(me) returns ShapeEnum from TopAbs;
     ---Purpose: returns FACE.
 
-    EmptyCopy(me) returns mutable TShape from TopoDS is virtual;
+    EmptyCopy(me) returns TShape from TopoDS is virtual;
     ---Purpose: Returns an empty TFace.
 
 end TFace;

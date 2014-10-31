@@ -38,7 +38,7 @@ class Geom_BSplineCurve;
 class Geom_BoundedCurve;
 
 
-//! Concat several curve in an BSplineCurve <br>
+//! Algorithm converts and concat several curve in an BSplineCurve <br>
 class GeomConvert_CompCurveToBSplineCurve  {
 public:
 

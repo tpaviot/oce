@@ -75,6 +75,7 @@
 #include <Geom_ConicalSurface.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_Line.hxx>
+#include <Geom_Plane.hxx>
 #include <Geom_Conic.hxx>
 #include <Geom_TrimmedCurve.hxx>
 #include <GCPnts_QuasiUniformDeflection.hxx>
@@ -249,7 +250,7 @@ static void PutInBounds (const TopoDS_Face&          F,
   Handle (Geom_Surface) S   = BRep_Tool::Surface(F,L);
 
   if (S->IsInstance(STANDARD_TYPE(Geom_RectangularTrimmedSurface))) {
-    S = (*(Handle_Geom_RectangularTrimmedSurface*)&S)->BasisSurface();
+    S = (*(Handle(Geom_RectangularTrimmedSurface)*)&S)->BasisSurface();
   }
   //---------------
   // Recadre en U.
@@ -2597,7 +2598,7 @@ static void MakeFace(const Handle(Geom_Surface)& S,
   Standard_Boolean vmindegen = isVminDegen, vmaxdegen = isVmaxDegen;
   Handle(Geom_Surface) theSurf = S;
   if (S->DynamicType() == STANDARD_TYPE(Geom_RectangularTrimmedSurface))
-    theSurf = (*(Handle_Geom_RectangularTrimmedSurface*)&S)->BasisSurface();
+    theSurf = (*(Handle(Geom_RectangularTrimmedSurface)*)&S)->BasisSurface();
   if (theSurf->DynamicType() == STANDARD_TYPE(Geom_ConicalSurface))
     {
       Handle(Geom_ConicalSurface) ConicalS = *((Handle(Geom_ConicalSurface)*) &theSurf);
@@ -3265,7 +3266,7 @@ Standard_Boolean BRepOffset_Tool::EnLargeFace
   //Special treatment for conical surfaces
   Handle(Geom_Surface) theSurf = S;
   if (S->DynamicType() == STANDARD_TYPE(Geom_RectangularTrimmedSurface))
-    theSurf = (*(Handle_Geom_RectangularTrimmedSurface*)&S)->BasisSurface();
+    theSurf = (*(Handle(Geom_RectangularTrimmedSurface)*)&S)->BasisSurface();
   if (theSurf->DynamicType() == STANDARD_TYPE(Geom_ConicalSurface))
     {
       Handle(Geom_ConicalSurface) ConicalS = *((Handle(Geom_ConicalSurface)*) &theSurf);

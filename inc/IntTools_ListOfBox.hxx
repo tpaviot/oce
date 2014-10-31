@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   IntTools_ListOfBox();
   
+  Standard_EXPORT   IntTools_ListOfBox(const IntTools_ListOfBox& Other);
+  
   Standard_EXPORT     void Assign(const IntTools_ListOfBox& Other) ;
     void operator=(const IntTools_ListOfBox& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_ListOfBox(const IntTools_ListOfBox& Other);
 
 
 Standard_Address myFirst;

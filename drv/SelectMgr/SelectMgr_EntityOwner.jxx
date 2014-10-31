@@ -7,9 +7,6 @@
 #ifndef _PrsMgr_PresentationManager_HeaderFile
 #include <PrsMgr_PresentationManager.hxx>
 #endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
-#include <PrsMgr_PresentationManager3d.hxx>
-#endif
 #ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
 #endif

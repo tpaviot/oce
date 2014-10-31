@@ -37,13 +37,15 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class TColStd_HArray1OfReal;
 class TColStd_HArray1OfInteger;
 class StdFail_NotDone;
 class Standard_NotImplemented;
 class Standard_OutOfRange;
 class TColStd_Array1OfInteger;
-class math_Vector;
 
 
 //! Symmetric Sparse ProfileMatrix useful  for 1D Finite <br>

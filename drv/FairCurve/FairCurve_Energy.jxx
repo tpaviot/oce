@@ -1,9 +1,6 @@
 #ifndef _TColgp_HArray1OfPnt2d_HeaderFile
 #include <TColgp_HArray1OfPnt2d.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
 #endif

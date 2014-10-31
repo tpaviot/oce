@@ -29,6 +29,7 @@
 //! - has an orientation for the underlying composite <br>
 //!   solid, in terms of its geometry (as opposed to <br>
 //!   orientation in relation to other shapes). <br>
+//!   Casts shape S to the more specialized return type, CompSolid. <br>
 class TopoDS_CompSolid  : public TopoDS_Shape {
 public:
 

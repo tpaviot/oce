@@ -15,6 +15,8 @@
 #ifndef __WNT_Uint_HeaderFile
 # define __WNT_Uint_HeaderFile
 
+// Purpose:  Defines a Windows NT UINT type.
+
 # ifndef __WINDOWS_H_INCLUDED
 #  define __WINDOWS_H_INCLUDED
 #  ifndef STRICT
@@ -38,7 +40,5 @@
 # endif  // __STANDARD_TYPE_HXX_INCLUDED 
 
 typedef UINT WNT_Uint;
-
-extern const Handle( Standard_Type )& STANDARD_TYPE( WNT_Uint );
 
 #endif  // __WNT_Uint_HeaderFile

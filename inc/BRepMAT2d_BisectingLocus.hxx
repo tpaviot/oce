@@ -34,6 +34,9 @@
 #ifndef _MAT_Side_HeaderFile
 #include <MAT_Side.hxx>
 #endif
+#ifndef _GeomAbs_JoinType_HeaderFile
+#include <GeomAbs_JoinType.hxx>
+#endif
 #ifndef _Handle_MAT_BasicElt_HeaderFile
 #include <Handle_MAT_BasicElt.hxx>
 #endif
@@ -57,7 +60,40 @@ class MAT_Arc;
 class MAT_DataMapOfIntegerBasicElt;
 
 
-
+//! BisectingLocus generates and contains the Bisecting_Locus <br>
+//!            of a set of lines from Geom2d, defined by <ExploSet>. <br>
+//! <br>
+//!            If the set of lines contains closed lines: <br>
+//!            ------------------------------------------ <br>
+//!            These lines cut the plane  in areas. <br>
+//!            One map can  be  computed for each area. <br>
+//! <br>
+//!            Bisecting locus computes a map in an area. <br>
+//!            The area is defined by a side (MAT_Left,MAT_Right) <br>
+//!            on one of the closed lines. <br>
+//! <br>
+//!            If the set of lines contains only open lines: <br>
+//!            -------------------------------------------- <br>
+//!            the map recovers all the plane. <br>
+//! <br>
+//!  Warning: Assume the orientation of the   closed  lines  are <br>
+//!          compatible. <br>
+//! <br>
+//!          Assume the explo contains only lines located in the <br>
+//!          area where the bisecting locus will be computed. <br>
+//! <br>
+//!          Assume a line don't cross itself or an other line. <br>
+//! <br>
+//!  Remark: <br>
+//!         the  curves  coming   from   the  explorer can   be <br>
+//!         decomposed in different parts. It  the  case for the <br>
+//!         curves other than circles or lines. <br>
+//! <br>
+//!         The map of bisecting  locus is described by a graph. <br>
+//!         - The  BasicsElements  correspond  to elements on <br>
+//!           the figure described by the Explorer from BRepMAT2d. <br>
+//!         - The Arcs correspond to the bisectors. <br>
+//!         - The Nodes are the extremities of the arcs. <br>
 class BRepMAT2d_BisectingLocus  {
 public:
 
@@ -65,25 +101,40 @@ public:
 
   
   Standard_EXPORT   BRepMAT2d_BisectingLocus();
-  
-  Standard_EXPORT     void Compute(BRepMAT2d_Explorer& anExplo,const Standard_Integer LineIndex = 1,const MAT_Side aSide = MAT_Left) ;
-  
+  //! Computation of the Bisector_Locus in a set of Lines <br>
+//!            defined in <anExplo>. <br>
+//!            The bisecting locus are computed on the side <aSide> <br>
+//!            from the line <LineIndex> in <anExplo>. <br>
+  Standard_EXPORT     void Compute(BRepMAT2d_Explorer& anExplo,const Standard_Integer LineIndex = 1,const MAT_Side aSide = MAT_Left,const GeomAbs_JoinType aJoinType = GeomAbs_Arc,const Standard_Boolean IsOpenResult = Standard_False) ;
+  //! Returns True if Compute has succeeded. <br>
   Standard_EXPORT     Standard_Boolean IsDone() const;
-  
+  //! Returns <theGraph> of <me>. <br>
   Standard_EXPORT     Handle_MAT_Graph Graph() const;
-  
+  //! Returns the number of contours. <br>
   Standard_EXPORT     Standard_Integer NumberOfContours() const;
-  
+  //! Returns the number of BasicElts on the line <br>
+//!          <IndLine>. <br>
   Standard_EXPORT     Standard_Integer NumberOfElts(const Standard_Integer IndLine) const;
-  
+  //! Returns the number of sections of a curve. <br>
+//!          this curve is the Indexth curve in the IndLineth contour <br>
+//!          given by anExplo. <br>
+//! <br>
   Standard_EXPORT     Standard_Integer NumberOfSections(const Standard_Integer IndLine,const Standard_Integer Index) const;
-  
+  //! Returns the BasicElts located at the position <br>
+//!          <Index> on the contour designed by <IndLine>. <br>
+//!  Remark: the BasicElts on a contour are sorted. <br>
+//! <br>
   Standard_EXPORT     Handle_MAT_BasicElt BasicElt(const Standard_Integer IndLine,const Standard_Integer Index) const;
-  
+  //! Returns the geometry linked to the <BasicElt>. <br>
   Standard_EXPORT     Handle_Geom2d_Geometry GeomElt(const Handle(MAT_BasicElt)& aBasicElt) const;
-  
+  //! Returns the geometry of  type <gp> linked to <br>
+//!            the <Node>. <br>
   Standard_EXPORT     gp_Pnt2d GeomElt(const Handle(MAT_Node)& aNode) const;
-  
+  //! Returns the  geometry of type <Bissec> <br>
+//!             linked   to the arc <ARC>. <br>
+//!             <Reverse> is False when the FirstNode of <anArc> <br>
+//!             correspond to the first point of geometry. <br>
+//! <br>
   Standard_EXPORT     Bisector_Bisec GeomBis(const Handle(MAT_Arc)& anArc,Standard_Boolean& Reverse) const;
 
 

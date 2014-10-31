@@ -29,7 +29,7 @@ class NCollection_Vec4
 public:
 
   //! Returns the number of components.
-  static size_t Length()
+  static int Length()
   {
     return 4;
   }
@@ -284,6 +284,24 @@ public:
     return aCopyVec4;
   }
 
+  //! Compute component-wise minimum of two vectors.
+  NCollection_Vec4 cwiseMin (const NCollection_Vec4& theVec) const
+  {
+    return NCollection_Vec4 (v[0] < theVec.v[0] ? v[0] : theVec.v[0],
+                             v[1] < theVec.v[1] ? v[1] : theVec.v[1],
+                             v[2] < theVec.v[2] ? v[2] : theVec.v[2],
+                             v[3] < theVec.v[3] ? v[3] : theVec.v[3]);
+  }
+
+  //! Compute component-wise maximum of two vectors.
+  NCollection_Vec4 cwiseMax (const NCollection_Vec4& theVec) const
+  {
+    return NCollection_Vec4 (v[0] > theVec.v[0] ? v[0] : theVec.v[0],
+                             v[1] > theVec.v[1] ? v[1] : theVec.v[1],
+                             v[2] > theVec.v[2] ? v[2] : theVec.v[2],
+                             v[3] > theVec.v[3] ? v[3] : theVec.v[3]);
+  }
+
   //! Compute per-component division by scale factor.
   NCollection_Vec4& operator/= (const Element_t theInvFactor)
   {
@@ -297,7 +315,7 @@ public:
   //! Compute per-component division by scale factor.
   NCollection_Vec4 operator/ (const Element_t theInvFactor)
   {
-    NCollection_Vec4 aResult(this);
+    NCollection_Vec4 aResult(*this);
     return aResult /= theInvFactor;
   }
 

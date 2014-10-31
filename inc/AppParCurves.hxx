@@ -19,13 +19,16 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-class math_Vector;
+#ifndef _math_IntegerVector_HeaderFile
+#include <math_IntegerVector.hxx>
+#endif
 class math_Matrix;
-class math_IntegerVector;
-class AppParCurves_MLineTool;
 class AppParCurves_MultiPoint;
 class AppParCurves_MultiCurve;
 class AppParCurves_MultiBSpCurve;
@@ -43,14 +46,6 @@ class AppParCurves_BSpGradient;
 class AppParCurves_BSpGradient_BFGS;
 class AppParCurves_BSpParLeastSquare;
 class AppParCurves_BSpParFunction;
-class AppParCurves_Projection;
-class AppParCurves_ProLeastSquare;
-class AppParCurves_ProConstraint;
-class AppParCurves_ProFunction;
-class AppParCurves_SmoothCriterion;
-class AppParCurves_LinearCriteria;
-class AppParCurves_MyCriterion;
-class AppParCurves_Variational;
 class AppParCurves_Array1OfConstraintCouple;
 class AppParCurves_HArray1OfConstraintCouple;
 class AppParCurves_Array1OfMultiPoint;
@@ -98,7 +93,6 @@ private:
 
 
 
-friend class AppParCurves_MLineTool;
 friend class AppParCurves_MultiPoint;
 friend class AppParCurves_MultiCurve;
 friend class AppParCurves_MultiBSpCurve;
@@ -116,14 +110,6 @@ friend class AppParCurves_BSpGradient;
 friend class AppParCurves_BSpGradient_BFGS;
 friend class AppParCurves_BSpParLeastSquare;
 friend class AppParCurves_BSpParFunction;
-friend class AppParCurves_Projection;
-friend class AppParCurves_ProLeastSquare;
-friend class AppParCurves_ProConstraint;
-friend class AppParCurves_ProFunction;
-friend class AppParCurves_SmoothCriterion;
-friend class AppParCurves_LinearCriteria;
-friend class AppParCurves_MyCriterion;
-friend class AppParCurves_Variational;
 friend class AppParCurves_Array1OfConstraintCouple;
 friend class AppParCurves_HArray1OfConstraintCouple;
 friend class AppParCurves_Array1OfMultiPoint;

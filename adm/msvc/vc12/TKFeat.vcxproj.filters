@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{3601CDBB-0FB6-0B88-1263-8B937F80ACFB}</UniqueIdentifier>
+      <UniqueIdentifier>{CFEF3596-1320-0446-0A5B-40D304DDC5E5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\LocOpe">
-      <UniqueIdentifier>{DCB8F38F-005E-15D3-12B4-07054EED720F}</UniqueIdentifier>
+      <UniqueIdentifier>{EB711F34-1602-1547-10AC-3B86FE1BC5B8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepFeat">
-      <UniqueIdentifier>{DB384964-1572-0665-0DDA-9FFACD0AD08B}</UniqueIdentifier>
+      <UniqueIdentifier>{51E3D034-13E6-0DC7-0870-3452DD2C51BD}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -88,9 +88,6 @@
       <Filter>Source files\LocOpe</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\LocOpe\LocOpe_Prism.cxx">
-      <Filter>Source files\LocOpe</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\LocOpe\LocOpe_ProjectedWires.cxx">
       <Filter>Source files\LocOpe</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\LocOpe\LocOpe_Revol.cxx">

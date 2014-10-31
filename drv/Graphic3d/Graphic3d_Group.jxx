@@ -1,20 +1,8 @@
-#ifndef _Graphic3d_GraphicDriver_HeaderFile
-#include <Graphic3d_GraphicDriver.hxx>
-#endif
-#ifndef _TColStd_HArray1OfByte_HeaderFile
-#include <TColStd_HArray1OfByte.hxx>
-#endif
 #ifndef _Graphic3d_GroupDefinitionError_HeaderFile
 #include <Graphic3d_GroupDefinitionError.hxx>
 #endif
-#ifndef _Graphic3d_PickIdDefinitionError_HeaderFile
-#include <Graphic3d_PickIdDefinitionError.hxx>
-#endif
 #ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Graphic3d_Group_HeaderFile
-#include <Graphic3d_Group.hxx>
 #endif
 #ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>

@@ -22,6 +22,9 @@
 #ifndef _Message_Printer_HeaderFile
 #include <Message_Printer.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 #ifndef _Message_Gravity_HeaderFile
 #include <Message_Gravity.hxx>
 #endif
@@ -31,12 +34,12 @@
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
 #endif
-class Draw_Interpretor;
 class TCollection_ExtendedString;
 class TCollection_AsciiString;
 
 
-//! Implementation of Printer class with output directed to Draw_Interpretor <br>
+//! Implementation of Printer class with output <br>
+//!          (Message_Messenge) directed to Draw_Interpretor <br>
 class Draw_Printer : public Message_Printer {
 
 public:

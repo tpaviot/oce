@@ -41,8 +41,10 @@ class TColStd_Array1OfReal;
 class TColStd_Array2OfReal;
 
 
-//! To convert an function (curve) polynomial by span in a BSpline. <br>
-//! <br>
+//! Convert a serie of Polynomial N-Dimensional Curves <br>
+//!   that are have continuity CM to an N-Dimensional Bspline Curve <br>
+//!   that has continuity CM. <br>
+//!   (to convert an function (curve) polynomial by span in a BSpline) <br>
 //!   This class uses the following arguments : <br>
 //!   NumCurves :  the number of Polynomial Curves <br>
 //!   Continuity:  the requested continuity for the n-dimensional Spline <br>

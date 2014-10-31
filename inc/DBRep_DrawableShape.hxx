@@ -52,6 +52,9 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class Standard_DomainError;
 class TopoDS_Shape;
 class Draw_Color;
@@ -59,10 +62,10 @@ class Draw_Display;
 class Poly_Triangulation;
 class gp_Trsf;
 class Draw_Drawable3D;
-class Draw_Interpretor;
 
 
-
+//! Drawable structure to display a  shape. Contains a <br>
+//!          list of edges and a list of faces. <br>
 class DBRep_DrawableShape : public Draw_Drawable3D {
 
 public:

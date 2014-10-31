@@ -40,6 +40,8 @@ public:
   
       Message_SequenceOfProgressScale();
   
+  Standard_EXPORT   Message_SequenceOfProgressScale(const Message_SequenceOfProgressScale& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Message_SequenceOfProgressScale()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Message_SequenceOfProgressScale(const Message_SequenceOfProgressScale& Other);
 
 
 

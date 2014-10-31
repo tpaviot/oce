@@ -31,9 +31,6 @@
 #ifndef _Blend_Point_HeaderFile
 #include <Blend_Point.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _BRepBlend_AppFuncRoot_HeaderFile
 #include <BRepBlend_AppFuncRoot.hxx>
 #endif

@@ -35,6 +35,7 @@ class TColStd_Array1OfReal;
 
 //! inherits class Cutting; contains a list of preferential points (pi)i <br>
 //! and a list of Recommended points used in cutting management. <br>
+//! if Cutting is necessary in [a,b], we cut at the di nearest from (a+b)/2 <br>
 class AdvApprox_PrefAndRec  : public AdvApprox_Cutting {
 public:
 

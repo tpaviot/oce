@@ -44,11 +44,9 @@ libTKLCAF_la_SOURCES = \
 @top_srcdir@/drv/TDF/TDF_DataMapIteratorOfAttributeDataMap_0.cxx \
 @top_srcdir@/drv/TDF/TDF_DataMapIteratorOfLabelDataMap_0.cxx \
 @top_srcdir@/drv/TDF/TDF_DataMapIteratorOfLabelIntegerMap_0.cxx \
-@top_srcdir@/drv/TDF/TDF_DataMapIteratorOfLabelLabelMap_0.cxx \
 @top_srcdir@/drv/TDF/TDF_DataMapNodeOfAttributeDataMap_0.cxx \
 @top_srcdir@/drv/TDF/TDF_DataMapNodeOfLabelDataMap_0.cxx \
 @top_srcdir@/drv/TDF/TDF_DataMapNodeOfLabelIntegerMap_0.cxx \
-@top_srcdir@/drv/TDF/TDF_DataMapNodeOfLabelLabelMap_0.cxx \
 @top_srcdir@/drv/TDF/TDF_DeltaList_0.cxx \
 @top_srcdir@/drv/TDF/TDF_DoubleMapIteratorOfAttributeDoubleMap_0.cxx \
 @top_srcdir@/drv/TDF/TDF_DoubleMapIteratorOfGUIDProgIDMap_0.cxx \
@@ -66,7 +64,6 @@ libTKLCAF_la_SOURCES = \
 @top_srcdir@/drv/TDF/TDF_LabelDoubleMap_0.cxx \
 @top_srcdir@/drv/TDF/TDF_LabelIndexedMap_0.cxx \
 @top_srcdir@/drv/TDF/TDF_LabelIntegerMap_0.cxx \
-@top_srcdir@/drv/TDF/TDF_LabelLabelMap_0.cxx \
 @top_srcdir@/drv/TDF/TDF_LabelList_0.cxx \
 @top_srcdir@/drv/TDF/TDF_LabelMap_0.cxx \
 @top_srcdir@/drv/TDF/TDF_LabelSequence_0.cxx \

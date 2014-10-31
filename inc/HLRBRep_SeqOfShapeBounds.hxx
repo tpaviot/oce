@@ -40,6 +40,8 @@ public:
   
       HLRBRep_SeqOfShapeBounds();
   
+  Standard_EXPORT   HLRBRep_SeqOfShapeBounds(const HLRBRep_SeqOfShapeBounds& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~HLRBRep_SeqOfShapeBounds()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   HLRBRep_SeqOfShapeBounds(const HLRBRep_SeqOfShapeBounds& Other);
 
 
 

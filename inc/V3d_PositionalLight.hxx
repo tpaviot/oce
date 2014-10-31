@@ -47,7 +47,7 @@ class Graphic3d_Group;
 
 
 //! Creation and modification of an isolated <br>
-//!          light source. <br>
+//!          (positional) light source. <br>
 class V3d_PositionalLight : public V3d_PositionLight {
 
 public:

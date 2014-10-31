@@ -40,6 +40,8 @@ public:
   
       TopTools_SequenceOfShape();
   
+  Standard_EXPORT   TopTools_SequenceOfShape(const TopTools_SequenceOfShape& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TopTools_SequenceOfShape()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopTools_SequenceOfShape(const TopTools_SequenceOfShape& Other);
 
 
 

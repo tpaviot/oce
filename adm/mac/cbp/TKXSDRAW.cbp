@@ -64,8 +64,6 @@
 			<Add option="-fPIC" />
 			<Add option="$(CSF_OPT_CMPL)" />
 			<Add directory="../../../inc" />
-			<Add directory="../../../drv/SWDRAW" />
-			<Add directory="../../../src/SWDRAW" />
 			<Add directory="../../../drv/XSDRAW" />
 			<Add directory="../../../src/XSDRAW" />
 			<Add directory="../../../drv/XSDRAWIGES" />
@@ -94,7 +92,6 @@
 			<Add library="TKG2d" />
 			<Add library="TKSTEPBase" />
 			<Add library="TKTopAlgo" />
-			<Add library="TKShHealing" />
 			<Add library="TKGeomBase" />
 			<Add library="TKGeomAlgo" />
 			<Add library="TKMesh" />
@@ -118,21 +115,8 @@
 			<Add library="tbbmalloc" />
 			<Add library="objc" />
 		</Linker>
-		<Unit filename="../../../src/SWDRAW/SWDRAW.cxx" />
-		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeAnalysis.cxx" />
-		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeBuild.cxx" />
-		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeConstruct.cxx" />
-		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeCustom.cxx" />
-		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeExtend.cxx" />
-		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeFix.cxx" />
-		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeProcess.cxx" />
-		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeProcessAPI.cxx" />
-		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeTool.cxx" />
-		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeUpgrade.cxx" />
-		<Unit filename="../../../src/SWDRAW/SWDRAW_ToVRML.cxx" />
 		<Unit filename="../../../src/XSDRAW/XSDRAW.cxx" />
 		<Unit filename="../../../src/XSDRAW/XSDRAW_Functions.cxx" />
-		<Unit filename="../../../src/XSDRAW/XSDRAW_Shape.cxx" />
 		<Unit filename="../../../src/XSDRAW/XSDRAW_Vars.cxx" />
 		<Unit filename="../../../src/XSDRAWIGES/XSDRAWIGES.cxx" />
 		<Unit filename="../../../src/XSDRAWSTEP/XSDRAWSTEP.cxx" />
@@ -144,6 +128,8 @@
 		<Unit filename="../../../drv/XSDRAWSTLVRML/XSDRAWSTLVRML_ElemNodesMap_0.cxx" />
 		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML.cxx" />
 		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_DataSource.cxx" />
+		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_DataSource3D.cxx" />
 		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_DrawableMesh.cxx" />
+		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_ToVRML.cxx" />
 	</Project>
 </CodeBlocks_project_file>

@@ -27,16 +27,6 @@
 			<Depends filename="TKG3d.cbp" />
 			<Depends filename="TKTopAlgo.cbp" />
 		</Project>
-		<Project filename="TKBO.cbp" >
-			<Depends filename="TKBRep.cbp" />
-			<Depends filename="TKTopAlgo.cbp" />
-			<Depends filename="TKMath.cbp" />
-			<Depends filename="TKernel.cbp" />
-			<Depends filename="TKG2d.cbp" />
-			<Depends filename="TKG3d.cbp" />
-			<Depends filename="TKGeomAlgo.cbp" />
-			<Depends filename="TKGeomBase.cbp" />
-		</Project>
 		<Project filename="TKHLR.cbp" >
 			<Depends filename="TKBRep.cbp" />
 			<Depends filename="TKernel.cbp" />
@@ -66,6 +56,17 @@
 			<Depends filename="TKG3d.cbp" />
 			<Depends filename="TKGeomBase.cbp" />
 			<Depends filename="TKGeomAlgo.cbp" />
+		</Project>
+		<Project filename="TKBO.cbp" >
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKGeomAlgo.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKPrim.cbp" />
 		</Project>
 		<Project filename="TKXMesh.cbp" >
 			<Depends filename="TKBRep.cbp" />

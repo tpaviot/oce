@@ -37,8 +37,8 @@
 #ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
@@ -51,9 +51,7 @@
 #endif
 class Prs3d_Presentation;
 class Standard_NotImplemented;
-class SelectMgr_SelectionManager;
 class SelectMgr_Selection;
-class PrsMgr_PresentationManager3d;
 class SelectMgr_SequenceOfOwner;
 class SelectMgr_EntityOwner;
 class PrsMgr_PresentationManager;
@@ -72,6 +70,15 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 
 public:
 
+  //! Recovers and calculates any sensitive primitive, <br>
+//! aSelection, available in Shape mode, specified by <br>
+//! aMode. As a rule, these are sensitive faces. <br>
+//! This method is defined as virtual. This enables you to <br>
+//! implement it in the creation of a new class of AIS <br>
+//! Interactive Object. You need to do this and in so <br>
+//! doing, redefine this method, if you create a class <br>
+//! which enriches the list of signatures and types. <br>
+  Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode)  = 0;
   //! defines the number of different modes of selection <br>
 //!          (or decomposition) for an Object. <br>
   Standard_EXPORT   virtual  Standard_Integer NbPossibleSelection() const;
@@ -104,9 +111,12 @@ public:
   //! Returns the current selection in this framework. <br>
        const Handle_SelectMgr_Selection& CurrentSelection() const;
   
-  Standard_EXPORT     void ResetLocation() ;
+  Standard_EXPORT     void ResetTransformation() ;
   //! Recomputes the location of the selection aSelection. <br>
-  Standard_EXPORT   virtual  void UpdateLocation() ;
+  Standard_EXPORT   virtual  void UpdateTransformation() ;
+  //! Updates locations in all sensitive entities from <aSelection> <br>
+//!          and in corresponding entity owners. <br>
+  Standard_EXPORT   virtual  void UpdateTransformations(const Handle(SelectMgr_Selection)& aSelection) ;
   //! Method which draws selected owners ( for fast presentation draw ) <br>
   Standard_EXPORT   virtual  void HilightSelected(const Handle(PrsMgr_PresentationManager3d)& PM,const SelectMgr_SequenceOfOwner& Seq) ;
   //! Method which clear all selected owners belonging <br>
@@ -135,7 +145,6 @@ public:
   Standard_EXPORT   virtual  void SetZLayer(const Handle(PrsMgr_PresentationManager)& thePrsMgr,const Standard_Integer theLayerId) ;
 
 
-friend class SelectMgr_SelectionManager;
 
 
   DEFINE_STANDARD_RTTI(SelectMgr_SelectableObject)
@@ -144,24 +153,12 @@ protected:
 
   
   Standard_EXPORT   SelectMgr_SelectableObject(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
-  //! Updates locations in all sensitive entities from <aSelection> <br>
-//!          and in corresponding entity owners. <br>
-  Standard_EXPORT   virtual  void UpdateLocation(const Handle(SelectMgr_Selection)& aSelection) ;
 
 SelectMgr_SequenceOfSelection myselections;
 
 
 private: 
 
-  //! Recovers and calculates any sensitive primitive, <br>
-//! aSelection, available in Shape mode, specified by <br>
-//! aMode. As a rule, these are sensitive faces. <br>
-//! This method is defined as virtual. This enables you to <br>
-//! implement it in the creation of a new class of AIS <br>
-//! Interactive Object. You need to do this and in so <br>
-//! doing, redefine this method, if you create a class <br>
-//! which enriches the list of signatures and types. <br>
-  Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode)  = 0;
 
 Standard_Integer mycurrent;
 Standard_Boolean myAutoHilight;

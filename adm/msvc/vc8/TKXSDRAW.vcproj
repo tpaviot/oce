@@ -47,10 +47,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\SWDRAW;..\..\..\src\SWDRAW;..\..\..\drv\XSDRAW;..\..\..\src\XSDRAW;..\..\..\drv\XSDRAWIGES;..\..\..\src\XSDRAWIGES;..\..\..\drv\XSDRAWSTEP;..\..\..\src\XSDRAWSTEP;..\..\..\drv\XSDRAWSTLVRML;..\..\..\src\XSDRAWSTLVRML;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XSDRAW;..\..\..\src\XSDRAW;..\..\..\drv\XSDRAWIGES;..\..\..\src\XSDRAWIGES;..\..\..\drv\XSDRAWSTEP;..\..\..\src\XSDRAWSTEP;..\..\..\drv\XSDRAWSTLVRML;..\..\..\src\XSDRAWSTLVRML;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__SWDRAW_DLL;__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -70,7 +70,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__SWDRAW_DLL;__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -78,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKV3d.lib TKMath.lib TKNIS.lib TKernel.lib TKService.lib TKXSBase.lib TKMeshVS.lib TKG3d.lib TKViewerTest.lib TKG2d.lib TKSTEPBase.lib TKTopAlgo.lib TKShHealing.lib TKGeomBase.lib TKGeomAlgo.lib TKMesh.lib TKDraw.lib TKSTEP.lib TKIGES.lib TKSTL.lib TKVRML.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKV3d.lib TKMath.lib TKNIS.lib TKernel.lib TKService.lib TKXSBase.lib TKMeshVS.lib TKG3d.lib TKViewerTest.lib TKG2d.lib TKSTEPBase.lib TKTopAlgo.lib TKGeomBase.lib TKGeomAlgo.lib TKMesh.lib TKDraw.lib TKSTEP.lib TKIGES.lib TKSTL.lib TKVRML.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKXSDRAW.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -145,10 +145,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\SWDRAW;..\..\..\src\SWDRAW;..\..\..\drv\XSDRAW;..\..\..\src\XSDRAW;..\..\..\drv\XSDRAWIGES;..\..\..\src\XSDRAWIGES;..\..\..\drv\XSDRAWSTEP;..\..\..\src\XSDRAWSTEP;..\..\..\drv\XSDRAWSTLVRML;..\..\..\src\XSDRAWSTLVRML;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XSDRAW;..\..\..\src\XSDRAW;..\..\..\drv\XSDRAWIGES;..\..\..\src\XSDRAWIGES;..\..\..\drv\XSDRAWSTEP;..\..\..\src\XSDRAWSTEP;..\..\..\drv\XSDRAWSTLVRML;..\..\..\src\XSDRAWSTLVRML;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__SWDRAW_DLL;__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -170,7 +170,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__SWDRAW_DLL;__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -178,7 +178,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKV3d.lib TKMath.lib TKNIS.lib TKernel.lib TKService.lib TKXSBase.lib TKMeshVS.lib TKG3d.lib TKViewerTest.lib TKG2d.lib TKSTEPBase.lib TKTopAlgo.lib TKShHealing.lib TKGeomBase.lib TKGeomAlgo.lib TKMesh.lib TKDraw.lib TKSTEP.lib TKIGES.lib TKSTL.lib TKVRML.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKV3d.lib TKMath.lib TKNIS.lib TKernel.lib TKService.lib TKXSBase.lib TKMeshVS.lib TKG3d.lib TKViewerTest.lib TKG2d.lib TKSTEPBase.lib TKTopAlgo.lib TKGeomBase.lib TKGeomAlgo.lib TKMesh.lib TKDraw.lib TKSTEP.lib TKIGES.lib TKSTL.lib TKVRML.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKXSDRAW.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -245,10 +245,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\SWDRAW;..\..\..\src\SWDRAW;..\..\..\drv\XSDRAW;..\..\..\src\XSDRAW;..\..\..\drv\XSDRAWIGES;..\..\..\src\XSDRAWIGES;..\..\..\drv\XSDRAWSTEP;..\..\..\src\XSDRAWSTEP;..\..\..\drv\XSDRAWSTLVRML;..\..\..\src\XSDRAWSTLVRML;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XSDRAW;..\..\..\src\XSDRAW;..\..\..\drv\XSDRAWIGES;..\..\..\src\XSDRAWIGES;..\..\..\drv\XSDRAWSTEP;..\..\..\src\XSDRAWSTEP;..\..\..\drv\XSDRAWSTLVRML;..\..\..\src\XSDRAWSTLVRML;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__SWDRAW_DLL;__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL;_OCC64"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__SWDRAW_DLL;__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -276,7 +276,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKV3d.lib TKMath.lib TKNIS.lib TKernel.lib TKService.lib TKXSBase.lib TKMeshVS.lib TKG3d.lib TKViewerTest.lib TKG2d.lib TKSTEPBase.lib TKTopAlgo.lib TKShHealing.lib TKGeomBase.lib TKGeomAlgo.lib TKMesh.lib TKDraw.lib TKSTEP.lib TKIGES.lib TKSTL.lib TKVRML.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKV3d.lib TKMath.lib TKNIS.lib TKernel.lib TKService.lib TKXSBase.lib TKMeshVS.lib TKG3d.lib TKViewerTest.lib TKG2d.lib TKSTEPBase.lib TKTopAlgo.lib TKGeomBase.lib TKGeomAlgo.lib TKMesh.lib TKDraw.lib TKSTEP.lib TKIGES.lib TKSTL.lib TKVRML.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKXSDRAW.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -344,10 +344,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\SWDRAW;..\..\..\src\SWDRAW;..\..\..\drv\XSDRAW;..\..\..\src\XSDRAW;..\..\..\drv\XSDRAWIGES;..\..\..\src\XSDRAWIGES;..\..\..\drv\XSDRAWSTEP;..\..\..\src\XSDRAWSTEP;..\..\..\drv\XSDRAWSTLVRML;..\..\..\src\XSDRAWSTLVRML;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XSDRAW;..\..\..\src\XSDRAW;..\..\..\drv\XSDRAWIGES;..\..\..\src\XSDRAWIGES;..\..\..\drv\XSDRAWSTEP;..\..\..\src\XSDRAWSTEP;..\..\..\drv\XSDRAWSTLVRML;..\..\..\src\XSDRAWSTLVRML;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__SWDRAW_DLL;__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL;_OCC64"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -369,7 +369,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__SWDRAW_DLL;__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -377,7 +377,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKV3d.lib TKMath.lib TKNIS.lib TKernel.lib TKService.lib TKXSBase.lib TKMeshVS.lib TKG3d.lib TKViewerTest.lib TKG2d.lib TKSTEPBase.lib TKTopAlgo.lib TKShHealing.lib TKGeomBase.lib TKGeomAlgo.lib TKMesh.lib TKDraw.lib TKSTEP.lib TKIGES.lib TKSTL.lib TKVRML.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKV3d.lib TKMath.lib TKNIS.lib TKernel.lib TKService.lib TKXSBase.lib TKMeshVS.lib TKG3d.lib TKViewerTest.lib TKG2d.lib TKSTEPBase.lib TKTopAlgo.lib TKGeomBase.lib TKGeomAlgo.lib TKMesh.lib TKDraw.lib TKSTEP.lib TKIGES.lib TKSTL.lib TKVRML.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKXSDRAW.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -421,46 +421,6 @@
 			Name="Source files"
 			>
 			<Filter
-				Name="SWDRAW"
-				>
-				<File
-					RelativePath="..\..\..\src\SWDRAW\SWDRAW.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\SWDRAW\SWDRAW_ShapeAnalysis.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\SWDRAW\SWDRAW_ShapeBuild.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\SWDRAW\SWDRAW_ShapeConstruct.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\SWDRAW\SWDRAW_ShapeCustom.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\SWDRAW\SWDRAW_ShapeExtend.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\SWDRAW\SWDRAW_ShapeFix.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\SWDRAW\SWDRAW_ShapeProcess.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\SWDRAW\SWDRAW_ShapeProcessAPI.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\SWDRAW\SWDRAW_ShapeTool.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\SWDRAW\SWDRAW_ShapeUpgrade.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\SWDRAW\SWDRAW_ToVRML.cxx">
-				</File>
-			</Filter>
-			<Filter
 				Name="XSDRAW"
 				>
 				<File
@@ -468,9 +428,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\XSDRAW\XSDRAW_Functions.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\XSDRAW\XSDRAW_Shape.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\XSDRAW\XSDRAW_Vars.cxx">
@@ -518,7 +475,13 @@
 					RelativePath="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_DataSource.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_DataSource3D.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_DrawableMesh.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_ToVRML.cxx">
 				</File>
 			</Filter>
 

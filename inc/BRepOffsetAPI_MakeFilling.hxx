@@ -137,6 +137,11 @@ public:
 //! If no initial surface is given, the algorithm computes it <br>
 //! automatically. If the set of edges is not connected (Free constraint), <br>
 //! missing edges are automatically computed. <br>
+//! Important: the initial surface must have orthogonal local coordinates, <br>
+//! i.e. partial derivatives dS/du and dS/dv must be orthogonal <br>
+//! at each point of surface. <br>
+//! If this condition breaks, distortions of resulting surface <br>
+//! are possible. <br>
   Standard_EXPORT     void LoadInitSurface(const TopoDS_Face& Surf) ;
   //! Adds a new constraint which also defines an edge of the wire <br>
 //!	        of the face <br>

@@ -42,12 +42,12 @@
 #endif
 class GccEnt_BadQualifier;
 class StdFail_NotDone;
-class GccIter_IsParallel;
+class Geom2dGcc_IsParallel;
 class Standard_OutOfRange;
 class Geom2dGcc_QualifiedCurve;
 class gp_Lin2d;
 class gp_Pnt2d;
-class Geom2dGcc_MyL2dTanObl;
+class Geom2dGcc_Lin2dTanOblIter;
 class Geom2dAdaptor_Curve;
 
 
@@ -130,7 +130,7 @@ public:
 //! solution. ParArg is the parameter of the point PntSol on the second argument (the line). <br>
 //! Exceptions <br>
 //! StdFail_NotDone if the construction fails. <br>
-//! GccIter_IsParallel if the solution and the second <br>
+//! Geom2dGcc_IsParallel if the solution and the second <br>
 //! argument (the line) are parallel. <br>
 //! Standard_OutOfRange if Index is less than zero or <br>
 //! greater than the number of solutions computed by this algorithm. <br>
@@ -154,7 +154,7 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Boolean Add(const Standard_Integer theIndex,const Geom2dGcc_MyL2dTanObl& theLin,const Standard_Real theTol,const Geom2dAdaptor_Curve& theC1) ;
+  Standard_EXPORT     Standard_Boolean Add(const Standard_Integer theIndex,const Geom2dGcc_Lin2dTanOblIter& theLin,const Standard_Real theTol,const Geom2dAdaptor_Curve& theC1) ;
 
 
 Standard_Boolean WellDone;

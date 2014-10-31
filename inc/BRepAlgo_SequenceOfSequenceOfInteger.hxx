@@ -40,6 +40,8 @@ public:
   
       BRepAlgo_SequenceOfSequenceOfInteger();
   
+  Standard_EXPORT   BRepAlgo_SequenceOfSequenceOfInteger(const BRepAlgo_SequenceOfSequenceOfInteger& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~BRepAlgo_SequenceOfSequenceOfInteger()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRepAlgo_SequenceOfSequenceOfInteger(const BRepAlgo_SequenceOfSequenceOfInteger& Other);
 
 
 

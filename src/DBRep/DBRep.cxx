@@ -14,10 +14,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <config.h>
-#endif
-
 #include <DBRep.ixx>
 #include <DBRep_DrawableShape.hxx>
 #include <Draw_Appli.hxx>
@@ -34,6 +30,7 @@
 #include <BRepTools_WireExplorer.hxx>
 #include <BRepTools_ShapeSet.hxx>
 #include <BRepAdaptor_Surface.hxx>
+#include <BRep_TEdge.hxx>
 #include <Precision.hxx>
 #include <Poly_Triangulation.hxx>
 #include <gp_Ax2.hxx>
@@ -49,13 +46,9 @@
 
 // memory management
 #include <Standard.hxx>
-//#ifdef WNT
 #include <stdio.h>
-#ifdef WNT
+#ifdef _WIN32
 extern Draw_Viewer dout;
-#endif
-#ifdef HAVE_STRINGS_H
-# include <strings.h>
 #endif
 
 #define Characters(IArg) (strspn (Arg[IArg], "0123456789.+-eE") != strlen (Arg[IArg]))
@@ -695,8 +688,9 @@ static Standard_Integer invert(Draw_Interpretor& ,
   
   BRep_Builder B;
   TopoDS_Shape NS = S.EmptyCopied();
-  TopoDS_Iterator itr(S);
+  NS.Closed (S.Closed());
 
+  TopoDS_Iterator itr(S);
   while (itr.More()) {
     B.Add(NS,itr.Value().Reversed());
     itr.Next();
@@ -969,6 +963,112 @@ static Standard_Integer countshapes(Draw_Interpretor& di,
 }
 
 //=======================================================================
+// 
+//=======================================================================
+void setProp(TopoDS_Shape Sh, const char** a, Standard_Integer n)
+{
+  Standard_Integer i;
+  for(i = 2; i < n; i++) {
+    if (strstr ( a[i], "free" )) {
+      if(a[i][0] == '-') {
+        Sh.Free(Standard_False);
+      }
+      else {
+        Sh.Free(Standard_True);
+      }
+    }
+    if (strstr ( a[i], "modified" )) {
+      if(a[i][0] == '-') {
+        Sh.Modified(Standard_False);
+      }
+      else {
+        Sh.Modified(Standard_True);
+      }
+    }
+    if (strstr ( a[i], "checked" )) {
+      if(a[i][0] == '-') {
+        Sh.Checked(Standard_False);
+      }
+      else {
+        Sh.Checked(Standard_True);
+      }
+    }
+    if (strstr ( a[i], "orientable" )) {
+      if(a[i][0] == '-') {
+        Sh.Orientable(Standard_False);
+      }
+      else {
+        Sh.Orientable(Standard_True);
+      }
+    }
+    if (strstr ( a[i], "closed" )) {
+      if(a[i][0] == '-') {
+        Sh.Closed(Standard_False);
+      }
+      else {
+        Sh.Closed(Standard_True);
+      }
+    }
+    if (strstr ( a[i], "infinite" )) {
+      if(a[i][0] == '-') {
+        Sh.Infinite(Standard_False);
+      }
+      else {
+        Sh.Infinite(Standard_True);
+      }
+    }
+    if (strstr ( a[i], "convex" )) {
+      if(a[i][0] == '-') {
+        Sh.Convex(Standard_False);
+      }
+      else {
+        Sh.Convex(Standard_True);
+      }
+    }
+    if (strstr ( a[i], "locked" )) {
+      if(a[i][0] == '-') {
+        Sh.Locked(Standard_False);
+      }
+      else {
+        Sh.Locked(Standard_True);
+      }
+    }
+  }
+}
+
+//=======================================================================
+// 
+//=======================================================================
+static Standard_Integer setFlags(Draw_Interpretor& ,
+                                    Standard_Integer n, const char** a)
+{
+  if (n < 3) return 1;
+
+  TopExp_Explorer ex;
+  TopoDS_Shape Sh = DBRep::Get(a[1]);
+
+  if (Sh.IsNull()) return 1;
+
+  setProp(Sh, a, n);
+  for (ex.Init (Sh,TopAbs_VERTEX); ex.More(); ex.Next()) {
+    TopoDS_Shape S = ex.Current();
+    setProp(S, a, n);
+  }
+
+  for (ex.Init (Sh,TopAbs_EDGE); ex.More(); ex.Next()) {
+    TopoDS_Shape S = ex.Current();
+    setProp(S, a, n);
+  }
+
+  for (ex.Init (Sh,TopAbs_FACE); ex.More(); ex.Next()) {
+    TopoDS_Shape S = ex.Current();
+    setProp(S, a, n);
+  }
+
+  return 0;
+}
+
+//=======================================================================
 //memory management
 //=======================================================================
 static Standard_Integer purgemmgt(Draw_Interpretor&, Standard_Integer , const char**) {
@@ -1200,6 +1300,9 @@ void  DBRep::BasicCommands(Draw_Interpretor& theCommands)
                   __FILE__,nbshapes,g);
   theCommands.Add("numshapes","numshapes s; size of shape",__FILE__,numshapes,g);
   theCommands.Add("countshapes","countshapes s; count of shape",__FILE__,countshapes,g);
+  theCommands.Add("setflags",
+                  "setflags shape_name flag1[flag2...]\n sets flags for shape(free, modidfied, checked, orientable, closed, infinite, convex, locked), for exmple <setflags a free> or <setflags a -free> if necessary unflag ",
+                  __FILE__,setFlags,g);
 
 //  theCommands.Add("dumpmmgt",
 //		  "dump le contenu du gestionnaire de memoire",__FILE__,dumpmmgt,g);

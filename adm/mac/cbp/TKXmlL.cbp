@@ -137,6 +137,7 @@
 		<Unit filename="../../../src/XmlMFunction/XmlMFunction_GraphNodeDriver.cxx" />
 		<Unit filename="../../../src/XmlMFunction/XmlMFunction_ScopeDriver.cxx" />
 		<Unit filename="../../../src/XmlObjMgt/XmlObjMgt.cxx" />
+		<Unit filename="../../../src/XmlObjMgt/XmlObjMgt_Array1.cxx" />
 		<Unit filename="../../../src/XmlObjMgt/XmlObjMgt_GP.cxx" />
 		<Unit filename="../../../src/XmlObjMgt/XmlObjMgt_Persistent.cxx" />
 	</Project>

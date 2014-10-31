@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TColStd_ListOfAsciiString();
   
+  Standard_EXPORT   TColStd_ListOfAsciiString(const TColStd_ListOfAsciiString& Other);
+  
   Standard_EXPORT     void Assign(const TColStd_ListOfAsciiString& Other) ;
     void operator=(const TColStd_ListOfAsciiString& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_ListOfAsciiString(const TColStd_ListOfAsciiString& Other);
 
 
 Standard_Address myFirst;

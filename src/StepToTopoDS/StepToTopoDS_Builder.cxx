@@ -79,8 +79,12 @@
 #include <StepToTopoDS_TranslateFace.hxx>
 #include <StepShape_HArray1OfFace.hxx>
 
+#include <STEPControl_ActorRead.hxx>
+
 #include <Message_ProgressSentry.hxx>
 #include <Message_Messenger.hxx>
+#include <Transfer_ActorOfTransientProcess.hxx>
+#include <STEPControl_ActorRead.hxx>
 
 static void ResetPreci (const TopoDS_Shape& S, Standard_Real maxtol)
 {
@@ -188,15 +192,15 @@ void StepToTopoDS_Builder::Init
 
   // Start Mapping
 
-  Handle(StepShape_ClosedShell) aCShell;
-  aCShell = aManifoldSolid->Outer();
+  Handle(StepShape_ConnectedFaceSet) aShell;
+  aShell = aManifoldSolid->Outer();
 
   StepToTopoDS_TranslateShell myTranShell;
   myTranShell.SetPrecision(Precision());
   myTranShell.SetMaxTol(MaxTol());
   // Non-manifold topology is not referenced by ManifoldSolidBrep (ssv; 14.11.2010)
   StepToTopoDS_NMTool dummyNMTool;
-  myTranShell.Init(aCShell, myTool, dummyNMTool);
+  myTranShell.Init(aShell, myTool, dummyNMTool);
 
   if (myTranShell.IsDone()) {
     TopoDS_Shape Sh = myTranShell.Value();
@@ -230,7 +234,7 @@ void StepToTopoDS_Builder::Init
     ResetPreci (S, MaxTol());
   }
   else {
-    TP->AddWarning(aCShell," OuterShell from ManifoldSolidBrep not mapped to TopoDS");
+    TP->AddWarning(aShell," OuterShell from ManifoldSolidBrep not mapped to TopoDS");
     myError  = StepToTopoDS_BuilderOther;
     done     = Standard_False;
   }
@@ -269,7 +273,7 @@ void StepToTopoDS_Builder::Init
   myTranShell.SetMaxTol(MaxTol());
   // OuterBound
 
-  aCShell = aBRepWithVoids->Outer();
+  aCShell = Handle(StepShape_ClosedShell)::DownCast(aBRepWithVoids->Outer());
   // Non-manifold topology is not referenced by BrepWithVoids (ssv; 14.11.2010)
   StepToTopoDS_NMTool dummyNMTool;
   myTranShell.Init(aCShell, myTool, dummyNMTool);
@@ -356,7 +360,7 @@ void StepToTopoDS_Builder::Init(const Handle(StepShape_FacetedBrep)& aFB,
   // Start Mapping
 
   Handle(StepShape_ClosedShell) aCShell;
-  aCShell = aFB->Outer();
+  aCShell = Handle(StepShape_ClosedShell)::DownCast(aFB->Outer());
   TopoDS_Shape Sh;
 
   StepToTopoDS_TranslateShell myTranShell; 
@@ -407,7 +411,7 @@ void StepToTopoDS_Builder::Init
   // Start Mapping
 
   Handle(StepShape_ClosedShell) aCShell;
-  aCShell = aFBABWV->Outer();
+  aCShell = Handle(StepShape_ClosedShell)::DownCast(aFBABWV->Outer());
   TopoDS_Shape Sh;
 
   StepToTopoDS_TranslateShell myTranShell;
@@ -610,6 +614,7 @@ void StepToTopoDS_Builder::Init (const Handle(StepShape_EdgeBasedWireframeModel)
       B.Add ( W, E );
     }
     if ( W.IsNull() ) continue;
+    W.Closed (BRep_Tool::IsClosed (W));
     B.Add ( C, W );
     if ( myResult.IsNull() ) myResult = W;
     else myResult = C;
@@ -671,6 +676,7 @@ void StepToTopoDS_Builder::Init (const Handle(StepShape_FaceBasedSurfaceModel)& 
       B.Add ( S, F );
     }
     if ( S.IsNull() ) continue;
+    S.Closed (BRep_Tool::IsClosed (S));
     B.Add ( C, S );
     if ( myResult.IsNull() ) myResult = S;
     else myResult = C;
@@ -720,7 +726,9 @@ static TopoDS_Face TranslateBoundedSurf (const Handle(StepGeom_Surface) &surf,
 
 void StepToTopoDS_Builder::Init
 (const Handle(StepShape_GeometricSet)& GCS,
- const Handle(Transfer_TransientProcess)& TP)
+ const Handle(Transfer_TransientProcess)& TP,
+ const Handle(Transfer_ActorOfTransientProcess)& RA,
+ const Standard_Boolean isManifold)
 {
   // Initialisation of the Tool
 
@@ -842,7 +850,23 @@ void StepToTopoDS_Builder::Init
       // try other surfs
       else res = TranslateBoundedSurf (aSurf, preci);
     }
-    else TP->AddWarning (ent," Entity is not a Curve, Point or Surface");
+    else if ( ent->IsKind(STANDARD_TYPE(StepGeom_GeometricRepresentationItem)) )
+    {
+      Handle(StepGeom_GeometricRepresentationItem) GRI = 
+        Handle(StepGeom_GeometricRepresentationItem)::DownCast(ent);
+      if (!RA.IsNull())
+      {
+        Handle(STEPControl_ActorRead) anActor = Handle(STEPControl_ActorRead)::DownCast(RA);
+        Handle(Transfer_Binder) binder;
+        if( !anActor.IsNull())
+          binder = anActor->TransferShape(GRI, TP, isManifold);
+        if (!binder.IsNull())
+        {
+          res = TransferBRep::ShapeResult(binder);
+        }
+      }
+    }
+    else TP->AddWarning (ent," Entity is not a Curve, Point, Surface or GeometricRepresentationItem");
     if ( ! res.IsNull() ) {
       B.Add(S, res);
       TransferBRep::SetShapeResult ( TP, ent, res );

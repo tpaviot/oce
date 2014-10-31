@@ -40,6 +40,8 @@ public:
   
       Plate_SequenceOfLinearXYZConstraint();
   
+  Standard_EXPORT   Plate_SequenceOfLinearXYZConstraint(const Plate_SequenceOfLinearXYZConstraint& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Plate_SequenceOfLinearXYZConstraint()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Plate_SequenceOfLinearXYZConstraint(const Plate_SequenceOfLinearXYZConstraint& Other);
 
 
 

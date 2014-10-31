@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   AIS_ListOfInteractive();
   
+  Standard_EXPORT   AIS_ListOfInteractive(const AIS_ListOfInteractive& Other);
+  
   Standard_EXPORT     void Assign(const AIS_ListOfInteractive& Other) ;
     void operator=(const AIS_ListOfInteractive& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   AIS_ListOfInteractive(const AIS_ListOfInteractive& Other);
 
 
 Standard_Address myFirst;

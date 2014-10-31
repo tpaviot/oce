@@ -30,7 +30,6 @@ class IntRes2d_Transition;
 class IntRes2d_Domain;
 class gp_Pnt2d;
 class IntImpParGen_ImpTool;
-class IntImpParGen_ParTool;
 class IntImpParGen_ImpParTool;
 class IntImpParGen_Intersector;
 class IntImpParGen_MyImpParTool;
@@ -47,7 +46,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Template class for an implicit  curve. <br>//! Template class for a tool on a parameterised curve. <br>//! Math function, instantiated inside the Intersector. <br>//! Tool used by the package IntCurve and IntImpParGen <br>
+  //! Template class for an implicit  curve. <br>//! Math function, instantiated inside the Intersector. <br>//! Tool used by the package IntCurve and IntImpParGen <br>
   Standard_EXPORT   static  void DetermineTransition(const IntRes2d_Position Pos1,gp_Vec2d& Tan1,const gp_Vec2d& Norm1,IntRes2d_Transition& Trans1,const IntRes2d_Position Pos2,gp_Vec2d& Tan2,const gp_Vec2d& Norm2,IntRes2d_Transition& Trans2,const Standard_Real Tol) ;
   
   Standard_EXPORT   static  Standard_Boolean DetermineTransition(const IntRes2d_Position Pos1,gp_Vec2d& Tan1,IntRes2d_Transition& Trans1,const IntRes2d_Position Pos2,gp_Vec2d& Tan2,IntRes2d_Transition& Trans2,const Standard_Real Tol) ;
@@ -72,7 +71,6 @@ private:
 
 
 friend class IntImpParGen_ImpTool;
-friend class IntImpParGen_ParTool;
 friend class IntImpParGen_ImpParTool;
 friend class IntImpParGen_Intersector;
 friend class IntImpParGen_MyImpParTool;

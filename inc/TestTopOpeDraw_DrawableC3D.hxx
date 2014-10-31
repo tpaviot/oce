@@ -40,11 +40,13 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class Draw_Text3D;
 class Geom_Curve;
 class Draw_Color;
 class gp_Pnt;
-class Draw_Interpretor;
 class Draw_Display;
 
 

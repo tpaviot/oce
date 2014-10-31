@@ -72,14 +72,6 @@ protected:
   //! Provides post-treatment actions <br>
   Standard_EXPORT     void PostTreat() ;
   
-  Standard_EXPORT   virtual  void PerformVZ() ;
-  
-  Standard_EXPORT   virtual  void PerformEZ() ;
-  
-  Standard_EXPORT   virtual  void PerformFZ() ;
-  
-  Standard_EXPORT   virtual  void PerformZZ() ;
-  
   Standard_EXPORT   virtual  void PrepareCopy() ;
   //! Provides post-treatment actions for the copy <br>
   Standard_EXPORT     void PostTreatCopy() ;

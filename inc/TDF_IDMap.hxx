@@ -28,7 +28,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class Standard_GUID;
 class TDF_StdMapNodeOfIDMap;
 class TDF_MapIteratorOfIDMap;
@@ -42,6 +41,8 @@ public:
 
   
   Standard_EXPORT   TDF_IDMap(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   TDF_IDMap(const TDF_IDMap& Other);
   
   Standard_EXPORT     TDF_IDMap& Assign(const TDF_IDMap& Other) ;
     TDF_IDMap& operator =(const TDF_IDMap& Other) 
@@ -75,8 +76,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_IDMap(const TDF_IDMap& Other);
 
 
 

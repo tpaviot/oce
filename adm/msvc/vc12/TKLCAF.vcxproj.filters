@@ -2,22 +2,22 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{3CAB62B1-0A06-0F16-186C-D14E937DB7AD}</UniqueIdentifier>
+      <UniqueIdentifier>{DA38B38C-120F-0DDA-115D-39A5669A0ABE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TDF">
-      <UniqueIdentifier>{A5F15F58-018C-1280-128C-3F9792F81B66}</UniqueIdentifier>
+      <UniqueIdentifier>{3742D180-1593-1164-0682-2C2F95E7EB15}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TDataStd">
-      <UniqueIdentifier>{CF06A9AB-0E90-08B4-130B-5B565480D6BB}</UniqueIdentifier>
+      <UniqueIdentifier>{FADBC2D7-0BA0-0817-0F74-ACDF888799AA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TFunction">
-      <UniqueIdentifier>{91A96790-01EA-0105-0401-2BF122E42E5B}</UniqueIdentifier>
+      <UniqueIdentifier>{798567E2-048F-00CC-16D5-5F8F1DACCE23}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TDocStd">
-      <UniqueIdentifier>{9F59555A-0120-14D6-0B1F-49B9291B5DFA}</UniqueIdentifier>
+      <UniqueIdentifier>{117D0122-161B-0ACB-06BE-861D14DF401E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AppStdL">
-      <UniqueIdentifier>{B6E2CFEE-0AC3-0E16-1192-AD16378D828F}</UniqueIdentifier>
+      <UniqueIdentifier>{EA966F23-01CD-149E-0609-7452C6E6533E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,9 +54,6 @@
     <ClCompile Include="..\..\..\drv\TDF\TDF_DataMapIteratorOfLabelIntegerMap_0.cxx">
       <Filter>Source files\TDF</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TDF\TDF_DataMapIteratorOfLabelLabelMap_0.cxx">
-      <Filter>Source files\TDF</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TDF\TDF_DataMapNodeOfAttributeDataMap_0.cxx">
       <Filter>Source files\TDF</Filter>
     </ClCompile>
@@ -64,9 +61,6 @@
       <Filter>Source files\TDF</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TDF\TDF_DataMapNodeOfLabelIntegerMap_0.cxx">
-      <Filter>Source files\TDF</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TDF\TDF_DataMapNodeOfLabelLabelMap_0.cxx">
       <Filter>Source files\TDF</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TDF\TDF_DeltaList_0.cxx">
@@ -118,9 +112,6 @@
       <Filter>Source files\TDF</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TDF\TDF_LabelIntegerMap_0.cxx">
-      <Filter>Source files\TDF</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TDF\TDF_LabelLabelMap_0.cxx">
       <Filter>Source files\TDF</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TDF\TDF_LabelList_0.cxx">

@@ -15,14 +15,6 @@
 #include <PMMgt_PManaged.ixx>
 #include <Standard_TypeMismatch.hxx>
 
-#ifdef TRACE
-#define  PRINT(X) cout X
-#define  SHALLOWDUMP(X) X.ShallowDump(cout)
-#else
-#define  PRINT(X) 
-#define  SHALLOWDUMP(X)
-#endif
-
 PMMgt_PManaged::PMMgt_PManaged()
 {
 }
@@ -30,10 +22,10 @@ PMMgt_PManaged::PMMgt_PManaged()
 //============================================================================
 #ifndef CSFDB
 class _Oid_PMMgt_PManaged : public Oid_PMMgt_PManaged {
-    friend class Handle_PMMgt_PManaged;
+    friend class Handle(PMMgt_PManaged);
 };
 
-void Handle_PMMgt_PManaged::Delete()
+void Handle(PMMgt_PManaged)::Delete()
 {
 //  PMMgt_PManaged* aMng;
   _Oid_PMMgt_PManaged *aOid;

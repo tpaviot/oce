@@ -116,8 +116,8 @@
 			<Add library="objc" />
 			<Add library="freetype" />
 		</Linker>
-		<Unit filename="../../../drv/DDF/DDF_StackIteratorOfTransactionStack_0.cxx" />
-		<Unit filename="../../../drv/DDF/DDF_StackNodeOfTransactionStack_0.cxx" />
+		<Unit filename="../../../drv/DDF/DDF_ListIteratorOfTransactionStack_0.cxx" />
+		<Unit filename="../../../drv/DDF/DDF_ListNodeOfTransactionStack_0.cxx" />
 		<Unit filename="../../../drv/DDF/DDF_TransactionStack_0.cxx" />
 		<Unit filename="../../../src/DDF/DDF.cxx" />
 		<Unit filename="../../../src/DDF/DDF_AttributeBrowser.cxx" />

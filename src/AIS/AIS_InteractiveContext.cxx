@@ -47,8 +47,8 @@
 #include <Precision.hxx>
 #include <AIS_Selection.hxx>
 #include <AIS_DataMapIteratorOfDataMapOfIOStatus.hxx>
-#include <AIS_ConnectedShape.hxx>
-#include <AIS_MultipleConnectedShape.hxx>
+#include <AIS_ConnectedInteractive.hxx>
+#include <AIS_MultipleConnectedInteractive.hxx>
 #include <AIS_DataMapIteratorOfDataMapOfILC.hxx>
 #include <AIS_GlobalStatus.hxx>
 #include <AIS_MapIteratorOfMapOfInteractive.hxx>
@@ -121,7 +121,7 @@ mgrSelector(new SelectMgr_SelectionManager()),
 myMainPM(new PrsMgr_PresentationManager3d(MainViewer->Viewer())),
 myMainVwr(MainViewer),
 myMainSel(new StdSelect_ViewerSelector3d()),
-myToHilightSelected( Standard_False ),
+myToHilightSelected( Standard_True ),
 myFilters(new SelectMgr_OrFilter()),
 myDefaultDrawer(new Prs3d_Drawer()),
 myDefaultColor(Quantity_NOC_GOLDENROD),
@@ -1319,19 +1319,19 @@ void AIS_InteractiveContext::SetLocation(const Handle(AIS_InteractiveObject)& an
   if(anIObj.IsNull()) return;
 
 
-  if(anIObj->HasLocation() && aLoc.IsIdentity()){
-    anIObj->ResetLocation();
+  if(anIObj->HasTransformation() && aLoc.IsIdentity()){
+    anIObj->ResetTransformation();
     mgrSelector->Update(anIObj,Standard_False);
     return;
   }
   if(aLoc.IsIdentity()) return ;
 
   // first reset the previous location to properly clean everything...
-  if(anIObj->HasLocation())
-    anIObj->ResetLocation();
+  if(anIObj->HasTransformation())
+    anIObj->ResetTransformation();
 
 
-  anIObj->SetLocation(aLoc);
+  anIObj->SetLocalTransformation (aLoc.Transformation());
   
   if(!HasOpenedContext())
     mgrSelector->Update(anIObj,Standard_False);
@@ -1352,7 +1352,7 @@ void AIS_InteractiveContext::ResetLocation(const Handle(AIS_InteractiveObject)& 
 {
   if(anIObj.IsNull()) return;
 
-  anIObj->ResetLocation();
+  anIObj->ResetTransformation();
   mgrSelector->Update(anIObj,Standard_False);
 }
 
@@ -1366,13 +1366,13 @@ HasLocation(const Handle(AIS_InteractiveObject)& anIObj) const
 {
   if(anIObj.IsNull()) return Standard_False;
 
-  return anIObj->HasLocation();
+  return anIObj->HasTransformation();
 }
 
-const TopLoc_Location& AIS_InteractiveContext::
+TopLoc_Location AIS_InteractiveContext::
 Location(const Handle(AIS_InteractiveObject)& anIObj) const
 {
-  return anIObj->Location();
+  return anIObj->Transformation();
 }
 
 //=======================================================================
@@ -1489,8 +1489,8 @@ void AIS_InteractiveContext::SetDisplayMode(const AIS_DisplayMode aMode,
     Handle(AIS_InteractiveObject) anObj = It.Key();
     // ENDCLE
     Standard_Boolean Processed = (anObj->IsKind(STANDARD_TYPE(AIS_Shape)) ||
-                                  anObj->IsKind(STANDARD_TYPE(AIS_ConnectedShape)) ||
-                                  anObj->IsKind(STANDARD_TYPE(AIS_MultipleConnectedShape)) );
+                                  anObj->IsKind(STANDARD_TYPE(AIS_ConnectedInteractive)) ||
+                                  anObj->IsKind(STANDARD_TYPE(AIS_MultipleConnectedInteractive)) );
     
     if ((!anObj->HasDisplayMode()) && Processed) 
       {
@@ -2580,7 +2580,7 @@ Standard_Boolean AIS_InteractiveContext::IsoOnPlane() const
 //purpose  : 
 //=======================================================================
 
-void AIS_InteractiveContext::SetSelectionMode(const Handle_AIS_InteractiveObject&, const Standard_Integer )
+void AIS_InteractiveContext::SetSelectionMode(const Handle(AIS_InteractiveObject)&, const Standard_Integer )
 {
 }
 
@@ -2589,7 +2589,7 @@ void AIS_InteractiveContext::SetSelectionMode(const Handle_AIS_InteractiveObject
 //purpose  : 
 //=======================================================================
 
-void AIS_InteractiveContext::UnsetSelectionMode(const Handle_AIS_InteractiveObject&)
+void AIS_InteractiveContext::UnsetSelectionMode(const Handle(AIS_InteractiveObject)&)
 {
 }
 
@@ -2676,7 +2676,7 @@ Standard_Integer AIS_InteractiveContext::PixelTolerance() const {
 //purpose  : 
 //=======================================================================
 
-Standard_Boolean AIS_InteractiveContext::IsInLocal(const Handle_AIS_InteractiveObject& anIObj,
+Standard_Boolean AIS_InteractiveContext::IsInLocal(const Handle(AIS_InteractiveObject)& anIObj,
                                                    Standard_Integer& TheIndex) const 
 {
   if(anIObj.IsNull()) return Standard_False;

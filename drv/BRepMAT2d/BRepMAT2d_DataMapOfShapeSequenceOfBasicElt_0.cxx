@@ -14,8 +14,8 @@
 #ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
 #endif
-#ifndef _BRepMAT2d_SequenceOfBasicElt_HeaderFile
-#include <BRepMAT2d_SequenceOfBasicElt.hxx>
+#ifndef _MAT_SequenceOfBasicElt_HeaderFile
+#include <MAT_SequenceOfBasicElt.hxx>
 #endif
 #ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
@@ -30,8 +30,8 @@
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem BRepMAT2d_SequenceOfBasicElt
-#define TheItem_hxx <BRepMAT2d_SequenceOfBasicElt.hxx>
+#define TheItem MAT_SequenceOfBasicElt
+#define TheItem_hxx <MAT_SequenceOfBasicElt.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>
 #define TCollection_DataMapNode BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt

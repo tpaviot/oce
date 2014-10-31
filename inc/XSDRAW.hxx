@@ -22,6 +22,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -58,7 +61,6 @@
 #ifndef _Handle_TopTools_HSequenceOfShape_HeaderFile
 #include <Handle_TopTools_HSequenceOfShape.hxx>
 #endif
-class Draw_Interpretor;
 class IFSelect_SessionPilot;
 class XSControl_WorkSession;
 class XSControl_Controller;
@@ -72,7 +74,6 @@ class TColStd_HSequenceOfTransient;
 class TCollection_AsciiString;
 class TopTools_HSequenceOfShape;
 class XSDRAW_Functions;
-class XSDRAW_Shape;
 class XSDRAW_Vars;
 
 
@@ -236,7 +237,6 @@ private:
 
 
 friend class XSDRAW_Functions;
-friend class XSDRAW_Shape;
 friend class XSDRAW_Vars;
 
 };

@@ -25,9 +25,11 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class Standard_DimensionError;
 class Standard_RangeError;
-class math_Vector;
 class math_Matrix;
 
 

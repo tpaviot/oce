@@ -40,6 +40,8 @@ public:
   
       Intf_SeqOfSectionPoint();
   
+  Standard_EXPORT   Intf_SeqOfSectionPoint(const Intf_SeqOfSectionPoint& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Intf_SeqOfSectionPoint()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Intf_SeqOfSectionPoint(const Intf_SeqOfSectionPoint& Other);
 
 
 

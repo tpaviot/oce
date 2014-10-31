@@ -16,7 +16,9 @@
 #include <Standard_Macro.hxx>
 #endif
 
-class Draw_Interpretor;
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 
 
 //! XSDRAW for STEP AP214 and AP203 <br>

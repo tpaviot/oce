@@ -40,6 +40,8 @@ public:
   
       Extrema_SequenceOfPOnCurv2d();
   
+  Standard_EXPORT   Extrema_SequenceOfPOnCurv2d(const Extrema_SequenceOfPOnCurv2d& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Extrema_SequenceOfPOnCurv2d()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Extrema_SequenceOfPOnCurv2d(const Extrema_SequenceOfPOnCurv2d& Other);
 
 
 

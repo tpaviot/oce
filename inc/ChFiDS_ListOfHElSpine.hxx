@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   ChFiDS_ListOfHElSpine();
   
+  Standard_EXPORT   ChFiDS_ListOfHElSpine(const ChFiDS_ListOfHElSpine& Other);
+  
   Standard_EXPORT     void Assign(const ChFiDS_ListOfHElSpine& Other) ;
     void operator=(const ChFiDS_ListOfHElSpine& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ChFiDS_ListOfHElSpine(const ChFiDS_ListOfHElSpine& Other);
 
 
 Standard_Address myFirst;

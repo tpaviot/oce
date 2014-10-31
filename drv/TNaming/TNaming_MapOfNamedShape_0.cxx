@@ -5,9 +5,6 @@
 
 #include <TNaming_MapOfNamedShape.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
 #ifndef _TNaming_NamedShape_HeaderFile
 #include <TNaming_NamedShape.hxx>
 #endif

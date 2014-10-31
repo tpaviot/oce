@@ -40,6 +40,8 @@ public:
   
       TColgp_SequenceOfDir2d();
   
+  Standard_EXPORT   TColgp_SequenceOfDir2d(const TColgp_SequenceOfDir2d& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColgp_SequenceOfDir2d()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColgp_SequenceOfDir2d(const TColgp_SequenceOfDir2d& Other);
 
 
 

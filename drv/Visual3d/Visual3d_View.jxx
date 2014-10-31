@@ -13,15 +13,6 @@
 #ifndef _Visual3d_ViewManager_HeaderFile
 #include <Visual3d_ViewManager.hxx>
 #endif
-#ifndef _Visual3d_ViewOrientation_HeaderFile
-#include <Visual3d_ViewOrientation.hxx>
-#endif
-#ifndef _Visual3d_ViewMapping_HeaderFile
-#include <Visual3d_ViewMapping.hxx>
-#endif
-#ifndef _Visual3d_ContextView_HeaderFile
-#include <Visual3d_ContextView.hxx>
-#endif
 #ifndef _Visual3d_Layer_HeaderFile
 #include <Visual3d_Layer.hxx>
 #endif
@@ -31,8 +22,8 @@
 #ifndef _Aspect_GradientBackground_HeaderFile
 #include <Aspect_GradientBackground.hxx>
 #endif
-#ifndef _TColStd_Array2OfReal_HeaderFile
-#include <TColStd_Array2OfReal.hxx>
+#ifndef _Visual3d_ContextView_HeaderFile
+#include <Visual3d_ContextView.hxx>
 #endif
 #ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
@@ -49,8 +40,8 @@
 #ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
 #endif
-#ifndef _Graphic3d_Plotter_HeaderFile
-#include <Graphic3d_Plotter.hxx>
+#ifndef _TColStd_Array2OfReal_HeaderFile
+#include <TColStd_Array2OfReal.hxx>
 #endif
 #ifndef _Visual3d_View_HeaderFile
 #include <Visual3d_View.hxx>

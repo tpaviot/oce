@@ -1,6 +1,0 @@
-#ifndef _Poly_PolygonOnTriangulation_HeaderFile
-#include <Poly_PolygonOnTriangulation.hxx>
-#endif
-#ifndef _BRepMesh_PairOfPolygon_HeaderFile
-#include <BRepMesh_PairOfPolygon.hxx>
-#endif

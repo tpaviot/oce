@@ -31,11 +31,13 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class TColStd_HArray1OfReal;
 class TColStd_HArray2OfReal;
 class StdFail_NotDone;
 class TColStd_Array1OfReal;
-class math_Vector;
 
 
 //! This class finds eigen values and vectors of <br>

@@ -43,6 +43,8 @@ public:
   
       Draw_SequenceOfDrawable3D();
   
+  Standard_EXPORT   Draw_SequenceOfDrawable3D(const Draw_SequenceOfDrawable3D& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Draw_SequenceOfDrawable3D()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Draw_SequenceOfDrawable3D(const Draw_SequenceOfDrawable3D& Other);
 
 
 

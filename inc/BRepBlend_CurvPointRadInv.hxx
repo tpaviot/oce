@@ -31,16 +31,20 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
 class Adaptor3d_HCurve;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 
 
-//! This function  is used  to find a  solution on  a done <br>
+//! Function of reframing between a point and a curve. <br>
+//!          valid in cases of constant and progressive radius. <br>
+//!          This function  is used  to find a  solution on  a done <br>
 //!          point   of   the curve 1 when   using  RstRstConsRad or <br>
 //!          CSConstRad... <br>
 //!          The vector <X>  used in Value, Values and  Derivatives <br>

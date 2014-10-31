@@ -22,8 +22,8 @@
 #ifndef _GccAna_Circ2dTanOnRad_HeaderFile
 #include <GccAna_Circ2dTanOnRad.hxx>
 #endif
-#ifndef _Geom2dGcc_MyCirc2dTanOnRad_HeaderFile
-#include <Geom2dGcc_MyCirc2dTanOnRad.hxx>
+#ifndef _Geom2dGcc_Circ2dTanOnRadGeo_HeaderFile
+#include <Geom2dGcc_Circ2dTanOnRadGeo.hxx>
 #endif
 #ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>

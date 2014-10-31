@@ -12,9 +12,6 @@
 #ifndef _PCollection_HAsciiString_HeaderFile
 #include <PCollection_HAsciiString.hxx>
 #endif
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
 #endif

@@ -96,9 +96,6 @@
 		<Unit filename="../../../drv/CDM/CDM_MapOfDocument_0.cxx" />
 		<Unit filename="../../../drv/CDM/CDM_MetaDataLookUpTable_0.cxx" />
 		<Unit filename="../../../drv/CDM/CDM_PresentationDirectory_0.cxx" />
-		<Unit filename="../../../drv/CDM/CDM_StackIteratorOfStackOfDocument_0.cxx" />
-		<Unit filename="../../../drv/CDM/CDM_StackNodeOfStackOfDocument_0.cxx" />
-		<Unit filename="../../../drv/CDM/CDM_StackOfDocument_0.cxx" />
 		<Unit filename="../../../drv/CDM/CDM_StdMapNodeOfMapOfDocument_0.cxx" />
 		<Unit filename="../../../src/CDM/CDM_Application.cxx" />
 		<Unit filename="../../../src/CDM/CDM_COutMessageDriver.cxx" />
@@ -129,6 +126,7 @@
 		<Unit filename="../../../src/CDF/CDF_Application.cxx" />
 		<Unit filename="../../../src/CDF/CDF_Directory.cxx" />
 		<Unit filename="../../../src/CDF/CDF_DirectoryIterator.cxx" />
+		<Unit filename="../../../src/CDF/CDF_FWOSDriver.cxx" />
 		<Unit filename="../../../src/CDF/CDF_MetaDataDriver.cxx" />
 		<Unit filename="../../../src/CDF/CDF_MetaDataDriverFactory.cxx" />
 		<Unit filename="../../../src/CDF/CDF_Session.cxx" />

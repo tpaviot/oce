@@ -52,6 +52,9 @@
 #ifndef _AppParCurves_Constraint_HeaderFile
 #include <AppParCurves_Constraint.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class TColStd_HArray1OfReal;
 class AppParCurves_HArray1OfConstraintCouple;
 class BRepApprox_TheMultiLineOfApprox;
@@ -61,7 +64,6 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox;
-class math_Vector;
 class AppParCurves_MultiCurve;
 class AppParCurves_MultiBSpCurve;
 class TColStd_Array1OfReal;

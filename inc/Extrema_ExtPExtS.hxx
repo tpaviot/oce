@@ -9,11 +9,11 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
-#ifndef _Standard_DefineAlloc_HeaderFile
-#include <Standard_DefineAlloc.hxx>
+#ifndef _Standard_DefineHandle_HeaderFile
+#include <Standard_DefineHandle.hxx>
 #endif
-#ifndef _Standard_Macro_HeaderFile
-#include <Standard_Macro.hxx>
+#ifndef _Handle_Extrema_ExtPExtS_HeaderFile
+#include <Handle_Extrema_ExtPExtS.hxx>
 #endif
 
 #ifndef _Standard_Real_HeaderFile
@@ -25,8 +25,8 @@
 #ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
 #endif
-#ifndef _Adaptor3d_SurfacePtr_HeaderFile
-#include <Adaptor3d_SurfacePtr.hxx>
+#ifndef _Handle_Adaptor3d_HSurfaceOfLinearExtrusion_HeaderFile
+#include <Handle_Adaptor3d_HSurfaceOfLinearExtrusion.hxx>
 #endif
 #ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
@@ -46,11 +46,14 @@
 #ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
 #endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
 class Adaptor3d_HCurve;
+class Adaptor3d_HSurfaceOfLinearExtrusion;
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class gp_Pnt;
-class Adaptor3d_SurfaceOfLinearExtrusion;
 class Extrema_POnSurf;
 class gp_Ax2;
 
@@ -58,21 +61,20 @@ class gp_Ax2;
 //! It calculates all the extremum (minimum and <br>
 //!          maximum) distances between a point and a linear <br>
 //!          extrusion surface. <br>
-class Extrema_ExtPExtS  {
-public:
+class Extrema_ExtPExtS : public Standard_Transient {
 
-  DEFINE_STANDARD_ALLOC
+public:
 
   
   Standard_EXPORT   Extrema_ExtPExtS();
   //! It calculates all the distances between a point <br>
 //!          from gp and a Surface. <br>
-  Standard_EXPORT   Extrema_ExtPExtS(const gp_Pnt& P,const Adaptor3d_SurfaceOfLinearExtrusion& S,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV);
+  Standard_EXPORT   Extrema_ExtPExtS(const gp_Pnt& P,const Handle(Adaptor3d_HSurfaceOfLinearExtrusion)& S,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV);
   //! It calculates all the distances between a point <br>
 //!          from gp and a Surface. <br>
-  Standard_EXPORT   Extrema_ExtPExtS(const gp_Pnt& P,const Adaptor3d_SurfaceOfLinearExtrusion& S,const Standard_Real TolU,const Standard_Real TolV);
+  Standard_EXPORT   Extrema_ExtPExtS(const gp_Pnt& P,const Handle(Adaptor3d_HSurfaceOfLinearExtrusion)& S,const Standard_Real TolU,const Standard_Real TolV);
   //! Initializes the fields of the algorithm. <br>
-  Standard_EXPORT     void Initialize(const Adaptor3d_SurfaceOfLinearExtrusion& S,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV) ;
+  Standard_EXPORT     void Initialize(const Handle(Adaptor3d_HSurfaceOfLinearExtrusion)& S,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV) ;
   
   Standard_EXPORT     void Perform(const gp_Pnt& P) ;
   //! Returns True if the distances are found. <br>
@@ -87,18 +89,17 @@ public:
 
 
 
+  DEFINE_STANDARD_RTTI(Extrema_ExtPExtS)
 
 protected:
 
 
 
 
-
-private:
+private: 
 
   
   Standard_EXPORT     void MakePreciser(Standard_Real& U,const gp_Pnt& P,const Standard_Boolean isMin,const gp_Ax2& OrtogSection) const;
-
 
 Standard_Real myuinf;
 Standard_Real myusup;
@@ -108,7 +109,7 @@ Standard_Real myvsup;
 Standard_Real mytolv;
 Extrema_FuncExtPS myF;
 Handle_Adaptor3d_HCurve myC;
-Adaptor3d_SurfacePtr myS;
+Handle_Adaptor3d_HSurfaceOfLinearExtrusion myS;
 gp_Vec myDirection;
 gp_Ax2 myPosition;
 Extrema_GenExtPS myExtPS;

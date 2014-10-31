@@ -25,9 +25,6 @@
 #ifndef _Handle_PCollection_HExtendedString_HeaderFile
 #include <Handle_PCollection_HExtendedString.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _PColStd_FieldOfHArray1OfExtendedString_HeaderFile
 #include <PColStd_FieldOfHArray1OfExtendedString.hxx>
 #endif
@@ -40,11 +37,7 @@
 #ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PCollection_HExtendedString;
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PColStd_FieldOfHArray1OfExtendedString;
@@ -70,10 +63,6 @@ public:
         Standard_Integer Upper() const;
   
   Standard_EXPORT     Handle_PCollection_HExtendedString Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PColStd_HArray1OfExtendedString( )
 {
@@ -158,10 +147,6 @@ PColStd_FieldOfHArray1OfExtendedString Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PColStd_HArray1OfExtendedString& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

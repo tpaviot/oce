@@ -40,6 +40,8 @@ public:
   
       AdvApp2Var_SequenceOfNode();
   
+  Standard_EXPORT   AdvApp2Var_SequenceOfNode(const AdvApp2Var_SequenceOfNode& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~AdvApp2Var_SequenceOfNode()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   AdvApp2Var_SequenceOfNode(const AdvApp2Var_SequenceOfNode& Other);
 
 
 

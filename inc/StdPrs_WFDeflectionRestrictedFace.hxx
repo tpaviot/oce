@@ -43,11 +43,17 @@
 class Prs3d_Presentation;
 class BRepAdaptor_HSurface;
 class Prs3d_Drawer;
+class Bnd_Box;
 
 
 //! A framework to provide display of U and V <br>
 //! isoparameters of faces, while allowing you to impose <br>
 //! a deflection on them. <br>
+//! Computes the wireframe presentation of faces with <br>
+//! restrictions by displaying a given number of U and/or <br>
+//! V isoparametric curves. The isoparametric curves are <br>
+//! drawn with respect to a maximal chordial deviation. <br>
+//! The presentation includes the restriction curves. <br>
 class StdPrs_WFDeflectionRestrictedFace  : public Prs3d_Root {
 public:
 
@@ -114,6 +120,8 @@ public:
 //! Curves give a sequence of face curves, it is used if the PrimitiveArray <br>
 //! visualization approach is activated (it is activated by default). <br>
   Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(BRepAdaptor_HSurface)& aFace,const Standard_Boolean DrawUIso,const Standard_Boolean DrawVIso,const Quantity_Length Deflection,const Standard_Integer NBUiso,const Standard_Integer NBViso,const Handle(Prs3d_Drawer)& aDrawer,Prs3d_NListOfSequenceOfPnt& Curves) ;
+  //! Adds box as polyline to the presentation object <br>
+  Standard_EXPORT   static  void AddBox(const Handle(Prs3d_Presentation)& thePrs,const Bnd_Box& theBndBox,const Handle(Prs3d_Drawer)& theDrawer) ;
   
   Standard_EXPORT   static  Standard_Boolean Match(const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Quantity_Length aDistance,const Handle(BRepAdaptor_HSurface)& aFace,const Handle(Prs3d_Drawer)& aDrawer) ;
   

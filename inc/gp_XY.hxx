@@ -74,6 +74,8 @@ public:
 //!  Index = 2 => Y is returned <br>
 //! Raises OutOfRange if Index != {1, 2}. <br>
         Standard_Real Coord(const Standard_Integer Index) const;
+  
+        Standard_Real& ChangeCoord(const Standard_Integer theIndex) ;
   //! For this number pair, returns its coordinates X and Y. <br>
         void Coord(Standard_Real& X,Standard_Real& Y) const;
   //! Returns the X coordinate of this number pair. <br>

@@ -19,19 +19,7 @@
 #include <Standard_NegativeValue.hxx>
 #include <Standard_OutOfRange.hxx>
 
-#ifdef HAVE_CONFIG_H
-# include <config.h>
-#endif
-#if defined(HAVE_STRING_H)
-# include <string.h>
-#endif
 #include <stdio.h>
-#if defined(HAVE_STDLIB_H)
-#include <stdlib.h>
-#endif
-#if defined(HAVE_LIBC_H)
-# include <libc.h>
-#endif
 
 //------------------------------------------------------------------------
 //  Create from an ExtendedString of TCollection
@@ -566,17 +554,6 @@ Standard_ExtCharacter PCollection_HExtendedString::Value
    if (Index < 0 || Index > Length()) Standard_OutOfRange::Raise();
    return Data(Index-1);
 }
-
-//------------------------------------------------------------------------
-//  ShallowDump
-//------------------------------------------------------------------------
-void PCollection_HExtendedString::ShallowDump(Standard_OStream& S) const
-{
-   S << "begin class HExtendedString " << endl;
-   ::ShallowDump(Data, S);
-   S << "end class HExtendedString" << endl;
-}
-
 
 //------------------------------------------------------------------------
 //  Assign

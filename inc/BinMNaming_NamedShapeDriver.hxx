@@ -71,6 +71,8 @@ public:
   Standard_EXPORT     void WriteShapeSection(Standard_OStream& theOS) ;
   //! Clear myShapeSet <br>
   Standard_EXPORT     void Clear() ;
+  //! set whether to store triangulation <br>
+        void SetWithTriangles(const Standard_Boolean isWithTriangles) ;
   //! set the format of topology <br>
 //!          First : does not write CurveOnSurface UV Points into the file <br>
 //!                  on reading calls Check() method. <br>

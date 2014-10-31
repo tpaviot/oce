@@ -46,6 +46,9 @@
 #ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
 #endif
+#ifndef _SelectBasics_PickArgs_HeaderFile
+#include <SelectBasics_PickArgs.hxx>
+#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
@@ -221,6 +224,8 @@ public:
   Standard_EXPORT     void SetUpdateSortPossible(const Standard_Boolean possible) ;
   
   Standard_EXPORT     Standard_Boolean IsUpdateSortPossible() const;
+  
+       const SelectBasics_PickArgs& LastPickingArguments() const;
 
 
 friend class SelectMgr_SelectionManager;
@@ -307,6 +312,7 @@ Standard_Integer myactivenb;
 Handle_TColStd_HArray1OfInteger myIndexes;
 TColStd_SequenceOfInteger myprim;
 Standard_Integer myCurRank;
+SelectBasics_PickArgs myLastPickArgs;
 Standard_Real lastx;
 Standard_Real lasty;
 Standard_Boolean myUpdateSortPossible;

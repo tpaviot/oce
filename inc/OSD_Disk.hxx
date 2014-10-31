@@ -35,7 +35,7 @@ class OSD_OSDError;
 class OSD_Path;
 
 
-//! Disk management <br>
+//! Disk management (a set of disk oriented tools) <br>
 class OSD_Disk  {
 public:
 

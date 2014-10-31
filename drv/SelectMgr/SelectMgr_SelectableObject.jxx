@@ -4,14 +4,8 @@
 #ifndef _Standard_NotImplemented_HeaderFile
 #include <Standard_NotImplemented.hxx>
 #endif
-#ifndef _SelectMgr_SelectionManager_HeaderFile
-#include <SelectMgr_SelectionManager.hxx>
-#endif
 #ifndef _SelectMgr_Selection_HeaderFile
 #include <SelectMgr_Selection.hxx>
-#endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
-#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _SelectMgr_SequenceOfOwner_HeaderFile
 #include <SelectMgr_SequenceOfOwner.hxx>

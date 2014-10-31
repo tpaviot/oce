@@ -28,7 +28,7 @@ class TopoDS_Face;
 class gp_Pnt;
 
 
-//! Provides Constructors. <br>
+//! Provides Constructors with a Face. <br>
 class BRepClass_FaceClassifier  : public BRepClass_FClassifier {
 public:
 

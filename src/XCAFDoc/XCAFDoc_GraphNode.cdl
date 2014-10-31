@@ -16,7 +16,9 @@
 class GraphNode from XCAFDoc inherits Attribute from TDF
 
 	---Purpose: This attribute allow user multirelation tree of labels.
-    	-- This GraphNode is experimental Graph that not control looping and redundance.
+    -- This GraphNode is experimental Graph that not control looping and redundance.
+    -- Attribute containg sequence of father's and child's labels.
+    -- Provide create and work with Graph in XCAFDocument.
 uses
 
   GUID              from Standard,   
@@ -61,7 +63,7 @@ is
 	    ---Purpose: Instance methods: 
 	    --          ================ 
     
-    Create returns mutable GraphNode from XCAFDoc;
+    Create returns GraphNode from XCAFDoc;
     
     SetGraphID (me : mutable; explicitID : GUID  from Standard);
 	
@@ -142,12 +144,12 @@ is
     Restore (me: mutable; with : Attribute from TDF) 
     is virtual;
 
-    Paste (me; into : mutable Attribute from TDF;
-	       RT   : mutable RelocationTable from TDF) 
+    Paste (me; into : Attribute from TDF;
+	       RT   : RelocationTable from TDF) 
     is virtual;    
 
     NewEmpty(me)
-    returns mutable Attribute from TDF
+    returns Attribute from TDF
     is redefined;
 	
     References(me;

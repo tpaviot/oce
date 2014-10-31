@@ -46,8 +46,8 @@
 #ifndef _Handle_Visual3d_Light_HeaderFile
 #include <Handle_Visual3d_Light.hxx>
 #endif
-#ifndef _Handle_Visual3d_HSetOfLight_HeaderFile
-#include <Handle_Visual3d_HSetOfLight.hxx>
+#ifndef _Handle_Visual3d_HSequenceOfLight_HeaderFile
+#include <Handle_Visual3d_HSequenceOfLight.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -58,7 +58,7 @@ class Visual3d_DepthCueingDefinitionError;
 class Visual3d_LightDefinitionError;
 class Visual3d_ZClippingDefinitionError;
 class Visual3d_Light;
-class Visual3d_HSetOfLight;
+class Visual3d_HSequenceOfLight;
 
 
 //! This class manages the creation and update of <br>
@@ -127,14 +127,7 @@ public:
   Standard_EXPORT     void SetLightOn(const Handle(Visual3d_Light)& ALight) ;
   //! Deactivates the light source <ALight> <br>
   Standard_EXPORT     void SetLightOff(const Handle(Visual3d_Light)& ALight) ;
-  //! Modifies the shading model when the type of <br>
-//!	    visualization is TOV_SHADING <br>
-//! <br>
-//!	    TypeOfModel	: TOM_NONE <br>
-//!			  TOM_INTERP_COLOR <br>
-//!			  TOM_FACET <br>
-//!			  TOM_VERTEX <br>
-//! <br>
+  //! Modifies the shading model when the type of visualization is TOV_SHADING <br>
   Standard_EXPORT     void SetModel(const Visual3d_TypeOfModel AModel) ;
   //! Modifies the mode of visualization. <br>
 //! <br>
@@ -178,7 +171,7 @@ public:
   Standard_EXPORT     void SetBackZClippingOff() ;
   //! Returns the group of active light sources <br>
 //!	    in the view of context <me>. <br>
-  Standard_EXPORT     Handle_Visual3d_HSetOfLight ActivatedLights() const;
+  Standard_EXPORT     Handle_Visual3d_HSequenceOfLight ActivatedLights() const;
   //! Returns the number of active light sources <br>
 //!	    in the view of context <me>. <br>
   Standard_EXPORT     Standard_Integer NumberOfActivatedLights() const;

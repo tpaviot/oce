@@ -22,6 +22,9 @@
 #ifndef _math_BFGS_HeaderFile
 #include <math_BFGS.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -34,7 +37,6 @@ class AppDef_MyBSplGradientOfBSplineCompute;
 class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute;
 class math_MultipleVarFunctionWithGradient;
-class math_Vector;
 
 
 

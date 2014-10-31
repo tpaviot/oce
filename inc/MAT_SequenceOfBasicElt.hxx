@@ -43,6 +43,8 @@ public:
   
       MAT_SequenceOfBasicElt();
   
+  Standard_EXPORT   MAT_SequenceOfBasicElt(const MAT_SequenceOfBasicElt& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~MAT_SequenceOfBasicElt()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   MAT_SequenceOfBasicElt(const MAT_SequenceOfBasicElt& Other);
 
 
 

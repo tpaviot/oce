@@ -43,6 +43,8 @@ public:
   
       StepRepr_SequenceOfMaterialPropertyRepresentation();
   
+  Standard_EXPORT   StepRepr_SequenceOfMaterialPropertyRepresentation(const StepRepr_SequenceOfMaterialPropertyRepresentation& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~StepRepr_SequenceOfMaterialPropertyRepresentation()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StepRepr_SequenceOfMaterialPropertyRepresentation(const StepRepr_SequenceOfMaterialPropertyRepresentation& Other);
 
 
 

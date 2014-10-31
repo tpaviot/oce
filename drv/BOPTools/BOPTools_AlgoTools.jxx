@@ -16,8 +16,8 @@
 #ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
 #endif
-#ifndef _BOPInt_Context_HeaderFile
-#include <BOPInt_Context.hxx>
+#ifndef _IntTools_Context_HeaderFile
+#include <IntTools_Context.hxx>
 #endif
 #ifndef _TopoDS_Solid_HeaderFile
 #include <TopoDS_Solid.hxx>

@@ -43,6 +43,8 @@ public:
   
       Select3D_SensitiveEntitySequence();
   
+  Standard_EXPORT   Select3D_SensitiveEntitySequence(const Select3D_SensitiveEntitySequence& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Select3D_SensitiveEntitySequence()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Select3D_SensitiveEntitySequence(const Select3D_SensitiveEntitySequence& Other);
 
 
 

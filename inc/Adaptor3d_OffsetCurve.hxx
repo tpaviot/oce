@@ -60,7 +60,7 @@ class Geom2d_BezierCurve;
 class Geom2d_BSplineCurve;
 
 
-//! Defines an Offset curve. <br>
+//! Defines an Offset curve (algorithmic 2d curve). <br>
 //! <br>
 class Adaptor3d_OffsetCurve  : public Adaptor2d_Curve2d {
 public:

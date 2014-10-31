@@ -98,6 +98,9 @@ public:
   Standard_EXPORT     void SetSplitSurfaceTool(const Handle(ShapeUpgrade_SplitSurface)& splitSurfaceTool) ;
   //! Sets the tool for dividing edges on Face. <br>
   Standard_EXPORT     void SetWireDivideTool(const Handle(ShapeUpgrade_WireDivide)& wireDivideTool) ;
+  //! Returns the tool for splitting surfaces. <br>
+//!          This tool must be already initialized. <br>
+  Standard_EXPORT   virtual  Handle_ShapeUpgrade_SplitSurface GetSplitSurfaceTool() const;
   //! Returns the tool for dividing edges on Face. <br>
 //!          This tool must be already initialized. <br>
   Standard_EXPORT   virtual  Handle_ShapeUpgrade_WireDivide GetWireDivideTool() const;
@@ -109,9 +112,6 @@ public:
 
 protected:
 
-  //! Returns the tool for splitting surfaces. <br>
-//!          This tool must be already initialized. <br>
-  Standard_EXPORT   virtual  Handle_ShapeUpgrade_SplitSurface GetSplitSurfaceTool() const;
 
 TopoDS_Face myFace;
 TopoDS_Shape myResult;

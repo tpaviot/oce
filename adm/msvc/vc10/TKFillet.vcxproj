@@ -424,16 +424,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_CSWalking_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_Extremity_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_HCurve2dTool_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_HCurveTool_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_Line_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_PointOnRst_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_SequenceNodeOfSequenceOfLine_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepBlend\BRepBlend_SequenceNodeOfSequenceOfPointOnRst_0.cxx">
@@ -457,6 +447,16 @@
     <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_BlendTool.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_CurvPointRadInv.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_Extremity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_HCurve2dTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_HCurveTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_Line.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_PointOnRst.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_RstRstConstRad.cxx">
     </ClCompile>

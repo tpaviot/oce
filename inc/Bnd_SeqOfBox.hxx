@@ -40,6 +40,8 @@ public:
   
       Bnd_SeqOfBox();
   
+  Standard_EXPORT   Bnd_SeqOfBox(const Bnd_SeqOfBox& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Bnd_SeqOfBox()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Bnd_SeqOfBox(const Bnd_SeqOfBox& Other);
 
 
 

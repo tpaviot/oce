@@ -40,6 +40,7 @@ BRepCheck_NotConnected,
 BRepCheck_SubshapeNotInShape,
 BRepCheck_BadOrientation,
 BRepCheck_BadOrientationOfSubshape,
+BRepCheck_InvalidPolygonOnTriangulation,
 BRepCheck_InvalidToleranceValue,
 BRepCheck_CheckFail
 };

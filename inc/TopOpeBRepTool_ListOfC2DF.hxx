@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TopOpeBRepTool_ListOfC2DF();
   
+  Standard_EXPORT   TopOpeBRepTool_ListOfC2DF(const TopOpeBRepTool_ListOfC2DF& Other);
+  
   Standard_EXPORT     void Assign(const TopOpeBRepTool_ListOfC2DF& Other) ;
     void operator=(const TopOpeBRepTool_ListOfC2DF& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopOpeBRepTool_ListOfC2DF(const TopOpeBRepTool_ListOfC2DF& Other);
 
 
 Standard_Address myFirst;

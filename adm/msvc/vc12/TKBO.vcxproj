@@ -81,11 +81,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPInt;..\..\..\src\BOPInt;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -100,10 +100,10 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKPrim.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc12\bin\TKBO.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc12\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -124,11 +124,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPInt;..\..\..\src\BOPInt;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win32\vc12\objd\TKBO/</AssemblerListingLocation>
@@ -144,10 +144,10 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKPrim.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc12\bind\TKBO.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc12\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -169,11 +169,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPInt;..\..\..\src\BOPInt;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -188,10 +188,10 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKPrim.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc12\bin\TKBO.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc12\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -212,11 +212,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPInt;..\..\..\src\BOPInt;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc12\objd\TKBO/</AssemblerListingLocation>
@@ -232,10 +232,10 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKPrim.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc12\bind\TKBO.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc12\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -336,6 +336,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_CompareRange.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Context.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_Curve.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_CurveRangeLocalizeData.cxx">
@@ -352,8 +354,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_FaceFace.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\IntTools\IntTools_LineConstructor.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_MarkedRangeSet.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_PntOn2Faces.cxx">
@@ -363,6 +363,8 @@
     <ClCompile Include="..\..\..\src\IntTools\IntTools_Range.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_Root.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_ShrunkRange.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_SurfaceRangeLocalizeData.cxx">
     </ClCompile>
@@ -391,12 +393,6 @@
     <ClCompile Include="..\..\..\src\BOPCol\BOPCol_Box2DBndTree.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPCol\BOPCol_BoxBndTree.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPInt\BOPInt_Context.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPInt\BOPInt_ShrunkRange.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPInt\BOPInt_Tools.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPDS\BOPDS_CommonBlock.cxx">
     </ClCompile>
@@ -462,11 +458,13 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_CheckerSI.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_CheckerSI_1.cxx">
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_MakerVolume.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_10.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_2.cxx">
     </ClCompile>

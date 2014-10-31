@@ -24,7 +24,8 @@
 #endif
 
 
-
+//! A topological part  of a  curve  in 2D or 3D,  the <br>
+//!          boundary    is   a   set  of oriented    Vertices. <br>
 class TopoDS_TEdge : public TopoDS_TShape {
 
 public:

@@ -16,7 +16,9 @@
 
 class PipeShell from BRepFill inherits  TShared from MMgt 
 
-	---Purpose: Perform general sweeping construction
+    ---Purpose: Computes a topological shell using some wires
+    --          (spines and profiles) and diplacement option
+    --          Perform general sweeping construction
 uses  
  Dir  from  gp,
  Ax2  from  gp,
@@ -115,6 +117,19 @@ is
 
         ---Level: Public
 
+
+--  ============================================
+--  Methods to set parameters for approximation
+--  ============================================
+    SetMaxDegree(me  :  mutable; 
+    	         NewMaxDegree : Integer  from  Standard);
+    ---Purpose: Define the maximum V degree of resulting surface  
+		 
+    SetMaxSegments(me  :  mutable; 
+    	           NewMaxSegments : Integer  from  Standard);
+    ---Purpose: Define the maximum number of spans in V-direction
+    --          on resulting surface
+		 
     SetForceApproxC1(me  :  mutable;
     	    	     ForceApproxC1 : Boolean from Standard);
 	---Purpose: Set the flag that indicates attempt to approximate
@@ -241,6 +256,9 @@ is
     returns Shape from TopoDS
     is  static;    
     
+    ErrorOnSurface (me)
+    returns Real from Standard;
+    
     FirstShape (me)
     ---Purpose: Returns the  TopoDS  Shape of the bottom of the sweep.
     ---C++: return const & 
@@ -289,6 +307,8 @@ fields
   myBoundTol    :  Real;  
   myTolAngular  :  Real;
   angmin,  angmax  :  Real; 
+  myMaxDegree   :  Integer;
+  myMaxSegments :  Integer;
   myForceApproxC1 : Boolean;
   
   myLaw         :  Function         from  Law;    
@@ -299,6 +319,8 @@ fields
   myTrihedron   :  Trihedron        from  GeomFill;
   myTransition  :  TransitionStyle  from  BRepFill; 
   myStatus      :  PipeError        from  GeomFill;
+  myErrorOnSurf :  Real             from  Standard;
+  
 end PipeShell;
 
 

@@ -248,8 +248,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\src\FWOSDriver\FWOSDriver.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\FWOSDriver\FWOSDriver_Driver.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\FWOSDriver\FWOSDriver_DriverFactory.cxx">
     </ClCompile>
 

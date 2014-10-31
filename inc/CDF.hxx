@@ -29,6 +29,7 @@ class CDF_Application;
 class CDF_StoreList;
 class CDF_Store;
 class CDF_MetaDataDriver;
+class CDF_FWOSDriver;
 class CDF_MetaDataDriverFactory;
 class CDF_Timer;
 
@@ -66,6 +67,7 @@ friend class CDF_Application;
 friend class CDF_StoreList;
 friend class CDF_Store;
 friend class CDF_MetaDataDriver;
+friend class CDF_FWOSDriver;
 friend class CDF_MetaDataDriverFactory;
 friend class CDF_Timer;
 

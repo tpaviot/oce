@@ -34,7 +34,7 @@ class TopLoc_Location;
 class BRep_CurveRepresentation;
 
 
-
+//! Representation by a 3D polygon. <br>
 class BRep_Polygon3D : public BRep_CurveRepresentation {
 
 public:

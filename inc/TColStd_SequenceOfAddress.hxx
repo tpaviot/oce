@@ -42,6 +42,8 @@ public:
   
       TColStd_SequenceOfAddress();
   
+  Standard_EXPORT   TColStd_SequenceOfAddress(const TColStd_SequenceOfAddress& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColStd_SequenceOfAddress()
 {
@@ -106,8 +108,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_SequenceOfAddress(const TColStd_SequenceOfAddress& Other);
 
 
 

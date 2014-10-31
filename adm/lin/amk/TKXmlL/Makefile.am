@@ -88,6 +88,7 @@ libTKXmlL_la_SOURCES = \
 @top_srcdir@/src/XmlMFunction/XmlMFunction_GraphNodeDriver.cxx \
 @top_srcdir@/src/XmlMFunction/XmlMFunction_ScopeDriver.cxx \
 @top_srcdir@/src/XmlObjMgt/XmlObjMgt.cxx \
+@top_srcdir@/src/XmlObjMgt/XmlObjMgt_Array1.cxx \
 @top_srcdir@/src/XmlObjMgt/XmlObjMgt_GP.cxx \
 @top_srcdir@/src/XmlObjMgt/XmlObjMgt_Persistent.cxx
 

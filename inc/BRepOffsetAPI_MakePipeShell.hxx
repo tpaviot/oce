@@ -37,11 +37,11 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _BRepBuilderAPI_TransitionMode_HeaderFile
-#include <BRepBuilderAPI_TransitionMode.hxx>
-#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
+#endif
+#ifndef _BRepBuilderAPI_TransitionMode_HeaderFile
+#include <BRepBuilderAPI_TransitionMode.hxx>
 #endif
 class BRepFill_PipeShell;
 class Standard_DomainError;
@@ -177,6 +177,11 @@ public:
 //! - boundary tolerance BoundTol <br>
 //! - angular tolerance TolAngular. <br>
   Standard_EXPORT     void SetTolerance(const Standard_Real Tol3d = 1.0e-4,const Standard_Real BoundTol = 1.0e-4,const Standard_Real TolAngular = 1.0e-2) ;
+  //! Define the maximum V degree of resulting surface <br>
+  Standard_EXPORT     void SetMaxDegree(const Standard_Integer NewMaxDegree) ;
+  //! Define the maximum number of spans in V-direction <br>
+//!          on resulting surface <br>
+  Standard_EXPORT     void SetMaxSegments(const Standard_Integer NewMaxSegments) ;
   //! Set the flag that indicates attempt to approximate <br>
 //!          a C1-continuous surface if a swept surface proved <br>
 //!          to be C0. <br>
@@ -264,6 +269,8 @@ public:
 //! Generated() returns the end shape, that can also be <br>
 //! obtained by method LastShape(). <br>
   Standard_EXPORT   virtual const TopTools_ListOfShape& Generated(const TopoDS_Shape& S) ;
+  
+  Standard_EXPORT     Standard_Real ErrorOnSurface() const;
 
 
 

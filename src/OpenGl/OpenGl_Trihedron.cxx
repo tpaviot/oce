@@ -88,6 +88,7 @@ static int   theNbFacettes = 12;
 //call_triedron_redraw
 void OpenGl_Trihedron::redraw (const Handle(OpenGl_Workspace)& theWorkspace) const
 {
+#if !defined(GL_ES_VERSION_2_0)
   const Standard_Real U = theWorkspace->ActiveView()->Height();
   const Standard_Real V = theWorkspace->ActiveView()->Width();
 
@@ -110,9 +111,26 @@ void OpenGl_Trihedron::redraw (const Handle(OpenGl_Workspace)& theWorkspace) con
   modelMatrix[3][0] = 0.;
   modelMatrix[3][1] = 0.;
   modelMatrix[3][2] = 0.;
-  projMatrix[3][0] = 0.;
-  projMatrix[3][1] = 0.;
-  projMatrix[3][2] = 0.;
+
+  projMatrix[0][0] = 2.0 / U;
+  projMatrix[0][1] = 0.0;
+  projMatrix[0][2] = 0.0;
+  projMatrix[0][3] = 0.0;
+
+  projMatrix[1][0] = 0.0;
+  projMatrix[1][1] = 2.0 / V;
+  projMatrix[1][2] = 0.0;
+  projMatrix[1][3] = 0.0;
+
+  projMatrix[2][0] = 0.0;
+  projMatrix[2][1] = 0.0;
+  projMatrix[2][2] = -2.0 * 1e-7;
+  projMatrix[2][3] = 0.0;
+
+  projMatrix[3][0] = 0.0;
+  projMatrix[3][1] = 0.0;
+  projMatrix[3][2] = 0.0;
+  projMatrix[3][3] = 1.0;
 
   /* sauvegarde du contexte des matrices avant chargement */
   glMatrixMode (GL_MODELVIEW);
@@ -269,6 +287,7 @@ void OpenGl_Trihedron::redraw (const Handle(OpenGl_Workspace)& theWorkspace) con
   glPopMatrix ();
   glMatrixMode (GL_MODELVIEW);
   glPopMatrix ();
+#endif
 }
 
 
@@ -278,6 +297,7 @@ void OpenGl_Trihedron::redraw (const Handle(OpenGl_Workspace)& theWorkspace) con
 //call_zbuffer_triedron_redraw
 void OpenGl_Trihedron::redrawZBuffer (const Handle(OpenGl_Workspace)& theWorkspace) const
 {
+#if !defined(GL_ES_VERSION_2_0)
   const Standard_Real U = theWorkspace->ActiveView()->Height();
   const Standard_Real V = theWorkspace->ActiveView()->Width();
 
@@ -303,9 +323,26 @@ void OpenGl_Trihedron::redrawZBuffer (const Handle(OpenGl_Workspace)& theWorkspa
     modelMatrix[3][0] = 0.;
     modelMatrix[3][1] = 0.;
     modelMatrix[3][2] = 0.;
-    projMatrix[3][0] = 0.;
-    projMatrix[3][1] = 0.;
-    projMatrix[3][2] = 0.;
+
+    projMatrix[0][0] = 2.0 / U;
+    projMatrix[0][1] = 0.0;
+    projMatrix[0][2] = 0.0;
+    projMatrix[0][3] = 0.0;
+
+    projMatrix[1][0] = 0.0;
+    projMatrix[1][1] = 2.0 / V;
+    projMatrix[1][2] = 0.0;
+    projMatrix[1][3] = 0.0;
+
+    projMatrix[2][0] = 0.0;
+    projMatrix[2][1] = 0.0;
+    projMatrix[2][2] = -2.0 * 1e-7;
+    projMatrix[2][3] = 0.0;
+
+    projMatrix[3][0] = 0.0;
+    projMatrix[3][1] = 0.0;
+    projMatrix[3][2] = 0.0;
+    projMatrix[3][3] = 1.0;
 
     /* save matrix */
     glMatrixMode (GL_MODELVIEW);
@@ -538,6 +575,7 @@ void OpenGl_Trihedron::redrawZBuffer (const Handle(OpenGl_Workspace)& theWorkspa
     glMatrixMode (GL_MODELVIEW);
     glPopMatrix ();
   }
+#endif
 }
 
 
@@ -562,9 +600,9 @@ OpenGl_Trihedron::OpenGl_Trihedron (const Aspect_TypeOfTriedronPosition thePosit
 : myPos (thePosition),
   myScale (theScale),
   myIsWireframe (theAsWireframe),
-  myLabelX (TCollection_ExtendedString ("X"), OpenGl_Vec3(1.0f, 0.0f, 0.0f), THE_LABEL_PARAMS),
-  myLabelY (TCollection_ExtendedString ("Y"), OpenGl_Vec3(0.0f, 1.0f, 0.0f), THE_LABEL_PARAMS),
-  myLabelZ (TCollection_ExtendedString ("Z"), OpenGl_Vec3(0.0f, 0.0f, 1.0f), THE_LABEL_PARAMS)
+  myLabelX ("X", OpenGl_Vec3(1.0f, 0.0f, 0.0f), THE_LABEL_PARAMS),
+  myLabelY ("Y", OpenGl_Vec3(0.0f, 1.0f, 0.0f), THE_LABEL_PARAMS),
+  myLabelZ ("Z", OpenGl_Vec3(0.0f, 0.0f, 1.0f), THE_LABEL_PARAMS)
 {
   Standard_Real R,G,B;
   Quantity_Color aColor (theColor);
@@ -606,7 +644,7 @@ OpenGl_Trihedron::~OpenGl_Trihedron()
 // function : Release
 // purpose  :
 // =======================================================================
-void OpenGl_Trihedron::Release (const Handle(OpenGl_Context)& theCtx)
+void OpenGl_Trihedron::Release (OpenGl_Context* theCtx)
 {
   myLabelX.Release (theCtx);
   myLabelY.Release (theCtx);
@@ -638,7 +676,9 @@ void OpenGl_Trihedron::Render (const Handle(OpenGl_Workspace)& theWorkspace) con
   */
   if (!theWorkspace->UseGLLight())
   {
+  #if !defined(GL_ES_VERSION_2_0)
     glDisable (GL_LIGHTING);
+  #endif
   }
 
   const Handle(OpenGl_Texture) aPrevTexture = theWorkspace->DisableTexture();

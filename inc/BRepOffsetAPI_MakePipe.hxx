@@ -28,6 +28,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
+#endif
 class TopoDS_Wire;
 class TopoDS_Shape;
 class BRepFill_Pipe;
@@ -76,6 +79,8 @@ public:
   Standard_EXPORT     TopoDS_Shape LastShape() ;
   
   Standard_EXPORT     TopoDS_Shape Generated(const TopoDS_Shape& SSpine,const TopoDS_Shape& SProfile) ;
+  
+  Standard_EXPORT     Standard_Real ErrorOnSurface() const;
 
 
 

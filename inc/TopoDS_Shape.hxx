@@ -96,6 +96,12 @@ public:
   //! Sets the free flag. <br>
 //! <br>
         void Free(const Standard_Boolean F) ;
+  //! Returns the locked flag. <br>
+//! <br>
+        Standard_Boolean Locked() const;
+  //! Sets the locked flag. <br>
+//! <br>
+        void Locked(const Standard_Boolean F) ;
   //! Returns the modification flag. <br>
 //! <br>
         Standard_Boolean Modified() const;

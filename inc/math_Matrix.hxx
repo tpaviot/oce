@@ -19,8 +19,8 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _math_DoubleTabOfReal_HeaderFile
-#include <math_DoubleTabOfReal.hxx>
+#ifndef _math_DoubleTab_HeaderFile
+#include <math_DoubleTab.hxx>
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
@@ -379,7 +379,7 @@ Standard_Integer LowerRowIndex;
 Standard_Integer UpperRowIndex;
 Standard_Integer LowerColIndex;
 Standard_Integer UpperColIndex;
-math_DoubleTabOfReal Array;
+math_DoubleTab Array;
 
 
 };

@@ -25,9 +25,6 @@
 #ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _PShort_FieldOfHArray1OfShortReal_HeaderFile
 #include <PShort_FieldOfHArray1OfShortReal.hxx>
 #endif
@@ -40,10 +37,6 @@
 #ifndef _Handle_PShort_VArrayNodeOfFieldOfHArray1OfShortReal_HeaderFile
 #include <Handle_PShort_VArrayNodeOfFieldOfHArray1OfShortReal.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PShort_FieldOfHArray1OfShortReal;
@@ -69,10 +62,6 @@ public:
         Standard_Integer Upper() const;
   
   Standard_EXPORT     Standard_ShortReal Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PShort_HArray1OfShortReal( )
 {
@@ -157,10 +146,6 @@ PShort_FieldOfHArray1OfShortReal Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PShort_HArray1OfShortReal& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

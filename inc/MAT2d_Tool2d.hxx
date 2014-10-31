@@ -19,6 +19,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _GeomAbs_JoinType_HeaderFile
+#include <GeomAbs_JoinType.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -68,6 +71,8 @@ public:
   Standard_EXPORT   MAT2d_Tool2d();
   //!<aSide> defines the side of the computation of the map. <br>
   Standard_EXPORT     void Sense(const MAT_Side aside) ;
+  
+  Standard_EXPORT     void SetJoinType(const GeomAbs_JoinType aJoinType) ;
   //! InitItems cuts the line in Items. <br>
 //!            this Items are the geometrics representations of <br>
 //!            the BasicElts from MAT. <br>
@@ -169,6 +174,7 @@ private:
 
 
 Standard_Real theDirection;
+GeomAbs_JoinType theJoinType;
 Standard_Integer theNumberOfBisectors;
 Standard_Integer theNumberOfPnts;
 Standard_Integer theNumberOfVecs;

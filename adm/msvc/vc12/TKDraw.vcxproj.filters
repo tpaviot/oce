@@ -2,31 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{56183995-0273-1796-02E9-150BC7B854A2}</UniqueIdentifier>
+      <UniqueIdentifier>{DC464498-0628-0FA1-1378-0D2A60591A31}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Draw">
-      <UniqueIdentifier>{BC5CAA46-06A8-0542-076D-00EA541854B3}</UniqueIdentifier>
+      <UniqueIdentifier>{C6AB0C00-07DE-134B-1524-77726DF9828E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DBRep">
-      <UniqueIdentifier>{60E82282-1023-08D9-0E37-AF6404CF53E3}</UniqueIdentifier>
+      <UniqueIdentifier>{EA741E06-0909-1079-1978-D3B56B2BA71A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DrawTrSurf">
-      <UniqueIdentifier>{8C5D02A2-12EB-06F8-10ED-204A81FB7D94}</UniqueIdentifier>
+      <UniqueIdentifier>{E7B00D4D-0BAC-08C2-0BDA-9655DDDF2930}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\drv\Draw\Draw_DataMapIteratorOfMapOfFunctions_0.cxx">
-      <Filter>Source files\Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Draw\Draw_DataMapIteratorOfVMap_0.cxx">
-      <Filter>Source files\Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Draw\Draw_DataMapNodeOfMapOfFunctions_0.cxx">
-      <Filter>Source files\Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Draw\Draw_DataMapNodeOfVMap_0.cxx">
-      <Filter>Source files\Draw</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Draw\Draw_Failure_0.cxx">
       <Filter>Source files\Draw</Filter>
     </ClCompile>
@@ -36,16 +24,10 @@
     <ClCompile Include="..\..\..\drv\Draw\Draw_MapOfAsciiString_0.cxx">
       <Filter>Source files\Draw</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Draw\Draw_MapOfFunctions_0.cxx">
-      <Filter>Source files\Draw</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Draw\Draw_SequenceNodeOfSequenceOfDrawable3D_0.cxx">
       <Filter>Source files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Draw\Draw_SequenceOfDrawable3D_0.cxx">
-      <Filter>Source files\Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Draw\Draw_VMap_0.cxx">
       <Filter>Source files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Draw\CommandWindow.cxx">

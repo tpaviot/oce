@@ -31,12 +31,14 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
 class Adaptor3d_HCurve;
 class Adaptor3d_HSurface;
-class math_Vector;
 class math_Matrix;
 class gp_Vec;
 class GeomFill_Tensor;

@@ -90,7 +90,7 @@ class TColStd_SequenceOfReal;
 //! Provides methods to <br>
 //! <br>
 //!          - identify possible contigous boundaries (for control <br>
-//!            afterwards) <br>
+//!            afterwards (of continuity: C0, C1, ...)) <br>
 //! <br>
 //!          - assemble contigous shapes into one shape. <br>
 //!            Only manifold shapes will be found. Sewing will not <br>

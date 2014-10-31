@@ -36,7 +36,8 @@ class Geom_Surface;
 class TopLoc_Location;
 
 
-
+//! Representation by   a parameter on  a curve   on a <br>
+//!          surface. <br>
 class BRep_PointOnCurveOnSurface : public BRep_PointsOnSurface {
 
 public:

@@ -24,7 +24,9 @@ class Standard_OutOfRange;
 
 //! defines OrderedGroupWithoutBackP, Type <402> Form <15> <br>
 //!          in package IGESBasic <br>
-//! <br>
+//!          Allows a collection of a set of entities to be <br>
+//!          maintained as a single entity, but the group is <br>
+//!          ordered and there are no back pointers. <br>
 //!          It inherits from Group <br>
 class IGESBasic_OrderedGroupWithoutBackP : public IGESBasic_Group {
 

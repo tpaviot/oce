@@ -20,8 +20,6 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/GccAna : @top_srcdir@/src/GccAna: \
 @top_srcdir@/drv/GccEnt : @top_srcdir@/src/GccEnt: \
 @top_srcdir@/drv/GccInt : @top_srcdir@/src/GccInt: \
-@top_srcdir@/drv/GccIter : @top_srcdir@/src/GccIter: \
-@top_srcdir@/drv/GccGeo : @top_srcdir@/src/GccGeo: \
 @top_srcdir@/drv/HatchGen : @top_srcdir@/src/HatchGen: \
 @top_srcdir@/drv/Geom2dHatch : @top_srcdir@/src/Geom2dHatch: \
 @top_srcdir@/drv/Law : @top_srcdir@/src/Law: \
@@ -65,8 +63,6 @@ INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES)  \
 -I@top_srcdir@/drv/GccAna -I@top_srcdir@/src/GccAna \
 -I@top_srcdir@/drv/GccEnt -I@top_srcdir@/src/GccEnt \
 -I@top_srcdir@/drv/GccInt -I@top_srcdir@/src/GccInt \
--I@top_srcdir@/drv/GccIter -I@top_srcdir@/src/GccIter \
--I@top_srcdir@/drv/GccGeo -I@top_srcdir@/src/GccGeo \
 -I@top_srcdir@/drv/HatchGen -I@top_srcdir@/src/HatchGen \
 -I@top_srcdir@/drv/Geom2dHatch -I@top_srcdir@/src/Geom2dHatch \
 -I@top_srcdir@/drv/Law -I@top_srcdir@/src/Law \
@@ -100,38 +96,17 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/drv/GccAna/GccAna_NoSolution_0.cxx \
 @top_srcdir@/drv/GccEnt/GccEnt_Array1OfPosition_0.cxx \
 @top_srcdir@/drv/GccEnt/GccEnt_BadQualifier_0.cxx \
-@top_srcdir@/drv/GccIter/GccIter_IsParallel_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_FuncTCirCuOfMyL2d2Tan_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_FuncTCuCuCuOfMyC2d3Tan_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_FuncTCuCuOfMyL2d2Tan_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_FuncTCuCuOnCuOfMyC2d2TanOn_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_FuncTCuPtOfMyL2d2Tan_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_FuncTOblOfMyL2dTanObl_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_MyC2d2TanOn_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_MyC2d3Tan_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_MyCirc2d2TanOn_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_MyCirc2d2TanRad_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_MyCirc2dTanCen_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_MyCirc2dTanOnRad_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_MyCurveTool_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_MyL2d2Tan_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_MyL2dTanObl_0.cxx \
-@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_MyQCurve_0.cxx \
-@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_ClassifierOfHatcher_0.cxx \
-@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_DataMapIteratorOfHatchingsOfHatcher_0.cxx \
-@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_DataMapIteratorOfMapOfElementsOfElementsOfHatcher_0.cxx \
-@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_DataMapNodeOfHatchingsOfHatcher_0.cxx \
-@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_DataMapNodeOfMapOfElementsOfElementsOfHatcher_0.cxx \
-@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_ElementOfHatcher_0.cxx \
-@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_ElementsOfHatcher_0.cxx \
-@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_FClass2dOfClassifierOfHatcher_0.cxx \
-@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_Hatcher_0.cxx \
-@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_HatchingOfHatcher_0.cxx \
-@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_HatchingsOfHatcher_0.cxx \
-@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_MapOfElementsOfElementsOfHatcher_0.cxx \
+@top_srcdir@/drv/Geom2dGcc/Geom2dGcc_IsParallel_0.cxx \
+@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_Classifier_0.cxx \
+@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_DataMapIteratorOfHatchings_0.cxx \
+@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_DataMapIteratorOfMapOfElements_0.cxx \
+@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_DataMapNodeOfHatchings_0.cxx \
+@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_DataMapNodeOfMapOfElements_0.cxx \
+@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_FClass2dOfClassifier_0.cxx \
+@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_Hatchings_0.cxx \
+@top_srcdir@/drv/Geom2dHatch/Geom2dHatch_MapOfElements_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_GInter_0.cxx \
-@top_srcdir@/drv/Geom2dInt/Geom2dInt_Geom2dCurveTool_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_IntConicCurveOfGInter_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_0.cxx \
@@ -221,7 +196,6 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/drv/IntCurveSurface/IntCurveSurface_ThePolyhedronToolOfHInter_0.cxx \
 @top_srcdir@/drv/IntCurveSurface/IntCurveSurface_TheQuadCurvExactHInter_0.cxx \
 @top_srcdir@/drv/IntCurveSurface/IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_0.cxx \
-@top_srcdir@/drv/IntPatch/IntPatch_CSFunction_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_CurvIntSurf_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_SequenceNodeOfSequenceOfLine_0.cxx \
@@ -233,12 +207,8 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/drv/IntPatch/IntPatch_SequenceOfPathPointOfTheSOnBounds_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_SequenceOfPoint_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_SequenceOfSegmentOfTheSOnBounds_0.cxx \
-@top_srcdir@/drv/IntPatch/IntPatch_TheFunctionOfTheInt2SOfThePWalkingInter_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_TheIWLineOfTheIWalking_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_TheIWalking_0.cxx \
-@top_srcdir@/drv/IntPatch/IntPatch_TheInt2SOfThePWalkingInter_0.cxx \
-@top_srcdir@/drv/IntPatch/IntPatch_TheInterfPolyhedron_0.cxx \
-@top_srcdir@/drv/IntPatch/IntPatch_ThePWalkingInter_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_ThePathPointOfTheSOnBounds_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_TheSOnBounds_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_TheSearchInside_0.cxx \
@@ -259,6 +229,8 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/drv/IntSurf/IntSurf_SequenceOfCouple_0.cxx \
 @top_srcdir@/drv/IntSurf/IntSurf_SequenceOfInteriorPoint_0.cxx \
 @top_srcdir@/drv/IntSurf/IntSurf_SequenceOfPathPoint_0.cxx \
+@top_srcdir@/drv/IntWalk/IntWalk_TheFunctionOfTheInt2S_0.cxx \
+@top_srcdir@/drv/IntWalk/IntWalk_TheInt2S_0.cxx \
 @top_srcdir@/drv/Intf/Intf_Array1OfLin_0.cxx \
 @top_srcdir@/drv/Intf/Intf_SeqOfSectionLine_0.cxx \
 @top_srcdir@/drv/Intf/Intf_SeqOfSectionPoint_0.cxx \
@@ -269,10 +241,10 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/drv/Law/Law_Laws_0.cxx \
 @top_srcdir@/drv/Law/Law_ListIteratorOfLaws_0.cxx \
 @top_srcdir@/drv/Law/Law_ListNodeOfLaws_0.cxx \
+@top_srcdir@/drv/NLPlate/NLPlate_ListIteratorOfStackOfPlate_0.cxx \
+@top_srcdir@/drv/NLPlate/NLPlate_ListNodeOfStackOfPlate_0.cxx \
 @top_srcdir@/drv/NLPlate/NLPlate_SequenceNodeOfSequenceOfHGPPConstraint_0.cxx \
 @top_srcdir@/drv/NLPlate/NLPlate_SequenceOfHGPPConstraint_0.cxx \
-@top_srcdir@/drv/NLPlate/NLPlate_StackIteratorOfStackOfPlate_0.cxx \
-@top_srcdir@/drv/NLPlate/NLPlate_StackNodeOfStackOfPlate_0.cxx \
 @top_srcdir@/drv/NLPlate/NLPlate_StackOfPlate_0.cxx \
 @top_srcdir@/drv/Plate/Plate_Array1OfPinpointConstraint_0.cxx \
 @top_srcdir@/drv/Plate/Plate_HArray1OfPinpointConstraint_0.cxx \
@@ -359,15 +331,36 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/src/Geom2dAPI/Geom2dAPI_ProjectPointOnCurve.cxx \
 @top_srcdir@/src/Geom2dGcc/Geom2dGcc.cxx \
 @top_srcdir@/src/Geom2dGcc/Geom2dGcc_Circ2d2TanOn.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_Circ2d2TanOnGeo.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_Circ2d2TanOnIter.cxx \
 @top_srcdir@/src/Geom2dGcc/Geom2dGcc_Circ2d2TanRad.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_Circ2d2TanRadGeo.cxx \
 @top_srcdir@/src/Geom2dGcc/Geom2dGcc_Circ2d3Tan.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_Circ2d3TanIter.cxx \
 @top_srcdir@/src/Geom2dGcc/Geom2dGcc_Circ2dTanCen.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_Circ2dTanCenGeo.cxx \
 @top_srcdir@/src/Geom2dGcc/Geom2dGcc_Circ2dTanOnRad.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_Circ2dTanOnRadGeo.cxx \
 @top_srcdir@/src/Geom2dGcc/Geom2dGcc_CurveTool.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_CurveToolGeo.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_FunctionTanCirCu.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_FunctionTanCuCu.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_FunctionTanCuCuCu.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_FunctionTanCuCuOnCu.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_FunctionTanCuPnt.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_FunctionTanObl.cxx \
 @top_srcdir@/src/Geom2dGcc/Geom2dGcc_Lin2d2Tan.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_Lin2d2TanIter.cxx \
 @top_srcdir@/src/Geom2dGcc/Geom2dGcc_Lin2dTanObl.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_Lin2dTanOblIter.cxx \
+@top_srcdir@/src/Geom2dGcc/Geom2dGcc_QCurve.cxx \
 @top_srcdir@/src/Geom2dGcc/Geom2dGcc_QualifiedCurve.cxx \
+@top_srcdir@/src/Geom2dHatch/Geom2dHatch_Element.cxx \
+@top_srcdir@/src/Geom2dHatch/Geom2dHatch_Elements.cxx \
+@top_srcdir@/src/Geom2dHatch/Geom2dHatch_Hatcher.cxx \
+@top_srcdir@/src/Geom2dHatch/Geom2dHatch_Hatching.cxx \
 @top_srcdir@/src/Geom2dHatch/Geom2dHatch_Intersector.cxx \
+@top_srcdir@/src/Geom2dInt/Geom2dInt_Geom2dCurveTool.cxx \
 @top_srcdir@/src/GeomAPI/GeomAPI.cxx \
 @top_srcdir@/src/GeomAPI/GeomAPI_ExtremaCurveCurve.cxx \
 @top_srcdir@/src/GeomAPI/GeomAPI_ExtremaCurveSurface.cxx \
@@ -432,6 +425,7 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/src/GeomFill/GeomFill_TrihedronLaw.cxx \
 @top_srcdir@/src/GeomFill/GeomFill_TrihedronWithGuide.cxx \
 @top_srcdir@/src/GeomFill/GeomFill_UniformSection.cxx \
+@top_srcdir@/src/GeomInt/GeomInt.cxx \
 @top_srcdir@/src/GeomInt/GeomInt_IntSS.cxx \
 @top_srcdir@/src/GeomInt/GeomInt_IntSS_1.cxx \
 @top_srcdir@/src/GeomInt/GeomInt_LineConstructor.cxx \
@@ -470,11 +464,13 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/src/IntPatch/IntPatch_ALine.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_ALineToWLine.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_ArcFunction.cxx \
+@top_srcdir@/src/IntPatch/IntPatch_CSFunction.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_GLine.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_HCurve2dTool.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_HInterTool.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_ImpImpIntersection.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_ImpPrmIntersection.cxx \
+@top_srcdir@/src/IntPatch/IntPatch_InterferencePolyhedron.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_Intersection.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_Line.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_LineConstructor.cxx \
@@ -515,6 +511,7 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/src/IntSurf/IntSurf_Quadric.cxx \
 @top_srcdir@/src/IntSurf/IntSurf_QuadricTool.cxx \
 @top_srcdir@/src/IntSurf/IntSurf_Transition.cxx \
+@top_srcdir@/src/IntWalk/IntWalk_PWalking.cxx \
 @top_srcdir@/src/Intf/Intf.cxx \
 @top_srcdir@/src/Intf/Intf_Interference.cxx \
 @top_srcdir@/src/Intf/Intf_InterferencePolygon2d.cxx \

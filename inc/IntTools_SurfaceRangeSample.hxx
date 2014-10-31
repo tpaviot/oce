@@ -32,7 +32,7 @@ class IntTools_CurveRangeSample;
 class IntTools_Range;
 
 
-
+//! class for range index management of surface <br>
 class IntTools_SurfaceRangeSample  {
 public:
 

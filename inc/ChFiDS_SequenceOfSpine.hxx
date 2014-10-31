@@ -43,6 +43,8 @@ public:
   
       ChFiDS_SequenceOfSpine();
   
+  Standard_EXPORT   ChFiDS_SequenceOfSpine(const ChFiDS_SequenceOfSpine& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~ChFiDS_SequenceOfSpine()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ChFiDS_SequenceOfSpine(const ChFiDS_SequenceOfSpine& Other);
 
 
 

@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   CDM_ListOfDocument();
   
+  Standard_EXPORT   CDM_ListOfDocument(const CDM_ListOfDocument& Other);
+  
   Standard_EXPORT     void Assign(const CDM_ListOfDocument& Other) ;
     void operator=(const CDM_ListOfDocument& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   CDM_ListOfDocument(const CDM_ListOfDocument& Other);
 
 
 Standard_Address myFirst;

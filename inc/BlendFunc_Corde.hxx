@@ -40,10 +40,12 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class Adaptor3d_HSurface;
 class Adaptor3d_HCurve;
 class Standard_DomainError;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 class gp_Vec;

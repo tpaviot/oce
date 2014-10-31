@@ -17,7 +17,6 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/TShort : @top_srcdir@/src/TShort: \
 @top_srcdir@/drv/Units : @top_srcdir@/src/Units: \
 @top_srcdir@/drv/UnitsAPI : @top_srcdir@/src/UnitsAPI: \
-@top_srcdir@/drv/IncludeLibrary : @top_srcdir@/src/IncludeLibrary: \
 @top_srcdir@/drv/Dico : @top_srcdir@/src/Dico: \
 @top_srcdir@/drv/NCollection : @top_srcdir@/src/NCollection: \
 @top_srcdir@/drv/Message : @top_srcdir@/src/Message
@@ -46,7 +45,6 @@ INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES) $(CSF_SOCKETLibs_INCLUDES) $(
 -I@top_srcdir@/drv/TShort -I@top_srcdir@/src/TShort \
 -I@top_srcdir@/drv/Units -I@top_srcdir@/src/Units \
 -I@top_srcdir@/drv/UnitsAPI -I@top_srcdir@/src/UnitsAPI \
--I@top_srcdir@/drv/IncludeLibrary -I@top_srcdir@/src/IncludeLibrary \
 -I@top_srcdir@/drv/Dico -I@top_srcdir@/src/Dico \
 -I@top_srcdir@/drv/NCollection -I@top_srcdir@/src/NCollection \
 -I@top_srcdir@/drv/Message -I@top_srcdir@/src/Message
@@ -168,20 +166,13 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/drv/Storage/Storage_HArrayOfCallBack_0.cxx \
 @top_srcdir@/drv/Storage/Storage_HArrayOfSchema_0.cxx \
 @top_srcdir@/drv/Storage/Storage_HPArray_0.cxx \
-@top_srcdir@/drv/Storage/Storage_HSeqOfCallBack_0.cxx \
-@top_srcdir@/drv/Storage/Storage_HSeqOfPersistent_0.cxx \
 @top_srcdir@/drv/Storage/Storage_HSeqOfRoot_0.cxx \
 @top_srcdir@/drv/Storage/Storage_IndexedDataMapNodeOfPType_0.cxx \
 @top_srcdir@/drv/Storage/Storage_MapOfCallBack_0.cxx \
 @top_srcdir@/drv/Storage/Storage_MapOfPers_0.cxx \
-@top_srcdir@/drv/Storage/Storage_MapPSDHasher_0.cxx \
 @top_srcdir@/drv/Storage/Storage_PArray_0.cxx \
 @top_srcdir@/drv/Storage/Storage_PType_0.cxx \
-@top_srcdir@/drv/Storage/Storage_SeqOfCallBack_0.cxx \
-@top_srcdir@/drv/Storage/Storage_SeqOfPersistent_0.cxx \
 @top_srcdir@/drv/Storage/Storage_SeqOfRoot_0.cxx \
-@top_srcdir@/drv/Storage/Storage_SequenceNodeOfSeqOfCallBack_0.cxx \
-@top_srcdir@/drv/Storage/Storage_SequenceNodeOfSeqOfPersistent_0.cxx \
 @top_srcdir@/drv/Storage/Storage_SequenceNodeOfSeqOfRoot_0.cxx \
 @top_srcdir@/drv/Storage/Storage_StreamExtCharParityError_0.cxx \
 @top_srcdir@/drv/Storage/Storage_StreamFormatError_0.cxx \
@@ -246,9 +237,6 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/drv/TColStd/TColStd_HSequenceOfInteger_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_HSequenceOfReal_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_HSequenceOfTransient_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_HSetOfInteger_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_HSetOfReal_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_HSetOfTransient_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_IndexedDataMapOfTransientTransient_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_IndexedMapNodeOfIndexedMapOfInteger_0.cxx \
@@ -261,16 +249,10 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/drv/TColStd/TColStd_ListIteratorOfListOfInteger_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_ListIteratorOfListOfReal_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_ListIteratorOfListOfTransient_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_ListIteratorOfSetListOfSetOfInteger_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_ListIteratorOfSetListOfSetOfReal_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_ListIteratorOfSetListOfSetOfTransient_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_ListNodeOfListOfAsciiString_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_ListNodeOfListOfInteger_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_ListNodeOfListOfReal_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_ListNodeOfListOfTransient_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_ListNodeOfSetListOfSetOfInteger_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_ListNodeOfSetListOfSetOfReal_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_ListNodeOfSetListOfSetOfTransient_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_ListOfAsciiString_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_ListOfInteger_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_ListOfReal_0.cxx \
@@ -286,12 +268,6 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/drv/TColStd/TColStd_MapOfTransient_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_MapRealHasher_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_MapTransientHasher_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_QueueNodeOfQueueOfInteger_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_QueueNodeOfQueueOfReal_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_QueueNodeOfQueueOfTransient_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_QueueOfInteger_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_QueueOfReal_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_QueueOfTransient_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_SequenceNodeOfSequenceOfAddress_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_SequenceNodeOfSequenceOfAsciiString_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_SequenceNodeOfSequenceOfBoolean_0.cxx \
@@ -310,24 +286,6 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/drv/TColStd/TColStd_SequenceOfInteger_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_SequenceOfReal_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_SequenceOfTransient_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_SetIteratorOfSetOfInteger_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_SetIteratorOfSetOfReal_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_SetIteratorOfSetOfTransient_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_SetListOfSetOfInteger_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_SetListOfSetOfReal_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_SetListOfSetOfTransient_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_SetOfInteger_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_SetOfReal_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_SetOfTransient_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_StackIteratorOfStackOfInteger_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_StackIteratorOfStackOfReal_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_StackIteratorOfStackOfTransient_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_StackNodeOfStackOfInteger_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_StackNodeOfStackOfReal_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_StackNodeOfStackOfTransient_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_StackOfInteger_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_StackOfReal_0.cxx \
-@top_srcdir@/drv/TColStd/TColStd_StackOfTransient_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_StdMapNodeOfMapOfAsciiString_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_StdMapNodeOfMapOfInteger_0.cxx \
 @top_srcdir@/drv/TColStd/TColStd_StdMapNodeOfMapOfReal_0.cxx \
@@ -366,6 +324,8 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/Message/Message_ProgressIndicator.cxx \
 @top_srcdir@/src/Message/Message_ProgressScale.cxx \
 @top_srcdir@/src/Message/Message_ProgressSentry.cxx \
+@top_srcdir@/src/NCollection/NCollection_AccAllocator.cxx \
+@top_srcdir@/src/NCollection/NCollection_AlignedAllocator.cxx \
 @top_srcdir@/src/NCollection/NCollection_BaseAllocator.cxx \
 @top_srcdir@/src/NCollection/NCollection_BaseList.cxx \
 @top_srcdir@/src/NCollection/NCollection_BaseMap.cxx \
@@ -375,6 +335,7 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/NCollection/NCollection_HeapAllocator.cxx \
 @top_srcdir@/src/NCollection/NCollection_IncAllocator.cxx \
 @top_srcdir@/src/NCollection/NCollection_SparseArrayBase.cxx \
+@top_srcdir@/src/NCollection/NCollection_WinHeapAllocator.cxx \
 @top_srcdir@/src/OSD/OSD.cxx \
 @top_srcdir@/src/OSD/OSD_Chronometer.cxx \
 @top_srcdir@/src/OSD/OSD_Directory.cxx \
@@ -386,7 +347,6 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/OSD/OSD_File.cxx \
 @top_srcdir@/src/OSD/OSD_FileIterator.cxx \
 @top_srcdir@/src/OSD/OSD_FileNode.cxx \
-@top_srcdir@/src/OSD/OSD_Function.cxx \
 @top_srcdir@/src/OSD/OSD_Host.cxx \
 @top_srcdir@/src/OSD/OSD_MAllocHook.cxx \
 @top_srcdir@/src/OSD/OSD_MemInfo.cxx \
@@ -413,44 +373,32 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/Standard/Handle_Standard_Persistent.cxx \
 @top_srcdir@/src/Standard/Handle_Standard_Transient.cxx \
 @top_srcdir@/src/Standard/Standard.cxx \
-@top_srcdir@/src/Standard/Standard_Address.cxx \
 @top_srcdir@/src/Standard/Standard_AncestorIterator.cxx \
-@top_srcdir@/src/Standard/Standard_Boolean.cxx \
 @top_srcdir@/src/Standard/Standard_CLocaleSentry.cxx \
 @top_srcdir@/src/Standard/Standard_CString.cxx \
-@top_srcdir@/src/Standard/Standard_Character.cxx \
 @top_srcdir@/src/Standard/Standard_ErrorHandler.cxx \
 @top_srcdir@/src/Standard/Standard_ErrorHandlerCallback.cxx \
-@top_srcdir@/src/Standard/Standard_ExtCharacter.cxx \
 @top_srcdir@/src/Standard/Standard_ExtString.cxx \
 @top_srcdir@/src/Standard/Standard_Failure.cxx \
 @top_srcdir@/src/Standard/Standard_GUID.cxx \
 @top_srcdir@/src/Standard/Standard_HashCode.cxx \
-@top_srcdir@/src/Standard/Standard_IStream.cxx \
-@top_srcdir@/src/Standard/Standard_Integer.cxx \
 @top_srcdir@/src/Standard/Standard_MMgrOpt.cxx \
 @top_srcdir@/src/Standard/Standard_MMgrRaw.cxx \
 @top_srcdir@/src/Standard/Standard_MMgrRoot.cxx \
 @top_srcdir@/src/Standard/Standard_MMgrTBBalloc.cxx \
 @top_srcdir@/src/Standard/Standard_Mutex.cxx \
-@top_srcdir@/src/Standard/Standard_OStream.cxx \
 @top_srcdir@/src/Standard/Standard_Persistent.cxx \
 @top_srcdir@/src/Standard/Standard_Real.cxx \
 @top_srcdir@/src/Standard/Standard_SStream.cxx \
-@top_srcdir@/src/Standard/Standard_ShallowDump.cxx \
 @top_srcdir@/src/Standard/Standard_ShortReal.cxx \
 @top_srcdir@/src/Standard/Standard_Storable.cxx \
-@top_srcdir@/src/Standard/Standard_Time.cxx \
 @top_srcdir@/src/Standard/Standard_Transient.cxx \
 @top_srcdir@/src/Standard/Standard_Type.cxx \
 @top_srcdir@/src/Standard/Standard_UUID.cxx \
 @top_srcdir@/src/Standard/Standard_math.cxx \
-@top_srcdir@/src/Standard/Standard_osd_ffi.c \
-@top_srcdir@/src/Standard/Standard_symlink.c \
 @top_srcdir@/src/Storage/Storage.cxx \
 @top_srcdir@/src/Storage/Storage_BaseDriver.cxx \
 @top_srcdir@/src/Storage/Storage_CallBack.cxx \
-@top_srcdir@/src/Storage/Storage_Container.cxx \
 @top_srcdir@/src/Storage/Storage_Data.cxx \
 @top_srcdir@/src/Storage/Storage_DefaultCallBack.cxx \
 @top_srcdir@/src/Storage/Storage_HeaderData.cxx \
@@ -465,9 +413,6 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/TColStd/TColStd_MapIteratorOfPackedMapOfInteger.cxx \
 @top_srcdir@/src/TColStd/TColStd_PackedMapOfInteger.cxx \
 @top_srcdir@/src/TCollection/TCollection.cxx \
-@top_srcdir@/src/TCollection/TCollection_AVLBaseNode.cxx \
-@top_srcdir@/src/TCollection/TCollection_Array1Descriptor.cxx \
-@top_srcdir@/src/TCollection/TCollection_Array2Descriptor.cxx \
 @top_srcdir@/src/TCollection/TCollection_AsciiString.cxx \
 @top_srcdir@/src/TCollection/TCollection_BaseSequence.cxx \
 @top_srcdir@/src/TCollection/TCollection_BasicMap.cxx \

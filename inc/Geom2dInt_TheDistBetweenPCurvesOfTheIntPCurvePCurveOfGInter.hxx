@@ -28,9 +28,11 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class Adaptor2d_Curve2d;
 class Geom2dInt_Geom2dCurveTool;
-class math_Vector;
 class math_Matrix;
 
 

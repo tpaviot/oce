@@ -4,8 +4,8 @@
 #ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
 #endif
-#ifndef _LocOpe_ProjectedWires_HeaderFile
-#include <LocOpe_ProjectedWires.hxx>
+#ifndef _LocOpe_WiresOnShape_HeaderFile
+#include <LocOpe_WiresOnShape.hxx>
 #endif
 #ifndef _LocOpe_BuildWires_HeaderFile
 #include <LocOpe_BuildWires.hxx>

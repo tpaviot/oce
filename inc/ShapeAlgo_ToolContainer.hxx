@@ -29,7 +29,7 @@ class ShapeFix_Shape;
 class ShapeFix_EdgeProjAux;
 
 
-
+//!  Returns tools used by AlgoContainer <br>
 class ShapeAlgo_ToolContainer : public MMgt_TShared {
 
 public:

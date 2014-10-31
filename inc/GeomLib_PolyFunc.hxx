@@ -28,7 +28,6 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-class math_Vector;
 
 
 //! Polynomial  Function <br>

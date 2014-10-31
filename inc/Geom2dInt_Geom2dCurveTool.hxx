@@ -55,7 +55,8 @@ class gp_Vec2d;
 class TColStd_Array1OfReal;
 
 
-
+//! This class provides a Geom2dCurveTool as < Geom2dCurveTool from IntCurve > <br>
+//!          from a Tool as < Geom2dCurveTool from Adaptor3d > . <br>
 class Geom2dInt_Geom2dCurveTool  {
 public:
 
@@ -65,15 +66,25 @@ public:
       static  GeomAbs_CurveType GetType(const Adaptor2d_Curve2d& C) ;
   
       static  Standard_Boolean IsComposite(const Adaptor2d_Curve2d& C) ;
-  
+  //! Returns the Lin2d from gp corresponding to the curve C. <br>
+//!          This method is called only when TheType returns <br>
+//!          GeomAbs_Line. <br>
       static  gp_Lin2d Line(const Adaptor2d_Curve2d& C) ;
-  
+  //! Returns the Circ2d from gp corresponding to the curve C. <br>
+//!          This method is called only when TheType returns <br>
+//!          GeomAbs_Circle. <br>
       static  gp_Circ2d Circle(const Adaptor2d_Curve2d& C) ;
-  
+  //! Returns the Elips2d from gp corresponding to the curve C. <br>
+//!          This method is called only when TheType returns <br>
+//!          GeomAbs_Ellipse. <br>
       static  gp_Elips2d Ellipse(const Adaptor2d_Curve2d& C) ;
-  
+  //! Returns the Parab2d from gp corresponding to the curve C. <br>
+//!          This method is called only when TheType returns <br>
+//!          GeomAbs_Parabola. <br>
       static  gp_Parab2d Parabola(const Adaptor2d_Curve2d& C) ;
-  
+  //! Returns the Hypr2d from gp corresponding to the curve C. <br>
+//!          This method is called only when TheType returns <br>
+//!          GeomAbs_Hyperbola. <br>
       static  gp_Hypr2d Hyperbola(const Adaptor2d_Curve2d& C) ;
   
       static  Standard_Real EpsX(const Adaptor2d_Curve2d& C) ;
@@ -99,11 +110,13 @@ public:
       static  void D3(const Adaptor2d_Curve2d& C,const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& T,gp_Vec2d& N,gp_Vec2d& V) ;
   
       static  gp_Vec2d DN(const Adaptor2d_Curve2d& C,const Standard_Real U,const Standard_Integer N) ;
-  
+  //! output the number of interval of continuity C2 of <br>
+//!           the curve <br>
       static  Standard_Integer NbIntervals(const Adaptor2d_Curve2d& C) ;
-  
+  //! compute Tab. <br>
       static  void Intervals(const Adaptor2d_Curve2d& C,TColStd_Array1OfReal& Tab) ;
-  
+  //! output the bounds of interval of index <Index> <br>
+//!           used if Type == Composite. <br>
       static  void GetInterval(const Adaptor2d_Curve2d& C,const Standard_Integer Index,const TColStd_Array1OfReal& Tab,Standard_Real& U1,Standard_Real& U2) ;
   
       static  Standard_Integer Degree(const Adaptor2d_Curve2d& C) ;
@@ -126,17 +139,9 @@ private:
 
 };
 
-#define IntCurveCurve Adaptor2d_Curve2d
-#define IntCurveCurve_hxx <Adaptor2d_Curve2d.hxx>
-#define Geom2dInt_CurveTool Geom2dInt_Geom2dCurveTool
-#define Geom2dInt_CurveTool_hxx <Geom2dInt_Geom2dCurveTool.hxx>
 
-#include <Geom2dInt_CurveTool.lxx>
+#include <Geom2dInt_Geom2dCurveTool.lxx>
 
-#undef IntCurveCurve
-#undef IntCurveCurve_hxx
-#undef Geom2dInt_CurveTool
-#undef Geom2dInt_CurveTool_hxx
 
 
 // other Inline functions and methods (like "C++: function call" methods)

@@ -40,11 +40,13 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class Draw_Text2D;
 class Geom2d_Curve;
 class Draw_Color;
 class gp_Pnt2d;
-class Draw_Interpretor;
 class Draw_Display;
 
 

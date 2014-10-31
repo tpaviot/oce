@@ -40,6 +40,8 @@ public:
   
       LocOpe_SequenceOfPntFace();
   
+  Standard_EXPORT   LocOpe_SequenceOfPntFace(const LocOpe_SequenceOfPntFace& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~LocOpe_SequenceOfPntFace()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   LocOpe_SequenceOfPntFace(const LocOpe_SequenceOfPntFace& Other);
 
 
 

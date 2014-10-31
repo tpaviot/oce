@@ -15,17 +15,98 @@
 #ifndef _Graphic3d_CStructure_HeaderFile
 #define _Graphic3d_CStructure_HeaderFile
 
-#include <Graphic3d_CGroup.hxx>
+#include <Graphic3d_BndBox4f.hxx>
+#include <Graphic3d_CStructure_Handle.hxx>
+#include <Graphic3d_Group.hxx>
+#include <Graphic3d_SequenceOfGroup.hxx>
 #include <Graphic3d_SequenceOfHClipPlane.hxx>
+#include <Graphic3d_TypeOfComposition.hxx>
+#include <Graphic3d_Vec3.hxx>
+#include <Standard_Transient.hxx>
+#include <Handle_Graphic3d_GraphicDriver.hxx>
 
-class Graphic3d_CStructure
+class Handle(Graphic3d_StructureManager);
+
+//! Low-level graphic structure interface
+class Graphic3d_CStructure : public Standard_Transient
 {
 
 public:
 
-  int   Id;
-  void* ptrStructure;
+  //! @return graphic driver created this structure
+  const Handle(Graphic3d_GraphicDriver)& GraphicDriver() const
+  {
+    return myGraphicDriver;
+  }
 
+  //! @return graphic groups
+  const Graphic3d_SequenceOfGroup& Groups() const
+  {
+    return myGroups;
+  }
+
+  //! @return associated clip planes
+  const Graphic3d_SequenceOfHClipPlane& ClipPlanes() const
+  {
+    return myClipPlanes;
+  }
+
+  //! Pass clip planes to the associated graphic driver structure
+  void SetClipPlanes (const Graphic3d_SequenceOfHClipPlane& thePlanes) { myClipPlanes = thePlanes; }
+
+  //! @return bounding box of this presentation
+  const Graphic3d_BndBox4f& BoundingBox() const
+  {
+    return myBndBox;
+  }
+
+  //! @return bounding box of this presentation
+  //! without transformation matrix applied
+  Graphic3d_BndBox4f& ChangeBoundingBox()
+  {
+    return myBndBox;
+  }
+
+public:
+
+  //! Update structure visibility state
+  virtual void UpdateNamedStatus() = 0;
+
+  //! Clear graphic data
+  virtual void Clear() = 0;
+
+  //! Connect other structure to this one
+  virtual void Connect    (Graphic3d_CStructure& theStructure) = 0;
+
+  //! Disconnect other structure to this one
+  virtual void Disconnect (Graphic3d_CStructure& theStructure) = 0;
+
+  //! Synchronize structure aspects
+  virtual void UpdateAspects() = 0;
+
+  //! Synchronize structure transformation
+  virtual void UpdateTransformation() = 0;
+
+  //! Highlight entire structure with color
+  virtual void HighlightWithColor  (const Graphic3d_Vec3&  theColor,
+                                    const Standard_Boolean theToCreate) = 0;
+
+  //! Highlight structure using boundary box
+  virtual void HighlightWithBndBox (const Handle(Graphic3d_Structure)& theStruct,
+                                    const Standard_Boolean             theToCreate) = 0;
+
+  //! Create shadow link to this structure
+  virtual Handle(Graphic3d_CStructure) ShadowLink (const Handle(Graphic3d_StructureManager)& theManager) const = 0;
+
+  //! Create new group within this structure
+  virtual Handle(Graphic3d_Group) NewGroup (const Handle(Graphic3d_Structure)& theStruct) = 0;
+
+  //! Remove group from this structure
+  virtual void RemoveGroup (const Handle(Graphic3d_Group)& theGroup) = 0;
+
+public:
+
+  int   Id;
   int   Priority;
   int   PreviousPriority;
 
@@ -34,29 +115,41 @@ public:
   CALL_DEF_CONTEXTMARKER   ContextMarker;
   CALL_DEF_CONTEXTTEXT     ContextText;
 
-  CALL_DEF_BOUNDBOX BoundBox;
+  CALL_DEF_COLOR HighlightColor;
 
   float Transformation[4][4];
-  int   Composition;
+  Graphic3d_TypeOfComposition Composition;
 
   int   ContainsFacet;
 
-  unsigned IsDeleted     : 1;
-  unsigned IsOpen        : 1;
-  unsigned IsInfinite    : 1;
-  unsigned stick         : 1;
-  unsigned highlight     : 1;
-  unsigned visible       : 1;
-  unsigned pick          : 1;
-  unsigned HLRValidation : 1;
+  unsigned IsInfinite     : 1;
+  unsigned stick          : 1;
+  unsigned highlight      : 1;
+  unsigned visible        : 1;
+  unsigned pick           : 1;
+  unsigned HLRValidation  : 1;
+  unsigned IsForHighlight : 1;
+  unsigned IsMutable      : 1;
+  unsigned Is2dText       : 1;
 
   CALL_DEF_TRANSFORM_PERSISTENCE TransformPersistence;
 
-  Graphic3d_SequenceOfHClipPlane ClipPlanes;
+protected:
+
+  //! Create empty structure.
+  Standard_EXPORT Graphic3d_CStructure (const Handle(Graphic3d_StructureManager)& theManager);
+
+protected:
+
+  Handle(Graphic3d_GraphicDriver) myGraphicDriver;
+  Graphic3d_SequenceOfGroup       myGroups;
+  Graphic3d_BndBox4f              myBndBox;
+  Graphic3d_SequenceOfHClipPlane  myClipPlanes;
+
+public:
+
+  DEFINE_STANDARD_RTTI(Graphic3d_CStructure) // Type definition
+
 };
 
-///typedef Graphic3d_CStructure CALL_DEF_STRUCTURE;
-
-const Handle(Standard_Type)& TYPE(Graphic3d_CStructure);
-
-#endif // Graphic3d_CStructure_HeaderFile
+#endif // _Graphic3d_CStructure_HeaderFile

@@ -40,7 +40,7 @@ class TopoDS_Compound;
 class TopTools_DataMapOfShapeShape;
 
 
-
+//! Analysis of the face size <br>
 class ShapeAnalysis_CheckSmallFace  {
 public:
 

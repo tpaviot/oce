@@ -19,6 +19,10 @@ deferred class TShape from TopoDS inherits TShared from MMgt
 	---Purpose: A TShape  is a topological  structure describing a
 	--          set of points in a 2D or 3D space.
 	--          
+	--          A topological shape is a structure made from other
+	--          shapes.  This is a deferred class  used to support
+	--          topological objects.
+	--
 	--          TShapes are   defined   by  their  optional domain
 	--          (geometry)  and  their  components  (other TShapes
 	--          with  Locations and Orientations).  The components
@@ -67,6 +71,16 @@ is
     Free(me : mutable; F : Boolean)
     ---C++: inline
 	---Purpose: Sets the free flag.
+    is static;
+
+    Locked(me) returns Boolean
+    ---C++: inline
+	---Purpose: Returns the locked flag.
+    is static;
+    
+    Locked(me : mutable; F : Boolean)
+    ---C++: inline
+	---Purpose: Sets the locked flag.
     is static;
     
     Modified(me) returns Boolean
@@ -134,7 +148,7 @@ is
 	--          VERTEX, EDGE, WIRE, FACE, ....
     is deferred;
     
-    EmptyCopy(me) returns mutable TShape from TopoDS
+    EmptyCopy(me) returns TShape from TopoDS
 	---Purpose: Returns a copy  of the  TShape  with no sub-shapes.
     is deferred;
     

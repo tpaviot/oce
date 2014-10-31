@@ -43,6 +43,8 @@ public:
   
       Expr_SequenceOfGeneralRelation();
   
+  Standard_EXPORT   Expr_SequenceOfGeneralRelation(const Expr_SequenceOfGeneralRelation& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Expr_SequenceOfGeneralRelation()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Expr_SequenceOfGeneralRelation(const Expr_SequenceOfGeneralRelation& Other);
 
 
 

@@ -37,7 +37,9 @@ class Adaptor3d_HCurve;
 class Adaptor3d_HSurface;
 
 
-
+//! Approximate the  projection of  a 3d curve   on an <br>
+//!          analytic surface and stores the result in Approx. <br>
+//!          The result is a 2d curve. <br>
 class ProjLib_ComputeApprox  {
 public:
 

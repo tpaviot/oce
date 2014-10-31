@@ -16,9 +16,6 @@
 #include <Handle_Message_PrinterOStream.hxx>
 #endif
 
-#ifndef _Message_Gravity_HeaderFile
-#include <Message_Gravity.hxx>
-#endif
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
 #endif
@@ -27,6 +24,9 @@
 #endif
 #ifndef _Message_Printer_HeaderFile
 #include <Message_Printer.hxx>
+#endif
+#ifndef _Message_Gravity_HeaderFile
+#include <Message_Gravity.hxx>
 #endif
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
@@ -60,13 +60,6 @@ public:
 {
   Close();
 }
-  //! Return trace level used for filtering messages; <br>
-//!          messages with lover gravity will be ignored. <br>
-        Message_Gravity GetTraceLevel() const;
-  //! Set trace level used for filtering messages. <br>
-//!          By default, trace level is Message_Info, so that <br>
-//!          all messages are output <br>
-        void SetTraceLevel(const Message_Gravity theTraceLevel) ;
   //! Returns option to convert non-Ascii symbols to UTF8 encoding <br>
         Standard_Boolean GetUseUtf8() const;
   //! Sets option to convert non-Ascii symbols to UTF8 encoding <br>
@@ -100,7 +93,6 @@ protected:
 private: 
 
 
-Message_Gravity myTraceLevel;
 Standard_Address myStream;
 Standard_Boolean myIsFile;
 Standard_Boolean myUseUtf8;

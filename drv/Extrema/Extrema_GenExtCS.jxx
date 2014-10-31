@@ -1,6 +1,3 @@
-#ifndef _TColgp_HArray1OfPnt_HeaderFile
-#include <TColgp_HArray1OfPnt.hxx>
-#endif
 #ifndef _TColgp_HArray2OfPnt_HeaderFile
 #include <TColgp_HArray2OfPnt.hxx>
 #endif

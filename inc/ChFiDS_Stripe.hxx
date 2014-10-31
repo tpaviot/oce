@@ -45,7 +45,7 @@ class ChFiDS_HData;
 class Geom2d_Curve;
 
 
-//! data structure associe au coin <br>
+//! Data characterising a band of fillet. <br>
 class ChFiDS_Stripe : public MMgt_TShared {
 
 public:

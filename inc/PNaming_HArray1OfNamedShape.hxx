@@ -25,9 +25,6 @@
 #ifndef _Handle_PNaming_NamedShape_HeaderFile
 #include <Handle_PNaming_NamedShape.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _PNaming_FieldOfHArray1OfNamedShape_HeaderFile
 #include <PNaming_FieldOfHArray1OfNamedShape.hxx>
 #endif
@@ -40,11 +37,7 @@
 #ifndef _Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape_HeaderFile
 #include <Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PNaming_NamedShape;
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PNaming_FieldOfHArray1OfNamedShape;
@@ -70,10 +63,6 @@ public:
         Standard_Integer Upper() const;
   
   Standard_EXPORT     Handle_PNaming_NamedShape Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PNaming_HArray1OfNamedShape( )
 {
@@ -158,10 +147,6 @@ PNaming_FieldOfHArray1OfNamedShape Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PNaming_HArray1OfNamedShape& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

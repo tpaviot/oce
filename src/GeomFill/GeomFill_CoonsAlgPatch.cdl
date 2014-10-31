@@ -17,7 +17,7 @@
 class CoonsAlgPatch from GeomFill inherits TShared from MMgt
 
 	---Purpose: Provides  evaluation   methods on an   algorithmic
-	--          patch   defined by  its   boundaries and  blending
+	--          patch (based on 4 Curves) defined by  its   boundaries and  blending
 	--          functions.
 
 uses
@@ -33,7 +33,7 @@ is
     --          constructed blending functions are linear.
     --  Warning: No control is done on the bounds.
     --          B1/B3 and B2/B4 must be same range and well oriented.
-    returns mutable CoonsAlgPatch  from  GeomFill;
+    returns CoonsAlgPatch  from  GeomFill;
 
     Func(me;
          f1,f2 : out Function from Law)

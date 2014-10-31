@@ -13,10 +13,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-  #include <config.h>
-#endif
-
 #include <OpenGl_GlCore11.hxx>
 
 #include <OpenGl_LayerList.hxx>
@@ -160,14 +156,15 @@ void OpenGl_LayerList::RemoveLayer (const Standard_Integer theLayerId)
 
 void OpenGl_LayerList::AddStructure (const OpenGl_Structure *theStructure,
                                      const Standard_Integer  theLayerId,
-                                     const Standard_Integer  thePriority)
+                                     const Standard_Integer  thePriority,
+                                     Standard_Boolean isForChangePriority)
 {
   // add structure to associated layer,
   // if layer doesn't exists, display structure in default layer
   OpenGl_PriorityList& aList = !HasLayer (theLayerId) ? defaultLayer ().PriorityList() :
     myLayers.ChangeValue (myLayerIds.Find (theLayerId)).PriorityList();
 
-  aList.Add (theStructure, thePriority);
+  aList.Add (theStructure, thePriority, isForChangePriority);
   myNbStructures++;
 
   // Note: In ray-tracing mode we don't modify modification
@@ -195,12 +192,10 @@ void OpenGl_LayerList::RemoveStructure (const OpenGl_Structure *theStructure,
   {
     myNbStructures--;
 
-#ifdef HAVE_OPENCL
     if (theStructure->IsRaytracable())
     {
       myModificationState++;
     }
-#endif
 
     return;
   }
@@ -218,16 +213,28 @@ void OpenGl_LayerList::RemoveStructure (const OpenGl_Structure *theStructure,
     {
       myNbStructures--;
 
-#ifdef HAVE_OPENCL
       if (theStructure->IsRaytracable())
       {
         myModificationState++;
       }
-#endif
 
       return;
     }
   }
+}
+
+//=======================================================================
+//function : InvalidateBVHData
+//purpose  :
+//=======================================================================
+void OpenGl_LayerList::InvalidateBVHData (const Standard_Integer theLayerId)
+{
+  Standard_Integer aSeqPos = !HasLayer (theLayerId) ?
+    1 : myLayerIds.Find (theLayerId);
+
+  OpenGl_PriorityList& aList = myLayers.ChangeValue (aSeqPos).PriorityList();
+
+  aList.InvalidateBVHData();
 }
 
 //=======================================================================
@@ -247,10 +254,10 @@ void OpenGl_LayerList::ChangeLayer (const OpenGl_Structure *theStructure,
 
   // take priority and remove structure from list found by <theOldLayerId>
   // if the structure is not found there, scan through all other layers
-  if ((aPriority = aList.Remove (theStructure)) >= 0)
+  if ((aPriority = aList.Remove (theStructure, Standard_True)) >= 0)
   {
     myNbStructures--;
-    AddStructure (theStructure, theNewLayerId, aPriority);
+    AddStructure (theStructure, theNewLayerId, aPriority, Standard_True);
   }
   else
   {
@@ -263,10 +270,47 @@ void OpenGl_LayerList::ChangeLayer (const OpenGl_Structure *theStructure,
         continue;
   
       // try to remove structure and get priority value from this layer
-      if ((aPriority = aList.Remove (theStructure)) >= 0)
+      if ((aPriority = aList.Remove (theStructure, Standard_True)) >= 0)
       {
         myNbStructures--;
-        AddStructure (theStructure, theNewLayerId, aPriority);
+        AddStructure (theStructure, theNewLayerId, aPriority, Standard_True);
+        break;
+      }
+    }
+  }
+}
+
+//=======================================================================
+//function : ChangePriority
+//purpose  :
+//=======================================================================
+void OpenGl_LayerList::ChangePriority (const OpenGl_Structure *theStructure,
+                                       const Standard_Integer theLayerId,
+                                       const Standard_Integer theNewPriority)
+{
+  Standard_Integer aSeqPos = !HasLayer (theLayerId) ?
+    1 : myLayerIds.Find (theLayerId);
+
+  OpenGl_PriorityList& aList = myLayers.ChangeValue (aSeqPos).PriorityList();
+
+  if (aList.Remove (theStructure, Standard_True) >= 0)
+  {
+    myNbStructures--;
+    AddStructure (theStructure, theLayerId, theNewPriority, Standard_True);
+  }
+  else
+  {
+    Standard_Integer aSeqId = 1;
+    OpenGl_SequenceOfLayers::Iterator anIts;
+    for (anIts.Init (myLayers); anIts.More (); anIts.Next (), aSeqId++)
+    {
+      if (aSeqPos == aSeqId)
+        continue;
+
+      if (aList.Remove (theStructure, Standard_True) >= 0)
+      {
+        myNbStructures--;
+        AddStructure (theStructure, theLayerId, theNewPriority, Standard_True);
         break;
       }
     }

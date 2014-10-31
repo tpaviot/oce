@@ -17,12 +17,13 @@
 class TShell from PTopoDS inherits TShape from PTopoDS
 
 	---Purpose: A topological  Shell shape.
-
+  --          A set of Faces or Shells, a topological surface or
+----          any faces structure.
 uses
     ShapeEnum from TopAbs
 
 is
-    Create returns mutable TShell from PTopoDS;
+    Create returns TShell from PTopoDS;
     	---Level: Internal 
     	
     ShapeType(me) returns ShapeEnum from TopAbs;

@@ -43,6 +43,12 @@
 #ifndef _GeomAbs_SurfaceType_HeaderFile
 #include <GeomAbs_SurfaceType.hxx>
 #endif
+#ifndef _Handle_Extrema_ExtPExtS_HeaderFile
+#include <Handle_Extrema_ExtPExtS.hxx>
+#endif
+#ifndef _Handle_Extrema_ExtPRevS_HeaderFile
+#include <Handle_Extrema_ExtPRevS.hxx>
+#endif
 #ifndef _Extrema_ExtFlag_HeaderFile
 #include <Extrema_ExtFlag.hxx>
 #endif
@@ -52,6 +58,8 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+class Extrema_ExtPExtS;
+class Extrema_ExtPRevS;
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_TypeMismatch;
@@ -156,6 +164,8 @@ gp_Pnt P21;
 gp_Pnt P22;
 TColStd_SequenceOfReal mySqDist;
 GeomAbs_SurfaceType mytype;
+Handle_Extrema_ExtPExtS myExtPExtS;
+Handle_Extrema_ExtPRevS myExtPRevS;
 
 
 };

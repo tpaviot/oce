@@ -28,17 +28,19 @@
 #ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class TDF_Data;
 class TDF_Label;
 class Standard_GUID;
 class TDF_Attribute;
-class Draw_Interpretor;
 class DDF_Data;
 class DDF_Browser;
 class DDF_Transaction;
 class DDF_TransactionStack;
-class DDF_StackNodeOfTransactionStack;
-class DDF_StackIteratorOfTransactionStack;
+class DDF_ListNodeOfTransactionStack;
+class DDF_ListIteratorOfTransactionStack;
 
 
 //! Provides facilities to manipulate data framework <br>
@@ -98,8 +100,8 @@ friend class DDF_Data;
 friend class DDF_Browser;
 friend class DDF_Transaction;
 friend class DDF_TransactionStack;
-friend class DDF_StackNodeOfTransactionStack;
-friend class DDF_StackIteratorOfTransactionStack;
+friend class DDF_ListNodeOfTransactionStack;
+friend class DDF_ListIteratorOfTransactionStack;
 
 };
 

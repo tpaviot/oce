@@ -43,6 +43,8 @@ public:
   
       TColgp_SequenceOfArray1OfPnt2d();
   
+  Standard_EXPORT   TColgp_SequenceOfArray1OfPnt2d(const TColgp_SequenceOfArray1OfPnt2d& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColgp_SequenceOfArray1OfPnt2d()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColgp_SequenceOfArray1OfPnt2d(const TColgp_SequenceOfArray1OfPnt2d& Other);
 
 
 

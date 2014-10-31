@@ -39,7 +39,7 @@ class MAT_SequenceOfArc;
 class MAT_SequenceOfBasicElt;
 
 
-
+//! Node of Graph. <br>
 class MAT_Node : public MMgt_TShared {
 
 public:

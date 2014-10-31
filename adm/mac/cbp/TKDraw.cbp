@@ -100,17 +100,11 @@
 			<Add library="tbbmalloc" />
 			<Add library="objc" />
 		</Linker>
-		<Unit filename="../../../drv/Draw/Draw_DataMapIteratorOfMapOfFunctions_0.cxx" />
-		<Unit filename="../../../drv/Draw/Draw_DataMapIteratorOfVMap_0.cxx" />
-		<Unit filename="../../../drv/Draw/Draw_DataMapNodeOfMapOfFunctions_0.cxx" />
-		<Unit filename="../../../drv/Draw/Draw_DataMapNodeOfVMap_0.cxx" />
 		<Unit filename="../../../drv/Draw/Draw_Failure_0.cxx" />
 		<Unit filename="../../../drv/Draw/Draw_IndexedMapNodeOfMapOfAsciiString_0.cxx" />
 		<Unit filename="../../../drv/Draw/Draw_MapOfAsciiString_0.cxx" />
-		<Unit filename="../../../drv/Draw/Draw_MapOfFunctions_0.cxx" />
 		<Unit filename="../../../drv/Draw/Draw_SequenceNodeOfSequenceOfDrawable3D_0.cxx" />
 		<Unit filename="../../../drv/Draw/Draw_SequenceOfDrawable3D_0.cxx" />
-		<Unit filename="../../../drv/Draw/Draw_VMap_0.cxx" />
 		<Unit filename="../../../src/Draw/CommandWindow.cxx" />
 		<Unit filename="../../../src/Draw/Draw.cxx" />
 		<Unit filename="../../../src/Draw/Draw_Axis2D.cxx" />

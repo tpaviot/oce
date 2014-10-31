@@ -43,14 +43,14 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _Handle_Graphic3d_ArrayOfPolylines_HeaderFile
-#include <Handle_Graphic3d_ArrayOfPolylines.hxx>
+#ifndef _Handle_Graphic3d_ArrayOfSegments_HeaderFile
+#include <Handle_Graphic3d_ArrayOfSegments.hxx>
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Handle_Graphic3d_ArrayOfPolygons_HeaderFile
-#include <Handle_Graphic3d_ArrayOfPolygons.hxx>
+#ifndef _Handle_Graphic3d_ArrayOfTriangles_HeaderFile
+#include <Handle_Graphic3d_ArrayOfTriangles.hxx>
 #endif
 #ifndef _Handle_MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #include <Handle_MeshVS_HArray1OfSequenceOfInteger.hxx>
@@ -68,8 +68,8 @@ class MeshVS_Mesh;
 class MeshVS_DataSource;
 class Prs3d_Presentation;
 class TColStd_Array1OfReal;
-class Graphic3d_ArrayOfPolylines;
-class Graphic3d_ArrayOfPolygons;
+class Graphic3d_ArrayOfSegments;
+class Graphic3d_ArrayOfTriangles;
 class MeshVS_HArray1OfSequenceOfInteger;
 class Graphic3d_ArrayOfPrimitives;
 class Graphic3d_AspectFillArea3d;
@@ -104,13 +104,13 @@ public:
 protected:
 
   //! Add to array of polylines some lines representing link <br>
-  Standard_EXPORT     void AddLinkPrs(const TColStd_Array1OfReal& theCoords,const Handle(Graphic3d_ArrayOfPolylines)& theLines,const Standard_Boolean IsShrinked,const Standard_Real ShrinkCoef) const;
-  //! Add to array of polylines some lines representing face's wire <br>
-  Standard_EXPORT     void AddFaceWirePrs(const TColStd_Array1OfReal& theCoords,const Standard_Integer NbNodes,const Handle(Graphic3d_ArrayOfPolylines)& theLines,const Standard_Boolean IsShrinked,const Standard_Real ShrinkCoef) const;
+  Standard_EXPORT     void AddLinkPrs(const TColStd_Array1OfReal& theCoords,const Handle(Graphic3d_ArrayOfSegments)& theLines,const Standard_Boolean IsShrinked,const Standard_Real ShrinkCoef) const;
+  //! Add to array of segments representing face's wire <br>
+  Standard_EXPORT     void AddFaceWirePrs(const TColStd_Array1OfReal& theCoords,const Standard_Integer theNbNodes,const Handle(Graphic3d_ArrayOfSegments)& theLines,const Standard_Boolean theIsShrinked,const Standard_Real theShrinkingCoef) const;
   //! Add to array of polygons a polygon representing face <br>
-  Standard_EXPORT     void AddFaceSolidPrs(const Standard_Integer ID,const TColStd_Array1OfReal& theCoords,const Standard_Integer NbNodes,const Standard_Integer MaxNodes,const Handle(Graphic3d_ArrayOfPolygons)& thePolygons,const Standard_Boolean IsReflected,const Standard_Boolean IsShrinked,const Standard_Real ShrinkCoef,const Standard_Boolean IsMeshSmoothShading) const;
+  Standard_EXPORT     void AddFaceSolidPrs(const Standard_Integer ID,const TColStd_Array1OfReal& theCoords,const Standard_Integer theNbNodes,const Standard_Integer theMaxNodes,const Handle(Graphic3d_ArrayOfTriangles)& theTriangles,const Standard_Boolean theIsReflected,const Standard_Boolean theIsShrinked,const Standard_Real theShrinkCoef,const Standard_Boolean theIsMeshSmoothShading) const;
   //! Draw array of polygons and polylines in the certain order according to transparency <br>
-  Standard_EXPORT     void DrawArrays(const Handle(Prs3d_Presentation)& Prs,const Handle(Graphic3d_ArrayOfPolygons)& thePolygons,const Handle(Graphic3d_ArrayOfPolylines)& theLines,const Handle(Graphic3d_ArrayOfPolylines)& theLinkLines,const Handle(Graphic3d_ArrayOfPolygons)& theVolumesInShad,const Standard_Boolean IsPolygonsEdgesOff,const Standard_Boolean IsSelected,const Handle(Graphic3d_AspectFillArea3d)& theFillAsp,const Handle(Graphic3d_AspectLine3d)& theLineAsp) const;
+  Standard_EXPORT     void DrawArrays(const Handle(Prs3d_Presentation)& Prs,const Handle(Graphic3d_ArrayOfPrimitives)& thePolygons,const Handle(Graphic3d_ArrayOfPrimitives)& theLines,const Handle(Graphic3d_ArrayOfPrimitives)& theLinkLines,const Handle(Graphic3d_ArrayOfPrimitives)& theVolumesInShad,const Standard_Boolean IsPolygonsEdgesOff,const Standard_Boolean IsSelected,const Handle(Graphic3d_AspectFillArea3d)& theFillAsp,const Handle(Graphic3d_AspectLine3d)& theLineAsp) const;
   //! Default calculation of center of face or link. This method if useful for shrink mode presentation <br>
 //! theCoords is array of nodes co-ordinates in the strict order X1, Y1, Z1, X2... <br>
 //! NbNodes is number of nodes an element consist of <br>

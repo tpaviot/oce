@@ -40,7 +40,6 @@ libTKXml_la_LIBADD = $(CSF_OPT_LIBS) \
 $(STLPort_LIB) 
 
 libTKXml_la_SOURCES = \
-@top_srcdir@/drv/XmlMNaming/XmlMNaming_Array1OfShape1_0.cxx \
 @top_srcdir@/src/XmlDrivers/XmlDrivers.cxx \
 @top_srcdir@/src/XmlDrivers/XmlDrivers_DocumentRetrievalDriver.cxx \
 @top_srcdir@/src/XmlDrivers/XmlDrivers_DocumentStorageDriver.cxx \

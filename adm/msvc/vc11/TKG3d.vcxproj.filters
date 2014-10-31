@@ -2,50 +2,41 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{AF1F0F42-0D64-06B5-0DA6-9C8D9D156AD7}</UniqueIdentifier>
+      <UniqueIdentifier>{E1C4D934-0894-0EB4-17FF-493D9A6B828A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom">
-      <UniqueIdentifier>{196A1F78-014C-17A1-0DE2-C8ABE08C30C4}</UniqueIdentifier>
+      <UniqueIdentifier>{474B5F1A-1522-1961-10AE-35A9E023DFE8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColGeom">
-      <UniqueIdentifier>{D59F6C9D-1300-053F-0EC5-94E0E7396A4C}</UniqueIdentifier>
+      <UniqueIdentifier>{4108D42A-18E7-03EC-148D-2C0ED882AF83}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomAdaptor">
-      <UniqueIdentifier>{71CFCDA0-0E74-1173-0FFC-08F0B2F24792}</UniqueIdentifier>
+      <UniqueIdentifier>{D0ED50E8-1862-0CF9-0BB5-59D70533974A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AdvApprox">
-      <UniqueIdentifier>{390046D4-0563-147D-0EB3-21B7CDA9FAFA}</UniqueIdentifier>
+      <UniqueIdentifier>{118F615D-16ED-15DA-0A1B-749854BCD14A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomLProp">
-      <UniqueIdentifier>{9C57D7D4-0E90-071B-1360-11FCACE38351}</UniqueIdentifier>
+      <UniqueIdentifier>{50846E02-17B8-15C8-1444-4F2AEB8AD0ED}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Adaptor3d">
-      <UniqueIdentifier>{C23E5F88-04CF-1741-0EC5-F9B472B5B112}</UniqueIdentifier>
+      <UniqueIdentifier>{9A95A1DD-11B2-1924-0A12-BC8B6D65CA84}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\LProp3d">
-      <UniqueIdentifier>{7C532B03-14C1-10CA-0359-CDED58993068}</UniqueIdentifier>
+      <UniqueIdentifier>{D2A57146-0E6C-0767-06B6-5971F7495072}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopAbs">
-      <UniqueIdentifier>{392D63DD-1217-0611-1387-7D1021ADE7CD}</UniqueIdentifier>
+      <UniqueIdentifier>{4091F4D2-0196-0057-0F55-7FE35C27BA9B}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\drv\Geom\Geom_HSequenceOfBSplineSurface_0.cxx">
       <Filter>Source files\Geom</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom\Geom_HSequenceOfSurface_0.cxx">
-      <Filter>Source files\Geom</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Geom\Geom_SequenceNodeOfSequenceOfBSplineSurface_0.cxx">
       <Filter>Source files\Geom</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom\Geom_SequenceNodeOfSequenceOfSurface_0.cxx">
-      <Filter>Source files\Geom</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Geom\Geom_SequenceOfBSplineSurface_0.cxx">
-      <Filter>Source files\Geom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Geom\Geom_SequenceOfSurface_0.cxx">
       <Filter>Source files\Geom</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Geom\Geom_UndefinedDerivative_0.cxx">
@@ -180,25 +171,13 @@
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array1OfBezierCurve_0.cxx">
       <Filter>Source files\TColGeom</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array1OfBoundedCurve_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array1OfBoundedSurface_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array1OfCurve_0.cxx">
       <Filter>Source files\TColGeom</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array1OfSurface_0.cxx">
       <Filter>Source files\TColGeom</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array2OfBSplineSurface_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array2OfBezierSurface_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array2OfBoundedSurface_0.cxx">
       <Filter>Source files\TColGeom</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_Array2OfSurface_0.cxx">
@@ -210,25 +189,10 @@
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray1OfBezierCurve_0.cxx">
       <Filter>Source files\TColGeom</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray1OfBoundedCurve_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray1OfBoundedSurface_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray1OfCurve_0.cxx">
       <Filter>Source files\TColGeom</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray1OfSurface_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray2OfBSplineSurface_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray2OfBezierSurface_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray2OfBoundedSurface_0.cxx">
       <Filter>Source files\TColGeom</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HArray2OfSurface_0.cxx">
@@ -237,19 +201,10 @@
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HSequenceOfBoundedCurve_0.cxx">
       <Filter>Source files\TColGeom</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HSequenceOfBoundedSurface_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HSequenceOfCurve_0.cxx">
       <Filter>Source files\TColGeom</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_HSequenceOfSurface_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceNodeOfSequenceOfBoundedCurve_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceNodeOfSequenceOfBoundedSurface_0.cxx">
       <Filter>Source files\TColGeom</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceNodeOfSequenceOfCurve_0.cxx">
@@ -259,9 +214,6 @@
       <Filter>Source files\TColGeom</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceOfBoundedCurve_0.cxx">
-      <Filter>Source files\TColGeom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceOfBoundedSurface_0.cxx">
       <Filter>Source files\TColGeom</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColGeom\TColGeom_SequenceOfCurve_0.cxx">

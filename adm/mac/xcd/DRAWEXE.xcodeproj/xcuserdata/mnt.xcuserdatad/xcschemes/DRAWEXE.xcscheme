@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "15C508080EDA185E19270FB7"
+               BlueprintIdentifier = "13A61808115D088102000303"
                BuildableName = "libDRAWEXE.dylib"
                BlueprintName = "DRAWEXE"
                ReferencedContainer = "container:DRAWEXE.xcodeproj">

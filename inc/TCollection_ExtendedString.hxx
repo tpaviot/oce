@@ -70,7 +70,11 @@ public:
 
   //! Initializes a ExtendedString to an empty ExtendedString. <br>
   Standard_EXPORT   TCollection_ExtendedString();
-  //! Creation by converting a CString to an extended string. <br>
+  //! Creation by converting a CString to an extended <br>
+//!          string.  If <isMultiByte> is true then the string is <br>
+//!          treated as having UTF-8 coding.  If it is not a UTF-8 <br>
+//!          then <isMultiByte> is ignored and each character is <br>
+//!          copied to ExtCharacter. <br>
   Standard_EXPORT   TCollection_ExtendedString(const Standard_CString astring,const Standard_Boolean isMultiByte = Standard_False);
   //! Creation by converting an ExtString to an extended string. <br>
   Standard_EXPORT   TCollection_ExtendedString(const Standard_ExtString astring);
@@ -87,7 +91,9 @@ public:
   Standard_EXPORT   TCollection_ExtendedString(const Standard_Real value);
   //! Initializes a ExtendedString with another ExtendedString. <br>
   Standard_EXPORT   TCollection_ExtendedString(const TCollection_ExtendedString& astring);
-  //! Creation by converting a normal Ascii string to an extended string. <br>
+  //! Creation by converting an Ascii string to an extended <br>
+//!          string. The string is treated as having UTF-8 coding. <br>
+//!          If it is not a UTF-8 then each character is copied to ExtCharacter. <br>
   Standard_EXPORT   TCollection_ExtendedString(const TCollection_AsciiString& astring);
   //!  Appends the other extended string to this extended string. <br>
 //! Note that this method is an alias of operator +=. <br>

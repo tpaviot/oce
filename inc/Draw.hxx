@@ -16,6 +16,9 @@
 #include <Standard_Macro.hxx>
 #endif
 
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -34,7 +37,6 @@
 #ifndef _Handle_Draw_ProgressIndicator_HeaderFile
 #include <Handle_Draw_ProgressIndicator.hxx>
 #endif
-class Draw_Interpretor;
 class TCollection_AsciiString;
 class Draw_Drawable3D;
 class Draw_ProgressIndicator;
@@ -58,16 +60,9 @@ class Draw_Grid;
 class Draw_Box;
 class Draw_SequenceOfDrawable3D;
 class Draw_ProgressIndicator;
-class Draw_Interpretor;
 class Draw_Printer;
-class Draw_VMap;
-class Draw_MapOfFunctions;
 class Draw_MapOfAsciiString;
 class Draw_SequenceNodeOfSequenceOfDrawable3D;
-class Draw_DataMapNodeOfVMap;
-class Draw_DataMapIteratorOfVMap;
-class Draw_DataMapNodeOfMapOfFunctions;
-class Draw_DataMapIteratorOfMapOfFunctions;
 class Draw_IndexedMapNodeOfMapOfAsciiString;
 
 
@@ -77,8 +72,6 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
-  Standard_EXPORT   static  void Load(Draw_Interpretor& theDI,const TCollection_AsciiString& theKey,const TCollection_AsciiString& theResourceFileName) ;
   
   Standard_EXPORT   static  void Load(Draw_Interpretor& theDI,const TCollection_AsciiString& theKey,const TCollection_AsciiString& theResourceFileName,TCollection_AsciiString& theDefaultsDirectory,TCollection_AsciiString& theUserDefaultsDirectory,const Standard_Boolean Verbose = Standard_False) ;
   //! Sets a variable. Display it if <Disp> is true. <br>
@@ -164,16 +157,9 @@ friend class Draw_Grid;
 friend class Draw_Box;
 friend class Draw_SequenceOfDrawable3D;
 friend class Draw_ProgressIndicator;
-friend class Draw_Interpretor;
 friend class Draw_Printer;
-friend class Draw_VMap;
-friend class Draw_MapOfFunctions;
 friend class Draw_MapOfAsciiString;
 friend class Draw_SequenceNodeOfSequenceOfDrawable3D;
-friend class Draw_DataMapNodeOfVMap;
-friend class Draw_DataMapIteratorOfVMap;
-friend class Draw_DataMapNodeOfMapOfFunctions;
-friend class Draw_DataMapIteratorOfMapOfFunctions;
 friend class Draw_IndexedMapNodeOfMapOfAsciiString;
 
 };

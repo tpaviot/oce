@@ -54,7 +54,7 @@ class TDF_LabelMap;
 class TDF_RelocationTable;
 
 
-
+//! store the arguments of Naming. <br>
 class TNaming_Name  {
 public:
 

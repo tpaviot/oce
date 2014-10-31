@@ -58,7 +58,6 @@ class GeomInt_TheMultiLineOfWLApprox;
 class GeomInt_TheMultiLineToolOfWLApprox;
 class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox;
-class math_Vector;
 class AppParCurves_MultiCurve;
 
 

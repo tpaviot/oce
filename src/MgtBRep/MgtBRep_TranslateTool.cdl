@@ -21,6 +21,7 @@ class TranslateTool from MgtBRep inherits TranslateTool from MgtTopoDS
 
 	---Purpose: The TranslateTool class is provided to support the
 	--          translation of BRep topological data structures.
+	--          Used to call the MgtTopoDS methods.
 uses
 
     TransientPersistentMap from PTColStd,
@@ -43,7 +44,7 @@ raises
 is
 
     Create(aTriMode : TriangleMode from MgtBRep)
-    returns mutable TranslateTool from MgtBRep;
+    returns TranslateTool from MgtBRep;
     	---Purpose: Creates a new TranslateTool
 
     --
@@ -120,7 +121,7 @@ is
     	TypeMismatch from Standard;
     
     MakeVertex(me; 
-    	       S  : mutable HShape from PTopoDS) 
+    	       S  : HShape from PTopoDS) 
 	---Level: Internal 
     raises
     	TypeMismatch from Standard;
@@ -132,7 +133,7 @@ is
     	TypeMismatch from Standard;
     
     MakeEdge(me; 
-    	     S  : mutable HShape from PTopoDS) 
+    	     S  : HShape from PTopoDS) 
 	---Level: Internal 
     raises
     	TypeMismatch from Standard;
@@ -144,7 +145,7 @@ is
     	TypeMismatch from Standard;
     
     MakeWire(me; 
-    	     S  : mutable HShape from PTopoDS) 
+    	     S  : HShape from PTopoDS) 
 	---Level: Internal 
     raises
     	TypeMismatch from Standard;
@@ -156,7 +157,7 @@ is
     	TypeMismatch from Standard;
     
     MakeFace(me; 
-    	     S  : mutable HShape from PTopoDS) 
+    	     S  : HShape from PTopoDS) 
 	---Level: Internal 
     raises
     	TypeMismatch from Standard;
@@ -168,7 +169,7 @@ is
     	TypeMismatch from Standard;
     
     MakeShell(me; 
-    	      S  : mutable HShape from PTopoDS) 
+    	      S  : HShape from PTopoDS) 
 	---Level: Internal 
     raises
     	TypeMismatch from Standard;
@@ -180,7 +181,7 @@ is
     	TypeMismatch from Standard;
     
     MakeSolid(me; 
-    	      S  : mutable HShape from PTopoDS) 
+    	      S  : HShape from PTopoDS) 
 	---Level: Internal 
     raises
     	TypeMismatch from Standard;
@@ -192,7 +193,7 @@ is
     	TypeMismatch from Standard;
     
     MakeCompSolid(me; 
-    	    	  S  : mutable HShape from PTopoDS) 
+    	    	  S  : HShape from PTopoDS) 
 	---Level: Internal 
     raises
     	TypeMismatch from Standard;
@@ -204,7 +205,7 @@ is
     	TypeMismatch from Standard;
     
     MakeCompound(me; 
-    	    	 S  : mutable HShape from PTopoDS) 
+    	    	 S  : HShape from PTopoDS) 
 	---Level: Internal 
     raises
     	TypeMismatch from Standard;
@@ -220,7 +221,7 @@ is
     
     UpdateVertex(me;
     	         S1 :         Shape                  from TopoDS;
-		 S2 : mutable HShape                 from PTopoDS;
+		 S2 : HShape                 from PTopoDS;
 		 M  : in out  TransientPersistentMap from PTColStd)
 	---Level: Internal 
     is redefined;
@@ -234,7 +235,7 @@ is
     
     UpdateEdge(me;
     	       S1 :         Shape                  from TopoDS;
-	       S2 : mutable HShape                 from PTopoDS;
+	       S2 : HShape                 from PTopoDS;
 	       M  : in out  TransientPersistentMap from PTColStd)
 	---Level: Internal 
     is redefined;
@@ -248,7 +249,7 @@ is
     
     UpdateFace(me;
     	       S1 :         Shape                  from TopoDS;
-	       S2 : mutable HShape                 from PTopoDS;
+	       S2 : HShape                 from PTopoDS;
 	       M  : in out  TransientPersistentMap from PTColStd)
 	---Level: Internal 
     is redefined;

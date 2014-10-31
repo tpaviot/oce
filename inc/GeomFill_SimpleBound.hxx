@@ -40,6 +40,7 @@ class gp_Vec;
 //! Defines a 3d curve as a boundary for a <br>
 //! GeomFill_ConstrainedFilling algorithm. <br>
 //! This curve is unattached to an existing surface.D <br>
+//! Contains fields to allow a reparametrization of curve. <br>
 class GeomFill_SimpleBound : public GeomFill_Boundary {
 
 public:

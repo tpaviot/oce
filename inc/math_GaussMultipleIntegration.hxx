@@ -22,13 +22,17 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
+#ifndef _math_IntegerVector_HeaderFile
+#include <math_IntegerVector.hxx>
+#endif
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
 class StdFail_NotDone;
 class math_MultipleVarFunction;
-class math_Vector;
-class math_IntegerVector;
 
 
 

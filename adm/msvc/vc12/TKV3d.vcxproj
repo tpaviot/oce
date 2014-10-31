@@ -266,12 +266,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\V3d\V3d_Light.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\V3d\V3d_ListOfTransient.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\V3d\V3d_OrthographicView.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\V3d\V3d_PerspectiveView.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\V3d\V3d_Plane.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\V3d\V3d_PositionLight.cxx">
@@ -318,27 +312,13 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_GroupDefinitionError_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_HSequenceOfGroup_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_HSequenceOfStructure_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_HSetOfGroup_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_InitialisationError_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListIteratorOfListOfPArray_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListIteratorOfListOfShortReal_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListIteratorOfSetListOfSetOfGroup_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListNodeOfListOfPArray_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListNodeOfListOfShortReal_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListNodeOfSetListOfSetOfGroup_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListOfPArray_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListOfShortReal_0.cxx">
     </ClCompile>
@@ -348,29 +328,11 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MaterialDefinitionError_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_PickIdDefinitionError_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_PlotterDefinitionError_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_PriorityDefinitionError_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfAddress_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfGroup_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfStructure_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfAddress_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfGroup_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfStructure_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SetIteratorOfSetOfGroup_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SetListOfSetOfGroup_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SetOfGroup_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_StdMapNodeOfMapOfStructure_0.cxx">
     </ClCompile>
@@ -379,8 +341,6 @@
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_TransformError_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_VectorError_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPoints.cxx">
     </ClCompile>
@@ -410,33 +370,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectText3d.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBitFields16.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBitFields20.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBitFields4.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBitFields8.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBounds.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CGraduatedTrihedron.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CGroup.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CLight.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CPick.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CStructure.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CTexture.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CTransPersStruct.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CUserDraw.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CView.cxx">
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Camera.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ClipPlane.cxx">
     </ClCompile>
@@ -446,29 +382,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_1.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_10.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_13.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_2.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_8.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_MarkerImage.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_MaterialAspect.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Plotter.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ShaderObject.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ShaderProgram.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ShaderVariable.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Strips.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Structure.cxx">
     </ClCompile>
@@ -504,45 +426,25 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_DepthCueingDefinitionError_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSequenceOfPickPath_0.cxx">
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSequenceOfLight_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSetOfLight_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSetOfView_0.cxx">
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSequenceOfView_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_LayerDefinitionError_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_LightDefinitionError_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfLight_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfView_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListNodeOfSetListOfSetOfLight_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListNodeOfSetListOfSetOfView_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_PickError_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SequenceNodeOfSequenceOfPickPath_0.cxx">
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SequenceNodeOfSequenceOfLight_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SequenceOfPickPath_0.cxx">
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SequenceNodeOfSequenceOfView_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfLight_0.cxx">
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SequenceOfLight_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfView_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfLight_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfView_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetOfLight_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetOfView_0.cxx">
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SequenceOfView_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_TransformError_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_TransientDefinitionError_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ViewDefinitionError_0.cxx">
     </ClCompile>
@@ -564,21 +466,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Visual3d\Visual3d_Light.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_PickDescriptor.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_PickPath.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_TransientManager.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Visual3d\Visual3d_View.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ViewManager.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ViewMapping.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ViewOrientation.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_View_Print.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListIteratorOfListOfSensitiveTriangle_0.cxx">
     </ClCompile>
@@ -651,6 +541,8 @@
     <ClCompile Include="..\..\..\src\Prs3d\Prs3d_PointAspect.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Presentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_PresentationShadow.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Projector.cxx">
     </ClCompile>
@@ -780,11 +672,7 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Presentation.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Presentation3d.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentationManager.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentationManager3d.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Prs.cxx">
     </ClCompile>
@@ -860,8 +748,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_ConnectedInteractive.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\AIS\AIS_ConnectedShape.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_DiameterDimension.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_Dimension.cxx">
@@ -914,8 +800,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_MultipleConnectedInteractive.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\AIS\AIS_MultipleConnectedShape.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_OffsetDimension.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_ParallelRelation.cxx">
@@ -927,6 +811,8 @@
     <ClCompile Include="..\..\..\src\AIS\AIS_PlaneTrihedron.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_Point.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_PointCloud.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_RadiusDimension.cxx">
     </ClCompile>

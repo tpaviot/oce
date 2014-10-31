@@ -209,6 +209,11 @@ public:
 //! Standard_OutOfRange if AName in not known <br>
 //! in the Quantity_NameOfColor enumeration. <br>
   Standard_EXPORT   static  Standard_CString StringName(const Quantity_NameOfColor AColor) ;
+  //! Finds color from predefined names. <br>
+//! For example, the name of the color which <br>
+//! corresponds to "BLACK" is Quantity_NOC_BLACK. <br>
+//! Returns false if name is unknown. <br>
+  Standard_EXPORT   static  Standard_Boolean ColorFromName(const Standard_CString theName,Quantity_NameOfColor& theColor) ;
   //! Converts HLS components into RGB ones. <br>
   Standard_EXPORT   static  void HlsRgb(const Quantity_Parameter H,const Quantity_Parameter L,const Quantity_Parameter S,Quantity_Parameter& R,Quantity_Parameter& G,Quantity_Parameter& B) ;
   //! Converts RGB components into HLS ones. <br>

@@ -111,7 +111,6 @@
 		<Unit filename="../../../src/LocOpe/LocOpe_Pipe.cxx" />
 		<Unit filename="../../../src/LocOpe/LocOpe_PntFace.cxx" />
 		<Unit filename="../../../src/LocOpe/LocOpe_Prism.cxx" />
-		<Unit filename="../../../src/LocOpe/LocOpe_ProjectedWires.cxx" />
 		<Unit filename="../../../src/LocOpe/LocOpe_Revol.cxx" />
 		<Unit filename="../../../src/LocOpe/LocOpe_RevolutionForm.cxx" />
 		<Unit filename="../../../src/LocOpe/LocOpe_SplitDrafts.cxx" />

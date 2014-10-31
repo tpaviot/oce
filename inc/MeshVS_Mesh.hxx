@@ -46,8 +46,8 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
@@ -69,7 +69,6 @@ class TColStd_HPackedMapOfInteger;
 class MeshVS_DataSource;
 class MeshVS_Drawer;
 class SelectMgr_EntityOwner;
-class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
 class SelectMgr_Selection;
 class SelectMgr_SequenceOfOwner;

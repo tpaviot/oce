@@ -419,19 +419,10 @@
 					RelativePath="..\..\..\drv\Geom\Geom_HSequenceOfBSplineSurface_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Geom\Geom_HSequenceOfSurface_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Geom\Geom_SequenceNodeOfSequenceOfBSplineSurface_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Geom\Geom_SequenceNodeOfSequenceOfSurface_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Geom\Geom_SequenceOfBSplineSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Geom\Geom_SequenceOfSurface_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Geom\Geom_UndefinedDerivative_0.cxx">
@@ -570,25 +561,13 @@
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_Array1OfBezierCurve_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_Array1OfBoundedCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_Array1OfBoundedSurface_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_Array1OfCurve_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_Array1OfSurface_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_Array2OfBSplineSurface_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_Array2OfBezierSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_Array2OfBoundedSurface_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_Array2OfSurface_0.cxx">
@@ -600,25 +579,10 @@
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_HArray1OfBezierCurve_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_HArray1OfBoundedCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_HArray1OfBoundedSurface_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_HArray1OfCurve_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_HArray1OfSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_HArray2OfBSplineSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_HArray2OfBezierSurface_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_HArray2OfBoundedSurface_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_HArray2OfSurface_0.cxx">
@@ -627,19 +591,10 @@
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_HSequenceOfBoundedCurve_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_HSequenceOfBoundedSurface_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_HSequenceOfCurve_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_HSequenceOfSurface_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_SequenceNodeOfSequenceOfBoundedCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_SequenceNodeOfSequenceOfBoundedSurface_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_SequenceNodeOfSequenceOfCurve_0.cxx">
@@ -649,9 +604,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_SequenceOfBoundedCurve_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColGeom\TColGeom_SequenceOfBoundedSurface_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColGeom\TColGeom_SequenceOfCurve_0.cxx">

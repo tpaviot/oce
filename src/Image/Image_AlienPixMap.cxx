@@ -13,10 +13,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-  #include <config.h>
-#endif
-
 #ifdef HAVE_FREEIMAGE
   #include <FreeImage.h>
 
@@ -29,6 +25,7 @@
 #include <gp.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <fstream>
+#include <algorithm>
 
 #ifdef HAVE_FREEIMAGE
 namespace
@@ -201,18 +198,17 @@ bool Image_AlienPixMap::InitCopy (const Image_PixMap& theCopy)
 
   if (myImgFormat == theCopy.Format())
   {
-    if (myData.mySizeRowBytes == theCopy.SizeRowBytes()
-     && myData.myTopToDown    == theCopy.TopDownInc())
+    if (SizeRowBytes() == theCopy.SizeRowBytes()
+     && TopDownInc()   == theCopy.TopDownInc())
     {
       // copy with one call
-      memcpy (myData.myDataPtr, theCopy.Data(), theCopy.SizeBytes());
+      memcpy (ChangeData(), theCopy.Data(), std::min (SizeBytes(), theCopy.SizeBytes()));
       return true;
     }
 
     // copy row-by-row
-    const Standard_Size aRowSizeBytes = (myData.mySizeRowBytes > theCopy.SizeRowBytes())
-                                      ? theCopy.SizeRowBytes() : myData.mySizeRowBytes;
-    for (Standard_Size aRow = 0; aRow < myData.mySizeY; ++aRow)
+    const Standard_Size aRowSizeBytes = std::min (SizeRowBytes(), theCopy.SizeRowBytes());
+    for (Standard_Size aRow = 0; aRow < myData.SizeY; ++aRow)
     {
       memcpy (ChangeRow (aRow), theCopy.Row (aRow), aRowSizeBytes);
     }
@@ -228,9 +224,9 @@ bool Image_AlienPixMap::InitCopy (const Image_PixMap& theCopy)
 // function : Clear
 // purpose  :
 // =======================================================================
-void Image_AlienPixMap::Clear (ImgFormat thePixelFormat)
+void Image_AlienPixMap::Clear()
 {
-  Image_PixMap::Clear (thePixelFormat);
+  Image_PixMap::Clear();
 #ifdef HAVE_FREEIMAGE
   if (myLibImage != NULL)
   {
@@ -331,7 +327,7 @@ bool Image_AlienPixMap::savePPM (const TCollection_AsciiString& theFileName) con
   Standard_Byte aByte;
   for (Standard_Size aRow = 0; aRow < SizeY(); ++aRow)
   {
-    for (Standard_Size aCol = 0; aCol < SizeY(); ++aCol)
+    for (Standard_Size aCol = 0; aCol < SizeX(); ++aCol)
     {
       // extremely SLOW but universal (implemented for all supported pixel formats)
       aColor = PixelColor ((Standard_Integer )aCol, (Standard_Integer )aRow, aDummy);
@@ -383,12 +379,11 @@ bool Image_AlienPixMap::Save (const TCollection_AsciiString& theFileName)
        || Format() == Image_PixMap::ImgRGB32)
       {
         // stupid FreeImage treats reserved byte as alpha if some bytes not set to 0xFF
-        Image_PixMapData<Image_ColorRGB32>& aData = Image_PixMap::EditData<Image_ColorRGB32>();
         for (Standard_Size aRow = 0; aRow < SizeY(); ++aRow)
         {
           for (Standard_Size aCol = 0; aCol < SizeX(); ++aCol)
           {
-            aData.ChangeValue (aRow, aCol).a_() = 0xFF;
+            myData.ChangeValue (aRow, aCol)[3] = 0xFF;
           }
         }
       }

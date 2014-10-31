@@ -7,6 +7,9 @@
 #ifndef _Prs3d_Drawer_HeaderFile
 #include <Prs3d_Drawer.hxx>
 #endif
+#ifndef _Bnd_Box_HeaderFile
+#include <Bnd_Box.hxx>
+#endif
 #ifndef _StdPrs_WFDeflectionRestrictedFace_HeaderFile
 #include <StdPrs_WFDeflectionRestrictedFace.hxx>
 #endif

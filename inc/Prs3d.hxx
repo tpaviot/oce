@@ -22,7 +22,15 @@
 #ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
 #endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
+#endif
+#ifndef _Handle_Prs3d_Drawer_HeaderFile
+#include <Handle_Prs3d_Drawer.hxx>
+#endif
 class gp_Pnt;
+class TopoDS_Shape;
+class Prs3d_Drawer;
 class Prs3d_Presentation;
 class Prs3d_BasicAspect;
 class Prs3d_PointAspect;
@@ -64,6 +72,17 @@ public:
   //! draws an arrow at a given location, with respect <br>
 //!          to a given direction. <br>
   Standard_EXPORT   static  Standard_Boolean MatchSegment(const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Quantity_Length aDistance,const gp_Pnt& p1,const gp_Pnt& p2,Quantity_Length& dist) ;
+  //! Computes the absolute deflection value depending on <br>
+//! the type of deflection in theDrawer: <br>
+//! <ul> <br>
+//! <li><b>Aspect_TOD_RELATIVE</b>: the absolute deflection is computed using the relative <br>
+//!   deviation coefficient from theDrawer and the shape's bounding box;</li> <br>
+//! <li><b>Aspect_TOD_ABSOLUTE</b>: the maximal chordial deviation from theDrawer is returned.</li> <br>
+//! </ul> <br>
+//! This function should always be used to compute the deflection value for building <br>
+//! discrete representations of the shape (triangualtion, wireframe) to avoid incosistencies <br>
+//! between different representations of the shape and undesirable visual artifacts. <br>
+  Standard_EXPORT   static  Standard_Real GetDeflection(const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer) ;
 
 
 

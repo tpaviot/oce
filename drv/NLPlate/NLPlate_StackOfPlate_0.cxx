@@ -8,26 +8,26 @@
 #ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
 #endif
-#ifndef _NLPlate_StackIteratorOfStackOfPlate_HeaderFile
-#include <NLPlate_StackIteratorOfStackOfPlate.hxx>
+#ifndef _NLPlate_ListIteratorOfStackOfPlate_HeaderFile
+#include <NLPlate_ListIteratorOfStackOfPlate.hxx>
 #endif
 #ifndef _Plate_Plate_HeaderFile
 #include <Plate_Plate.hxx>
 #endif
-#ifndef _NLPlate_StackNodeOfStackOfPlate_HeaderFile
-#include <NLPlate_StackNodeOfStackOfPlate.hxx>
+#ifndef _NLPlate_ListNodeOfStackOfPlate_HeaderFile
+#include <NLPlate_ListNodeOfStackOfPlate.hxx>
 #endif
  
 
 #define Item Plate_Plate
 #define Item_hxx <Plate_Plate.hxx>
-#define TCollection_StackNode NLPlate_StackNodeOfStackOfPlate
-#define TCollection_StackNode_hxx <NLPlate_StackNodeOfStackOfPlate.hxx>
-#define TCollection_StackIterator NLPlate_StackIteratorOfStackOfPlate
-#define TCollection_StackIterator_hxx <NLPlate_StackIteratorOfStackOfPlate.hxx>
-#define Handle_TCollection_StackNode Handle_NLPlate_StackNodeOfStackOfPlate
-#define TCollection_StackNode_Type_() NLPlate_StackNodeOfStackOfPlate_Type_()
-#define TCollection_Stack NLPlate_StackOfPlate
-#define TCollection_Stack_hxx <NLPlate_StackOfPlate.hxx>
-#include <TCollection_Stack.gxx>
+#define TCollection_ListNode NLPlate_ListNodeOfStackOfPlate
+#define TCollection_ListNode_hxx <NLPlate_ListNodeOfStackOfPlate.hxx>
+#define TCollection_ListIterator NLPlate_ListIteratorOfStackOfPlate
+#define TCollection_ListIterator_hxx <NLPlate_ListIteratorOfStackOfPlate.hxx>
+#define Handle_TCollection_ListNode Handle_NLPlate_ListNodeOfStackOfPlate
+#define TCollection_ListNode_Type_() NLPlate_ListNodeOfStackOfPlate_Type_()
+#define TCollection_List NLPlate_StackOfPlate
+#define TCollection_List_hxx <NLPlate_StackOfPlate.hxx>
+#include <TCollection_List.gxx>
 

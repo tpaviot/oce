@@ -28,7 +28,7 @@ class TopoDS_Shape;
 //! Splits all surfaces of revolution, cylindrical, toroidal, <br>
 //!          conical, spherical surfaces in the given shape so that <br>
 //!          each resulting segment covers not more than defined number <br>
-//!          of degrees. <br>
+//!          of degrees (to segments less than 90). <br>
 class ShapeUpgrade_ShapeDivideAngle  : public ShapeUpgrade_ShapeDivide {
 public:
 

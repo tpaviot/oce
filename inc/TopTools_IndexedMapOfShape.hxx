@@ -44,6 +44,8 @@ public:
   
   Standard_EXPORT   TopTools_IndexedMapOfShape(const Standard_Integer NbBuckets = 1);
   
+  Standard_EXPORT   TopTools_IndexedMapOfShape(const TopTools_IndexedMapOfShape& Other);
+  
   Standard_EXPORT     TopTools_IndexedMapOfShape& Assign(const TopTools_IndexedMapOfShape& Other) ;
     TopTools_IndexedMapOfShape& operator =(const TopTools_IndexedMapOfShape& Other) 
 {
@@ -86,8 +88,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopTools_IndexedMapOfShape(const TopTools_IndexedMapOfShape& Other);
 
 
 

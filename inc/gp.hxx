@@ -78,7 +78,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Parabola. <br>//! Method of package gp <br>
+  //! Method of package gp <br>
 //!  In geometric computations, defines the tolerance criterion <br>
 //! used to determine when two numbers can be considered equal. <br>
 //! Many class functions use this tolerance criterion, for <br>

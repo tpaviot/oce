@@ -37,6 +37,8 @@
 
 
 //! Interface to dynamic library loader. <br>
+//!          Provides tools to load a shared library <br>
+//!          and retrieve the address of an entry point. <br>
 class OSD_SharedLibrary  {
 public:
 

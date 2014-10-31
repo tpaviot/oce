@@ -19,6 +19,7 @@
 #include <OpenGl_PrimitiveArray.hxx>
 #include <OpenGl_CappingPlaneResource.hxx>
 #include <OpenGl_Vec.hxx>
+#include <OpenGl_Structure.hxx>
 
 IMPLEMENT_STANDARD_HANDLE(OpenGl_CappingAlgoFilter, OpenGl_RenderFilter)
 IMPLEMENT_STANDARD_RTTIEXT(OpenGl_CappingAlgoFilter, OpenGl_RenderFilter)
@@ -30,6 +31,15 @@ Standard_Boolean OpenGl_CappingAlgo::myIsInit = Standard_False;
 
 namespace
 {
+
+#if !defined(GL_ES_VERSION_2_0)
+  static const GLint THE_FILLPRIM_FROM = GL_TRIANGLES;
+  static const GLint THE_FILLPRIM_TO   = GL_POLYGON;
+#else
+  static const GLint THE_FILLPRIM_FROM = GL_TRIANGLES;
+  static const GLint THE_FILLPRIM_TO   = GL_TRIANGLE_FAN;
+#endif
+
   static const OpenGl_Vec4 THE_CAPPING_PLN_VERTS[12] =
     { OpenGl_Vec4 ( 0.0f, 0.0f, 0.0f, 1.0f),
       OpenGl_Vec4 ( 1.0f, 0.0f, 0.0f, 0.0f),
@@ -44,7 +54,7 @@ namespace
       OpenGl_Vec4 ( 0.0f, 0.0f,-1.0f, 0.0f),
       OpenGl_Vec4 ( 1.0f, 0.0f, 0.0f, 0.0f) };
 
-  static const OpenGl_Vec4 THE_CAPPING_PLN_TCOORD[12] = 
+  static const OpenGl_Vec4 THE_CAPPING_PLN_TCOORD[12] =
     { OpenGl_Vec4 ( 0.0f, 0.0f, 0.0f, 1.0f),
       OpenGl_Vec4 ( 1.0f, 0.0f, 0.0f, 0.0f),
       OpenGl_Vec4 ( 0.0f, 1.0f, 0.0f, 0.0f),
@@ -57,14 +67,14 @@ namespace
       OpenGl_Vec4 ( 0.0f, 0.0f, 0.0f, 1.0f),
       OpenGl_Vec4 ( 0.0f,-1.0f, 0.0f, 0.0f),
       OpenGl_Vec4 ( 1.0f, 0.0f, 0.0f, 0.0f) };
-};
+}
 
 // =======================================================================
 // function : RenderCapping
 // purpose  :
 // =======================================================================
-void OpenGl_CappingAlgo::RenderCapping (const Handle(OpenGl_Workspace)& theWorkspace,
-                                        const OpenGl_ListOfGroup& theGroups)
+void OpenGl_CappingAlgo::RenderCapping (const Handle(OpenGl_Workspace)&  theWorkspace,
+                                        const Graphic3d_SequenceOfGroup& theGroups)
 {
   const Handle(OpenGl_Context)& aContext = theWorkspace->GetGlContext();
 
@@ -102,6 +112,12 @@ void OpenGl_CappingAlgo::RenderCapping (const Handle(OpenGl_Workspace)& theWorks
   // prepare for rendering the clip planes
   glEnable (GL_STENCIL_TEST);
 
+  // remember current state of depth
+  // function and change its value
+  GLint aDepthFuncPrev;
+  glGetIntegerv (GL_DEPTH_FUNC, &aDepthFuncPrev);
+  glDepthFunc (GL_LESS);
+
   // generate capping for every clip plane
   for (aCappingIt.Init (aContextPlanes); aCappingIt.More(); aCappingIt.Next())
   {
@@ -134,10 +150,12 @@ void OpenGl_CappingAlgo::RenderCapping (const Handle(OpenGl_Workspace)& theWorks
     glStencilFunc (GL_ALWAYS, 1, 0x01);
     glStencilOp (GL_KEEP, GL_INVERT, GL_INVERT);
 
-    OpenGl_ListOfGroup::Iterator aGroupIt (theGroups);
-    for (; aGroupIt.More(); aGroupIt.Next())
+    for (OpenGl_Structure::GroupIterator aGroupIt (theGroups); aGroupIt.More(); aGroupIt.Next())
     {
-      aGroupIt.Value()->Render (theWorkspace);
+      if (aGroupIt.Value()->IsClosed())
+      {
+        aGroupIt.Value()->Render (theWorkspace);
+      }
     }
 
     // override material, cull back faces
@@ -155,7 +173,6 @@ void OpenGl_CappingAlgo::RenderCapping (const Handle(OpenGl_Workspace)& theWorks
     // render capping plane using the generated stencil mask
     glColorMask (GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
     glDepthMask (GL_TRUE);
-    glDepthFunc (GL_LESS);
     glStencilFunc (GL_EQUAL, 1, 0x01);
     glStencilOp (GL_KEEP, GL_KEEP, GL_KEEP);
     glEnable (GL_DEPTH_TEST);
@@ -165,6 +182,7 @@ void OpenGl_CappingAlgo::RenderCapping (const Handle(OpenGl_Workspace)& theWorks
 
   // restore previous application state
   glClear (GL_STENCIL_BUFFER_BIT);
+  glDepthFunc (aDepthFuncPrev);
   glStencilFunc (GL_ALWAYS, 0, 0xFF);
   glDisable (GL_STENCIL_TEST);
 
@@ -213,7 +231,7 @@ void OpenGl_CappingAlgo::RenderPlane (const Handle(OpenGl_Workspace)& theWorkspa
 
   // set identity model matrix
   const OpenGl_Matrix* aModelMatrix = theWorkspace->SetStructureMatrix (&OpenGl_IdentityMatrix);
-
+#if !defined(GL_ES_VERSION_2_0)
   glMultMatrixf ((const GLfloat*)aPlaneRes->Orientation());
   glNormal3f (0.0f, 1.0f, 0.0f);
   glEnableClientState (GL_VERTEX_ARRAY);
@@ -223,6 +241,7 @@ void OpenGl_CappingAlgo::RenderPlane (const Handle(OpenGl_Workspace)& theWorkspa
   glDrawArrays (GL_TRIANGLES, 0, 12);
   glDisableClientState (GL_VERTEX_ARRAY);
   glDisableClientState (GL_TEXTURE_COORD_ARRAY);
+#endif
 
   theWorkspace->SetStructureMatrix (aModelMatrix, true);
   theWorkspace->SetAspectFace (aFaceAspect);
@@ -257,22 +276,8 @@ void OpenGl_CappingAlgo::Init()
 // =======================================================================
 Standard_Boolean OpenGl_CappingAlgoFilter::CanRender (const OpenGl_Element* theElement)
 {
-  const OpenGl_PrimitiveArray* aPArray =
-    dynamic_cast<const OpenGl_PrimitiveArray*> (theElement);
-  if (!aPArray)
-    return Standard_False;
-
-  switch (aPArray->PArray()->type)
-  {
-    case TelPolygonsArrayType :
-    case TelTrianglesArrayType :
-    case TelQuadranglesArrayType :
-    case TelTriangleStripsArrayType :
-    case TelQuadrangleStripsArrayType :
-    case TelTriangleFansArrayType :
-      return Standard_True;
-
-    default:
-      return Standard_False;
-  }
+  const OpenGl_PrimitiveArray* aPArray = dynamic_cast<const OpenGl_PrimitiveArray*> (theElement);
+  return aPArray != NULL
+      && aPArray->DrawMode() >= THE_FILLPRIM_FROM
+      && aPArray->DrawMode() <= THE_FILLPRIM_TO;
 }

@@ -28,9 +28,6 @@
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 #ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
 #endif
@@ -68,8 +65,6 @@ Standard_EXPORT virtual ~DBC_BaseArray(){Delete();}
   Standard_EXPORT     Standard_Address Lock() const;
   //! unlocks the array <me> from memory <br>
   Standard_EXPORT     void Unlock() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& S) const;
     Standard_Integer _CSFDB_GetDBC_BaseArraymySize() const { return mySize; }
     void _CSFDB_SetDBC_BaseArraymySize(const Standard_Integer p) { mySize = p; }
     DBC_DBVArray _CSFDB_GetDBC_BaseArraymyData() const { return myData; }
@@ -97,10 +92,6 @@ private:
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const DBC_BaseArray& me,Standard_OStream& S) {
- me.ShallowDump(S);
-}
-
 
 
 #endif

@@ -40,6 +40,8 @@ public:
   
       HatchGen_Domains();
   
+  Standard_EXPORT   HatchGen_Domains(const HatchGen_Domains& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~HatchGen_Domains()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   HatchGen_Domains(const HatchGen_Domains& Other);
 
 
 

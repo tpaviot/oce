@@ -35,7 +35,7 @@ class TColgp_Array2OfPnt;
 class TColStd_Array2OfReal;
 
 
-
+//! Root class for Filling; <br>
 class GeomFill_Filling  {
 public:
 

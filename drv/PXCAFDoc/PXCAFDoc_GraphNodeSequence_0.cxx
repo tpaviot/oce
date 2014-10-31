@@ -18,9 +18,6 @@
 #ifndef _PXCAFDoc_SeqNodeOfGraphNodeSequence_HeaderFile
 #include <PXCAFDoc_SeqNodeOfGraphNodeSequence.hxx>
 #endif
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
 #endif

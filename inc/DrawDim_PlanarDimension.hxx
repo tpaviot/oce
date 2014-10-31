@@ -25,7 +25,7 @@
 class TopoDS_Face;
 
 
-
+//! Dimensions between point, line and circle ON a plane <br>
 class DrawDim_PlanarDimension : public DrawDim_Dimension {
 
 public:

@@ -3,8 +3,8 @@
 //
 // This file is part of Open CASCADE Technology software library.
 //
-// This library is free software; you can redistribute it and / or modify it
-// under the terms of the GNU Lesser General Public version 2.1 as published
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
 // by the Free Software Foundation, with special exception defined in the file
 // OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
 // distribution for complete text of the license and disclaimer of any warranty.
@@ -34,71 +34,7 @@
 #include <BOPTest_DrawableShape.hxx>
 #include <BOPTest_Objects.hxx>
 
-//
-#ifdef HAVE_TBB
-#include <BOPCol_TBB.hxx>
-//=======================================================================
-//class : BOPTime_Chronometer
-//purpose  : 
-//=======================================================================
-class BOPTime_Chronometer {
- public:
-  BOPTime_Chronometer() {
-  }
-  //
-  ~BOPTime_Chronometer() {
-  }
-  //
-  void Start() {
-    myT0 = tick_count::now();
-  }
-  //
-  void Stop() {
-    myTime=(tick_count::now() - myT0).seconds();
-  }
-  //
-  double Time() const{
-    return myTime;
-  };
-  //
- protected:
-  tick_count myT0;
-  double myTime;
-};
-////////////////////////////////////////////////////////////////////////
-#else
-#include <OSD_Chronometer.hxx>
-//=======================================================================
-//class    : BOPTime_Chronometer
-//purpose  : 
-//=======================================================================
-class BOPTime_Chronometer {
- public:
-  BOPTime_Chronometer() {
-  }
-  //
-  ~BOPTime_Chronometer() {
-  }
-  //
-  void Start() {
-    myChronometer.Reset();
-    myChronometer.Start();
-  }
-  //
-  void Stop() {
-    myChronometer.Stop();
-    myChronometer.Show(myTime);
-  }
-  //
-  double Time() const{
-    return myTime;
-  };
-  //
- protected:
-  OSD_Chronometer myChronometer;
-  double myTime;
-};
-#endif
+#include <BOPTest_Chronometer.hxx>
 
 static Standard_Integer bfillds  (Draw_Interpretor&, Standard_Integer, const char**); 
 static Standard_Integer bbuild   (Draw_Interpretor&, Standard_Integer, const char**);
@@ -117,10 +53,10 @@ void BOPTest::PartitionCommands(Draw_Interpretor& theCommands)
   // Chapter's name
   const char* g = "Partition commands";
   // Commands  
-  theCommands.Add("bfillds"  , "use bfillds [-s -t]" , __FILE__, bfillds, g);
-  theCommands.Add("bbuild"   , "use bbuild r [-s -t]", __FILE__, bbuild, g);
-  theCommands.Add("bbop"     , "use bbop r op"       , __FILE__, bbop, g);
-  theCommands.Add("bclear"   , "use bclear"          , __FILE__, bclear, g);
+  theCommands.Add("bfillds", "use bfillds [-s -t]"  , __FILE__, bfillds, g);
+  theCommands.Add("bbuild" , "use bbuild r [-s -t]" , __FILE__, bbuild, g);
+  theCommands.Add("bbop"   , "use bbop r op [-s -t]", __FILE__, bbop, g);
+  theCommands.Add("bclear" , "use bclear"           , __FILE__, bclear, g);
 }
 
 //=======================================================================
@@ -314,8 +250,8 @@ Standard_Integer bbop(Draw_Interpretor& di,
                       Standard_Integer n, 
                       const char** a) 
 { 
-  if (n!=3) {
-    di << " use bbop r op\n";
+  if (n<3) {
+    di << " use bbop r op [-s -t]\n";
     return 0;
   }
   //
@@ -326,15 +262,29 @@ Standard_Integer bbop(Draw_Interpretor& di,
   }
   //
   char buf[32];
-  Standard_Integer iErr, iOp;
+  Standard_Boolean bRunParallel, bShowTime;
+  Standard_Integer iErr, iOp, i;
   BOPAlgo_Operation aOp;
-  BOPCol_ListIteratorOfListOfShape aIt;
+  BOPCol_ListIteratorOfListOfShape aIt; 
+  BOPTime_Chronometer aChrono;
   //
   iOp=Draw::Atoi(a[2]);
   if (iOp<0 || iOp>4) {
     di << " invalid operation type\n";
+    return 0;
   }
   aOp=(BOPAlgo_Operation)iOp;
+  //
+  bShowTime=Standard_False;
+  bRunParallel=Standard_True;
+  for (i=3; i<n; ++i) {
+    if (!strcmp(a[i], "-s")) {
+      bRunParallel=Standard_False;
+    }
+    else if (!strcmp(a[i], "-t")) {
+      bShowTime=Standard_True;
+    }
+  }
   //
   BOPAlgo_PaveFiller& aPF=BOPTest_Objects::PaveFiller();
   //
@@ -356,6 +306,9 @@ Standard_Integer bbop(Draw_Interpretor& di,
   }
   //
   aBOP.SetOperation(aOp);
+  aBOP.SetRunParallel(bRunParallel);
+  //
+  aChrono.Start();
   //
   aBOP.PerformWithFiller(aPF);
   iErr=aBOP.ErrorStatus();
@@ -363,6 +316,16 @@ Standard_Integer bbop(Draw_Interpretor& di,
     Sprintf(buf, " error: %d\n",  iErr);
     di << buf;
     return 0;
+  }
+  //
+  aChrono.Stop();
+  //
+  if (bShowTime) {
+    Standard_Real aTime;
+    //
+    aTime=aChrono.Time();
+    Sprintf(buf, "  Tps: %7.2lf\n", aTime);
+    di << buf;
   }
   //
   const TopoDS_Shape& aR=aBOP.Shape();

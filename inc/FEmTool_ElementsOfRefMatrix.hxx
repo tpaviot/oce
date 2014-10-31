@@ -28,14 +28,16 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class PLib_Base;
 class Standard_ConstructionError;
-class math_Vector;
 
 
 //! this  class  describes  the  functions  needed  for <br>
 //!          calculating  matrix  elements  of  RefMatrix  for  linear <br>
-//!          criteriums  (Tension,  Flexsion  and  Jerk). <br>
+//!          criteriums  (Tension,  Flexsion  and  Jerk) by  Gauss  integration. <br>
 //!          Each  function  from  set  gives  value  Pi(u)'*Pj(u)'  or <br>
 //!          Pi(u)''*Pj(u)''  or  Pi(u)'''*Pj(u)'''  for  each  i  and  j, <br>
 //!          where  Pi(u)  is  i-th  basis  function  of  expansion  and <br>

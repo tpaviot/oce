@@ -496,8 +496,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Act.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ActFunc.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Activator.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IFSelect\IFSelect_AppliedModifiers.cxx">
@@ -648,8 +646,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\IFSelect\IFSelect_WorkSession.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\TransferBRep\TransferBRep_BinderOfShape_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\TransferBRep\TransferBRep_HSequenceOfTransferResultInfo_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TransferBRep\TransferBRep_OrientedShapeMapper_0.cxx">
@@ -661,6 +657,8 @@
     <ClCompile Include="..\..\..\drv\TransferBRep\TransferBRep_ShapeMapper_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_BinderOfShape.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_Reader.cxx">
     </ClCompile>
@@ -864,8 +862,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\MoniTool\MoniTool_SequenceOfElement_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\MoniTool\MoniTool_TransientElem_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\MoniTool\MoniTool_AttrList.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\MoniTool\MoniTool_CaseData.cxx">
@@ -898,11 +894,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\MoniTool\MoniTool_TimerSentry.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_TransientElem.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\MoniTool\MoniTool_TypedValue.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_ValueInterpret.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_ValueSatisfies.cxx">
     </ClCompile>
 
   </ItemGroup>

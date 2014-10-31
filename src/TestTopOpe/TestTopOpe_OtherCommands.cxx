@@ -14,9 +14,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <config.h>
-#endif
 #include <TestTopOpe.ixx>
 
 #include <DBRep.hxx>
@@ -40,11 +37,8 @@
 #include <BRep_Tool.hxx>
 #include <Precision.hxx>
 
-#ifdef WNT
+#ifdef _WIN32
 Standard_IMPORT Draw_Viewer dout;
-#endif
-#ifdef HAVE_STRINGS_H
-# include <strings.h>
 #endif
 
 //=======================================================================
@@ -193,6 +187,7 @@ Standard_Integer MKSOLSHE(Draw_Interpretor&, Standard_Integer narg, const char**
     if (S.IsNull()) continue;
     if (S.ShapeType() == TopAbs_FACE) {
       BB.Add(she,S);
+      she.Closed (BRep_Tool::IsClosed (she));
       yaface = Standard_True;
     }
   }

@@ -28,7 +28,8 @@ class TopoDS_Face;
 
 
 //! Provide an   exploration of a  BRep Shape   for the <br>
-//!          classification. <br>
+//!          classification. Defines the description of a solid for the <br>
+//!          SolidClassifier. <br>
 class TopClass_SolidExplorer  {
 public:
 

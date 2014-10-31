@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   TopOpeBRepDS_ListOfInterference();
   
+  Standard_EXPORT   TopOpeBRepDS_ListOfInterference(const TopOpeBRepDS_ListOfInterference& Other);
+  
   Standard_EXPORT     void Assign(const TopOpeBRepDS_ListOfInterference& Other) ;
     void operator=(const TopOpeBRepDS_ListOfInterference& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopOpeBRepDS_ListOfInterference(const TopOpeBRepDS_ListOfInterference& Other);
 
 
 Standard_Address myFirst;

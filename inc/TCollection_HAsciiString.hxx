@@ -414,10 +414,6 @@ public:
   //! Returns the field myString. <br>
        const TCollection_AsciiString& String() const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString ShallowCopy() const;
-  
-  Standard_EXPORT     void ShallowDump(Standard_OStream& s) const;
-  
   Standard_EXPORT     Standard_Boolean IsSameState(const Handle(TCollection_HAsciiString)& other) const;
 
 
@@ -444,14 +440,6 @@ TCollection_AsciiString myString;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline Handle_TCollection_HAsciiString ShallowCopy(const Handle_TCollection_HAsciiString& me) {
- return me->ShallowCopy();
-}
-
-inline void ShallowDump(const Handle_TCollection_HAsciiString& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

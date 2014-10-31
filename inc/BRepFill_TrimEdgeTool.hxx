@@ -45,7 +45,7 @@ class TColgp_SequenceOfPnt;
 class gp_Pnt2d;
 
 
-
+//! Geometric Tool using to construct Offset Wires. <br>
 class BRepFill_TrimEdgeTool  {
 public:
 

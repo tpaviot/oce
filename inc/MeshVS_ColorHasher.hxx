@@ -16,9 +16,6 @@
 #include <Standard_Macro.hxx>
 #endif
 
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
-#include <TColStd_MapIntegerHasher.hxx>
-#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -29,7 +26,7 @@ class Quantity_Color;
 
 
 //! Hasher for using in ColorToIdsMap from MeshVS <br>
-class MeshVS_ColorHasher  : public TColStd_MapIntegerHasher {
+class MeshVS_ColorHasher  {
 public:
 
   DEFINE_STANDARD_ALLOC

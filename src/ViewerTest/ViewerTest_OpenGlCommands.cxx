@@ -13,10 +13,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <config.h>
-#endif
-
 #include <ViewerTest.hxx>
 
 #include <AIS_Drawer.hxx>
@@ -27,14 +23,12 @@
 #include <Graphic3d_Group.hxx>
 #include <Graphic3d_ShaderObject.hxx>
 #include <Graphic3d_ShaderProgram.hxx>
-#include <OpenGl_ArbVBO.hxx>
 #include <OpenGl_AspectFace.hxx>
 #include <OpenGl_AspectLine.hxx>
 #include <OpenGl_AspectMarker.hxx>
 #include <OpenGl_AspectText.hxx>
 #include <OpenGl_Context.hxx>
 #include <OpenGl_Element.hxx>
-#include <OpenGl_ExtFBO.hxx>
 #include <OpenGl_GlCore20.hxx>
 #include <OpenGl_GraphicDriver.hxx>
 #include <OpenGl_Workspace.hxx>
@@ -88,7 +82,7 @@ public:
 
   public:
     Element (const Handle(VUserDrawObj)& theIObj,
-             CALL_DEF_BOUNDS* theBounds)
+             Graphic3d_BndBox4f* theBounds)
     : myIObj( theIObj )
     {
       if (!myIObj.IsNull())
@@ -105,7 +99,7 @@ public:
         myIObj->Render(theWorkspace);
     }
 
-    virtual void Release (const Handle(OpenGl_Context)&)
+    virtual void Release (OpenGl_Context*)
     {
       //
     }
@@ -125,7 +119,7 @@ private:
 
     // Called by VUserDrawElement
     void Render(const Handle(OpenGl_Workspace)& theWorkspace) const;
-    void GetBounds(CALL_DEF_BOUNDS* theBounds);
+    void GetBounds(Graphic3d_BndBox4f* theBounds);
 
     GLfloat myCoords[6];
 
@@ -158,16 +152,21 @@ void VUserDrawObj::ComputeSelection (const Handle(SelectMgr_Selection)& theSelec
   theSelection->Add(aSensitive);
 }
 
-void VUserDrawObj::GetBounds(CALL_DEF_BOUNDS* theBounds)
+void VUserDrawObj::GetBounds(Graphic3d_BndBox4f* theBounds)
 {
   if (theBounds)
   {
-    theBounds->XMin = myCoords[0];
-    theBounds->YMin = myCoords[1];
-    theBounds->ZMin = myCoords[2];
-    theBounds->XMax = myCoords[3];
-    theBounds->YMax = myCoords[4];
-    theBounds->ZMax = myCoords[5];
+    Graphic3d_Vec4 aMinPt (myCoords[0], myCoords[1], myCoords[2], 1.0f);
+    Graphic3d_Vec4 aMaxPt (myCoords[3], myCoords[4], myCoords[5], 1.0f);
+    if (!theBounds->IsValid())
+    {
+      theBounds->Combine (Graphic3d_BndBox4f (aMinPt, aMaxPt));
+    }
+    else
+    {
+      theBounds->CornerMin() = aMinPt;
+      theBounds->CornerMax() = aMaxPt;
+    }
   }
 }
 

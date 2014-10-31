@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TopTools_ListOfShape();
   
+  Standard_EXPORT   TopTools_ListOfShape(const TopTools_ListOfShape& Other);
+  
   Standard_EXPORT     void Assign(const TopTools_ListOfShape& Other) ;
     void operator=(const TopTools_ListOfShape& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopTools_ListOfShape(const TopTools_ListOfShape& Other);
 
 
 Standard_Address myFirst;

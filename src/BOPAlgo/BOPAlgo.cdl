@@ -17,7 +17,8 @@ package BOPAlgo
 
 uses
     gp,  
-    Bnd,
+    Bnd, 
+    Message,
     TopAbs, 
     Geom,  
     GeomAPI, 
@@ -28,7 +29,6 @@ uses
     IntSurf,
     --
     BOPDS, 
-    BOPInt, 
     BOPCol, 
     BOPTools 
 is   
@@ -74,7 +74,8 @@ is
     class SectionAttribute; 
     class CheckerSI; 
     class ArgumentAnalyzer; 
-    class CheckResult;
+    class CheckResult; 
+    class MakerVolume;
     --
     --  pointers
     --

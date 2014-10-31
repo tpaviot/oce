@@ -2,31 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{C96521C0-1507-09C1-0CE5-7187566C58C6}</UniqueIdentifier>
+      <UniqueIdentifier>{3CAD4C29-1575-1978-004B-1633C4A09222}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DBC">
-      <UniqueIdentifier>{38467649-08D9-1377-0EBE-D418D3A9C825}</UniqueIdentifier>
+      <UniqueIdentifier>{DA2F6F26-1811-0AFD-190C-2038DA748861}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PCollection">
-      <UniqueIdentifier>{931D7BD7-070D-0C24-072A-2B3919B1C504}</UniqueIdentifier>
+      <UniqueIdentifier>{A5CFE7AF-11D5-155A-005C-327273F80BD2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PColStd">
-      <UniqueIdentifier>{FDB6136B-0AD0-194C-0199-BADABC6E8C4D}</UniqueIdentifier>
+      <UniqueIdentifier>{D015D324-11BC-026D-18DE-ADC45F374187}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PMMgt">
-      <UniqueIdentifier>{BD2F2626-03A8-0310-044D-90471029A29B}</UniqueIdentifier>
+      <UniqueIdentifier>{AF062D5B-0D90-117E-15DC-2E40C39DC560}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PShort">
-      <UniqueIdentifier>{7295B0DC-108C-0B10-0409-864481FB7A24}</UniqueIdentifier>
+      <UniqueIdentifier>{0945D84C-086C-0A32-054B-0C3E45CC3F38}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PStandard">
-      <UniqueIdentifier>{0FD48D84-0C5B-0499-025C-A168DBEB1299}</UniqueIdentifier>
+      <UniqueIdentifier>{4A91A339-0119-0517-1509-B6B0D0125B58}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PTColStd">
-      <UniqueIdentifier>{121E2847-0529-05B4-1119-29EE6AE3920F}</UniqueIdentifier>
+      <UniqueIdentifier>{2AF9BA17-0D29-1038-05A5-057F51E9B3E1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ObjMgt">
-      <UniqueIdentifier>{8A173DBF-0AF4-04FD-0817-B6B5DB5D4362}</UniqueIdentifier>
+      <UniqueIdentifier>{208D3FC1-185A-0421-0F24-C5644E3C43F2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -71,27 +71,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\DBC\DBC_DBVArray.cxx">
       <Filter>Source files\DBC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PCollection\PCollection_IsContained_0.cxx">
-      <Filter>Source files\PCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PCollection\PCollection_IsNotRoot_0.cxx">
-      <Filter>Source files\PCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PCollection\PCollection_IsNullTree_0.cxx">
-      <Filter>Source files\PCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PCollection\PCollection_PrivCompareOfInteger_0.cxx">
-      <Filter>Source files\PCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PCollection\PCollection_PrivCompareOfReal_0.cxx">
-      <Filter>Source files\PCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PCollection\PCollection_CompareOfInteger.cxx">
-      <Filter>Source files\PCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PCollection\PCollection_CompareOfReal.cxx">
-      <Filter>Source files\PCollection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\PCollection\PCollection_HAsciiString.cxx">
       <Filter>Source files\PCollection</Filter>
@@ -141,81 +120,6 @@
     <ClCompile Include="..\..\..\drv\PColStd\PColStd_HArray2OfReal_0.cxx">
       <Filter>Source files\PColStd</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HDoubleListOfInteger_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HDoubleListOfPersistent_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HDoubleListOfReal_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HOfAsciiString_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HOfExtendedString_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HOfInteger_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HOfReal_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSequenceOfHAsciiString_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSequenceOfHExtendedString_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSequenceOfInteger_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSequenceOfPersistent_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSequenceOfReal_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSingleListOfInteger_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSingleListOfPersistent_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HSingleListOfReal_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqExplorerOfHSequenceOfHAsciiString_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqExplorerOfHSequenceOfHExtendedString_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqExplorerOfHSequenceOfInteger_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqExplorerOfHSequenceOfPersistent_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqExplorerOfHSequenceOfReal_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqNodeOfHSequenceOfHAsciiString_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqNodeOfHSequenceOfHExtendedString_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqNodeOfHSequenceOfInteger_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqNodeOfHSequenceOfPersistent_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PColStd\PColStd_SeqNodeOfHSequenceOfReal_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString_0.cxx">
       <Filter>Source files\PColStd</Filter>
     </ClCompile>
@@ -256,12 +160,6 @@
       <Filter>Source files\PColStd</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayTNodeOfFieldOfHArray2OfReal_0.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PColStd\PColStd_HashAsciiString.cxx">
-      <Filter>Source files\PColStd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PColStd\PColStd_HashExtendedString.cxx">
       <Filter>Source files\PColStd</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\PMMgt\PMMgt_PManaged.cxx">

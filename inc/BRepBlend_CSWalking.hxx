@@ -49,6 +49,9 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Blend_Status_HeaderFile
 #include <Blend_Status.hxx>
 #endif
@@ -68,7 +71,6 @@ class BRepBlend_PointOnRst;
 class BRepBlend_SequenceOfPointOnRst;
 class BRepBlend_Extremity;
 class Blend_CSFunction;
-class math_Vector;
 class IntSurf_Transition;
 class gp_Pnt;
 class gp_Pnt2d;

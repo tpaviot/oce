@@ -1,3 +1,6 @@
+#ifndef _Adaptor3d_HSurfaceOfRevolution_HeaderFile
+#include <Adaptor3d_HSurfaceOfRevolution.hxx>
+#endif
 #ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
 #endif
@@ -6,9 +9,6 @@
 #endif
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Adaptor3d_SurfaceOfRevolution_HeaderFile
-#include <Adaptor3d_SurfaceOfRevolution.hxx>
 #endif
 #ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>

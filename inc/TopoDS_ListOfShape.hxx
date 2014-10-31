@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   TopoDS_ListOfShape();
   
+  Standard_EXPORT   TopoDS_ListOfShape(const TopoDS_ListOfShape& Other);
+  
   Standard_EXPORT     void Assign(const TopoDS_ListOfShape& Other) ;
     void operator=(const TopoDS_ListOfShape& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopoDS_ListOfShape(const TopoDS_ListOfShape& Other);
 
 
 Standard_Address myFirst;

@@ -11,7 +11,8 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/MeshTest : @top_srcdir@/src/MeshTest: \
 @top_srcdir@/drv/GeomliteTest : @top_srcdir@/src/GeomliteTest: \
 @top_srcdir@/drv/DrawFairCurve : @top_srcdir@/src/DrawFairCurve: \
-@top_srcdir@/drv/BOPTest : @top_srcdir@/src/BOPTest
+@top_srcdir@/drv/BOPTest : @top_srcdir@/src/BOPTest: \
+@top_srcdir@/drv/SWDRAW : @top_srcdir@/src/SWDRAW
 
 
 AM_CXXFLAGS = 
@@ -31,7 +32,8 @@ INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES)  \
 -I@top_srcdir@/drv/MeshTest -I@top_srcdir@/src/MeshTest \
 -I@top_srcdir@/drv/GeomliteTest -I@top_srcdir@/src/GeomliteTest \
 -I@top_srcdir@/drv/DrawFairCurve -I@top_srcdir@/src/DrawFairCurve \
--I@top_srcdir@/drv/BOPTest -I@top_srcdir@/src/BOPTest
+-I@top_srcdir@/drv/BOPTest -I@top_srcdir@/src/BOPTest \
+-I@top_srcdir@/drv/SWDRAW -I@top_srcdir@/src/SWDRAW
 
 
 lib_LTLIBRARIES=libTKTopTest.la
@@ -57,6 +59,7 @@ libTKTopTest_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKBool/libTKBool.la \
 ../TKOffset/libTKOffset.la \
 ../TKFeat/libTKFeat.la \
+../TKShHealing/libTKShHealing.la \
 $(STLPort_LIB) 
 
 libTKTopTest_la_SOURCES = \
@@ -125,6 +128,15 @@ libTKTopTest_la_SOURCES = \
 @top_srcdir@/src/MeshTest/MeshTest_CheckTopology.cxx \
 @top_srcdir@/src/MeshTest/MeshTest_DrawableMesh.cxx \
 @top_srcdir@/src/MeshTest/MeshTest_PluginCommands.cxx \
+@top_srcdir@/src/SWDRAW/SWDRAW.cxx \
+@top_srcdir@/src/SWDRAW/SWDRAW_ShapeAnalysis.cxx \
+@top_srcdir@/src/SWDRAW/SWDRAW_ShapeCustom.cxx \
+@top_srcdir@/src/SWDRAW/SWDRAW_ShapeExtend.cxx \
+@top_srcdir@/src/SWDRAW/SWDRAW_ShapeFix.cxx \
+@top_srcdir@/src/SWDRAW/SWDRAW_ShapeProcess.cxx \
+@top_srcdir@/src/SWDRAW/SWDRAW_ShapeProcessAPI.cxx \
+@top_srcdir@/src/SWDRAW/SWDRAW_ShapeTool.cxx \
+@top_srcdir@/src/SWDRAW/SWDRAW_ShapeUpgrade.cxx \
 @top_srcdir@/src/TestTopOpe/TestTopOpe.cxx \
 @top_srcdir@/src/TestTopOpe/TestTopOpe_BOOP.cxx \
 @top_srcdir@/src/TestTopOpe/TestTopOpe_BOOPCommands.cxx \

@@ -41,7 +41,10 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-
+//! This  attribute located  at  the  root label  of the <br>
+//!        framework contains  a   back reference to   the  owner <br>
+//!        TDocStd_Document, providing acces to the document from <br>
+//!        any label.  private class Owner; <br>
 class TDocStd_Owner : public TDF_Attribute {
 
 public:

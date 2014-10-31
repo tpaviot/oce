@@ -27,6 +27,8 @@ class gp_Vec;
 
 
 //! deferred class describing a continous 3d function f(u) <br>
+//!          This class must be provided by the user to use the <br>
+//!          approximation algorithm FittingCurve. <br>
 class AppCont_Function  {
 public:
 

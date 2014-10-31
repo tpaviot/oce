@@ -88,6 +88,8 @@ class gp_Dir;
 //!  The derivatives are always defined for the u direction. <br>
 //!  For the v direction the definition of the derivatives depends on <br>
 //!  the degree of continuity of the referenced curve. <br>
+//!  Curve and Axis are coplanar. <br>
+//!  Curve doesn't intersect Axis. <br>
 class Adaptor3d_SurfaceOfRevolution  : public Adaptor3d_Surface {
 public:
 

@@ -31,6 +31,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -61,9 +64,6 @@
 #ifndef _BRepFill_TypeOfContact_HeaderFile
 #include <BRepFill_TypeOfContact.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 class Law_Function;
 class BRepFill_LocationLaw;
 class BRepFill_SectionLaw;
@@ -81,7 +81,9 @@ class gp_Trsf;
 class BRepFill_Sweep;
 
 
-//! Perform general sweeping construction <br>
+//! Computes a topological shell using some wires <br>
+//!          (spines and profiles) and diplacement option <br>
+//!          Perform general sweeping construction <br>
 class BRepFill_PipeShell : public MMgt_TShared {
 
 public:
@@ -127,6 +129,11 @@ public:
 //! becomes a boundary of the swept surface and the width of section varies <br>
 //! along the path. <br>
   Standard_EXPORT     void Set(const TopoDS_Wire& AuxiliarySpine,const Standard_Boolean CurvilinearEquivalence = Standard_True,const BRepFill_TypeOfContact KeepContact = BRepFill_NoContact) ;
+  //! Define the maximum V degree of resulting surface <br>
+  Standard_EXPORT     void SetMaxDegree(const Standard_Integer NewMaxDegree) ;
+  //! Define the maximum number of spans in V-direction <br>
+//!          on resulting surface <br>
+  Standard_EXPORT     void SetMaxSegments(const Standard_Integer NewMaxSegments) ;
   //! Set the flag that indicates attempt to approximate <br>
 //!          a C1-continuous surface if a swept surface proved <br>
 //!          to be C0. <br>//! Give section to sweep. <br>
@@ -172,6 +179,8 @@ public:
   Standard_EXPORT     Standard_Boolean MakeSolid() ;
   //! Returns the result Shape. <br>
   Standard_EXPORT    const TopoDS_Shape& Shape() const;
+  
+  Standard_EXPORT     Standard_Real ErrorOnSurface() const;
   //! Returns the  TopoDS  Shape of the bottom of the sweep. <br>
   Standard_EXPORT    const TopoDS_Shape& FirstShape() const;
   //! Returns the TopoDS Shape of the top of the sweep. <br>
@@ -212,6 +221,8 @@ Standard_Real myBoundTol;
 Standard_Real myTolAngular;
 Standard_Real angmin;
 Standard_Real angmax;
+Standard_Integer myMaxDegree;
+Standard_Integer myMaxSegments;
 Standard_Boolean myForceApproxC1;
 Handle_Law_Function myLaw;
 Standard_Boolean myIsAutomaticLaw;
@@ -221,6 +232,7 @@ Handle_TopTools_HArray2OfShape myFaces;
 GeomFill_Trihedron myTrihedron;
 BRepFill_TransitionStyle myTransition;
 GeomFill_PipeError myStatus;
+Standard_Real myErrorOnSurf;
 
 
 };

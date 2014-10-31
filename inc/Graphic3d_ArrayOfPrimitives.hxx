@@ -16,17 +16,26 @@
 #include <Handle_Graphic3d_ArrayOfPrimitives.hxx>
 #endif
 
-#ifndef _Graphic3d_PrimitiveArray_HeaderFile
-#include <Graphic3d_PrimitiveArray.hxx>
+#ifndef _Graphic3d_IndexBuffer_Handle_HeaderFile
+#include <Graphic3d_IndexBuffer_Handle.hxx>
+#endif
+#ifndef _Graphic3d_Buffer_Handle_HeaderFile
+#include <Graphic3d_Buffer_Handle.hxx>
+#endif
+#ifndef _Graphic3d_BoundBuffer_Handle_HeaderFile
+#include <Graphic3d_BoundBuffer_Handle.hxx>
+#endif
+#ifndef _Graphic3d_TypeOfPrimitiveArray_HeaderFile
+#include <Graphic3d_TypeOfPrimitiveArray.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Standard_Byte_HeaderFile
+#include <Standard_Byte.hxx>
+#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Graphic3d_TypeOfPrimitiveArray_HeaderFile
-#include <Graphic3d_TypeOfPrimitiveArray.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
@@ -181,27 +190,9 @@ public:
 //!  Warning: <R,G,B> are ignored when the <hasBColors> <br>
 //! constructor parameter is FALSE <br>
   Standard_EXPORT     Standard_Integer AddBound(const Standard_Integer edgeNumber,const Standard_Real R,const Standard_Real G,const Standard_Real B) ;
-  //! Adds an edge in the range [1,VertexNumber()] in the array, <br>
-//! if <isVisible> is FALSE the edge between <vertexIndex> and <br>
-//! the next edge will not be visible even if the SetEdgeOn() method <br>
-//! is activated in Graphic3d_AspectFillArea3d class. <br>
-//! returns the actual edges number. <br>
-//!  Warning: <isVisible> is ignored when the <hasEdgeInfos> <br>
-//! constructor parameter is FALSE. <br>
-  Standard_EXPORT     Standard_Integer AddEdge(const Standard_Integer vertexIndex,const Standard_Boolean isVisible = Standard_True) ;
-  //! Orientate correctly all vertexs & normals of this array <br>
-//! according to the <aNormal> parameter and <br>
-//! returns TRUE when something has change in the array. <br>
-//!  Warning: When the array has edges this method is apply <br>
-//! on edge sub array instead on vertex sub array. <br>
-  Standard_EXPORT     Standard_Boolean Orientate(const gp_Dir& aNormal) ;
-  //! Orientate correctly all vertexs & normal of the bound <aBound> <br>
-//! according to the <aNormal> parameter and <br>
-//! returns TRUE when something has change in the array. <br>
-//!  Warning: When the array has edges this method is apply <br>
-//! on edge sub array instead on vertex sub array. <br>
-//! When this array has no bound, <aBoundIndex> design the item number <br>
-  Standard_EXPORT     Standard_Boolean Orientate(const Standard_Integer aBoundIndex,const gp_Dir& aNormal) ;
+  //! Adds an edge in the range [1,VertexNumber()] in the array. <br>
+//! Returns the actual edges number. <br>
+  Standard_EXPORT     Standard_Integer AddEdge(const Standard_Integer vertexIndex) ;
   //! Change the vertice of rank <anIndex> in the array. <br>
   Standard_EXPORT     void SetVertice(const Standard_Integer anIndex,const gp_Pnt& aVertice) ;
   //! Change the vertice of rank <anIndex> in the array. <br>
@@ -227,8 +218,12 @@ public:
   Standard_EXPORT     void SetBoundColor(const Standard_Integer anIndex,const Quantity_Color& aColor) ;
   //! Change the bound color of rank <anIndex> in the array. <br>
         void SetBoundColor(const Standard_Integer anIndex,const Standard_Real R,const Standard_Real G,const Standard_Real B) ;
-  //! Returns the array address. <br>
-        Graphic3d_PrimitiveArray Array() const;
+  //! Returns optional index buffer. <br>
+       const Graphic3d_IndexBuffer_Handle& Indices() const;
+  //! Returns vertex attributes buffer (colors, normals, texture coordinates). <br>
+       const Graphic3d_Buffer_Handle& Attributes() const;
+  //! Returns optional bounds buffer. <br>
+       const Graphic3d_BoundBuffer_Handle& Bounds() const;
   //! Returns the type of this primitive <br>
         Graphic3d_TypeOfPrimitiveArray Type() const;
   //! Returns the string type of this primitive <br>
@@ -268,16 +263,11 @@ public:
   //! Returns the vertex texture coordinates at rank <aRank> <br>
 //! from the vertex table if defined. <br>
         void VertexTexel(const Standard_Integer aRank,Standard_Real& TX,Standard_Real& TY) const;
-  //! Returns TRUE when edge visibillity array is defined. <br>
-        Standard_Boolean HasEdgeInfos() const;
   //! Returns the number of defined edges <br>
         Standard_Integer EdgeNumber() const;
   //! Returns the vertex index at rank <aRank> <br>
 //! in the range [1,VertexNumber()] <br>
         Standard_Integer Edge(const Standard_Integer aRank) const;
-  //! Returns TRUE when the edge at rank <aRank> <br>
-//! is visible. <br>
-        Standard_Boolean EdgeIsVisible(const Standard_Integer aRank) const;
   //! Returns TRUE when bound colors array is defined. <br>
         Standard_Boolean HasBoundColors() const;
   //! Returns the number of defined bounds <br>
@@ -312,28 +302,25 @@ protected:
 //! constructor parameter is > 0. <br>
 //! You must use AddEdge() method only if the <maxEdges> <br>
 //! constructor parameter is > 0. <br>
-//! You must use a coherent set of AddEdge() methods according to the <br>
-//! <hasEdgeInfos> constructor parameter. <br>
-  Standard_EXPORT   Graphic3d_ArrayOfPrimitives(const Graphic3d_TypeOfPrimitiveArray aType,const Standard_Integer maxVertexs,const Standard_Integer maxBounds,const Standard_Integer maxEdges,const Standard_Boolean hasVNormals,const Standard_Boolean hasVColors,const Standard_Boolean hasBColors,const Standard_Boolean hasTexels,const Standard_Boolean hasEdgeInfos);
+  Standard_EXPORT   Graphic3d_ArrayOfPrimitives(const Graphic3d_TypeOfPrimitiveArray aType,const Standard_Integer maxVertexs,const Standard_Integer maxBounds,const Standard_Integer maxEdges,const Standard_Boolean hasVNormals,const Standard_Boolean hasVColors,const Standard_Boolean hasBColors,const Standard_Boolean hasTexels);
 
 
 
 private: 
 
-  //! Orientate correctly a set of vertexs & normal <br>
-//! from <aVertexIndex> to <aVertexIndex>+<aVertexNumber>-1 <br>
-//! according to the <aNormal> parameter and <br>
-//! returns TRUE when something has change in the array. <br>
-//!  Warning: When the array has edges this method is apply <br>
-//! on edge sub array instead on vertex sub array. <br>
-  Standard_EXPORT     Standard_Boolean Orientate(const Standard_Integer aVertexIndex,const Standard_Integer aVertexNumber,const gp_Dir& aNormal) ;
   
   Standard_EXPORT     void ComputeVNormals(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
 
-Graphic3d_PrimitiveArray myPrimitiveArray;
+Graphic3d_IndexBuffer_Handle myIndices;
+Graphic3d_Buffer_Handle myAttribs;
+Graphic3d_BoundBuffer_Handle myBounds;
+Graphic3d_TypeOfPrimitiveArray myType;
 Standard_Integer myMaxBounds;
 Standard_Integer myMaxVertexs;
 Standard_Integer myMaxEdges;
+Standard_Byte myVNor;
+Standard_Byte myVTex;
+Standard_Byte myVCol;
 
 
 };

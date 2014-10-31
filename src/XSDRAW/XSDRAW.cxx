@@ -17,7 +17,6 @@
 #include <TColStd_HSequenceOfAsciiString.hxx>
 #include <IFSelect_Functions.hxx>
 #include <IFSelect_SessionPilot.hxx>
-#include <SWDRAW.hxx>
 //#include <XSDRAW_Shape.hxx>
 #include <XSDRAW_Vars.hxx>
 #include <XSControl_Functions.hxx>
@@ -34,9 +33,6 @@
 #include <stdio.h>
 
 #include <Message.hxx>
-#include <Message_Messenger.hxx>
-#include <Message_PrinterOStream.hxx>
-#include <Draw_Printer.hxx>
 
 static int deja = 0, dejald = 0;
 //unused variable 
@@ -98,20 +94,14 @@ static Standard_Integer XSTEPDRAWRUN (Draw_Interpretor& , Standard_Integer argc,
 void XSDRAW::LoadDraw (Draw_Interpretor& theCommands)
 {
   if (dejald) return;  dejald = 1;
-//  XSDRAW_Shape::InitCommands (theCommands);
-//  Pour tout faire d un coup : BRepTest & cie, SWDRAW & cie :
-  SWDRAW::Init (theCommands);
+//  Pour tout faire d un coup : BRepTest & cie:
   LoadSession();
 
   //skl: we make remove commands "x" and "exit" in order to this commands are
   //     performed not in IFSelect_SessionPilot but in standard Tcl interpretor
   XSDRAW::RemoveCommand("x");
   XSDRAW::RemoveCommand("exit");
-  const Handle(Message_Messenger) &sout = Message::DefaultMessenger();
-  if (!sout.IsNull()){
-    sout->RemovePrinters(STANDARD_TYPE(Message_PrinterOStream));
-    sout->AddPrinter(new Draw_Printer(theCommands));
-  }
+
 //  if (!getenv("WBHOSTTOP")) XSDRAW::RemoveCommand("xsnew");
   Handle(TColStd_HSequenceOfAsciiString) list =
     IFSelect_Activator::Commands(0);
@@ -265,7 +255,7 @@ void XSDRAW::LoadDraw (Draw_Interpretor& theCommands)
 
 //  FONCTION POUR LE DEBUG
 
-Standard_Integer XSDRAW_WHAT (const Handle_Standard_Transient& ent)
+Standard_Integer XSDRAW_WHAT (const Handle(Standard_Transient)& ent)
 {
   if (ent.IsNull()) { cout<<"(Null Handle)"<<endl; return 0; }
   Handle(Interface_InterfaceModel) model = XSDRAW::Model();

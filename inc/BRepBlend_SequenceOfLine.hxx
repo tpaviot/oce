@@ -43,6 +43,8 @@ public:
   
       BRepBlend_SequenceOfLine();
   
+  Standard_EXPORT   BRepBlend_SequenceOfLine(const BRepBlend_SequenceOfLine& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~BRepBlend_SequenceOfLine()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRepBlend_SequenceOfLine(const BRepBlend_SequenceOfLine& Other);
 
 
 

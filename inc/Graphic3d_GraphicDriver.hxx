@@ -19,9 +19,6 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _OSD_SharedLibrary_HeaderFile
-#include <OSD_SharedLibrary.hxx>
-#endif
 #ifndef _Aspect_DisplayConnection_Handle_HeaderFile
 #include <Aspect_DisplayConnection_Handle.hxx>
 #endif
@@ -31,23 +28,23 @@
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
-#ifndef _Standard_CString_HeaderFile
-#include <Standard_CString.hxx>
-#endif
 #ifndef _Graphic3d_CView_HeaderFile
 #include <Graphic3d_CView.hxx>
 #endif
 #ifndef _Graphic3d_CStructure_HeaderFile
 #include <Graphic3d_CStructure.hxx>
 #endif
-#ifndef _Standard_ShortReal_HeaderFile
-#include <Standard_ShortReal.hxx>
+#ifndef _Graphic3d_CStructure_Handle_HeaderFile
+#include <Graphic3d_CStructure_Handle.hxx>
 #endif
-#ifndef _Graphic3d_CGroup_HeaderFile
-#include <Graphic3d_CGroup.hxx>
+#ifndef _Handle_Graphic3d_StructureManager_HeaderFile
+#include <Handle_Graphic3d_StructureManager.hxx>
 #endif
 #ifndef _Aspect_GradientFillMethod_HeaderFile
 #include <Aspect_GradientFillMethod.hxx>
+#endif
+#ifndef _Standard_CString_HeaderFile
+#include <Standard_CString.hxx>
 #endif
 #ifndef _Aspect_FillMethod_HeaderFile
 #include <Aspect_FillMethod.hxx>
@@ -55,35 +52,14 @@
 #ifndef _Aspect_CLayer2d_HeaderFile
 #include <Aspect_CLayer2d.hxx>
 #endif
-#ifndef _Graphic3d_Vertex_HeaderFile
-#include <Graphic3d_Vertex.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
-#ifndef _Quantity_PlaneAngle_HeaderFile
-#include <Quantity_PlaneAngle.hxx>
-#endif
-#ifndef _Graphic3d_TextPath_HeaderFile
-#include <Graphic3d_TextPath.hxx>
-#endif
-#ifndef _Graphic3d_HorizontalTextAlignment_HeaderFile
-#include <Graphic3d_HorizontalTextAlignment.hxx>
-#endif
-#ifndef _Graphic3d_VerticalTextAlignment_HeaderFile
-#include <Graphic3d_VerticalTextAlignment.hxx>
-#endif
-#ifndef _Graphic3d_PrimitiveArray_HeaderFile
-#include <Graphic3d_PrimitiveArray.hxx>
-#endif
-#ifndef _Graphic3d_CUserDraw_HeaderFile
-#include <Graphic3d_CUserDraw.hxx>
-#endif
 #ifndef _Standard_Size_HeaderFile
 #include <Standard_Size.hxx>
 #endif
 #ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
+#endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
 #endif
 #ifndef _Aspect_TypeOfTriedronPosition_HeaderFile
 #include <Aspect_TypeOfTriedronPosition.hxx>
@@ -93,6 +69,9 @@
 #endif
 #ifndef _Graphic3d_CGraduatedTrihedron_HeaderFile
 #include <Graphic3d_CGraduatedTrihedron.hxx>
+#endif
+#ifndef _Standard_ShortReal_HeaderFile
+#include <Standard_ShortReal.hxx>
 #endif
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
@@ -128,69 +107,32 @@
 #include <Graphic3d_CPick.hxx>
 #endif
 class Graphic3d_TransformError;
-class TColStd_Array2OfReal;
+class Graphic3d_StructureManager;
 class Quantity_Color;
-class gp_Ax2;
-class TCollection_ExtendedString;
 class TCollection_AsciiString;
+class TColStd_Array2OfReal;
 
 
 //! This class allows the definition of a graphic driver <br>
-//!      (currently only OpenGl driver is used). <br>
+//!      for 3d interface (currently only OpenGl driver is used). <br>
 class Graphic3d_GraphicDriver : public MMgt_TShared {
 
 public:
 
-  //! Starts graphic driver with given connection <br>
-  Standard_EXPORT   virtual  Standard_Boolean Begin(const Aspect_DisplayConnection_Handle& theDisplayConnection)  = 0;
-  //! call_togl_end <br>
-  Standard_EXPORT   virtual  void End()  = 0;
   //! call_togl_inquirelight <br>
   Standard_EXPORT   virtual  Standard_Integer InquireLightLimit()  = 0;
-  //! call_togl_inquiremat <br>
-  Standard_EXPORT   virtual  void InquireMat(const Graphic3d_CView& ACView,TColStd_Array2OfReal& AMatO,TColStd_Array2OfReal& AMatM)  = 0;
   //! call_togl_inquireplane <br>
   Standard_EXPORT   virtual  Standard_Integer InquirePlaneLimit()  = 0;
   //! call_togl_inquireview <br>
   Standard_EXPORT   virtual  Standard_Integer InquireViewLimit()  = 0;
-  //! call_togl_blink <br>
-  Standard_EXPORT   virtual  void Blink(const Graphic3d_CStructure& ACStructure,const Standard_Boolean Create)  = 0;
-  //! call_togl_boundarybox <br>
-  Standard_EXPORT   virtual  void BoundaryBox(const Graphic3d_CStructure& ACStructure,const Standard_Boolean Create)  = 0;
-  //! call_togl_highlightcolor <br>
-  Standard_EXPORT   virtual  void HighlightColor(const Graphic3d_CStructure& ACStructure,const Standard_ShortReal R,const Standard_ShortReal G,const Standard_ShortReal B,const Standard_Boolean Create)  = 0;
-  //! call_togl_namesetstructure <br>
-  Standard_EXPORT   virtual  void NameSetStructure(const Graphic3d_CStructure& ACStructure)  = 0;
-  //! call_togl_cleargroup <br>
-  Standard_EXPORT   virtual  void ClearGroup(const Graphic3d_CGroup& ACGroup)  = 0;
-  //! call_togl_facecontextgroup <br>
-  Standard_EXPORT   virtual  void FaceContextGroup(const Graphic3d_CGroup& ACGroup,const Standard_Integer NoInsert)  = 0;
-  //! call_togl_group <br>
-  Standard_EXPORT   virtual  void Group(Graphic3d_CGroup& ACGroup)  = 0;
-  //! call_togl_linecontextgroup <br>
-  Standard_EXPORT   virtual  void LineContextGroup(const Graphic3d_CGroup& ACGroup,const Standard_Integer NoInsert)  = 0;
-  //! call_togl_markercontextgroup <br>
-  Standard_EXPORT   virtual  void MarkerContextGroup(const Graphic3d_CGroup& ACGroup,const Standard_Integer NoInsert)  = 0;
-  //! call_togl_removegroup <br>
-  Standard_EXPORT   virtual  void RemoveGroup(const Graphic3d_CGroup& ACGroup)  = 0;
-  //! call_togl_textcontextgroup <br>
-  Standard_EXPORT   virtual  void TextContextGroup(const Graphic3d_CGroup& ACGroup,const Standard_Integer NoInsert)  = 0;
-  //! call_togl_clearstructure <br>
-  Standard_EXPORT   virtual  void ClearStructure(const Graphic3d_CStructure& ACStructure)  = 0;
-  //! call_togl_connect <br>
-  Standard_EXPORT   virtual  void Connect(const Graphic3d_CStructure& AFather,const Graphic3d_CStructure& ASon)  = 0;
-  //! call_togl_contextstructure <br>
-  Standard_EXPORT   virtual  void ContextStructure(const Graphic3d_CStructure& ACStructure)  = 0;
-  //! call_togl_disconnect <br>
-  Standard_EXPORT   virtual  void Disconnect(const Graphic3d_CStructure& AFather,const Graphic3d_CStructure& ASon)  = 0;
   //! call_togl_displaystructure <br>
-  Standard_EXPORT   virtual  void DisplayStructure(const Graphic3d_CView& ACView,const Graphic3d_CStructure& ACStructure,const Standard_Integer APriority)  = 0;
+  Standard_EXPORT   virtual  void DisplayStructure(const Graphic3d_CView& theCView,Graphic3d_CStructure& theCStructure,const Standard_Integer thePriority)  = 0;
   //! call_togl_erasestructure <br>
-  Standard_EXPORT   virtual  void EraseStructure(const Graphic3d_CView& ACView,const Graphic3d_CStructure& ACStructure)  = 0;
+  Standard_EXPORT   virtual  void EraseStructure(const Graphic3d_CView& theCView,Graphic3d_CStructure& theCStructure)  = 0;
   //! call_togl_removestructure <br>
-  Standard_EXPORT   virtual  void RemoveStructure(const Graphic3d_CStructure& ACStructure)  = 0;
-  //! call_togl_structure <br>
-  Standard_EXPORT   virtual  void Structure(Graphic3d_CStructure& ACStructure)  = 0;
+  Standard_EXPORT   virtual  void RemoveStructure(Graphic3d_CStructure_Handle& theCStructure)  = 0;
+  //! Creates new empty graphic structure <br>
+  Standard_EXPORT   virtual  Graphic3d_CStructure_Handle Structure(const Handle(Graphic3d_StructureManager)& theManager)  = 0;
   //! call_togl_activateview <br>
   Standard_EXPORT   virtual  void ActivateView(const Graphic3d_CView& ACView)  = 0;
   //! call_togl_antialiasing <br>
@@ -211,57 +153,30 @@ public:
   Standard_EXPORT   virtual  void DeactivateView(const Graphic3d_CView& ACView)  = 0;
   //! call_togl_cliplimit <br>
   Standard_EXPORT   virtual  void DepthCueing(const Graphic3d_CView& ACView,const Standard_Boolean AFlag)  = 0;
-  //! call_togl_unproject_raster <br>
-  Standard_EXPORT   virtual  Standard_Boolean ProjectRaster(const Graphic3d_CView& ACView,const Standard_ShortReal AX,const Standard_ShortReal AY,const Standard_ShortReal AZ,Standard_Integer& AU,Standard_Integer& AV)  = 0;
-  //! call_togl_unproject_raster <br>
-  Standard_EXPORT   virtual  Standard_Boolean UnProjectRaster(const Graphic3d_CView& ACView,const Standard_Integer Axm,const Standard_Integer Aym,const Standard_Integer AXM,const Standard_Integer AYM,const Standard_Integer AU,const Standard_Integer AV,Standard_ShortReal& AX,Standard_ShortReal& AY,Standard_ShortReal& AZ)  = 0;
-  //! call_togl_unproject_raster_with_ray <br>
-  Standard_EXPORT   virtual  Standard_Boolean UnProjectRasterWithRay(const Graphic3d_CView& ACView,const Standard_Integer Axm,const Standard_Integer Aym,const Standard_Integer AXM,const Standard_Integer AYM,const Standard_Integer AU,const Standard_Integer AV,Standard_ShortReal& AX,Standard_ShortReal& AY,Standard_ShortReal& AZ,Standard_ShortReal& DX,Standard_ShortReal& DY,Standard_ShortReal& DZ)  = 0;
   //! call_togl_ratio_window <br>
   Standard_EXPORT   virtual  void RatioWindow(const Graphic3d_CView& ACView)  = 0;
-  //! call_togl_redraw <br>
-//!  Warning: when the redraw area has a null size, the full view is redrawn <br>
-  Standard_EXPORT   virtual  void Redraw(const Graphic3d_CView& ACView,const Aspect_CLayer2d& ACUnderLayer,const Aspect_CLayer2d& ACOverLayer,const Standard_Integer x = 0,const Standard_Integer y = 0,const Standard_Integer width = 0,const Standard_Integer height = 0)  = 0;
+  //! Redraw content of the view <br>
+  Standard_EXPORT   virtual  void Redraw(const Graphic3d_CView& theCView,const Aspect_CLayer2d& theCUnderLayer,const Aspect_CLayer2d& theCOverLayer,const Standard_Integer theX = 0,const Standard_Integer theY = 0,const Standard_Integer theWidth = 0,const Standard_Integer theHeight = 0)  = 0;
+  //! Redraw layer of immediate presentations <br>
+  Standard_EXPORT   virtual  void RedrawImmediate(const Graphic3d_CView& theCView,const Aspect_CLayer2d& theCUnderLayer,const Aspect_CLayer2d& theCOverLayer)  = 0;
+  //! Invalidates content of the view but does not redraw it <br>
+  Standard_EXPORT   virtual  void Invalidate(const Graphic3d_CView& theCView)  = 0;
   //! call_togl_removeview <br>
   Standard_EXPORT   virtual  void RemoveView(const Graphic3d_CView& ACView)  = 0;
   //! call_togl_setlight <br>
   Standard_EXPORT   virtual  void SetLight(const Graphic3d_CView& ACView)  = 0;
   //! Pass clip planes to the associated graphic driver view. <br>
   Standard_EXPORT   virtual  void SetClipPlanes(const Graphic3d_CView& theCView)  = 0;
-  //! Pass clip planes to the associated graphic driver structure. <br>
-  Standard_EXPORT   virtual  void SetClipPlanes(const Graphic3d_CStructure& theCStructure)  = 0;
+  //! Inform graphic driver if camera assigned to view changes. <br>
+  Standard_EXPORT   virtual  void SetCamera(const Graphic3d_CView& theCView)  = 0;
   //! call_togl_setvisualisation <br>
   Standard_EXPORT   virtual  void SetVisualisation(const Graphic3d_CView& ACView)  = 0;
-  //! call_togl_transformstructure <br>
-  Standard_EXPORT   virtual  void TransformStructure(const Graphic3d_CStructure& ACStructure)  = 0;
   //! call_togl_transparency <br>
   Standard_EXPORT   virtual  void Transparency(const Graphic3d_CView& ACView,const Standard_Boolean AFlag)  = 0;
-  //! call_togl_update <br>
-  Standard_EXPORT   virtual  void Update(const Graphic3d_CView& ACView,const Aspect_CLayer2d& ACUnderLayer,const Aspect_CLayer2d& ACOverLayer)  = 0;
   //! call_togl_view <br>
   Standard_EXPORT   virtual  Standard_Boolean View(Graphic3d_CView& ACView)  = 0;
-  //! call_togl_viewmapping <br>
-  Standard_EXPORT   virtual  void ViewMapping(const Graphic3d_CView& ACView,const Standard_Boolean AWait)  = 0;
-  //! call_togl_vieworientation <br>
-  Standard_EXPORT   virtual  void ViewOrientation(const Graphic3d_CView& ACView,const Standard_Boolean AWait)  = 0;
   
   Standard_EXPORT   virtual  void Environment(const Graphic3d_CView& ACView)  = 0;
-  //! sets the stencil test to theIsEnabled state; <br>
-  Standard_EXPORT   virtual  void SetStencilTestOptions(const Graphic3d_CGroup& theCGroup,const Standard_Boolean theIsEnabled)  = 0;
-  //! sets the flipping to theIsEnabled state for the given graphic group. <br>
-  Standard_EXPORT   virtual  void SetFlippingOptions(const Graphic3d_CGroup& theCGroup,const Standard_Boolean theIsEnabled,const gp_Ax2& theRefPlane)  = 0;
-  //! call_togl_text <br>
-  Standard_EXPORT   virtual  void Text(const Graphic3d_CGroup& ACGroup,const Standard_CString AText,const Graphic3d_Vertex& APoint,const Standard_Real AHeight,const Quantity_PlaneAngle AAngle,const Graphic3d_TextPath ATp,const Graphic3d_HorizontalTextAlignment AHta,const Graphic3d_VerticalTextAlignment AVta,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_text <br>
-  Standard_EXPORT   virtual  void Text(const Graphic3d_CGroup& ACGroup,const Standard_CString AText,const Graphic3d_Vertex& APoint,const Standard_Real AHeight,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_text <br>
-  Standard_EXPORT   virtual  void Text(const Graphic3d_CGroup& ACGroup,const TCollection_ExtendedString& AText,const Graphic3d_Vertex& APoint,const Standard_Real AHeight,const Quantity_PlaneAngle AAngle,const Graphic3d_TextPath ATp,const Graphic3d_HorizontalTextAlignment AHta,const Graphic3d_VerticalTextAlignment AVta,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_text <br>
-  Standard_EXPORT   virtual  void Text(const Graphic3d_CGroup& ACGroup,const TCollection_ExtendedString& AText,const Graphic3d_Vertex& APoint,const Standard_Real AHeight,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_parray <br>
-  Standard_EXPORT   virtual  void PrimitiveArray(const Graphic3d_CGroup& ACGroup,const Graphic3d_PrimitiveArray& parray,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_userdraw <br>
-  Standard_EXPORT   virtual  void UserDraw(const Graphic3d_CGroup& ACGroup,const Graphic3d_CUserDraw& AUserDraw)  = 0;
   //! enables/disables usage of OpenGL vertex buffer arrays while drawing primitiev arrays <br>
   Standard_EXPORT   virtual  void EnableVBO(const Standard_Boolean status)  = 0;
   //! Returns information about GPU memory usage. <br>
@@ -280,10 +195,6 @@ public:
   Standard_EXPORT   virtual  void GraduatedTrihedronErase(const Graphic3d_CView& view)  = 0;
   //! call_togl_graduatedtrihedron_minmaxvalues <br>
   Standard_EXPORT   virtual  void GraduatedTrihedronMinMaxValues(const Standard_ShortReal xmin,const Standard_ShortReal ymin,const Standard_ShortReal zmin,const Standard_ShortReal xmax,const Standard_ShortReal ymax,const Standard_ShortReal zmax)  = 0;
-  //! call_togl_begin_ajout_mode <br>
-  Standard_EXPORT   virtual  Standard_Boolean BeginAddMode(const Graphic3d_CView& ACView)  = 0;
-  //! call_togl_end_ajout_mode <br>
-  Standard_EXPORT   virtual  void EndAddMode()  = 0;
   //! @param theDrawToFrontBuffer Advanced option to modify rendering mode: <br>
 //! 1. TRUE.  Drawing immediate mode structures directly to the front buffer over the scene image. <br>
 //!    Fast, so preferred for interactive work (used by default). <br>
@@ -296,14 +207,10 @@ public:
 //!    But it works in any case and is especially useful for view dump because the dump image is read from the back buffer. <br>
 //! @return previous mode. <br>
   Standard_EXPORT   virtual  Standard_Boolean SetImmediateModeDrawToFront(const Graphic3d_CView& theCView,const Standard_Boolean theDrawToFrontBuffer)  = 0;
-  //! call_togl_begin_immediat_mode <br>
-  Standard_EXPORT   virtual  Standard_Boolean BeginImmediatMode(const Graphic3d_CView& ACView,const Aspect_CLayer2d& ACUnderLayer,const Aspect_CLayer2d& ACOverLayer,const Standard_Boolean DoubleBuffer,const Standard_Boolean RetainMode)  = 0;
-  //! call_togl_clear_immediat_mode <br>
-  Standard_EXPORT   virtual  void ClearImmediatMode(const Graphic3d_CView& ACView,const Standard_Boolean aFlush = Standard_True)  = 0;
-  //! call_togl_draw_structure <br>
-  Standard_EXPORT   virtual  void DrawStructure(const Graphic3d_CStructure& ACStructure)  = 0;
-  //! call_togl_end_immediat_mode <br>
-  Standard_EXPORT   virtual  void EndImmediatMode(const Standard_Integer Synchronize)  = 0;
+  //! Display structure in immediate mode on top of general presentation <br>
+  Standard_EXPORT   virtual  void DisplayImmediateStructure(const Graphic3d_CView& theCView,const Graphic3d_CStructure& theCStructure)  = 0;
+  //! Erases immediate structure <br>
+  Standard_EXPORT   virtual  void EraseImmediateStructure(const Graphic3d_CView& theCView,const Graphic3d_CStructure& theCStructure)  = 0;
   //! call_togl_layer2d <br>
   Standard_EXPORT   virtual  void Layer(Aspect_CLayer2d& ACLayer)  = 0;
   //! call_togl_removelayer2d <br>
@@ -394,6 +301,9 @@ public:
 //! In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer). <br>
 //! Notice however that results may differ a lot and do not contain some elements. <br>
   Standard_EXPORT   virtual  Standard_Boolean Export(const Standard_CString theFileName,const Graphic3d_ExportFormat theFormat,const Graphic3d_SortType theSortType,const Standard_Integer theWidth,const Standard_Integer theHeight,const Graphic3d_CView& theView,const Aspect_CLayer2d& theLayerUnder,const Aspect_CLayer2d& theLayerOver,const Standard_Real thePrecision = 0.005,const Standard_Address theProgressBarFunc = NULL,const Standard_Address theProgressObject = NULL)  = 0;
+  
+//! Marks BVH tree and the set of BVH primitives of correspondent priority list with id theLayerId as outdated. <br>
+  Standard_EXPORT   virtual  void InvalidateBVHData(Graphic3d_CView& theCView,const Standard_Integer theLayerId)  = 0;
   //! Add a new top-level z layer with ID <theLayerId> for <br>
 //! the view. Z layers allow drawing structures in higher layers <br>
 //! in foreground of structures in lower layers. To add a structure <br>
@@ -418,11 +328,12 @@ public:
 //! exists in graphic driver, the method returns -1. <br>
   Standard_EXPORT   virtual  Standard_Integer GetZLayer(const Graphic3d_CStructure& theCStructure) const = 0;
   //!  Sets the settings for a single Z layer of specified view. <br>
-  Standard_EXPORT   virtual  void SetZLayerSettings(const Graphic3d_CView& theCView,const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings theSettings)  = 0;
+  Standard_EXPORT   virtual  void SetZLayerSettings(const Graphic3d_CView& theCView,const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings& theSettings)  = 0;
+  //! Changes the priority of a structure within its Z layer <br>
+//! in the specified view. <br>
+  Standard_EXPORT   virtual  void ChangePriority(const Graphic3d_CStructure& theCStructure,const Graphic3d_CView& theCView,const Standard_Integer theNewPriority)  = 0;
   
   Standard_EXPORT     void PrintBoolean(const Standard_CString AComment,const Standard_Boolean AValue) const;
-  
-  Standard_EXPORT     void PrintCGroup(const Graphic3d_CGroup& ACGroup,const Standard_Integer AField) const;
   
   Standard_EXPORT     void PrintCLight(const Graphic3d_CLight& ACLight,const Standard_Integer AField) const;
   
@@ -462,10 +373,9 @@ public:
 protected:
 
   //! Initialises the Driver <br>
-  Standard_EXPORT   Graphic3d_GraphicDriver(const Standard_CString AShrName);
+  Standard_EXPORT   Graphic3d_GraphicDriver(const Aspect_DisplayConnection_Handle& theDisp);
 
 Standard_Integer MyTraceLevel;
-OSD_SharedLibrary MySharedLibrary;
 Aspect_DisplayConnection_Handle myDisplayConnection;
 Standard_Boolean myDeviceLostFlag;
 

@@ -28,8 +28,7 @@
 #include <TColStd_ListIteratorOfListOfInteger.hxx>
 #include <PrsMgr_Presentation.hxx>
 #include <Prs3d_Presentation.hxx>
-#include <PrsMgr_Presentation3d.hxx>
-#include <PrsMgr_PresentationManager3d.hxx>
+#include <PrsMgr_PresentationManager.hxx>
 #include <Geom_Transformation.hxx>
 
 #undef OPTIM_UPDATE  // If this variable is defined there will be done
@@ -83,7 +82,7 @@ Standard_Boolean TPrsStd_NamedShapeDriver::Update (const TDF_Label& aLabel,
     else {
       TopoDS_Shape oldShape = AISShape->Shape();
       if(oldShape != S) {
-	AISShape->ResetLocation();
+	AISShape->ResetTransformation();
 
 #ifdef OPTIM_UPDATE
 	Handle(AIS_InteractiveContext) ctx = AISShape->GetContext();

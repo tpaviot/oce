@@ -27,7 +27,7 @@
 #endif
 
 
-
+//! Data structure of a set of Hiding Triangles. <br>
 class HLRAlgo_PolyHidingData  {
 public:
 

@@ -57,9 +57,6 @@ libTKBRep_la_SOURCES = \
 @top_srcdir@/drv/BRepTools/BRepTools_DataMapIteratorOfMapOfVertexPnt2d_0.cxx \
 @top_srcdir@/drv/BRepTools/BRepTools_DataMapNodeOfMapOfVertexPnt2d_0.cxx \
 @top_srcdir@/drv/BRepTools/BRepTools_MapOfVertexPnt2d_0.cxx \
-@top_srcdir@/drv/TopExp/TopExp_StackIteratorOfStackOfIterator_0.cxx \
-@top_srcdir@/drv/TopExp/TopExp_StackNodeOfStackOfIterator_0.cxx \
-@top_srcdir@/drv/TopExp/TopExp_StackOfIterator_0.cxx \
 @top_srcdir@/drv/TopTools/TopTools_Array1OfListOfShape_0.cxx \
 @top_srcdir@/drv/TopTools/TopTools_Array1OfShape_0.cxx \
 @top_srcdir@/drv/TopTools/TopTools_Array2OfShape_0.cxx \
@@ -122,6 +119,7 @@ libTKBRep_la_SOURCES = \
 @top_srcdir@/drv/TopoDS/TopoDS_ListIteratorOfListOfShape_0.cxx \
 @top_srcdir@/drv/TopoDS/TopoDS_ListNodeOfListOfShape_0.cxx \
 @top_srcdir@/drv/TopoDS/TopoDS_ListOfShape_0.cxx \
+@top_srcdir@/drv/TopoDS/TopoDS_LockedShape_0.cxx \
 @top_srcdir@/drv/TopoDS/TopoDS_UnCompatibleShapes_0.cxx \
 @top_srcdir@/src/BRep/BRep_Builder.cxx \
 @top_srcdir@/src/BRep/BRep_Curve3D.cxx \

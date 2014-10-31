@@ -43,6 +43,8 @@ public:
   
       XCAFDoc_GraphNodeSequence();
   
+  Standard_EXPORT   XCAFDoc_GraphNodeSequence(const XCAFDoc_GraphNodeSequence& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~XCAFDoc_GraphNodeSequence()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   XCAFDoc_GraphNodeSequence(const XCAFDoc_GraphNodeSequence& Other);
 
 
 

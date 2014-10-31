@@ -76,7 +76,6 @@ libTKFeat_la_SOURCES = \
 @top_srcdir@/src/LocOpe/LocOpe_Pipe.cxx \
 @top_srcdir@/src/LocOpe/LocOpe_PntFace.cxx \
 @top_srcdir@/src/LocOpe/LocOpe_Prism.cxx \
-@top_srcdir@/src/LocOpe/LocOpe_ProjectedWires.cxx \
 @top_srcdir@/src/LocOpe/LocOpe_Revol.cxx \
 @top_srcdir@/src/LocOpe/LocOpe_RevolutionForm.cxx \
 @top_srcdir@/src/LocOpe/LocOpe_SplitDrafts.cxx \

@@ -43,6 +43,8 @@ public:
   
       MDF_ARDriverSequence();
   
+  Standard_EXPORT   MDF_ARDriverSequence(const MDF_ARDriverSequence& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~MDF_ARDriverSequence()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   MDF_ARDriverSequence(const MDF_ARDriverSequence& Other);
 
 
 

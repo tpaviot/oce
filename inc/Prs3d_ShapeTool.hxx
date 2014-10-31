@@ -58,14 +58,17 @@ class Poly_PolygonOnTriangulation;
 class Poly_Polygon3D;
 
 
-
+//! describes the behaviour requested for a wireframe <br>
+//!          shape presentation. <br>
 class Prs3d_ShapeTool  {
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  
-  Standard_EXPORT   Prs3d_ShapeTool(const TopoDS_Shape& TheShape);
+  //! Constructs the tool and initializes it using theShape and theAllVertices <br>
+//! (optional) arguments. By default, only isolated and internal vertices are considered, <br>
+//! however if theAllVertices argument is equal to True, all shape's vertices are taken into account. <br>
+  Standard_EXPORT   Prs3d_ShapeTool(const TopoDS_Shape& theShape,const Standard_Boolean theAllVertices = Standard_False);
   
   Standard_EXPORT     void InitFace() ;
   

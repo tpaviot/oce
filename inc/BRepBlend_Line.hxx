@@ -31,22 +31,12 @@
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
-#ifndef _Handle_Adaptor3d_HVertex_HeaderFile
-#include <Handle_Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
-#include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
 class Standard_OutOfRange;
-class Adaptor3d_HVertex;
-class Adaptor2d_HCurve2d;
-class BRepBlend_PointOnRst;
-class BRepBlend_SequenceOfPointOnRst;
-class BRepBlend_Extremity;
 class Blend_Point;
+class BRepBlend_Extremity;
 
 
 
@@ -56,41 +46,58 @@ public:
 
   
   Standard_EXPORT   BRepBlend_Line();
-  
+  //! Clears the content of the line. <br>
   Standard_EXPORT     void Clear() ;
-  
+  //! Adds a point in the line. <br>
         void Append(const Blend_Point& P) ;
-  
+  //! Adds a point in the line at the first place. <br>
         void Prepend(const Blend_Point& P) ;
-  
+  //! Adds a point in the line at the first place. <br>
         void InsertBefore(const Standard_Integer Index,const Blend_Point& P) ;
-  
+  //! Removes  from  <me>    all  the  items  of <br>
+//! positions between <FromIndex> and <ToIndex>. <br>
+//! Raises an exception if the indices are out of bounds. <br>
         void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-  
+  //! Sets the value of the transition of the line on S1 and <br>
+//!          the line on S2. <br>
   Standard_EXPORT     void Set(const IntSurf_TypeTrans TranS1,const IntSurf_TypeTrans TranS2) ;
-  
+  //! Sets the value of the transition of the line on a surface <br>
   Standard_EXPORT     void Set(const IntSurf_TypeTrans Trans) ;
-  
+  //! Sets the values of the start points for the line. <br>
         void SetStartPoints(const BRepBlend_Extremity& StartPt1,const BRepBlend_Extremity& StartPt2) ;
-  
+  //! Sets tne values of the end points for the line. <br>
         void SetEndPoints(const BRepBlend_Extremity& EndPt1,const BRepBlend_Extremity& EndPt2) ;
-  
+  //! Returns the number of points in the line. <br>
         Standard_Integer NbPoints() const;
-  
+  //! Returns the point of range Index. <br>
        const Blend_Point& Point(const Standard_Integer Index) const;
-  
+  //! Returns the type of the transition of the line defined <br>
+//!          on the first surface. The transition is "constant" <br>
+//!          along the line. <br>
+//!          The transition is IN if the line is oriented in such <br>
+//!          a way that the system of vectors (N,DRac,T) is <br>
+//!          right-handed, where <br>
+//!                N is the normal to the first surface at a point P, <br>
+//!                DRac is a vector tangent to the blending patch, <br>
+//!                oriented towards the valid part of this patch, <br>
+//!                T  is the tangent to the line on S1 at P. <br>
+//!          The transitioon is OUT when the system of vectors is <br>
+//!          left-handed. <br>
         IntSurf_TypeTrans TransitionOnS1() const;
-  
+  //! Returns the type of the transition of the line defined <br>
+//!          on the second surface. The transition is "constant" <br>
+//!          along the line. <br>
         IntSurf_TypeTrans TransitionOnS2() const;
-  
+  //! Returns the start point on S1. <br>
        const BRepBlend_Extremity& StartPointOnFirst() const;
-  
+  //! Returns the start point on S2 <br>
        const BRepBlend_Extremity& StartPointOnSecond() const;
-  
+  //! Returns the end point on S1. <br>
        const BRepBlend_Extremity& EndPointOnFirst() const;
-  
+  //! Returns the point on S2. <br>
        const BRepBlend_Extremity& EndPointOnSecond() const;
-  
+  //! Returns the type of the transition of the line defined <br>
+//!          on the surface. <br>
         IntSurf_TypeTrans TransitionOnS() const;
 
 
@@ -119,37 +126,9 @@ Standard_Boolean hass2;
 
 };
 
-#define TheVertex Handle_Adaptor3d_HVertex
-#define TheVertex_hxx <Adaptor3d_HVertex.hxx>
-#define TheArc Handle_Adaptor2d_HCurve2d
-#define TheArc_hxx <Adaptor2d_HCurve2d.hxx>
-#define ThePointOnRst BRepBlend_PointOnRst
-#define ThePointOnRst_hxx <BRepBlend_PointOnRst.hxx>
-#define TheSequenceOfPointOnRst BRepBlend_SequenceOfPointOnRst
-#define TheSequenceOfPointOnRst_hxx <BRepBlend_SequenceOfPointOnRst.hxx>
-#define TheExtremity BRepBlend_Extremity
-#define TheExtremity_hxx <BRepBlend_Extremity.hxx>
-#define Blend_Line BRepBlend_Line
-#define Blend_Line_hxx <BRepBlend_Line.hxx>
-#define Handle_Blend_Line Handle_BRepBlend_Line
-#define Blend_Line_Type_() BRepBlend_Line_Type_()
 
-#include <Blend_Line.lxx>
+#include <BRepBlend_Line.lxx>
 
-#undef TheVertex
-#undef TheVertex_hxx
-#undef TheArc
-#undef TheArc_hxx
-#undef ThePointOnRst
-#undef ThePointOnRst_hxx
-#undef TheSequenceOfPointOnRst
-#undef TheSequenceOfPointOnRst_hxx
-#undef TheExtremity
-#undef TheExtremity_hxx
-#undef Blend_Line
-#undef Blend_Line_hxx
-#undef Handle_Blend_Line
-#undef Blend_Line_Type_
 
 
 // other Inline functions and methods (like "C++: function call" methods)

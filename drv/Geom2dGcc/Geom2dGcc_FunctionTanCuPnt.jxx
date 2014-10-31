@@ -1,0 +1,9 @@
+#ifndef _Geom2dAdaptor_Curve_HeaderFile
+#include <Geom2dAdaptor_Curve.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _Geom2dGcc_FunctionTanCuPnt_HeaderFile
+#include <Geom2dGcc_FunctionTanCuPnt.hxx>
+#endif

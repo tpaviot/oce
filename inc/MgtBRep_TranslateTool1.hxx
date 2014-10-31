@@ -55,6 +55,7 @@ class PTopoDS_Shape1;
 
 //! The TranslateTool1 class is provided to support the <br>
 //!          translation of BRep topological data structures. <br>
+//!          Used to call the MgtTopoDS methods. <br>
 class MgtBRep_TranslateTool1 : public MgtTopoDS_TranslateTool1 {
 
 public:

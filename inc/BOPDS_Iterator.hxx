@@ -31,11 +31,11 @@
 #ifndef _BOPDS_ListIteratorOfListOfPassKeyBoolean_HeaderFile
 #include <BOPDS_ListIteratorOfListOfPassKeyBoolean.hxx>
 #endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
-#include <TopAbs_ShapeEnum.hxx>
-#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
+#endif
+#ifndef _TopAbs_ShapeEnum_HeaderFile
+#include <TopAbs_ShapeEnum.hxx>
 #endif
 class BOPDS_DS;
 
@@ -99,6 +99,13 @@ Standard_EXPORT virtual ~BOPDS_Iterator();
   
 //! Returns the block length <br>
   Standard_EXPORT     Standard_Integer BlockLength() const;
+  //! Set the flag of parallel processing <br>
+//! if <theFlag> is true  the parallel processing is switched on <br>
+//! if <theFlag> is false the parallel processing is switched off <br>
+//! <br>
+  Standard_EXPORT     void SetRunParallel(const Standard_Boolean theFlag) ;
+  //! Returns the flag of parallel processing <br>
+  Standard_EXPORT     Standard_Boolean RunParallel() const;
 
 
 
@@ -115,6 +122,7 @@ Standard_Integer myLength;
 BOPDS_PDS myDS;
 BOPDS_VectorOfListOfPassKeyBoolean myLists;
 BOPDS_ListIteratorOfListOfPassKeyBoolean myIterator;
+Standard_Boolean myRunParallel;
 
 
 private:

@@ -31,12 +31,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _Handle_TColgp_HArray1OfXY_HeaderFile
-#include <Handle_TColgp_HArray1OfXY.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfXYZ_HeaderFile
-#include <Handle_TColgp_HArray1OfXYZ.hxx>
-#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
@@ -48,8 +42,6 @@ class Standard_DomainError;
 class gp_XY;
 class gp_XYZ;
 class IGESGeom_CopiousData;
-class TColgp_HArray1OfXY;
-class TColgp_HArray1OfXYZ;
 class gp_Trsf;
 class gp_Ax3;
 class gp_Ax2;
@@ -91,10 +83,6 @@ public:
 //!           <datatype> = 1 : Common Z is computed as average of all Z <br>
 //!           <datatype> = 1 or 2 : Vectors are ignored <br>
   Standard_EXPORT     Handle_IGESGeom_CopiousData MakeCopiousData(const Standard_Integer datatype,const Standard_Boolean polyline = Standard_False) const;
-  //! Returns the list of points as a HArray1OfXY. Z are ignored. <br>
-  Standard_EXPORT     Handle_TColgp_HArray1OfXY MakeXY() const;
-  //! Returns the list of points as a HArray1OfXYZ <br>
-  Standard_EXPORT     Handle_TColgp_HArray1OfXYZ MakeXYZ() const;
   //! Returns the Position in which the method EvalXYZ will <br>
 //!           evaluate a XYZ. It can be regarded as defining a local system. <br>
 //!           It is initially set to Identity <br>

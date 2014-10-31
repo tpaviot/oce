@@ -67,6 +67,7 @@ class Geom_BSplineCurve;
 
 //! This class provides an interface between the services provided by any <br>
 //! curve from the package Geom and those required of the curve by algorithms which use it. <br>
+//! Creation of the loaded curve the curve is C1 by piece. <br>
 class GeomAdaptor_Curve  : public Adaptor3d_Curve {
 public:
 

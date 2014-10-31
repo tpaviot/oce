@@ -49,8 +49,8 @@
 #ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
 #endif
-#ifndef _TColStd_SetOfInteger_HeaderFile
-#include <TColStd_SetOfInteger.hxx>
+#ifndef _TColStd_PackedMapOfInteger_HeaderFile
+#include <TColStd_PackedMapOfInteger.hxx>
 #endif
 #ifndef _BRepAlgo_CheckStatus_HeaderFile
 #include <BRepAlgo_CheckStatus.hxx>
@@ -237,7 +237,7 @@ TopoDS_Shape myEmptyShape;
 TopTools_ListOfShape myEmptyListOfShape;
 TColStd_ListOfInteger myEmptyListOfInteger;
 TopTools_DataMapOfShapeShape myCompoundWireMap;
-TColStd_SetOfInteger mySetOfKeepPoint;
+TColStd_PackedMapOfInteger mySetOfKeepPoint;
 
 
 };

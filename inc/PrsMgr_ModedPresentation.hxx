@@ -34,9 +34,9 @@ public:
   
   Standard_EXPORT   PrsMgr_ModedPresentation();
   
-  Standard_EXPORT   PrsMgr_ModedPresentation(const Handle(PrsMgr_Presentation)& aPresentation,const Standard_Integer aMode);
+  Standard_EXPORT   PrsMgr_ModedPresentation(const Handle(PrsMgr_Presentation)& thePrs,const Standard_Integer theMode);
   
-  Standard_EXPORT     Handle_PrsMgr_Presentation Presentation() const;
+  Standard_EXPORT    const Handle_PrsMgr_Presentation& Presentation() const;
   
   Standard_EXPORT     Standard_Integer Mode() const;
 

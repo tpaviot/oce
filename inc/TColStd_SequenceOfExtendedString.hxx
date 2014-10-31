@@ -40,6 +40,8 @@ public:
   
       TColStd_SequenceOfExtendedString();
   
+  Standard_EXPORT   TColStd_SequenceOfExtendedString(const TColStd_SequenceOfExtendedString& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColStd_SequenceOfExtendedString()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_SequenceOfExtendedString(const TColStd_SequenceOfExtendedString& Other);
 
 
 

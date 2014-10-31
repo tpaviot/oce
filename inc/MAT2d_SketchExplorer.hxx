@@ -31,6 +31,7 @@ class Geom2d_Curve;
 //! SketchExplorer  is  an iterator on  a  sketch.   A <br>
 //!          sketch is a set of contours, each contour is a set <br>
 //!          of curves from Geom2d. <br>
+//!          It's use by BisectingLocus. <br>
 class MAT2d_SketchExplorer  {
 public:
 

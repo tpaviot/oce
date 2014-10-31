@@ -145,6 +145,8 @@ private:
   
   Standard_EXPORT     void GeomGeomPerfom(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang,IntSurf_ListOfPntOn2S& LOfPnts,const Standard_Boolean RestrictLine,const GeomAbs_SurfaceType typs1,const GeomAbs_SurfaceType typs2) ;
   
+  Standard_EXPORT     void GeomGeomPerfomTrimSurf(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang,IntSurf_ListOfPntOn2S& LOfPnts,const Standard_Boolean RestrictLine,const GeomAbs_SurfaceType typs1,const GeomAbs_SurfaceType typs2) ;
+  
   Standard_EXPORT     void GeomParamPerfom(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Boolean isNotAnalitical,const GeomAbs_SurfaceType typs1,const GeomAbs_SurfaceType typs2) ;
 
 

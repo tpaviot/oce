@@ -12,39 +12,16 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <config.h>
-#endif
-
 #ifndef WNT
 
 #include <OSD_Directory.ixx>
 #include <OSD_WhoAmI.hxx>
 #include <OSD_Protection.hxx>
 
-#ifdef HAVE_SYS_TYPES_H
-# include <sys/types.h>
-#endif
-
-#ifdef HAVE_SYS_STAT_H
-# include <sys/stat.h>
-#endif
-
-#ifdef HAVE_SYS_PARAM_H
-# include <sys/param.h>   // For getwd()
-#endif
-
+#include <sys/stat.h>
 #include <errno.h>
-
-#ifdef HAVE_UNISTD_H
-# include <unistd.h>
-#endif
-
 #include <stdio.h>
-
-#ifdef HAVE_OSFCN_H
-# include <osfcn.h>
-#endif
+#include <unistd.h>
 
 const OSD_WhoAmI Iam = OSD_WDirectory;
 
@@ -108,6 +85,7 @@ TCollection_AsciiString aString (name);
 #include <OSD_Directory.hxx>
 #include <OSD_Protection.hxx>
 #include <Standard_ProgramError.hxx>
+#include <TCollection_ExtendedString.hxx>
 
 #include <OSD_WNT_1.hxx>
 
@@ -145,8 +123,8 @@ void OSD_Directory :: Build (const OSD_Protection& Protect ) {
   Standard_ProgramError :: Raise (
                             TEXT( "OSD_Directory :: Build (): incorrect call - no directory name" )
                            );
-
- if (  Exists () || CreateDirectory ( dirName.ToCString (), NULL )  )
+ TCollection_ExtendedString dirNameW(dirName);
+ if (  Exists () || CreateDirectoryW ( (const wchar_t*) dirNameW.ToExtString (), NULL )  )
 
   SetProtection ( Protect );
 

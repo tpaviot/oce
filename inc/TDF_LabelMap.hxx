@@ -28,7 +28,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class TDF_Label;
 class TDF_LabelMapHasher;
 class TDF_StdMapNodeOfLabelMap;
@@ -43,6 +42,8 @@ public:
 
   
   Standard_EXPORT   TDF_LabelMap(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   TDF_LabelMap(const TDF_LabelMap& Other);
   
   Standard_EXPORT     TDF_LabelMap& Assign(const TDF_LabelMap& Other) ;
     TDF_LabelMap& operator =(const TDF_LabelMap& Other) 
@@ -76,8 +77,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_LabelMap(const TDF_LabelMap& Other);
 
 
 

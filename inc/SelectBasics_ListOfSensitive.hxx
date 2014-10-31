@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   SelectBasics_ListOfSensitive();
   
+  Standard_EXPORT   SelectBasics_ListOfSensitive(const SelectBasics_ListOfSensitive& Other);
+  
   Standard_EXPORT     void Assign(const SelectBasics_ListOfSensitive& Other) ;
     void operator=(const SelectBasics_ListOfSensitive& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   SelectBasics_ListOfSensitive(const SelectBasics_ListOfSensitive& Other);
 
 
 Standard_Address myFirst;

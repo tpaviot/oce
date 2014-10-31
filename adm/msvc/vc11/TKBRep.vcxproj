@@ -254,6 +254,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TopoDS\TopoDS_ListOfShape_0.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\TopoDS\TopoDS_LockedShape_0.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\TopoDS\TopoDS_UnCompatibleShapes_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\TopoDS\TopoDS.cxx">
@@ -299,12 +301,6 @@
     <ClCompile Include="..\..\..\src\TopoDS\TopoDS_Vertex.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\TopoDS\TopoDS_Wire.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TopExp\TopExp_StackIteratorOfStackOfIterator_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TopExp\TopExp_StackNodeOfStackOfIterator_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\TopExp\TopExp_StackOfIterator_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\TopExp\TopExp.cxx">
     </ClCompile>

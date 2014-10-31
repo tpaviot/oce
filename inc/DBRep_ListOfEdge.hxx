@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   DBRep_ListOfEdge();
   
+  Standard_EXPORT   DBRep_ListOfEdge(const DBRep_ListOfEdge& Other);
+  
   Standard_EXPORT     void Assign(const DBRep_ListOfEdge& Other) ;
     void operator=(const DBRep_ListOfEdge& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   DBRep_ListOfEdge(const DBRep_ListOfEdge& Other);
 
 
 Standard_Address myFirst;

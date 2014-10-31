@@ -40,7 +40,7 @@
 class TopOpeBRepDS_Transition;
 
 
-//! An interference with a parameter. <br>
+//! An interference with a parameter (ShapeShapeInterference). <br>
 class TopOpeBRepDS_EdgeVertexInterference : public TopOpeBRepDS_ShapeShapeInterference {
 
 public:

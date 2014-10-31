@@ -40,6 +40,8 @@ public:
   
       Blend_SequenceOfPoint();
   
+  Standard_EXPORT   Blend_SequenceOfPoint(const Blend_SequenceOfPoint& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~Blend_SequenceOfPoint()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Blend_SequenceOfPoint(const Blend_SequenceOfPoint& Other);
 
 
 

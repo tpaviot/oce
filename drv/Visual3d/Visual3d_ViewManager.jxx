@@ -7,14 +7,8 @@
 #ifndef _Visual3d_View_HeaderFile
 #include <Visual3d_View.hxx>
 #endif
-#ifndef _Visual3d_HSetOfView_HeaderFile
-#include <Visual3d_HSetOfView.hxx>
-#endif
-#ifndef _Aspect_Window_HeaderFile
-#include <Aspect_Window.hxx>
-#endif
-#ifndef _Graphic3d_Vector_HeaderFile
-#include <Graphic3d_Vector.hxx>
+#ifndef _Visual3d_HSequenceOfView_HeaderFile
+#include <Visual3d_HSequenceOfView.hxx>
 #endif
 #ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
@@ -27,6 +21,9 @@
 #endif
 #ifndef _TColStd_Array2OfReal_HeaderFile
 #include <TColStd_Array2OfReal.hxx>
+#endif
+#ifndef _Aspect_Window_HeaderFile
+#include <Aspect_Window.hxx>
 #endif
 #ifndef _Graphic3d_DataStructureManager_HeaderFile
 #include <Graphic3d_DataStructureManager.hxx>

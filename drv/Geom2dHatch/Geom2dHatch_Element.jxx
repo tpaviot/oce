@@ -1,0 +1,6 @@
+#ifndef _Geom2dAdaptor_Curve_HeaderFile
+#include <Geom2dAdaptor_Curve.hxx>
+#endif
+#ifndef _Geom2dHatch_Element_HeaderFile
+#include <Geom2dHatch_Element.hxx>
+#endif

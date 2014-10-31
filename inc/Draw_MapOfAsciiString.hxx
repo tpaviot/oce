@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   Draw_MapOfAsciiString(const Standard_Integer NbBuckets = 1);
   
+  Standard_EXPORT   Draw_MapOfAsciiString(const Draw_MapOfAsciiString& Other);
+  
   Standard_EXPORT     Draw_MapOfAsciiString& Assign(const Draw_MapOfAsciiString& Other) ;
     Draw_MapOfAsciiString& operator =(const Draw_MapOfAsciiString& Other) 
 {
@@ -85,8 +87,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Draw_MapOfAsciiString(const Draw_MapOfAsciiString& Other);
 
 
 

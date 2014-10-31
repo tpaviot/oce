@@ -31,7 +31,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class AIS_InteractiveObject;
 class TColStd_MapTransientHasher;
 class AIS_StdMapNodeOfMapOfInteractive;
@@ -46,6 +45,8 @@ public:
 
   
   Standard_EXPORT   AIS_MapOfInteractive(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   AIS_MapOfInteractive(const AIS_MapOfInteractive& Other);
   
   Standard_EXPORT     AIS_MapOfInteractive& Assign(const AIS_MapOfInteractive& Other) ;
     AIS_MapOfInteractive& operator =(const AIS_MapOfInteractive& Other) 
@@ -79,8 +80,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   AIS_MapOfInteractive(const AIS_MapOfInteractive& Other);
 
 
 

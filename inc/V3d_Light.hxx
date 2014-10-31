@@ -67,6 +67,7 @@ class V3d_View;
 
 
 //! Defines services on Light type objects.. <br>
+//!         (base class for AmbientLight and PositionLight) <br>
 class V3d_Light : public MMgt_TShared {
 
 public:

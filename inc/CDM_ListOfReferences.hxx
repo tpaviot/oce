@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   CDM_ListOfReferences();
   
+  Standard_EXPORT   CDM_ListOfReferences(const CDM_ListOfReferences& Other);
+  
   Standard_EXPORT     void Assign(const CDM_ListOfReferences& Other) ;
     void operator=(const CDM_ListOfReferences& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   CDM_ListOfReferences(const CDM_ListOfReferences& Other);
 
 
 Standard_Address myFirst;

@@ -7,9 +7,6 @@
 #ifndef _math_MultipleVarFunctionWithHessian_HeaderFile
 #include <math_MultipleVarFunctionWithHessian.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _math_NewtonMinimum_HeaderFile
 #include <math_NewtonMinimum.hxx>
 #endif

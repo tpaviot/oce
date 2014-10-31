@@ -52,7 +52,8 @@ class TColStd_IndexedDataMapOfTransientTransient;
 
 //! This is a relocation dictionnary between source <br>
 //!          and target labels, attributes or any <br>
-//!          transient. Note that one target value may be the <br>
+//!          transient(useful for copy or paste actions). <br>
+//!          Note that one target value may be the <br>
 //!          relocation value of more than one source object. <br>
 //! <br>
 //!          Common behaviour: it returns true and the found <br>

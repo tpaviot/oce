@@ -48,9 +48,6 @@ libTKCDF_la_SOURCES = \
 @top_srcdir@/drv/CDM/CDM_MapOfDocument_0.cxx \
 @top_srcdir@/drv/CDM/CDM_MetaDataLookUpTable_0.cxx \
 @top_srcdir@/drv/CDM/CDM_PresentationDirectory_0.cxx \
-@top_srcdir@/drv/CDM/CDM_StackIteratorOfStackOfDocument_0.cxx \
-@top_srcdir@/drv/CDM/CDM_StackNodeOfStackOfDocument_0.cxx \
-@top_srcdir@/drv/CDM/CDM_StackOfDocument_0.cxx \
 @top_srcdir@/drv/CDM/CDM_StdMapNodeOfMapOfDocument_0.cxx \
 @top_srcdir@/drv/PCDM/PCDM_DriverError_0.cxx \
 @top_srcdir@/drv/PCDM/PCDM_SequenceNodeOfSequenceOfDocument_0.cxx \
@@ -61,6 +58,7 @@ libTKCDF_la_SOURCES = \
 @top_srcdir@/src/CDF/CDF_Application.cxx \
 @top_srcdir@/src/CDF/CDF_Directory.cxx \
 @top_srcdir@/src/CDF/CDF_DirectoryIterator.cxx \
+@top_srcdir@/src/CDF/CDF_FWOSDriver.cxx \
 @top_srcdir@/src/CDF/CDF_MetaDataDriver.cxx \
 @top_srcdir@/src/CDF/CDF_MetaDataDriverFactory.cxx \
 @top_srcdir@/src/CDF/CDF_Session.cxx \

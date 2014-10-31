@@ -37,14 +37,18 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class Adaptor3d_HSurface;
 class Adaptor3d_HCurve;
 class Adaptor2d_HCurve2d;
-class math_Vector;
 class math_Matrix;
 
 
-//! Class     used   to   compute  a    solution   of  the <br>
+//! Function of reframing between a restriction surface of the <br>
+//!          surface and a curve. <br>
+//!          Class     used   to   compute  a    solution   of  the <br>
 //!          surfRstConstRad  problem  on a done restriction of the <br>
 //!          surface. <br>
 //!          The vector  <X> used in  Value, Values and Derivatives <br>

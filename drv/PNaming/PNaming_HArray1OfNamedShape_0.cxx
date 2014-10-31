@@ -12,9 +12,6 @@
 #ifndef _PNaming_NamedShape_HeaderFile
 #include <PNaming_NamedShape.hxx>
 #endif
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
 #endif

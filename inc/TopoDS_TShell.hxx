@@ -28,7 +28,7 @@
 class TopoDS_TShape;
 
 
-
+//! A set of faces connected by their edges. <br>
 class TopoDS_TShell : public TopoDS_TShape {
 
 public:

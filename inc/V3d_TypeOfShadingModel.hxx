@@ -8,17 +8,15 @@
 
 
 //! Defines the type of shading for the graphic object: <br>
-//! -   V3d_COLOR: simple surface color, <br>
-//! -   V3d_MULTICOLOR: interpolated colors, <br>
-//! -   V3d_FLAT: flat shading, <br>
-//! -   V3d_GOURAUD: Gouraud shading, <br>
-//! -   V3d_HIDDEN: hidden line removal. <br>
+//! -   V3d_COLOR: simple surface color (Visual3d_TOM_NONE), <br>
+//! -   V3d_FLAT: flat shading (Visual3d_TOM_FACET), <br>
+//! -   V3d_GOURAUD: Gouraud shading (Visual3d_TOM_VERTEX), <br>
+//! -   V3d_PHONG: Phong shading (Visual3d_TOM_FRAGMENT). <br>
 enum V3d_TypeOfShadingModel {
 V3d_COLOR,
-V3d_MULTICOLOR,
 V3d_FLAT,
 V3d_GOURAUD,
-V3d_HIDDEN
+V3d_PHONG
 };
 
 #ifndef _Standard_PrimitiveTypes_HeaderFile

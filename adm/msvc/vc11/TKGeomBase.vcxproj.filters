@@ -2,73 +2,73 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{4D755175-1316-115F-135D-3AE243DCA484}</UniqueIdentifier>
+      <UniqueIdentifier>{4C380B7F-1572-0508-0C4D-1002D92B28E8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ProjLib">
-      <UniqueIdentifier>{B508D105-0FE7-0EDB-0EE9-367E6FA6AA08}</UniqueIdentifier>
+      <UniqueIdentifier>{8AAA686B-1974-01F7-095F-20F3C062D6D5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomProjLib">
-      <UniqueIdentifier>{E503F736-1712-1821-02B8-55DB10A121AB}</UniqueIdentifier>
+      <UniqueIdentifier>{063FCA04-1933-02B4-0F49-A5737E418A5B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GCPnts">
-      <UniqueIdentifier>{A962E649-0AF9-031E-0098-234F0117ED16}</UniqueIdentifier>
+      <UniqueIdentifier>{E26C6503-04A1-1753-0682-FF97DA4AA4B5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CPnts">
-      <UniqueIdentifier>{CE61C3A7-196D-0957-0EF2-CAC8D948477C}</UniqueIdentifier>
+      <UniqueIdentifier>{836FF172-09E0-1638-0CCE-9A107DB09EA6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Approx">
-      <UniqueIdentifier>{4D232A13-1209-0F3E-006E-7FCD798AEE46}</UniqueIdentifier>
+      <UniqueIdentifier>{7FE023E5-0395-07AB-0109-86301FC1489E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AppParCurves">
-      <UniqueIdentifier>{213F2CBB-171E-187D-03FE-252504A1305A}</UniqueIdentifier>
+      <UniqueIdentifier>{86B663F3-0067-0217-1588-038B65B4D2FB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\FEmTool">
-      <UniqueIdentifier>{6D658BF2-1185-0257-0D14-91C33BA85851}</UniqueIdentifier>
+      <UniqueIdentifier>{8770140C-1827-080B-13C6-12252B465AD0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AppCont">
-      <UniqueIdentifier>{3E5A4989-0AA9-13C2-0776-99709CB019C4}</UniqueIdentifier>
+      <UniqueIdentifier>{F41E3DDE-1287-10F8-10A0-3D30D450B285}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Extrema">
-      <UniqueIdentifier>{6BA4A6A0-1713-0EFC-1576-B56A4E56382C}</UniqueIdentifier>
+      <UniqueIdentifier>{F86FC767-1976-1823-040A-3E04BFA9C144}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntAna">
-      <UniqueIdentifier>{81D78B26-0912-001E-0BDD-24ED7F646C02}</UniqueIdentifier>
+      <UniqueIdentifier>{CF777FFA-11ED-1298-1360-836277B576FE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntAna2d">
-      <UniqueIdentifier>{EF12B0AB-0BD9-0B40-00D5-2AE928314441}</UniqueIdentifier>
+      <UniqueIdentifier>{9753EA10-056A-0AB0-03BC-329DA70C62F2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomConvert">
-      <UniqueIdentifier>{783E61D4-0206-0A4A-092B-9B313CBD9B97}</UniqueIdentifier>
+      <UniqueIdentifier>{3410DEA3-18A0-1381-0203-B8129CCDE8A7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AdvApp2Var">
-      <UniqueIdentifier>{31E9DC8F-1252-0C0E-0D32-6DA366029039}</UniqueIdentifier>
+      <UniqueIdentifier>{654BA434-17C9-02C3-138A-6E52A6F444D3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomLib">
-      <UniqueIdentifier>{4A9B8632-0C0C-0A80-043B-D92AA87F8DFB}</UniqueIdentifier>
+      <UniqueIdentifier>{D2A437E1-0832-0B78-16B1-FD6E8E653F9A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dConvert">
-      <UniqueIdentifier>{425D124E-15BD-00B3-13BA-DCEA3C9648AB}</UniqueIdentifier>
+      <UniqueIdentifier>{32D63D18-032F-0F9F-0E6E-AB882C792576}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Hermit">
-      <UniqueIdentifier>{7D062481-0B9F-0286-0EDD-52A6762E93CF}</UniqueIdentifier>
+      <UniqueIdentifier>{8A8E39E7-0CEA-015A-11AC-7E7430FE259F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BndLib">
-      <UniqueIdentifier>{EA123595-170D-108D-0021-005B7674ADD3}</UniqueIdentifier>
+      <UniqueIdentifier>{58211CFE-18A9-0A6C-1782-F62AF27D8A5D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AppDef">
-      <UniqueIdentifier>{40128CB8-0413-0D9C-157D-9BCFFF747346}</UniqueIdentifier>
+      <UniqueIdentifier>{06E926EB-1530-0816-07F0-21BE695C047E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomTools">
-      <UniqueIdentifier>{3C23FB55-0053-12CA-17C2-45A9B7893743}</UniqueIdentifier>
+      <UniqueIdentifier>{2AFC47A1-13FE-13D0-137D-889D55115B1D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GC">
-      <UniqueIdentifier>{8B31D577-0F95-1948-0BA3-65CE97DE1CBB}</UniqueIdentifier>
+      <UniqueIdentifier>{74D31B8C-13DA-0403-17A0-785207514CE2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GCE2d">
-      <UniqueIdentifier>{306F49ED-0655-0E3F-0D66-8DF1BEF9F9F2}</UniqueIdentifier>
+      <UniqueIdentifier>{8EACFBBF-0CCF-0D5F-0B0A-7603ABEB0CD2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\gce">
-      <UniqueIdentifier>{88BF7B4D-002B-0F89-0142-64C6C7365041}</UniqueIdentifier>
+      <UniqueIdentifier>{96E2C100-05CA-17A7-0C6F-91AA6048B397}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -273,9 +273,6 @@
     <ClCompile Include="..\..\..\src\AppParCurves\AppParCurves_MultiPoint.cxx">
       <Filter>Source files\AppParCurves</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\AppParCurves\AppParCurves_SmoothCriterion.cxx">
-      <Filter>Source files\AppParCurves</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\FEmTool\FEmTool_AssemblyTable_0.cxx">
       <Filter>Source files\FEmTool</Filter>
     </ClCompile>
@@ -378,40 +375,22 @@
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_Array2OfPOnSurf_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCFOfECC2dOfExtCC2d_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCLocFOfLocECC2d_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCFOfECCOfExtCC_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCLocFOfLocECC_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCFOfELCC2dOfLocateExtCC2d_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ECC2d_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCFOfELCCOfLocateExtCC_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ECC_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCLocFOfLocECC2dOfLocateExtCC2d_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELCC2d_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCLocFOfLocECCOfLocateExtCC_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCache2dOfExtCC2d_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCacheOfExtCC_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ECC2dOfExtCC2d_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ECCOfExtCC_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELCC2dOfLocateExtCC2d_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELCCOfLocateExtCC_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELCC_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELPCOfLocateExtPC2d_0.cxx">
@@ -430,12 +409,6 @@
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_EPCOfExtPC_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ExtCC2d_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ExtCC_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_ExtPC2d_0.cxx">
@@ -465,28 +438,16 @@
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_HArray2OfPOnSurf_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LCCache2dOfLocateExtCC2d_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocECC2d_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LCCacheOfLocateExtCC_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocECC2dOfLocateExtCC2d_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocECCOfLocateExtCC_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocECC_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocEPCOfLocateExtPC2d_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocEPCOfLocateExtPC_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocateExtCC2d_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocateExtCC_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocateExtPC2d_0.cxx">
@@ -537,22 +498,10 @@
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCFOfECC2dOfExtCC2d_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCLocFOfLocECC2d_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCFOfECCOfExtCC_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCFOfELCC2dOfLocateExtCC2d_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCFOfELCCOfLocateExtCC_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCLocFOfLocECC2dOfLocateExtCC2d_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCLocFOfLocECCOfLocateExtCC_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCLocFOfLocECC_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d_0.cxx">
@@ -573,22 +522,10 @@
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCFOfECC2dOfExtCC2d_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCFOfECCOfExtCC_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCFOfELCC2dOfLocateExtCC2d_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCFOfELCCOfLocateExtCC_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2dOfLocateExtCC2d_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECCOfLocateExtCC_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSequenceOfPOnCurv2d_0.cxx">
@@ -613,6 +550,12 @@
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Extrema\Extrema_CurveTool.cxx">
+      <Filter>Source files\Extrema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_ExtCC.cxx">
+      <Filter>Source files\Extrema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_ExtCC2d.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Extrema\Extrema_ExtCS.cxx">
@@ -676,6 +619,18 @@
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Extrema\Extrema_GenLocateExtSS.cxx">
+      <Filter>Source files\Extrema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_GlobOptFuncCC.cxx">
+      <Filter>Source files\Extrema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_GlobOptFuncCS.cxx">
+      <Filter>Source files\Extrema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_LocateExtCC.cxx">
+      <Filter>Source files\Extrema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_LocateExtCC2d.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Extrema\Extrema_POnSurf.cxx">
@@ -930,12 +885,6 @@
     <ClCompile Include="..\..\..\src\BndLib\BndLib_AddSurface.cxx">
       <Filter>Source files\BndLib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\BndLib\BndLib_Compute2d.cxx">
-      <Filter>Source files\BndLib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BndLib\BndLib_Compute3d.cxx">
-      <Filter>Source files\BndLib</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\AppDef\AppDef_Array1OfMultiPointConstraint_0.cxx">
       <Filter>Source files\AppDef</Filter>
     </ClCompile>
@@ -967,9 +916,6 @@
       <Filter>Source files\AppDef</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\AppDef\AppDef_MyBSplGradientOfBSplineCompute_0.cxx">
-      <Filter>Source files\AppDef</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\AppDef\AppDef_MyCriterionOfTheVariational_0.cxx">
       <Filter>Source files\AppDef</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\AppDef\AppDef_MyGradientOfCompute_0.cxx">
@@ -1017,7 +963,7 @@
     <ClCompile Include="..\..\..\drv\AppDef\AppDef_TheResol_0.cxx">
       <Filter>Source files\AppDef</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\AppDef\AppDef_TheVariational_0.cxx">
+    <ClCompile Include="..\..\..\src\AppDef\AppDef_LinearCriteria.cxx">
       <Filter>Source files\AppDef</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\AppDef\AppDef_MultiLine.cxx">
@@ -1027,6 +973,12 @@
       <Filter>Source files\AppDef</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\AppDef\AppDef_MyLineTool.cxx">
+      <Filter>Source files\AppDef</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AppDef\AppDef_SmoothCriterion.cxx">
+      <Filter>Source files\AppDef</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AppDef\AppDef_Variational.cxx">
       <Filter>Source files\AppDef</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\GeomTools\GeomTools.cxx">

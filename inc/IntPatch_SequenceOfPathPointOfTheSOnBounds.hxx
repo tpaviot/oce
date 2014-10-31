@@ -40,6 +40,8 @@ public:
   
       IntPatch_SequenceOfPathPointOfTheSOnBounds();
   
+  Standard_EXPORT   IntPatch_SequenceOfPathPointOfTheSOnBounds(const IntPatch_SequenceOfPathPointOfTheSOnBounds& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntPatch_SequenceOfPathPointOfTheSOnBounds()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntPatch_SequenceOfPathPointOfTheSOnBounds(const IntPatch_SequenceOfPathPointOfTheSOnBounds& Other);
 
 
 

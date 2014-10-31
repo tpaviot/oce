@@ -41,7 +41,8 @@ class CDM_Document;
 class PCDM_ReferenceIterator;
 
 
-
+//! this class list the method that must be available for <br>
+//!          a specific DBMS <br>
 class CDF_MetaDataDriver : public Standard_Transient {
 
 public:

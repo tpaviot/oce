@@ -59,29 +59,13 @@ is
     exception BadContinuity inherits Failure;
     exception NotDefined    inherits Failure;
     
-    deferred generic class CurveTool;
-        ---Purpose: The template class used in CLProps.
-    deferred generic class SurfaceTool;
-        ---Purpose: The template class used in SLProps.
-    
     generic class CLProps;
-    	---Purpose: Computation of local properties of a curve.
+
     generic class SLProps;
-    	---Purpose: Computation of local properties of a surface.
 
-							    
     class CurAndInf;	
-    	---Purpose: Stores the parameters of a curve 2d or 3d corresponding
-	--          to the curvature's extremas and the inflection's points.
-    
-    class AnalyticCurInf;
-    	---Purpose: Computes the locals extremas of curvature of a gp curve.
 
-    private generic class FuncCurExt;
-    private generic class FuncCurNul;
-    generic class NumericCurInf, FCurExt, FCurNul;    	
-    	---Purpose: Computes the locals extremas of curvature and the 
-    	--          inflections of a bounded curve in 2d.
+    class AnalyticCurInf;
 
     private class SequenceOfCIType instantiates Sequence from TCollection 
 						        (CIType  from  LProp); 

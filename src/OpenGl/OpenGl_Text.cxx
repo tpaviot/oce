@@ -25,10 +25,6 @@
 #include <Font_FontMgr.hxx>
 #include <TCollection_HAsciiString.hxx>
 
-#ifdef HAVE_CONFIG_H
-  #include <config.h>
-#endif
-
 #ifdef HAVE_GL2PS
   #include <gl2ps.h>
 #endif
@@ -116,6 +112,7 @@ namespace
     char aPsFont[64];
     getGL2PSFontName (theAspect.FontName().ToCString(), aPsFont);
 
+  #if !defined(GL_ES_VERSION_2_0)
     if (theIs2d)
     {
       glRasterPos2f (0.0f, 0.0f);
@@ -127,6 +124,7 @@ namespace
 
     GLubyte aZero = 0;
     glBitmap (1, 1, 0, 0, 0, 0, &aZero);
+  #endif
 
     // Standard GL2PS's alignment isn't used, because it doesn't work correctly
     // for all formats, therefore alignment is calculated manually relative
@@ -158,16 +156,16 @@ OpenGl_Text::OpenGl_Text()
 // function : OpenGl_Text
 // purpose  :
 // =======================================================================
-OpenGl_Text::OpenGl_Text (const TCollection_ExtendedString& theText,
-                          const OpenGl_Vec3&                thePoint,
-                          const OpenGl_TextParam&           theParams)
+OpenGl_Text::OpenGl_Text (const Standard_Utf8Char* theText,
+                          const OpenGl_Vec3&       thePoint,
+                          const OpenGl_TextParam&  theParams)
 : myWinX (0.0f),
   myWinY (0.0f),
   myWinZ (0.0f),
   myScaleHeight  (1.0f),
   myExportHeight (1.0f),
   myParams (theParams),
-  myString ((Standard_Utf16Char* )theText.ToExtString()),
+  myString (theText),
   myPoint  (thePoint),
   myIs2d   (false)
 {
@@ -192,7 +190,7 @@ void OpenGl_Text::SetFontSize (const Handle(OpenGl_Context)& theCtx,
 {
   if (myParams.Height != theFontSize)
   {
-    Release (theCtx);
+    Release (theCtx.operator->());
   }
   myParams.Height = theFontSize;
 }
@@ -205,7 +203,7 @@ void OpenGl_Text::Init (const Handle(OpenGl_Context)& theCtx,
                         const Standard_Utf8Char*      theText,
                         const OpenGl_Vec3&            thePoint)
 {
-  releaseVbos (theCtx);
+  releaseVbos (theCtx.operator->());
   myIs2d   = false;
   myPoint  = thePoint;
   myString.FromUnicode (theText);
@@ -222,11 +220,11 @@ void OpenGl_Text::Init (const Handle(OpenGl_Context)& theCtx,
 {
   if (myParams.Height != theParams.Height)
   {
-    Release (theCtx);
+    Release (theCtx.operator->());
   }
   else
   {
-    releaseVbos (theCtx);
+    releaseVbos (theCtx.operator->());
   }
   myIs2d   = false;
   myParams = theParams;
@@ -245,11 +243,11 @@ void OpenGl_Text::Init (const Handle(OpenGl_Context)&     theCtx,
 {
   if (myParams.Height != theParams.Height)
   {
-    Release (theCtx);
+    Release (theCtx.operator->());
   }
   else
   {
-    releaseVbos (theCtx);
+    releaseVbos (theCtx.operator->());
   }
   myIs2d       = true;
   myParams     = theParams;
@@ -271,14 +269,14 @@ OpenGl_Text::~OpenGl_Text()
 // function : releaseVbos
 // purpose  :
 // =======================================================================
-void OpenGl_Text::releaseVbos (const Handle(OpenGl_Context)& theCtx)
+void OpenGl_Text::releaseVbos (OpenGl_Context* theCtx)
 {
   for (Standard_Integer anIter = 0; anIter < myVertsVbo.Length(); ++anIter)
   {
     Handle(OpenGl_VertexBuffer)& aVerts = myVertsVbo.ChangeValue (anIter);
     Handle(OpenGl_VertexBuffer)& aTCrds = myTCrdsVbo.ChangeValue (anIter);
 
-    if (!theCtx.IsNull())
+    if (theCtx)
     {
       theCtx->DelayedRelease (aVerts);
       theCtx->DelayedRelease (aTCrds);
@@ -289,15 +287,13 @@ void OpenGl_Text::releaseVbos (const Handle(OpenGl_Context)& theCtx)
   myTextures.Clear();
   myVertsVbo.Clear();
   myTCrdsVbo.Clear();
-  myVertsArray.Clear();
-  myTCrdsArray.Clear();
 }
 
 // =======================================================================
 // function : Release
 // purpose  :
 // =======================================================================
-void OpenGl_Text::Release (const Handle(OpenGl_Context)& theCtx)
+void OpenGl_Text::Release (OpenGl_Context* theCtx)
 {
   releaseVbos (theCtx);
   if (!myFont.IsNull())
@@ -305,7 +301,8 @@ void OpenGl_Text::Release (const Handle(OpenGl_Context)& theCtx)
     Handle(OpenGl_Context) aCtx = theCtx;
     const TCollection_AsciiString aKey = myFont->ResourceKey();
     myFont.Nullify();
-    aCtx->ReleaseResource (aKey, Standard_True);
+    if (aCtx)
+      aCtx->ReleaseResource (aKey, Standard_True);
   }
 }
 
@@ -387,22 +384,18 @@ void OpenGl_Text::Render (const Handle(OpenGl_Workspace)& theWorkspace) const
 
   if (aCtx->IsGlGreaterEqual (2, 0))
   {
-    Handle(OpenGl_ShaderProgram) aProgram = aTextAspect->ShaderProgramRes (theWorkspace);
-
+    const Handle(OpenGl_ShaderProgram)& aProgram = aTextAspect->ShaderProgramRes (aCtx);
+    aCtx->BindProgram (aProgram);
     if (!aProgram.IsNull())
     {
-      aProgram->BindWithVariables (aCtx);
+      aProgram->ApplyVariables (aCtx);
 
       const OpenGl_MaterialState* aMaterialState = aCtx->ShaderManager()->MaterialState (aProgram);
-      
+
       if (aMaterialState == NULL || aMaterialState->Aspect() != aTextAspect)
         aCtx->ShaderManager()->UpdateMaterialStateTo (aProgram, aTextAspect);
-      
+
       aCtx->ShaderManager()->PushState (aProgram);
-    }
-    else
-    {
-      OpenGl_ShaderProgram::Unbind (aCtx);
     }
   }
 
@@ -447,11 +440,12 @@ void OpenGl_Text::Render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
 // purpose  :
 // =======================================================================
 void OpenGl_Text::setupMatrix (const Handle(OpenGl_PrinterContext)& thePrintCtx,
-                               const Handle(OpenGl_Context)&        /*theCtx*/,
+                               const Handle(OpenGl_Context)&        theCtx,
                                const OpenGl_AspectText&             theTextAspect,
                                const OpenGl_Vec3                    theDVec) const
 {
   // setup matrix
+#if !defined(GL_ES_VERSION_2_0)
   if (myIs2d)
   {
     glLoadIdentity();
@@ -471,8 +465,8 @@ void OpenGl_Text::setupMatrix (const Handle(OpenGl_PrinterContext)& thePrintCtx,
                   &anObjX, &anObjY, &anObjZ);
 
     glLoadIdentity();
-    glTranslated (anObjX, anObjY, anObjZ);
-    glRotated (theTextAspect.Angle(), 0.0, 0.0, 1.0);
+    theCtx->core11->glTranslated (anObjX, anObjY, anObjZ);
+    theCtx->core11->glRotated (theTextAspect.Angle(), 0.0, 0.0, 1.0);
     if (!theTextAspect.IsZoomable())
     {
     #ifdef _WIN32
@@ -486,12 +480,13 @@ void OpenGl_Text::setupMatrix (const Handle(OpenGl_PrinterContext)& thePrintCtx,
         // text should be scaled in all directions with same
         // factor to save its proportions, so use height (y) scaling
         // as it is better for keeping text/3d graphics proportions
-        glScalef (aTextScaley, aTextScaley, aTextScaley);
+        theCtx->core11->glScaled ((GLfloat )aTextScaley, (GLfloat )aTextScaley, (GLfloat )aTextScaley);
       }
     #endif
-      glScaled (myScaleHeight, myScaleHeight, myScaleHeight);
+      theCtx->core11->glScaled (myScaleHeight, myScaleHeight, myScaleHeight);
     }
   }
+#endif
 }
 
 // =======================================================================
@@ -516,45 +511,28 @@ void OpenGl_Text::drawText (const Handle(OpenGl_PrinterContext)& ,
   }
 #endif
 
-  if (myVertsVbo.Length() == myTextures.Length())
+  if (myVertsVbo.Length() != myTextures.Length()
+   || myTextures.IsEmpty())
   {
-    for (Standard_Integer anIter = 0; anIter < myTextures.Length(); ++anIter)
-    {
-      const GLuint aTexId = myTextures.Value (anIter);
-      const Handle(OpenGl_VertexBuffer)& aVerts = myVertsVbo.Value (anIter);
-      const Handle(OpenGl_VertexBuffer)& aTCrds = myTCrdsVbo.Value (anIter);
-      aVerts->BindFixed (theCtx, GL_VERTEX_ARRAY);
-      aTCrds->BindFixed (theCtx, GL_TEXTURE_COORD_ARRAY);
-      glBindTexture (GL_TEXTURE_2D, aTexId);
-
-      glDrawArrays (GL_TRIANGLES, 0, GLsizei(aVerts->GetElemsNb()));
-
-      glBindTexture (GL_TEXTURE_2D, 0);
-      aTCrds->UnbindFixed (theCtx, GL_TEXTURE_COORD_ARRAY);
-      aVerts->UnbindFixed (theCtx, GL_VERTEX_ARRAY);
-    }
+    return;
   }
-  else if (myVertsArray.Length() == myTextures.Length())
+
+  for (Standard_Integer anIter = 0; anIter < myTextures.Length(); ++anIter)
   {
-    glEnableClientState (GL_VERTEX_ARRAY);
-    glEnableClientState (GL_TEXTURE_COORD_ARRAY);
-    for (Standard_Integer anIter = 0; anIter < myTextures.Length(); ++anIter)
-    {
-      const GLuint aTexId = myTextures.Value (anIter);
-      const Handle(OpenGl_Vec2Array)& aVerts = myVertsArray.Value (anIter);
-      const Handle(OpenGl_Vec2Array)& aTCrds = myTCrdsArray.Value (anIter);
+    const GLuint aTexId = myTextures.Value (anIter);
+    glBindTexture (GL_TEXTURE_2D, aTexId);
 
-      glVertexPointer   (2, GL_FLOAT, 0, (GLfloat* )&aVerts->First());
-      glTexCoordPointer (2, GL_FLOAT, 0, (GLfloat* )&aTCrds->First());
-      glBindTexture (GL_TEXTURE_2D, aTexId);
+    const Handle(OpenGl_VertexBuffer)& aVerts = myVertsVbo.Value (anIter);
+    const Handle(OpenGl_VertexBuffer)& aTCrds = myTCrdsVbo.Value (anIter);
+    aVerts->BindAttribute (theCtx, Graphic3d_TOA_POS);
+    aTCrds->BindAttribute (theCtx, Graphic3d_TOA_UV);
 
-      glDrawArrays (GL_TRIANGLES, 0, aVerts->Length());
+    glDrawArrays (GL_TRIANGLES, 0, GLsizei(aVerts->GetElemsNb()));
 
-      glBindTexture (GL_TEXTURE_2D, 0);
-    }
-    glDisableClientState (GL_TEXTURE_COORD_ARRAY);
-    glDisableClientState (GL_VERTEX_ARRAY);
+    aVerts->UnbindAttribute (theCtx, Graphic3d_TOA_UV);
+    aVerts->UnbindAttribute (theCtx, Graphic3d_TOA_POS);
   }
+  glBindTexture (GL_TEXTURE_2D, 0);
 }
 
 // =======================================================================
@@ -603,14 +581,18 @@ Handle(OpenGl_Font) OpenGl_Text::FindFont (const Handle(OpenGl_Context)& theCtx,
     }
 
     Handle(OpenGl_Context) aCtx = theCtx;
+  #if !defined(GL_ES_VERSION_2_0)
     glPushAttrib (GL_TEXTURE_BIT);
+  #endif
     aFont = new OpenGl_Font (aFontFt, theKey);
     if (!aFont->Init (aCtx))
     {
       //glPopAttrib();
       //return aFont; // out of resources?
     }
+  #if !defined(GL_ES_VERSION_2_0)
     glPopAttrib(); // texture bit
+  #endif
 
     aCtx->ShareResource (theKey, aFont);
   }
@@ -637,7 +619,7 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
    && !myFont->ResourceKey().IsEqual (aFontKey))
   {
     // font changed
-    const_cast<OpenGl_Text* > (this)->Release (theCtx);
+    const_cast<OpenGl_Text* > (this)->Release (theCtx.operator->());
   }
 
   if (myFont.IsNull())
@@ -657,14 +639,7 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
     aFormatter.Append (theCtx, myString, *myFont.operator->());
     aFormatter.Format();
 
-    if (!theCtx->caps->vboDisable && theCtx->core15 != NULL)
-    {
-      aFormatter.Result (theCtx, myTextures, myVertsVbo, myTCrdsVbo);
-    }
-    else
-    {
-      aFormatter.Result (theCtx, myTextures, myVertsArray, myTCrdsArray);
-    }
+    aFormatter.Result (theCtx, myTextures, myVertsVbo, myTCrdsVbo);
     aFormatter.BndBox (myBndBox);
   }
 
@@ -676,6 +651,7 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
   myExportHeight = 1.0f;
   myScaleHeight  = 1.0f;
 
+#if !defined(GL_ES_VERSION_2_0)
   glMatrixMode (GL_MODELVIEW);
   glPushMatrix();
   if (!myIs2d)
@@ -696,7 +672,7 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
 
     GLdouble x2, y2, z2;
     const GLdouble h = (GLdouble )myFont->FTFont()->PointSize();
-    gluUnProject (myWinX, myWinY + h - 1.0, myWinZ,
+    gluUnProject (myWinX, myWinY + h, myWinZ,
                   (GLdouble* )THE_IDENTITY_MATRIX, myProjMatrix, myViewport,
                   &x2, &y2, &z2);
 
@@ -710,6 +686,7 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
 
   // push enabled flags to the stack
   glPushAttrib (GL_ENABLE_BIT);
+  glDisable (GL_LIGHTING);
 
   // setup depth test
   if (!myIs2d
@@ -721,6 +698,7 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
   {
     glDisable (GL_DEPTH_TEST);
   }
+
 
   // setup alpha test
   GLint aTexEnvParam = GL_REPLACE;
@@ -739,9 +717,9 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
   // activate texture unit
   glDisable (GL_TEXTURE_1D);
   glEnable  (GL_TEXTURE_2D);
-  if (theCtx->core13 != NULL)
+  if (theCtx->core15fwd != NULL)
   {
-    theCtx->core13->glActiveTexture (GL_TEXTURE0);
+    theCtx->core15fwd->glActiveTexture (GL_TEXTURE0);
   }
 
   // extra drawings
@@ -755,7 +733,7 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
     }
     case Aspect_TODT_SUBTITLE:
     {
-      glColor3fv  (theColorSubs.rgb);
+      theCtx->core11->glColor3fv (theColorSubs.rgb);
       setupMatrix (thePrintCtx, theCtx, theTextAspect, OpenGl_Vec3 (0.0f, 0.0f, 0.00001f));
 
       glBindTexture (GL_TEXTURE_2D, 0);
@@ -769,7 +747,7 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
     }
     case Aspect_TODT_DEKALE:
     {
-      glColor3fv  (theColorSubs.rgb);
+      theCtx->core11->glColor3fv  (theColorSubs.rgb);
       setupMatrix (thePrintCtx, theCtx, theTextAspect, OpenGl_Vec3 (+1.0f, +1.0f, 0.00001f));
       drawText    (thePrintCtx, theCtx, theTextAspect);
       setupMatrix (thePrintCtx, theCtx, theTextAspect, OpenGl_Vec3 (-1.0f, -1.0f, 0.00001f));
@@ -788,7 +766,7 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
   }
 
   // main draw call
-  glColor3fv  (theColorText.rgb);
+  theCtx->core11->glColor3fv (theColorText.rgb);
   setupMatrix (thePrintCtx, theCtx, theTextAspect, OpenGl_Vec3 (0.0f, 0.0f, 0.0f));
   drawText    (thePrintCtx, theCtx, theTextAspect);
 
@@ -830,4 +808,5 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
   // revert OpenGL state
   glPopAttrib(); // enable bit
   glPopMatrix(); // model view matrix was modified
+#endif
 }

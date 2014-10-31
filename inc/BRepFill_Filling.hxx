@@ -127,6 +127,11 @@ public:
 //! <br>
   Standard_EXPORT     void SetApproxParam(const Standard_Integer MaxDeg = 8,const Standard_Integer MaxSegments = 9) ;
   //! Loads the initial Surface <br>
+//!          The initial surface must have orthogonal local coordinates, <br>
+//!          i.e. partial derivatives dS/du and dS/dv must be orthogonal <br>
+//!          at each point of surface. <br>
+//!          If this condition breaks, distortions of resulting surface <br>
+//!          are possible. <br>
   Standard_EXPORT     void LoadInitSurface(const TopoDS_Face& aFace) ;
   //! Adds a new constraint which also defines an edge of the wire <br>
 //!	        of the face <br>

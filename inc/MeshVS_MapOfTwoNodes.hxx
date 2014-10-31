@@ -31,7 +31,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class MeshVS_TwoNodesHasher;
 class MeshVS_StdMapNodeOfMapOfTwoNodes;
 class MeshVS_MapIteratorOfMapOfTwoNodes;
@@ -45,6 +44,8 @@ public:
 
   
   Standard_EXPORT   MeshVS_MapOfTwoNodes(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   MeshVS_MapOfTwoNodes(const MeshVS_MapOfTwoNodes& Other);
   
   Standard_EXPORT     MeshVS_MapOfTwoNodes& Assign(const MeshVS_MapOfTwoNodes& Other) ;
     MeshVS_MapOfTwoNodes& operator =(const MeshVS_MapOfTwoNodes& Other) 
@@ -78,8 +79,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   MeshVS_MapOfTwoNodes(const MeshVS_MapOfTwoNodes& Other);
 
 
 

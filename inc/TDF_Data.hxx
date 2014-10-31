@@ -25,8 +25,8 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _TColStd_StackOfInteger_HeaderFile
-#include <TColStd_StackOfInteger.hxx>
+#ifndef _TColStd_ListOfInteger_HeaderFile
+#include <TColStd_ListOfInteger.hxx>
 #endif
 #ifndef _TDF_HAllocator_HeaderFile
 #include <TDF_HAllocator.hxx>
@@ -190,7 +190,7 @@ Standard_Integer myTransaction;
 Standard_Integer myNbTouchedAtt;
 Standard_Boolean myNotUndoMode;
 Standard_Integer myTime;
-TColStd_StackOfInteger myTimes;
+TColStd_ListOfInteger myTimes;
 TDF_HAllocator myLabelNodeAllocator;
 Standard_Boolean myAllowModification;
 

@@ -25,9 +25,6 @@
 #ifndef _Handle_PDF_Attribute_HeaderFile
 #include <Handle_PDF_Attribute.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _PDF_FieldOfHAttributeArray1_HeaderFile
 #include <PDF_FieldOfHAttributeArray1.hxx>
 #endif
@@ -40,11 +37,7 @@
 #ifndef _Handle_PDF_VArrayNodeOfFieldOfHAttributeArray1_HeaderFile
 #include <Handle_PDF_VArrayNodeOfFieldOfHAttributeArray1.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PDF_Attribute;
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PDF_FieldOfHAttributeArray1;
@@ -70,10 +63,6 @@ public:
         Standard_Integer Upper() const;
   
   Standard_EXPORT     Handle_PDF_Attribute Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PDF_HAttributeArray1( )
 {
@@ -158,10 +147,6 @@ PDF_FieldOfHAttributeArray1 Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PDF_HAttributeArray1& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

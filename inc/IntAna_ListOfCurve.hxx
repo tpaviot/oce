@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   IntAna_ListOfCurve();
   
+  Standard_EXPORT   IntAna_ListOfCurve(const IntAna_ListOfCurve& Other);
+  
   Standard_EXPORT     void Assign(const IntAna_ListOfCurve& Other) ;
     void operator=(const IntAna_ListOfCurve& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntAna_ListOfCurve(const IntAna_ListOfCurve& Other);
 
 
 Standard_Address myFirst;

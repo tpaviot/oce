@@ -1,0 +1,9 @@
+#ifndef _gp_Circ2d_HeaderFile
+#include <gp_Circ2d.hxx>
+#endif
+#ifndef _Geom2dAdaptor_Curve_HeaderFile
+#include <Geom2dAdaptor_Curve.hxx>
+#endif
+#ifndef _Geom2dGcc_FunctionTanCirCu_HeaderFile
+#include <Geom2dGcc_FunctionTanCirCu.hxx>
+#endif

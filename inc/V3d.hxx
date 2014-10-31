@@ -46,8 +46,6 @@ class V3d_View;
 class V3d_Viewer;
 class V3d_Viewer;
 class V3d_View;
-class V3d_OrthographicView;
-class V3d_PerspectiveView;
 class V3d_LayerMgr;
 class V3d_Light;
 class V3d_AmbientLight;
@@ -55,7 +53,6 @@ class V3d_PositionLight;
 class V3d_PositionalLight;
 class V3d_DirectionalLight;
 class V3d_SpotLight;
-class V3d_ListOfTransient;
 class V3d_RectangularGrid;
 class V3d_CircularGrid;
 class V3d_ColorScale;
@@ -66,16 +63,6 @@ class V3d_ColorScaleLayerItem;
 //!          of the 3D Viewer. It provides a set of high level commands <br>
 //!          to control the views and viewing modes. This package is <br>
 //!          complementary to the Visual3D graphic package. <br>
-//!    Warning <br>
-//! The CSF_WALKTHROUGH variable enables you to <br>
-//! manage the perspective of the view in the viewer by <br>
-//! defining setenv CSF_WALKTHROUGH "Yes". <br>
-//! If you use the syntax unsetenv <br>
-//! CSF_WALKTHROUGH, you undefine the variable <br>
-//! (you make sure that the variable is deactivated). In <br>
-//! this case, the eye is located outside the 3D bounding <br>
-//! box of the view. This is the default behavior for <br>
-//! managing the view perspective. <br>
 class V3d  {
 public:
 
@@ -121,8 +108,6 @@ private:
 
 friend class V3d_Viewer;
 friend class V3d_View;
-friend class V3d_OrthographicView;
-friend class V3d_PerspectiveView;
 friend class V3d_LayerMgr;
 friend class V3d_Light;
 friend class V3d_AmbientLight;
@@ -130,7 +115,6 @@ friend class V3d_PositionLight;
 friend class V3d_PositionalLight;
 friend class V3d_DirectionalLight;
 friend class V3d_SpotLight;
-friend class V3d_ListOfTransient;
 friend class V3d_RectangularGrid;
 friend class V3d_CircularGrid;
 friend class V3d_ColorScale;

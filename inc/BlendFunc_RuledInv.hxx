@@ -31,6 +31,9 @@
 #ifndef _Blend_FuncInv_HeaderFile
 #include <Blend_FuncInv.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
@@ -40,7 +43,6 @@
 class Adaptor3d_HSurface;
 class Adaptor3d_HCurve;
 class Adaptor2d_HCurve2d;
-class math_Vector;
 class math_Matrix;
 
 

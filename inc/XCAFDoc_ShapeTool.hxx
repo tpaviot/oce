@@ -52,6 +52,8 @@ class TopTools_SequenceOfShape;
 
 //!  A tool to store shapes in an XDE <br>
 //! document in the form of assembly structure, and to maintain this structure. <br>
+//! Attribute containing Shapes section of DECAF document. <br>
+//! Provide tools for management of Shapes section. <br>
 //! The API provided by this class allows to work with this <br>
 //! structure regardless of its low-level implementation. <br>
 //! All the shapes are stored on child labels of a main label which is <br>

@@ -42,7 +42,6 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
 class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox;
 class BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox;
 class AppParCurves_HArray1OfConstraintCouple;
-class math_Vector;
 class TColStd_Array1OfReal;
 class TColStd_Array1OfInteger;
 class AppParCurves_MultiBSpCurve;

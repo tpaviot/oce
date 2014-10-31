@@ -9,8 +9,6 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/PPoly : @top_srcdir@/src/PPoly: \
 @top_srcdir@/drv/PColgp : @top_srcdir@/src/PColgp: \
 @top_srcdir@/drv/PTopLoc : @top_srcdir@/src/PTopLoc: \
-@top_srcdir@/drv/PColPGeom : @top_srcdir@/src/PColPGeom: \
-@top_srcdir@/drv/PColPGeom2d : @top_srcdir@/src/PColPGeom2d: \
 @top_srcdir@/drv/MgtBRep : @top_srcdir@/src/MgtBRep: \
 @top_srcdir@/drv/MgtGeom : @top_srcdir@/src/MgtGeom: \
 @top_srcdir@/drv/MgtGeom2d : @top_srcdir@/src/MgtGeom2d: \
@@ -34,8 +32,6 @@ INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES)  \
 -I@top_srcdir@/drv/PPoly -I@top_srcdir@/src/PPoly \
 -I@top_srcdir@/drv/PColgp -I@top_srcdir@/src/PColgp \
 -I@top_srcdir@/drv/PTopLoc -I@top_srcdir@/src/PTopLoc \
--I@top_srcdir@/drv/PColPGeom -I@top_srcdir@/src/PColPGeom \
--I@top_srcdir@/drv/PColPGeom2d -I@top_srcdir@/src/PColPGeom2d \
 -I@top_srcdir@/drv/MgtBRep -I@top_srcdir@/src/MgtBRep \
 -I@top_srcdir@/drv/MgtGeom -I@top_srcdir@/src/MgtGeom \
 -I@top_srcdir@/drv/MgtGeom2d -I@top_srcdir@/src/MgtGeom2d \
@@ -57,62 +53,6 @@ libTKPShape_la_LIBADD = $(CSF_OPT_LIBS) \
 $(STLPort_LIB) 
 
 libTKPShape_la_SOURCES = \
-@top_srcdir@/drv/PColPGeom/PColPGeom_FieldOfHArray1OfBSplineCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_FieldOfHArray1OfBezierCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_FieldOfHArray1OfBoundedCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_FieldOfHArray1OfBoundedSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_FieldOfHArray1OfCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_FieldOfHArray1OfSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_FieldOfHArray2OfBSplineSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_FieldOfHArray2OfBezierSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_FieldOfHArray2OfBoundedSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_FieldOfHArray2OfSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_HArray1OfBSplineCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_HArray1OfBezierCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_HArray1OfBoundedCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_HArray1OfBoundedSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_HArray1OfCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_HArray1OfSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_HArray2OfBSplineSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_HArray2OfBezierSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_HArray2OfBoundedSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_HArray2OfSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayNodeOfFieldOfHArray1OfBSplineCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayNodeOfFieldOfHArray1OfBezierCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayNodeOfFieldOfHArray1OfBoundedCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayNodeOfFieldOfHArray1OfBoundedSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayNodeOfFieldOfHArray1OfCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayNodeOfFieldOfHArray1OfSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayNodeOfFieldOfHArray2OfBSplineSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayNodeOfFieldOfHArray2OfBezierSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayNodeOfFieldOfHArray2OfBoundedSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayNodeOfFieldOfHArray2OfSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayTNodeOfFieldOfHArray1OfBSplineCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayTNodeOfFieldOfHArray1OfBezierCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayTNodeOfFieldOfHArray1OfBoundedCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayTNodeOfFieldOfHArray1OfBoundedSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayTNodeOfFieldOfHArray1OfCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayTNodeOfFieldOfHArray1OfSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayTNodeOfFieldOfHArray2OfBSplineSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayTNodeOfFieldOfHArray2OfBezierSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayTNodeOfFieldOfHArray2OfBoundedSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom/PColPGeom_VArrayTNodeOfFieldOfHArray2OfSurface_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_FieldOfHArray1OfBSplineCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_FieldOfHArray1OfBezierCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_FieldOfHArray1OfBoundedCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_FieldOfHArray1OfCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_HArray1OfBSplineCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_HArray1OfBezierCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_HArray1OfBoundedCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_HArray1OfCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_VArrayNodeOfFieldOfHArray1OfBSplineCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_VArrayNodeOfFieldOfHArray1OfBezierCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_VArrayNodeOfFieldOfHArray1OfBoundedCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_VArrayNodeOfFieldOfHArray1OfCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_VArrayTNodeOfFieldOfHArray1OfBSplineCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_VArrayTNodeOfFieldOfHArray1OfBezierCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_VArrayTNodeOfFieldOfHArray1OfBoundedCurve_0.cxx \
-@top_srcdir@/drv/PColPGeom2d/PColPGeom2d_VArrayTNodeOfFieldOfHArray1OfCurve_0.cxx \
 @top_srcdir@/drv/PColgp/PColgp_FieldOfHArray1OfCirc2d_0.cxx \
 @top_srcdir@/drv/PColgp/PColgp_FieldOfHArray1OfDir2d_0.cxx \
 @top_srcdir@/drv/PColgp/PColgp_FieldOfHArray1OfDir_0.cxx \

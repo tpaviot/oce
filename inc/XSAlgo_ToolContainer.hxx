@@ -21,7 +21,7 @@
 #endif
 
 
-
+//! Returns tools used by AlgoContainer <br>
 class XSAlgo_ToolContainer : public MMgt_TShared {
 
 public:

@@ -36,14 +36,15 @@
 #include <Graphic3d_SequenceOfHClipPlane.hxx>
 #include <Graphic3d_ZLayerSettings.hxx>
 #include <Visual3d_TypeOfSurfaceDetail.hxx>
+#include <Visual3d_TypeOfModel.hxx>
 
-#include <OpenGl_telem_view.hxx>
+#include <OpenGl_BVHTreeSelector.hxx>
 #include <OpenGl_LayerList.hxx>
 #include <OpenGl_Light.hxx>
+#include <OpenGl_LineAttributes.hxx>
 
 #include <Handle_OpenGl_Context.hxx>
 #include <Handle_OpenGl_GraphicDriver.hxx>
-#include <Handle_OpenGl_Display.hxx>
 #include <Handle_OpenGl_Workspace.hxx>
 #include <Handle_OpenGl_View.hxx>
 #include <Handle_OpenGl_Texture.hxx>
@@ -61,15 +62,6 @@ struct OPENGL_BG_GRADIENT
   TEL_COLOUR color1;
   TEL_COLOUR color2;
   Aspect_GradientFillMethod type;
-};
-
-struct OPENGL_EXTRA_REP
-{
-  Tfloat  vrp[3];
-  Tfloat  vpn[3];
-  Tfloat  vup[3];
-  TEL_VIEW_MAPPING map;
-  Tfloat  scaleFactors[3];
 };
 
 struct OPENGL_ZCLIP
@@ -92,6 +84,7 @@ struct OPENGL_FOG
   TEL_COLOUR         Color;
 };
 
+struct OpenGl_Matrix;
 class OpenGl_GraduatedTrihedron;
 class OpenGl_Structure;
 class OpenGl_Trihedron;
@@ -115,9 +108,9 @@ class OpenGl_View : public MMgt_TShared
   void SetClipPlanes (const Graphic3d_SequenceOfHClipPlane &thePlanes) { myClipPlanes = thePlanes; }
   void SetVisualisation (const CALL_DEF_VIEWCONTEXT &AContext);
 
+  void SetCamera (const Handle(Graphic3d_Camera)& theCamera) { myCamera = theCamera; }
+
   void SetClipLimit (const Graphic3d_CView& theCView);
-  void SetMapping (const Handle(OpenGl_Display)& theGlDisplay, const Graphic3d_CView& theCView);
-  void SetOrientation (const Graphic3d_CView& theCView);
 
   void SetFog (const Graphic3d_CView& theCView, const Standard_Boolean theFlag);
 
@@ -132,22 +125,8 @@ class OpenGl_View : public MMgt_TShared
                                   const Graphic3d_CGraduatedTrihedron& theCubic);
   void GraduatedTrihedronErase (const Handle(OpenGl_Context)& theCtx);
 
-  Standard_Boolean ProjectObjectToRaster (const Standard_Integer w, const Standard_Integer h,
-                                          const Standard_ShortReal x, const Standard_ShortReal y, const Standard_ShortReal z,
-                                          Standard_ShortReal &xr, Standard_ShortReal &yr);
-  Standard_Boolean ProjectRasterToObject (const Standard_Integer w, const Standard_Integer h,
-                                          const Standard_Integer xr, const Standard_Integer yr,
-                                          Standard_ShortReal &x, Standard_ShortReal &y, Standard_ShortReal &z);
-  Standard_Boolean ProjectRasterToObjectWithRay (const Standard_Integer w, const Standard_Integer h,
-                                                 const Standard_Integer xr, const Standard_Integer yr,
-                                                 Standard_ShortReal &x, Standard_ShortReal &y, Standard_ShortReal &z,
-                                                 Standard_ShortReal &dx, Standard_ShortReal &dy, Standard_ShortReal &dz);
-  void GetMatrices (TColStd_Array2OfReal&  theMatOrient,
-                    TColStd_Array2OfReal&  theMatMapping,
-                    const Standard_Boolean theIsCustom) const;
-
-  Standard_Real Height () const { return (myExtra.map.window.xmax - myExtra.map.window.xmin); }
-  Standard_Real Width () const { return (myExtra.map.window.ymax - myExtra.map.window.ymin); }
+  Standard_Real Height () const { return myCamera->ViewDimensions().X(); }
+  Standard_Real Width () const { return myCamera->ViewDimensions().Y(); }
 
   Standard_Integer Backfacing () const { return myBackfacing; }
 
@@ -159,11 +138,17 @@ class OpenGl_View : public MMgt_TShared
   //! The structure will be added to associated with it z layer.
   //! If the z layer is not presented in the view, the structure will
   //! be displayed in default bottom-level z layer.
-  void DisplayStructure (const OpenGl_Structure *theStructure,
+  void DisplayStructure (const OpenGl_Structure* theStructure,
                          const Standard_Integer  thePriority);
 
   //! Erase structure from display list.
-  void EraseStructure (const OpenGl_Structure *theStructure);
+  void EraseStructure (const OpenGl_Structure* theStructure);
+
+  //! Add structure to the list of immediate structures.
+  void DisplayImmediateStructure (const OpenGl_Structure* theStructure);
+
+  //! Erase structure from display list.
+  void EraseImmediateStructure (const OpenGl_Structure* theStructure);
 
   //! Insert a new top-level z layer with ID <theLayerId>
   void AddZLayer (const Standard_Integer theLayerId);
@@ -181,6 +166,10 @@ class OpenGl_View : public MMgt_TShared
   void SetZLayerSettings (const Standard_Integer theLayerId,
                           const Graphic3d_ZLayerSettings theSettings);
 
+  //! Changes the priority of a structure within its ZLayer
+  void ChangePriority (const OpenGl_Structure *theStructure,
+                       const Standard_Integer theNewPriority);
+
   void CreateBackgroundTexture (const Standard_CString AFileName, const Aspect_FillMethod AFillStyle);
   void SetBackgroundTextureStyle (const Aspect_FillMethod FillStyle);
   void SetBackgroundGradient (const Quantity_Color& AColor1, const Quantity_Color& AColor2, const Aspect_GradientFillMethod AType);
@@ -193,7 +182,7 @@ class OpenGl_View : public MMgt_TShared
                const Aspect_CLayer2d&               theCOverLayer);
 
 
-  void DrawBackground (const Handle(OpenGl_Workspace)& theWorkspace);
+  void DrawBackground (OpenGl_Workspace& theWorkspace);
 
   //! Returns list of OpenGL Z-layers.
   const OpenGl_LayerList& LayerList() const { return myZLayers; }
@@ -207,52 +196,69 @@ class OpenGl_View : public MMgt_TShared
   //! Returns visualization mode for objects in the view.
   Visual3d_TypeOfSurfaceDetail SurfaceDetail() const { return mySurfaceDetail; }
 
-#ifdef HAVE_OPENCL
+  //! Returns selector for BVH tree, providing a possibility to store information
+  //! about current view volume and to detect which objects are overlapping it.
+  OpenGl_BVHTreeSelector& BVHTreeSelector() { return myBVHSelector; }
+
+  //! Marks BVH tree for given priority list as dirty and
+  //! marks primitive set for rebuild.
+  void InvalidateBVHData (const Standard_Integer theLayerId);
+
+  void GetMatrices (TColStd_Array2OfReal&  theMatOrient,
+                    TColStd_Array2OfReal&  theMatMapping) const;
+
+  //! Returns list of immediate structures rendered on top of main presentation
+  const OpenGl_SequenceOfStructure& ImmediateStructures() const
+  {
+    return myImmediateList;
+  }
+
   //! Returns modification state for ray-tracing.
   Standard_Size ModificationState() const { return myModificationState; }
-#endif
 
-public:
-
-  DEFINE_STANDARD_RTTI(OpenGl_View) // Type definition
-
- protected:
+protected:
 
   void RenderStructs (const Handle(OpenGl_Workspace) &AWorkspace);
   void RedrawLayer2d (const Handle(OpenGl_PrinterContext)& thePrintContext,
                       const Graphic3d_CView&               theCView,
                       const Aspect_CLayer2d&               theCLayer);
+  void RedrawTrihedron (const Handle(OpenGl_Workspace) &theWorkspace);
 
-  Handle(OpenGl_Texture) myTextureEnv;
-  Visual3d_TypeOfSurfaceDetail mySurfaceDetail; //WSSurfaceDetail
-  Standard_Integer myBackfacing; //WSBackfacing
+  //! Redraw contents of model scene: clipping planes,
+  //! lights, structures. The peculiar properties of "scene" is that
+  //! it requires empty Z-Buffer and uses projection and orientation
+  //! matrices supplied by 3d view.
+  //! @param thePrintCtx [in] printer context which facilitates tiled printing.
+  //! @param theWorkspace [in] rendering workspace.
+  //! @param theCView [in] view data.
+  //! @param theProjection [in] view projection matrix.
+  //! @param theOrientation [in] view orientation matrix.
+  void RedrawScene (const Handle(OpenGl_PrinterContext)& thePrintContext,
+                    const Handle(OpenGl_Workspace)& theWorkspace,
+                    const OpenGl_Matrix* theProjection,
+                    const OpenGl_Matrix* theOrientation);
 
-  OPENGL_BG_TEXTURE myBgTexture; //WSBgTexture
-  OPENGL_BG_GRADIENT myBgGradient; //WSBgGradient
+  Handle(OpenGl_LineAttributes) myLineAttribs;
+  Handle(OpenGl_Texture)        myTextureEnv;
+  Visual3d_TypeOfSurfaceDetail  mySurfaceDetail;
+  Standard_Integer              myBackfacing;
 
-  //{ myViewRep
-  Tmatrix3    myOrientationMatrix;
-  Tmatrix3    myMappingMatrix;
-
-  //Tint        shield_indicator;
-  //TEL_COLOUR  shield_colour;
-  //Tint        border_indicator;
-  //TEL_COLOUR  border_colour;
-  //Tint        active_status;
+  OPENGL_BG_TEXTURE  myBgTexture;
+  OPENGL_BG_GRADIENT myBgGradient;
 
   OPENGL_ZCLIP   myZClip;
-  OPENGL_EXTRA_REP myExtra;
-  //}
 
   Graphic3d_SequenceOfHClipPlane myClipPlanes;
   
+  Handle(Graphic3d_Camera) myCamera;
+
   OPENGL_FOG myFog;
   OpenGl_Trihedron*          myTrihedron;
   OpenGl_GraduatedTrihedron* myGraduatedTrihedron;
 
   //View_LABViewContext
   int myVisualization;
-  int myIntShadingMethod;
+  Visual3d_TypeOfModel       myShadingModel;  //!< lighting shading model
 
   //View_LABLight
   OpenGl_ListOfLight myLights;
@@ -263,15 +269,17 @@ public:
 
   //View_LABDepthCueing - fixed index used
 
-  OpenGl_LayerList myZLayers;
+  OpenGl_LayerList           myZLayers;       //!< main list of displayed structure, sorted by layers
+  OpenGl_SequenceOfStructure myImmediateList; //!< list of immediate structures rendered on top of main presentation
 
   const TEL_TRANSFORM_PERSISTENCE *myTransPers;
   Standard_Boolean myIsTransPers;
 
+  //! Modification state
+  Standard_Size myProjectionState;
+  Standard_Size myModelViewState;
   OpenGl_StateCounter* myStateCounter;
 
-  Standard_Size myCurrOrientationState; // <-- delete it after merge with new camera
-  Standard_Size myCurrViewMappingState; // <-- delete it after merge with new camera
   Standard_Size myCurrLightSourceState;
 
   typedef std::pair<Standard_Size, Standard_Size> StateInfo;
@@ -280,12 +288,18 @@ public:
   StateInfo myLastViewMappingState;
   StateInfo myLastLightSourceState;
 
-#ifdef HAVE_OPENCL
-  Standard_Size myModificationState;
-#endif
+  //! Is needed for selection of overlapping objects and storage of the current view volume
+  OpenGl_BVHTreeSelector myBVHSelector;
 
- public:
+  Standard_Size myModificationState;
+
+public:
+
   DEFINE_STANDARD_ALLOC
+  DEFINE_STANDARD_RTTI(OpenGl_View) // Type definition
+
+  friend class OpenGl_Workspace;
+
 };
 
-#endif //_OpenGl_View_Header
+#endif // _OpenGl_View_Header

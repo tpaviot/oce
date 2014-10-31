@@ -1,9 +1,6 @@
 #ifndef _SelectMgr_SelectionManager_HeaderFile
 #include <SelectMgr_SelectionManager.hxx>
 #endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
-#include <PrsMgr_PresentationManager3d.hxx>
-#endif
 #ifndef _V3d_Viewer_HeaderFile
 #include <V3d_Viewer.hxx>
 #endif
@@ -60,9 +57,6 @@
 #endif
 #ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Geom_Transformation_HeaderFile
-#include <Geom_Transformation.hxx>
 #endif
 #ifndef _SelectMgr_Filter_HeaderFile
 #include <SelectMgr_Filter.hxx>

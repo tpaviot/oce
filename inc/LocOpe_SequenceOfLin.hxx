@@ -40,6 +40,8 @@ public:
   
       LocOpe_SequenceOfLin();
   
+  Standard_EXPORT   LocOpe_SequenceOfLin(const LocOpe_SequenceOfLin& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~LocOpe_SequenceOfLin()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   LocOpe_SequenceOfLin(const LocOpe_SequenceOfLin& Other);
 
 
 

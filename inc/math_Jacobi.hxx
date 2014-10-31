@@ -36,7 +36,6 @@
 #endif
 class StdFail_NotDone;
 class math_Matrix;
-class math_Vector;
 
 
 

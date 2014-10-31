@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Solid_HeaderFile
+#include <TopoDS_Solid.hxx>
+#endif
+#ifndef _BOPAlgo_PaveFiller_HeaderFile
+#include <BOPAlgo_PaveFiller.hxx>
+#endif
+#ifndef _BOPAlgo_MakerVolume_HeaderFile
+#include <BOPAlgo_MakerVolume.hxx>
+#endif

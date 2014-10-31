@@ -43,6 +43,8 @@ public:
   
       StepFEA_SequenceOfCurve3dElementProperty();
   
+  Standard_EXPORT   StepFEA_SequenceOfCurve3dElementProperty(const StepFEA_SequenceOfCurve3dElementProperty& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~StepFEA_SequenceOfCurve3dElementProperty()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StepFEA_SequenceOfCurve3dElementProperty(const StepFEA_SequenceOfCurve3dElementProperty& Other);
 
 
 

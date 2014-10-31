@@ -41,7 +41,7 @@ class BRepClass_Edge;
 
 
 //! Provide an   exploration of a  BRep Face   for the <br>
-//!          classification. <br>
+//!          classification. Return UV edges. <br>
 class BRepClass_FaceExplorer  {
 public:
 

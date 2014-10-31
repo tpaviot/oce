@@ -31,12 +31,14 @@
 #ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class TDocStd_Application;
 class TDocStd_Document;
 class TDF_Label;
 class Standard_GUID;
 class TDF_Attribute;
-class Draw_Interpretor;
 class DDocStd_DrawDocument;
 
 

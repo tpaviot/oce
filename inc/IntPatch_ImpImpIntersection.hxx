@@ -65,7 +65,7 @@ public:
   
   Standard_EXPORT   IntPatch_ImpImpIntersection(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang);
   
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang) ;
+  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang,const Standard_Boolean isTheTrimmed = Standard_False) ;
   //! Returns True if the calculus was succesfull. <br>
         Standard_Boolean IsDone() const;
   //! Returns true if the is no intersection. <br>

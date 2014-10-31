@@ -25,9 +25,6 @@
 #ifndef _Handle_PColStd_HArray1OfInteger_HeaderFile
 #include <Handle_PColStd_HArray1OfInteger.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _PDataStd_FieldOfHArray1OfHArray1OfInteger_HeaderFile
 #include <PDataStd_FieldOfHArray1OfHArray1OfInteger.hxx>
 #endif
@@ -40,11 +37,7 @@
 #ifndef _Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger_HeaderFile
 #include <Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PColStd_HArray1OfInteger;
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PDataStd_FieldOfHArray1OfHArray1OfInteger;
@@ -70,10 +63,6 @@ public:
         Standard_Integer Upper() const;
   
   Standard_EXPORT     Handle_PColStd_HArray1OfInteger Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
 
   PDataStd_HArray1OfHArray1OfInteger( )
 {
@@ -158,10 +147,6 @@ PDataStd_FieldOfHArray1OfHArray1OfInteger Data;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PDataStd_HArray1OfHArray1OfInteger& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

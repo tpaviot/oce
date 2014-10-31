@@ -38,6 +38,8 @@ class TDF_Label;
 //!           Depending  of   the called  method  an   external <br>
 //!          reference is set  in  the the target  document  to <br>
 //!          registred the externallink. <br>
+//!          Provide services to set, update and perform <br>
+//!          external references. <br>
 //!  Warning1: Nothing is provided in this class  about the <br>
 //!          opportunity to copy, set a link or  update  it. <br>
 //!          Such decisions must be under application control. <br>

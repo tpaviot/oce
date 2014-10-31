@@ -21,12 +21,6 @@
 
 #define BUC60814	//GG_300101	Idem UKI60826
 
-#define IMP150501       //GG_150501     CADPAK_V2 Add Drag() method
-
-#define IMP160701   	//ZSV  Add InitDetected(),MoreDetected(),NextDetected(),
-//                       DetectedCurrentShape(),DetectedCurrentObject()
-//                       methods
-
 #define OCC138          //VTN Avoding infinit loop in AddOrRemoveCurrentObject method.
 
 #define OCC9657
@@ -42,6 +36,8 @@
 #include <AIS_GlobalStatus.hxx>
 #include <AIS_Shape.hxx>
 
+#include <Aspect_Grid.hxx>
+
 #include <V3d_Light.hxx>
 #include <V3d_PositionalLight.hxx>
 #include <V3d_SpotLight.hxx>
@@ -52,10 +48,7 @@
 #include <SelectMgr_Selection.hxx>
 #include <SelectBasics_SensitiveEntity.hxx>
 
-#ifdef IMP150501
-#include <Visual3d_TransientManager.hxx>
 #include <Prs3d_Presentation.hxx>
-#endif
 
 #ifdef OCC9657
 #include <AIS_MapOfInteractive.hxx>
@@ -128,81 +121,68 @@ static void InfoOnLight(const Handle(V3d_View) aView)
 }
 #endif
 */
+
 //=======================================================================
 //function : MoveTo
-//purpose  : 
+//purpose  :
 //=======================================================================
-
-AIS_StatusOfDetection AIS_InteractiveContext::MoveTo(const Standard_Integer XPix, 
-				   const Standard_Integer YPix, 
-				   const Handle(V3d_View)& aView)
+AIS_StatusOfDetection AIS_InteractiveContext::MoveTo (const Standard_Integer  theXPix,
+                                                      const Standard_Integer  theYPix,
+                                                      const Handle(V3d_View)& theView,
+                                                      const Standard_Boolean  theToRedrawOnUpdate)
 {
-  if(HasOpenedContext()){
+  if (HasOpenedContext())
+  {
     myWasLastMain = Standard_True;
-    return myLocalContexts(myCurLocalIndex)->MoveTo(XPix,YPix,aView);
+    return myLocalContexts (myCurLocalIndex)->MoveTo (theXPix, theYPix, theView, theToRedrawOnUpdate);
   }
 
-#ifdef IMP160701
-    //Nullify class members storing information about detected AIS objects.
   myAISCurDetected = 0;
   myAISDetectedSeq.Clear();
-#endif
 
-  // OCC11904 - local variables made non-static - it looks and works better like this
-  Handle (PrsMgr_PresentationManager3d) pmgr ;
-  Handle (StdSelect_ViewerSelector3d) selector;
-  Standard_Boolean ismain = Standard_True,UpdVwr = Standard_False;
-  
-  // Preliminaires
-  if(aView->Viewer()== myMainVwr) {
-    pmgr = myMainPM;
-    selector=myMainSel;
-    myLastPicked = myLastinMain;
-    myWasLastMain = Standard_True;
-  }
-  else 
+  if (theView->Viewer() != myMainVwr)
+  {
     return AIS_SOD_Error;
-  
-  AIS_StatusOfDetection TheStat(AIS_SOD_Nothing);
-  
-  
-  // allonzy
-  selector->Pick(XPix, YPix, aView);
-
-#ifdef IMP160701
-  //filling of myAISDetectedSeq sequence storing information about detected AIS objects
-  // (the objects must be AIS_Shapes).
-  Handle(SelectMgr_EntityOwner) anEntityOwner;
-  const Standard_Integer NbDetected = selector->NbPicked();
-  for(Standard_Integer i_detect = 1;i_detect<=NbDetected;i_detect++)
-  {
-    anEntityOwner = selector->Picked(i_detect);
-    if(!anEntityOwner.IsNull())
-      if(myFilters->IsOk(anEntityOwner))
-      {
-        Handle(AIS_InteractiveObject) anObj = 
-		Handle(AIS_InteractiveObject)::DownCast(anEntityOwner->Selectable());
-        if(!Handle(AIS_Shape)::DownCast(anObj).IsNull())
-          myAISDetectedSeq.Append(anObj);
-      }
   }
-#endif
 
-  selector->Init();
-  if ( selector->More() )
+  // preliminaires
+  myLastPicked  = myLastinMain;
+  myWasLastMain = Standard_True;
+  AIS_StatusOfDetection aStatus        = AIS_SOD_Nothing;
+  Standard_Boolean      toUpdateViewer = Standard_False;
+
+  // allonzy
+  myMainSel->Pick (theXPix, theYPix, theView);
+
+  // filling of myAISDetectedSeq sequence storing information about detected AIS objects
+  // (the objects must be AIS_Shapes)
+  const Standard_Integer aDetectedNb = myMainSel->NbPicked();
+  for (Standard_Integer aDetIter = 1; aDetIter <= aDetectedNb; ++aDetIter)
   {
-    if ( HasOpenedContext() ) 
+    Handle(SelectMgr_EntityOwner) anOwner = myMainSel->Picked (aDetIter);
+    if (anOwner.IsNull()
+     || !myFilters->IsOk (anOwner))
     {
-      if ( !myFilters->IsOk( selector->OnePicked() ) ) 
-        return AIS_SOD_AllBad;
-      else
-        if ( !myLocalContexts( myCurLocalIndex )->Filter()->IsOk( selector->OnePicked() ) )
-          return AIS_SOD_AllBad;
+      continue;
     }
- 
-    // Does nothing if previously detected object is equal to the current one
-    if ( selector->OnePicked()->Selectable() == myLastPicked )
-      return AIS_SOD_OnlyOneDetected;
+
+    Handle(AIS_InteractiveObject) anObj = Handle(AIS_InteractiveObject)::DownCast (anOwner->Selectable());
+    if (!anObj.IsNull())
+    {
+      myAISDetectedSeq.Append (anObj);
+    }
+  }
+
+  myMainSel->Init();
+  if (myMainSel->More())
+  {
+    // does nothing if previously detected object is equal to the current one
+    if (myMainSel->OnePicked()->Selectable() == myLastPicked)
+    {
+      return myLastPicked->State() == 1
+           ? AIS_SOD_Selected
+           : AIS_SOD_OnlyOneDetected;
+    }
  
     // Previously detected object is unhilighted if it is not selected or hilighted 
     // with selection color if it is selected. Such highlighting with selection color 
@@ -211,136 +191,137 @@ AIS_StatusOfDetection AIS_InteractiveContext::MoveTo(const Standard_Integer XPix
     // method call. As result it is necessary to rehighligt it with mySelectionColor.
     if (!myLastPicked.IsNull())
     {
-      Standard_Integer aHiMod = myLastPicked->HasHilightMode() ? myLastPicked->HilightMode() : 0;
+      const Standard_Integer aHiMod = myLastPicked->HasHilightMode() ? myLastPicked->HilightMode() : 0;
       if (myLastPicked->State() != 1)
       {
-        pmgr->Unhighlight (myLastPicked, aHiMod);
-        UpdVwr = Standard_True;
+        myMainPM->Unhighlight (myLastPicked, aHiMod);
+        toUpdateViewer = Standard_True;
       }
       else if (myToHilightSelected)
       {
-        pmgr->Color (myLastPicked, mySelectionColor, aHiMod);
-        UpdVwr = Standard_True;
+        myMainPM->Color (myLastPicked, mySelectionColor, aHiMod);
+        toUpdateViewer = Standard_True;
       }
     }
 
-    // Initialize myLastPicked field with currently detected object
-    myLastPicked = Handle(AIS_InteractiveObject)::DownCast (selector->OnePicked()->Selectable());
+    // initialize myLastPicked field with currently detected object
+    myLastPicked = Handle(AIS_InteractiveObject)::DownCast (myMainSel->OnePicked()->Selectable());
+    myLastinMain = myLastPicked;
 
-    if ( ismain )
-      myLastinMain = myLastPicked;
-
-    // Highlight detected object if it is not selected or myToHilightSelected flag is true
-    if (!myLastPicked.IsNull()
-     && (myLastPicked->State()!= 1 || myToHilightSelected))
+    // highlight detected object if it is not selected or myToHilightSelected flag is true
+    if (!myLastPicked.IsNull())
     {
-      Standard_Integer aHiMod = myLastPicked->HasHilightMode() ? myLastPicked->HilightMode() : 0;
-      pmgr->Color (myLastPicked, myHilightColor, aHiMod);
-      UpdVwr = Standard_True;
-    }
+      if (myLastPicked->State() != 1 || myToHilightSelected)
+      {
+        const Standard_Integer aHiMod = myLastPicked->HasHilightMode() ? myLastPicked->HilightMode() : 0;
+        myMainPM->Color (myLastPicked, myHilightColor, aHiMod);
+        toUpdateViewer = Standard_True;
+      }
 
-    if (!myLastPicked.IsNull()
-      && myLastPicked->State() == 1)
-    {
-      TheStat = AIS_SOD_Selected;
+      aStatus = myLastPicked->State() == 1
+              ? AIS_SOD_Selected
+              : AIS_SOD_OnlyOneDetected;
     }
   }
   else 
   {
-    // Previously detected object is unhilighted if it is not selected or hilighted
-    // with selection color if it is selected.
-    TheStat = AIS_SOD_Nothing;
+    // previously detected object is unhilighted if it is not selected or hilighted
+    // with selection color if it is selected
+    aStatus = AIS_SOD_Nothing;
     if (!myLastPicked.IsNull())
     {
       Standard_Integer aHiMod = myLastPicked->HasHilightMode() ? myLastPicked->HilightMode() : 0;
       if (myLastPicked->State() != 1)
       {
-        pmgr->Unhighlight (myLastPicked, aHiMod);
-        UpdVwr = Standard_True;
+        myMainPM->Unhighlight (myLastPicked, aHiMod);
+        toUpdateViewer = Standard_True;
       }
       else if (myToHilightSelected)
       {
-        pmgr->Color (myLastPicked, mySelectionColor, aHiMod);
-        UpdVwr = Standard_True;
+        myMainPM->Color (myLastPicked, mySelectionColor, aHiMod);
+        toUpdateViewer = Standard_True;
       }
     }
 
-    if ( ismain )
-      myLastinMain.Nullify();
+    myLastinMain.Nullify();
+    myLastPicked.Nullify();
   }
-  
-  if(UpdVwr) aView->Viewer()->Update();
-  myLastPicked.Nullify();
-  
-  mylastmoveview = aView;
-  return TheStat;
+
+  if (toUpdateViewer)
+  {
+    if (theToRedrawOnUpdate)
+    {
+      theView->Viewer()->Update();
+    }
+    else
+    {
+      theView->Viewer()->Invalidate();
+    }
+  }
+
+  mylastmoveview = theView;
+  return aStatus;
 }
 
 //=======================================================================
 //function : Select
 //purpose  : 
 //=======================================================================
-
-AIS_StatusOfPick AIS_InteractiveContext::Select(const Standard_Integer XPMin,
-						const Standard_Integer  YPMin,
-						const Standard_Integer  XPMax,
-						const Standard_Integer  YPMax, 
-						const Handle(V3d_View)& aView,
-						const Standard_Boolean updateviewer)
+AIS_StatusOfPick AIS_InteractiveContext::Select (const Standard_Integer  theXPMin,
+                                                 const Standard_Integer  theYPMin,
+                                                 const Standard_Integer  theXPMax,
+                                                 const Standard_Integer  theYPMax,
+                                                 const Handle(V3d_View)& theView,
+                                                 const Standard_Boolean  toUpdateViewer)
 {
   // all objects detected by the selector are taken, previous current objects are emptied,
   // new objects are put...
 
-  if(HasOpenedContext())
-    return myLocalContexts(myCurLocalIndex)->Select(XPMin,YPMin,XPMax,YPMax,aView,updateviewer);
-
-  ClearCurrents(Standard_False);
-  // OCC11904 - local variables made non-static - it looks and works better like this
-  Handle(StdSelect_ViewerSelector3d) selector;
-  
-  if(aView->Viewer()== myMainVwr) {
-    selector= myMainSel;
-    myWasLastMain = Standard_True;}
-
-  selector->Pick(XPMin,YPMin,XPMax,YPMax,aView);
-  AIS_Selection::SetCurrentSelection(myCurrentName.ToCString());
-
-#ifdef OCC9657
-  AIS_MapOfInteractive theSelectedObj;
-  for( selector->Init(); selector->More(); selector->Next() )
+  if (HasOpenedContext())
   {
-    Handle( AIS_InteractiveObject ) anObj = 
-      Handle( AIS_InteractiveObject )::DownCast( selector->Picked()->Selectable() );
-    if( !anObj.IsNull() )
-      theSelectedObj.Add( anObj );
+    return myLocalContexts(myCurLocalIndex)->Select (theXPMin, theYPMin,
+                                                     theXPMax, theYPMax,
+                                                     theView, toUpdateViewer);
   }
-  AIS_MapIteratorOfMapOfInteractive anIt( theSelectedObj );
-  for( ; anIt.More(); anIt.Next() )
+
+  ClearCurrents (Standard_False);
+
+  Handle(StdSelect_ViewerSelector3d) aSelector;
+
+  if (theView->Viewer() == myMainVwr)
   {
-    AIS_Selection::Select( anIt.Key() );
-    anIt.Key()->State(1);
+    aSelector = myMainSel;
+    myWasLastMain = Standard_True;
   }
-#else
-  for(selector->Init();selector->More();selector->Next()){
-    const Handle(SelectMgr_SelectableObject)& SO = selector->Picked()->Selectable();
-    if(!SO.IsNull()){
-#ifdef OCC138
-      AIS_Selection::Select(SO);
-      (*((Handle(AIS_InteractiveObject)*)&SO))->State(1);
-#else
-      (*((Handle(AIS_InteractiveObject)*)&SO))->State(1);
-      AIS_Selection::Select(SO);
-#endif //OCC138
+
+  aSelector->Pick (theXPMin, theYPMin, theXPMax, theYPMax, theView);
+  AIS_Selection::SetCurrentSelection (myCurrentName.ToCString());
+
+  AIS_MapOfInteractive anObjectsToSelect;
+  for (aSelector->Init(); aSelector->More(); aSelector->Next())
+  {
+    Handle(AIS_InteractiveObject) anObj = 
+      Handle(AIS_InteractiveObject)::DownCast (aSelector->Picked()->Selectable());
+    if (!anObj.IsNull())
+    {
+      anObjectsToSelect.Add (anObj);
     }
   }
 
-#endif //OCC9657
-  HilightCurrents(updateviewer);
-  
-  Standard_Integer NS = NbCurrents();
-  if(NS==0) return AIS_SOP_NothingSelected;
-  if(NS==1) return AIS_SOP_OneSelected;
-  return AIS_SOP_SeveralSelected;
+  AIS_MapIteratorOfMapOfInteractive anIt (anObjectsToSelect);
+  for ( ; anIt.More(); anIt.Next())
+  {
+    AIS_Selection::Select (anIt.Key());
+    anIt.Key()->State (1);
+  }
+
+  HilightCurrents (toUpdateViewer);
+
+  Standard_Integer aSelNum = NbCurrents();
+
+  return (aSelNum == 0) ? AIS_SOP_NothingSelected
+                        : (aSelNum == 1) ? AIS_SOP_OneSelected
+                                         : AIS_SOP_SeveralSelected;
   
 }
 
@@ -348,64 +329,56 @@ AIS_StatusOfPick AIS_InteractiveContext::Select(const Standard_Integer XPMin,
 //function : Select
 //purpose  : Selection by polyline
 //=======================================================================
-
-AIS_StatusOfPick AIS_InteractiveContext::Select(const TColgp_Array1OfPnt2d& aPolyline,
-						const Handle(V3d_View)& aView,
-						const Standard_Boolean updateviewer)
+AIS_StatusOfPick AIS_InteractiveContext::Select (const TColgp_Array1OfPnt2d& thePolyline,
+                                                 const Handle(V3d_View)&     theView,
+                                                 const Standard_Boolean      toUpdateViewer)
 {
   // all objects detected by the selector are taken, previous current objects are emptied,
   // new objects are put...
 
-  if(HasOpenedContext())
-    return myLocalContexts(myCurLocalIndex)->Select(aPolyline,aView,updateviewer);
-
-  ClearCurrents(Standard_False);
-  // OCC11904 - local variables made non-static - it looks and works better like this
-  Handle(StdSelect_ViewerSelector3d) selector;
-  
-  if(aView->Viewer()== myMainVwr) {
-    selector= myMainSel;
-    myWasLastMain = Standard_True;}
-
-  selector->Pick(aPolyline,aView);
-  AIS_Selection::SetCurrentSelection(myCurrentName.ToCString());
-
-
-#ifdef OCC9657
-  AIS_MapOfInteractive theSelectedObj;
-  for( selector->Init(); selector->More(); selector->Next() )
+  if (HasOpenedContext())
   {
-    Handle( AIS_InteractiveObject ) anObj = 
-      Handle( AIS_InteractiveObject )::DownCast( selector->Picked()->Selectable() );
-    if( !anObj.IsNull() )
-      theSelectedObj.Add( anObj );
+    return myLocalContexts(myCurLocalIndex)->Select (thePolyline, theView, toUpdateViewer);
   }
-  AIS_MapIteratorOfMapOfInteractive anIt( theSelectedObj );
-  for( ; anIt.More(); anIt.Next() )
+
+  ClearCurrents (Standard_False);
+
+  Handle(StdSelect_ViewerSelector3d) aSelector;
+
+  if (theView->Viewer() == myMainVwr)
   {
-    AIS_Selection::Select( anIt.Key() );
-    anIt.Key()->State(1);
+    aSelector = myMainSel;
+    myWasLastMain = Standard_True;
   }
-#else
-  for(selector->Init();selector->More();selector->Next()){
-    const Handle(SelectMgr_SelectableObject)& SO = selector->Picked()->Selectable();
-    if(!SO.IsNull()){
-#ifdef OCC138
-      AIS_Selection::Select(SO);
-      (*((Handle(AIS_InteractiveObject)*)&SO))->State(1);
-#else
-      (*((Handle(AIS_InteractiveObject)*)&SO))->State(1);
-      AIS_Selection::Select(SO);
-#endif //OCC138
+
+  aSelector->Pick (thePolyline, theView);
+  AIS_Selection::SetCurrentSelection (myCurrentName.ToCString());
+
+  AIS_MapOfInteractive anObjectsToSelect;
+  for (aSelector->Init(); aSelector->More(); aSelector->Next())
+  {
+    Handle(AIS_InteractiveObject) anObj = 
+      Handle( AIS_InteractiveObject )::DownCast (aSelector->Picked()->Selectable());
+    if (!anObj.IsNull())
+    {
+      anObjectsToSelect.Add (anObj);
     }
   }
-#endif //OCC9657
-  HilightCurrents(updateviewer);
-  
-  Standard_Integer NS = NbCurrents();
-  if(NS==0) return AIS_SOP_NothingSelected;
-  if(NS==1) return AIS_SOP_OneSelected;
-  return AIS_SOP_SeveralSelected;
+
+  AIS_MapIteratorOfMapOfInteractive anIt (anObjectsToSelect);
+  for ( ; anIt.More(); anIt.Next())
+  {
+    AIS_Selection::Select (anIt.Key());
+    anIt.Key()->State (1);
+  }
+
+  HilightCurrents (toUpdateViewer);
+
+  Standard_Integer aSelNum = NbCurrents();
+
+  return (aSelNum == 0) ? AIS_SOP_NothingSelected
+                        : (aSelNum == 1) ? AIS_SOP_OneSelected
+                                         : AIS_SOP_SeveralSelected;
   
 }
 
@@ -413,175 +386,204 @@ AIS_StatusOfPick AIS_InteractiveContext::Select(const TColgp_Array1OfPnt2d& aPol
 //function : Select
 //purpose  : 
 //=======================================================================
-
-AIS_StatusOfPick AIS_InteractiveContext::Select(const Standard_Boolean updateviewer)
+AIS_StatusOfPick AIS_InteractiveContext::Select (const Standard_Boolean toUpdateViewer)
 {
-  if(HasOpenedContext()){
+  if (HasOpenedContext())
+  {
     if(myWasLastMain)
-      return myLocalContexts(myCurLocalIndex)->Select(updateviewer);
+    {
+      return myLocalContexts(myCurLocalIndex)->Select (toUpdateViewer);
+    }
     else
+    {
+      myLocalContexts(myCurLocalIndex)->SetSelected (myLastPicked, toUpdateViewer);
+      return AIS_SOP_OneSelected;
+    }
+  }
+
+  if (myWasLastMain && !myLastinMain.IsNull())
+  {
+    if(myLastinMain->State() != 1)
+    {
+      SetCurrentObject (myLastinMain,Standard_False);
+      if(toUpdateViewer)
       {
-	myLocalContexts(myCurLocalIndex)->SetSelected(myLastPicked,updateviewer);
-	return AIS_SOP_OneSelected;
-      }
-  }
-//  AIS_StatusOfPick PS(AIS_SOP_NothingSelected);
-  if(myWasLastMain && !myLastinMain.IsNull()){
-    if(myLastinMain->State()!=1){
-      SetCurrentObject(myLastinMain,Standard_False);
-      if(updateviewer)
-	UpdateCurrentViewer();}
-  }
-  else{
-    AIS_Selection::SetCurrentSelection(myCurrentName.ToCString());
-    Handle(AIS_Selection) S = AIS_Selection::CurrentSelection();
-    Handle(Standard_Transient) Tr;
-    Handle(AIS_InteractiveObject) IO;
-    
-    for(S->Init();S->More();S->Next()){
-      Tr = S->Value();
-      IO = (*((Handle(AIS_InteractiveObject)*)&Tr));
-      IO->State(0);
-      Unhilight(IO,Standard_False);
-      if(myObjects.IsBound(IO)){ // anti-plantage-rob
-	if(myObjects(IO)->IsSubIntensityOn())
-	  HilightWithColor(IO,mySubIntensity,Standard_False);
+        UpdateCurrentViewer();
       }
     }
-    
+  }
+  else
+  {
+    AIS_Selection::SetCurrentSelection (myCurrentName.ToCString());
+    Handle(AIS_Selection) aSelection = AIS_Selection::CurrentSelection();
+    Handle(AIS_InteractiveObject) anObj;
+    for (aSelection->Init(); aSelection->More(); aSelection->Next())
+    {
+      anObj = Handle(AIS_InteractiveObject)::DownCast (aSelection->Value());
+      anObj->State (0);
+      Unhilight (anObj,Standard_False);
+      if (myObjects.IsBound (anObj) && myObjects(anObj)->IsSubIntensityOn())
+      {
+        HilightWithColor (anObj, mySubIntensity, Standard_False);
+      }
+    }
+
     AIS_Selection::Select();
-    if(updateviewer){
-      if(myWasLastMain)
+    if (toUpdateViewer && myWasLastMain)
+    {
         UpdateCurrentViewer();
     }
   }
-  Standard_Integer NS = NbCurrents();
-  if(NS==0) return AIS_SOP_NothingSelected;
-  if(NS==1) return AIS_SOP_OneSelected;
-  return AIS_SOP_SeveralSelected;
+
+  Standard_Integer aSelNum = NbCurrents();
+
+  return (aSelNum == 0) ? AIS_SOP_NothingSelected
+                        : (aSelNum == 1) ? AIS_SOP_OneSelected
+                                         : AIS_SOP_SeveralSelected;
 }
 
 //=======================================================================
 //function : ShiftSelect
 //purpose  : 
 //=======================================================================
-
-AIS_StatusOfPick AIS_InteractiveContext::ShiftSelect(const Standard_Boolean updateviewer)
+AIS_StatusOfPick AIS_InteractiveContext::ShiftSelect (const Standard_Boolean toUpdateViewer)
 {
-  if(HasOpenedContext()){
+  if (HasOpenedContext())
+  {
     if(myWasLastMain)
-      return myLocalContexts(myCurLocalIndex)->ShiftSelect(updateviewer);
-    else{
-      myLocalContexts(myCurLocalIndex)->AddOrRemoveSelected(myLastPicked,updateviewer);
-      Standard_Integer NS =NbSelected();
-      if(NS==0) return AIS_SOP_NothingSelected;
-      if(NS==1) return AIS_SOP_OneSelected;
-      return AIS_SOP_SeveralSelected;
-    }
-  }
-  if(myWasLastMain && !myLastinMain.IsNull())
-    AddOrRemoveCurrentObject(myLastinMain,updateviewer);
-
-  Standard_Integer NS = NbCurrents();
-  if(NS==0) return AIS_SOP_NothingSelected;
-  if(NS==1) return AIS_SOP_OneSelected;
-  return AIS_SOP_SeveralSelected;
-}
-
-
-//=======================================================================
-//function : ShiftSelect
-//purpose  : 
-//=======================================================================
-
-AIS_StatusOfPick AIS_InteractiveContext::ShiftSelect(const Standard_Integer XPMin, 
-						     const Standard_Integer YPMin, 
-						     const Standard_Integer XPMax, 
-						     const Standard_Integer YPMax, 
-						     const Handle(V3d_View)& aView,
-						     const Standard_Boolean updateviewer)
-{
-  
-  if(HasOpenedContext())
-    return myLocalContexts(myCurLocalIndex)->ShiftSelect(XPMin,YPMin,XPMax,YPMax,aView,updateviewer);
-  
-  UnhilightCurrents(Standard_False);
-  // OCC11904 - local variables made non-static - it looks and works better like this
-  Handle(StdSelect_ViewerSelector3d) selector;
-  
-  if(aView->Viewer()== myMainVwr) {
-    selector= myMainSel;
-    myWasLastMain = Standard_True;}
-  else
-    return AIS_SOP_NothingSelected;
-  
-  selector->Pick(XPMin,YPMin,XPMax,YPMax,aView);
-  AIS_Selection::SetCurrentSelection(myCurrentName.ToCString());
-  for(selector->Init();selector->More();selector->Next()){
-    const Handle(SelectMgr_SelectableObject)& SO = selector->Picked()->Selectable();
-    if(!SO.IsNull()){
-      AIS_SelectStatus SelStat = AIS_Selection::Select(SO);
-      Standard_Integer mod = (SelStat==AIS_SS_Added)?1:0;
-      (*((Handle(AIS_InteractiveObject)*)&SO))->State(mod);
-    }
-  }
-  
-  HilightCurrents(updateviewer);
-  
-  Standard_Integer NS =NbCurrents();
-  if(NS==0) return AIS_SOP_NothingSelected;
-  if(NS==1) return AIS_SOP_OneSelected;
-  return AIS_SOP_SeveralSelected;
-  
-}
-
-//=======================================================================
-//function : ShiftSelect
-//purpose  : 
-//=======================================================================
-
-AIS_StatusOfPick AIS_InteractiveContext::ShiftSelect( const TColgp_Array1OfPnt2d& aPolyline,
-                                                      const Handle(V3d_View)& aView,
-                                                      const Standard_Boolean updateviewer )
-{
-    if( HasOpenedContext() )
-        return myLocalContexts( myCurLocalIndex )->ShiftSelect( aPolyline, aView, updateviewer );
-
-    UnhilightCurrents( Standard_False );
-    // OCC11904 - local variables made non-static - it looks and works better like this
-    Handle(StdSelect_ViewerSelector3d) selector;
-  
-    if( aView->Viewer() == myMainVwr ) {
-        selector= myMainSel;
-        myWasLastMain = Standard_True;
+    {
+      return myLocalContexts (myCurLocalIndex)->ShiftSelect (toUpdateViewer);
     }
     else
-        return AIS_SOP_NothingSelected;
+    {
+      myLocalContexts (myCurLocalIndex)->AddOrRemoveSelected (myLastPicked, toUpdateViewer);
 
-    selector->Pick( aPolyline, aView );
-    
-    AIS_Selection::SetCurrentSelection( myCurrentName.ToCString() );
-    for( selector->Init(); selector->More(); selector->Next() ) {
-        const Handle(SelectMgr_SelectableObject)& SO = selector->Picked()->Selectable();
-        if( !SO.IsNull() ) {
-            AIS_SelectStatus SelStat = AIS_Selection::Select( SO );
-            Standard_Integer mod = ( SelStat == AIS_SS_Added ) ? 1 : 0;
-            (*((Handle(AIS_InteractiveObject)*)&SO))->State( mod );
-        }
+      Standard_Integer aSelNum = NbSelected();
+      return (aSelNum == 0) ? AIS_SOP_NothingSelected
+                            : (aSelNum == 1) ? AIS_SOP_OneSelected
+                                             : AIS_SOP_SeveralSelected;
     }
-    
-    HilightCurrents( updateviewer );
-    Standard_Integer NS = NbCurrents();
-    if( NS == 0 ) return AIS_SOP_NothingSelected;
-    if( NS == 1 ) return AIS_SOP_OneSelected;
-    return AIS_SOP_SeveralSelected;
+  }
+
+  if (myWasLastMain && !myLastinMain.IsNull())
+  {
+    AddOrRemoveCurrentObject (myLastinMain, toUpdateViewer);
+  }
+
+  Standard_Integer aCurrentSelNum = NbCurrents();
+
+  return (aCurrentSelNum == 0) ? AIS_SOP_NothingSelected
+                               : (aCurrentSelNum == 1) ? AIS_SOP_OneSelected
+                                                       : AIS_SOP_SeveralSelected;
+}
+
+//=======================================================================
+//function : ShiftSelect
+//purpose  : 
+//=======================================================================
+AIS_StatusOfPick AIS_InteractiveContext::ShiftSelect (const Standard_Integer theXPMin,
+                                                      const Standard_Integer theYPMin,
+                                                      const Standard_Integer theXPMax,
+                                                      const Standard_Integer theYPMax,
+                                                      const Handle(V3d_View)& theView,
+                                                      const Standard_Boolean toUpdateViewer)
+{
+  if (HasOpenedContext())
+  {
+    return myLocalContexts(myCurLocalIndex)->ShiftSelect (theXPMin, theYPMin, theXPMax, theYPMax,
+                                                          theView, toUpdateViewer);
+  }
+
+  UnhilightCurrents (Standard_False);
+
+  Handle(StdSelect_ViewerSelector3d) aSelector;
+  if (theView->Viewer() == myMainVwr)
+  {
+    aSelector = myMainSel;
+    myWasLastMain = Standard_True;
+  }
+  else
+  {
+    return AIS_SOP_NothingSelected;
+  }
+
+  aSelector->Pick (theXPMin, theYPMin, theXPMax, theYPMax, theView);
+  AIS_Selection::SetCurrentSelection (myCurrentName.ToCString());
+  for (aSelector->Init(); aSelector->More(); aSelector->Next())
+  {
+    Handle(AIS_InteractiveObject) anObjToSelect =  Handle(AIS_InteractiveObject)::DownCast (aSelector->Picked()->Selectable());
+    if (!anObjToSelect.IsNull())
+    {
+      AIS_SelectStatus aSelStatus = AIS_Selection::Select (anObjToSelect);
+      Standard_Integer aState = (aSelStatus == AIS_SS_Added) ? 1 : 0;
+      anObjToSelect->State (aState);
+    }
+  }
+
+  HilightCurrents (toUpdateViewer);
+
+  Standard_Integer aSelNum = NbCurrents();
+
+  return (aSelNum == 0) ? AIS_SOP_NothingSelected
+                        : (aSelNum == 1) ? AIS_SOP_OneSelected
+                                         : AIS_SOP_SeveralSelected;
+
+}
+
+//=======================================================================
+//function : ShiftSelect
+//purpose  : 
+//=======================================================================
+AIS_StatusOfPick AIS_InteractiveContext::ShiftSelect (const TColgp_Array1OfPnt2d& thePolyline,
+                                                      const Handle(V3d_View)& theView,
+                                                      const Standard_Boolean toUpdateViewer)
+{
+  if (HasOpenedContext())
+  {
+    return myLocalContexts(myCurLocalIndex)->ShiftSelect (thePolyline, theView, toUpdateViewer);
+  }
+
+  UnhilightCurrents (Standard_False);
+
+  Handle(StdSelect_ViewerSelector3d) aSelector;
+
+  if (theView->Viewer() == myMainVwr)
+  {
+    aSelector= myMainSel;
+    myWasLastMain = Standard_True;
+  }
+  else
+  {
+    return AIS_SOP_NothingSelected;
+  }
+
+  aSelector->Pick (thePolyline, theView);
+
+  AIS_Selection::SetCurrentSelection (myCurrentName.ToCString());
+  for (aSelector->Init(); aSelector->More(); aSelector->Next())
+  {
+    Handle(AIS_InteractiveObject) anObjToSelect = Handle(AIS_InteractiveObject)::DownCast (aSelector->Picked()->Selectable());
+    if (!anObjToSelect.IsNull())
+    {
+      AIS_SelectStatus aSelStatus = AIS_Selection::Select (anObjToSelect);
+      Standard_Integer aState = (aSelStatus == AIS_SS_Added ) ? 1 : 0;
+      anObjToSelect->State (aState);
+    }
+  }
+
+  HilightCurrents (toUpdateViewer);
+
+  Standard_Integer aSelNum = NbCurrents();
+
+  return (aSelNum == 0) ? AIS_SOP_NothingSelected
+                        : (aSelNum == 1) ? AIS_SOP_OneSelected
+                                         : AIS_SOP_SeveralSelected;
 }
 
 //=======================================================================
 //function : SetCurrentObject
 //purpose  : 
 //=======================================================================
-
 void AIS_InteractiveContext::SetCurrentObject(const Handle(AIS_InteractiveObject)& anIObj,
 					      const Standard_Boolean updateviewer)
 {
@@ -1118,17 +1120,21 @@ Standard_Boolean AIS_InteractiveContext::HasSelectedShape() const
 
 TopoDS_Shape AIS_InteractiveContext::SelectedShape() const 
 {
+  if (!HasOpenedContext())
+  {
+    TopoDS_Shape aResShape;
+    Handle(AIS_Shape) aShape = Handle(AIS_Shape)::DownCast (SelectedInteractive());
+    if (!aShape.IsNull())
+    {
+      aResShape = aShape->Shape().Located (TopLoc_Location (SelectedInteractive()->Transformation()) * aShape->Shape().Location());
+    }
 
-  if(!HasOpenedContext()){
-    TopoDS_Shape sh;
-#ifdef IMP280200
-    Handle(AIS_Shape) shape = 
-	Handle(AIS_Shape)::DownCast(SelectedInteractive());
-    if( !shape.IsNull() ) sh = shape->Shape();
-#endif
-    return sh;
-  } else
-    return myLocalContexts(myCurLocalIndex)->SelectedShape();
+    return aResShape;
+  } 
+  else
+  {
+    return myLocalContexts (myCurLocalIndex)->SelectedShape();
+  }
 }
 
 //=======================================================================
@@ -1310,71 +1316,46 @@ Handle(SelectMgr_EntityOwner) AIS_InteractiveContext::DetectedOwner() const
 
 //=======================================================================
 //function : HilightNextDetected
-//purpose  : 
+//purpose  :
 //=======================================================================
-Standard_Integer AIS_InteractiveContext::HilightNextDetected(const Handle(V3d_View)& V)
+Standard_Integer AIS_InteractiveContext::HilightNextDetected (const Handle(V3d_View)& theView,
+                                                              const Standard_Boolean  theToRedrawImmediate)
 {
-  if(!HasOpenedContext())
-    return 0;
-  return myLocalContexts(myCurLocalIndex)->HilightNextDetected(V);
+  return HasOpenedContext()
+       ? myLocalContexts (myCurLocalIndex)->HilightNextDetected (theView, theToRedrawImmediate)
+       : 0;
     
 }
 
 //=======================================================================
 //function : HilightNextDetected
-//purpose  : 
+//purpose  :
 //=======================================================================
-Standard_Integer AIS_InteractiveContext::HilightPreviousDetected(const Handle(V3d_View)& V)
+Standard_Integer AIS_InteractiveContext::HilightPreviousDetected (const Handle(V3d_View)& theView,
+                                                                  const Standard_Boolean  theToRedrawImmediate)
 {
-  if(!HasOpenedContext())
-    return 0;
-  return myLocalContexts(myCurLocalIndex)->HilightPreviousDetected(V);
+  return HasOpenedContext()
+       ? myLocalContexts (myCurLocalIndex)->HilightPreviousDetected (theView, theToRedrawImmediate)
+       : 0;
     
 }
 
-#ifdef IMP150501
-void AIS_InteractiveContext::Drag(
-                                const Handle(V3d_View)& aView,
-                                const Handle(AIS_InteractiveObject)& anObject,
-                                const Handle(Geom_Transformation)& aTrsf,
-                                const Standard_Boolean postConcatenate,
-                                const Standard_Boolean update,
-                                const Standard_Boolean zBuffer) {
-
-  if( anObject.IsNull() || aView.IsNull() ) return;
-
-  if( update ) {
-    anObject->SetTransformation(aTrsf,postConcatenate,Standard_True);
-    aView->Update();
-  } else if( Visual3d_TransientManager::BeginDraw(aView->View(),
-                                        zBuffer,Standard_False) ) {
-    Handle(Prs3d_Presentation) P = anObject->Presentation();
-    if( !P.IsNull() ) {
-      if( postConcatenate ) P->Multiply(aTrsf);
-      else                  P->Transform(aTrsf);
-      Visual3d_TransientManager::DrawStructure(P);
-    }
-    Visual3d_TransientManager::EndDraw(Standard_True);
-  }
-}
-#endif
-
-#ifdef IMP160701
 //=======================================================================
 //function : InitDetected
 //purpose  :
 //=======================================================================
 void AIS_InteractiveContext::InitDetected()
 {
-  if(HasOpenedContext())
+  if (HasOpenedContext())
   {
     myLocalContexts(myCurLocalIndex)->InitDetected();
     return;
   }
 
   if(myAISDetectedSeq.Length() != 0)
+  {
     myAISCurDetected = 1;
-
+  }
 }
 
 //=======================================================================
@@ -1383,10 +1364,12 @@ void AIS_InteractiveContext::InitDetected()
 //=======================================================================
 Standard_Boolean AIS_InteractiveContext::MoreDetected() const
 {
-  if(HasOpenedContext())
+  if (HasOpenedContext())
+  {
     return myLocalContexts(myCurLocalIndex)->MoreDetected();
+  }
 
-  return (myAISCurDetected>0 &&myAISCurDetected <= myAISDetectedSeq.Length()) ?
+  return (myAISCurDetected > 0 && myAISCurDetected <= myAISDetectedSeq.Length()) ?
           Standard_True : Standard_False;
 }
 
@@ -1409,34 +1392,35 @@ void AIS_InteractiveContext::NextDetected()
 //function : DetectedCurrentShape
 //purpose  :
 //=======================================================================
-
 const TopoDS_Shape& AIS_InteractiveContext::DetectedCurrentShape() const
 {
-  if(HasOpenedContext())
+  if (HasOpenedContext())
+  {
     return myLocalContexts(myCurLocalIndex)->DetectedCurrentShape();
+  }
 
-  static TopoDS_Shape bidsh;
-  if(myAISCurDetected > 0 &&
-     myAISCurDetected <= myAISDetectedSeq.Length())
-    return Handle(AIS_Shape)::DownCast(myAISDetectedSeq(myAISCurDetected))->Shape();
-  return bidsh;
+  static TopoDS_Shape aDummyShape;
+
+  Handle(AIS_Shape) aCurrentShape = Handle(AIS_Shape)::DownCast (DetectedCurrentObject());
+
+  if (aCurrentShape.IsNull())
+  {
+    return aDummyShape;
+  }
+
+  return aCurrentShape->Shape();
 }
 
 //=======================================================================
 //function : DetectedCurrentObject
 //purpose  :
 //=======================================================================
-
-Handle(AIS_InteractiveObject) AIS_InteractiveContext::DetectedCurrentObject() const {
-  if(HasOpenedContext())
+Handle(AIS_InteractiveObject) AIS_InteractiveContext::DetectedCurrentObject() const
+{
+  if (HasOpenedContext())
+  {
     return myLocalContexts(myCurLocalIndex)->DetectedCurrentObject();
+  }
 
-  Handle(AIS_InteractiveObject) aBad;
- 
-  if(myAISCurDetected > 0 &&
-     myAISCurDetected <= myAISDetectedSeq.Length())
-      return myAISDetectedSeq(myAISCurDetected);
-  else
-    return aBad;
+  return MoreDetected() ? myAISDetectedSeq(myAISCurDetected) : NULL;
 }
-#endif

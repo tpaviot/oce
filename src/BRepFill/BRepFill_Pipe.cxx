@@ -263,8 +263,7 @@ void BRepFill_Pipe::Perform(const TopoDS_Wire&  Spine,
   myLoc->Law(1)->D0(first, M, V);
     fila.SetValues(M(1,1), M(1,2), M(1,3), V.X(),
 		   M(2,1), M(2,2), M(2,3), V.Y(),
-		   M(3,1), M(3,2), M(3,3), V.Z(),
-		   1.e-12, 1.e-14);
+		   M(3,1), M(3,2), M(3,3), V.Z());
 
   fila.Multiply(myTrsf);
   TopLoc_Location LocFirst(fila);
@@ -293,8 +292,7 @@ void BRepFill_Pipe::Perform(const TopoDS_Wire&  Spine,
 //    try { // Not good, but there are no other means to test SetValues
   fila.SetValues(M(1,1), M(1,2), M(1,3), V.X(),
 		 M(2,1), M(2,2), M(2,3), V.Y(),
-		 M(3,1), M(3,2), M(3,3), V.Z(),
-		 1.e-12, 1.e-14);
+		 M(3,1), M(3,2), M(3,3), V.Z());
   fila.Multiply(myTrsf);
   TopLoc_Location LocLast(fila);
   if (! myLoc->IsClosed() || LocFirst != LocLast) {
@@ -361,6 +359,16 @@ const TopoDS_Shape& BRepFill_Pipe::Profile() const
 const TopoDS_Shape& BRepFill_Pipe::Shape() const 
 {
   return myShape;
+}
+
+//=======================================================================
+//function : ErrorOnSurface
+//purpose  : 
+//=======================================================================
+
+Standard_Real BRepFill_Pipe::ErrorOnSurface() const 
+{
+  return myErrorOnSurf;
 }
 
 
@@ -518,9 +526,10 @@ TopoDS_Wire BRepFill_Pipe::PipeLine(const gp_Pnt& Point)
  // Sweeping
  BRepFill_Sweep MkSw(Section, myLoc, Standard_True);
  MkSw.SetForceApproxC1(myForceApproxC1);
- MkSw.Build( myReversedEdges, myTapes,
+ MkSw.Build( myReversedEdges, myTapes, myRails,
              BRepFill_Modified, myContinuity, GeomFill_Location, myDegmax, mySegmax );
  TopoDS_Shape aLocalShape = MkSw.Shape();
+ myErrorOnSurf = MkSw.ErrorOnSurface();
  return TopoDS::Wire(aLocalShape);
 // return TopoDS::Wire(MkSw.Shape());
 }
@@ -580,6 +589,7 @@ TopoDS_Shape BRepFill_Pipe::MakeShape(const TopoDS_Shape& S,
 	W.Closed(LastShape.Closed());
 	TheLast = W;
       }
+      result.Closed (BRep_Tool::IsClosed (result));
       break;
     }
 	  
@@ -594,6 +604,7 @@ TopoDS_Shape BRepFill_Pipe::MakeShape(const TopoDS_Shape& S,
       if ( !mySpine.Closed() && !TheFirst.IsNull()) {
 	 B.Add(result, TheFirst.Reversed());
       }
+      result.Closed (BRep_Tool::IsClosed (result));
       break;
     }
 
@@ -645,9 +656,10 @@ TopoDS_Shape BRepFill_Pipe::MakeShape(const TopoDS_Shape& S,
 	new (BRepFill_ShapeLaw) (TopoDS::Vertex(TheS));
       BRepFill_Sweep MkSw(Section, myLoc, Standard_True);
       MkSw.SetForceApproxC1(myForceApproxC1);
-      MkSw.Build( myReversedEdges, myTapes,
+      MkSw.Build( myReversedEdges, myTapes, myRails,
                   BRepFill_Modified, myContinuity, GeomFill_Location, myDegmax, mySegmax );
       result = MkSw.Shape();
+      myErrorOnSurf = MkSw.ErrorOnSurface();
 
       Handle(TopTools_HArray2OfShape) aSections = MkSw.Sections();
 
@@ -666,9 +678,10 @@ TopoDS_Shape BRepFill_Pipe::MakeShape(const TopoDS_Shape& S,
       MkSw.SetBounds(TopoDS::Wire(TheFirst), 
 		     TopoDS::Wire(TheLast));
       MkSw.SetForceApproxC1(myForceApproxC1);
-      MkSw.Build( myReversedEdges, myTapes,
+      MkSw.Build( myReversedEdges, myTapes, myRails,
                   BRepFill_Modified, myContinuity, GeomFill_Location, myDegmax, mySegmax );
       result = MkSw.Shape();
+      myErrorOnSurf = MkSw.ErrorOnSurface();
       //Correct <myFirst> and <myLast>
       ReverseModifiedEdges(myFirst, myReversedEdges);
       ReverseModifiedEdges(myLast, myReversedEdges);

@@ -43,6 +43,8 @@ public:
   
   Standard_EXPORT   Message_ListOfMsg();
   
+  Standard_EXPORT   Message_ListOfMsg(const Message_ListOfMsg& Other);
+  
   Standard_EXPORT     void Assign(const Message_ListOfMsg& Other) ;
     void operator=(const Message_ListOfMsg& Other) 
 {
@@ -100,8 +102,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Message_ListOfMsg(const Message_ListOfMsg& Other);
 
 
 Standard_Address myFirst;

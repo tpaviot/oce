@@ -16,26 +16,6 @@
 #include <Message_PrinterOStream.hxx>
 
 //=======================================================================
-//function : GetTraceLevel
-//purpose  : 
-//=======================================================================
-
-inline Message_Gravity Message_PrinterOStream::GetTraceLevel() const
-{
-  return myTraceLevel;
-}
-
-//=======================================================================
-//function : SetTraceLevel
-//purpose  : 
-//=======================================================================
-
-inline void Message_PrinterOStream::SetTraceLevel (const Message_Gravity theTraceLevel)
-{
-  myTraceLevel = theTraceLevel;
-}
-
-//=======================================================================
 //function : GetUseUtf8
 //purpose  : 
 //=======================================================================
@@ -64,4 +44,3 @@ inline Standard_OStream& Message_PrinterOStream::GetStream () const
 {
   return *(Standard_OStream*)myStream;
 }
-

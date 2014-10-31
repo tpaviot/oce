@@ -34,17 +34,10 @@
 #ifndef _Handle_PShort_SeqNodeOfHSequenceOfShortReal_HeaderFile
 #include <Handle_PShort_SeqNodeOfHSequenceOfShortReal.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PShort_SeqNodeOfHSequenceOfShortReal;
-class Standard_Persistent;
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class PShort_SeqExplorerOfHSequenceOfShortReal;
@@ -105,10 +98,6 @@ public:
   
   Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
   
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
-  
   Standard_EXPORT     void Destroy() ;
 ~PShort_HSequenceOfShortReal()
 {
@@ -154,14 +143,6 @@ Standard_Integer Size;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline Handle_Standard_Persistent ShallowCopy(const Handle_PShort_HSequenceOfShortReal& me) {
- return me->ShallowCopy();
-}
-
-inline void ShallowDump(const Handle_PShort_HSequenceOfShortReal& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

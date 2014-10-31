@@ -43,6 +43,8 @@ public:
   
       StlMesh_SequenceOfMeshTriangle();
   
+  Standard_EXPORT   StlMesh_SequenceOfMeshTriangle(const StlMesh_SequenceOfMeshTriangle& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~StlMesh_SequenceOfMeshTriangle()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StlMesh_SequenceOfMeshTriangle(const StlMesh_SequenceOfMeshTriangle& Other);
 
 
 

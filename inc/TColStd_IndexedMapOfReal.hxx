@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   TColStd_IndexedMapOfReal(const Standard_Integer NbBuckets = 1);
   
+  Standard_EXPORT   TColStd_IndexedMapOfReal(const TColStd_IndexedMapOfReal& Other);
+  
   Standard_EXPORT     TColStd_IndexedMapOfReal& Assign(const TColStd_IndexedMapOfReal& Other) ;
     TColStd_IndexedMapOfReal& operator =(const TColStd_IndexedMapOfReal& Other) 
 {
@@ -88,8 +90,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_IndexedMapOfReal(const TColStd_IndexedMapOfReal& Other);
 
 
 

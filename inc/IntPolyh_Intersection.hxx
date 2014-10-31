@@ -44,7 +44,12 @@ class Adaptor3d_HSurface;
 class TColStd_Array1OfReal;
 
 
-
+//!  the main   algorithm.  Algorythm   outputs are <br>
+//!           lines  and  points like   discribe   in the last <br>
+//!           paragraph.  The Algorythm provides direct acces to <br>
+//!           the elements of those   lines  and points. Other <br>
+//!           classes  of this package  are for internal use and <br>
+//!           only concern the algorithmic part. <br>
 class IntPolyh_Intersection  {
 public:
 

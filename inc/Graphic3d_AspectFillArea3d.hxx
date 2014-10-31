@@ -151,9 +151,9 @@ public:
 //!          Standard_False if the edges are not drawn. <br>
   Standard_EXPORT     Standard_Boolean Edge() const;
   //! Returns the surface material of internal faces <br>
-  Standard_EXPORT     Graphic3d_MaterialAspect BackMaterial() const;
+  Standard_EXPORT    const Graphic3d_MaterialAspect& BackMaterial() const;
   //! Returns the surface material of external faces <br>
-  Standard_EXPORT     Graphic3d_MaterialAspect FrontMaterial() const;
+  Standard_EXPORT    const Graphic3d_MaterialAspect& FrontMaterial() const;
   
   Standard_EXPORT     Handle_Graphic3d_TextureMap TextureMap() const;
   

@@ -32,8 +32,8 @@ class BRepGProp_Cinert;
 class BRepGProp_Sinert;
 class BRepGProp_Vinert;
 class BRepGProp_VinertGK;
-class BRepGProp_UFunctionOfVinertGK;
-class BRepGProp_TFunctionOfVinertGK;
+class BRepGProp_UFunction;
+class BRepGProp_TFunction;
 
 
 //! Provides global functions to compute a shape's global <br>
@@ -206,8 +206,8 @@ friend class BRepGProp_Cinert;
 friend class BRepGProp_Sinert;
 friend class BRepGProp_Vinert;
 friend class BRepGProp_VinertGK;
-friend class BRepGProp_UFunctionOfVinertGK;
-friend class BRepGProp_TFunctionOfVinertGK;
+friend class BRepGProp_UFunction;
+friend class BRepGProp_TFunction;
 
 };
 

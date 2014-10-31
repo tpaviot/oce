@@ -16,14 +16,8 @@
 #include <Handle_AIS_MultipleConnectedInteractive.hxx>
 #endif
 
-#ifndef _AIS_SequenceOfInteractive_HeaderFile
-#include <AIS_SequenceOfInteractive.hxx>
-#endif
 #ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
-#endif
-#ifndef _PrsMgr_TypeOfPresentation3d_HeaderFile
-#include <PrsMgr_TypeOfPresentation3d.hxx>
 #endif
 #ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
@@ -37,8 +31,8 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
@@ -53,8 +47,7 @@
 #include <Handle_SelectMgr_Selection.hxx>
 #endif
 class AIS_InteractiveObject;
-class AIS_SequenceOfInteractive;
-class PrsMgr_PresentationManager3d;
+class gp_Trsf;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;
@@ -71,24 +64,22 @@ class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 public:
 
   //! Initializes the Interactive Object with multiple <br>
-//! presentation connections. If aTypeOfPresentation3d <br>
-//! does not have the affectation PrsMgr_TOP_AllView, <br>
-//! it is projector dependent. <br>
-  Standard_EXPORT   AIS_MultipleConnectedInteractive(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
-  //! Add anotherIObj in the presentation of me <br>
-  Standard_EXPORT     void Connect(const Handle(AIS_InteractiveObject)& anotherIObj) ;
+//! connections to AIS_Interactive objects. <br>
+  Standard_EXPORT   AIS_MultipleConnectedInteractive();
+  //! Adds instance of theInteractive to child list. <br>
+  Standard_EXPORT     void Connect(const Handle(AIS_InteractiveObject)& theInteractive) ;
+  //! Establishes the connection between the Connected <br>
+//! Interactive Object, anotherIobj, and its reference. <br>
+//! Locates instance in aLocation. <br>
+  Standard_EXPORT   virtual  void Connect(const Handle(AIS_InteractiveObject)& anotherIobj,const gp_Trsf& aLocation) ;
   
   Standard_EXPORT   virtual  AIS_KindOfInteractive Type() const;
   
   Standard_EXPORT   virtual  Standard_Integer Signature() const;
   //! Returns true if the object is connected to others. <br>
   Standard_EXPORT     Standard_Boolean HasConnection() const;
-  
-//! Returns the connection references of the previous <br>
-//! Interactive Objects in view. <br>
-       const AIS_SequenceOfInteractive& ConnectedTo() const;
-  //!  Removes the connection anotherIObj to an entity. <br>
-  Standard_EXPORT     void Disconnect(const Handle(AIS_InteractiveObject)& anotherIObj) ;
+  //!  Removes the connection with theInteractive. <br>
+  Standard_EXPORT     void Disconnect(const Handle(AIS_InteractiveObject)& theInteractive) ;
   //! Clears all the connections to objects. <br>
   Standard_EXPORT     void DisconnectAll() ;
   //! computes the presentation according to a point of view <br>
@@ -101,6 +92,9 @@ public:
   Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
   
   Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
+  //!  Informs the graphic context that the interactive Object <br>
+//! may be decomposed into sub-shapes for dynamic selection. <br>
+      virtual  Standard_Boolean AcceptShapeDecomposition() const;
 
 
 
@@ -121,11 +115,9 @@ protected:
 
 private: 
 
-  
+  //!  Computes the selection for whole subtree in scene hierarchy. <br>
   Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
 
-AIS_SequenceOfInteractive myReferences;
-AIS_SequenceOfInteractive myPreviousReferences;
 
 
 };

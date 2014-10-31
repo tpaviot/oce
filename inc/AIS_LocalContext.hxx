@@ -28,8 +28,8 @@
 #ifndef _Handle_StdSelect_ViewerSelector3d_HeaderFile
 #include <Handle_StdSelect_ViewerSelector3d.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
@@ -109,7 +109,6 @@
 class AIS_InteractiveContext;
 class SelectMgr_SelectionManager;
 class StdSelect_ViewerSelector3d;
-class PrsMgr_PresentationManager3d;
 class SelectMgr_OrFilter;
 class SelectMgr_Filter;
 class AIS_InteractiveObject;
@@ -219,15 +218,15 @@ public:
   
         Standard_Boolean AutomaticHilight() const;
   
-  Standard_EXPORT     AIS_StatusOfDetection MoveTo(const Standard_Integer Xpix,const Standard_Integer Ypix,const Handle(V3d_View)& aview) ;
+  Standard_EXPORT     AIS_StatusOfDetection MoveTo(const Standard_Integer theXpix,const Standard_Integer theYpix,const Handle(V3d_View)& theView,const Standard_Boolean theToRedrawImmediate) ;
   //! returns True if more than one entity <br>
 //!          was detected at the last Mouse position. <br>
         Standard_Boolean HasNextDetected() const;
   //! returns True if  last detected. the next detected will <br>
 //!          be first one (endless loop) <br>
-  Standard_EXPORT     Standard_Integer HilightNextDetected(const Handle(V3d_View)& aView) ;
+  Standard_EXPORT     Standard_Integer HilightNextDetected(const Handle(V3d_View)& theView,const Standard_Boolean theToRedrawImmediate) ;
   
-  Standard_EXPORT     Standard_Integer HilightPreviousDetected(const Handle(V3d_View)& aView) ;
+  Standard_EXPORT     Standard_Integer HilightPreviousDetected(const Handle(V3d_View)& theView,const Standard_Boolean theToRedrawImmediate) ;
   //! returns True if something was done... <br>
   Standard_EXPORT     Standard_Boolean UnhilightLastDetected(const Handle(V3d_View)& aView) ;
   //! returns the number of selected <br>
@@ -262,20 +261,34 @@ public:
   
   Standard_EXPORT     void AddOrRemoveSelected(const TopoDS_Shape& aShape,const Standard_Boolean updateviewer = Standard_True) ;
   
-  Standard_EXPORT     void AddOrRemoveSelected(const Handle(SelectMgr_EntityOwner)& Ownr,const Standard_Boolean updateviewer = Standard_True) ;
-  
-  Standard_EXPORT     void ClearSelected(const Standard_Boolean updateviewer = Standard_True) ;
+  Standard_EXPORT     void AddOrRemoveSelected(const Handle(SelectMgr_EntityOwner)& theOwner,const Standard_Boolean toUpdateViewer = Standard_True) ;
+  //! Clears local context selection. <br>
+//!          @param toUpdateViewer [in] if TRUE the viewer will be updated. <br>
+  Standard_EXPORT     void ClearSelected(const Standard_Boolean toUpdateViewer = Standard_True) ;
+  //! Removes an interactive object from the local context selection. <br>
+//!          Method deselects all associated entity owners. <br>
+//!          @param theIO [in] the interactive object. <br>
+//!          @param toUpdateViewer [in] if TRUE the viewer will be updated. <br>
+  Standard_EXPORT     void ClearSelected(const Handle(AIS_InteractiveObject)& theIO,const Standard_Boolean toUpdateViewer = Standard_True) ;
   
         Standard_Boolean HasDetected() const;
   
+//! Initialization for iteration through mouse-detected objects in local context. <br>
   Standard_EXPORT     void InitDetected() ;
   
+//! @return true if there is more mouse-detected objects after the current one <br>
+//! during iteration through mouse-detected interactive objects. <br>
   Standard_EXPORT     Standard_Boolean MoreDetected() const;
   
+//! Gets next current object during iteration through mouse-detected <br>
+//! interactive objects. <br>
   Standard_EXPORT     void NextDetected() ;
   
+//! @return current mouse-detected shape or empty (null) shape, if current interactive object <br>
+//! is not a shape (AIS_Shape) or there is no current mouse-detected interactive object at all. <br>
   Standard_EXPORT    const TopoDS_Shape& DetectedCurrentShape() const;
   
+//! @return current mouse-detected interactive object or null object if there is no current detected. <br>
   Standard_EXPORT     Handle_AIS_InteractiveObject DetectedCurrentObject() const;
   
   Standard_EXPORT     Standard_Boolean HasDetectedShape() const;
@@ -295,7 +308,7 @@ public:
 //!          coming from a Decomposition of an element. <br>
   Standard_EXPORT     Standard_Boolean HasShape() const;
   
-  Standard_EXPORT    const TopoDS_Shape& SelectedShape() const;
+  Standard_EXPORT     TopoDS_Shape SelectedShape() const;
   
   Standard_EXPORT     Handle_SelectMgr_EntityOwner SelectedOwner() const;
   
@@ -365,16 +378,17 @@ public:
   Standard_EXPORT     void SetPixelTolerance(const Standard_Integer aPrecision = 2) ;
   //! Returns the pixel tolerance. <br>
   Standard_EXPORT     Standard_Integer PixelTolerance() const;
-  //! initializes the list of presentations to be displayed <br>
-//!          returns False if No Local COnte <br>
+  //! Resets the transient list of presentations previously displayed in immediate mode <br>
+//! and begins accumulation of new list by following AddToImmediateList()/Color()/Highlight() calls. <br>
   Standard_EXPORT     Standard_Boolean BeginImmediateDraw() ;
-  //! returns True if <anIObj> has been stored in the list. <br>
-  Standard_EXPORT     Standard_Boolean ImmediateAdd(const Handle(AIS_InteractiveObject)& anIObj,const Standard_Integer aMode = 0) ;
-  //! returns True if <anIObj> has been removed from the list. <br>
-  Standard_EXPORT     Standard_Boolean ImmediateRemove(const Handle(AIS_InteractiveObject)& anIObj,const Standard_Integer aMode = 0) ;
-  //! returns True if the immediate display has been done. <br>
-  Standard_EXPORT     Standard_Boolean EndImmediateDraw(const Handle(V3d_View)& aView,const Standard_Boolean DoubleBuf = Standard_False) ;
-  
+  //! Resets the transient list of presentations previously displayed in immediate mode. <br>
+  Standard_EXPORT   virtual  void ClearImmediateDraw() ;
+  //! Stores presentation theMode of object theObj in the transient list of presentations to be displayed in immediate mode. <br>
+//! Will be taken in account in EndImmediateDraw method. <br>
+  Standard_EXPORT     Standard_Boolean ImmediateAdd(const Handle(AIS_InteractiveObject)& theObj,const Standard_Integer theMode = 0) ;
+  //! Allows rapid drawing of the view theView by avoiding an update of the whole background. <br>
+  Standard_EXPORT     Standard_Boolean EndImmediateDraw(const Handle(V3d_View)& theView) ;
+  //! Returns true if Presentation Manager is accumulating transient list of presentations to be displayed in immediate mode. <br>
   Standard_EXPORT     Standard_Boolean IsImmediateModeOn() const;
   
   Standard_EXPORT     void UpdateConversion() ;
@@ -432,7 +446,7 @@ private:
   
   Standard_EXPORT     void ActivateStandardModes(const Handle(SelectMgr_SelectableObject)& anObject,const Standard_Boolean WithProj = Standard_True) ;
   
-  Standard_EXPORT     void ManageDetected(const Handle(SelectMgr_EntityOwner)& aPickOwner,const Handle(V3d_View)& aview) ;
+  Standard_EXPORT     void manageDetected(const Handle(SelectMgr_EntityOwner)& thePickOwner,const Handle(V3d_View)& theView,const Standard_Boolean theToRedrawImmediate) ;
   //! returns 0  if the detected entity was Not FilterOK... <br>
         Standard_Integer DetectedIndex() ;
   
@@ -455,8 +469,6 @@ private:
   Standard_EXPORT     Standard_Boolean ComesFromDecomposition(const Standard_Integer aPickedIndex) const;
   
   Standard_EXPORT     Standard_Boolean HasFilters(const TopAbs_ShapeEnum aType) const;
-  
-  Standard_EXPORT     void HilightTriangle(const Standard_Integer Rank,const Handle(V3d_View)& aViou) ;
 
 Handle_AIS_InteractiveContext myCTX;
 Standard_Boolean myLoadDisplayed;

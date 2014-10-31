@@ -21,7 +21,6 @@
 #endif
 class Standard_Transient;
 class Standard_GUID;
-class FWOSDriver_Driver;
 class FWOSDriver_DriverFactory;
 
 
@@ -49,7 +48,6 @@ private:
 
 
 
-friend class FWOSDriver_Driver;
 friend class FWOSDriver_DriverFactory;
 
 };

@@ -40,6 +40,8 @@ public:
   
       IntPatch_SequenceOfSegmentOfTheSOnBounds();
   
+  Standard_EXPORT   IntPatch_SequenceOfSegmentOfTheSOnBounds(const IntPatch_SequenceOfSegmentOfTheSOnBounds& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntPatch_SequenceOfSegmentOfTheSOnBounds()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntPatch_SequenceOfSegmentOfTheSOnBounds(const IntPatch_SequenceOfSegmentOfTheSOnBounds& Other);
 
 
 

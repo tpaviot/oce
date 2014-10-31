@@ -74,6 +74,7 @@ Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Trsf);
 //!    where {V1, V2, V3} defines the vectorial part of the <br>
 //!    transformation and T defines the translation part of the <br>
 //!    transformation. <br>
+//!  This transformation never change the nature of the objects. <br>
 class gp_Trsf  {
 
 public:
@@ -202,16 +203,12 @@ public:
 //! <br>
 //!          x' = a11 x + a12 y + a13 z + a14 <br>
 //!          y' = a21 x + a22 y + a23 z + a24 <br>
-//!          z' = a31 x + a32 y + a43 z + a34 <br>
-//! <br>
-//!          Tolang and  TolDist are  used  to  test  for  null <br>
-//!          angles and null distances to determine the form of <br>
-//!          the transformation (identity, translation, etc..). <br>
+//!          z' = a31 x + a32 y + a33 z + a34 <br>
 //! <br>
 //!          The method Value(i,j) will return aij. <br>
-//!          Raises ConstructionError if the determinant of  the aij is null. Or  if <br>
-//!          the matrix as not a uniform scale. <br>
-  Standard_EXPORT     void SetValues(const Standard_Real a11,const Standard_Real a12,const Standard_Real a13,const Standard_Real a14,const Standard_Real a21,const Standard_Real a22,const Standard_Real a23,const Standard_Real a24,const Standard_Real a31,const Standard_Real a32,const Standard_Real a33,const Standard_Real a34,const Standard_Real Tolang,const Standard_Real TolDist) ;
+//!          Raises ConstructionError if the determinant of  the aij is null. <br>
+//!          The matrix is orthogonalized before future using. <br>
+  Standard_EXPORT     void SetValues(const Standard_Real a11,const Standard_Real a12,const Standard_Real a13,const Standard_Real a14,const Standard_Real a21,const Standard_Real a22,const Standard_Real a23,const Standard_Real a24,const Standard_Real a31,const Standard_Real a32,const Standard_Real a33,const Standard_Real a34) ;
   //! Returns true if the determinant of the vectorial part of <br>
 //! this transformation is negative. <br>
         Standard_Boolean IsNegative() const;
@@ -280,19 +277,8 @@ public:
   return Multiplied(T);
 }
   
-//!  Computes the transformation composed with T and  <me>. <br>
-//!  In a C++ implementation you can also write Tcomposed = <me> * T. <br>
-//!  Example : <br>
-//!      Trsf T1, T2, Tcomp; ............... <br>
-//!      //composition : <br>
-//!        Tcomp = T2.Multiplied(T1);         // or   (Tcomp = T2 * T1) <br>
-//!      // transformation of a point <br>
-//!        Pnt P1(10.,3.,4.); <br>
-//!        Pnt P2 = P1.Transformed(Tcomp);    //using Tcomp <br>
-//!        Pnt P3 = P1.Transformed(T1);       //using T1 then T2 <br>
-//!        P3.Transform(T2);                  // P3 = P2 !!! <br>
 //!  Computes the transformation composed with <me> and T. <br>
-//!  <me> = T * <me> <br>
+//!  <me> = <me> * T <br>
   Standard_EXPORT     void Multiply(const gp_Trsf& T) ;
     void operator *=(const gp_Trsf& T) 
 {
@@ -329,6 +315,8 @@ friend class gp_GTrsf;
 
 protected:
 
+  //! Makes orthogonalization of "matrix" <br>
+  Standard_EXPORT     void Orthogonalize() ;
 
 
 

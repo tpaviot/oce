@@ -13,9 +13,6 @@
 #ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
 #endif
-#ifndef _Draw_Interpretor_HeaderFile
-#include <Draw_Interpretor.hxx>
-#endif
 #ifndef _DDocStd_HeaderFile
 #include <DDocStd.hxx>
 #endif

@@ -46,6 +46,8 @@ public:
   
   Standard_EXPORT   BRep_ListOfPointRepresentation();
   
+  Standard_EXPORT   BRep_ListOfPointRepresentation(const BRep_ListOfPointRepresentation& Other);
+  
   Standard_EXPORT     void Assign(const BRep_ListOfPointRepresentation& Other) ;
     void operator=(const BRep_ListOfPointRepresentation& Other) 
 {
@@ -103,8 +105,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRep_ListOfPointRepresentation(const BRep_ListOfPointRepresentation& Other);
 
 
 Standard_Address myFirst;

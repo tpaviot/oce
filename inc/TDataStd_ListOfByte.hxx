@@ -45,6 +45,8 @@ public:
   
   Standard_EXPORT   TDataStd_ListOfByte();
   
+  Standard_EXPORT   TDataStd_ListOfByte(const TDataStd_ListOfByte& Other);
+  
   Standard_EXPORT     void Assign(const TDataStd_ListOfByte& Other) ;
     void operator=(const TDataStd_ListOfByte& Other) 
 {
@@ -102,8 +104,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDataStd_ListOfByte(const TDataStd_ListOfByte& Other);
 
 
 Standard_Address myFirst;

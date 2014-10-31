@@ -33,7 +33,8 @@ class V3d_View;
 class TColgp_Array1OfPnt2d;
 
 
-
+//! used to manage mouse event (move,select,shiftselect) <br>
+//!          By default the events are transmitted to interactive context. <br>
 class ViewerTest_EventManager : public MMgt_TShared {
 
 public:
@@ -56,6 +57,9 @@ public:
   Standard_EXPORT   virtual  void ShiftSelect(const TColgp_Array1OfPnt2d& thePolyline) ;
   
        const Handle_AIS_InteractiveContext& Context() const;
+  //! Gets current mouse position. It tracks change of mouse position <br>
+//! with mouse drugging or with DRAW command call (vmoveto). <br>
+  Standard_EXPORT     void GetCurrentPosition(Standard_Integer& theXPix,Standard_Integer& theYPix) const;
 
 
 

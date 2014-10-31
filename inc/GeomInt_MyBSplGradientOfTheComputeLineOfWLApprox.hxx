@@ -42,7 +42,6 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
 class GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox;
 class GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox;
 class AppParCurves_HArray1OfConstraintCouple;
-class math_Vector;
 class TColStd_Array1OfReal;
 class TColStd_Array1OfInteger;
 class AppParCurves_MultiBSpCurve;

@@ -14,9 +14,6 @@
 #ifndef _HLRBRep_LineTool_HeaderFile
 #include <HLRBRep_LineTool.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
 #endif

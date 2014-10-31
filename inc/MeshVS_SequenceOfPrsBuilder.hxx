@@ -43,6 +43,8 @@ public:
   
       MeshVS_SequenceOfPrsBuilder();
   
+  Standard_EXPORT   MeshVS_SequenceOfPrsBuilder(const MeshVS_SequenceOfPrsBuilder& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~MeshVS_SequenceOfPrsBuilder()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   MeshVS_SequenceOfPrsBuilder(const MeshVS_SequenceOfPrsBuilder& Other);
 
 
 

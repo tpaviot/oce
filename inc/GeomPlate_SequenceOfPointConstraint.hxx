@@ -43,6 +43,8 @@ public:
   
       GeomPlate_SequenceOfPointConstraint();
   
+  Standard_EXPORT   GeomPlate_SequenceOfPointConstraint(const GeomPlate_SequenceOfPointConstraint& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~GeomPlate_SequenceOfPointConstraint()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   GeomPlate_SequenceOfPointConstraint(const GeomPlate_SequenceOfPointConstraint& Other);
 
 
 

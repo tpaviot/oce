@@ -46,7 +46,7 @@ class TopoDS_Shape;
 class Geom2d_Curve;
 
 
-//! A Geom point and a tolerance. <br>
+//! A Geom curve and a tolerance. <br>
 class TopOpeBRepDS_Curve  {
 public:
 

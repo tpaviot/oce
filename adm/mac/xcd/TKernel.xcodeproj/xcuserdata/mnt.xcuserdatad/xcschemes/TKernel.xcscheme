@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1789051D08731596166E0304"
+               BlueprintIdentifier = "0D3F16780351161C11A818D2"
                BuildableName = "libTKernel.dylib"
                BlueprintName = "TKernel"
                ReferencedContainer = "container:TKernel.xcodeproj">

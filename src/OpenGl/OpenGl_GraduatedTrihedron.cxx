@@ -24,10 +24,7 @@
 #include <InterfaceGraphic_Aspect.hxx>
 #include <InterfaceGraphic_Visual3d.hxx>
 
-#ifdef HAVE_CONFIG_H
-  #include <config.h>
-#endif
-#ifdef HAVE_STRING_H
+#ifndef _WIN32
   #include <string.h>
 #endif
 
@@ -49,6 +46,7 @@ float xmin = 0.0f, ymin = 0.0f, zmin = 0.0f, xmax = 100.0f, ymax = 100.0f, zmax 
 /* Normal of the view (not normalized!) */
 static float getNormal(float* normal)
 {
+#if !defined(GL_ES_VERSION_2_0)
   GLint viewport[4];
   GLdouble model_matrix[16], proj_matrix[16];
 
@@ -75,6 +73,9 @@ static float getNormal(float* normal)
   /* Distance corresponding to 1 pixel */
   const float width = (float) sqrt(dx2 * dx2 + dy2 * dy2 + dz2 * dz2);
   return width / (float) viewport[2];
+#else
+  return 1.0f;
+#endif
 }
 
 static float getDistance2Corner(float* normal, float* center, float x, float y, float z)
@@ -134,6 +135,7 @@ static void drawArrow(float x1, float y1, float z1,
                       float x2, float y2, float z2,
                       float xn, float yn, float zn)
 {
+#if !defined(GL_ES_VERSION_2_0)
     float h, r;
     float xa, ya, za;
     float x0, y0, z0;
@@ -183,13 +185,14 @@ static void drawArrow(float x1, float y1, float z1,
         glVertex3f(xa2, ya2, za2);
         glVertex3f(x2,  y2,  z2);
     glEnd();
+#endif
 }
 
 // =======================================================================
 // function : Release
 // purpose  :
 // =======================================================================
-void OpenGl_GraduatedTrihedron::Release (const Handle(OpenGl_Context)& theCtx)
+void OpenGl_GraduatedTrihedron::Release (OpenGl_Context* theCtx)
 {
   myLabelX.Release (theCtx);
   myLabelY.Release (theCtx);
@@ -198,9 +201,9 @@ void OpenGl_GraduatedTrihedron::Release (const Handle(OpenGl_Context)& theCtx)
 }
 
 OpenGl_GraduatedTrihedron::OpenGl_GraduatedTrihedron (const Graphic3d_CGraduatedTrihedron& theData)
-: myLabelX (theData.xname, OpenGl_Vec3(1.0f, 0.0f, 0.0f), THE_LABEL_PARAMS),
-  myLabelY (theData.yname, OpenGl_Vec3(0.0f, 1.0f, 0.0f), THE_LABEL_PARAMS),
-  myLabelZ (theData.zname, OpenGl_Vec3(0.0f, 0.0f, 1.0f), THE_LABEL_PARAMS),
+: myLabelX (NCollection_String ((Standard_Utf16Char* )theData.xname.ToExtString()).ToCString(), OpenGl_Vec3(1.0f, 0.0f, 0.0f), THE_LABEL_PARAMS),
+  myLabelY (NCollection_String ((Standard_Utf16Char* )theData.yname.ToExtString()).ToCString(), OpenGl_Vec3(0.0f, 1.0f, 0.0f), THE_LABEL_PARAMS),
+  myLabelZ (NCollection_String ((Standard_Utf16Char* )theData.zname.ToExtString()).ToCString(), OpenGl_Vec3(0.0f, 0.0f, 1.0f), THE_LABEL_PARAMS),
   myToDrawXName (theData.xdrawname == Standard_True),
   myToDrawYName (theData.ydrawname == Standard_True),
   myToDrawZName (theData.zdrawname == Standard_True),
@@ -280,6 +283,7 @@ OpenGl_GraduatedTrihedron::~OpenGl_GraduatedTrihedron()
 //call_graduatedtrihedron_redraw
 void OpenGl_GraduatedTrihedron::Render (const Handle(OpenGl_Workspace)& theWorkspace) const
 {
+#if !defined(GL_ES_VERSION_2_0)
   const OpenGl_AspectLine *oldAspectLine = theWorkspace->SetAspectLine(&myDefaultAspectLine);
   theWorkspace->AspectLine(Standard_True);
 
@@ -961,6 +965,7 @@ void OpenGl_GraduatedTrihedron::Render (const Handle(OpenGl_Workspace)& theWorks
     glEnable(GL_LIGHTING);
 
   theWorkspace->SetAspectLine(oldAspectLine);
+#endif
 }
 
 //call_graduatedtrihedron_minmaxvalues

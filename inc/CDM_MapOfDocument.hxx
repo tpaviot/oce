@@ -31,7 +31,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class CDM_Document;
 class CDM_DocumentHasher;
 class CDM_StdMapNodeOfMapOfDocument;
@@ -46,6 +45,8 @@ public:
 
   
   Standard_EXPORT   CDM_MapOfDocument(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   CDM_MapOfDocument(const CDM_MapOfDocument& Other);
   
   Standard_EXPORT     CDM_MapOfDocument& Assign(const CDM_MapOfDocument& Other) ;
     CDM_MapOfDocument& operator =(const CDM_MapOfDocument& Other) 
@@ -79,8 +80,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   CDM_MapOfDocument(const CDM_MapOfDocument& Other);
 
 
 

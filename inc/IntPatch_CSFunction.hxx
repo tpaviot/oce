@@ -40,22 +40,24 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
 class Adaptor3d_HSurface;
-class Adaptor3d_HSurfaceTool;
 class Adaptor2d_HCurve2d;
-class IntPatch_HCurve2dTool;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 
 
-
+//! this function is associated to the intersection between <br>
+//!          a curve on surface and a surface  . <br>
 class IntPatch_CSFunction  : public math_FunctionSetWithDerivatives {
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! S1 is the surface on which the intersection is searched. <br>
+//!          C is a curve on the surface S2. <br>
   Standard_EXPORT   IntPatch_CSFunction(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor2d_HCurve2d)& C,const Handle(Adaptor3d_HSurface)& S2);
   
   Standard_EXPORT     Standard_Integer NbVariables() const;

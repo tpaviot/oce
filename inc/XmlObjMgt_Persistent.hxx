@@ -27,7 +27,7 @@
 #endif
 
 
-
+//! root for XML-persistence <br>
 class XmlObjMgt_Persistent  {
 public:
 

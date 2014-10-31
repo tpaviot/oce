@@ -22,36 +22,37 @@
 #ifndef _TColStd_ListOfInteger_HeaderFile
 #include <TColStd_ListOfInteger.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 class Aspect_IdentDefinitionError;
 
 
-//! This class permits the creation and control of all <br>
-//!	    identifiers. <br>
-//!  Warning: An identifier is an integer. <br>
+//! This class permits the creation and control of integer identifiers. <br>
 class Aspect_GenId  {
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an available set of identifiers with the lower <br>
-//!	    bound 0 and the upper bound INT_MAX/2. <br>
+  //! Creates an available set of identifiers with the lower bound 0 and the upper bound INT_MAX / 2. <br>
   Standard_EXPORT   Aspect_GenId();
-  //! Creates an available set of identifiers with the lower <br>
-//!	    bound <Low> and the upper bound <Up>. <br>
-//!  Warning: Raises IdentDefinitionError if <Up> is less than <Low>. <br>//! Copies the content of <Other> into <me>. <br>
-  Standard_EXPORT   Aspect_GenId(const Standard_Integer Low,const Standard_Integer Up);
-  //! Frees all identifiers of <me>. <br>
+  //! Creates an available set of identifiers with specified range. <br>
+//! Raises IdentDefinitionError if theUpper is less than theLow. <br>
+  Standard_EXPORT   Aspect_GenId(const Standard_Integer theLow,const Standard_Integer theUpper);
+  //! Free all identifiers - make the whole range available again. <br>
   Standard_EXPORT     void Free() ;
-  //! Frees the identifier <Id> of <me>. <br>
-  Standard_EXPORT     void Free(const Standard_Integer Id) ;
-  //! Returns the number of available identifiers of <me>. <br>
+  //! Free specified identifier. Warning - method has no protection against double-freeing! <br>
+  Standard_EXPORT     void Free(const Standard_Integer theId) ;
+  //! Returns true if there are available identifiers in range. <br>
+  Standard_EXPORT     Standard_Boolean HasFree() const;
+  //! Returns the number of available identifiers. <br>
   Standard_EXPORT     Standard_Integer Available() const;
-  //! Returns the lower bound of <me>. <br>
+  //! Returns the lower identifier in range. <br>
   Standard_EXPORT     Standard_Integer Lower() const;
-  //! Returns an available identifier of <me>. <br>
-//!  Warning: Raises IdentDefinitionError if all identifiers are busy. <br>
+  //! Returns the next available identifier. <br>
+//! Warning: Raises IdentDefinitionError if all identifiers are busy. <br>
   Standard_EXPORT     Standard_Integer Next() ;
-  //! Returns the upper bound of <me>. <br>
+  //! Returns the upper identifier in range. <br>
   Standard_EXPORT     Standard_Integer Upper() const;
 
 
@@ -68,11 +69,11 @@ private:
 
 
 
-Standard_Integer MyCount;
-Standard_Integer MyLength;
-Standard_Integer MyLowerBound;
-Standard_Integer MyUpperBound;
-TColStd_ListOfInteger MyFreeIds;
+Standard_Integer myFreeCount;
+Standard_Integer myLength;
+Standard_Integer myLowerBound;
+Standard_Integer myUpperBound;
+TColStd_ListOfInteger myFreeIds;
 
 
 };

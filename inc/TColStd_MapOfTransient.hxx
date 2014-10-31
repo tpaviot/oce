@@ -31,7 +31,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class Standard_Transient;
 class TColStd_MapTransientHasher;
 class TColStd_StdMapNodeOfMapOfTransient;
@@ -46,6 +45,8 @@ public:
 
   
   Standard_EXPORT   TColStd_MapOfTransient(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   TColStd_MapOfTransient(const TColStd_MapOfTransient& Other);
   
   Standard_EXPORT     TColStd_MapOfTransient& Assign(const TColStd_MapOfTransient& Other) ;
     TColStd_MapOfTransient& operator =(const TColStd_MapOfTransient& Other) 
@@ -79,8 +80,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_MapOfTransient(const TColStd_MapOfTransient& Other);
 
 
 

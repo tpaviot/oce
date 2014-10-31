@@ -378,8 +378,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\AppParCurves\AppParCurves_MultiPoint.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\AppParCurves\AppParCurves_SmoothCriterion.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\FEmTool\FEmTool_AssemblyTable_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\FEmTool\FEmTool_HAssemblyTable_0.cxx">
@@ -448,29 +446,17 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_Array2OfPOnSurf_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCFOfECC2dOfExtCC2d_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCLocFOfLocECC2d_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCFOfECCOfExtCC_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCLocFOfLocECC_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCFOfELCC2dOfLocateExtCC2d_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ECC2d_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCFOfELCCOfLocateExtCC_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ECC_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCLocFOfLocECC2dOfLocateExtCC2d_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELCC2d_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCLocFOfLocECCOfLocateExtCC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCache2dOfExtCC2d_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCacheOfExtCC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ECC2dOfExtCC2d_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ECCOfExtCC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELCC2dOfLocateExtCC2d_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELCCOfLocateExtCC_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELCC_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELPCOfLocateExtPC2d_0.cxx">
     </ClCompile>
@@ -483,10 +469,6 @@
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_EPCOfExtPC2d_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_EPCOfExtPC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ExtCC2d_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ExtCC_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_ExtPC2d_0.cxx">
     </ClCompile>
@@ -506,21 +488,13 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_HArray2OfPOnSurf_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LCCache2dOfLocateExtCC2d_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocECC2d_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LCCacheOfLocateExtCC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocECC2dOfLocateExtCC2d_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocECCOfLocateExtCC_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocECC_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocEPCOfLocateExtPC2d_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocEPCOfLocateExtPC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocateExtCC2d_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocateExtCC_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_LocateExtPC2d_0.cxx">
     </ClCompile>
@@ -554,17 +528,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCFOfECC2dOfExtCC2d_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCLocFOfLocECC2d_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCFOfECCOfExtCC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCFOfELCC2dOfLocateExtCC2d_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCFOfELCCOfLocateExtCC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCLocFOfLocECC2dOfLocateExtCC2d_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCLocFOfLocECCOfLocateExtCC_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SeqPOnCOfCCLocFOfLocECC_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d_0.cxx">
     </ClCompile>
@@ -578,17 +544,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCFOfECC2dOfExtCC2d_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCFOfECCOfExtCC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCFOfELCC2dOfLocateExtCC2d_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCFOfELCCOfLocateExtCC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2dOfLocateExtCC2d_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECCOfLocateExtCC_0.cxx">
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_SequenceNodeOfSequenceOfPOnCurv2d_0.cxx">
     </ClCompile>
@@ -605,6 +563,10 @@
     <ClCompile Include="..\..\..\src\Extrema\Extrema_Curve2dTool.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Extrema\Extrema_CurveTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_ExtCC.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_ExtCC2d.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Extrema\Extrema_ExtCS.cxx">
     </ClCompile>
@@ -647,6 +609,14 @@
     <ClCompile Include="..\..\..\src\Extrema\Extrema_GenLocateExtPS.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Extrema\Extrema_GenLocateExtSS.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_GlobOptFuncCC.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_GlobOptFuncCS.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_LocateExtCC.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_LocateExtCC2d.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Extrema\Extrema_POnSurf.cxx">
     </ClCompile>
@@ -816,10 +786,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BndLib\BndLib_AddSurface.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\BndLib\BndLib_Compute2d.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BndLib\BndLib_Compute3d.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\AppDef\AppDef_Array1OfMultiPointConstraint_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\AppDef\AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_0.cxx">
@@ -841,8 +807,6 @@
     <ClCompile Include="..\..\..\drv\AppDef\AppDef_HArray1OfMultiPointConstraint_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\AppDef\AppDef_MyBSplGradientOfBSplineCompute_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\AppDef\AppDef_MyCriterionOfTheVariational_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\AppDef\AppDef_MyGradientOfCompute_0.cxx">
     </ClCompile>
@@ -874,13 +838,17 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\AppDef\AppDef_TheResol_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\AppDef\AppDef_TheVariational_0.cxx">
+    <ClCompile Include="..\..\..\src\AppDef\AppDef_LinearCriteria.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\AppDef\AppDef_MultiLine.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\AppDef\AppDef_MultiPointConstraint.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\AppDef\AppDef_MyLineTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AppDef\AppDef_SmoothCriterion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AppDef\AppDef_Variational.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\GeomTools\GeomTools.cxx">
     </ClCompile>

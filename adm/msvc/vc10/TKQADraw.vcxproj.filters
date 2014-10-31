@@ -2,28 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{237BEF09-0567-0F02-169C-2968066C7DB1}</UniqueIdentifier>
+      <UniqueIdentifier>{9944AF16-10F1-17AC-0A9A-9AE7A8DED4C0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QABugs">
-      <UniqueIdentifier>{B01CD173-1338-09FC-17C5-4D63FFE02826}</UniqueIdentifier>
+      <UniqueIdentifier>{61B5CE7E-1243-032A-06EC-C71B77DC399F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QADNaming">
-      <UniqueIdentifier>{6C0C1158-103A-0446-03B0-F2528607F89F}</UniqueIdentifier>
+      <UniqueIdentifier>{4AFEE22A-0DE8-0B43-18D1-C18BACB8E964}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QADraw">
-      <UniqueIdentifier>{53A5D1CA-0C62-00DA-050C-87C9F2DB4C60}</UniqueIdentifier>
+      <UniqueIdentifier>{E2AEDCE4-11B2-0C5F-1777-170D4467F5A9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANCollection">
-      <UniqueIdentifier>{733393C3-05EB-0748-083D-057D285C0D37}</UniqueIdentifier>
+      <UniqueIdentifier>{316676F3-11C6-172D-079E-14DD51CDFD31}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewBRepNaming">
-      <UniqueIdentifier>{67D10C4C-09F2-0D3A-048F-B779597FFB5B}</UniqueIdentifier>
+      <UniqueIdentifier>{A99CE3F7-02DA-0376-17E8-14B068498B45}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewDBRepNaming">
-      <UniqueIdentifier>{4F502491-185B-0BFA-05A7-1C349FC2B3CE}</UniqueIdentifier>
+      <UniqueIdentifier>{569065F2-194E-0DD2-0A6C-C0CE652E6912}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewModTopOpe">
-      <UniqueIdentifier>{AA9E6398-0C40-0CAF-00E0-3102147F86BD}</UniqueIdentifier>
+      <UniqueIdentifier>{F450204B-0CBC-0577-0CA5-16EE748129B9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -93,15 +93,6 @@
     <ClCompile Include="..\..\..\src\QABugs\QABugs_PresentableObject.cxx">
       <Filter>Source files\QABugs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\QADNaming\QADNaming_DataMapIteratorOfDataMapOfShapeOfName_0.cxx">
-      <Filter>Source files\QADNaming</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\QADNaming\QADNaming_DataMapNodeOfDataMapOfShapeOfName_0.cxx">
-      <Filter>Source files\QADNaming</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\QADNaming\QADNaming_DataMapOfShapeOfName_0.cxx">
-      <Filter>Source files\QADNaming</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\QADNaming\QADNaming.cxx">
       <Filter>Source files\QADNaming</Filter>
     </ClCompile>
@@ -159,46 +150,25 @@
     <ClCompile Include="..\..\..\drv\QANCollection\QANCollection_ListOfPnt_0.cxx">
       <Filter>Source files\QANCollection</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\QANCollection\QANCollection_QueueNodeOfQueueOfPnt_0.cxx">
-      <Filter>Source files\QANCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\QANCollection\QANCollection_QueueOfPnt_0.cxx">
-      <Filter>Source files\QANCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\QANCollection\QANCollection_SListNodeOfSListOfPnt_0.cxx">
-      <Filter>Source files\QANCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\QANCollection\QANCollection_SListOfPnt_0.cxx">
-      <Filter>Source files\QANCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\QANCollection\QANCollection_StackIteratorOfStackOfPnt_0.cxx">
-      <Filter>Source files\QANCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\QANCollection\QANCollection_StackNodeOfStackOfPnt_0.cxx">
-      <Filter>Source files\QANCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\QANCollection\QANCollection_StackOfPnt_0.cxx">
-      <Filter>Source files\QANCollection</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\QANCollection\QANCollection.cxx">
       <Filter>Source files\QANCollection</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\QANCollection\QANCollection1.cxx">
-      <Filter>Source files\QANCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\QANCollection\QANCollection2.cxx">
-      <Filter>Source files\QANCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\QANCollection\QANCollection3.cxx">
-      <Filter>Source files\QANCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\QANCollection\QANCollection4.cxx">
-      <Filter>Source files\QANCollection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\QANCollection\QANCollectionTest.cxx">
+    <ClCompile Include="..\..\..\src\QANCollection\QANCollection_Alloc.cxx">
       <Filter>Source files\QANCollection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\QANCollection\QANCollection_Common.cxx">
+      <Filter>Source files\QANCollection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\QANCollection\QANCollection_Perf.cxx">
+      <Filter>Source files\QANCollection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\QANCollection\QANCollection_Simple.cxx">
+      <Filter>Source files\QANCollection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\QANCollection\QANCollection_Stl.cxx">
+      <Filter>Source files\QANCollection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\QANCollection\QANCollection_Test.cxx">
       <Filter>Source files\QANCollection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\QANewBRepNaming\QANewBRepNaming.cxx">

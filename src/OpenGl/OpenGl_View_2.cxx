@@ -26,7 +26,6 @@
 
 #include <OpenGl_AspectLine.hxx>
 #include <OpenGl_Context.hxx>
-#include <OpenGl_Display.hxx>
 #include <OpenGl_Matrix.hxx>
 #include <OpenGl_Workspace.hxx>
 #include <OpenGl_View.hxx>
@@ -65,6 +64,7 @@ struct OPENGL_CLIP_PLANE
 * Fonctions privees
 */
 
+#if !defined(GL_ES_VERSION_2_0)
 /*-----------------------------------------------------------------*/
 /*
 *  Set des lumieres
@@ -154,419 +154,18 @@ static void bind_light (const OpenGl_Light& theLight,
 
   glEnable (theLightGlId++);
 }
-
-/*----------------------------------------------------------------------*/
-/*
-* Prototypes
-*/
-
-static void call_util_apply_trans2( float ix, float iy, float iz, matrix3 mat,
-                                   float *ox, float *oy, float *oz );
-static void call_util_mat_mul( matrix3 mat_a, matrix3 mat_b, matrix3 mat_c);
-
-/*----------------------------------------------------------------------*/
-/*
-* Fonctions externes
-*/
-
-/*
-*  Evaluates orientation matrix.
-*/
-/* OCC18942: obsolete in OCCT6.3, might be removed in further versions! */
-void call_func_eval_ori_matrix3 (const point3* vrp,        // view reference point
-                                 const vec3*   vpn,        // view plane normal
-                                 const vec3*   vup,        // view up vector
-                                 int*          err_ind,
-                                 float         mout[4][4]) // OUT view orientation matrix
-{
-
-  /* Translate to VRP then change the basis.
-  * The old basis is: e1 = < 1, 0, 0>, e2 = < 0, 1, 0>, e3 = < 0, 0, 1>.
-  * The new basis is: ("x" means cross product)
-  *  e3' = VPN / |VPN|
-  *  e1' = VUP x VPN / |VUP x VPN|
-  *  e2' = e3' x e1'
-  * Therefore the transform from old to new is x' = TAx, where:
-  *
-  *       | e1'x e2'x e3'x 0 |         |   1      0      0      0 |
-  *   A = | e1'y e2'y e3'y 0 |,    T = |   0      1      0      0 |
-  *       | e1'z e2'z e3'z 0 |         |   0      0      1      0 |
-  *       |  0    0    0   1 |         | -vrp.x -vrp.y -vrp.z   1 |
-  *
-  */
-
-  /*
-  * These ei's are really ei primes.
-  */
-  register float      (*m)[4][4];
-  point3      e1, e2, e3, e4;
-  double      s, v;
-
-  /*
-  * e1' = VUP x VPN / |VUP x VPN|, but do the division later.
-  */
-  e1.x = vup->delta_y * vpn->delta_z - vup->delta_z * vpn->delta_y;
-  e1.y = vup->delta_z * vpn->delta_x - vup->delta_x * vpn->delta_z;
-  e1.z = vup->delta_x * vpn->delta_y - vup->delta_y * vpn->delta_x;
-  s = sqrt( e1.x * e1.x + e1.y * e1.y + e1.z * e1.z);
-  e3.x = vpn->delta_x;
-  e3.y = vpn->delta_y;
-  e3.z = vpn->delta_z;
-  v = sqrt( e3.x * e3.x + e3.y * e3.y + e3.z * e3.z);
-  /*
-  * Check for vup and vpn colinear (zero dot product).
-  */
-  if ((s > -EPSI) && (s < EPSI))
-    *err_ind = 2;
-  else
-    /*
-    * Check for a normal vector not null.
-    */
-    if ((v > -EPSI) && (v < EPSI))
-      *err_ind = 3;
-    else {
-      /*
-      * Normalize e1
-      */
-      e1.x /= ( float )s;
-      e1.y /= ( float )s;
-      e1.z /= ( float )s;
-      /*
-      * e3 = VPN / |VPN|
-      */
-      e3.x /= ( float )v;
-      e3.y /= ( float )v;
-      e3.z /= ( float )v;
-      /*
-      * e2 = e3 x e1
-      */
-      e2.x = e3.y * e1.z - e3.z * e1.y;
-      e2.y = e3.z * e1.x - e3.x * e1.z;
-      e2.z = e3.x * e1.y - e3.y * e1.x;
-      /*
-      * Add the translation
-      */
-      e4.x = -( e1.x * vrp->x + e1.y * vrp->y + e1.z * vrp->z);
-      e4.y = -( e2.x * vrp->x + e2.y * vrp->y + e2.z * vrp->z);
-      e4.z = -( e3.x * vrp->x + e3.y * vrp->y + e3.z * vrp->z);
-      /*
-      * Homogeneous entries
-      *
-      *  | e1.x  e2.x  e3.x  0.0 |   | 1  0  0  0 |
-      *  | e1.y  e2.y  e3.y  0.0 | * | 0  1  0  0 |
-      *  | e1.z  e2.z  e3.z  0.0 |   | a  b  1  c |
-      *  | e4.x  e4.y  e4.z  1.0 |   | 0  0  0  1 |
-      */
-
-      m = (float (*)[4][4])mout;
-
-      (*m)[0][0] = e1.x;
-      (*m)[0][1] = e2.x;
-      (*m)[0][2] = e3.x;
-      (*m)[0][3] = ( float )0.0;
-
-      (*m)[1][0] = e1.y;
-      (*m)[1][1] = e2.y;
-      (*m)[1][2] = e3.y;
-      (*m)[1][3] = ( float )0.0;
-
-      (*m)[2][0] = e1.z;
-      (*m)[2][1] = e2.z;
-      (*m)[2][2] = e3.z;
-      (*m)[2][3] = ( float )0.0;
-
-      (*m)[3][0] = e4.x;
-      (*m)[3][1] = e4.y;
-      (*m)[3][2] = e4.z;
-      (*m)[3][3] = ( float )1.0;
-
-      *err_ind = 0;
-    }
-}
-
-/*----------------------------------------------------------------------*/
-/*
-*  Evaluates mapping matrix.
-*/
-/* OCC18942: obsolete in OCCT6.3, might be removed in further versions! */
-void call_func_eval_map_matrix3(
-                                view_map3 *Map,
-                                int *err_ind,
-                                matrix3 mat)
-{
-  int i, j;
-  matrix3 Tpar, Spar;
-  matrix3 Tper, Sper;
-  matrix3 Shear;
-  matrix3 Scale;
-  matrix3 Tprp;
-  matrix3 aux_mat1, aux_mat2, aux_mat3;
-  point3 Prp;
-
-  *err_ind = 0;
-  for (i=0; i<4; i++)
-    for (j=0; j<4; j++)
-      Spar[i][j] = Sper[i][j] = aux_mat1[i][j] = aux_mat2[i][j] =
-      aux_mat3[i][j] = Tper[i][j] = Tpar[i][j] = Tprp[i][j] =
-      Shear[i][j] = Scale[i][j] = ( float )(i == j);
-
-  Prp.x = Map->proj_ref_point.x;
-  Prp.y = Map->proj_ref_point.y;
-  Prp.z = Map->proj_ref_point.z;
-
-  /*
-  * Type Parallele
-  */
-  if (Map->proj_type == TYPE_PARAL)
-  {
-    float umid, vmid;
-    point3 temp;
-
-#ifdef FMN
-    float    cx, cy, gx, gy, xsf, ysf, zsf;
-    float    fpd, bpd;
-    float    dopx, dopy, dopz;
-    matrix3  tmat = { { ( float )1.0, ( float )0.0, ( float )0.0, ( float )0.0 },
-    { ( float )0.0, ( float )1.0, ( float )0.0, ( float )0.0 },
-    { ( float )0.0, ( float )0.0, ( float )1.0, ( float )0.0 },
-    { ( float )0.0, ( float )0.0, ( float )0.0, ( float )1.0 } };
-    matrix3  smat = { { ( float )1.0, ( float )0.0, ( float )0.0, ( float )0.0 },
-    { ( float )0.0, ( float )1.0, ( float )0.0, ( float )0.0 },
-    { ( float )0.0, ( float )0.0, ( float )1.0, ( float )0.0 },
-    { ( float )0.0, ( float )0.0, ( float )0.0, ( float )1.0 } };
-    matrix3 shmat = { { ( float )1.0, ( float )0.0, ( float )0.0, ( float )0.0 },
-    { ( float )0.0, ( float )1.0, ( float )0.0, ( float )0.0 },
-    { ( float )0.0, ( float )0.0, ( float )1.0, ( float )0.0 },
-    { ( float )0.0, ( float )0.0, ( float )0.0, ( float )1.0 } };
-    matrix3 tshmat = { { ( float )1.0, ( float )0.0, ( float )0.0, ( float )0.0 },
-    { ( float )0.0, ( float )1.0, ( float )0.0, ( float )0.0 },
-    { ( float )0.0, ( float )0.0, ( float )1.0, ( float )0.0 },
-    { ( float )0.0, ( float )0.0, ( float )0.0, ( float )1.0 } };
-
-    /* centers */
-    cx = Map->win.x_min + Map->win.x_max, cx /= ( float )2.0;
-    cy = Map->win.y_min + Map->win.y_max, cy /= ( float )2.0;
-
-    gx = 2.0/ (Map->win.x_max - Map->win.x_min);
-    gy = 2.0/ (Map->win.y_max - Map->win.y_min);
-
-    tmat[0][3] = -cx;
-    tmat[1][3] = -cy;
-    tmat[2][3] = (Map->front_plane + Map->back_plane)/(Map->front_plane - Map->back_plane);
-
-    smat[0][0] = gx;
-    smat[1][1] = gy;
-    smat[2][2] = -2./(Map->front_plane - Map->back_plane);
-
-    /* scale factors */
-    dopx = cx - Prp.x;
-    dopy = cy - Prp.y;
-    dopz = - Prp.z;
-
-    /* map matrix */
-    shmat[0][2] = -(dopx/dopz);
-    shmat[1][2] = -(dopy/dopz);
-
-    /* multiply to obtain mapping matrix */
-    call_util_mat_mul( tmat, shmat, tshmat );
-    call_util_mat_mul( smat, tshmat, mat );
-
-    return;
 #endif
 
-    /* CAL */
-    Map->proj_vp.z_min = ( float )0.0;
-    Map->proj_vp.z_max = ( float )1.0;
-    /* CAL */
+/*----------------------------------------------------------------------*/
 
-    /* Shear matrix calculation */
-    umid = ( float )(Map->win.x_min+Map->win.x_max)/( float )2.0;
-    vmid = ( float )(Map->win.y_min+Map->win.y_max)/( float )2.0;
-    if(Prp.z == Map->view_plane){
-      /* Projection reference point is on the view plane */
-      *err_ind = 1;
-      return;
-    }
-    Shear[2][0] = ( float )(-1.0) * ((Prp.x-umid)/(Prp.z-Map->view_plane));
-    Shear[2][1] = ( float )(-1.0) * ((Prp.y-vmid)/(Prp.z-Map->view_plane));
-
-    /*
-    * Calculate the lower left coordinate of the view plane
-    * after the Shearing Transformation.
-    */
-    call_util_apply_trans2(Map->win.x_min, Map->win.y_min,
-      Map->view_plane, Shear, &(temp.x), &(temp.y), &(temp.z));
-
-    /* Translate the back plane to the origin */
-    Tpar[3][0] = ( float )(-1.0) * temp.x;
-    Tpar[3][1] = ( float )(-1.0) * temp.y;
-    Tpar[3][2] = ( float )(-1.0) * Map->back_plane;
-
-    call_util_mat_mul(Shear, Tpar, aux_mat1);
-
-    /* Calculation of Scaling transformation */
-    Spar[0][0] = ( float )1.0 / (Map->win.x_max - Map->win.x_min);
-    Spar[1][1] = ( float )1.0 / (Map->win.y_max - Map->win.y_min);
-    Spar[2][2] = ( float )1.0 / (Map->front_plane - Map->back_plane );
-    call_util_mat_mul (aux_mat1, Spar, aux_mat2);
-    /* Atlast we transformed view volume to NPC */
-
-    /* Translate and scale the view plane to projection view port */
-    if(Map->proj_vp.x_min < 0.0 || Map->proj_vp.y_min < 0.0 ||
-      Map->proj_vp.z_min < 0.0 || Map->proj_vp.x_max > 1.0 ||
-      Map->proj_vp.y_max > 1.0 || Map->proj_vp.z_max > 1.0 ||
-      Map->proj_vp.x_min > Map->proj_vp.x_max ||
-      Map->proj_vp.y_min > Map->proj_vp.y_max ||
-      Map->proj_vp.z_min > Map->proj_vp.z_max){
-        *err_ind = 1;
-        return;
-      }
-      for(i=0; i<4; i++)
-        for(j=0; j<4; j++)
-          aux_mat1[i][j] = (float)(i==j);
-      aux_mat1[0][0] = Map->proj_vp.x_max-Map->proj_vp.x_min;
-      aux_mat1[1][1] = Map->proj_vp.y_max-Map->proj_vp.y_min;
-      aux_mat1[2][2] = Map->proj_vp.z_max-Map->proj_vp.z_min;
-      aux_mat1[3][0] = Map->proj_vp.x_min;
-      aux_mat1[3][1] = Map->proj_vp.y_min;
-      aux_mat1[3][2] = Map->proj_vp.z_min;
-      call_util_mat_mul (aux_mat2, aux_mat1, mat);
-
-      return;
-  }
-
-  /*
-  * Type Perspective
-  */
-  else if (Map->proj_type == TYPE_PERSPECT)
+void OpenGl_View::DrawBackground (OpenGl_Workspace& theWorkspace)
+{
+#if !defined(GL_ES_VERSION_2_0)
+  if ( (theWorkspace.NamedStatus & OPENGL_NS_WHITEBACK) == 0 &&
+       ( myBgTexture.TexId != 0 || myBgGradient.type != Aspect_GFM_NONE ) )
   {
-    float umid, vmid;
-    float B, F, V;
-    float Zvmin;
-
-    /* CAL */
-    Map->proj_vp.z_min = ( float )0.0;
-    Map->proj_vp.z_max = ( float )1.0;
-    /* CAL */
-
-    B = Map->back_plane;
-    F = Map->front_plane;
-    V = Map->view_plane;
-
-    if(Prp.z == Map->view_plane){
-      /* Centre of Projection is on the view plane */
-      *err_ind = 1;
-      return;
-    }
-    if(Map->proj_vp.x_min < 0.0 || Map->proj_vp.y_min < 0.0 ||
-      Map->proj_vp.z_min < 0.0 || Map->proj_vp.x_max > 1.0 ||
-      Map->proj_vp.y_max > 1.0 || Map->proj_vp.z_max > 1.0 ||
-      Map->proj_vp.x_min > Map->proj_vp.x_max ||
-      Map->proj_vp.y_min > Map->proj_vp.y_max ||
-      Map->proj_vp.z_min > Map->proj_vp.z_max ||
-      F < B){
-        *err_ind = 1;
-        return;
-      }
-
-      /* This is the transformation to move VRC to Center Of Projection */
-      Tprp[3][0] = ( float )(-1.0)*Prp.x;
-      Tprp[3][1] = ( float )(-1.0)*Prp.y;
-      Tprp[3][2] = ( float )(-1.0)*Prp.z;
-
-      /* Calculation of Shear matrix */
-      umid = ( float )(Map->win.x_min+Map->win.x_max)/( float )2.0-Prp.x;
-      vmid = ( float )(Map->win.y_min+Map->win.y_max)/( float )2.0-Prp.y;
-      Shear[2][0] = ( float )(-1.0)*umid/(Map->view_plane-Prp.z);
-      Shear[2][1] = ( float )(-1.0)*vmid/(Map->view_plane-Prp.z);
-      call_util_mat_mul(Tprp, Shear, aux_mat3);
-
-      /* Scale the view volume to canonical view volume
-      * Centre of projection at origin.
-      * 0 <= N <= -1, -0.5 <= U <= 0.5, -0.5 <= V <= 0.5
-      */
-      Scale[0][0] =  (( float )(-1.0)*Prp.z+V)/
-        ((Map->win.x_max-Map->win.x_min)*(( float )(-1.0)*Prp.z+B));
-      Scale[1][1] =  (( float )(-1.0)*Prp.z+V)/
-        ((Map->win.y_max-Map->win.y_min)*(( float )(-1.0)*Prp.z+B));
-      Scale[2][2] =  ( float )(-1.0) / (( float )(-1.0)*Prp.z+B);
-
-      call_util_mat_mul(aux_mat3, Scale, aux_mat1);
-
-      /*
-      * Transform the Perspective view volume into
-      * Parallel view volume.
-      * Lower left coordinate: (-0.5,-0.5, -1)
-      * Upper right coordinate: (0.5, 0.5, 1.0)
-      */
-      Zvmin = ( float )(-1.0*(-1.0*Prp.z+F)/(-1.0*Prp.z+B));
-      aux_mat2[2][2] = ( float )1.0/(( float )1.0+Zvmin);
-      aux_mat2[2][3] = ( float )(-1.0);
-      aux_mat2[3][2] = ( float )(-1.0)*Zvmin*aux_mat2[2][2];
-      aux_mat2[3][3] = ( float )0.0;
-      call_util_mat_mul(aux_mat1, aux_mat2, Shear);
-
-      for(i=0; i<4; i++)
-        for(j=0; j<4; j++)
-          aux_mat1[i][j] = aux_mat2[i][j] = (float)(i==j);
-
-      /* Translate and scale the view plane to projection view port */
-      aux_mat2[0][0] = (Map->proj_vp.x_max-Map->proj_vp.x_min);
-      aux_mat2[1][1] = (Map->proj_vp.y_max-Map->proj_vp.y_min);
-      aux_mat2[2][2] = (Map->proj_vp.z_max-Map->proj_vp.z_min);
-      aux_mat2[3][0] = aux_mat2[0][0]/( float )2.0+Map->proj_vp.x_min;
-      aux_mat2[3][1] = aux_mat2[1][1]/( float )2.0+Map->proj_vp.y_min;
-      aux_mat2[3][2] = aux_mat2[2][2]+Map->proj_vp.z_min;
-      call_util_mat_mul (Shear, aux_mat2, mat);
-
-      return;
-  }
-  else
-    *err_ind = 1;
-}
-
-/*----------------------------------------------------------------------*/
-
-static void
-call_util_apply_trans2( float ix, float iy, float iz, matrix3 mat,
-                       float *ox, float *oy, float *oz )
-{
-  float temp;
-  *ox = ix*mat[0][0]+iy*mat[1][0]+iz*mat[2][0]+mat[3][0];
-  *oy = ix*mat[0][1]+iy*mat[1][1]+iz*mat[2][1]+mat[3][1];
-  *oz = ix*mat[0][2]+iy*mat[1][2]+iz*mat[2][2]+mat[3][2];
-  temp = ix * mat[0][3]+iy * mat[1][3]+iz * mat[2][3]+mat[3][3];
-  *ox /= temp;
-  *oy /= temp;
-  *oz /= temp;
-}
-
-/*----------------------------------------------------------------------*/
-
-static void
-call_util_mat_mul( matrix3 mat_a, matrix3 mat_b, matrix3 mat_c)
-{
-  int i, j, k;
-
-  for (i=0; i<4; i++)
-    for (j=0; j<4; j++)
-      for (mat_c[i][j] = ( float )0.0,k=0; k<4; k++)
-        mat_c[i][j] += mat_a[i][k] * mat_b[k][j];
-}
-
-/*----------------------------------------------------------------------*/
-
-void OpenGl_View::DrawBackground (const Handle(OpenGl_Workspace) &AWorkspace)
-{
-  /////////////////////////////////////////////////////////////////////////////
-  // Step 1: Prepare for redraw
-
-  // Render background
-  if ( (AWorkspace->NamedStatus & OPENGL_NS_WHITEBACK) == 0 &&
-    ( myBgTexture.TexId != 0 || myBgGradient.type != Aspect_GFM_NONE ) )
-  {
-    const Standard_Integer aViewWidth = AWorkspace->Width();
-    const Standard_Integer aViewHeight = AWorkspace->Height();
+    const Standard_Integer aViewWidth = theWorkspace.Width();
+    const Standard_Integer aViewHeight = theWorkspace.Height();
 
     glPushAttrib( GL_ENABLE_BIT | GL_TEXTURE_BIT );
 
@@ -722,8 +321,8 @@ void OpenGl_View::DrawBackground (const Handle(OpenGl_Workspace) &AWorkspace)
 
       glDisable( GL_BLEND ); //push GL_ENABLE_BIT
 
-      glColor3fv( AWorkspace->BackgroundColor().rgb );
-      glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL); //push GL_TEXTURE_BIT
+      glColor3fv (theWorkspace.BackgroundColor().rgb);
+      glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL); //push GL_TEXTURE_BIT
 
       // Note that texture is mapped using GL_REPEAT wrapping mode so integer part
       // is simply ignored, and negative multiplier is here for convenience only
@@ -743,89 +342,131 @@ void OpenGl_View::DrawBackground (const Handle(OpenGl_Workspace) &AWorkspace)
 
     glPopAttrib(); //GL_ENABLE_BIT | GL_TEXTURE_BIT
 
-    if ( AWorkspace->UseZBuffer() )
-      glEnable( GL_DEPTH_TEST );
-
-    /* GL_DITHER on/off pour le trace */
-    if (AWorkspace->Dither())
-      glEnable (GL_DITHER);
-    else
-      glDisable (GL_DITHER);
+    if (theWorkspace.UseZBuffer())
+    {
+      glEnable (GL_DEPTH_TEST);
+    }
   }
+#endif
 }
 
 /*----------------------------------------------------------------------*/
 
 //call_func_redraw_all_structs_proc
 void OpenGl_View::Render (const Handle(OpenGl_PrinterContext)& thePrintContext,
-                          const Handle(OpenGl_Workspace) &AWorkspace,
-                          const Graphic3d_CView& ACView,
-                          const Aspect_CLayer2d& ACUnderLayer,
-                          const Aspect_CLayer2d& ACOverLayer)
+                          const Handle(OpenGl_Workspace) &theWorkspace,
+                          const Graphic3d_CView& theCView,
+                          const Aspect_CLayer2d& theCUnderLayer,
+                          const Aspect_CLayer2d& theCOverLayer)
 {
-  // Store and disable current clipping planes
-  const Handle(OpenGl_Context)& aContext = AWorkspace->GetGlContext();
-  const Standard_Integer aMaxClipPlanes = aContext->MaxClipPlanes();
-  const GLenum lastid = GL_CLIP_PLANE0 + aMaxClipPlanes;
-  OPENGL_CLIP_PLANE *oldPlanes = new OPENGL_CLIP_PLANE[aMaxClipPlanes];
-  OPENGL_CLIP_PLANE *ptrPlane = oldPlanes;
-  GLenum planeid = GL_CLIP_PLANE0;
-  for ( ; planeid < lastid; planeid++, ptrPlane++ )
+  // ==================================
+  //      Step 1: Prepare for redraw
+  // ==================================
+
+  const Handle(OpenGl_Context)& aContext = theWorkspace->GetGlContext();
+
+#if !defined(GL_ES_VERSION_2_0)
+  // store and disable current clipping planes
+  const Standard_Integer aMaxPlanes = aContext->MaxClipPlanes();
+  NCollection_Array1<OPENGL_CLIP_PLANE> aOldPlanes (GL_CLIP_PLANE0, GL_CLIP_PLANE0 + aMaxPlanes - 1);
+  if (aContext->core11 != NULL)
   {
-    glGetClipPlane( planeid, ptrPlane->Equation );
-    if ( ptrPlane->isEnabled )
+    for (Standard_Integer aClipPlaneId = aOldPlanes.Lower(); aClipPlaneId <= aOldPlanes.Upper(); ++aClipPlaneId)
     {
-      glDisable( planeid );
-      ptrPlane->isEnabled = GL_TRUE;
+      OPENGL_CLIP_PLANE& aPlane = aOldPlanes.ChangeValue (aClipPlaneId);
+      aContext->core11->glGetClipPlane (aClipPlaneId, aPlane.Equation);
+      if (aPlane.isEnabled)
+      {
+        aContext->core11fwd->glDisable (aClipPlaneId);
+        aPlane.isEnabled = GL_TRUE;
+      }
+      else
+      {
+        aPlane.isEnabled = GL_FALSE;
+      }
     }
-    else
-    {
-      ptrPlane->isEnabled = GL_FALSE;
-    }
+  }
+#endif
+
+  Standard_Boolean isProjectionMatUpdateNeeded  = Standard_False;
+  Standard_Boolean isOrientationMatUpdateNeeded = Standard_False;
+  if (myBVHSelector.ProjectionState() != myCamera->ProjectionState())
+  {
+    isProjectionMatUpdateNeeded = Standard_True;
+    myBVHSelector.ChangeProjectionState() = myCamera->ProjectionState();
+  }
+  if (myBVHSelector.ModelViewState() != myCamera->ModelViewState())
+  {
+    isOrientationMatUpdateNeeded = Standard_True;
+    myBVHSelector.ChangeModelViewState() = myCamera->ModelViewState();
   }
 
   // Set OCCT state uniform variables
-  const Handle(OpenGl_ShaderManager) aManager = aContext->ShaderManager();
-  if (StateInfo (myCurrLightSourceState, aManager->LightSourceState().Index()) != myLastLightSourceState)
+  const Handle(OpenGl_ShaderManager) aManager   = aContext->ShaderManager();
+  const Standard_Boolean             isSameView = aManager->IsSameView (this); // force camera state update when needed
+  if (!aManager->IsEmpty())
   {
-    aManager->UpdateLightSourceStateTo (&myLights);
-    myLastLightSourceState = StateInfo (myCurrLightSourceState, aManager->LightSourceState().Index());
-  }
-  if (StateInfo (myCurrViewMappingState, aManager->ProjectionState().Index()) != myLastViewMappingState)
-  {
-    aManager->UpdateProjectionStateTo (myMappingMatrix);
-    myLastViewMappingState = StateInfo (myCurrViewMappingState, aManager->ProjectionState().Index());
-  }
-  if (StateInfo (myCurrOrientationState, aManager->WorldViewState().Index()) != myLastOrientationState)
-  {
-    aManager->UpdateWorldViewStateTo (myOrientationMatrix);
-    myLastOrientationState = StateInfo (myCurrOrientationState, aManager->WorldViewState().Index());
-  }
-  if (aManager->ModelWorldState().Index() == 0)
-  {
-    Tmatrix3 aModelWorldState = { { 1.f, 0.f, 0.f, 0.f },
-                                  { 0.f, 1.f, 0.f, 0.f },
-                                  { 0.f, 0.f, 1.f, 0.f },
-                                  { 0.f, 0.f, 0.f, 1.f } };
-    
-    aManager->UpdateModelWorldStateTo (aModelWorldState);
+    if (StateInfo (myCurrLightSourceState, aManager->LightSourceState().Index()) != myLastLightSourceState)
+    {
+      aManager->UpdateLightSourceStateTo (&myLights);
+      myLastLightSourceState = StateInfo (myCurrLightSourceState, aManager->LightSourceState().Index());
+    }
+
+    if (myProjectionState != myCamera->ProjectionState()
+    || !isSameView)
+    {
+      myProjectionState = myCamera->ProjectionState();
+      aManager->UpdateProjectionStateTo ((const Tmatrix3*)myCamera->ProjectionMatrixF().GetData());
+    }
+
+    if (myModelViewState != myCamera->ModelViewState()
+    || !isSameView)
+    {
+      myModelViewState = myCamera->ModelViewState();
+      aManager->UpdateWorldViewStateTo ((const Tmatrix3*)myCamera->OrientationMatrixF().GetData());
+    }
+
+    if (aManager->ModelWorldState().Index() == 0)
+    {
+      Tmatrix3 aModelWorldState = { { 1.f, 0.f, 0.f, 0.f },
+                                    { 0.f, 1.f, 0.f, 0.f },
+                                    { 0.f, 0.f, 1.f, 0.f },
+                                    { 0.f, 0.f, 0.f, 1.f } };
+
+      aContext->ShaderManager()->UpdateModelWorldStateTo (&aModelWorldState);
+    }
   }
 
-  /////////////////////////////////////////////////////////////////////////////
-  // Step 1: Prepare for redraw
+  if (isProjectionMatUpdateNeeded
+   || isOrientationMatUpdateNeeded)
+  {
+    myBVHSelector.SetViewVolume (myCamera);
+  }
+
+  // ====================================
+  //      Step 2: Redraw background
+  // ====================================
 
   // Render background
-  DrawBackground (AWorkspace);
+  if (theWorkspace->ToRedrawGL())
+  {
+    DrawBackground (*theWorkspace);
+  }
 
+#if !defined(GL_ES_VERSION_2_0)
   // Switch off lighting by default
   glDisable(GL_LIGHTING);
+#endif
 
-  /////////////////////////////////////////////////////////////////////////////
-  // Step 2: Draw underlayer
-  RedrawLayer2d (thePrintContext, ACView, ACUnderLayer);
+  // =================================
+  //      Step 3: Draw underlayer
+  // =================================
 
-  /////////////////////////////////////////////////////////////////////////////
-  // Step 3: Redraw main plane
+  RedrawLayer2d (thePrintContext, theCView, theCUnderLayer);
+
+  // =================================
+  //      Step 4: Redraw main plane
+  // =================================
 
   // Setup face culling
   GLboolean isCullFace = GL_FALSE;
@@ -837,279 +478,119 @@ void OpenGl_View::Render (const Handle(OpenGl_PrinterContext)& thePrintContext,
       glEnable( GL_CULL_FACE );
       glCullFace( GL_BACK );
     }
-	else
+    else
       glDisable( GL_CULL_FACE );
   }
 
-  //TsmPushAttri(); /* save previous graphics context */
-
-  // if the view is scaled normal vectors are scaled to unit length for correct displaying of shaded objects
-  if(myExtra.scaleFactors[0] != 1.F ||
-     myExtra.scaleFactors[1] != 1.F ||
-     myExtra.scaleFactors[2] != 1.F)
+#if !defined(GL_ES_VERSION_2_0)
+  // if the view is scaled normal vectors are scaled to unit
+  // length for correct displaying of shaded objects
+  const gp_Pnt anAxialScale = myCamera->AxialScale();
+  if(anAxialScale.X() != 1.F ||
+     anAxialScale.Y() != 1.F ||
+     anAxialScale.Z() != 1.F)
     glEnable(GL_NORMALIZE);
   else if(glIsEnabled(GL_NORMALIZE))
     glDisable(GL_NORMALIZE);
 
-  // Apply View Projection
-  // This routine activates the Projection matrix for a view.
-
-  glMatrixMode( GL_PROJECTION );
-
-#ifdef _WIN32
-  // add printing scale/tiling transformation
-  if (!thePrintContext.IsNull())
-  {
-    thePrintContext->LoadProjTransformation();
-  }
-  else
-#endif
-    glLoadIdentity();
-
-  glMultMatrixf( (const GLfloat *) myMappingMatrix );
-
-  // Add translation necessary for the environnement mapping
-  if (mySurfaceDetail != Visual3d_TOD_NONE)
-  {
-    // OCC280: FitAll work incorrect for perspective view if the SurfaceDetail mode is V3d_TEX_ENVIRONMENT or V3d_TEX_ALL
-    // const GLfloat dep = vptr->vrep.extra.map.fpd * 0.5F;
-    const GLfloat dep = (myExtra.map.fpd + myExtra.map.bpd) * 0.5F;
-    glTranslatef(-dep*myExtra.vpn[0],-dep*myExtra.vpn[1],-dep*myExtra.vpn[2]);
-  }
-
-  // Apply matrix
-  AWorkspace->SetViewMatrix((const OpenGl_Matrix *)myOrientationMatrix);
-
-/*
-While drawing after a clipplane has been defined and enabled, each vertex
-is transformed to eye-coordinates, where it is dotted with the transformed
-clipping plane equation.  Eye-coordinate vertexes whose dot product with
-the transformed clipping plane equation is positive or zero are in, and
-require no clipping.  Those eye-coordinate vertexes whose dot product is
-negative are clipped.  Because clipplane clipping is done in eye-
-coordinates, changes to the projection matrix have no effect on its
-operation.
-
-A point and a normal are converted to a plane equation in the following manner:
-
-point = [Px,Py,Pz]
-
-normal = |Nx|
-|Ny|
-|Nz|
-
-plane equation = |A|
-|B|
-|C|
-|D|
-A = Nx
-B = Ny
-C = Nz
-D = -[Px,Py,Pz] dot |Nx|
-|Ny|
-|Nz|
-
-*/
-
   // Apply Fog
   if ( myFog.IsOn )
   {
-    const GLfloat ramp = myExtra.map.fpd - myExtra.map.bpd;
-    const GLfloat fog_start = myFog.Front * ramp - myExtra.map.fpd;
-    const GLfloat fog_end   = myFog.Back  * ramp - myExtra.map.fpd;
+    Standard_Real aFogFrontConverted = (Standard_Real )myFog.Front + myCamera->Distance();
+    if (myCamera->ZFar() < aFogFrontConverted)
+    {
+      aFogFrontConverted = myCamera->ZFar();
+      myFog.Front = (Standard_ShortReal )(aFogFrontConverted - myCamera->Distance());
+    }
+
+    Standard_Real aFogBackConverted = (Standard_Real )myFog.Back + myCamera->Distance();
+    if (myCamera->ZFar() < aFogFrontConverted)
+    {
+      aFogBackConverted = myCamera->ZFar();
+      myFog.Back = (Standard_ShortReal )(aFogBackConverted - myCamera->Distance());
+    }
+
+    if (aFogFrontConverted > aFogBackConverted)
+    {
+      myFog.Front = (Standard_ShortReal )(aFogFrontConverted - myCamera->Distance());
+      myFog.Back = (Standard_ShortReal )(aFogBackConverted - myCamera->Distance());
+    }
 
     glFogi(GL_FOG_MODE, GL_LINEAR);
-    glFogf(GL_FOG_START, fog_start);
-    glFogf(GL_FOG_END, fog_end);
+    glFogf(GL_FOG_START, (Standard_ShortReal )aFogFrontConverted);
+    glFogf(GL_FOG_END, (Standard_ShortReal )aFogBackConverted);
     glFogfv(GL_FOG_COLOR, myFog.Color.rgb);
     glEnable(GL_FOG);
   }
   else
     glDisable(GL_FOG);
 
-  // Apply Lights
-  {
-    // setup lights
-    Graphic3d_Vec4 anAmbientColor (THE_DEFAULT_AMBIENT[0],
-                                   THE_DEFAULT_AMBIENT[1],
-                                   THE_DEFAULT_AMBIENT[2],
-                                   THE_DEFAULT_AMBIENT[3]);
-    GLenum aLightGlId = GL_LIGHT0;
-    for (OpenGl_ListOfLight::Iterator aLightIt (myLights);
-         aLightIt.More(); aLightIt.Next())
-    {
-      bind_light (aLightIt.Value(), aLightGlId, anAmbientColor);
-    }
-
-    // apply accumulated ambient color
-    anAmbientColor.a() = 1.0f;
-    glLightModelfv (GL_LIGHT_MODEL_AMBIENT, anAmbientColor.GetData());
-
-    if (aLightGlId != GL_LIGHT0)
-    {
-      glEnable (GL_LIGHTING);
-    }
-    // switch off unused lights
-    for (; aLightGlId <= GL_LIGHT7; ++aLightGlId)
-    {
-      glDisable (aLightGlId);
-    }
-  }
-
   // Apply InteriorShadingMethod
-  glShadeModel( myIntShadingMethod == TEL_SM_FLAT ? GL_FLAT : GL_SMOOTH );
+  aContext->core11->glShadeModel (myShadingModel == Visual3d_TOM_FACET
+                               || myShadingModel == Visual3d_TOM_NONE ? GL_FLAT : GL_SMOOTH);
+#endif
 
-  // Apply clipping planes
-  {
-    if (myZClip.Back.IsOn || myZClip.Front.IsOn)
-    {
-      const GLdouble ramp = myExtra.map.fpd - myExtra.map.bpd;
-
-      Handle(Graphic3d_ClipPlane) aPlaneBack;
-      Handle(Graphic3d_ClipPlane) aPlaneFront;
-
-      if (myZClip.Back.IsOn)
-      {
-        const GLdouble back = ramp * myZClip.Back.Limit + myExtra.map.bpd;
-        const Graphic3d_ClipPlane::Equation aBackEquation (0.0, 0.0, 1.0, -back);
-        aPlaneBack = new Graphic3d_ClipPlane (aBackEquation);
-      }
-
-      if (myZClip.Front.IsOn)
-      {
-        const GLdouble front = ramp * myZClip.Front.Limit + myExtra.map.bpd;
-        const Graphic3d_ClipPlane::Equation aFrontEquation (0.0, 0.0, -1.0, front);
-        aPlaneFront = new Graphic3d_ClipPlane (aFrontEquation);
-      }
-
-      // do some "memory allocation"-wise optimization
-      if (!aPlaneBack.IsNull() || !aPlaneFront.IsNull())
-      {
-        Graphic3d_SequenceOfHClipPlane aSlicingPlanes;
-        if (!aPlaneBack.IsNull())
-        {
-          aSlicingPlanes.Append (aPlaneBack);
-        }
-
-        if (!aPlaneFront.IsNull())
-        {
-          aSlicingPlanes.Append (aPlaneFront);
-        }
-
-        // add planes at loaded view matrix state
-        aContext->ChangeClipping().AddView (aSlicingPlanes, AWorkspace);
-      }
-    }
-
-    // Apply user clipping planes
-    if (!myClipPlanes.IsEmpty())
-    {
-      Graphic3d_SequenceOfHClipPlane aUserPlanes;
-      Graphic3d_SequenceOfHClipPlane::Iterator aClippingIt (myClipPlanes);
-      for (; aClippingIt.More(); aClippingIt.Next())
-      {
-        const Handle(Graphic3d_ClipPlane)& aClipPlane = aClippingIt.Value();
-        if (aClipPlane->IsOn())
-        {
-          aUserPlanes.Append (aClipPlane);
-        }
-      }
-
-      if (!aUserPlanes.IsEmpty())
-      {
-        // add planes at actual matrix state.
-        aContext->ChangeClipping().AddWorld (aUserPlanes);
-      }
-    }
-    
-    if (!aManager->IsEmpty())
-    {
-      aManager->UpdateClippingState();
-    }
-  }
+  aManager->SetShadingModel (myShadingModel);
 
   // Apply AntiAliasing
+  if (myAntiAliasing)
+    theWorkspace->NamedStatus |= OPENGL_NS_ANTIALIASING;
+  else
+    theWorkspace->NamedStatus &= ~OPENGL_NS_ANTIALIASING;
+
+  if (!aManager->IsEmpty())
   {
-    if (myAntiAliasing)
-      AWorkspace->NamedStatus |= OPENGL_NS_ANTIALIASING;
-	else
-      AWorkspace->NamedStatus &= ~OPENGL_NS_ANTIALIASING;
+    aManager->UpdateClippingState();
   }
 
-  // Clear status bitfields
-  AWorkspace->NamedStatus &= ~(OPENGL_NS_2NDPASSNEED | OPENGL_NS_2NDPASSDO);
-
-  // Added PCT for handling of textures
-  switch (mySurfaceDetail)
+  // Redraw 3d scene
+  if (!myCamera->IsStereo() || !aContext->HasStereoBuffers())
   {
-    case Visual3d_TOD_NONE:
-      AWorkspace->NamedStatus |= OPENGL_NS_FORBIDSETTEX;
-      AWorkspace->DisableTexture();
-      // Render the view
-      RenderStructs(AWorkspace);
-      break;
+    // single-pass monographic rendering
+    const OpenGl_Matrix* aProj = (const OpenGl_Matrix*) &myCamera->ProjectionMatrixF();
 
-    case Visual3d_TOD_ENVIRONMENT:
-      AWorkspace->NamedStatus |= OPENGL_NS_FORBIDSETTEX;
-      AWorkspace->EnableTexture (myTextureEnv);
-      // Render the view
-      RenderStructs(AWorkspace);
-      AWorkspace->DisableTexture();
-      break;
+    const OpenGl_Matrix* aOrient = (const OpenGl_Matrix*) &myCamera->OrientationMatrixF();
 
-    case Visual3d_TOD_ALL:
-      // First pass
-      AWorkspace->NamedStatus &= ~OPENGL_NS_FORBIDSETTEX;
-      // Render the view
-      RenderStructs(AWorkspace);
-      AWorkspace->DisableTexture();
-
-      // Second pass
-      if (AWorkspace->NamedStatus & OPENGL_NS_2NDPASSNEED)
-      {
-        AWorkspace->NamedStatus |= OPENGL_NS_2NDPASSDO;
-        AWorkspace->EnableTexture (myTextureEnv);
-
-        /* sauvegarde de quelques parametres OpenGL */
-        GLint blend_dst, blend_src;
-        GLint zbuff_f;
-        GLboolean zbuff_w;
-        glGetBooleanv(GL_DEPTH_WRITEMASK, &zbuff_w);
-        glGetIntegerv(GL_DEPTH_FUNC, &zbuff_f);
-        glGetIntegerv(GL_BLEND_DST, &blend_dst);
-        glGetIntegerv(GL_BLEND_SRC, &blend_src);
-        GLboolean zbuff_state = glIsEnabled(GL_DEPTH_TEST);
-        GLboolean blend_state = glIsEnabled(GL_BLEND);
-
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_BLEND);
-
-        glDepthFunc(GL_EQUAL);
-        glDepthMask(GL_FALSE);
-        glEnable(GL_DEPTH_TEST);
-
-        AWorkspace->NamedStatus |= OPENGL_NS_FORBIDSETTEX;
-
-        // Render the view
-        RenderStructs(AWorkspace);
-        AWorkspace->DisableTexture();
-
-        /* restauration des parametres OpenGL */
-        glBlendFunc(blend_src, blend_dst);
-        if (!blend_state) glDisable(GL_BLEND);
-
-        glDepthFunc(zbuff_f);
-        glDepthMask(zbuff_w);
-        if (!zbuff_state) glDisable(GL_DEPTH_FUNC);
-      }
-      break;
+    // redraw scene with normal orientation and projection
+    RedrawScene (thePrintContext, theWorkspace, aProj, aOrient);
   }
+  else
+  {
+    // two stereographic passes
+    const OpenGl_Matrix* aLProj  = (const OpenGl_Matrix*) &myCamera->ProjectionStereoLeftF();
+    const OpenGl_Matrix* aRProj  = (const OpenGl_Matrix*) &myCamera->ProjectionStereoRightF();
+    const OpenGl_Matrix* aOrient = (const OpenGl_Matrix*) &myCamera->OrientationMatrixF();
+
+    // safely switch to left Eye buffer
+    aContext->SetDrawBufferLeft();
+
+    // redraw left Eye
+    RedrawScene (thePrintContext, theWorkspace, aLProj, aOrient);
+
+    // reset depth buffer of first rendering pass
+    if (theWorkspace->UseDepthTest())
+    {
+      glClear (GL_DEPTH_BUFFER_BIT);
+    }
+    // safely switch to right Eye buffer
+    aContext->SetDrawBufferRight();
+
+    // redraw right Eye
+    RedrawScene (thePrintContext, theWorkspace, aRProj, aOrient);
+
+    // switch back to monographic rendering
+    aContext->SetDrawBufferMono();
+  }
+
+  // ===============================
+  //      Step 5: Trihedron
+  // ===============================
 
   // Resetting GL parameters according to the default aspects
   // in order to synchronize GL state with the graphic driver state
   // before drawing auxiliary stuff (trihedrons, overlayer)
   // and invoking optional callbacks
-  AWorkspace->ResetAppliedAspect();
+  theWorkspace->ResetAppliedAspect();
 
   aContext->ChangeClipping().RemoveAll();
 
@@ -1121,50 +602,75 @@ D = -[Px,Py,Pz] dot |Nx|
     // We need to disable (unbind) all shaders programs to ensure
     // that all objects without specified aspect will be drawn
     // correctly (such as background)
-    OpenGl_ShaderProgram::Unbind (aContext);
+    aContext->BindProgram (NULL);
   }
 
-  // display global trihedron
-  if (myTrihedron != NULL)
+  // Render trihedron
+  if (theWorkspace->ToRedrawGL())
   {
-    myTrihedron->Render (AWorkspace);
-  }
-  if (myGraduatedTrihedron != NULL)
-  {
-    myGraduatedTrihedron->Render (AWorkspace);
-  }
+    RedrawTrihedron (theWorkspace);
 
-  // Restore face culling
-  if ( myBackfacing )
-  {
-    if ( isCullFace )
+    // Restore face culling
+    if ( myBackfacing )
     {
-      glEnable   ( GL_CULL_FACE );
-      glCullFace ( GL_BACK      );
+      if ( isCullFace )
+      {
+        glEnable   ( GL_CULL_FACE );
+        glCullFace ( GL_BACK      );
+      }
+      else
+        glDisable ( GL_CULL_FACE );
     }
-    else
-      glDisable ( GL_CULL_FACE );
   }
 
-  /////////////////////////////////////////////////////////////////////////////
-  // Step 6: Draw overlayer
+  // ===============================
+  //      Step 6: Redraw overlay
+  // ===============================
+
   const int aMode = 0;
-  AWorkspace->DisplayCallback (ACView, (aMode | OCC_PRE_OVERLAY));
+  theWorkspace->DisplayCallback (theCView, (aMode | OCC_PRE_OVERLAY));
 
-  RedrawLayer2d (thePrintContext, ACView, ACOverLayer);
+  RedrawLayer2d (thePrintContext, theCView, theCOverLayer);
 
-  AWorkspace->DisplayCallback (ACView, aMode);
+  theWorkspace->DisplayCallback (theCView, aMode);
 
-  // Restore clipping planes
-  for ( ptrPlane = oldPlanes, planeid = GL_CLIP_PLANE0; planeid < lastid; planeid++, ptrPlane++ )
+  // ===============================
+  //      Step 7: Finalize
+  // ===============================
+
+#if !defined(GL_ES_VERSION_2_0)
+  // restore clipping planes
+  if (aContext->core11 != NULL)
   {
-    glClipPlane( planeid, ptrPlane->Equation );
-    if ( ptrPlane->isEnabled )
-      glEnable( planeid );
-    else
-      glDisable( planeid );
+    for (Standard_Integer aClipPlaneId = aOldPlanes.Lower(); aClipPlaneId <= aOldPlanes.Upper(); ++aClipPlaneId)
+    {
+      const OPENGL_CLIP_PLANE& aPlane = aOldPlanes.ChangeValue (aClipPlaneId);
+      aContext->core11->glClipPlane (aClipPlaneId, aPlane.Equation);
+      if (aPlane.isEnabled)
+        aContext->core11fwd->glEnable (aClipPlaneId);
+      else
+        aContext->core11fwd->glDisable (aClipPlaneId);
+    }
   }
-  delete[] oldPlanes;
+#endif
+
+  // ==============================================================
+  //      Step 8: Keep shader manager informed about last View
+  // ==============================================================
+
+  if (!aManager.IsNull())
+  {
+    aManager->SetLastView (this);
+  }
+}
+
+// =======================================================================
+// function : InvalidateBVHData
+// purpose  :
+// =======================================================================
+void OpenGl_View::InvalidateBVHData (const Standard_Integer theLayerId)
+{
+  myZLayers.InvalidateBVHData (theLayerId);
 }
 
 /*----------------------------------------------------------------------*/
@@ -1175,27 +681,35 @@ void OpenGl_View::RenderStructs (const Handle(OpenGl_Workspace) &AWorkspace)
   if ( myZLayers.NbStructures() <= 0 )
     return;
 
+#if !defined(GL_ES_VERSION_2_0)
   glPushAttrib ( GL_DEPTH_BUFFER_BIT );
+#endif
 
   //TsmPushAttri(); /* save previous graphics context */
 
   if ( (AWorkspace->NamedStatus & OPENGL_NS_2NDPASSNEED) == 0 )
   {
-    const int antiAliasingMode = AWorkspace->GetDisplay()->AntiAliasingMode();
+  #if !defined(GL_ES_VERSION_2_0)
+    const int antiAliasingMode = AWorkspace->AntiAliasingMode();
+  #endif
 
     if ( !myAntiAliasing )
     {
+    #if !defined(GL_ES_VERSION_2_0)
       glDisable(GL_POINT_SMOOTH);
       glDisable(GL_LINE_SMOOTH);
       if( antiAliasingMode & 2 ) glDisable(GL_POLYGON_SMOOTH);
+    #endif
       glBlendFunc (GL_ONE, GL_ZERO);
       glDisable (GL_BLEND);
     }
     else
     {
+    #if !defined(GL_ES_VERSION_2_0)
       glEnable(GL_POINT_SMOOTH);
       glEnable(GL_LINE_SMOOTH);
       if( antiAliasingMode & 2 ) glEnable(GL_POLYGON_SMOOTH);
+    #endif
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
       glEnable (GL_BLEND);
     }
@@ -1203,8 +717,10 @@ void OpenGl_View::RenderStructs (const Handle(OpenGl_Workspace) &AWorkspace)
 
   myZLayers.Render (AWorkspace);
 
+#if !defined(GL_ES_VERSION_2_0)
   //TsmPopAttri(); /* restore previous graphics context; before update lights */
   glPopAttrib();
+#endif
 }
 
 /*----------------------------------------------------------------------*/
@@ -1214,6 +730,7 @@ void OpenGl_View::RedrawLayer2d (const Handle(OpenGl_PrinterContext)& thePrintCo
                                  const Graphic3d_CView&               ACView,
                                  const Aspect_CLayer2d&               ACLayer)
 {
+#if !defined(GL_ES_VERSION_2_0)
   if (&ACLayer == NULL
    || ACLayer.ptrLayer == NULL
    || ACLayer.ptrLayer->listIndex == 0) return;
@@ -1338,6 +855,22 @@ void OpenGl_View::RedrawLayer2d (const Handle(OpenGl_PrinterContext)& thePrintCo
     glViewport (0, 0, (GLsizei) ACView.DefWindow.dx, (GLsizei) ACView.DefWindow.dy);
 
   glFlush ();
+#endif
+}
+
+/*----------------------------------------------------------------------*/
+
+void OpenGl_View::RedrawTrihedron (const Handle(OpenGl_Workspace) &theWorkspace)
+{
+  // display global trihedron
+  if (myTrihedron != NULL)
+  {
+    myTrihedron->Render (theWorkspace);
+  }
+  if (myGraduatedTrihedron != NULL)
+  {
+    myGraduatedTrihedron->Render (theWorkspace);
+  }
 }
 
 /*----------------------------------------------------------------------*/
@@ -1378,14 +911,13 @@ void OpenGl_View::CreateBackgroundTexture (const Standard_CString  theFilePath,
     }
 
     anImage.SetTopDown (false);
-    Image_PixMapData<Image_ColorRGB>& aDataNew = anImage.EditData<Image_ColorRGB>();
     Quantity_Color aSrcColor;
     for (Standard_Size aRow = 0; aRow < anImage.SizeY(); ++aRow)
     {
       for (Standard_Size aCol = 0; aCol < anImage.SizeX(); ++aCol)
       {
         aSrcColor = anImageLoaded.PixelColor ((Standard_Integer )aCol, (Standard_Integer )aRow);
-        Image_ColorRGB& aColor = aDataNew.ChangeValue (aRow, aCol);
+        Image_ColorRGB& aColor = anImage.ChangeValue<Image_ColorRGB> (aRow, aCol);
         aColor.r() = Standard_Byte(255.0 * aSrcColor.Red());
         aColor.g() = Standard_Byte(255.0 * aSrcColor.Green());
         aColor.b() = Standard_Byte(255.0 * aSrcColor.Blue());
@@ -1407,9 +939,12 @@ void OpenGl_View::CreateBackgroundTexture (const Standard_CString  theFilePath,
   glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 
   const GLenum aDataFormat = (anImage.Format() == Image_PixMap::ImgRGB) ? GL_RGB : GL_RGBA;
+
+#if !defined(GL_ES_VERSION_2_0)
   gluBuild2DMipmaps (GL_TEXTURE_2D, 3/*4*/,
                      GLint(anImage.SizeX()), GLint(anImage.SizeY()),
                      aDataFormat, GL_UNSIGNED_BYTE, anImage.Data());
+#endif
 
   myBgTexture.TexId  = aTextureId;
   myBgTexture.Width  = (Standard_Integer )anImage.SizeX();
@@ -1489,6 +1024,25 @@ void OpenGl_View::DisplayStructure (const OpenGl_Structure *theStructure,
 }
 
 //=======================================================================
+//function : DisplayImmediateStructure
+//purpose  :
+//=======================================================================
+
+void OpenGl_View::DisplayImmediateStructure (const OpenGl_Structure* theStructure)
+{
+  for (OpenGl_SequenceOfStructure::Iterator anIter (myImmediateList);
+       anIter.More(); anIter.Next())
+  {
+    if (anIter.Value() == theStructure)
+    {
+      return;
+    }
+  }
+
+  myImmediateList.Append (theStructure);
+}
+
+//=======================================================================
 //function : EraseStructure
 //purpose  :
 //=======================================================================
@@ -1497,6 +1051,24 @@ void OpenGl_View::EraseStructure (const OpenGl_Structure *theStructure)
 {
   Standard_Integer aZLayer = theStructure->GetZLayer ();
   myZLayers.RemoveStructure (theStructure, aZLayer);
+}
+
+//=======================================================================
+//function : EraseImmediateStructure
+//purpose  :
+//=======================================================================
+
+void OpenGl_View::EraseImmediateStructure (const OpenGl_Structure* theStructure)
+{
+  for (OpenGl_SequenceOfStructure::Iterator anIter (myImmediateList);
+       anIter.More(); anIter.Next())
+  {
+    if (anIter.Value() == theStructure)
+    {
+      myImmediateList.Remove (anIter);
+      return;
+    }
+  }
 }
 
 //=======================================================================
@@ -1521,3 +1093,235 @@ void OpenGl_View::SetZLayerSettings (const Standard_Integer theLayerId,
   myZLayers.Layer (theLayerId).SetLayerSettings (theSettings);
 }
 
+//=======================================================================
+//function : ChangePriority
+//purpose  :
+//=======================================================================
+void OpenGl_View::ChangePriority (const OpenGl_Structure *theStructure,
+                                  const Standard_Integer theNewPriority)
+{
+  Standard_Integer aLayerId = theStructure->GetZLayer();
+  myZLayers.ChangePriority (theStructure, aLayerId, theNewPriority);
+}
+
+//=======================================================================
+//function : RedrawScene
+//purpose  :
+//=======================================================================
+
+void OpenGl_View::RedrawScene (const Handle(OpenGl_PrinterContext)& thePrintContext,
+                               const Handle(OpenGl_Workspace)& theWorkspace,
+                               const OpenGl_Matrix* theProjection,
+                               const OpenGl_Matrix* theOrientation)
+{
+  const Handle(OpenGl_Context)& aContext = theWorkspace->GetGlContext();
+
+  if (myZClip.Back.IsOn || myZClip.Front.IsOn)
+  {
+    Handle(Graphic3d_ClipPlane) aPlaneBack;
+    Handle(Graphic3d_ClipPlane) aPlaneFront;
+
+    if (myZClip.Back.IsOn)
+    {
+      Standard_Real aClipBackConverted = (Standard_Real )myZClip.Front.Limit + myCamera->Distance();
+      if (myCamera->ZFar() < aClipBackConverted)
+      {
+        aClipBackConverted = myCamera->ZFar();
+        myZClip.Back.Limit = (Standard_ShortReal )(aClipBackConverted - myCamera->Distance());
+      }
+      const Graphic3d_ClipPlane::Equation aBackEquation (0.0, 0.0, 1.0, (Standard_ShortReal )aClipBackConverted);
+      aPlaneBack = new Graphic3d_ClipPlane (aBackEquation);
+    }
+
+    if (myZClip.Front.IsOn)
+    {
+      Standard_Real aClipFrontConverted = (Standard_Real )myZClip.Front.Limit + myCamera->Distance();
+      if (myCamera->ZNear() > aClipFrontConverted)
+      {
+        aClipFrontConverted = myCamera->ZNear();
+        myZClip.Front.Limit = (Standard_ShortReal )(aClipFrontConverted - myCamera->Distance());
+      }
+      const Graphic3d_ClipPlane::Equation aFrontEquation (0.0, 0.0, -1.0, (Standard_ShortReal )-aClipFrontConverted);
+      aPlaneFront = new Graphic3d_ClipPlane (aFrontEquation);
+    }
+
+    // Specify slicing planes with identity transformation
+    if (!aPlaneBack.IsNull() || !aPlaneFront.IsNull())
+    {
+      Graphic3d_SequenceOfHClipPlane aSlicingPlanes;
+      if (!aPlaneBack.IsNull())
+      {
+        aSlicingPlanes.Append (aPlaneBack);
+      }
+
+      if (!aPlaneFront.IsNull())
+      {
+        aSlicingPlanes.Append (aPlaneFront);
+      }
+
+      // add planes at loaded view matrix state
+      aContext->ChangeClipping().AddView (aSlicingPlanes, theWorkspace);
+    }
+  }
+
+#if !defined(GL_ES_VERSION_2_0)
+  // Setup view projection
+  glMatrixMode (GL_PROJECTION);
+
+#ifdef _WIN32
+  // add printing scale/tiling transformation
+  if (!thePrintContext.IsNull())
+  {
+    thePrintContext->LoadProjTransformation();
+  }
+  else
+#endif
+    glLoadIdentity();
+
+  glMultMatrixf ((const GLfloat*)theProjection);
+
+  if (!thePrintContext.IsNull())
+  {
+    // update shader uniform projection matrix with new data
+    Tmatrix3 aResultProjection;
+    glGetFloatv (GL_PROJECTION_MATRIX, *aResultProjection);
+    aContext->ShaderManager()->UpdateProjectionStateTo (&aResultProjection);
+
+    // force shader uniform restore on next frame
+    myProjectionState = 0;
+  }
+#endif
+
+  // Setup view orientation
+  theWorkspace->SetViewMatrix (theOrientation);
+
+  // Specify clipping planes in view transformation space
+  if (!myClipPlanes.IsEmpty())
+  {
+    Graphic3d_SequenceOfHClipPlane aUserPlanes;
+    Graphic3d_SequenceOfHClipPlane::Iterator aClippingIt (myClipPlanes);
+    for (; aClippingIt.More(); aClippingIt.Next())
+    {
+      const Handle(Graphic3d_ClipPlane)& aClipPlane = aClippingIt.Value();
+      if (aClipPlane->IsOn())
+      {
+        aUserPlanes.Append (aClipPlane);
+      }
+    }
+
+    if (!aUserPlanes.IsEmpty())
+    {
+      aContext->ChangeClipping().AddWorld (aUserPlanes);
+    }
+
+    if (!aContext->ShaderManager()->IsEmpty())
+    {
+      aContext->ShaderManager()->UpdateClippingState();
+    }
+  }
+
+#if !defined(GL_ES_VERSION_2_0)
+  // Apply Lights
+  {
+    // setup lights
+    Graphic3d_Vec4 anAmbientColor (THE_DEFAULT_AMBIENT[0],
+                                   THE_DEFAULT_AMBIENT[1],
+                                   THE_DEFAULT_AMBIENT[2],
+                                   THE_DEFAULT_AMBIENT[3]);
+    GLenum aLightGlId = GL_LIGHT0;
+    for (OpenGl_ListOfLight::Iterator aLightIt (myLights);
+         aLightIt.More(); aLightIt.Next())
+    {
+      bind_light (aLightIt.Value(), aLightGlId, anAmbientColor);
+    }
+
+    // apply accumulated ambient color
+    anAmbientColor.a() = 1.0f;
+    glLightModelfv (GL_LIGHT_MODEL_AMBIENT, anAmbientColor.GetData());
+
+    if (aLightGlId != GL_LIGHT0)
+    {
+      glEnable (GL_LIGHTING);
+    }
+    // switch off unused lights
+    for (; aLightGlId <= GL_LIGHT7; ++aLightGlId)
+    {
+      glDisable (aLightGlId);
+    }
+  }
+#endif
+
+  // Clear status bitfields
+  theWorkspace->NamedStatus &= ~(OPENGL_NS_2NDPASSNEED | OPENGL_NS_2NDPASSDO);
+
+  // Added PCT for handling of textures
+  switch (mySurfaceDetail)
+  {
+    case Visual3d_TOD_NONE:
+      theWorkspace->NamedStatus |= OPENGL_NS_FORBIDSETTEX;
+      theWorkspace->DisableTexture();
+      // Render the view
+      RenderStructs (theWorkspace);
+      break;
+
+    case Visual3d_TOD_ENVIRONMENT:
+      theWorkspace->NamedStatus |= OPENGL_NS_FORBIDSETTEX;
+      theWorkspace->EnableTexture (myTextureEnv);
+      // Render the view
+      RenderStructs (theWorkspace);
+      theWorkspace->DisableTexture();
+      break;
+
+    case Visual3d_TOD_ALL:
+      // First pass
+      theWorkspace->NamedStatus &= ~OPENGL_NS_FORBIDSETTEX;
+      // Render the view
+      RenderStructs (theWorkspace);
+      theWorkspace->DisableTexture();
+
+      // Second pass
+      if (theWorkspace->NamedStatus & OPENGL_NS_2NDPASSNEED)
+      {
+        theWorkspace->NamedStatus |= OPENGL_NS_2NDPASSDO;
+        theWorkspace->EnableTexture (myTextureEnv);
+
+        // Remember OpenGl properties
+        GLint aSaveBlendDst = GL_ONE_MINUS_SRC_ALPHA, aSaveBlendSrc = GL_SRC_ALPHA;
+        GLint aSaveZbuffFunc;
+        GLboolean aSaveZbuffWrite;
+        glGetBooleanv (GL_DEPTH_WRITEMASK, &aSaveZbuffWrite);
+        glGetIntegerv (GL_DEPTH_FUNC, &aSaveZbuffFunc);
+      #if !defined(GL_ES_VERSION_2_0)
+        glGetIntegerv (GL_BLEND_DST, &aSaveBlendDst);
+        glGetIntegerv (GL_BLEND_SRC, &aSaveBlendSrc);
+      #endif
+        GLboolean wasZbuffEnabled = glIsEnabled (GL_DEPTH_TEST);
+        GLboolean wasBlendEnabled = glIsEnabled (GL_BLEND);
+
+        // Change the properties for second rendering pass
+        glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glEnable (GL_BLEND);
+
+        glDepthFunc (GL_EQUAL);
+        glDepthMask (GL_FALSE);
+        glEnable (GL_DEPTH_TEST);
+
+        theWorkspace->NamedStatus |= OPENGL_NS_FORBIDSETTEX;
+
+        // Render the view
+        RenderStructs (theWorkspace);
+        theWorkspace->DisableTexture();
+
+        // Restore properties back
+        glBlendFunc (aSaveBlendSrc, aSaveBlendDst);
+        if (!wasBlendEnabled)
+          glDisable (GL_BLEND);
+
+        glDepthFunc (aSaveZbuffFunc);
+        glDepthMask (aSaveZbuffWrite);
+        if (!wasZbuffEnabled)
+          glDisable (GL_DEPTH_FUNC);
+      }
+      break;
+  }
+}

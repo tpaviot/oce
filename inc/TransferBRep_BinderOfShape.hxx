@@ -30,28 +30,42 @@
 #endif
 class Transfer_TransferFailure;
 class TopoDS_Shape;
-class TransferBRep_ShapeInfo;
 class Standard_Type;
 
 
-
+//! Allows direct binding between a starting Object and the Result <br>
+//!           of its transfer when it is Unique. <br>
+//!           The Result itself is defined as a formal parameter <Shape from TopoDS> <br>
+//!  Warning : While it is possible to instantiate BinderOfShape with any Type <br>
+//!           for the Result, it is not advisable to instantiate it with <br>
+//!           Transient Classes, because such Results are directly known and <br>
+//!           managed by TransferProcess & Co, through <br>
+//!           SimpleBinderOfTransient : this class looks like instantiation <br>
+//!           of BinderOfShape, but its method ResultType <br>
+//!           is adapted (reads DynamicType of the Result) <br>
 class TransferBRep_BinderOfShape : public Transfer_Binder {
 
 public:
 
-  
+  //! normal standard constructor, creates an empty BinderOfShape <br>
   Standard_EXPORT   TransferBRep_BinderOfShape();
-  
+  //! constructor which in the same time defines the result <br>//! Returns True if a starting object is bound with SEVERAL <br>
+//!           results : Here, returns allways False <br>
+//!           But it can have next results <br>
   Standard_EXPORT   TransferBRep_BinderOfShape(const TopoDS_Shape& res);
-  
+  //! Returns the Type permitted for the Result, i.e. the Type <br>
+//!           of the Parameter Class <Shape from TopoDS> (statically defined) <br>
   Standard_EXPORT     Handle_Standard_Type ResultType() const;
-  
+  //! Returns the Type Name computed for the Result (dynamic) <br>
   Standard_EXPORT     Standard_CString ResultTypeName() const;
-  
+  //! Defines the Result <br>
   Standard_EXPORT     void SetResult(const TopoDS_Shape& res) ;
-  
+  //! Returns the defined Result, if there is one <br>
   Standard_EXPORT    const TopoDS_Shape& Result() const;
-  
+  //! Returns the defined Result, if there is one, and allows to <br>
+//!           change it (avoids Result + SetResult). <br>
+//!           Admits that Result can be not yet defined <br>
+//!  Warning : a call to CResult causes Result to be known as defined <br>
   Standard_EXPORT     TopoDS_Shape& CResult() ;
 
 

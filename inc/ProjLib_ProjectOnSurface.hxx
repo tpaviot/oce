@@ -36,7 +36,8 @@ class Adaptor3d_HSurface;
 class Geom_BSplineCurve;
 
 
-
+//! Project a curve on a  surface.  The result ( a  3D <br>
+//!          Curve)  will be an approximation <br>
 class ProjLib_ProjectOnSurface  {
 public:
 

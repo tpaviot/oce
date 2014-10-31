@@ -37,7 +37,8 @@ class TDataXtd_Constraint;
 class TopoDS_Shape;
 
 
-//! priority rule to display standard attributes is : <br>
+//! Root class of drivers to build draw variables from TDF_Label. <br>
+//!          Priority rule to display standard attributes is : <br>
 //!          * 1 Constraint <br>
 //!          * 2 Object <br>
 //!          * 3 Datum      (Point,Axis,Plane) <br>

@@ -24,7 +24,7 @@
 #endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
-class BRepMAT2d_SequenceOfBasicElt;
+class MAT_SequenceOfBasicElt;
 class TopTools_ShapeMapHasher;
 class BRepMAT2d_DataMapOfShapeSequenceOfBasicElt;
 class BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt;
@@ -45,7 +45,7 @@ public:
   
   Standard_EXPORT    const TopoDS_Shape& Key() const;
   
-  Standard_EXPORT    const BRepMAT2d_SequenceOfBasicElt& Value() const;
+  Standard_EXPORT    const MAT_SequenceOfBasicElt& Value() const;
 
 
 

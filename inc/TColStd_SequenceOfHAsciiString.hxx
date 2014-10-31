@@ -43,6 +43,8 @@ public:
   
       TColStd_SequenceOfHAsciiString();
   
+  Standard_EXPORT   TColStd_SequenceOfHAsciiString(const TColStd_SequenceOfHAsciiString& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColStd_SequenceOfHAsciiString()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_SequenceOfHAsciiString(const TColStd_SequenceOfHAsciiString& Other);
 
 
 

@@ -49,6 +49,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
+#endif
 class BRepFill_LocationLaw;
 class TopTools_HArray2OfShape;
 class Standard_DomainError;
@@ -84,6 +87,8 @@ public:
   Standard_EXPORT    const TopoDS_Shape& Profile() const;
   
   Standard_EXPORT    const TopoDS_Shape& Shape() const;
+  
+  Standard_EXPORT     Standard_Real ErrorOnSurface() const;
   
   Standard_EXPORT    const TopoDS_Shape& FirstShape() const;
   
@@ -141,6 +146,7 @@ Handle_TopTools_HArray2OfShape myFaces;
 Handle_TopTools_HArray2OfShape myEdges;
 TopTools_MapOfShape myReversedEdges;
 BRepFill_DataMapOfShapeHArray2OfShape myTapes;
+BRepFill_DataMapOfShapeHArray2OfShape myRails;
 Standard_Integer myCurIndexOfSectionEdge;
 TopoDS_Shape myFirst;
 TopoDS_Shape myLast;
@@ -149,6 +155,7 @@ Standard_Integer mySegmax;
 GeomAbs_Shape myContinuity;
 GeomFill_Trihedron myMode;
 Standard_Boolean myForceApproxC1;
+Standard_Real myErrorOnSurf;
 
 
 };

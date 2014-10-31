@@ -31,6 +31,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKVoxel", "TKVoxel.vcproj",
 		{C9441D69-05AB-12E2-09DA-1A2212B2D0EC} = {C9441D69-05AB-12E2-09DA-1A2212B2D0EC}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKIVtk", "TKIVtk.vcproj", "{45E9E78F-136F-099E-0FA9-C32DC6F257E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C9441D69-05AB-12E2-09DA-1A2212B2D0EC} = {C9441D69-05AB-12E2-09DA-1A2212B2D0EC}
+		{B2538C18-063D-0B90-019D-C6651416124A} = {B2538C18-063D-0B90-019D-C6651416124A}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -87,6 +93,14 @@ Global
 		{3157C647-0FAE-117D-1477-FB61F4DBEA10}.Debug|x64.Build.0 = Debug|x64
 		{3157C647-0FAE-117D-1477-FB61F4DBEA10}.Release|x64.ActiveCfg = Release|x64
 		{3157C647-0FAE-117D-1477-FB61F4DBEA10}.Release|x64.Build.0 = Release|x64
+		{45E9E78F-136F-099E-0FA9-C32DC6F257E5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{45E9E78F-136F-099E-0FA9-C32DC6F257E5}.Debug|Win32.Build.0 = Debug|Win32
+		{45E9E78F-136F-099E-0FA9-C32DC6F257E5}.Release|Win32.ActiveCfg = Release|Win32
+		{45E9E78F-136F-099E-0FA9-C32DC6F257E5}.Release|Win32.Build.0 = Release|Win32
+		{45E9E78F-136F-099E-0FA9-C32DC6F257E5}.Debug|x64.ActiveCfg = Debug|x64
+		{45E9E78F-136F-099E-0FA9-C32DC6F257E5}.Debug|x64.Build.0 = Debug|x64
+		{45E9E78F-136F-099E-0FA9-C32DC6F257E5}.Release|x64.ActiveCfg = Release|x64
+		{45E9E78F-136F-099E-0FA9-C32DC6F257E5}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

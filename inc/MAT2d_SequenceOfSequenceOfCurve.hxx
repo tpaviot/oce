@@ -40,6 +40,8 @@ public:
   
       MAT2d_SequenceOfSequenceOfCurve();
   
+  Standard_EXPORT   MAT2d_SequenceOfSequenceOfCurve(const MAT2d_SequenceOfSequenceOfCurve& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~MAT2d_SequenceOfSequenceOfCurve()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   MAT2d_SequenceOfSequenceOfCurve(const MAT2d_SequenceOfSequenceOfCurve& Other);
 
 
 

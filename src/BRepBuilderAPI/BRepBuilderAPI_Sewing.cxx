@@ -1057,6 +1057,7 @@ void BRepBuilderAPI_Sewing::EvaluateDistances(TopTools_SequenceOfShape& sequence
     TopLoc_Location loc;
     Standard_Real first, last;
     Handle(Geom_Curve) c3d = BRep_Tool::Curve(sec, loc, first, last);
+    if (c3d.IsNull()) continue;
     if (!loc.IsIdentity()) {
       c3d = Handle(Geom_Curve)::DownCast(c3d->Copy());
       c3d->Transform(loc.Transformation());
@@ -3549,33 +3550,14 @@ Standard_Boolean BRepBuilderAPI_Sewing::MergedNearestEdges(const TopoDS_Shape& e
     TColStd_SequenceOfInteger seqForward;
     TColStd_SequenceOfInteger seqCandidates;
     TColStd_IndexedMapOfInteger mapReference;
-    mapReference.Add(1); // Add index of reference section
+    mapReference.Add(indRef); // Add index of reference section
     if (FindCandidates(seqEdges,mapReference,seqCandidates,seqForward)) {
       Standard_Integer nbCandidates = seqCandidates.Length();
-      // Check if reference section is merged reversed
-      Standard_Boolean toReverse = Standard_False;
-      if (indRef != 1) {
-        // Find reference edge in candidates
-        Standard_Boolean isFound = Standard_False;
-        for (i = 1; i <= nbCandidates && !isFound; i++) {
-          isFound = (seqCandidates(i) == indRef);
-          if (isFound) {
-            // Record orientation
-            toReverse = !seqForward(i);
-            // Restore first edge
-            seqCandidates(i) = 1;
-            seqForward(i) = 1;
-          }
-        }
-        // Fail if reference is not in candidates
-        if (!isFound) return Standard_False;
-      }
       // Record candidate sections
       for (i = 1; i <= nbCandidates; i++) {
         // Retrieve merged edge
         TopoDS_Shape iedge = seqEdges(seqCandidates(i));
-        Standard_Integer ori =
-          ((seqForward(i) && toReverse) || (!seqForward(i) && !toReverse))? 0 : 1;
+        Standard_Integer ori = (seqForward(i))? 1 : 0;
         SeqMergedEdge.Append(iedge);
         SeqMergedOri.Append(ori);
         if (!myNonmanifold) break;
@@ -3623,15 +3605,16 @@ void BRepBuilderAPI_Sewing::Cutting(const Handle(Message_ProgressIndicator)& the
     const TopoDS_Edge& bound = TopoDS::Edge(myBoundFaces.FindKey(i));
     // Do not cut floating edges
     if (!myBoundFaces(i).Extent()) continue;
+    // Obtain bound curve
+    c3d = BRep_Tool::Curve(bound, loc, first, last);
+    if (c3d.IsNull()) continue;
+    if (!loc.IsIdentity()) {
+      c3d = Handle(Geom_Curve)::DownCast(c3d->Copy());
+      c3d->Transform(loc.Transformation());
+    }
     // Create cutting sections
     TopTools_ListOfShape listSections;
     { //szv: Use brackets to destroy local variables
-      // Obtain bound curve
-      c3d = BRep_Tool::Curve(bound, loc, first, last);
-      if (!loc.IsIdentity()) {
-        c3d = Handle(Geom_Curve)::DownCast(c3d->Copy());
-        c3d->Transform(loc.Transformation());
-      }
       // Obtain candidate vertices
       TopoDS_Vertex V1, V2;
       TopTools_IndexedMapOfShape CandidateVertices;

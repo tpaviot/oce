@@ -40,6 +40,8 @@ public:
   
       PrsMgr_Presentations();
   
+  Standard_EXPORT   PrsMgr_Presentations(const PrsMgr_Presentations& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~PrsMgr_Presentations()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   PrsMgr_Presentations(const PrsMgr_Presentations& Other);
 
 
 

@@ -19,19 +19,8 @@
 
 #include <Standard_Stream.hxx>
 
-#ifdef HAVE_CONFIG_H
-# include <config.h>
-#endif
 #include <stdio.h>
-#ifdef HAVE_STDLIB_H
-# include <stdlib.h>
-#endif
-#ifdef HAVE_SYS_TYPES_H
-# include <sys/types.h>
-#endif
-#if defined (HAVE_SYS_STAT_H) || defined(WNT)
-# include <sys/stat.h>
-#endif
+#include <sys/stat.h>
 
 #include <Units_Token.hxx>
 #include <Units_TokensSequence.hxx>
@@ -286,7 +275,7 @@ void Units_UnitsDictionary::Creates(const Standard_CString afilename)
         if(move) {
           Standard_Integer last = theunitssequence->Length();
           unit = theunitssequence->Value(last);
-          shiftedunit = *(Handle_Units_ShiftedUnit*)&unit;
+          shiftedunit = *(Handle(Units_ShiftedUnit)*)&unit;
           shiftedunit->Move(move);
         }
       }

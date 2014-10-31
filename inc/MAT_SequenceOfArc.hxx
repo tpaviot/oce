@@ -43,6 +43,8 @@ public:
   
       MAT_SequenceOfArc();
   
+  Standard_EXPORT   MAT_SequenceOfArc(const MAT_SequenceOfArc& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~MAT_SequenceOfArc()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   MAT_SequenceOfArc(const MAT_SequenceOfArc& Other);
 
 
 

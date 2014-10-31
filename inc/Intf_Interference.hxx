@@ -41,7 +41,9 @@ class Intf_TangentZone;
 
 
 //! Describes the   Interference  computation    result <br>
-//!          between polygon2d or polygon3d or polyhedron. <br>
+//!          between polygon2d or polygon3d or polyhedron <br>
+//!         (as  three sequences   of  points  of  intersection, <br>
+//!          polylines of intersection and zones de tangence). <br>
 class Intf_Interference  {
 public:
 

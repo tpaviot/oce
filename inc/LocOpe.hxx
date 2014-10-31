@@ -25,7 +25,6 @@ class TopoDS_Edge;
 class TopoDS_Shape;
 class TColgp_SequenceOfPnt;
 class LocOpe_SplitShape;
-class LocOpe_ProjectedWires;
 class LocOpe_WiresOnShape;
 class LocOpe_Spliter;
 class LocOpe_Generator;
@@ -92,7 +91,6 @@ private:
 
 
 friend class LocOpe_SplitShape;
-friend class LocOpe_ProjectedWires;
 friend class LocOpe_WiresOnShape;
 friend class LocOpe_Spliter;
 friend class LocOpe_Generator;

@@ -47,10 +47,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -70,7 +70,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -145,10 +145,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -170,7 +170,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -245,10 +245,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -344,10 +344,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -369,7 +369,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -565,9 +565,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_FileNode.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OSD\OSD_Function.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_Host.cxx">
@@ -824,13 +821,7 @@
 					RelativePath="..\..\..\src\Standard\Standard.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Standard\Standard_Address.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\Standard\Standard_AncestorIterator.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Standard\Standard_Boolean.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Standard\Standard_CLocaleSentry.cxx">
@@ -839,16 +830,10 @@
 					RelativePath="..\..\..\src\Standard\Standard_CString.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Standard\Standard_Character.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\Standard\Standard_ErrorHandler.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Standard\Standard_ErrorHandlerCallback.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Standard\Standard_ExtCharacter.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Standard\Standard_ExtString.cxx">
@@ -861,12 +846,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Standard\Standard_HashCode.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Standard\Standard_IStream.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Standard\Standard_Integer.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Standard\Standard_MMgrOpt.cxx">
@@ -884,9 +863,6 @@
 					RelativePath="..\..\..\src\Standard\Standard_Mutex.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Standard\Standard_OStream.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\Standard\Standard_Persistent.cxx">
 				</File>
 				<File
@@ -896,16 +872,10 @@
 					RelativePath="..\..\..\src\Standard\Standard_SStream.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Standard\Standard_ShallowDump.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\Standard\Standard_ShortReal.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Standard\Standard_Storable.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Standard\Standard_Time.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Standard\Standard_Transient.cxx">
@@ -918,12 +888,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Standard\Standard_math.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Standard\Standard_osd_ffi.c">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Standard\Standard_symlink.c">
 				</File>
 			</Filter>
 			<Filter
@@ -976,12 +940,6 @@
 					RelativePath="..\..\..\drv\Storage\Storage_HPArray_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Storage\Storage_HSeqOfCallBack_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Storage\Storage_HSeqOfPersistent_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Storage\Storage_HSeqOfRoot_0.cxx">
 				</File>
 				<File
@@ -994,28 +952,13 @@
 					RelativePath="..\..\..\drv\Storage\Storage_MapOfPers_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Storage\Storage_MapPSDHasher_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Storage\Storage_PArray_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Storage\Storage_PType_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Storage\Storage_SeqOfCallBack_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Storage\Storage_SeqOfPersistent_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Storage\Storage_SeqOfRoot_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Storage\Storage_SequenceNodeOfSeqOfCallBack_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Storage\Storage_SequenceNodeOfSeqOfPersistent_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Storage\Storage_SequenceNodeOfSeqOfRoot_0.cxx">
@@ -1049,9 +992,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Storage\Storage_CallBack.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Storage\Storage_Container.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Storage\Storage_Data.cxx">
@@ -1256,15 +1196,6 @@
 					RelativePath="..\..\..\drv\TColStd\TColStd_HSequenceOfTransient_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_HSetOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_HSetOfReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_HSetOfTransient_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\TColStd\TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient_0.cxx">
 				</File>
 				<File
@@ -1301,15 +1232,6 @@
 					RelativePath="..\..\..\drv\TColStd\TColStd_ListIteratorOfListOfTransient_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_ListIteratorOfSetListOfSetOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_ListIteratorOfSetListOfSetOfReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_ListIteratorOfSetListOfSetOfTransient_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\TColStd\TColStd_ListNodeOfListOfAsciiString_0.cxx">
 				</File>
 				<File
@@ -1320,15 +1242,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColStd\TColStd_ListNodeOfListOfTransient_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_ListNodeOfSetListOfSetOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_ListNodeOfSetListOfSetOfReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_ListNodeOfSetListOfSetOfTransient_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColStd\TColStd_ListOfAsciiString_0.cxx">
@@ -1374,24 +1287,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColStd\TColStd_MapTransientHasher_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_QueueNodeOfQueueOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_QueueNodeOfQueueOfReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_QueueNodeOfQueueOfTransient_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_QueueOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_QueueOfReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_QueueOfTransient_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColStd\TColStd_SequenceNodeOfSequenceOfAddress_0.cxx">
@@ -1448,60 +1343,6 @@
 					RelativePath="..\..\..\drv\TColStd\TColStd_SequenceOfTransient_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_SetIteratorOfSetOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_SetIteratorOfSetOfReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_SetIteratorOfSetOfTransient_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_SetListOfSetOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_SetListOfSetOfReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_SetListOfSetOfTransient_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_SetOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_SetOfReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_SetOfTransient_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_StackIteratorOfStackOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_StackIteratorOfStackOfReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_StackIteratorOfStackOfTransient_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_StackNodeOfStackOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_StackNodeOfStackOfReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_StackNodeOfStackOfTransient_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_StackOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_StackOfReal_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\TColStd\TColStd_StackOfTransient_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\TColStd\TColStd_StdMapNodeOfMapOfAsciiString_0.cxx">
 				</File>
 				<File
@@ -1534,15 +1375,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\TCollection\TCollection.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\TCollection\TCollection_AVLBaseNode.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\TCollection\TCollection_Array1Descriptor.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\TCollection\TCollection_Array2Descriptor.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\TCollection\TCollection_AsciiString.cxx">
@@ -1696,10 +1528,6 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="IncludeLibrary"
-				>
-			</Filter>
-			<Filter
 				Name="Dico"
 				>
 				<File
@@ -1724,6 +1552,12 @@
 			<Filter
 				Name="NCollection"
 				>
+				<File
+					RelativePath="..\..\..\src\NCollection\NCollection_AccAllocator.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\NCollection\NCollection_AlignedAllocator.cxx">
+				</File>
 				<File
 					RelativePath="..\..\..\src\NCollection\NCollection_BaseAllocator.cxx">
 				</File>
@@ -1750,6 +1584,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\NCollection\NCollection_SparseArrayBase.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\NCollection\NCollection_WinHeapAllocator.cxx">
 				</File>
 			</Filter>
 			<Filter

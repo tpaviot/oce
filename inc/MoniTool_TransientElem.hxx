@@ -35,26 +35,37 @@
 #include <Standard_CString.hxx>
 #endif
 class Standard_Transient;
-class TColStd_MapTransientHasher;
-class MoniTool_DataInfo;
 class MoniTool_Element;
 class Standard_Type;
 
 
-
+//! an TransientElem defines an Element for a specific input class <br>
+//!           its definition includes the value of the Key to be mapped, <br>
+//!           and the HashCoder associated to the class of the Key <br>
+//! <br>
+//!           Transient from Standard defines the class to be keyed <br>
+//!           MapTransientHasher from TColStd is the associated Hasher <br>
+//!           DataInfo from MoniTool   is an additionnal class which helps to provide <br>
+//!             informations on the value (template : see DataInfo) <br>
 class MoniTool_TransientElem : public MoniTool_Element {
 
 public:
 
-  
+  //! Creates a TransientElem with a Value. This Value can then not be <br>
+//!           changed. It is used by the Hasher to compute the HashCode, <br>
+//!           which will then be stored for an immediate reading. <br>
   Standard_EXPORT   MoniTool_TransientElem(const Handle(Standard_Transient)& akey);
-  
+  //! Returns the contained value <br>
   Standard_EXPORT    const Handle_Standard_Transient& Value() const;
-  
+  //! Specific testof equallity : defined as False if <other> has <br>
+//!           not the same true Type, else contents are compared (by <br>
+//!           C++ operator ==) <br>
   Standard_EXPORT     Standard_Boolean Equates(const Handle(MoniTool_Element)& other) const;
-  
+  //! Returns the Type of the Value. By default, returns the <br>
+//!           DynamicType of <me>, but can be redefined <br>
   Standard_EXPORT   virtual  Handle_Standard_Type ValueType() const;
-  
+  //! Returns the name of the Type of the Value. Default is name <br>
+//!           of ValueType, unless it is for a non-handled object <br>
   Standard_EXPORT   virtual  Standard_CString ValueTypeName() const;
 
 

@@ -28,6 +28,7 @@
 #include <Poly_Array1OfTriangle.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
+#include <Prs3d.hxx>
 #include <Prs3d_Drawer.hxx>
 #include <Prs3d_IsoAspect.hxx>
 #include <Prs3d_PointAspect.hxx>
@@ -141,7 +142,7 @@ void Prs3d_WFShape::Add (const Handle (Prs3d_Presentation)& thePresentation,
     return;
   }
 
-  Prs3d_ShapeTool aTool (theShape);
+  Prs3d_ShapeTool aTool (theShape, theDrawer->VertexDrawMode() == Prs3d_VDM_All);
   TopTools_ListOfShape aLFree, aLUnFree, aLWire;
   for (aTool.InitCurve(); aTool.MoreCurve(); aTool.NextCurve())
   {
@@ -154,20 +155,7 @@ void Prs3d_WFShape::Add (const Handle (Prs3d_Presentation)& thePresentation,
     }
   }
 
-  Standard_Real aDeflection = theDrawer->MaximalChordialDeviation();
-  if (theDrawer->TypeOfDeflection() == Aspect_TOD_RELATIVE)
-  {
-    // The arrow calculation is based on the global min max
-    Bnd_Box aBndBox;
-    BRepBndLib::Add (theShape, aBndBox);
-    if (!aBndBox.IsVoid())
-    {
-      Standard_Real aXmin, aYmin, aZmin, aXmax, aYmax, aZmax;
-      aBndBox.Get (aXmin, aYmin, aZmin, aXmax, aYmax, aZmax);
-      aDeflection = Max (aXmax-aXmin, Max (aYmax-aYmin, aZmax-aZmin))
-                       * theDrawer->DeviationCoefficient();
-    }
-  }
+  Standard_Real aDeflection = Prs3d::GetDeflection(theShape, theDrawer);
 
   Handle(Graphic3d_Group) aGroup = Prs3d_Root::CurrentGroup (thePresentation);
 
@@ -176,7 +164,6 @@ void Prs3d_WFShape::Add (const Handle (Prs3d_Presentation)& thePresentation,
   Prs3d_NListOfSequenceOfPnt aWireCurves;
   Prs3d_NListOfSequenceOfPnt aFreeCurves;
   Prs3d_NListOfSequenceOfPnt anUnFreeCurves;
-  TColgp_SequenceOfPnt       aShapePoints;
 
   const Standard_Integer anIsoU = theDrawer->UIsoAspect()->Number();
   const Standard_Integer anIsoV = theDrawer->VIsoAspect()->Number();
@@ -299,17 +286,16 @@ void Prs3d_WFShape::Add (const Handle (Prs3d_Presentation)& thePresentation,
     Prs3d_NListIteratorOfListOfSequenceOfPnt anIt;
     for (anIt.Init (anUIsoCurves); anIt.More(); anIt.Next())
     {
-      aNbVertices += anIt.Value().Length();
+      aNbVertices += anIt.Value()->Length();
     }
     Handle(Graphic3d_ArrayOfPolylines) anUIsoArray = new Graphic3d_ArrayOfPolylines (aNbVertices, aNbBounds);
     for (anIt.Init (anUIsoCurves); anIt.More(); anIt.Next())
     {
-      TColgp_SequenceOfPnt aPoints;
-      aPoints.Assign (anIt.Value());
-      anUIsoArray->AddBound (aPoints.Length());
-      for (Standard_Integer anI = 1; anI <= aPoints.Length(); ++anI)
+      const Handle(TColgp_HSequenceOfPnt)& aPoints = anIt.Value();
+      anUIsoArray->AddBound (aPoints->Length());
+      for (Standard_Integer anI = 1; anI <= aPoints->Length(); ++anI)
       {
-        anUIsoArray->AddVertex (aPoints.Value (anI));
+        anUIsoArray->AddVertex (aPoints->Value (anI));
       }
     }
     Handle(Graphic3d_Group) aGroup = Prs3d_Root::NewGroup (thePresentation);
@@ -317,23 +303,23 @@ void Prs3d_WFShape::Add (const Handle (Prs3d_Presentation)& thePresentation,
     aGroup->AddPrimitiveArray (anUIsoArray);
   }
 
+  // NOTE: THIS BLOCK WILL NEVER EXECUTE AS aVIsoCurves IS NOT FILLED!!
   if (aVIsoCurves.Size() > 0)
   {
     aNbBounds = aVIsoCurves.Size();
     Prs3d_NListIteratorOfListOfSequenceOfPnt anIt;
     for (anIt.Init (aVIsoCurves); anIt.More(); anIt.Next())
     {
-      aNbVertices += anIt.Value().Length();
+      aNbVertices += anIt.Value()->Length();
     }
     Handle(Graphic3d_ArrayOfPolylines) VIsoArray = new Graphic3d_ArrayOfPolylines (aNbVertices, aNbBounds);
     for (anIt.Init (aVIsoCurves); anIt.More(); anIt.Next())
     {
-      TColgp_SequenceOfPnt aPoints;
-      aPoints.Assign (anIt.Value());
-      VIsoArray->AddBound (aPoints.Length());
-      for (int anI = 1; anI <= aPoints.Length(); anI++)
+      const Handle(TColgp_HSequenceOfPnt)& aPoints = anIt.Value();
+      VIsoArray->AddBound (aPoints->Length());
+      for (int anI = 1; anI <= aPoints->Length(); anI++)
       {
-        VIsoArray->AddVertex (aPoints.Value (anI));
+        VIsoArray->AddVertex (aPoints->Value (anI));
       }
     }
     Handle(Graphic3d_Group) aGroup = Prs3d_Root::NewGroup (thePresentation);
@@ -445,14 +431,14 @@ void Prs3d_WFShape::Add (const Handle (Prs3d_Presentation)& thePresentation,
       try
       {
         OCC_CATCH_SIGNALS
-        TColgp_SequenceOfPnt aPoints;
-        if (!AddPolygon (anEdge, aDeflection, aPoints))
+        const Handle(TColgp_HSequenceOfPnt)& aPoints = new TColgp_HSequenceOfPnt;
+        if (!AddPolygon (anEdge, aDeflection, aPoints->ChangeSequence()))
         {
           if (BRep_Tool::IsGeometric (anEdge))
           {
             BRepAdaptor_Curve aCurve (anEdge);
             myCurveAlgo.Add (thePresentation, aCurve, aDeflection, theDrawer,
-                             aPoints, Standard_False);
+                             aPoints->ChangeSequence(), Standard_False);
             aWireCurves.Append (aPoints);
           }
         }
@@ -481,14 +467,14 @@ void Prs3d_WFShape::Add (const Handle (Prs3d_Presentation)& thePresentation,
         try
         {
           OCC_CATCH_SIGNALS
-          TColgp_SequenceOfPnt aPoints;
-          if (!AddPolygon (anEdge, aDeflection, aPoints))
+          const Handle(TColgp_HSequenceOfPnt)& aPoints = new TColgp_HSequenceOfPnt;
+          if (!AddPolygon (anEdge, aDeflection, aPoints->ChangeSequence()))
           {
             if (BRep_Tool::IsGeometric (anEdge))
             {
               BRepAdaptor_Curve aCurve (anEdge);
               myCurveAlgo.Add (thePresentation, aCurve, aDeflection, theDrawer,
-                               aPoints, Standard_False);
+                               aPoints->ChangeSequence(), Standard_False);
               aFreeCurves.Append (aPoints);
             }
           }
@@ -516,13 +502,13 @@ void Prs3d_WFShape::Add (const Handle (Prs3d_Presentation)& thePresentation,
       try
       {
         OCC_CATCH_SIGNALS
-        TColgp_SequenceOfPnt aPoints;
-        if (!AddPolygon (anEdge, aDeflection, aPoints))
+        const Handle(TColgp_HSequenceOfPnt)& aPoints = new TColgp_HSequenceOfPnt;
+        if (!AddPolygon (anEdge, aDeflection, aPoints->ChangeSequence()))
         {
           if (BRep_Tool::IsGeometric (anEdge))
           {
             BRepAdaptor_Curve aCurve (anEdge);
-            myCurveAlgo.Add (thePresentation, aCurve, aDeflection, theDrawer, aPoints, Standard_False);
+            myCurveAlgo.Add (thePresentation, aCurve, aDeflection, theDrawer, aPoints->ChangeSequence(), Standard_False);
             anUnFreeCurves.Append (aPoints);
           }
         }
@@ -546,17 +532,16 @@ void Prs3d_WFShape::Add (const Handle (Prs3d_Presentation)& thePresentation,
     Prs3d_NListIteratorOfListOfSequenceOfPnt anIt;
     for (anIt.Init (aWireCurves); anIt.More(); anIt.Next())
     {
-      aNbVertices += anIt.Value().Length();
+      aNbVertices += anIt.Value()->Length();
     }
     Handle(Graphic3d_ArrayOfPolylines) WireArray = new Graphic3d_ArrayOfPolylines (aNbVertices, aNbBounds);
     for (anIt.Init (aWireCurves); anIt.More(); anIt.Next())
     {
-      TColgp_SequenceOfPnt aPoints;
-      aPoints.Assign (anIt.Value());
-      WireArray->AddBound (aPoints.Length());
-      for (anI = 1; anI <= aPoints.Length(); ++anI)
+      const Handle(TColgp_HSequenceOfPnt)& aPoints = anIt.Value();
+      WireArray->AddBound (aPoints->Length());
+      for (anI = 1; anI <= aPoints->Length(); ++anI)
       {
-        WireArray->AddVertex (aPoints.Value (anI));
+        WireArray->AddVertex (aPoints->Value (anI));
       }
     }
     Handle(Graphic3d_Group) aGroup = Prs3d_Root::NewGroup (thePresentation);
@@ -570,17 +555,16 @@ void Prs3d_WFShape::Add (const Handle (Prs3d_Presentation)& thePresentation,
     Prs3d_NListIteratorOfListOfSequenceOfPnt anIt;
     for (anIt.Init (aFreeCurves); anIt.More(); anIt.Next())
     {
-      aNbVertices += anIt.Value().Length();
+      aNbVertices += anIt.Value()->Length();
     }
     Handle(Graphic3d_ArrayOfPolylines) aFreeArray = new Graphic3d_ArrayOfPolylines (aNbVertices, aNbBounds);
     for (anIt.Init(aFreeCurves); anIt.More(); anIt.Next())
     {
-      TColgp_SequenceOfPnt aPoints;
-      aPoints.Assign (anIt.Value());
-      aFreeArray->AddBound (aPoints.Length());
-      for (anI = 1; anI <= aPoints.Length(); ++anI)
+      const Handle(TColgp_HSequenceOfPnt)& aPoints = anIt.Value();
+      aFreeArray->AddBound (aPoints->Length());
+      for (anI = 1; anI <= aPoints->Length(); ++anI)
       {
-        aFreeArray->AddVertex (aPoints.Value (anI));
+        aFreeArray->AddVertex (aPoints->Value (anI));
       }
     }  
     Handle(Graphic3d_Group) aGroup = Prs3d_Root::NewGroup (thePresentation);
@@ -594,17 +578,16 @@ void Prs3d_WFShape::Add (const Handle (Prs3d_Presentation)& thePresentation,
     Prs3d_NListIteratorOfListOfSequenceOfPnt anIt;
     for (anIt.Init (anUnFreeCurves); anIt.More(); anIt.Next())
     {
-      aNbVertices += anIt.Value().Length();
+      aNbVertices += anIt.Value()->Length();
     }
     Handle(Graphic3d_ArrayOfPolylines) anUnFreeArray = new Graphic3d_ArrayOfPolylines (aNbVertices, aNbBounds);
     for (anIt.Init (anUnFreeCurves); anIt.More(); anIt.Next())
     {
-      TColgp_SequenceOfPnt aPoints;
-      aPoints.Assign (anIt.Value());
-      anUnFreeArray->AddBound (aPoints.Length());
-      for (anI = 1; anI <= aPoints.Length(); ++anI)
+      const Handle(TColgp_HSequenceOfPnt)& aPoints = anIt.Value();
+      anUnFreeArray->AddBound (aPoints->Length());
+      for (anI = 1; anI <= aPoints->Length(); ++anI)
       {
-        anUnFreeArray->AddVertex (aPoints.Value (anI));
+        anUnFreeArray->AddVertex (aPoints->Value (anI));
       }
     }
     Handle(Graphic3d_Group) aGroup = Prs3d_Root::NewGroup (thePresentation);
@@ -613,6 +596,7 @@ void Prs3d_WFShape::Add (const Handle (Prs3d_Presentation)& thePresentation,
   }
 
   // Points
+  TColgp_SequenceOfPnt aShapePoints;
   for (aTool.InitVertex(); aTool.MoreVertex(); aTool.NextVertex())
   {
     aShapePoints.Append (BRep_Tool::Pnt (aTool.GetVertex()));

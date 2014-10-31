@@ -47,9 +47,6 @@
 #ifndef _IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking_HeaderFile
 #include <IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
 #ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
 #endif

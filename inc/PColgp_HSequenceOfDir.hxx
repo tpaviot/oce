@@ -34,17 +34,10 @@
 #ifndef _Handle_PColgp_SeqNodeOfHSequenceOfDir_HeaderFile
 #include <Handle_PColgp_SeqNodeOfHSequenceOfDir.hxx>
 #endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PColgp_SeqNodeOfHSequenceOfDir;
-class Standard_Persistent;
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class PColgp_SeqExplorerOfHSequenceOfDir;
@@ -106,10 +99,6 @@ public:
   
   Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
   
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
-  
   Standard_EXPORT     void Destroy() ;
 ~PColgp_HSequenceOfDir()
 {
@@ -155,14 +144,6 @@ Standard_Integer Size;
 
 
 // other Inline functions and methods (like "C++: function call" methods)
-inline Handle_Standard_Persistent ShallowCopy(const Handle_PColgp_HSequenceOfDir& me) {
- return me->ShallowCopy();
-}
-
-inline void ShallowDump(const Handle_PColgp_HSequenceOfDir& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
-
 
 
 #endif

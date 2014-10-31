@@ -18,6 +18,8 @@
 class Sweep from BRepFill 
 
 	---Purpose: Topological Sweep Algorithm
+	--          Computes an  Sweep  shell using a  generating
+  --          wire, an SectionLaw and an LocationLaw.
 	---Level: Advanced
 
 uses 
@@ -88,6 +90,7 @@ is
    Build(me : in  out;
          ReversedEdges : in out MapOfShape from TopTools;
 	 Tapes : in out DataMapOfShapeHArray2OfShape from BRepFill;
+	 Rails : in out DataMapOfShapeHArray2OfShape from BRepFill;
          Transition : TransitionStyle  =  BRepFill_Modified;    
          Continuity : Shape  from  GeomAbs   = GeomAbs_C2;
          Approx     : ApproxStyle = GeomFill_Location; 
@@ -121,6 +124,7 @@ is
             Vf,  Vl    : Integer;
 	    ReversedEdges : in out MapOfShape from TopTools;
 	    Tapes : in out DataMapOfShapeHArray2OfShape from BRepFill;
+	    Rails : in out DataMapOfShapeHArray2OfShape from BRepFill;
             ExtendFirst :  Real  =  0.0; 
             ExtendLast  :  Real  =  0.0)  
    returns Boolean is  private;

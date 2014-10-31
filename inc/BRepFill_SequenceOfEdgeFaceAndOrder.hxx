@@ -40,6 +40,8 @@ public:
   
       BRepFill_SequenceOfEdgeFaceAndOrder();
   
+  Standard_EXPORT   BRepFill_SequenceOfEdgeFaceAndOrder(const BRepFill_SequenceOfEdgeFaceAndOrder& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~BRepFill_SequenceOfEdgeFaceAndOrder()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRepFill_SequenceOfEdgeFaceAndOrder(const BRepFill_SequenceOfEdgeFaceAndOrder& Other);
 
 
 

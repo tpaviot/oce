@@ -23,6 +23,8 @@ class Standard_OutOfMemory;
 
 
 
+//! Intermediate class between Standard_Transient <br>
+//! and descendants. <br>
 //! The abstract class TShared is the root class of <br>
 //! managed objects. TShared objects are managed <br>
 //! by a memory manager based on reference <br>

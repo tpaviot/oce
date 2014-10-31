@@ -24,7 +24,7 @@
 #endif
 
 
-
+//! a MessageDriver that writes nowhere. <br>
 class CDM_NullMessageDriver : public CDM_MessageDriver {
 
 public:

@@ -12,9 +12,6 @@
 #ifndef _PColStd_HArray1OfReal_HeaderFile
 #include <PColStd_HArray1OfReal.hxx>
 #endif
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
 #ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
 #endif

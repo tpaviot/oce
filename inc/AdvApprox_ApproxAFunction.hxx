@@ -67,6 +67,7 @@ class TColgp_Array1OfPnt;
 
 
 
+//! this approximate a given function <br>
 class AdvApprox_ApproxAFunction  {
 public:
 

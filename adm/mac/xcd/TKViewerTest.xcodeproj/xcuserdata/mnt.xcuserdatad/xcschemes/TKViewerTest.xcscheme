@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "01940E200EC200100C2E0E5A"
+               BlueprintIdentifier = "0C56188D18F50ABD0D550684"
                BuildableName = "libTKViewerTest.dylib"
                BlueprintName = "TKViewerTest"
                ReferencedContainer = "container:TKViewerTest.xcodeproj">

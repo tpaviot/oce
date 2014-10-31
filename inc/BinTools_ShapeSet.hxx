@@ -68,6 +68,8 @@ public:
   
   Standard_EXPORT   virtual  void Delete() ;
 Standard_EXPORT virtual ~BinTools_ShapeSet(){Delete() ; }
+  //! Define if shape will be stored with triangles <br>
+  Standard_EXPORT     void SetWithTriangles(const Standard_Boolean isWithTriangles) ;
   
   Standard_EXPORT     void SetFormatNb(const Standard_Integer theFormatNb) ;
   //! two formats available for the moment: <br>

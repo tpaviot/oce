@@ -33,7 +33,8 @@ class Bnd_Box2d;
 class gp_Pnt2d;
 
 
-
+//! Describes the necessary polygon information to compute <br>
+//!        the interferences. <br>
 class Intf_Polygon2d  {
 public:
 
@@ -43,6 +44,7 @@ public:
        const Bnd_Box2d& Bounding() const;
   //! Returns True if the polyline is closed. <br>
   Standard_EXPORT   virtual  Standard_Boolean Closed() const;
+  virtual ~Intf_Polygon2d() {}
   //! Returns the tolerance of the polygon. <br>
   Standard_EXPORT   virtual  Standard_Real DeflectionOverEstimation() const = 0;
   //! Returns the number of Segments in the polyline. <br>

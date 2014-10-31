@@ -40,6 +40,8 @@ public:
   
       IntCurveSurface_SequenceOfPnt();
   
+  Standard_EXPORT   IntCurveSurface_SequenceOfPnt(const IntCurveSurface_SequenceOfPnt& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~IntCurveSurface_SequenceOfPnt()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntCurveSurface_SequenceOfPnt(const IntCurveSurface_SequenceOfPnt& Other);
 
 
 

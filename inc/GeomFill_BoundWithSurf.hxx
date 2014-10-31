@@ -44,6 +44,8 @@ class gp_Vec;
 //!          the computations are done with a CurveOnSurf and a <br>
 //!          normals field  defined by the normalized normal to <br>
 //!          the surface along the PCurve. <br>
+//!          Contains fields  to allow a reparametrization of curve <br>
+//!          and normals field. <br>
 class GeomFill_BoundWithSurf : public GeomFill_Boundary {
 
 public:

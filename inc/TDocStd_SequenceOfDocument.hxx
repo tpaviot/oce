@@ -43,6 +43,8 @@ public:
   
       TDocStd_SequenceOfDocument();
   
+  Standard_EXPORT   TDocStd_SequenceOfDocument(const TDocStd_SequenceOfDocument& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TDocStd_SequenceOfDocument()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDocStd_SequenceOfDocument(const TDocStd_SequenceOfDocument& Other);
 
 
 

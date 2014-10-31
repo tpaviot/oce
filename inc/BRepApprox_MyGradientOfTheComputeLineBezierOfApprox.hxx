@@ -43,7 +43,6 @@ class BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox;
 class AppParCurves_HArray1OfConstraintCouple;
-class math_Vector;
 class AppParCurves_MultiCurve;
 
 

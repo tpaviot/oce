@@ -61,6 +61,9 @@
 #ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
 #endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
 class gp_Pnt;
 class gp_Pnt2d;
 class Geom_Geometry;
@@ -76,7 +79,6 @@ class Geom2d_BSplineCurve;
 class Geom_Surface;
 class Geom_BezierSurface;
 class Geom_BSplineSurface;
-class Draw_Interpretor;
 class DrawTrSurf_Drawable;
 class DrawTrSurf_Point;
 class DrawTrSurf_Curve;

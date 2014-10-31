@@ -270,8 +270,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\XmlMDataXtd\XmlMDataXtd_ShapeDriver.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\XmlMNaming\XmlMNaming_Array1OfShape1_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\XmlMNaming\XmlMNaming.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\XmlMNaming\XmlMNaming_NamedShapeDriver.cxx">

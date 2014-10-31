@@ -13,13 +13,9 @@
 
 #include <OSD.ixx>
 
-#ifndef WNT
+#ifndef _WIN32
 
 //---------- All Systems except Windows NT : ----------------------------------
-
-#ifdef HAVE_CONFIG_H
-# include <config.h>
-#endif
 
 # include <stdio.h>
 
@@ -34,27 +30,16 @@
 #include <OSD_SIGSYS.hxx>
 #include <OSD_Exception_CTRL_BREAK.hxx>
 #include <Standard_NumericError.hxx>
-#include <Standard_NullObject.hxx>
 #include <Standard_DivideByZero.hxx>
 #include <Standard_Overflow.hxx>
 
 #include <Standard_ErrorHandler.hxx>
 
 // POSIX threads
-#ifdef HAVE_PTHREAD_H
- #include <pthread.h>
-#endif
-
-#ifdef HAVE_PTHREAD_H
-static pthread_t getOCCThread () {
-  static pthread_t TheOCCThread = 0;
-  return TheOCCThread ;
-}
-#endif
+#include <pthread.h>
 
 #ifdef linux
 #include <fenv.h>
-#include <fpu_control.h>
 static Standard_Boolean fFltExceptions = Standard_False;
 #endif
 
@@ -66,37 +51,9 @@ static Standard_Boolean fCtrlBrk;
 typedef void (ACT_SIGIO_HANDLER)(void) ;
 ACT_SIGIO_HANDLER *ADR_ACT_SIGIO_HANDLER = NULL ;
 
-#if defined(HAVE_FLOATINGPOINT_H) && defined(HAVE_SYS_MACHSIG_H)
-# include <floatingpoint.h>
-# include <sys/machsig.h>
-// JPT : Difference between SUN/SUNOS and SUN/SOLARIS 
-# define FPE_FLTDIV_TRAP FPE_FLTDIV 
-# define FPE_INTDIV_TRAP FPE_INTDIV 
-# define FPE_FLTOVF_TRAP FPE_FLTOVF 
-# define FPE_INTOVF_TRAP FPE_INTOVF
-# define FPE_FLTUND_TRAP FPE_FLTUND 
-
-#define	FPE_FLTRES_TRAP FPE_FLTRES	/* floating point inexact result */
-#define	FPE_FLTINV_TRAP FPE_FLTINV	/* invalid floating point operation */
-#define	FPE_FLTSUB_TRAP FPE_FLTSUB	/* subscript out of range */
-
-extern "C" {int ieee_handler(char *,char *, sigfpe_handler_type&);}
-# include <stdlib.h>
-#endif
-
 #ifdef DECOSF1
 typedef void (* SIG_PFV) (int);
 #endif
-
-#if defined(HAVE_SIGFPE_H) && defined(HAVE_SYS_SIGINFO_H)
-# include <sigfpe.h>
-# include <sys/siginfo.h>
-# define FPE_FLTDIV_TRAP FPE_FLTDIV 
-# define FPE_INTDIV_TRAP FPE_INTDIV 
-# define FPE_FLTOVF_TRAP FPE_FLTOVF 
-# define FPE_INTOVF_TRAP FPE_INTOVF
-# define FPE_FLTUND_TRAP FPE_FLTUND 
-#endif 
 
 #ifdef __GNUC__
 # include <stdlib.h>
@@ -110,15 +67,13 @@ typedef void (* SIG_PFV) (int);
 #endif
 typedef void (* SIG_PFV) (int);
 
-#ifdef HAVE_SIGNAL_H
-# include <signal.h>
+#include <signal.h>
+
+#if !defined(__ANDROID__)
+  #include <sys/signal.h>
 #endif
 
-#ifdef HAVE_SYS_SIGNAL_H
-# include <sys/signal.h>
-#endif
-
-#if defined(HAVE_PTHREAD_H) && defined(NO_CXX_EXCEPTION) 
+#if defined(HAVE_PTHREAD_H) && defined(NO_CXX_EXCEPTION)
 //============================================================================
 //====  GetOldSigAction
 //====     get previous 
@@ -391,10 +346,7 @@ static void SegvHandler(const int theSignal,
      sigaddset(&set, SIGSEGV);
      sigprocmask (SIG_UNBLOCK, &set, NULL) ;
      void *address = ip->si_addr ;
-     if ( (((long) address )& ~0xffff) == (long) UndefinedHandleAddress ) {
-       Standard_NullObject::NewInstance("Attempt to access to null object")->Jump();
-     }
-     else {
+     {
        char Msg[100];
        sprintf(Msg,"SIGSEGV 'segmentation violation' detected. Address %lx",
          (long ) address ) ;
@@ -423,10 +375,7 @@ static void SegvHandler(const int theSignal,
     Space = ((struct sigcontext *)theContext)->sc_sl.sl_ss.ss_cr20 ;
     Offset = ((struct sigcontext *)theContext)->sc_sl.sl_ss.ss_cr21 ;
 //    cout << "Wrong address = " << hex(Offset) << endl ;
-    if ((Offset & ~0xffff) == (long)UndefinedHandleAddress) {
-      Standard_NullObject::Jump("Attempt to access to null object") ;
-    }
-    else {
+    {
       sprintf(Msg,"SIGSEGV 'segmentation violation' detected. Address %lx",Offset) ;
       OSD_SIGSEGV::Jump(Msg);
 //    scp->sc_pcoq_head = scp->sc_pcoq_tail ;       Permettrait de continuer a

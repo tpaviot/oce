@@ -577,9 +577,6 @@
 					RelativePath="..\..\..\drv\MAT2d\MAT2d_DataMapOfIntegerVec2d_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\MAT2d\MAT2d_Mat2d_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\MAT2d\MAT2d_SequenceNodeOfSequenceOfConnexion_0.cxx">
 				</File>
 				<File
@@ -611,6 +608,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\MAT2d\MAT2d_MapBiIntHasher.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\MAT2d\MAT2d_Mat2d.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\MAT2d\MAT2d_MiniPath.cxx">
@@ -663,9 +663,6 @@
 				Name="BRepMAT2d"
 				>
 				<File
-					RelativePath="..\..\..\drv\BRepMAT2d\BRepMAT2d_BisectingLocus_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\BRepMAT2d\BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape_0.cxx">
 				</File>
 				<File
@@ -684,10 +681,7 @@
 					RelativePath="..\..\..\drv\BRepMAT2d\BRepMAT2d_DataMapOfShapeSequenceOfBasicElt_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\BRepMAT2d\BRepMAT2d_SequenceNodeOfSequenceOfBasicElt_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepMAT2d\BRepMAT2d_SequenceOfBasicElt_0.cxx">
+					RelativePath="..\..\..\src\BRepMAT2d\BRepMAT2d_BisectingLocus.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepMAT2d\BRepMAT2d_Explorer.cxx">
@@ -895,25 +889,10 @@
 				Name="BRepGProp"
 				>
 				<File
-					RelativePath="..\..\..\drv\BRepGProp\BRepGProp_Cinert_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepGProp\BRepGProp_Sinert_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepGProp\BRepGProp_TFunctionOfVinertGK_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepGProp\BRepGProp_UFunctionOfVinertGK_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepGProp\BRepGProp_VinertGK_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BRepGProp\BRepGProp_Vinert_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\BRepGProp\BRepGProp.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepGProp\BRepGProp_Cinert.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepGProp\BRepGProp_Domain.cxx">
@@ -923,6 +902,21 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepGProp\BRepGProp_Face.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepGProp\BRepGProp_Sinert.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepGProp\BRepGProp_TFunction.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepGProp\BRepGProp_UFunction.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepGProp\BRepGProp_Vinert.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepGProp\BRepGProp_VinertGK.cxx">
 				</File>
 			</Filter>
 			<Filter
@@ -1022,9 +1016,6 @@
 				Name="BRepApprox"
 				>
 				<File
-					RelativePath="..\..\..\drv\BRepApprox\BRepApprox_ApproxLine_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\BRepApprox\BRepApprox_Approx_0.cxx">
 				</File>
 				<File
@@ -1070,9 +1061,6 @@
 					RelativePath="..\..\..\drv\BRepApprox\BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\BRepApprox\BRepApprox_SurfaceTool_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\BRepApprox\BRepApprox_TheComputeLineBezierOfApprox_0.cxx">
 				</File>
 				<File
@@ -1098,6 +1086,12 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\BRepApprox\BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_0.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepApprox\BRepApprox_ApproxLine.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepApprox\BRepApprox_SurfaceTool.cxx">
 				</File>
 			</Filter>
 

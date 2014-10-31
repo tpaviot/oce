@@ -43,6 +43,8 @@ public:
   
       MDF_ASDriverSequence();
   
+  Standard_EXPORT   MDF_ASDriverSequence(const MDF_ASDriverSequence& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~MDF_ASDriverSequence()
 {
@@ -107,8 +109,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   MDF_ASDriverSequence(const MDF_ASDriverSequence& Other);
 
 
 

@@ -22,12 +22,12 @@
 #ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
 #endif
-#ifndef _Handle_LocOpe_ProjectedWires_HeaderFile
-#include <Handle_LocOpe_ProjectedWires.hxx>
+#ifndef _Handle_LocOpe_WiresOnShape_HeaderFile
+#include <Handle_LocOpe_WiresOnShape.hxx>
 #endif
 class StdFail_NotDone;
 class TopTools_ListOfShape;
-class LocOpe_ProjectedWires;
+class LocOpe_WiresOnShape;
 
 
 
@@ -39,9 +39,9 @@ public:
   
   Standard_EXPORT   LocOpe_BuildWires();
   
-  Standard_EXPORT   LocOpe_BuildWires(const TopTools_ListOfShape& Ledges,const Handle(LocOpe_ProjectedWires)& PW);
+  Standard_EXPORT   LocOpe_BuildWires(const TopTools_ListOfShape& Ledges,const Handle(LocOpe_WiresOnShape)& PW);
   
-  Standard_EXPORT     void Perform(const TopTools_ListOfShape& Ledges,const Handle(LocOpe_ProjectedWires)& PW) ;
+  Standard_EXPORT     void Perform(const TopTools_ListOfShape& Ledges,const Handle(LocOpe_WiresOnShape)& PW) ;
   
   Standard_EXPORT     Standard_Boolean IsDone() const;
   

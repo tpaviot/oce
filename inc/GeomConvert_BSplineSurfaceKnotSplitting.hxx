@@ -34,7 +34,10 @@ class TColStd_Array1OfInteger;
 
 //! An algorithm to determine isoparametric curves along <br>
 //! which a BSpline surface should be split in order to <br>
-//! obtain patches of the same continuity. <br>
+//! obtain patches of the same continuity. The continuity order is given at the <br>
+//!  construction time. It is possible to compute the surface patches <br>
+//!  corresponding to the splitting with the method of package <br>
+//!  SplitBSplineSurface. <br>
 //!  For a B-spline surface the discontinuities are localised at <br>
 //!  the knot values. Between two knots values the B-spline is <br>
 //!  infinitely continuously differentiable.  For each parametric <br>

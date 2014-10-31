@@ -59,7 +59,6 @@ class Adaptor2d_HCurve2d;
 class Blend_RstRstFunction;
 class Blend_SurfCurvFuncInv;
 class Blend_CurvPointFuncInv;
-class math_Vector;
 class Adaptor3d_HVertex;
 class IntSurf_Transition;
 class BRepBlend_Extremity;
@@ -86,6 +85,15 @@ class Blend_Point;
 //!          3) stall as there  is a solution of problem <br>
 //!          surf/surf  within the domain  of the  surface <br>
 //!          of support of the restriction. <br>
+//! <br>
+//!          Construction of a BRepBlend_Line between two pcurves <br>
+//!          from an approached starting solution. The output <br>
+//!          entries of this builder are of the same nature <br>
+//!          as of a traditional walking, but the requirements <br>
+//!          to the Line are not the same. If the determination of validity range is always <br>
+//!          guaranteed, the criteria of correct repartition of sections <br>
+//!          before smoothing are not respected. The resulting Line <br>
+//!          is f(t) oriented. <br>
 class BRepBlend_RstRstLineBuilder  {
 public:
 

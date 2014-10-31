@@ -22,8 +22,8 @@
 #ifndef _Handle_SelectMgr_SelectionManager_HeaderFile
 #include <Handle_SelectMgr_SelectionManager.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Handle_V3d_Viewer_HeaderFile
 #include <Handle_V3d_Viewer.hxx>
@@ -115,9 +115,6 @@
 #ifndef _AIS_ClearMode_HeaderFile
 #include <AIS_ClearMode.hxx>
 #endif
-#ifndef _Handle_Geom_Transformation_HeaderFile
-#include <Handle_Geom_Transformation.hxx>
-#endif
 #ifndef _Handle_SelectMgr_Filter_HeaderFile
 #include <Handle_SelectMgr_Filter.hxx>
 #endif
@@ -131,7 +128,6 @@
 #include <Handle_AIS_LocalContext.hxx>
 #endif
 class SelectMgr_SelectionManager;
-class PrsMgr_PresentationManager3d;
 class V3d_Viewer;
 class StdSelect_ViewerSelector3d;
 class AIS_InteractiveObject;
@@ -151,7 +147,6 @@ class TopoDS_Shape;
 class SelectMgr_EntityOwner;
 class SelectMgr_IndexedMapOfOwner;
 class Standard_Transient;
-class Geom_Transformation;
 class SelectMgr_Filter;
 class SelectMgr_ListOfFilter;
 class AIS_ListOfInteractive;
@@ -474,7 +469,7 @@ public:
   Standard_EXPORT     Standard_Boolean HasLocation(const Handle(AIS_InteractiveObject)& aniobj) const;
   
 //! Returns the location of the entity aniobj. <br>
-  Standard_EXPORT    const TopLoc_Location& Location(const Handle(AIS_InteractiveObject)& aniobj) const;
+  Standard_EXPORT     TopLoc_Location Location(const Handle(AIS_InteractiveObject)& aniobj) const;
   //! change the current facing model apply on polygons for <br>
 //! SetColor(), SetTransparency(), SetMaterial() methods <br>
 //! default facing model is Aspect_TOFM_TWO_SIDE. This mean that attributes is <br>
@@ -855,11 +850,11 @@ public:
 //!          of the object presentation is changed. <br>
 //!	  	Updates the viewer when <updateViewer> is TRUE <br>
   Standard_EXPORT     void SetSelectedAspect(const Handle(Prs3d_BasicAspect)& anAspect,const Standard_Boolean globalChange = Standard_True,const Standard_Boolean updateViewer = Standard_True) ;
-  //! Relays mouse position in pixels XPix and YPix to the <br>
-//! interactive context selectors. This is done by the view <br>
-//! aView passing this position to the main viewer and updating it. <br>
+  //! Relays mouse position in pixels theXPix and theYPix to the interactive context selectors. <br>
+//! This is done by the view theView passing this position to the main viewer and updating it. <br>
 //! Functions in both Neutral Point and local contexts. <br>
-  Standard_EXPORT     AIS_StatusOfDetection MoveTo(const Standard_Integer XPix,const Standard_Integer YPix,const Handle(V3d_View)& aView) ;
+//! If theToRedrawOnUpdate is set to false, callee should call RedrawImmediate() to highlight detected object. <br>
+  Standard_EXPORT     AIS_StatusOfDetection MoveTo(const Standard_Integer theXPix,const Standard_Integer theYPix,const Handle(V3d_View)& theView,const Standard_Boolean theToRedrawOnUpdate = Standard_True) ;
   //! returns True  if other entities  were detected  in the <br>
 //!          last mouse detection <br>
   Standard_EXPORT     Standard_Boolean HasNextDetected() const;
@@ -873,9 +868,9 @@ public:
 //!          WARNING : Loop Method. When all the detected entities <br>
 //!                    have been hilighted , the next call will hilight <br>
 //!                    the first one again <br>
-  Standard_EXPORT     Standard_Integer HilightNextDetected(const Handle(V3d_View)& aView) ;
+  Standard_EXPORT     Standard_Integer HilightNextDetected(const Handle(V3d_View)& theView,const Standard_Boolean theToRedrawImmediate = Standard_True) ;
   //! Same as previous methods in reverse direction... <br>
-  Standard_EXPORT     Standard_Integer HilightPreviousDetected(const Handle(V3d_View)& aView) ;
+  Standard_EXPORT     Standard_Integer HilightPreviousDetected(const Handle(V3d_View)& theView,const Standard_Boolean theToRedrawImmediate = Standard_True) ;
   //! Selects everything found in the bounding rectangle <br>
 //! defined by the pixel minima and maxima, XPMin, <br>
 //! YPMin, XPMax, and YPMax in the view, aView <br>
@@ -1182,12 +1177,20 @@ public:
   //! returns the owner of the detected sensitive primitive. <br>
   Standard_EXPORT     Handle_SelectMgr_EntityOwner DetectedOwner() const;
   
+//! Initialization for iteration through mouse-detected objects in <br>
+//! interactive context or in local context if it is opened. <br>
   Standard_EXPORT     void InitDetected() ;
   
+//! @return true if there is more mouse-detected objects after the current one <br>
+//! during iteration through mouse-detected interactive objects. <br>
   Standard_EXPORT     Standard_Boolean MoreDetected() const;
   
+//! Gets next current object during iteration through mouse-detected <br>
+//! interactive objects. <br>
   Standard_EXPORT     void NextDetected() ;
   
+//! @return current mouse-detected shape or empty (null) shape, if current interactive object <br>
+//! is not a shape (AIS_Shape) or there is no current mouse-detected interactive object at all. <br>
   Standard_EXPORT    const TopoDS_Shape& DetectedCurrentShape() const;
   
   Standard_EXPORT     Handle_AIS_InteractiveObject DetectedCurrentObject() const;
@@ -1260,20 +1263,14 @@ public:
 //!          returns False if No Local COnte <br>
   Standard_EXPORT     Standard_Boolean BeginImmediateDraw() ;
   //! returns True if <anIObj> has been stored in the list. <br>
-  Standard_EXPORT     Standard_Boolean ImmediateAdd(const Handle(AIS_InteractiveObject)& anIObj,const Standard_Integer aMode = 0) ;
-  //! returns True if <anIObj> has been removed from the list. <br>
-  Standard_EXPORT     Standard_Boolean ImmediateRemove(const Handle(AIS_InteractiveObject)& anIObj,const Standard_Integer aMode = 0) ;
+  Standard_EXPORT     Standard_Boolean ImmediateAdd(const Handle(AIS_InteractiveObject)& theObj,const Standard_Integer theMode = 0) ;
   //! returns True if the immediate display has been done. <br>
-  Standard_EXPORT     Standard_Boolean EndImmediateDraw(const Handle(V3d_View)& aView,const Standard_Boolean DoubleBuf = Standard_False) ;
-  //! Uses the First Active View of Main Viewer!!! <br>
+  Standard_EXPORT     Standard_Boolean EndImmediateDraw(const Handle(V3d_View)& theView) ;
+  //! Uses the First Active View of Main Viewer! <br>
 //!          returns True if the immediate display has been done. <br>
-  Standard_EXPORT     Standard_Boolean EndImmediateDraw(const Standard_Boolean DoubleBuf = Standard_False) ;
+  Standard_EXPORT     Standard_Boolean EndImmediateDraw() ;
   
   Standard_EXPORT     Standard_Boolean IsImmediateModeOn() const;
-  //! Transforms the current presentation of the object <anObject> <br>
-//!          using the transient graphic space of the view <aView> in <br>
-//!          immediat mode graphics. <br>
-  Standard_EXPORT     void Drag(const Handle(V3d_View)& aView,const Handle(AIS_InteractiveObject)& anObject,const Handle(Geom_Transformation)& aTranformation,const Standard_Boolean postConcatenate = Standard_False,const Standard_Boolean update = Standard_False,const Standard_Boolean zBuffer = Standard_False) ;
   
 //! Sets the highlighting status aStatus of detected and <br>
 //! selected entities. <br>

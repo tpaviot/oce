@@ -205,13 +205,13 @@ protected:
   //! Notification that is fired at each AbortTransaction event. <br>
   Standard_EXPORT   virtual  void OnAbortTransaction(const Handle(TDocStd_Document)& theDoc) ;
 
+Handle_Resource_Manager myResources;
+Standard_Boolean myIsDriverLoaded;
 
 
 private: 
 
 
-Handle_Resource_Manager myResources;
-Standard_Boolean myIsDriverLoaded;
 
 
 };

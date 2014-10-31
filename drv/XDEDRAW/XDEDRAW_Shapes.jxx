@@ -1,6 +1,3 @@
-#ifndef _Draw_Interpretor_HeaderFile
-#include <Draw_Interpretor.hxx>
-#endif
 #ifndef _XDEDRAW_Shapes_HeaderFile
 #include <XDEDRAW_Shapes.hxx>
 #endif

@@ -346,8 +346,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\MAT2d\MAT2d_DataMapOfIntegerVec2d_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\MAT2d\MAT2d_Mat2d_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\MAT2d\MAT2d_SequenceNodeOfSequenceOfConnexion_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\MAT2d\MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve_0.cxx">
@@ -369,6 +367,8 @@
     <ClCompile Include="..\..\..\src\MAT2d\MAT2d_CutCurve.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\MAT2d\MAT2d_MapBiIntHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MAT2d\MAT2d_Mat2d.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\MAT2d\MAT2d_MiniPath.cxx">
     </ClCompile>
@@ -398,8 +398,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Bisector\Bisector_PolyBis.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepMAT2d\BRepMAT2d_BisectingLocus_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepMAT2d\BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepMAT2d\BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt_0.cxx">
@@ -412,9 +410,7 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepMAT2d\BRepMAT2d_DataMapOfShapeSequenceOfBasicElt_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepMAT2d\BRepMAT2d_SequenceNodeOfSequenceOfBasicElt_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepMAT2d\BRepMAT2d_SequenceOfBasicElt_0.cxx">
+    <ClCompile Include="..\..\..\src\BRepMAT2d\BRepMAT2d_BisectingLocus.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepMAT2d\BRepMAT2d_Explorer.cxx">
     </ClCompile>
@@ -534,25 +530,25 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepLib\BRepLib_MakeWire_1.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepGProp\BRepGProp_Cinert_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepGProp\BRepGProp_Sinert_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepGProp\BRepGProp_TFunctionOfVinertGK_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepGProp\BRepGProp_UFunctionOfVinertGK_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepGProp\BRepGProp_VinertGK_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepGProp\BRepGProp_Vinert_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Cinert.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Domain.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_EdgeTool.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Face.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Sinert.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_TFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_UFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Vinert.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_VinertGK.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepIntCurveSurface\BRepIntCurveSurface_Inter.cxx">
     </ClCompile>
@@ -608,8 +604,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepBuilderAPI\BRepBuilderAPI_Transform.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_ApproxLine_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_Approx_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_0.cxx">
@@ -640,8 +634,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_SurfaceTool_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_TheComputeLineBezierOfApprox_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_TheComputeLineOfApprox_0.cxx">
@@ -659,6 +651,10 @@
     <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_ThePrmPrmSvSurfacesOfApprox_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepApprox\BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepApprox\BRepApprox_ApproxLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepApprox\BRepApprox_SurfaceTool.cxx">
     </ClCompile>
 
   </ItemGroup>

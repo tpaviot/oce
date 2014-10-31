@@ -28,7 +28,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Standard_DomainError;
 class TCollection_AsciiString;
 class TColStd_StdMapNodeOfMapOfAsciiString;
 class TColStd_MapIteratorOfMapOfAsciiString;
@@ -42,6 +41,8 @@ public:
 
   
   Standard_EXPORT   TColStd_MapOfAsciiString(const Standard_Integer NbBuckets = 1);
+  
+  Standard_EXPORT   TColStd_MapOfAsciiString(const TColStd_MapOfAsciiString& Other);
   
   Standard_EXPORT     TColStd_MapOfAsciiString& Assign(const TColStd_MapOfAsciiString& Other) ;
     TColStd_MapOfAsciiString& operator =(const TColStd_MapOfAsciiString& Other) 
@@ -75,8 +76,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_MapOfAsciiString(const TColStd_MapOfAsciiString& Other);
 
 
 

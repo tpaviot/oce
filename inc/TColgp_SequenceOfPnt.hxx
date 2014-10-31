@@ -40,6 +40,8 @@ public:
   
       TColgp_SequenceOfPnt();
   
+  Standard_EXPORT   TColgp_SequenceOfPnt(const TColgp_SequenceOfPnt& Other);
+  
   Standard_EXPORT     void Clear() ;
 ~TColgp_SequenceOfPnt()
 {
@@ -104,8 +106,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColgp_SequenceOfPnt(const TColgp_SequenceOfPnt& Other);
 
 
 

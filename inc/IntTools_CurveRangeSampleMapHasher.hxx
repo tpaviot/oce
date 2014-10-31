@@ -25,7 +25,7 @@
 class IntTools_CurveRangeSample;
 
 
-
+//! class for range index management of curve <br>
 class IntTools_CurveRangeSampleMapHasher  {
 public:
 

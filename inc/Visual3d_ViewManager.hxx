@@ -16,8 +16,8 @@
 #include <Handle_Visual3d_ViewManager.hxx>
 #endif
 
-#ifndef _Visual3d_SetOfView_HeaderFile
-#include <Visual3d_SetOfView.hxx>
+#ifndef _Visual3d_SequenceOfView_HeaderFile
+#include <Visual3d_SequenceOfView.hxx>
 #endif
 #ifndef _Handle_Visual3d_Layer_HeaderFile
 #include <Handle_Visual3d_Layer.hxx>
@@ -43,14 +43,8 @@
 #ifndef _Graphic3d_StructureManager_HeaderFile
 #include <Graphic3d_StructureManager.hxx>
 #endif
-#ifndef _Handle_Visual3d_HSetOfView_HeaderFile
-#include <Handle_Visual3d_HSetOfView.hxx>
-#endif
-#ifndef _Handle_Aspect_Window_HeaderFile
-#include <Handle_Aspect_Window.hxx>
-#endif
-#ifndef _Graphic3d_Vertex_HeaderFile
-#include <Graphic3d_Vertex.hxx>
+#ifndef _Handle_Visual3d_HSequenceOfView_HeaderFile
+#include <Handle_Visual3d_HSequenceOfView.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -67,6 +61,9 @@
 #ifndef _Aspect_TypeOfHighlightMethod_HeaderFile
 #include <Aspect_TypeOfHighlightMethod.hxx>
 #endif
+#ifndef _Handle_Aspect_Window_HeaderFile
+#include <Handle_Aspect_Window.hxx>
+#endif
 #ifndef _Graphic3d_CView_HeaderFile
 #include <Graphic3d_CView.hxx>
 #endif
@@ -76,13 +73,12 @@
 class Visual3d_Layer;
 class Graphic3d_GraphicDriver;
 class Visual3d_View;
-class Visual3d_HSetOfView;
-class Aspect_Window;
-class Graphic3d_Vector;
+class Visual3d_HSequenceOfView;
 class Graphic3d_Structure;
 class TColStd_SequenceOfInteger;
 class Aspect_GenId;
 class TColStd_Array2OfReal;
+class Aspect_Window;
 class Graphic3d_DataStructureManager;
 
 
@@ -118,44 +114,19 @@ public:
   Standard_EXPORT     void Erase() ;
   //! Redraws all the displayed structures. <br>
   Standard_EXPORT     void Redraw() const;
+  //! Updates layer of immediate presentations. <br>
+  Standard_EXPORT     void RedrawImmediate() const;
+  //! Invalidates viewer content but does not redraw it. <br>
+  Standard_EXPORT     void Invalidate() const;
   //! Deletes and erases the 3D visualiser <me>. <br>
   Standard_EXPORT     void Remove() ;
-  //! Updates screen in function of modifications of <br>
-//!	    the structures. <br>
+  //! Updates screen in function of modifications of the structures. <br>
 //!  Category: Methods to modify the class definition <br>
-//!  Warning: Not necessary if the update mode is TOU_ASAP. <br>
   Standard_EXPORT     void Update() const;
   //! Returns the group of views activated in the visualiser <me>. <br>
-  Standard_EXPORT     Handle_Visual3d_HSetOfView ActivatedView() const;
-  //! Applies the view orientation transformation, the <br>
-//!	    view mapping transformation and view clip, the <br>
-//!	    display transformation to the vertex <AVertex>. <br>
-//!	    Returns the pixel coordinates <AU>, <AV>. <br>
-//!  Warning: Returns <AU> = <AV> = IntegerLast () if the <br>
-//!	    evaluation is impossible. <br>
-//!	    -- Bad Window, Numeric error... <br>
-  Standard_EXPORT     void ConvertCoord(const Handle(Aspect_Window)& AWindow,const Graphic3d_Vertex& AVertex,Standard_Integer& AU,Standard_Integer& AV) const;
-  //! Applies the inverse of the display transformation, the <br>
-//!	    inverse of the view mapping transformation and view clip, <br>
-//!	    the inverse of the view orientation transformation to <br>
-//!	    the pixel coordinates <AU>, <AV>. <br>
-//!	    Returns the world coordinates <AVertex>. <br>
-//!  Warning: Returns AVertex (X, Y, Z) with X = Y = Z = RealLast () <br>
-//!	    if the evaluation is impossible. <br>
-//!	    -- Bad Window, Numeric error... <br>
-  Standard_EXPORT     Graphic3d_Vertex ConvertCoord(const Handle(Aspect_Window)& AWindow,const Standard_Integer AU,const Standard_Integer AV) const;
-  //! Applies the inverse of the display transformation, the <br>
-//!	    inverse of the view mapping transformation and view clip, <br>
-//!	    the inverse of the view orientation transformation to <br>
-//!	    the pixel coordinates <AU>, <AV>. <br>
-//!	    Returns the world coordinates <AVertex> and projection ray <AVector>. <br>
-//!  Warning: Returns AVertex (X, Y, Z) with X = Y = Z = RealLast () and <br>
-//!          AVector (VX, VY, VZ) with VX = VY = VZ = 0. <br>
-//!	    if the evaluation is impossible. <br>
-//!	    -- Bad Window, Numeric error... <br>
-  Standard_EXPORT     void ConvertCoordWithProj(const Handle(Aspect_Window)& AWindow,const Standard_Integer AU,const Standard_Integer AV,Graphic3d_Vertex& Point,Graphic3d_Vector& Proj) const;
+  Standard_EXPORT     Handle_Visual3d_HSequenceOfView ActivatedView() const;
   //! Returns the group of views defined in the visualiser <me>. <br>
-  Standard_EXPORT     Handle_Visual3d_HSetOfView DefinedView() const;
+  Standard_EXPORT     Handle_Visual3d_HSequenceOfView DefinedView() const;
   //! Returns the theoretical maximum number of <br>
 //!	    definable views in the view manager <me>. <br>
 //!  Warning: It's not possible to accept an infinite <br>
@@ -182,7 +153,7 @@ public:
   //! Get Z layer ID assigned for the structure. <br>
   Standard_EXPORT     Standard_Integer GetZLayer(const Handle(Graphic3d_Structure)& theStructure) const;
   //! Sets the settings for a single Z layer for all managed views. <br>
-  Standard_EXPORT     void SetZLayerSettings(const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings theSettings) ;
+  Standard_EXPORT     void SetZLayerSettings(const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings& theSettings) ;
   //! Returns the settings of a single Z layer. <br>
   Standard_EXPORT     Graphic3d_ZLayerSettings ZLayerSettings(const Standard_Integer theLayerId) ;
   //! Add a new top-level Z layer and get its ID as <br>
@@ -271,7 +242,7 @@ private:
   //! Adds a new layer in all the views of <me>. <br>
   Standard_EXPORT     void SetLayer(const Handle(Visual3d_Layer)& ALayer) ;
 
-Visual3d_SetOfView MyDefinedView;
+Visual3d_SequenceOfView MyDefinedView;
 Handle_Visual3d_Layer MyUnderLayer;
 Handle_Visual3d_Layer MyOverLayer;
 Aspect_GenId MyViewGenId;
