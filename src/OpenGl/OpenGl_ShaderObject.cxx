@@ -20,7 +20,7 @@
 #include <Standard_Assert.hxx>
 #include <TCollection_AsciiString.hxx>
 
-#ifdef __BORLANDC__
+#if defined(__BORLANDC__) || defined(__MINGW32__)
 #include <malloc.h>
 #endif
 
