@@ -4,6 +4,7 @@ This version is not binary compatible with OCE 0.15, OCE_ABI_SOVERSION
 was incremented.
 
 * Upgraded to OCCT 6.7.1
+  http://www.opencascade.com/pub/doc/Release_Notes_6.7.1.pdf
 
 * Fix a numerical bug in ApproxAFunc2Var due to compiler optimization.
 
@@ -36,6 +37,7 @@ This version is not binary compatible with OCE 0.14.1, OCE_ABI_SOVERSION
 was incremented.
 
 * Upgraded to OCCT 6.7.0
+  http://www.opencascade.com/pub/doc/Release_Notes_6.7.0.pdf
 
 * Relicensed to LGPL 2.1.
 
@@ -106,6 +108,7 @@ This version is not binary compatible with OCE 0.12, OCE_ABI_SOVERSION
 was incremented.
 
 * Upgraded to OCCT 6.6.0
+  http://www.opencascade.com/pub/doc/Release_Notes_6.6.0.pdf
 
 * Fix handling of paths containing non-ASCII characters in DRAWEXE.
 
@@ -170,6 +173,7 @@ This version is not binary compatible with OCE 0.10.x, OCE_ABI_SOVERSION
 was incremented.
 
 * Upgraded to OCCT 6.5.4
+  http://www.opencascade.com/pub/doc/Release_Notes_6.5.4.pdf
 
 * Build system improvements and additions
   - added support for Visual C++ 2012
@@ -192,6 +196,7 @@ This version is not binary compatible with OCE 0.9.x, OCE_ABI_SOVERSION
 was incremented.
 
 * Upgraded to OCCT 6.5.3 
+  http://www.opencascade.com/pub/doc/Release_Notes_6.5.3.pdf
 
 * Improved compiler support for the new OCCT version
   - Fix build failures on Alpha
@@ -223,6 +228,7 @@ This is a bugfix release.
 Version 0.9.0 - January 2012
 
 * Upgraded to OCCT 6.5.2
+  http://www.opencascade.com/pub/doc/Release_Notes_6.5.2.pdf
 
 * Added support for CMake uninstall feature. make uninstall is now possible
 

@@ -289,6 +289,9 @@ if(OCE_MULTITHREAD_LIBRARY STREQUAL "NONE")
     add_definitions(-DIGNORE_NO_ATOMICS)
 endif (OCE_MULTITHREAD_LIBRARY STREQUAL "NONE")
 
+#  Make OCE version visible to OCC_VERSION_STRING_EXT
+set(OCC_VERSION_DEVELOPMENT oce-${OCE_VERSION})
+
 #
 # Check components dependencies
 #

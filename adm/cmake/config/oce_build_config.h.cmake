@@ -261,3 +261,7 @@
 
 /* Define if uint32_t and int are the same type */
 #cmakedefine OCE_IS_DUPLICATE_UINT32_T
+
+/* Make OCE release number visible when displaying OCCT version number */
+#cmakedefine OCC_VERSION_DEVELOPMENT "@OCC_VERSION_DEVELOPMENT@"
+
