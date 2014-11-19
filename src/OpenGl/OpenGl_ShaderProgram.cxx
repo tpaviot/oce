@@ -24,7 +24,7 @@
 #include <OpenGl_ShaderProgram.hxx>
 #include <OpenGl_ShaderManager.hxx>
 
-#ifdef __BORLANDC__
+#if defined(__BORLANDC__) || defined(__MINGW32__)
 #include <malloc.h>
 #endif
 
